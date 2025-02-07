@@ -49,24 +49,6 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/menu',
-        has: [{ type: 'host', value: 'bitdash.app' }],
-        destination: 'https://menu.bitdash.app',
-        permanent: true
-      },
-      {
-        source: '/auto',
-        has: [{ type: 'host', value: 'bitdash.app' }],
-        destination: 'https://auto.bitdash.app',
-        permanent: true
-      },
-      {
-        source: '/stock',
-        has: [{ type: 'host', value: 'bitdash.app' }],
-        destination: 'https://stock.bitdash.app',
-        permanent: true
-      },
-      {
         source: '/food',
         has: [{ type: 'host', value: 'bitdash.app' }],
         destination: 'https://food.bitdash.app',
@@ -90,12 +72,6 @@ const nextConfig = {
         destination: 'https://cash.bitdash.app',
         permanent: true
       },
-      {
-        source: '/eats',
-        has: [{ type: 'host', value: 'bitdash.app' }],
-        destination: 'https://eats.bitdash.app',
-        permanent: true
-      }
     ];
   },
 

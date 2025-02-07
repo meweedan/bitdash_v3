@@ -223,10 +223,10 @@ export default function Landing() {
 
   const platforms = [
     {
-      name: "BitMenu",
-      icon: MenuIcon,
-      description: "Revolutionising ordering + dining process",
-      subdomain: "menu.bitdash.app",
+      name: "BitCash",
+      icon: FaMoneyBillWave,
+      description: "Revolutionising Libyan Finances",
+      subdomain: "cash.bitdash.app",
       // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
     },
     {
@@ -250,33 +250,7 @@ export default function Landing() {
       subdomain: "ride.bitdash.app",
       // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
     },
-    {
-      name: "BitCash",
-      icon: FaMoneyBillWave,
-      description: "Revolutionising Libyan Finances",
-      subdomain: "cash.bitdash.app",
-      // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
-    },
-    {
-      name: "BitAuto",
-      icon: Car,
-      description: "Auto showroom + service centre; digitally remastered",
-      subdomain: "auto.bitdash.app",
-      // features: ["Automotive trading", "Top-tier services", "3D AR Photos"]
-    },
-    {
-      name: "BitStock",
-      icon: Package,
-      description: "Buy, sell and trade inventory",
-      subdomain: "stock.bitdash.app",
-      // features: ["Inventory Management", "Predictive Analytics", "Waste Reduction"]
-    },
-    {
-      name: "BitEats",
-      icon: ForkKnifeCrossed,
-      description: "Grocery and food delivery, simplified",
-      subdomain: "eats.bitdash.app",
-    }
+    
   ];
 
   return (
