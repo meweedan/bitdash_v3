@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "agents",
+  "info": {
+    "singularName": "agent",
+    "pluralName": "agents",
+    "displayName": "Agent",
+    "description": "Cashpoint agents for physical transactions"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "operator": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::operator.operator"
+    },
+    "cashBalance": {
+      "type": "decimal",
+      "required": true,
+      "default": 0.0
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["active", "suspended", "pending"],
+      "default": "pending"
+    },
+   "location": {
+      "type": "component",
+      "repeatable": false,
+      "component": "agent.location",
+      "required": true
+    },
+    "searchRadius": { 
+      "type": "decimal",
+      "default": 10,
+      "min": 1,
+      "max": 50
+    },
+    "lastLocationUpdate": { 
+      "type": "datetime"
+    },
+    "operatingHours": {
+      "type": "json"
+    },
+    "dailyTransactionLimit": {
+      "type": "decimal",
+      "default": 10000
+    },
+    "transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::transaction.transaction",
+      "mappedBy": "agent"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "agent"
+    },
+    "supportedCurrencies": {
+      "type": "json"
+    },
+    "ratingScore": {
+      "type": "decimal",
+      "min": 0,
+      "max": 5
+    },
+    "verificationDocuments": {
+      "type": "media",
+      "multiple": true
+    },
+     "wallet": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wallet.wallet",
+      "mappedBy": "agent"
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "kind": "collectionType",
+  "collectionName": "operators",
+  "info": {
+    "singularName": "operator",
+    "pluralName": "operators",
+    "displayName": "Operator",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "fullName": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "phone": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "businessLicense": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "operator"
+    },
+    "restaurant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::restaurant.restaurant",
+      "inversedBy": "operator"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::order.order",
+      "mappedBy": "operators"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Active",
+        "Inactive",
+        "Pending"
+      ]
+    },
+    "dateJoined": {
+      "type": "datetime"
+    },
+    "verificationStatus": {
+      "type": "boolean"
+    },
+    "businessType": {
+      "type": "enumeration",
+      "enum": [
+        "restaurant",
+        "dealer",
+        "trader",
+        "agent",
+        "merchant"
+      ]
+    },
+    "taxId": {
+      "type": "string"
+    },
+    "profileImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "subscription": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subscription.subscription",
+      "mappedBy": "operator"
+    },
+    "payments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment.payment",
+      "mappedBy": "operator"
+    },
+    "vehicles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vehicle.vehicle",
+      "mappedBy": "operator"
+    },
+    "stocks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::stock.stock",
+      "mappedBy": "operator"
+    },
+     "dealershipName": { "type": "string" },
+    "dealershipAddress": { "type": "string" },
+    "dealerRating": { "type": "decimal" },
+    "salesHistory": { "type": "json" },
+    "certifications": { "type": "json" },
+    "specializations": { 
+      "type": "enumeration",
+      "enum": ["luxury", "sports", "commercial", "general"]
+    },
+    "availableFinancing": { "type": "boolean" },
+    "insuranceProvider": { "type": "boolean" },
+    "auto_dealer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::auto-dealer.auto-dealer",
+      "inversedBy": "operator"
+    },
+    "trader": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::trader.trader",
+      "inversedBy": "operator"
+    },
+    "agent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::agent.agent",
+      "mappedBy": "operator"
+    },
+    "merchant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::merchant.merchant",
+      "mappedBy": "operator"
+    }
+  }
+}

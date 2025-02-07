@@ -1,0 +1,40 @@
+/* General Layout */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: visible;
+        /* Allow the sphere to render outside of the content area */
+    background: linear-gradient(to top, #1a73e8, #0d47a1);
+    /* Blue gradient background */
+    color: #e3f2fd;
+}
+
+/* Main Content */
+.main {
+    text-align: center;
+    padding: 4rem 20px;
+    flex-grow: 1;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #333;
+    color: #90caf9;
+    font-size: 0.9em;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #007aff;
+}

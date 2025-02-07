@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Restaurant {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  qr_code     String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  tables      Table[]
+  menus       Menu[]   @relation("RestaurantToMenu")
+  operators   User[]   @relation("UserToRestaurant")
+}
+
+model Menu {
+  id            Int          @id @default(autoincrement())
+  name          String
+  description   String?
+  created_at    DateTime     @default(now())
+  updated_at    DateTime     @updatedAt
+  published_at  DateTime?
+  created_by_id Int?
+  updated_by_id Int?
+  menu_items    MenuItem[]
+  restaurants   Restaurant[] @relation("RestaurantToMenu")
+}
+
+model MenuItem {
+  id           Int       @id @default(autoincrement())
+  name         String
+  description  String?
+  price        Decimal
+  category     String
+  image        String?
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  published_at DateTime?
+  menuId       Int
+  menu         Menu      @relation(fields: [menuId], references: [id])
+}
+
+model Table {
+  id           Int        @id @default(autoincrement())
+  name         String
+  description  String?
+  qr_code      String?
+  status       String     @default("Available")
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
+  restaurantId Int
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+}
+
+model User {
+  id          Int          @id @default(autoincrement())
+  username    String       @unique
+  email       String       @unique
+  password    String
+  provider    String       @default("local")
+  confirmed   Boolean      @default(false)
+  blocked     Boolean      @default(false)
+  created_at  DateTime     @default(now())
+  updated_at  DateTime     @updatedAt
+  roleId      Int?
+  role        Role?        @relation(fields: [roleId], references: [id])
+  restaurants Restaurant[] @relation("UserToRestaurant")
+}
+
+model Role {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  type        String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  users       User[]
+}

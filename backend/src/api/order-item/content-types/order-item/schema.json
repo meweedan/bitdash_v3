@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_items",
+  "info": {
+    "singularName": "order-item",
+    "pluralName": "order-items",
+    "displayName": "Order Item"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "order_items"
+    },
+    "menu_item": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::menu-item.menu-item",
+      "inversedBy": "order_items"
+    },
+    "quantity": {
+      "type": "integer",
+      "required": true,
+      "default": 1,
+      "min": 1
+    },
+    "unit_price": {
+      "type": "decimal",
+      "required": true
+    },
+    "subtotal": {
+      "type": "decimal",
+      "required": true
+    },
+    "special_instructions": {
+      "type": "string"
+    },
+    "modifications": {
+      "type": "json"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "preparing",
+        "ready",
+        "completed",
+        "cancelled"
+      ],
+      "required": true,
+      "default": "pending"
+    },
+    "preparation_notes": {
+      "type": "string"
+    },
+    "discount_amount": {
+      "type": "decimal",
+      "default": 0
+    },
+    "discount_reason": {
+      "type": "string"
+    }
+  }
+}

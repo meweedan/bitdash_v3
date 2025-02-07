@@ -1,0 +1,63 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stocks",
+  "info": {
+    "singularName": "stock",
+    "pluralName": "stocks",
+    "displayName": "Stock"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "quantity": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "description": {
+      "type": "text"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["available", "sold", "expired"],
+      "default": "available"
+    },
+    "operator": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::operator.operator"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order"
+    },
+    "messages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::message.message"
+    },
+    "customer_profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer-profile.customer-profile"
+    },
+    "metadata": {
+      "type": "json"
+    }
+  }
+}

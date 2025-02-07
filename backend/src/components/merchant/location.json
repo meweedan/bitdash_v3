@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_merchant_locations",
+  "info": {
+    "displayName": "Location",
+    "description": "Merchant operating location"
+  },
+  "attributes": {
+    "address": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "coordinates": {
+      "type": "json",
+      "required": true,
+      "custom": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["Point"],
+      "default": "Point",
+      "required": true
+    },
+    "formattedAddress": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string"
+    }
+  }
+}

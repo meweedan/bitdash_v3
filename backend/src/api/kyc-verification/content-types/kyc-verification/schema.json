@@ -1,0 +1,43 @@
+{
+    "kind": "collectionType",
+    "collectionName": "kyc_verifications",
+    "info": {
+      "singularName": "kyc-verification",
+      "pluralName": "kyc-verifications",
+      "displayName": "KYC Verification"
+    },
+    "attributes": {
+      "customer": {
+        "type": "relation",
+        "relation": "oneToOne",
+        "target": "api::customer-profile.customer-profile"
+      },
+      "status": {
+        "type": "enumeration",
+        "enum": ["pending", "approved", "rejected"],
+        "default": "pending"
+      },
+      "document_type": {
+        "type": "enumeration",
+        "enum": ["passport", "national_id", "drivers_license"],
+        "required": true
+      },
+      "document_front": {
+        "type": "media",
+        "required": true
+      },
+      "document_back": {
+        "type": "media"
+      },
+      "selfie": {
+        "type": "media",
+        "required": true
+      },
+      "verified_at": {
+        "type": "datetime"
+      },
+      "rejection_reason": {
+        "type": "text"
+      }
+    }
+  }

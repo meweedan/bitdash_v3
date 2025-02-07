@@ -1,0 +1,70 @@
+{
+    "kind": "collectionType",
+    "collectionName": "payment_links",
+    "info": {
+      "singularName": "payment-link",
+      "pluralName": "payment-links",
+      "displayName": "Payment Link",
+      "description": "Generated payment links for merchants"
+    },
+    "attributes": {
+      "amount": {
+        "type": "decimal",
+        "required": true
+      },
+      "currency": {
+        "type": "string",
+        "required": true,
+        "default": "LYD"
+      },
+      "description": {
+        "type": "string"
+      },
+      "merchant": {
+        "type": "relation",
+        "relation": "manyToOne",
+        "target": "api::merchant.merchant"
+      },
+      "status": {
+        "type": "enumeration",
+        "enum": ["active", "completed", "expired"],
+        "default": "active"
+      },
+      "payment_type": {
+        "type": "enumeration",
+        "enum": ["fixed", "variable"],
+        "default": "fixed"
+      },
+      "link_id": {
+        "type": "uid",
+        "required": true
+      },
+      "pin": {
+        "type": "string",
+        "required": true,
+        "private": true,
+        "minLength": 6,
+        "maxLength": 6
+      },
+      "expiry": {
+        "type": "datetime"
+      },
+      "callback_url": {
+        "type": "string"
+      },
+      "success_url": {
+        "type": "string"
+      },
+      "cancel_url": {
+        "type": "string"
+      },
+      "metadata": {
+        "type": "json"
+      },
+      "transactions": {
+        "type": "relation",
+        "relation": "oneToMany",
+        "target": "api::transaction.transaction"
+      }
+    }
+  }

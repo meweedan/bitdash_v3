@@ -1,0 +1,12 @@
+/* styles/index.css */
+.parallax-section {
+    height: 500px;
+    position: relative;
+}
+
+.parallax-section h1 {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}

@@ -1,0 +1,46 @@
+{
+  "name": "backend",
+  "private": true,
+  "version": "3.0.0",
+  "description": "BitDash v3 Backend",
+  "scripts": {
+    "dev": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "prisma:generate": "prisma generate"
+  },
+  "dependencies": {
+    "@binance/connector": "^3.6.1",
+    "@prisma/client": "^4.14.1",
+    "@socket.io/redis-adapter": "^8.3.0",
+    "@strapi/plugin-i18n": "^4.25.13",
+    "@strapi/plugin-users-permissions": "4.15.0",
+    "@strapi/provider-upload-aws-s3": "^5.4.2",
+    "@strapi/provider-upload-cloudinary": "^5.4.1",
+    "@strapi/strapi": "4.15.0",
+    "ajv": "^8.17.1",
+    "axios": "^1.7.9",
+    "better-sqlite3": "8.6.0",
+    "crypto": "^1.0.1",
+    "decimal.js": "^10.5.0",
+    "ethers": "^6.13.5",
+    "pg": "^8.10.0",
+    "pg-connection-string": "^2.7.0",
+    "prisma": "^4.14.1",
+    "qrcode": "^1.5.4",
+    "socket.io": "^4.8.1",
+    "strapi-plugin-qrcode-generator": "^0.1.1",
+    "strapi-plugin-socket-io": "^2.1.2",
+    "stripe": "^17.4.0",
+    "tronweb": "^6.0.1",
+    "web3": "^4.16.0"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "devDependencies": {
+    "@types/koa-bodyparser": "^4.3.12"
+  }
+}

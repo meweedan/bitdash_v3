@@ -1,0 +1,58 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/tables",
+      "handler": "table.create",
+      "config": {
+        "policies": [],
+        "auth": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tables/:id/generate-qr",
+      "handler": "table.generateQR",
+      "config": {
+        "policies": [],
+        "auth": true
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tables",
+      "handler": "table.find",
+      "config": {
+        "policies": [],
+        "auth": true
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tables/:id",
+      "handler": "table.findOne",
+      "config": {
+        "policies": [],
+        "auth": true
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tables/:id",
+      "handler": "table.update",
+      "config": {
+        "policies": [],
+        "auth": true
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tables/:id",
+      "handler": "table.delete",
+      "config": {
+        "policies": [],
+        "auth": true
+      }
+    }
+  ]
+}

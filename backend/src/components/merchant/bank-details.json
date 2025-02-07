@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_merchant_bank_details",
+  "info": {
+    "displayName": "Bank Details"
+  },
+  "attributes": {
+    "bankName": {
+      "type": "string"
+    },
+    "accountNumber": {
+      "type": "string",
+      "private": true
+    },
+    "swiftCode": {
+      "type": "string"
+    },
+    "isVerified": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

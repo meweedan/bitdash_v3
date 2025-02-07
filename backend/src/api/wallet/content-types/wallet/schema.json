@@ -1,0 +1,83 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wallets",
+  "info": {
+    "singularName": "wallet",
+    "pluralName": "wallets",
+    "displayName": "Wallet"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "balance": {
+      "type": "decimal",
+      "required": true,
+      "default": 0,
+      "min": 0
+    },
+    "currency": {
+      "type": "string",
+      "required": true,
+      "default": "LYD"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "walletId": {
+      "type": "uid",
+      "required": true
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::customer-profile.customer-profile"
+    },
+    "agent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::agent.agent"
+    },
+    "merchant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::merchant.merchant"
+    },
+     "operator": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::operator.operator"
+    },
+    "transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::transaction.transaction",
+      "mappedBy": "wallet"
+    },
+    "captain": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::captain.captain",
+      "inversedBy": "wallet"
+    },
+    "bankAccounts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bank-account.bank-account",
+      "mappedBy": "wallet"
+    },
+    "dailyLimit": {
+      "type": "decimal",
+      "default": 5000
+    },
+    "monthlyLimit": {
+      "type": "decimal",
+      "default": 50000
+    },
+    "lastActivity": {
+      "type": "datetime"
+    }
+  }
+}

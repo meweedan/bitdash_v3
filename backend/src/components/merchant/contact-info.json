@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_merchant_contact_info",
+  "info": {
+    "displayName": "Contact Info"
+  },
+  "attributes": {
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "address": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/restaurants/:id/generate-qr-codes",
+      "handler": "restaurant.generateQrCodes",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

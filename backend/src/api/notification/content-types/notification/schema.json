@@ -1,0 +1,42 @@
+{
+    "kind": "collectionType",
+    "collectionName": "notifications",
+    "info": {
+      "singularName": "notification",
+      "pluralName": "notifications",
+      "displayName": "Notification"
+    },
+    "attributes": {
+      "type": {
+        "type": "enumeration",
+        "enum": [
+          "transaction",
+          "security",
+          "account",
+          "promotion",
+          "trading"
+        ],
+        "required": true
+      },
+      "title": {
+        "type": "string",
+        "required": true
+      },
+      "message": {
+        "type": "text",
+        "required": true
+      },
+      "recipient": {
+        "type": "relation",
+        "relation": "manyToOne",
+        "target": "plugin::users-permissions.user"
+      },
+      "read": {
+        "type": "boolean",
+        "default": false
+      },
+      "metadata": {
+        "type": "json"
+      }
+    }
+  }

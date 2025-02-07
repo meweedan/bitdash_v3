@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "transactions",
+  "info": {
+    "singularName": "transaction",
+    "pluralName": "transactions",
+    "displayName": "Transaction",
+    "description": "Financial transaction records"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "amount": {
+      "type": "decimal",
+      "required": true
+    },
+    "contacts": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::contact.contact"
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": ["LYD", "USDT", "USD"],
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["transfer", "deposit", "withdrawal", "conversion", "payment"],
+      "required": true
+    },
+    "sender": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::wallet.wallet"
+    },
+    "receiver": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::wallet.wallet"
+    },
+    "merchant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::merchant.merchant"
+    },
+    "payment_link": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::payment-link.payment-link"
+    },
+    "agent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent.agent"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "completed", "failed", "reversed"],
+      "default": "pending"
+    },
+    "blockchain_tx_hash": {
+      "type": "string"
+    },
+    "fee": {
+      "type": "decimal",
+      "required": true,
+      "default": 0
+    },
+    "exchangeRate": {
+      "type": "decimal"
+    },
+    "reference": {
+      "type": "string",
+      "unique": true
+    },
+    "metadata": {
+      "type": "json"
+    }
+  }
+}

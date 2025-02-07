@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: bitdash-backend
+    env: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /_health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 18.0.0
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 1337
+      - key: APP_KEYS
+        value: "twt2G9T3YK/ZN/wI0v9zKw==,W0+g73UTKU3jNvxUG8E/lw==,+MOodREum7In9PbAZR7SYw==,vLg8VsLDpX6xlxW3O/4dOA=="
+      - key: API_TOKEN_SALT
+        value: "wONaVtRsJ57rBgifEOhMow=="
+      - key: ADMIN_JWT_SECRET
+        value: "F77ENLeLdzI5/x6hCng7QA=="
+      - key: TRANSFER_TOKEN_SALT
+        value: "itmI6GQ0pphd3ShHp+FRHw=="
+      - key: JWT_SECRET
+        value: "n2ADOfsILZ/Hke/XbrHrNQ=="
+      - key: DATABASE_CLIENT
+        value: postgres
+      - key: DATABASE_URL
+        value: "postgres://bitdash_user:1dsx9fZmMThYwsiw29RUPZaUGWYPvlgX@dpg-csv6q5aj1k6c73c23rcg-a.oregon-postgres.render.com/bitdash"
+      - key: DATABASE_SSL
+        value: "true"
+      - key: DATABASE_SSL_REJECT_UNAUTHORIZED
+        value: "false"
+      - key: PUBLIC_URL
+        value: "https://bitdash-backend.onrender.com"
+      - key: FRONTEND_URL
+        value: "https://menu.bitdash.app,https://stock.bitdash.app,https://auto.bitdash.app,https://bitdash.app"
+
+    disk:
+      name: strapi-uploads
+      mountPath: /opt/render/project/src/public/uploads
+      sizeGB: 1

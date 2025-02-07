@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscriptions",
+  "info": {
+    "singularName": "subscription",
+    "pluralName": "subscriptions",
+    "displayName": "Subscription",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "tier": {
+      "type": "enumeration",
+      "enum": [
+        "standard",
+        "premium"
+      ],
+      "required": true
+    },
+    "commission_rate": {
+      "type": "decimal",
+      "required": true
+    },
+    "monthly_fee": {
+      "type": "decimal",
+      "required": true
+    },
+    "restaurant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::restaurant.restaurant",
+      "inversedBy": "subscription"
+    },
+    "start_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "cancelled",
+        "expired"
+      ],
+      "required": true,
+      "default": "active"
+    },
+    "operator": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::operator.operator",
+      "inversedBy": "subscription"
+    },
+    "end_date": {
+      "type": "datetime"
+    },
+    "stripeSubscriptionId": {
+      "type": "string",
+      "unique": true,
+      "private": false
+    },
+    "stripeCustomerId": {
+      "type": "string",
+      "private": false
+    },
+    "stripePriceId": {
+      "type": "string",
+      "private": false
+    }
+  }
+}

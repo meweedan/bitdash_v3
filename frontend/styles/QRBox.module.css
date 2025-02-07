@@ -1,0 +1,40 @@
+
+.qrBox {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.capturing {
+    transform: scale(1);
+    transform-origin: top left;
+}
+
+.qrCodeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoContainer img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.qrFooter {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media print {
+    .qrBox {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .qrFooter {
+        border-top-color: rgba(0, 0, 0, 0.1) !important;
+    }
+}

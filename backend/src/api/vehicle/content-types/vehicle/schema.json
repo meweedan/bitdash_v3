@@ -1,0 +1,196 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vehicles",
+  "info": {
+    "singularName": "vehicle",
+    "pluralName": "vehicles",
+    "displayName": "Vehicle"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "make": {
+      "type": "string",
+      "required": true
+    },
+    "model": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "marketPrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "dealRating": {
+      "type": "enumeration",
+      "enum": ["excellent", "good", "fair", "poor"],
+      "required": true
+    },
+    "year": {
+      "type": "integer",
+      "required": true
+    },
+    "registration": {
+      "type": "date",
+      "required": true
+    },
+    "mileage": {
+      "type": "integer",
+      "required": true
+    },
+    "vin": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "fuelType": {
+      "type": "enumeration",
+      "enum": ["petrol", "diesel", "hybrid", "electric", "lpg"],
+      "required": true
+    },
+    "transmission": {
+      "type": "enumeration",
+      "enum": ["manual", "automatic", "semi-automatic"],
+      "required": true
+    },
+    "bodyType": {
+      "type": "enumeration",
+      "enum": ["sedan", "suv", "hatchback", "coupe", "wagon", "van", "truck"],
+      "required": true
+    },
+    "engineSize": {
+      "type": "decimal",
+      "required": true
+    },
+    "enginePower": {
+      "type": "integer",
+      "required": true
+    },
+    "acceleration": {
+      "type": "decimal"
+    },
+    "topSpeed": {
+      "type": "integer"
+    },
+    "exteriorColor": {
+      "type": "string",
+      "required": true
+    },
+    "interiorColor": {
+      "type": "string",
+      "required": true
+    },
+    "numberOfOwners": {
+      "type": "integer",
+      "required": true,
+      "default": 1
+    },
+    "warranty": {
+      "type": "json"
+    },
+    "features": {
+      "type": "json"
+    },
+    "serviceHistory": {
+      "type": "json"
+    },
+    "co2Emissions": {
+      "type": "integer"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"],
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["available", "sold", "reserved", "pending"],
+      "default": "available"
+    },
+    "operator": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::operator.operator",
+      "inversedBy": "vehicles"
+    },
+    "customer_profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer-profile.customer-profile"
+    },
+    "similarVehicles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::vehicle.vehicle"
+    },
+    "messages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::message.message"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "galleryImages": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "interiorImages": {
+      "type": "media", 
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "exteriorImages": {
+      "type": "media",
+      "multiple": true, 
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "damageImages": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "serviceHistoryImages": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "pdfs"]
+    },
+    "inquiries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::vehicle-inquiry.vehicle-inquiry",
+      "mappedBy": "vehicle"
+    }
+  }
+}

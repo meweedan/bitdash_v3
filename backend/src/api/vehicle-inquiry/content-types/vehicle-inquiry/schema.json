@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vehicle_inquiries",
+  "info": {
+    "singularName": "vehicle-inquiry",
+    "pluralName": "vehicle-inquiries",
+    "displayName": "Vehicle Inquiry"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "customerName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "message": {
+      "type": "text",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "responded", "resolved"],
+      "default": "pending"
+    },
+    "vehicle": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::vehicle.vehicle"
+    },
+    "dealer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::auto-dealer.auto-dealer"
+    },
+    "messages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::message.message",
+      "mappedBy": "vehicle_inquiry"
+    }
+  }
+}

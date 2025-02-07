@@ -1,0 +1,40 @@
+{
+    "kind": "collectionType",
+    "collectionName": "audit_logs",
+    "info": {
+      "singularName": "audit-log",
+      "pluralName": "audit-logs",
+      "displayName": "Audit Log"
+    },
+    "attributes": {
+      "action": {
+        "type": "string",
+        "required": true
+      },
+      "user": {
+        "type": "relation",
+        "relation": "manyToOne",
+        "target": "plugin::users-permissions.user"
+      },
+      "ip_address": {
+        "type": "string"
+      },
+      "resource_type": {
+        "type": "string",
+        "required": true
+      },
+      "resource_id": {
+        "type": "string",
+        "required": true
+      },
+      "old_values": {
+        "type": "json"
+      },
+      "new_values": {
+        "type": "json"
+      },
+      "metadata": {
+        "type": "json"
+      }
+    }
+  }

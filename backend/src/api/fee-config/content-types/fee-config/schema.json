@@ -1,0 +1,35 @@
+{
+    "kind": "singleType",
+    "collectionName": "fee_configs",
+    "info": {
+      "singularName": "fee-config",
+      "pluralName": "fee-configs",
+      "displayName": "Fee Configuration"
+    },
+    "attributes": {
+      "transfer_fee_percentage": {
+        "type": "decimal",
+        "default": 1.0
+      },
+      "withdrawal_fee_percentage": {
+        "type": "decimal",
+        "default": 1.5
+      },
+      "crypto_purchase_fee": {
+        "type": "decimal",
+        "default": 2.0
+      },
+      "forex_spread": {
+        "type": "decimal",
+        "default": 0.5
+      },
+      "minimum_withdrawal": {
+        "type": "decimal",
+        "default": 10
+      },
+      "maximum_withdrawal": {
+        "type": "decimal",
+        "default": 10000
+      }
+    }
+  }

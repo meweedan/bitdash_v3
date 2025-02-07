@@ -1,0 +1,28 @@
+.sphereContainer {
+    position: fixed;
+    left: 0;
+    /* Keeps the sphere behind the hero text */
+    /* Prevents any interaction */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        animation: fadeOut 8s ease-in forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        filter: blur(3px);
+    }
+
+    50% {
+        opacity: 0.5;
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 0.15;
+        /* Set to a low opacity instead of 0 */
+        filter: blur(20px);
+    }
+}

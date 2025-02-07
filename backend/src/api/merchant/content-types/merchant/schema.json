@@ -1,0 +1,98 @@
+{
+  "kind": "collectionType",
+  "collectionName": "merchants",
+  "info": {
+    "singularName": "merchant",
+    "pluralName": "merchants",
+    "displayName": "Merchant",
+    "description": "Merchants"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "businessName": {
+      "type": "string",
+      "required": true
+    },
+    "businessType": {
+      "type": "string"
+    },
+    "location": {
+      "type": "component",
+      "component": "merchant.location",
+      "required": true
+    },
+    "registrationNumber": {
+      "type": "string"
+    },
+    "verificationStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "verified", "rejected"],
+      "default": "pending"
+    },
+    "currency": {
+      "type": "string",
+      "required": true,
+      "default": "LYD"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["active", "suspended", "inactive"],
+      "default": "active"
+    },
+    "contact": {
+      "type": "component",
+      "component": "merchant.contact-info",
+      "required": true
+    },
+    "bankDetails": {
+      "type": "component",
+      "component": "merchant.bank-details"
+    },
+    "qr_code": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "payment_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment-link.payment-link",
+      "mappedBy": "merchant"
+    },
+    "transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::transaction.transaction",
+      "mappedBy": "merchant"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "merchant"
+    },
+    "wallet": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wallet.wallet",
+      "mappedBy": "merchant"
+    },
+    "merchant_pin": {
+      "type": "string",
+      "required": true,
+      "private": true,
+      "minLength": 6,
+      "maxLength": 6
+    },
+    "settings": {
+      "type": "component",
+      "component": "merchant.settings"
+    }
+  }
+}

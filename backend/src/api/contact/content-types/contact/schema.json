@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contacts",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Contact",
+    "description": "Customer contacts for quick transfers"
+  },
+  "attributes": {
+    "owner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer-profile.customer-profile",
+      "inversedBy": "contacts"
+    },
+    "contact_profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer-profile.customer-profile"
+    },
+    "nickname": {
+      "type": "string"
+    },
+    "frequency": {
+      "type": "integer",
+      "default": 0
+    },
+    "last_transfer": {
+      "type": "datetime"
+    },
+    "payment_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment-link.payment-link"
+    },
+    "favorite": {
+      "type": "boolean",
+      "default": false
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["active", "blocked", "pending"],
+      "default": "active"
+    },
+    "transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::transaction.transaction"
+    }
+  }
+}

@@ -1,0 +1,144 @@
+// frontend/components/PWALanding.js
+import React from 'react';
+import Image from 'next/image';
+import { Container } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import AutoShowroomAnimation from './AutoShowroomAnimation';
+import { ParallaxOrderFlow } from './ParallaxOrderFlow';
+import { StockFlowAnimation } from './StockFlowAnimation';
+import CryptoMatrix from './CryptoMatrix';
+
+const PWAContainer = ({ children }) => (
+  <div 
+    className="min-h-screen flex flex-col items-center justify-center p-4" 
+  >
+    {children}
+  </div>
+);
+
+export const MenuPWALanding = () => {
+  const router = useRouter();
+  const config = {
+    title: 'BitMenu',
+    description: 'Digital menu and ordering system for restaurants',
+    image: '/menu.png',
+    color: '#4CAF50'
+  };
+
+  return (
+    <PWAContainer>
+      <Container config={config} router={router}>
+        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
+          <ParallaxOrderFlow />
+        </div>
+      </Container>
+    </PWAContainer>
+  );
+};
+
+export const CashPWALanding = () => {
+  const router = useRouter();
+  const config = {
+    title: 'BitCash',
+    description: 'Reimagining Libyan Finances',
+    image: '/cash.png',
+    color: '#4CAF50'
+  };
+
+  return (
+    <PWAContainer>
+      <Container config={config} router={router}>
+        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
+          <CryptoMatrix />
+        </div>
+      </Container>
+    </PWAContainer>
+  );
+};
+
+export const AutoPWALanding = () => {
+  const router = useRouter();
+  const config = {
+    title: 'BitAuto',
+    description: 'Automotive dealership and inventory management',
+    image: '/auto.png',
+    color: '#2196F3'
+  };
+
+  return (
+    <PWAContainer>
+      <Container config={config} router={router}>
+        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
+          <AutoShowroomAnimation />
+        </div>
+      </Container>
+    </PWAContainer>
+  );
+};
+
+export const StockPWALanding = () => {
+  const router = useRouter();
+  const config = {
+    title: 'BitStock',
+    description: 'Stock management and inventory control',
+    image: '/stock.png',
+    color: '#FF9800'
+  };
+
+  return (
+    <PWAContainer>
+      <Container config={config} router={router}>
+        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
+          <StockFlowAnimation />
+        </div>
+      </Container>
+    </PWAContainer>
+  );
+};
+
+export const EatsPWALanding = () => {
+  const router = useRouter();
+  const config = {
+    title: 'BitEats',
+    description: 'Grocery and food; delivered to your doorstep',
+    image: '/eats.png',
+    color: '#4CAF50'
+  };
+
+  return (
+    <PWAContainer>
+      <Container config={config} router={router}>
+        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
+          <ParallaxOrderFlow />
+        </div>
+      </Container>
+    </PWAContainer>
+  );
+};
+
+// Default export for backwards compatibility
+const PWALanding = () => {
+  const router = useRouter();
+  const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
+
+  if (hostname.includes('menu')) return <MenuPWALanding />;
+  if (hostname.includes('auto')) return <AutoPWALanding />;
+  if (hostname.includes('stock')) return <StockPWALanding />;
+  if (hostname.includes('cash')) return <CashPWALanding />;
+  if (hostname.includes('eats')) return <EatsPWALanding />;
+
+  const config = {
+    title: 'BitDash',
+    description: 'Growing together, bit by bit.',
+    image: '/app-logo.png',
+    color: '#111111'
+  };
+
+  return (
+    <PWAContainer>
+      <Container config={config} router={router} />
+    </PWAContainer>
+  );
+};
+
+export default PWALanding;
