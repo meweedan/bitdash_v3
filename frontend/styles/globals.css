@@ -1,123 +1,114 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: var(--chakra-colors-black-100);
-  color: var(--chakra-colors-blackAlpha-800);
+/* globals.css */
+:root {
+  /* Base colors */
+  --bitcash-color: #56bba5;
+  --bitshop-color: #77a2e4;
+  --bitfood-color: #ff7f50;
+  --bitride-color: #edb26d;
+
+  /* Gradient definitions */
+  --bitcash-gradient: linear-gradient(135deg, #e8f7f4, #56bba5, #306f63);
+  --bitshop-gradient: linear-gradient(135deg, #eef3fb, #77a2e4, #466088);
+  --bitfood-gradient: linear-gradient(135deg, #fff2ef, #ff7f50, #994b30);
+  --bitride-gradient: linear-gradient(135deg, #fcf6eb, #edb26d, #8e6a41);
+  --bitdash-gradient: linear-gradient(135deg, #56bba5, #77a2e4, #ff7f50, #edb26d);
 }
 
-.dark-mode body {
-  background-color: var(--chakra-colors-black-800);
-  color: var(--chakra-colors-whiteAlpha-900);
+/* Subdomain-specific backgrounds */
+[data-subdomain="cash"] {
+  background: var(--bitcash-gradient);
 }
 
-h1,
-h2,
-h3,
-p {
-  margin: 0;
+[data-subdomain="shop"] {
+  background: var(--bitshop-gradient);
 }
 
-html[dir='rtl'] {
-  text-align: right;
+[data-subdomain="food"] {
+  background: var(--bitfood-gradient);
 }
 
-html[dir='ltr'] {
-  text-align: left;
+[data-subdomain="ride"] {
+  background: var(--bitride-gradient);
 }
 
-.main {
-  padding: 40px;
-  text-align: center;
-}
-.section {
-  opacity: 0;
-  transform: translateY(100px);
-  transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
+/* Main domain styling */
+[data-subdomain="main"] {
+  background: var(--bitdash-gradient);
 }
 
-.section.inView {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0px);
-  /* No blur when in view */
+/* Glass effect styling */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.icon {
-  position: absolute;
-  width: 120px;
-  z-index: 1;
-  opacity: 0;
-  transition: transform 1.2s ease-in-out, opacity 1.2s ease-in-out, filter 1.2s ease-in-out;
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.inView .icon {
-  opacity: 1;
-  filter: blur(0px);
+/* Gradient text effects */
+.gradient-text-bitcash {
+  background: var(--bitcash-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-
-.iconRight {
-  right: 180px;
+.gradient-text-bitshop {
+  background: var(--bitshop-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* Apply blur and fade out on scroll */
-.section:not(.inView) {
-  filter: blur(5px);
+.gradient-text-bitfood {
+  background: var(--bitfood-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.section:not(.inView) .icon {
-  filter: blur(5px);
-  opacity: 0.5;
-  /* Slightly faded when out of view */
+.gradient-text-bitride {
+  background: var(--bitride-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.dark-mode body {
-  background-color: var(--chakra-colors-black-800);
-  color: var(--chakra-colors-whiteAlpha-900);
+.gradient-text-bitdash {
+  background: var(--bitdash-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  -webkit-text-size-adjust: 100%;
-  touch-action: manipulation;
+/* Animation classes */
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradientMove 15s ease infinite;
 }
 
-#__next {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-/* Prevent pull-to-refresh but allow scrolling */
-body {
-  overscroll-behavior-y: none;
-  overflow-x: hidden;
-}
-
-/* Better touch handling for iOS */
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* Ensure inputs are clickable */
-input,
-textarea,
-button,
-select,
-a {
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-}
-
-/* Prevent iOS zoom on input */
-@supports (-webkit-touch-callout: none) {
-
-  input,
-  select,
-  textarea {
-    font-size: 16px !important;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 }

@@ -230,6 +230,27 @@ export default function Landing() {
       // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
     },
     {
+      name: "BitFood",
+      icon: FoodIcon,
+      description: "Revolutionising ordering + dining process",
+      subdomain: "food.bitdash.app",
+      // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
+    },
+    {
+      name: "BitShop",
+      icon: ShopIcon,
+      description: "Shopping never felt so easy",
+      subdomain: "shop.bitdash.app",
+      // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
+    },
+    {
+      name: "BitRide",
+      icon: RideIcon,
+      description: "Revolutionising transportation",
+      subdomain: "ride.bitdash.app",
+      // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
+    },
+    {
       name: "BitCash",
       icon: FaMoneyBillWave,
       description: "Revolutionising Libyan Finances",

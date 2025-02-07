@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-    <Box backgroundColor={isDark ? 'black' : 'white'} minHeight="10vh" color={isDark ? 'white' : 'black'}>
+    <Box backgroundColor={isDark ? 'black' : 'white'} minHeight="10vh">
       <Header />
       <Box as="main" flex="1">
         <main>{children}</main>

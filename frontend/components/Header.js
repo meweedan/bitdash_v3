@@ -14,6 +14,7 @@ import {
   VStack,
   SimpleGrid,
   useDisclosure,
+  useColorModeValue,
   HStack,
   Icon,
 } from '@chakra-ui/react';
@@ -50,6 +51,8 @@ export default function Header() {
   const isRTL = i18n.language === 'ar' || i18n.language === 'he';
   const [showPlatforms, setShowPlatforms] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [platform, setPlatform] = useState('bitdash');
+  const accentColor = `brand.${platform}.500`;
 
   useEffect(() => {
     const checkAuth = () => {
@@ -74,31 +77,52 @@ export default function Header() {
 
   const platforms = [
     {
-      image: '/menu.png',
-      mobileImage: '/menu.png',
-      href: 'https://menu.bitdash.app/',
-    },
-    {
       image: '/cash.png',
       mobileImage: '/cash.png',
       href: 'https://cash.bitdash.app/',
     },
     {
-      image: '/auto.png',
-      mobileImage: '/auto.png',
-      href: 'https://auto.bitdash.app/',
+      image: '/ride.png',
+      mobileImage: '/ride.png',
+      href: 'https://ride.bitdash.app/',
     },
     {
-      image: '/stock.png',
-      mobileImage: '/stock.png',
-      href: 'https://stock.bitdash.app/',
+      image: '/food.png',
+      mobileImage: '/food.png',
+      href: 'https://food.bitdash.app/',
     },
     {
-      image: '/eats.png',
-      mobileImage: '/eats.png',
-      href: 'https://eats.bitdash.app/',
-    }
+      image: '/shop.png',
+      mobileImage: '/shop.png',
+      href: 'https://shop.bitdash.app/',
+    },
   ];
+
+  const bgColor = useColorModeValue(
+  platform === 'bitcash' ? 'brand.bitcash.50' : 
+  platform === 'bitfood' ? 'brand.bitfood.50' :
+  platform === 'bitshop' ? 'brand.bitshop.50' :
+  platform === 'bitride' ? 'brand.bitride.50' :
+  'gray.50',
+  'gray.900'
+);
+
+  const getPlatformFromURL = () => {
+  // Check for localhost development
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname;
+    if (hostname.includes('cash')) return 'bitcash';
+    if (hostname.includes('food')) return 'bitfood';
+    if (hostname.includes('shop')) return 'bitshop';
+    if (hostname.includes('ride')) return 'bitride';
+  }
+  return 'bitdash'; // Default platform
+};
+
+useEffect(() => {
+  setPlatform(getPlatformFromURL());
+}, []);
+
 
   return (
     <Flex
@@ -125,7 +149,7 @@ export default function Header() {
           borderColor={isDark ? "whiteAlpha.100" : "blackAlpha.100"}
         >
           <HStack 
-            spacing={8} 
+            spacing={10} 
             py={6} 
             px={8}
             justify="center"
@@ -147,13 +171,13 @@ export default function Header() {
                   <Image 
                     src={platform.image}
                     alt="platform"
-                    width={90}
-                    height={120}
+                    width={160}
+                    height={220}
                     priority={true}
                     style={{ objectFit: 'contain' }}
                   />
                   <Text 
-                    fontSize="sm" 
+                    fontSize="md" 
                     fontWeight="medium"
                     color={isDark ? 'whiteAlpha.900' : 'gray.700'}
                   >
@@ -183,7 +207,7 @@ export default function Header() {
 
         {/* Desktop Center Menu */}
         <HStack 
-          spacing={100} 
+          spacing={{ base: 'none', lg: '110' }}
           display={{ base: 'none', lg: 'flex' }}
           position="relative"
         >
@@ -191,7 +215,6 @@ export default function Header() {
             <Text
               fontSize="lg"
               fontWeight="bold"
-              _hover={{ color: 'blue.500' }}
               cursor="pointer"
             >
               {t('servicesMenu')}
@@ -202,7 +225,6 @@ export default function Header() {
             <Text
               fontSize="lg"
               fontWeight="bold"
-              _hover={{ color: 'blue.500' }}
               cursor="pointer"
             >
               {t('aboutUs')}
@@ -213,10 +235,8 @@ export default function Header() {
             <Text
               fontSize="lg"
               fontWeight="bold"
-              _hover={{ color: 'blue.500' }}
               cursor="pointer"
               onClick={() => setShowPlatforms(!showPlatforms)}
-              color={showPlatforms ? 'blue.500' : 'inherit'}
             >
               {t('ourSolutions')}
             </Text>
@@ -246,9 +266,9 @@ export default function Header() {
 
           <IconButton
             onClick={toggleColorMode}
-            variant="solid"
+            variant={`${platform}-solid`}
             bg={isDark ? 'whiteAlpha.200' : 'blackAlpha.50'}
-            color="blue.500"
+            color={`brand.${platform}.500`}
             aria-label="Toggle Theme"
             icon={isDark ? 
               <svg viewBox="0 0 24 24" width="24px" height="24px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
@@ -260,9 +280,9 @@ export default function Header() {
 
           <IconButton
             icon={<FaWhatsapp size={24} />}
-            variant="solid"
+            variant={`${platform}-solid`}
             bg={isDark ? 'whiteAlpha.200' : 'blackAlpha.50'}
-            color="blue.500"
+            color={`brand.${platform}.500`}
             onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
             aria-label="WhatsApp"
             size="lg"
@@ -274,7 +294,7 @@ export default function Header() {
               <Button 
                 leftIcon={<FaUser size={20} />} 
                 size="lg"
-                variant="solid"
+                variant={`${platform}-solid`}
                 bg={isDark ? 'whiteAlpha.200' : 'blackAlpha.50'}
                 onClick={() => router.push('/login')}
                 _hover={{ bg: isDark ? 'whiteAlpha.300' : 'blackAlpha.100' }}
@@ -286,7 +306,7 @@ export default function Header() {
                 onClick={handleLogout}
                 size="lg"
                 colorScheme="red"
-                variant="solid"
+                variant={`${platform}-solid`}
               >
                 {t('logout')}
               </Button>
@@ -296,8 +316,8 @@ export default function Header() {
               <Button 
                 leftIcon={<FaSignInAlt size={20} />}
                 size="lg"
-                colorScheme="blue"
-                variant="solid"
+                variant={`${platform}-outline`}
+                color={`brand.${platform}.700`}
                 onClick={() => router.push('/login')}
               >
                 {t('login')}
@@ -305,10 +325,9 @@ export default function Header() {
               <Button 
                 leftIcon={<FaUserPlus size={20} />}
                 size="lg"
-                variant="solid"
-                bg={isDark ? 'whiteAlpha.200' : 'blackAlpha.50'}
+                variant={`${platform}-solid`}
                 onClick={() => router.push('/signup')}
-                _hover={{ bg: isDark ? 'whiteAlpha.300' : 'blackAlpha.100' }}
+                _hover={{ bg: isDark ? 'whiteAlpha.300' : `brand.${platform}.700` }}
               >
                 {t('signup')}
               </Button>
@@ -339,8 +358,8 @@ export default function Header() {
 
           <IconButton
             onClick={toggleColorMode}
-            variant="ghost"
-            color="#1179be"
+            variant={`${platform}-outline`}
+            color={`brand.${platform}.500`}
             aria-label="Toggle Theme"
             icon={isDark ? <svg viewBox="0 0 24 24" width="20px" height="20px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
                 : <svg viewBox="0 0 24 24" width="20px" height="20px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>}
@@ -354,15 +373,15 @@ export default function Header() {
                 href="/login"
                 icon={<FaUser />}
                 aria-label={t('myAccount')}
-                variant="ghost"
-                colorScheme="blue"
+                variant={`${platform}-outline`}
+                color={`brand.${platform}.700`}
                 size="sm"
               />
               <IconButton
                 onClick={handleLogout}
                 icon={<FaSignOutAlt />}
                 aria-label={t('logout')}
-                variant="ghost"
+                variant={`${platform}-outline`}
                 colorScheme="red"
                 size="sm"
               />
@@ -374,7 +393,7 @@ export default function Header() {
                 href="/login"
                 icon={<FaSignInAlt />}
                 aria-label={t('login')}
-                variant="ghost"
+                variant={`${platform}-outline`}
                 colorScheme="blue"
                 size="sm"
               />
@@ -383,7 +402,7 @@ export default function Header() {
                 href="/signup"
                 icon={<FaUserPlus />}
                 aria-label={t('signup')}
-                variant="ghost"
+                variant={`${platform}-outline`}
                 colorScheme="blue"
                 size="sm"
               />
@@ -392,7 +411,7 @@ export default function Header() {
 
           <IconButton
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            variant="ghost"
+            variant={`${platform}-outline`}
             aria-label="Toggle Navigation"
             onClick={onToggle}
             size="sm"
@@ -416,7 +435,7 @@ export default function Header() {
             <MenuItems href="/about" onClick={onClose}>{t('aboutUs')}</MenuItems>
             <Button
               leftIcon={<FaWhatsapp />}
-              variant="ghost"
+              variant={`${platform}-outline`}
               colorScheme="blue"
               onClick={() => {
                 window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank");
@@ -446,11 +465,11 @@ export default function Header() {
                   <Image
                     src={platform.image}
                     alt="platform"
-                    width={90}
-                    height={120}
+                    width={50}
+                    height={80}
                     priority={true}
                     style={{ 
-                      width: '100%', 
+                      width: '90%', 
                       height: 'auto', 
                       objectFit: 'contain'
                     }}

@@ -107,7 +107,7 @@ API_TOKEN_SALT=your-token-salt
 ADMIN_JWT_SECRET=your-admin-jwt-secret
 
 # Service-specific Configuration
-BITCOSH_API_KEY=your-cash-api-key
+BITCASH_API_KEY=your-cash-api-key
 BITFOOD_API_KEY=your-food-api-key
 BITSHOP_API_KEY=your-shop-api-key
 BITRIDE_API_KEY=your-ride-api-key

@@ -36,6 +36,26 @@ export const MenuPWALanding = () => {
   );
 };
 
+export const FoodPWALanding = () => {
+  const router = useRouter();
+  const config = {
+    title: 'BitFood',
+    description: 'Digital menu and ordering system for restaurants',
+    image: '/food.png',
+    color: '#4CAF50'
+  };
+
+  return (
+    <PWAContainer>
+      <Container config={config} router={router}>
+        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
+          <ParallaxOrderFlow />
+        </div>
+      </Container>
+    </PWAContainer>
+  );
+};
+
 export const CashPWALanding = () => {
   const router = useRouter();
   const config = {
@@ -62,6 +82,26 @@ export const AutoPWALanding = () => {
     title: 'BitAuto',
     description: 'Automotive dealership and inventory management',
     image: '/auto.png',
+    color: '#2196F3'
+  };
+
+  return (
+    <PWAContainer>
+      <Container config={config} router={router}>
+        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
+          <AutoShowroomAnimation />
+        </div>
+      </Container>
+    </PWAContainer>
+  );
+};
+
+export const RidePWALanding = () => {
+  const router = useRouter();
+  const config = {
+    title: 'BitRide',
+    description: 'Ride safe',
+    image: '/ride.png',
     color: '#2196F3'
   };
 
@@ -116,6 +156,26 @@ export const EatsPWALanding = () => {
   );
 };
 
+export const ShopPWALanding = () => {
+  const router = useRouter();
+  const config = {
+    title: 'BitShop',
+    description: 'Shopping never felt so easy',
+    image: '/shop.png',
+    color: '#4CAF50'
+  };
+
+  return (
+    <PWAContainer>
+      <Container config={config} router={router}>
+        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
+          <ParallaxOrderFlow />
+        </div>
+      </Container>
+    </PWAContainer>
+  );
+};
+
 // Default export for backwards compatibility
 const PWALanding = () => {
   const router = useRouter();
@@ -126,6 +186,9 @@ const PWALanding = () => {
   if (hostname.includes('stock')) return <StockPWALanding />;
   if (hostname.includes('cash')) return <CashPWALanding />;
   if (hostname.includes('eats')) return <EatsPWALanding />;
+  if (hostname.includes('food')) return <FoodPWALanding />;
+  if (hostname.includes('ride')) return <RidePWALanding />;
+  if (hostname.includes('shop')) return <ShopPWALanding />;
 
   const config = {
     title: 'BitDash',

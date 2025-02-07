@@ -41,7 +41,7 @@ import Link from 'next/link';
 
 const MapComponent = dynamic(() => import('@/components/common/MapComponent'), {
   ssr: false,
-  loading: () => <Skeleton height="80%" width="100%" />
+  loading: () => <Skeleton height="100%" width="100%" />
 });
 
 export const LocationsPreview = () => {
@@ -58,7 +58,7 @@ export const LocationsPreview = () => {
 
   return (
     <Box 
-      h="80%" 
+      h="100%" 
       w="100%" 
       position="relative"
     >
@@ -100,9 +100,9 @@ export const LocationsPreview = () => {
       </Box>
 
       <Box 
-        h="80%" 
+        h="100%" 
         w="100%"
-        pt="50px" // Space for search bar
+        pt="80px" // Space for search bar
       >
         <MapComponent 
           locations={locations} 

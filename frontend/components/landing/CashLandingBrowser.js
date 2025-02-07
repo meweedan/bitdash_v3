@@ -19,7 +19,8 @@ import {
   Code,
   List,
   ListItem,
-  ListIcon
+  ListIcon,
+  Badge
 } from '@chakra-ui/react';
 import { ArrowRight } from 'phosphor-react/dist';
 import { 
@@ -50,11 +51,13 @@ const BitCashLanding = () => {
   const { t } = useTranslation('common');
   const containerRef = useRef(null);
 
-  const accentColor = useColorModeValue('blue.500', 'blue.300');
+  // Updated color scheme using new BitDash v3 colors
+  const primaryColor = useColorModeValue('brand.bitcash.500', 'brand.bitcash.600');
   const bgGradient = useColorModeValue(
-    'linear(to-b, gray.50 0%, white 100%)',
-    'linear(to-b, gray.900 0%, black 100%)'
+    'linear(to-b, green.50, white)',
+    'linear(to-b, gray.900, black)'
   );
+  const glassCardBg = useColorModeValue('whiteAlpha.900', 'whiteAlpha.100');
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -69,381 +72,308 @@ const BitCashLanding = () => {
 
   const heroScale = useTransform(smoothScroll, [0, 1], [1, 0.92]);
 
+  // Enterprise solutions with updated styling
   const enterpriseSolutions = [
     {
       icon: FaServer,
       title: 'bitcash.solutions.scalable.title',
       description: 'bitcash.solutions.scalable.description',
-      technical: 'bitcash.solutions.scalable.technical'
+      technical: 'bitcash.solutions.scalable.technical',
+      color: 'brand.bitcash.500'
     },
     {
       icon: FaShieldAlt,
       title: 'bitcash.solutions.security.title',
       description: 'bitcash.solutions.security.description',
-      technical: 'bitcash.solutions.security.technical'
+      technical: 'bitcash.solutions.security.technical',
+      color: 'brand.bitcash.600'
     },
     {
       icon: FaCode,
       title: 'bitcash.solutions.api.title',
       description: 'bitcash.solutions.api.description',
-      technical: 'bitcash.solutions.api.technical'
+      technical: 'bitcash.solutions.api.technical',
+      color: 'brand.bitcash.700'
     }
   ];
 
+  // Updated features with new brand colors
   const sectionFeatures = [
     {
       icon: FaGlobe,
       title: 'bitcash.features.global.title',
       description: 'bitcash.features.global.description',
-      color: 'green.500'
+      color: 'brand.bitcash.400'
     },
     {
       icon: FaLock,
       title: 'bitcash.features.security.title',
       description: 'bitcash.features.security.description',
-      color: 'red.500'
+      color: 'brand.bitcash.500'
     },
     {
       icon: FaBitcoin,
       title: 'bitcash.features.crypto.title',
       description: 'bitcash.features.crypto.description',
-      color: 'blue.500'
+      color: 'brand.bitcash.600'
     },
     {
       icon: FaIndustry,
       title: 'bitcash.features.enterprise.title',
       description: 'bitcash.features.enterprise.description',
-      color: 'purple.500'
+      color: 'brand.bitcash.700'
     }
   ];
-
-  const platformHighlights = [
-    {
-      icon: FaMobileAlt,
-      title: 'bitcash.highlights.mobile.title',
-      description: 'bitcash.highlights.mobile.description'
-    },
-    {
-      icon: FaBalanceScale,
-      title: 'bitcash.highlights.regulatory.title',
-      description: 'bitcash.highlights.regulatory.description'
-    }
-  ];
-
-  const mt5Integration = {
-    features: [
-      {
-        icon: FaExchangeAlt,
-        title: 'bitcash.mt5.trading.title',
-        description: 'bitcash.mt5.trading.description'
-      },
-      {
-        icon: FaRegChartBar,
-        title: 'bitcash.mt5.charts.title',
-        description: 'bitcash.mt5.charts.description'
-      }
-    ],
-    technicalHighlights: [
-      'bitcash.mt5.tech.websocket',
-      'bitcash.mt5.tech.latency',
-      'bitcash.mt5.tech.multiAsset'
-    ]
-  };
 
   return (
-      <Box 
-        ref={containerRef} 
-        bg={bgGradient} 
-        maxW="100%" 
-        overflow="hidden"
-      >
-        <Head>
-          <title>BitCash | Reimagining Libya's Finances</title>
-          <meta name="description" content="Payment solution built for Libyans, by Libyans" />
-        </Head>
+    <Box 
+      ref={containerRef} 
+      bg={bgGradient} 
+      minH="100vh"
+      overflow="hidden"
+    >
+      <Head>
+        <title>BitCash</title>
+        <meta name="description" content="Experience the future of digital payments with BitCash" />
+      </Head>
 
-        <ScrollProgress scrollYProgress={smoothScroll} />
+      <ScrollProgress scrollYProgress={smoothScroll} color="brand.bitcash.500" />
 
-        <Container maxW="8xl" px={{ base: 4, lg: 0 }}>
-          <ParallaxSection>
-            <motion.div style={{ scale: heroScale }}>
-              <Flex 
-                direction="column" 
-                align="center" 
-                textAlign="center" 
-                py={{ base: 16, md: 24 }}
-              >
-                <VStack spacing={6} maxW="4xl">
-                  <GradientHeading 
-                    fontSize={{ base: '3xl', md: '5xl', lg: '6xl' }}
-                  >
-                    {t('bitcash.hero.title')}
-                  </GradientHeading>
-
-                  <Text 
-                    fontSize={{ base: 'lg', md: 'xl' }} 
-                    color={useColorModeValue('gray.600', 'gray.300')}
-                    maxW="2xl"
-                  >
-                    {t('bitcash.hero.subtitle')}
-                  </Text>
-
-                  <HStack spacing={4} pt={8}>
-                    <Button
-                      size="lg"
-                      colorScheme="blue"
-                      rightIcon={<ArrowRight />}
-                      onClick={() => router.push('/signup')}
-                    >
-                      {t('bitcash.hero.cta.signup')}
-                    </Button>
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      onClick={() => router.push('/enterprise')}
-                    >
-                      {t('bitcash.hero.cta.enterprise')}
-                    </Button>
-                  </HStack>
-                </VStack>
-
-                <Box mt={12} w="full" maxW="5xl">
-                  <GlassCard p={6} borderRadius="2xl">
-                    <CryptoMatrix 
-                      columns={{ base: 4, md: 6 }} 
-                      spacing={{ base: 2, md: 4 }} 
-                    />
-                  </GlassCard>
-                </Box>
-              </Flex>
-            </motion.div>
-          </ParallaxSection>
-
-          {/* Platform Features */}
-          <ParallaxSection>
-            <SimpleGrid 
-              columns={[1, 2, 4]} 
-              spacing={6} 
-              py={{ base: 16, md: 24 }}
-            >
-              {sectionFeatures.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <GlassCard p={6} h="full">
-                    <VStack align="start" spacing={4}>
-                      <Icon 
-                        as={feature.icon} 
-                        boxSize={10} 
-                        color={feature.color} 
-                      />
-                      <Heading size="md">{t(feature.title)}</Heading>
-                      <Text color={useColorModeValue('gray.600', 'gray.300')}>
-                        {t(feature.description)}
-                      </Text>
-                    </VStack>
-                  </GlassCard>
-                </motion.div>
-              ))}
-            </SimpleGrid>
-          </ParallaxSection>
-
-          <ParallaxSection>
-            {/* New Locations TabPanel */}
-              <Box 
-                bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
-                borderRadius="xl"
-                height="600px" 
-                overflow="hidden"
-              >
-                <LocationsPreview />
-              </Box>
-          </ParallaxSection>
-
-          {/* Platform Highlights */}
-          <ParallaxSection>
+      <Container maxW="8xl" px={{ base: 4, lg: 0 }}>
+        {/* Hero Section */}
+        <ParallaxSection>
+          <motion.div style={{ scale: heroScale }}>
             <Flex 
-              direction={{ base: 'column', md: 'row' }}
-              justify="space-between"
-              align="center"
-              py={{ base: 24, md: 12 }}
-              gap={8}
+              direction="column" 
+              align="center" 
+              textAlign="center" 
+              py={{ base: 20, md: 28 }}
+              position="relative"
             >
-              {platformHighlights.map((highlight, index) => (
-                <GlassCard 
-                  key={index} 
-                  p={6}
+
+              <VStack spacing={8} maxW="4xl">
+                <GradientHeading 
+                  fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
+                  bgGradient="linear(to-r, brand.bitcash.500, brand.bitcash.700)"
                 >
-                  <VStack align="start" spacing={4}>
+                  {t('bitcash.hero.title')}
+                </GradientHeading>
+
+                <Text 
+                  fontSize={{ base: 'xl', md: '2xl' }} 
+                  color={useColorModeValue('gray.600', 'gray.300')}
+                  maxW="3xl"
+                  lineHeight="tall"
+                >
+                  {t('bitcash.hero.subtitle')}
+                </Text>
+
+                <HStack spacing={6} pt={8}>
+                  <Button
+                    size="lg"
+                    variant="bitcash-solid"
+                    px={8}
+                    h={14}
+                    fontSize="lg"
+                    rightIcon={<ArrowRight weight="bold" />}
+                    _hover={{ bg: 'green.600' }}
+                    onClick={() => router.push('/signup')}
+                  >
+                    {t('bitcash.hero.cta.signup')}
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="bitcash-outline"
+                    borderColor="brand.bitcash.600"
+                    color="brand.bitcash.500"
+                    px={8}
+                    h={14}
+                    fontSize="lg"
+                    _hover={{ bg: 'green.50' }}
+                    onClick={() => router.push('/enterprise')}
+                  >
+                    {t('bitcash.hero.cta.enterprise')}
+                  </Button>
+                </HStack>
+              </VStack>
+
+              {/* Updated CryptoMatrix Card */}
+              <Box mt={16} w="full" maxW="6xl">
+                <GlassCard 
+                  p={8} 
+                  borderRadius="3xl"
+                  bg={glassCardBg}
+                  borderColor="brand.bitcash"
+                  borderWidth={2}
+                  boxShadow="xl"
+                >
+                  <CryptoMatrix 
+                    columns={{ base: 3, md: 6 }} 
+                    spacing={{ base: 4, md: 6 }} 
+                  />
+                </GlassCard>
+              </Box>
+            </Flex>
+          </motion.div>
+        </ParallaxSection>
+
+        {/* Features Grid with Animation */}
+        <ParallaxSection>
+          <SimpleGrid 
+            columns={{ base: 1, md: 2, lg: 4 }} 
+            spacing={8} 
+            py={{ base: 20, md: 28 }}
+          >
+            {sectionFeatures.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: "easeOut"
+                }}
+              >
+                <GlassCard 
+                  p={8} 
+                  h="full"
+                  bg={glassCardBg}
+                  borderColor={feature.color}
+                  borderWidth={2}
+                  _hover={{ 
+                    transform: 'translateY(-5px)',
+                    boxShadow: 'xl'
+                  }}
+                  transition="all 0.3s ease"
+                >
+                  <VStack align="start" spacing={6}>
                     <Icon 
-                      as={highlight.icon} 
-                      boxSize={10} 
-                      color={useColorModeValue('blue.500', 'blue.300')} 
+                      as={feature.icon} 
+                      boxSize={12} 
+                      color={feature.color}
                     />
-                    <Heading size="md">{t(highlight.title)}</Heading>
+                    <Heading size="md">{t(feature.title)}</Heading>
                     <Text color={useColorModeValue('gray.600', 'gray.300')}>
-                      {t(highlight.description)}
+                      {t(feature.description)}
                     </Text>
                   </VStack>
                 </GlassCard>
+              </motion.div>
+            ))}
+          </SimpleGrid>
+        </ParallaxSection>
+
+        {/* Updated Locations Preview */}
+        <ParallaxSection>
+          <Box 
+            bg={glassCardBg}
+            borderRadius="3xl"
+            overflow="hidden"
+            height="1200px"
+            borderColor="bitcash-solid"
+            borderWidth={2}
+            boxShadow="2xl"
+          >
+            <LocationsPreview />
+          </Box>
+        </ParallaxSection>
+
+        {/* Enterprise Solutions with New Styling */}
+        <ParallaxSection>
+          <VStack spacing={16} py={28} align="center">
+            <VStack textAlign="center" maxW="3xl" spacing={6}>
+              <GradientHeading 
+                size="2xl"
+                bgGradient="linear(to-r, brand.bitcash.500, brand.bitcash.700)"
+              >
+                {t('bitcash.enterprise.title')}
+              </GradientHeading>
+              <Text 
+                fontSize="xl" 
+                color={useColorModeValue('gray.600', 'gray.300')}
+              >
+                {t('bitcash.enterprise.subtitle')}
+              </Text>
+            </VStack>
+
+            <SimpleGrid 
+              columns={{ base: 1, md: 3 }} 
+              spacing={8} 
+              w="full"
+            >
+              {enterpriseSolutions.map((solution, index) => (
+                <GlassCard 
+                  key={index} 
+                  p={8}
+                  bg={glassCardBg}
+                  borderColor={solution.color}
+                  borderWidth={2}
+                  _hover={{ 
+                    transform: 'translateY(-5px)',
+                    boxShadow: 'xl'
+                  }}
+                  transition="all 0.3s ease"
+                >
+                  <VStack spacing={6} align="start">
+                    <Icon 
+                      as={solution.icon} 
+                      boxSize={12} 
+                      color={solution.color} 
+                    />
+                    <Heading size="md">{t(solution.title)}</Heading>
+                    <Text>{t(solution.description)}</Text>
+                    <Code 
+                      colorScheme="green" 
+                      p={4} 
+                      borderRadius="xl"
+                      fontSize="sm"
+                      w="full"
+                    >
+                      {t(solution.technical)}
+                    </Code>
+                  </VStack>
+                </GlassCard>
               ))}
-            </Flex>
-          </ParallaxSection>
+            </SimpleGrid>
+          </VStack>
+        </ParallaxSection>
 
-          {/* Loading Animation */}
-          <div className="flex justify-center items-center py-12">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
-          </div>
-
-          {/* Enterprise Solutions Section */}
-          <ParallaxSection>
-            <VStack spacing={12} py={24} align="center">
-              <VStack textAlign="center" maxW="3xl">
-                <Heading size="2xl">{t('bitcash.enterprise.title')}</Heading>
-                <Text fontSize="xl" color="gray.500">
-                  {t('bitcash.enterprise.subtitle')}
+        {/* Call to Action Section */}
+        <ParallaxSection>
+          <Box py={20}>
+            <GlassCard 
+              p={12}
+              bg={glassCardBg}
+              borderColor="brand.bitcash"
+              borderWidth={2}
+              textAlign="center"
+            >
+              <VStack spacing={8}>
+                <Heading size="xl">
+                  {t('bitcash.cta.title')}
+                </Heading>
+                <Text fontSize="xl" maxW="2xl">
+                  {t('bitcash.cta.description')}
                 </Text>
+                <Button
+                  size="lg"
+                  variant="bitcash-solid"
+                  px={12}
+                  h={16}
+                  fontSize="xl"
+                  rightIcon={<ArrowRight weight="bold" />}
+                  _hover={{ bg: 'green.600' }}
+                  onClick={() => router.push('/get-started')}
+                >
+                  {t('bitcash.cta.button')}
+                </Button>
               </VStack>
-
-              <SimpleGrid columns={[1, 3]} spacing={8}>
-                {enterpriseSolutions.map((solution, index) => (
-                  <GlassCard key={index} p={6}>
-                    <VStack spacing={4} align="start">
-                      <Icon as={solution.icon} boxSize={10} color="blue.400" />
-                      <Heading size="md">{t(solution.title)}</Heading>
-                      <Text>{t(solution.description)}</Text>
-                      <Code colorScheme="blue" p={2} borderRadius="md">
-                        {t(solution.technical)}
-                      </Code>
-                    </VStack>
-                  </GlassCard>
-                ))}
-              </SimpleGrid>
-            </VStack>
-          </ParallaxSection>
-
-          {/* MT5 Trading Platform Integration */}
-          <ParallaxSection>
-            <VStack spacing={12} py={24} align="center">
-              <VStack textAlign="center" maxW="3xl">
-                <Heading size="2xl">{t('bitcash.mt5.title')}</Heading>
-                <Text fontSize="xl" color="gray.500">
-                  {t('bitcash.mt5.subtitle')}
-                </Text>
-              </VStack>
-
-              <SimpleGrid columns={[1, 2]} spacing={8}>
-                {mt5Integration.features.map((feature, index) => (
-                  <GlassCard key={index} p={6}>
-                    <VStack spacing={4} align="start">
-                      <Icon as={feature.icon} boxSize={10} color="green.400" />
-                      <Heading size="md">{t(feature.title)}</Heading>
-                      <Text>{t(feature.description)}</Text>
-                    </VStack>
-                  </GlassCard>
-                ))}
-              </SimpleGrid>
-
-              <VStack spacing={4} w="full" maxW="3xl">
-                <Heading size="lg">{t('bitcash.mt5.tech.title')}</Heading>
-                <List spacing={3} w="full">
-                  {mt5Integration.technicalHighlights.map((highlight, index) => (
-                    <ListItem key={index} display="flex" alignItems="center">
-                      <ListIcon as={MdCheckCircle} color="green.500" />
-                      <Text>{t(highlight)}</Text>
-                    </ListItem>
-                  ))}
-                </List>
-              </VStack>
-            </VStack>
-          </ParallaxSection>
-
-          {/* Agent Recruitment Section */}
-          <ParallaxSection>
-            <VStack spacing={12} py={24} align="center">
-              <VStack textAlign="center" maxW="3xl">
-                <Heading size="2xl">{t('bitcash.agent.title')}</Heading>
-                <Text fontSize="xl" color="gray.500">
-                  {t('bitcash.agent.subtitle')}
-                </Text>
-              </VStack>
-
-              <GlassCard p={8} maxW="4xl" w="full">
-                <VStack spacing={6} align="start">
-                  <HStack spacing={4} align="center">
-                    <Icon as={FaMoneyBillWave} boxSize={10} color="green.500" />
-                    <Heading size="md">{t('bitcash.agent.earnMore')}</Heading>
-                  </HStack>
-
-                  <SimpleGrid columns={[1, 2]} spacing={4}>
-                    <VStack align="start" spacing={3}>
-                      <List spacing={3}>
-                        <ListItem display="flex" alignItems="center">
-                          <ListIcon as={MdCheckCircle} color="green.500" />
-                          {t('bitcash.agent.services.cash')}
-                        </ListItem>
-                        <ListItem display="flex" alignItems="center">
-                          <ListIcon as={MdCheckCircle} color="green.500" />
-                          {t('bitcash.agent.services.fx')}
-                        </ListItem>
-                        <ListItem display="flex" alignItems="center">
-                          <ListIcon as={MdCheckCircle} color="green.500" />
-                          {t('bitcash.agent.services.crypto')}
-                        </ListItem>
-                      </List>
-                    </VStack>
-                    <VStack align="start" spacing={3}>
-                      <List spacing={3}>
-                        <ListItem display="flex" alignItems="center">
-                          <ListIcon as={MdCheckCircle} color="green.500" />
-                          {t('bitcash.agent.benefits.commission')}
-                        </ListItem>
-                        <ListItem display="flex" alignItems="center">
-                          <ListIcon as={MdCheckCircle} color="green.500" />
-                          {t('bitcash.agent.benefits.training')}
-                        </ListItem>
-                        <ListItem display="flex" alignItems="center">
-                          <ListIcon as={MdCheckCircle} color="green.500" />
-                          {t('bitcash.agent.benefits.support')}
-                        </ListItem>
-                      </List>
-                    </VStack>
-                  </SimpleGrid>
-
-                  <Divider my={4} />
-
-                  <VStack w="full" spacing={4}>
-                    <Text fontWeight="bold" fontSize="lg">
-                      {t('bitcash.agent.cta.question')}
-                    </Text>
-                    <HStack spacing={4} w="full" justify="center">
-                      <Button 
-                        colorScheme="blue" 
-                        size="lg" 
-                        rightIcon={<ArrowRight />}
-                        onClick={() => router.push('/signup/operator')}
-                      >
-                        {t('bitcash.agent.cta.apply')}
-                      </Button>
-                      <Button 
-                        variant="outline" 
-                        colorScheme="blue" 
-                        size="lg"
-                        onClick={() => router.push('/agent-info')}
-                      >
-                        {t('bitcash.agent.cta.learnMore')}
-                      </Button>
-                    </HStack>
-                  </VStack>
-                  </VStack>
-              </GlassCard>
-              </VStack>
-          </ParallaxSection>
-        </Container>
-      </Box>
+            </GlassCard>
+          </Box>
+        </ParallaxSection>
+      </Container>
+    </Box>
   );
 };
 

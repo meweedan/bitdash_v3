@@ -67,6 +67,24 @@ const nextConfig = {
         permanent: true
       },
       {
+        source: '/food',
+        has: [{ type: 'host', value: 'bitdash.app' }],
+        destination: 'https://food.bitdash.app',
+        permanent: true
+      },
+      {
+        source: '/shop',
+        has: [{ type: 'host', value: 'bitdash.app' }],
+        destination: 'https://shop.bitdash.app',
+        permanent: true
+      },
+      {
+        source: '/ride',
+        has: [{ type: 'host', value: 'bitdash.app' }],
+        destination: 'https://ride.bitdash.app',
+        permanent: true
+      },
+      {
         source: '/cash',
         has: [{ type: 'host', value: 'bitdash.app' }],
         destination: 'https://cash.bitdash.app',

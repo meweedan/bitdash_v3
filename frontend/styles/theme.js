@@ -3,78 +3,123 @@ import { extendTheme } from '@chakra-ui/react';
 const theme = extendTheme({
   colors: {
     brand: {
-      500: '#3182ce', // Blue for light mode buttons
-      600: '#000000', // Darker shade for hover in light mode
-      700: '#2267cf', // Accent color for light mode
-      darkBlue: '#0a60a3', // Dark mode button color
-      lightBlue: '#1179be', // Darker blue for hover in dark mode
+      bitcash: {
+        400: '#7bcfbd',
+        500: '#56bba5',    // Base
+        600: '#1eb495',    // Hover
+        700: '#2d7b6a',    // Emphasis
+      },
+      bitfood: {
+        400: '#ffd7ba',
+        500: '#ffa78a',    // Base
+        600: '#ffc8b6',    // Hover
+        700: '#ff8963',    // Emphasis
+      },
+      bitshop: {
+        400: '#77a2e4',
+        500: '#8bcdfd',    // Base
+        600: '#74baed',    // Hover
+        700: '#5f94e6',    // Emphasis
+      },
+      bitride: {
+        400: '#ebcdab',
+        500: '#e6c093',    // Base
+        600: '#c6a783',    // Hover
+        700: '#edb26d',    // Emphasis
+      }
+    },
+  },
+  components: {
+    Button: {
+      baseStyle: {
+        borderRadius: 'xl',
+        fontWeight: 'bold',
+      },
+      variants: {
+        // BitCash variants
+        'bitcash-solid': {
+          bg: 'brand.bitcash.500',
+          color: 'white',
+          _hover: { bg: 'brand.bitcash.600' }
+        },
+        'bitcash-outline': {
+          border: '2px solid',
+          borderColor: 'brand.bitcash.500',
+          color: 'brand.bitcash.500',
+          _hover: { bg: 'brand.bitcash.500', color: 'white' }
+        },
+        
+        // BitFood variants
+        'bitfood-solid': {
+          bg: 'brand.bitfood.500',
+          color: 'white',
+          _hover: { bg: 'brand.bitfood.600' }
+        },
+        'bitfood-outline': {
+          border: '2px solid',
+          borderColor: 'brand.bitfood.500',
+          color: 'brand.bitfood.500',
+          _hover: { bg: 'brand.bitfood.500', color: 'white' }
+        },
+        
+        // BitShop variants
+        'bitshop-solid': {
+          bg: 'brand.bitshop.500',
+          color: 'white',
+          _hover: { bg: 'brand.bitshop.600' }
+        },
+        'bitshop-outline': {
+          border: '2px solid',
+          borderColor: 'brand.bitshop.500',
+          color: 'brand.bitshop.500',
+          _hover: { bg: 'brand.bitshop.500', color: 'white' }
+        },
+        
+        // BitRide variants
+        'bitride-solid': {
+          bg: 'brand.bitride.500',
+          color: 'white',
+          _hover: { bg: 'brand.bitride.600' }
+        },
+        'bitride-outline': {
+          border: '2px solid',
+          borderColor: 'brand.bitride.500',
+          color: 'brand.bitride.500',
+          _hover: { bg: 'brand.bitride.500', color: 'white' }
+        }
+      },
+    },
+    GlassCard: {
+      baseStyle: (props) => ({
+        bg: props.colorMode === 'dark' ? 'whiteAlpha.50' : 'whiteAlpha.900',
+        backdropFilter: 'blur(10px)',
+        borderRadius: 'xl',
+        border: '1px solid',
+        borderColor: props.colorMode === 'dark' ? 'whiteAlpha.200' : 'gray.100',
+      }),
+      variants: {
+        bitcash: {
+          borderColor: 'brand.bitcash.500',
+        },
+        bitfood: {
+          borderColor: 'brand.bitfood.500',
+        },
+        bitshop: {
+          borderColor: 'brand.bitshop.500',
+        },
+        bitride: {
+          borderColor: 'brand.bitride.500',
+        }
+      }
     },
   },
   styles: {
     global: (props) => ({
       body: {
-        bg: props.colorMode === 'dark' ? 'black' : 'white', // Body background
-        color: props.colorMode === 'dark' ? 'white' : 'black', // Text color
-      },
-      a: {
-        color: props.colorMode === 'dark' ? 'white' : 'brand.500', // Link color based on mode
-        _hover: {
-          color: props.colorMode === 'dark' ? 'brand.lightBlue' : 'brand.700', // Hover color
-        },
-      },
+        bg: props.colorMode === 'dark' ? 'black' : 'white',
+        color: props.colorMode === 'dark' ? 'white' : 'gray.800',
+      }
     }),
-  },
-  components: {
-    Button: {
-      baseStyle: {
-        borderRadius: 'full', // Rounded buttons
-        color: 'white', // Default text color
-        backdropFilter: 'blur(10px)', // Apply blur universally to all buttons
-      },
-      variants: {
-        solid: (props) => ({
-          bg: props.colorMode === 'dark' ? 'brand.darkBlue' : 'brand.500', // Button background based on mode
-          _hover: {
-            bg: props.colorMode === 'dark' ? 'brand.lightBlue' : 'brand.700', // Hover state
-            color: props.colorMode === 'dark' ? 'white' : 'black', // Hover text color
-          },
-        }),
-        outline: (props) => ({
-          border: '2px solid',
-          borderColor: props.colorMode === 'dark' ? 'brand.lightBlue' : 'brand.700',
-          color: props.colorMode === 'dark' ? 'brand.lightBlue' : 'brand.700',
-          _hover: {
-            bg: props.colorMode === 'dark' ? 'brand.darkBlue' : 'brand.500',
-            color: 'white',
-          },
-        }),
-      },
-    },
-    Heading: {
-      baseStyle: (props) => ({
-        color: props.colorMode === 'dark' ? 'white' : 'black', // Heading color
-      }),
-    },
-    Text: {
-      baseStyle: (props) => ({
-        color: props.colorMode === 'dark' ? 'white' : 'black', // Text color
-      }),
-    },
-    Link: {
-      baseStyle: (props) => ({
-        color: props.colorMode === 'dark' ? 'white' : 'brand.500', // Link color
-      }),
-    },
-  },
-  config: {
-    initialColorMode: 'light', // Default to light mode
-    useSystemColorMode: false, // Don’t change based on system preferences
-  },
-  breakpoints: {
-    sm: '30em',
-    md: '48em',
-    lg: '62em',
-    xl: '80em',
   },
 });
 

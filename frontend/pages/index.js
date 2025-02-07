@@ -9,6 +9,10 @@ import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
 import MenuLandingBrowser from '@/components/landing/MenuLandingBrowser';
 import StockLandingBrowser from '@/components/landing/StockLandingBrowser';
 import EatsLandingBrowser from '@/components/landing/EatsLandingBrowser';
+import FoodLandingBrowser from '@/components/landing/FoodLandingBrowser';
+import RideLandingBrowser from '@/components/landing/RideLandingBrowser';
+import ShopLandingBrowser from '@/components/landing/ShopLandingBrowser';
+
 
 function HomePage() {
   const { t } = useTranslation('common');
@@ -21,7 +25,13 @@ function HomePage() {
     if (hostname.includes('menu.')) {
       setPlatform('menu');
     } else if (hostname.includes('cash.')) {
-      setPlatform('cash');
+    setPlatform('cash');
+    } else if (hostname.includes('food.')) {
+    setPlatform('food');
+    } else if (hostname.includes('ride.')) {
+    setPlatform('ride');
+    } else if (hostname.includes('shop.')) {
+      setPlatform('shop');
     } else if (hostname.includes('eats.')) {
       setPlatform('eats');
     } else if (hostname.includes('auto.')) {
@@ -50,6 +60,24 @@ function HomePage() {
           title: t('cash.title', 'BitCash'),
           favicon: '/cash-icons/favicon.ico',
           manifest: '/manifests/cash-manifest.json'
+        };
+      case 'food':
+        return {
+          title: t('food.title', 'BitFood'),
+          favicon: '/food-icons/favicon.ico',
+          manifest: '/manifests/food-manifest.json'
+          };
+      case 'shop':
+        return {
+          title: t('shop.title', 'BitShop'),
+          favicon: '/shop-icons/favicon.ico',
+          manifest: '/manifests/shop-manifest.json'
+          };
+      case 'ride': 
+        return {
+        title: t('ride.title', 'BitRide'),
+        favicon: '/ride-icons/favicon.ico',
+        manifest: '/manifests/ride-manifest.json'
         };
       case 'eats':
         return {
@@ -89,8 +117,14 @@ function HomePage() {
         return <AutoLandingBrowser />;
       case 'stock':
         return <StockLandingBrowser />;
+        case 'food':
+          return <FoodLandingBrowser />;
+        case 'shop':
+          return <ShopLandingBrowser />;
       case 'eats':
         return <EatsLandingBrowser />;
+        case 'ride':
+          return <RideLandingBrowser />;
         
       default:
         return <MainLanding />;

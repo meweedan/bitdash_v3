@@ -14,8 +14,14 @@ const Logo = () => {
       setPlatform('menu');
     } else if (hostname.includes('cash')) {
       setPlatform('cash');
+    } else if (hostname.includes('food')) {
+      setPlatform('food');  
     } else if (hostname.includes('eats')) {
       setPlatform('eats');
+    } else if (hostname.includes('ride')) {
+      setPlatform('ride');
+    } else if (hostname.includes('shop')) {
+      setPlatform('shop');
     } else if (hostname.includes('auto')) {
       setPlatform('auto');
     } else if (hostname.includes('stock')) {
@@ -34,7 +40,7 @@ const Logo = () => {
         ar: { path: '/menu-ar.png', width: 801, height: 233 }
       },
       cash: {
-        en: { path: '/cash.png', width: 816, height: 189 },
+        en: { path: '/cash.png', width: 916, height: 289 },
         ar: { path: '/cash-ar.png', width: 801, height: 233}
       },
       auto: {
@@ -48,6 +54,18 @@ const Logo = () => {
       eats: {
         en: { path: '/eats.png', width: 778, height: 175 },
         ar: { path: '/eats-ar.png', width: 784, height: 233 }
+      },
+      food: {
+        en: { path: '/food.png', width: 978, height: 275 },
+        ar: { path: '/food-ar.png', width: 784, height: 233 }
+      },
+      shop: {
+        en: { path: '/shop.png', width: 978, height: 275 },
+        ar: { path: '/shop-ar.png', width: 784, height: 233 }
+      },
+      ride: {
+        en: { path: '/ride.png', width: 978, height: 275 },
+        ar: { path: '/ride-ar.png', width: 784, height: 233 }
       },
       main: {
         en: { path: '/bitdash-logo.png', width: 875, height: 285 },

@@ -23,6 +23,9 @@ const QRScanner = ({ isOpen, onClose }) => {
             'menu.bitdash.app',
             'auto.bitdash.app',
             'stock.bitdash.app',
+            'shop.bitdash.app',
+            'food.bitdash.app',
+            'ride.bitdash.app',
             'cash.bitdash.app'
           ];
           
