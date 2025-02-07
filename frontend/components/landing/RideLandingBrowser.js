@@ -108,75 +108,68 @@ const BitRideLandingBrowser = () => {
 
       {/* Hero Section */}
       <Container maxW="8xl" px={{ base: 4, lg: 0 }}>
-  <Grid
-    templateColumns={{ base: '1fr', lg: '1fr 1fr' }}
-    gap={{ base: 12, lg: 8 }}
-    alignItems="center"
-  >
-    <GridItem order={{ base: 2, lg: 1 }}>
-      <VStack 
-        align={{ base: 'center', lg: 'start' }} 
-        spacing={{ base: 6, lg: 8 }} 
-        textAlign={{ base: 'center', lg: 'left' }}
-      >
-        <GradientHeading
-          fontSize={{ base: '3xl', md: '5xl', lg: '6xl' }}
-          bgGradient="linear(to-r, brand.bitride.500, brand.bitride.700)"
-          lineHeight={{ base: 1.2, lg: 1.1 }}
+        <Grid
+            templateColumns={{ base: '1fr', lg: '1fr 1fr' }}
+            gap={{ base: 12, lg: 8 }}
+            alignItems="center"
         >
-          Your Ride, Your Way
-        </GradientHeading>
+            <GridItem order={{ base: 2, lg: 1 }}>
+            <VStack 
+                align={{ base: 'center', lg: 'start' }} 
+                spacing={{ base: 6, lg: 8 }} 
+                textAlign={{ base: 'center', lg: 'left' }}
+            >
+                <GradientHeading
+                fontSize={{ base: '3xl', md: '5xl', lg: '6xl' }}
+                bgGradient="linear(to-r, brand.bitride.500, brand.bitride.700)"
+                lineHeight={{ base: 1.2, lg: 1.1 }}
+                >
+                Your Ride, Your Way. <br/>
+                24/7. 365 days.
+                </GradientHeading>
 
-        <Text
-          fontSize={{ base: 'md', md: 'lg', lg: 'xl' }}
-          color={useColorModeValue('gray.600', 'gray.300')}
-          maxW="xl"
-        >
-          Experience premium ride-hailing service with professional drivers and comfortable vehicles. Available 24/7.
-        </Text>
+                <HStack 
+                spacing={{ base: 2, md: 4 }}
+                flexDir={{ base: 'column', sm: 'row' }}
+                w={{ base: "full", sm: "auto" }}
+                >
+                <Button
+                    size={{ base: "md", lg: "lg" }}
+                    variant="bitride-outline"
+                    rightIcon={<ArrowRight />}
+                    w={{ base: "full", sm: "auto" }}
+                    h={{ base: 12, lg: 14 }}
+                    px={{ base: 6, lg: 8 }}
+                    fontSize={{ base: "md", lg: "lg" }}
+                    onClick={() => router.push('/ride/book')}
+                >
+                    Book Now
+                </Button>
+                <Button
+                    size={{ base: "md", lg: "lg" }}
+                    variant="bitride-outline"
+                    w={{ base: "full", sm: "auto" }}
+                    h={{ base: 12, lg: 14 }}
+                    px={{ base: 6, lg: 8 }}
+                    fontSize={{ base: "md", lg: "lg" }}
+                    onClick={() => router.push('/ride/driver-signup')}
+                >
+                    Become a Driver
+                </Button>
+                </HStack>
+            </VStack>
+            </GridItem>
 
-        <HStack 
-          spacing={{ base: 2, md: 4 }}
-          flexDir={{ base: 'column', sm: 'row' }}
-          w={{ base: "full", sm: "auto" }}
-        >
-          <Button
-            size={{ base: "md", lg: "lg" }}
-            variant="bitride-solid"
-            rightIcon={<ArrowRight />}
-            w={{ base: "full", sm: "auto" }}
-            h={{ base: 12, lg: 14 }}
-            px={{ base: 6, lg: 8 }}
-            fontSize={{ base: "md", lg: "lg" }}
-            onClick={() => router.push('/ride/book')}
-          >
-            Book Now
-          </Button>
-          <Button
-            size={{ base: "md", lg: "lg" }}
-            variant="bitride-outline"
-            w={{ base: "full", sm: "auto" }}
-            h={{ base: 12, lg: 14 }}
-            px={{ base: 6, lg: 8 }}
-            fontSize={{ base: "md", lg: "lg" }}
-            onClick={() => router.push('/ride/driver-signup')}
-          >
-            Become a Driver
-          </Button>
-        </HStack>
-      </VStack>
-    </GridItem>
-
-    <GridItem order={{ base: 1, lg: 2 }}>
-      <Box 
-        height={{ base: '500px', sm: '300px', md: '400px', lg: '600px' }}
-        mx={{ base: -4, lg: 0 }}
-      >
-        <RideAnimation />
-      </Box>
-    </GridItem>
-  </Grid>
-</Container>
+            <GridItem order={{ base: 1, lg: 2 }}>
+            <Box 
+                height={{ base: '450px', sm: '300px', md: '400px', lg: '700px' }}
+                mx={{ base: -4, lg: -8 }}
+            >
+                <RideAnimation />
+            </Box>
+            </GridItem>
+        </Grid>
+        </Container>
 
       {/* Features Grid */}
       <Container maxW="8xl" py={{ base: 12, md: 20 }} px={{ base: 4, lg: 0 }}>

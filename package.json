@@ -27,5 +27,15 @@
     "@types/qrcode": "^1.5.5",
     "@types/socket.io": "^3.0.1",
     "jest": "^29.7.0"
-  }
+  },
+  "name": "bitdash_v3",
+  "version": "1.0.0",
+  "description": "Welcome to BitDash v3, your comprehensive digital services ecosystem combining fintech, food delivery, e-commerce, and ride-hailing into one powerful platform.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

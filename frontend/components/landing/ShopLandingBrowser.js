@@ -113,7 +113,7 @@ const ShopLandingBrowser = () => {
       overflow="hidden"
     >
       <Head>
-        <title>BitShop | E-commerce Platform</title>
+        <title>BitShop</title>
         <meta name="description" content="Build and grow your online business with BitShop" />
       </Head>
 

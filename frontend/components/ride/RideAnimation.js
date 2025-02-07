@@ -19,8 +19,8 @@ const RideAnimation = () => {
   const gridColor = useColorModeValue('rgba(230,192,147,0.2)', 'rgba(237,178,109,0.2)');
 
   // Adjust sizes for mobile
-  const phoneWidth = useBreakpointValue({ base: '220px', md: '280px' });
-  const phoneHeight = useBreakpointValue({ base: '450px', md: '580px' });
+  const phoneWidth = useBreakpointValue({ base: '180px', md: '220px' });
+  const phoneHeight = useBreakpointValue({ base: '380px', md: '440px' });
   const carSize = useBreakpointValue({ base: 32, md: 48 });
   const iconSize = useBreakpointValue({ base: 16, md: 24 });
 
@@ -149,7 +149,7 @@ const RideAnimation = () => {
             <User size={isMobile ? 16 : 20} color="white" />
           </Box>
           <VStack align="start" spacing={0}>
-            <Text fontWeight="bold" fontSize={isMobile ? "xs" : "sm"}>James Wilson</Text>
+            <Text fontWeight="bold" fontSize={isMobile ? "xs" : "sm"}>Mohamed Awidan</Text>
             <HStack spacing={1}>
               <Star size={isMobile ? 10 : 12} fill={primaryColor} color={primaryColor} />
               <Text fontSize={isMobile ? "2xs" : "xs"}>4.9</Text>

@@ -1,0 +1,28 @@
+{
+  "name": "bitdash_mobile",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/bitcash",
+    "apps/bitfood",
+    "apps/bitride",
+    "apps/bitshop",
+    "shared",
+    "packages/*"
+  ],
+  "scripts": {
+    "bitcash": "yarn workspace bitcash start",
+    "bitfood": "yarn workspace bitfood start",
+    "bitride": "yarn workspace bitride start",
+    "bitshop": "yarn workspace bitshop start",
+    "clean": "rm -rf node_modules && rm -rf apps/*/node_modules"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^2.1.1",
+    "axios": "^1.7.9"
+  },
+  "devDependencies": {
+    "@types/react-native": "^0.72.8",
+    "typescript": "^5.7.3"
+  }
+}
