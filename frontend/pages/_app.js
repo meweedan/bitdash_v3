@@ -40,7 +40,7 @@ function MyApp({ Component, pageProps }) {
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={customTheme}>
         <CurrencyProvider>
-          <DisplacementSphere />
+          {/* <DisplacementSphere /> */}
           <InstallPWA />
           <CartProvider>
             <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
