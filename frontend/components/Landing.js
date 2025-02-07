@@ -33,7 +33,7 @@ import {
   ArrowRight, 
   Users, 
   Clock, 
-  FoodIcon,
+  Utensils,
   ShopIcon,
   RideIcon,
   CheckCircle,
@@ -51,7 +51,8 @@ import {
   QrCode,
   ArrowDown,
   ForkKnifeCrossed,
-  Scan
+  Scan,
+  CarFront
 } from 'lucide-react';
 import { FaWhatsapp,   FaMoneyBillWave, } from 'react-icons/fa';
 import Hero from './Hero';
@@ -234,21 +235,21 @@ export default function Landing() {
     },
     {
       name: "BitFood",
-      icon: FoodIcon,
+      icon: Utensils,
       description: "Revolutionising ordering + dining process",
       subdomain: "food.bitdash.app",
       // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
     },
     {
       name: "BitShop",
-      icon: ShopIcon,
+      icon: ShoppingCart,
       description: "Shopping never felt so easy",
       subdomain: "shop.bitdash.app",
       // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
     },
     {
       name: "BitRide",
-      icon: RideIcon,
+      icon: CarFront,
       description: "Revolutionising transportation",
       subdomain: "ride.bitdash.app",
       // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
