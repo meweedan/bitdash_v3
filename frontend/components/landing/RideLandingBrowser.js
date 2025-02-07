@@ -274,50 +274,6 @@ const BitRideLandingBrowser = () => {
         </Container>
       </Box>
 
-      {/* Call to Action */}
-      <Container maxW="8xl" py={20}>
-        <GlassCard
-          p={12}
-          variant="bitride"
-          textAlign="center"
-        >
-          <VStack spacing={6}>
-            <GradientHeading
-              size="2xl"
-              bgGradient="linear(to-r, brand.bitride.500, brand.bitride.700)"
-            >
-              Ready to Start?
-            </GradientHeading>
-            <Text fontSize="xl" maxW="2xl">
-              Download the app and experience premium ride service today
-            </Text>
-            <HStack spacing={4}>
-              <Button
-                size="lg"
-                variant="bitride-solid"
-                rightIcon={<ArrowRight />}
-                h={14}
-                px={8}
-                fontSize="lg"
-                onClick={() => router.push('/ride/download')}
-              >
-                Download App
-              </Button>
-              <Button
-                size="lg"
-                variant="bitride-outline"
-                h={14}
-                px={8}
-                fontSize="lg"
-                onClick={() => router.push('/ride/learn-more')}
-              >
-                Learn More
-              </Button>
-            </HStack>
-          </VStack>
-        </GlassCard>
-      </Container>
-
       {/* How It Works Section */}
       <Box bg={useColorModeValue('white', 'gray.900')} py={20}>
         <Container maxW="8xl">
