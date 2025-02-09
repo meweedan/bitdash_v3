@@ -3,6 +3,13 @@ import { extendTheme } from '@chakra-ui/react';
 const theme = extendTheme({
   colors: {
     brand: {
+       bitdash: {
+        400: '#67bdfd', 
+        500: '#8C8C8C',
+        600: '#edb26d',
+        700: '#525252',
+        800: '#ffd7ba'
+      },
       bitcash: {
         400: '#7bcfbd',
         500: '#56bba5',    // Base
@@ -26,9 +33,16 @@ const theme = extendTheme({
         500: '#e6c093',    // Base
         600: '#c6a783',    // Hover
         700: '#edb26d',    // Emphasis
+      },
+      bitwork: {
+        400: '#8C8C8C',    // Lighter grey for subtle highlights
+        500: '#525252',    // Base - your specified grey
+        600: '#424242',    // Hover - slightly darker
+        700: '#333333',    // Emphasis - even darker for contrast
       }
     },
   },
+
   components: {
     Button: {
       baseStyle: {
@@ -36,6 +50,22 @@ const theme = extendTheme({
         fontWeight: 'bold',
       },
       variants: {
+         // BitDash variants
+        'bitdash-solid': {
+          bg: 'brand.bitdash.500',
+          color: 'white',
+          _hover: { bg: 'brand.bitdash.600' }
+        },
+        'bitdash-outline': {
+          border: '2px solid',
+          borderImage: 'brand.bitdash.500',
+          borderImageSlice: 1,
+          color: props => props.colorMode === 'dark' ? 'white' : 'gray.800',
+          _hover: { 
+            bg: 'brand.bitdash.500', 
+            color: 'white'
+          }
+        },
         // BitCash variants
         'bitcash-solid': {
           bg: 'brand.bitcash.500',
@@ -86,6 +116,22 @@ const theme = extendTheme({
           borderColor: 'brand.bitride.500',
           color: 'brand.bitride.500',
           _hover: { bg: 'brand.bitride.500', color: 'white' }
+        },
+
+        // BitWork variants
+       'bitwork-solid': {
+          bg: 'brand.bitwork.500',
+          color: 'white', 
+          _hover: { bg: 'brand.bitwork.600' }
+        },
+        'bitwork-outline': {
+          border: '2px solid',
+          borderColor: 'brand.bitwork.500',
+          color: props => props.colorMode === 'dark' ? 'brand.bitwork.400' : 'brand.bitwork.500',
+          _hover: { 
+            bg: 'brand.bitwork.500', 
+            color: 'white'
+          }
         }
       },
     },
@@ -98,6 +144,10 @@ const theme = extendTheme({
         borderColor: props.colorMode === 'dark' ? 'whiteAlpha.200' : 'gray.100',
       }),
       variants: {
+        bitdash: {
+          borderImage: 'brand.bitdash.500',
+          borderImageSlice: 1,
+        },
         bitcash: {
           borderColor: 'brand.bitcash.500',
         },
@@ -109,6 +159,12 @@ const theme = extendTheme({
         },
         bitride: {
           borderColor: 'brand.bitride.500',
+        },
+        bitwork: {
+          borderColor: 'brand.bitwork.500',
+          _hover: {
+            borderColor: 'brand.bitwork.400'
+          }
         }
       }
     },

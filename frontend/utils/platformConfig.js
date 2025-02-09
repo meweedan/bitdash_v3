@@ -1,6 +1,6 @@
 export const PLATFORMS = {
   menu: {
-    name: 'BitMenu',
+    name: 'BitFood',
     role: 3,  // ID for Operator role
     endpoint: '/api/restaurants',
     entityName: 'restaurant',

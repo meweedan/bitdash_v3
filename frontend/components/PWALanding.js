@@ -16,31 +16,11 @@ const PWAContainer = ({ children }) => (
   </div>
 );
 
-export const MenuPWALanding = () => {
-  const router = useRouter();
-  const config = {
-    title: 'BitMenu',
-    description: 'Digital menu and ordering system for restaurants',
-    image: '/menu.png',
-    color: '#4CAF50'
-  };
-
-  return (
-    <PWAContainer>
-      <Container config={config} router={router}>
-        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
-          <ParallaxOrderFlow />
-        </div>
-      </Container>
-    </PWAContainer>
-  );
-};
-
 export const FoodPWALanding = () => {
   const router = useRouter();
   const config = {
     title: 'BitFood',
-    description: 'Digital menu and ordering system for restaurants',
+    description: 'Online menus + ordering system for restaurants',
     image: '/food.png',
     color: '#4CAF50'
   };

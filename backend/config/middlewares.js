@@ -10,6 +10,7 @@ module.exports = [
         'https://shop.bitdash.app',
         'https://food.bitdash.app',
         'https://ride.bitdash.app',
+        'https://work.bitdash.app',
         'http://localhost:3000', 
         'https://bitdash-backend.onrender.com'],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],

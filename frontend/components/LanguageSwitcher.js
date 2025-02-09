@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
-import { Select, Box } from '@chakra-ui/react';
+import { Box, HStack, Text, useBreakpointValue } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 
 const languageOptions = [
-  { code: 'ar', fullName: 'العربية', shortName: 'AR' },
-  { code: 'en', fullName: 'English', shortName: 'EN' },
+  { code: 'ar', fullName: 'العربية', shortName: 'AR', flag: '🇱🇾' },
+  { code: 'en', fullName: 'English', shortName: 'EN', flag: '🇬🇧' },
 ];
 
 const LanguageSwitcher = () => {
@@ -15,41 +16,57 @@ const LanguageSwitcher = () => {
     router.push({ pathname, query }, asPath, { locale: newLocale });
   };
 
-
   return (
-    <Box position="relative" zIndex="dropdown">
-      <Select
-        value={locale}
-        onChange={(e) => changeLanguage(e.target.value)}
+    <Box position="relative" zIndex="dropdown" width="auto">
+      <HStack 
+        spacing={0}
+        borderRadius="md"
+        position="relative"
         width="auto"
         minWidth="50px"
-        fontWeight="bold"
-        cursor="pointer"
-        border="none"
-        _focus={{ boxShadow: 'none' }}
-        _hover={{ backgroundColor: 'transparent' }}
-        sx={{
-          // Hide the default arrow with a custom background image trick
-          WebkitAppearance: 'none',
-          MozAppearance: 'none',
-          appearance: 'none',
-          paddingRight: '1rem',
-          background: 'none', // Remove default background
-          backgroundImage: 'none', // Remove default arrow
-        }}
       >
-        {languageOptions.map(({ code, fullName, shortName }) => (
-          <option
+        {/* Background Slider */}
+        <motion.div
+          initial={false}
+          animate={{
+            x: locale === 'ar' ? 0 : '100%',
+          }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          style={{
+            position: 'absolute',
+            width: '50%',
+            height: '100%',
+            borderRadius: '4px',
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(4px)',
+            zIndex: 0,
+          }}
+        />
+
+        {/* Language Options */}
+        {languageOptions.map(({ code, shortName, flag }) => (
+          <Box
             key={code}
-            value={code}
+            onClick={() => changeLanguage(code)}
+            cursor="pointer"
+            flex="1"
+            pt={2}
+            p={2} 
+            textAlign="center"
+            position="relative"
+            zIndex={1}
+            fontWeight="bold"
+            fontSize="xl"
             style={{
               direction: code === 'ar' ? 'rtl' : 'ltr',
             }}
           >
-            {code === locale ? shortName : fullName}
-          </option>
+            <Text>
+              {code === locale ? flag : flag}
+            </Text>
+          </Box>
         ))}
-      </Select>
+      </HStack>
     </Box>
   );
 };

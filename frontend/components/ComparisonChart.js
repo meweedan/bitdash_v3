@@ -5,22 +5,22 @@ export const ComparisonChart = () => {
     {
       name: 'Order Time',
       Traditional: 12,
-      BitMenu: 2,
+      BitFood: 2,
     },
     {
       name: 'Error Rate',
       Traditional: 15,
-      BitMenu: 0.1,
+      BitFood: 0.1,
     },
     {
       name: 'Staff Cost',
       Traditional: 100,
-      BitMenu: 40,
+      BitFood: 40,
     },
     {
       name: 'Customer Satisfaction',
       Traditional: 75,
-      BitMenu: 98,
+      BitFood: 98,
     }
   ];
 
@@ -42,9 +42,9 @@ export const ComparisonChart = () => {
           animationDuration={2000}
         />
         <Bar 
-          dataKey="BitMenu" 
+          dataKey="BitFood" 
           fill="#60A5FA" 
-          name="BitMenu"
+          name="BitFood"
           animationBegin={1000}
           animationDuration={2000}
         />

@@ -4,14 +4,11 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/components/Layout';
 import MainLanding from '@/components/Landing';
-import AutoLandingBrowser from '@/components/landing/AutoLandingBrowser';
 import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
-import MenuLandingBrowser from '@/components/landing/MenuLandingBrowser';
-import StockLandingBrowser from '@/components/landing/StockLandingBrowser';
-import EatsLandingBrowser from '@/components/landing/EatsLandingBrowser';
 import FoodLandingBrowser from '@/components/landing/FoodLandingBrowser';
 import RideLandingBrowser from '@/components/landing/RideLandingBrowser';
 import ShopLandingBrowser from '@/components/landing/ShopLandingBrowser';
+import WorkLandingBrowser from '@/components/landing/WorkLandingBrowser';
 
 
 function HomePage() {
@@ -22,22 +19,16 @@ function HomePage() {
     // Get platform from hostname
     const hostname = window.location.hostname;
     
-    if (hostname.includes('menu.')) {
-      setPlatform('menu');
+    if (hostname.includes('shop.')) {
+      setPlatform('shop');
     } else if (hostname.includes('cash.')) {
     setPlatform('cash');
     } else if (hostname.includes('food.')) {
     setPlatform('food');
     } else if (hostname.includes('ride.')) {
     setPlatform('ride');
-    } else if (hostname.includes('shop.')) {
-      setPlatform('shop');
-    } else if (hostname.includes('eats.')) {
-      setPlatform('eats');
-    } else if (hostname.includes('auto.')) {
-      setPlatform('auto');
-    } else if (hostname.includes('stock.')) {
-      setPlatform('stock');
+    } else if (hostname.includes('work.')) {
+      setPlatform('work');
     } else if (process.env.NODE_ENV === 'development') {
       // Handle development environment
       const platform = new URLSearchParams(window.location.search).get('platform');
@@ -49,12 +40,6 @@ function HomePage() {
 
   const getPlatformMeta = () => {
     switch (platform) {
-      case 'menu':
-        return {
-          title: t('menu.title', 'BitMenu'),
-          favicon: '/menu-icons/favicon.ico',
-          manifest: '/manifests/menu-manifest.json'
-        };
       case 'cash':
         return {
           title: t('cash.title', 'BitCash'),
@@ -79,23 +64,11 @@ function HomePage() {
         favicon: '/ride-icons/favicon.ico',
         manifest: '/manifests/ride-manifest.json'
         };
-      case 'eats':
+      case 'work':
         return {
-          title: t('eats.title', 'BitEats'),
-          favicon: '/eats-icons/favicon.ico',
-          manifest: '/manifests/eats-manifest.json'
-        };
-      case 'auto':
-        return {
-          title: t('auto.title', 'BitAuto'),
-          favicon: '/auto-icons/favicon.ico',
-          manifest: '/manifests/auto-manifest.json'
-        };
-      case 'stock':
-        return {
-          title: t('stock.title', 'BitStock'),
-          favicon: '/stock-icons/favicon.ico',
-          manifest: '/manifests/stock-manifest.json'
+          title: t('work.title', 'BitWork'),
+          favicon: '/work-icons/favicon.ico',
+          manifest: '/manifests/work-manifest.json'
         };
         
       default:
@@ -109,22 +82,16 @@ function HomePage() {
 
   const renderPlatform = () => {
     switch (platform) {
-      case 'menu':
-        return <MenuLandingBrowser />;
       case 'cash':
           return <CashLandingBrowser />;
-      case 'auto':
-        return <AutoLandingBrowser />;
-      case 'stock':
-        return <StockLandingBrowser />;
+      case 'shop':
+        return <ShopLandingBrowser />;
         case 'food':
           return <FoodLandingBrowser />;
-        case 'shop':
-          return <ShopLandingBrowser />;
-      case 'eats':
-        return <EatsLandingBrowser />;
         case 'ride':
           return <RideLandingBrowser />;
+          case 'work':
+            return <WorkLandingBrowser />;
         
       default:
         return <MainLanding />;

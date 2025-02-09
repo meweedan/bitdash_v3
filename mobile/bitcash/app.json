@@ -1,28 +1,91 @@
 {
   "expo": {
-    "name": "bitcash",
+    "name": "BitCash",
     "slug": "bitcash",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/images/icon.png",
+    "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera for QR code scanning."
+        }
+      ],
+      "expo-barcode-scanner"
+    ],
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#56bba5"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "updates": {
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/your-project-id"
     },
     "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bitdash.bitcash",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "NSCameraUsageDescription": "BitCash needs access to your camera for QR code scanning",
+        "NSPhotoLibraryUsageDescription": "BitCash needs access to your photos for profile and business logo uploads",
+        "NSLocationWhenInUseUsageDescription": "BitCash needs your location to find nearby agents and merchants",
+        "UIBackgroundModes": [
+          "fetch",
+          "remote-notification"
+        ]
       }
     },
+    "android": {
+      "package": "app.bitdash.bitcash",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#56bba5"
+      },
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "RECEIVE_BOOT_COMPLETED"
+      ],
+      "softwareKeyboardLayoutMode": "pan"
+    },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/images/favicon.png"
+    },
+    "notification": {
+      "icon": "./assets/notification-icon.png",
+      "color": "#56bba5",
+      "iosDisplayInForeground": true,
+      "androidMode": "default"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "your-project-id"
+      }
+    },
+    "owner": "bitdash",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "jsEngine": "hermes",
+    "locales": {
+      "en": "./assets/locales/en.json",
+      "ar": "./assets/locales/ar.json"
+    },
+    "fonts": {
+      "DMSans-Regular": "./assets/fonts/DMSans-Regular.ttf",
+      "DMSans-Medium": "./assets/fonts/DMSans-Medium.ttf",
+      "DMSans-Bold": "./assets/fonts/DMSans-Bold.ttf"
     }
   }
 }

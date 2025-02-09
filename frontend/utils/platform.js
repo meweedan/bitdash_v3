@@ -1,12 +1,12 @@
 // utils/platformUtils.js
 export const PLATFORMS = {
-  MENU: {
-    subdomain: 'menu',
-    name: 'BitMenu',
+  FOOD: {
+    subdomain: 'food',
+    name: 'BitFood',
     role: 'food_operator',
     businessType: 'restaurant',
     displayName: 'Restaurant Platform',
-    dashboardPath: '/menu/operator/dashboard'
+    dashboardPath: '/food/operator/dashboard'
   },
   AUTO: {
     subdomain: 'auto',

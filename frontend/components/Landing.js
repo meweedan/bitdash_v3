@@ -52,10 +52,12 @@ import {
   ArrowDown,
   ForkKnifeCrossed,
   Scan,
-  CarFront
+  CarFront,
+  Briefcase
 } from 'lucide-react';
 import { FaWhatsapp,   FaMoneyBillWave, } from 'react-icons/fa';
 import Hero from './Hero';
+import theme from '@/styles/theme';
 
 const checkIsPWA = () => {
   if (typeof window === 'undefined') return false;
@@ -214,124 +216,124 @@ export default function Landing() {
   const { t } = useTranslation();
   const router = useRouter();
 
-  const colorAnimation = keyframes`
-    0% { color: #245b84; }    
-    14% { color: #36739f; }   
-    28% { color: #52a4e1; }   
-    42% { color: #67bdfd; }   
-    56% { color: #70b4e6; }   
-    70% { color: #65a6fa; }   
-    85% { color: #6a9ce8; }   
-    100% { color: #245b84; }  
-  `;
-
   const platforms = [
-    {
-      name: "BitCash",
-      icon: FaMoneyBillWave,
-      description: "Revolutionising Libyan Finances",
-      subdomain: "cash.bitdash.app",
-      // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
-    },
-    {
-      name: "BitFood",
-      icon: Utensils,
-      description: "Revolutionising ordering + dining process",
-      subdomain: "food.bitdash.app",
-      // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
-    },
-    {
-      name: "BitShop",
-      icon: ShoppingCart,
-      description: "Shopping never felt so easy",
-      subdomain: "shop.bitdash.app",
-      // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
-    },
-    {
-      name: "BitRide",
-      icon: CarFront,
-      description: "Revolutionising transportation",
-      subdomain: "ride.bitdash.app",
-      // features: ["Digital Menus", "Order Management", "Advanced Analytics"]
-    },
-    
-  ];
+  {
+    name: t('bitcash.name'),
+    icon: FaMoneyBillWave,
+    description: t('bitcash.description'),
+    subdomain: "cash.bitdash.app",
+    color: "brand.bitcash"
+  },
+  {
+    name: t('bitfood.name'),
+    icon: Utensils,
+    description: t('bitfood.description'),
+    subdomain: "food.bitdash.app",
+    color: "brand.bitfood"
+  },
+  {
+    name: t('bitshop.name'),
+    icon: ShoppingCart,
+    description: t('bitshop.description'),
+    subdomain: "shop.bitdash.app",
+    color: "brand.bitshop"
+  },
+  {
+    name: t('bitride.name'),
+    icon: CarFront,
+    description: t('bitride.description'),
+    subdomain: "ride.bitdash.app",
+    color: "brand.bitride"
+  },
+  {
+    name: t('bitwork.name'),
+    icon: Briefcase,
+    description: t('bitwork.description'),
+    subdomain: "work.bitdash.app",
+    color: "brand.bitwork"
+  }
+];
 
-  return (
+const colorAnimation = keyframes`
+  0% { color: ${theme.colors.brand.bitcash[400]}; }    
+  25% { color: ${theme.colors.brand.bitfood[400]}; }   
+  50% { color: ${theme.colors.brand.bitshop[400]}; }   
+  75% { color: ${theme.colors.brand.bitride[400]}; }   
+  100% { color: ${theme.colors.brand.bitwork[400]}; }  
+`;
+
+return (
     <Box py={20} overflow="hidden">
       <Container maxW="container.xl">
-        <VStack spacing={20}>
+        <VStack spacing={8}>
           {platforms.map((platform, idx) => (
             <ChakraBox
               key={platform.name}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: idx * 0.2 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
               w="full"
               cursor="pointer"
               onClick={() => window.location.href = `https://${platform.subdomain}`}
             >
-              <VStack 
-                spacing={6} 
-                p={10}
-                borderRadius="3xl"
-                bg={isDark ? 'whiteAlpha.50' : 'gray.50'}
+              <Flex
+                direction="row"
+                align="center"
+                p={6}
+                borderRadius="2xl"
+                bg={isDark ? 'whiteAlpha.50' : 'white'}
+                borderWidth="1px"
+                borderColor={isDark ? 'whiteAlpha.100' : 'gray.100'}
+                transition="all 0.3s ease"
                 _hover={{
-                  transform: 'scale(1.02)',
-                  transition: 'all 0.3s ease'
+                  transform: 'translateX(8px)',
+                  bg: isDark ? 'whiteAlpha.100' : 'gray.50',
+                  borderColor: `${platform.color}.500`,
+                  boxShadow: 'xl'
                 }}
               >
-                <HStack spacing={4} align="center">
-                  <Icon 
-                    as={platform.icon} 
-                    boxSize={8}
-                    animation={`${colorAnimation} 3s infinite linear`}
-                  />
+                <Circle
+                  size="48px"
+                  bg={`${platform.color}.400`}
+                  color={isDark ? 'white' : 'white'}
+                  opacity={0.9}
+                  mr={6}
+                >
+                  <Icon as={platform.icon} boxSize={5} />
+                </Circle>
+
+                <VStack align="start" spacing={1} flex={1}>
                   <Heading
-                    fontSize={{ base: "3xl", md: "4xl" }}
-                    fontWeight="bold"
-                    animation={`${colorAnimation} 3s infinite linear`}
+                    size="md"
+                    fontWeight="semibold"
+                    letterSpacing="tight"
                   >
                     {platform.name}
                   </Heading>
-                </HStack>
+                  <Text
+                    fontSize="sm"
+                    color={isDark ? 'gray.400' : 'gray.600'}
+                    letterSpacing="tight"
+                  >
+                    {platform.description}
+                  </Text>
+                </VStack>
 
-                <Text
-                  fontSize="xl"
-                  color={isDark ? 'gray.300' : 'gray.600'}
-                  fontWeight="medium"
-                >
-                  {platform.description}
-                </Text>
-
-                {/* <HStack spacing={4} pt={4}>
-                  {platform.features.map((feature, fidx) => (
-                    <Badge
-                      key={fidx}
-                      fontSize="sm"
-                      colorScheme="blue"
-                      variant="subtle"
-                      px={3}
-                      py={1}
-                      borderRadius="full"
-                    >
-                      {feature}
-                    </Badge>
-                  ))}
-                </HStack> */}
-
-                <Icon 
-                  as={ArrowRight} 
-                  boxSize={6} 
-                  transform="translateX(0)"
+                <Icon
+                  as={ArrowRight}
+                  boxSize={5}
+                  color={isDark ? 'gray.400' : 'gray.600'}
+                  opacity={0.5}
                   transition="all 0.3s ease"
+                  transform="translateX(-10px)"
                   _groupHover={{
-                    transform: "translateX(5px)",
-                    opacity: 1
+                    transform: "translateX(0)",
+                    opacity: 1,
+                    color: `${platform.color}.500`
                   }}
                 />
-              </VStack>
+              </Flex>
             </ChakraBox>
           ))}
         </VStack>
@@ -365,69 +367,99 @@ export default function Landing() {
 
   return (
     <>
-      <Box>
-        <Hero />
-          <Container maxW="container.xl">
-              <VStack spacing={4} textAlign="center">
-                <Heading
-                  textAlign="center"
-                  bgGradient="linear(to-r, #0a60a3, #67bdfd)"
-                  bgClip="text"
-                  fontSize={{ base: "5xl", md: "5xl" }}
-                >
-                  {t('heroTitle')}
-                </Heading>
+  <Box
+    bg={isDark ? 'black' : 'white'}
+    minH="100vh"
+    overflowX="hidden"
+  >
+    <Hero />
+    <Container maxW="container.xl" px={{ base: 4, md: 8 }}>
+      <VStack spacing={16} py={20}>
+        {/* Hero Content */}
+        <VStack spacing={8} textAlign="center" maxW="3xl" mx="auto">
+          <Heading
+            fontSize={{ base: "4xl", md: "6xl" }}
+            fontWeight="bold"
+            letterSpacing="tight"
+            bgGradient={`linear(to-r, ${theme.colors.brand.bitcash[400]}, ${theme.colors.brand.bitwork[400]})`}
+            bgClip="text"
+            lineHeight="1.2"
+          >
+            {t('heroTitle')}
+          </Heading>
 
-                <Text
-                  fontSize={{ base: "lg", md: "xl" }}
-                  color={isDark ? 'gray.400' : 'gray.600'}
-                  maxW="xl"
-                >
-                  {t('ctaDescription')}
-                </Text>
+          <Text
+            fontSize={{ base: "xl", md: "2xl" }}
+            color={isDark ? 'gray.400' : 'gray.600'}
+            maxW="2xl"
+            lineHeight="tall"
+          >
+            {t('ctaDescription')}
+          </Text>
 
-              <SimpleGrid spacing={6}>
-                <HStack spacing={4}>
-                  <Text
-                    fontSize="4xl"
-                    fontWeight="bold"
-                    bgGradient="linear(to-r, #0a60a3, #67bdfd)"
-                    bgClip="text"
-                  >
-                    15%
-                  </Text>
-                  <Text color={isDark ? 'gray.400' : 'gray.600'}>
-                    Average ROI
-                  </Text>
-                  <Text
-                    fontSize="4xl"
-                    fontWeight="bold"
-                    bgGradient="linear(to-r, #0a60a3, #67bdfd)"
-                    bgClip="text"
-                  >
-                    100+
-                  </Text>
-                  <Text color={isDark ? 'gray.400' : 'gray.600'}>
-                    Enterprise Clients
-                  </Text>
-                </HStack>
-              </SimpleGrid>
+          <HStack spacing={8} pt={4}>
+            <Text
+              fontSize={{ base: "3xl", md: "4xl" }}
+              fontWeight="bold"
+              letterSpacing="tight"
+            >
+              <Text
+                as="span"
+                bgGradient={`linear(to-r, ${theme.colors.brand.bitcash[400]}, ${theme.colors.brand.bitwork[400]})`}
+                bgClip="text"
+              >
+                15%
+              </Text>
+              <Text
+                as="span"
+                fontSize="lg"
+                color={isDark ? 'gray.400' : 'gray.600'}
+                ml={2}
+              >
+                {t('stats.averageRoi')}
+              </Text>
+            </Text>
 
-              <HStack spacing={4}>
-                  <Button
-                  leftIcon={<FaWhatsapp />}
-                  variant="ghost"
-                  colorScheme="blue"
-                  onClick={() => {
-                    window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank");
-                    onClose();
-                  }}
-                  size="md"
-                >
-                  {t('scheduleDemo')}
-                </Button>
-              </HStack>
-            </VStack>
+            <Text
+              fontSize={{ base: "3xl", md: "4xl" }}
+              fontWeight="bold"
+              letterSpacing="tight"
+            >
+              <Text
+                as="span"
+                bgGradient={`linear(to-r, ${theme.colors.brand.bitcash[400]}, ${theme.colors.brand.bitwork[400]})`}
+                bgClip="text"
+              >
+                100+
+              </Text>
+              <Text
+                as="span"
+                fontSize="lg"
+                color={isDark ? 'gray.400' : 'gray.600'}
+                ml={2}
+              >
+                {t('stats.enterpriseClients')}
+              </Text>
+            </Text>
+          </HStack>
+
+          <Button
+            leftIcon={<FaWhatsapp />}
+            size="lg"
+            variant="bitdash-solid"
+            px={8}
+            height="60px"
+            fontSize="lg"
+            _hover={{
+              transform: 'translateY(-2px)',
+              boxShadow: 'lg'
+            }}
+            onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
+          >
+            {t('scheduleDemo')}
+          </Button>
+        </VStack>
+        </VStack>
           </Container>
 
         {/* Solutions Section - Using your ServiceCard component */}

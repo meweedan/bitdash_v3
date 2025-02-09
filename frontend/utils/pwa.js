@@ -20,10 +20,10 @@ export const getPlatformInfo = () => {
         description: 'Automotive dealership management system'
       };
     }
-    if (hostname.includes('menu')) {
+    if (hostname.includes('food')) {
       return {
-        name: 'BitMenu',
-        platform: 'menu',
+        name: 'BitFood',
+        platform: 'food',
         description: 'Digital menu and ordering system'
       };
     }

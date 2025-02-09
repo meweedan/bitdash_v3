@@ -34,8 +34,8 @@ const PLATFORM_CONFIG = {
   menu: {
     type: 'Operator',
     roleId: 3,
-    route: '/menu/operator/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://menu.bitdash.app',
+    route: '/food/operator/dashboard',
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://food.bitdash.app',
   },
   auto: {
     type: 'Dealer',
@@ -642,7 +642,7 @@ else if (platform === 'stock') {
   return (
     <Layout>
       <Head>
-        <title>{platform === 'menu' ? 'BitMenu' : platform === 'auto' ? 'BitAuto' : 'BitStock'} - Sign Up</title>
+        <title>{platform === 'food' ? 'BitFood' : platform === 'auto' ? 'BitAuto' : 'BitStock'} - Sign Up</title>
       </Head>
 
       <Container maxW="container.lg" py={10}>
@@ -849,8 +849,8 @@ else if (platform === 'stock') {
               </>
             )}
 
-            {/* Step 3: Subscription Selection (BitMenu only) */}
-            {step === 3 && platform === 'menu' && (
+            {/* Step 3: Subscription Selection (BitFood only) */}
+            {step === 3 && platform === 'food' && (
               <>
                 <Heading size="lg" mb={2} align="center">Choose Your Plan</Heading>
                 <Text mb={6} align="center">Start with a 30-day free trial</Text>

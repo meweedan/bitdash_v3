@@ -75,6 +75,16 @@ export default function Header() {
     router.push('/login');
   };
 
+  // Main BitDash domain custom header
+  const isMainDomain = () => {
+    if (typeof window !== 'undefined') {
+      const hostname = window.location.hostname;
+      // Check if it's the main domain without subdomains
+      return hostname === 'bitdash.app' || hostname === 'localhost';
+    }
+    return false;
+  };
+
   const platforms = [
     {
       image: '/cash.png',
@@ -96,6 +106,11 @@ export default function Header() {
       mobileImage: '/shop.png',
       href: 'https://shop.bitdash.app/',
     },
+    {
+      image: '/work.png',
+      mobileImage: '/work.png',
+      href: 'https://work.bitdash.app/',
+      },
   ];
 
   const bgColor = useColorModeValue(
@@ -103,6 +118,7 @@ export default function Header() {
   platform === 'bitfood' ? 'brand.bitfood.50' :
   platform === 'bitshop' ? 'brand.bitshop.50' :
   platform === 'bitride' ? 'brand.bitride.50' :
+  platform === 'bitwork' ? 'brand.bitwork.50' :
   'gray.50',
   'gray.900'
 );
@@ -115,6 +131,7 @@ export default function Header() {
     if (hostname.includes('food')) return 'bitfood';
     if (hostname.includes('shop')) return 'bitshop';
     if (hostname.includes('ride')) return 'bitride';
+    if (hostname.includes('work')) return 'bitwork';
   }
   return 'bitdash'; // Default platform
 };
@@ -163,7 +180,7 @@ useEffect(() => {
                 rel="noopener noreferrer"
               >
                 <VStack
-                  spacing={3}
+                  spacing={5}
                   align="center"
                   transition="transform 0.2s"
                   _hover={{ transform: 'translateY(-5px)' }}
@@ -171,8 +188,8 @@ useEffect(() => {
                   <Image 
                     src={platform.image}
                     alt="platform"
-                    width={160}
-                    height={220}
+                    width={120}
+                    height={200}
                     priority={true}
                     style={{ objectFit: 'contain' }}
                   />
@@ -289,48 +306,53 @@ useEffect(() => {
             _hover={{ bg: isDark ? 'whiteAlpha.300' : 'blackAlpha.100' }}
           />
 
-          {isLoggedIn ? (
+          {/* Only show auth buttons if not on main domain */}
+          {!isMainDomain() && (
             <>
-              <Button 
-                leftIcon={<FaUser size={20} />} 
-                size="lg"
-                variant={`${platform}-solid`}
-                bg={isDark ? 'whiteAlpha.200' : 'blackAlpha.50'}
-                onClick={() => router.push('/login')}
-                _hover={{ bg: isDark ? 'whiteAlpha.300' : 'blackAlpha.100' }}
-              >
-                {t('myAccount')}
-              </Button>
-              <Button
-                leftIcon={<FaSignOutAlt size={20} />}
-                onClick={handleLogout}
-                size="lg"
-                colorScheme="red"
-                variant={`${platform}-solid`}
-              >
-                {t('logout')}
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button 
-                leftIcon={<FaSignInAlt size={20} />}
-                size="lg"
-                variant={`${platform}-outline`}
-                color={`brand.${platform}.700`}
-                onClick={() => router.push('/login')}
-              >
-                {t('login')}
-              </Button>
-              <Button 
-                leftIcon={<FaUserPlus size={20} />}
-                size="lg"
-                variant={`${platform}-solid`}
-                onClick={() => router.push('/signup')}
-                _hover={{ bg: isDark ? 'whiteAlpha.300' : `brand.${platform}.700` }}
-              >
-                {t('signup')}
-              </Button>
+              {isLoggedIn ? (
+                <>
+                  <Button 
+                    leftIcon={<FaUser size={20} />} 
+                    size="lg"
+                    variant={`${platform}-solid`}
+                    bg={isDark ? 'whiteAlpha.200' : 'blackAlpha.50'}
+                    onClick={() => router.push('/login')}
+                    _hover={{ bg: isDark ? 'whiteAlpha.300' : 'blackAlpha.100' }}
+                  >
+                    {t('myAccount')}
+                  </Button>
+                  <Button
+                    leftIcon={<FaSignOutAlt size={20} />}
+                    onClick={handleLogout}
+                    size="lg"
+                    colorScheme="red"
+                    variant={`${platform}-solid`}
+                  >
+                    {t('logout')}
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button 
+                    leftIcon={<FaSignInAlt size={20} />}
+                    size="lg"
+                    variant={`${platform}-outline`}
+                    color={`brand.${platform}.700`}
+                    onClick={() => router.push('/login')}
+                  >
+                    {t('login')}
+                  </Button>
+                  <Button 
+                    leftIcon={<FaUserPlus size={20} />}
+                    size="lg"
+                    variant={`${platform}-solid`}
+                    onClick={() => router.push('/signup')}
+                    _hover={{ bg: isDark ? 'whiteAlpha.300' : `brand.${platform}.700` }}
+                  >
+                    {t('signup')}
+                  </Button>
+                </>
+              )}
             </>
           )}
         </Flex>
@@ -366,46 +388,50 @@ useEffect(() => {
             size="sm"
           />
 
-          {isLoggedIn ? (
+          {!isMainDomain() && (
             <>
-              <IconButton
-                as={Link}
-                href="/login"
-                icon={<FaUser />}
-                aria-label={t('myAccount')}
-                variant={`${platform}-outline`}
-                color={`brand.${platform}.700`}
-                size="sm"
-              />
-              <IconButton
-                onClick={handleLogout}
-                icon={<FaSignOutAlt />}
-                aria-label={t('logout')}
-                variant={`${platform}-outline`}
-                colorScheme="red"
-                size="sm"
-              />
-            </>
-          ) : (
-            <>
-              <IconButton
-                as={Link}
-                href="/login"
-                icon={<FaSignInAlt />}
-                aria-label={t('login')}
-                variant={`${platform}-outline`}
-                colorScheme="blue"
-                size="sm"
-              />
-              <IconButton
-                as={Link}
-                href="/signup"
-                icon={<FaUserPlus />}
-                aria-label={t('signup')}
-                variant={`${platform}-outline`}
-                colorScheme="blue"
-                size="sm"
-              />
+              {isLoggedIn ? (
+                <>
+                  <IconButton
+                    as={Link}
+                    href="/login"
+                    icon={<FaUser />}
+                    aria-label={t('myAccount')}
+                    variant={`${platform}-outline`}
+                    color={`brand.${platform}.700`}
+                    size="sm"
+                  />
+                  <IconButton
+                    onClick={handleLogout}
+                    icon={<FaSignOutAlt />}
+                    aria-label={t('logout')}
+                    variant={`${platform}-outline`}
+                    colorScheme="red"
+                    size="sm"
+                  />
+                </>
+              ) : (
+                <>
+                  <IconButton
+                    as={Link}
+                    href="/login"
+                    icon={<FaSignInAlt />}
+                    aria-label={t('login')}
+                    variant={`${platform}-outline`}
+                    colorScheme="blue"
+                    size="sm"
+                  />
+                  <IconButton
+                    as={Link}
+                    href="/signup"
+                    icon={<FaUserPlus />}
+                    aria-label={t('signup')}
+                    variant={`${platform}-outline`}
+                    colorScheme="blue"
+                    size="sm"
+                  />
+                </>
+              )}
             </>
           )}
 
@@ -419,7 +445,7 @@ useEffect(() => {
         </HStack>
       </Flex>
 
-      {/* Mobile Menu - Untouched */}
+      {/* Mobile Menu */}
       <Collapse in={isOpen} animateOpacity>
         <Box
           position="fixed"
@@ -430,7 +456,8 @@ useEffect(() => {
           boxShadow="3xl"
           zIndex="1000"
         >
-          <SimpleGrid columns={3} w="full">           
+          {/* Navigation Links */}
+          <SimpleGrid columns={3} w="full" mb={4}>           
             <MenuItems href="/services" onClick={onClose}>{t('servicesMenu')}</MenuItems>
             <MenuItems href="/about" onClick={onClose}>{t('aboutUs')}</MenuItems>
             <Button
@@ -447,7 +474,22 @@ useEffect(() => {
                 {t('Chatbot')}
               </Text>
             </Button>
+          </SimpleGrid>
 
+          {/* Platforms Row */}
+          <Flex 
+            justify="space-between" 
+            align="center" 
+            px={4} 
+            w="full" 
+            overflowX="auto"
+            css={{
+              '&::-webkit-scrollbar': {
+                display: 'none'
+              },
+              scrollbarWidth: 'none'
+            }}
+          >
             {platforms.map((platform) => (
               <a 
                 key={platform.href}
@@ -459,28 +501,25 @@ useEffect(() => {
                 <Box
                   onClick={onClose}
                   textAlign="center"
-                  p={3}
+                  p={2}
                   borderRadius="md"
+                  minW="60px"
                 >
                   <Image
                     src={platform.image}
                     alt="platform"
-                    width={50}
-                    height={80}
+                    width={80}
+                    height={50}
                     priority={true}
                     style={{ 
-                      width: '90%', 
-                      height: 'auto', 
+                      margin: '0 auto',
                       objectFit: 'contain'
                     }}
                   />
-                  <Text mt={2} fontSize="sm" fontWeight="medium">
-                    {platform.name}
-                  </Text>
                 </Box>
               </a>
             ))}
-          </SimpleGrid>
+          </Flex>
         </Box>
       </Collapse>
     </Flex>

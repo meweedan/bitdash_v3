@@ -16,7 +16,7 @@ module.exports = {
       // Loop through tables and generate a QR code for each table
       for (const table of restaurant.tables) {
         const tableID = table.id;
-        const qrCodeUrl = `https://menu.bitdash.app/qr/${restaurant.id}/${tableID}`;
+        const qrCodeUrl = `https://food.bitdash.app/qr/${restaurant.id}/${tableID}`;
         const qrCodeImage = await QRCode.toDataURL(qrCodeUrl);
 
         qrCodes[tableID] = qrCodeImage; // Store the QR code image

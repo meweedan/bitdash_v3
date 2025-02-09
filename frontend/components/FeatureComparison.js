@@ -23,7 +23,7 @@ export const FeatureComparison = () => {
         title: "Order Wait Time",
         description: "Long queues during peak hours"
       },
-      bitmenu: {
+      BitFood: {
         icon: Clock,
         metric: "<1min",
         title: "Instant Ordering",
@@ -37,7 +37,7 @@ export const FeatureComparison = () => {
         title: "Order Errors",
         description: "$2,000+ monthly waste"
       },
-      bitmenu: {
+      BitFood: {
         icon: DollarSign,
         metric: "0.1%",
         title: "Error Rate",
@@ -51,7 +51,7 @@ export const FeatureComparison = () => {
         title: "Staff Needs",
         description: "Higher operational costs"
       },
-      bitmenu: {
+      BitFood: {
         icon: Users,
         metric: "1x",
         title: "Staff Optimization",
@@ -100,15 +100,15 @@ export const FeatureComparison = () => {
                   spacing={4} 
                   p={6}
                 >
-                  <Icon as={comparison.bitmenu.icon} boxSize={6} color="#67bdfd"/>
+                  <Icon as={comparison.BitFood.icon} boxSize={6} color="#67bdfd"/>
                   <Text fontSize="3xl" fontWeight="bold" color="#67bdfd">
-                    {comparison.bitmenu.metric}
+                    {comparison.BitFood.metric}
                   </Text>
                   <Text fontSize="lg" fontWeight="bold" color="#67bdfd">
-                    {comparison.bitmenu.title}
+                    {comparison.BitFood.title}
                   </Text>
                   <Text fontSize="sm" color="#67bdfd">
-                    {comparison.bitmenu.description}
+                    {comparison.BitFood.description}
                   </Text>
                 </VStack>
               </SurfaceTransition>

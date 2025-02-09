@@ -9,7 +9,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { useToast } from '@/hooks/useToast';
 import ApiService from '@/services/api';
 
-const BASE_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 const ROLES = {
  MERCHANT: 8,
  AGENT: 7,

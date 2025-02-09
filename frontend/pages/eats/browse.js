@@ -56,7 +56,7 @@ const RestaurantBrowsePage = () => {
   }, []);
 
   const handleOrderClick = (restaurantId) => {
-    router.push(`/menu/${restaurantId}`);
+    router.push(`/food/${restaurantId}`);
   };
 
   if (isLoading) {

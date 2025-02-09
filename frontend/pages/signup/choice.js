@@ -121,13 +121,13 @@ const CustomerBox = styled(Box)`
 
 // Update the PLATFORMS configuration
 const PLATFORMS = {
-  MENU: {
-    subdomain: 'menu',
-    name: 'BitMenu',
+  FOOD: {
+    subdomain: 'food',
+    name: 'BitFood',
     title: 'restaurantOwner',
     description: 'restaurantDescription',
     icon: Store,
-    signupPath: '/signup/operator?platform=menu'
+    signupPath: '/signup/operator?platform=food'
   },
   AUTO: {
     subdomain: 'auto',
@@ -165,14 +165,6 @@ const PLATFORMS = {
         commission: '1.5%'
       }
     ]
-  },
-  EATS: {
-    subdomain: 'eats',
-    name: 'BitEats',
-    title: 'foodDelivery',
-    description: 'foodDeliveryDescription',
-    icon: Utensils,
-    signupPath: '/signup/captain'
   }
 };
 

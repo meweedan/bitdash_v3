@@ -69,7 +69,7 @@ const Footer = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
-      if (hostname.includes('menu')) setPlatform('menu');
+      if (hostname.includes('food')) setPlatform('food');
       else if (hostname.includes('auto')) setPlatform('auto');
       else if (hostname.includes('stock')) setPlatform('stock');
       else if (hostname.includes('eats')) setPlatform('eats');
@@ -93,9 +93,9 @@ const Footer = () => {
       { label: 'Privacy', href: '/privacy', icon: Shield },
       { label: 'Terms', href: '/terms', icon: FileText },
     ],
-    menu: [
-      { label: 'Browse Menus', href: '/menu/browse', icon: Search },
-      { label: 'Track Order', href: '/menu/order-tracking', icon: PackageSearch },
+    food: [
+      { label: 'Browse Menus', href: '/food/browse', icon: Search },
+      { label: 'Track Order', href: '/food/order-tracking', icon: PackageSearch },
       { label: 'Privacy', href: '/privacy', icon: Shield },
     ],
     auto: [
@@ -123,7 +123,7 @@ const Footer = () => {
 
   const getPWANavItems = (isLoggedIn) => {
     const navItems = {
-      menu: [
+      food: [
         { label: 'Operators', action: 'search', icon: Search, color: 'blue.500' },
         { label: 'Track Orders', action: 'tracking', icon: PackageSearch, color: 'blue.400' },
         { label: 'Scanner', action: 'scan', icon: Camera, color: 'blue.300' },
@@ -195,7 +195,7 @@ const Footer = () => {
       setError('Please enter an order number');
       return;
     }
-    router.push(`/menu/order-tracking/${orderNumber}`);
+    router.push(`/food/order-tracking/${orderNumber}`);
   };
 
   const QRScanner = dynamic(() => import('./QRScanner'), { ssr: false });
@@ -334,7 +334,7 @@ const Footer = () => {
         <DrawerOverlay />
         <DrawerContent maxH="100%" borderTopRadius="20px">
           <DrawerHeader borderBottomWidth="1px">
-            {platform === 'menu' ? 'Find Restaurants' : 
+            {platform === 'food' ? 'Find Restaurants' : 
              platform === 'auto' ? 'Find Dealers' : 
              'Browse Market'}
           </DrawerHeader>
@@ -386,14 +386,14 @@ const Footer = () => {
         <DrawerOverlay />
         <DrawerContent borderTopRadius="20px">
           <DrawerHeader borderBottomWidth="1px">
-            {platform === 'menu' ? 'Track Order' : 
+            {platform === 'food' ? 'Track Order' : 
              platform === 'auto' ? 'Vehicle Listings' : 
              'Trade History'}
           </DrawerHeader>
           <DrawerBody py={4}>
             <FormControl isRequired isInvalid={!!error}>
               <FormLabel>
-                {platform === 'menu' ? 'Order Number' : 
+                {platform === 'food' ? 'Order Number' : 
                  platform === 'auto' ? 'Search Listings' : 
                  'Search Trades'}
               </FormLabel>
@@ -404,7 +404,7 @@ const Footer = () => {
                   setError('');
                 }}
                 placeholder={
-                  platform === 'menu' ? 'Enter your order number' : 
+                  platform === 'food' ? 'Enter your order number' : 
                   platform === 'auto' ? 'Search vehicle listings' : 
                   'Search trade history'
                 }
@@ -417,7 +417,7 @@ const Footer = () => {
               onClick={handleTrackOrder}
               isFullWidth
             >
-              {platform === 'menu' ? 'Track Order' : 
+              {platform === 'food' ? 'Track Order' : 
                platform === 'auto' ? 'Search Listings' : 
                'Search Trades'}
             </Button>

@@ -14,9 +14,9 @@ export default function Document() {
         description: 'Automotive dealership management system',
       };
     }
-    if (hostname.includes('menu')) {
+    if (hostname.includes('food')) {
       return {
-        title: 'BitMenu',
+        title: 'BitFood',
         description: 'Digital menu and ordering system',
       };
     }

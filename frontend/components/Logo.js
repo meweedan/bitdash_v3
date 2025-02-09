@@ -10,22 +10,16 @@ const Logo = () => {
   
   useEffect(() => {
     const hostname = window.location.hostname;
-    if (hostname.includes('menu')) {
-      setPlatform('menu');
+    if (hostname.includes('work')) {
+      setPlatform('work');
     } else if (hostname.includes('cash')) {
       setPlatform('cash');
     } else if (hostname.includes('food')) {
       setPlatform('food');  
-    } else if (hostname.includes('eats')) {
-      setPlatform('eats');
     } else if (hostname.includes('ride')) {
       setPlatform('ride');
     } else if (hostname.includes('shop')) {
       setPlatform('shop');
-    } else if (hostname.includes('auto')) {
-      setPlatform('auto');
-    } else if (hostname.includes('stock')) {
-      setPlatform('stock');
     } else if (process.env.NODE_ENV === 'development') {
       const urlPlatform = new URLSearchParams(window.location.search).get('platform');
       setPlatform(urlPlatform);
@@ -35,25 +29,13 @@ const Logo = () => {
   const getLogoConfig = () => {
     // Dimensions from the screenshots
     const configs = {
-      menu: {
-        en: { path: '/menu.png', width: 816, height: 189 },
-        ar: { path: '/menu-ar.png', width: 801, height: 233 }
-      },
       cash: {
         en: { path: '/cash.png', width: 916, height: 289 },
         ar: { path: '/cash-ar.png', width: 801, height: 233}
       },
-      auto: {
-        en: { path: '/auto.png', width: 785, height: 194 },
-        ar: { path: '/auto-ar.png', width: 799, height: 271 }
-      },
-      stock: {
-        en: { path: '/stock.png', width: 778, height: 175 },
-        ar: { path: '/stock-ar.png', width: 784, height: 233 }
-      },
-      eats: {
-        en: { path: '/eats.png', width: 778, height: 175 },
-        ar: { path: '/eats-ar.png', width: 784, height: 233 }
+      work: {
+        en: { path: '/work.png', width: 778, height: 175 },
+        ar: { path: '/work-ar.png', width: 784, height: 233 }
       },
       food: {
         en: { path: '/food.png', width: 978, height: 275 },

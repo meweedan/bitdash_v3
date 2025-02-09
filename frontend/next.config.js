@@ -72,6 +72,12 @@ const nextConfig = {
         destination: 'https://cash.bitdash.app',
         permanent: true
       },
+      {
+        source: '/work',
+        has: [{ type: 'host', value: 'bitdash.app' }],
+        destination: 'https://work.bitdash.app',
+        permanent: true
+      }
     ];
   },
 

@@ -10,19 +10,19 @@ export const SystemComparison = () => {
   const comparisons = [
     {
       traditional: "Manual order taking (12-15 min)",
-      bitMenu: "Instant digital ordering"
+      bitFood: "Instant digital ordering"
     },
     {
       traditional: "15% order error rate",
-      bitMenu: "< 0.1% error rate"
+      bitFood: "< 0.1% error rate"
     },
     {
       traditional: "High staff costs",
-      bitMenu: "Reduced staff needs"
+      bitFood: "Reduced staff needs"
     },
     {
       traditional: "Limited analytics",
-      bitMenu: "Real-time insights"
+      bitFood: "Real-time insights"
     }
   ];
 
@@ -39,7 +39,7 @@ export const SystemComparison = () => {
           <Box p={4} bg={isDark ? 'green.900' : 'green.50'} rounded="md">
             <HStack>
               <CheckCircle />
-              <Text>{comparison.bitMenu}</Text>
+              <Text>{comparison.bitFood}</Text>
             </HStack>
           </Box>
         </Grid>

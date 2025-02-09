@@ -37,7 +37,7 @@ services:
       - key: PUBLIC_URL
         value: "https://bitdash-backend.onrender.com"
       - key: FRONTEND_URL
-        value: "https://menu.bitdash.app,https://stock.bitdash.app,https://auto.bitdash.app,https://bitdash.app"
+        value: "https://food.bitdash.app,https://stock.bitdash.app,https://auto.bitdash.app,https://bitdash.app"
 
     disk:
       name: strapi-uploads

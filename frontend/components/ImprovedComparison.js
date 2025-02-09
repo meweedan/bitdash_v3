@@ -14,7 +14,7 @@ export const ImprovedComparison = () => {
         metric: "15min",
         impact: "Lost customers during peak hours"
       },
-      bitMenu: {
+      bitFood: {
         text: "Instant digital ordering",
         metric: "<1min",
         impact: "60% faster table turnover"
@@ -26,7 +26,7 @@ export const ImprovedComparison = () => {
         metric: "15%",
         impact: "$2,000+ monthly waste"
       },
-      bitMenu: {
+      bitFood: {
         text: "Near-perfect accuracy",
         metric: "99.9%",
         impact: "Save $24,000+ annually"
@@ -38,7 +38,7 @@ export const ImprovedComparison = () => {
         metric: "3x",
         impact: "$8,000+ monthly staff cost"
       },
-      bitMenu: {
+      bitFood: {
         text: "1 server per section",
         metric: "1x",
         impact: "67% staff cost reduction"
@@ -80,9 +80,9 @@ export const ImprovedComparison = () => {
               shadow="xl"
             >
               <VStack align="start" spacing={4}>
-                <Text fontSize="3xl" fontWeight="bold">{comparison.bitMenu.metric}</Text>
-                <Text fontWeight="medium">{comparison.bitMenu.text}</Text>
-                <Text fontSize="sm" color="gray.500">{comparison.bitMenu.impact}</Text>
+                <Text fontSize="3xl" fontWeight="bold">{comparison.bitFood.metric}</Text>
+                <Text fontWeight="medium">{comparison.bitFood.text}</Text>
+                <Text fontSize="sm" color="gray.500">{comparison.bitFood.impact}</Text>
               </VStack>
             </Box>
           </Grid>

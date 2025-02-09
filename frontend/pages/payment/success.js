@@ -43,7 +43,7 @@ export default function PaymentSuccess() {
         if (type === 'voucher') {
           router.push('/wallet');
         } else {
-          router.push('/menu/operator/dashboard');
+          router.push('/food/operator/dashboard');
         }
 
       } catch (error) {

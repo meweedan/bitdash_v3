@@ -37,13 +37,13 @@ const MenuPWALanding = () => {
       <Container maxW="container.lg">
         <VStack spacing={8} align="center" pb={20}>
           <Image
-            src="/menu-logo.png"
-            alt="BitMenu"
+            src="/food-logo.png"
+            alt="BitFood"
             w="150px"
             h="150px"
             objectFit="contain"
           />
-          <Heading size="2xl" color="green.500">BitMenu</Heading>
+          <Heading size="2xl" color="green.500">BitFood</Heading>
           <Text fontSize="xl" textAlign="center" color={isDark ? 'gray.400' : 'gray.600'}>
             Your digital menu and ordering solution
           </Text>
@@ -178,8 +178,8 @@ const PWALayout = ({ children }) => {
   useEffect(() => {
     if (isPWA && router.pathname === '/') {
       switch(hostname) {
-        case 'menu.bitdash.app':
-          router.replace('/menu');
+        case 'food.bitdash.app':
+          router.replace('/food');
           break;
         case 'auto.bitdash.app':
           router.replace('/auto');
@@ -196,4 +196,4 @@ const PWALayout = ({ children }) => {
   return children;
 };
 
-export { MenuPWALanding, AutoPWALanding, StockPWALanding, PWALayout };
+export { FoodPWALanding, AutoPWALanding, StockPWALanding, PWALayout };

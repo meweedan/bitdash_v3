@@ -8,20 +8,10 @@ import Layout from '@/components/Layout';
 import useSubdomain from '@/hooks/useSubdomain';
 
 const PLATFORM_ROUTES = {
-  menu: {
-    operator: '/menu/operator/dashboard',
-    customer: '/menu/customer/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://menu.bitdash.app'
-  },
-  auto: {
-    dealer: '/auto/dealer/dashboard',
-    customer: '/auto/customer/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://auto.bitdash.app'
-  },
-  stock: {
-    trader: '/stock/dashboard',
-    customer: '/stock/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://stock.bitdash.app'
+  food: {
+    operator: '/food/operator/dashboard',
+    customer: '/food/customer/dashboard',
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://food.bitdash.app'
   },
   eats: {
     captain: '/eats/captain/dashboard',
@@ -37,16 +27,8 @@ const PLATFORM_ROUTES = {
 };
 
 const PROFILE_ENDPOINTS = {
-  menu: {
+  food: {
     operator: '/api/operators',
-    customer: '/api/customer-profiles'
-  },
-  auto: {
-    dealer: '/api/operators',
-    customer: '/api/customer-profiles'
-  },
-  stock: {
-    trader: '/api/operators',
     customer: '/api/customer-profiles'
   },
   eats: {
@@ -61,8 +43,7 @@ const PROFILE_ENDPOINTS = {
 };
 
 const BUSINESS_TYPE_ROUTES = {
-  restaurant: { platform: 'menu', userType: 'operator' },
-  dealer: { platform: 'auto', userType: 'dealer' },
+  restaurant: { platform: 'food', userType: 'operator' },
   trader: { platform: 'stock', userType: 'trader' },
   merchant: { platform: 'cash', userType: 'merchant' },
   agent: { platform: 'cash', userType: 'agent' },

@@ -19,7 +19,7 @@ const QRScanner = ({ isOpen, onClose }) => {
 
   const handleScan = (data) => {
     if (data) {
-      if (data.includes('/menu/')) {
+      if (data.includes('/food/')) {
         onClose();
         router.push(data);
       }
