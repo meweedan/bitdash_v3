@@ -17,7 +17,7 @@ import {
 import { Search, ShoppingBag, Clock, BellRing, Package, BarChart2, Car, Tool, DollarSign } from 'lucide-react';
 
 // Menu PWA Landing
-const MenuPWALanding = () => {
+const FoodPWALanding = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';

@@ -45,11 +45,11 @@ export function withAuth(WrappedComponent) {
           
           // Verify correct platform access
           const businessTypeMap = {
-            restaurant: 'menu',
+            restaurant: 'food',
             dealer: 'auto',
             trader: 'stock',
-            merchant: 'pay',
-            agent: 'pay'
+            merchant: 'cash',
+            agent: 'cash'
           };
 
           const correctPlatform = businessTypeMap[operator.attributes.businessType];

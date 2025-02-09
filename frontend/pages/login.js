@@ -11,12 +11,8 @@ const PLATFORM_ROUTES = {
   food: {
     operator: '/food/operator/dashboard',
     customer: '/food/customer/dashboard',
+    captain: '/food/captain/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://food.bitdash.app'
-  },
-  eats: {
-    captain: '/eats/captain/dashboard',
-    customer: '/eats/customer/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://eats.bitdash.app'
   },
   cash: {
     merchant: '/cash/merchant/dashboard',
@@ -29,9 +25,7 @@ const PLATFORM_ROUTES = {
 const PROFILE_ENDPOINTS = {
   food: {
     operator: '/api/operators',
-    customer: '/api/customer-profiles'
-  },
-  eats: {
+    customer: '/api/customer-profiles',
     captain: '/api/captains',
     customer: '/api/customer-profiles'
   },
@@ -44,10 +38,10 @@ const PROFILE_ENDPOINTS = {
 
 const BUSINESS_TYPE_ROUTES = {
   restaurant: { platform: 'food', userType: 'operator' },
+  captain: { platform: 'food', userType: 'captain' },
   trader: { platform: 'stock', userType: 'trader' },
   merchant: { platform: 'cash', userType: 'merchant' },
   agent: { platform: 'cash', userType: 'agent' },
-  captain: { platform: 'eats', userType: 'captain' }
 };
 
 const formStyles = {
@@ -120,9 +114,9 @@ const LoginPage = () => {
 
   const checkBusinessType = async (token, userId) => {
     const hostname = window.location.hostname;
-    const isEats = hostname.includes('eats.');
+    const isFood = hostname.includes('food.');
 
-    if (isEats) {
+    if (isFood) {
       console.log('Checking captain profile...');
       const response = await fetch(
         `${BASE_URL}/api/captains?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
@@ -163,7 +157,7 @@ const LoginPage = () => {
 
   const determineUserType = async (token, userId) => {
     const hostname = window.location.hostname;
-    const currentPlatform = hostname.includes('eats.') ? 'eats' : platform;
+    const currentPlatform = hostname.includes('food.') ? 'food' : platform;
     console.log('Current hostname:', hostname);
     console.log('Platform from hook:', platform);
     console.log('Using platform:', currentPlatform);

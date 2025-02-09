@@ -156,14 +156,32 @@ export const ShopPWALanding = () => {
   );
 };
 
+export const WorkPWALanding = () => {
+  const router = useRouter();
+  const config = {
+    title: 'BitWork',
+    description: 'Working never felt so easy',
+    image: '/shop.png',
+    color: '#4CAF50'
+  };
+
+  return (
+    <PWAContainer>
+      <Container config={config} router={router}>
+        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
+          <ParallaxOrderFlow />
+        </div>
+      </Container>
+    </PWAContainer>
+  );
+};
+
 // Default export for backwards compatibility
 const PWALanding = () => {
   const router = useRouter();
   const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
 
-  if (hostname.includes('menu')) return <MenuPWALanding />;
-  if (hostname.includes('auto')) return <AutoPWALanding />;
-  if (hostname.includes('stock')) return <StockPWALanding />;
+  if (hostname.includes('work')) return <WorkPWALanding />;
   if (hostname.includes('cash')) return <CashPWALanding />;
   if (hostname.includes('eats')) return <EatsPWALanding />;
   if (hostname.includes('food')) return <FoodPWALanding />;

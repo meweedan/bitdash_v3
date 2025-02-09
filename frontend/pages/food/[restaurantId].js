@@ -319,7 +319,7 @@ const handleCheckout = async () => {
 
     // Redirect to order tracking
     router.push({
-      pathname: `/menu/order-tracking/${orderId}`,
+      pathname: `/food/order-tracking/${orderId}`,
       query: isGuest ? { guestName, guestPhone } : {}
     });
 
