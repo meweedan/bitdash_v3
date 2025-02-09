@@ -55,7 +55,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::order.order",
-      "mappedBy": "shop-owner"
+      "mappedBy": "owner"
     },
     "location": {
       "type": "component",
