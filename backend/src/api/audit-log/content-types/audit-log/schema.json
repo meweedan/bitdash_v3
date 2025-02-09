@@ -8,6 +8,7 @@
     },
     "attributes": {
       "action": {
+        "type": "enumeration",
         "enum": [
           "review_created",
           "review_updated",

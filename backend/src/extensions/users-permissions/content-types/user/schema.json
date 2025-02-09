@@ -111,7 +111,7 @@
       "target": "api::captain.captain",
       "mappedBy": "users_permissions_user"
       },
-      "employer": {
+    "employer": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::employer.employer",

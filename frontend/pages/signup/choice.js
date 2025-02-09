@@ -268,14 +268,14 @@ export default function SignupChoice() {
       >
         <Container maxW="xl" centerContent>
           <VStack spacing={12} w="full">
-            <AnimatedHeading
+            <Text
               textAlign="center"
               size="xl"
             >
               {currentPlatform 
                 ? t('joinPlatform', { name: currentPlatform.name })
                 : t('choosePlatform')}
-            </AnimatedHeading>
+            </Text>
 
             {/* Platform Options Section */}
             {currentPlatform && (
@@ -329,7 +329,6 @@ export default function SignupChoice() {
               {t('haveAccount')}{' '}
               <Button
                 variant="link"
-                color="blue.400"
                 onClick={() => router.push('/login')}
               >
                 {t('login')}
