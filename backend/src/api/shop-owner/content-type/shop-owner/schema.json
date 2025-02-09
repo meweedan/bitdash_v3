@@ -15,29 +15,32 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "shopName": {
+     "shopName": {
       "type": "string",
       "required": true,
       "unique": true
-    },
-    "description": {
-      "type": "richtext"
-    },
-    "logo": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": ["images"]
-    },
-    "coverImage": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": ["images"]
     },
     "orders": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::order.order",
       "mappedBy": "shop_owner"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false
+    },
+    "wallet": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wallet.wallet"
     },
     "items": {
       "type": "relation",
@@ -52,8 +55,7 @@
     },
     "businessDocuments": {
       "type": "media",
-      "multiple": true,
-      "allowedTypes": ["files", "images"]
+      "multiple": true
     },
     "location": {
       "type": "component",

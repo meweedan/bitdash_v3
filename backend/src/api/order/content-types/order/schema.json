@@ -4,7 +4,8 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "Order"
+    "displayName": "Order",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -92,26 +93,6 @@
       "relation": "manyToOne",
       "target": "api::shop-owner.shop-owner",
       "inversedBy": "orders"
-    },
-    "review": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::review.review",
-      "mappedBy": "order"
-    },
-    "shop_items": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::shop-item.shop-item"
-    },
-    "order_type": {
-      "type": "enumeration",
-      "enum": [
-        "food",
-        "shop"
-      ],
-      "required": true,
-      "default": "food"
     }
   }
 }
