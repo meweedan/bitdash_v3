@@ -17,30 +17,20 @@ import {
 } from '@chakra-ui/react';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Store, Car, Utensils, Package, User,  DollarSign, UserPlus, Wallet, CarFront, User2Icon, CarTaxiFront } from 'lucide-react';
+import { Store, Car, Utensils, Package, User, DollarSign, UserPlus, Wallet, CarFront, User2Icon, CarTaxiFront } from 'lucide-react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+// Reuse existing animations
 const colorChange = keyframes`
-  0% { color: #245b84; }    /* Dark Blue-Green */
-  14% { color: #36739f; }   /* Medium Blue */
-  28% { color: #52a4e1; }   /* Bright Blue */
-  42% { color: #67bdfd; }   /* Light Blue */
-  56% { color: #70b4e6; }   /* Sky Blue */
-  70% { color: #65a6fa; }   /* Electric Blue */
-  85% { color: #6a9ce8; }   /* Steel Blue */
-  100% { color: #245b84; }  /* Back to Dark Blue-Green */
-`;
-
-const borderColorChange = keyframes`
-  0% { border-color: rgba(36, 91, 132, 0.3); }
-  14% { border-color: rgba(54, 115, 159, 0.3); }
-  28% { border-color: rgba(82, 164, 225, 0.3); }
-  42% { border-color: rgba(103, 189, 253, 0.3); }
-  56% { border-color: rgba(112, 180, 230, 0.3); }
-  70% { border-color: rgba(101, 166, 250, 0.3); }
-  85% { border-color: rgba(106, 156, 232, 0.3); }
-  100% { border-color: rgba(36, 91, 132, 0.3); }
+  0% { color: #245b84; }
+  14% { color: #36739f; }
+  28% { color: #52a4e1; }
+  42% { color: #67bdfd; }
+  56% { color: #70b4e6; }
+  70% { color: #65a6fa; }
+  85% { color: #6a9ce8; }
+  100% { color: #245b84; }
 `;
 
 const backgroundColorChange = keyframes`
@@ -54,21 +44,6 @@ const backgroundColorChange = keyframes`
   100% { background-color: rgba(36, 91, 132, 0.05); }
 `;
 
-const preciousMetalPulse = keyframes`
-  0% { 
-    background-color: rgba(192, 192, 192, 0.05);
-    border-color: rgba(192, 192, 192, 0.2);
-  }
-  50% { 
-    background-color: rgba(212, 175, 55, 0.05);
-    border-color: rgba(212, 175, 55, 0.2);
-  }
-  100% { 
-    background-color: rgba(192, 192, 192, 0.05);
-    border-color: rgba(192, 192, 192, 0.2);
-  }
-`;
-
 const AnimatedIcon = styled(Icon)`
   animation: ${colorChange} 10s infinite;
 `;
@@ -77,17 +52,8 @@ const AnimatedHeading = styled(Heading)`
   animation: ${colorChange} 10s infinite;
 `;
 
-const AnimatedButton = styled(Button)`
-  background: #245b84;
-  color: white;
-  animation: ${backgroundColorChange} 10s infinite;
-  &:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.2);
-  }
-`;
-
-const AnimatedBox = styled(Box)`
+// Modify this to use Chakra UI theme variants
+const PlatformBox = styled(Box)`
   padding: 2rem;
   width: 100%;
   border-width: 5px;
@@ -100,30 +66,15 @@ const AnimatedBox = styled(Box)`
     transform: scale(1.05);
     box-shadow: var(--chakra-shadows-dark-lg);
   }
-  animation: ${backgroundColorChange} 10s infinite, ${borderColorChange} 10s infinite;
+  animation: ${backgroundColorChange} 10s infinite;
 `;
 
-const CustomerBox = styled(Box)`
-  padding: 2rem;
-  width: 100%;
-  border-width: 2px;
-  border-radius: var(--chakra-radii-xl);
-  box-shadow: var(--chakra-shadows-xl);
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s;
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: var(--chakra-shadows-dark-lg);
-  }
-  animation: ${preciousMetalPulse} 8s infinite ease-in-out;
-`;
-
-// Update the PLATFORMS configuration
+// PLATFORMS configuration remains the same
 const PLATFORMS = {
   FOOD: {
     subdomain: 'food',
     name: 'BitFood',
+    themeKey: 'bitfood',
     title: 'restaurantOwner',
     description: 'restaurantDescription',
     icon: Store,
@@ -132,6 +83,7 @@ const PLATFORMS = {
   WORK: {
     subdomain: 'work',
     name: 'BitWork',
+    themeKey: 'bitwork',
     icon: Car,
     options: [
       {
@@ -151,6 +103,7 @@ const PLATFORMS = {
   RIDE: {
     subdomain: 'ride',
     name: 'BitRide',
+    themeKey: 'bitride',
     icon: CarFront,
     options: [
       {
@@ -170,6 +123,7 @@ const PLATFORMS = {
   SHOP: {
     subdomain: 'shop',
     name: 'BitShop',
+    themeKey: 'bitshop',
     icon: Store,
     options: [
       {
@@ -177,7 +131,7 @@ const PLATFORMS = {
         title: 'shopSignup',
         icon: Store,
         signupPath: '/signup/shop-owner'
-        },
+      },
       {
         type: 'customer',
         title: 'customer',
@@ -189,6 +143,7 @@ const PLATFORMS = {
   CASH: {
     subdomain: 'cash',
     name: 'BitCash',
+    themeKey: 'bitcash',
     icon: DollarSign,
     options: [
       {
@@ -230,76 +185,79 @@ export default function SignupChoice() {
   }, []);
 
   const renderOperatorCard = (platform) => (
-  <AnimatedBox>
-    <VStack spacing={4}>
-      <AnimatedIcon as={platform.icon} boxSize={10} />
-      <AnimatedHeading size="md">
-        {t(platform.title)}
-      </AnimatedHeading>
-      <Text 
-        textAlign="center" 
-        color={isDark ? 'whiteAlpha.700' : 'gray.600'}
-        fontSize="sm"
-      >
-        {t(platform.description)}
-      </Text>
-      <AnimatedButton
-        size="lg"
-        width="100%"
-        onClick={() => router.push(platform.signupPath)}
-      >
-        {t('businessSignup')}
-      </AnimatedButton>
-    </VStack>
-  </AnimatedBox>
-);
-
-const renderPlatformOptions = (platform) => {
-  if (platform.options) {
-    // Render BitCash specific options
-    return (
-      <VStack spacing={6} width="full">
-        <AnimatedHeading size="lg" textAlign="center">
-          {t('chooseAccountType')}
+    <PlatformBox 
+      borderColor={`brand.${platform.themeKey}.500`}
+      _hover={{ 
+        borderColor: `brand.${platform.themeKey}.600` 
+      }}
+    >
+      <VStack spacing={4}>
+        <AnimatedIcon as={platform.icon} boxSize={10} />
+        <AnimatedHeading size="md">
+          {t(platform.title)}
         </AnimatedHeading>
-        
-        {platform.options.map((option) => (
-          <AnimatedBox 
-            key={option.type}
-            onClick={() => router.push(option.signupPath)}
-          >
-            <HStack spacing={4}>
-              <AnimatedIcon as={option.icon} boxSize={10} />
-              <VStack spacing={2}>
-                <AnimatedHeading size="md">
-                  {t(option.title)}
-                </AnimatedHeading>
-                <Badge colorScheme="blue">
-                  {option.commission} {t('commission')}
-                </Badge>
-              </VStack>
-              <Text 
-                textAlign="center" 
-                color={isDark ? 'whiteAlpha.700' : 'gray.600'}
-                fontSize="sm"
-              >
-                {t(option.description)}
-              </Text>
-              <AnimatedButton
-                size="lg"
-                width="100%"
-              >
-                {t('getStarted')}
-              </AnimatedButton>
-            </HStack>
-          </AnimatedBox>
-        ))}
+        <Text 
+          textAlign="center" 
+          color={isDark ? 'whiteAlpha.700' : 'gray.600'}
+          fontSize="sm"
+        >
+          {t(platform.description)}
+        </Text>
+        <Button
+          size="lg"
+          width="100%"
+          variant={`${platform.themeKey}-solid`}
+          onClick={() => router.push(platform.signupPath)}
+        >
+          {t('businessSignup')}
+        </Button>
       </VStack>
-    );
-   }
-    return renderOperatorCard(platform);
-};
+    </PlatformBox>
+  );
 
+  const renderPlatformOptions = (platform) => {
+    if (platform.options) {
+      return (
+        <VStack spacing={6} width="full">
+          <AnimatedHeading size="lg" textAlign="center">
+            {t('chooseAccountType')}
+          </AnimatedHeading>
+          
+          {platform.options.map((option) => (
+            <PlatformBox 
+              key={option.type}
+              borderColor={`brand.${platform.themeKey}.500`}
+              _hover={{ 
+                borderColor: `brand.${platform.themeKey}.600` 
+              }}
+              onClick={() => router.push(option.signupPath)}
+            >
+              <HStack spacing={4} align="center">
+                <AnimatedIcon as={option.icon} boxSize={10} />
+                <VStack spacing={2} flex={1}>
+                  <AnimatedHeading size="md">
+                    {t(option.title)}
+                  </AnimatedHeading>
+                  {option.commission && (
+                    <Badge colorScheme={platform.themeKey}>
+                      {option.commission} {t('commission')}
+                    </Badge>
+                  )}
+                </VStack>
+                <Button
+                  variant={`${platform.themeKey}-solid`}
+                  size="lg"
+                >
+                  {t('getStarted')}
+                </Button>
+              </HStack>
+            </PlatformBox>
+          ))}
+        </VStack>
+      );
+    }
+    return renderOperatorCard(platform);
+  };
 
   return (
     <Layout>
@@ -329,7 +287,11 @@ const renderPlatformOptions = (platform) => {
             <Divider borderColor={isDark ? 'whiteAlpha.300' : 'gray.200'} />
 
             {/* Customer Section */}
-            <CustomerBox
+            <PlatformBox
+              borderColor="gray.500"
+              _hover={{ 
+                borderColor: 'gray.600' 
+              }}
               onClick={() => router.push('/signup/customer')}
             >
               <VStack spacing={4}>
@@ -361,7 +323,7 @@ const renderPlatformOptions = (platform) => {
                   {t('createCustomerAccount')}
                 </Button>
               </VStack>
-            </CustomerBox>
+            </PlatformBox>
 
             <Text fontSize="sm" color={isDark ? 'whiteAlpha.700' : 'gray.500'}>
               {t('haveAccount')}{' '}
@@ -378,7 +340,7 @@ const renderPlatformOptions = (platform) => {
       </Flex>
     </Layout>
   );
-};
+}
 
 export async function getStaticProps({ locale }) {
   return {
