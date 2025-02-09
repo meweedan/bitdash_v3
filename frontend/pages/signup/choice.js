@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Store, Car, Utensils, Package, User,  DollarSign, UserPlus, Wallet } from 'lucide-react';
+import { Store, Car, Utensils, Package, User,  DollarSign, UserPlus, Wallet, CarFront, User2Icon } from 'lucide-react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
@@ -129,21 +129,44 @@ const PLATFORMS = {
     icon: Store,
     signupPath: '/signup/operator?platform=food'
   },
-  AUTO: {
-    subdomain: 'auto',
-    name: 'BitAuto',
-    title: 'autoDealer',
-    description: 'autoDealerDescription',
+  WORK: {
+    subdomain: 'work',
+    name: 'BitWork',
     icon: Car,
-    signupPath: '/signup/operator?platform=auto'
+    options: [
+      {
+        type: 'employer',
+        title: 'employerSignup',
+        icon: UserPlus,
+        signupPath: '/signup/employer'
+      },
+      {
+        type: 'employee',
+        title: 'employee',
+        icon: Store,
+        signupPath: '/signup/employee'
+      }
+    ]
   },
-  STOCK: {
-    subdomain: 'stock',
-    name: 'BitStock',
-    title: 'inventoryManager',
-    description: 'inventoryDescription',
-    icon: Package,
-    signupPath: '/signup/operator?platform=stock'
+  RIDE: {
+    subdomain: 'ride',
+    name: 'BitRide',
+    icon: CarFront,
+    options: [
+      {
+        type: 'captain',
+        title: 'captainSignup',
+        icon: User2Icon,
+        signupPath: '/signup/captain'
+      },
+      {
+        type: 'rider',
+        title: 'rider',
+        icon: Store,
+        signupPath: '/signup/merchant',
+        commission: '1.5%'
+      }
+    ]
   },
   CASH: {
     subdomain: 'cash',

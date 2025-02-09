@@ -38,6 +38,12 @@
       "target": "api::customer-profile.customer-profile",
       "inversedBy": "orders"
     },
+    "operators": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::operator.operator",
+      "inversedBy": "orders"
+    },
     "payment_method": {
       "type": "enumeration",
       "enum": [
@@ -53,6 +59,12 @@
     "notes": {
       "type": "text"
     },
+    "restaurant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::restaurant.restaurant",
+      "inversedBy": "orders"
+    },
     "order_items": {
       "type": "relation",
       "relation": "oneToMany",
@@ -62,6 +74,12 @@
     "cancellation_attempts": {
       "type": "integer",
       "default": 0
+    },
+    "captain": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::captain.captain",
+      "inversedBy": "orders"
     },
     "messages": {
       "type": "relation",
@@ -78,8 +96,7 @@
     "shop_owner": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::shop-owner.shop-owner",
-      "inversedBy": "orders"
+      "target": "api::shop-owner.shop-owner"
     },
     "shop_items": {
       "type": "relation",

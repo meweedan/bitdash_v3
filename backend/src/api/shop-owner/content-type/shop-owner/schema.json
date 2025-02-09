@@ -51,12 +51,6 @@
       "type": "media",
       "multiple": true
     },
-    "orders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order",
-      "inversedBy": "shop_owner"
-    },
     "location": {
       "type": "component",
       "component": "common.address"
