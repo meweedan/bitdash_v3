@@ -4,8 +4,7 @@
   "info": {
     "singularName": "shop-owner",
     "pluralName": "shop-owners",
-    "displayName": "Shop Owner",
-    "description": "Shop owners for BitShop marketplace"
+    "displayName": "Shop Owner"
   },
   "options": {
     "draftAndPublish": true
@@ -34,11 +33,6 @@
       "multiple": false,
       "allowedTypes": ["images"]
     },
-    "wallet": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::wallet.wallet"
-    },
     "orders": {
       "type": "relation",
       "relation": "oneToMany",
@@ -56,28 +50,6 @@
       "enum": ["pending", "verified", "rejected"],
       "default": "pending"
     },
-    "businessLicense": {
-      "type": "string",
-      "required": true
-    },
-    "taxId": {
-      "type": "string",
-      "required": true
-    },
-    "registrationNumber": {
-      "type": "string",
-      "required": true
-    },
-    "businessType": {
-      "type": "enumeration",
-      "enum": [
-        "retail",
-        "wholesale",
-        "manufacturer",
-        "artisan"
-      ],
-      "default": "retail"
-    },
     "businessDocuments": {
       "type": "media",
       "multiple": true,
@@ -85,13 +57,7 @@
     },
     "location": {
       "type": "component",
-      "component": "common.address",
-      "required": true
-    },
-    "operatingHours": {
-      "type": "component",
-      "component": "common.operating-hours",
-      "required": true
+      "component": "common.address"
     },
     "categories": {
       "type": "json"
@@ -101,14 +67,6 @@
       "max": 5,
       "min": 0,
       "default": 0
-    },
-    "phone": {
-      "type": "string",
-      "required": true
-    },
-    "fullName": {
-      "type": "string",
-      "required": true
     }
   }
 }

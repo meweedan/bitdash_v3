@@ -163,7 +163,7 @@ const PLATFORMS = {
         type: 'rider',
         title: 'rider',
         icon: User,
-        signupPath: '/signup/rider',
+        signupPath: '/signup/customer',
       }
     ]
   },
