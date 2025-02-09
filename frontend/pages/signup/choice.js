@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Store, Car, Utensils, Package, User,  DollarSign, UserPlus, Wallet, CarFront, User2Icon } from 'lucide-react';
+import { Store, Car, Utensils, Package, User,  DollarSign, UserPlus, Wallet, CarFront, User2Icon, CarTaxiFront } from 'lucide-react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
@@ -156,15 +156,33 @@ const PLATFORMS = {
       {
         type: 'captain',
         title: 'captainSignup',
-        icon: User2Icon,
+        icon: CarTaxiFront,
         signupPath: '/signup/captain'
       },
       {
         type: 'rider',
         title: 'rider',
+        icon: User,
+        signupPath: '/signup/rider',
+      }
+    ]
+  },
+  SHOP: {
+    subdomain: 'shop',
+    name: 'BitShop',
+    icon: Store,
+    options: [
+      {
+        type: 'shop',
+        title: 'shopSignup',
         icon: Store,
-        signupPath: '/signup/merchant',
-        commission: '1.5%'
+        signupPath: '/signup/shop-owner'
+        },
+      {
+        type: 'customer',
+        title: 'customer',
+        icon: User,
+        signupPath: '/signup/customer'
       }
     ]
   },

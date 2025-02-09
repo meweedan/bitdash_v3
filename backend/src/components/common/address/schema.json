@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_common_addresses",
+  "info": {
+    "displayName": "Address",
+    "description": "Location address component"
+  },
+  "options": {},
+  "attributes": {
+    "street": {
+      "type": "string",
+      "required": true
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "coordinates": {
+      "type": "json"
+    }
+  }
+}

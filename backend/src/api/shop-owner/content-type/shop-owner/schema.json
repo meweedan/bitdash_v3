@@ -4,7 +4,8 @@
   "info": {
     "singularName": "shop-owner",
     "pluralName": "shop-owners",
-    "displayName": "Shop Owner"
+    "displayName": "Shop Owner",
+    "description": "Shop owners for BitShop marketplace"
   },
   "options": {
     "draftAndPublish": true
@@ -25,16 +26,24 @@
     },
     "logo": {
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "allowedTypes": ["images"]
     },
     "coverImage": {
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "allowedTypes": ["images"]
     },
     "wallet": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::wallet.wallet"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "shop_owner"
     },
     "items": {
       "type": "relation",
@@ -47,13 +56,42 @@
       "enum": ["pending", "verified", "rejected"],
       "default": "pending"
     },
+    "businessLicense": {
+      "type": "string",
+      "required": true
+    },
+    "taxId": {
+      "type": "string",
+      "required": true
+    },
+    "registrationNumber": {
+      "type": "string",
+      "required": true
+    },
+    "businessType": {
+      "type": "enumeration",
+      "enum": [
+        "retail",
+        "wholesale",
+        "manufacturer",
+        "artisan"
+      ],
+      "default": "retail"
+    },
     "businessDocuments": {
       "type": "media",
-      "multiple": true
+      "multiple": true,
+      "allowedTypes": ["files", "images"]
     },
     "location": {
       "type": "component",
-      "component": "common.address"
+      "component": "common.address",
+      "required": true
+    },
+    "operatingHours": {
+      "type": "component",
+      "component": "common.operating-hours",
+      "required": true
     },
     "categories": {
       "type": "json"
@@ -63,6 +101,14 @@
       "max": 5,
       "min": 0,
       "default": 0
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "fullName": {
+      "type": "string",
+      "required": true
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "Order"
+    "displayName": "Order",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -87,7 +88,7 @@
       "target": "api::message.message",
       "mappedBy": "order"
     },
-    "review": {
+     "review": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::review.review",
@@ -96,7 +97,8 @@
     "shop_owner": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::shop-owner.shop-owner"
+      "target": "api::shop-owner.shop-owner",
+      "inversedBy": "orders"
     },
     "shop_items": {
       "type": "relation",
