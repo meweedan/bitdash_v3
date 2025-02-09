@@ -171,7 +171,7 @@ const BitRideLandingBrowser = () => {
         </Container>
 
       {/* Features Grid */}
-      <Container maxW="8xl">
+      <Container maxW="8xl" py={{ base: 12, md: 20 }} px={{ base: 4, lg: 0 }}>
         <SimpleGrid 
             columns={{ base: 1, md: 2, lg: 4 }} 
             spacing={{ base: 6, lg: 8 }}
@@ -205,7 +205,7 @@ const BitRideLandingBrowser = () => {
       </Container>
 
       {/* Driver Benefits */}
-      <Box>
+      <Box py={20}>
         <Container maxW="8xl">
           <VStack spacing={16}>
             <VStack spacing={4} textAlign="center">
@@ -245,7 +245,7 @@ const BitRideLandingBrowser = () => {
       </Box>
 
       {/* Stats Section */}
-      <Box>
+      <Box py={20}>
         <Container maxW="8xl">
           <SimpleGrid 
             columns={{ base: 1, sm: 2, md: 3 }} 
@@ -274,7 +274,7 @@ const BitRideLandingBrowser = () => {
       </Box>
 
       {/* How It Works Section */}
-      <Box>
+      <Box py={20}>
         <Container maxW="8xl">
           <VStack spacing={16}>
             <VStack spacing={4} textAlign="center">
@@ -331,8 +331,8 @@ const BitRideLandingBrowser = () => {
       </Box>
 
       {/* Safety Section */}
-      <Container maxW="8xl">
-        <Grid templateColumns={{ base: '1fr', lg: '1fr 1fr' }} alignItems="center">
+      <Container maxW="8xl" py={20}>
+        <Grid templateColumns={{ base: '1fr', lg: '1fr 1fr' }} gap={12} alignItems="center">
           <GridItem>
             <VStack align="start" spacing={6}>
               <GradientHeading
@@ -383,11 +383,13 @@ const BitRideLandingBrowser = () => {
       </Container>
 
       {/* Final CTA */}
-      <Box>
+      <Box py={20}>
         <Container maxW="8xl">
           <GlassCard
+            p={{ base: 6, md: 12 }}
             variant="bitride"
             textAlign="center"
+            mx={{ base: 4, lg: 0 }}
             >
             <VStack spacing={{ base: 4, md: 6 }}>
                 <GradientHeading

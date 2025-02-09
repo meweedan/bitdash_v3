@@ -117,12 +117,6 @@
       "target": "api::payment.payment",
       "mappedBy": "operator"
     },
-    "trader": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::trader.trader",
-      "inversedBy": "operator"
-    },
     "agent": {
       "type": "relation",
       "relation": "oneToOne",
