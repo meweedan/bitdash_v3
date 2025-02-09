@@ -51,11 +51,11 @@
       "type": "media",
       "multiple": true
     },
-     "orders": {
+    "orders": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::order.order",
-      "mappedBy": "owner"
+      "inversedBy": "shop_owner"
     },
     "location": {
       "type": "component",

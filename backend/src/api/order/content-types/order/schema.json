@@ -4,8 +4,7 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "Order",
-    "description": ""
+    "displayName": "Order"
   },
   "options": {
     "draftAndPublish": false
@@ -39,12 +38,6 @@
       "target": "api::customer-profile.customer-profile",
       "inversedBy": "orders"
     },
-    "operators": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::operator.operator",
-      "inversedBy": "orders"
-    },
     "payment_method": {
       "type": "enumeration",
       "enum": [
@@ -60,12 +53,6 @@
     "notes": {
       "type": "text"
     },
-    "restaurant": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::restaurant.restaurant",
-      "inversedBy": "orders"
-    },
     "order_items": {
       "type": "relation",
       "relation": "oneToMany",
@@ -76,25 +63,19 @@
       "type": "integer",
       "default": 0
     },
-    "captain": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::captain.captain",
-      "inversedBy": "orders"
-    },
     "messages": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::message.message",
       "mappedBy": "order"
     },
-     "review": {
+    "review": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::review.review",
       "mappedBy": "order"
     },
-    "owner": {
+    "shop_owner": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::shop-owner.shop-owner",

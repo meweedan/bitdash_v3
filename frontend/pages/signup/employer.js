@@ -22,6 +22,7 @@ import {
   Progress,
   FormHelperText,
   Select,
+  Textarea
 } from '@chakra-ui/react';
 
 import Layout from '@/components/Layout';
@@ -40,64 +41,45 @@ const EmployerSignup = () => {
     password: '',
     confirmPassword: '',
 
-    // Operator fields (with i18n)
+    // Company Info
+    companyName: '',
+    type: 'corporate',
+    description: '',
+    industry: '',
+    size: '',
+    website: '',
+
+    // Contact Info
     fullName: '',
     phone: '',
-    businessLicense: '',
+    position: '',
+
+    // Business Details
+    registrationNumber: '',
     taxId: '',
-    businessType: 'agent',
-    status: 'Pending',
-    dateJoined: new Date().toISOString(),
-    verificationStatus: false,
-    locale: 'en',
+    address: '',
+    city: '',
 
-    // Agent fields
-    businessName: '',
-    cashBalance: 0.0,
-    agentStatus: 'pending',
-    location: {
-      address: '',
-      coordinates: { lat: 0, lng: 0 },
-      type: 'Point'
-    },
-    operatingHours: {
-      open: '09:00',
-      close: '17:00'
-    },
-    dailyTransactionLimit: 10000,
-    supportedCurrencies: ['LYD'],
-    ratingScore: 0,
-
-    // Wallet fields
-    initialBalance: 0,
+    // Wallet Settings
     currency: 'LYD',
     isActive: true,
-    dailyLimit: 10000,
-    monthlyLimit: 200000,
-    walletStatus: 'active'
+    dailyLimit: 50000,
+    monthlyLimit: 1000000,
+
+    // Subscription
+    subscriptionTier: 'standard',
+    status: 'active'
   });
 
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
 
   const handleChange = (e) => {
-    const { name, value, type } = e.target;
-    if (name.includes('.')) {
-      // Handle nested objects (location, operatingHours)
-      const [parent, child] = name.split('.');
-      setFormData(prev => ({
-        ...prev,
-        [parent]: {
-          ...prev[parent],
-          [child]: type === 'number' ? parseFloat(value) : value
-        }
-      }));
-    } else {
-      setFormData(prev => ({
-        ...prev,
-        [name]: type === 'number' ? parseFloat(value) : value
-      }));
-    }
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const validateForm = () => {
@@ -119,24 +101,19 @@ const EmployerSignup = () => {
     const requiredFields = [
       'email',
       'password',
+      'companyName',
       'fullName',
       'phone',
-      'businessName',
-      'businessLicense',
+      'registrationNumber',
       'taxId',
-      'cashBalance',
-      'location.address'
+      'address'
     ];
 
     for (const field of requiredFields) {
-      const value = field.includes('.') 
-        ? field.split('.').reduce((obj, key) => obj?.[key], formData)
-        : formData[field];
-        
-      if (!value) {
+      if (!formData[field]) {
         toast({
           title: 'Missing Required Field',
-          description: `Please fill in ${field.split('.').pop().replace(/([A-Z])/g, ' $1').toLowerCase()}`,
+          description: `Please fill in ${field.replace(/([A-Z])/g, ' $1').toLowerCase()}`,
           status: 'error'
         });
         return false;
@@ -152,7 +129,7 @@ const EmployerSignup = () => {
 
     setLoading(true);
     try {
-      // 1. Create user with agent role (7)
+      // 1. Create user with employer role
       setProgress(20);
       const userRes = await fetch(`${API_URL}/api/auth/local/register`, {
         method: 'POST',
@@ -171,93 +148,78 @@ const EmployerSignup = () => {
 
       const { jwt, user } = await userRes.json();
 
-      // 2. Update user role to Agent (7)
-      setProgress(30);
-      await fetch(`${API_URL}/api/users/${user.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${jwt}`
-        },
-        body: JSON.stringify({ role: 7 })
-      });
-
-      // 3. Create operator with i18n support
+      // 2. Create company profile
       setProgress(40);
-      const operatorData = {
+      const companyData = {
         data: {
-          fullName: formData.fullName,
-          email: formData.email,
-          phone: formData.phone,
-          businessLicense: formData.businessLicense,
-          taxId: formData.taxId,
-          businessType: 'agent',
-          status: formData.status,
-          dateJoined: formData.dateJoined,
-          verificationStatus: formData.verificationStatus,
-          users_permissions_user: user.id,
-          locale: formData.locale
+          name: formData.companyName,
+          type: formData.type,
+          description: formData.description,
+          industry: formData.industry,
+          size: formData.size,
+          address: formData.address,
+          city: formData.city,
+          verified: false
         }
       };
 
-      const operatorRes = await fetch(`${API_URL}/api/operators`, {
+      const companyRes = await fetch(`${API_URL}/api/companies`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${jwt}`
         },
-        body: JSON.stringify(operatorData)
+        body: JSON.stringify(companyData)
       });
 
-      if (!operatorRes.ok) {
-        throw new Error('Failed to create operator profile');
+      if (!companyRes.ok) {
+        throw new Error('Failed to create company profile');
       }
 
-      const operator = await operatorRes.json();
+      const company = await companyRes.json();
 
-      // 4. Create agent profile
+      // 3. Create employer profile
       setProgress(60);
-      const agentData = {
+      const employerData = {
         data: {
-          cashBalance: parseFloat(formData.cashBalance) || 0.0,
-          status: formData.agentStatus,
-          location: formData.location,
-          operatingHours: formData.operatingHours,
-          dailyTransactionLimit: formData.dailyTransactionLimit,
-          supportedCurrencies: formData.supportedCurrencies,
-          ratingScore: formData.ratingScore,
-          operator: operator.data.id,
-          users_permissions_user: user.id
+          user: user.id,
+          company: company.data.id,
+          fullName: formData.fullName,
+          phone: formData.phone,
+          position: formData.position,
+          registrationNumber: formData.registrationNumber,
+          taxId: formData.taxId,
+          verificationStatus: 'pending'
         }
       };
 
-      const agentRes = await fetch(`${API_URL}/api/agents`, {
+      const employerRes = await fetch(`${API_URL}/api/employers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${jwt}`
         },
-        body: JSON.stringify(agentData)
+        body: JSON.stringify(employerData)
       });
 
-      if (!agentRes.ok) {
-        throw new Error('Failed to create agent profile');
+      if (!employerRes.ok) {
+        throw new Error('Failed to create employer profile');
       }
 
-      const agent = await agentRes.json();
+      const employer = await employerRes.json();
 
-      // 5. Create wallet
+      // 4. Create wallet
       setProgress(80);
       const walletData = {
         data: {
-          balance: parseFloat(formData.initialBalance) || 0,
+          balance: 0,
           currency: formData.currency,
           isActive: formData.isActive,
-          walletId: `AW${Date.now()}${Math.random().toString(36).substr(2, 4)}`.toUpperCase(),
+          walletId: `EW${Date.now()}${Math.random().toString(36).substr(2, 4)}`.toUpperCase(),
           dailyLimit: formData.dailyLimit,
           monthlyLimit: formData.monthlyLimit,
           lastActivity: new Date().toISOString(),
-          agent: agent.data.id
+          employer: employer.data.id
         }
       };
 
@@ -270,39 +232,24 @@ const EmployerSignup = () => {
         body: JSON.stringify(walletData)
       });
 
-      if (!walletRes.ok) {
-        throw new Error('Failed to create wallet');
-      }
-
-      const wallet = await walletRes.json();
-
-      // 6. Update operator with agent reference
+      // 5. Create subscription
       setProgress(90);
-      await fetch(`${API_URL}/api/operators/${operator.data.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${jwt}`
-        },
-        body: JSON.stringify({
-          data: {
-            agents: agent.data.id
-          }
-        })
-      });
+      const subscriptionData = {
+        data: {
+          tier: formData.subscriptionTier,
+          status: formData.status,
+          employer: employer.data.id,
+          start_date: new Date().toISOString()
+        }
+      };
 
-      // 7. Update agent with wallet reference
-      await fetch(`${API_URL}/api/agents/${agent.data.id}`, {
-        method: 'PUT',
+      await fetch(`${API_URL}/api/subscriptions`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${jwt}`
         },
-        body: JSON.stringify({
-          data: {
-            wallet: wallet.data.id
-          }
-        })
+        body: JSON.stringify(subscriptionData)
       });
 
       // Success
@@ -312,12 +259,12 @@ const EmployerSignup = () => {
       
       toast({
         title: 'Success',
-        description: 'Your agent account has been created successfully',
+        description: 'Your employer account has been created successfully',
         status: 'success',
         duration: 5000
       });
 
-      router.push('/cash/agent/dashboard');
+      router.push('/work/employer/dashboard');
 
     } catch (error) {
       console.error('Signup error:', error);
@@ -334,14 +281,13 @@ const EmployerSignup = () => {
   };
 
   const generateUsername = (email) => {
-    const baseUsername = email.split('@')[0];
-    return baseUsername.length >= 3 ? baseUsername : `${baseUsername}${Math.random().toString(36).substr(2, 4)}`;
+    return `${email.split('@')[0]}_${Math.random().toString(36).substr(2, 4)}`;
   };
 
   return (
     <Layout>
       <Head>
-        <title>BitCash - Agent Signup</title>
+        <title>BitWork - Employer Signup</title>
       </Head>
 
       <Container maxW="container.md" py={8}>
@@ -349,7 +295,7 @@ const EmployerSignup = () => {
           <Progress 
             value={progress} 
             size="xs" 
-            colorScheme="blue" 
+            colorScheme="bitwork" 
             mb={4} 
             isAnimated 
             hasStripe
@@ -366,9 +312,9 @@ const EmployerSignup = () => {
         >
           <VStack spacing={6} align="stretch">
             <VStack align="center" spacing={2}>
-              <Heading size="lg">Become a BitCash Agent</Heading>
-              <Badge colorScheme="blue" p={2} borderRadius="full">
-                1% Commission on All Transactions
+              <Heading size="lg">Create Employer Account</Heading>
+              <Badge colorScheme="gray" p={2} borderRadius="full">
+                Post Jobs & Find Talent
               </Badge>
             </VStack>
 
@@ -413,24 +359,79 @@ const EmployerSignup = () => {
 
                 <Divider />
 
-                {/* Business Information */}
+                {/* Company Information */}
                 <Box w="full">
-                  <Heading size="sm" mb={4}>Business Information</Heading>
+                  <Heading size="sm" mb={4}>Company Information</Heading>
+                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                    <FormControl isRequired>
+                      <FormLabel>Company Name</FormLabel>
+                      <Input
+                        name="companyName"
+                        value={formData.companyName}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+
+                    <FormControl isRequired>
+                      <FormLabel>Company Type</FormLabel>
+                      <Select
+                        name="type"
+                        value={formData.type}
+                        onChange={handleChange}
+                      >
+                        <option value="corporate">Corporate</option>
+                        <option value="sme">SME</option>
+                        <option value="startup">Startup</option>
+                      </Select>
+                    </FormControl>
+
+                    <FormControl>
+                      <FormLabel>Industry</FormLabel>
+                      <Input
+                        name="industry"
+                        value={formData.industry}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+
+                    <FormControl>
+                      <FormLabel>Company Size</FormLabel>
+                      <Select
+                        name="size"
+                        value={formData.size}
+                        onChange={handleChange}
+                      >
+                        <option value="1-10">1-10 employees</option>
+                        <option value="11-50">11-50 employees</option>
+                        <option value="51-200">51-200 employees</option>
+                        <option value="201-500">201-500 employees</option>
+                        <option value="501+">501+ employees</option>
+                      </Select>
+                    </FormControl>
+
+                    <FormControl gridColumn="span 2">
+                      <FormLabel>Company Description</FormLabel>
+                      <Textarea
+                        name="description"
+                        value={formData.description}
+                        onChange={handleChange}
+                        rows={3}
+                      />
+                    </FormControl>
+                  </SimpleGrid>
+                </Box>
+
+                <Divider />
+
+                {/* Contact Information */}
+                <Box w="full">
+                  <Heading size="sm" mb={4}>Contact Information</Heading>
                   <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
                     <FormControl isRequired>
                       <FormLabel>Full Name</FormLabel>
                       <Input
                         name="fullName"
                         value={formData.fullName}
-                        onChange={handleChange}
-                      />
-                    </FormControl>
-
-                    <FormControl isRequired>
-                      <FormLabel>Business Name</FormLabel>
-                      <Input
-                        name="businessName"
-                        value={formData.businessName}
                         onChange={handleChange}
                       />
                     </FormControl>
@@ -444,11 +445,28 @@ const EmployerSignup = () => {
                       />
                     </FormControl>
 
-                    <FormControl isRequired>
-                      <FormLabel>Business License</FormLabel>
+                    <FormControl>
+                      <FormLabel>Position</FormLabel>
                       <Input
-                        name="businessLicense"
-                        value={formData.businessLicense}
+                        name="position"
+                        value={formData.position}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+                  </SimpleGrid>
+                </Box>
+
+                <Divider />
+
+                {/* Business Details */}
+                <Box w="full">
+                  <Heading size="sm" mb={4}>Business Details</Heading>
+                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                    <FormControl isRequired>
+                      <FormLabel>Registration Number</FormLabel>
+                      <Input
+                        name="registrationNumber"
+                        value={formData.registrationNumber}
                         onChange={handleChange}
                       />
                     </FormControl>
@@ -461,131 +479,36 @@ const EmployerSignup = () => {
                         onChange={handleChange}
                       />
                     </FormControl>
-                  </SimpleGrid>
-                </Box>
 
-                <Divider />
-
-                {/* Agent Details */}
-                <Box w="full">
-                  <Heading size="sm" mb={4}>Agent Details</Heading>
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-                    <FormControl isRequired>
-                      <FormLabel>Initial Cash Balance</FormLabel>
-                      <InputGroup>
-                        <InputLeftAddon>LYD</InputLeftAddon>
-                        <Input
-                          name="cashBalance"
-                          type="number"
-                          min="0"
-                          step="0.01"
-                          value={formData.cashBalance}
-                          onChange={handleChange}
-                        />
-                      </InputGroup>
-                    </FormControl>
-
-                    <FormControl isRequired>
-                      <FormLabel>Daily Transaction Limit</FormLabel>
-                      <InputGroup>
-                        <InputLeftAddon>LYD</InputLeftAddon>
-                        <Input
-                          name="dailyTransactionLimit"
-                          type="number"
-                          min="0"
-                          value={formData.dailyTransactionLimit}
-                          onChange={handleChange}
-                        />
-                      </InputGroup>
-                    </FormControl>
-
-                    <FormControl isRequired>
-                      <FormLabel>Opening Time</FormLabel>
+                    <FormControl isRequired gridColumn="span 2">
+                      <FormLabel>Business Address</FormLabel>
                       <Input
-                        name="operatingHours.open"
-                        type="time"
-                        value={formData.operatingHours.open}
+                        name="address"
+                        value={formData.address}
                         onChange={handleChange}
                       />
                     </FormControl>
 
                     <FormControl isRequired>
-                      <FormLabel>Closing Time</FormLabel>
+                      <FormLabel>City</FormLabel>
                       <Input
-                        name="operatingHours.close"
-                        type="time"
-                        value={formData.operatingHours.close}
+                        name="city"
+                        value={formData.city}
                         onChange={handleChange}
                       />
-                    </FormControl>
-                  </SimpleGrid>
-                </Box>
-
-                <Divider />
-
-                {/* Location Information */}
-                <Box w="full">
-                  <Heading size="sm" mb={4}>Location</Heading>
-                  <FormControl isRequired>
-                    <FormLabel>Operating Address</FormLabel>
-                    <Input
-                      name="location.address"
-                      value={formData.location.address}
-                      onChange={handleChange}
-                    />
-                    <FormHelperText>Physical location where you'll operate</FormHelperText>
-                  </FormControl>
-                </Box>
-
-                <Divider />
-
-                {/* Wallet Settings */}
-                <Box w="full">
-                  <Heading size="sm" mb={4}>Wallet Settings</Heading>
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-                    <FormControl>
-                      <FormLabel>Daily Limit</FormLabel>
-                      <InputGroup>
-                        <InputLeftAddon>LYD</InputLeftAddon>
-                        <Input
-                          name="dailyLimit"
-                          type="number"
-                          min="0"
-                          value={formData.dailyLimit}
-                          onChange={handleChange}
-                          disabled
-                        />
-                      </InputGroup>
-                      <FormHelperText>Default: 10,000 LYD</FormHelperText>
-                    </FormControl>
-
-                    <FormControl>
-                      <FormLabel>Monthly Limit</FormLabel>
-                      <InputGroup>
-                        <InputLeftAddon>LYD</InputLeftAddon>
-                        <Input
-                          name="monthlyLimit"
-                          type="number"
-                          min="0"
-                          value={formData.monthlyLimit}
-                          onChange={handleChange}
-                          disabled
-                        />
-                      </InputGroup>
-                      <FormHelperText>Default: 200,000 LYD</FormHelperText>
                     </FormControl>
                   </SimpleGrid>
                 </Box>
 
                 <Button
                   type="submit"
-                  colorScheme="blue"
+                  variant="bitwork-solid"
                   size="lg"
                   w="full"
                   isLoading={loading}
                   loadingText="Creating Account..."
                 >
-                  Create Agent Account
+                  Create Employer Account
                 </Button>
               </VStack>
             </form>
@@ -594,7 +517,7 @@ const EmployerSignup = () => {
               Already have an account?{' '}
               <Button
                 variant="link"
-                colorScheme="blue"
+                colorScheme="gray"
                 onClick={() => router.push('/login')}
               >
                 Login
