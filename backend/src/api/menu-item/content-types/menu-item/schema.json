@@ -80,6 +80,12 @@
       "relation": "oneToMany",
       "target": "api::order-item.order-item",
       "mappedBy": "menu_item"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "menu_item"
     }
   }
 }

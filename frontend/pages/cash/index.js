@@ -1,10 +1,10 @@
-// frontend/pages/auto/index.js
+// frontend/pages/cash/index.js
 import { useEffect } from 'react';
 import { usePWA } from '@/hooks/usePWA';
 import { BitLandingBrowser } from '@/components/PWALanding';  // Fix: import from PWALanding component
 import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
 
-const AutoPage = () => {
+const CashPage = () => {
   const { isPWA } = usePWA();
   const isBrowser = typeof window !== 'undefined';
   const hostname = isBrowser ? window.location.hostname : '';
@@ -20,4 +20,4 @@ const AutoPage = () => {
   return isPWA ? <CashPWALanding /> : <CashLandingBrowser />;
 };
 
-export default AutoPage;
+export default CashPage;

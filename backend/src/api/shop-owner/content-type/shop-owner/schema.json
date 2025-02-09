@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shop_owners",
+  "info": {
+    "singularName": "shop-owner",
+    "pluralName": "shop-owners",
+    "displayName": "Shop Owner"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "shopName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false
+    },
+    "wallet": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wallet.wallet"
+    },
+    "items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::shop-item.shop-item",
+      "mappedBy": "owner"
+    },
+    "verificationStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "verified", "rejected"],
+      "default": "pending"
+    },
+    "businessDocuments": {
+      "type": "media",
+      "multiple": true
+    },
+    "location": {
+      "type": "component",
+      "component": "common.address"
+    },
+    "categories": {
+      "type": "json"
+    },
+    "rating": {
+      "type": "decimal",
+      "max": 5,
+      "min": 0,
+      "default": 0
+    }
+  }
+}

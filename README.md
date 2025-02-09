@@ -4,9 +4,9 @@ Welcome to BitDash v3, your comprehensive digital services ecosystem combining f
 
 ## 🌟 Core Platforms
 
-### 💰 BitCash
+### 💰 Cash
 
-BitCash is our innovative fintech solution offering seamless digital payments and financial services.
+Cash by BitDash is our innovative fintech solution offering seamless digital payments and financial services.
 
 **Key Features:**
 - 🔄 P2P Transfers: Instant money transfers between users
@@ -15,9 +15,9 @@ BitCash is our innovative fintech solution offering seamless digital payments an
 - 👥 Customer Profiles: KYC and transaction history
 - 📊 Analytics Dashboard: Real-time financial insights
 
-### 🍽️ BitFood
+### 🍽️ Food
 
-BitFood combines restaurant delivery and in-person dining solutions into one powerful platform.
+Food by BitDash combines restaurant delivery and in-person dining solutions into one powerful platform.
 
 **Key Features:**
 - 🚚 Food Delivery: Restaurant and grocery delivery service
@@ -25,6 +25,17 @@ BitFood combines restaurant delivery and in-person dining solutions into one pow
 - 🏪 Grocery Delivery: Fresh produce and household items
 - 👨‍🍳 Kitchen Display: Order management for restaurants
 - 📍 Real-time Tracking: Live order and delivery tracking
+
+### 💼 Work
+
+BitWork is our hiring solution, enabling businesses to list available positions to reach a broad range of talent looking to get hired online.
+
+**Key Features:**
+- 🏪 Online job listings: List your available positions as easy as 1, 2, 3
+- 📦 FBS Service: Fulfilled by BitShop logistics
+- 📊 Seller Dashboard: Inventory and order management
+- ⭐ Reviews System: Customer ratings and feedback
+- 📱 Mobile App: Native iOS and Android shopping
 
 ### 🛍️ BitShop
 
@@ -37,7 +48,7 @@ BitShop is our e-commerce marketplace enabling businesses to sell products onlin
 - ⭐ Reviews System: Customer ratings and feedback
 - 📱 Mobile App: Native iOS and Android shopping
 
-### 🚗 BitRide
+### 🚗 Ride
 
 BitRide provides reliable and efficient ride-hailing services.
 

@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_profile_certification",
+  "info": {
+    "displayName": "Certification"
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "issuer": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "expires": {
+      "type": "date"
+    },
+    "url": {
+      "type": "string"
+    },
+    "document": {
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

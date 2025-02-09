@@ -19,7 +19,7 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, ChatIcon } from '@chakra-ui/icons';
-import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Logo from '@/components/Logo';
 import { FaSignInAlt, FaUserPlus, FaUser, FaSignOutAlt, FaWhatsapp } from 'react-icons/fa';
 

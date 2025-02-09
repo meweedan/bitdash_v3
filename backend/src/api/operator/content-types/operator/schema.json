@@ -117,21 +117,6 @@
       "target": "api::payment.payment",
       "mappedBy": "operator"
     },
-    "stocks": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::stock.stock",
-      "mappedBy": "operator"
-    },
-     "dealershipName": { "type": "string" },
-    "dealershipAddress": { "type": "string" },
-    "dealerRating": { "type": "decimal" },
-    "salesHistory": { "type": "json" },
-    "certifications": { "type": "json" },
-    "specializations": { 
-      "type": "enumeration",
-      "enum": ["luxury", "sports", "commercial", "general"]
-    },
     "trader": {
       "type": "relation",
       "relation": "oneToOne",

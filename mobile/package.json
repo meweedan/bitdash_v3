@@ -7,6 +7,7 @@
     "apps/bitfood",
     "apps/bitride",
     "apps/bitshop",
+    "apps/bitwork",
     "shared",
     "packages/*"
   ],
@@ -15,6 +16,7 @@
     "bitfood": "yarn workspace bitfood start",
     "bitride": "yarn workspace bitride start",
     "bitshop": "yarn workspace bitshop start",
+    "bitwork": "yarn workspace bitwork start",
     "clean": "rm -rf node_modules && rm -rf apps/*/node_modules"
   },
   "dependencies": {

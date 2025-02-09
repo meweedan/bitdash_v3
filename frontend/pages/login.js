@@ -1,11 +1,22 @@
 import { useState, useEffect } from 'react';
-import { Box, Button, Input, FormControl, FormLabel, Heading, Text, VStack, useToast, useColorMode, Spinner } from '@chakra-ui/react';
+import { 
+  Box, 
+  Button, 
+  Input, 
+  FormControl, 
+  FormLabel, 
+  Heading, 
+  Text, 
+  VStack, 
+  useToast, 
+  useColorMode, 
+  Spinner 
+} from '@chakra-ui/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/components/Layout';
-import useSubdomain from '@/hooks/useSubdomain';
 
 const PLATFORM_ROUTES = {
   food: {
@@ -19,6 +30,21 @@ const PLATFORM_ROUTES = {
     agent: '/cash/agent/dashboard',
     client: '/cash/client/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://cash.bitdash.app'
+  },
+  work: {
+    employer: '/work/employer/dashboard',
+    employee: '/work/employee/dashboard',
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://work.bitdash.app'
+  },
+  ride: {
+    captain: '/ride/captain/dashboard',
+    client: '/ride/client/dashboard',
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://ride.bitdash.app'
+  },
+  shop: {
+    owner: '/shop/owner/dashboard',
+    customer: '/shop/customer/dashboard',
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://shop.bitdash.app'
   }
 };
 
@@ -26,59 +52,40 @@ const PROFILE_ENDPOINTS = {
   food: {
     operator: '/api/operators',
     customer: '/api/customer-profiles',
-    captain: '/api/captains',
-    customer: '/api/customer-profiles'
+    captain: '/api/captains'
   },
   cash: {
     merchant: '/api/operators',
     agent: '/api/agents',
     client: '/api/customer-profiles'
+  },
+  work: {
+    employer: '/api/employers',
+    employee: '/api/employees'
+  },
+  ride: {
+    captain: '/api/captains',
+    client: '/api/customer-profiles'
+  },
+  shop: {
+    owner: '/api/shop-owners',
+    customer: '/api/customer-profiles'
   }
 };
 
 const BUSINESS_TYPE_ROUTES = {
   restaurant: { platform: 'food', userType: 'operator' },
   captain: { platform: 'food', userType: 'captain' },
-  trader: { platform: 'stock', userType: 'trader' },
   merchant: { platform: 'cash', userType: 'merchant' },
   agent: { platform: 'cash', userType: 'agent' },
-};
-
-const formStyles = {
-  position: "fixed",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: { base: "90%", sm: "400px" },
-  maxWidth: "400px",
-  p: 8,
-  borderRadius: "xl",
-  boxShadow: "xl",
-  backdropFilter: "blur(10px)",
-  bg: "rgba(255, 255, 255, 0.05)",
-  border: "1px solid",
-  borderColor: "whiteAlpha.200"
-};
-
-const inputStyles = {
-  bg: "rgba(255, 255, 255, 0.05)",
-  borderColor: "whiteAlpha.300",
-  _hover: { borderColor: "whiteAlpha.400" },
-  _focus: {
-    borderColor: "blue.400",
-    bg: "rgba(255, 255, 255, 0.08)",
-  }
-};
-
-const buttonStyles = {
-  bg: "blue.500",
-  color: "white",
-  _hover: {
-    bg: "blue.600",
-    transform: 'translateY(-2px)'
-  },
-  _active: { bg: "blue.700" },
-  transition: "all 0.2s"
+  employer: { platform: 'work', userType: 'employer' },
+  employee: { platform: 'work', userType: 'employee' },
+  shopOwner: { platform: 'shop', userType: 'owner' },
+  client: { platform: 'food', userType: 'customer' },
+  customer: { platform: 'cash', userType: 'client' },
+  clientShop: { platform: 'shop', userType: 'customer' },
+  clientRide: { platform: 'ride', userType: 'client' },
+  clientCash: { platform: 'cash', userType: 'client' }
 };
 
 const LoginPage = () => {
@@ -89,18 +96,74 @@ const LoginPage = () => {
   const toast = useToast();
   const router = useRouter();
   const { colorMode } = useColorMode();
-  const { platform } = useSubdomain();
   const isDark = colorMode === 'dark';
+  const [platform, setPlatform] = useState('bitdash');
   const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
+  const getPlatformFromURL = () => {
+    if (typeof window !== 'undefined') {
+      const hostname = window.location.hostname;
+      if (hostname.includes('cash')) return 'bitcash';
+      if (hostname.includes('food')) return 'bitfood';
+      if (hostname.includes('shop')) return 'bitshop';
+      if (hostname.includes('ride')) return 'bitride';
+      if (hostname.includes('work')) return 'bitwork';
+
+      if (hostname === 'localhost' || hostname === '127.0.0.1') {
+        const path = window.location.pathname;
+        if (path.includes('/cash')) return 'bitcash';
+        if (path.includes('/food')) return 'bitfood';
+        if (path.includes('/shop')) return 'bitshop';
+        if (path.includes('/ride')) return 'bitride';
+        if (path.includes('/work')) return 'bitwork';
+      }
+    }
+    return 'bitdash';
+  };
+
   useEffect(() => {
-    const hostname = window.location.hostname;
-    console.log('Current hostname:', hostname);
-    console.log('Detected platform:', platform);
-  }, [platform]);
+    setPlatform(getPlatformFromURL());
+    checkAuth();
+  }, []);
+
+  const formStyles = {
+    maxWidth: "400px",
+    mx: "auto",
+    mt: 8,
+    p: 6,
+    borderRadius: "xl",
+    bg: isDark ? 'whiteAlpha.50' : 'gray.50',
+    borderWidth: "1px",
+    borderColor: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+    boxShadow: "xl"
+  };
+
+  const inputStyles = {
+    variant: "filled",
+    bg: isDark ? 'whiteAlpha.50' : 'white',
+    color: isDark ? `brand.${platform}.500` : `brand.${platform}.700`,
+    borderWidth: "1px",
+    borderColor: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+    _hover: {
+      borderColor: isDark ? `brand.${platform}.400` : `brand.${platform}.500`,
+    },
+    _focus: {
+      borderColor: isDark ? `brand.${platform}.400` : `brand.${platform}.500`,
+      bg: isDark ? 'whiteAlpha.100' : 'white'
+    }
+  };
+
+  const buttonStyles = {
+    variant: `${platform}-outline`,
+    color: isDark ? `brand.${platform}.500` : `brand.${platform}.700`,
+    _hover: {
+      bg: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+      color: 'white'
+    }
+  };
 
   const handleRedirect = (userType) => {
-    const platformConfig = PLATFORM_ROUTES[platform];
+    const platformConfig = PLATFORM_ROUTES[currentPlatform.replace('bit', '')];
     if (!platformConfig || !platformConfig[userType]) return;
 
     const route = platformConfig[userType];
@@ -113,24 +176,6 @@ const LoginPage = () => {
   };
 
   const checkBusinessType = async (token, userId) => {
-    const hostname = window.location.hostname;
-    const isFood = hostname.includes('food.');
-
-    if (isFood) {
-      console.log('Checking captain profile...');
-      const response = await fetch(
-        `${BASE_URL}/api/captains?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-
-      if (response.ok) {
-        const { data } = await response.json();
-        console.log('Captain profile response:', data);
-        if (data?.[0]) return 'captain';
-      }
-      return null;
-    }
-
     const response = await fetch(
       `${BASE_URL}/api/operators?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
       { headers: { Authorization: `Bearer ${token}` } }
@@ -139,9 +184,7 @@ const LoginPage = () => {
     if (!response.ok) return null;
 
     const { data } = await response.json();
-    if (!data?.[0]?.attributes?.businessType) return null;
-
-    return data[0].attributes.businessType;
+    return data?.[0]?.attributes?.businessType || null;
   };
 
   const checkProfileType = async (token, userId, endpoint) => {
@@ -156,24 +199,18 @@ const LoginPage = () => {
   };
 
   const determineUserType = async (token, userId) => {
-    const hostname = window.location.hostname;
-    const currentPlatform = hostname.includes('food.') ? 'food' : platform;
-    console.log('Current hostname:', hostname);
-    console.log('Platform from hook:', platform);
-    console.log('Using platform:', currentPlatform);
-
+    const platform = currentPlatform.replace('bit', '');
     const businessType = await checkBusinessType(token, userId);
-    console.log('Business type:', businessType);
     
     if (businessType && BUSINESS_TYPE_ROUTES[businessType]) {
       const route = BUSINESS_TYPE_ROUTES[businessType];
-      if (route.platform === currentPlatform) {
+      if (route.platform === platform) {
         return route.userType;
       }
       return null;
     }
 
-    const platformEndpoints = PROFILE_ENDPOINTS[currentPlatform];
+    const platformEndpoints = PROFILE_ENDPOINTS[platform];
     if (!platformEndpoints) return null;
 
     for (const [userType, endpoint] of Object.entries(platformEndpoints)) {
@@ -205,10 +242,6 @@ const LoginPage = () => {
       localStorage.removeItem('user');
     }
   };
-
-  useEffect(() => {
-    checkAuth();
-  }, [platform]);
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -279,33 +312,39 @@ const LoginPage = () => {
       
       <Box {...formStyles}>
         <VStack spacing={6}>
-          <Heading as="h1" size="lg" color={isDark ? 'white' : 'gray.800'}>
+          <Heading 
+            as="h1" 
+            size="lg" 
+            color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}
+          >
             {t('login')}
           </Heading>
 
           <FormControl isRequired>
-            <FormLabel color={isDark ? 'white' : 'gray.700'}>{t('email')}</FormLabel>
+            <FormLabel color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}>
+              {t('email')}
+            </FormLabel>
             <Input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onKeyPress={handleKeyPress}
               {...inputStyles}
-              color={isDark ? 'white' : 'gray.800'}
               placeholder={t('email')}
               disabled={isLoading}
             />
           </FormControl>
 
           <FormControl isRequired>
-            <FormLabel color={isDark ? 'white' : 'gray.700'}>{t('password')}</FormLabel>
+            <FormLabel color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}>
+              {t('password')}
+            </FormLabel>
             <Input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onKeyPress={handleKeyPress}
               {...inputStyles}
-              color={isDark ? 'white' : 'gray.800'}
               placeholder={t('password')}
               disabled={isLoading}
             />
@@ -315,28 +354,26 @@ const LoginPage = () => {
             width="100%" 
             {...buttonStyles} 
             onClick={handleLogin}
-            mt={4}
-            disabled={isLoading}
+            isLoading={isLoading}
+            loadingText={t('loggingIn')}
             _disabled={{
-              bg: "gray.500",
-              cursor: "not-allowed",
-              _hover: { bg: "gray.500" }
+              opacity: 0.6,
+              cursor: 'not-allowed',
+              _hover: { bg: 'transparent' }
             }}
           >
-            {isLoading ? <Spinner size="sm" /> : t('login')}
+            {t('login')}
           </Button>
 
           <VStack spacing={2}>
-            <Text fontSize="sm" color={isDark ? 'white' : 'gray.600'}>
+            <Text color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}>
               {t('noAccount')} {" "}
               <Button 
                 variant="link" 
-                color="blue.400" 
+                color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}
                 onClick={() => router.push('/signup')}
-                disabled={isLoading}
                 _hover={{
-                  color: 'blue.300',
-                  textDecoration: 'underline'
+                  color: isDark ? `brand.${platform}.400` : `brand.${platform}.500`
                 }}
               >
                 {t('signup')}
@@ -344,12 +381,12 @@ const LoginPage = () => {
             </Text>
             
             <Button
-              variant="link"
+              variant={`${platform}-outline`}
               onClick={() => router.push('/forgot-password')}
-              color="blue.400"
+              color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}
               _hover={{
-                color: 'blue.300',
-                textDecoration: 'underline'
+                bg: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+                color: 'white'
               }}
             >
               {t('forgotPassword')}

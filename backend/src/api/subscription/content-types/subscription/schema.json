@@ -11,11 +11,14 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "tier": {
+   "tier": {
       "type": "enumeration",
       "enum": [
         "standard",
-        "premium"
+        "premium",
+        "employer_basic",
+        "employer_premium",
+        "employer_enterprise"
       ],
       "required": true
     },
@@ -68,6 +71,12 @@
     "stripePriceId": {
       "type": "string",
       "private": false
+    },
+     "employer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::employer.employer",
+      "inversedBy": "subscription"
     }
   }
 }

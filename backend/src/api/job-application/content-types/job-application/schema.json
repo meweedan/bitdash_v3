@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "job_applications",
+  "info": {
+    "singularName": "job-application",
+    "pluralName": "job-applications",
+    "displayName": "Job Application"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "job": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::job.job"
+    },
+    "applicant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer-profile.customer-profile"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "reviewing",
+        "shortlisted",
+        "interview",
+        "offered",
+        "accepted",
+        "rejected"
+      ],
+      "default": "pending"
+    },
+    "resume": {
+      "type": "media",
+      "multiple": false
+    },
+    "coverLetter": {
+      "type": "richtext"
+    },
+    "expectedSalary": {
+      "type": "decimal"
+    },
+    "noticePeriod": {
+      "type": "integer"
+    },
+    "experience": {
+      "type": "component",
+      "component": "job.applicant-experience"
+    },
+    "questions": {
+      "type": "component",
+      "component": "job.application-questions",
+      "repeatable": true
+    },
+    "rating": {
+      "type": "decimal",
+      "max": 5,
+      "min": 0
+    },
+    "notes": {
+      "type": "richtext"
+    },
+    "timeline": {
+      "type": "component",
+      "component": "job.application-timeline",
+      "repeatable": true
+    }
+  }
+}

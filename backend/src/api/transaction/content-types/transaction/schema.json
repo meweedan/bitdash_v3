@@ -26,9 +26,39 @@
       "required": true
     },
     "type": {
-      "type": "enumeration",
-      "enum": ["transfer", "deposit", "withdrawal", "conversion", "payment"],
-      "required": true
+       "type": "enumeration",
+      "enum": [
+        "transfer",
+        "deposit",
+        "withdrawal",
+        "conversion",
+        "payment",
+        "job_post",
+        "job_featured",
+        "shop_sale",
+        "shop_payout",
+        "employer_subscription"
+      ]
+    },
+    "job": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::job.job"
+    },
+    "employer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::employer.employer"
+    },
+    "shop_owner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::shop-owner.shop-owner"
+    },
+    "shop_item": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::shop-item.shop-item"
     },
     "sender": {
       "type": "relation",

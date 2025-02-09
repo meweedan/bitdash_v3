@@ -88,13 +88,31 @@
       "target": "api::message.message",
       "mappedBy": "order"
     },
-     "orderType": {
-      "type": "enumeration",
-      "enum": ["purchase", "test-drive", "inspection"]
+     "review": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::review.review",
+      "mappedBy": "order"
     },
-    "financingDetails": { "type": "json" },
-    "insuranceDetails": { "type": "json" },
-    "inspectionReport": { "type": "json" },
-    "testDriveDate": { "type": "datetime" }
+    "shop_owner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::shop-owner.shop-owner",
+      "inversedBy": "orders"
+    },
+    "shop_items": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::shop-item.shop-item"
+    },
+    "order_type": {
+      "type": "enumeration",
+      "enum": [
+        "food",
+        "shop"
+      ],
+      "required": true,
+      "default": "food"
+    }
   }
 }

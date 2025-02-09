@@ -8,8 +8,26 @@
     },
     "attributes": {
       "action": {
-        "type": "string",
-        "required": true
+        "enum": [
+          "review_created",
+          "review_updated",
+          "review_approved",
+          "review_rejected",
+          "review_replied",
+          "job_created",
+          "job_updated",
+          "job_deleted",
+          "application_submitted",
+          "application_status_changed",
+          "employer_registered",
+          "employer_verified",
+          "shop_owner_registered",
+          "shop_owner_verified",
+          "shop_item_created",
+          "shop_item_updated",
+          "shop_item_deleted",
+          "inventory_updated"
+        ]
       },
       "user": {
         "type": "relation",
