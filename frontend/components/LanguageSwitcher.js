@@ -23,7 +23,6 @@ const LanguageSwitcher = () => {
         borderRadius="md"
         position="relative"
         width="auto"
-        minWidth="50px"
       >
         {/* Background Slider */}
         <motion.div
