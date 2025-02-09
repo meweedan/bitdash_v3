@@ -36,22 +36,10 @@
       "target": "api::order.order",
       "inversedBy": "messages"
     },
-    "vehicle": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::vehicle.vehicle",
-      "inversedBy": "messages"
-    },
     "captain": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::captain.captain",
-      "inversedBy": "messages"
-    },
-    "vehicle_inquiry": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::vehicle-inquiry.vehicle-inquiry",
       "inversedBy": "messages"
     }
   }

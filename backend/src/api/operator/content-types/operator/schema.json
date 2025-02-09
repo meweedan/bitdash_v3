@@ -88,7 +88,7 @@
       "type": "enumeration",
       "enum": [
         "restaurant",
-        "dealer",
+        "employer",
         "trader",
         "agent",
         "merchant"
@@ -117,12 +117,6 @@
       "target": "api::payment.payment",
       "mappedBy": "operator"
     },
-    "vehicles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::vehicle.vehicle",
-      "mappedBy": "operator"
-    },
     "stocks": {
       "type": "relation",
       "relation": "oneToMany",
@@ -137,14 +131,6 @@
     "specializations": { 
       "type": "enumeration",
       "enum": ["luxury", "sports", "commercial", "general"]
-    },
-    "availableFinancing": { "type": "boolean" },
-    "insuranceProvider": { "type": "boolean" },
-    "auto_dealer": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::auto-dealer.auto-dealer",
-      "inversedBy": "operator"
     },
     "trader": {
       "type": "relation",

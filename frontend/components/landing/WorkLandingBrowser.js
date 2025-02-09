@@ -34,6 +34,7 @@ import {
   Clock,
   Shield,
 } from 'lucide-react';
+import GlassCard from '@/components/GlassCard';
 
 const MotionBox = motion(Box);
 
@@ -303,11 +304,15 @@ const WorkLandingBrowser = () => {
       </Box>
 
       {/* CTA Section */}
-      <Container maxW="8xl" py={20}>
+      <Container>
+        <GlassCard
+        p={8}
+        variant="bitwork"
+        textAlign="center">
         <VStack spacing={8} textAlign="center">
           <Heading
             fontSize={{ base: '3xl', lg: '4xl' }}
-            color="brand.bitwork.500"
+            // color="brand.bitwork.500"
           >
             Ready to Get Started?
           </Heading>
@@ -330,6 +335,7 @@ const WorkLandingBrowser = () => {
             </Button>
           </HStack>
         </VStack>
+        </GlassCard>
       </Container>
     </Box>
   );

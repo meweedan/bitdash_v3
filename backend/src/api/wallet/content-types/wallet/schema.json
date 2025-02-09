@@ -62,12 +62,6 @@
       "target": "api::captain.captain",
       "inversedBy": "wallet"
     },
-    "bankAccounts": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::bank-account.bank-account",
-      "mappedBy": "wallet"
-    },
     "dailyLimit": {
       "type": "decimal",
       "default": 5000

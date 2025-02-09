@@ -31,7 +31,7 @@ import {
 import { QuestionOutlineIcon, CheckIcon } from '@chakra-ui/icons';
 
 const PLATFORM_CONFIG = {
-  menu: {
+  food: {
     type: 'Operator',
     roleId: 3,
     route: '/food/operator/dashboard',
@@ -222,7 +222,7 @@ export default function Signup() {
   const validateStep = () => {
     const fieldsToValidate = {
       1: ['email', 'password', 'fullName', 'phone', 'businessLicense', 'taxId'],
-      2: platform === 'menu' ? ['restaurantName', 'restaurantAddress'] :
+      2: platform === 'food' ? ['restaurantName', 'restaurantAddress'] :
          platform === 'auto' ? ['dealershipName', 'dealershipAddress'] :
          ['companyName', 'warehouseAddress']
     };
@@ -275,7 +275,7 @@ export default function Signup() {
           commission_rate: platform === 'auto' ? 5.0 : 
                          platform === 'stock' ? 3.0 : 
                          plan.commission_rate,
-          monthly_fee: platform === 'menu' ? plan.monthlyPrice : 0,
+          monthly_fee: platform === 'food' ? plan.monthlyPrice : 0,
           start_date: new Date().toISOString(),
           end_date: trialEndDate.toISOString(),
           currency: 'USD',
@@ -351,7 +351,7 @@ const handleSubmit = async () => {
           phone: formData.phone,
           businessLicense: formData.businessLicense,
           taxId: formData.taxId,
-          businessType: platform === 'menu' ? 'restaurant' : 
+          businessType: platform === 'food' ? 'restaurant' : 
                       platform === 'auto' ? 'dealer' : 'trader',
           status: 'Pending',
           dateJoined: new Date().toISOString(),
@@ -367,7 +367,7 @@ const handleSubmit = async () => {
 
     // 4. Platform specific setup
     setProgress(70);
-    if (platform === 'menu') {
+    if (platform === 'food') {
       let restaurant;
       let subscription;
 
@@ -610,7 +610,7 @@ else if (platform === 'stock') {
 
       toast({
         title: 'Success!',
-        description: platform === 'menu' ? 
+        description: platform === 'food' ? 
           'Registration successful! Your 30-day free trial has started.' : 
           'Registration successful!',
         status: 'success',
@@ -659,7 +659,7 @@ else if (platform === 'stock') {
 
         <StepIndicator 
           currentStep={step} 
-          totalSteps={platform === 'menu' ? 3 : 2} 
+          totalSteps={platform === 'food' ? 3 : 2} 
         />
 
         <Box
@@ -732,12 +732,12 @@ else if (platform === 'stock') {
             {step === 2 && (
               <>
                 <Heading size="lg" mb={6} align="center">
-                  {platform === 'menu' ? 'Restaurant Information' :
+                  {platform === 'food' ? 'Restaurant Information' :
                    platform === 'auto' ? 'Dealership Information' :
                    'Company Information'}
                 </Heading>
 
-                {platform === 'menu' && (
+                {platform === 'food' && (
                   <>
                     <FormField
                       label="Restaurant Name"
@@ -884,11 +884,11 @@ else if (platform === 'stock') {
                 colorScheme="blue"
                 size="lg"
                 ml="auto"
-                onClick={step < (platform === 'menu' ? 3 : 2) ? handleNextStep : handleSubmit}
+                onClick={step < (platform === 'food' ? 3 : 2) ? handleNextStep : handleSubmit}
                 isLoading={loading}
                 loadingText="Creating Account..."
               >
-                {step < (platform === 'menu' ? 3 : 2) ? 'Next' : 'Create Account'}
+                {step < (platform === 'food' ? 3 : 2) ? 'Next' : 'Create Account'}
               </Button>
             </HStack>
           </VStack>

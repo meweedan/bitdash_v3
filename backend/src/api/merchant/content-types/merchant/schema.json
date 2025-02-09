@@ -46,10 +46,6 @@
       "component": "merchant.contact-info",
       "required": true
     },
-    "bankDetails": {
-      "type": "component",
-      "component": "merchant.bank-details"
-    },
     "qr_code": {
       "type": "media",
       "multiple": false,

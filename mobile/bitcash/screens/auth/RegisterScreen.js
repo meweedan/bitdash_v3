@@ -41,13 +41,6 @@ export default function RegisterScreen() {
    address: '',
    monthlyVolume: 0,
 
-   // Bank Details
-   bankDetails: {
-     bankName: '',
-     accountNumber: '',
-     swiftCode: ''
-   },
-
    // Agent fields
    location: {
      address: '',
@@ -111,7 +104,7 @@ export default function RegisterScreen() {
    }
 
    if (userType === 'merchant') {
-     const requiredFields = ['businessName', 'businessLicense', 'taxId', 'bankDetails.bankName', 'bankDetails.accountNumber'];
+     const requiredFields = ['businessName', 'businessLicense', 'taxId'];
      for (const field of requiredFields) {
        const value = field.includes('.') 
          ? field.split('.').reduce((obj, key) => obj?.[key], formData)
@@ -125,7 +118,7 @@ export default function RegisterScreen() {
    }
 
    if (userType === 'agent') {
-     const requiredFields = ['location.address', 'bankDetails.bankName', 'bankDetails.accountNumber'];
+     const requiredFields = ['location.address'];
      for (const field of requiredFields) {
        const value = field.includes('.') 
          ? field.split('.').reduce((obj, key) => obj?.[key], formData)
@@ -192,7 +185,6 @@ export default function RegisterScreen() {
          registrationNumber: formData.registrationNumber,
          address: formData.address,
          monthlyVolume: formData.monthlyVolume,
-         bankDetails: formData.bankDetails
        };
      } else if (userType === 'agent') {
        profileData.data = {
@@ -202,7 +194,6 @@ export default function RegisterScreen() {
          dailyTransactionLimit: formData.dailyTransactionLimit,
          supportedCurrencies: formData.supportedCurrencies,
          ratingScore: formData.ratingScore,
-         bankDetails: formData.bankDetails
        };
      } else {
        profileData.data = {
@@ -459,39 +450,6 @@ export default function RegisterScreen() {
                 onChangeText={(value) => handleChange('address', value)}
               />
             </View>
-
-            {/* Bank Details Section */}
-            <ThemedText style={[styles.sectionTitle, { marginTop: 20 }]}>Bank Details</ThemedText>
-            
-            <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.input}
-                placeholder="Bank Name"
-                placeholderTextColor="#666"
-                value={formData.bankDetails.bankName}
-                onChangeText={(value) => handleChange('bankDetails.bankName', value)}
-              />
-            </View>
-
-            <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.input}
-                placeholder="Account Number"
-                placeholderTextColor="#666"
-                value={formData.bankDetails.accountNumber}
-                onChangeText={(value) => handleChange('bankDetails.accountNumber', value)}
-              />
-            </View>
-
-            <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.input}
-                placeholder="SWIFT Code"
-                placeholderTextColor="#666"
-                value={formData.bankDetails.swiftCode}
-                onChangeText={(value) => handleChange('bankDetails.swiftCode', value)}
-              />
-            </View>
           </View>
         )}
 
@@ -542,39 +500,6 @@ export default function RegisterScreen() {
                 value={formData.dailyTransactionLimit.toString()}
                 onChangeText={(value) => handleChange('dailyTransactionLimit', parseFloat(value) || 0)}
                 keyboardType="numeric"
-              />
-            </View>
-
-            {/* Bank Details Section */}
-            <ThemedText style={[styles.sectionTitle, { marginTop: 20 }]}>Bank Details</ThemedText>
-            
-            <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.input}
-                placeholder="Bank Name"
-                placeholderTextColor="#666"
-                value={formData.bankDetails.bankName}
-                onChangeText={(value) => handleChange('bankDetails.bankName', value)}
-              />
-            </View>
-
-            <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.input}
-                placeholder="Account Number"
-                placeholderTextColor="#666"
-                value={formData.bankDetails.accountNumber}
-                onChangeText={(value) => handleChange('bankDetails.accountNumber', value)}
-              />
-            </View>
-
-            <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.input}
-                placeholder="SWIFT Code"
-                placeholderTextColor="#666"
-                value={formData.bankDetails.swiftCode}
-                onChangeText={(value) => handleChange('bankDetails.swiftCode', value)}
               />
             </View>
           </View>

@@ -58,11 +58,6 @@ const MerchantSignup = () => {
       address: '',
       phone: '',
       monthlyVolume: 0,
-      bankDetails: {
-        bankName: '',
-        accountNumber: '',
-        swiftCode: ''
-      },
       contact: {
         name: '',
         phone: '',
@@ -148,9 +143,6 @@ const MerchantSignup = () => {
       'phone',
       'businessLicense',
       'taxId',
-      'metadata.bankDetails.bankName',
-      'metadata.bankDetails.accountNumber',
-      'metadata.bankDetails.swiftCode'
     ];
 
     for (const field of requiredFields) {
@@ -569,41 +561,6 @@ await Promise.all([
                         name="expiry"
                         type="datetime-local"
                         value={formData.expiry}
-                        onChange={handleChange}
-                      />
-                    </FormControl>
-                  </SimpleGrid>
-                </Box>
-
-                <Divider />
-
-                {/* Bank Details */}
-                <Box w="full">
-                  <Heading size="sm" mb={4}>Bank Details</Heading>
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-                    <FormControl isRequired>
-                      <FormLabel>Bank Name</FormLabel>
-                      <Input
-                        name="metadata.bankDetails.bankName"
-                        value={formData.metadata.bankDetails.bankName}
-                        onChange={handleChange}
-                      />
-                    </FormControl>
-
-                    <FormControl isRequired>
-                      <FormLabel>Bank Account Number</FormLabel>
-                      <Input
-                        name="metadata.bankDetails.accountNumber"
-                        value={formData.metadata.bankDetails.accountNumber}
-                        onChange={handleChange}
-                      />
-                    </FormControl>
-
-                    <FormControl isRequired>
-                      <FormLabel>SWIFT Code</FormLabel>
-                      <Input
-                        name="metadata.bankDetails.swiftCode"
-                        value={formData.metadata.bankDetails.swiftCode}
                         onChange={handleChange}
                       />
                     </FormControl>

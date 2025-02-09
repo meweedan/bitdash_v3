@@ -68,11 +68,6 @@ const AgentSignup = () => {
     supportedCurrencies: ['LYD'],
     ratingScore: 0,
 
-    // Bank Details
-    bankName: '',
-    bankAccountNumber: '',
-    swiftCode: '',
-
     // Wallet fields
     initialBalance: 0,
     currency: 'LYD',
@@ -129,9 +124,6 @@ const AgentSignup = () => {
       'businessName',
       'businessLicense',
       'taxId',
-      'bankName',
-      'bankAccountNumber',
-      'swiftCode',
       'cashBalance',
       'location.address'
     ];
@@ -235,10 +227,7 @@ const AgentSignup = () => {
           supportedCurrencies: formData.supportedCurrencies,
           ratingScore: formData.ratingScore,
           operator: operator.data.id,
-          users_permissions_user: user.id,
-          bankName: formData.bankName,
-          bankAccountNumber: formData.bankAccountNumber,
-          swiftCode: formData.swiftCode
+          users_permissions_user: user.id
         }
       };
 
@@ -546,41 +535,6 @@ const AgentSignup = () => {
                     />
                     <FormHelperText>Physical location where you'll operate</FormHelperText>
                   </FormControl>
-                </Box>
-
-                <Divider />
-
-                {/* Bank Information */}
-                <Box w="full">
-                  <Heading size="sm" mb={4}>Bank Information</Heading>
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-                    <FormControl isRequired>
-                      <FormLabel>Bank Name</FormLabel>
-                      <Input
-                        name="bankName"
-                        value={formData.bankName}
-                        onChange={handleChange}
-                      />
-                    </FormControl>
-
-                    <FormControl isRequired>
-                      <FormLabel>Bank Account Number</FormLabel>
-                      <Input
-                        name="bankAccountNumber"
-                        value={formData.bankAccountNumber}
-                        onChange={handleChange}
-                      />
-                    </FormControl>
-
-                    <FormControl isRequired>
-                      <FormLabel>SWIFT Code</FormLabel>
-                      <Input
-                        name="swiftCode"
-                        value={formData.swiftCode}
-                        onChange={handleChange}
-                      />
-                    </FormControl>
-                  </SimpleGrid>
                 </Box>
 
                 <Divider />
