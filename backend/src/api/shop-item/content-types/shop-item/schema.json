@@ -65,7 +65,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::review.review",
-      "mappedBy": "item"
+      "mappedBy": "shop_item"
     }
   }
 }

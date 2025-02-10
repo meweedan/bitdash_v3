@@ -6,6 +6,9 @@
     "pluralName": "notifications",
     "displayName": "Notification"
   },
+  "options": {
+    "draftAndPublish": false
+  },
   "attributes": {
     "type": {
       "type": "enumeration",
