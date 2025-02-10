@@ -24,8 +24,7 @@ const SignupRedirect = () => {
 
   return (
     <Layout>
-      <Box
-      >
+      <Box>
         <Spinner size="xl" />
       </Box>
     </Layout>

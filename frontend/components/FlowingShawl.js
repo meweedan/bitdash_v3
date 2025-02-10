@@ -9,7 +9,6 @@ const FlowingShawl = () => {
 
   useEffect(() => {
     setIsClient(true);
-    // Detect platform from subdomain
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
       if (hostname.includes('cash')) setPlatform('bitcash');
@@ -22,40 +21,40 @@ const FlowingShawl = () => {
 
   const themeColors = {
     bitdash: [
-      new THREE.Color('#67bdfd'), // 400
-      new THREE.Color('#8C8C8C'), // 500
-      new THREE.Color('#edb26d'), // 600
-      new THREE.Color('#525252')  // 700
+      new THREE.Color('#67bdfd'),
+      new THREE.Color('#8C8C8C'),
+      new THREE.Color('#edb26d'),
+      new THREE.Color('#525252')
     ],
     bitcash: [
-      new THREE.Color('#7bcfbd'), // 400
-      new THREE.Color('#56bba5'), // 500
-      new THREE.Color('#1eb495'), // 600
-      new THREE.Color('#2d7b6a')  // 700
+      new THREE.Color('#7bcfbd'),
+      new THREE.Color('#56bba5'),
+      new THREE.Color('#1eb495'),
+      new THREE.Color('#2d7b6a')
     ],
     bitfood: [
-      new THREE.Color('#ffd7ba'), // 400
-      new THREE.Color('#ffa78a'), // 500
-      new THREE.Color('#ffc8b6'), // 600
-      new THREE.Color('#ff8963')  // 700
+      new THREE.Color('#ffd7ba'),
+      new THREE.Color('#ffa78a'),
+      new THREE.Color('#ffc8b6'),
+      new THREE.Color('#ff8963')
     ],
     bitshop: [
-      new THREE.Color('#77a2e4'), // 400
-      new THREE.Color('#8bcdfd'), // 500
-      new THREE.Color('#74baed'), // 600
-      new THREE.Color('#5f94e6')  // 700
+      new THREE.Color('#77a2e4'),
+      new THREE.Color('#8bcdfd'),
+      new THREE.Color('#74baed'),
+      new THREE.Color('#5f94e6')
     ],
     bitride: [
-      new THREE.Color('#ebcdab'), // 400
-      new THREE.Color('#e6c093'), // 500
-      new THREE.Color('#c6a783'), // 600
-      new THREE.Color('#edb26d')  // 700
+      new THREE.Color('#ebcdab'),
+      new THREE.Color('#e6c093'),
+      new THREE.Color('#c6a783'),
+      new THREE.Color('#edb26d')
     ],
     bitwork: [
-      new THREE.Color('#8C8C8C'), // 400
-      new THREE.Color('#525252'), // 500
-      new THREE.Color('#424242'), // 600
-      new THREE.Color('#333333')  // 700
+      new THREE.Color('#8C8C8C'),
+      new THREE.Color('#525252'),
+      new THREE.Color('#424242'),
+      new THREE.Color('#333333')
     ]
   };
 
@@ -64,17 +63,12 @@ const FlowingShawl = () => {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(44, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ 
-      antialias: true, 
-      alpha: true,
-      powerPreference: "high-performance"
-    });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(window.devicePixelRatio);
     mountRef.current.appendChild(renderer.domElement);
 
-    // Create flowing curves
     const createCurve = (startY, color) => {
       const points = [];
       const numPoints = 50;
@@ -117,13 +111,12 @@ const FlowingShawl = () => {
       scene.add(curve);
     }
 
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(ambientLight);
-
-    const pointLight = new THREE.PointLight(0xffffff, 1);
-    pointLight.position.set(10, 10, 10);
+    const pointLight = new THREE.PointLight(0x404040, 5, 360, 360, 560);
+    pointLight.position.set(9, 9, 9);
     scene.add(pointLight);
+
+    const ambientLight = new THREE.AmbientLight(0x404040, 80, 129, 400);
+    scene.add(ambientLight);
 
     camera.position.z = 50;
 
@@ -133,27 +126,24 @@ const FlowingShawl = () => {
       time += 0.003;
 
       curves.forEach((curve, index) => {
-        // Flowing wave motion
         const vertices = curve.geometry.attributes.position;
         const originalY = -10 + index * spacing;
 
         for (let i = 0; i < vertices.count; i++) {
           const x = vertices.getX(i);
           
-          // Complex wave pattern
-          const wave1 = Math.sin(x * 0.1 + time) * 2;
-          const wave2 = Math.cos(x * 0.2 + time * 1.5) * 1.5;
-          const wave3 = Math.sin(x * 0.05 + time * 0.7) * 3;
+          // More fluid-like wave pattern but keeping original structure
+          const wave1 = Math.sin(x * 0.05 + time) * 3;
+          const wave2 = Math.cos(x * 0.03 + time * 1.5) * 2;
+          const wave3 = Math.sin(x * 0.08 + time * 0.7) * 2;
           
-          // Combine waves with original position
           const y = originalY + wave1 + wave2 + wave3;
           
           vertices.setY(i, y);
         }
         vertices.needsUpdate = true;
 
-        // Fade out animation
-        const elapsedTime = time * 333; // Adjust timing
+        const elapsedTime = time * 333;
         if (elapsedTime <= 8000) {
           let opacity;
           if (elapsedTime <= 4000) {
@@ -164,7 +154,6 @@ const FlowingShawl = () => {
           curve.material.opacity = opacity;
         }
 
-        // Subtle shine effect
         curve.material.emissiveIntensity = 0.1 + Math.sin(time * 2) * 0.05;
       });
 

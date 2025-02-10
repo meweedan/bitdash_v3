@@ -5,7 +5,6 @@ import { Container } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import AutoShowroomAnimation from './AutoShowroomAnimation';
 import { ParallaxOrderFlow } from './ParallaxOrderFlow';
-import { StockFlowAnimation } from './StockFlowAnimation';
 import CryptoMatrix from './CryptoMatrix';
 
 const PWAContainer = ({ children }) => (
@@ -56,26 +55,6 @@ export const CashPWALanding = () => {
   );
 };
 
-export const AutoPWALanding = () => {
-  const router = useRouter();
-  const config = {
-    title: 'BitAuto',
-    description: 'Automotive dealership and inventory management',
-    image: '/auto.png',
-    color: '#2196F3'
-  };
-
-  return (
-    <PWAContainer>
-      <Container config={config} router={router}>
-        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
-          <AutoShowroomAnimation />
-        </div>
-      </Container>
-    </PWAContainer>
-  );
-};
-
 export const RidePWALanding = () => {
   const router = useRouter();
   const config = {
@@ -90,46 +69,6 @@ export const RidePWALanding = () => {
       <Container config={config} router={router}>
         <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
           <AutoShowroomAnimation />
-        </div>
-      </Container>
-    </PWAContainer>
-  );
-};
-
-export const StockPWALanding = () => {
-  const router = useRouter();
-  const config = {
-    title: 'BitStock',
-    description: 'Stock management and inventory control',
-    image: '/stock.png',
-    color: '#FF9800'
-  };
-
-  return (
-    <PWAContainer>
-      <Container config={config} router={router}>
-        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
-          <StockFlowAnimation />
-        </div>
-      </Container>
-    </PWAContainer>
-  );
-};
-
-export const EatsPWALanding = () => {
-  const router = useRouter();
-  const config = {
-    title: 'BitEats',
-    description: 'Grocery and food; delivered to your doorstep',
-    image: '/eats.png',
-    color: '#4CAF50'
-  };
-
-  return (
-    <PWAContainer>
-      <Container config={config} router={router}>
-        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
-          <ParallaxOrderFlow />
         </div>
       </Container>
     </PWAContainer>
@@ -183,7 +122,6 @@ const PWALanding = () => {
 
   if (hostname.includes('work')) return <WorkPWALanding />;
   if (hostname.includes('cash')) return <CashPWALanding />;
-  if (hostname.includes('eats')) return <EatsPWALanding />;
   if (hostname.includes('food')) return <FoodPWALanding />;
   if (hostname.includes('ride')) return <RidePWALanding />;
   if (hostname.includes('shop')) return <ShopPWALanding />;

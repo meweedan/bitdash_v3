@@ -147,7 +147,6 @@ const MenuItems = ({ href, children, onClick }) => (
       position="sticky"  // Changed from fixed
       top="0"
       width="100%"
-      bg={isDark ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)'}
       backdropFilter="blur(10px)"
       zIndex={999}
     >

@@ -1,325 +1,297 @@
-import { useRef, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import Head from 'next/head';
+import React, { useState } from 'react';
 import {
   Box,
   Container,
   Heading,
   Text,
-  Button,
   VStack,
   HStack,
+  Button,
+  Grid,
+  GridItem,
+  useColorMode,
   SimpleGrid,
-  useColorModeValue,
-  Flex,
   Icon,
-  Badge,
+  Card,
+  CardBody,
 } from '@chakra-ui/react';
-import { 
+import { motion } from 'framer-motion';
+import {
   Store,
   ShoppingBag,
-  Package,
   Truck,
+  Package,
+  TrendingUp,
+  Search,
+  Warehouse,
+  ArrowUpRight,
+  CheckCircle,
   BarChart3,
-  Users,
-  CreditCard,
-  Star,
-  ArrowRight,
-  Building2
+  Wallet,
+  Clock,
+  Shield,
 } from 'lucide-react';
-
-import GradientHeading from '@/components/GradientHeading';
-import ScrollProgress from '@/components/ScrollProgress';
 import GlassCard from '@/components/GlassCard';
-import DeluxeDeliveryFlow from '@/components/DeluxeDeliveryFlow';
+import ShopSignupFlow from '@/components/ShopSignupFlow';
 
 const MotionBox = motion(Box);
 
 const ShopLandingBrowser = () => {
-  const router = useRouter();
-  const { t } = useTranslation('common');
-  const containerRef = useRef(null);
-  const scrollRef = useRef(null);
+  const { colorMode } = useColorMode();
+  const [activeTab, setActiveTab] = useState('sellers');
 
-  // BitShop theme colors
-  const bgGradient = useColorModeValue(
-    'linear(to-b, #77a2e4, white)',
-    'linear(to-b, gray.900, black)'
-  );
+  const stats = [
+    { value: '50K+', label: 'Active Sellers', icon: Store },
+    { value: '1M+', label: 'Products', icon: Package },
+    { value: '98%', label: 'Delivery Rate', icon: TrendingUp },
+  ];
 
   const features = [
     {
+      title: 'Easy Setup',
+      description: 'Create your online store in minutes with simple verification',
       icon: Store,
-      title: 'Online Store',
-      description: 'Create your store in minutes with powerful e-commerce tools',
-      color: 'brand.bitshop.500'
     },
     {
-      icon: Package,
-      title: 'FBB Service',
-      description: 'Fulfilled by BitShop - We handle storage and shipping',
-      color: 'brand.bitshop.500'
+      title: 'BitShop Fulfillment',
+      description: 'We handle storage, packaging, and delivery',
+      icon: Warehouse,
     },
     {
+      title: 'Sales Analytics',
+      description: 'Track performance with detailed insights',
       icon: BarChart3,
-      title: 'Analytics',
-      description: 'Track performance and grow your business with insights',
-      color: 'brand.bitshop.500'
     },
     {
-      icon: CreditCard,
-      title: 'Payments',
-      description: 'Secure payment processing with BitCash integration',
-      color: 'brand.bitshop.500'
-    }
+      title: 'Secure Payments',
+      description: 'Integrated with BitCash for instant settlements',
+      icon: Wallet,
+    },
   ];
 
-  const sellerBenefits = [
-    {
-      icon: Building2,
-      title: 'Warehouse Network',
-      description: 'Access our nationwide fulfillment centers'
-    },
-    {
-      icon: Truck,
-      title: 'Fast Delivery',
-      description: 'Next-day delivery for FBB items'
-    },
-    {
-      icon: Users,
-      title: 'Customer Base',
-      description: 'Reach millions of BitDash users'
-    },
-    {
-      icon: Star,
-      title: 'Seller Support',
-      description: '24/7 dedicated seller support'
-    }
+  const benefits = [
+    'Next-day delivery with BitShop Fulfillment',
+    'Access to millions of BitDash users',
+    'Real-time inventory tracking',
+    'Automated order processing',
+    'Multi-warehouse network',
+    'Dedicated seller support',
   ];
-
-  useEffect(() => {
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
-    }, 100);
-  }, []);
 
   return (
-    <Box 
-      ref={containerRef} 
-      bg={bgGradient}
-      minH="100vh"
-      overflow="hidden"
-    >
-      <Head>
-        <title>BitShop</title>
-        <meta name="description" content="Build and grow your online business with BitShop" />
-      </Head>
-
+    <Box>
       {/* Hero Section */}
-      <Box 
-        ref={scrollRef}
-        minH="100vh" 
-        position="relative"
-      >
-        <AnimatePresence>
-          <MotionBox
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            position="relative"
-            zIndex={2}
-          >
-            <Container maxW="8xl" px={{ base: 4, lg: 0 }} py={0}>
-              <Flex 
-                minH="100vh"
-                direction="column" 
-                align="center" 
-                justify="center"
-                pt={{ base: 16, md: 24 }}
+      <Container maxW="8xl" pt={8}>
+        <Grid templateColumns={{ base: '1fr', lg: '1fr 1fr' }} gap={16} alignItems="center">
+          <GridItem>
+            <VStack align="start" spacing={8}>
+              <Heading
+                fontSize={{ base: '4xl', lg: '6xl' }}
+                bgGradient="linear(to-r, brand.bitshop.400, brand.bitshop.600)"
+                bgClip="text"
+                lineHeight="shorter"
               >
-                <VStack spacing={6} maxW="4xl" mb={12}>
-                  <GradientHeading 
-                    fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
-                    textAlign="center"
-                    bgGradient="linear(to-r, brand.bitshop.500, brand.bitshop.700)"
-                  >
-                    Your Success Starts Here
-                  </GradientHeading>
+                Turn Your Products into a Thriving Business
+              </Heading>
 
-                  <Text 
-                    fontSize={{ base: 'xl', md: '2xl' }} 
-                    color={useColorModeValue('gray.600', 'gray.300')}
-                    maxW="2xl"
-                    textAlign="center"
-                  >
-                    Build, manage, and scale your online business with powerful e-commerce tools
-                  </Text>
+              <Text fontSize={{ base: 'lg', lg: 'xl' }}>
+                Start selling online with powerful e-commerce tools and nationwide fulfillment network.
+                From setup to delivery, we've got you covered.
+              </Text>
 
-                  <HStack spacing={4} pt={4}>
-                    <Button
-                      size="lg"
-                      variant="bitshop-solid"
-                      rightIcon={<ArrowRight />}
-                      h={14}
-                      px={8}
-                      fontSize="lg"
-                      onClick={() => router.push('/shop/signup')}
-                    >
-                      Start Selling
-                    </Button>
-                    <Button
-                      size="lg"
-                      variant="bitshop-outline"
-                      h={14}
-                      px={8}
-                      fontSize="lg"
-                      onClick={() => router.push('/shop/learn-more')}
-                    >
-                      Learn More
-                    </Button>
-                  </HStack>
-                </VStack>
+              <HStack spacing={4}>
+                <Button
+                  variant="bitshop-solid"
+                  size="lg"
+                  rightIcon={<ArrowUpRight />}
+                >
+                  Start Selling
+                </Button>
+                <Button
+                  variant="bitshop-outline"
+                  size="lg"
+                >
+                  Learn More
+                </Button>
+              </HStack>
+            </VStack>
+          </GridItem>
 
-                {/* Delivery flow showcase */}
-                <Box w="full" minH="70vh" position="relative">
-                  <DeluxeDeliveryFlow />
-                </Box>
-              </Flex>
-            </Container>
-          </MotionBox>
-        </AnimatePresence>
-      </Box>
-
-      {/* Features Grid */}
-      <Container maxW="8xl" py={32}>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8}>
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+          <GridItem display={{ base: 'none', lg: 'block' }}>
+            <MotionBox
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              <GlassCard
-                p={8}
-                variant="bitshop"
-                _hover={{ 
-                  transform: 'translateY(-5px)',
-                  boxShadow: 'xl'
-                }}
-                transition="all 0.3s ease"
+              {/* Platform Preview */}
+              <Box
+                h="500px"
+                borderRadius="2xl"
+                position="relative"
+                overflow="hidden"
               >
-                <VStack align="start" spacing={4}>
-                  <Icon as={feature.icon} boxSize={8} color="brand.bitshop.500" />
-                  <Heading size="md">{feature.title}</Heading>
-                  <Text>{feature.description}</Text>
-                </VStack>
-              </GlassCard>
-            </motion.div>
-          ))}
-        </SimpleGrid>
+                {/* Add platform preview */}
+              </Box>
+            </MotionBox>
+          </GridItem>
+        </Grid>
       </Container>
 
-      {/* Seller Benefits */}
-      <Box bg={useColorModeValue('white', 'gray.900')} py={32}>
+      {/* Shop Flow Animation */}
+      <Box py={20}>
+        <ShopSignupFlow />
+      </Box>
+
+      {/* Stats Section */}
+      <Box py={20}>
+        <Container maxW="8xl">
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8}>
+            {stats.map((stat, index) => (
+              <MotionBox
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card
+                  borderWidth="1px"
+                  borderColor="brand.bitshop.500"
+                  borderRadius="xl"
+                  _hover={{
+                    transform: 'translateY(-4px)',
+                    boxShadow: 'xl',
+                  }}
+                  transition="all 0.3s"
+                >
+                  <CardBody>
+                    <VStack spacing={4}>
+                      <Icon as={stat.icon} boxSize={8} color="brand.bitshop.500" />
+                      <Text fontSize="4xl" fontWeight="bold" color="brand.bitshop.500">
+                        {stat.value}
+                      </Text>
+                      <Text color="gray.500">{stat.label}</Text>
+                    </VStack>
+                  </CardBody>
+                </Card>
+              </MotionBox>
+            ))}
+          </SimpleGrid>
+        </Container>
+      </Box>
+
+      {/* Features Section */}
+      <Container maxW="8xl" py={20}>
+        <VStack spacing={16}>
+          <Heading
+            fontSize={{ base: '3xl', lg: '4xl' }}
+            textAlign="center"
+            color="brand.bitshop.500"
+          >
+            Everything You Need to Succeed
+          </Heading>
+
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} w="full">
+            {features.map((feature, index) => (
+              <MotionBox
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card
+                  h="full"
+                  borderWidth="1px"
+                  borderColor="gray.200"
+                  borderRadius="xl"
+                  _hover={{
+                    borderColor: 'brand.bitshop.500',
+                    transform: 'translateY(-4px)',
+                    boxShadow: 'xl',
+                  }}
+                  transition="all 0.3s"
+                >
+                  <CardBody>
+                    <VStack spacing={4} align="start">
+                      <Icon as={feature.icon} boxSize={6} color="brand.bitshop.500" />
+                      <Text fontSize="xl" fontWeight="bold">
+                        {feature.title}
+                      </Text>
+                      <Text color="gray.500">
+                        {feature.description}
+                      </Text>
+                    </VStack>
+                  </CardBody>
+                </Card>
+              </MotionBox>
+            ))}
+          </SimpleGrid>
+        </VStack>
+      </Container>
+
+      {/* Benefits Section */}
+      <Box py={20}>
         <Container maxW="8xl">
           <VStack spacing={16}>
-            <VStack spacing={4} textAlign="center">
-              <GradientHeading
-                size="2xl"
-                bgGradient="linear(to-r, brand.bitshop.500, brand.bitshop.700)"
-              >
-                Why Sell on BitShop?
-              </GradientHeading>
-              <Text fontSize="xl" maxW="3xl">
-                Join thousands of successful sellers already growing their business with us
-              </Text>
-            </VStack>
+            <Heading
+              fontSize={{ base: '3xl', lg: '4xl' }}
+              textAlign="center"
+            >
+              Key Benefits
+            </Heading>
 
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} w="full">
-              {sellerBenefits.map((benefit, index) => (
-                <GlassCard
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
+              {benefits.map((benefit, index) => (
+                <HStack
                   key={index}
-                  p={8}
-                  variant="bitshop"
-                  _hover={{ 
-                    transform: 'translateY(-5px)',
-                    boxShadow: 'xl'
+                  spacing={4}
+                  p={4}
+                  borderRadius="xl"
+                  borderWidth="1px"
+                  borderColor="gray.200"
+                  _hover={{
+                    borderColor: 'brand.bitshop.500',
+                    transform: 'translateX(8px)',
                   }}
-                  transition="all 0.3s ease"
+                  transition="all 0.3s"
                 >
-                  <VStack align="start" spacing={4}>
-                    <Icon as={benefit.icon} boxSize={8} color="brand.bitshop.500" />
-                    <Heading size="md">{benefit.title}</Heading>
-                    <Text>{benefit.description}</Text>
-                  </VStack>
-                </GlassCard>
+                  <Icon as={CheckCircle} color="brand.bitshop.500" />
+                  <Text>{benefit}</Text>
+                </HStack>
               ))}
             </SimpleGrid>
           </VStack>
         </Container>
       </Box>
 
-      {/* Stats Section */}
-      <Box py={32}>
-        <Container maxW="8xl">
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={16}>
-            <VStack>
-              <Heading size="3xl" color="brand.bitshop.500">10K+</Heading>
-              <Text fontSize="xl">Active Sellers</Text>
-            </VStack>
-            <VStack>
-              <Heading size="3xl" color="brand.bitshop.500">1M+</Heading>
-              <Text fontSize="xl">Products Listed</Text>
-            </VStack>
-            <VStack>
-              <Heading size="3xl" color="brand.bitshop.500">24/7</Heading>
-              <Text fontSize="xl">Support Available</Text>
-            </VStack>
-          </SimpleGrid>
-        </Container>
-      </Box>
-
-      {/* Call to Action */}
-      <Container maxW="8xl" py={32}>
+      {/* CTA Section */}
+      <Container maxW="8xl" pb={20}>
         <GlassCard
-          p={12}
+          p={8}
           variant="bitshop"
           textAlign="center"
         >
-          <VStack spacing={6}>
-            <GradientHeading
-              size="2xl"
-              bgGradient="linear(to-r, brand.bitshop.500, brand.bitshop.700)"
+          <VStack spacing={8}>
+            <Heading
+              fontSize={{ base: '3xl', lg: '4xl' }}
             >
               Ready to Start Selling?
-            </GradientHeading>
+            </Heading>
             <Text fontSize="xl" maxW="2xl">
-              Join the fastest growing e-commerce platform in the region
+              Join thousands of successful sellers growing their business with BitShop
             </Text>
             <HStack spacing={4}>
               <Button
-                size="lg"
                 variant="bitshop-solid"
-                rightIcon={<ArrowRight />}
-                h={14}
-                px={8}
-                fontSize="lg"
-                onClick={() => router.push('/shop/signup')}
+                size="lg"
+                rightIcon={<ArrowUpRight />}
               >
                 Create Store
               </Button>
               <Button
-                size="lg"
                 variant="bitshop-outline"
-                h={14}
-                px={8}
-                fontSize="lg"
-                onClick={() => router.push('/shop/demo')}
+                size="lg"
               >
-                Request Demo
+                Watch Demo
               </Button>
             </HStack>
           </VStack>
