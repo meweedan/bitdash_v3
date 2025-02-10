@@ -71,12 +71,6 @@
     "stripePriceId": {
       "type": "string",
       "private": false
-    },
-     "employer": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::employer.employer",
-      "inversedBy": "subscription"
     }
   }
 }

@@ -72,18 +72,6 @@
     },
     "lastActivity": {
       "type": "datetime"
-    },
-     "employer": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::employer.employer",
-      "inversedBy": "wallet"
-    },
-    "shop_owner": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::shop-owner.shop-owner",
-      "inversedBy": "wallet"
     }
   }
 }

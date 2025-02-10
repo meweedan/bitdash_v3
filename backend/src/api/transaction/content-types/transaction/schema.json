@@ -40,26 +40,6 @@
         "employer_subscription"
       ]
     },
-    "job": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::job.job"
-    },
-    "employer": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::employer.employer"
-    },
-    "shop_owner": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::shop-owner.shop-owner"
-    },
-    "shop_item": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::shop-item.shop-item"
-    },
     "sender": {
       "type": "relation",
       "relation": "manyToOne",

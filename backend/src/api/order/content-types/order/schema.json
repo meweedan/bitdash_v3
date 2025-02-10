@@ -87,14 +87,6 @@
       "relation": "oneToMany",
       "target": "api::message.message",
       "mappedBy": "order"
-    },
-     "orderType": {
-      "type": "enumeration",
-      "enum": ["purchase", "test-drive", "inspection"]
-    },
-    "financingDetails": { "type": "json" },
-    "insuranceDetails": { "type": "json" },
-    "inspectionReport": { "type": "json" },
-    "testDriveDate": { "type": "datetime" }
+    }
   }
 }
