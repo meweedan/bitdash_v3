@@ -43,11 +43,11 @@
       "relation": "oneToOne",
       "target": "api::wallet.wallet"
     },
-    "items": {
+    "shop_items": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::shop-item.shop-item",
-      "mappedBy": "owner"
+      "mappedBy": "shop_owner"
     },
     "verificationStatus": {
       "type": "enumeration",
@@ -59,8 +59,8 @@
       "multiple": true
     },
     "location": {
-      "type": "component",
-      "component": "common.address"
+    "type": "component",
+    "component": "common.address"
     },
     "categories": {
       "type": "json"

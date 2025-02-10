@@ -47,13 +47,16 @@
       "type": "integer"
     },
     "experience": {
-      "type": "component",
-      "component": "job.applicant-experience"
+    "type": "component",
+    "component": "job.applicant-experience"
     },
     "questions": {
-      "type": "component",
-      "component": "job.application-questions",
-      "repeatable": true
+    "type": "component",
+    "component": "job.application-questions"
+    },
+    "timeline": {
+    "type": "component",
+    "component": "job.application-timeline"
     },
     "rating": {
       "type": "decimal",
@@ -62,11 +65,6 @@
     },
     "notes": {
       "type": "richtext"
-    },
-    "timeline": {
-      "type": "component",
-      "component": "job.application-timeline",
-      "repeatable": true
     }
   }
 }

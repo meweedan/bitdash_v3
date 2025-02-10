@@ -25,7 +25,7 @@
       "type": "media",
       "multiple": true
     },
-    "owner": {
+    "shop_owner": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::shop-owner.shop-owner"
@@ -51,9 +51,8 @@
       "type": "json"
     },
     "variants": {
-      "type": "component",
-      "component": "shop.item-variant",
-      "repeatable": true
+    "type": "component",
+    "component": "shop.item-variant"
     },
     "rating": {
       "type": "decimal",

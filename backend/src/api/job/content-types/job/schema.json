@@ -36,19 +36,16 @@
       "required": true
     },
     "experience": {
-      "type": "component",
-      "component": "job.experience",
-      "required": true
+    "type": "component",
+    "component": "job.experience"
     },
     "salary": {
-      "type": "component",
-      "component": "job.salary",
-      "required": true
+    "type": "component",
+    "component": "job.salary"
     },
     "location": {
-      "type": "component",
-      "component": "job.location",
-      "required": true
+    "type": "component",
+    "component": "job.location"
     },
     "benefits": {
       "type": "json"
