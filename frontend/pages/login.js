@@ -36,7 +36,7 @@ const PLATFORM_ROUTES = {
     employee: '/work/employee/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://work.bitdash.app'
   },
-  ride: {
+  ride : {
     captain: '/ride/captain/dashboard',
     client: '/ride/client/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://ride.bitdash.app'
@@ -63,19 +63,20 @@ const PROFILE_ENDPOINTS = {
     employer: '/api/employers',
     employee: '/api/employees'
   },
-  ride: {
+  ride : {
     captain: '/api/captains',
     client: '/api/customer-profiles'
   },
   shop: {
     owner: '/api/shop-owners',
     customer: '/api/customer-profiles'
-  }
+    }
 };
 
 const BUSINESS_TYPE_ROUTES = {
   restaurant: { platform: 'food', userType: 'operator' },
   captain: { platform: 'food', userType: 'captain' },
+  trader: { platform: 'stock', userType: 'trader' },
   merchant: { platform: 'cash', userType: 'merchant' },
   agent: { platform: 'cash', userType: 'agent' },
   employer: { platform: 'work', userType: 'employer' },
@@ -85,7 +86,77 @@ const BUSINESS_TYPE_ROUTES = {
   customer: { platform: 'cash', userType: 'client' },
   clientShop: { platform: 'shop', userType: 'customer' },
   clientRide: { platform: 'ride', userType: 'client' },
-  clientCash: { platform: 'cash', userType: 'client' }
+  clientCash: { platform: 'cash', userType: 'client' },
+};
+
+const getPlatformFromURL = () => {
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname;
+    if (hostname.includes('cash')) return 'bitcash';
+    if (hostname.includes('food')) return 'bitfood';
+    if (hostname.includes('shop')) return 'bitshop';
+    if (hostname.includes('ride')) return 'bitride';
+    if (hostname.includes('work')) return 'bitwork';
+    
+    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+      const path = window.location.pathname;
+      if (path.includes('/cash')) return 'bitcash';
+      if (path.includes('/food')) return 'bitfood';
+      if (path.includes('/shop')) return 'bitshop';
+      if (path.includes('/ride')) return 'bitride';
+      if (path.includes('/work')) return 'bitwork';
+    }
+  }
+  return 'bitdash';
+};
+
+const getColorScheme = (platform, isDark) => {
+  const colorSchemes = {
+    bitcash: {
+      bg: isDark ? 'whiteAlpha.50' : 'gray.50',
+      text: isDark ? 'brand.bitcash.400' : 'brand.bitcash.600',
+      button: 'brand.bitcash.500',
+      hover: 'brand.bitcash.600',
+      border: 'brand.bitcash.500'
+    },
+    bitfood: {
+      bg: isDark ? 'whiteAlpha.50' : 'gray.50',
+      text: isDark ? 'brand.bitfood.400' : 'brand.bitfood.600',
+      button: 'brand.bitfood.500',
+      hover: 'brand.bitfood.600',
+      border: 'brand.bitfood.500'
+    },
+    bitshop: {
+      bg: isDark ? 'whiteAlpha.50' : 'gray.50',
+      text: isDark ? 'brand.bitshop.400' : 'brand.bitshop.600',
+      button: 'brand.bitshop.500',
+      hover: 'brand.bitshop.600',
+      border: 'brand.bitshop.500'
+    },
+    bitride: {
+      bg: isDark ? 'whiteAlpha.50' : 'gray.50',
+      text: isDark ? 'brand.bitride.400' : 'brand.bitride.600',
+      button: 'brand.bitride.500',
+      hover: 'brand.bitride.600',
+      border: 'brand.bitride.500'
+    },
+    bitwork: {
+      bg: isDark ? 'whiteAlpha.50' : 'gray.50',
+      text: isDark ? 'brand.bitwork.400' : 'brand.bitwork.600',
+      button: 'brand.bitwork.500',
+      hover: 'brand.bitwork.600',
+      border: 'brand.bitwork.500'
+    },
+    bitdash: {
+      bg: isDark ? 'whiteAlpha.50' : 'gray.50',
+      text: isDark ? 'gray.200' : 'gray.800',
+      button: 'brand.bitdash.500',
+      hover: 'brand.bitdash.600',
+      border: 'brand.bitdash.500'
+    }
+  };
+
+  return colorSchemes[platform] || colorSchemes.bitdash;
 };
 
 const LoginPage = () => {
@@ -97,34 +168,16 @@ const LoginPage = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-  const [platform, setPlatform] = useState('bitdash');
+  const [currentPlatform, setCurrentPlatform] = useState('bitdash');
   const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-  const getPlatformFromURL = () => {
-    if (typeof window !== 'undefined') {
-      const hostname = window.location.hostname;
-      if (hostname.includes('cash')) return 'bitcash';
-      if (hostname.includes('food')) return 'bitfood';
-      if (hostname.includes('shop')) return 'bitshop';
-      if (hostname.includes('ride')) return 'bitride';
-      if (hostname.includes('work')) return 'bitwork';
-
-      if (hostname === 'localhost' || hostname === '127.0.0.1') {
-        const path = window.location.pathname;
-        if (path.includes('/cash')) return 'bitcash';
-        if (path.includes('/food')) return 'bitfood';
-        if (path.includes('/shop')) return 'bitshop';
-        if (path.includes('/ride')) return 'bitride';
-        if (path.includes('/work')) return 'bitwork';
-      }
-    }
-    return 'bitdash';
-  };
-
   useEffect(() => {
-    setPlatform(getPlatformFromURL());
+    const platform = getPlatformFromURL();
+    setCurrentPlatform(platform);
     checkAuth();
   }, []);
+
+  const colors = getColorScheme(currentPlatform, isDark);
 
   const formStyles = {
     maxWidth: "400px",
@@ -132,33 +185,42 @@ const LoginPage = () => {
     mt: 8,
     p: 6,
     borderRadius: "xl",
-    bg: isDark ? 'whiteAlpha.50' : 'gray.50',
+    bg: colors.bg,
     borderWidth: "1px",
-    borderColor: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+    borderColor: colors.border,
     boxShadow: "xl"
   };
 
   const inputStyles = {
     variant: "filled",
     bg: isDark ? 'whiteAlpha.50' : 'white',
-    color: isDark ? `brand.${platform}.500` : `brand.${platform}.700`,
     borderWidth: "1px",
-    borderColor: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+    borderColor: colors.border,
     _hover: {
-      borderColor: isDark ? `brand.${platform}.400` : `brand.${platform}.500`,
+      borderColor: colors.hover,
     },
     _focus: {
-      borderColor: isDark ? `brand.${platform}.400` : `brand.${platform}.500`,
-      bg: isDark ? 'whiteAlpha.100' : 'white'
+      borderColor: colors.hover,
+      boxShadow: `0 0 0 1px ${colors.hover}`,
     }
   };
 
   const buttonStyles = {
-    variant: `${platform}-outline`,
-    color: isDark ? `brand.${platform}.500` : `brand.${platform}.700`,
+    variant: currentPlatform.includes('bit') ? `${currentPlatform}-solid` : 'bitdash-solid',
+    bg: colors.button,
+    color: 'white',
     _hover: {
-      bg: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
-      color: 'white'
+      bg: colors.hover,
+      transform: 'translateY(-2px)',
+    },
+    _active: {
+      transform: 'translateY(0)',
+    },
+    transition: 'all 0.2s',
+    // Override any default styles
+    _disabled: {
+      bg: colors.button + '80', // 80 for opacity
+      _hover: { bg: colors.button + '80' }
     }
   };
 
@@ -315,36 +377,34 @@ const LoginPage = () => {
           <Heading 
             as="h1" 
             size="lg" 
-            color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}
+            color={colors.text}
           >
             {t('login')}
           </Heading>
 
           <FormControl isRequired>
-            <FormLabel color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}>
-              {t('email')}
-            </FormLabel>
+            <FormLabel color={colors.text}>{t('email')}</FormLabel>
             <Input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onKeyPress={handleKeyPress}
               {...inputStyles}
+              color={colors.text}
               placeholder={t('email')}
               disabled={isLoading}
             />
           </FormControl>
 
           <FormControl isRequired>
-            <FormLabel color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}>
-              {t('password')}
-            </FormLabel>
+            <FormLabel color={colors.text}>{t('password')}</FormLabel>
             <Input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onKeyPress={handleKeyPress}
               {...inputStyles}
+              color={colors.text}
               placeholder={t('password')}
               disabled={isLoading}
             />
@@ -355,37 +415,33 @@ const LoginPage = () => {
             {...buttonStyles} 
             onClick={handleLogin}
             isLoading={isLoading}
+            variant={`${currentPlatform}-solid`}
+            bg={colors.button} 
             loadingText={t('loggingIn')}
-            _disabled={{
-              opacity: 0.6,
-              cursor: 'not-allowed',
-              _hover: { bg: 'transparent' }
-            }}
           >
             {t('login')}
           </Button>
 
           <VStack spacing={2}>
-            <Text color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}>
+            <Text color={colors.text}>
               {t('noAccount')} {" "}
               <Button 
                 variant="link" 
-                color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}
+                color={colors.button}
                 onClick={() => router.push('/signup')}
-                _hover={{
-                  color: isDark ? `brand.${platform}.400` : `brand.${platform}.500`
-                }}
+                _hover={{ color: colors.hover }}
               >
                 {t('signup')}
               </Button>
             </Text>
             
             <Button
-              variant={`${platform}-outline`}
+              variant={`${currentPlatform}-outline`}
               onClick={() => router.push('/forgot-password')}
-              color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}
+              borderColor={colors.border}
+              color={colors.text}
               _hover={{
-                bg: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+                bg: colors.button,
                 color: 'white'
               }}
             >
