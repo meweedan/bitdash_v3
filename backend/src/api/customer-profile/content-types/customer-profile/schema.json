@@ -111,27 +111,8 @@
         }
       }
     },
-     "jobPreferences": {
-      "type": "component",
-      "component": "profile.job-preferences"
-    },
-    "workExperience": {
-      "type": "component",
-      "component": "profile.work-experience",
-      "repeatable": true
-    },
-    "education": {
-      "type": "component",
-      "component": "profile.education",
-      "repeatable": true
-    },
     "skills": {
       "type": "json"
-    },
-    "certifications": {
-      "type": "component",
-      "component": "profile.certification",
-      "repeatable": true
     },
     "jobApplications": {
       "type": "relation",

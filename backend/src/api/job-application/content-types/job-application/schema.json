@@ -46,18 +46,6 @@
     "noticePeriod": {
       "type": "integer"
     },
-    "experience": {
-    "type": "component",
-    "component": "job.applicant-experience"
-    },
-    "questions": {
-    "type": "component",
-    "component": "job.application-questions"
-    },
-    "timeline": {
-    "type": "component",
-    "component": "job.application-timeline"
-    },
     "rating": {
       "type": "decimal",
       "max": 5,

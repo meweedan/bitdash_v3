@@ -35,18 +35,6 @@
       "enum": ["full-time", "part-time", "contract"],
       "required": true
     },
-    "experience": {
-    "type": "component",
-    "component": "job.experience"
-    },
-    "salary": {
-    "type": "component",
-    "component": "job.salary"
-    },
-    "location": {
-    "type": "component",
-    "component": "job.location"
-    },
     "benefits": {
       "type": "json"
     },

@@ -37,10 +37,6 @@
     "city": {
       "type": "string"
     },
-    "coordinates": {
-      "type": "component",
-      "component": "common.coordinates"
-    },
     "industry": {
       "type": "json"
     },

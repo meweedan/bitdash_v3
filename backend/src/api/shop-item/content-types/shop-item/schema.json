@@ -50,10 +50,6 @@
     "specifications": {
       "type": "json"
     },
-    "variants": {
-    "type": "component",
-    "component": "shop.item-variant"
-    },
     "rating": {
       "type": "decimal",
       "max": 5,

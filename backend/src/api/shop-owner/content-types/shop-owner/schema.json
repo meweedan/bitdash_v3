@@ -58,10 +58,6 @@
       "type": "media",
       "multiple": true
     },
-    "location": {
-    "type": "component",
-    "component": "common.address"
-    },
     "categories": {
       "type": "json"
     },
