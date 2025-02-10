@@ -13,7 +13,8 @@
     "user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "shop_owner"
     },
      "shopName": {
       "type": "string",
@@ -21,10 +22,10 @@
       "unique": true
     },
     "orders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order",
-      "mappedBy": "shop_owner"
+     "type": "relation",
+     "relation": "oneToMany",
+     "target": "api::order.order",
+     "inversedBy": "shop_owner"
     },
     "description": {
       "type": "richtext"

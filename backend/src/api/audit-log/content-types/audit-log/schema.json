@@ -6,6 +6,9 @@
       "pluralName": "audit-logs",
       "displayName": "Audit Log"
     },
+    "options": {
+    "draftAndPublish": true
+    },
     "attributes": {
       "action": {
         "type": "enumeration",
