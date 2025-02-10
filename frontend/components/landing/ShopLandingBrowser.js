@@ -33,6 +33,7 @@ import {
 } from 'lucide-react';
 import GlassCard from '@/components/GlassCard';
 import ShopSignupFlow from '@/components/ShopSignupFlow';
+import MarketplacePreview from '../MarketplacePreview';
 
 const MotionBox = motion(Box);
 
@@ -125,12 +126,11 @@ const ShopLandingBrowser = () => {
             >
               {/* Platform Preview */}
               <Box
-                h="500px"
                 borderRadius="2xl"
                 position="relative"
                 overflow="hidden"
               >
-                {/* Add platform preview */}
+                <MarketplacePreview />
               </Box>
             </MotionBox>
           </GridItem>
