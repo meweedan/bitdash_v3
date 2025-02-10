@@ -44,10 +44,6 @@ const backgroundColorChange = keyframes`
   100% { background-color: rgba(36, 91, 132, 0.05); }
 `;
 
-const AnimatedIcon = styled(Icon)`
-  animation: ${colorChange} 10s infinite;
-`;
-
 // Modify this to use Chakra UI theme variants
 const PlatformBox = styled(Box)`
   padding: 2rem;
@@ -189,7 +185,7 @@ export default function SignupChoice() {
       }}
     >
       <VStack spacing={4}>
-        <AnimatedIcon as={platform.icon} boxSize={10} color={`brand.${platform.themeKey}.500`} />
+        <Icon as={platform.icon} boxSize={10} color={`brand.${platform.themeKey}.500`} />
         <Heading 
           size="md" 
           color={`brand.${platform.themeKey}.500`}
@@ -198,7 +194,7 @@ export default function SignupChoice() {
         </Heading>
         <Text 
           textAlign="center" 
-          color={isDark ? 'whiteAlpha.700' : 'gray.600'}
+          color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
           fontSize="sm"
         >
           {t(platform.description)}
@@ -237,15 +233,15 @@ export default function SignupChoice() {
               onClick={() => router.push(option.signupPath)}
             >
               <HStack spacing={4} align="center">
-                <AnimatedIcon 
+                <Icon 
                   as={option.icon} 
                   boxSize={10} 
-                  color={`brand.${platform.themeKey}.500`} 
+                  color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
                 />
                 <VStack spacing={2} flex={1}>
                   <Heading 
                     size="md" 
-                    color={`brand.${platform.themeKey}.500`}
+                    color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
                   >
                     {t(option.title)}
                   </Heading>
@@ -342,12 +338,12 @@ export default function SignupChoice() {
 
             <Text 
               fontSize="sm" 
-              color={isDark ? 'whiteAlpha.700' : 'gray.500'}
+              color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
             >
               {t('haveAccount')}{' '}
               <Button
                 variant="link"
-                color="blue.400"
+                color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
                 onClick={() => router.push('/login')}
               >
                 {t('login')}

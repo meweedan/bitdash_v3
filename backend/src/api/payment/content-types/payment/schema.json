@@ -55,7 +55,7 @@
     "payment_method": {
       "type": "enumeration",
       "enum": [
-        "bitwallet",
+        "bitcash",
         "cash",
         "card"
       ]
