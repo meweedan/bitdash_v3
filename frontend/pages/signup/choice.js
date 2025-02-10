@@ -48,10 +48,6 @@ const AnimatedIcon = styled(Icon)`
   animation: ${colorChange} 10s infinite;
 `;
 
-const AnimatedHeading = styled(Heading)`
-  animation: ${colorChange} 10s infinite;
-`;
-
 // Modify this to use Chakra UI theme variants
 const PlatformBox = styled(Box)`
   padding: 2rem;
@@ -69,7 +65,6 @@ const PlatformBox = styled(Box)`
   animation: ${backgroundColorChange} 10s infinite;
 `;
 
-// PLATFORMS configuration remains the same
 const PLATFORMS = {
   FOOD: {
     subdomain: 'food',
@@ -175,6 +170,8 @@ export default function SignupChoice() {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
+  const [platform, setPlatform] = useState('bitdash');
+  const accentColor = `brand.${platform}.500`;
   const [currentPlatform, setCurrentPlatform] = useState(null);
 
   useEffect(() => {
@@ -192,10 +189,13 @@ export default function SignupChoice() {
       }}
     >
       <VStack spacing={4}>
-        <AnimatedIcon as={platform.icon} boxSize={10} />
-        <AnimatedHeading size="md">
+        <AnimatedIcon as={platform.icon} boxSize={10} color={`brand.${platform.themeKey}.500`} />
+        <Heading 
+          size="md" 
+          color={`brand.${platform.themeKey}.500`}
+        >
           {t(platform.title)}
-        </AnimatedHeading>
+        </Heading>
         <Text 
           textAlign="center" 
           color={isDark ? 'whiteAlpha.700' : 'gray.600'}
@@ -219,9 +219,13 @@ export default function SignupChoice() {
     if (platform.options) {
       return (
         <VStack spacing={6} width="full">
-          <AnimatedHeading size="lg" textAlign="center">
+          <Heading 
+            size="lg" 
+            textAlign="center" 
+            color={`brand.${platform.themeKey}.500`}
+          >
             {t('chooseAccountType')}
-          </AnimatedHeading>
+          </Heading>
           
           {platform.options.map((option) => (
             <PlatformBox 
@@ -233,11 +237,18 @@ export default function SignupChoice() {
               onClick={() => router.push(option.signupPath)}
             >
               <HStack spacing={4} align="center">
-                <AnimatedIcon as={option.icon} boxSize={10} />
+                <AnimatedIcon 
+                  as={option.icon} 
+                  boxSize={10} 
+                  color={`brand.${platform.themeKey}.500`} 
+                />
                 <VStack spacing={2} flex={1}>
-                  <AnimatedHeading size="md">
+                  <Heading 
+                    size="md" 
+                    color={`brand.${platform.themeKey}.500`}
+                  >
                     {t(option.title)}
-                  </AnimatedHeading>
+                  </Heading>
                   {option.commission && (
                     <Badge colorScheme={platform.themeKey}>
                       {option.commission} {t('commission')}
@@ -268,14 +279,15 @@ export default function SignupChoice() {
       >
         <Container maxW="xl" centerContent>
           <VStack spacing={12} w="full">
-            <Text
+            <Heading
               textAlign="center"
               size="xl"
+              color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
             >
               {currentPlatform 
                 ? t('joinPlatform', { name: currentPlatform.name })
                 : t('choosePlatform')}
-            </Text>
+            </Heading>
 
             {/* Platform Options Section */}
             {currentPlatform && (
@@ -298,14 +310,17 @@ export default function SignupChoice() {
                 <Icon 
                   as={User} 
                   boxSize={10}
-                  color={isDark ? 'whiteAlpha.900' : 'gray.700'}
+                  color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
                 />
-                <Heading size="md" color={isDark ? 'white' : 'gray.800'}>
+                <Heading 
+                  size="md" 
+                  color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
+                >
                   {t('customerSignup')}
                 </Heading>
                 <Text 
                   textAlign="center" 
-                  color={isDark ? 'whiteAlpha.700' : 'gray.600'}
+                  color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
                   fontSize="sm"
                 >
                   {t('customerDescription')}
@@ -325,10 +340,14 @@ export default function SignupChoice() {
               </VStack>
             </PlatformBox>
 
-            <Text fontSize="sm" color={isDark ? 'whiteAlpha.700' : 'gray.500'}>
+            <Text 
+              fontSize="sm" 
+              color={isDark ? 'whiteAlpha.700' : 'gray.500'}
+            >
               {t('haveAccount')}{' '}
               <Button
                 variant="link"
+                color="blue.400"
                 onClick={() => router.push('/login')}
               >
                 {t('login')}
