@@ -9,7 +9,7 @@ import '../styles/globals.css';
 import theme from '../styles/theme';
 import { CartProvider } from '@/contexts/CartContext';
 import InstallPWA from '@/components/InstallPWA';
-import DisplacementSphere from '@/components/DisplacementSphere';
+import FlowingLines from '@/components/FlowingShawl';
 import { CurrencyProvider } from '@/contexts/CurrencyContext';
 
 function MyApp({ Component, pageProps }) {
@@ -40,7 +40,7 @@ function MyApp({ Component, pageProps }) {
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={customTheme}>
         <CurrencyProvider>
-          {/* <DisplacementSphere /> */}
+          <FlowingLines />
           <InstallPWA />
           <CartProvider>
             <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />

@@ -1,0 +1,32 @@
+/* FlowingShawl.module.css */
+.shawlContainer {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOut 8s ease-in forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1.5;
+        filter: blur(3px);
+    }
+
+    50% {
+        opacity: 0.5;
+        filter: blur(7px);
+    }
+
+    100% {
+        opacity: 0.25;
+        filter: blur(10px);
+    }
+}
+
+.shawlContainer canvas {
+    pointer-events: none;
+}
