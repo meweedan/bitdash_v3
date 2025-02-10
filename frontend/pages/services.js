@@ -177,7 +177,6 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
           left="0"
           right="0"
           bottom="0"
-          bg={colorMode === 'dark' ? 'gray.900' : 'gray.50'}
         >
           <Image
             src={isRTL ? platform.imageAr : platform.image}
@@ -193,10 +192,6 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
           <Box
             position="absolute"
             inset="0"
-            bg={`linear-gradient(to bottom, 
-              transparent 0%, 
-              ${colorMode === 'dark' ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)'} 100%
-            )`}
             opacity={0.9}
             transition="opacity 0.3s"
             _groupHover={{ opacity: 0.7 }}
@@ -291,7 +286,6 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
                 _hover={{
                   borderColor: platform.color,
                   transform: 'translateX(8px)',
-                  bg: colorMode === 'dark' ? 'whiteAlpha.50' : 'blackAlpha.50'
                 }}
               >
                 <Icon as={ChevronRight} color={platform.color} />
@@ -337,7 +331,6 @@ const Services = () => {
     </Head>
     <Layout>
     <Box
-      bg={colorMode === 'dark' ? 'black' : 'white'}
       position="relative"
       overflow="hidden"
     >

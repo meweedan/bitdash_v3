@@ -633,7 +633,7 @@ const AboutPage = () => {
       title: "Our Future",
       subtitle: "Building Tomorrow",
       description: "Moving forward with continuous innovation and dedication. Establishing foundations for a digital-first future through technological advancement.",
-      animation: BitRideAnimation,
+      animation: BitWorkAnimation,
       color: "brand.bitride.500",
       stats: [
         { value: "10+", label: "New Projects" },
@@ -656,14 +656,13 @@ const AboutPage = () => {
       </Head>
 
       <Box 
-        bg={colorMode === 'dark' ? 'black' : 'white'}
-        minH="100vh"
+        minH="80vh"
         position="relative"
         overflow="hidden"
       >
         {/* Hero Section */}
         <Box
-          h="100vh"
+          h="80vh"
           position="relative"
           display="flex"
           alignItems="center"
@@ -700,7 +699,6 @@ const AboutPage = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <BitWorkAnimation />
               </motion.div>
             </VStack>
           </Container>

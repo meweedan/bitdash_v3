@@ -43,7 +43,7 @@ const LanguageSwitcher = () => {
         />
 
         {/* Language Options */}
-        {languageOptions.map(({ code, shortName, flag }) => (
+        {languageOptions.map(({ code, shortName }) => (
           <Box
             key={code}
             onClick={() => changeLanguage(code)}
@@ -61,7 +61,7 @@ const LanguageSwitcher = () => {
             }}
           >
             <Text>
-              {code === locale ? flag : flag}
+              {code === locale ? shortName : shortName}
             </Text>
           </Box>
         ))}
