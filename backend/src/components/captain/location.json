@@ -15,6 +15,10 @@
       "required": true,
       "custom": true
     },
+    "lastUpdated": {
+      "type": "datetime",
+      "required": true
+    },
     "type": {
       "type": "enumeration",
       "enum": ["Point"],

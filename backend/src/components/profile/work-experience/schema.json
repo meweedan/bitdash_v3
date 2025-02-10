@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_profile_work_experience",
+  "info": {
+    "displayName": "Work Experience"
+  },
+  "attributes": {
+    "company": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
+      "type": "string",
+      "required": true
+    },
+    "startDate": {
+      "type": "date",
+      "required": true
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "current": {
+      "type": "boolean",
+      "default": false
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

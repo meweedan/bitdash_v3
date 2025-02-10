@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_job_applicant_experience",
+  "info": {
+    "displayName": "Applicant Experience"
+  },
+  "attributes": {
+    "years": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "current": {
+      "type": "string"
+    },
+    "previous": {
+      "type": "json"
+    }
+  }
+}

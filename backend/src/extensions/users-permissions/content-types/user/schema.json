@@ -110,6 +110,18 @@
       "relation": "oneToOne",
       "target": "api::captain.captain",
       "mappedBy": "users_permissions_user"
-      }
+      },
+    "employer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::employer.employer",
+      "mappedBy": "users_permissions_user"
+    },
+    "shop_owner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::shop-owner.shop-owner",
+      "mappedBy": "users_permissions_user"
+    }
   }
 }

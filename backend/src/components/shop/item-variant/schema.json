@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shop_item_variant",
+  "info": {
+    "displayName": "Item Variant"
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "stock": {
+      "type": "integer",
+      "min": 0,
+      "default": 0
+    },
+    "specifications": {
+      "type": "json"
+    }
+  }
+}

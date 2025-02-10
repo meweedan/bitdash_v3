@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_job_application_timeline",
+  "info": {
+    "displayName": "Application Timeline"
+  },
+  "attributes": {
+    "action": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "datetime",
+      "required": true
+    },
+    "by": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_profile_job_preferences",
+  "info": {
+    "displayName": "Job Preferences",
+    "description": "Job seeker preferences"
+  },
+  "attributes": {
+    "roles": {
+      "type": "json"
+    },
+    "locations": {
+      "type": "json"
+    },
+    "salary": {
+      "type": "component",
+      "component": "job.salary"
+    },
+    "type": {
+      "type": "json"
+    },
+    "remote": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

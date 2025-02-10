@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_job_application_questions",
+  "info": {
+    "displayName": "Application Questions"
+  },
+  "attributes": {
+    "question": {
+      "type": "string",
+      "required": true
+    },
+    "answer": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_job_salary",
+  "info": {
+    "displayName": "Salary"
+  },
+  "attributes": {
+    "min": {
+      "type": "decimal"
+    },
+    "max": {
+      "type": "decimal"
+    },
+    "currency": {
+      "type": "string",
+      "default": "LYD"
+    },
+    "negotiable": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

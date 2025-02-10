@@ -110,6 +110,46 @@
           "localized": false
         }
       }
+    },
+     "jobPreferences": {
+      "type": "component",
+      "component": "profile.job-preferences"
+    },
+    "workExperience": {
+      "type": "component",
+      "component": "profile.work-experience",
+      "repeatable": true
+    },
+    "education": {
+      "type": "component",
+      "component": "profile.education",
+      "repeatable": true
+    },
+    "skills": {
+      "type": "json"
+    },
+    "certifications": {
+      "type": "component",
+      "component": "profile.certification",
+      "repeatable": true
+    },
+    "jobApplications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::job-application.job-application",
+      "mappedBy": "applicant"
+    },
+    "shopOrders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "customer"
+    },
+     "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "customer_profile"
     }
   }
 }

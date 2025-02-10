@@ -87,6 +87,12 @@
       "relation": "oneToMany",
       "target": "api::message.message",
       "mappedBy": "order"
+    },
+    "shop_owner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::shop-owner.shop-owner",
+      "inversedBy": "orders"
     }
   }
 }
