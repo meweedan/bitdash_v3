@@ -89,10 +89,9 @@
       "mappedBy": "order"
     },
     "shop_owner": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::shop-owner.shop-owner",
-      "mappedBy": "orders"
+    "type": "relation",
+    "relation": "manyToOne",
+    "target": "api::shop-owner.shop-owner"
     }
   }
 }
