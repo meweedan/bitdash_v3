@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import {
   Box,
@@ -16,6 +16,7 @@ import {
   Flex,
   Icon,
   Badge,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import { 
   ArrowRight, 
@@ -25,7 +26,10 @@ import {
   ChefHat,
   Truck,
   Store,
-  Star
+  Star,
+  Clock,
+  Award,
+  Shield
 } from 'lucide-react';
 
 import GradientHeading from '@/components/GradientHeading';
@@ -34,17 +38,28 @@ import GlassCard from '@/components/GlassCard';
 import DeluxeDeliveryFlow from '@/components/DeluxeDeliveryFlow';
 
 const MotionBox = motion(Box);
-
-const BITFOOD_COLOR = '#FF7F50';
-const BITFOOD_HOVER = '#FF6347';
+const MotionFlex = motion(Flex);
 
 const FoodLandingBrowser = () => {
   const router = useRouter();
   const { t } = useTranslation('common');
   const containerRef = useRef(null);
-  const scrollRef = useRef(null);
+  
+  // Responsive font sizes
+  const heroFontSize = useBreakpointValue({ 
+    base: '3xl', 
+    sm: '4xl', 
+    md: '6xl', 
+    lg: '7xl' 
+  });
+  
+  const subtitleFontSize = useBreakpointValue({ 
+    base: 'lg', 
+    sm: 'xl', 
+    md: '2xl' 
+  });
 
-  // BitFood theme colors
+  // Theme colors
   const bgGradient = useColorModeValue(
     'linear(to-b, #FFF5F2, white)',
     'linear(to-b, gray.900, black)'
@@ -52,56 +67,46 @@ const FoodLandingBrowser = () => {
 
   const features = [
     {
-      icon: Utensils,
-      title: 'Restaurant Dining',
-      description: 'Scan QR code, order, and pay at your table',
-      color: BITFOOD_COLOR
+      icon: ChefHat,
+      title: 'Premium Dining',
+      description: 'Experience culinary excellence with our carefully curated selection of top-rated restaurants',
     },
     {
-      icon: Truck,
-      title: 'Food Delivery',
-      description: 'Your favorite meals delivered to your door',
-      color: BITFOOD_COLOR
+      icon: Clock,
+      title: 'Priority Delivery',
+      description: 'Swift, white-glove delivery service ensuring your meal arrives in perfect condition',
     },
     {
-      icon: ShoppingBag,
-      title: 'Grocery Delivery',
-      description: 'Fresh groceries when you need them',
-      color: BITFOOD_COLOR
+      icon: Award,
+      title: 'Elite Selection',
+      description: 'Access to exclusive restaurants and specialty grocers not available elsewhere',
     },
     {
-      icon: Store,
-      title: 'For Businesses',
-      description: 'Complete restaurant management solution',
-      color: BITFOOD_COLOR
+      icon: Shield,
+      title: 'Concierge Service',
+      description: 'Dedicated support team for a seamless premium dining experience',
     }
   ];
 
-  useEffect(() => {
-    // Ensure proper resize handling for animations
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
-    }, 100);
-  }, []);
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
 
   return (
     <Box 
       ref={containerRef} 
       bg={bgGradient}
-      minH="100vh"
       overflow="hidden"
     >
       <Head>
         <title>BitFood</title>
-        <meta name="description" content="Order, dine, and deliver with BitFood" />
+        <meta name="description" content="Premium dining and delivery experiences with BitFood" />
       </Head>
 
-      {/* Hero Section with Full-Screen Delivery Flow */}
-      <Box 
-        ref={scrollRef}
-        minH="100vh" 
-        position="relative"
-      >
+      {/* Hero Section */}
+      <Box position="relative">
         <AnimatePresence>
           <MotionBox
             initial={{ opacity: 0 }}
@@ -109,63 +114,68 @@ const FoodLandingBrowser = () => {
             position="relative"
             zIndex={2}
           >
-            <Container maxW="8xl" px={{ base: 4, lg: 0 }} py={0}>
+            <Container maxW="8xl" px={{ base: 4, lg: 8 }} py={{ base: 8, md: 0 }}>
               <Flex 
                 minH="100vh"
                 direction="column" 
                 align="center" 
                 justify="center"
-                pt={{ base: 16, md: 24 }}
+                pt={{ base: 20, md: 24 }}
+                textAlign="center"
               >
-                <VStack spacing={6} maxW="4xl" mb={12}>
+                <VStack spacing={{ base: 6, md: 8 }} maxW="4xl" mb={{ base: 8, md: 12 }}>
                   <GradientHeading 
-                    fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
-                    textAlign="center"
-                    bgGradient={`linear(to-r, ${BITFOOD_COLOR}, ${BITFOOD_HOVER})`}
+                    fontSize={heroFontSize}
+                    bgGradient="linear(to-r, brand.bitfood.500, brand.bitfood.700)"
+                    letterSpacing="tight"
+                    fontWeight="bold"
                   >
-                    The Future of Food
+                    Elevate Your Dining Experience
                   </GradientHeading>
 
                   <Text 
-                    fontSize={{ base: 'xl', md: '2xl' }} 
+                    fontSize={subtitleFontSize}
                     color={useColorModeValue('gray.600', 'gray.300')}
                     maxW="2xl"
-                    textAlign="center"
+                    lineHeight="tall"
                   >
-                    One platform for all your food needs - dine in, delivery, or groceries
+                    Discover a world of culinary excellence with our premium dining and delivery service
                   </Text>
 
-                  <HStack spacing={4} pt={4}>
+                  <HStack 
+                    spacing={{ base: 3, md: 4 }} 
+                    pt={{ base: 4, md: 6 }}
+                    flexDir={{ base: 'column', sm: 'row' }}
+                    w={{ base: 'full', sm: 'auto' }}
+                  >
                     <Button
+                      variant="bitfood-solid"
                       size="lg"
-                      bg={BITFOOD_COLOR}
-                      color="white"
                       rightIcon={<ArrowRight />}
-                      _hover={{ bg: BITFOOD_HOVER }}
-                      h={14}
-                      px={8}
-                      fontSize="lg"
+                      h={{ base: 12, md: 14 }}
+                      px={{ base: 6, md: 8 }}
+                      fontSize={{ base: 'md', md: 'lg' }}
+                      w={{ base: 'full', sm: 'auto' }}
                       onClick={() => router.push('/food/explore')}
                     >
-                      Explore BitFood
+                      Explore Premium Dining
                     </Button>
                     <Button
+                      variant="bitfood-outline"
                       size="lg"
-                      variant="outline"
-                      borderColor={BITFOOD_COLOR}
-                      color={BITFOOD_COLOR}
-                      h={14}
-                      px={8}
-                      fontSize="lg"
+                      h={{ base: 12, md: 14 }}
+                      px={{ base: 6, md: 8 }}
+                      fontSize={{ base: 'md', md: 'lg' }}
+                      w={{ base: 'full', sm: 'auto' }}
                       onClick={() => router.push('/food/business')}
                     >
-                      For Business
+                      Partner With Us
                     </Button>
                   </HStack>
                 </VStack>
 
-                {/* Full-width delivery flow showcase */}
-                <Box w="full" minH="70vh" position="relative">
+                {/* Delivery flow showcase */}
+                <Box w="full" minH={{ base: '50vh', md: '70vh' }} position="relative">
                   <DeluxeDeliveryFlow />
                 </Box>
               </Flex>
@@ -175,97 +185,138 @@ const FoodLandingBrowser = () => {
       </Box>
 
       {/* Features Grid */}
-      <Container maxW="8xl" py={32}>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8}>
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <GlassCard
-                p={8}
-                borderColor={feature.color}
-                borderWidth={2}
-                _hover={{ 
-                  transform: 'translateY(-5px)',
-                  boxShadow: 'xl'
-                }}
-                transition="all 0.3s ease"
+      <Box py={{ base: 16, md: 32 }} px={{ base: 4, md: 8 }}>
+        <Container maxW="8xl">
+          <SimpleGrid 
+            columns={{ base: 1, md: 2, lg: 4 }} 
+            spacing={{ base: 6, md: 8 }}
+            mx="auto"
+          >
+            {features.map((feature, index) => (
+              <MotionBox
+                key={index}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                variants={fadeInUp}
               >
-                <VStack align="start" spacing={4}>
-                  <Icon as={feature.icon} boxSize={8} color={feature.color} />
-                  <Heading size="md">{feature.title}</Heading>
-                  <Text>{feature.description}</Text>
-                </VStack>
-              </GlassCard>
-            </motion.div>
-          ))}
-        </SimpleGrid>
-      </Container>
+                <GlassCard
+                  variant="bitfood"
+                  p={{ base: 6, md: 8 }}
+                  height="full"
+                  _hover={{ 
+                    transform: 'translateY(-5px)',
+                    boxShadow: 'xl'
+                  }}
+                  transition="all 0.3s ease"
+                >
+                  <VStack align="start" spacing={4}>
+                    <Icon as={feature.icon} boxSize={{ base: 6, md: 8 }} color="brand.bitfood.500" />
+                    <Heading size="md" color={useColorModeValue('gray.800', 'white')}>
+                      {feature.title}
+                    </Heading>
+                    <Text color={useColorModeValue('gray.600', 'gray.300')}>
+                      {feature.description}
+                    </Text>
+                  </VStack>
+                </GlassCard>
+              </MotionBox>
+            ))}
+          </SimpleGrid>
+        </Container>
+      </Box>
 
       {/* Stats Section */}
-      <Box bg={useColorModeValue('white', 'gray.900')} py={32}>
+      <Box 
+        bg={useColorModeValue('white', 'gray.900')} 
+        py={{ base: 16, md: 32 }}
+        px={{ base: 4, md: 8 }}
+      >
         <Container maxW="8xl">
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={16}>
+          <SimpleGrid 
+            columns={{ base: 1, md: 3 }} 
+            spacing={{ base: 12, md: 16 }}
+            textAlign="center"
+          >
             <VStack>
-              <Heading size="3xl" color={BITFOOD_COLOR}>500+</Heading>
-              <Text fontSize="xl">Restaurant Partners</Text>
+              <Heading 
+                size={{ base: '2xl', md: '3xl' }} 
+                color="brand.bitfood.500"
+                fontWeight="bold"
+              >
+                500+
+              </Heading>
+              <Text fontSize={{ base: 'lg', md: 'xl' }}>Elite Restaurant Partners</Text>
             </VStack>
             <VStack>
-              <Heading size="3xl" color={BITFOOD_COLOR}>15min</Heading>
-              <Text fontSize="xl">Average Delivery Time</Text>
+              <Heading 
+                size={{ base: '2xl', md: '3xl' }} 
+                color="brand.bitfood.500"
+                fontWeight="bold"
+              >
+                15min
+              </Heading>
+              <Text fontSize={{ base: 'lg', md: 'xl' }}>Priority Delivery Time</Text>
             </VStack>
             <VStack>
-              <Heading size="3xl" color={BITFOOD_COLOR}>4.9⭐️</Heading>
-              <Text fontSize="xl">Customer Rating</Text>
+              <Heading 
+                size={{ base: '2xl', md: '3xl' }} 
+                color="brand.bitfood.500"
+                fontWeight="bold"
+              >
+                4.9⭐️
+              </Heading>
+              <Text fontSize={{ base: 'lg', md: 'xl' }}>Client Satisfaction</Text>
             </VStack>
           </SimpleGrid>
         </Container>
       </Box>
 
       {/* Call to Action */}
-      <Container maxW="8xl" py={32}>
+      <Container maxW="8xl" py={{ base: 16, md: 32 }} px={{ base: 4, md: 8 }}>
         <GlassCard
-          p={12}
-          borderColor={BITFOOD_COLOR}
-          borderWidth={2}
+          variant="bitfood"
+          p={{ base: 8, md: 12 }}
           textAlign="center"
         >
-          <VStack spacing={6}>
+          <VStack spacing={{ base: 4, md: 6 }}>
             <GradientHeading
-              size="2xl"
-              bgGradient={`linear(to-r, ${BITFOOD_COLOR}, ${BITFOOD_HOVER})`}
+              size={{ base: 'xl', md: '2xl' }}
+              bgGradient="linear(to-r, brand.bitfood.500, brand.bitfood.700)"
             >
-              Ready to Get Started?
+              Experience Premium Dining Today
             </GradientHeading>
-            <Text fontSize="xl" maxW="2xl">
-              Join thousands of satisfied customers and restaurants already using BitFood
+            <Text 
+              fontSize={{ base: 'md', md: 'xl' }} 
+              maxW="2xl"
+              color={useColorModeValue('gray.600', 'gray.300')}
+            >
+              Join our exclusive community of food connoisseurs and experience dining excellence
             </Text>
-            <HStack spacing={4}>
+            <HStack 
+              spacing={{ base: 3, md: 4 }}
+              flexDir={{ base: 'column', sm: 'row' }}
+              w={{ base: 'full', sm: 'auto' }}
+            >
               <Button
+                variant="bitfood-solid"
                 size="lg"
-                bg={BITFOOD_COLOR}
-                color="white"
                 rightIcon={<ArrowRight />}
-                _hover={{ bg: BITFOOD_HOVER }}
-                h={14}
-                px={8}
-                fontSize="lg"
+                h={{ base: 12, md: 14 }}
+                px={{ base: 6, md: 8 }}
+                fontSize={{ base: 'md', md: 'lg' }}
+                w={{ base: 'full', sm: 'auto' }}
                 onClick={() => router.push('/food/signup')}
               >
-                Sign Up Now
+                Join Now
               </Button>
               <Button
+                variant="bitfood-outline"
                 size="lg"
-                variant="outline"
-                borderColor={BITFOOD_COLOR}
-                color={BITFOOD_COLOR}
-                h={14}
-                px={8}
-                fontSize="lg"
+                h={{ base: 12, md: 14 }}
+                px={{ base: 6, md: 8 }}
+                fontSize={{ base: 'md', md: 'lg' }}
+                w={{ base: 'full', sm: 'auto' }}
                 onClick={() => router.push('/food/learn-more')}
               >
                 Learn More

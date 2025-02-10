@@ -13,17 +13,17 @@
 @keyframes fadeOut {
     0% {
         opacity: 0.85;
-        filter: blur(3px);
+        filter: blur(2px);
     }
 
     50% {
         opacity: 0.5;
-        filter: blur(5px);
+        filter: blur(4px);
     }
 
     100% {
-        opacity: 0.33;
-        filter: blur(7px);
+        opacity: 0.44;
+        filter: blur(5px);
     }
 }
 
