@@ -89,6 +89,7 @@ const ShopOwnerDashboard = () => {
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [theme, setTheme] = useState({
     colors: {
       primary: '#3182ce',
