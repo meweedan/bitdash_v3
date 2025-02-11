@@ -111,9 +111,13 @@ const ShopOwnerDashboard = () => {
         `populate[logo][fields][0]=url` +
         `&populate[coverImage][fields][0]=url` +
         `&populate[wallet][fields][0]=balance` +
+        `&populate[shop_items][populate][images]=*` +
         `&populate[shop_items][fields][0]=name` +
         `&populate[shop_items][fields][1]=price` +
         `&populate[shop_items][fields][2]=stock` +
+        `&populate[shop_items][fields][3]=category` +
+        `&populate[shop_items][fields][4]=status` +
+        `&populate[shop_items][fields][5]=rating` +
         `&filters[user][id][$eq]=${user.id}`,
         {
           headers: {
@@ -235,7 +239,8 @@ const ShopOwnerDashboard = () => {
               <Box 
                 position="relative" 
                 minW={{ base: "full", md: "200px" }}
-                h="200px"
+                h="315px"
+                w="full" 
                 overflow="hidden"
                 borderRadius="lg"
               >
@@ -254,9 +259,10 @@ const ShopOwnerDashboard = () => {
                   bottom={4}
                   left={4}
                   bg="white"
-                  p={2}
+                  p={1}
                   borderRadius="full"
-                  boxShadow="md"
+                  boxShadow="lg"
+                  border="4px solid white"
                 >
                   <Image
                     src={shop.logo?.data?.attributes?.url ?
@@ -264,7 +270,7 @@ const ShopOwnerDashboard = () => {
                       '/default-shop-logo.jpg'
                     }
                     alt={`${shop.shopName} logo`}
-                    boxSize="50px"
+                    boxSize="160px"
                     borderRadius="full"
                     objectFit="cover"
                   />
@@ -457,13 +463,11 @@ const ShopOwnerDashboard = () => {
           isOpen={isAddProductOpen}
           onClose={onAddProductClose}
           onSubmit={async (productData) => {
-            // Handle product creation
-            toast({
-              title: "Product added successfully",
-              status: "success",
-              duration: 2000
-            });
             try {
+              const formDataObj = JSON.parse(productData.get('data'));
+              formDataObj.shop_owner = shopData.data[0].id;
+              productData.set('data', JSON.stringify(formDataObj));
+
               const response = await fetch(
                 `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items`,
                 {

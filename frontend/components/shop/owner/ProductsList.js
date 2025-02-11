@@ -42,32 +42,57 @@ const ProductsList = ({ products = [], onEdit, onDelete }) => {
   const tableBg = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
 
-  // Get unique categories from products
-  const categories = [...new Set(products.map(
-    product => product.attributes.category
-  ))];
+  // Get unique categories from products, handling possible undefined values
+  const categories = [...new Set(products
+    .filter(product => product?.attributes?.category)
+    .map(product => product.attributes.category)
+  )];
 
-  // Filter products based on search and filters
+  // Filter products based on search and filters, with better error handling
   const filteredProducts = products.filter(product => {
-    const matchesSearch = product.attributes.name.toLowerCase()
+    if (!product?.attributes) return false;
+    
+    const matchesSearch = (product.attributes.name || '').toLowerCase()
       .includes(searchTerm.toLowerCase());
+    
     const matchesCategory = categoryFilter === 'all' || 
       product.attributes.category === categoryFilter;
+    
     const matchesStatus = statusFilter === 'all' || 
       product.attributes.status === statusFilter;
+    
     return matchesSearch && matchesCategory && matchesStatus;
   });
 
+  // Enhanced stock badge logic
   const getStockBadge = (stock) => {
-    if (stock <= 0) return <Badge colorScheme="red">Out of Stock</Badge>;
-    if (stock < 10) return <Badge colorScheme="yellow">Low Stock</Badge>;
-    return <Badge colorScheme="green">In Stock</Badge>;
+    const stockNum = parseInt(stock);
+    if (isNaN(stockNum) || stockNum <= 0) return <Badge colorScheme="red">Out of Stock</Badge>;
+    if (stockNum < 10) return <Badge colorScheme="yellow">Low Stock ({stockNum})</Badge>;
+    return <Badge colorScheme="green">In Stock ({stockNum})</Badge>;
+  };
+
+  // Price formatter
+  const formatPrice = (price) => {
+    const num = parseFloat(price);
+    return isNaN(num) ? '0.00' : num.toFixed(2);
+  };
+
+  // Handle image URL
+  const getImageUrl = (product) => {
+    try {
+      return product.attributes.images?.data?.[0]?.attributes?.url
+        ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.attributes.images.data[0].attributes.url}`
+        : '/placeholder-product.jpg';
+    } catch (error) {
+      return '/placeholder-product.jpg';
+    }
   };
 
   return (
     <VStack spacing={4} align="stretch">
       {/* Filters */}
-      <Flex 
+       <Flex 
         gap={4} 
         direction={{ base: 'column', md: 'row' }}
         bg={tableBg}
@@ -80,7 +105,6 @@ const ProductsList = ({ products = [], onEdit, onDelete }) => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           maxW={{ base: 'full', md: '300px' }}
-          leftIcon={<FiSearch />}
         />
         <Select
           value={categoryFilter}
@@ -114,7 +138,7 @@ const ProductsList = ({ products = [], onEdit, onDelete }) => {
         <Table variant="simple">
           <Thead>
             <Tr>
-              <Th>Product</Th>
+              <Th width="40%">Product</Th>
               <Th>Category</Th>
               <Th isNumeric>Price</Th>
               <Th isNumeric>Stock</Th>
@@ -128,18 +152,28 @@ const ProductsList = ({ products = [], onEdit, onDelete }) => {
               <Tr key={product.id}>
                 <Td>
                   <HStack spacing={3}>
-                    <Image
-                      src={product.attributes.images?.data?.[0]?.attributes?.url ?
-                        `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.attributes.images.data[0].attributes.url}` :
-                        '/placeholder-product.jpg'
-                      }
-                      alt={product.attributes.name}
-                      boxSize="50px"
-                      objectFit="cover"
+                    <Box
+                      width="50px"
+                      height="50px"
+                      position="relative"
+                      overflow="hidden"
                       borderRadius="md"
-                    />
+                    >
+                      <Image
+                        src={getImageUrl(product)}
+                        alt={product.attributes.name}
+                        position="absolute"
+                        top={0}
+                        left={0}
+                        width="100%"
+                        height="100%"
+                        objectFit="cover"
+                      />
+                    </Box>
                     <VStack align="start" spacing={0}>
-                      <Text fontWeight="medium">{product.attributes.name}</Text>
+                      <Text fontWeight="medium">
+                        {product.attributes.name || 'Unnamed Product'}
+                      </Text>
                       <Text fontSize="sm" color="gray.500">
                         ID: {product.id}
                       </Text>
@@ -147,10 +181,12 @@ const ProductsList = ({ products = [], onEdit, onDelete }) => {
                   </HStack>
                 </Td>
                 <Td>
-                  <Badge>{product.attributes.category}</Badge>
+                  <Badge>
+                    {product.attributes.category || 'Uncategorized'}
+                  </Badge>
                 </Td>
                 <Td isNumeric fontWeight="medium">
-                  {product.attributes.price} LYD
+                  {formatPrice(product.attributes.price)} LYD
                 </Td>
                 <Td isNumeric>
                   {getStockBadge(product.attributes.stock)}
@@ -162,12 +198,12 @@ const ProductsList = ({ products = [], onEdit, onDelete }) => {
                       product.attributes.status === 'hidden' ? 'gray' : 'red'
                     }
                   >
-                    {product.attributes.status}
+                    {product.attributes.status || 'Unknown'}
                   </Badge>
                 </Td>
                 <Td>
                   <HStack>
-                    <Text>{product.attributes.rating?.toFixed(1) || '0.0'}</Text>
+                    <Text>{(product.attributes.rating || 0).toFixed(1)}</Text>
                     <Text color="gray.500" fontSize="sm">
                       ({product.attributes.reviews?.data?.length || 0})
                     </Text>
@@ -196,15 +232,13 @@ const ProductsList = ({ products = [], onEdit, onDelete }) => {
                       </MenuItem>
                       <MenuItem
                         icon={<FiArchive />}
-                        onClick={() => {
-                          // Toggle product visibility
-                        }}
+                        onClick={() => onDelete(product.id, product.attributes.status === 'hidden' ? 'available' : 'hidden')}
                       >
                         {product.attributes.status === 'hidden' ? 'Show' : 'Hide'} Product
                       </MenuItem>
                       <MenuItem
                         icon={<FiTrash2 />}
-                        onClick={() => onDelete(product.id)}
+                        onClick={() => onDelete(product.id, 'delete')}
                         color="red.500"
                       >
                         Delete Product

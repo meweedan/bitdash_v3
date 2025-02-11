@@ -66,6 +66,48 @@
       "max": 5,
       "min": 0,
       "default": 0
+    },
+    "theme": {
+    "type": "json",
+    "default": {
+      "name": "default",
+      "colors": {
+        "primary": "#3182CE",
+        "secondary": "#F7FAFC",
+        "accent": "#48BB78",
+        "text": "#2D3748"
+      },
+      "layout": "grid",
+      "showLocation": true,
+      "showSocialLinks": true,
+      "customCss": ""
+    }
+  },
+  "wallet_pin": {
+    "type": "integer",
+    "required": true,
+    "private": true
+  },
+  "location": {
+    "type": "json",
+    "default": {
+      "address": "",
+      "city": "",
+      "coordinates": {
+        "lat": null,
+        "lng": null
+      },
+      "showOnPublicPage": true
+    }
+  },
+  "social_links": {
+    "type": "json",
+    "default": {
+      "facebook": "",
+      "instagram": "",
+      "twitter": "",
+      "website": ""
+    }
     }
   }
 }
