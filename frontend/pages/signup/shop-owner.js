@@ -16,162 +16,126 @@ import {
   Divider,
   Badge,
   InputGroup,
-  InputLeftAddon,
-  SimpleGrid,
+  InputRightElement,
   useColorModeValue,
   Progress,
-  FormHelperText,
-  Select,
+  FormErrorMessage,
   Textarea,
+  IconButton,
   Stack,
-  Tag,
-  TagLabel,
-  TagCloseButton,
+  AspectRatio,
+  Image,
 } from '@chakra-ui/react';
-
+import { FiEye, FiEyeOff, FiUpload, FiX } from 'react-icons/fi';
 import Layout from '@/components/Layout';
-
-const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const ShopOwnerSignup = () => {
   const router = useRouter();
   const toast = useToast();
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [categoryInput, setCategoryInput] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
-    // User credentials
+    // User Auth Data
+    username: '',
     email: '',
     password: '',
     confirmPassword: '',
 
-    // Shop Info
+    // Shop Owner Data
     shopName: '',
     description: '',
+    verificationStatus: 'pending',
     categories: [],
+
+    // File uploads
     logo: null,
     coverImage: null,
-
-    // Owner Info
-    fullName: '',
-    phone: '',
-    businessLicense: '',
-    taxId: '',
-
-    // Location
-    address: '',
-    city: '',
-    coordinates: {
-      lat: 0,
-      lng: 0
-    },
-
-    // Business Details
-    registrationNumber: '',
-    businessType: 'retail',
-    operatingHours: {
-      open: '09:00',
-      close: '21:00'
-    },
-
-    // Wallet Settings
-    walletPin: '',
-    currency: 'LYD',
-    isActive: true,
-    dailyLimit: 10000,
-    monthlyLimit: 200000,
-    walletStatus: 'pending_verification'
+    businessDocuments: []
   });
 
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
 
   const handleChange = (e) => {
-    const { name, value, type } = e.target;
-    if (name.includes('.')) {
-      // Handle nested objects (location, operatingHours)
-      const [parent, child] = name.split('.');
-      setFormData(prev => ({
-        ...prev,
-        [parent]: {
-          ...prev[parent],
-          [child]: type === 'number' ? parseFloat(value) : value
-        }
-      }));
-    } else {
-      setFormData(prev => ({
-        ...prev,
-        [name]: type === 'number' ? parseFloat(value) : value
-      }));
-    }
-  };
-
-  const handleCategoryAdd = (e) => {
-    if (e.key === 'Enter' && categoryInput.trim()) {
-      e.preventDefault();
-      if (!formData.categories.includes(categoryInput.trim())) {
-        setFormData(prev => ({
-          ...prev,
-          categories: [...prev.categories, categoryInput.trim()]
-        }));
-      }
-      setCategoryInput('');
-    }
-  };
-
-  const handleCategoryRemove = (category) => {
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      categories: prev.categories.filter(cat => cat !== category)
+      [name]: value
+    }));
+    // Clear error when field is changed
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  const handleFileChange = (e, fieldName) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFormData(prev => ({
+        ...prev,
+        [fieldName]: file
+      }));
+    }
+  };
+
+  const handleDocumentsChange = (e) => {
+    const files = Array.from(e.target.files);
+    setFormData(prev => ({
+      ...prev,
+      businessDocuments: [...prev.businessDocuments, ...files]
+    }));
+  };
+
+  const removeDocument = (index) => {
+    setFormData(prev => ({
+      ...prev,
+      businessDocuments: prev.businessDocuments.filter((_, i) => i !== index)
     }));
   };
 
   const validateForm = () => {
-    if (!formData.email || !formData.email.includes('@')) {
-      toast({ title: 'Invalid email', status: 'error' });
-      return false;
+    const newErrors = {};
+
+    // User validation
+    if (!formData.username) {
+      newErrors.username = 'Username is required';
+    } else if (formData.username.length < 3) {
+      newErrors.username = 'Username must be at least 3 characters';
     }
 
-    if (formData.password.length < 8) {
-      toast({ title: 'Password too short', status: 'error' });
-      return false;
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Invalid email address';
+    }
+
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+    } else if (formData.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
     }
 
     if (formData.password !== formData.confirmPassword) {
-      toast({ title: 'Passwords do not match', status: 'error' });
-      return false;
+      newErrors.confirmPassword = 'Passwords do not match';
     }
 
-    if (formData.walletPin.length !== 6) {
-      toast({ title: 'Wallet PIN must be 6 digits', status: 'error' });
-      return false;
+    // Shop validation
+    if (!formData.shopName) {
+      newErrors.shopName = 'Shop name is required';
     }
 
-    const requiredFields = [
-      'email',
-      'password',
-      'shopName',
-      'fullName',
-      'phone',
-      'businessLicense',
-      'taxId',
-      'address',
-      'registrationNumber'
-    ];
-
-    for (const field of requiredFields) {
-      if (!formData[field]) {
-        toast({
-          title: 'Missing Required Field',
-          description: `Please fill in ${field.replace(/([A-Z])/g, ' $1').toLowerCase()}`,
-          status: 'error'
-        });
-        return false;
-      }
+    if (!formData.description) {
+      newErrors.description = 'Description is required';
     }
 
-    return true;
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
@@ -180,50 +144,76 @@ const ShopOwnerSignup = () => {
 
     setLoading(true);
     try {
-      // 1. Create user
+      // Step 1: Create user account
       setProgress(20);
-      const userRes = await fetch(`${API_URL}/api/auth/local/register`, {
+      const userData = {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        provider: 'local',
+        confirmed: true, // Auto-confirm for now
+        blocked: false,
+        role: 3 // Assuming 3 is the shop owner role ID
+      };
+
+      const registerRes = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/local/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          username: generateUsername(formData.email),
-          email: formData.email,
-          password: formData.password,
-        })
+        body: JSON.stringify(userData)
       });
 
-      if (!userRes.ok) {
-        const error = await userRes.json();
+      if (!registerRes.ok) {
+        const error = await registerRes.json();
         throw new Error(error.error?.message || 'Registration failed');
       }
 
-      const { jwt, user } = await userRes.json();
+      const { jwt, user } = await registerRes.json();
 
-      // 2. Create shop owner profile
+      // Step 2: Upload media files
       setProgress(40);
+      const uploadFile = async (file, field) => {
+        if (!file) return null;
+        const formData = new FormData();
+        formData.append('files', file);
+        
+        const uploadRes = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/upload`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+          body: formData,
+        });
+        
+        if (!uploadRes.ok) throw new Error(`Failed to upload ${field}`);
+        const uploadData = await uploadRes.json();
+        return uploadData[0].id;
+      };
+
+      const logoId = await uploadFile(formData.logo, 'logo');
+      const coverId = await uploadFile(formData.coverImage, 'coverImage');
+      
+      // Upload business documents
+      const documentIds = await Promise.all(
+        formData.businessDocuments.map(doc => uploadFile(doc, 'businessDocuments'))
+      );
+
+      // Step 3: Create shop owner profile
+      setProgress(70);
       const shopOwnerData = {
         data: {
           user: user.id,
           shopName: formData.shopName,
           description: formData.description,
-          categories: formData.categories,
-          fullName: formData.fullName,
-          phone: formData.phone,
-          businessLicense: formData.businessLicense,
-          taxId: formData.taxId,
-          location: {
-            address: formData.address,
-            city: formData.city,
-            coordinates: formData.coordinates
-          },
-          businessType: formData.businessType,
-          operatingHours: formData.operatingHours,
           verificationStatus: 'pending',
-          rating: 0
+          categories: [],
+          rating: 0,
+          logo: logoId,
+          coverImage: coverId,
+          businessDocuments: documentIds
         }
       };
 
-      const shopOwnerRes = await fetch(`${API_URL}/api/shop-owners`, {
+      const shopOwnerRes = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-owners`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -236,65 +226,19 @@ const ShopOwnerSignup = () => {
         throw new Error('Failed to create shop owner profile');
       }
 
-      const shopOwner = await shopOwnerRes.json();
-
-      // 3. Create wallet
-      setProgress(70);
-      const walletData = {
-        data: {
-          balance: 0,
-          currency: formData.currency,
-          isActive: formData.isActive,
-          walletId: `SW${Date.now()}${Math.random().toString(36).substr(2, 4)}`.toUpperCase(),
-          dailyLimit: formData.dailyLimit,
-          monthlyLimit: formData.monthlyLimit,
-          lastActivity: new Date().toISOString(),
-          shop_owner: shopOwner.data.id
-        }
-      };
-
-      const walletRes = await fetch(`${API_URL}/api/wallets`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${jwt}`
-        },
-        body: JSON.stringify(walletData)
-      });
-
-      if (!walletRes.ok) {
-        throw new Error('Failed to create wallet');
-      }
-
-      // 4. Update shop owner with wallet reference
-      setProgress(90);
-      await fetch(`${API_URL}/api/shop-owners/${shopOwner.data.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${jwt}`
-        },
-        body: JSON.stringify({
-          data: {
-            wallet: walletRes.data.id
-          }
-        })
-      });
-
-      // Success
       setProgress(100);
       localStorage.setItem('token', jwt);
       localStorage.setItem('user', JSON.stringify(user));
-      
+      localStorage.setItem('isNewShop', 'true'); // Flag for showing welcome modal
+
       toast({
-        title: 'Success',
-        description: 'Your shop account has been created successfully',
+        title: 'Success!',
+        description: 'Your shop has been created successfully.',
         status: 'success',
         duration: 5000
       });
 
-      router.push('/shop/dashboard');
-
+      router.push('/shop/owner/dashboard');
     } catch (error) {
       console.error('Signup error:', error);
       toast({
@@ -309,24 +253,20 @@ const ShopOwnerSignup = () => {
     }
   };
 
-  const generateUsername = (email) => {
-    return `${email.split('@')[0]}_${Math.random().toString(36).substr(2, 4)}`;
-  };
-
-   return (
+  return (
     <Layout>
       <Head>
-        <title>BitShop - Store Owner Signup</title>
+        <title>Create Your Shop - BitShop</title>
       </Head>
 
       <Container maxW="container.md" py={8}>
         {loading && (
-          <Progress 
-            value={progress} 
-            size="xs" 
-            colorScheme="bitshop" 
-            mb={4} 
-            isAnimated 
+          <Progress
+            value={progress}
+            size="xs"
+            colorScheme="blue"
+            mb={4}
+            isAnimated
             hasStripe
           />
         )}
@@ -351,104 +291,188 @@ const ShopOwnerSignup = () => {
               <VStack spacing={6}>
                 {/* Account Credentials */}
                 <Box w="full">
-                  <Heading size="sm" mb={4}>Account Credentials</Heading>
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-                    <FormControl isRequired>
-                      <FormLabel>Address</FormLabel>
+                  <Heading size="md" mb={4}>Account Credentials</Heading>
+                  <VStack spacing={4}>
+                    <FormControl isRequired isInvalid={!!errors.username}>
+                      <FormLabel>Username</FormLabel>
                       <Input
-                        name="address"
-                        value={formData.address}
+                        name="username"
+                        value={formData.username}
                         onChange={handleChange}
                       />
+                      <FormErrorMessage>{errors.username}</FormErrorMessage>
                     </FormControl>
 
-                    <FormControl isRequired>
-                      <FormLabel>City</FormLabel>
+                    <FormControl isRequired isInvalid={!!errors.email}>
+                      <FormLabel>Email Address</FormLabel>
                       <Input
-                        name="city"
-                        value={formData.city}
+                        name="email"
+                        type="email"
+                        value={formData.email}
                         onChange={handleChange}
                       />
+                      <FormErrorMessage>{errors.email}</FormErrorMessage>
                     </FormControl>
 
-                    <FormControl>
-                      <FormLabel>Opening Time</FormLabel>
-                      <Input
-                        name="operatingHours.open"
-                        type="time"
-                        value={formData.operatingHours.open}
-                        onChange={handleChange}
-                      />
+                    <FormControl isRequired isInvalid={!!errors.password}>
+                      <FormLabel>Password</FormLabel>
+                      <InputGroup>
+                        <Input
+                          name="password"
+                          type={showPassword ? "text" : "password"}
+                          value={formData.password}
+                          onChange={handleChange}
+                        />
+                        <InputRightElement>
+                          <IconButton
+                            icon={showPassword ? <FiEyeOff /> : <FiEye />}
+                            variant="ghost"
+                            onClick={() => setShowPassword(!showPassword)}
+                          />
+                        </InputRightElement>
+                      </InputGroup>
+                      <FormErrorMessage>{errors.password}</FormErrorMessage>
                     </FormControl>
 
-                    <FormControl>
-                      <FormLabel>Closing Time</FormLabel>
+                    <FormControl isRequired isInvalid={!!errors.confirmPassword}>
+                      <FormLabel>Confirm Password</FormLabel>
                       <Input
-                        name="operatingHours.close"
-                        type="time"
-                        value={formData.operatingHours.close}
+                        name="confirmPassword"
+                        type="password"
+                        value={formData.confirmPassword}
                         onChange={handleChange}
                       />
+                      <FormErrorMessage>{errors.confirmPassword}</FormErrorMessage>
                     </FormControl>
-                  </SimpleGrid>
+                  </VStack>
                 </Box>
 
                 <Divider />
 
-                {/* Wallet Setup */}
+                {/* Shop Information */}
                 <Box w="full">
-                  <Heading size="sm" mb={4}>Wallet Setup</Heading>
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-                    <FormControl isRequired>
-                      <FormLabel>Wallet PIN</FormLabel>
+                  <Heading size="md" mb={4}>Shop Information</Heading>
+                  <VStack spacing={4}>
+                    <FormControl isRequired isInvalid={!!errors.shopName}>
+                      <FormLabel>Shop Name</FormLabel>
                       <Input
-                        name="walletPin"
-                        type="password"
-                        maxLength={6}
-                        value={formData.walletPin}
+                        name="shopName"
+                        value={formData.shopName}
                         onChange={handleChange}
-                        placeholder="6-digit PIN"
                       />
-                      <FormHelperText>
-                        Create a 6-digit PIN for your BitCash wallet
-                      </FormHelperText>
+                      <FormErrorMessage>{errors.shopName}</FormErrorMessage>
+                    </FormControl>
+
+                    <FormControl isRequired isInvalid={!!errors.description}>
+                      <FormLabel>Description</FormLabel>
+                      <Textarea
+                        name="description"
+                        value={formData.description}
+                        onChange={handleChange}
+                        rows={4}
+                      />
+                      <FormErrorMessage>{errors.description}</FormErrorMessage>
                     </FormControl>
 
                     <FormControl>
-                      <FormLabel>Daily Transaction Limit</FormLabel>
-                      <InputGroup>
-                        <InputLeftAddon>LYD</InputLeftAddon>
-                        <Input
-                          name="dailyLimit"
-                          type="number"
-                          value={formData.dailyLimit}
-                          onChange={handleChange}
-                          disabled
-                        />
-                      </InputGroup>
-                      <FormHelperText>Default: 10,000 LYD</FormHelperText>
+                      <FormLabel>Shop Logo</FormLabel>
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => handleFileChange(e, 'logo')}
+                        display="none"
+                        id="logo-upload"
+                      />
+                      <Button
+                        as="label"
+                        htmlFor="logo-upload"
+                        leftIcon={<FiUpload />}
+                        w="full"
+                        cursor="pointer"
+                      >
+                        Upload Logo
+                      </Button>
+                      {formData.logo && (
+                        <Text mt={2} fontSize="sm">
+                          Selected: {formData.logo.name}
+                        </Text>
+                      )}
                     </FormControl>
 
                     <FormControl>
-                      <FormLabel>Monthly Transaction Limit</FormLabel>
-                      <InputGroup>
-                        <InputLeftAddon>LYD</InputLeftAddon>
-                        <Input
-                          name="monthlyLimit"
-                          type="number"
-                          value={formData.monthlyLimit}
-                          onChange={handleChange}
-                          disabled
-                        />
-                      </InputGroup>
-                      <FormHelperText>Default: 200,000 LYD</FormHelperText>
+                      <FormLabel>Cover Image</FormLabel>
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => handleFileChange(e, 'coverImage')}
+                        display="none"
+                        id="cover-upload"
+                      />
+                      <Button
+                        as="label"
+                        htmlFor="cover-upload"
+                        leftIcon={<FiUpload />}
+                        w="full"
+                        cursor="pointer"
+                      >
+                        Upload Cover Image
+                      </Button>
+                      {formData.coverImage && (
+                        <Text mt={2} fontSize="sm">
+                          Selected: {formData.coverImage.name}
+                        </Text>
+                      )}
                     </FormControl>
-                  </SimpleGrid>
+
+                    <FormControl>
+                      <FormLabel>Business Documents</FormLabel>
+                      <Input
+                        type="file"
+                        multiple
+                        accept=".pdf,.doc,.docx"
+                        onChange={handleDocumentsChange}
+                        display="none"
+                        id="documents-upload"
+                      />
+                      <Button
+                        as="label"
+                        htmlFor="documents-upload"
+                        leftIcon={<FiUpload />}
+                        w="full"
+                        cursor="pointer"
+                      >
+                        Upload Documents
+                      </Button>
+                      {formData.businessDocuments.length > 0 && (
+                        <VStack mt={2} align="stretch">
+                          {formData.businessDocuments.map((doc, index) => (
+                            <Stack
+                              key={index}
+                              direction="row"
+                              align="center"
+                              bg="gray.50"
+                              p={2}
+                              borderRadius="md"
+                            >
+                              <Text fontSize="sm" flex={1}>
+                                {doc.name}
+                              </Text>
+                              <IconButton
+                                icon={<FiX />}
+                                size="sm"
+                                onClick={() => removeDocument(index)}
+                              />
+                            </Stack>
+                          ))}
+                        </VStack>
+                      )}
+                    </FormControl>
+                  </VStack>
                 </Box>
 
                 <Button
                   type="submit"
-                  variant="bitshop-solid"
+                  colorScheme="blue"
                   size="lg"
                   w="full"
                   isLoading={loading}
@@ -460,7 +484,7 @@ const ShopOwnerSignup = () => {
             </form>
 
             <Text textAlign="center">
-              Already have an account?{' '}
+              Already have a shop?{' '}
               <Button
                 variant="link"
                 colorScheme="blue"

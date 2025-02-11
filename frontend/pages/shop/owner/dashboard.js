@@ -76,6 +76,7 @@ import OrdersList from '@/components/shop/owner/OrdersList';
 import ReviewsList from '@/components/shop/owner/ReviewsList';
 import SalesChart from '@/components/shop/owner/SalesChart';
 import TopProductsChart from '@/components/shop/owner/TopProductsChart';
+import WelcomeModal from '@/components/shop/owner/WelcomeModal';
 
 const MotionStat = motion(Stat);
 
@@ -86,6 +87,7 @@ const ShopOwnerDashboard = () => {
   const { isOpen: isAddProductOpen, onOpen: onAddProductOpen, onClose: onAddProductClose } = useDisclosure();
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
 
   // Fetch shop owner data
   const { 
@@ -198,11 +200,34 @@ const ShopOwnerDashboard = () => {
 
   const shop = shopData.data[0].attributes;
 
+  useEffect(() => {
+    // Check if this is a new shop
+    const isNewShop = localStorage.getItem('isNewShop');
+    if (isNewShop) {
+      setShowWelcomeModal(true);
+      localStorage.removeItem('isNewShop'); // Clear the flag
+    }
+  }, []);
+
+  const handleWelcomeModalClose = (redirectPath) => {
+    setShowWelcomeModal(false);
+    if (redirectPath) {
+      router.push(redirectPath);
+    }
+  };
+
   return (
     <Layout>
       <Head>
         <title>{shop.shopName} - Dashboard | BitShop</title>
       </Head>
+
+      {/* Welcome Modal */}
+      <WelcomeModal
+        isOpen={showWelcomeModal}
+        onClose={handleWelcomeModalClose}
+        shopId={shopData?.data?.[0]?.id}
+      />
       <Container maxW="1400px" py={6}>
         {/* Shop Header */}
         <Card mb={6}>
