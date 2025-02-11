@@ -20,6 +20,12 @@ import {
   Flex,
   Heading,
   Badge,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
 } from '@chakra-ui/react';
 import {
   FiPlus,
@@ -29,31 +35,59 @@ import {
   FiDownload,
   FiArrowRight,
 } from 'react-icons/fi';
-import Papa from 'papaparse';
 
 const WelcomeModal = ({ isOpen, onClose, shopId }) => {
   const [step, setStep] = useState('options');
   const [csvFile, setCsvFile] = useState(null);
+  const [csvPreview, setCsvPreview] = useState([]);
+  const [csvHeaders, setCsvHeaders] = useState([]);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const toast = useToast();
   const cardBg = useColorModeValue('gray.50', 'gray.700');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
 
+  const parseCSV = (text) => {
+    const lines = text.split('\n');
+    const headers = lines[0].split(',').map(header => 
+      header.trim().replace(/["']/g, '')
+    );
+    
+    const data = lines.slice(1).map(line => {
+      const values = line.split(',').map(value => 
+        value.trim().replace(/["']/g, '')
+      );
+      return headers.reduce((obj, header, i) => {
+        obj[header] = values[i];
+        return obj;
+      }, {});
+    }).filter(row => Object.values(row).some(value => value));
+
+    return { headers, data };
+  };
+
   const handleCsvUpload = async (event) => {
     const file = event.target.files[0];
     if (file) {
       setCsvFile(file);
-      setStep('csv-preview');
       
-      // Parse CSV preview
-      Papa.parse(file, {
-        header: true,
-        preview: 5, // Show first 5 rows
-        complete: function(results) {
-          console.log("CSV Preview:", results.data);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const { headers, data } = parseCSV(e.target.result);
+          setCsvHeaders(headers);
+          setCsvPreview(data.slice(0, 5)); // Show first 5 rows
+          setStep('csv-preview');
+        } catch (error) {
+          toast({
+            title: 'Error parsing CSV',
+            description: 'Please make sure your CSV is properly formatted',
+            status: 'error',
+            duration: 5000
+          });
         }
-      });
+      };
+      reader.readAsText(file);
     }
   };
 
@@ -64,14 +98,14 @@ const WelcomeModal = ({ isOpen, onClose, shopId }) => {
     setUploadProgress(0);
 
     try {
-      Papa.parse(csvFile, {
-        header: true,
-        complete: async function(results) {
-          const total = results.data.length;
-          let processed = 0;
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const { data } = parseCSV(e.target.result);
+        const total = data.length;
+        let processed = 0;
 
-          for (const product of results.data) {
-            // Create product in chunks
+        for (const product of data) {
+          try {
             await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items`, {
               method: 'POST',
               headers: {
@@ -82,8 +116,8 @@ const WelcomeModal = ({ isOpen, onClose, shopId }) => {
                 data: {
                   name: product.name,
                   description: product.description,
-                  price: parseFloat(product.price),
-                  stock: parseInt(product.stock),
+                  price: parseFloat(product.price) || 0,
+                  stock: parseInt(product.stock) || 0,
                   category: product.category,
                   subcategory: product.subcategory,
                   shop_owner: shopId,
@@ -94,21 +128,21 @@ const WelcomeModal = ({ isOpen, onClose, shopId }) => {
 
             processed++;
             setUploadProgress((processed / total) * 100);
+          } catch (error) {
+            console.error('Error importing product:', error);
           }
-
-          toast({
-            title: 'Import Complete',
-            description: `Successfully imported ${processed} products`,
-            status: 'success',
-            duration: 5000
-          });
-
-          onClose();
-        },
-        error: function(error) {
-          throw new Error(error);
         }
-      });
+
+        toast({
+          title: 'Import Complete',
+          description: `Successfully imported ${processed} out of ${total} products`,
+          status: 'success',
+          duration: 5000
+        });
+
+        onClose();
+      };
+      reader.readAsText(csvFile);
     } catch (error) {
       toast({
         title: 'Import Failed',
@@ -123,12 +157,11 @@ const WelcomeModal = ({ isOpen, onClose, shopId }) => {
 
   const downloadTemplate = () => {
     const template = [
-      ['name', 'description', 'price', 'stock', 'category', 'subcategory'],
-      ['Example Product', 'Product description', '99.99', '100', 'electronics', 'phones']
-    ];
+      'name,description,price,stock,category,subcategory',
+      'Example Product,Product description,99.99,100,electronics,phones'
+    ].join('\n');
     
-    const csv = Papa.unparse(template);
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const blob = new Blob([template], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = 'bitshop_product_template.csv';
@@ -264,9 +297,35 @@ const WelcomeModal = ({ isOpen, onClose, shopId }) => {
             <VStack spacing={2}>
               <Heading size="md">Review Import</Heading>
               <Text textAlign="center" color="gray.500">
-                Ready to import {csvFile?.name}
+                Preview of {csvFile?.name}
               </Text>
             </VStack>
+
+            {csvPreview.length > 0 && (
+              <Box overflowX="auto" w="full">
+                <Table size="sm">
+                  <Thead>
+                    <Tr>
+                      {csvHeaders.map((header, i) => (
+                        <Th key={i}>{header}</Th>
+                      ))}
+                    </Tr>
+                  </Thead>
+                  <Tbody>
+                    {csvPreview.map((row, i) => (
+                      <Tr key={i}>
+                        {csvHeaders.map((header, j) => (
+                          <Td key={j}>{row[header]}</Td>
+                        ))}
+                      </Tr>
+                    ))}
+                  </Tbody>
+                </Table>
+                <Text mt={2} fontSize="sm" color="gray.500">
+                  Showing first {csvPreview.length} rows of {csvFile?.name}
+                </Text>
+              </Box>
+            )}
 
             {isUploading && (
               <Box w="full">
