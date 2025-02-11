@@ -37,6 +37,7 @@ const ShopOwnerSignup = () => {
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
     // User Auth Data
@@ -44,6 +45,10 @@ const ShopOwnerSignup = () => {
     email: '',
     password: '',
     confirmPassword: '',
+
+    // Wallet Security
+    walletPin: '',
+    confirmWalletPin: '',
 
     // Business Info
     businessName: '',
@@ -139,6 +144,16 @@ const ShopOwnerSignup = () => {
 
     if (!formData.password || formData.password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters';
+    }
+
+    if (!formData.walletPin) {
+    newErrors.walletPin = 'Wallet PIN is required';
+    } else if (!/^\d{6}$/.test(formData.walletPin)) {
+    newErrors.walletPin = 'PIN must be exactly 6 digits';
+    }
+
+    if (formData.walletPin !== formData.confirmWalletPin) {
+    newErrors.confirmWalletPin = 'PINs do not match';
     }
 
     if (formData.password !== formData.confirmPassword) {
@@ -244,9 +259,11 @@ const ShopOwnerSignup = () => {
           walletId: `SW${Date.now()}${Math.random().toString(36).substr(2, 4)}`.toUpperCase(),
           dailyLimit: 10000,
           monthlyLimit: 200000,
-          lastActivity: new Date().toISOString()
+          lastActivity: new Date().toISOString(),
+          wallet_pin: parseInt(formData.walletPin), // Add the PIN
+          shop_owner: shopOwner.data.id
         }
-      };
+        };
 
       console.log('Creating wallet:', walletData);
       const walletRes = await fetch(`${API_URL}/api/wallets`, {
@@ -462,6 +479,37 @@ const ShopOwnerSignup = () => {
                 </Box>
 
                 <Divider />
+
+                <Box w="full">
+                <Heading size="md" mb={4}>Wallet Security</Heading>
+                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                    <FormControl isRequired isInvalid={!!errors.walletPin}>
+                    <FormLabel>Wallet PIN (6 digits)</FormLabel>
+                    <Input
+                        name="walletPin"
+                        type="password"
+                        maxLength={6}
+                        value={formData.walletPin}
+                        onChange={handleChange}
+                        placeholder="Enter 6-digit PIN"
+                    />
+                    <FormErrorMessage>{errors.walletPin}</FormErrorMessage>
+                    </FormControl>
+
+                    <FormControl isRequired isInvalid={!!errors.confirmWalletPin}>
+                    <FormLabel>Confirm PIN</FormLabel>
+                    <Input
+                        name="confirmWalletPin"
+                        type="password"
+                        maxLength={6}
+                        value={formData.confirmWalletPin}
+                        onChange={handleChange}
+                        placeholder="Confirm 6-digit PIN"
+                    />
+                    <FormErrorMessage>{errors.confirmWalletPin}</FormErrorMessage>
+                    </FormControl>
+                </SimpleGrid>
+                </Box>
 
                 {/* Business Information */}
                 <Box w="full">

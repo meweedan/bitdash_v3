@@ -89,6 +89,14 @@ const ShopOwnerDashboard = () => {
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
 
+    useEffect(() => {
+    const isNewShop = localStorage.getItem('isNewShop');
+    if (isNewShop) {
+      setShowWelcomeModal(true);
+      localStorage.removeItem('isNewShop');
+    }
+  }, []); // Empty dependency array since we only want this to run once
+
   // Fetch shop owner data
   const { 
     data: shopData,
@@ -199,15 +207,6 @@ const ShopOwnerDashboard = () => {
   }
 
   const shop = shopData.data[0].attributes;
-
-  useEffect(() => {
-    // Check if this is a new shop
-    const isNewShop = localStorage.getItem('isNewShop');
-    if (isNewShop) {
-      setShowWelcomeModal(true);
-      localStorage.removeItem('isNewShop'); // Clear the flag
-    }
-  }, []);
 
   const handleWelcomeModalClose = (redirectPath) => {
     setShowWelcomeModal(false);
