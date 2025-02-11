@@ -32,7 +32,6 @@ import Head from 'next/head';
 const platforms = [
   {
     id: 'cash',
-    title: 'BitCash',
     tagline: 'Digital Banking Redefined',
     description: 'Experience the future of financial transactions with our sophisticated digital payment platform.',
     image: '/cash.png',
@@ -52,7 +51,6 @@ const platforms = [
   },
   {
     id: 'food',
-    title: 'BitFood',
     tagline: 'Elevating Dining Experiences',
     description: 'Transform your restaurant operations with our comprehensive digital solution.',
     image: '/food.png',
@@ -72,7 +70,6 @@ const platforms = [
   },
   {
     id: 'shop',
-    title: 'BitShop',
     tagline: 'Commerce Without Limits',
     description: 'Unlock your business potential with our advanced e-commerce platform.',
     image: '/shop.png',
@@ -92,7 +89,6 @@ const platforms = [
   },
   {
     id: 'ride',
-    title: 'BitRide',
     tagline: 'Mobility of Tomorrow',
     description: 'Revolutionize transportation with our intelligent mobility solutions.',
     image: '/ride.png',
@@ -112,7 +108,6 @@ const platforms = [
   },
   {
     id: 'work',
-    title: 'BitWork',
     tagline: 'Your Career & Service Marketplace',
     description: 'Connect with top employers and skilled professionals. From corporate careers to handyman services, we bridge the gap between talent and opportunity.',
     image: '/work.png',

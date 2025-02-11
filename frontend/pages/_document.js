@@ -8,33 +8,39 @@ export default function Document() {
     // At build time, window is undefined. Adjust for runtime behavior dynamically.
     const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
 
-    if (hostname.includes('auto')) {
+    if (hostname.includes('shop')) {
       return {
-        title: 'BitAuto',
-        description: 'Automotive dealership management system',
+        title: 'BitShop',
+        description: 'Shopping made easy.',
       };
     }
     if (hostname.includes('food')) {
       return {
         title: 'BitFood',
-        description: 'Digital menu and ordering system',
+        description: 'Digital menu and ordering system.',
       };
     }
-    if (hostname.includes('stock')) {
+     if (hostname.includes('ride')) {
       return {
-        title: 'BitStock',
-        description: 'Stock management and inventory control',
+        title: 'BitRide',
+        description: 'Your ride, your way, 24/7, 365.',
+      };
+    }
+    if (hostname.includes('work')) {
+      return {
+        title: 'BitWork',
+        description: 'Your employment is our mission.',
       };
     }
     if (hostname.includes('cash')) {
       return {
         title: 'BitCash',
-        description: 'Payment processing, international remittance and instant transfers',
+        description: 'Payment processing, international remittance and instant transfers.',
       };
     }
     return {
       title: 'BitDash',
-      description: 'Smart solutions, tailored for startups.',
+      description: 'Growing together, bit by bit.',
     };
   };
 
