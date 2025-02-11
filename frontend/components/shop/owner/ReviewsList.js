@@ -1,5 +1,5 @@
 // components/shop/owner/ReviewsList.js
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   VStack,

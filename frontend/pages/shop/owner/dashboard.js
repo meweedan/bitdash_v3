@@ -77,6 +77,7 @@ import ReviewsList from '@/components/shop/owner/ReviewsList';
 import SalesChart from '@/components/shop/owner/SalesChart';
 import TopProductsChart from '@/components/shop/owner/TopProductsChart';
 import WelcomeModal from '@/components/shop/owner/WelcomeModal';
+import ThemeEditor from '@/components/shop/owner/ThemeEditor';
 
 const MotionStat = motion(Stat);
 
@@ -88,6 +89,24 @@ const ShopOwnerDashboard = () => {
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+  const [theme, setTheme] = useState({
+    colors: {
+      primary: '#3182ce',
+      secondary: '#f7fafc',
+      text: '#2d3748'
+    },
+    layout: 'grid',
+    coverHeight: '315px',
+    logoSize: '160px',
+    showLocation: true,
+    showRatings: true,
+    enableSearch: false,
+    customCss: ''
+  });
+
+  const handleThemeChange = (newTheme) => {
+    setTheme(newTheme);
+  };
 
     useEffect(() => {
     const isNewShop = localStorage.getItem('isNewShop');
@@ -222,7 +241,7 @@ const ShopOwnerDashboard = () => {
   return (
     <Layout>
       <Head>
-        <title>{shop.shopName} - Dashboard | BitShop</title>
+        <title>{shop.shopName} Dashboard</title>
       </Head>
 
       {/* Welcome Modal */}
@@ -276,6 +295,13 @@ const ShopOwnerDashboard = () => {
                   />
                 </Box>
               </Box>
+
+              <ThemeEditor 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)}
+                theme={theme}
+                onSave={handleThemeChange}
+              />
 
               <VStack align="start" flex={1} spacing={2}>
                 <HStack>

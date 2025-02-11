@@ -28,7 +28,8 @@
     "shop_owner": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::shop-owner.shop-owner"
+      "target": "api::shop-owner.shop-owner",
+      "inversedBy": "shop_items"
     },
     "category": {
       "type": "string",
