@@ -198,27 +198,42 @@ const ShopOwnerSignup = () => {
 
     setLoading(true);
     try {
-      // Step 1: Create user account with shop owner role
-      setProgress(20);
-      const userRes = await fetch(`${API_URL}/api/auth/local/register`, {
+        // Step 1: Create user with default authenticated role
+        setProgress(20);
+        const userRes = await fetch(`${API_URL}/api/auth/local/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          username: formData.username,
-          email: formData.email,
-          password: formData.password,
-          role: 12, // Shop Owner role ID
-          confirmed: true
+            username: formData.username,
+            email: formData.email,
+            password: formData.password,
+            confirmed: true
         })
-      });
+        });
 
-      if (!userRes.ok) {
+        if (!userRes.ok) {
         const error = await userRes.json();
         throw new Error(error.error?.message || 'Registration failed');
-      }
+        }
 
-      const { jwt, user } = await userRes.json();
-      console.log('Created user:', user);
+        const { jwt, user } = await userRes.json();
+        console.log('Created user:', user);
+
+        // Step 2: Update user role to Shop Owner (ID 12)
+        const updateRoleRes = await fetch(`${API_URL}/api/users/${user.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwt}`
+        },
+        body: JSON.stringify({
+            role: 12
+        })
+        });
+
+        if (!updateRoleRes.ok) {
+        throw new Error('Failed to update user role');
+        }
 
       // Step 2: Upload media files
       setProgress(40);

@@ -1,4 +1,4 @@
-// pages/shop/[shopName].js
+import React from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -12,48 +12,32 @@ import {
   Image,
   Button,
   Badge,
-  useColorModeValue,
   Flex,
   Icon,
   Card,
   CardBody,
   Spinner,
-  Select,
-  Grid,
-  GridItem
+  useColorModeValue
 } from '@chakra-ui/react';
 import { FiStar, FiShoppingBag } from 'react-icons/fi';
 import Head from 'next/head';
-import ThemeEditor from '@/components/shop/owner/ThemeEditor';
 
-// Available themes
-const themes = {
-  default: {
-    coverHeight: "315px",
-    logoSize: "160px",
-    colors: {
-      primary: "blue.500",
-      secondary: "gray.100",
-      text: "gray.800"
-    }
+// Default theme configuration
+const DEFAULT_THEME = {
+  name: 'default',
+  colors: {
+    primary: 'blue.500',
+    secondary: 'gray.100',
+    text: 'gray.800'
   },
-  minimal: {
-    coverHeight: "200px",
-    logoSize: "120px",
-    colors: {
-      primary: "black",
-      secondary: "white",
-      text: "black"
-    }
-  },
-  modern: {
-    coverHeight: "400px",
-    logoSize: "180px",
-    colors: {
-      primary: "purple.500",
-      secondary: "gray.50",
-      text: "gray.900"
-    }
+  layout: 'grid',
+  coverHeight: '315px',
+  logoSize: '160px',
+  showLocation: true,
+  showRatings: true,
+  customCss: '',
+  location: {
+    showOnPublicPage: true
   }
 };
 
@@ -62,9 +46,11 @@ const ShopPage = () => {
   const { shopName } = router.query;
 
   // Fetch shop data
-  const { data: shopData, isLoading } = useQuery({
+  const { data: shopData, isLoading, error } = useQuery({
     queryKey: ['shop', shopName],
     queryFn: async () => {
+      if (!shopName) return null;
+
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-owners?` +
         `populate[logo][fields][0]=url` +
@@ -78,12 +64,14 @@ const ShopPage = () => {
           }
         }
       );
+      
       if (!response.ok) throw new Error('Shop not found');
       return response.json();
     },
     enabled: !!shopName
   });
 
+  // Handle loading state
   if (isLoading) {
     return (
       <Flex minH="100vh" justify="center" align="center">
@@ -92,29 +80,38 @@ const ShopPage = () => {
     );
   }
 
-  if (!shopData?.data?.[0]) {
+  // Handle error or no shop found
+  if (error || !shopData?.data?.[0]) {
     return (
       <Flex minH="100vh" justify="center" align="center">
-        <Text>Shop not found</Text>
+        <VStack spacing={4}>
+          <Text fontSize="2xl" color="red.500">
+            Shop Not Found
+          </Text>
+          <Button onClick={() => router.push('/')}>
+            Return to Home
+          </Button>
+        </VStack>
       </Flex>
     );
   }
 
-const shop = shopData.data[0].attributes;
-  const theme = shop.theme;
+  // Extract shop data with fallbacks
+  const shop = shopData.data[0].attributes;
+  const theme = shop.theme || DEFAULT_THEME;
 
-  // Apply custom theme
-  const styles = {
-    ...(theme.customCss && { customStyles: theme.customCss }),
-    colors: theme.colors,
-    layout: theme.layout
+  // Ensure nested objects exist
+  const location = shop.location || { 
+    address: 'N/A', 
+    city: 'N/A', 
+    showOnPublicPage: false 
   };
+  const shopItems = shop.shop_items?.data || [];
 
-
-   return (
+  return (
     <>
       <Head>
-        <title>{shop.shopName}</title>
+        <title>{shop.shopName || 'Shop'}</title>
         {theme.customCss && (
           <style>{theme.customCss}</style>
         )}
@@ -123,9 +120,9 @@ const shop = shopData.data[0].attributes;
       <Box>
         {/* Cover and Logo Section */}
         <Box 
-          bgColor={theme.colors.secondary}
+          bgColor={theme.colors?.secondary || 'gray.100'}
           position="relative"
-          h={theme.layout === 'minimal' ? '200px' : '315px'}
+          h={theme.coverHeight || '315px'}
         >
           <Image
             src={shop.coverImage?.data?.attributes?.url ?
@@ -153,7 +150,7 @@ const shop = shopData.data[0].attributes;
                 '/default-shop-logo.jpg'
               }
               alt={`${shop.shopName} logo`}
-              boxSize={theme.logoSize}
+              boxSize={theme.logoSize || '160px'}
               borderRadius="full"
               objectFit="cover"
             />
@@ -167,83 +164,156 @@ const shop = shopData.data[0].attributes;
               <VStack align="start" spacing={1}>
                 <Heading size="2xl">{shop.shopName}</Heading>
                 <Text color="gray.600" fontSize="lg">
-                  {shop.description}
+                  {shop.description || 'No description available'}
                 </Text>
                 <HStack spacing={4}>
                   <Badge colorScheme="green">
-                    {shop.verificationStatus}
+                    {shop.verificationStatus || 'Pending'}
                   </Badge>
+                  
                   {/* Location */}
-                    {theme.showLocation && shop.location.showOnPublicPage && (
-                      <Box mt={8}>
-                        <Heading size="md" mb={4}>Location</Heading>
-                        <Text>{shop.location.address}</Text>
-                        <Text>{shop.location.city}</Text>
-                      </Box>
-                    )}
-                  <HStack color="yellow.500">
-                    <Icon as={FiStar} />
-                    <Text>{shop.rating?.toFixed(1) || '0.0'}</Text>
-                  </HStack>
+                  {theme.showLocation && location.showOnPublicPage && (
+                    <Box>
+                      <Text>
+                        {location.address} {location.city ? `, ${location.city}` : ''}
+                      </Text>
+                    </Box>
+                  )}
+                  
+                  {/* Rating */}
+                  {theme.showRatings && (
+                    <HStack color="yellow.500">
+                      <Icon as={FiStar} />
+                      <Text>{shop.rating?.toFixed(1) || '0.0'}</Text>
+                    </HStack>
+                  )}
                 </HStack>
               </VStack>
             </Flex>
 
             {/* Products Grid/List */}
-          {theme.layout === 'grid' ? (
-            <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} spacing={6}>
-              {/* Product cards */}
-            </SimpleGrid>
-          ) : (
-            <VStack spacing={4}>
-              {shop.shop_items?.data?.map((product) => (
-                <Card 
-                  key={product.id}
-                  overflow="hidden"
-                  transition="transform 0.2s"
-                  _hover={{ transform: 'translateY(-4px)' }}
-                >
-                  <Box position="relative" h="300px">
-                    <Image
-                      src={product.attributes.images?.data?.[0]?.attributes?.url ?
-                        `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.attributes.images.data[0].attributes.url}` :
-                        '/placeholder-product.jpg'
-                      }
-                      alt={product.attributes.name}
-                      objectFit="cover"
-                      w="full"
-                      h="full"
-                    />
-                  </Box>
-                  <CardBody>
-                    <VStack align="start" spacing={2}>
-                      <Heading size="md">
-                        {product.attributes.name}
-                      </Heading>
-                      <Text color="gray.600">
-                        {product.attributes.description}
-                      </Text>
-                      <Text 
-                        color={theme.colors.primary} 
-                        fontWeight="bold" 
-                        fontSize="xl"
-                      >
-                        {product.attributes.price} LYD
-                      </Text>
-                      <Button
-                        leftIcon={<FiShoppingBag />}
-                        colorScheme="blue"
+            {theme.layout === 'grid' ? (
+              <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} spacing={6}>
+                {shopItems.map((product) => (
+                  <Card 
+                    key={product.id}
+                    overflow="hidden"
+                    transition="transform 0.2s"
+                    _hover={{ transform: 'translateY(-4px)' }}
+                    borderWidth="1px"
+                    borderColor="gray.200"
+                  >
+                    <Box position="relative" h="300px">
+                      <Image
+                        src={product.attributes.images?.data?.[0]?.attributes?.url ?
+                          `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.attributes.images.data[0].attributes.url}` :
+                          '/placeholder-product.jpg'
+                        }
+                        alt={product.attributes.name}
+                        objectFit="cover"
                         w="full"
-                        isDisabled={product.attributes.stock <= 0}
-                      >
-                        {product.attributes.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
-                      </Button>
-                    </VStack>
-                  </CardBody>
-                </Card>
-              ))}
-            </VStack>
-          )}
+                        h="full"
+                      />
+                    </Box>
+                    <CardBody>
+                      <VStack align="start" spacing={2}>
+                        <Heading size="md">
+                          {product.attributes.name}
+                        </Heading>
+                        <Text color="gray.600" noOfLines={2}>
+                          {product.attributes.description}
+                        </Text>
+                        <Text 
+                          color={theme.colors?.primary || 'blue.500'}
+                          fontWeight="bold" 
+                          fontSize="xl"
+                        >
+                          {product.attributes.price} LYD
+                        </Text>
+                        <Button
+                          leftIcon={<FiShoppingBag />}
+                          colorScheme="blue"
+                          w="full"
+                          isDisabled={
+                            product.attributes.stock <= 0 || 
+                            product.attributes.status === 'out_of_stock'
+                          }
+                        >
+                          {product.attributes.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
+                        </Button>
+                      </VStack>
+                    </CardBody>
+                  </Card>
+                ))}
+              </SimpleGrid>
+            ) : (
+              <VStack spacing={4} w="full">
+                {shopItems.map((product) => (
+                  <Card 
+                    key={product.id}
+                    w="full"
+                    overflow="hidden"
+                    transition="transform 0.2s"
+                    _hover={{ transform: 'translateY(-4px)' }}
+                    borderWidth="1px"
+                    borderColor="gray.200"
+                    flexDirection={{ base: 'column', md: 'row' }}
+                  >
+                    <Box position="relative" h="300px" w={{ base: 'full', md: '300px' }}>
+                      <Image
+                        src={product.attributes.images?.data?.[0]?.attributes?.url ?
+                          `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.attributes.images.data[0].attributes.url}` :
+                          '/placeholder-product.jpg'
+                        }
+                        alt={product.attributes.name}
+                        objectFit="cover"
+                        w="full"
+                        h="full"
+                      />
+                    </Box>
+                    <CardBody flex="1">
+                      <VStack align="start" spacing={2}>
+                        <Heading size="md">
+                          {product.attributes.name}
+                        </Heading>
+                        <Text color="gray.600" noOfLines={3}>
+                          {product.attributes.description}
+                        </Text>
+                        <Text 
+                          color={theme.colors?.primary || 'blue.500'}
+                          fontWeight="bold" 
+                          fontSize="xl"
+                        >
+                          {product.attributes.price} LYD
+                        </Text>
+                        <Button
+                          leftIcon={<FiShoppingBag />}
+                          colorScheme="blue"
+                          w="full"
+                          isDisabled={
+                            product.attributes.stock <= 0 || 
+                            product.attributes.status === 'out_of_stock'
+                          }
+                        >
+                          {product.attributes.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
+                        </Button>
+                      </VStack>
+                    </CardBody>
+                  </Card>
+                ))}
+              </VStack>
+            )}
+
+            {/* No Products Message */}
+            {shopItems.length === 0 && (
+              <Flex w="full" justify="center" py={10}>
+                <VStack spacing={4}>
+                  <Text fontSize="xl" color="gray.500">
+                    No products available in this shop
+                  </Text>
+                </VStack>
+              </Flex>
+            )}
           </VStack>
         </Container>
       </Box>

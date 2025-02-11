@@ -81,7 +81,7 @@ const BUSINESS_TYPE_ROUTES = {
   agent: { platform: 'cash', userType: 'agent' },
   employer: { platform: 'work', userType: 'employer' },
   employee: { platform: 'work', userType: 'employee' },
-  shopOwner: { platform: 'shop', userType: 'owner' },
+  'shop-owner': { platform: 'shop', userType: 'owner' },
   client: { platform: 'food', userType: 'customer' },
   customer: { platform: 'cash', userType: 'client' },
   clientShop: { platform: 'shop', userType: 'customer' },
