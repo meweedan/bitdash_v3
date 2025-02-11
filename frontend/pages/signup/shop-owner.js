@@ -17,17 +17,19 @@ import {
   Badge,
   InputGroup,
   InputRightElement,
+  SimpleGrid,
   useColorModeValue,
   Progress,
   FormErrorMessage,
   Textarea,
   IconButton,
   Stack,
-  AspectRatio,
-  Image,
+  Select,
 } from '@chakra-ui/react';
 import { FiEye, FiEyeOff, FiUpload, FiX } from 'react-icons/fi';
 import Layout from '@/components/Layout';
+
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const ShopOwnerSignup = () => {
   const router = useRouter();
@@ -35,7 +37,6 @@ const ShopOwnerSignup = () => {
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
-  const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
     // User Auth Data
@@ -44,11 +45,31 @@ const ShopOwnerSignup = () => {
     password: '',
     confirmPassword: '',
 
-    // Shop Owner Data
+    // Business Info
+    businessName: '',
+    registrationNumber: '',
+    taxId: '',
+    phone: '',
+    address: '',
+    city: '',
+    businessType: 'retail', // retail, wholesale, manufacturer
+    monthlyVolume: 0,
+
+    // Shop Info
     shopName: '',
     description: '',
-    verificationStatus: 'pending',
     categories: [],
+    operatingHours: {
+      open: '09:00',
+      close: '21:00'
+    },
+
+    // Contact Info
+    contact: {
+      name: '',
+      phone: '',
+      email: ''
+    },
 
     // File uploads
     logo: null,
@@ -60,16 +81,21 @@ const ShopOwnerSignup = () => {
   const borderColor = useColorModeValue('gray.200', 'gray.700');
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    // Clear error when field is changed
-    if (errors[name]) {
-      setErrors(prev => ({
+    const { name, value, type } = e.target;
+    
+    if (name.includes('.')) {
+      const [parent, child] = name.split('.');
+      setFormData(prev => ({
         ...prev,
-        [name]: ''
+        [parent]: {
+          ...prev[parent],
+          [child]: type === 'number' ? parseFloat(value) : value
+        }
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: type === 'number' ? parseFloat(value) : value
       }));
     }
   };
@@ -103,21 +129,15 @@ const ShopOwnerSignup = () => {
     const newErrors = {};
 
     // User validation
-    if (!formData.username) {
-      newErrors.username = 'Username is required';
-    } else if (formData.username.length < 3) {
-      newErrors.username = 'Username must be at least 3 characters';
-    }
-
-    if (!formData.email) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    if (!formData.email || !formData.email.includes('@')) {
       newErrors.email = 'Invalid email address';
     }
 
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-    } else if (formData.password.length < 6) {
+    if (!formData.username || formData.username.length < 3) {
+      newErrors.username = 'Username must be at least 3 characters';
+    }
+
+    if (!formData.password || formData.password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters';
     }
 
@@ -125,17 +145,36 @@ const ShopOwnerSignup = () => {
       newErrors.confirmPassword = 'Passwords do not match';
     }
 
-    // Shop validation
-    if (!formData.shopName) {
-      newErrors.shopName = 'Shop name is required';
+    // Business validation
+    const requiredFields = [
+      'businessName',
+      'registrationNumber',
+      'taxId',
+      'phone',
+      'address',
+      'shopName',
+      'description'
+    ];
+
+    requiredFields.forEach(field => {
+      if (!formData[field]) {
+        newErrors[field] = `${field.replace(/([A-Z])/g, ' $1').toLowerCase()} is required`;
+      }
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      Object.entries(newErrors).forEach(([field, message]) => {
+        toast({
+          title: 'Validation Error',
+          description: message,
+          status: 'error',
+          duration: 3000
+        });
+      });
+      return false;
     }
 
-    if (!formData.description) {
-      newErrors.description = 'Description is required';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return true;
   };
 
   const handleSubmit = async (e) => {
@@ -144,30 +183,27 @@ const ShopOwnerSignup = () => {
 
     setLoading(true);
     try {
-      // Step 1: Create user account
+      // Step 1: Create user account with shop owner role
       setProgress(20);
-      const userData = {
-        username: formData.username,
-        email: formData.email,
-        password: formData.password,
-        provider: 'local',
-        confirmed: true, // Auto-confirm for now
-        blocked: false,
-        role: 3 // Assuming 3 is the shop owner role ID
-      };
-
-      const registerRes = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/local/register`, {
+      const userRes = await fetch(`${API_URL}/api/auth/local/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userData)
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+          role: 12, // Shop Owner role ID
+          confirmed: true
+        })
       });
 
-      if (!registerRes.ok) {
-        const error = await registerRes.json();
+      if (!userRes.ok) {
+        const error = await userRes.json();
         throw new Error(error.error?.message || 'Registration failed');
       }
 
-      const { jwt, user } = await registerRes.json();
+      const { jwt, user } = await userRes.json();
+      console.log('Created user:', user);
 
       // Step 2: Upload media files
       setProgress(40);
@@ -176,7 +212,7 @@ const ShopOwnerSignup = () => {
         const formData = new FormData();
         formData.append('files', file);
         
-        const uploadRes = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/upload`, {
+        const uploadRes = await fetch(`${API_URL}/api/upload`, {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${jwt}`,
@@ -184,36 +220,80 @@ const ShopOwnerSignup = () => {
           body: formData,
         });
         
-        if (!uploadRes.ok) throw new Error(`Failed to upload ${field}`);
+        if (!uploadRes.ok) {
+          console.error(`Failed to upload ${field}:`, await uploadRes.json());
+          throw new Error(`Failed to upload ${field}`);
+        }
         const uploadData = await uploadRes.json();
         return uploadData[0].id;
       };
 
-      const logoId = await uploadFile(formData.logo, 'logo');
-      const coverId = await uploadFile(formData.coverImage, 'coverImage');
-      
-      // Upload business documents
-      const documentIds = await Promise.all(
-        formData.businessDocuments.map(doc => uploadFile(doc, 'businessDocuments'))
-      );
+      const [logoId, coverId, ...documentIds] = await Promise.all([
+        uploadFile(formData.logo, 'logo'),
+        uploadFile(formData.coverImage, 'coverImage'),
+        ...formData.businessDocuments.map(doc => uploadFile(doc, 'businessDocuments'))
+      ].filter(Boolean));
 
-      // Step 3: Create shop owner profile
-      setProgress(70);
+      // Step 3: Create wallet
+      setProgress(60);
+      const walletData = {
+        data: {
+          balance: 0,
+          currency: 'LYD',
+          isActive: true,
+          walletId: `SW${Date.now()}${Math.random().toString(36).substr(2, 4)}`.toUpperCase(),
+          dailyLimit: 10000,
+          monthlyLimit: 200000,
+          lastActivity: new Date().toISOString()
+        }
+      };
+
+      console.log('Creating wallet:', walletData);
+      const walletRes = await fetch(`${API_URL}/api/wallets`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${jwt}`
+        },
+        body: JSON.stringify(walletData)
+      });
+
+      if (!walletRes.ok) {
+        console.error('Wallet creation error:', await walletRes.json());
+        throw new Error('Failed to create wallet');
+      }
+      const wallet = await walletRes.json();
+
+      // Step 4: Create shop owner profile
+      setProgress(80);
       const shopOwnerData = {
         data: {
           user: user.id,
           shopName: formData.shopName,
           description: formData.description,
+          businessName: formData.businessName,
+          registrationNumber: formData.registrationNumber,
+          taxId: formData.taxId,
+          phone: formData.phone,
+          address: formData.address,
+          city: formData.city,
+          businessType: formData.businessType,
+          operatingHours: formData.operatingHours,
+          contact: formData.contact,
           verificationStatus: 'pending',
           categories: [],
           rating: 0,
           logo: logoId,
           coverImage: coverId,
-          businessDocuments: documentIds
+          businessDocuments: documentIds,
+          wallet: wallet.data.id,
+          monthlyVolume: formData.monthlyVolume,
+          publishedAt: new Date().toISOString()
         }
       };
 
-      const shopOwnerRes = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-owners`, {
+      console.log('Creating shop owner:', JSON.stringify(shopOwnerData, null, 2));
+      const shopOwnerRes = await fetch(`${API_URL}/api/shop-owners`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -223,22 +303,60 @@ const ShopOwnerSignup = () => {
       });
 
       if (!shopOwnerRes.ok) {
+        const errorData = await shopOwnerRes.json();
+        console.error('Shop owner creation error:', errorData);
         throw new Error('Failed to create shop owner profile');
       }
 
+      const shopOwner = await shopOwnerRes.json();
+
+      // Step 5: Update relationships
+      setProgress(90);
+      await Promise.all([
+        // Update user with shop owner reference
+        fetch(`${API_URL}/api/users/${user.id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwt}`
+          },
+          body: JSON.stringify({
+            shop_owner: shopOwner.data.id
+          })
+        }),
+
+        // Update wallet with shop owner reference
+        fetch(`${API_URL}/api/wallets/${wallet.data.id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwt}`
+          },
+          body: JSON.stringify({
+            data: {
+              shop_owner: shopOwner.data.id
+            }
+          })
+        })
+      ]);
+
       setProgress(100);
       localStorage.setItem('token', jwt);
-      localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('isNewShop', 'true'); // Flag for showing welcome modal
+      localStorage.setItem('user', JSON.stringify({
+        ...user,
+        role: { id: 12, type: 'shop_owner' }
+      }));
+      localStorage.setItem('isNewShop', 'true');
 
       toast({
         title: 'Success!',
-        description: 'Your shop has been created successfully.',
+        description: 'Your shop has been created successfully',
         status: 'success',
         duration: 5000
       });
 
       router.push('/shop/owner/dashboard');
+
     } catch (error) {
       console.error('Signup error:', error);
       toast({
@@ -292,18 +410,17 @@ const ShopOwnerSignup = () => {
                 {/* Account Credentials */}
                 <Box w="full">
                   <Heading size="md" mb={4}>Account Credentials</Heading>
-                  <VStack spacing={4}>
-                    <FormControl isRequired isInvalid={!!errors.username}>
+                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                    <FormControl isRequired>
                       <FormLabel>Username</FormLabel>
                       <Input
                         name="username"
                         value={formData.username}
                         onChange={handleChange}
                       />
-                      <FormErrorMessage>{errors.username}</FormErrorMessage>
                     </FormControl>
 
-                    <FormControl isRequired isInvalid={!!errors.email}>
+                    <FormControl isRequired>
                       <FormLabel>Email Address</FormLabel>
                       <Input
                         name="email"
@@ -311,10 +428,9 @@ const ShopOwnerSignup = () => {
                         value={formData.email}
                         onChange={handleChange}
                       />
-                      <FormErrorMessage>{errors.email}</FormErrorMessage>
                     </FormControl>
 
-                    <FormControl isRequired isInvalid={!!errors.password}>
+                    <FormControl isRequired>
                       <FormLabel>Password</FormLabel>
                       <InputGroup>
                         <Input
@@ -331,10 +447,9 @@ const ShopOwnerSignup = () => {
                           />
                         </InputRightElement>
                       </InputGroup>
-                      <FormErrorMessage>{errors.password}</FormErrorMessage>
                     </FormControl>
 
-                    <FormControl isRequired isInvalid={!!errors.confirmPassword}>
+                    <FormControl isRequired>
                       <FormLabel>Confirm Password</FormLabel>
                       <Input
                         name="confirmPassword"
@@ -342,28 +457,111 @@ const ShopOwnerSignup = () => {
                         value={formData.confirmPassword}
                         onChange={handleChange}
                       />
-                      <FormErrorMessage>{errors.confirmPassword}</FormErrorMessage>
                     </FormControl>
-                  </VStack>
+                  </SimpleGrid>
                 </Box>
 
                 <Divider />
 
-                {/* Shop Information */}
+                {/* Business Information */}
                 <Box w="full">
-                  <Heading size="md" mb={4}>Shop Information</Heading>
-                  <VStack spacing={4}>
-                    <FormControl isRequired isInvalid={!!errors.shopName}>
+                  <Heading size="md" mb={4}>Business Information</Heading>
+                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                    <FormControl isRequired>
+                      <FormLabel>Business Name</FormLabel>
+                      <Input
+                        name="businessName"
+                        value={formData.businessName}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+
+                    <FormControl isRequired>
                       <FormLabel>Shop Name</FormLabel>
                       <Input
                         name="shopName"
                         value={formData.shopName}
                         onChange={handleChange}
                       />
-                      <FormErrorMessage>{errors.shopName}</FormErrorMessage>
                     </FormControl>
 
-                    <FormControl isRequired isInvalid={!!errors.description}>
+                    <FormControl isRequired>
+                      <FormLabel>Registration Number</FormLabel>
+                      <Input
+                        name="registrationNumber"
+                        value={formData.registrationNumber}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+
+                    <FormControl isRequired>
+                      <FormLabel>Tax ID</FormLabel>
+                      <Input
+                        name="taxId"
+                        value={formData.taxId}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+
+                    <FormControl isRequired>
+                      <FormLabel>Business Type</FormLabel>
+                      <Select
+                        name="businessType"
+                        value={formData.businessType}
+                        onChange={handleChange}
+                      >
+                        <option value="retail">Retail</option>
+                        <option value="wholesale">Wholesale</option>
+                        <option value="manufacturer">Manufacturer</option>
+                      </Select>
+                    </FormControl>
+
+                    <FormControl isRequired>
+                      <FormLabel>Monthly Volume</FormLabel>
+                      <Input
+                        name="monthlyVolume"
+                        type="number"
+                        value={formData.monthlyVolume}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+
+                    <FormControl isRequired>
+                      <FormLabel>Phone</FormLabel>
+                      <Input
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+
+                    <FormControl isRequired>
+                      <FormLabel>Address</FormLabel>
+                      <Input
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+
+                    <FormControl isRequired>
+                      <FormLabel>City</FormLabel>
+                      <Input
+                        name="city"
+                        value={formData.city}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+                  </SimpleGrid>
+                </Box>
+
+                <Divider />
+
+                {/* Shop Details */}
+                <Box w="full">
+                  <Heading size="md" mb={4}>Shop Details</Heading>
+                  <VStack spacing={4}>
+                    <FormControl isRequired>
                       <FormLabel>Description</FormLabel>
                       <Textarea
                         name="description"
@@ -371,9 +569,74 @@ const ShopOwnerSignup = () => {
                         onChange={handleChange}
                         rows={4}
                       />
-                      <FormErrorMessage>{errors.description}</FormErrorMessage>
                     </FormControl>
 
+                    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4} w="full">
+                      <FormControl>
+                        <FormLabel>Opening Time</FormLabel>
+                        <Input
+                          name="operatingHours.open"
+                          type="time"
+                          value={formData.operatingHours.open}
+                          onChange={handleChange}
+                        />
+                      </FormControl>
+
+                      <FormControl>
+                        <FormLabel>Closing Time</FormLabel>
+                        <Input
+                          name="operatingHours.close"
+                          type="time"
+                          value={formData.operatingHours.close}
+                          onChange={handleChange}
+                        />
+                      </FormControl>
+                    </SimpleGrid>
+                  </VStack>
+                </Box>
+
+                <Divider />
+
+                {/* Contact Information */}
+                <Box w="full">
+                  <Heading size="md" mb={4}>Contact Information</Heading>
+                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                    <FormControl isRequired>
+                      <FormLabel>Contact Name</FormLabel>
+                      <Input
+                        name="contact.name"
+                        value={formData.contact.name}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+
+                    <FormControl isRequired>
+                      <FormLabel>Contact Phone</FormLabel>
+                      <Input
+                        name="contact.phone"
+                        value={formData.contact.phone}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+
+                    <FormControl isRequired>
+                      <FormLabel>Contact Email</FormLabel>
+                      <Input
+                        name="contact.email"
+                        type="email"
+                        value={formData.contact.email}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+                  </SimpleGrid>
+                </Box>
+
+                <Divider />
+
+                {/* Media Upload */}
+                <Box w="full">
+                  <Heading size="md" mb={4}>Shop Media</Heading>
+                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
                     <FormControl>
                       <FormLabel>Shop Logo</FormLabel>
                       <Input
@@ -424,7 +687,7 @@ const ShopOwnerSignup = () => {
                       )}
                     </FormControl>
 
-                    <FormControl>
+                    <FormControl gridColumn="1 / -1">
                       <FormLabel>Business Documents</FormLabel>
                       <Input
                         type="file"
@@ -467,7 +730,7 @@ const ShopOwnerSignup = () => {
                         </VStack>
                       )}
                     </FormControl>
-                  </VStack>
+                  </SimpleGrid>
                 </Box>
 
                 <Button
@@ -498,6 +761,6 @@ const ShopOwnerSignup = () => {
       </Container>
     </Layout>
   );
-};
+  };
 
-export default ShopOwnerSignup; 
+  export default ShopOwnerSignup;
