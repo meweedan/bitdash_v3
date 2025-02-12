@@ -22,17 +22,16 @@ import {
 } from '@chakra-ui/react';
 import { FiUser, FiLock, FiDollarSign } from 'react-icons/fi';
 
-export const PaymentConfirmationModal = ({
+const PaymentConfirmationModal = ({
   isOpen,
   onClose,
   customerBalance,
   totalAmount,
   shopName,
   onConfirmPayment,
-  isProcessing
+  isProcessing,
 }) => {
-  const [pin, setPin] = React.useState('');
-  const theme = useShopTheme();
+  const [pin, setPin] = useState('');
 
   return (
     <Modal 
@@ -42,68 +41,41 @@ export const PaymentConfirmationModal = ({
       isCentered
     >
       <ModalOverlay backdropFilter="blur(10px)" />
-      <ModalContent 
-        bg={theme.colors.background}
-        color={theme.colors.text}
-        borderRadius={theme.customization.borderRadius}
-      >
-        <ModalHeader 
-          borderBottomWidth="1px" 
-          borderColor={useColorModeValue('gray.200', 'gray.600')}
-        >
-          Confirm Payment
-        </ModalHeader>
+      <ModalContent>
+        <ModalHeader>Confirm Payment</ModalHeader>
         <ModalBody>
           <VStack spacing={6} align="stretch">
-            {/* Payment Details Section */}
-            <VStack align="start" spacing={4}>
-              <HStack w="full" justify="space-between">
-                <Text color="gray.500">Paying to</Text>
-                <Text fontWeight="bold" color={theme.colors.primary}>
-                  {shopName}
-                </Text>
-              </HStack>
-              
-              {/* Balance Display */}
-              <HStack 
-                w="full" 
-                justify="space-between" 
-                p={4} 
-                bg={useColorModeValue('gray.50', 'gray.700')} 
-                borderRadius={theme.customization.borderRadius}
-              >
-                <HStack>
-                  <Icon as={FiUser} color={theme.colors.primary} />
-                  <Text>Your Balance</Text>
-                </HStack>
-                <Text fontWeight="bold">
-                  {customerBalance?.toLocaleString()} LYD
-                </Text>
-              </HStack>
-
-              {/* Payment Amount */}
-              <HStack 
-                w="full" 
-                justify="space-between" 
-                p={4} 
-                bg={useColorModeValue(`${theme.colors.primary}50`, `${theme.colors.primary}900`)} 
-                borderRadius={theme.customization.borderRadius}
-              >
-                <HStack>
-                  <Icon as={FiDollarSign} color={theme.colors.primary} />
-                  <Text>Amount to Pay</Text>
-                </HStack>
-                <Text fontWeight="bold" color={theme.colors.primary}>
-                  {totalAmount?.toLocaleString()} LYD
-                </Text>
-              </HStack>
+            <VStack align="start" spacing={2}>
+              <Text color="gray.500">Paying to</Text>
+              <Text fontSize="lg" fontWeight="bold">{shopName}</Text>
             </VStack>
 
-            {/* PIN Input */}
+            <HStack justify="space-between" p={4} bg={useColorModeValue('gray.50', 'gray.700')} borderRadius="md">
+              <HStack>
+                <Icon as={FiUser} />
+                <Text>Your Balance</Text>
+              </HStack>
+              <Text fontWeight="bold">
+                {customerBalance?.toLocaleString()} LYD
+              </Text>
+            </HStack>
+
+            <HStack justify="space-between" p={4} bg={useColorModeValue('blue.50', 'blue.900')} borderRadius="md">
+              <HStack>
+                <Icon as={FiDollarSign} />
+                <Text>Amount to Pay</Text>
+              </HStack>
+              <Text fontWeight="bold" color="blue.500">
+                {totalAmount?.toLocaleString()} LYD
+              </Text>
+            </HStack>
+
+            <Divider />
+
             <FormControl>
               <FormLabel>
                 <HStack>
-                  <Icon as={FiLock} color={theme.colors.primary} />
+                  <Icon as={FiLock} />
                   <Text>Enter Your PIN</Text>
                 </HStack>
               </FormLabel>
@@ -121,8 +93,8 @@ export const PaymentConfirmationModal = ({
                       fontSize="xl"
                       borderColor={useColorModeValue('gray.200', 'gray.600')}
                       _focus={{
-                        borderColor: theme.colors.primary,
-                        boxShadow: `0 0 0 1px ${theme.colors.primary}`
+                        borderColor: 'blue.400',
+                        boxShadow: `0 0 0 1px ${useColorModeValue('blue.400', 'blue.300')}`
                       }}
                     />
                   ))}
@@ -131,6 +103,7 @@ export const PaymentConfirmationModal = ({
             </FormControl>
           </VStack>
         </ModalBody>
+
         <ModalFooter>
           <HStack spacing={3}>
             <Button 
@@ -141,7 +114,7 @@ export const PaymentConfirmationModal = ({
               Cancel
             </Button>
             <Button
-              colorScheme={theme.colors.primary.split('.')[0]}
+              colorScheme="blue"
               onClick={() => onConfirmPayment(pin)}
               isLoading={isProcessing}
               isDisabled={pin.length !== 6 || isProcessing}
@@ -156,4 +129,4 @@ export const PaymentConfirmationModal = ({
   );
 };
 
-export default ShopThemeContext;
+export default PaymentConfirmationModal;

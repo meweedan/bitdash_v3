@@ -9,7 +9,6 @@ import '../styles/globals.css';
 import theme from '../styles/theme';
 import { CartProvider } from '@/contexts/CartContext';
 import { ShopCartProvider } from '@/contexts/ShopCartContext';
-import { ShopThemeProvider } from '@/contexts/ShopThemeContext';
 import { PaymentProvider } from '@/contexts/PaymentContext';
 import InstallPWA from '@/components/InstallPWA';
 import FlowingLines from '@/components/FlowingShawl';
@@ -45,7 +44,6 @@ function MyApp({ Component, pageProps }) {
       <ChakraProvider theme={customTheme}>
         <AuthProvider>
           <CurrencyProvider>
-            <ShopThemeProvider>
               <PaymentProvider>
                 <FlowingLines />
                 <InstallPWA />
@@ -56,7 +54,6 @@ function MyApp({ Component, pageProps }) {
                   </ShopCartProvider>
                 </CartProvider>
               </PaymentProvider>
-            </ShopThemeProvider>
           </CurrencyProvider>
         </AuthProvider>
       </ChakraProvider>

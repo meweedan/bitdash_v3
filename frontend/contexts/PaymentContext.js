@@ -26,8 +26,8 @@ import {
 } from '@chakra-ui/react';
 import { FiUser, FiLock, FiDollarSign, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 import { useRouter } from 'next/router';
-import { useShopTheme } from './ShopThemeContext';
 import { useAuth } from '@/contexts/AuthContext';
+import theme from '../styles/theme'
 
 // Create the PaymentContext
 const PaymentContext = createContext(null);
@@ -102,7 +102,6 @@ const TransactionConfirmationModal = ({
 export const PaymentProvider = ({ children }) => {
   const router = useRouter();
   const { isAuthenticated, user } = useAuth();
-  const theme = useShopTheme();
   const toast = useToast();
   const { 
     isOpen: isPaymentModalOpen, 
@@ -312,9 +311,10 @@ export const PaymentProvider = ({ children }) => {
     >
       <ModalOverlay backdropFilter="blur(10px)" />
       <ModalContent 
-        bg={theme.colors.background}
-        color={theme.colors.text}
-        borderRadius={theme.customization.borderRadius}
+        // Use Theme directly
+        bg={useColorModeValue('white', 'black')}
+        color={useColorModeValue('gray.800', 'white')}
+        borderRadius="xl"
       >
         <ModalHeader 
           borderBottomWidth="1px" 
@@ -397,29 +397,31 @@ export const PaymentProvider = ({ children }) => {
             </FormControl>
           </VStack>
         </ModalBody>
-        <ModalFooter>
-          <HStack spacing={3}>
-            <Button 
-              variant="ghost" 
-              onClick={onClosePaymentModal}
-              isDisabled={isProcessing}
-            >
-              Cancel
-            </Button>
-            <Button
-              colorScheme={theme.colors.primary.split('.')[0]}
-              onClick={handlePayment}
-              isLoading={isProcessing}
-              isDisabled={pin.length !== 6 || isProcessing}
-              loadingText="Processing..."
-            >
-              Confirm Payment
-            </Button>
-          </HStack>
-        </ModalFooter>
+         <ModalFooter>
+        <HStack spacing={3}>
+          <Button 
+            variant="ghost" 
+            onClick={onClosePaymentModal}
+            isDisabled={isProcessing}
+          >
+            Cancel
+          </Button>
+          <Button
+            // Use a direct color scheme from your theme
+            colorScheme="bitshop"
+            onClick={handlePayment}
+            isLoading={isProcessing}
+            isDisabled={pin.length !== 6 || isProcessing}
+            loadingText="Processing..."
+          >
+            Confirm Payment
+          </Button>
+        </HStack>
+      </ModalFooter>
       </ModalContent>
     </Modal>
   );
+
 
   return (
     <PaymentContext.Provider 
