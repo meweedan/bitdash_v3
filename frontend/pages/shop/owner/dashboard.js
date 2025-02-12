@@ -290,7 +290,15 @@ const ShopOwnerDashboard = () => {
                   </HStack>
                 </HStack>
               </VStack>
-
+            <HStack>
+              <Button
+                leftIcon={<FiEdit />}
+                colorScheme="purple"
+                variant="outline"
+                onClick={onThemeOpen}
+              >
+                Edit Theme
+              </Button>
               <Button
                 leftIcon={<FiPlus />}
                 colorScheme="blue"
@@ -298,9 +306,10 @@ const ShopOwnerDashboard = () => {
               >
                 Add Product
               </Button>
-            </Flex>
-          </CardBody>
-        </Card>
+            </HStack>
+          </Flex>
+        </CardBody>
+      </Card>
 
         {/* Stats Grid */}
         <SimpleGrid columns={{ base: 1, md: 4 }} spacing={6} mb={6}>
