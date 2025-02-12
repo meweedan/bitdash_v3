@@ -1,4 +1,3 @@
-// components/shop/owner/ProductsList.js
 import React, { useState } from 'react';
 import {
   Table,
@@ -21,18 +20,14 @@ import {
   Text,
   VStack,
   useColorModeValue,
-  Button,
   Flex,
-  Tooltip
 } from '@chakra-ui/react';
 import {
   FiMoreVertical,
   FiEdit2,
   FiTrash2,
   FiEye,
-  FiSearch,
   FiArchive,
-  FiFilter
 } from 'react-icons/fi';
 
 const ProductsList = ({ products = [], onEdit, onDelete }) => {
@@ -40,15 +35,14 @@ const ProductsList = ({ products = [], onEdit, onDelete }) => {
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
   const tableBg = useColorModeValue('white', 'gray.800');
-  const borderColor = useColorModeValue('gray.200', 'gray.700');
-
-  // Get unique categories from products, handling possible undefined values
+  
+  // Get unique categories from products
   const categories = [...new Set(products
     .filter(product => product?.attributes?.category)
     .map(product => product.attributes.category)
   )];
 
-  // Filter products based on search and filters, with better error handling
+  // Filter products based on search and filters
   const filteredProducts = products.filter(product => {
     if (!product?.attributes) return false;
     
@@ -64,7 +58,7 @@ const ProductsList = ({ products = [], onEdit, onDelete }) => {
     return matchesSearch && matchesCategory && matchesStatus;
   });
 
-  // Enhanced stock badge logic
+  // Stock badge logic
   const getStockBadge = (stock) => {
     const stockNum = parseInt(stock);
     if (isNaN(stockNum) || stockNum <= 0) return <Badge colorScheme="red">Out of Stock</Badge>;
@@ -72,7 +66,7 @@ const ProductsList = ({ products = [], onEdit, onDelete }) => {
     return <Badge colorScheme="green">In Stock ({stockNum})</Badge>;
   };
 
-  // Price formatter
+  // Format price
   const formatPrice = (price) => {
     const num = parseFloat(price);
     return isNaN(num) ? '0.00' : num.toFixed(2);
@@ -92,7 +86,7 @@ const ProductsList = ({ products = [], onEdit, onDelete }) => {
   return (
     <VStack spacing={4} align="stretch">
       {/* Filters */}
-       <Flex 
+      <Flex 
         gap={4} 
         direction={{ base: 'column', md: 'row' }}
         bg={tableBg}
@@ -162,12 +156,9 @@ const ProductsList = ({ products = [], onEdit, onDelete }) => {
                       <Image
                         src={getImageUrl(product)}
                         alt={product.attributes.name}
-                        position="absolute"
-                        top={0}
-                        left={0}
-                        width="100%"
-                        height="100%"
                         objectFit="cover"
+                        w="full"
+                        h="full"
                       />
                     </Box>
                     <VStack align="start" spacing={0}>
@@ -219,14 +210,8 @@ const ProductsList = ({ products = [], onEdit, onDelete }) => {
                     />
                     <MenuList>
                       <MenuItem
-                        icon={<FiEye />}
-                        onClick={() => window.open(`/shop/products/${product.id}`, '_blank')}
-                      >
-                        View Product
-                      </MenuItem>
-                      <MenuItem
                         icon={<FiEdit2 />}
-                        onClick={() => onEdit(product.id)}
+                        onClick={() => onEdit(product)}
                       >
                         Edit Product
                       </MenuItem>

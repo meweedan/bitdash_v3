@@ -1,4 +1,3 @@
-// pages/shop/owner/dashboard.js
 import React, { useState, useMemo, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -29,17 +28,9 @@ import {
   IconButton,
   Menu,
   MenuButton,
-  Alert,
   MenuList,
   MenuItem,
   useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  Progress,
   Card,
   CardBody,
 } from '@chakra-ui/react';
@@ -51,7 +42,6 @@ import {
   FiDollarSign,
   FiStar,
   FiTrendingUp,
-  FiTrendingDown,
   FiGrid,
   FiList,
   FiSettings,
@@ -59,65 +49,39 @@ import {
   FiMoreVertical,
   FiEdit,
   FiTrash2,
-  FiEye,
   FiAlertCircle,
 } from 'react-icons/fi';
 
-import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
 import Layout from '@/components/Layout';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 
-// Custom components
+// Import your existing components
 import ProductsList from '@/components/shop/owner/ProductsList';
+import ProductEditModal from '@/components/shop/owner/ProductEditModal';
 import AddProductModal from '@/components/shop/owner/AddProductModal';
 import OrdersList from '@/components/shop/owner/OrdersList';
 import ReviewsList from '@/components/shop/owner/ReviewsList';
 import SalesChart from '@/components/shop/owner/SalesChart';
 import TopProductsChart from '@/components/shop/owner/TopProductsChart';
-import WelcomeModal from '@/components/shop/owner/WelcomeModal';
 import ThemeEditor from '@/components/shop/owner/ThemeEditor';
 
 const MotionStat = motion(Stat);
 
 const ShopOwnerDashboard = () => {
-  const router = useRouter();
   const { user } = useAuth();
   const toast = useToast();
   const { isOpen: isAddProductOpen, onOpen: onAddProductOpen, onClose: onAddProductClose } = useDisclosure();
+  const { isOpen: isEditProductOpen, onOpen: onEditProductOpen, onClose: onEditProductClose } = useDisclosure();
+  const { isOpen: isThemeOpen, onOpen: onThemeOpen, onClose: onThemeClose } = useDisclosure();
+  
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
-  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [theme, setTheme] = useState({
-    colors: {
-      primary: '#3182ce',
-      secondary: '#f7fafc',
-      text: '#2d3748'
-    },
-    layout: 'grid',
-    coverHeight: '315px',
-    logoSize: '160px',
-    showLocation: true,
-    showRatings: true,
-    enableSearch: false,
-    customCss: ''
-  });
 
-  const handleThemeChange = (newTheme) => {
-    setTheme(newTheme);
-  };
-
-    useEffect(() => {
-    const isNewShop = localStorage.getItem('isNewShop');
-    if (isNewShop) {
-      setShowWelcomeModal(true);
-      localStorage.removeItem('isNewShop');
-    }
-  }, []); // Empty dependency array since we only want this to run once
-
-  // Fetch shop owner data
+  // Fetch shop owner data with proper API structure
   const { 
     data: shopData,
     isLoading: isShopLoading,
@@ -132,12 +96,8 @@ const ShopOwnerDashboard = () => {
         `&populate[coverImage][fields][0]=url` +
         `&populate[wallet][fields][0]=balance` +
         `&populate[shop_items][populate][images]=*` +
-        `&populate[shop_items][fields][0]=name` +
-        `&populate[shop_items][fields][1]=price` +
-        `&populate[shop_items][fields][2]=stock` +
-        `&populate[shop_items][fields][3]=category` +
-        `&populate[shop_items][fields][4]=status` +
-        `&populate[shop_items][fields][5]=rating` +
+        `&populate[shop_items][populate][reviews]=*` +
+        `&populate[orders][populate][items]=*` +
         `&filters[user][id][$eq]=${user.id}`,
         {
           headers: {
@@ -151,33 +111,12 @@ const ShopOwnerDashboard = () => {
     enabled: !!user?.id
   });
 
-  // Fetch orders
-  const {
-    data: ordersData,
-    isLoading: isOrdersLoading
-  } = useQuery({
-    queryKey: ['shopOrders', shopData?.data?.[0]?.id],
-    queryFn: async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders?` +
-        `filters[shop_owner][id][$eq]=${shopData.data[0].id}` +
-        `&sort[0]=createdAt:desc` +
-        `&populate=*`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        }
-      );
-      if (!response.ok) throw new Error('Failed to fetch orders');
-      return response.json();
-    },
-    enabled: !!shopData?.data?.[0]?.id
-  });
+  const shop = shopData?.data?.[0]?.attributes;
+  const shopId = shopData?.data?.[0]?.id;
 
   // Calculate shop statistics
   const shopStats = useMemo(() => {
-    if (!ordersData?.data) return {
+    if (!shop?.orders?.data) return {
       totalRevenue: 0,
       monthlyRevenue: 0,
       totalOrders: 0,
@@ -185,27 +124,72 @@ const ShopOwnerDashboard = () => {
       lowStockItems: 0
     };
 
-    const orders = ordersData.data;
+    const orders = shop.orders.data;
     const now = new Date();
-    const shopItems = shopData?.data?.[0]?.attributes?.shop_items?.data || [];
+    const shopItems = shop.shop_items?.data || [];
     
     return {
       totalRevenue: orders.reduce((sum, order) => 
-        sum + (parseFloat(order?.attributes?.total) || 0), 0),
+        sum + (parseFloat(order.attributes.total) || 0), 0),
       monthlyRevenue: orders
         .filter(order => {
-          const orderDate = new Date(order?.attributes?.createdAt);
+          const orderDate = new Date(order.attributes.createdAt);
           return orderDate.getMonth() === now.getMonth() && 
                  orderDate.getFullYear() === now.getFullYear();
         })
-        .reduce((sum, order) => sum + (parseFloat(order?.attributes?.total) || 0), 0),
+        .reduce((sum, order) => sum + (parseFloat(order.attributes.total) || 0), 0),
       totalOrders: orders.length,
       pendingOrders: orders.filter(order => 
-        order?.attributes?.status === 'pending').length,
+        order.attributes.status === 'pending').length,
       lowStockItems: shopItems.filter(item => 
         item.attributes.stock < 10).length
     };
-  }, [ordersData, shopData]);
+  }, [shop]);
+
+  const handleEditProduct = (product) => {
+    setSelectedProduct(product);
+    onEditProductOpen();
+  };
+
+  const handleProductAction = async (productId, action) => {
+    try {
+      if (action === 'delete') {
+        await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items/${productId}`, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+      } else {
+        await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items/${productId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          },
+          body: JSON.stringify({
+            data: {
+              status: action
+            }
+          })
+        });
+      }
+      
+      toast({
+        title: action === 'delete' ? 'Product deleted' : 'Product updated',
+        status: 'success',
+        duration: 2000
+      });
+      refetchShop();
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: error.message,
+        status: 'error',
+        duration: 3000
+      });
+    }
+  };
 
   if (isShopLoading) {
     return (
@@ -217,7 +201,7 @@ const ShopOwnerDashboard = () => {
     );
   }
 
-  if (shopError || !shopData?.data?.[0]) {
+  if (shopError || !shop) {
     return (
       <Layout>
         <Container maxW="container.xl" py={6}>
@@ -230,27 +214,12 @@ const ShopOwnerDashboard = () => {
     );
   }
 
-  const shop = shopData.data[0].attributes;
-
-  const handleWelcomeModalClose = (redirectPath) => {
-    setShowWelcomeModal(false);
-    if (redirectPath) {
-      router.push(redirectPath);
-    }
-  };
-
   return (
     <Layout>
       <Head>
         <title>{shop.shopName} Dashboard</title>
       </Head>
 
-      {/* Welcome Modal */}
-      <WelcomeModal
-        isOpen={showWelcomeModal}
-        onClose={handleWelcomeModalClose}
-        shopId={shopData?.data?.[0]?.id}
-      />
       <Container maxW="1400px" py={6}>
         {/* Shop Header */}
         <Card mb={6}>
@@ -296,13 +265,6 @@ const ShopOwnerDashboard = () => {
                   />
                 </Box>
               </Box>
-
-              <ThemeEditor 
-                isOpen={isModalOpen} 
-                onClose={() => setIsModalOpen(false)}
-                theme={theme}
-                onSave={handleThemeChange}
-              />
 
               <VStack align="start" flex={1} spacing={2}>
                 <HStack>
@@ -417,31 +379,44 @@ const ShopOwnerDashboard = () => {
           <TabPanels>
             <TabPanel px={0}>
               <ProductsList 
-                products={shopData?.data?.[0]?.attributes?.shop_items?.data || []}
-                onEdit={(id) => router.push(`/shop/owner/products/${id}/edit`)}
-                onDelete={async (id) => {
-                  // Handle product deletion
-                  toast({
-                    title: "Product deleted",
-                    status: "success",
-                    duration: 2000
-                  });
-                  refetchShop();
-                }}
+                products={shop.shop_items?.data || []}
+                onEdit={handleEditProduct}
+                onDelete={handleProductAction}
               />
             </TabPanel>
 
             <TabPanel px={0}>
               <OrdersList 
-                orders={ordersData?.data || []}
-                isLoading={isOrdersLoading}
+                orders={shop.orders?.data || []}
                 onStatusChange={async (orderId, newStatus) => {
-                  // Handle order status change
-                  toast({
-                    title: "Order status updated",
-                    status: "success",
-                    duration: 2000
-                  });
+                  try {
+                    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders/${orderId}`, {
+                      method: 'PUT',
+                      headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                      },
+                      body: JSON.stringify({
+                        data: {
+                          status: newStatus
+                        }
+                      })
+                    });
+                    
+                    toast({
+                      title: "Order status updated",
+                      status: "success",
+                      duration: 2000
+                    });
+                    refetchShop();
+                  } catch (error) {
+                    toast({
+                      title: "Error updating order",
+                      description: error.message,
+                      status: "error",
+                      duration: 3000
+                    });
+                  }
                 }}
               />
             </TabPanel>
@@ -451,19 +426,13 @@ const ShopOwnerDashboard = () => {
                 <Card>
                   <CardBody>
                     <Heading size="md" mb={4}>Sales Overview</Heading>
-                    <SalesChart 
-                      orders={ordersData?.data || []}
-                      isLoading={isOrdersLoading}
-                    />
+                    <SalesChart orders={shop.orders?.data || []} />
                   </CardBody>
                 </Card>
                 <Card>
                   <CardBody>
                     <Heading size="md" mb={4}>Top Products</Heading>
-                    <TopProductsChart 
-                      orders={ordersData?.data || []}
-                      isLoading={isOrdersLoading}
-                    />
+                    <TopProductsChart orders={shop.orders?.data || []} />
                   </CardBody>
                 </Card>
               </SimpleGrid>
@@ -471,14 +440,37 @@ const ShopOwnerDashboard = () => {
 
             <TabPanel px={0}>
               <ReviewsList
-                shopId={shopData?.data?.[0]?.id}
+                shopId={shopId}
                 onReply={async (reviewId, reply) => {
-                  // Handle review reply
-                  toast({
-                    title: "Reply posted",
-                    status: "success",
-                    duration: 2000
-                  });
+                  try {
+                    await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reviews/${reviewId}`, {
+                      method: 'PUT',
+                      headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                      },
+                      body: JSON.stringify({
+                        data: {
+                          reply,
+                          reply_at: new Date().toISOString()
+                        }
+                      })
+                    });
+                    
+                    toast({
+                      title: "Reply posted",
+                      status: "success",
+                      duration: 2000
+                    });
+                    refetchShop();
+                  } catch (error) {
+                    toast({
+                      title: "Error posting reply",
+                      description: error.message,
+                      status: "error",
+                      duration: 3000
+                    });
+                  }
                 }}
               />
             </TabPanel>
@@ -492,7 +484,7 @@ const ShopOwnerDashboard = () => {
           onSubmit={async (productData) => {
             try {
               const formDataObj = JSON.parse(productData.get('data'));
-              formDataObj.shop_owner = shopData.data[0].id;
+              formDataObj.owner = shopId;
               productData.set('data', JSON.stringify(formDataObj));
 
               const response = await fetch(
@@ -506,9 +498,7 @@ const ShopOwnerDashboard = () => {
                 }
               );
 
-              if (!response.ok) {
-                throw new Error('Failed to create product');
-              }
+              if (!response.ok) throw new Error('Failed to create product');
 
               toast({
                 title: "Product added successfully",
@@ -529,40 +519,146 @@ const ShopOwnerDashboard = () => {
           }}
         />
 
-        {/* Settings Menu */}
+        {/* Edit Product Modal */}
+        <ProductEditModal
+          isOpen={isEditProductOpen}
+          onClose={onEditProductClose}
+          product={selectedProduct}
+          onSave={async (formData) => {
+            try {
+              const response = await fetch(
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items/${selectedProduct.id}`,
+                {
+                  method: 'PUT',
+                  headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                  },
+                  body: formData
+                }
+              );
+
+              if (!response.ok) throw new Error('Failed to update product');
+
+              toast({
+                title: "Product updated successfully",
+                status: "success",
+                duration: 2000
+              });
+              onEditProductClose();
+              setSelectedProduct(null);
+              refetchShop();
+            } catch (error) {
+              toast({
+                title: "Error updating product",
+                description: error.message,
+                status: "error",
+                duration: 3000
+              });
+            }
+          }}
+        />
+
+        {/* Theme Editor Modal */}
+        <ThemeEditor
+          isOpen={isThemeOpen}
+          onClose={onThemeClose}
+          theme={shop.theme}
+          onSave={async (newTheme) => {
+            try {
+              await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/${shopId}`, {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({
+                  data: {
+                    theme: newTheme
+                  }
+                })
+              });
+
+              toast({
+                title: "Theme updated successfully",
+                status: "success",
+                duration: 2000
+              });
+              refetchShop();
+            } catch (error) {
+              toast({
+                title: "Error updating theme",
+                description: error.message,
+                status: "error",
+                duration: 3000
+              });
+            }
+          }}
+        />
+
+        {/* Quick Actions Menu */}
         <Menu>
           <MenuButton
             as={IconButton}
             icon={<FiMoreVertical />}
             variant="ghost"
             position="fixed"
-            top={4}
+            bottom={4}
             right={4}
-          />
+            size="lg"
+            colorScheme="blue"
+            shadow="lg"
+          >
+            Actions
+          </MenuButton>
           <MenuList>
             <MenuItem
-              icon={<FiSettings />}
-              onClick={() => router.push('/shop/owner/settings')}
+              icon={<FiEdit />}
+              onClick={onThemeOpen}
             >
-              Shop Settings
+              Customize Theme
             </MenuItem>
             <MenuItem
               icon={<FiUpload />}
-              onClick={() => router.push('/shop/owner/import')}
+              onClick={onAddProductOpen}
             >
-              Import Products
+              Add New Product
             </MenuItem>
             <MenuItem
               icon={<FiPackage />}
-              onClick={() => router.push('/shop/owner/inventory')}
+              onClick={() => {
+                // Toggle quick view of low stock items
+                const lowStockItems = shop.shop_items?.data.filter(item => 
+                  item.attributes.stock < 10
+                ) || [];
+                
+                if (lowStockItems.length === 0) {
+                  toast({
+                    title: "No low stock items",
+                    description: "All products have sufficient stock",
+                    status: "info",
+                    duration: 3000
+                  });
+                  return;
+                }
+
+                toast({
+                  title: "Low Stock Items",
+                  description: (
+                    <VStack align="start">
+                      {lowStockItems.map(item => (
+                        <Text key={item.id}>
+                          {item.attributes.name}: {item.attributes.stock} left
+                        </Text>
+                      ))}
+                    </VStack>
+                  ),
+                  status: "warning",
+                  duration: 5000,
+                  isClosable: true
+                });
+              }}
             >
-              Inventory Management
-            </MenuItem>
-            <MenuItem
-              icon={<FiStar />}
-              onClick={() => router.push('/shop/owner/reviews')}
-            >
-              Review Management
+              Check Low Stock
             </MenuItem>
           </MenuList>
         </Menu>

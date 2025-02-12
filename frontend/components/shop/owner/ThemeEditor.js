@@ -1,3 +1,4 @@
+// components/shop/owner/ThemeEditor.js
 import React, { useState } from 'react';
 import {
   Modal,

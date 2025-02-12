@@ -1,5 +1,4 @@
-// components/shop/owner/ReviewsList.js
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   VStack,
@@ -9,8 +8,6 @@ import {
   Button,
   Image,
   Textarea,
-  IconButton,
-  Badge,
   Avatar,
   useColorModeValue,
   Flex,
@@ -28,15 +25,13 @@ import {
   Grid,
   GridItem,
   Icon,
-  Divider,
-  useToast
+  useToast,
+  Badge
 } from '@chakra-ui/react';
 import {
   FiStar,
   FiMessageSquare,
-  FiFlag,
-  FiImage,
-  FiFilter
+  FiImage
 } from 'react-icons/fi';
 
 const ReviewsList = ({ shopId, onReply }) => {
@@ -48,7 +43,7 @@ const ReviewsList = ({ shopId, onReply }) => {
   const [selectedReviewId, setSelectedReviewId] = useState(null);
   const bgColor = useColorModeValue('white', 'gray.800');
 
-  // Fetch reviews
+  // Fetch reviews specific to shop owner's items
   const {
     data: reviewsData,
     isLoading,
@@ -58,8 +53,11 @@ const ReviewsList = ({ shopId, onReply }) => {
     queryFn: async () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reviews?` +
-        `filters[shop_item][shop_owner][id][$eq]=${shopId}` +
-        `&populate=*` +
+        `filters[shop_item][owner][id][$eq]=${shopId}` +
+        `&populate[customer_profile][fields][0]=fullName` +
+        `&populate[customer_profile][fields][1]=avatar` +
+        `&populate[shop_item][fields][0]=name` +
+        `&populate[images]=*` +
         `&sort[0]=createdAt:desc`,
         {
           headers: {
@@ -73,12 +71,9 @@ const ReviewsList = ({ shopId, onReply }) => {
     enabled: !!shopId
   });
 
-  const filteredReviews = useMemo(() => {
-    if (!reviewsData?.data) return [];
-    return reviewsData.data.filter(review => 
-      filterRating === 'all' || review.attributes.rating === parseInt(filterRating)
-    );
-  }, [reviewsData, filterRating]);
+  const filteredReviews = reviewsData?.data?.filter(review => 
+    filterRating === 'all' || review.attributes.rating === parseInt(filterRating)
+  ) || [];
 
   const handleReplySubmit = async (reviewId) => {
     if (!replyText.trim()) return;
@@ -113,7 +108,6 @@ const ReviewsList = ({ shopId, onReply }) => {
       {/* Filters */}
       <HStack spacing={4} bg={bgColor} p={4} borderRadius="lg">
         <Select
-          icon={<FiFilter />}
           value={filterRating}
           onChange={(e) => setFilterRating(e.target.value)}
           maxW="200px"
@@ -139,7 +133,10 @@ const ReviewsList = ({ shopId, onReply }) => {
                       <Avatar
                         size="sm"
                         name={review.attributes.customer_profile?.data?.attributes?.fullName}
-                        src={review.attributes.customer_profile?.data?.attributes?.avatar?.data?.attributes?.url}
+                        src={review.attributes.customer_profile?.data?.attributes?.avatar?.data?.attributes?.url ?
+                          `${process.env.NEXT_PUBLIC_BACKEND_URL}${review.attributes.customer_profile.data.attributes.avatar.data.attributes.url}` :
+                          undefined
+                        }
                       />
                       <VStack align="start" spacing={0}>
                         <Text fontWeight="medium">
@@ -262,6 +259,12 @@ const ReviewsList = ({ shopId, onReply }) => {
           </ModalBody>
         </ModalContent>
       </Modal>
+
+      {filteredReviews.length === 0 && (
+        <Box p={8} textAlign="center" bg={bgColor} borderRadius="lg">
+          <Text color="gray.500">No reviews found</Text>
+        </Box>
+      )}
     </VStack>
   );
 };

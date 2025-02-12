@@ -1,4 +1,3 @@
-// components/shop/owner/OrdersList.js
 import React, { useState } from 'react';
 import {
   Table,
@@ -19,7 +18,6 @@ import {
   VStack,
   Select,
   Input,
-  Button,
   useColorModeValue,
   Flex,
   Spinner
@@ -33,7 +31,7 @@ import {
   FiSearch
 } from 'react-icons/fi';
 
-const OrdersList = ({ orders = [], isLoading, onStatusChange }) => {
+const OrdersList = ({ orders = [], onStatusChange }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const bgColor = useColorModeValue('white', 'gray.800');
@@ -55,14 +53,6 @@ const OrdersList = ({ orders = [], isLoading, onStatusChange }) => {
     const matchesStatus = statusFilter === 'all' || order.attributes.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
-
-  if (isLoading) {
-    return (
-      <Box textAlign="center" py={10}>
-        <Spinner size="xl" />
-      </Box>
-    );
-  }
 
   return (
     <VStack spacing={4} align="stretch">

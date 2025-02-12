@@ -8,6 +8,7 @@ import { useState } from 'react';
 import '../styles/globals.css';
 import theme from '../styles/theme';
 import { CartProvider } from '@/contexts/CartContext';
+import { ShopCartProvider } from '@/contexts/ShopCartContext';
 import InstallPWA from '@/components/InstallPWA';
 import FlowingLines from '@/components/FlowingShawl';
 import { CurrencyProvider } from '@/contexts/CurrencyContext';
@@ -43,8 +44,10 @@ function MyApp({ Component, pageProps }) {
           <FlowingLines />
           <InstallPWA />
           <CartProvider>
-            <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
-            <Component {...pageProps} />
+            <ShopCartProvider>
+              <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
+              <Component {...pageProps} />
+            </ShopCartProvider>
           </CartProvider>
         </CurrencyProvider>
       </ChakraProvider>
