@@ -27,7 +27,7 @@ import {
 import { FiUser, FiLock, FiDollarSign, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 import { useRouter } from 'next/router';
 import { useShopTheme } from './ShopThemeContext';
-import { useAuth } from './AuthContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 // Create the PaymentContext
 const PaymentContext = createContext(null);
