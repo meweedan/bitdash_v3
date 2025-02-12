@@ -20,30 +20,30 @@ import Layout from '@/components/Layout';
 
 const PLATFORM_ROUTES = {
   food: {
-    operator: '/food/operator/dashboard',
-    customer: '/food/customer/dashboard',
-    captain: '/food/captain/dashboard',
+    operator: '/operator/dashboard',
+    customer: '/customer/dashboard',
+    captain: '/captain/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://food.bitdash.app'
   },
   cash: {
-    merchant: '/cash/merchant/dashboard',
-    agent: '/cash/agent/dashboard',
-    client: '/cash/client/dashboard',
+    merchant: '/merchant/dashboard',
+    agent: '/agent/dashboard',
+    client: '/client/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://cash.bitdash.app'
   },
   work: {
-    employer: '/work/employer/dashboard',
-    employee: '/work/employee/dashboard',
+    employer: '/employer/dashboard',
+    employee: '/employee/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://work.bitdash.app'
   },
   ride : {
-    captain: '/ride/captain/dashboard',
-    client: '/ride/client/dashboard',
+    captain: '/captain/dashboard',
+    client: '/client/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://ride.bitdash.app'
   },
   shop: {
-    owner: '/shop/owner/dashboard',
-    customer: '/shop/customer/dashboard',
+    owner: '/owner/dashboard',
+    customer: '/customer/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://shop.bitdash.app'
   }
 };

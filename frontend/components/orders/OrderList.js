@@ -99,7 +99,7 @@ const OrderList = ({ orders = [], isLoading, showFilters = false, showPagination
             bg={cardBg}
             _hover={{ transform: 'translateY(-2px)', cursor: 'pointer' }}
             transition="all 0.2s"
-            onClick={() => router.push(`/shop/orders/${order.id}`)}
+            onClick={() => router.push(`/orders/${order.id}`)}
           >
             <CardBody>
               <HStack justify="space-between" align="start">
@@ -133,7 +133,7 @@ const OrderList = ({ orders = [], isLoading, showFilters = false, showPagination
                       colorScheme="blue"
                       onClick={(e) => {
                         e.stopPropagation();
-                        router.push(`/shop/orders/${order.id}/review`);
+                        router.push(`/orders/${order.id}/review`);
                       }}
                     >
                       Leave Review

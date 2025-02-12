@@ -309,8 +309,8 @@ const MenuItems = ({ href, children, onClick }) => (
                   <Button 
                     leftIcon={<FaUser size={20} />} 
                     size="lg"
-                    variant={`${platform}-solid`}
-                    bg={isDark ? 'white' : 'black'}
+                    variant={`${platform}-outline`}  // Changed from -solid to -outline
+                    color={isDark ? 'white' : 'black'} // Changed color definition
                     onClick={() => router.push('/login')}
                     _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
                   >
@@ -320,8 +320,8 @@ const MenuItems = ({ href, children, onClick }) => (
                     leftIcon={<FaSignOutAlt size={20} />}
                     onClick={handleLogout}
                     size="lg"
+                    variant={`${platform}-outline`}  // Changed from -solid to -outline
                     colorScheme="red"
-                    variant={`${platform}-solid`}
                   >
                     {t('logout')}
                   </Button>

@@ -181,7 +181,7 @@ const WelcomeModal = ({ isOpen, onClose, shopId }) => {
             <VStack spacing={4} w="full">
               <Box
                 as="button"
-                onClick={() => onClose('/shop/owner/products/new')}
+                onClick={() => onClose('/owner/products/new')}
                 p={6}
                 bg={cardBg}
                 borderRadius="lg"

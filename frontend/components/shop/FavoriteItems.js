@@ -125,7 +125,7 @@ const FavoriteItems = ({ items = [], isLoading, onRemoveFromFavorites, onAddToCa
 
                 <Button
                   variant="ghost"
-                  onClick={() => router.push(`/shop/products/${item.id}`)}
+                  onClick={() => router.push(`/products/${item.id}`)}
                 >
                   View Details
                 </Button>

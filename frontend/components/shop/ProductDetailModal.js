@@ -36,7 +36,7 @@ const ProductDetailModal = ({
   const images = product?.attributes?.images?.data || [];
   const bgColor = useColorModeValue('white', 'gray.800');
 
-  const productUrl = `/shop/${shopName}/${product?.attributes?.name?.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+  const productUrl = `/${shopName}/${product?.attributes?.name?.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="4xl" motionPreset="slideInBottom">
