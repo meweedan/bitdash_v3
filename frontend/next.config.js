@@ -46,37 +46,37 @@ const nextConfig = {
   },
 
   // Subdomain redirects
-  async redirects() {
+  async rewrites() {
     return [
+      // Shop platform routes
       {
-        source: '/food',
-        has: [{ type: 'host', value: 'bitdash.app' }],
-        destination: 'https://food.bitdash.app',
-        permanent: true
+        source: '/:path*',
+        has: [{ type: 'host', value: 'shop.bitdash.app' }],
+        destination: '/shop/:path*',
       },
+      // Food platform routes
       {
-        source: '/shop',
-        has: [{ type: 'host', value: 'bitdash.app' }],
-        destination: 'https://shop.bitdash.app',
-        permanent: true
+        source: '/:path*',
+        has: [{ type: 'host', value: 'food.bitdash.app' }],
+        destination: '/food/:path*',
       },
+      // Ride platform routes
       {
-        source: '/ride',
-        has: [{ type: 'host', value: 'bitdash.app' }],
-        destination: 'https://ride.bitdash.app',
-        permanent: true
+        source: '/:path*',
+        has: [{ type: 'host', value: 'ride.bitdash.app' }],
+        destination: '/ride/:path*',
       },
+      // Cash platform routes
       {
-        source: '/cash',
-        has: [{ type: 'host', value: 'bitdash.app' }],
-        destination: 'https://cash.bitdash.app',
-        permanent: true
+        source: '/:path*',
+        has: [{ type: 'host', value: 'cash.bitdash.app' }],
+        destination: '/cash/:path*',
       },
+      // Work platform routes
       {
-        source: '/work',
-        has: [{ type: 'host', value: 'bitdash.app' }],
-        destination: 'https://work.bitdash.app',
-        permanent: true
+        source: '/:path*',
+        has: [{ type: 'host', value: 'work.bitdash.app' }],
+        destination: '/work/:path*',
       }
     ];
   },

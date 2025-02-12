@@ -1,5 +1,5 @@
 // pages/shop/[shopName].js
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -28,6 +28,7 @@ import Head from 'next/head';
 import Layout from '@/components/Layout';
 import { useShopCart } from '@/contexts/ShopCartContext';
 import CartDrawer from '@/components/shop/owner/CartDrawer';
+import ProductDetailModal from '@/components/shop/ProductDetailModal';
 import { useAuth } from '@/hooks/useAuth';
 
 // Default theme configuration
@@ -52,14 +53,27 @@ const DEFAULT_THEME = {
 const ShopPage = () => {
   const router = useRouter();
   const { shopName } = router.query;
-const { cart, addToCart } = useShopCart();
+  const { cart, addToCart } = useShopCart();
   const { user } = useAuth();
   const toast = useToast();
+  const [addingToCart, setAddingToCart] = useState({});
   const { 
     isOpen: isCartOpen, 
     onOpen: onOpenCart, 
     onClose: onCloseCart 
   } = useDisclosure();
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const { 
+    isOpen: isProductDetailOpen, 
+    onOpen: onOpenProductDetail, 
+    onClose: onCloseProductDetail 
+  } = useDisclosure();
+
+  // Add click handler for product cards
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+    onOpenProductDetail();
+  };
 
   // Fetch shop data
   const { data: shopData, isLoading, error } = useQuery({
@@ -130,7 +144,9 @@ const { cart, addToCart } = useShopCart();
   };
   const shopItems = shop.shop_items?.data || [];
 
-  const handleAddToCart = (product) => {
+  const handleAddToCart = async (product) => {
+  setAddingToCart(prev => ({ ...prev, [product.id]: true }));
+  try {
     if (!user) {
       toast({
         title: 'Please log in',
@@ -171,7 +187,11 @@ const { cart, addToCart } = useShopCart();
       status: 'success',
       duration: 2000
     });
-  };
+
+    } finally {
+        setAddingToCart(prev => ({ ...prev, [product.id]: false }));
+      }
+    };
 
   return (
     <>
@@ -299,6 +319,8 @@ const { cart, addToCart } = useShopCart();
                 <SimpleGrid columns={{ base: 1, md: 3, lg: 4 }} spacing={6} w="full">
                   {shopItems.map((product) => (
                     <Card 
+                      onClick={() => handleProductClick(product)}
+                      cursor="pointer"
                       key={product.id}
                       overflow="hidden"
                       transition="transform 0.2s"
@@ -369,7 +391,10 @@ const { cart, addToCart } = useShopCart();
                               product.attributes.stock <= 0 || 
                               product.attributes.status !== 'available'
                             }
-                            onClick={() => handleAddToCart(product)}
+                            onClick={(e) => {
+                              e.stopPropagation(); // Prevent card click
+                              handleAddToCart(product);
+                            }}
                           >
                             {product.attributes.stock > 0 && product.attributes.status === 'available' 
                               ? 'Add to Cart' 
@@ -385,6 +410,8 @@ const { cart, addToCart } = useShopCart();
                 <VStack spacing={4} w="full">
                   {shopItems.map((product) => (
                     <Card 
+                      onClick={() => handleProductClick(product)}
+                      cursor="pointer"
                       key={product.id}
                       w="full"
                       overflow="hidden"
@@ -450,6 +477,7 @@ const { cart, addToCart } = useShopCart();
                             )}
                           </HStack>
                           <Button
+                            isLoading={addingToCart[product.id]}
                             leftIcon={<FiShoppingBag />}
                             colorScheme="blue"
                             w="full"
@@ -491,6 +519,15 @@ const { cart, addToCart } = useShopCart();
             shopData={shopData}
           />
         </Box>
+        {selectedProduct && (
+          <ProductDetailModal
+            isOpen={isProductDetailOpen}
+            onClose={onCloseProductDetail}
+            product={selectedProduct}
+            onAddToCart={handleAddToCart}
+            shopName={shopName}
+          />
+        )}
       </Layout>
     </>
   );
