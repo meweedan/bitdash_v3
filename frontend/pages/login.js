@@ -223,6 +223,135 @@ const LoginPage = () => {
     }
   };
 
+  const checkBusinessType = async (token, userId) => {
+  try {
+    console.log('Checking business type for user:', userId);
+    console.log('Current platform:', currentPlatform);
+
+    // Specifically for shop platform
+    if (currentPlatform === 'bitshop') {
+      const ownerResponse = await fetch(
+        `${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      console.log('Owner API response status:', ownerResponse.status);
+
+      if (ownerResponse.ok) {
+        const { data } = await ownerResponse.json();
+        console.log('Owner API data:', data);
+
+        if (data && data.length > 0) {
+          console.log('Found owner profile');
+          return 'owner';
+        }
+      }
+    }
+
+    // Fallback for other platforms or if owner check fails
+    const responses = await Promise.all([
+      fetch(`${BASE_URL}/api/operators?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+        { headers: { Authorization: `Bearer ${token}` } }),
+      fetch(`${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+        { headers: { Authorization: `Bearer ${token}` } })
+    ]);
+
+    for (const response of responses) {
+      console.log(`Response from ${response.url} - status: ${response.status}`);
+      
+      if (response.ok) {
+        const { data } = await response.json();
+        console.log('Response data:', data);
+
+        if (data && data.length > 0) {
+          // Check if it's a shop owner specifically
+          if (response.url.includes('/api/owners')) {
+            return 'owner';
+          }
+          return data[0]?.attributes?.businessType;
+        }
+      }
+    }
+
+    console.log('No business type found');
+    return null;
+  } catch (error) {
+    console.error('Business type check error:', error);
+    return null;
+  }
+};
+
+const checkProfileType = async (token, userId, endpoint) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}${endpoint}?filters[user][id][$eq]=${userId}&populate=*`,
+      { 
+        method: 'GET',
+        headers: { 
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        } 
+      }
+    );
+
+    if (!response.ok) {
+      console.error('Profile type check failed:', await response.text());
+      return false;
+    }
+
+    const { data } = await response.json();
+    console.log('Profile data:', data);
+
+    return data && data.length > 0;
+  } catch (error) {
+    console.error('Profile type check error:', error);
+    return false;
+  }
+};
+
+const determineUserType = async (token, userId) => {
+  console.log('Determining user type for:', { 
+    userId, 
+    platform: currentPlatform 
+  });
+
+  const platform = currentPlatform.replace('bit', '');
+  const businessType = await checkBusinessType(token, userId);
+  
+  console.log('Business type found:', businessType);
+
+  // Direct match for shop platform
+  if (platform === 'shop' && businessType === 'owner') {
+    return 'owner';
+  }
+
+  if (businessType && BUSINESS_TYPE_ROUTES[businessType]) {
+    const route = BUSINESS_TYPE_ROUTES[businessType];
+    if (route.platform === platform) {
+      console.log('Matched business type route:', route);
+      return route.userType;
+    }
+  }
+
+  const platformEndpoints = PROFILE_ENDPOINTS[platform];
+  if (!platformEndpoints) {
+    console.log('No platform endpoints found');
+    return null;
+  }
+
+  for (const [userType, endpoint] of Object.entries(platformEndpoints)) {
+    console.log(`Checking profile for userType: ${userType}, endpoint: ${endpoint}`);
+    const profileExists = await checkProfileType(token, userId, endpoint);
+    if (profileExists) {
+      console.log(`Profile found for userType: ${userType}`);
+      return userType;
+    }
+  }
+
+  console.log('No matching user type found');
+  return null;
+};
+
   const handleRedirect = (userType) => {
     const platformConfig = PLATFORM_ROUTES[currentPlatform.replace('bit', '')];
     if (!platformConfig || !platformConfig[userType]) return;
@@ -234,53 +363,6 @@ const LoginPage = () => {
     } else {
       window.location.href = `${platformConfig.baseUrl}${route}`;
     }
-  };
-
-  const checkBusinessType = async (token, userId) => {
-    const response = await fetch(
-      `${BASE_URL}/api/operators?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-
-    if (!response.ok) return null;
-
-    const { data } = await response.json();
-    return data?.[0]?.attributes?.businessType || null;
-  };
-
-  const checkProfileType = async (token, userId, endpoint) => {
-    const response = await fetch(
-      `${BASE_URL}${endpoint}?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-
-    if (!response.ok) return false;
-    const { data } = await response.json();
-    return data?.[0] ? true : false;
-  };
-
-  const determineUserType = async (token, userId) => {
-    const platform = currentPlatform.replace('bit', '');
-    const businessType = await checkBusinessType(token, userId);
-    
-    if (businessType && BUSINESS_TYPE_ROUTES[businessType]) {
-      const route = BUSINESS_TYPE_ROUTES[businessType];
-      if (route.platform === platform) {
-        return route.userType;
-      }
-      return null;
-    }
-
-    const platformEndpoints = PROFILE_ENDPOINTS[platform];
-    if (!platformEndpoints) return null;
-
-    for (const [userType, endpoint] of Object.entries(platformEndpoints)) {
-      if (await checkProfileType(token, userId, endpoint)) {
-        return userType;
-      }
-    }
-
-    return null;
   };
 
   const checkAuth = async () => {
@@ -303,7 +385,6 @@ const LoginPage = () => {
       localStorage.removeItem('user');
     }
   };
-
   const handleLogin = async () => {
     if (!email || !password) {
       toast({
