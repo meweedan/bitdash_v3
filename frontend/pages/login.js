@@ -76,7 +76,6 @@ const PROFILE_ENDPOINTS = {
 const BUSINESS_TYPE_ROUTES = {
   restaurant: { platform: 'food', userType: 'operator' },
   captain: { platform: 'food', userType: 'captain' },
-  trader: { platform: 'stock', userType: 'trader' },
   merchant: { platform: 'cash', userType: 'merchant' },
   agent: { platform: 'cash', userType: 'agent' },
   employer: { platform: 'work', userType: 'employer' },

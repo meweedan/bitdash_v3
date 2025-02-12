@@ -41,7 +41,8 @@
     "wallet": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::wallet.wallet"
+      "target": "api::wallet.wallet",
+      "mappedBy": "owner"
     },
     "shop_items": {
       "type": "relation",
@@ -105,7 +106,8 @@
     "default": {
       "facebook": "",
       "instagram": "",
-      "twitter": "",
+      "x": "",
+      "tiktok": "",
       "website": ""
     }
     }

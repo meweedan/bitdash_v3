@@ -62,6 +62,12 @@
       "target": "api::captain.captain",
       "inversedBy": "wallet"
     },
+    "owner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::owner.owner",
+      "inversedBy": "wallet"
+    },
     "dailyLimit": {
       "type": "decimal",
       "default": 5000

@@ -198,44 +198,44 @@ const ShopOwnerSignup = () => {
 
     setLoading(true);
     try {
-        // Step 1: Create user with default authenticated role
-        setProgress(20);
-        const userRes = await fetch(`${API_URL}/api/auth/local/register`, {
+      // Step 1: Create user with default authenticated role
+      setProgress(20);
+      const userRes = await fetch(`${API_URL}/api/auth/local/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            username: formData.username,
-            email: formData.email,
-            password: formData.password,
-            confirmed: true
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+          confirmed: true
         })
-        });
+      });
 
-        if (!userRes.ok) {
+      if (!userRes.ok) {
         const error = await userRes.json();
         throw new Error(error.error?.message || 'Registration failed');
-        }
+      }
 
-        const { jwt, user } = await userRes.json();
-        console.log('Created user:', user);
+      const { jwt, user } = await userRes.json();
+      console.log('Created user:', user);
 
-        // Step 2: Update user role to Shop Owner (ID 12)
-        const updateRoleRes = await fetch(`${API_URL}/api/users/${user.id}`, {
+      // Step 2: Update user role to Shop Owner (ID 12)
+      const updateRoleRes = await fetch(`${API_URL}/api/users/${user.id}`, {
         method: 'PUT',
         headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${jwt}`
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${jwt}`
         },
         body: JSON.stringify({
-            role: 12
+          role: 12
         })
-        });
+      });
 
-        if (!updateRoleRes.ok) {
+      if (!updateRoleRes.ok) {
         throw new Error('Failed to update user role');
-        }
+      }
 
-      // Step 2: Upload media files
+      // Step 3: Upload media files
       setProgress(40);
       const uploadFile = async (file, field) => {
         if (!file) return null;
@@ -264,41 +264,9 @@ const ShopOwnerSignup = () => {
         ...formData.businessDocuments.map(doc => uploadFile(doc, 'businessDocuments'))
       ].filter(Boolean));
 
-      // Step 3: Create wallet
+      // Step 4: Create owner profile
       setProgress(60);
-      const walletData = {
-        data: {
-          balance: 0,
-          currency: 'LYD',
-          isActive: true,
-          walletId: `SW${Date.now()}${Math.random().toString(36).substr(2, 4)}`.toUpperCase(),
-          dailyLimit: 10000,
-          monthlyLimit: 200000,
-          lastActivity: new Date().toISOString(),
-          wallet_pin: parseInt(formData.walletPin), // Add the PIN
-          shop_owner: shopOwner.data.id
-        }
-        };
-
-      console.log('Creating wallet:', walletData);
-      const walletRes = await fetch(`${API_URL}/api/wallets`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${jwt}`
-        },
-        body: JSON.stringify(walletData)
-      });
-
-      if (!walletRes.ok) {
-        console.error('Wallet creation error:', await walletRes.json());
-        throw new Error('Failed to create wallet');
-      }
-      const wallet = await walletRes.json();
-
-      // Step 4: Create shop owner profile
-      setProgress(80);
-      const shopOwnerData = {
+      const ownerData = {
         data: {
           user: user.id,
           shopName: formData.shopName,
@@ -318,65 +286,82 @@ const ShopOwnerSignup = () => {
           logo: logoId,
           coverImage: coverId,
           businessDocuments: documentIds,
-          wallet: wallet.data.id,
           monthlyVolume: formData.monthlyVolume,
+          wallet_pin: parseInt(formData.walletPin), // Add wallet PIN here
           publishedAt: new Date().toISOString()
         }
       };
 
-      console.log('Creating shop owner:', JSON.stringify(shopOwnerData, null, 2));
-      const shopOwnerRes = await fetch(`${API_URL}/api/owners`, {
+      console.log('Creating owner:', JSON.stringify(ownerData, null, 2));
+      const ownerRes = await fetch(`${API_URL}/api/owners`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${jwt}`
         },
-        body: JSON.stringify(shopOwnerData)
+        body: JSON.stringify(ownerData)
       });
 
-      if (!shopOwnerRes.ok) {
-        const errorData = await shopOwnerRes.json();
-        console.error('Shop owner creation error:', errorData);
-        throw new Error('Failed to create shop owner profile');
+      if (!ownerRes.ok) {
+        const errorData = await ownerRes.json();
+        console.error('Owner creation error:', errorData);
+        throw new Error('Failed to create owner profile');
       }
 
-      const shopOwner = await shopOwnerRes.json();
+      const owner = await ownerRes.json();
 
-      // Step 5: Update relationships
-      setProgress(90);
-      await Promise.all([
-        // Update user with shop owner reference
-        fetch(`${API_URL}/api/users/${user.id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${jwt}`
-          },
-          body: JSON.stringify({
-            shop_owner: shopOwner.data.id
-          })
-        }),
+      // Step 5: Create wallet
+      setProgress(80);
+      const walletData = {
+        data: {
+          balance: 0,
+          currency: 'LYD',
+          isActive: true,
+          walletId: `SW${Date.now()}${Math.random().toString(36).substr(2, 4)}`.toUpperCase(),
+          dailyLimit: 10000,
+          monthlyLimit: 200000,
+          lastActivity: new Date().toISOString(),
+          shop_owner: owner.data.id,
+          user: user.id
+        }
+      };
 
-        // Update wallet with shop owner reference
-        fetch(`${API_URL}/api/wallets/${wallet.data.id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${jwt}`
-          },
-          body: JSON.stringify({
-            data: {
-              shop_owner: shopOwner.data.id
-            }
-          })
+      console.log('Creating wallet:', walletData);
+      const walletRes = await fetch(`${API_URL}/api/wallets`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${jwt}`
+        },
+        body: JSON.stringify(walletData)
+      });
+
+      if (!walletRes.ok) {
+        console.error('Wallet creation error:', await walletRes.json());
+        throw new Error('Failed to create wallet');
+      }
+
+      const wallet = await walletRes.json();
+
+      // Step 6: Update owner with wallet reference
+      await fetch(`${API_URL}/api/owners/${owner.data.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${jwt}`
+        },
+        body: JSON.stringify({
+          data: {
+            wallet: wallet.data.id
+          }
         })
-      ]);
+      });
 
       setProgress(100);
       localStorage.setItem('token', jwt);
       localStorage.setItem('user', JSON.stringify({
         ...user,
-        role: { id: 12, type: 'shop_owner' }
+        role: { id: 12, type: 'owner' }
       }));
       localStorage.setItem('isNewShop', 'true');
 

@@ -21,6 +21,7 @@ import {
 } from '@chakra-ui/react';
 import { FiStar, FiShoppingBag } from 'react-icons/fi';
 import Head from 'next/head';
+import Layout from '@/components/Layout';
 
 // Default theme configuration
 const DEFAULT_THEME = {
@@ -116,7 +117,7 @@ const ShopPage = () => {
           <style>{theme.customCss}</style>
         )}
       </Head>
-
+      <Layout>
       <Box>
         {/* Cover and Logo Section */}
         <Box 
@@ -317,6 +318,7 @@ const ShopPage = () => {
           </VStack>
         </Container>
       </Box>
+      </Layout>
     </>
   );
 };
