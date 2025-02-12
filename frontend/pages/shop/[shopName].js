@@ -52,7 +52,7 @@ const ShopPage = () => {
       if (!shopName) return null;
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-owners?` +
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
         `populate[logo][fields][0]=url` +
         `&populate[coverImage][fields][0]=url` +
         `&populate[shop_items][populate][images]=*` +

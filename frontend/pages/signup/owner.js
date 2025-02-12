@@ -1,4 +1,4 @@
-// pages/signup/shop-owner.js
+// pages/signup/owner.js
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -325,7 +325,7 @@ const ShopOwnerSignup = () => {
       };
 
       console.log('Creating shop owner:', JSON.stringify(shopOwnerData, null, 2));
-      const shopOwnerRes = await fetch(`${API_URL}/api/shop-owners`, {
+      const shopOwnerRes = await fetch(`${API_URL}/api/owners`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

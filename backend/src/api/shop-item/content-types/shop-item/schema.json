@@ -25,10 +25,10 @@
       "type": "media",
       "multiple": true
     },
-    "shop_owner": {
+    "owner": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::shop-owner.shop-owner",
+      "target": "api::owner.owner",
       "inversedBy": "shop_items"
     },
     "category": {

@@ -117,10 +117,10 @@
       "target": "api::employer.employer",
       "mappedBy": "users_permissions_user"
     },
-    "shop_owner": {
+    "owner": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::shop-owner.shop-owner",
+      "target": "api::owner.owner",
       "mappedBy": "users_permissions_user"
     }
   }

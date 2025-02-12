@@ -2,4 +2,4 @@
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::shop-owner.shop-owner');
+module.exports = createCoreRouter('api::owner.owner');

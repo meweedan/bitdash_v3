@@ -89,7 +89,7 @@
       "enum": [
         "restaurant",
         "employer",
-        "shop-owner",
+        "owner",
         "agent",
         "merchant"
       ]

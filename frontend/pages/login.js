@@ -68,7 +68,7 @@ const PROFILE_ENDPOINTS = {
     client: '/api/customer-profiles'
   },
   shop: {
-    owner: '/api/shop-owners',
+    owner: '/api/owners',
     customer: '/api/customer-profiles'
     }
 };
@@ -81,7 +81,7 @@ const BUSINESS_TYPE_ROUTES = {
   agent: { platform: 'cash', userType: 'agent' },
   employer: { platform: 'work', userType: 'employer' },
   employee: { platform: 'work', userType: 'employee' },
-  'shop-owner': { platform: 'shop', userType: 'owner' },
+  owner: { platform: 'shop', userType: 'owner' },
   client: { platform: 'food', userType: 'customer' },
   customer: { platform: 'cash', userType: 'client' },
   clientShop: { platform: 'shop', userType: 'customer' },
@@ -98,7 +98,7 @@ const getPlatformFromURL = () => {
     if (hostname.includes('ride')) return 'bitride';
     if (hostname.includes('work')) return 'bitwork';
     
-    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+    if (hostname === 'localhost') {
       const path = window.location.pathname;
       if (path.includes('/cash')) return 'bitcash';
       if (path.includes('/food')) return 'bitfood';
@@ -180,13 +180,13 @@ const LoginPage = () => {
   const colors = getColorScheme(currentPlatform, isDark);
 
   const formStyles = {
-    maxWidth: "400px",
+    maxWidth: "600px",
     mx: "auto",
     mt: 8,
     p: 6,
     borderRadius: "xl",
     bg: colors.bg,
-    borderWidth: "1px",
+    borderWidth: "0.1px",
     borderColor: colors.border,
     boxShadow: "xl"
   };
@@ -372,7 +372,7 @@ const LoginPage = () => {
         <title>{t('login')}</title>
       </Head>
       
-      <Box {...formStyles}>
+      <Box {...formStyles} mt="20" p="8">
         <VStack spacing={6}>
           <Heading 
             as="h1" 

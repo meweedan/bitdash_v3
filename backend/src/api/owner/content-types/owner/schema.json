@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "shop_owners",
+  "collectionName": "owners",
   "info": {
-    "singularName": "shop-owner",
-    "pluralName": "shop-owners",
-    "displayName": "Shop Owner"
+    "singularName": "owner",
+    "pluralName": "owners",
+    "displayName": "Owner"
   },
   "options": {
     "draftAndPublish": true
@@ -14,7 +14,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "shop_owner"
+      "inversedBy": "owner"
     },
      "shopName": {
       "type": "string",
@@ -25,7 +25,7 @@
         "type": "relation",
         "relation": "oneToMany",
         "target": "api::order.order",
-        "mappedBy": "shop_owner" 
+        "mappedBy": "owner" 
     },
     "description": {
       "type": "richtext"
@@ -47,7 +47,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::shop-item.shop-item",
-      "mappedBy": "shop_owner"
+      "mappedBy": "owner"
     },
     "verificationStatus": {
       "type": "enumeration",

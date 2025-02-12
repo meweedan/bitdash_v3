@@ -88,10 +88,10 @@
       "target": "api::message.message",
       "mappedBy": "order"
     },
-    "shop_owner": {
+    "owner": {
     "type": "relation",
     "relation": "manyToOne",
-    "target": "api::shop-owner.shop-owner"
+    "target": "api::owner.owner"
     }
   }
 }

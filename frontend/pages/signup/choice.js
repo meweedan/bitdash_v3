@@ -121,7 +121,7 @@ const PLATFORMS = {
         type: 'shop',
         title: 'shopSignup',
         icon: Store,
-        signupPath: '/signup/shop-owner'
+        signupPath: '/signup/owner'
       },
       {
         type: 'customer',
