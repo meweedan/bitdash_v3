@@ -151,7 +151,7 @@ export default function EditMenuItem() {
         duration: 3000
       });
 
-      router.push('/food/operator/dashboard');
+      router.push('/operator/dashboard');
     } catch (error) {
       toast({
         title: 'Error',
@@ -196,7 +196,7 @@ export default function EditMenuItem() {
             </AlertDescription>
             <Button
               mt={4}
-              onClick={() => router.push('/food/operator/dashboard')}
+              onClick={() => router.push('/operator/dashboard')}
               colorScheme="red"
               size="sm"
             >
@@ -291,7 +291,7 @@ export default function EditMenuItem() {
 
               <HStack spacing={4} width="full">
                 <Button
-                  onClick={() => router.push('/food/operator/dashboard')}
+                  onClick={() => router.push('/operator/dashboard')}
                   width="full"
                   variant="outline"
                 >

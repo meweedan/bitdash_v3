@@ -50,7 +50,7 @@ const MenuItemsOverview = () => {
     <Box>
       <Flex justifyContent="space-between" alignItems="center" mb={4}>
         <Heading as="h2" size="lg">Menu Items</Heading>
-        <Button onClick={() => router.push('/food/operator/dashboard/menu-items/create')} colorScheme="green">
+        <Button onClick={() => router.push('/operator/dashboard/menu-items/create')} colorScheme="green">
           Add Menu Item
         </Button>
       </Flex>
@@ -64,7 +64,7 @@ const MenuItemsOverview = () => {
               <Flex justify="space-between">
                 <Heading as="h4" size="sm">{item.attributes.name}</Heading>
                 <Flex gap={2}>
-                  <Button colorScheme="blue" size="xs" onClick={() => router.push(`/food/operator/dashboard/menu-items/edit?id=${item.id}`)}>Edit</Button>
+                  <Button colorScheme="blue" size="xs" onClick={() => router.push(`/operator/dashboard/menu-items/edit?id=${item.id}`)}>Edit</Button>
                   <Button colorScheme="red" size="xs" onClick={() => handleDeleteMenuItem(item.id)}>Delete</Button>
                 </Flex>
               </Flex>

@@ -140,7 +140,7 @@ const BitRideLandingBrowser = () => {
                     h={{ base: 12, lg: 14 }}
                     px={{ base: 6, lg: 8 }}
                     fontSize={{ base: "md", lg: "lg" }}
-                    onClick={() => router.push('/ride/book')}
+                    onClick={() => router.push('/book')}
                 >
                     Book Now
                 </Button>
@@ -151,7 +151,7 @@ const BitRideLandingBrowser = () => {
                     h={{ base: 12, lg: 14 }}
                     px={{ base: 6, lg: 8 }}
                     fontSize={{ base: "md", lg: "lg" }}
-                    onClick={() => router.push('/ride/driver-signup')}
+                    onClick={() => router.push('/signup/captain')}
                 >
                     Become a Driver
                 </Button>
@@ -415,7 +415,7 @@ const BitRideLandingBrowser = () => {
                   h={14}
                   px={8}
                   fontSize="lg"
-                  onClick={() => router.push('/ride/signup')}
+                  onClick={() => router.push('/signup')}
                 >
                   Sign Up to Ride
                 </Button>
@@ -425,7 +425,7 @@ const BitRideLandingBrowser = () => {
                   h={14}
                   px={8}
                   fontSize="lg"
-                  onClick={() => router.push('/ride/driver-signup')}
+                  onClick={() => router.push('/signup/captain')}
                 >
                   Become a Driver
                 </Button>

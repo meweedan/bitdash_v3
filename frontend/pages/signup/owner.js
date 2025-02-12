@@ -372,7 +372,7 @@ const ShopOwnerSignup = () => {
         duration: 5000
       });
 
-      router.push('/shop/owner/dashboard');
+      router.push('/owner/dashboard');
 
     } catch (error) {
       console.error('Signup error:', error);

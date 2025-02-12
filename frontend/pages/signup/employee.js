@@ -257,7 +257,7 @@ const EmployeeSignup = () => {
         duration: 5000
       });
 
-      router.push('/work/employee/dashboard');
+      router.push('/employee/dashboard');
 
     } catch (error) {
       console.error('Signup error:', error);

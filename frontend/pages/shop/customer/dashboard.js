@@ -281,7 +281,7 @@ const CustomerDashboard = () => {
               <Tooltip label="Shopping Cart">
                 <IconButton
                   icon={<FiShoppingCart />}
-                  onClick={() => router.push('/shop/cart')}
+                  onClick={() => router.push('/cart')}
                   colorScheme="blue"
                   variant="ghost"
                   size="lg"
@@ -290,7 +290,7 @@ const CustomerDashboard = () => {
               <Tooltip label="Wishlist">
                 <IconButton
                   icon={<FiHeart />}
-                  onClick={() => router.push('/shop/wishlist')}
+                  onClick={() => router.push('/wishlist')}
                   colorScheme="red"
                   variant="ghost"
                   size="lg"
@@ -598,7 +598,7 @@ const CustomerDashboard = () => {
                   leftIcon={<FiUser />}
                   onClick={() => {
                     onMenuModalClose();
-                    router.push('/shop/customer/profile');
+                    router.push('/customer/profile');
                   }}
                   w="full"
                   justifyContent="start"
@@ -610,7 +610,7 @@ const CustomerDashboard = () => {
                   leftIcon={<FiShoppingBag />}
                   onClick={() => {
                     onMenuModalClose();
-                    router.push('/shop/orders');
+                    router.push('/orders');
                   }}
                   w="full"
                   justifyContent="start"
@@ -622,7 +622,7 @@ const CustomerDashboard = () => {
                   leftIcon={<FiHeart />}
                   onClick={() => {
                     onMenuModalClose();
-                    router.push('/shop/wishlist');
+                    router.push('/wishlist');
                   }}
                   w="full"
                   justifyContent="start"
@@ -634,7 +634,7 @@ const CustomerDashboard = () => {
                   leftIcon={<FiSettings />}
                   onClick={() => {
                     onMenuModalClose();
-                    router.push('/shop/customer/settings');
+                    router.push('/customer/settings');
                   }}
                   w="full"
                   justifyContent="start"

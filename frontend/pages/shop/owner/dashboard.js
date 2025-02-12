@@ -58,7 +58,7 @@ import Layout from '@/components/Layout';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 
-// Import your existing components
+// Shop Owner Components
 import ProductsList from '@/components/shop/owner/ProductsList';
 import ProductEditModal from '@/components/shop/owner/ProductEditModal';
 import AddProductModal from '@/components/shop/owner/AddProductModal';

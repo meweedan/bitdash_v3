@@ -9,9 +9,12 @@ import '../styles/globals.css';
 import theme from '../styles/theme';
 import { CartProvider } from '@/contexts/CartContext';
 import { ShopCartProvider } from '@/contexts/ShopCartContext';
+import { ShopThemeProvider } from '@/contexts/ShopThemeContext';
+import { PaymentProvider } from '@/contexts/PaymentContext';
 import InstallPWA from '@/components/InstallPWA';
 import FlowingLines from '@/components/FlowingShawl';
 import { CurrencyProvider } from '@/contexts/CurrencyContext';
+import { AuthProvider } from '@/contexts/AuthContext';
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
@@ -40,16 +43,22 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={customTheme}>
-        <CurrencyProvider>
-          <FlowingLines />
-          <InstallPWA />
-          <CartProvider>
-            <ShopCartProvider>
-              <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
-              <Component {...pageProps} />
-            </ShopCartProvider>
-          </CartProvider>
-        </CurrencyProvider>
+        <AuthProvider>
+          <CurrencyProvider>
+            <ShopThemeProvider>
+              <PaymentProvider>
+                <FlowingLines />
+                <InstallPWA />
+                <CartProvider>
+                  <ShopCartProvider>
+                    <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
+                    <Component {...pageProps} />
+                  </ShopCartProvider>
+                </CartProvider>
+              </PaymentProvider>
+            </ShopThemeProvider>
+          </CurrencyProvider>
+        </AuthProvider>
       </ChakraProvider>
       {process.env.NODE_ENV === 'development' && <ReactQueryDevtools />}
     </QueryClientProvider>

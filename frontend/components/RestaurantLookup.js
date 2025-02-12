@@ -78,7 +78,7 @@ const RestaurantLookup = () => {
   };
 
 const handleOrderClick = (restaurantId) => {
-  router.push(`/food/${restaurantId}`);
+  router.push(`/${restaurantId}`);
 };
 
   return (

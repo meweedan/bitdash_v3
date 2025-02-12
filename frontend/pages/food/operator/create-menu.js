@@ -153,7 +153,7 @@ export default function CreateMenu() {
       status: 'success',
       duration: 3000,
     });
-    router.push('/food/operator/dashboard');
+    router.push('/operator/dashboard');
   } catch (error) {
     console.error('Submit error:', error);
     toast({

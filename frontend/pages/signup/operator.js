@@ -34,7 +34,7 @@ const PLATFORM_CONFIG = {
   food: {
     type: 'Operator',
     roleId: 3,
-    route: '/food/operator/dashboard',
+    route: '/operator/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://food.bitdash.app',
   },
   auto: {

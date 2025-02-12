@@ -302,9 +302,9 @@ export default function CustomerSignup() {
 
       const hostname = window.location.hostname;
       if (hostname === 'food.bitdash.app') {
-        router.push('/food/customer/dashboard');
+        router.push('/customer/dashboard');
       } else if (hostname === 'cash.bitdash.app') {
-        router.push('/cash/client/dashboard');
+        router.push('/client/dashboard');
       }
 
     } catch (error) {

@@ -1068,13 +1068,13 @@ const handleViewOrderDetails = (order) => {
 const handleAdd = (type) => {
   switch (type) {
     case 'restaurant':
-      router.push('/food/operator/create-page');
+      router.push('/operator/create-page');
       break;
     case 'menu':
-      router.push('/food/operator/dashboard/menus/create'); // This path doesn't exist
+      router.push('/operator/dashboard/menus/create'); // This path doesn't exist
       break;
     case 'menuItem':
-      router.push('/food/operator/dashboard/menu-items/create'); // This path doesn't exist
+      router.push('/operator/dashboard/menu-items/create'); // This path doesn't exist
       break;
     case 'table':
       handleAddTable();
@@ -1226,10 +1226,10 @@ const handleUpdateTable = async (tableId) => {
 const handleUpdate = (type, id) => {
   switch (type) {
     case 'menu':
-      router.push(`/food/operator/dashboard/menus/${id}/edit`);
+      router.push(`/operator/dashboard/menus/${id}/edit`);
       break;
     case 'menuItem':
-      router.push(`/food/operator/dashboard/menu-items/${id}/edit`);
+      router.push(`/operator/dashboard/menu-items/${id}/edit`);
       break;
   }
 };
@@ -1531,7 +1531,7 @@ const handleDelete = async (type, id) => {
                                   >
                                     <QRCodeCard
                                       tableName={table.name}
-                                      qrValue={`https://food.bitdash.app/food/${userData.restaurant.id}`}
+                                      qrValue={`https://food.bitdash.app/${userData.restaurant.id}`}
                                       isDarkMode={qrDarkMode}
                                       restaurantName={userData.restaurant.name}
                                       poweredByText={t('poweredBy')}

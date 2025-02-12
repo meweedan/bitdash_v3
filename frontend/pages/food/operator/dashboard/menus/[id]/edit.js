@@ -121,7 +121,7 @@ export default function MenuEditPage() {
         status: 'error',
         duration: 5000
       });
-      router.push('/food/operator/dashboard');
+      router.push('/operator/dashboard');
     } finally {
       setLoading(false);
     }

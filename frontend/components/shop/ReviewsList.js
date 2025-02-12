@@ -133,7 +133,7 @@ const ReviewsList = ({ reviews = [], isLoading }) => {
                   <Button
                     size="sm"
                     variant="ghost"
-                    onClick={() => router.push(`/shop/products/${review.attributes.shop_item?.data?.id}`)}
+                    onClick={() => router.push(`/products/${review.attributes.shop_item?.data?.id}`)}
                   >
                     View Product
                   </Button>

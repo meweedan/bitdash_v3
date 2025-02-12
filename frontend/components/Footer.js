@@ -94,8 +94,8 @@ const Footer = () => {
       { label: 'Terms', href: '/terms', icon: FileText },
     ],
     food: [
-      { label: 'Browse Menus', href: '/food/browse', icon: Search },
-      { label: 'Track Order', href: '/food/order-tracking', icon: PackageSearch },
+      { label: 'Browse Menus', href: '/browse', icon: Search },
+      { label: 'Track Order', href: '/order-tracking', icon: PackageSearch },
       { label: 'Privacy', href: '/privacy', icon: Shield },
     ],
     auto: [
@@ -195,7 +195,7 @@ const Footer = () => {
       setError('Please enter an order number');
       return;
     }
-    router.push(`/food/order-tracking/${orderNumber}`);
+    router.push(`/order-tracking/${orderNumber}`);
   };
 
   const QRScanner = dynamic(() => import('./QRScanner'), { ssr: false });

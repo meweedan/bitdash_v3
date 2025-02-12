@@ -6,7 +6,7 @@ export const PLATFORMS = {
     role: 'food_operator',
     businessType: 'restaurant',
     displayName: 'Restaurant Platform',
-    dashboardPath: '/food/operator/dashboard'
+    dashboardPath: '/operator/dashboard'
   },
   AUTO: {
     subdomain: 'auto',

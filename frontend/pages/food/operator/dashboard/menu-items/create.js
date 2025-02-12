@@ -180,7 +180,7 @@ export default function CreateMenuItem() {
       duration: 3000,
     });
     
-    router.push('/food/operator/dashboard');
+    router.push('/operator/dashboard');
   } catch (error) {
     console.error('Menu item creation error:', error);
     toast({

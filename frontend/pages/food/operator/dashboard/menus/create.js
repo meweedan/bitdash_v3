@@ -53,7 +53,7 @@ export default function CreateMenu() {
             status: 'error',
             duration: 3000,
           });
-          router.push('/food/operator/dashboard');
+          router.push('/operator/dashboard');
         }
       } catch (error) {
         console.error('Auth error:', error);
@@ -113,7 +113,7 @@ export default function CreateMenu() {
         duration: 3000,
       });
       
-      router.push('/food/operator/dashboard');
+      router.push('/operator/dashboard');
     } catch (error) {
       console.error('Menu creation error:', error);
       toast({
