@@ -27,7 +27,7 @@ function HomePage() {
     setPlatform('food');
     // } else if (hostname.includes('ride.')) {
     // setPlatform('ride');
-    } else if (hostname.includes('ahop.')) {
+    } else if (hostname.includes('shop.')) {
       setPlatform('shop');
     } else if (process.env.NODE_ENV === 'development') {
       // Handle development environment
