@@ -6,9 +6,9 @@ import Layout from '@/components/Layout';
 import MainLanding from '@/components/Landing';
 import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
 import FoodLandingBrowser from '@/components/landing/FoodLandingBrowser';
-import RideLandingBrowser from '@/components/landing/RideLandingBrowser';
+// import RideLandingBrowser from '@/components/landing/RideLandingBrowser';
 import ShopLandingBrowser from '@/components/landing/ShopLandingBrowser';
-import WorkLandingBrowser from '@/components/landing/WorkLandingBrowser';
+// import WorkLandingBrowser from '@/components/landing/WorkLandingBrowser';
 
 
 function HomePage() {
@@ -19,16 +19,16 @@ function HomePage() {
     // Get platform from hostname
     const hostname = window.location.hostname;
     
-    if (hostname.includes('shop.')) {
-      setPlatform('shop');
-    } else if (hostname.includes('cash.')) {
-    setPlatform('cash');
+    if (hostname.includes('cash.')) {
+      setPlatform('cash');
+    // } else if (hostname.includes('work.')) {
+    // setPlatform('work');
     } else if (hostname.includes('food.')) {
     setPlatform('food');
-    } else if (hostname.includes('ride.')) {
-    setPlatform('ride');
-    } else if (hostname.includes('work.')) {
-      setPlatform('work');
+    // } else if (hostname.includes('ride.')) {
+    // setPlatform('ride');
+    } else if (hostname.includes('ahop.')) {
+      setPlatform('shop');
     } else if (process.env.NODE_ENV === 'development') {
       // Handle development environment
       const platform = new URLSearchParams(window.location.search).get('platform');
@@ -58,18 +58,18 @@ function HomePage() {
           favicon: '/shop-icons/favicon.ico',
           manifest: '/manifests/shop-manifest.json'
           };
-      case 'ride': 
-        return {
-        title: t('ride.title', 'BitRide'),
-        favicon: '/ride-icons/favicon.ico',
-        manifest: '/manifests/ride-manifest.json'
-        };
-      case 'work':
-        return {
-          title: t('work.title', 'BitWork'),
-          favicon: '/work-icons/favicon.ico',
-          manifest: '/manifests/work-manifest.json'
-        };
+      // case 'ride': 
+      //   return {
+      //   title: t('ride.title', 'BitRide'),
+      //   favicon: '/ride-icons/favicon.ico',
+      //   manifest: '/manifests/ride-manifest.json'
+      //   };
+      // case 'work':
+      //   return {
+      //     title: t('work.title', 'BitWork'),
+      //     favicon: '/work-icons/favicon.ico',
+      //     manifest: '/manifests/work-manifest.json'
+      //   };
         
       default:
         return {
@@ -88,10 +88,10 @@ function HomePage() {
         return <ShopLandingBrowser />;
         case 'food':
           return <FoodLandingBrowser />;
-        case 'ride':
-          return <RideLandingBrowser />;
-          case 'work':
-            return <WorkLandingBrowser />;
+        // case 'ride':
+        //   return <RideLandingBrowser />;
+        //   case 'work':
+        //     return <WorkLandingBrowser />;
         
       default:
         return <MainLanding />;
