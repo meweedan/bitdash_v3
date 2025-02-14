@@ -28,7 +28,7 @@ const PLATFORM_ROUTES = {
   cash: {
     merchant: '/merchant/dashboard',
     agent: '/agent/dashboard',
-    client: '/client/dashboard',
+    customer: '/client/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://cash.bitdash.app'
   },
   // work: {
@@ -57,7 +57,7 @@ const PROFILE_ENDPOINTS = {
   cash: {
     merchant: '/api/operators',
     agent: '/api/agents',
-    client: '/api/customer-profiles'
+    customer: '/api/customer-profiles'
   },
   // work: {
   //   employer: '/api/employers',
