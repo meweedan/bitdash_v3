@@ -13,7 +13,6 @@ import { PaymentProvider } from '@/contexts/PaymentContext';
 import InstallPWA from '@/components/InstallPWA';
 import FlowingLines from '@/components/FlowingShawl';
 import { CurrencyProvider } from '@/contexts/CurrencyContext';
-import { AuthProvider } from '@/contexts/AuthContext';
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
@@ -42,7 +41,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={customTheme}>
-        <AuthProvider>
           <CurrencyProvider>
               <PaymentProvider>
                 <FlowingLines />
@@ -55,7 +53,6 @@ function MyApp({ Component, pageProps }) {
                 </CartProvider>
               </PaymentProvider>
           </CurrencyProvider>
-        </AuthProvider>
       </ChakraProvider>
       {process.env.NODE_ENV === 'development' && <ReactQueryDevtools />}
     </QueryClientProvider>

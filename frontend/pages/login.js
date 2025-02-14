@@ -84,8 +84,8 @@ const BUSINESS_TYPE_ROUTES = {
   client: { platform: 'food', userType: 'customer' },
   customer: { platform: 'cash', userType: 'client' },
   clientShop: { platform: 'shop', userType: 'customer' },
-  clientRide: { platform: 'ride', userType: 'client' },
-  clientCash: { platform: 'cash', userType: 'client' },
+  clientRide: { platform: 'ride', userType: 'customer' },
+  clientCash: { platform: 'cash', userType: 'customer' },
 };
 
 const getPlatformFromURL = () => {

@@ -26,7 +26,7 @@ import {
 } from '@chakra-ui/react';
 import { FiUser, FiLock, FiDollarSign, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
 import { useRouter } from 'next/router';
-import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/hooks/useAuth';
 import theme from '../styles/theme'
 
 // Create the PaymentContext
