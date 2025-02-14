@@ -72,11 +72,11 @@ export default function Header() {
       mobileImage: '/cash.png',
       href: 'https://cash.bitdash.app/',
     },
-    {
-      image: '/ride.png',
-      mobileImage: '/ride.png',
-      href: 'https://ride.bitdash.app/',
-    },
+    // {
+    //   image: '/ride.png',
+    //   mobileImage: '/ride.png',
+    //   href: 'https://ride.bitdash.app/',
+    // },
     {
       image: '/food.png',
       mobileImage: '/food.png',
@@ -87,11 +87,11 @@ export default function Header() {
       mobileImage: '/shop.png',
       href: 'https://shop.bitdash.app/',
     },
-    {
-      image: '/work.png',
-      mobileImage: '/work.png',
-      href: 'https://work.bitdash.app/',
-      },
+    // {
+    //   image: '/work.png',
+    //   mobileImage: '/work.png',
+    //   href: 'https://work.bitdash.app/',
+    //   },
   ];
 
   const bgColor = useColorModeValue(

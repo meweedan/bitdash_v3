@@ -87,44 +87,44 @@ const platforms = [
       'Marketing Tools'
     ]
   },
-  {
-    id: 'ride',
-    tagline: 'Mobility of Tomorrow',
-    description: 'Revolutionize transportation with our intelligent mobility solutions.',
-    image: '/ride.png',
-    imageAr: '/ride-ar.png',
-    color: 'brand.bitride.500',
-    stats: [
-      { value: '50K+', label: 'Daily Rides' },
-      { value: '15+', label: 'Cities' },
-      { value: '4.8', label: 'Rating' }
-    ],
-    features: [
-      'Smart Routing',
-      'Fleet Management',
-      'Real-time Tracking',
-      'Driver Analytics'
-    ]
-  },
-  {
-    id: 'work',
-    tagline: 'Your Career & Service Marketplace',
-    description: 'Connect with top employers and skilled professionals. From corporate careers to handyman services, we bridge the gap between talent and opportunity.',
-    image: '/work.png',
-    imageAr: '/work-ar.png',
-    color: 'brand.bitwork.500',
-    stats: [
-      { value: '100K+', label: 'Active Users' },
-      { value: '20K+', label: 'Job Listings' },
-      { value: '95%', label: 'Success Rate' }
-    ],
-    features: [
-      'Corporate Job Listings',
-      'Skilled Labor Market',
-      'Instant Booking',
-      'Verified Professionals'
-    ]
-   }
+  // {
+  //   id: 'ride',
+  //   tagline: 'Mobility of Tomorrow',
+  //   description: 'Revolutionize transportation with our intelligent mobility solutions.',
+  //   image: '/ride.png',
+  //   imageAr: '/ride-ar.png',
+  //   color: 'brand.bitride.500',
+  //   stats: [
+  //     { value: '50K+', label: 'Daily Rides' },
+  //     { value: '15+', label: 'Cities' },
+  //     { value: '4.8', label: 'Rating' }
+  //   ],
+  //   features: [
+  //     'Smart Routing',
+  //     'Fleet Management',
+  //     'Real-time Tracking',
+  //     'Driver Analytics'
+  //   ]
+  // },
+  // {
+  //   id: 'work',
+  //   tagline: 'Your Career & Service Marketplace',
+  //   description: 'Connect with top employers and skilled professionals. From corporate careers to handyman services, we bridge the gap between talent and opportunity.',
+  //   image: '/work.png',
+  //   imageAr: '/work-ar.png',
+  //   color: 'brand.bitwork.500',
+  //   stats: [
+  //     { value: '100K+', label: 'Active Users' },
+  //     { value: '20K+', label: 'Job Listings' },
+  //     { value: '95%', label: 'Success Rate' }
+  //   ],
+  //   features: [
+  //     'Corporate Job Listings',
+  //     'Skilled Labor Market',
+  //     'Instant Booking',
+  //     'Verified Professionals'
+  //   ]
+  //  }
 ];
 
 const PlatformShowcase = ({ platform, index, isRTL }) => {

@@ -238,20 +238,20 @@ export default function Landing() {
     subdomain: "shop.bitdash.app",
     color: "brand.bitshop"
   },
-  {
-    name: t('bitride.name'),
-    icon: CarFront,
-    description: t('bitride.description'),
-    subdomain: "ride.bitdash.app",
-    color: "brand.bitride"
-  },
-  {
-    name: t('bitwork.name'),
-    icon: Briefcase,
-    description: t('bitwork.description'),
-    subdomain: "work.bitdash.app",
-    color: "brand.bitwork"
-  }
+  // {
+  //   name: t('bitride.name'),
+  //   icon: CarFront,
+  //   description: t('bitride.description'),
+  //   subdomain: "ride.bitdash.app",
+  //   color: "brand.bitride"
+  // },
+  // {
+  //   name: t('bitwork.name'),
+  //   icon: Briefcase,
+  //   description: t('bitwork.description'),
+  //   subdomain: "work.bitdash.app",
+  //   color: "brand.bitwork"
+  // }
 ];
 
 const colorAnimation = keyframes`

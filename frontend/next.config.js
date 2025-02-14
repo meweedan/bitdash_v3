@@ -61,23 +61,23 @@ const nextConfig = {
         destination: '/food/:path*',
       },
       // Ride platform routes
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'ride.bitdash.app' }],
-        destination: '/ride/:path*',
-      },
+      // {
+      //   source: '/:path*',
+      //   has: [{ type: 'host', value: 'ride.bitdash.app' }],
+      //   destination: '/ride/:path*',
+      // },
       // Cash platform routes
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'cash.bitdash.app' }],
         destination: '/cash/:path*',
       },
-      // Work platform routes
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'work.bitdash.app' }],
-        destination: '/work/:path*',
-      }
+      // // Work platform routes
+      // {
+      //   source: '/:path*',
+      //   has: [{ type: 'host', value: 'work.bitdash.app' }],
+      //   destination: '/work/:path*',
+      // }
     ];
   },
 

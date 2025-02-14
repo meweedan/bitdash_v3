@@ -31,16 +31,16 @@ const PLATFORM_ROUTES = {
     client: '/client/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://cash.bitdash.app'
   },
-  work: {
-    employer: '/employer/dashboard',
-    employee: '/employee/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://work.bitdash.app'
-  },
-  ride : {
-    captain: '/captain/dashboard',
-    client: '/client/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://ride.bitdash.app'
-  },
+  // work: {
+  //   employer: '/employer/dashboard',
+  //   employee: '/employee/dashboard',
+  //   baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://work.bitdash.app'
+  // },
+  // ride : {
+  //   captain: '/captain/dashboard',
+  //   client: '/client/dashboard',
+  //   baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://ride.bitdash.app'
+  // },
   shop: {
     owner: '/owner/dashboard',
     customer: '/customer/dashboard',
@@ -59,14 +59,14 @@ const PROFILE_ENDPOINTS = {
     agent: '/api/agents',
     client: '/api/customer-profiles'
   },
-  work: {
-    employer: '/api/employers',
-    employee: '/api/employees'
-  },
-  ride : {
-    captain: '/api/captains',
-    client: '/api/customer-profiles'
-  },
+  // work: {
+  //   employer: '/api/employers',
+  //   employee: '/api/employees'
+  // },
+  // ride : {
+  //   captain: '/api/captains',
+  //   client: '/api/customer-profiles'
+  // },
   shop: {
     owner: '/api/owners',
     customer: '/api/customer-profiles'
@@ -78,14 +78,13 @@ const BUSINESS_TYPE_ROUTES = {
   captain: { platform: 'food', userType: 'captain' },
   merchant: { platform: 'cash', userType: 'merchant' },
   agent: { platform: 'cash', userType: 'agent' },
-  employer: { platform: 'work', userType: 'employer' },
-  employee: { platform: 'work', userType: 'employee' },
+  customer: { platform: 'cash', userType: 'customer' },
+  // employer: { platform: 'work', userType: 'employer' },
+  // employee: { platform: 'work', userType: 'employee' },
   owner: { platform: 'shop', userType: 'owner' },
   client: { platform: 'food', userType: 'customer' },
-  customer: { platform: 'cash', userType: 'client' },
-  clientShop: { platform: 'shop', userType: 'customer' },
-  clientRide: { platform: 'ride', userType: 'customer' },
-  customer: { platform: 'cash', userType: 'customer' },
+  customer: { platform: 'shop', userType: 'customer' },
+  // customer: { platform: 'ride', userType: 'customer' },
 };
 
 const getPlatformFromURL = () => {
@@ -94,16 +93,16 @@ const getPlatformFromURL = () => {
     if (hostname.includes('cash')) return 'bitcash';
     if (hostname.includes('food')) return 'bitfood';
     if (hostname.includes('shop')) return 'bitshop';
-    if (hostname.includes('ride')) return 'bitride';
-    if (hostname.includes('work')) return 'bitwork';
+    // if (hostname.includes('ride')) return 'bitride';
+    // if (hostname.includes('work')) return 'bitwork';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
       if (path.includes('/cash')) return 'bitcash';
       if (path.includes('/food')) return 'bitfood';
       if (path.includes('/shop')) return 'bitshop';
-      if (path.includes('/ride')) return 'bitride';
-      if (path.includes('/work')) return 'bitwork';
+      // if (path.includes('/ride')) return 'bitride';
+      // if (path.includes('/work')) return 'bitwork';
     }
   }
   return 'bitdash';
@@ -132,20 +131,20 @@ const getColorScheme = (platform, isDark) => {
       hover: 'brand.bitshop.600',
       border: 'brand.bitshop.500'
     },
-    bitride: {
-      bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.bitride.400' : 'brand.bitride.600',
-      button: 'brand.bitride.500',
-      hover: 'brand.bitride.600',
-      border: 'brand.bitride.500'
-    },
-    bitwork: {
-      bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.bitwork.400' : 'brand.bitwork.600',
-      button: 'brand.bitwork.500',
-      hover: 'brand.bitwork.600',
-      border: 'brand.bitwork.500'
-    },
+    // bitride: {
+    //   bg: isDark ? 'whiteAlpha.50' : 'gray.50',
+    //   text: isDark ? 'brand.bitride.400' : 'brand.bitride.600',
+    //   button: 'brand.bitride.500',
+    //   hover: 'brand.bitride.600',
+    //   border: 'brand.bitride.500'
+    // },
+    // bitwork: {
+    //   bg: isDark ? 'whiteAlpha.50' : 'gray.50',
+    //   text: isDark ? 'brand.bitwork.400' : 'brand.bitwork.600',
+    //   button: 'brand.bitwork.500',
+    //   hover: 'brand.bitwork.600',
+    //   border: 'brand.bitwork.500'
+    // },
     bitdash: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
       text: isDark ? 'gray.200' : 'gray.800',
