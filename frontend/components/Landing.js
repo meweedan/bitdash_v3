@@ -372,7 +372,6 @@ return (
     minH="100vh"
     overflowX="hidden"
   >
-    <Hero />
     <Container maxW="container.xl" px={{ base: 4, md: 8 }}>
       <VStack spacing={16} py={20}>
         {/* Hero Content */}

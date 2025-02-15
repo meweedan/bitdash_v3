@@ -36,8 +36,6 @@ import Head from 'next/head';
 import { useWallet } from '@/hooks/useWallet';
 import { useQuery } from '@tanstack/react-query';
 
-const { t } = useTranslation();
-
 const TransactionConfirmationModal = ({ 
   isOpen, 
   onClose, 
