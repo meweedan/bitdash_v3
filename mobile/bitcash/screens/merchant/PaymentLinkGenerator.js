@@ -84,7 +84,7 @@ const PaymentLinkGenerator = ({ merchantData, visible, onClose }) => {
       }
 
       const responseData = await response.json();
-      const fullUrl = `${frontendUrl}/cash/${businessName}/${linkId}`;
+      const fullUrl = `${frontendUrl}/${businessName}/${linkId}`;
       
       return {
         ...responseData.data,

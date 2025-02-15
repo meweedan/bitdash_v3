@@ -214,7 +214,7 @@ export default function PublicProfile() {
                     size="lg"
                     leftIcon={<FiArrowUpRight />}
                     onClick={() => router.push({
-                      pathname: '/cash/client/transfer',
+                      pathname: '/client/transfer',
                       query: { 
                         recipientId: profile.id,
                         recipientName: attributes.fullName,

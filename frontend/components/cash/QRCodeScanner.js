@@ -53,7 +53,7 @@ const QRCodeGenerator = ({ amount, merchantId, description = '', customColors = 
     >
       <VStack spacing={4}>
         <QRCode
-          value={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/cash/${qrData.attributes.link_id}`}
+          value={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${qrData.attributes.link_id}`}
           size={200}
           level="H"
           bgColor={customColors?.qrBackground || 'white'}

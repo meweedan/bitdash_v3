@@ -87,7 +87,7 @@ const PaymentLinksList = ({ merchantId }) => {
 const PaymentLinkItem = ({ link, onDelete }) => {
   const bgHover = useColorModeValue('gray.50', 'gray.700');
   const { attributes } = link;
-  const paymentUrl = `https://cash.bitdash.app/cash/${attributes.metadata?.businessName?.toLowerCase().replace(/[^a-z0-9]/g, '-')}/${attributes.link_id}`;
+  const paymentUrl = `https://cash.bitdash.app/${attributes.metadata?.businessName?.toLowerCase().replace(/[^a-z0-9]/g, '-')}/${attributes.link_id}`;
   const { hasCopied, onCopy } = useClipboard(paymentUrl);
   const isExpired = attributes.expiry ? isPast(new Date(attributes.expiry)) : false;
 

@@ -134,7 +134,7 @@ const QRCodeModal = ({
         ) : (
           <VStack spacing={4} align="center">
             <QRCodeCanvas
-              value={`${frontendUrl}/cash/${qrCodeData.attributes.link_id}`}
+              value={`${frontendUrl}/${qrCodeData.attributes.link_id}`}
               size={200}
               level="H"
               bgColor={customColors?.qrBackground || 'white'}

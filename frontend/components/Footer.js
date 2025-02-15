@@ -109,9 +109,9 @@ const Footer = () => {
       { label: 'Privacy', href: '/privacy', icon: Shield },
     ],
     cash: [
-      { label: 'Transfer Money', href: '/cash/client/transfer', icon: FiArrowRightCircle },
-      { label: 'Dashboard', href: '/cash/client/dashboard', icon: DollarSign },
-      { label: 'Profile', href: '/cash/profile/[clientName]', icon: FiUser },
+      { label: 'Transfer Money', href: '/client/transfer', icon: FiArrowRightCircle },
+      { label: 'Dashboard', href: '/client/dashboard', icon: DollarSign },
+      { label: 'Profile', href: '/profile/[clientName]', icon: FiUser },
     ],
     eats: [
       { label: 'Order Food', href: '/eats/order', icon: Utensils },

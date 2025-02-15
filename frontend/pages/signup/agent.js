@@ -317,7 +317,7 @@ const AgentSignup = () => {
         duration: 5000
       });
 
-      router.push('/cash/agent/dashboard');
+      router.push('/agent/dashboard');
 
     } catch (error) {
       console.error('Signup error:', error);

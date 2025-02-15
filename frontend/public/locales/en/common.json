@@ -157,7 +157,6 @@
   "orderFailed": "Order failed",
   "emptyCart": "Your cart is empty",
   "paymentMethod": "Payment Method",
-  "cash": "Cash",
   "card": "Card",
   "addToCart": "Add to Cart",
   "removeFromCart": "Remove",
@@ -497,7 +496,7 @@
     "title": "BitDash | Next-Generation Business Solutions",
     "description": "Transform your business operations with innovative digital solutions."
   },
-  "hero": {
+  "cash.hero": {
     "badge": "Innovation at Its Best",
     "title": "Transform Your Business Operations",
     "subtitle": "Seamlessly integrate, optimize, and grow with our cutting-edge platform.",
@@ -888,6 +887,64 @@
   "FeaturedVehicles": "Featured Vehicles",
   "ViewAllVehicles": "View All Vehicles",
   "CTABitAuto": "Get Started with BitAuto",
+  "cash": {
+      "hero": {
+        "title": "Instant Payments for the Digital Age",
+        "subtitle": "Transfer money instantly, pay merchants in real-time, and shop globally with BitCash's secure payment network",
+        "get_started": "Get Started"
+      }
+    },
+    "hero": {
+      "merchant_signup": "For Merchants"
+    },
+    "demo": {
+      "instant_transfer": "Transfer Speed",
+      "global_reach": "Countries",
+      "merchants": "Active Merchants"
+    },
+    "instant": {
+      "payments": {
+        "title": "Instant Transfers",
+        "description": "Send and receive money instantly with zero delays. Perfect for both personal and business transactions."
+      }
+    },
+    "merchant": {
+      "solutions": {
+        "title": "Merchant Solutions",
+        "description": "Accept payments in-store and online with our comprehensive merchant platform and integrated payment solutions."
+      }
+    },
+    "qr": {
+      "payments": {
+        "title": "QR Code Payments",
+        "description": "Seamless point-of-sale payments using quick QR code scanning for contactless transactions."
+      }
+    },
+    "mobile": {
+      "app": {
+        "title": "Mobile First",
+        "description": "Manage your money, make payments, and track transactions from our powerful mobile app."
+      }
+    },
+      "secure": {
+        "payments": {
+          "title": "Secure Payments",
+          "description": "Enterprise-grade security with fraud protection",
+          "technical": "End-to-end encryption, 2FA, Fraud AI"
+        }
+      },
+      "business": {
+        "analytics": {
+          "title": "Business Analytics",
+          "description": "Real-time insights into your payment flows",
+          "technical": "Custom reports, API access, Dashboard"
+        }
+      },
+    "cash.cta": {
+      "title": "Ready to Transform Your Payments?",
+      "description": "Join thousands of businesses and millions of users on the fastest growing payment network",
+      "button": "Start Now"
+    },
   "CTABitAutoParagraph": "Join thousands of satisfied customers and experience the future of auto trading.",
   "meta": {
     "title": "BitCash - Fintech Solutions",
@@ -1144,7 +1201,6 @@
   "welcome_to_bitdash": "Welcome to BitDash!",
   "your_verification_code_is": "Your verification code is:",
   "this_code_will_expire_in_10_mi": "This code will expire in 10 minutes.",
-  "merchant": "Merchant:",
   "amount": "Amount:",
   "transaction_id": "Transaction ID:",
   "balance_before": "Balance Before:",
@@ -1203,7 +1259,6 @@
   "send_money": "Send Money",
   "transfer_information": "Transfer Information",
   "processing_time": "Processing Time",
-  "instant": "Instant",
   "transfer_fee": "Transfer Fee",
   "free": "Free",
   "find_bitcash_locations": "Find BitCash Locations",

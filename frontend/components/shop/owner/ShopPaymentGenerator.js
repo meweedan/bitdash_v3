@@ -106,7 +106,7 @@ const ShopPaymentGenerator = ({
         const responseData = await response.json();
         
         // Construct full payment URL
-        const fullUrl = `${frontendUrl}/cash/${businessName}/${linkId}`;
+        const fullUrl = `${frontendUrl}/${businessName}/${linkId}`;
         
         return {
           ...responseData.data,

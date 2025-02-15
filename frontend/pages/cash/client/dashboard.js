@@ -299,7 +299,7 @@ const ClientDashboard = () => {
               <Tooltip label="Send Money">
                 <IconButton
                   icon={<FiArrowLeftCircle />}
-                  onClick={() => router.push('/cash/client/transfer')}
+                  onClick={() => router.push('/client/transfer')}
                   colorScheme="blue"
                   variant="ghost"
                   size="lg"
@@ -343,7 +343,7 @@ const ClientDashboard = () => {
                       leftIcon={<FiUser />}
                       onClick={() => {
                         onMenuModalClose();
-                        router.push('/cash/client/profile');
+                        router.push('/client/profile');
                       }}
                       w="full"
                       justifyContent="start"
@@ -356,7 +356,7 @@ const ClientDashboard = () => {
                       leftIcon={<FiLink />}
                       onClick={() => {
                         onMenuModalClose();
-                        router.push('/cash/client/payment-links');
+                        router.push('/client/payment-links');
                       }}
                       w="full"
                       justifyContent="start"
@@ -369,7 +369,7 @@ const ClientDashboard = () => {
                       leftIcon={<FiUsers />}
                       onClick={() => {
                         onMenuModalClose();
-                        router.push('/cash/client/contacts');
+                        router.push('/client/contacts');
                       }}
                       w="full"
                       justifyContent="start"

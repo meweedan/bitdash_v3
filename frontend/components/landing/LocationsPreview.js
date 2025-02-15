@@ -87,7 +87,7 @@ export const LocationsPreview = () => {
               isReadOnly
             />
           </InputGroup>
-          <Link href="/cash/map">
+          <Link href="/map">
             <Button 
               size="sm" 
               colorScheme="blue"

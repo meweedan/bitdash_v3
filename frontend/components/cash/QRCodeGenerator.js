@@ -11,7 +11,7 @@ const QRCodeGenerator = ({
 }) => {
   const [paymentLink, setPaymentLink] = useState(null);
   const qrValue = paymentLink ? 
-    `${process.env.NEXT_PUBLIC_FRONTEND_URL}/cash/${paymentLink.attributes.link_id}` : '';
+    `${process.env.NEXT_PUBLIC_FRONTEND_URL}/${paymentLink.attributes.link_id}` : '';
 
   // Create payment link mutation
   const createPaymentLink = useMutation({

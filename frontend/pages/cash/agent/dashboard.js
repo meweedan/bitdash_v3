@@ -385,11 +385,11 @@ const AgentDashboard = () => {
     }
       
     };const handleDeposit = () => {
-      router.push('/cash/agent/deposit');
+      router.push('/agent/deposit');
     };
 
     const handleWithdraw = () => {
-      router.push('/cash/agent/withdraw');
+      router.push('/agent/withdraw');
     };
 
   // Loading state

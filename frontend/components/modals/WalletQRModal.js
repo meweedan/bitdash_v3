@@ -25,7 +25,7 @@ const WalletQRModal = ({ isOpen, onClose, walletData, profileId }) => {
   // Ensure we have a valid profile ID, either from props or from walletData
   const customerId = profileId || walletData?.customer?.data?.id || walletData?.customer?.id;
   const paymentLink = customerId 
-    ? `https://cash.bitdash.app/cash/profile/${customerId}`
+    ? `https://cash.bitdash.app/profile/${customerId}`
     : '';
 
   const { hasCopied: hasWalletCopied, onCopy: onWalletCopy } = useClipboard(walletData.walletId);

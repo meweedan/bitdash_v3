@@ -55,7 +55,7 @@ const DepositPage = () => {
         status: 'success',
         duration: 3000
       });
-      router.push('/cash/agent/dashboard');
+      router.push('/agent/dashboard');
     },
     onError: (error) => {
       toast({
