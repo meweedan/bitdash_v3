@@ -1,6 +1,4 @@
 // frontend/pages/cash/profile/[clientName].js
-import { useTranslation } from 'next-i18next';
-// frontend/pages/cash/profile/[clientName].js
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -28,8 +26,7 @@ import { FiUser, FiPhone, FiCreditCard, FiArrowUpRight } from 'react-icons/fi';
 import Layout from '@/components/Layout';
 import GlassCard from '@/components/GlassCard';
 
-export default function Profile() {
-  const { t } = useTranslation();
+export default function PublicProfile() {
   const router = useRouter();
   const { clientName } = router.query;
   const [profile, setProfile] = useState(null);
@@ -134,7 +131,7 @@ export default function Profile() {
       <Layout>
         <Flex justify="center" align="center" direction="column" gap={4}>
           <GlassCard p={6}>
-            <Heading size="md">{t('profile_error')}</Heading>
+            <Heading size="md">Profile Error</Heading>
             <Text color="red.500">{error || 'Failed to load profile'}</Text>
           </GlassCard>
         </Flex>
@@ -206,7 +203,7 @@ export default function Profile() {
               <VStack spacing={4} align="stretch">
                 <HStack>
                   <FiUser />
-                  <Text fontWeight="bold">{t('customer_id')}</Text>
+                  <Text fontWeight="bold">Customer ID:</Text>
                   <Text>{profile.id}</Text>
                 </HStack>
                 <VStack spacing={4} align="stretch">
@@ -226,7 +223,9 @@ export default function Profile() {
                     })}
                     width="full"
                     py={6}
-                  >{t('send_money')}</Button>
+                  >
+                    Send Money
+                  </Button>
                 </VStack>
               </VStack>
             </VStack>

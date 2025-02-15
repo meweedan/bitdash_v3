@@ -1,5 +1,3 @@
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState, useEffect } from 'react';
 import { 
   Box, 
@@ -63,38 +61,40 @@ const TransactionConfirmationModal = ({
       <ModalBody>
         <VStack spacing={4} align="stretch">
           <HStack justify="space-between">
-            <Text>{t('merchant')}</Text>
+            <Text>Merchant:</Text>
             <Text fontWeight="bold">{merchantName}</Text>
           </HStack>
           <HStack justify="space-between">
-            <Text>{t('amount')}</Text>
+            <Text>Amount:</Text>
             <Text fontWeight="bold" color="green.500">
               {amount.toLocaleString()} LYD
             </Text>
           </HStack>
           {transactionId && (
             <HStack justify="space-between">
-              <Text>{t('transaction_id')}</Text>
+              <Text>Transaction ID:</Text>
               <Text fontWeight="bold">{transactionId}</Text>
             </HStack>
           )}
           <Divider />
           <HStack justify="space-between">
-            <Text>{t('balance_before')}</Text>
+            <Text>Balance Before:</Text>
             <Text>{beforeBalance.toLocaleString()} LYD</Text>
           </HStack>
           <HStack justify="space-between">
-            <Text>{t('balance_after')}</Text>
+            <Text>Balance After:</Text>
             <Text>{afterBalance.toLocaleString()} LYD</Text>
           </HStack>
           <HStack justify="space-between">
-            <Text>{t('time')}</Text>
+            <Text>Time:</Text>
             <Text>{new Date().toLocaleString()}</Text>
           </HStack>
         </VStack>
       </ModalBody>
       <ModalFooter>
-        <Button onClick={onClose} colorScheme="blue">{t('close')}</Button>
+        <Button onClick={onClose} colorScheme="blue">
+          Close
+        </Button>
       </ModalFooter>
     </ModalContent>
   </Modal>
@@ -112,7 +112,6 @@ const DynamicPaymentPage = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [transactionResult, setTransactionResult] = useState(null);
   const toast = useToast();
-  const { t } = useTranslation();
   const { isOpen: isConfirmOpen, onOpen: onConfirmOpen, onClose: onConfirmClose } = useDisclosure();
 
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
@@ -381,9 +380,9 @@ const DynamicPaymentPage = () => {
       <Layout>
         <Flex height="50vh" width="100vw" justifyContent="center" alignItems="center" textAlign="center">
           <VStack spacing={4}>
-            <Heading>{t('invalid_payment_link')}</Heading>
-            <Text>{t('the_payment_link_youre_trying_')}</Text>
-            <Button onClick={() => router.push('/')}>{t('go_to_home')}</Button>
+            <Heading>Invalid Payment Link</Heading>
+            <Text>The payment link you're trying to access is invalid or has expired.</Text>
+            <Button onClick={() => router.push('/')}>Go to Home</Button>
           </VStack>
         </Flex>
       </Layout>
@@ -424,12 +423,12 @@ const DynamicPaymentPage = () => {
                   <Heading size="md" textAlign="right">
                     {merchantDetails?.attributes?.metadata?.businessName || businessName}
                   </Heading>
-                  <Badge colorScheme="green">{t('verified_merchant')}</Badge>
+                  <Badge colorScheme="green">Verified Merchant</Badge>
                 </VStack>
               </Flex>
 
               <Box w="full" p={4} borderRadius="lg" textAlign="center">
-                <Text fontSize="sm" color="gray.500">{t('payment_amount')}</Text>
+                <Text fontSize="sm" color="gray.500">Payment Amount</Text>
                 <Text fontSize="3xl" fontWeight="bold" color="green.500">
                   {paymentDetails.attributes.amount.toLocaleString()} LYD
                 </Text>
@@ -439,7 +438,7 @@ const DynamicPaymentPage = () => {
                 <Flex align="center" justify="space-between" p={3} borderRadius="md" w="full">
                   <HStack>
                     <Icon as={FiUser} />
-                    <Text>{t('your_balance')}</Text>
+                    <Text>Your Balance</Text>
                   </HStack>
                   {isWalletLoading ? (
                     <Spinner size="sm" />
@@ -457,7 +456,7 @@ const DynamicPaymentPage = () => {
                     <FormLabel>
                       <HStack>
                         <Icon as={FiLock} />
-                        <Text>{t('enter_merchants_6digit_pin')}</Text>
+                        <Text>Enter Merchant's 6-Digit PIN</Text>
                       </HStack>
                     </FormLabel>
                     <HStack justify="center" spacing={4}>
@@ -491,13 +490,17 @@ const DynamicPaymentPage = () => {
                     onClick={handlePayment}
                     isLoading={isProcessing}
                     isDisabled={pin.length !== 6 || isProcessing}
-                  >{t('confirm_payment')}</Button>
+                  >
+                    Confirm Payment
+                  </Button>
                 </VStack>
               ) : (
                 <Button
                   w="full"
                   onClick={() => router.push(`/login?redirect=${encodeURIComponent(router.asPath)}`)}
-                >{t('login_to_pay')}</Button>
+                >
+                  Login to Pay
+                </Button>
               )}
             </VStack>
           </Box>
@@ -524,14 +527,5 @@ const DynamicPaymentPage = () => {
     </>
   );
 };
-
-// Fetching translations for multiple locales
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common'])),
-    },
-  };
-}
 
 export default DynamicPaymentPage;

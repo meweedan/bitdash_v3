@@ -496,12 +496,14 @@ useEffect(() => {
               colorScheme="red"
               onClick={onOpen}
               isDisabled={order?.attributes?.cancellation_attempts >= 3}
-            >{t('cancel_order')}</Button>
+            >
+              Cancel Order 
+            </Button>
           )}
 
           {/* Messages Section */}
           <Box bg="whiteAlpha.200" p={4} borderRadius="lg">
-            <Heading size="md" mb={4}>{t('messages')}</Heading>
+            <Heading size="md" mb={4}>Messages</Heading>
             <VStack spacing={4} maxH="300px" overflowY="auto" mb={4}>
               {messages.map((message) => (
                 <Box 
@@ -535,7 +537,9 @@ useEffect(() => {
                 onClick={handleSendMessage}
                 isLoading={isSendingMessage}
                 leftIcon={<FiMessageCircle />}
-              >{t('send')}</Button>
+              >
+                Send
+              </Button>
             </HStack>
           </Box>
 
@@ -547,13 +551,17 @@ useEffect(() => {
           >
             <AlertDialogOverlay>
               <AlertDialogContent>
-                <AlertDialogHeader>{t('cancel_order')}</AlertDialogHeader>
+                <AlertDialogHeader>Cancel Order</AlertDialogHeader>
                 <AlertDialogBody>
                   Are you sure? You have {3 - (order?.attributes?.cancellation_attempts || 0)} attempts remaining.
                 </AlertDialogBody>
                 <AlertDialogFooter>
-                  <Button ref={cancelRef} onClick={onClose}>{t('no')}</Button>
-                  <Button colorScheme="red" onClick={handleCancelOrder} ml={3}>{t('yes_cancel_order')}</Button>
+                  <Button ref={cancelRef} onClick={onClose}>
+                    No
+                  </Button>
+                  <Button colorScheme="red" onClick={handleCancelOrder} ml={3}>
+                    Yes, Cancel Order
+                  </Button>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialogOverlay>
@@ -624,16 +632,16 @@ useEffect(() => {
                     <Box bg="whiteAlpha.200" p={4} borderRadius="lg">
                       <VStack spacing={3}>
                         <HStack justify="space-between" width="100%">
-                          <Text>{t('table')}</Text>
+                          <Text>Table</Text>
                           <Text>{order?.tables?.[0]?.name || 'N/A'}</Text>
                         </HStack>
                         <HStack justify="space-between" width="100%">
-                          <Text>{t('payment_method')}</Text>
+                          <Text>Payment Method</Text>
                           <Badge colorScheme="purple">{order?.payment_method}</Badge>
                         </HStack>
                         <Divider />
                         <HStack justify="space-between" width="100%">
-                          <Text fontWeight="bold">{t('total_amount')}</Text>
+                          <Text fontWeight="bold">Total Amount</Text>
                           <Text fontWeight="bold" fontSize="xl">${order?.total}</Text>
                         </HStack>
                       </VStack>
@@ -642,7 +650,7 @@ useEffect(() => {
                     {/* Notes */}
                     {order?.notes && (
                       <Box bg="whiteAlpha.200" p={4} borderRadius="lg">
-                        <Text fontWeight="bold" mb={2}>{t('order_notes')}</Text>
+                        <Text fontWeight="bold" mb={2}>Order Notes</Text>
                         <Text>{order.notes}</Text>
                       </Box>
                     )}
@@ -651,13 +659,13 @@ useEffect(() => {
                     <Box bg="whiteAlpha.100" p={4} borderRadius="lg">
                       <VStack align="stretch" spacing={2}>
                         <HStack justify="space-between">
-                          <Text fontSize="sm" color="gray.400">{t('order_placed')}</Text>
+                          <Text fontSize="sm" color="gray.400">Order Placed</Text>
                           <Text fontSize="sm" color="gray.400">
                             {new Date(order?.createdAt).toLocaleString()}
                           </Text>
                         </HStack>
                         <HStack justify="space-between">
-                          <Text fontSize="sm" color="gray.400">{t('last_updated')}</Text>
+                          <Text fontSize="sm" color="gray.400">Last Updated</Text>
                           <Text fontSize="sm" color="gray.400">
                             {new Date(order?.updatedAt).toLocaleString()}
                           </Text>
