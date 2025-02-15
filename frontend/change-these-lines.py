@@ -2,7 +2,7 @@ import os
 import re
 
 # Set your project directory here
-PROJECT_DIR = "./pages/"
+PROJECT_DIR = "./frontend/"
 
 # Output file for the list of changes
 OUTPUT_FILE = "change-these-lines.txt"
