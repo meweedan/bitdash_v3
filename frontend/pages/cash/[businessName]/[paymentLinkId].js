@@ -14,6 +14,7 @@ import {
   HStack,
   Avatar,
   Badge,
+  Image,
   useColorModeValue,
   Modal,
   ModalOverlay,
@@ -197,6 +198,7 @@ const DynamicPaymentPage = () => {
       });
     }
   });
+
   useEffect(() => {
    const fetchPaymentLinkDetails = async () => {
       if (!paymentLinkId) return;
@@ -269,7 +271,6 @@ const DynamicPaymentPage = () => {
     setIsProcessing(true);
 
     try {
-      // Verify merchant wallet
       const merchantWalletResponse = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/wallets?populate=*&filters[merchant][id][$eq]=${merchantDetails.id}`,
         {
@@ -322,7 +323,6 @@ const DynamicPaymentPage = () => {
       
       onConfirmOpen();
 
-      // Clear celebration after animation
       setTimeout(() => {
         setShowCelebration(false);
       }, 5000);
@@ -371,6 +371,7 @@ const DynamicPaymentPage = () => {
       </Layout>
     );
   }
+
   return (
     <>
       <Head>
@@ -381,35 +382,58 @@ const DynamicPaymentPage = () => {
         </title>
       </Head>
       <Layout>
-        <Flex justifyContent="center" alignItems="center" p={4}>
+        <Flex 
+          justifyContent="center" 
+          alignItems="center" 
+          p={4} 
+          bg={useColorModeValue('gray.50', 'gray.800')}
+          minHeight="100vh"
+        >
           <Box
             w="full"
             maxW="md"
             borderRadius="xl"
             boxShadow="xl"
             p={6}
+            bg={useColorModeValue('white', 'gray.700')}
           >
             <VStack spacing={6}>
-              <Flex align="center" justify="space-between" w="full">
+              <Flex 
+                direction="column" 
+                align="center" 
+                w="full" 
+                textAlign="center"
+                mb={4}
+              >
                 {merchantDetails?.attributes?.logo?.data ? (
-                  <Avatar 
+                  <Image 
                     src={`${backendUrl}${merchantDetails.attributes.logo.data.attributes.url}`} 
-                    size="lg" 
-                    name={merchantDetails.attributes.metadata?.businessName || t('common.merchant')}
+                    alt={merchantDetails.attributes.metadata?.businessName || t('common.merchant')}
+                    boxSize="150px"
+                    objectFit="contain"
+                    borderRadius="full"
+                    mb={4}
+                    boxShadow="md"
                   />
                 ) : (
                   <Avatar 
                     bg="blue.500" 
                     color="white"
-                    size="lg"
+                    size="2xl"
                     name={merchantDetails?.attributes?.metadata?.businessName || businessName}
+                    mb={4}
                   />
                 )}
-                <VStack align="end" spacing={1}>
-                  <Heading size="md" textAlign="right">
+                <VStack spacing={2}>
+                  <Heading size="lg" color={useColorModeValue('gray.800', 'white')}>
                     {merchantDetails?.attributes?.metadata?.businessName || businessName}
                   </Heading>
-                  <Badge colorScheme="green">{t('payment.status.verified')}</Badge>
+                  <Badge 
+                    colorScheme="green" 
+                    fontSize="sm"
+                  >
+                    {t('payment.status.verified')}
+                  </Badge>
                 </VStack>
               </Flex>
 
@@ -425,99 +449,98 @@ const DynamicPaymentPage = () => {
                   <HStack>
                     <Icon as={FiUser} />
                     <Text>{t('payment.labels.your_balance')}</Text>
-                  </HStack>
-                  {isWalletLoading ? (
-                    <Spinner size="sm" />
-                  ) : (
-                    <Text fontWeight="bold">
-                      {walletData?.data?.attributes?.balance?.toLocaleString() || 0} {t('common.currency')}
-                    </Text>
-                  )}
-                </Flex>
-              )}
-
-              {isAuthenticated ? (
-                <VStack spacing={4} align="stretch" w="full">
-                  <FormControl>
-                    <FormLabel>
-                      <HStack>
-                        <Icon as={FiLock} />
-                        <Text>{t('payment.labels.enter_pin')}</Text>
-                      </HStack>
-                    </FormLabel>
-                    <HStack justify="center" spacing={4}>
-                      <PinInput 
-                        value={pin}
-                        onChange={setPin}
-                        type="number"
-                        mask
-                        size="lg"
-                      >
-                        {[...Array(6)].map((_, i) => (
-                          <PinInputField
-                            key={i}
-                            fontSize="xl"
-                            borderColor={useColorModeValue('gray.200', 'gray.600')}
-                            _focus={{
-                              borderColor: 'blue.400',
-                              boxShadow: `0 0 0 1px ${useColorModeValue('blue.400', 'blue.300')}`
-                            }}
-                            _hover={{
-                              borderColor: useColorModeValue('gray.300', 'gray.500')
-                            }}
-                          />
-                        ))}
-                      </PinInput>
-                    </HStack>
-                  </FormControl>
-                  <Button
-                    size="lg"
-                    colorScheme="blue"
-                    onClick={handlePayment}
-                    isLoading={isProcessing}
-                    isDisabled={pin.length !== 6 || isProcessing}
-                  >
-                    {t('payment.labels.confirm_payment')}
-                  </Button>
-                </VStack>
+              {isWalletLoading ? (
+                <Spinner size="sm" />
               ) : (
-                <InlineLoginForm onLoginSuccess={handleLoginSuccess} />
+                <Text fontWeight="bold">
+                  {walletData?.data?.attributes?.balance?.toLocaleString() || 0} {t('common.currency')}
+                </Text>
               )}
+              </HStack>
+            </Flex>
+          )}
+
+          {isAuthenticated ? (
+            <VStack spacing={4} align="stretch" w="full">
+              <FormControl>
+                <FormLabel>
+                  <HStack>
+                    <Icon as={FiLock} />
+                    <Text>{t('payment.labels.enter_pin')}</Text>
+                  </HStack>
+                </FormLabel>
+                <HStack justify="center" spacing={4}>
+                  <PinInput 
+                    value={pin}
+                    onChange={setPin}
+                    type="number"
+                    mask
+                    size="lg"
+                  >
+                    {[...Array(6)].map((_, i) => (
+                      <PinInputField
+                        key={i}
+                        fontSize="xl"
+                        borderColor={useColorModeValue('gray.200', 'gray.600')}
+                        _focus={{
+                          borderColor: 'blue.400',
+                          boxShadow: `0 0 0 1px ${useColorModeValue('blue.400', 'blue.300')}`
+                        }}
+                        _hover={{
+                          borderColor: useColorModeValue('gray.300', 'gray.500')
+                        }}
+                      />
+                    ))}
+                  </PinInput>
+                </HStack>
+              </FormControl>
+              <Button
+                size="lg"
+                colorScheme="blue"
+                onClick={handlePayment}
+                isLoading={isProcessing}
+                isDisabled={pin.length !== 6 || isProcessing}
+              >
+                {t('payment.labels.confirm_payment')}
+              </Button>
             </VStack>
-          </Box>
-        </Flex>
+          ) : (
+            <InlineLoginForm onLoginSuccess={handleLoginSuccess} />
+          )}
+        </VStack>
+      </Box>
+    </Flex>
 
-        <CelebrationOverlay 
-          isSuccess={transactionResult?.isSuccess}
-          isActive={showCelebration}
-        />
+    <CelebrationOverlay 
+      isSuccess={transactionResult?.isSuccess}
+      isActive={showCelebration}
+    />
 
-        {transactionResult && (
-          <TransactionConfirmationModal
-            isOpen={isConfirmOpen}
-            onClose={() => {
-              onConfirmClose();
-              setTransactionResult(null);
-              setPin('');
-              router.push(transactionResult.isSuccess ? '/payments/success' : '/');
-            }}
-            beforeBalance={transactionResult.beforeBalance}
-            afterBalance={transactionResult.afterBalance}
-            amount={paymentDetails.attributes.amount}
-            merchantName={merchantDetails?.attributes?.metadata?.businessName || businessName}
-            isSuccess={transactionResult.isSuccess}
-            transactionId={transactionResult.transactionId}
-          />
-        )}
-      </Layout>
-    </>
-  );
+    {transactionResult && (
+      <TransactionConfirmationModal
+        isOpen={isConfirmOpen}
+        onClose={() => {
+          onConfirmClose();
+          setTransactionResult(null);
+          setPin('');
+          router.push(transactionResult.isSuccess ? '/payments/success' : '/');
+        }}
+        beforeBalance={transactionResult.beforeBalance}
+        afterBalance={transactionResult.afterBalance}
+        amount={paymentDetails.attributes.amount}
+        merchantName={merchantDetails?.attributes?.metadata?.businessName || businessName}
+        isSuccess={transactionResult.isSuccess}
+        transactionId={transactionResult.transactionId}
+      />
+    )}
+  </Layout>
+</>
+);
 };
-
 export const getServerSideProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale, ['common'])),
-  },
-});
-
+    },
+  });
+  
 export default DynamicPaymentPage;

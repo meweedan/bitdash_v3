@@ -1,7 +1,8 @@
 // components/CelebrationOverlay.js
 import React, { useEffect, useState } from 'react';
-import { Box, keyframes } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import { keyframes } from '@emotion/react';
 
 const fallAnimation = keyframes`
   0% {
