@@ -342,11 +342,7 @@ const MerchantDashboard = () => {
     );
     if (!response.ok) throw new Error('Failed to fetch merchant data');
     const data = await response.json();
-    
-    // Ensure data exists
-    if (!data?.data?.[0]) throw new Error('No merchant data found');
-    
-    return data;
+    return data.data[0]; // Key change: return the first merchant directly
   },
   enabled: !!isAuthenticated,
   refetchInterval: 30000
@@ -398,7 +394,7 @@ if (error || !merchantData?.data?.[0]) {
 }
 
 // Correct data access
-const merchant = merchantData.data[0].attributes;
+const merchant = merchantData?.attributes || {};
 const wallet = merchant?.wallet?.data?.attributes;
 
   return (
