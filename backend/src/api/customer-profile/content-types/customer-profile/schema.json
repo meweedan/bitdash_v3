@@ -111,15 +111,6 @@
         }
       }
     },
-    "skills": {
-      "type": "json"
-    },
-    "jobApplications": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::job-application.job-application",
-      "mappedBy": "applicant"
-    },
     "shopOrders": {
       "type": "relation",
       "relation": "oneToMany",
