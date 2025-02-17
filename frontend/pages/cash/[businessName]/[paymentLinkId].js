@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'next-i18next';
 import { 
   Box, 
   VStack, 
@@ -33,6 +34,10 @@ import Layout from '@/components/Layout';
 import Head from 'next/head';
 import { useWallet } from '@/hooks/useWallet';
 import { useQuery } from '@tanstack/react-query';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+import InlineLoginForm from '@/components/auth/InlineLoginForm';
+import CelebrationOverlay from '@/components/CelebrationOverlay';
 
 const TransactionConfirmationModal = ({ 
   isOpen, 
@@ -43,67 +48,74 @@ const TransactionConfirmationModal = ({
   merchantName, 
   isSuccess,
   transactionId
-}) => (
-  <Modal isOpen={isOpen} onClose={onClose} isCentered>
-    <ModalOverlay backdropFilter="blur(10px)" />
-    <ModalContent>
-      <ModalHeader>
-        <Flex align="center">
-          <Icon 
-            as={isSuccess ? FiCheckCircle : FiAlertCircle} 
-            color={isSuccess ? 'green.500' : 'red.500'}
-            mr={3}
-            boxSize={6}
-          />
-          <Text>{isSuccess ? 'Payment Successful' : 'Payment Failed'}</Text>
-        </Flex>
-      </ModalHeader>
-      <ModalBody>
-        <VStack spacing={4} align="stretch">
-          <HStack justify="space-between">
-            <Text>Merchant:</Text>
-            <Text fontWeight="bold">{merchantName}</Text>
-          </HStack>
-          <HStack justify="space-between">
-            <Text>Amount:</Text>
-            <Text fontWeight="bold" color="green.500">
-              {amount.toLocaleString()} LYD
+}) => {
+  const { t } = useTranslation();
+  
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} isCentered>
+      <ModalOverlay backdropFilter="blur(10px)" />
+      <ModalContent>
+        <ModalHeader>
+          <Flex align="center">
+            <Icon 
+              as={isSuccess ? FiCheckCircle : FiAlertCircle} 
+              color={isSuccess ? 'green.500' : 'red.500'}
+              mr={3}
+              boxSize={6}
+            />
+            <Text>
+              {t(`payment.confirmation.${isSuccess ? 'success' : 'failed'}`)}
             </Text>
-          </HStack>
-          {transactionId && (
+          </Flex>
+        </ModalHeader>
+        <ModalBody>
+          <VStack spacing={4} align="stretch">
             <HStack justify="space-between">
-              <Text>Transaction ID:</Text>
-              <Text fontWeight="bold">{transactionId}</Text>
+              <Text>{t('payment.confirmation.merchant')}:</Text>
+              <Text fontWeight="bold">{merchantName}</Text>
             </HStack>
-          )}
-          <Divider />
-          <HStack justify="space-between">
-            <Text>Balance Before:</Text>
-            <Text>{beforeBalance.toLocaleString()} LYD</Text>
-          </HStack>
-          <HStack justify="space-between">
-            <Text>Balance After:</Text>
-            <Text>{afterBalance.toLocaleString()} LYD</Text>
-          </HStack>
-          <HStack justify="space-between">
-            <Text>Time:</Text>
-            <Text>{new Date().toLocaleString()}</Text>
-          </HStack>
-        </VStack>
-      </ModalBody>
-      <ModalFooter>
-        <Button onClick={onClose} colorScheme="blue">
-          Close
-        </Button>
-      </ModalFooter>
-    </ModalContent>
-  </Modal>
-);
+            <HStack justify="space-between">
+              <Text>{t('payment.confirmation.amount')}:</Text>
+              <Text fontWeight="bold" color="green.500">
+                {amount.toLocaleString()} {t('common.currency')}
+              </Text>
+            </HStack>
+            {transactionId && (
+              <HStack justify="space-between">
+                <Text>{t('payment.confirmation.transaction_id')}:</Text>
+                <Text fontWeight="bold">{transactionId}</Text>
+              </HStack>
+            )}
+            <Divider />
+            <HStack justify="space-between">
+              <Text>{t('payment.confirmation.balance_before')}:</Text>
+              <Text>{beforeBalance.toLocaleString()} {t('common.currency')}</Text>
+            </HStack>
+            <HStack justify="space-between">
+              <Text>{t('payment.confirmation.balance_after')}:</Text>
+              <Text>{afterBalance.toLocaleString()} {t('common.currency')}</Text>
+            </HStack>
+            <HStack justify="space-between">
+              <Text>{t('payment.confirmation.time')}:</Text>
+              <Text>{new Date().toLocaleString()}</Text>
+            </HStack>
+          </VStack>
+        </ModalBody>
+        <ModalFooter>
+          <Button onClick={onClose} colorScheme="blue">
+            {t('payment.confirmation.close')}
+          </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  );
+};
 
 const DynamicPaymentPage = () => {
+  const { t } = useTranslation();
   const router = useRouter();
-  const { businessName, paymentLinkId } = router.query; // Add this at the top
-  const { isAuthenticated, user } = useAuth();
+  const { businessName, paymentLinkId } = router.query;
+  const { isAuthenticated, user, setUser } = useAuth();
   const { data: wallet } = useWallet();
   const [paymentDetails, setPaymentDetails] = useState(null);
   const [merchantDetails, setMerchantDetails] = useState(null);
@@ -111,6 +123,7 @@ const DynamicPaymentPage = () => {
   const [loading, setLoading] = useState(true);
   const [isProcessing, setIsProcessing] = useState(false);
   const [transactionResult, setTransactionResult] = useState(null);
+  const [showCelebration, setShowCelebration] = useState(false);
   const toast = useToast();
   const { isOpen: isConfirmOpen, onOpen: onConfirmOpen, onClose: onConfirmClose } = useDisclosure();
 
@@ -124,10 +137,10 @@ const DynamicPaymentPage = () => {
   } = useQuery({
     queryKey: ['walletBalance', 'customer', user?.id],
     queryFn: async () => {
-      if (!user?.id) throw new Error('User ID is missing');
+      if (!user?.id) throw new Error(t('errors.user_id_missing'));
       
       const token = localStorage.getItem('token');
-      if (!token) throw new Error('Authentication token is missing');
+      if (!token) throw new Error(t('errors.token_missing'));
 
       try {
         const response = await fetch(
@@ -149,18 +162,10 @@ const DynamicPaymentPage = () => {
             body: errorText
           });
           
-          throw new Error(errorText || 'Failed to fetch wallet');
+          throw new Error(errorText || t('payment.errors.wallet_fetch'));
         }
 
         const data = await response.json();
-        
-        console.log('Wallet data received:', {
-          data,
-          userId: user.id,
-          walletId: data.data?.[0]?.id,
-          balance: data.data?.[0]?.attributes?.balance
-        });
-
         return data;
       } catch (error) {
         console.error('Complete wallet fetch error:', error);
@@ -168,7 +173,6 @@ const DynamicPaymentPage = () => {
       }
     },
     select: (data) => {
-      // Ensure we always return a consistent data structure
       const wallet = data.data?.[0];
       return {
         data: {
@@ -186,14 +190,13 @@ const DynamicPaymentPage = () => {
     onError: (error) => {
       console.error('Wallet query error:', error);
       toast({
-        title: 'Error fetching wallet',
+        title: t('payment.errors.wallet_error'),
         description: error.message,
         status: 'error',
         duration: 5000
       });
     }
   });
-
   useEffect(() => {
    const fetchPaymentLinkDetails = async () => {
       if (!paymentLinkId) return;
@@ -209,7 +212,7 @@ const DynamicPaymentPage = () => {
         );
 
         if (!paymentResponse.ok) {
-          throw new Error('Failed to fetch payment link details');
+          throw new Error(t('payment.errors.payment_link_invalid'));
         }
 
         const paymentData = await paymentResponse.json();
@@ -217,7 +220,7 @@ const DynamicPaymentPage = () => {
         setMerchantDetails(paymentData.data.attributes.merchant?.data);
       } catch (error) {
         toast({
-          title: 'Error',
+          title: t('common.error'),
           description: error.message,
           status: 'error',
           duration: 5000
@@ -230,18 +233,18 @@ const DynamicPaymentPage = () => {
     if (paymentLinkId) {
       fetchPaymentLinkDetails();
     }
-  }, [paymentLinkId, toast]);
+  }, [paymentLinkId, t, toast]);
 
-   const handlePayment = async () => {
-    if (!isAuthenticated) {
-      router.push(`/login?redirect=${encodeURIComponent(router.asPath)}`);
-      return;
-    }
+  const handleLoginSuccess = (data) => {
+    setUser(data.user);
+    refetchWallet();
+  };
 
+  const handlePayment = async () => {
     if (!pin || pin.length !== 6) {
       toast({
-        title: 'Invalid PIN',
-        description: 'Please enter a 6-digit PIN',
+        title: t('payment.errors.invalid_pin'),
+        description: t('payment.errors.pin_required'),
         status: 'error',
         duration: 3000
       });
@@ -249,34 +252,14 @@ const DynamicPaymentPage = () => {
     }
 
     const totalAmount = paymentDetails.attributes.amount;
-    
-    // Extensive logging
-    console.log('Payment Attempt Full Details:', {
-      user: {
-        id: user.id,
-        email: user.email
-      },
-      walletData: {
-        id: walletData?.data?.id,
-        balance: walletData?.data?.attributes?.balance
-      },
-      merchantDetails: {
-        id: merchantDetails?.id,
-        businessName: merchantDetails?.attributes?.metadata?.businessName
-      },
-      paymentDetails: {
-        id: paymentDetails.id,
-        amount: totalAmount
-      },
-      pin: pin ? 'REDACTED' : 'MISSING'
-    });
-
     const currentBalance = walletData?.data?.attributes?.balance || 0;
 
     if (currentBalance < totalAmount) {
       toast({
-        title: 'Insufficient Balance',
-        description: `Your balance (${currentBalance.toLocaleString()} LYD) is insufficient`,
+        title: t('payment.errors.insufficient_balance'),
+        description: t('payment.errors.insufficient_balance_desc', {
+          balance: currentBalance.toLocaleString()
+        }),
         status: 'error',
         duration: 3000
       });
@@ -286,7 +269,7 @@ const DynamicPaymentPage = () => {
     setIsProcessing(true);
 
     try {
-      // First, verify merchant wallet
+      // Verify merchant wallet
       const merchantWalletResponse = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/wallets?populate=*&filters[merchant][id][$eq]=${merchantDetails.id}`,
         {
@@ -298,14 +281,14 @@ const DynamicPaymentPage = () => {
       );
 
       if (!merchantWalletResponse.ok) {
-        throw new Error('Failed to fetch merchant wallet');
+        throw new Error(t('payment.errors.merchant_wallet'));
       }
 
       const merchantWalletData = await merchantWalletResponse.json();
       const merchantWalletId = merchantWalletData.data?.[0]?.id;
 
       if (!merchantWalletId) {
-        throw new Error('Merchant wallet not found');
+        throw new Error(t('payment.errors.merchant_not_found'));
       }
 
       const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/wallets/payment`, {
@@ -325,15 +308,11 @@ const DynamicPaymentPage = () => {
 
       const result = await response.json();
       
-      console.log('Payment Response:', {
-        status: response.status,
-        body: result
-      });
-
       if (!response.ok) {
-        throw new Error(result.error?.message || 'Payment failed');
+        throw new Error(result.error?.message || t('payment.errors.payment_failed'));
       }
 
+      setShowCelebration(true);
       setTransactionResult({
         beforeBalance: currentBalance,
         afterBalance: result.data.customerBalance,
@@ -343,11 +322,13 @@ const DynamicPaymentPage = () => {
       
       onConfirmOpen();
 
+      // Clear celebration after animation
+      setTimeout(() => {
+        setShowCelebration(false);
+      }, 5000);
+
     } catch (error) {
-      console.error('Complete Payment Error:', {
-        message: error.message,
-        stack: error.stack
-      });
+      console.error('Payment Error:', error);
       
       setTransactionResult({
         beforeBalance: currentBalance,
@@ -357,7 +338,7 @@ const DynamicPaymentPage = () => {
       
       onConfirmOpen();
       toast({
-        title: 'Payment Error',
+        title: t('payment.errors.payment_failed'),
         description: error.message,
         status: 'error',
         duration: 5000
@@ -380,19 +361,24 @@ const DynamicPaymentPage = () => {
       <Layout>
         <Flex height="50vh" width="100vw" justifyContent="center" alignItems="center" textAlign="center">
           <VStack spacing={4}>
-            <Heading>Invalid Payment Link</Heading>
-            <Text>The payment link you're trying to access is invalid or has expired.</Text>
-            <Button onClick={() => router.push('/')}>Go to Home</Button>
+            <Heading>{t('payment.errors.link_invalid')}</Heading>
+            <Text>{t('payment.errors.link_expired')}</Text>
+            <Button onClick={() => router.push('/')}>
+              {t('payment.labels.go_home')}
+            </Button>
           </VStack>
         </Flex>
       </Layout>
     );
   }
-
   return (
     <>
       <Head>
-        <title>{merchantDetails?.attributes?.metadata?.businessName || 'Merchant'} | Payment</title>
+        <title>
+          {t('payment.meta.merchant_title', {
+            merchantName: merchantDetails?.attributes?.metadata?.businessName || t('common.merchant')
+          })}
+        </title>
       </Head>
       <Layout>
         <Flex justifyContent="center" alignItems="center" p={4}>
@@ -409,7 +395,7 @@ const DynamicPaymentPage = () => {
                   <Avatar 
                     src={`${backendUrl}${merchantDetails.attributes.logo.data.attributes.url}`} 
                     size="lg" 
-                    name={merchantDetails.attributes.metadata?.businessName || 'Merchant'}
+                    name={merchantDetails.attributes.metadata?.businessName || t('common.merchant')}
                   />
                 ) : (
                   <Avatar 
@@ -423,14 +409,14 @@ const DynamicPaymentPage = () => {
                   <Heading size="md" textAlign="right">
                     {merchantDetails?.attributes?.metadata?.businessName || businessName}
                   </Heading>
-                  <Badge colorScheme="green">Verified Merchant</Badge>
+                  <Badge colorScheme="green">{t('payment.status.verified')}</Badge>
                 </VStack>
               </Flex>
 
               <Box w="full" p={4} borderRadius="lg" textAlign="center">
-                <Text fontSize="sm" color="gray.500">Payment Amount</Text>
+                <Text fontSize="sm" color="gray.500">{t('payment.labels.payment_amount')}</Text>
                 <Text fontSize="3xl" fontWeight="bold" color="green.500">
-                  {paymentDetails.attributes.amount.toLocaleString()} LYD
+                  {paymentDetails.attributes.amount.toLocaleString()} {t('common.currency')}
                 </Text>
               </Box>
 
@@ -438,13 +424,13 @@ const DynamicPaymentPage = () => {
                 <Flex align="center" justify="space-between" p={3} borderRadius="md" w="full">
                   <HStack>
                     <Icon as={FiUser} />
-                    <Text>Your Balance</Text>
+                    <Text>{t('payment.labels.your_balance')}</Text>
                   </HStack>
                   {isWalletLoading ? (
                     <Spinner size="sm" />
                   ) : (
                     <Text fontWeight="bold">
-                      {walletData?.data?.attributes?.balance?.toLocaleString() || 0} LYD
+                      {walletData?.data?.attributes?.balance?.toLocaleString() || 0} {t('common.currency')}
                     </Text>
                   )}
                 </Flex>
@@ -456,7 +442,7 @@ const DynamicPaymentPage = () => {
                     <FormLabel>
                       <HStack>
                         <Icon as={FiLock} />
-                        <Text>Enter Merchant's 6-Digit PIN</Text>
+                        <Text>{t('payment.labels.enter_pin')}</Text>
                       </HStack>
                     </FormLabel>
                     <HStack justify="center" spacing={4}>
@@ -491,20 +477,20 @@ const DynamicPaymentPage = () => {
                     isLoading={isProcessing}
                     isDisabled={pin.length !== 6 || isProcessing}
                   >
-                    Confirm Payment
+                    {t('payment.labels.confirm_payment')}
                   </Button>
                 </VStack>
               ) : (
-                <Button
-                  w="full"
-                  onClick={() => router.push(`/login?redirect=${encodeURIComponent(router.asPath)}`)}
-                >
-                  Login to Pay
-                </Button>
+                <InlineLoginForm onLoginSuccess={handleLoginSuccess} />
               )}
             </VStack>
           </Box>
         </Flex>
+
+        <CelebrationOverlay 
+          isSuccess={transactionResult?.isSuccess}
+          isActive={showCelebration}
+        />
 
         {transactionResult && (
           <TransactionConfirmationModal
@@ -527,5 +513,11 @@ const DynamicPaymentPage = () => {
     </>
   );
 };
+
+export const getServerSideProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common'])),
+  },
+});
 
 export default DynamicPaymentPage;

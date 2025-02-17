@@ -26,16 +26,6 @@
         "inventory_alert"
       ]
     },
-    "job": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::job.job"
-    },
-    "job_application": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::job-application.job-application"
-    },
     "shop_item": {
       "type": "relation",
       "relation": "manyToOne",

@@ -813,5 +813,70 @@
   "features.subtitle": "أدوات مصممة لنجاحك",
   "cta.title": "انضم لـ BitDash اليوم",
   "cta.subtitle": "اختبر قوة الابتكار",
-  "cta.action": "ابدأ الآن"
+  "cta.action": "ابدأ الآن",
+   "auth": {
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "email_placeholder": "أدخل بريدك الإلكتروني",
+    "password_placeholder": "أدخل كلمة المرور",
+    "no_account": "ليس لديك حساب؟",
+    "register_now": "سجل الآن",
+    "errors": {
+      "login_error": "خطأ في تسجيل الدخول",
+      "login_failed": "فشل تسجيل الدخول",
+      "invalid_credentials": "بريد إلكتروني أو كلمة مرور غير صالحة",
+      "server_error": "حدث خطأ في الخادم"
+    }
+  },
+  "payment": {
+    "login_to_complete": "تسجيل الدخول لإكمال الدفع",
+    "login_continue": "تسجيل الدخول والمتابعة",
+    "processing": "جاري المعالجة...",
+    "success": {
+      "title": "تم الدفع بنجاح",
+      "message": "تمت معالجة عملية الدفع الخاصة بك بنجاح"
+    },
+    "error": {
+      "title": "فشلت عملية الدفع",
+      "message": "حدث خطأ أثناء معالجة عملية الدفع الخاصة بك"
+    },
+    "meta": {
+      "title": "الدفع",
+      "merchant_title": "{{merchantName}} | الدفع"
+    },
+    "errors": {
+      "invalid_pin": "رمز PIN غير صالح",
+      "pin_required": "الرجاء إدخال رمز PIN المكون من 6 أرقام",
+      "insufficient_balance": "رصيد غير كافي",
+      "insufficient_balance_desc": "رصيدك ({{balance}} د.ل) غير كافي",
+      "merchant_wallet": "فشل في جلب محفظة التاجر",
+      "merchant_not_found": "لم يتم العثور على محفظة التاجر",
+      "payment_failed": "فشلت عملية الدفع",
+      "payment_link_invalid": "فشل في جلب تفاصيل رابط الدفع",
+      "link_invalid": "رابط دفع غير صالح",
+      "link_expired": "رابط الدفع الذي تحاول الوصول إليه غير صالح أو منتهي الصلاحية"
+    },
+    "status": {
+      "verified": "تاجر موثق"
+    },
+    "labels": {
+      "payment_amount": "مبلغ الدفع",
+      "your_balance": "رصيدك",
+      "enter_pin": "أدخل رمز PIN المكون من 6 أرقام للتاجر",
+      "confirm_payment": "تأكيد الدفع",
+      "login_to_pay": "تسجيل الدخول للدفع",
+      "go_home": "العودة للرئيسية"
+    },
+    "confirmation": {
+      "success": "تم الدفع بنجاح",
+      "failed": "فشلت عملية الدفع",
+      "merchant": "التاجر",
+      "amount": "المبلغ",
+      "transaction_id": "رقم العملية",
+      "balance_before": "الرصيد قبل",
+      "balance_after": "الرصيد بعد",
+      "time": "الوقت",
+      "close": "إغلاق"
+    }
+  }
 }

@@ -1101,6 +1101,71 @@
       }
     }
   },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "email_placeholder": "Enter your email",
+    "password_placeholder": "Enter your password",
+    "no_account": "Don't have an account?",
+    "register_now": "Register now",
+    "errors": {
+      "login_error": "Login Error",
+      "login_failed": "Login failed",
+      "invalid_credentials": "Invalid email or password",
+      "server_error": "Server error occurred"
+    }
+  },
+  "payment": {
+    "login_to_complete": "Login to Complete Payment",
+    "login_continue": "Login & Continue",
+    "processing": "Processing...",
+    "success": {
+      "title": "Payment Successful",
+      "message": "Your payment has been processed successfully"
+    },
+    "error": {
+      "title": "Payment Failed",
+      "message": "There was an error processing your payment"
+    },
+    "meta": {
+      "title": "Payment",
+      "merchant_title": "{{merchantName}} | Payment"
+    },
+    "errors": {
+      "invalid_pin": "Invalid PIN",
+      "pin_required": "Please enter a 6-digit PIN",
+      "insufficient_balance": "Insufficient Balance",
+      "insufficient_balance_desc": "Your balance ({{balance}} LYD) is insufficient",
+      "merchant_wallet": "Failed to fetch merchant wallet",
+      "merchant_not_found": "Merchant wallet not found",
+      "payment_failed": "Payment failed",
+      "payment_link_invalid": "Failed to fetch payment link details",
+      "link_invalid": "Invalid Payment Link",
+      "link_expired": "The payment link you're trying to access is invalid or has expired"
+    },
+    "status": {
+      "verified": "Verified Merchant"
+    },
+    "labels": {
+      "payment_amount": "Payment Amount",
+      "your_balance": "Your Balance",
+      "enter_pin": "Enter Merchant's 6-Digit PIN",
+      "confirm_payment": "Confirm Payment",
+      "login_to_pay": "Login to Pay",
+      "go_home": "Go to Home"
+    },
+    "confirmation": {
+      "success": "Payment Successful",
+      "failed": "Payment Failed",
+      "merchant": "Merchant",
+      "amount": "Amount",
+      "transaction_id": "Transaction ID",
+      "balance_before": "Balance Before",
+      "balance_after": "Balance After",
+      "time": "Time",
+      "close": "Close"
+    }
+  },
   "learn_more": "Learn More",
   "transforming_digital_landscape": "Transforming Digital Landscape",
   "building_integrated_solutions_": "Building integrated solutions for a connected future",
