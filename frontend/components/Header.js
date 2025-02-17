@@ -155,7 +155,6 @@ const MenuItems = ({ href, children, onClick }) => (
         <Box 
           display={{ base: 'none', lg: 'block' }}
           w="full"
-          bg={isDark ? 'rgba(0, 0, 0, 0.9)' : 'rgba(255, 255, 255, 0.95)'}
           transition="all 0.3s ease"
           h={showPlatforms ? 'auto' : '0'}
           overflow="hidden"
@@ -184,7 +183,7 @@ const MenuItems = ({ href, children, onClick }) => (
                     src={platform.image}
                     alt="platform"
                     width={120}
-                    height={200}
+                    height={180}
                     priority={true}
                     style={{ objectFit: 'contain' }}
                   />
@@ -209,7 +208,7 @@ const MenuItems = ({ href, children, onClick }) => (
         dir={isRTL ? 'rtl' : 'ltr'}
       >
         {/* Logo */}
-        <Box width={{ base: '120px', md: '180px' }}>
+        <Box width={{ base: '110px', md: '190px' }}>
           <Link href="/" passHref>
             <Box display="block">
               <Logo />

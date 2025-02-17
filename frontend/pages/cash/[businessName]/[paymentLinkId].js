@@ -48,67 +48,139 @@ const TransactionConfirmationModal = ({
   amount, 
   merchantName, 
   isSuccess,
-  transactionId
+  transactionId,
+  auditLogDetails
 }) => {
   const { t } = useTranslation();
-  
+  const router = useRouter();
+  const toast = useToast();
+
+  const handleClose = () => {
+    onClose();
+    router.push('/client/dashboard');
+  };
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isCentered>
-      <ModalOverlay backdropFilter="blur(10px)" />
-      <ModalContent>
-        <ModalHeader>
-          <Flex align="center">
-            <Icon 
-              as={isSuccess ? FiCheckCircle : FiAlertCircle} 
-              color={isSuccess ? 'green.500' : 'red.500'}
-              mr={3}
-              boxSize={6}
-            />
-            <Text>
-              {t(`payment.confirmation.${isSuccess ? 'success' : 'failed'}`)}
-            </Text>
-          </Flex>
-        </ModalHeader>
-        <ModalBody>
-          <VStack spacing={4} align="stretch">
-            <HStack justify="space-between">
-              <Text>{t('payment.confirmation.merchant')}:</Text>
-              <Text fontWeight="bold">{merchantName}</Text>
-            </HStack>
-            <HStack justify="space-between">
-              <Text>{t('payment.confirmation.amount')}:</Text>
-              <Text fontWeight="bold" color="green.500">
-                {amount.toLocaleString()} {t('common.currency')}
+    <>
+      {isSuccess && (
+        <CelebrationOverlay 
+          isSuccess={true}
+          isActive={true}
+          style={{ 
+            position: 'fixed', 
+            top: 0, 
+            left: 0, 
+            width: '100%', 
+            height: '100%', 
+            zIndex: 1000 
+          }}
+        />
+      )}
+      <Modal 
+        isOpen={isOpen} 
+        onClose={handleClose} 
+        isCentered
+        size="xl"
+        closeOnOverlayClick={false}
+      >
+        <ModalOverlay backdropFilter="blur(10px)" />
+        <ModalContent>
+          <ModalHeader>
+            <Flex align="center">
+              <Icon 
+                as={isSuccess ? FiCheckCircle : FiAlertCircle} 
+                color={isSuccess ? 'green.500' : 'red.500'}
+                mr={3}
+                boxSize={6}
+              />
+              <Text>
+                {t(`payment.confirmation.${isSuccess ? 'success' : 'failed'}`)}
               </Text>
-            </HStack>
-            {transactionId && (
+            </Flex>
+          </ModalHeader>
+          <ModalBody>
+            <VStack spacing={4} align="stretch">
+              {/* Transaction Details */}
               <HStack justify="space-between">
-                <Text>{t('payment.confirmation.transaction_id')}:</Text>
-                <Text fontWeight="bold">{transactionId}</Text>
+                <Text fontWeight="bold">{t('payment.confirmation.merchant')}:</Text>
+                <Text>{merchantName}</Text>
               </HStack>
-            )}
-            <Divider />
-            <HStack justify="space-between">
-              <Text>{t('payment.confirmation.balance_before')}:</Text>
-              <Text>{beforeBalance.toLocaleString()} {t('common.currency')}</Text>
-            </HStack>
-            <HStack justify="space-between">
-              <Text>{t('payment.confirmation.balance_after')}:</Text>
-              <Text>{afterBalance.toLocaleString()} {t('common.currency')}</Text>
-            </HStack>
-            <HStack justify="space-between">
-              <Text>{t('payment.confirmation.time')}:</Text>
-              <Text>{new Date().toLocaleString()}</Text>
-            </HStack>
-          </VStack>
-        </ModalBody>
-        <ModalFooter>
-          <Button onClick={onClose} colorScheme="blue">
-            {t('payment.confirmation.close')}
-          </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+              <HStack justify="space-between">
+                <Text fontWeight="bold">{t('payment.confirmation.amount')}:</Text>
+                <Text color="green.500" fontWeight="bold">
+                  {amount.toLocaleString()} {t('common.currency')}
+                </Text>
+              </HStack>
+
+              {/* Audit Log Details */}
+              {auditLogDetails && (
+                <VStack 
+                  align="stretch" 
+                  spacing={3} 
+                  p={4} 
+                  bg={useColorModeValue('gray.50', 'gray.700')} 
+                  borderRadius="md"
+                >
+                  <Heading size="sm" mb={2}>
+                    {t('payment.confirmation.transaction_details')}
+                  </Heading>
+                  
+                  {transactionId && (
+                    <HStack justify="space-between">
+                      <Text>{t('payment.confirmation.transaction_id')}:</Text>
+                      <Text fontWeight="bold">{transactionId}</Text>
+                    </HStack>
+                  )}
+
+                  {auditLogDetails.metadata?.ip && (
+                    <HStack justify="space-between">
+                      <Text>{t('payment.confirmation.ip_address')}:</Text>
+                      <Text>{auditLogDetails.metadata.ip}</Text>
+                    </HStack>
+                  )}
+
+                  {auditLogDetails.metadata?.userAgent && (
+                    <HStack justify="space-between">
+                      <Text>{t('payment.confirmation.device')}:</Text>
+                      <Text fontSize="xs" maxW="200px" overflow="hidden" textOverflow="ellipsis">
+                        {auditLogDetails.metadata.userAgent}
+                      </Text>
+                    </HStack>
+                  )}
+
+                  <HStack justify="space-between">
+                    <Text>{t('payment.confirmation.timestamp')}:</Text>
+                    <Text>
+                      {new Date(auditLogDetails.metadata.timestamp).toLocaleString()}
+                    </Text>
+                  </HStack>
+                </VStack>
+              )}
+
+              {/* Balance Information */}
+              <Divider />
+              <HStack justify="space-between">
+                <Text>{t('payment.confirmation.balance_before')}:</Text>
+                <Text>{beforeBalance.toLocaleString()} {t('common.currency')}</Text>
+              </HStack>
+              <HStack justify="space-between">
+                <Text>{t('payment.confirmation.balance_after')}:</Text>
+                <Text>{afterBalance.toLocaleString()} {t('common.currency')}</Text>
+              </HStack>
+            </VStack>
+          </ModalBody>
+          <ModalFooter>
+            <Button 
+              colorScheme="blue" 
+              onClick={handleClose}
+              width="full"
+            >
+              {t('payment.confirmation.continue_to_dashboard')}
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
   );
 };
 
@@ -313,12 +385,34 @@ const DynamicPaymentPage = () => {
         throw new Error(result.error?.message || t('payment.errors.payment_failed'));
       }
 
+       // Fetch audit log details
+      const auditLogResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/audit-logs?` +
+        `filters[resource_id][$eq]=${result.data.transaction.id}` +
+        `&filters[resource_type][$eq]=transaction` +
+        `&sort[0]=createdAt:desc` +
+        `&populate=*`,
+        {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
+      let auditLogDetails = null;
+      if (auditLogResponse.ok) {
+        const auditLogData = await auditLogResponse.json();
+        auditLogDetails = auditLogData.data?.[0]?.attributes;
+      }
+
       setShowCelebration(true);
       setTransactionResult({
         beforeBalance: currentBalance,
         afterBalance: result.data.customerBalance,
         isSuccess: true,
-        transactionId: result.data.transaction.id
+        transactionId: result.data.transaction.id,
+        auditLogDetails
       });
       
       onConfirmOpen();
@@ -514,26 +608,27 @@ const DynamicPaymentPage = () => {
     />
 
     {transactionResult && (
-      <TransactionConfirmationModal
-        isOpen={isConfirmOpen}
-        onClose={() => {
-          onConfirmClose();
-          setTransactionResult(null);
-          setPin('');
-          router.push(transactionResult.isSuccess ? '/payments/success' : '/');
-        }}
-        beforeBalance={transactionResult.beforeBalance}
-        afterBalance={transactionResult.afterBalance}
-        amount={paymentDetails.attributes.amount}
-        merchantName={merchantDetails?.attributes?.metadata?.businessName || businessName}
-        isSuccess={transactionResult.isSuccess}
-        transactionId={transactionResult.transactionId}
-      />
-    )}
-  </Layout>
-</>
-);
+        <TransactionConfirmationModal
+          isOpen={isConfirmOpen}
+          onClose={() => {
+            onConfirmClose();
+            setTransactionResult(null);
+            setPin('');
+          }}
+          beforeBalance={transactionResult.beforeBalance}
+          afterBalance={transactionResult.afterBalance}
+          amount={paymentDetails.attributes.amount}
+          merchantName={merchantDetails?.attributes?.metadata?.businessName || businessName}
+          isSuccess={transactionResult.isSuccess}
+          transactionId={transactionResult.transactionId}
+          auditLogDetails={transactionResult.auditLogDetails}
+        />
+      )}
+      </Layout>
+    </>
+  );
 };
+
 export const getServerSideProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale, ['common'])),
