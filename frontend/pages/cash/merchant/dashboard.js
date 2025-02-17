@@ -49,6 +49,7 @@ import {
   FiCalendar,
   FiMapPin,
   FiMail,
+  FiPlus,
   FiPhone,
 } from 'react-icons/fi';
 import { FaQrcode } from 'react-icons/fa';
