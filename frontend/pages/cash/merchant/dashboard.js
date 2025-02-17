@@ -326,7 +326,8 @@ const MerchantDashboard = () => {
   const { 
   data: merchantData, 
   isLoading, 
-  error 
+  error,
+  refetch
 } = useQuery({
   queryKey: ['merchantData'],
   queryFn: async () => {
