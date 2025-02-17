@@ -53,6 +53,7 @@ import TransactionSummary from '@/components/transactions/TransactionSummary';
 import PaymentLinksList from '@/components/cash/merchant/PaymentLinksList';
 import PaymentLinkGenerator from '@/components/cash/merchant/PaymentLinkGenerator';
 import ProfileEditor from '@/components/cash/merchant/ProfileEditor';
+import BusinessDetailsCard from '@/components/cash/merchant/BusinessDetailsCard';
 
 // Icons
 import { 
@@ -321,177 +322,82 @@ const MerchantDashboard = () => {
   const { isOpen: isProfileOpen, onOpen: onProfileOpen, onClose: onProfileClose } = useDisclosure();
   const { isOpen: isPaymentLinkOpen, onOpen: onPaymentLinkOpen, onClose: onPaymentLinkClose } = useDisclosure();
 
-  // Fetch merchant data
-  // Fetch merchant data
-  const { data: merchantData, isLoading } = useQuery({
-    queryKey: ['merchantData'],
-    queryFn: async () => {
-      const userId = JSON.parse(localStorage.getItem('user'))?.id;
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/merchants?populate=*&filters[users_permissions_user][id][$eq]=${userId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        }
-      );
-      if (!response.ok) throw new Error('Failed to fetch merchant data');
-      const data = await response.json();
-      return data.data[0];
-    },
-    enabled: !!isAuthenticated,
-    refetchInterval: 30000 // Refresh every 30 seconds
-  });
-
   const { 
-    data: walletData,
-    isLoading: isWalletLoading,
-    error: walletError,
-    refetch: refetchWallet
-    } = useQuery({
-      queryKey: ['walletBalance', 'merchant', merchantData?.id],
-      queryFn: async () => {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/wallets?populate=*&filters[merchant][id][$eq]=${merchantData?.id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-          }
-        );
-        if (!response.ok) throw new Error('Failed to fetch wallet');
-        return response.json();
-      },
-      enabled: !!merchantData?.id,
-      refetchInterval: 10000,
-      retry: 2,
-      onError: (error) => {
-        toast({
-          title: 'Error fetching wallet',
-          description: error.message,
-          status: 'error',
-          duration: 5000
-        });
-      }
-    });
-
-  // Export mutation
-  const exportTransactions = useMutation({
-    mutationFn: async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/merchants/export`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
+  data: merchantData, 
+  isLoading, 
+  error 
+} = useQuery({
+  queryKey: ['merchantData'],
+  queryFn: async () => {
+    const userId = JSON.parse(localStorage.getItem('user'))?.id;
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/merchants?populate=*&filters[users_permissions_user][id][$eq]=${userId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
         }
-      );
-      if (!response.ok) throw new Error('Export failed');
-      return response.blob();
-    },
-    onSuccess: (blob) => {
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `transactions_${new Date().toISOString()}.csv`;
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      toast({
-        title: 'Export Successful',
-        status: 'success',
-        duration: 3000
-      });
-    }
-  });
-
-  // Auth redirect
-  useEffect(() => {
-    if (!authLoading && !isAuthenticated) {
-      router.push('/login');
-    }
-  }, [authLoading, isAuthenticated, router]);
-
-  if (authLoading || isLoading) {
-    return (
-      <Layout>
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-          <Spinner size="xl" />
-        </Box>
-      </Layout>
+      }
     );
+    if (!response.ok) throw new Error('Failed to fetch merchant data');
+    const data = await response.json();
+    
+    // Ensure data exists
+    if (!data?.data?.[0]) throw new Error('No merchant data found');
+    
+    return data;
+  },
+  enabled: !!isAuthenticated,
+  refetchInterval: 30000
+});
+
+// Remove duplicate useEffect
+useEffect(() => {
+  if (!authLoading && !isAuthenticated) {
+    router.push('/login');
   }
+}, [authLoading, isAuthenticated, router]);
 
+// Loading state
+if (authLoading || isLoading) {
+  return (
+    <Layout>
+      <Box>
+        <Container maxW="7xl" py={8}>
+          <VStack spacing={8} align="center" justify="center" minH="60vh">
+            <Spinner size="xl" />
+            <Text color="gray.500">Loading your dashboard...</Text>
+          </VStack>
+        </Container>
+      </Box>
+    </Layout>
+  );
+}
 
-  useEffect(() => {
-    if (!authLoading && !isAuthenticated) {
-      router.push('/login');
-    }
-  }, [authLoading, isAuthenticated, router]);
+// Error handling
+if (error || !merchantData?.data?.[0]) {
+  return (
+    <Layout>
+      <Box>
+        <Container maxW="7xl" py={8}>
+          <Alert status="error" variant="solid">
+            <AlertIcon />
+            <AlertTitle>Error Loading Dashboard</AlertTitle>
+            <AlertDescription>
+              {error?.message || 'Failed to load merchant data'}
+            </AlertDescription>
+            <Button onClick={() => router.push('/login')}>
+              Return to Login
+            </Button>
+          </Alert>
+        </Container>
+      </Box>
+    </Layout>
+  );
+}
 
-  if (authLoading || isLoading) {
-    return (
-      <Layout>
-        <Box >
-          <Container maxW="7xl" py={8}>
-            <VStack spacing={8} align="center" justify="center" minH="60vh">
-              <Box 
-                as={motion.div}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                w={12}
-                h={12}
-                borderWidth={2}
-                borderColor="bitcash.500"
-                borderBottomColor="transparent"
-                borderRadius="full"
-              />
-              <Text color="gray.500">Loading your dashboard...</Text>
-            </VStack>
-          </Container>
-        </Box>
-      </Layout>
-    );
-  }
-
-  if (error || !merchantData?.data?.[0]) {
-    return (
-      <Layout>
-        <Box>
-          <Container maxW="7xl" py={8}>
-            <Alert 
-              status="error"
-              variant="solid"
-              borderRadius="xl"
-              flexDirection="column"
-              alignItems="center"
-              justifyContent="center"
-              textAlign="center"
-              py={4}
-            >
-              <AlertIcon boxSize="40px" mr={0} />
-              <AlertTitle mt={4} mb={1} fontSize="lg">
-                Error Loading Dashboard
-              </AlertTitle>
-              <AlertDescription maxWidth="sm">
-                {error?.message || 'Failed to load merchant data'}
-              </AlertDescription>
-              <Button 
-                mt={4} 
-                colorScheme="red" 
-                onClick={() => router.push('/login')}
-              >
-                Return to Login
-              </Button>
-            </Alert>
-          </Container>
-        </Box>
-      </Layout>
-    );
-  }
-
-  const merchant = merchantData.data[0].attributes;
-  const wallet = merchant?.wallet?.data?.attributes;
+// Correct data access
+const merchant = merchantData.data[0].attributes;
+const wallet = merchant?.wallet?.data?.attributes;
 
   return (
     <Layout>
