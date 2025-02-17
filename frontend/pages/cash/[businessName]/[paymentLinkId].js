@@ -36,8 +36,8 @@ import { useWallet } from '@/hooks/useWallet';
 import { useQuery } from '@tanstack/react-query';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import InlineLoginForm from '@/components/auth/InlineLoginForm';
-import CelebrationOverlay from '@/components/CelebrationOverlay';
+import InlineLoginForm from '@/components/common/InlineLoginForm';
+import CelebrationOverlay from '@/components/common/CelebrationOverlay';
 
 const TransactionConfirmationModal = ({ 
   isOpen, 
