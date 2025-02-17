@@ -38,12 +38,20 @@ const TRANSACTION_LIMITS = {
 // Rate limiting middleware setup
 const rateLimiters = {};
 Object.entries(TRANSACTION_LIMITS).forEach(([type, limits]) => {
-  rateLimiters[type] = rateLimit.middleware({
-    interval: limits.rateLimit.minutes * 60 * 1000,
-    max: limits.rateLimit.max,
-    message: `Too many ${type} attempts. Please try again later.`,
-    prefix: `wallet_${type}_`
-  });
+  rateLimiters[type] = async (ctx, next) => {
+    const limiter = rateLimit.middleware({
+      interval: limits.rateLimit.minutes * 60 * 1000,
+      max: limits.rateLimit.max,
+      message: `Too many ${type} attempts. Please try again later.`,
+      prefix: `wallet_${type}_`
+    });
+
+    try {
+      await limiter(ctx, next);
+    } catch (error) {
+      ctx.throw(429, error.message);
+    }
+  };
 });
 
 // Helper function to validate transaction limits
@@ -286,7 +294,8 @@ module.exports = createCoreController('api::wallet.wallet', ({ strapi }) => ({
   },
 
   async transfer(ctx) {
-    await rateLimiters.transfer(ctx);
+    await rateLimiters.transfer(ctx, () => Promise.resolve());
+
     const trx = await strapi.db.transaction();
     
     try {
@@ -414,7 +423,8 @@ module.exports = createCoreController('api::wallet.wallet', ({ strapi }) => ({
   },
 
   async deposit(ctx) {
-    await rateLimiters.deposit(ctx);
+    await rateLimiters.deposit(ctx, () => Promise.resolve());
+
     const trx = await strapi.db.transaction();
     
     try {
@@ -567,7 +577,8 @@ module.exports = createCoreController('api::wallet.wallet', ({ strapi }) => ({
     }
   },
   async withdraw(ctx) {
-    await rateLimiters.withdrawal(ctx);
+    await rateLimiters.withdrawal(ctx, () => Promise.resolve());
+
     const trx = await strapi.db.transaction();
     
     try {
@@ -730,7 +741,7 @@ module.exports = createCoreController('api::wallet.wallet', ({ strapi }) => ({
     }
   },
   async processPayment(ctx) {
-    await rateLimiters.payment(ctx);
+    await rateLimiters.payment(ctx, () => Promise.resolve());
     const trx = await strapi.db.transaction();
     
     try {
