@@ -1,4 +1,3 @@
-// pages/pay/merchant/dashboard.js
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -35,9 +34,23 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Tag,
   Avatar,
-  Stack,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Portal,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
 } from '@chakra-ui/react';
 import {
   FiDollarSign,
@@ -46,46 +59,52 @@ import {
   FiDownload,
   FiLink,
   FiTrendingUp,
-  FiCalendar,
   FiMapPin,
   FiMail,
   FiPlus,
   FiPhone,
+  FiMenu,
+  FiCopy,
+  FiShare2,
+  FiMoreVertical,
 } from 'react-icons/fi';
 import { FaQrcode } from 'react-icons/fa';
-import format from 'date-fns/format';
 
-// Components
+// Import your existing components
 import TransactionsList from '@/components/cash/merchant/TransactionsList';
 import PaymentLinksList from '@/components/cash/merchant/PaymentLinksList';
 import WalletBalance from '@/components/cash/WalletBalance';
 import PaymentLinkGenerator from '@/components/cash/merchant/PaymentLinkGenerator';
-
-const statusColors = {
-  active: 'green',
-  completed: 'blue',
-  pending: 'orange',
-  expired: 'red',
-  failed: 'red',
-  suspended: 'yellow',
-};
+import QRCodeModal from '@/components/cash/merchant/QRCodeModal';
+import BusinessDetailsCard from '@/components/cash/merchant/BusinessDetailsCard';
 
 const MerchantDashboard = () => {
   const router = useRouter();
   const toast = useToast();
   const { isAuthenticated, loading: authLoading } = useAuth();
+  const queryClient = useQueryClient();
   const isMobile = useBreakpointValue({ base: true, md: false });
-  
-  // UI state
+
+  // Theme colors
   const cardBg = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.100', 'gray.700');
   const mutedColor = useColorModeValue('gray.600', 'gray.400');
+  const accentColor = useColorModeValue('blue.500', 'blue.300');
 
-  // Modal controls
-  const { 
-    isOpen: isPaymentLinkOpen, 
-    onOpen: onPaymentLinkOpen, 
-    onClose: onPaymentLinkClose 
+  // Tab state for mobile
+  const [activeTab, setActiveTab] = useState('overview');
+
+  // Modals and drawers
+  const {
+    isOpen: isPaymentLinkOpen,
+    onOpen: onPaymentLinkOpen,
+    onClose: onPaymentLinkClose
+  } = useDisclosure();
+
+  const {
+    isOpen: isQRCodeOpen,
+    onOpen: onQRCodeOpen,
+    onClose: onQRCodeClose
   } = useDisclosure();
 
   const {
@@ -94,7 +113,7 @@ const MerchantDashboard = () => {
     onClose: onMenuClose
   } = useDisclosure();
 
-  // Fetch merchant data
+  // Fetch merchant data with your API structure
   const { data: merchantData, isLoading } = useQuery({
     queryKey: ['merchantData'],
     queryFn: async () => {
@@ -114,6 +133,7 @@ const MerchantDashboard = () => {
     enabled: !!isAuthenticated,
   });
 
+  // Export transactions mutation
   const exportTransactions = useMutation({
     mutationFn: async () => {
       const response = await fetch(
@@ -145,94 +165,110 @@ const MerchantDashboard = () => {
 
   const merchant = merchantData?.attributes || {};
 
-  // Enhanced Business Details Component
-  const BusinessDetails = () => (
-    <VStack spacing={4} align="stretch">
+  // Mobile-optimized header
+  const DashboardHeader = () => (
+    <VStack spacing={4} w="full" align="stretch">
       <Flex justify="space-between" align="center">
-        <Heading size="md">Business Information</Heading>
-        <IconButton
-          icon={<FiSettings />}
-          variant="ghost"
-          onClick={() => router.push('/settings')}
-          aria-label="Settings"
-        />
+        <HStack spacing={4}>
+          <Avatar
+            src={merchant?.logo?.data?.attributes?.url ? 
+              `${process.env.NEXT_PUBLIC_BACKEND_URL}${merchant.logo.data.attributes.url}` : 
+              undefined}
+            name={merchant.businessName}
+            size={isMobile ? "md" : "lg"}
+          />
+          <VStack align="start" spacing={0}>
+            <Heading size={isMobile ? "md" : "lg"}>{merchant.businessName}</Heading>
+            <Badge colorScheme={
+              merchant.verificationStatus === 'verified' ? 'green' : 
+              merchant.verificationStatus === 'pending' ? 'yellow' : 'red'
+            }>
+              {merchant.verificationStatus}
+            </Badge>
+          </VStack>
+        </HStack>
+        
+        {isMobile ? (
+          <IconButton
+            icon={<FiMenu />}
+            variant="ghost"
+            onClick={onMenuOpen}
+            aria-label="Menu"
+          />
+        ) : (
+          <HStack spacing={3}>
+            <Button
+              leftIcon={<FiLink />}
+              colorScheme="blue"
+              onClick={onPaymentLinkOpen}
+            >
+              Create Payment Link
+            </Button>
+            <IconButton
+              icon={<FiSettings />}
+              variant="ghost"
+              onClick={() => router.push('/settings')}
+              aria-label="Settings"
+            />
+          </HStack>
+        )}
       </Flex>
-      
-      <Stack spacing={3}>
-        <DetailItem icon={FiMapPin} label="Address">
-          {merchant?.location?.address || 'N/A'}
-        </DetailItem>
-        
-        <DetailItem icon={FiMail} label="Email">
-          {merchant?.contact?.email || 'N/A'}
-        </DetailItem>
-        
-        <DetailItem icon={FiPhone} label="Phone">
-          {merchant?.contact?.phone || 'N/A'}
-        </DetailItem>
-        
-        <DetailItem icon={FiCreditCard} label="Registration Number">
-          {merchant?.registrationNumber || 'Not provided'}
-        </DetailItem>
-        
-        <Flex align="center" justify="space-between">
-          <Text fontSize="sm" color={mutedColor}>Verification Status</Text>
-          <Badge 
-            colorScheme={merchant.verificationStatus === 'verified' ? 'green' : 'orange'}
-            textTransform="capitalize"
-          >
-            {merchant.verificationStatus}
-          </Badge>
-        </Flex>
-      </Stack>
+
+      {/* Mobile tab navigation */}
+      {isMobile && (
+        <Tabs 
+          isFitted 
+          variant="enclosed" 
+          onChange={(index) => setActiveTab(['overview', 'transactions', 'links'][index])}
+        >
+          <TabList>
+            <Tab>Overview</Tab>
+            <Tab>Transactions</Tab>
+            <Tab>Links</Tab>
+          </TabList>
+        </Tabs>
+      )}
     </VStack>
   );
 
-  // Responsive Header Component
-  const DashboardHeader = () => (
-    <Flex
-      justify="space-between"
-      align="center"
+  // Mobile-optimized stats grid
+  const StatsGrid = () => (
+    <SimpleGrid 
+      columns={{ base: 2, md: 4 }} 
+      spacing={4}
       w="full"
-      pb={4}
-      borderBottom="1px solid"
-      borderColor={borderColor}
     >
-      <HStack spacing={4}>
-        {merchant?.logo?.data?.attributes?.url && (
-          <Avatar 
-            src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${merchant.logo.data.attributes.url}`}
-            size="lg"
-            name={merchant.businessName}
-          />
-        )}
-        <VStack align="start" spacing={1}>
-          <Heading size="lg">{merchant.businessName}</Heading>
-          <HStack spacing={2}>
-            <Badge 
-              colorScheme={statusColors[merchant.status]}
-              textTransform="capitalize"
-            >
-              {merchant.status}
-            </Badge>
-            <Text fontSize="sm" color={mutedColor}>
-              {merchant.businessType}
-            </Text>
-          </HStack>
-        </VStack>
-      </HStack>
-
-      {!isMobile && (
-        <Button
-          leftIcon={<FiLink />}
-          colorScheme="blue"
-          onClick={onPaymentLinkOpen}
-          size="lg"
-        >
-          Create Payment Link
-        </Button>
-      )}
-    </Flex>
+      <WalletBalance
+        type="merchant"
+        walletId={merchant?.wallet?.data?.id}
+        currency={merchant.currency}
+      />
+      
+      <StatCard
+        label="Today's Sales"
+        value={merchant?.metadata?.todaySales || 0}
+        prefix={merchant.currency}
+        icon={FiTrendingUp}
+        color="green"
+      />
+      
+      <StatCard
+        label="Active Links"
+        value={merchant?.payment_links?.data?.filter(
+          link => link.attributes.status === 'active'
+        ).length || 0}
+        icon={FiLink}
+        color="blue"
+      />
+      
+      <StatCard
+        label="Success Rate"
+        value={(merchant?.metadata?.successRate || 0).toFixed(1)}
+        suffix="%"
+        icon={FiCreditCard}
+        color="purple"
+      />
+    </SimpleGrid>
   );
 
   return (
@@ -241,134 +277,196 @@ const MerchantDashboard = () => {
         <title>{merchant.businessName || 'Merchant'} Dashboard | BitCash</title>
       </Head>
 
-      <Container maxW="1400px" p={{ base: 2, md: 6 }}>
-        <VStack spacing={6} align="stretch">
-          <DashboardHeader />
+      <Container maxW="1400px" px={3} py={4}>
+        {isLoading ? (
+          <Flex justify="center" align="center" h="200px">
+            <Spinner size="xl" color={accentColor} />
+          </Flex>
+        ) : (
+          <VStack spacing={6} align="stretch">
+            <DashboardHeader />
+            <StatsGrid />
 
-          {/* Wallet & Key Metrics */}
-          <SimpleGrid columns={{ base: 1, md: 4 }} gap={4}>
-            <WalletBalance 
-              type="merchant" 
-              walletId={merchant?.wallet?.data?.id}
-              currency={merchant.currency}
-              style={{ gridColumn: '1 / span 1' }}
-            />
-            
-            <StatCard
-              label="Today's Sales"
-              value={merchant?.metadata?.todaySales || 0}
-              prefix={merchant.currency}
-              icon={FiTrendingUp}
-              color="green"
-            />
-            
-            <StatCard
-              label="Active Links"
-              value={merchant?.payment_links?.data?.filter(
-                link => link.attributes.status === 'active'
-              ).length || 0}
-              icon={FiLink}
-              color="blue"
-            />
-            
-            <StatCard
-              label="Success Rate"
-              value={(merchant?.metadata?.successRate || 0).toFixed(1)}
-              suffix="%"
-              icon={FiCreditCard}
-              color="purple"
-            />
-          </SimpleGrid>
-
-          {/* Main Content Grid */}
-          <Grid
-            templateColumns={{ base: '1fr', lg: '3fr 2fr' }}
-            gap={6}
-            alignItems="start"
-          >
-            {/* Left Column */}
-            <GridItem>
-              <VStack spacing={6} align="stretch">
-                {/* Recent Transactions */}
-                <DashboardCard 
-                  title="Recent Transactions"
-                  action={
-                    <Button
-                      leftIcon={<FiDownload />}
-                      size="sm"
-                      onClick={() => exportTransactions.mutate()}
-                      isLoading={exportTransactions.isLoading}
-                    >
-                      Export
-                    </Button>
-                  }
-                >
-                  <TransactionsList 
+            {/* Mobile view */}
+            {isMobile ? (
+              <Box>
+                {activeTab === 'overview' && (
+                  <BusinessDetailsCard merchant={merchant} />
+                )}
+                {activeTab === 'transactions' && (
+                  <TransactionsList
                     merchantId={merchantData?.id}
                     currency={merchant.currency}
-                    mobileView={isMobile}
+                    mobileView={true}
                   />
-                </DashboardCard>
-              </VStack>
-            </GridItem>
-
-            {/* Right Column */}
-            <GridItem>
-              <VStack spacing={6} align="stretch">
-                {/* Business Details */}
-                <DashboardCard title="Business Details">
-                  <BusinessDetails />
-                </DashboardCard>
-
-                {/* Active Payment Links */}
-                <DashboardCard 
-                  title="Active Payment Links"
-                  action={
-                    <Button
-                      size="sm"
-                      onClick={onPaymentLinkOpen}
-                      leftIcon={<FiPlus />}
-                    >
-                      New Link
-                    </Button>
-                  }
-                >
-                  <PaymentLinksList 
+                )}
+                {activeTab === 'links' && (
+                  <PaymentLinksList
                     merchantId={merchantData?.id}
                     currency={merchant.currency}
-                    mobileView={isMobile}
+                    mobileView={true}
+                    onQRCode={onQRCodeOpen}
                   />
-                </DashboardCard>
-              </VStack>
-            </GridItem>
-          </Grid>
-        </VStack>
+                )}
+              </Box>
+            ) : (
+              /* Desktop view */
+              <Grid templateColumns="3fr 1fr" gap={6}>
+                <GridItem>
+                  <VStack spacing={6} align="stretch">
+                    <DashboardCard
+                      title="Recent Transactions"
+                      action={
+                        <Button
+                          leftIcon={<FiDownload />}
+                          size="sm"
+                          onClick={() => exportTransactions.mutate()}
+                          isLoading={exportTransactions.isLoading}
+                        >
+                          Export
+                        </Button>
+                      }
+                    >
+                      <TransactionsList
+                        merchantId={merchantData?.id}
+                        currency={merchant.currency}
+                        limit={10}
+                      />
+                    </DashboardCard>
+                  </VStack>
+                </GridItem>
 
-        {/* Mobile Actions Drawer */}
-        <MobileActionsDrawer
-          isOpen={isMenuOpen}
-          onClose={onMenuClose}
-          onPaymentLinkOpen={onPaymentLinkOpen}
-        />
+                <GridItem>
+                  <VStack spacing={6} align="stretch">
+                    <BusinessDetailsCard merchant={merchant} />
+                    <DashboardCard
+                      title="Active Payment Links"
+                      action={
+                        <Button
+                          size="sm"
+                          onClick={onPaymentLinkOpen}
+                          leftIcon={<FiPlus />}
+                        >
+                          New Link
+                        </Button>
+                      }
+                    >
+                      <PaymentLinksList
+                        merchantId={merchantData?.id}
+                        currency={merchant.currency}
+                        onQRCode={onQRCodeOpen}
+                      />
+                    </DashboardCard>
+                  </VStack>
+                </GridItem>
+              </Grid>
+            )}
+          </VStack>
+        )}
 
-        {/* Payment Link Generator Modal */}
-        <PaymentLinkGenerator 
+        {/* Modals and Drawers */}
+        <PaymentLinkGenerator
           merchantData={merchantData}
           isOpen={isPaymentLinkOpen}
           onClose={onPaymentLinkClose}
           currency={merchant.currency}
+        />
+
+        <QRCodeModal
+          isOpen={isQRCodeOpen}
+          onClose={onQRCodeClose}
+          data={merchantData}
+        />
+
+        <MobileMenu
+          isOpen={isMenuOpen}
+          onClose={onMenuClose}
+          onPaymentLinkOpen={onPaymentLinkOpen}
+          onExport={() => exportTransactions.mutate()}
+          isExporting={exportTransactions.isLoading}
         />
       </Container>
     </Layout>
   );
 };
 
-// Reusable Components
+// Enhanced mobile menu
+const MobileMenu = ({ isOpen, onClose, onPaymentLinkOpen, onExport, isExporting }) => (
+  <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+    <DrawerOverlay />
+    <DrawerContent>
+      <DrawerCloseButton />
+      <DrawerHeader>Quick Actions</DrawerHeader>
+      <DrawerBody>
+        <VStack spacing={4}>
+          <Button
+            leftIcon={<FiLink />}
+            w="full"
+            colorScheme="blue"
+            onClick={() => {
+              onClose();
+              onPaymentLinkOpen();
+            }}
+          >
+            Create Payment Link
+          </Button>
+          <Button
+            leftIcon={<FiDownload />}
+            w="full"
+            onClick={() => {
+              onClose();
+              onExport();
+            }}
+            isLoading={isExporting}
+          >
+            Export Transactions
+          </Button>
+          <Button
+            leftIcon={<FiSettings />}
+            w="full"
+            variant="ghost"
+            onClick={() => router.push('/settings')}
+          >
+            Settings
+          </Button>
+        </VStack>
+      </DrawerBody>
+    </DrawerContent>
+  </Drawer>
+);
+
+// Reusable stat card
+const StatCard = ({ label, value, prefix, suffix, icon, color }) => (
+  <Box
+    p={4}
+    bg={useColorModeValue('white', 'gray.800')}
+    borderRadius="xl"
+    boxShadow="sm"
+    border="1px solid"
+    borderColor={useColorModeValue('gray.100', 'gray.700')}
+  >
+    <VStack align="start" spacing={2}>
+      <Icon as={icon} boxSize={6} color={`${color}.500`} />
+      <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
+        {label}
+      </Text>
+      <HStack spacing={1}>
+        {prefix && <Text fontSize="sm">{prefix}</Text>}
+        <Text fontSize="xl" fontWeight="bold">
+          {value}
+        </Text>
+        {suffix && <Text fontSize="sm">{suffix}</Text>}
+      </HStack>
+    </VStack>
+  </Box>
+);
+
+// Reusable dashboard card
 const DashboardCard = ({ title, children, action }) => (
   <Box
     bg={useColorModeValue('white', 'gray.800')}
     borderRadius="xl"
-    p={6}
+    p={4}
     boxShadow="sm"
     border="1px solid"
     borderColor={useColorModeValue('gray.100', 'gray.700')}
@@ -383,72 +481,101 @@ const DashboardCard = ({ title, children, action }) => (
   </Box>
 );
 
-const DetailItem = ({ icon, label, children }) => (
-  <Flex align="center" justify="space-between">
-    <HStack spacing={3} color={useColorModeValue('gray.600', 'gray.400')}>
-      <Icon as={icon} boxSize={5} />
-      <Text fontSize="sm">{label}</Text>
-    </HStack>
-    <Text fontWeight="medium" textAlign="right">
-      {children}
-    </Text>
-  </Flex>
+// PaymentLink actions menu component
+const PaymentLinkActions = ({ link, onCopy, onShare, onQR }) => (
+  <Menu>
+    <MenuButton
+      as={IconButton}
+      icon={<FiMoreVertical />}
+      variant="ghost"
+      size="sm"
+      aria-label="Actions"
+    />
+    <MenuList>
+      <MenuItem icon={<FiCopy />} onClick={onCopy}>
+        Copy Link
+      </MenuItem>
+      <MenuItem icon={<FiShare2 />} onClick={onShare}>
+        Share
+      </MenuItem>
+      <MenuItem icon={<FaQrcode />} onClick={onQR}>
+        Show QR Code
+      </MenuItem>
+    </MenuList>
+  </Menu>
 );
 
-const MobileActionsDrawer = ({ isOpen, onClose, onPaymentLinkOpen }) => (
-  <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
-    <DrawerOverlay />
-    <DrawerContent>
-      <DrawerCloseButton />
-      <DrawerHeader>Quick Actions</DrawerHeader>
-      <DrawerBody>
-        <VStack spacing={4} align="stretch">
-          <Button
-            leftIcon={<FiLink />}
-            onClick={() => {
-              onClose();
-              onPaymentLinkOpen();
-            }}
-          >
-            Create Payment Link
-          </Button>
-          <Button leftIcon={<FiDownload />}>
-            Export Transactions
-          </Button>
-          <Button leftIcon={<FiSettings />}>
-            Business Settings
-          </Button>
-        </VStack>
-      </DrawerBody>
-    </DrawerContent>
-  </Drawer>
-);
+// Transaction details modal
+const TransactionDetailsModal = ({ isOpen, onClose, transaction }) => {
+  const cancelRef = React.useRef();
 
-const StatCard = ({ label, value, prefix, suffix, icon, color }) => (
-  <Box
-    p={5}
-    bg={useColorModeValue('white', 'gray.800')}
-    borderRadius="xl"
-    boxShadow="sm"
-    border="1px solid"
-    borderColor={useColorModeValue('gray.100', 'gray.700')}
-  >
-    <HStack justify="space-between">
-      <VStack align="start" spacing={1}>
-        <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
-          {label}
-        </Text>
-        <HStack spacing={2}>
-          {prefix && <Text fontSize="sm">{prefix}</Text>}
-          <Text fontSize="xl" fontWeight="bold">
-            {value}
-          </Text>
-          {suffix && <Text fontSize="sm">{suffix}</Text>}
-        </HStack>
-      </VStack>
-      <Icon as={icon} boxSize={8} color={`${color}.500`} />
-    </HStack>
-  </Box>
-);
+  return (
+    <AlertDialog
+      isOpen={isOpen}
+      leastDestructiveRef={cancelRef}
+      onClose={onClose}
+    >
+      <AlertDialogOverlay>
+        <AlertDialogContent>
+          <AlertDialogHeader fontSize="lg" fontWeight="bold">
+            Transaction Details
+          </AlertDialogHeader>
+
+          <AlertDialogBody>
+            <VStack align="stretch" spacing={4}>
+              <HStack justify="space-between">
+                <Text color="gray.500">Amount</Text>
+                <Text fontWeight="bold">
+                  {transaction?.amount} {transaction?.currency}
+                </Text>
+              </HStack>
+              
+              <HStack justify="space-between">
+                <Text color="gray.500">Status</Text>
+                <Badge colorScheme={
+                  transaction?.status === 'completed' ? 'green' :
+                  transaction?.status === 'pending' ? 'yellow' : 'red'
+                }>
+                  {transaction?.status}
+                </Badge>
+              </HStack>
+              
+              <HStack justify="space-between">
+                <Text color="gray.500">Reference</Text>
+                <Text>{transaction?.reference}</Text>
+              </HStack>
+              
+              <HStack justify="space-between">
+                <Text color="gray.500">Fee</Text>
+                <Text>{transaction?.fee} {transaction?.currency}</Text>
+              </HStack>
+              
+              <Divider />
+              
+              <VStack align="stretch" spacing={2}>
+                <Text color="gray.500">Metadata</Text>
+                <Box 
+                  p={2} 
+                  bg="gray.50" 
+                  borderRadius="md"
+                  fontSize="sm"
+                  fontFamily="mono"
+                >
+                  {JSON.stringify(transaction?.metadata, null, 2)}
+                </Box>
+              </VStack>
+            </VStack>
+          </AlertDialogBody>
+
+          <AlertDialogFooter>
+            <Button ref={cancelRef} onClick={onClose}>
+              Close
+            </Button>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialogOverlay>
+    </AlertDialog>
+  );
+};
 
 export default MerchantDashboard;

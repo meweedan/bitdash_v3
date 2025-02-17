@@ -1,4 +1,4 @@
-// components/merchants/BusinessDetailsCard.js
+// components/cash/merchant/BusinessDetailsCard.js
 import React, { useState } from 'react';
 import {
   Box,
@@ -14,7 +14,8 @@ import {
   AspectRatio,
   useBreakpointValue,
   SimpleGrid,
-  Collapse
+  Collapse,
+  Skeleton
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import { format, parseISO } from 'date-fns';
@@ -47,7 +48,26 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
   const cardBg = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
 
-  // Status badges
+  // Guard against undefined merchant
+  if (!merchant) {
+    return (
+      <Box
+        bg={cardBg}
+        borderRadius="xl"
+        borderWidth={1}
+        borderColor={borderColor}
+        p={6}
+      >
+        <VStack spacing={4} align="stretch">
+          <Skeleton height="120px" />
+          <Skeleton height="20px" />
+          <Skeleton height="20px" width="60%" />
+        </VStack>
+      </Box>
+    );
+  }
+
+  // Status badge configuration
   const getStatusConfig = (status, type) => {
     const configs = {
       verification: {
@@ -73,10 +93,10 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
         borderWidth={2}
         borderColor="bitcash.500"
       >
-        {merchant.logo?.data ? (
+        {merchant.logo?.data?.attributes?.url ? (
           <Image
             src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${merchant.logo.data.attributes.url}`}
-            alt={merchant.businessName}
+            alt={merchant.businessName || 'Business Logo'}
             layout="fill"
             objectFit="cover"
           />
@@ -141,50 +161,66 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
 
   const renderStatusBadges = () => (
     <HStack spacing={2} flexWrap="wrap">
-      <Badge
-        colorScheme={getStatusConfig(merchant.verificationStatus, 'verification').colorScheme}
-        display="flex"
-        alignItems="center"
-        px={2}
-        py={1}
-        borderRadius="full"
-      >
-        <Box as={getStatusConfig(merchant.verificationStatus, 'verification').icon} size={12} mr={1} />
-        {merchant.verificationStatus?.toUpperCase()}
-      </Badge>
-      <Badge
-        colorScheme={getStatusConfig(merchant.status, 'activity').colorScheme}
-        display="flex"
-        alignItems="center"
-        px={2}
-        py={1}
-        borderRadius="full"
-      >
-        <Box as={getStatusConfig(merchant.status, 'activity').icon} size={12} mr={1} />
-        {merchant.status?.toUpperCase()}
-      </Badge>
-      <Badge
-        colorScheme="purple"
-        px={2}
-        py={1}
-        borderRadius="full"
-      >
-        {merchant.currency}
-      </Badge>
+      {merchant.verificationStatus && (
+        <Badge
+          colorScheme={getStatusConfig(merchant.verificationStatus, 'verification').colorScheme}
+          display="flex"
+          alignItems="center"
+          px={2}
+          py={1}
+          borderRadius="full"
+        >
+          <Box as={getStatusConfig(merchant.verificationStatus, 'verification').icon} size={12} mr={1} />
+          {merchant.verificationStatus.toUpperCase()}
+        </Badge>
+      )}
+      {merchant.status && (
+        <Badge
+          colorScheme={getStatusConfig(merchant.status, 'activity').colorScheme}
+          display="flex"
+          alignItems="center"
+          px={2}
+          py={1}
+          borderRadius="full"
+        >
+          <Box as={getStatusConfig(merchant.status, 'activity').icon} size={12} mr={1} />
+          {merchant.status.toUpperCase()}
+        </Badge>
+      )}
+      {merchant.currency && (
+        <Badge
+          colorScheme="purple"
+          px={2}
+          py={1}
+          borderRadius="full"
+        >
+          {merchant.currency}
+        </Badge>
+      )}
     </HStack>
   );
+
+  const formatDate = (dateString) => {
+    if (!dateString) return 'Not available';
+    try {
+      return format(parseISO(dateString), 'MMM yyyy');
+    } catch (error) {
+      console.error('Date parsing error:', error);
+      return 'Invalid date';
+    }
+  };
 
   const renderMetrics = () => (
     <SimpleGrid columns={{ base: 2, lg: 4 }} gap={4} width="full">
       <MetricBox
         icon={Users}
         label="Total Customers"
-        value={merchant.metadata?.totalCustomers || 0}
+        value={merchant.metadata?.totalCustomers?.toLocaleString() || '0'}
       />
       <MetricBox
         icon={Calendar}
         label="Member Since"
-        value={format(parseISO(merchant.createdAt), 'MMM yyyy')}
+        value={formatDate(merchant.createdAt)}
       />
       <MetricBox
         icon={BarChart4}
@@ -219,16 +255,16 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
 
       <Box p={6}>
         <VStack spacing={6} align="stretch">
-          <HStack spacing={6} align="start">
+          <HStack spacing={6} align="start" flexWrap={{ base: "wrap", md: "nowrap" }}>
             {renderBusinessLogo()}
 
             <VStack align="stretch" spacing={4} flex={1}>
               <VStack align="stretch" spacing={1}>
                 <Heading size="lg" color="bitcash.500">
-                  {merchant.businessName}
+                  {merchant.businessName || 'Unnamed Business'}
                 </Heading>
                 <Text color="gray.500">
-                  {merchant.businessType}
+                  {merchant.businessType || 'Business Type Not Set'}
                 </Text>
               </VStack>
 
@@ -236,7 +272,7 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
               {renderStatusBadges()}
             </VStack>
 
-            <HStack spacing={2}>
+            <HStack spacing={2} flexShrink={0}>
               <Tooltip label="View QR Code" placement="top">
                 <IconButton
                   icon={<QrCode size={20} />}
@@ -271,6 +307,7 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
             bottom={2}
             right={2}
             onClick={() => setShowExtra(!showExtra)}
+            aria-label={showExtra ? "Show less" : "Show more"}
           />
         </VStack>
       </Box>
@@ -296,10 +333,19 @@ const MetricBox = ({ icon: Icon, label, value, trend }) => {
           variant="ghost"
           colorScheme="bitcash"
           size="sm"
+          aria-label={label}
         />
         <VStack align="start" spacing={0}>
           <Text fontSize="sm" color="gray.500">{label}</Text>
           <Text fontSize="lg" fontWeight="bold">{value}</Text>
+          {trend && (
+            <Text 
+              fontSize="xs" 
+              color={trend === 'up' ? 'green.500' : 'red.500'}
+            >
+              {trend === 'up' ? '↑' : '↓'} {Math.abs(trend)}%
+            </Text>
+          )}
         </VStack>
       </HStack>
     </Box>

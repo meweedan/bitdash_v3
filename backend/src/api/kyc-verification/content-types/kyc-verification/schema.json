@@ -14,30 +14,43 @@
       },
       "status": {
         "type": "enumeration",
-        "enum": ["pending", "approved", "rejected"],
+        "enum": ["pending", "approved", "rejected", "review_required"],
         "default": "pending"
       },
-      "document_type": {
+      "tier": {
         "type": "enumeration",
-        "enum": ["passport", "national_id", "drivers_license"],
-        "required": true
+        "enum": ["basic", "intermediate", "advanced"],
+        "default": "basic"
       },
-      "document_front": {
-        "type": "media",
-        "required": true
+      "risk_score": {
+        "type": "integer",
+        "min": 0,
+        "max": 100
       },
-      "document_back": {
-        "type": "media"
+      "documents": {
+        "type": "component",
+        "component": "kyc.documents",
+        "repeatable": true
       },
-      "selfie": {
-        "type": "media",
-        "required": true
+      "verification_attempts": {
+        "type": "integer",
+        "default": 0
       },
-      "verified_at": {
+      "last_verification": {
         "type": "datetime"
       },
-      "rejection_reason": {
+      "expiry_date": {
+        "type": "datetime"
+      },
+      "compliance_notes": {
         "type": "text"
+      },
+      "aml_check_result": {
+        "type": "json"
+      },
+      "pep_check_result": {
+        "type": "boolean",
+        "default": false
       }
     }
   }

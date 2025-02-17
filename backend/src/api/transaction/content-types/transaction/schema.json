@@ -33,8 +33,6 @@
         "withdrawal",
         "conversion",
         "payment",
-        "job_post",
-        "job_featured",
         "shop_sale",
         "shop_payout"
       ]

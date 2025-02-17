@@ -78,12 +78,6 @@
       "target": "api::contact.contact",
       "mappedBy": "customer_profile"
     },
-    "payments": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::payment.payment",
-      "mappedBy": "customer_profile"
-    },
     "recent_orders": {
       "type": "relation",
       "relation": "oneToMany",

@@ -17,10 +17,6 @@
         "security",
         "account",
         "promotion",
-        "trading",
-        "new_job_application",
-        "application_status",
-        "job_match",
         "shop_order",
         "shop_payout",
         "inventory_alert"
