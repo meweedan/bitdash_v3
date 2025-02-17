@@ -70,64 +70,6 @@ module.exports = {
     }
   },
 
-  async validate(ctx) {
-    try {
-      // Get the token from the Authorization header
-      const token = ctx.request.headers.authorization?.replace('Bearer ', '');
-
-      if (!token) {
-        return ctx.unauthorized('No token provided');
-      }
-
-      // Verify the token
-      let decoded;
-      try {
-        decoded = jwt.verify(token, process.env.JWT_SECRET);
-      } catch (error) {
-        return ctx.unauthorized('Invalid or expired token');
-      }
-
-      // Find the user
-      const user = await prisma.user.findUnique({
-        where: { id: decoded.id },
-        include: {
-          role: true,
-          restaurant: true,
-          menus: true,
-        }
-      });
-
-      if (!user) {
-        return ctx.unauthorized('User not found');
-      }
-
-      // Sanitize user data
-      const sanitizedUser = {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        userType: user.userType,
-        role: user.role ? {
-          id: user.role.id,
-          name: user.role.name,
-          type: user.role.type
-        } : null,
-        restaurant: user.restaurant ? {
-          id: user.restaurant.id,
-          name: user.restaurant.name,
-        } : null,
-        menus: user.menus.map(menu => ({
-          id: menu.id,
-          name: menu.name,
-        })),
-      };
-
-      return ctx.send(sanitizedUser);
-    } catch (error) {
-      return ctx.badRequest(error.message);
-    }
-  },
-
   async login(ctx) {
     const { identifier, password } = ctx.request.body;
 
