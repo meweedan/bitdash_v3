@@ -199,14 +199,13 @@ const DynamicPaymentPage = () => {
     }
   });
 
-   // Fetch Payment Link Details
   useEffect(() => {
-    const fetchPaymentLinkDetails = async () => {
+   const fetchPaymentLinkDetails = async () => {
       if (!paymentLinkId) return;
 
       try {
         const paymentResponse = await fetch(
-          `${backendUrl}/api/payment-links/${paymentLinkId}/public`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/payment-links/${paymentLinkId}/public`,
           {
             headers: {
               'Content-Type': 'application/json'
@@ -215,42 +214,19 @@ const DynamicPaymentPage = () => {
         );
 
         if (!paymentResponse.ok) {
-          // Store error details for failed page
-          localStorage.setItem('paymentErrorDetails', JSON.stringify({
-            amount: 0,
-            merchantName: businessName || 'Unknown Merchant',
-            errorMessage: t('payment.errors.payment_link_invalid')
-          }));
-          
-          router.push('/payments/failed');
-          return;
+          throw new Error(t('payment.errors.payment_link_invalid'));
         }
 
         const paymentData = await paymentResponse.json();
-        
-        // Additional validation for payment link
-        const now = new Date();
-        const paymentLink = paymentData.data;
-        
-        if (paymentLink.status !== 'active') {
-          throw new Error(t('payment.errors.payment_link_inactive'));
-        }
-
-        if (paymentLink.expiry && new Date(paymentLink.expiry) < now) {
-          throw new Error(t('payment.errors.payment_link_expired'));
-        }
-
         setPaymentDetails(paymentData.data);
         setMerchantDetails(paymentData.data.attributes.merchant?.data);
       } catch (error) {
-        // Store error details for failed page
-        localStorage.setItem('paymentErrorDetails', JSON.stringify({
-          amount: 0,
-          merchantName: businessName || 'Unknown Merchant',
-          errorMessage: error.message
-        }));
-        
-        router.push('/payments/failed');
+        toast({
+          title: t('common.error'),
+          description: error.message,
+          status: 'error',
+          duration: 5000
+        });
       } finally {
         setLoading(false);
       }
@@ -259,17 +235,14 @@ const DynamicPaymentPage = () => {
     if (paymentLinkId) {
       fetchPaymentLinkDetails();
     }
-  }, [paymentLinkId, t, toast, router, businessName, backendUrl]);
+  }, [paymentLinkId, t, toast]);
 
-  // Handle Login Success
   const handleLoginSuccess = (data) => {
     setUser(data.user);
     refetchWallet();
   };
 
-  // Handle Payment
   const handlePayment = async () => {
-    // PIN Validation
     if (!pin || pin.length !== 6) {
       toast({
         title: t('payment.errors.invalid_pin'),
@@ -283,7 +256,6 @@ const DynamicPaymentPage = () => {
     const totalAmount = paymentDetails.attributes.amount;
     const currentBalance = walletData?.data?.attributes?.balance || 0;
 
-    // Balance Check
     if (currentBalance < totalAmount) {
       toast({
         title: t('payment.errors.insufficient_balance'),
@@ -299,9 +271,8 @@ const DynamicPaymentPage = () => {
     setIsProcessing(true);
 
     try {
-      // Fetch Merchant Wallet
       const merchantWalletResponse = await fetch(
-        `${backendUrl}/api/wallets?populate=*&filters[merchant][id][$eq]=${merchantDetails.id}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/wallets?populate=*&filters[merchant][id][$eq]=${merchantDetails.id}`,
         {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -321,8 +292,7 @@ const DynamicPaymentPage = () => {
         throw new Error(t('payment.errors.merchant_not_found'));
       }
 
-      // Process Payment
-      const response = await fetch(`${backendUrl}/api/wallets/payment`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/wallets/payment`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -343,13 +313,6 @@ const DynamicPaymentPage = () => {
         throw new Error(result.error?.message || t('payment.errors.payment_failed'));
       }
 
-      // Store transaction details for success page
-      localStorage.setItem('lastTransaction', JSON.stringify({
-        amount: totalAmount,
-        transactionId: result.data.transaction.id,
-        merchantName: merchantDetails?.attributes?.metadata?.businessName || businessName
-      }));
-
       setShowCelebration(true);
       setTransactionResult({
         beforeBalance: currentBalance,
@@ -360,22 +323,13 @@ const DynamicPaymentPage = () => {
       
       onConfirmOpen();
 
-      // Redirect to success page after celebration
       setTimeout(() => {
         setShowCelebration(false);
-        router.push('/payments/success');
       }, 5000);
 
     } catch (error) {
       console.error('Payment Error:', error);
       
-      // Store error details for failed page
-      localStorage.setItem('paymentErrorDetails', JSON.stringify({
-        amount: totalAmount,
-        merchantName: merchantDetails?.attributes?.metadata?.businessName || businessName,
-        errorMessage: error.message
-      }));
-
       setTransactionResult({
         beforeBalance: currentBalance,
         afterBalance: currentBalance,
@@ -383,15 +337,17 @@ const DynamicPaymentPage = () => {
       });
       
       onConfirmOpen();
-      
-      // Redirect to failed page
-      router.push('/payments/failed');
+      toast({
+        title: t('payment.errors.payment_failed'),
+        description: error.message,
+        status: 'error',
+        duration: 5000
+      });
     } finally {
       setIsProcessing(false);
     }
   };
 
-  // Loading and Error States (similar to previous implementation)
   if (loading) {
     return (
       <Flex height="100vh" width="100vw" justifyContent="center" alignItems="center">
@@ -557,31 +513,31 @@ const DynamicPaymentPage = () => {
       isActive={showCelebration}
     />
 
-        {transactionResult && (
-          <TransactionConfirmationModal
-            isOpen={isConfirmOpen}
-            onClose={() => {
-              onConfirmClose();
-              setTransactionResult(null);
-              setPin('');
-            }}
-            beforeBalance={transactionResult.beforeBalance}
-            afterBalance={transactionResult.afterBalance}
-            amount={paymentDetails.attributes.amount}
-            merchantName={merchantDetails?.attributes?.metadata?.businessName || businessName}
-            isSuccess={transactionResult.isSuccess}
-            transactionId={transactionResult.transactionId}
-          />
-        )}
-      </Layout>
-    </>
-  );
+    {transactionResult && (
+      <TransactionConfirmationModal
+        isOpen={isConfirmOpen}
+        onClose={() => {
+          onConfirmClose();
+          setTransactionResult(null);
+          setPin('');
+          router.push(transactionResult.isSuccess ? '/payments/success' : '/');
+        }}
+        beforeBalance={transactionResult.beforeBalance}
+        afterBalance={transactionResult.afterBalance}
+        amount={paymentDetails.attributes.amount}
+        merchantName={merchantDetails?.attributes?.metadata?.businessName || businessName}
+        isSuccess={transactionResult.isSuccess}
+        transactionId={transactionResult.transactionId}
+      />
+    )}
+  </Layout>
+</>
+);
 };
-
 export const getServerSideProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale, ['common'])),
-  },
-});
-
+    },
+  });
+  
 export default DynamicPaymentPage;
