@@ -386,8 +386,6 @@ const DynamicPaymentPage = () => {
           justifyContent="center" 
           alignItems="center" 
           p={4} 
-          bg={useColorModeValue('gray.50', 'gray.800')}
-          minHeight="100vh"
         >
           <Box
             w="full"
@@ -395,7 +393,6 @@ const DynamicPaymentPage = () => {
             borderRadius="xl"
             boxShadow="xl"
             p={6}
-            bg={useColorModeValue('white', 'gray.700')}
           >
             <VStack spacing={6}>
               <Flex 
@@ -419,7 +416,7 @@ const DynamicPaymentPage = () => {
                   <Avatar 
                     bg="blue.500" 
                     color="white"
-                    size="2xl"
+                    size="3xl"
                     name={merchantDetails?.attributes?.metadata?.businessName || businessName}
                     mb={4}
                   />
