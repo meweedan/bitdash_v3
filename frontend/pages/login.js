@@ -142,11 +142,7 @@ const LoginPage = () => {
     mx: "auto",
     mt: 8,
     p: 6,
-    borderRadius: "xl",
-    bg: colors.bg,
-    borderWidth: "0.1px",
     borderColor: colors.border,
-    boxShadow: "xl"
   };
 
   const inputStyles = {
@@ -159,7 +155,6 @@ const LoginPage = () => {
     },
     _focus: {
       borderColor: colors.hover,
-      boxShadow: `0 0 0 1px ${colors.hover}`,
     }
   };
 
