@@ -113,6 +113,35 @@ const MerchantDashboard = () => {
     enabled: !!isAuthenticated,
   });
 
+  const exportTransactions = useMutation({
+    mutationFn: async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/merchants/export`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      );
+      if (!response.ok) throw new Error('Export failed');
+      return response.blob();
+    },
+    onSuccess: (blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `transactions_${new Date().toISOString()}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      toast({
+        title: 'Export Successful',
+        status: 'success',
+        duration: 3000
+      });
+    }
+  });
+
   const merchant = merchantData?.attributes || {};
 
   // Enhanced Business Details Component
