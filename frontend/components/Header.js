@@ -62,6 +62,7 @@ export default function Header() {
       const hostname = window.location.hostname;
       // Check if it's the main domain without subdomains
       return hostname === 'bitdash.app' || hostname === 'localhost';
+      return hostname === 'www.bitdash.app' || hostname === 'localhost';
     }
     return false;
   };
