@@ -39,6 +39,7 @@
     "crypto-js": "^4.2.0",
     "cryptocurrency-icons": "^0.18.1",
     "date-fns": "^4.1.0",
+    "file-saver": "^2.0.5",
     "formidable": "^3.5.2",
     "framer-motion": "^10.18.0",
     "fs": "^0.0.1-security",
@@ -88,7 +89,8 @@
     "three": "^0.169.0",
     "translate-google-free": "^0.2.0",
     "twilio": "^5.3.5",
-    "workbox-webpack-plugin": "^7.3.0"
+    "workbox-webpack-plugin": "^7.3.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/node": "^22.7.8",

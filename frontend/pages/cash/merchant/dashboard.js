@@ -52,7 +52,7 @@ import TransactionList from '@/components/transactions/TransactionList';
 import TransactionSummary from '@/components/transactions/TransactionSummary';
 import PaymentLinksList from '@/components/cash/merchant/PaymentLinksList';
 import PaymentLinkGenerator from '@/components/cash/merchant/PaymentLinkGenerator';
-import BusinessDetailsCard from '@/components/cash/merchant/BusinessDetailsCard';
+import ProfileEditor from '@/components/cash/merchant/ProfileEditor';
 
 // Icons
 import { 
@@ -318,35 +318,46 @@ const MerchantDashboard = () => {
   const toast = useToast();
   const queryClient = useQueryClient();
   const { user, isAuthenticated, loading: authLoading, logout } = useAuth();
+  const { isOpen: isProfileOpen, onOpen: onProfileOpen, onClose: onProfileClose } = useDisclosure();
   const { isOpen: isPaymentLinkOpen, onOpen: onPaymentLinkOpen, onClose: onPaymentLinkClose } = useDisclosure();
 
   // Fetch merchant data
   const { data: merchantData, isLoading, error, refetch } = useQuery({
     queryKey: ['merchantData', user?.id],
     queryFn: async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/merchants?` +
-        `filters[users_permissions_user][id][$eq]=${user.id}&` +
-        `populate[wallet][populate]=*&` +
-        `populate[transactions][populate]=*&` +
-        `populate[transactions][sort][0]=createdAt:desc&` +
-        `populate[payment_links][populate]=*&` +
-        `populate[logo][populate]=*&` +
-        `populate[qr_code][populate]=*&` +
-        `populate[location][populate]=*&` +
-        `populate[settings][populate]=*`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
+      if (!user?.id) return null;
+
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/merchants?` +
+          `filters[users_permissions_user][id][$eq]=${user.id}&` +
+          `populate[wallet][populate]=*&` +
+          `populate[transactions][populate]=*&` +
+          `populate[transactions][sort][0]=createdAt:desc&` +
+          `populate[payment_links][populate]=*&` +
+          `populate[logo][populate]=*&` +
+          `populate[qr_code][populate]=*&` +
+          `populate[location][populate]=*&` +
+          `populate[settings][populate]=*`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
           }
-        }
-      );
-      
-      if (!response.ok) throw new Error('Failed to fetch merchant data');
-      return response.json();
+        );
+        
+        if (!response.ok) throw new Error('Failed to fetch merchant data');
+        const data = await response.json();
+        if (!data?.data?.[0]) throw new Error('No merchant data found');
+        return data;
+      } catch (error) {
+        console.error('Merchant data fetch error:', error);
+        throw error;
+      }
     },
     enabled: !!user?.id && isAuthenticated,
-    refetchInterval: 30000
+    refetchInterval: 30000,
+    retry: 1
   });
 
   useEffect(() => {
@@ -455,8 +466,8 @@ const MerchantDashboard = () => {
                   <MenuItem icon={<Download />} onClick={() => router.push('/transactions')}>
                     Export Transactions
                   </MenuItem>
-                  <MenuItem icon={<Settings />} onClick={() => router.push('/settings')}>
-                    Settings
+                  <MenuItem icon={<Settings />} onClick={onProfileOpen}>
+                    Edit Profile
                   </MenuItem>
                   <MenuItem icon={<LogOut />} onClick={logout}>
                     Logout
@@ -575,6 +586,19 @@ const MerchantDashboard = () => {
           merchantData={merchantData.data[0]}
           isOpen={isPaymentLinkOpen}
           onClose={onPaymentLinkClose}
+        />
+
+        {/* Profile Editor */}
+        <ProfileEditor 
+          merchant={merchantData.data[0]}
+          isOpen={isProfileOpen}
+          onClose={onProfileClose}
+          onUpdate={(updatedData) => {
+            queryClient.setQueryData(['merchantData', user?.id], (old) => ({
+              ...old,
+              data: [updatedData.data]
+            }));
+          }}
         />
       </Box>
     </Layout>
