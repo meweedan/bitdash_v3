@@ -1,15 +1,12 @@
-// components/pay/merchant/PaymentLinkGenerator.js
 import React, { useState, useEffect } from 'react';
 import { 
   Box, 
   VStack, 
   Text, 
   Button, 
-  Input,
-  FormControl,
-  FormLabel,
-  FormHelperText,
-  FormErrorMessage,
+  Input, 
+  FormControl, 
+  FormLabel, 
   useToast,
   Modal,
   ModalOverlay,
@@ -17,162 +14,121 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-  ModalFooter,
   Flex,
   useColorMode,
   HStack,
   IconButton,
-  useClipboard,
-  Select,
-  Switch,
-  InputGroup,
-  InputRightElement,
-  InputLeftAddon,
-  Divider,
-  useBreakpointValue,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Tooltip,
-  Badge,
-  Image,
-  Collapse
+  useClipboard
 } from "@chakra-ui/react";
 import { QRCodeCanvas } from "qrcode.react";
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { 
-  FiCopy, 
-  FiShare2, 
-  FiSun, 
-  FiMoon, 
-  FiCheck,
-  FiX,
-  FiClock,
-  FiAlertCircle,
-  FiLock,
-  FiUnlock,
-  FiEye,
-  FiEyeOff
-} from 'react-icons/fi';
+import { useMutation } from '@tanstack/react-query';
+import { FiCopy, FiShare2, FiSun, FiMoon } from 'react-icons/fi';
 
 const PaymentLinkGenerator = ({ 
-  merchantData,
-  isOpen,
-  onClose,
-  currency = 'LYD'
+  merchantData, 
+  isOpen, 
+  onClose 
 }) => {
-  const queryClient = useQueryClient();
+  const [amount, setAmount] = useState('');
+  const [pin, setPin] = useState('');
+  const [paymentLink, setPaymentLink] = useState(null);
+  const [isQRDarkMode, setIsQRDarkMode] = useState(false);
   const toast = useToast();
   const { colorMode } = useColorMode();
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const { hasCopied, onCopy } = useClipboard(paymentLink?.url || '');
 
-  // Form state
-  const [formData, setFormData] = useState({
-    amount: '',
-    pin: '',
-    description: '',
-    expiry: '24', // hours
-    paymentType: 'fixed',
-    requirePin: true,
-    allowPartial: false,
-    minAmount: '',
-    maxAmount: '',
-  });
-  
-  const [errors, setErrors] = useState({});
-  const [showPin, setShowPin] = useState(false);
-  const [generatedLink, setGeneratedLink] = useState(null);
-  const [isQRDarkMode, setIsQRDarkMode] = useState(false);
+  // Ensure environment variables are defined
+  const frontendUrl = 'https://cash.bitdash.app';
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-  // Reset form when modal closes
-  useEffect(() => {
-    if (!isOpen) {
-      setFormData({
-        amount: '',
-        pin: '',
-        description: '',
-        expiry: '24',
-        paymentType: 'fixed',
-        requirePin: true,
-        allowPartial: false,
-        minAmount: '',
-        maxAmount: '',
-      });
-      setGeneratedLink(null);
-      setErrors({});
-    }
-  }, [isOpen]);
+  if (!backendUrl) {
+    console.error('Missing backend URL');
+    return null;
+  }
 
-  // Create payment link mutation
-  const createLinkMutation = useMutation({
+  // Get business name, defaulting to a safe URL-friendly string
+  const businessName = merchantData?.attributes?.metadata?.businessName 
+    ? merchantData.attributes.metadata.businessName.toLowerCase().replace(/[^a-z0-9]/g, '-')
+    : 'merchant';
+
+  const createPaymentLink = useMutation({
     mutationFn: async (data) => {
-      if (!merchantData?.id) {
-        throw new Error('Invalid merchant data');
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('Authentication token is missing');
+      }
+
+      if (!merchantData || !merchantData.id) {
+        throw new Error('Invalid merchant information');
       }
 
       // Generate unique link ID
-      const linkId = `PAY-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`.toUpperCase();
+      const linkId = `${businessName}-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`.toUpperCase();
       
-      // Calculate expiry date
+      // Calculate expiry (24 hours from now)
       const expiry = new Date();
-      expiry.setHours(expiry.getHours() + parseInt(data.expiry));
+      expiry.setHours(expiry.getHours() + 24);
 
-      const payload = {
-        data: {
-          amount: data.paymentType === 'fixed' ? parseFloat(data.amount) : null,
-          currency,
-          description: data.description,
-          merchant: merchantData.id,
-          status: 'active',
-          payment_type: data.paymentType,
-          pin: data.requirePin ? data.pin : null,
-          link_id: linkId,
-          expiry: expiry.toISOString(),
-          metadata: {
-            businessName: merchantData.attributes?.businessName,
-            merchantId: merchantData.id,
-            minAmount: data.paymentType === 'variable' ? parseFloat(data.minAmount) : null,
-            maxAmount: data.paymentType === 'variable' ? parseFloat(data.maxAmount) : null,
-            allowPartial: data.allowPartial,
-            requirePin: data.requirePin,
-            createdAt: new Date().toISOString()
+      try {
+        const response = await fetch(
+          `${backendUrl}/api/payment-links`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              data: {
+                amount: parseFloat(data.amount),
+                currency: 'LYD',
+                merchant: merchantData.id,
+                status: 'active',
+                payment_type: 'fixed',
+                pin: data.pin,
+                link_id: linkId,
+                expiry: expiry.toISOString(),
+                description: `Payment to ${merchantData.attributes.metadata.businessName}`,
+                success_url: `${frontendUrl}/payments/success`,
+                cancel_url: `${frontendUrl}/payments/cancel`,
+                metadata: {
+                  businessName: merchantData.attributes.metadata.businessName,
+                  merchantId: merchantData.id,
+                  createdAt: new Date().toISOString(),
+                  merchantPhone: merchantData.attributes.phone,
+                  merchantEmail: merchantData.attributes.email,
+                  linkType: 'qr',
+                  platform: 'web'
+                }
+              }
+            })
           }
-        }
-      };
+        );
 
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/payment-links`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          },
-          body: JSON.stringify(payload)
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error?.message || 'Failed to create payment link');
         }
-      );
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error?.message || 'Failed to create payment link');
+        const responseData = await response.json();
+        
+        // Construct full payment URL
+        const fullUrl = `${frontendUrl}/${businessName}/${linkId}`;
+        
+        return {
+          ...responseData.data,
+          url: fullUrl
+        };
+      } catch (error) {
+        console.error('Payment Link Creation Error:', error);
+        throw new Error(error.message || 'Failed to create payment link');
       }
-
-      const responseData = await response.json();
-      const baseUrl = 'https://cash.bitdash.app';
-      const businessPath = merchantData.attributes?.businessName?.toLowerCase().replace(/[^a-z0-9]/g, '-') || 'pay';
-      
-      return {
-        ...responseData.data,
-        url: `${baseUrl}/${businessPath}/${linkId}`
-      };
     },
     onSuccess: (data) => {
-      setGeneratedLink(data);
-      queryClient.invalidateQueries(['payment-links']);
+      setPaymentLink(data);
       toast({
         title: 'Payment Link Created',
+        description: 'QR code is ready to be scanned',
         status: 'success',
         duration: 3000
       });
@@ -187,57 +143,66 @@ const PaymentLinkGenerator = ({
     }
   });
 
-  // Validate form
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (formData.paymentType === 'fixed') {
-      if (!formData.amount || isNaN(formData.amount) || parseFloat(formData.amount) <= 0) {
-        newErrors.amount = 'Please enter a valid amount';
-      }
-    } else {
-      if (!formData.minAmount || isNaN(formData.minAmount) || parseFloat(formData.minAmount) <= 0) {
-        newErrors.minAmount = 'Please enter a valid minimum amount';
-      }
-      if (!formData.maxAmount || isNaN(formData.maxAmount) || parseFloat(formData.maxAmount) <= parseFloat(formData.minAmount)) {
-        newErrors.maxAmount = 'Maximum amount must be greater than minimum';
-      }
+  const handleGenerateLink = () => {
+    // Validation
+    if (!amount || !pin) {
+      toast({
+        title: 'Validation Error',
+        description: 'Please enter both amount and PIN',
+        status: 'error',
+        duration: 3000
+      });
+      return;
     }
 
-    if (formData.requirePin) {
-      if (!formData.pin || formData.pin.length !== 6 || isNaN(formData.pin)) {
-        newErrors.pin = 'PIN must be 6 digits';
-      }
+    if (isNaN(amount) || parseFloat(amount) <= 0) {
+      toast({
+        title: 'Invalid Amount',
+        description: 'Please enter a valid amount greater than 0',
+        status: 'error',
+        duration: 3000
+      });
+      return;
     }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    if (pin.length !== 6 || isNaN(pin)) {
+      toast({
+        title: 'Invalid PIN',
+        description: 'PIN must be 6 digits',
+        status: 'error',
+        duration: 3000
+      });
+      return;
+    }
+
+    // Generate payment link
+    createPaymentLink.mutate({ amount, pin });
   };
 
-  // Handle form submission
-  const handleSubmit = () => {
-    if (validateForm()) {
-      createLinkMutation.mutate(formData);
-    }
-  };
-
-  // Share functionality
   const handleShare = async () => {
-    if (generatedLink?.url) {
+    if (paymentLink?.url) {
       if (navigator.share) {
         try {
           await navigator.share({
             title: 'Payment Link',
-            text: `Payment request for ${formData.amount} ${currency}`,
-            url: generatedLink.url
+            text: `Pay ${businessName} - ${paymentLink.attributes.amount} LYD`,
+            url: paymentLink.url
           });
         } catch (error) {
           console.error('Share failed:', error);
+          onCopy();
+          toast({
+            title: 'Link Copied',
+            description: 'Payment link copied to clipboard instead',
+            status: 'success',
+            duration: 2000
+          });
         }
       } else {
-        navigator.clipboard.writeText(generatedLink.url);
+        onCopy();
         toast({
-          title: 'Link copied to clipboard',
+          title: 'Link Copied',
+          description: 'Payment link copied to clipboard',
           status: 'success',
           duration: 2000
         });
@@ -245,344 +210,158 @@ const PaymentLinkGenerator = ({
     }
   };
 
-  // Handle copying link
-  const { hasCopied, onCopy } = useClipboard(generatedLink?.url || '');
-
-  // QR code colors based on mode
-  const qrColors = isQRDarkMode ? {
-    background: colorMode === 'dark' ? '#1A202C' : '#000000',
-    foreground: colorMode === 'dark' ? '#E2E8F0' : '#FFFFFF'
-  } : {
-    background: colorMode === 'dark' ? '#2D3748' : '#FFFFFF',
-    foreground: '#1179BE'
+  const resetForm = () => {
+    setAmount('');
+    setPin('');
+    setPaymentLink(null);
   };
+
+  // Determine QR code colors based on dark mode and user preference
+  const getQRCodeColors = () => {
+    if (isQRDarkMode) {
+      return {
+        background: colorMode === 'dark' ? '#1A202C' : '#000000',
+        foreground: colorMode === 'dark' ? '#E2E8F0' : '#FFFFFF'
+      };
+    }
+    return {
+      background: colorMode === 'dark' ? '#2D3748' : '#FFFFFF',
+      foreground: colorMode === 'dark' ? '#000000' : '#1179BE'
+    };
+  };
+
+  const qrColors = getQRCodeColors();
 
   return (
     <Modal 
       isOpen={isOpen} 
-      onClose={onClose}
-      size={isMobile ? "full" : "xl"}
-      motionPreset="slideInBottom"
+      onClose={onClose} 
+      size="xl" 
+      closeOnOverlayClick={!paymentLink}
+      closeOnEsc={!paymentLink}
     >
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>
           <Text 
-            bgGradient="linear(to-r, blue.400, blue.600)"
+            bgGradient={
+              colorMode === 'dark' 
+                ? "linear(to-r, gray.100, gray.300)" 
+                : "linear(to-r, gray.700, gray.900)"
+            }
             bgClip="text"
             fontWeight="bold"
           >
-            Create Payment Link
+            Generate Payment Link
           </Text>
         </ModalHeader>
-        <ModalCloseButton />
-        
-        <ModalBody>
-          {!generatedLink ? (
-            <Tabs variant="enclosed">
-              <TabList>
-                <Tab>Basic</Tab>
-                <Tab>Advanced</Tab>
-              </TabList>
+        <ModalCloseButton isDisabled={paymentLink && true} />
+        <ModalBody pb={6}>
+          {!paymentLink ? (
+            <VStack spacing={4}>
+              <FormControl isRequired>
+                <FormLabel>Amount (LYD)</FormLabel>
+                <Input
+                  type="number"
+                  placeholder="Enter amount"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                />
+              </FormControl>
 
-              <TabPanels>
-                <TabPanel>
-                  <VStack spacing={4}>
-                    {/* Payment Type Selection */}
-                    <FormControl>
-                      <FormLabel>Payment Type</FormLabel>
-                      <Select
-                        value={formData.paymentType}
-                        onChange={(e) => setFormData(prev => ({
-                          ...prev,
-                          paymentType: e.target.value
-                        }))}
-                      >
-                        <option value="fixed">Fixed Amount</option>
-                        <option value="variable">Variable Amount</option>
-                      </Select>
-                    </FormControl>
+              <FormControl isRequired>
+                <FormLabel>Merchant PIN</FormLabel>
+                <Input
+                  type="password"
+                  placeholder="Enter 6-digit PIN"
+                  value={pin}
+                  onChange={(e) => setPin(e.target.value)}
+                  maxLength={6}
+                />
+              </FormControl>
 
-                    {/* Amount Input(s) */}
-                    {formData.paymentType === 'fixed' ? (
-                      <FormControl isInvalid={!!errors.amount}>
-                        <FormLabel>Amount ({currency})</FormLabel>
-                        <InputGroup>
-                          <InputLeftAddon>{currency}</InputLeftAddon>
-                          <Input
-                            type="number"
-                            placeholder="Enter amount"
-                            value={formData.amount}
-                            onChange={(e) => setFormData(prev => ({
-                              ...prev,
-                              amount: e.target.value
-                            }))}
-                          />
-                        </InputGroup>
-                        <FormErrorMessage>{errors.amount}</FormErrorMessage>
-                      </FormControl>
-                    ) : (
-                      <HStack spacing={4}>
-                        <FormControl isInvalid={!!errors.minAmount}>
-                          <FormLabel>Minimum Amount</FormLabel>
-                          <InputGroup>
-                            <InputLeftAddon>{currency}</InputLeftAddon>
-                            <Input
-                              type="number"
-                              placeholder="Min"
-                              value={formData.minAmount}
-                              onChange={(e) => setFormData(prev => ({
-                                ...prev,
-                                minAmount: e.target.value
-                              }))}
-                            />
-                          </InputGroup>
-                          <FormErrorMessage>{errors.minAmount}</FormErrorMessage>
-                        </FormControl>
-
-                        <FormControl isInvalid={!!errors.maxAmount}>
-                          <FormLabel>Maximum Amount</FormLabel>
-                          <InputGroup>
-                            <InputLeftAddon>{currency}</InputLeftAddon>
-                            <Input
-                              type="number"
-                              placeholder="Max"
-                              value={formData.maxAmount}
-                              onChange={(e) => setFormData(prev => ({
-                                ...prev,
-                                maxAmount: e.target.value
-                              }))}
-                            />
-                          </InputGroup>
-                          <FormErrorMessage>{errors.maxAmount}</FormErrorMessage>
-                        </FormControl>
-                      </HStack>
-                    )}
-
-                    {/* Description */}
-                    <FormControl>
-                      <FormLabel>Description (Optional)</FormLabel>
-                      <Input
-                        placeholder="Enter description"
-                        value={formData.description}
-                        onChange={(e) => setFormData(prev => ({
-                          ...prev,
-                          description: e.target.value
-                        }))}
-                      />
-                    </FormControl>
-
-                    {/* PIN Input */}
-                    <FormControl isInvalid={!!errors.pin}>
-                      <FormLabel>Merchant PIN</FormLabel>
-                      <InputGroup>
-                        <Input
-                          type={showPin ? "text" : "password"}
-                          placeholder="Enter 6-digit PIN"
-                          value={formData.pin}
-                          onChange={(e) => setFormData(prev => ({
-                            ...prev,
-                            pin: e.target.value
-                          }))}
-                          maxLength={6}
-                        />
-                        <InputRightElement>
-                          <IconButton
-                            icon={showPin ? <FiEyeOff /> : <FiEye />}
-                            variant="ghost"
-                            onClick={() => setShowPin(!showPin)}
-                            size="sm"
-                          />
-                        </InputRightElement>
-                      </InputGroup>
-                      <FormErrorMessage>{errors.pin}</FormErrorMessage>
-                    </FormControl>
-                  </VStack>
-                </TabPanel>
-
-                <TabPanel>
-                  <VStack spacing={4}>
-                    {/* Expiry Time */}
-                    <FormControl>
-                      <FormLabel>Link Expiry</FormLabel>
-                      <Select
-                        value={formData.expiry}
-                        onChange={(e) => setFormData(prev => ({
-                          ...prev,
-                          expiry: e.target.value
-                        }))}
-                      >
-                        <option value="1">1 hour</option>
-                        <option value="24">24 hours</option>
-                        <option value="72">3 days</option>
-                        <option value="168">7 days</option>
-                      </Select>
-                    </FormControl>
-
-                    {/* Security Options */}
-                    <FormControl>
-                      <FormLabel>Security Options</FormLabel>
-                      <VStack align="start">
-                        <HStack>
-                          <Switch
-                            isChecked={formData.requirePin}
-                            onChange={(e) => setFormData(prev => ({
-                              ...prev,
-                              requirePin: e.target.checked
-                            }))}
-                          />
-                          <Text>Require PIN for payment</Text>
-                        </HStack>
-                        
-                        {formData.paymentType === 'fixed' && (
-                          <HStack>
-                            <Switch
-                              isChecked={formData.allowPartial}
-                              onChange={(e) => setFormData(prev => ({
-                                ...prev,
-                                allowPartial: e.target.checked
-                              }))}
-                            />
-                            <Text>Allow partial payments</Text>
-                          </HStack>
-                        )}
-                      </VStack>
-                    </FormControl>
-                  </VStack>
-                </TabPanel>
-              </TabPanels>
-            </Tabs>
+              <Button
+                colorScheme="blue"
+                onClick={handleGenerateLink}
+                isLoading={createPaymentLink.isLoading}
+                width="full"
+              >
+                Generate Payment Link
+              </Button>
+            </VStack>
           ) : (
-            <VStack spacing={6} align="center">
+            <VStack spacing={4} align="center">
               <Box 
                 p={4} 
                 borderWidth={2} 
                 borderRadius="xl" 
-                borderColor={colorMode === 'dark' ? 'whiteAlpha.300' : 'gray.200'}
-                boxShadow="lg"
+                borderColor={colorMode === 'dark' ? 'whiteAlpha.300' : 'blackAlpha.200'}
+                boxShadow="md"
               >
                 <QRCodeCanvas
-                  value={generatedLink.url}
+                  value={paymentLink.url}
                   size={250}
                   level="H"
                   bgColor={qrColors.background}
                   fgColor={qrColors.foreground}
                   style={{
                     borderRadius: '16px',
-                    padding: '8px'
+                    border: `4px solid ${colorMode === 'dark' ? '#2D3748' : '#E2E8F0'}`
                   }}
-                  includeMargin
                 />
               </Box>
-
-              <VStack spacing={3} align="center">
-                <Badge 
-                  colorScheme="green" 
-                  fontSize="md" 
-                  px={3} 
-                  py={1} 
-                  borderRadius="full"
-                >
-                  Link Active
-                </Badge>
-
-                {formData.paymentType === 'fixed' ? (
-                  <Text fontSize="2xl" fontWeight="bold">
-                    {parseFloat(formData.amount).toLocaleString()} {currency}
-                  </Text>
-                ) : (
-                  <Text fontSize="lg" color="gray.500">
-                    {formData.minAmount} - {formData.maxAmount} {currency}
-                  </Text>
-                )}
-
-                {formData.description && (
-                  <Text color="gray.500" textAlign="center">
-                    {formData.description}
-                  </Text>
-                )}
-
-                <Text fontSize="sm" color="gray.500">
-                  Expires in {formData.expiry} hours
+              
+              <VStack spacing={2} align="center">
+                <Text fontWeight="bold">
+                  {parseFloat(paymentLink.attributes.amount).toLocaleString()} LYD
                 </Text>
-
-                <Box
-                  p={3}
-                  bg={colorMode === 'dark' ? 'gray.700' : 'gray.50'}
-                  borderRadius="lg"
-                  w="full"
-                  maxW="300px"
+                
+                <Text 
+                  fontSize="sm" 
+                  color="gray.500" 
+                  textAlign="center"
+                  maxWidth="300px"
+                  noOfLines={2}
                 >
-                  <Text fontSize="sm" isTruncated>
-                    {generatedLink.url}
-                  </Text>
-                </Box>
-
-                <HStack spacing={4} mt={2}>
-                  <IconButton
-                    icon={isQRDarkMode ? <FiSun /> : <FiMoon />}
-                    onClick={() => setIsQRDarkMode(!isQRDarkMode)}
-                    variant="outline"
-                    aria-label="Toggle QR Theme"
-                  />
-                  <IconButton
-                    icon={<FiCopy />}
-                    onClick={onCopy}
-                    variant="outline"
-                    aria-label="Copy Link"
-                    colorScheme={hasCopied ? 'green' : 'gray'}
-                  />
-                  <Button
-                    leftIcon={<FiShare2 />}
-                    onClick={handleShare}
-                    colorScheme="blue"
-                  >
-                    Share
-                  </Button>
-                </HStack>
+                  {paymentLink.url}
+                </Text>
               </VStack>
+
+              <HStack spacing={4}>
+                <IconButton
+                  icon={isQRDarkMode ? <FiSun /> : <FiMoon />}
+                  onClick={() => setIsQRDarkMode(!isQRDarkMode)}
+                  variant="outline"
+                  aria-label="Toggle QR Code Theme"
+                />
+                <IconButton
+                  icon={<FiCopy />}
+                  onClick={onCopy}
+                  variant="outline"
+                  aria-label="Copy Link"
+                  colorScheme={hasCopied ? 'green' : 'gray'}
+                />
+                <Button
+                  leftIcon={<FiShare2 />}
+                  onClick={handleShare}
+                  colorScheme="blue"
+                  variant="solid"
+                >
+                  Share
+                </Button>
+              </HStack>
+
+              <Button 
+                variant="outline" 
+                onClick={resetForm}
+                width="full"
+                mt={2}
+              >
+                Generate New Link
+              </Button>
             </VStack>
           )}
         </ModalBody>
-
-        <ModalFooter>
-          {!generatedLink ? (
-            <HStack spacing={3}>
-              <Button variant="ghost" onClick={onClose}>
-                Cancel
-              </Button>
-              <Button
-                colorScheme="blue"
-                onClick={handleSubmit}
-                isLoading={createLinkMutation.isLoading}
-                leftIcon={<FiLock />}
-              >
-                Generate Secure Link
-              </Button>
-            </HStack>
-          ) : (
-            <Button 
-              variant="outline" 
-              onClick={() => {
-                setGeneratedLink(null);
-                setFormData({
-                  amount: '',
-                  pin: '',
-                  description: '',
-                  expiry: '24',
-                  paymentType: 'fixed',
-                  requirePin: true,
-                  allowPartial: false,
-                  minAmount: '',
-                  maxAmount: '',
-                });
-              }}
-              w="full"
-            >
-              Create Another Link
-            </Button>
-          )}
-        </ModalFooter>
       </ModalContent>
     </Modal>
   );
