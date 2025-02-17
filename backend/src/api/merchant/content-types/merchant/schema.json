@@ -18,6 +18,12 @@
     "businessType": {
       "type": "string"
     },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
     "location": {
       "type": "component",
       "component": "merchant.location",
