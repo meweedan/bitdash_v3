@@ -61,8 +61,8 @@ const Logo = () => {
 
   // Using the largest width (875px) and height (285px) as reference
   // to create consistent scaling while maintaining proportions
-  const CONTAINER_WIDTH = { base: '140px', md: '180px' };
-  const CONTAINER_HEIGHT = { base: '45px', md: '40px' };
+  const CONTAINER_WIDTH = { base: '125px', md: '220px' };
+  const CONTAINER_HEIGHT = { base: '45px', md: '60px' };
 
   const logoConfig = getLogoConfig();
 

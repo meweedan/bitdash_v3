@@ -15,6 +15,14 @@ module.exports = {
       config: {
         auth: false
       }
-    }
+    },
+    {
+     method: 'GET',
+      path: '/auth/validate',
+      handler: 'auth.validate',
+      config: {
+        policies: ['plugin::users-permissions.isAuthenticated']
+      }
+    },
   ]
 };
