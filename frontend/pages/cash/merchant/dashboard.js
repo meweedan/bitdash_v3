@@ -52,6 +52,7 @@ import TransactionList from '@/components/transactions/TransactionList';
 import TransactionSummary from '@/components/transactions/TransactionSummary';
 import PaymentLinksList from '@/components/cash/merchant/PaymentLinksList';
 import PaymentLinkGenerator from '@/components/cash/merchant/PaymentLinkGenerator';
+import BusinessDetailsCard from '@/components/cash/merchant/BusinessDetailsCard';
 
 // Icons
 import { 
@@ -512,7 +513,11 @@ const MerchantDashboard = () => {
             </Flex>
 
             {/* Business Overview */}
-            <BusinessDetailsCard merchant={merchant} />
+            <BusinessDetailsCard 
+              merchant={merchantData.data[0].attributes}
+              onQROpen={() => {/* QR code handler */}}
+              onCreateLink={() => {/* Link creation handler */}}
+            />
 
             {/* Wallet & Processing Fees */}
             <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={6} w="full">
