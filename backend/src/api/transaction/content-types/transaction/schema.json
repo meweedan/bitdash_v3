@@ -36,8 +36,7 @@
         "job_post",
         "job_featured",
         "shop_sale",
-        "shop_payout",
-        "employer_subscription"
+        "shop_payout"
       ]
     },
     "sender": {

@@ -339,7 +339,7 @@ module.exports = createCoreController('api::merchant.merchant', ({ strapi }) => 
 
       return ctx.created({
         data: paymentLink,
-        link: `${process.env.FRONTEND_URL}/cash/${uniqueCode}`
+        link: `${process.env.FRONTEND_URL}/${uniqueCode}`
       });
     } catch (error) {
       console.error('Create payment link error:', error);

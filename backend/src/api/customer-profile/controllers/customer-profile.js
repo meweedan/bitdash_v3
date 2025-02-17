@@ -202,7 +202,7 @@ async generateWalletQR(ctx) {
     }
 
     // Generate unique wallet link (similar to payment links)
-    const walletLink = `${process.env.FRONTEND_URL}/cash/to/${profile.wallet.walletId}`;
+    const walletLink = `${process.env.FRONTEND_URL}/to/${profile.wallet.walletId}`;
 
     // Generate QR code
     const QRCode = require('qrcode');

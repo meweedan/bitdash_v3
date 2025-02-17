@@ -64,7 +64,7 @@ const currencies = [
     symbol: 'usdt',
     name: 'Tether',
     icon: (
-      <svg viewBox="0 0 32 32" width="32" height="32">
+      <svg viewBox="0 0 32 32" width="64" height="64">
         <path
           fill="#26A17B"
           d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z"
@@ -80,7 +80,7 @@ const currencies = [
     symbol: 'lyd',
     name: 'Libyan Dinar',
     icon: (
-      <svg viewBox="0 0 32 32" width="32" height="32">
+      <svg viewBox="0 0 32 32" width="64" height="64">
         <circle cx="16" cy="16" r="16" fill="#239659"/>
         <text
           x="50%"
@@ -101,7 +101,7 @@ const currencies = [
     symbol: 'usd',
     name: 'US Dollar',
     icon: (
-      <svg viewBox="0 0 32 32" width="32" height="32">
+      <svg viewBox="0 0 32 32" width="64" height="64">
         <circle cx="16" cy="16" r="16" fill="#22803D"/>
         <text
           x="50%"
@@ -122,7 +122,7 @@ const currencies = [
     symbol: 'eur',
     name: 'Euro',
     icon: (
-      <svg viewBox="0 0 32 32" width="32" height="32">
+      <svg viewBox="0 0 32 32" width="64" height="64">
         <circle cx="16" cy="16" r="16" fill="#0F47AF"/>
         <text
           x="50%"
@@ -143,7 +143,7 @@ const currencies = [
     symbol: 'gbp',
     name: 'British Pound',
     icon: (
-      <svg viewBox="0 0 32 32" width="32" height="32">
+      <svg viewBox="0 0 32 32" width="64" height="64">
         <circle cx="16" cy="16" r="16" fill="#003D7D"/>
         <text
           x="50%"
@@ -164,7 +164,7 @@ const currencies = [
     symbol: 'egp',
     name: 'Egyptian Pound',
     icon: (
-      <svg viewBox="0 0 32 32" width="32" height="32">
+      <svg viewBox="0 0 32 32" width="64" height="64">
         <circle cx="16" cy="16" r="16" fill="#C8102E"/>
         <text
           x="50%"
@@ -185,7 +185,7 @@ const currencies = [
 
 const CryptoMatrix = ({ 
   columns = { base: 3, md: 4, lg: 6 }, 
-  spacing = { base: 4, md: 6 },
+  spacing = { base: 2, md: 2 },
   duration = 4 
 }) => {
   const boxBg = useColorModeValue('whiteAlpha.200', 'whiteAlpha.50');
@@ -198,7 +198,7 @@ const CryptoMatrix = ({
         <motion.div
           key={symbol}
           animate={{
-            y: [10, -5, 10],
+            y: [20, -5, 20],
             opacity: [0.8, 1, 0.8]
           }}
           transition={{
@@ -213,10 +213,10 @@ const CryptoMatrix = ({
             aspectRatio={1}
             p={3}
             bg={boxBg}
-            borderRadius="2xl"
+            borderRadius="3xl"
             boxShadow={boxShadow}
             _hover={{
-              transform: 'scale(1.05)',
+              transform: 'scale(1.5)',
               boxShadow: `0 0 20px ${glowColor}`,
             }}
             transition="all 0.3s ease"

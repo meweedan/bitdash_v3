@@ -1,62 +1,98 @@
 {
-    "kind": "collectionType",
-    "collectionName": "audit_logs",
-    "info": {
-      "singularName": "audit-log",
-      "pluralName": "audit-logs",
-      "displayName": "Audit Log"
-    },
-    "options": {
+  "kind": "collectionType",
+  "collectionName": "audit_logs",
+  "info": {
+    "singularName": "audit-log",
+    "pluralName": "audit-logs",
+    "displayName": "Audit Log"
+  },
+  "options": {
     "draftAndPublish": true
+  },
+  "attributes": {
+    "action": {
+      "type": "enumeration",
+      "enum": [
+        "review_created",
+        "review_updated",
+        "review_approved",
+        "review_rejected",
+        "review_replied",
+        "shop_owner_registered",
+        "shop_owner_verified",
+        "shop_item_created",
+        "shop_item_updated",
+        "shop_item_deleted",
+        "inventory_updated",
+        "transfer_initiated",
+        "transfer_completed",
+        "transfer_failed",
+        "payment_initiated",
+        "payment_completed",
+        "payment_failed",
+        "deposit_initiated",
+        "deposit_completed",
+        "deposit_failed",
+        "withdrawal_initiated",
+        "withdrawal_completed",
+        "withdrawal_failed",
+        "wallet_created",
+        "wallet_updated",
+        "wallet_suspended",
+        "wallet_reactivated",
+        "pin_changed",
+        "limits_updated",
+        "payment_link_created",
+        "payment_link_updated",
+        "payment_link_expired"
+      ]
     },
-    "attributes": {
-      "action": {
-        "type": "enumeration",
-        "enum": [
-          "review_created",
-          "review_updated",
-          "review_approved",
-          "review_rejected",
-          "review_replied",
-          "job_created",
-          "job_updated",
-          "job_deleted",
-          "application_submitted",
-          "application_status_changed",
-          "employer_registered",
-          "employer_verified",
-          "shop_owner_registered",
-          "shop_owner_verified",
-          "shop_item_created",
-          "shop_item_updated",
-          "shop_item_deleted",
-          "inventory_updated"
-        ]
-      },
-      "user": {
-        "type": "relation",
-        "relation": "manyToOne",
-        "target": "plugin::users-permissions.user"
-      },
-      "ip_address": {
-        "type": "string"
-      },
-      "resource_type": {
-        "type": "string",
-        "required": true
-      },
-      "resource_id": {
-        "type": "string",
-        "required": true
-      },
-      "old_values": {
-        "type": "json"
-      },
-      "new_values": {
-        "type": "json"
-      },
-      "metadata": {
-        "type": "json"
-      }
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "ip_address": {
+      "type": "string"
+    },
+    "resource_type": {
+      "type": "string",
+      "required": true
+    },
+    "resource_id": {
+      "type": "string",
+      "required": true
+    },
+    "old_values": {
+      "type": "json"
+    },
+    "new_values": {
+      "type": "json"
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "severity": {
+      "type": "enumeration",
+      "enum": ["low", "medium", "high", "critical"],
+      "default": "low"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["success", "failure", "warning"],
+      "default": "success"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "device_info": {
+      "type": "json"
+    },
+    "location": {
+      "type": "json"
+    },
+    "transaction_reference": {
+      "type": "string"
     }
   }
+}

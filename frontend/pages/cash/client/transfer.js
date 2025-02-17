@@ -1,4 +1,4 @@
-// frontend/pages/pay/client/transfer.js
+// frontend/pages/cash/client/transfer.js
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';

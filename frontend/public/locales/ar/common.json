@@ -3,7 +3,6 @@
   "welcome.hero": "ننمو معًا، بِتًا بِتًا.",
   "scrolldown": "قم بالتمرير لأسفل للمزيد",
   "title": "BitDash - منصة BI للشركات الناشئة",
-  "dashboard": "لوحة التحكم",
   "ourpartners": "شركاؤنا",
   "search": "بحث",
   "partnerlookup": "اكتشف تجربتك المفضلة لتناول الطعام",
@@ -435,6 +434,99 @@
   "invalidInput.password": "كلمة مرور قصيرة جدًا",
   "failedToLoadMenu": "فشل تحميل القائمة",
   "checkoutError": "خطأ في الدفع",
+   "dashboard": {
+    "meta": {
+      "title": "لوحة التحكم"
+    },
+    "errors": {
+      "error": "خطأ",
+      "fetch_wallet": "فشل في جلب المحفظة",
+      "fetch_transactions": "فشل في جلب المعاملات",
+      "load_wallet": "فشل في تحميل بيانات المحفظة"
+    },
+    "wallet": {
+      "id": "رقم المحفظة",
+      "status": {
+        "active": "نشط",
+        "inactive": "غير نشط"
+      }
+    },
+    "balance": {
+      "available": "الرصيد المتاح",
+      "daily_limit": "الحد اليومي للإنفاق",
+      "monthly_activity": "النشاط الشهري"
+    },
+    "stats": {
+      "limit_used": "{{percentage}}% مستخدم اليوم",
+      "monthly_activity": "النشاط الشهري",
+      "income": "الدخل",
+      "spent": "المصروفات"
+    },
+    "actions": {
+      "send_money": "إرسال الأموال",
+      "qr_code": "رمز QR الخاص بك",
+      "more": "المزيد من الخيارات"
+    },
+    "menu": {
+      "title": "إجراءات سريعة",
+      "profile": "إعدادات الملف الشخصي",
+      "payment_links": "روابط الدفع",
+      "contacts": "جهات الاتصال",
+      "share": "مشاركة المحفظة",
+      "share_coming_soon": "خاصية المشاركة قادمة قريباً",
+      "logout": "تسجيل الخروج"
+    },
+    "tabs": {
+      "recent": "الأخيرة",
+      "history": "السجل",
+      "analytics": "التحليلات",
+      "locations": "المواقع"
+    },
+    "charts": {
+      "spending": "نظرة عامة على الإنفاق",
+      "category": "الإنفاق حسب الفئة",
+      "category_title": "توزيع الفئات",
+      "monthly": "نظرة عامة شهرية",
+      "monthly_title": "الاتجاهات الشهرية",
+      "no_data": "لا توجد بيانات متاحة"
+    },
+    "transactions": {
+      "no_recent": "لا توجد معاملات حديثة",
+      "no_history": "لا يوجد سجل معاملات",
+      "deposits": "الإيداعات",
+      "withdrawals": "السحوبات",
+      "payments": "المدفوعات",
+      "filter_title": "تصفية المعاملات",
+      "type_label": "نوع المعاملة",
+      "date_label": "النطاق الزمني"
+    },
+    "locations": {
+      "title": "البحث عن الوكلاء",
+      "search": "البحث في المواقع...",
+      "no_agents": "لا يوجد وكلاء في هذه المنطقة"
+    },
+    "qr": {
+      "title": "رمز QR للمحفظة",
+      "description": "امسح هذا الرمز لاستلام المدفوعات",
+      "copy": "نسخ الرمز",
+      "share": "مشاركة الرمز",
+      "download": "تحميل QR"
+    }
+  },
+  "common": {
+    "currency": "د.ل",
+    "unnamed": "مستخدم بدون اسم",
+    "no_email": "لا يوجد بريد إلكتروني",
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجاح",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "view": "عرض",
+    "close": "إغلاق"
+  },
   "pleaseSelectTable": "الرجاء اختيار طاولة",
   "guestInfoRequired": "معلومات الضيف مطلوبة",
   "orderPlaced": "تم تقديم الطلب بنجاح",

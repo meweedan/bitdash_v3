@@ -71,26 +71,6 @@ const PLATFORMS = {
     icon: Store,
     signupPath: '/signup/operator?platform=food'
   },
-  WORK: {
-    subdomain: 'work',
-    name: 'BitWork',
-    themeKey: 'bitwork',
-    icon: Car,
-    options: [
-      {
-        type: 'employer',
-        title: 'employerSignup',
-        icon: UserPlus,
-        signupPath: '/signup/employer'
-      },
-      {
-        type: 'employee',
-        title: 'employee',
-        icon: Store,
-        signupPath: '/signup/employee'
-      }
-    ]
-  },
   RIDE: {
     subdomain: 'ride',
     name: 'BitRide',

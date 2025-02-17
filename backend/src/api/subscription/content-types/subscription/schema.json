@@ -15,10 +15,7 @@
       "type": "enumeration",
       "enum": [
         "standard",
-        "premium",
-        "employer_basic",
-        "employer_premium",
-        "employer_enterprise"
+        "premium"
       ],
       "required": true
     },

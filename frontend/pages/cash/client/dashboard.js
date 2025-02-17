@@ -1,6 +1,7 @@
 // frontend/pages/client/dashboard.js
 import React, { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { useTranslation } from 'next-i18next';
 import {
   Box,
   Container,
@@ -10,7 +11,7 @@ import {
   Text,
   Button,
   SimpleGrid,
-  Spinner,
+  Skeleton,
   Badge,
   Avatar,
   useColorModeValue,
@@ -37,12 +38,10 @@ import {
   Alert,
   AlertIcon,
   Progress,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
   Divider,
-  Tooltip
+  Tooltip,
+  Wrap,
+  WrapItem
 } from '@chakra-ui/react';
 import { 
   FiDollarSign,
@@ -64,16 +63,16 @@ import {
   FiUsers,
   FiLogOut,
   FiMap,
-  FiEyeOff
+  FiEyeOff,
+  FiActivity
 } from 'react-icons/fi';
-import { QRCodeCanvas } from 'qrcode.react';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
 import Layout from '@/components/Layout';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 
-// Transaction components
+// Components
 import TransactionList from '@/components/transactions/TransactionList';
 import TransactionSummary from '@/components/transactions/TransactionSummary';
 import SpendingChart from '@/components/charts/SpendingChart';
@@ -85,10 +84,25 @@ import AgentLocator from '@/components/cash/customer/AgentLocator';
 
 const MotionStat = motion(Stat);
 
+// Loading Skeleton
+const DashboardSkeleton = () => (
+  <VStack spacing={6} w="full">
+    <Skeleton height="100px" w="full" borderRadius="xl" />
+    <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={6} w="full">
+      <Skeleton height="150px" borderRadius="xl" />
+      <Skeleton height="150px" borderRadius="xl" />
+      <Skeleton height="150px" borderRadius="xl" />
+    </SimpleGrid>
+    <Skeleton height="300px" w="full" borderRadius="xl" />
+    <Skeleton height="400px" w="full" borderRadius="xl" />
+  </VStack>
+);
+
 const ClientDashboard = () => {
   const router = useRouter();
   const { user } = useAuth();
   const toast = useToast();
+  const { t } = useTranslation(['dashboard', 'common']);
   const { isOpen: isQROpen, onOpen: onQROpen, onClose: onQRClose } = useDisclosure();
   const [showBalance, setShowBalance] = useState(false);
   const bgColor = useColorModeValue('white', 'gray.800');
@@ -110,16 +124,17 @@ const ClientDashboard = () => {
     queryFn: async () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/wallets?` +
-      `populate[customer][populate][avatar][fields][0]=url` +
-      `&populate=*` +
-      `&filters[customer][users_permissions_user][id][$eq]=${user.id}`,
+        `populate[customer][populate][0]=avatar` +
+        `&populate[customer][populate][1]=users_permissions_user` +
+        `&populate=*` +
+        `&filters[customer][users_permissions_user][id][$eq]=${user.id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
         }
       );
-      if (!response.ok) throw new Error('Failed to fetch wallet');
+      if (!response.ok) throw new Error(t('errors.fetch_wallet'));
       return response.json();
     },
     refetchInterval: 10000,
@@ -127,7 +142,7 @@ const ClientDashboard = () => {
     retry: 2,
     onError: (error) => {
       toast({
-        title: 'Error fetching wallet',
+        title: t('errors.error'),
         description: error.message,
         status: 'error',
         duration: 5000
@@ -137,9 +152,9 @@ const ClientDashboard = () => {
 
   // Fetch transactions
   const {
-  data: transactionsData,
-  isLoading: isTransactionsLoading,
-  error: transactionsError
+    data: transactionsData,
+    isLoading: isTransactionsLoading,
+    error: transactionsError
   } = useQuery({
     queryKey: ['transactions', walletData?.data?.[0]?.id],
     queryFn: async () => {
@@ -155,10 +170,10 @@ const ClientDashboard = () => {
           }
         }
       );
-      if (!response.ok) throw new Error('Failed to fetch transactions');
+      if (!response.ok) throw new Error(t('errors.fetch_transactions'));
       return response.json();
     },
-    enabled: !!walletData?.data?.[0]?.id && walletData?.data?.[0]?.id !== undefined,
+    enabled: !!walletData?.data?.[0]?.id,
     refetchInterval: 10000
   });
 
@@ -170,6 +185,10 @@ const ClientDashboard = () => {
       totalPayments: 0,
       monthlySpending: 0
     };
+
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
 
     const transactions = transactionsData.data || [];
     return {
@@ -184,12 +203,10 @@ const ClientDashboard = () => {
         .reduce((sum, t) => sum + (parseFloat(t?.attributes?.amount) || 0), 0),
       monthlySpending: transactions
         .filter(t => {
-          if (!t?.attributes?.createdAt) return false;
-          const date = new Date(t.attributes.createdAt);
-          const now = new Date();
-          return date.getMonth() === now.getMonth() && 
-                date.getFullYear() === now.getFullYear() &&
-                t.attributes.type === 'payment';
+          const date = new Date(t?.attributes?.createdAt);
+          return date.getMonth() === currentMonth && 
+                 date.getFullYear() === currentYear &&
+                 t.attributes.type === 'payment';
         })
         .reduce((sum, t) => sum + (parseFloat(t?.attributes?.amount) || 0), 0)
     };
@@ -206,9 +223,9 @@ const ClientDashboard = () => {
   if (isWalletLoading) {
     return (
       <Layout>
-        <Flex justify="center" align="center" minH="100vh">
-          <Spinner size="xl" />
-        </Flex>
+        <Container maxW={{ base: "100%", md: "1200px" }} py={6}>
+          <DashboardSkeleton />
+        </Container>
       </Layout>
     );
   }
@@ -220,7 +237,7 @@ const ClientDashboard = () => {
         <Container maxW="container.xl" py={6}>
           <Alert status="error">
             <AlertIcon />
-            {walletError?.message || 'Failed to load wallet data'}
+            {walletError?.message || t('errors.load_wallet')}
           </Alert>
         </Container>
       </Layout>
@@ -228,16 +245,17 @@ const ClientDashboard = () => {
   }
 
   const wallet = walletData.data[0].attributes;
+  const customerProfile = wallet?.customer?.data?.attributes;
 
   return (
     <Layout>
       <Head>
-        <title>Dashboard | BitCash</title>
+        <title>{t('meta.title')} | BitCash</title>
       </Head>
       <Container 
-        maxW="1200px" 
-        py={6} 
-        px={{ base: 4, md: 8 }}
+        maxW={{ base: "100%", md: "1200px" }}
+        py={{ base: 3, md: 6 }}
+        px={{ base: 2, md: 8 }}
         position="relative"
         overflow="hidden"
       >
@@ -254,172 +272,88 @@ const ClientDashboard = () => {
           pointerEvents="none"
         />
 
-        <VStack spacing={{ base: 6, md: 8 }} align="stretch">
+        <VStack spacing={{ base: 4, md: 8 }} align="stretch">
           {/* Header */}
           <Flex 
             justify="space-between" 
             align={{ base: "start", md: "center" }}
-            direction={{ base: "column", md: "row" }}
-            gap={4}
-            backdropFilter="blur(8px)"
-            bg={useColorModeValue('whiteAlpha.800', 'blackAlpha.500')}
-            p={6}
+            direction={{ base: "column", sm: "row" }}
+            gap={{ base: 2, md: 4 }}
+            p={{ base: 3, md: 6 }}
+            bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
             borderRadius="2xl"
             boxShadow="sm"
+            backdropFilter="blur(8px)"
           >
-            <VStack align="start" spacing={1}>
-              <HStack spacing={3}>
-                <Avatar
-                  size="2xl"
-                  name={
-                    user?.customer_profile?.fullName || 
-                    user?.username || 
-                    'User'
-                  }
-                  src={
-                    user?.customer_profile?.avatar?.data?.attributes?.url
-                      ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${user.customer_profile.avatar.data.attributes.url}`
-                      : undefined
-                  }
-                  bg="blue.500"
-                  color="white"
-                />
-                <VStack align="start" spacing={0}>
-                  <Heading size="md">
-                    {user?.customer_profile?.fullName || user?.username || 'User'}
-                  </Heading>
-                  <Text fontSize="sm" color="gray.500">
-                    {user?.email || 'No email'}
-                  </Text>
-                </VStack>
-              </HStack>
-            </VStack>
-            
-            <HStack spacing={3}>
-              <Tooltip label="Send Money">
-                <IconButton
-                  icon={<FiArrowLeftCircle />}
-                  onClick={() => router.push('/client/transfer')}
-                  colorScheme="blue"
-                  variant="ghost"
-                  size="lg"
-                />
-              </Tooltip>
-              <Tooltip label="Your QR Code">
-                <IconButton
-                  icon={<FiCreditCard />}
-                  onClick={onQROpen}
-                  colorScheme="purple"
-                  variant="ghost"
-                  size="lg"
-                />
-              </Tooltip>
-
-              {/* Replace existing Menu with Modal trigger */}
-              <Tooltip label="More Options">
-                <IconButton
-                  icon={<FiMoreVertical />}
-                  onClick={onMenuModalOpen}
-                  variant="ghost"
-                  size="lg"
-                />
-              </Tooltip>
+            <HStack spacing={{ base: 2, md: 3 }} flex={1}>
+              <Avatar
+                size={{ base: "lg", md: "2xl" }}
+                name={customerProfile?.fullName || user?.username}
+                src={
+                  customerProfile?.avatar?.data?.attributes?.url
+                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${customerProfile.avatar.data.attributes.url}`
+                    : undefined
+                }
+                bg="blue.500"
+                color="white"
+              />
+              <VStack align="start" spacing={0}>
+                <Heading size={{ base: "sm", md: "md" }}>
+                  {customerProfile?.fullName || user?.username || t('common:unnamed')}
+                </Heading>
+                <Text fontSize={{ base: "xs", md: "sm" }} color="gray.500">
+                  {user?.email || t('common:no_email')}
+                </Text>
+                <Badge 
+                  colorScheme="green"
+                  variant="subtle"
+                  mt={1}
+                >
+                  {t('wallet.id')}: {wallet.walletId}
+                </Badge>
+              </VStack>
             </HStack>
-
-            {/* Menu Modal */}
-            <Modal 
-              isOpen={isMenuModalOpen} 
-              onClose={onMenuModalClose}
-              size="xs"
-            >
-              <ModalOverlay />
-              <ModalContent>
-                <ModalHeader>Quick Actions</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody pb={6}>
-                  <VStack spacing={4} w="full">
-                    {/* Profile Settings */}
-                    <Button 
-                      leftIcon={<FiUser />}
-                      onClick={() => {
-                        onMenuModalClose();
-                        router.push('/client/profile');
-                      }}
-                      w="full"
-                      justifyContent="start"
-                    >
-                      Profile Settings
-                    </Button>
-
-                    {/* Payment Links */}
-                    <Button 
-                      leftIcon={<FiLink />}
-                      onClick={() => {
-                        onMenuModalClose();
-                        router.push('/client/payment-links');
-                      }}
-                      w="full"
-                      justifyContent="start"
-                    >
-                      Payment Links
-                    </Button>
-
-                    {/* Contacts */}
-                    <Button 
-                      leftIcon={<FiUsers />}
-                      onClick={() => {
-                        onMenuModalClose();
-                        router.push('/client/contacts');
-                      }}
-                      w="full"
-                      justifyContent="start"
-                    >
-                      Contacts
-                    </Button>
-
-                    {/* Share Wallet */}
-                    <Button 
-                      leftIcon={<FiShare2 />}
-                      onClick={() => {
-                        onMenuModalClose();
-                        toast({
-                          title: 'Share Wallet',
-                          description: 'Wallet sharing functionality coming soon',
-                          status: 'info'
-                        });
-                      }}
-                      w="full"
-                      justifyContent="start"
-                    >
-                      Share Wallet
-                    </Button>
-
-                    {/* Logout */}
-                    <Button 
-                      leftIcon={<FiLogOut />}
-                      onClick={() => {
-                        onMenuModalClose();
-                        localStorage.removeItem('token');
-                        localStorage.removeItem('user');
-                        router.push('/login');
-                      }}
-                      w="full"
-                      justifyContent="start"
-                      colorScheme="red"
-                      variant="outline"
-                    >
-                      Logout
-                    </Button>
-                  </VStack>
-                </ModalBody>
-              </ModalContent>
-            </Modal>
+            
+            <Wrap spacing={2} justify={{ base: "start", sm: "end" }}>
+              <WrapItem>
+                <Tooltip label={t('actions.send_money')}>
+                  <IconButton
+                    icon={<FiArrowLeftCircle />}
+                    onClick={() => router.push('/client/transfer')}
+                    colorScheme="blue"
+                    variant="ghost"
+                    size={{ base: "md", md: "lg" }}
+                  />
+                </Tooltip>
+              </WrapItem>
+              <WrapItem>
+                <Tooltip label={t('actions.qr_code')}>
+                  <IconButton
+                    icon={<FiCreditCard />}
+                    onClick={onQROpen}
+                    colorScheme="purple"
+                    variant="ghost"
+                    size={{ base: "md", md: "lg" }}
+                  />
+                </Tooltip>
+              </WrapItem>
+              <WrapItem>
+                <Tooltip label={t('actions.more')}>
+                  <IconButton
+                    icon={<FiMoreVertical />}
+                    onClick={onMenuModalOpen}
+                    variant="ghost"
+                    size={{ base: "md", md: "lg" }}
+                  />
+                </Tooltip>
+              </WrapItem>
+            </Wrap>
           </Flex>
 
           {/* Main Stats */}
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
+          <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={{ base: 3, md: 6 }}>
             <MotionStat
-              p={6}
+              p={{ base: 4, md: 6 }}
               bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
               borderRadius="2xl"
               boxShadow="lg"
@@ -427,10 +361,15 @@ const ClientDashboard = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <StatLabel fontSize="sm" mb={2}>Available Balance</StatLabel>
+              <StatLabel fontSize={{ base: "xs", md: "sm" }} mb={2}>
+                {t('balance.available')}
+              </StatLabel>
               <HStack>
-                <StatNumber color={useColorModeValue('blue.600', 'blue.300')} fontSize="3xl">
-                  {showBalance ? wallet.balance.toLocaleString() : '•••••••'} LYD
+                <StatNumber 
+                  color={useColorModeValue('blue.600', 'blue.300')} 
+                  fontSize={{ base: "2xl", md: "3xl" }}
+                >
+                  {showBalance ? wallet.balance.toLocaleString() : '•••••••'} {t('common:currency')}
                 </StatNumber>
                 <IconButton
                   icon={showBalance ? <FiEyeOff /> : <FiEye />}
@@ -441,22 +380,19 @@ const ClientDashboard = () => {
               </HStack>
               <HStack mt={2} spacing={2}>
                 <Badge 
-                  colorScheme="green"
+                  colorScheme={wallet.isActive ? "green" : "red"}
                   variant="subtle"
                   px={2}
                   py={1}
                   borderRadius="full"
                 >
-                  Active
+                  {t(`wallet.status.${wallet.isActive ? 'active' : 'inactive'}`)}
                 </Badge>
-                <Text fontSize="sm" color="gray.500">
-                  ID: {wallet.walletId}
-                </Text>
               </HStack>
             </MotionStat>
 
             <MotionStat
-              p={6}
+              p={{ base: 4, md: 6 }}
               bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
               borderRadius="2xl"
               boxShadow="lg"
@@ -464,9 +400,11 @@ const ClientDashboard = () => {
               whileHover={{ scale: 1.02 }}
             >
               <VStack align="start" spacing={2}>
-                <StatLabel fontSize="sm">Daily Spending Limit</StatLabel>
-                <StatNumber fontSize="2xl">
-                  {((wallet.dailyLimit - transactionStats?.monthlySpending) || 0).toLocaleString()} LYD
+                <StatLabel fontSize={{ base: "xs", md: "sm" }}>
+                  {t('balance.daily_limit')}
+                </StatLabel>
+                <StatNumber fontSize={{ base: "xl", md: "2xl" }}>
+                  {((wallet.dailyLimit - transactionStats?.monthlySpending) || 0).toLocaleString()} {t('common:currency')}
                 </StatNumber>
                 <Box w="full">
                   <Progress 
@@ -475,15 +413,15 @@ const ClientDashboard = () => {
                     size="sm"
                     borderRadius="full"
                   />
-                  <Text fontSize="sm" color="gray.500" mt={1}>
-                    {dailyLimitUsage.toFixed(1)}% used today
+                  <Text fontSize={{ base: "xs", md: "sm" }} color="gray.500" mt={1}>
+                    {t('stats.limit_used', { percentage: dailyLimitUsage.toFixed(1) })}
                   </Text>
                 </Box>
               </VStack>
             </MotionStat>
 
             <MotionStat
-              p={6}
+              p={{ base: 4, md: 6 }}
               bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
               borderRadius="2xl"
               boxShadow="lg"
@@ -491,47 +429,51 @@ const ClientDashboard = () => {
               whileHover={{ scale: 1.02 }}
             >
               <VStack align="start" spacing={2}>
-                <StatLabel fontSize="sm">Monthly Activity</StatLabel>
-                <StatNumber fontSize="2xl">
-                  {(transactionStats?.monthlySpending || 0).toLocaleString()} LYD
+                <StatLabel fontSize={{ base: "xs", md: "sm" }}>
+                  {t('stats.monthly_activity')}
+                </StatLabel>
+                <StatNumber fontSize={{ base: "xl", md: "2xl" }}>
+                  {(transactionStats?.monthlySpending || 0).toLocaleString()} {t('common:currency')}
                 </StatNumber>
-                <Box w="full">
-                  <SimpleGrid columns={2} spacing={4}>
-                    <VStack align="start" spacing={0}>
-                      <HStack color="green.500">
-                        <Icon as={FiTrendingUp} />
-                        <Text fontSize="sm" fontWeight="medium">Income</Text>
-                      </HStack>
-                      <Text fontSize="sm">
-                        {(transactionStats?.totalDeposits || 0).toLocaleString()} LYD
+                <SimpleGrid columns={2} spacing={4} w="full">
+                  <VStack align="start" spacing={0}>
+                    <HStack color="green.500">
+                      <Icon as={FiTrendingUp} />
+                      <Text fontSize={{ base: "xs", md: "sm" }} fontWeight="medium">
+                        {t('stats.income')}
                       </Text>
-                    </VStack>
-                    <VStack align="start" spacing={0}>
-                      <HStack color="red.500">
-                        <Icon as={FiTrendingDown} />
-                        <Text fontSize="sm" fontWeight="medium">Spent</Text>
-                      </HStack>
-                      <Text fontSize="sm">
-                        {(transactionStats?.totalPayments || 0).toLocaleString()} LYD
+                    </HStack>
+                    <Text fontSize={{ base: "xs", md: "sm" }}>
+                      {(transactionStats?.totalDeposits || 0).toLocaleString()} {t('common:currency')}
+                    </Text>
+                  </VStack>
+                  <VStack align="start" spacing={0}>
+                    <HStack color="red.500">
+                      <Icon as={FiTrendingDown} />
+                      <Text fontSize={{ base: "xs", md: "sm" }} fontWeight="medium">
+                        {t('stats.spent')}
                       </Text>
-                    </VStack>
-                  </SimpleGrid>
-                </Box>
+                    </HStack>
+                    <Text fontSize={{ base: "xs", md: "sm" }}>
+                      {(transactionStats?.totalPayments || 0).toLocaleString()} {t('common:currency')}
+                    </Text>
+                  </VStack>
+                </SimpleGrid>
               </VStack>
             </MotionStat>
           </SimpleGrid>
-
           {/* Spending Chart */}
           <Box 
             bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
             borderRadius="2xl"
             boxShadow="lg"
             backdropFilter="blur(8px)"
-            p={6}
+            p={{ base: 3, md: 6 }}
           >
             <SpendingChart 
               transactions={transactionsData?.data || []} 
               isLoading={isTransactionsLoading}
+              title={t('charts.spending')}
             />
           </Box>
 
@@ -541,22 +483,42 @@ const ClientDashboard = () => {
             borderRadius="2xl"
             boxShadow="lg"
             backdropFilter="blur(8px)"
-            p={6}
+            p={{ base: 3, md: 6 }}
           >
-            <Tabs variant="soft-rounded" colorScheme="blue">
-              <TabList>
-                <Tab><Icon as={FiClock} mr={2} /> Recent</Tab>
-                <Tab><Icon as={FiList} mr={2} /> History</Tab>
-                <Tab><Icon as={FiUser} mr={2} /> Analytics</Tab>
-                <Tab><Icon as={FiMap} mr={2} /> Locations</Tab>  
+            <Tabs 
+              variant="soft-rounded" 
+              colorScheme="blue"
+              isLazy
+              size={{ base: "sm", md: "md" }}
+            >
+              <TabList 
+                overflowX="auto" 
+                py={2}
+                css={{
+                  scrollbarWidth: 'none',
+                  '::-webkit-scrollbar': { display: 'none' },
+                }}
+              >
+                <Tab whiteSpace="nowrap">
+                  <Icon as={FiClock} mr={2} /> {t('tabs.recent')}
+                </Tab>
+                <Tab whiteSpace="nowrap">
+                  <Icon as={FiList} mr={2} /> {t('tabs.history')}
+                </Tab>
+                <Tab whiteSpace="nowrap">
+                  <Icon as={FiActivity} mr={2} /> {t('tabs.analytics')}
+                </Tab>
+                <Tab whiteSpace="nowrap">
+                  <Icon as={FiMap} mr={2} /> {t('tabs.locations')}
+                </Tab>
               </TabList>
-
 
               <TabPanels>
                 <TabPanel px={0}>
                   <TransactionList 
                     transactions={transactionsData?.data?.slice(0, 5) || []}
                     isLoading={isTransactionsLoading}
+                    emptyText={t('transactions.no_recent')}
                   />
                 </TabPanel>
                 
@@ -565,12 +527,23 @@ const ClientDashboard = () => {
                     <TransactionSummary 
                       transactions={transactionsData?.data}
                       isLoading={isTransactionsLoading}
+                      labels={{
+                        deposits: t('transactions.deposits'),
+                        withdrawals: t('transactions.withdrawals'),
+                        payments: t('transactions.payments')
+                      }}
                     />
                     <TransactionList 
                       transactions={transactionsData?.data || []}
                       isLoading={isTransactionsLoading}
                       showFilters
                       showPagination
+                      emptyText={t('transactions.no_history')}
+                      labels={{
+                        filterTitle: t('transactions.filter_title'),
+                        typeLabel: t('transactions.type_label'),
+                        dateLabel: t('transactions.date_label')
+                      }}
                     />
                   </VStack>
                 </TabPanel>
@@ -578,31 +551,44 @@ const ClientDashboard = () => {
                 <TabPanel px={0}>
                   <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
                     <VStack align="stretch" spacing={6}>
-                      <Heading size="md">Spending by Category</Heading>
+                      <Heading size="md">{t('charts.category')}</Heading>
                       <SpendingCategoryChart 
                         transactions={transactionsData?.data || []} 
                         isLoading={isTransactionsLoading}
+                        labels={{
+                          title: t('charts.category_title'),
+                          noData: t('charts.no_data')
+                        }}
                       />
                     </VStack>
                     <VStack align="stretch" spacing={6}>
-                      <Heading size="md">Monthly Overview</Heading>
+                      <Heading size="md">{t('charts.monthly')}</Heading>
                       <MonthlyTrendChart 
                         transactions={transactionsData?.data || []} 
                         isLoading={isTransactionsLoading}
+                        labels={{
+                          title: t('charts.monthly_title'),
+                          noData: t('charts.no_data')
+                        }}
                       />
                     </VStack>
                   </SimpleGrid>
                 </TabPanel>
 
-                {/* New Locations TabPanel */}
                 <TabPanel px={0}>
                   <Box 
                     bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
                     borderRadius="xl"
-                    height="600px"
+                    height={{ base: "400px", md: "600px" }}
                     overflow="hidden"
                   >
-                    <AgentLocator />
+                    <AgentLocator 
+                      labels={{
+                        title: t('locations.title'),
+                        searchPlaceholder: t('locations.search'),
+                        noAgents: t('locations.no_agents')
+                      }}
+                    />
                   </Box>
                 </TabPanel>
               </TabPanels>
@@ -610,11 +596,104 @@ const ClientDashboard = () => {
           </Box>
         </VStack>
 
+        {/* Quick Actions Modal */}
+        <Modal 
+          isOpen={isMenuModalOpen} 
+          onClose={onMenuModalClose}
+          size="xs"
+        >
+          <ModalOverlay backdropFilter="blur(4px)" />
+          <ModalContent>
+            <ModalHeader>{t('menu.title')}</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody pb={6}>
+              <VStack spacing={4} w="full">
+                <Button 
+                  leftIcon={<FiUser />}
+                  onClick={() => {
+                    onMenuModalClose();
+                    router.push('/client/profile');
+                  }}
+                  w="full"
+                  justifyContent="start"
+                >
+                  {t('menu.profile')}
+                </Button>
+
+                <Button 
+                  leftIcon={<FiLink />}
+                  onClick={() => {
+                    onMenuModalClose();
+                    router.push('/client/payment-links');
+                  }}
+                  w="full"
+                  justifyContent="start"
+                >
+                  {t('menu.payment_links')}
+                </Button>
+
+                <Button 
+                  leftIcon={<FiUsers />}
+                  onClick={() => {
+                    onMenuModalClose();
+                    router.push('/client/contacts');
+                  }}
+                  w="full"
+                  justifyContent="start"
+                >
+                  {t('menu.contacts')}
+                </Button>
+
+                <Button 
+                  leftIcon={<FiShare2 />}
+                  onClick={() => {
+                    onMenuModalClose();
+                    toast({
+                      title: t('menu.share_coming_soon'),
+                      status: 'info'
+                    });
+                  }}
+                  w="full"
+                  justifyContent="start"
+                >
+                  {t('menu.share')}
+                </Button>
+
+                <Divider />
+
+                <Button 
+                  leftIcon={<FiLogOut />}
+                  onClick={() => {
+                    onMenuModalClose();
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    router.push('/login');
+                  }}
+                  w="full"
+                  justifyContent="start"
+                  colorScheme="red"
+                  variant="outline"
+                >
+                  {t('menu.logout')}
+                </Button>
+              </VStack>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+
+        {/* QR Code Modal */}
         <WalletQRModal
           isOpen={isQROpen}
           onClose={onQRClose}
           walletData={wallet}
-          profileId={user?.customer_profile?.id || walletData?.data?.[0]?.attributes?.customer?.data?.id}
+          profileId={customerProfile?.id}
+          labels={{
+            title: t('qr.title'),
+            description: t('qr.description'),
+            copy: t('qr.copy'),
+            share: t('qr.share'),
+            download: t('qr.download')
+          }}
         />
       </Container>
     </Layout>

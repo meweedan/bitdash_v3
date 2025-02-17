@@ -3,7 +3,6 @@
   "welcome": "Growing together, bit by bit.",
   "scrolldown": "Scroll down for more",
   "title": "BitDash - BI Platform for Startups",
-  "dashboard": "Dashboard",
   "ourpartners": "Our Partners",
   "search": "Search",
   "partnerlookup": "Find your next favorite dining experience",
@@ -1102,98 +1101,6 @@
       }
     }
   },
-  "common": "",
-  "visible": "",
-  "T": "",
-  "loggingIn": "",
-  "data": "",
-  "commission": "",
-  "profilePicture": "",
-  "food": {
-    "flow": {
-      "restaurant": "",
-      "deliveryTime": "",
-      "menuItem": "",
-      "estimatedDelivery": "",
-      "preparing": "",
-      "orderDelivered": "",
-      "rateExperience": ""
-    },
-    "meta": {
-      "title": "",
-      "description": ""
-    },
-    "hero": {
-      "title": "",
-      "description": "",
-      "downloadButton": "",
-      "exploreButton": ""
-    },
-    "features": {
-      "title": "",
-      "description": ""
-    },
-    "stats": {
-      "restaurants": "",
-      "restaurantsLabel": "",
-      "deliveryTime": "",
-      "deliveryTimeLabel": "",
-      "rating": "",
-      "ratingLabel": ""
-    },
-    "cta": {
-      "title": "",
-      "description": "",
-      "downloadButton": "",
-      "availableOn": ""
-    }
-  },
-  "nav": {
-    "menu": ""
-  },
-  "whatsappLink": "",
-  "platforms": {
-    "bitcash": {
-      "name": "",
-      "description": ""
-    },
-    "bitfood": {
-      "name": "",
-      "description": ""
-    },
-    "bitshop": {
-      "name": "",
-      "description": ""
-    }
-  },
-  "steps": {
-    "integration": {
-      "title": "",
-      "content": ""
-    },
-    "roi": {
-      "title": "",
-      "content": ""
-    },
-    "security": {
-      "title": "",
-      "content": ""
-    },
-    "support": {
-      "title": "",
-      "content": ""
-    }
-  },
-  "stats": {
-    "averageRoi": "",
-    "clients": ""
-  },
-  "values": {
-    "title": ""
-  },
-  "en-US": "",
-  "maplibre-gl": "",
-  "captain-marker": "",
   "learn_more": "Learn More",
   "transforming_digital_landscape": "Transforming Digital Landscape",
   "building_integrated_solutions_": "Building integrated solutions for a connected future",
@@ -1641,5 +1548,98 @@
   "limited_liability_for_service_": "Limited liability for service interruptions",
   "users_responsible_for_data_bac": "Users responsible for data backup",
   "6_governing_law": "6. Governing Law",
-  "these_terms_are_governed_by_li": "These terms are governed by Libyan law. Any disputes will be resolved in Libyan courts."
+  "these_terms_are_governed_by_li": "These terms are governed by Libyan law. Any disputes will be resolved in Libyan courts.",
+  "dashboard": {
+    "meta": {
+      "title": "Dashboard"
+    },
+    "errors": {
+      "error": "Error",
+      "fetch_wallet": "Failed to fetch wallet",
+      "fetch_transactions": "Failed to fetch transactions",
+      "load_wallet": "Failed to load wallet data"
+    },
+    "wallet": {
+      "id": "Wallet ID",
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      }
+    },
+    "balance": {
+      "available": "Available Balance",
+      "daily_limit": "Daily Spending Limit",
+      "monthly_activity": "Monthly Activity"
+    },
+    "stats": {
+      "limit_used": "{{percentage}}% used today",
+      "monthly_activity": "Monthly Activity",
+      "income": "Income",
+      "spent": "Spent"
+    },
+    "actions": {
+      "send_money": "Send Money",
+      "qr_code": "Your QR Code",
+      "more": "More Options"
+    },
+    "menu": {
+      "title": "Quick Actions",
+      "profile": "Profile Settings",
+      "payment_links": "Payment Links",
+      "contacts": "Contacts",
+      "share": "Share Wallet",
+      "share_coming_soon": "Sharing functionality coming soon",
+      "logout": "Logout"
+    },
+    "tabs": {
+      "recent": "Recent",
+      "history": "History",
+      "analytics": "Analytics",
+      "locations": "Locations"
+    },
+    "charts": {
+      "spending": "Spending Overview",
+      "category": "Spending by Category",
+      "category_title": "Category Distribution",
+      "monthly": "Monthly Overview",
+      "monthly_title": "Monthly Trends",
+      "no_data": "No data available"
+    },
+    "transactions": {
+      "no_recent": "No recent transactions",
+      "no_history": "No transaction history",
+      "deposits": "Deposits",
+      "withdrawals": "Withdrawals",
+      "payments": "Payments",
+      "filter_title": "Filter Transactions",
+      "type_label": "Transaction Type",
+      "date_label": "Date Range"
+    },
+    "locations": {
+      "title": "Find Agents",
+      "search": "Search locations...",
+      "no_agents": "No agents found in this area"
+    },
+    "qr": {
+      "title": "Your Wallet QR Code",
+      "description": "Scan this code to receive payments",
+      "copy": "Copy Code",
+      "share": "Share Code",
+      "download": "Download QR"
+    }
+  },
+  "common": {
+    "currency": "LYD",
+    "unnamed": "Unnamed User",
+    "no_email": "No email",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "close": "Close"
+  }
 }
