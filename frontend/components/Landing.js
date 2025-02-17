@@ -97,7 +97,6 @@ const ServiceCard = ({ description, delay, image }) => {
         left: 0,
         right: 0,
         height: '4px',
-        bgGradient: 'linear(to-r, #0a60a3, #67bdfd)',
         transform: 'scaleX(0)',
         transition: 'transform 0.3s ease',
       }}
@@ -380,7 +379,7 @@ return (
             fontSize={{ base: "4xl", md: "6xl" }}
             fontWeight="bold"
             letterSpacing="tight"
-            bgGradient={`linear(to-r, ${theme.colors.brand.bitcash[400]}, ${theme.colors.brand.bitwork[400]})`}
+            bgGradient="linear(to-r, #0a60a3, #67bdfd)"
             bgClip="text"
             lineHeight="1.2"
           >
@@ -404,7 +403,7 @@ return (
             >
               <Text
                 as="span"
-                bgGradient={`linear(to-r, ${theme.colors.brand.bitcash[400]}, ${theme.colors.brand.bitwork[400]})`}
+                bgGradient="linear(to-r, #0a60a3, #67bdfd)"
                 bgClip="text"
               >
                 15%
@@ -426,7 +425,7 @@ return (
             >
               <Text
                 as="span"
-                bgGradient={`linear(to-r, ${theme.colors.brand.bitcash[400]}, ${theme.colors.brand.bitwork[400]})`}
+                bgGradient="linear(to-r, #0a60a3, #67bdfd)"
                 bgClip="text"
               >
                 100+

@@ -5,10 +5,10 @@ const theme = extendTheme({
     brand: {
        bitdash: {
         400: '#67bdfd', 
-        500: '#8C8C8C',
-        600: '#edb26d',
-        700: '#525252',
-        800: '#ffd7ba'
+        500: '#67bdfd',
+        600: '#67bdfd',
+        700: '#67bdfd',
+        800: '#67bdfd'
       },
       bitcash: {
         400: '#7bcfbd',
