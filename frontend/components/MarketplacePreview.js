@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// components/MarketplacePreview.js
+import React from 'react';
 import { 
   Box, 
   VStack, 
@@ -24,26 +25,21 @@ const MarketplacePreview = () => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
-  // Fetch featured shop items
+  // Fetch shop items and owner stores
   const { data: itemsData, isLoading } = useQuery({
-    queryKey: ['featuredItems'],
+    queryKey: ['shopItems'],
     queryFn: async () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?` +
-        `populate[images]=*` +
-        `&populate[owner][populate][logo]=*` +
-        `&populate[reviews]=*` +
-        `&filters[status][$eq]=available` +
-        `&pagination[limit]=4` +
-        `&sort[0]=rating:desc`,
+        `populate[images]=*&populate[owner][populate][logo]=*&populate[reviews]=*&` +
+        `filters[status][$eq]=available&pagination[limit]=4&sort[0]=rating:desc`,
         {
           headers: {
             'Content-Type': 'application/json'
           }
         }
       );
-      
-      if (!response.ok) throw new Error('Failed to fetch items');
+      if (!response.ok) throw new Error('Failed to fetch shop items');
       return response.json();
     }
   });
@@ -72,19 +68,8 @@ const MarketplacePreview = () => {
 
         {isLoading 
           ? [1, 2, 3, 4].map((_, index) => (
-              <HStack
-                key={index}
-                w="full"
-                bg={isDark ? 'gray.700' : 'gray.50'}
-                p={4}
-                borderRadius="xl"
-                spacing={4}
-              >
-                <Skeleton 
-                  w="100px" 
-                  h="100px" 
-                  borderRadius="md" 
-                />
+              <HStack key={index} w="full" bg={isDark ? 'gray.700' : 'gray.50'} p={4} borderRadius="xl" spacing={4}>
+                <Skeleton w="100px" h="100px" borderRadius="md" />
                 <VStack align="start" flex={1} spacing={2}>
                   <SkeletonText noOfLines={2} spacing={2} w="full" />
                   <Skeleton height="20px" w="100px" />
@@ -100,52 +85,24 @@ const MarketplacePreview = () => {
                 borderRadius="xl"
                 spacing={4}
                 position="relative"
-                _hover={{
-                  transform: 'translateY(-2px)',
-                  boxShadow: 'md'
-                }}
+                _hover={{ transform: 'translateY(-2px)', boxShadow: 'md' }}
                 transition="all 0.2s"
               >
-                {/* Product Image */}
-                <Box 
-                  w="100px" 
-                  h="100px" 
-                  borderRadius="md"
-                  overflow="hidden"
-                  position="relative"
-                >
+                <Box w="100px" h="100px" borderRadius="md" overflow="hidden" position="relative">
                   <Image
                     src={item.attributes.images?.data?.[0]?.attributes?.url
                       ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.attributes.images.data[0].attributes.url}`
-                      : '/placeholder-product.jpg'
-                    }
+                      : '/placeholder-product.jpg'}
                     alt={item.attributes.name}
                     objectFit="cover"
                     w="full"
                     h="full"
                   />
-                  {item.attributes.stock <= 10 && (
-                    <Badge
-                      position="absolute"
-                      top={1}
-                      left={1}
-                      colorScheme="red"
-                      fontSize="xs"
-                    >
-                      Low Stock
-                    </Badge>
-                  )}
                 </Box>
-
-                {/* Product Details */}
                 <VStack align="start" flex={1} spacing={2}>
                   <HStack w="full" justify="space-between">
                     <VStack align="start" spacing={0}>
-                      <Text 
-                        fontWeight="bold" 
-                        color={isDark ? 'white' : 'black'}
-                        fontSize="md"
-                      >
+                      <Text fontWeight="bold" color={isDark ? 'white' : 'black'} fontSize="md">
                         {item.attributes.name}
                       </Text>
                       <HStack spacing={2}>
@@ -153,34 +110,19 @@ const MarketplacePreview = () => {
                           size="xs"
                           src={item.attributes.owner?.data?.attributes?.logo?.data?.attributes?.url
                             ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${item.attributes.owner.data.attributes.logo.data.attributes.url}`
-                            : '/default-shop-logo.jpg'
-                          }
+                            : '/default-shop-logo.jpg'}
                         />
                         <Text fontSize="sm" color="gray.500">
                           {item.attributes.owner?.data?.attributes?.shopName}
                         </Text>
-                        {item.attributes.owner?.data?.attributes?.verificationStatus === 'verified' && (
-                          <Badge colorScheme="green" variant="subtle" fontSize="xs">
-                            Verified
-                          </Badge>
-                        )}
                       </HStack>
                     </VStack>
-                    <Icon 
-                      as={Heart} 
-                      color="gray.400"
-                      _hover={{ color: 'red.500' }}
-                      cursor="pointer"
-                    />
+                    <Icon as={Heart} color="gray.400" _hover={{ color: 'red.500' }} cursor="pointer" />
                   </HStack>
 
                   <HStack justify="space-between" w="full">
                     <HStack spacing={4}>
-                      <Text 
-                        fontWeight="bold" 
-                        color="blue.500"
-                        fontSize="lg"
-                      >
+                      <Text fontWeight="bold" color="blue.500" fontSize="lg">
                         {item.attributes.price} LYD
                       </Text>
                       {item.attributes.rating > 0 && (
@@ -192,12 +134,7 @@ const MarketplacePreview = () => {
                         </HStack>
                       )}
                     </HStack>
-                    <Button
-                      size="sm"
-                      leftIcon={<Icon as={ShoppingBag} />}
-                      colorScheme="blue"
-                      variant="ghost"
-                    >
+                    <Button size="sm" leftIcon={<Icon as={ShoppingBag} />} colorScheme="blue" variant="ghost">
                       View
                     </Button>
                   </HStack>

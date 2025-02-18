@@ -13,92 +13,98 @@ export const StockFlowAnimation = () => {
   return (
     <Box 
       position="relative" 
-      h="400px" 
+      h="500px" 
       overflow="hidden"
       my={8}
+      borderRadius="lg"
+      boxShadow="lg"
+      bgGradient={isDark ? "linear(to-r, gray.800, black)" : "linear(to-r, white, gray.100)"}
     >
       {/* Business Icons */}
       <MotionBox
         position="absolute"
-        left="5%"
-        top="40%"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        left="10%"
+        top="30%"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
       >
-        <Building2 size={48} color={isDark ? '#fff' : '#000'} />
+        <Building2 size={64} color={isDark ? '#fff' : '#000'} />
       </MotionBox>
 
       <MotionBox
         position="absolute"
-        right="5%"
-        top="40%"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        right="10%"
+        top="30%"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
       >
-        <Building2 size={48} color={isDark ? '#fff' : '#000'} />
+        <Building2 size={64} color={isDark ? '#fff' : '#000'} />
       </MotionBox>
 
       {/* Animated Stock Flow */}
       <MotionBox
         position="absolute"
-        left="20%"
+        left="25%"
         top="45%"
         animate={{
-          x: [0, 400, 0],
-          y: [0, -20, 0],
+          x: [0, 500, 0],
+          y: [0, -30, 0],
+          rotate: [0, 10, -10, 0],
         }}
         transition={{
-          duration: 4,
+          duration: 5,
           repeat: Infinity,
           ease: "easeInOut"
         }}
       >
-        <Package size={32} color="#3182CE" />
+        <Package size={40} color="#2B6CB0" style={{ filter: 'drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.2))' }} />
       </MotionBox>
 
       {/* Money Flow */}
       <MotionBox
         position="absolute"
-        right="20%"
+        right="25%"
         top="45%"
         animate={{
-          x: [0, -400, 0],
-          y: [0, 20, 0],
+          x: [0, -500, 0],
+          y: [0, 30, 0],
+          rotate: [0, -10, 10, 0],
         }}
         transition={{
-          duration: 4,
+          duration: 5,
           repeat: Infinity,
           ease: "easeInOut",
           delay: 0.5
         }}
       >
-        <DollarSign size={32} color="#38A169" />
+        <DollarSign size={40} color="#38A169" style={{ filter: 'drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.2))' }} />
       </MotionBox>
 
-      {/* Floating Elements */}
-      {[...Array(5)].map((_, i) => (
+      {/* Floating Particles for Depth */}
+      {[...Array(7)].map((_, i) => (
         <MotionBox
           key={i}
           position="absolute"
-          left={`${20 + i * 15}%`}
-          top="60%"
-          width="8px"
-          height="8px"
+          left={`${15 + i * 12}%`}
+          top="55%"
+          width="10px"
+          height="10px"
           borderRadius="full"
           bg="blue.400"
           animate={{
             y: [-20, 20, -20],
-            opacity: [0.2, 1, 0.2],
-            scale: [1, 1.2, 1]
+            opacity: [0.3, 1, 0.3],
+            scale: [0.8, 1.5, 0.8]
           }}
           transition={{
-            duration: 3,
+            duration: 3.5,
             repeat: Infinity,
-            delay: i * 0.4,
+            delay: i * 0.5,
             ease: "easeInOut"
           }}
+          boxShadow="lg"
         />
       ))}
     </Box>
