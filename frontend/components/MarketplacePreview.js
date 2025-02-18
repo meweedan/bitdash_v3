@@ -39,8 +39,9 @@ const MarketplacePreview = () => {
       );
       if (!response.ok) throw new Error('Failed to fetch shop items');
       const result = await response.json();
-      return result?.data ?? [];
-    }
+      return result?.data && Array.isArray(result.data) ? result.data : [];
+    },
+    staleTime: 300000,
   });
 
   return (
