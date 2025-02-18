@@ -48,26 +48,26 @@ const ShopLandingPage = () => {
   return (
     <Box>
       {/* Hero Section */}
-      <Container maxW="7xl" pt={20} pb={20}>
+      <Container maxW={{ base: "full", lg: "7xl" }} px={{ base: 4, md: 8 }} pt={10} pb={20}>
         <Grid templateColumns={{ base: '1fr', lg: '1fr 1fr' }} gap={8} alignItems="center">
           <GridItem>
-            <VStack align="start" spacing={6} textAlign={{ base: 'center', lg: 'left' }}>
+            <VStack align={{ base: "center", lg: "start" }} spacing={6} textAlign={{ base: 'center', lg: 'left' }}>
               <Badge colorScheme="blue" px={3} py={1} borderRadius="full" fontSize="md">
                 {t('create_your_store_now')}
               </Badge>
-              <Heading fontSize={{ base: '3xl', lg: '5xl' }} fontWeight="bold">
+              <Heading fontSize={{ base: '2xl', md: '4xl', lg: '5xl' }} fontWeight="bold">
                 {t('bitshop_the_future_of_libyan_ecommerce')}
               </Heading>
-              <Text fontSize={{ base: 'md', lg: 'lg' }} color="gray.500">
+              <Text fontSize={{ base: 'sm', md: 'lg' }} color="gray.500">
                 {t('list_products_manage_orders_and_sell_anywhere')}
               </Text>
-              <HStack spacing={4}>
+              <HStack spacing={4} flexWrap="wrap" justify={{ base: "center", lg: "start" }}>
                 <Button size="lg" colorScheme="blue" rightIcon={<ChevronRight />}>{t('get_started')}</Button>
                 <Button size="lg" variant="ghost" colorScheme="blue">{t('learn_more')}</Button>
               </HStack>
             </VStack>
           </GridItem>
-          <GridItem>
+          <GridItem display={{ base: "none", md: "block" }}>
             <MotionBox initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <StockFlowAnimation />
             </MotionBox>
@@ -78,8 +78,8 @@ const ShopLandingPage = () => {
       <Divider my={10} />
 
       {/* Live Marketplace Preview */}
-      <Box py={16}>
-        <Container maxW="7xl">
+      <Box py={10} px={4}>
+        <Container maxW={{ base: "full", lg: "7xl" }}>
           <Heading size="xl" textAlign="center" mb={6}>{t('live_marketplace_preview')}</Heading>
           <MarketplacePreview />
         </Container>
@@ -88,8 +88,8 @@ const ShopLandingPage = () => {
       <Divider my={10} />
 
       {/* Why Choose BitShop */}
-      <Box py={16}>
-        <Container maxW="7xl">
+      <Box py={10} px={4}>
+        <Container maxW={{ base: "full", lg: "7xl" }}>
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
             {[
               {
@@ -123,8 +123,8 @@ const ShopLandingPage = () => {
       </Box>
 
       {/* Call to Action */}
-      <Box py={16} bg={bgAccent}>
-        <Container maxW="5xl" textAlign="center">
+      <Box py={10} px={4} bg={bgAccent}>
+        <Container maxW={{ base: "full", lg: "5xl" }} textAlign="center">
           <VStack spacing={6}>
             <Heading size="2xl">{t('start_selling_today')}</Heading>
             <Text fontSize="lg" color="gray.500">
