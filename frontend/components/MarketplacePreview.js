@@ -143,29 +143,43 @@ const MarketplacePreview = () => {
   const [page, setPage] = useState(1);
   const [favorites, setFavorites] = useState(new Set());
 
-  // Fetch products with React Query
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['products', searchTerm, sortBy, page],
-    queryFn: async () => {
-      const params = new URLSearchParams({
-        'pagination[page]': page,
-        'pagination[pageSize]': ITEMS_PER_PAGE,
-        sort: sortBy,
-        ...(searchTerm && { search: searchTerm })
-      });
+  // In MarketplacePreview component, update the useQuery hook:
+const { data, isLoading, error } = useQuery({
+  queryKey: ['products', searchTerm, sortBy, page],
+  queryFn: async () => {
+    // Construct query params according to Strapi's format
+    const params = new URLSearchParams({
+      'filters[status][$eq]': 'available',
+      'pagination[page]': page,
+      'pagination[pageSize]': ITEMS_PER_PAGE,
+      'populate[owner][populate]': 'logo',
+      'populate': 'images',
+    });
 
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items/search?${params}`
-      );
+    // Add search if exists
+    if (searchTerm) {
+      params.append('filters[$or][0][name][$containsi]', searchTerm);
+      params.append('filters[$or][1][description][$containsi]', searchTerm);
+    }
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch products');
-      }
+    // Add sorting
+    if (sortBy) {
+      const [field, order] = sortBy.split(':');
+      params.append('sort', `${field}:${order}`);
+    }
 
-      return response.json();
-    },
-    keepPreviousData: true
-  });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch products');
+    }
+
+    return response.json();
+  },
+  keepPreviousData: true
+});
 
   // Handle favorite toggle
   const handleFavoriteToggle = (productId) => {

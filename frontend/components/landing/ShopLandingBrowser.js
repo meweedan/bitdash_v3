@@ -153,6 +153,10 @@ export default function ShopLanding() {
       <Box
         position="relative"
         height={headerHeight}
+        bgGradient={isDark 
+          ? "linear(to-r, gray.900, brand.bitshop.700, brand.bitshop.900)"
+          : "linear(to-r, white, brand.bitshop.100, brand.bitshop.200)"
+        }
       >
         <Box
           position="absolute"
@@ -255,7 +259,8 @@ export default function ShopLanding() {
                   </InputLeftElement>
                   <Input
                     placeholder={t('search_placeholder')}
-                    bg={isDark ? 'gray.800' : 'white'}
+                    bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
+backdropFilter="blur(10px)"
                     borderRadius="xl"
                     borderWidth={2}
                     _focus={{
@@ -267,7 +272,7 @@ export default function ShopLanding() {
                     position="absolute"
                     right={2}
                     top={2}
-                    colorScheme="blue"
+                    variant="bitshop-solid"
                     zIndex={2}
                     display={{ base: 'none', md: 'flex' }}
                   >
@@ -475,7 +480,7 @@ export default function ShopLanding() {
                 <HStack spacing={4}>
                   <Button
                     size="lg"
-                    colorScheme="blue"
+                    colorScheme="bitshop-solid"
                     rightIcon={<ChevronRight />}
                   >
                     {t('create_store_button')}
@@ -522,7 +527,8 @@ export default function ShopLanding() {
                 ].map((item, index) => (
                   <Card
                     key={index}
-                    bg={isDark ? 'gray.800' : 'white'}
+                    bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
+backdropFilter="blur(10px)"
                     height="full"
                     _hover={{ transform: 'translateY(-5px)' }}
                     transition="all 0.2s"
@@ -532,7 +538,8 @@ export default function ShopLanding() {
                         <Box
                           p={3}
                           borderRadius="lg"
-                          bg={isDark ? 'blue.900' : 'blue.50'}
+                          bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
+backdropFilter="blur(10px)"
                         >
                           <item.icon size={24} color={isDark ? '#90CDF4' : '#2B6CB0'} />
                         </Box>
@@ -594,7 +601,8 @@ export default function ShopLanding() {
                     spacing={2}
                     p={2}
                     borderRadius="lg"
-                    bg={isDark ? 'gray.800' : 'gray.100'}
+                    bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
+backdropFilter="blur(10px)"
                   >
                     <item.icon size={16} />
                     <Text fontSize="sm">{item.label}</Text>
