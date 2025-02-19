@@ -31,6 +31,13 @@ import { ShoppingBag, Heart, Search, Star } from 'lucide-react';
 // Items per page
 const ITEMS_PER_PAGE = 12;
 
+  const handleViewItem = () => {
+    const slug = name?.toLowerCase().replace(/\s+/g, '-');
+    const shopSlug = owner?.data?.attributes?.shopName?.toLowerCase().replace(/\s+/g, '-') || 'shop';
+    router.push(`/shop/${shopSlug}/${slug}`);
+  };
+
+
 /** Card for a single product item (Amazon style) */
 const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
   const router = useRouter();
@@ -257,12 +264,6 @@ export default function MarketplacePreview() {
       }
       return newSet;
     });
-  };
-
-  const handleViewItem = () => {
-    const slug = name?.toLowerCase().replace(/\s+/g, '-');
-    const shopSlug = owner?.data?.attributes?.shopName?.toLowerCase().replace(/\s+/g, '-') || 'shop';
-    router.push(`/shop/${shopSlug}/${slug}`);
   };
 
   // Banner background
