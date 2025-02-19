@@ -33,8 +33,6 @@ import {
 
 const ITEMS_PER_PAGE = 12;
 
-const router = useRouter();
-
 const ProductCard = ({ product, onFavorite, isFavorited }) => {
   const router = useRouter();
   const { colorMode } = useColorMode();
