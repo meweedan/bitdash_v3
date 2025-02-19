@@ -28,43 +28,112 @@ import {
   SliderFilledTrack,
   SliderThumb,
   Tooltip,
-  Checkbox
+  Checkbox,
+  useToast,
 } from '@chakra-ui/react';
 import { ChromePicker } from 'react-color';
 
-const ThemeEditor = ({ 
-  isOpen, 
-  onClose, 
-  theme, 
-  onSave 
+/**
+ * Updated ThemeEditor that sends color/theme updates to Strapi 
+ * on save.
+ *
+ * Props:
+ * - isOpen: boolean => controls modal visibility
+ * - onClose: function => closes the modal
+ * - theme: object => the existing theme to edit
+ * - onSave: function => callback if you want to do something else after
+ * - ownerId: string => the ID of the owner in Strapi
+ * - token: string => optional JWT for authentication to Strapi
+ */
+const ThemeEditor = ({
+  isOpen,
+  onClose,
+  theme,
+  onSave,
+  ownerId,
+  token,
 }) => {
+  const toast = useToast();
+  // Make a local copy so user can cancel without changing the actual theme
   const [localTheme, setLocalTheme] = useState(theme);
   const [colorPickerOpen, setColorPickerOpen] = useState({
     primary: false,
     secondary: false,
-    text: false
+    text: false,
+    accent: false,
   });
 
   const handleColorChange = (colorKey, color) => {
-    setLocalTheme(prev => ({
+    setLocalTheme((prev) => ({
       ...prev,
       colors: {
         ...prev.colors,
-        [colorKey]: color.hex
-      }
+        [colorKey]: color.hex,
+      },
     }));
   };
 
   const toggleColorPicker = (colorKey) => {
-    setColorPickerOpen(prev => ({
+    setColorPickerOpen((prev) => ({
       ...prev,
-      [colorKey]: !prev[colorKey]
+      [colorKey]: !prev[colorKey],
     }));
   };
 
-  const handleSave = () => {
-    onSave(localTheme);
-    onClose();
+  /**
+   * Persists the updated theme to Strapi:
+   *  PUT /api/owners/:ownerId
+   *   { data: { theme: localTheme } }
+   */
+  const handleSave = async () => {
+    try {
+      // Optional: If you need authentication, pass the JWT in `token` prop
+      const headers = {
+        'Content-Type': 'application/json',
+      };
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/${ownerId}`,
+        {
+          method: 'PUT',
+          headers,
+          body: JSON.stringify({
+            data: {
+              theme: localTheme,
+            },
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to update theme (HTTP ${response.status})`);
+      }
+
+      const updated = await response.json();
+      toast({
+        title: 'Theme updated!',
+        description: 'Your storefront theme has been saved.',
+        status: 'success',
+        duration: 3000,
+      });
+
+      // Call parent onSave callback if needed
+      if (onSave) {
+        onSave(localTheme, updated);
+      }
+    } catch (err) {
+      toast({
+        title: 'Error',
+        description: err.message,
+        status: 'error',
+        duration: 3000,
+      });
+    } finally {
+      onClose();
+    }
   };
 
   return (
@@ -86,31 +155,42 @@ const ThemeEditor = ({
               <TabPanel>
                 <VStack spacing={4} align="stretch">
                   {Object.keys(localTheme.colors).map((colorKey) => (
-                    <FormControl key={colorKey}>
+                    <FormControl key={colorKey} position="relative">
                       <FormLabel textTransform="capitalize">
-                        {colorKey.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())} Color
+                        {colorKey
+                          .replace(/([A-Z])/g, ' $1')
+                          .replace(/^./, (str) => str.toUpperCase())}{' '}
+                        Color
                       </FormLabel>
                       <HStack>
-                        <Input 
+                        <Input
                           value={localTheme.colors[colorKey]}
                           onClick={() => toggleColorPicker(colorKey)}
                           readOnly
                           flex={1}
                         />
-                        <Box 
-                          w="50px" 
-                          h="50px" 
-                          bg={localTheme.colors[colorKey]} 
+                        <Box
+                          w="50px"
+                          h="50px"
+                          bg={localTheme.colors[colorKey]}
                           borderRadius="md"
                           onClick={() => toggleColorPicker(colorKey)}
+                          cursor="pointer"
                         />
                       </HStack>
                       {colorPickerOpen[colorKey] && (
-                        <Box mt={2} position="absolute" zIndex={10}>
+                        <Box
+                          mt={2}
+                          position="absolute"
+                          zIndex={10}
+                          bg="white"
+                          boxShadow="lg"
+                        >
                           <ChromePicker
                             color={localTheme.colors[colorKey]}
-                            onChange={(color) => handleColorChange(colorKey, color)}
-                            onClose={() => toggleColorPicker(colorKey)}
+                            onChange={(color) =>
+                              handleColorChange(colorKey, color)
+                            }
                           />
                         </Box>
                       )}
@@ -126,10 +206,12 @@ const ThemeEditor = ({
                     <FormLabel>Layout Style</FormLabel>
                     <Select
                       value={localTheme.layout}
-                      onChange={(e) => setLocalTheme(prev => ({
-                        ...prev,
-                        layout: e.target.value
-                      }))}
+                      onChange={(e) =>
+                        setLocalTheme((prev) => ({
+                          ...prev,
+                          layout: e.target.value,
+                        }))
+                      }
                     >
                       <option value="grid">Grid</option>
                       <option value="list">List</option>
@@ -140,19 +222,21 @@ const ThemeEditor = ({
                   <FormControl>
                     <FormLabel>Cover Image Height</FormLabel>
                     <Slider
-                      defaultValue={parseInt(localTheme.coverHeight)}
+                      defaultValue={parseInt(localTheme.coverHeight) || 315}
                       min={100}
                       max={500}
-                      onChange={(val) => setLocalTheme(prev => ({
-                        ...prev,
-                        coverHeight: `${val}px`
-                      }))}
+                      onChange={(val) =>
+                        setLocalTheme((prev) => ({
+                          ...prev,
+                          coverHeight: `${val}px`,
+                        }))
+                      }
                     >
                       <SliderTrack>
                         <SliderFilledTrack />
                       </SliderTrack>
-                      <Tooltip 
-                        hasArrow 
+                      <Tooltip
+                        hasArrow
                         placement="top"
                         label={localTheme.coverHeight}
                       >
@@ -164,19 +248,21 @@ const ThemeEditor = ({
                   <FormControl>
                     <FormLabel>Logo Size</FormLabel>
                     <Slider
-                      defaultValue={parseInt(localTheme.logoSize)}
+                      defaultValue={parseInt(localTheme.logoSize) || 160}
                       min={50}
                       max={250}
-                      onChange={(val) => setLocalTheme(prev => ({
-                        ...prev,
-                        logoSize: `${val}px`
-                      }))}
+                      onChange={(val) =>
+                        setLocalTheme((prev) => ({
+                          ...prev,
+                          logoSize: `${val}px`,
+                        }))
+                      }
                     >
                       <SliderTrack>
                         <SliderFilledTrack />
                       </SliderTrack>
-                      <Tooltip 
-                        hasArrow 
+                      <Tooltip
+                        hasArrow
                         placement="top"
                         label={localTheme.logoSize}
                       >
@@ -197,10 +283,12 @@ const ThemeEditor = ({
                     <Switch
                       id="show-location"
                       isChecked={localTheme.showLocation}
-                      onChange={(e) => setLocalTheme(prev => ({
-                        ...prev,
-                        showLocation: e.target.checked
-                      }))}
+                      onChange={(e) =>
+                        setLocalTheme((prev) => ({
+                          ...prev,
+                          showLocation: e.target.checked,
+                        }))
+                      }
                     />
                   </FormControl>
 
@@ -209,19 +297,23 @@ const ThemeEditor = ({
                     <VStack align="stretch">
                       <Checkbox
                         isChecked={localTheme.showRatings}
-                        onChange={(e) => setLocalTheme(prev => ({
-                          ...prev,
-                          showRatings: e.target.checked
-                        }))}
+                        onChange={(e) =>
+                          setLocalTheme((prev) => ({
+                            ...prev,
+                            showRatings: e.target.checked,
+                          }))
+                        }
                       >
                         Show Ratings
                       </Checkbox>
                       <Checkbox
                         isChecked={localTheme.enableSearch}
-                        onChange={(e) => setLocalTheme(prev => ({
-                          ...prev,
-                          enableSearch: e.target.checked
-                        }))}
+                        onChange={(e) =>
+                          setLocalTheme((prev) => ({
+                            ...prev,
+                            enableSearch: e.target.checked,
+                          }))
+                        }
                       >
                         Enable Search
                       </Checkbox>
@@ -235,15 +327,16 @@ const ThemeEditor = ({
                 <VStack spacing={4} align="stretch">
                   <FormControl>
                     <FormLabel>Custom CSS</FormLabel>
-                    <Input
-                      as="textarea"
-                      minH="200px"
-                      value={localTheme.customCss || ''}
-                      onChange={(e) => setLocalTheme(prev => ({
-                        ...prev,
-                        customCss: e.target.value
-                      }))}
-                      placeholder="Add custom CSS here..."
+                    <Box as="textarea"
+                         minH="200px"
+                         value={localTheme.customCss || ''}
+                         onChange={(e) =>
+                           setLocalTheme((prev) => ({
+                             ...prev,
+                             customCss: e.target.value,
+                           }))
+                         }
+                         placeholder="Add custom CSS here..."
                     />
                   </FormControl>
                 </VStack>

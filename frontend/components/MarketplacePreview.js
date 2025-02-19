@@ -1,90 +1,91 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import {
   Box,
-  Heading,
-  Text,
-  Container,
   VStack,
   HStack,
-  Button,
   Grid,
-  IconButton,
+  Text,
+  Image,
+  Badge,
+  Icon,
+  useColorMode,
+  Skeleton,
+  Button,
   Select,
   Input,
-  Icon,
   InputGroup,
   InputLeftElement,
-  Badge,
-  Skeleton,
-  useColorMode,
-  useColorModeValue,
-  useToast,
   Avatar,
+  useToast,
+  Container,
   Flex,
+  IconButton,
 } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'next-i18next';
-import { ShoppingBag, Heart, Search, Star } from 'lucide-react';
+import { 
+  ShoppingBag, 
+  Heart,
+  Star,
+  Search,
+} from 'lucide-react';
 
-/** 
- * Number of products to display per page. 
- * Adjust as needed for performance or design.
- */
 const ITEMS_PER_PAGE = 12;
 
-/** 
- * A single Product Card reminiscent of Amazon's item listing. 
- */
-const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
+/** Card for each product item */
+const ProductCard = ({ product, onFavorite, isFavorited }) => {
   const router = useRouter();
-  const { t } = useTranslation('common');
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
+  const { t } = useTranslation('common');
 
-  // De-structure from Strapi's typical shape: { id, attributes: {...} }
+  // Strapi typically returns something like:
+  // product = { id, attributes: { name, price, stock, ...owner } }
   const {
     id,
     attributes: {
       name,
       price,
       stock,
-      rating = 0,
-      status = 'available',
-      images,
-      owner,
+      rating,
+      status,
       category,
       subcategory,
       description,
+      images,
+      owner,
     },
   } = product;
 
-  // Create a slug from the product name (like Amazon)
-  const slug = name.toLowerCase().replace(/\s+/g, '-');
-  const shopName = owner?.data?.attributes?.shopName || 'unknown-shop';
-
+  // Build a dynamic route: /shop/[shopName]/[productName]
   const handleViewItem = () => {
-    // Example dynamic route: /shop/[shopName]/[productName]
+    // Slugify the product name (e.g. "My Product" -> "my-product")
+    const slug = name.toLowerCase().replace(/\s+/g, '-');
+
+    // Owner’s shopName
+    const shopName = owner?.data?.attributes?.shopName ?? 'unknown-shop';
+
+    // Push to dynamic route
     router.push(`/shop/${shopName}/${slug}`);
   };
 
   return (
     <Box
-      bg={isDark ? 'whiteAlpha.100' : 'whiteAlpha.700'}
-      backdropFilter="blur(6px)"
+      bg={isDark ? 'whiteAlpha.100' : 'whiteAlpha.500'}
+      backdropFilter="blur(10px)"
       borderRadius="xl"
       overflow="hidden"
-      boxShadow="lg"
+      boxShadow="xl"
       borderWidth="1px"
       borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
       transition="all 0.2s"
-      _hover={{ transform: 'translateY(-2px)', boxShadow: 'xl' }}
-      position="relative"
+      _hover={{ transform: 'translateY(-4px)', boxShadow: '2xl' }}
     >
       {/* Product Image */}
-      <Box position="relative" h="220px">
-        <Box
-          as="img"
+      <Box position="relative" h="200px">
+        <Image
+          // If there's an uploaded image, display it; else placeholder
           src={
             images?.data?.[0]?.attributes?.url
               ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${images.data[0].attributes.url}`
@@ -92,8 +93,8 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
           }
           alt={name}
           objectFit="cover"
-          w="full"
-          h="full"
+          w="100%"
+          h="100%"
         />
         <IconButton
           icon={<Heart fill={isFavorited ? 'red' : 'none'} />}
@@ -102,22 +103,17 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
           right={2}
           colorScheme={isFavorited ? 'red' : 'gray'}
           variant="ghost"
-          onClick={() => onFavoriteToggle(id)}
+          onClick={() => onFavorite(id)}
           aria-label="Favorite"
         />
       </Box>
 
-      {/* Details */}
+      {/* Product Details */}
       <Box p={4}>
         <VStack align="stretch" spacing={3}>
-          {/* Title + Stock */}
+          {/* Title + Stock Badge */}
           <HStack justify="space-between">
-            <Text
-              fontWeight="semibold"
-              fontSize="md"
-              noOfLines={1}
-              color={useColorModeValue('gray.800', 'whiteAlpha.900')}
-            >
+            <Text fontWeight="bold" fontSize="lg" noOfLines={1}>
               {name}
             </Text>
             <Badge colorScheme={status === 'available' ? 'green' : 'red'}>
@@ -126,50 +122,26 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
           </HStack>
 
           {/* Description */}
-          <Text
-            color="gray.500"
-            fontSize="sm"
-            noOfLines={2}
-            lineHeight="shorter"
-          >
+          <Text color="gray.500" fontSize="sm" noOfLines={2}>
             {description}
           </Text>
 
-          {/* Price + Category / Rating */}
-          <HStack justify="space-between" align="center">
-            <VStack align="start" spacing={0}>
-              <Text
-                fontWeight="bold"
-                fontSize="lg"
-                color="blue.500"
-              >
-                {parseFloat(price).toFixed(2)} LYD
-              </Text>
-              <HStack spacing={1}>
-                {/* Show rating if > 0 */}
-                {rating > 0 && (
-                  <>
-                    <Star size={14} color="#f6c84c" />
-                    <Text fontSize="xs" color="gray.600">
-                      {rating.toFixed(1)}
-                    </Text>
-                  </>
-                )}
-              </HStack>
-            </VStack>
-            <VStack align="end" spacing={0}>
+          {/* Price + Category */}
+          <HStack justify="space-between" pt={2}>
+            <Text fontWeight="bold" fontSize="xl" color="brand.bitshop.500">
+              {parseFloat(price).toFixed(2)} LYD
+            </Text>
+            <HStack>
               <Badge>{category}</Badge>
-              {subcategory && (
-                <Badge variant="outline">{subcategory}</Badge>
-              )}
-            </VStack>
+              {subcategory && <Badge variant="outline">{subcategory}</Badge>}
+            </HStack>
           </HStack>
 
-          {/* Bottom area: See item button */}
+          {/* View / See Item Button */}
           <Button
+            leftIcon={<ShoppingBag />}
+            variant="bitshop-solid"
             size="sm"
-            colorScheme="blue"
-            leftIcon={<ShoppingBag size={16} />}
             isDisabled={status !== 'available' || stock <= 0}
             onClick={handleViewItem}
           >
@@ -181,213 +153,160 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
   );
 };
 
-/**
- * Main MarketplacePreview component that fetches from Strapi
- * and displays items in an Amazon-esque grid.
- */
 const MarketplacePreview = () => {
-  const { t } = useTranslation('common');
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
+  const { t } = useTranslation('common');
   const toast = useToast();
 
-  // State for search, sorting, favorites, pagination
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('rating:desc');
   const [page, setPage] = useState(1);
   const [favorites, setFavorites] = useState(new Set());
 
-  /**
-   * Data fetching with React Query
-   * - retrieve only 'available' items
-   * - search name/description
-   * - apply sorting
-   * - apply pagination
-   */
+  // Fetch shop-items from Strapi
   const {
-    data,
-    isLoading,
-    error,
-    isFetching,
+    data, 
+    isLoading, 
+    error 
   } = useQuery({
-    queryKey: ['shop-items', searchTerm, sortBy, page],
+    queryKey: ['shopItems', searchTerm, sortBy, page],
     queryFn: async () => {
+      // Build query params
       const params = new URLSearchParams({
         'filters[status][$eq]': 'available',
         'pagination[page]': page.toString(),
         'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
         'populate[images]': '*',
-        'populate[owner]': '*',
+        'populate[owner][populate][logo]': '*',
       });
 
-      // For searching
       if (searchTerm) {
         params.append('filters[$or][0][name][$containsi]', searchTerm);
         params.append('filters[$or][1][description][$containsi]', searchTerm);
       }
 
-      // For sorting
-      // e.g. rating:desc => 'sort=rating:desc'
       if (sortBy) {
+        // e.g. 'rating:desc'
         params.append('sort', sortBy);
       }
 
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`;
-      const res = await fetch(url);
-      if (!res.ok) throw new Error('Failed to fetch products');
-      return res.json();
+      // Make request
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`
+      );
+      if (!res.ok) {
+        throw new Error('Failed to fetch products');
+      }
+
+      // Typically returns { data: [...], meta: {...} }
+      const json = await res.json();
+      return json;
     },
     keepPreviousData: true,
   });
 
-  // Transform data
-  const items = data?.data || [];
-  const pagination = data?.meta?.pagination || {};
-
-  // For toggling favorites
+  // Handle favorites
   const handleFavoriteToggle = (productId) => {
     setFavorites((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(productId)) {
-        newSet.delete(productId);
+      const newFavorites = new Set(prev);
+      if (newFavorites.has(productId)) {
+        newFavorites.delete(productId);
         toast({
           title: t('removed_from_favorites'),
           status: 'info',
           duration: 2000,
         });
       } else {
-        newSet.add(productId);
+        newFavorites.add(productId);
         toast({
           title: t('added_to_favorites'),
           status: 'success',
           duration: 2000,
         });
       }
-      return newSet;
+      return newFavorites;
     });
   };
 
-  // Amazon-like hero banner or heading
-  const heroBg = useColorModeValue('gray.100', 'gray.700');
+  // Convert to an array we can .map over
+  const items = data?.data ?? [];
 
   return (
-    <Box w="full" position="relative">
-      {/* Amazon-like Banner */}
-      <Flex
-        bg={heroBg}
-        py={8}
-        px={4}
-        mb={4}
-        align="center"
-        justify="center"
-        direction="column"
-        textAlign="center"
-      >
-        <Heading fontSize={{ base: '2xl', md: '4xl' }} color="blue.500">
-          {t('our_marketplace')}
-        </Heading>
-        <Text color="gray.500" mt={2} maxW="3xl">
-          {t('explore_best_deals')}
-        </Text>
-      </Flex>
-
-      {/* Actual Container for content */}
-      <Container maxW="7xl" mb={8}>
-        {/* Search / Sort Row */}
-        <VStack spacing={4} mb={8}>
-          <HStack w="full">
-            {/* Search Input */}
-            <InputGroup size="lg" maxW="400px">
-              <InputLeftElement pointerEvents="none">
-                <Icon as={Search} color="gray.500" />
-              </InputLeftElement>
-              <Input
-                placeholder={t('search_products')}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
-                borderWidth="1px"
-                borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
-              />
-            </InputGroup>
-
-            {/* Sort Dropdown */}
-            <Select
-              size="lg"
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              w="200px"
+    <Container maxW="7xl" py={8}>
+      {/* Filter Row */}
+      <VStack spacing={6} w="full" mb={8}>
+        <HStack w="full" spacing={4}>
+          {/* Search Input */}
+          <InputGroup size="lg">
+            <InputLeftElement>
+              <Icon as={Search} color="gray.500" />
+            </InputLeftElement>
+            <Input
+              placeholder={t('search_products')}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
+              backdropFilter="blur(10px)"
               borderWidth="1px"
               borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
-            >
-              <option value="rating:desc">{t('top_rated')}</option>
-              <option value="createdAt:desc">{t('newest')}</option>
-              <option value="price:asc">{t('price_low_to_high')}</option>
-              <option value="price:desc">{t('price_high_to_low')}</option>
-            </Select>
-          </HStack>
-        </VStack>
+            />
+          </InputGroup>
 
-        {/* Loading / Error / Items */}
-        {isLoading || isFetching ? (
-          // Show skeleton grid
-          <Grid templateColumns="repeat(auto-fill, minmax(240px, 1fr))" gap={4}>
-            {[...Array(ITEMS_PER_PAGE)].map((_, i) => (
-              <Skeleton key={i} height="320px" borderRadius="lg" />
-            ))}
-          </Grid>
-        ) : error ? (
-          <Box textAlign="center" p={6}>
-            <Text color="red.500" fontWeight="bold">
-              {t('error_loading_products')}
-            </Text>
-          </Box>
-        ) : items.length === 0 ? (
-          <Box textAlign="center" p={6}>
-            <Text>{t('no_products_available')}</Text>
-          </Box>
-        ) : (
-          <Grid templateColumns="repeat(auto-fill, minmax(240px, 1fr))" gap={6}>
-            {items.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onFavoriteToggle={handleFavoriteToggle}
-                isFavorited={favorites.has(product.id)}
-              />
-            ))}
-          </Grid>
-        )}
+          {/* Sort Dropdown */}
+          <Select
+            size="lg"
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            w="200px"
+            bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
+            backdropFilter="blur(10px)"
+            borderWidth="1px"
+            borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
+          >
+            <option value="rating:desc">{t('top_rated')}</option>
+            <option value="createdAt:desc">{t('newest')}</option>
+            <option value="price:asc">{t('price_low_to_high')}</option>
+            <option value="price:desc">{t('price_high_to_low')}</option>
+          </Select>
+        </HStack>
+      </VStack>
 
-        {/* 
-          Example Pagination (if needed):
-          data?.meta?.pagination => { page, pageCount, total, pageSize }
-        */}
-        {pagination && (
-          <HStack justify="center" mt={8} spacing={4}>
-            <Button
-              isDisabled={page <= 1}
-              onClick={() => setPage((p) => Math.max(1, p - 1))}
-            >
-              {t('previous')}
-            </Button>
-            <Text>
-              {t('page_x_of_y', {
-                x: page,
-                y: pagination.pageCount || 1,
-              })}
-            </Text>
-            <Button
-              isDisabled={page >= (pagination.pageCount || 1)}
-              onClick={() => setPage((p) => p + 1)}
-            >
-              {t('next')}
-            </Button>
-          </HStack>
-        )}
-      </Container>
-    </Box>
+      {/* Main Content */}
+      {isLoading ? (
+        <Grid templateColumns="repeat(auto-fill, minmax(280px, 1fr))" gap={6}>
+          {[...Array(ITEMS_PER_PAGE)].map((_, i) => (
+            <Skeleton key={i} h="400px" borderRadius="xl" />
+          ))}
+        </Grid>
+      ) : error ? (
+        <Box
+          p={8}
+          bg={isDark ? 'red.900' : 'red.50'}
+          color={isDark ? 'red.200' : 'red.600'}
+          borderRadius="xl"
+          textAlign="center"
+        >
+          <Text>{t('error_loading_products')}</Text>
+        </Box>
+      ) : items.length === 0 ? (
+        <Box textAlign="center">
+          <Text>{t('no_products_available')}</Text>
+        </Box>
+      ) : (
+        <Grid templateColumns="repeat(auto-fill, minmax(280px, 1fr))" gap={6}>
+          {items.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              onFavorite={handleFavoriteToggle}
+              isFavorited={favorites.has(product.id)}
+            />
+          ))}
+        </Grid>
+      )}
+      {/* If you want pagination controls, handle them using data.meta.pagination */}
+    </Container>
   );
 };
 
