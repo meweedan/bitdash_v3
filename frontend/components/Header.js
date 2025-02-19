@@ -22,6 +22,7 @@ import { HamburgerIcon, CloseIcon, ChatIcon } from '@chakra-ui/icons';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Logo from '@/components/Logo';
 import { FaSignInAlt, FaUserPlus, FaUser, FaSignOutAlt, FaWhatsapp } from 'react-icons/fa';
+import AnnouncementBanner from './AnnouncementBanner';
 
 export default function Header() {
   const { t, i18n } = useTranslation('common');
@@ -34,6 +35,7 @@ export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [platform, setPlatform] = useState('bitdash');
   const accentColor = `brand.${platform}.500`;
+  const showAnnouncements = platform === 'bitshop' || platform === 'bitcash';
 
   useEffect(() => {
     const checkAuth = () => {
@@ -519,6 +521,10 @@ const MenuItems = ({ href, children, onClick }) => (
           </Flex>
         </Box>
       </Collapse>
+       {/* Add the announcement banner */}
+    {showAnnouncements && (
+      <AnnouncementBanner platform={platform} />
+    )}
     </Flex>
   );
 }

@@ -184,7 +184,7 @@ export default function MarketplacePreview() {
   const [favorites, setFavorites] = useState(new Set());
 
   // React Query fetch
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, isFetching, error } = useQuery({
     queryKey: ['products', searchTerm, sortBy, page],
     queryFn: async () => {
       try {
@@ -233,8 +233,8 @@ export default function MarketplacePreview() {
   });
 
   // Safely extract items
-  const items = Array.isArray(data?.data) ? data.data : [];
-  const pagination = data?.meta?.pagination || {};
+  const items = Array.isArray(data?.data?.attributes?.results) ? data?.data?.attributes?.results : [];
+  const pagination = data?.data?.attributes?.pagination || {};
 
   // Toggle favorites
   const handleFavoriteToggle = (productId) => {
@@ -257,6 +257,12 @@ export default function MarketplacePreview() {
       }
       return newSet;
     });
+  };
+
+  const handleViewItem = () => {
+    const slug = name?.toLowerCase().replace(/\s+/g, '-');
+    const shopSlug = owner?.data?.attributes?.shopName?.toLowerCase().replace(/\s+/g, '-') || 'shop';
+    router.push(`/shop/${shopSlug}/${slug}`);
   };
 
   // Banner background
@@ -340,10 +346,13 @@ export default function MarketplacePreview() {
           </Box>
         ) : (
           <Grid templateColumns="repeat(auto-fill, minmax(280px, 1fr))" gap={6}>
-            {data?.data?.map((product) => (
+            {items.map((product) => (
               <ProductCard
                 key={product.id}
-                product={product}
+                product={{
+                  id: product.id,
+                  attributes: product
+                }}
                 onFavorite={handleFavoriteToggle}
                 isFavorited={favorites.has(product.id)}
               />
