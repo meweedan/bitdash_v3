@@ -9,8 +9,7 @@ import {
   Text, 
   VStack, 
   useToast, 
-  useColorMode, 
-  Spinner 
+  useColorMode 
 } from '@chakra-ui/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -20,30 +19,20 @@ import Layout from '@/components/Layout';
 
 const PLATFORM_ROUTES = {
   food: {
-    operator: '/food/operator/dashboard',
-    customer: '/food/customer/dashboard',
-    captain: '/food/captain/dashboard',
+    operator: '/operator/dashboard',
+    customer: '/customer/dashboard',
+    captain: '/captain/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://food.bitdash.app'
   },
   cash: {
-    merchant: '/cash/merchant/dashboard',
-    agent: '/cash/agent/dashboard',
-    client: '/cash/client/dashboard',
+    merchant: '/merchant/dashboard',
+    agent: '/agent/dashboard',
+    customer: '/client/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://cash.bitdash.app'
   },
-  work: {
-    employer: '/work/employer/dashboard',
-    employee: '/work/employee/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://work.bitdash.app'
-  },
-  ride : {
-    captain: '/ride/captain/dashboard',
-    client: '/ride/client/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://ride.bitdash.app'
-  },
   shop: {
-    owner: '/shop/owner/dashboard',
-    customer: '/shop/customer/dashboard',
+    owner: '/owner/dashboard',
+    customer: '/customer/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://shop.bitdash.app'
   }
 };
@@ -57,20 +46,12 @@ const PROFILE_ENDPOINTS = {
   cash: {
     merchant: '/api/operators',
     agent: '/api/agents',
-    client: '/api/customer-profiles'
-  },
-  work: {
-    employer: '/api/employers',
-    employee: '/api/employees'
-  },
-  ride : {
-    captain: '/api/captains',
-    client: '/api/customer-profiles'
+    customer: '/api/customer-profiles'
   },
   shop: {
     owner: '/api/owners',
     customer: '/api/customer-profiles'
-    }
+  }
 };
 
 const BUSINESS_TYPE_ROUTES = {
@@ -78,14 +59,10 @@ const BUSINESS_TYPE_ROUTES = {
   captain: { platform: 'food', userType: 'captain' },
   merchant: { platform: 'cash', userType: 'merchant' },
   agent: { platform: 'cash', userType: 'agent' },
-  employer: { platform: 'work', userType: 'employer' },
-  employee: { platform: 'work', userType: 'employee' },
+  customer: { platform: 'cash', userType: 'customer' },
   owner: { platform: 'shop', userType: 'owner' },
   client: { platform: 'food', userType: 'customer' },
-  customer: { platform: 'cash', userType: 'client' },
-  clientShop: { platform: 'shop', userType: 'customer' },
-  clientRide: { platform: 'ride', userType: 'client' },
-  clientCash: { platform: 'cash', userType: 'client' },
+  customer: { platform: 'shop', userType: 'customer' }
 };
 
 const getPlatformFromURL = () => {
@@ -94,16 +71,12 @@ const getPlatformFromURL = () => {
     if (hostname.includes('cash')) return 'bitcash';
     if (hostname.includes('food')) return 'bitfood';
     if (hostname.includes('shop')) return 'bitshop';
-    if (hostname.includes('ride')) return 'bitride';
-    if (hostname.includes('work')) return 'bitwork';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
       if (path.includes('/cash')) return 'bitcash';
       if (path.includes('/food')) return 'bitfood';
       if (path.includes('/shop')) return 'bitshop';
-      if (path.includes('/ride')) return 'bitride';
-      if (path.includes('/work')) return 'bitwork';
     }
   }
   return 'bitdash';
@@ -131,20 +104,6 @@ const getColorScheme = (platform, isDark) => {
       button: 'brand.bitshop.500',
       hover: 'brand.bitshop.600',
       border: 'brand.bitshop.500'
-    },
-    bitride: {
-      bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.bitride.400' : 'brand.bitride.600',
-      button: 'brand.bitride.500',
-      hover: 'brand.bitride.600',
-      border: 'brand.bitride.500'
-    },
-    bitwork: {
-      bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.bitwork.400' : 'brand.bitwork.600',
-      button: 'brand.bitwork.500',
-      hover: 'brand.bitwork.600',
-      border: 'brand.bitwork.500'
     },
     bitdash: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
@@ -183,11 +142,7 @@ const LoginPage = () => {
     mx: "auto",
     mt: 8,
     p: 6,
-    borderRadius: "xl",
-    bg: colors.bg,
-    borderWidth: "0.1px",
     borderColor: colors.border,
-    boxShadow: "xl"
   };
 
   const inputStyles = {
@@ -200,7 +155,6 @@ const LoginPage = () => {
     },
     _focus: {
       borderColor: colors.hover,
-      boxShadow: `0 0 0 1px ${colors.hover}`,
     }
   };
 
@@ -216,141 +170,157 @@ const LoginPage = () => {
       transform: 'translateY(0)',
     },
     transition: 'all 0.2s',
-    // Override any default styles
     _disabled: {
-      bg: colors.button + '80', // 80 for opacity
+      bg: colors.button + '80',
       _hover: { bg: colors.button + '80' }
     }
   };
 
-  const checkBusinessType = async (token, userId) => {
-  try {
-    console.log('Checking business type for user:', userId);
-    console.log('Current platform:', currentPlatform);
-
-    // Specifically for shop platform
-    if (currentPlatform === 'bitshop') {
-      const ownerResponse = await fetch(
-        `${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
-        { headers: { Authorization: `Bearer ${token}` } }
+  const checkWalletExists = async (token, userId) => {
+    try {
+      const walletResponse = await fetch(
+        `${BASE_URL}/api/wallets?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+        { 
+          method: 'GET',
+          headers: { 
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          } 
+        }
       );
 
-      console.log('Owner API response status:', ownerResponse.status);
-
-      if (ownerResponse.ok) {
-        const { data } = await ownerResponse.json();
-        console.log('Owner API data:', data);
-
-        if (data && data.length > 0) {
-          console.log('Found owner profile');
-          return 'owner';
-        }
+      if (!walletResponse.ok) {
+        console.error('Wallet check failed:', await walletResponse.text());
+        return false;
       }
-    }
 
-    // Fallback for other platforms or if owner check fails
-    const responses = await Promise.all([
-      fetch(`${BASE_URL}/api/operators?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
-        { headers: { Authorization: `Bearer ${token}` } }),
-      fetch(`${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
-        { headers: { Authorization: `Bearer ${token}` } })
-    ]);
-
-    for (const response of responses) {
-      console.log(`Response from ${response.url} - status: ${response.status}`);
-      
-      if (response.ok) {
-        const { data } = await response.json();
-        console.log('Response data:', data);
-
-        if (data && data.length > 0) {
-          // Check if it's a shop owner specifically
-          if (response.url.includes('/api/owners')) {
-            return 'owner';
-          }
-          return data[0]?.attributes?.businessType;
-        }
-      }
-    }
-
-    console.log('No business type found');
-    return null;
-  } catch (error) {
-    console.error('Business type check error:', error);
-    return null;
-  }
-};
-
-const checkProfileType = async (token, userId, endpoint) => {
-  try {
-    const response = await fetch(
-      `${BASE_URL}${endpoint}?filters[user][id][$eq]=${userId}&populate=*`,
-      { 
-        method: 'GET',
-        headers: { 
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        } 
-      }
-    );
-
-    if (!response.ok) {
-      console.error('Profile type check failed:', await response.text());
+      const { data } = await walletResponse.json();
+      return data && data.length > 0;
+    } catch (error) {
+      console.error('Wallet existence check error:', error);
       return false;
     }
+  };
 
-    const { data } = await response.json();
-    console.log('Profile data:', data);
+  const checkBusinessType = async (token, userId) => {
+    try {
+      if (currentPlatform === 'bitshop') {
+        const ownerResponse = await fetch(
+          `${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
 
-    return data && data.length > 0;
-  } catch (error) {
-    console.error('Profile type check error:', error);
-    return false;
-  }
-};
+        if (ownerResponse.ok) {
+          const { data } = await ownerResponse.json();
+          if (data && data.length > 0) {
+            return 'owner';
+          }
+        }
+      }
 
-const determineUserType = async (token, userId) => {
-  console.log('Determining user type for:', { 
-    userId, 
-    platform: currentPlatform 
-  });
+      const responses = await Promise.all([
+        fetch(`${BASE_URL}/api/operators?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+          { headers: { Authorization: `Bearer ${token}` } }),
+        fetch(`${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+          { headers: { Authorization: `Bearer ${token}` } })
+      ]);
 
-  const platform = currentPlatform.replace('bit', '');
-  const businessType = await checkBusinessType(token, userId);
-  
-  console.log('Business type found:', businessType);
+      for (const response of responses) {
+        if (response.ok) {
+          const { data } = await response.json();
+          if (data && data.length > 0) {
+            if (response.url.includes('/api/owners')) {
+              return 'owner';
+            }
+            return data[0]?.attributes?.businessType;
+          }
+        }
+      }
 
-  // Direct match for shop platform
-  if (platform === 'shop' && businessType === 'owner') {
-    return 'owner';
-  }
-
-  if (businessType && BUSINESS_TYPE_ROUTES[businessType]) {
-    const route = BUSINESS_TYPE_ROUTES[businessType];
-    if (route.platform === platform) {
-      console.log('Matched business type route:', route);
-      return route.userType;
+      return null;
+    } catch (error) {
+      console.error('Business type check error:', error);
+      return null;
     }
-  }
+  };
 
-  const platformEndpoints = PROFILE_ENDPOINTS[platform];
-  if (!platformEndpoints) {
-    console.log('No platform endpoints found');
+  const checkProfileType = async (token, userId, endpoint) => {
+    try {
+      const response = await fetch(
+        `${BASE_URL}${endpoint}?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
+        { 
+          method: 'GET',
+          headers: { 
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          } 
+        }
+      );
+
+      if (!response.ok) {
+        console.error('Profile type check failed:', await response.text());
+        return false;
+      }
+
+      const { data } = await response.json();
+      return data && data.length > 0;
+    } catch (error) {
+      console.error('Profile type check error:', error);
+      return false;
+    }
+  };
+
+  const determineUserType = async (token, userId) => {
+    const platform = currentPlatform.replace('bit', '');
+    
+    if (platform === 'cash') {
+      const customerProfileResponse = await fetch(
+        `${BASE_URL}/api/customer-profiles?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+        { 
+          method: 'GET',
+          headers: { 
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          } 
+        }
+      );
+
+      if (customerProfileResponse.ok) {
+        const { data: customerData } = await customerProfileResponse.json();
+        
+        if (customerData && customerData.length > 0) {
+          const hasWallet = await checkWalletExists(token, userId);
+          
+          if (hasWallet) {
+            return 'customer';
+          }
+        }
+      }
+    }
+
+    const businessType = await checkBusinessType(token, userId);
+    
+    if (businessType && BUSINESS_TYPE_ROUTES[businessType]) {
+      const route = BUSINESS_TYPE_ROUTES[businessType];
+      if (route.platform === platform) {
+        return route.userType;
+      }
+    }
+
+    const platformEndpoints = PROFILE_ENDPOINTS[platform];
+    if (!platformEndpoints) {
+      return null;
+    }
+
+    for (const [userType, endpoint] of Object.entries(platformEndpoints)) {
+      const profileExists = await checkProfileType(token, userId, endpoint);
+      if (profileExists) {
+        return userType;
+      }
+    }
+
     return null;
-  }
-
-  for (const [userType, endpoint] of Object.entries(platformEndpoints)) {
-    console.log(`Checking profile for userType: ${userType}, endpoint: ${endpoint}`);
-    const profileExists = await checkProfileType(token, userId, endpoint);
-    if (profileExists) {
-      console.log(`Profile found for userType: ${userType}`);
-      return userType;
-    }
-  }
-
-  console.log('No matching user type found');
-  return null;
-};
+  };
 
   const handleRedirect = (userType) => {
     const platformConfig = PLATFORM_ROUTES[currentPlatform.replace('bit', '')];
@@ -378,13 +348,19 @@ const determineUserType = async (token, userId) => {
       const userType = await determineUserType(token, user.id);
       if (userType) {
         handleRedirect(userType);
+      } else {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setIsLoading(false);
       }
     } catch (error) {
       console.error('Auth check error:', error);
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      setIsLoading(false);
     }
   };
+
   const handleLogin = async () => {
     if (!email || !password) {
       toast({
