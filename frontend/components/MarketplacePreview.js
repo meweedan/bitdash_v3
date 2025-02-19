@@ -1,7 +1,6 @@
 // components/MarketplacePreview.js
+
 import React, { useState } from 'react';
-// ❌ REMOVE next/image import – it was causing the constructor error
-// import Image from 'next/image'; 
 import { useRouter } from 'next/router';
 import {
   Box,
@@ -24,22 +23,22 @@ import {
   useColorModeValue,
   useToast,
   Flex,
-  Image // ✅ Use Chakra UI’s <Image>
 } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'next-i18next';
 import { ShoppingBag, Heart, Search, Star } from 'lucide-react';
 
+// Items per page
 const ITEMS_PER_PAGE = 12;
 
-/** Single product card, Amazon style. */
+/** Card for a single product item (Amazon style) */
 const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   const { t } = useTranslation('common');
 
-  // Safe attribute destructuring
+  // Safely access attributes with fallbacks
   const attributes = product?.attributes || {};
   const {
     name = '',
@@ -49,28 +48,31 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
     status = 'available',
     rating = 0,
     category = '',
-    subcategory = ''
+    subcategory = '',
   } = attributes;
 
-  // Access images array
-  const images = attributes.images?.data || [];
-  // Build a complete image URL or fallback
+  // Safely access nested data
+  const images = attributes?.images?.data || [];
+  const owner = attributes?.owner?.data?.attributes || {};
+  
+  // Get image URL
   const imageUrl = images[0]?.attributes?.url
     ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${images[0].attributes.url}`
     : '/placeholder-product.jpg';
 
-  // Owner shopName
-  const owner = attributes.owner?.data?.attributes || {};
-  
-  // Handler for view item
+  // Handle view item with proper error checks
   const handleViewItem = () => {
     if (!name || !owner?.shopName) {
-      console.error('Missing product name or owner shopName', { name, owner });
+      console.error('Missing required data for navigation', { name, owner });
       return;
     }
+    
     const productSlug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
     const shopSlug = owner.shopName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    router.push(`/shop/${shopSlug}/${productSlug}`);
+    
+    const url = `/shop/${shopSlug}/${productSlug}`;
+    console.log('Navigating to:', url);
+    router.push(url);
   };
 
   return (
@@ -88,13 +90,12 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
     >
       {/* Product Image */}
       <Box position="relative" h="220px">
-        {/* ✅ Use Chakra UI <Image> (not next/image) */}
         <Image
           src={imageUrl}
           alt={name}
           objectFit="cover"
-          width="100%"
-          height="100%"
+          w="full"
+          h="full"
           fallbackSrc="/placeholder-product.jpg"
         />
         <IconButton
@@ -109,7 +110,7 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
         />
       </Box>
 
-      {/* Product details */}
+      {/* Product Details */}
       <Box p={4}>
         <VStack align="stretch" spacing={3}>
           <HStack justify="space-between">
@@ -126,7 +127,12 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
             </Badge>
           </HStack>
 
-          <Text color="gray.500" fontSize="sm" noOfLines={2} lineHeight="shorter">
+          <Text
+            color="gray.500"
+            fontSize="sm"
+            noOfLines={2}
+            lineHeight="shorter"
+          >
             {description}
           </Text>
 
@@ -135,7 +141,7 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
               <Text fontWeight="bold" fontSize="lg" color="blue.500">
                 {parseFloat(price).toFixed(2)} LYD
               </Text>
-              {!!rating && (
+              {rating > 0 && (
                 <HStack spacing={1}>
                   <Star size={14} color="#f6c84c" />
                   <Text fontSize="xs" color="gray.600">
@@ -145,8 +151,8 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
               )}
             </VStack>
             <VStack align="end" spacing={0}>
-              {!!category && <Badge>{category}</Badge>}
-              {!!subcategory && <Badge variant="outline">{subcategory}</Badge>}
+              {category && <Badge>{category}</Badge>}
+              {subcategory && <Badge variant="outline">{subcategory}</Badge>}
             </VStack>
           </HStack>
 
@@ -165,82 +171,97 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
   );
 };
 
-/** Main marketplace preview component. */
+/**
+ * Main MarketplacePreview
+ */
 export default function MarketplacePreview() {
   const { t } = useTranslation('common');
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   const toast = useToast();
 
-  // States
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('rating:desc');
   const [page, setPage] = useState(1);
   const [favorites, setFavorites] = useState(new Set());
 
-  // React Query: fetch shop-items
-  const {
-    data,
-    isLoading,
-    isFetching,
-    error,
-  } = useQuery({
+  // React Query fetch
+  const { data, isLoading, isFetching, error } = useQuery({
     queryKey: ['products', searchTerm, sortBy, page],
     queryFn: async () => {
-      // build query params
-      const params = new URLSearchParams({
-        'filters[status][$eq]': 'available',
-        'pagination[page]': page.toString(),
-        'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
-        'populate': '*'
-      });
+      try {
+        // Base params for pagination and population
+        const params = new URLSearchParams({
+          'filters[status][$eq]': 'available',
+          'pagination[page]': page.toString(),
+          'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
+          'populate': '*', // This will populate all relations
+        });
 
-      // search
-      if (searchTerm) {
-        params.append('filters[$or][0][name][$containsi]', searchTerm);
-        params.append('filters[$or][1][description][$containsi]', searchTerm);
-      }
-      // sort e.g. rating:desc
-      if (sortBy) {
-        const [field, direction] = sortBy.split(':');
-        params.append('sort[0]', `${field}:${direction}`);
-      }
+        // Add search filters if search term exists
+        if (searchTerm) {
+          params.append('filters[$or][0][name][$containsi]', searchTerm);
+          params.append('filters[$or][1][description][$containsi]', searchTerm);
+        }
 
-      console.log('Fetching URL:', `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`);
+        // Add sorting
+        if (sortBy) {
+          const [field, direction] = sortBy.split(':');
+          params.append('sort[0]', `${field}:${direction}`);
+        }
 
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`);
-      if (!res.ok) {
-        throw new Error('Failed to fetch products');
+        console.log('Fetching URL:', `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`);
+
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`
+        );
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+
+        const result = await response.json();
+        console.log('API Response:', result);
+
+        return result;
+      } catch (error) {
+        console.error('API Error:', error);
+        throw error;
       }
-      const json = await res.json();
-      console.log('API Response:', json);
-      return json;
     },
     keepPreviousData: true,
     refetchOnWindowFocus: false,
-    staleTime: 30000
+    staleTime: 30000, // Consider data fresh for 30 seconds
   });
 
-  // Safely extract items array
-  // Strapi typically returns { data: [ ... ], meta: { ... } }
-  const items = Array.isArray(data?.data) ? data.data : [];
-  // For advanced pagination usage, see data?.meta?.pagination
+  // Safely extract items
+  const items = Array.isArray(data?.data?.attributes?.results) ? data?.data?.attributes?.results : [];
+  const pagination = data?.data?.attributes?.pagination || {};
 
-  // Favorites toggle
+  // Toggle favorites
   const handleFavoriteToggle = (productId) => {
     setFavorites((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(productId)) {
         newSet.delete(productId);
-        toast({ title: t('removed_from_favorites'), status: 'info', duration: 2000 });
+        toast({
+          title: t('removed_from_favorites'),
+          status: 'info',
+          duration: 2000,
+        });
       } else {
         newSet.add(productId);
-        toast({ title: t('added_to_favorites'), status: 'success', duration: 2000 });
+        toast({
+          title: t('added_to_favorites'),
+          status: 'success',
+          duration: 2000,
+        });
       }
       return newSet;
     });
   };
 
+  // Banner background
   const heroBg = useColorModeValue('gray.100', 'gray.700');
 
   return (
@@ -264,6 +285,7 @@ export default function MarketplacePreview() {
         </Text>
       </Flex>
 
+      {/* Container */}
       <Container maxW="7xl" mb={8}>
         {/* Search / Sort */}
         <VStack spacing={4} mb={8}>
@@ -283,7 +305,7 @@ export default function MarketplacePreview() {
               />
             </InputGroup>
 
-            {/* Sort */}
+            {/* Sort Dropdown */}
             <Select
               size="lg"
               value={sortBy}
@@ -301,7 +323,7 @@ export default function MarketplacePreview() {
           </HStack>
         </VStack>
 
-        {/* Main content */}
+        {/* Main content area */}
         {error ? (
           <Box textAlign="center" p={6}>
             <Text color="red.500" fontWeight="bold">
@@ -323,7 +345,7 @@ export default function MarketplacePreview() {
             {items.map((product) => (
               <ProductCard
                 key={product.id}
-                product={product}
+                product={product}  // Pass the whole product object
                 onFavoriteToggle={handleFavoriteToggle}
                 isFavorited={favorites.has(product.id)}
               />
@@ -331,8 +353,30 @@ export default function MarketplacePreview() {
           </Grid>
         )}
 
-        {/* If you want advanced pagination logic, do data?.meta?.pagination */}
+        {/* Pagination */}
+        {pagination && (
+          <HStack justify="center" mt={8} spacing={4}>
+            <Button
+              isDisabled={page <= 1}
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+            >
+              {t('previous')}
+            </Button>
+            <Text>
+              {t('page_x_of_y', {
+                x: page,
+                y: pagination.pageCount || 1,
+              })}
+            </Text>
+            <Button
+              isDisabled={page >= (pagination.pageCount || 1)}
+              onClick={() => setPage((p) => p + 1)}
+            >
+              {t('next')}
+            </Button>
+          </HStack>
+        )}
       </Container>
     </Box>
   );
-}
+};
