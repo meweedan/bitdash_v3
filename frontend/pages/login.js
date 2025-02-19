@@ -231,8 +231,9 @@ const LoginPage = () => {
     try {
       // Special handling for shop platform
       if (currentPlatform === 'bitshop') {
+        console.log('Checking shop owner status...');
         const ownerResponse = await fetch(
-          `${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
+          `${BASE_URL}/api/owners?filters[user][id][$eq]=${userId}&populate=*`,
           { 
             headers: { 
               Authorization: `Bearer ${token}`,
@@ -243,6 +244,7 @@ const LoginPage = () => {
 
         if (ownerResponse.ok) {
           const { data } = await ownerResponse.json();
+          console.log('Owner data:', data);
           if (data && data.length > 0) {
             return 'owner';
           }
@@ -291,13 +293,21 @@ const LoginPage = () => {
   const determineUserType = async (token, userId) => {
     const platform = currentPlatform.replace('bit', '');
     
-    // Handle shop platform separately
     if (platform === 'shop') {
       const businessType = await checkBusinessType(token, userId);
-      if (businessType) {
-        return businessType; // Will be either 'owner' or 'customer'
+      console.log('Determined business type:', businessType);
+      
+      if (businessType === 'owner') {
+        return 'owner';
+      }
+
+      // Only then check if they're a customer
+      const customerProfileExists = await checkProfileType(token, userId, PROFILE_ENDPOINTS.shop.customer);
+      if (customerProfileExists) {
+        return 'customer';
       }
     }
+
     
     // Handle cash platform customer check
     if (platform === 'cash') {
@@ -333,7 +343,6 @@ const LoginPage = () => {
       }
     }
 
-    // Check against platform-specific profile endpoints
     const platformEndpoints = PROFILE_ENDPOINTS[platform];
     if (!platformEndpoints) {
       return null;

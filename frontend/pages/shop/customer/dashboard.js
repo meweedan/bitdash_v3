@@ -1,5 +1,5 @@
 // pages/shop/customer/dashboard.js
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   Box,
@@ -21,6 +21,7 @@ import {
   Icon,
   Flex,
   useToast,
+  Image,
   Tabs,
   TabList,
   TabPanels,
@@ -101,92 +102,100 @@ const CustomerDashboard = () => {
   const { 
     data: profileData,
     isLoading: isProfileLoading,
-    error: profileError,
-    refetch: refetchProfile
+    error: profileError
   } = useQuery({
     queryKey: ['customerProfile', user?.id],
     queryFn: async () => {
+      if (!user?.id) throw new Error('No user ID found');
+
+      const token = localStorage.getItem('token');
+      if (!token) {
+        router.push('/login');
+        throw new Error('No auth token found');
+      }
+
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/customer-profiles?` +
         `populate[avatar][fields][0]=url` +
         `&populate[wallet][fields][0]=balance` +
         `&populate[wallet][fields][1]=currency` +
-        `&populate[orders][fields][0]=total` +
-        `&populate[favourites][fields][0]=name` +
-        `&populate[favourites][fields][1]=price` +
-        `&populate[favourites][fields][2]=images` +
+        `&populate[shopOrders][populate][0]=shop_items` +
+        `&populate[shopOrders][populate][1]=status` +
+        `&populate[shopOrders][populate][2]=total` +
+        `&populate[reviews][populate][0]=shop_item` +
+        `&populate[reviews][populate][1]=rating` +
+        `&populate[reviews][populate][2]=images` +
+        `&populate[favourites][populate][0]=images` + 
+        `&populate[favourites][populate][1]=name` +
+        `&populate[favourites][populate][2]=price` +
         `&filters[users_permissions_user][id][$eq]=${user.id}`,
         {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
+          headers: { Authorization: `Bearer ${token}` }
         }
       );
-      if (!response.ok) throw new Error('Failed to fetch profile');
+
+      if (!response.ok) {
+        if (response.status === 401) {
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+          router.push('/login');
+          throw new Error('Authentication expired');
+        }
+        throw new Error('Failed to fetch profile');
+      }
+
       return response.json();
     },
-    enabled: !!user?.id,
-    retry: 2,
-    onError: (error) => {
-      toast({
-        title: 'Error fetching profile',
-        description: error.message,
-        status: 'error',
-        duration: 5000
-      });
-    }
+    enabled: !!user?.id
   });
 
   // Fetch orders
-  const {
+  const { 
     data: ordersData,
-    isLoading: isOrdersLoading,
-    error: ordersError
+    isLoading: isOrdersLoading
   } = useQuery({
-    queryKey: ['orders', profileData?.data?.[0]?.id],
+    queryKey: ['shopOrders', profileData?.data?.[0]?.id],
     queryFn: async () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders?` + 
         `filters[customer_profile][id][$eq]=${profileData.data[0].id}` +
+        `&filters[type][$eq]=shop` +  // Add this to filter shop orders only
         `&sort[0]=createdAt:desc` +
         `&populate=*`,
         {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         }
       );
       if (!response.ok) throw new Error('Failed to fetch orders');
       return response.json();
     },
-    enabled: !!profileData?.data?.[0]?.id,
-    refetchInterval: 30000
+    enabled: !!profileData?.data?.[0]?.id
   });
 
   // Calculate order stats
   const orderStats = useMemo(() => {
-    if (!ordersData?.data) return {
-      totalSpent: 0,
-      monthlySpending: 0,
-      totalOrders: 0,
-      completedOrders: 0
-    };
+  if (!ordersData?.data) return {
+    totalSpent: 0,
+    monthlySpending: 0,
+    totalOrders: 0,
+    completedOrders: 0
+  };
 
-    const orders = ordersData.data;
+  const shopOrders = ordersData.data.filter(order => order.attributes.type === 'shop');
     const now = new Date();
     
     return {
-      totalSpent: orders.reduce((sum, order) => 
+      totalSpent: shopOrders.reduce((sum, order) => 
         sum + (parseFloat(order?.attributes?.total) || 0), 0),
-      monthlySpending: orders
+      monthlySpending: shopOrders
         .filter(order => {
           const orderDate = new Date(order?.attributes?.createdAt);
           return orderDate.getMonth() === now.getMonth() && 
-                 orderDate.getFullYear() === now.getFullYear();
+                orderDate.getFullYear() === now.getFullYear();
         })
         .reduce((sum, order) => sum + (parseFloat(order?.attributes?.total) || 0), 0),
-      totalOrders: orders.length,
-      completedOrders: orders.filter(order => 
+      totalOrders: shopOrders.length,
+      completedOrders: shopOrders.filter(order => 
         order?.attributes?.status === 'completed').length
     };
   }, [ordersData]);
@@ -216,8 +225,19 @@ const CustomerDashboard = () => {
     );
   }
 
-  const profile = profileData.data[0].attributes;
-  const wallet = profile.wallet?.data?.attributes;
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+    
+    if (!token || !user) {
+      router.push('/login');
+      return;
+    }
+  }, []);
+
+  // When accessing data
+  const profile = profileData?.data?.[0]?.attributes || {};
+  const wallet = profile?.wallet?.data?.attributes || {};
 
   return (
     <Layout>
@@ -420,7 +440,7 @@ const CustomerDashboard = () => {
               <TabPanels>
                 <TabPanel px={0}>
                   <OrderList 
-                    orders={ordersData?.data?.slice(0, 5) || []}
+                    orders={ordersData?.data?.filter(order => order.attributes.type === 'shop')?.slice(0, 5) || []}
                     isLoading={isOrdersLoading}
                   />
                   </TabPanel>
