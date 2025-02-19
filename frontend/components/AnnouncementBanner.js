@@ -18,24 +18,47 @@ const iconMap = {
   rocket: "🚀"
 };
 
-const AnnouncementBanner = ({ platform = 'bitshop' }) => {
+const AnnouncementBanner = () => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
+  const [platform, setPlatform] = useState('bitdash');
 
+  // Get current platform based on URL/hostname
+  useEffect(() => {
+    const hostname = window.location.hostname;
+    if (hostname.includes('shop')) setPlatform('bitshop');
+    else if (hostname.includes('cash')) setPlatform('bitcash');
+    else if (hostname.includes('food')) setPlatform('bitfood');
+    
+    // For local development
+    if (hostname === 'localhost') {
+      const path = window.location.pathname;
+      if (path.includes('/shop')) setPlatform('bitshop');
+      if (path.includes('/cash')) setPlatform('bitcash');
+      if (path.includes('/food')) setPlatform('bitfood');
+    }
+  }, []);
+
+  // Fetch platform-specific announcements
   const { data: announcements } = useQuery({
-    queryKey: ['announcements'],
+    queryKey: ['announcements', platform],
     queryFn: async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/announcements?` +
-        'filters[status][$eq]=active&' +
-        `filters[target][$in][0]=all&filters[target][$in][1]=${platform === 'bitshop' ? 'owner' : 'customer'}&` +
-        'sort[priority]=desc'
-      );
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/announcements?` +
+          'filters[status][$eq]=active&' +
+          `filters[platform][$eq]=${platform}&` +
+          'sort[priority]=desc'
+        );
 
-      if (!response.ok) throw new Error('Failed to fetch announcements');
-      return response.json();
+        if (!response.ok) throw new Error('Failed to fetch announcements');
+        return response.json();
+      } catch (error) {
+        console.error('Failed to fetch announcements:', error);
+        return { data: [] };
+      }
     },
-    staleTime: 60000 // 1 minute
+    staleTime: 60000 // Cache for 1 minute
   });
 
   if (!announcements?.data?.length) return null;
@@ -43,16 +66,14 @@ const AnnouncementBanner = ({ platform = 'bitshop' }) => {
   return (
     <Box
       position="sticky"
-      top="72px" // Adjust based on your header height
+      top="72px"
       left={0}
       right={0}
       zIndex={998}
-      bg={isDark ? `brand.${platform}.900` : `brand.${platform}.500`}
-      backdropFilter="blur(8px)"
+      bg={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
+      backdropFilter="blur(10px)"
       boxShadow="lg"
       overflow="hidden"
-      borderBottom="1px solid"
-      borderColor={isDark ? `brand.${platform}.800` : `brand.${platform}.400`}
     >
       <MotionBox
         display="flex"
@@ -69,7 +90,7 @@ const AnnouncementBanner = ({ platform = 'bitshop' }) => {
         }}
         style={{ gap: "2rem" }}
       >
-        {[...Array(2)].map((_, repeatIndex) => (
+        {[...Array(10)].map((_, repeatIndex) => (
           <HStack key={repeatIndex} spacing={8}>
             {announcements.data.map((announcement, index) => (
               <HStack
@@ -95,9 +116,9 @@ const AnnouncementBanner = ({ platform = 'bitshop' }) => {
                   {iconMap[announcement.attributes.icon]}
                 </Text>
                 <Text
-                  color={isDark ? 'white' : 'white'}
-                  fontWeight="medium"
-                  fontSize="sm"
+                  color={isDark ? 'white' : 'black'}
+                  fontWeight="large"
+                  fontSize="lg"
                 >
                   {announcement.attributes.text}
                 </Text>
@@ -105,7 +126,7 @@ const AnnouncementBanner = ({ platform = 'bitshop' }) => {
                   w="2px"
                   h="2px"
                   borderRadius="full"
-                  bg={isDark ? 'whiteAlpha.400' : 'whiteAlpha.600'}
+                  bg={isDark ? 'whiteAlpha.400' : 'black'}
                 />
               </HStack>
             ))}

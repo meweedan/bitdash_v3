@@ -273,11 +273,11 @@ const LoginPage = () => {
   const determineUserType = async (token, userId) => {
     const platform = currentPlatform.replace('bit', '');
     
+    // Specific handling for BitCash platform
     if (platform === 'cash') {
       const customerProfileResponse = await fetch(
-        `${BASE_URL}/api/customer-profiles?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+        `${BASE_URL}/api/customer-profiles?filters[user][id][$eq]=${userId}&populate=*`, 
         { 
-          method: 'GET',
           headers: { 
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -298,8 +298,45 @@ const LoginPage = () => {
       }
     }
 
+    // Specific handling for BitShop platform 
+    if (platform === 'shop') {
+      const ownerResponse = await fetch(
+        `${BASE_URL}/api/owners?filters[user][id][$eq]=${userId}&populate=*`,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
+      if (ownerResponse.ok) {
+        const { data: ownerData } = await ownerResponse.json();
+        if (ownerData && ownerData.length > 0) {
+          return 'owner';
+        }
+      }
+
+      const customerResponse = await fetch(
+        `${BASE_URL}/api/customer-profiles?filters[user][id][$eq]=${userId}&populate=*`,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
+      if (customerResponse.ok) {
+        const { data: customerData } = await customerResponse.json();
+        if (customerData && customerData.length > 0) {
+          return 'customer';
+        }
+      }
+    }
+
+    // Check business type for other roles
     const businessType = await checkBusinessType(token, userId);
-    
     if (businessType && BUSINESS_TYPE_ROUTES[businessType]) {
       const route = BUSINESS_TYPE_ROUTES[businessType];
       if (route.platform === platform) {
@@ -307,6 +344,7 @@ const LoginPage = () => {
       }
     }
 
+    // Check platform specific profiles as fallback
     const platformEndpoints = PROFILE_ENDPOINTS[platform];
     if (!platformEndpoints) {
       return null;
@@ -320,7 +358,7 @@ const LoginPage = () => {
     }
 
     return null;
-  };
+    };
 
   const handleRedirect = (userType) => {
     const platformConfig = PLATFORM_ROUTES[currentPlatform.replace('bit', '')];

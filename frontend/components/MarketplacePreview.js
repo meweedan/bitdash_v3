@@ -31,13 +31,6 @@ import { ShoppingBag, Heart, Search, Star } from 'lucide-react';
 // Items per page
 const ITEMS_PER_PAGE = 12;
 
-  const handleViewItem = () => {
-    const slug = name?.toLowerCase().replace(/\s+/g, '-');
-    const shopSlug = owner?.data?.attributes?.shopName?.toLowerCase().replace(/\s+/g, '-') || 'shop';
-    router.push(`/shop/${shopSlug}/${slug}`);
-  };
-
-
 /** Card for a single product item (Amazon style) */
 const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
   const router = useRouter();
@@ -45,30 +38,42 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
   const isDark = colorMode === 'dark';
   const { t } = useTranslation('common');
 
+  // Safely access attributes with fallbacks
+  const attributes = product?.attributes || {};
   const {
-    id,
-    attributes: {
-      name,
-      description,
-      price,
-      stock,
-      status,
-      rating,
-      category,
-      subcategory,
-      images,
-      owner
-    }
-  } = product;
+    name = '',
+    description = '',
+    price = 0,
+    stock = 0,
+    status = 'available',
+    rating = 0,
+    category = '',
+    subcategory = '',
+  } = attributes;
 
-  // Get first image URL if exists
-  const imageUrl = images?.data?.[0]?.attributes?.url
-    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${images.data[0].attributes.url}`
+  // Safely access nested data
+  const images = attributes?.images?.data || [];
+  const owner = attributes?.owner?.data?.attributes || {};
+  
+  // Get image URL
+  const imageUrl = images[0]?.attributes?.url
+    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${images[0].attributes.url}`
     : '/placeholder-product.jpg';
 
-  // Get owner info
-  const shopName = owner?.data?.attributes?.shopName;
-  const ownerLogo = owner?.data?.attributes?.logo?.data?.attributes?.url;
+  // Handle view item with proper error checks
+  const handleViewItem = () => {
+    if (!name || !owner?.shopName) {
+      console.error('Missing required data for navigation', { name, owner });
+      return;
+    }
+    
+    const productSlug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    const shopSlug = owner.shopName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    
+    const url = `/shop/${shopSlug}/${productSlug}`;
+    console.log('Navigating to:', url);
+    router.push(url);
+  };
 
   return (
     <Box
@@ -85,17 +90,13 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
     >
       {/* Product Image */}
       <Box position="relative" h="220px">
-        <Box
-          as="img"
-          src={
-            images?.data?.[0]?.attributes?.url
-              ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${images.data[0].attributes.url}`
-              : '/placeholder-product.jpg'
-          }
+        <Image
+          src={imageUrl}
           alt={name}
           objectFit="cover"
           w="full"
           h="full"
+          fallbackSrc="/placeholder-product.jpg"
         />
         <IconButton
           icon={<Heart fill={isFavorited ? 'red' : 'none'} />}
@@ -104,7 +105,7 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
           right={2}
           colorScheme={isFavorited ? 'red' : 'gray'}
           variant="ghost"
-          onClick={() => onFavoriteToggle(id)}
+          onClick={() => onFavoriteToggle(product.id)}
           aria-label="Favorite"
         />
       </Box>
@@ -112,7 +113,6 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
       {/* Product Details */}
       <Box p={4}>
         <VStack align="stretch" spacing={3}>
-          {/* Title + Stock */}
           <HStack justify="space-between">
             <Text
               fontWeight="semibold"
@@ -127,7 +127,6 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
             </Badge>
           </HStack>
 
-          {/* Description */}
           <Text
             color="gray.500"
             fontSize="sm"
@@ -137,22 +136,19 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
             {description}
           </Text>
 
-          {/* Price, Category, Rating */}
           <HStack justify="space-between" align="center">
             <VStack align="start" spacing={0}>
               <Text fontWeight="bold" fontSize="lg" color="blue.500">
                 {parseFloat(price).toFixed(2)} LYD
               </Text>
-              <HStack spacing={1}>
-                {rating > 0 && (
-                  <>
-                    <Star size={14} color="#f6c84c" />
-                    <Text fontSize="xs" color="gray.600">
-                      {rating.toFixed(1)}
-                    </Text>
-                  </>
-                )}
-              </HStack>
+              {rating > 0 && (
+                <HStack spacing={1}>
+                  <Star size={14} color="#f6c84c" />
+                  <Text fontSize="xs" color="gray.600">
+                    {rating.toFixed(1)}
+                  </Text>
+                </HStack>
+              )}
             </VStack>
             <VStack align="end" spacing={0}>
               {category && <Badge>{category}</Badge>}
@@ -160,7 +156,6 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
             </VStack>
           </HStack>
 
-          {/* View item button */}
           <Button
             size="sm"
             colorScheme="blue"
@@ -174,7 +169,7 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
       </Box>
     </Box>
   );
-}
+};
 
 /**
  * Main MarketplacePreview
@@ -350,11 +345,8 @@ export default function MarketplacePreview() {
             {items.map((product) => (
               <ProductCard
                 key={product.id}
-                product={{
-                  id: product.id,
-                  attributes: product
-                }}
-                onFavorite={handleFavoriteToggle}
+                product={product}  // Pass the whole product object
+                onFavoriteToggle={handleFavoriteToggle}
                 isFavorited={favorites.has(product.id)}
               />
             ))}

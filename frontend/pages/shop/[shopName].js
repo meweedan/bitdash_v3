@@ -118,38 +118,44 @@ const ShopPage = () => {
       if (!shopName) return null;
 
       try {
-        // First, get owner ID from shop name
-        const ownersResponse = await fetch(
+        // Step 1: First find the owner by shopName
+        const ownerResponse = await fetch(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?filters[shopName][$eq]=${shopName}`
         );
 
-        if (!ownersResponse.ok) {
+        if (!ownerResponse.ok) {
+          console.error('Owner lookup failed:', await ownerResponse.text());
           throw new Error('Shop not found');
         }
 
-        const ownersData = await ownersResponse.json();
-        const ownerId = ownersData.data?.[0]?.id;
+        const ownerData = await ownerResponse.json();
+        console.log('Owner lookup result:', ownerData);
 
+        const ownerId = ownerData.data?.[0]?.id;
         if (!ownerId) {
           throw new Error('Shop not found');
         }
 
-        // Then use public-shop endpoint to get full shop data
-        const shopResponse = await fetch(
+        // Step 2: Then use the public-shop endpoint
+        const publicShopResponse = await fetch(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/${ownerId}/public-shop`
         );
 
-        if (!shopResponse.ok) {
+        if (!publicShopResponse.ok) {
+          console.error('Public shop fetch failed:', await publicShopResponse.text());
           throw new Error('Failed to fetch shop data');
         }
 
-        return shopResponse.json();
+        const shopData = await publicShopResponse.json();
+        console.log('Public shop data:', shopData);
+
+        return shopData;
       } catch (error) {
         console.error('Shop fetch error:', error);
         throw error;
       }
     },
-    enabled: !!shopName
+    enabled: Boolean(shopName)
   });
 
   // Loading state
