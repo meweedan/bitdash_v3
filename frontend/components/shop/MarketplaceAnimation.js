@@ -13,32 +13,9 @@ export const MarketplaceAnimation = () => {
   return (
     <Box 
       position="relative" 
-      h="600px" 
+      h="400px" 
       overflow="hidden"
-      perspective="1000px"
     >
-      {/* 3D Grid Background */}
-      <MotionBox
-        position="absolute"
-        width="200%"
-        height="200%"
-        style={{
-          backgroundImage: `linear-gradient(${isDark ? 'rgba(45,55,72,0.3)' : 'rgba(226,232,240,0.3)'} 1px, 
-                           transparent 1px), 
-                           linear-gradient(90deg, ${isDark ? 'rgba(45,55,72,0.3)' : 'rgba(226,232,240,0.3)'} 1px, 
-                           transparent 1px)`,
-          backgroundSize: '40px 40px',
-          transform: 'rotateX(60deg) translateY(-50%)',
-        }}
-        animate={{
-          y: [0, -40],
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 2,
-          ease: "linear"
-        }}
-      />
 
       {/* Floating Stores */}
       {[...Array(5)].map((_, i) => (
@@ -89,31 +66,6 @@ export const MarketplaceAnimation = () => {
           style={{ filter: 'drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.4))' }} 
         />
       </MotionBox>
-
-      {/* Floating Particles */}
-      {[...Array(20)].map((_, i) => (
-        <MotionBox
-          key={i}
-          position="absolute"
-          left={`${Math.random() * 100}%`}
-          top={`${Math.random() * 100}%`}
-          width="4px"
-          height="4px"
-          borderRadius="full"
-          bg={isDark ? "blue.400" : "blue.500"}
-          animate={{
-            y: [-100, 100],
-            x: [-50, 50],
-            opacity: [0, 1, 0],
-            scale: [0, 1, 0]
-          }}
-          transition={{
-            duration: 4 + Math.random() * 2,
-            repeat: Infinity,
-            delay: i * 0.2,
-          }}
-        />
-      ))}
     </Box>
   );
 };

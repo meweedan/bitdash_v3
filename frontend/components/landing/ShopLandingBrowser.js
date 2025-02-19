@@ -18,6 +18,7 @@ import {
   useBreakpointValue,
   Flex,
   Avatar,
+  Link,
   Wrap,
   WrapItem,
   Card,
@@ -68,6 +69,50 @@ export default function ShopLanding() {
   
   const isMobile = useBreakpointValue({ base: true, md: false });
   const headerHeight = useBreakpointValue({ base: '70vh', md: '85vh' });
+
+  const AnnouncementBanner = () => {
+  return (
+    <Box 
+      overflow="hidden" 
+      bg="brand.bitshop.500" 
+      position="relative"
+    >
+      <MotionBox
+        animate={{
+          x: ["0%", "-50%"]
+        }}
+        transition={{
+          x: {
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }
+        }}
+        display="flex"
+        whiteSpace="nowrap"
+      >
+        {[...Array(2)].map((_, idx) => (
+          <HStack key={idx} spacing={8} mx={8}>
+            {[
+              "🔥 Flash Sale: 20% off Electronics",
+              "⚡ New Arrivals Daily",
+              "🎁 Free Shipping on orders over 50 LYD",
+              "💫 Join BitShop, Get 10% Off",
+              "🌟 Verified Sellers Only",
+            ].map((text, index) => (
+              <HStack key={index} spacing={2}>
+                <Text color="white" fontWeight="bold">
+                  {text}
+                </Text>
+                <Box w={2} h={2} borderRadius="full" />
+              </HStack>
+            ))}
+          </HStack>
+        ))}
+      </MotionBox>
+    </Box>
+  );
+};
   
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
@@ -125,6 +170,77 @@ export default function ShopLanding() {
     }
   ];
 
+  const announcements = [
+    {
+      id: 1,
+      icon: "🔥",
+      text: "Flash Sale: 20% off Electronics",
+      link: "/sales/electronics"
+    },
+    {
+      id: 2,
+      icon: "⚡",
+      text: "New Arrivals Daily",
+      link: "/new-arrivals"
+    },
+    {
+      id: 3,
+      icon: "🎁",
+      text: "Free Shipping on orders over 50 LYD",
+      link: "/shipping"
+    },
+    {
+      id: 4,
+      icon: "💫",
+      text: "Join BitShop, Get 10% Off",
+      link: "/signup"
+    }
+  ];
+
+  const ScrollableCategories = () => {
+  return (
+    <Box
+      position="relative"
+      _after={{
+        content: '""',
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        bottom: 0,
+        width: '20px',
+        bgGradient: 'linear(to-l, white, transparent)',
+        pointerEvents: 'none',
+      }}
+      _before={{
+        content: '""',
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        bottom: 0,
+        width: '20px',
+        bgGradient: 'linear(to-r, white, transparent)',
+        pointerEvents: 'none',
+        zIndex: 1,
+      }}
+    >
+      <HStack
+        spacing={4}
+        overflowX="auto"
+        py={2}
+        px={4}
+        className="hide-scrollbar"
+        position="relative"
+      >
+        <Button>
+          <Link href="/categories" passHref>
+          </Link>
+          <Text fontSize="lg" fontWeight="bold">Categories</Text>
+          </Button>
+      </HStack>
+    </Box>
+  );
+};
+
   const stats = [
     {
       label: t('stats_products'),
@@ -150,180 +266,77 @@ export default function ShopLanding() {
 
   return (
     <Box overflowX="hidden">
-      <Box
-        position="relative"
-        height={headerHeight}
-        bgGradient={isDark 
-          ? "linear(to-r, gray.900, brand.bitshop.700, brand.bitshop.900)"
-          : "linear(to-r, white, brand.bitshop.100, brand.bitshop.200)"
-        }
+      <AnnouncementBanner announcements={announcements} />
+      
+      <Container 
+        maxW="8xl" 
+        px={{ base: 4, md: 8 }}
+        py={{ base: 6, md: 10 }}
       >
-        <Box
-          position="absolute"
-          top={0}
-          left={0}
-          right={0}
-          bottom={0}
-          overflow="hidden"
-          pointerEvents="none"
+        <Grid 
+          templateColumns={{ 
+            base: '1fr',
+            lg: '1.2fr 0.8fr' 
+          }}
+          gap={{ base: 8, lg: 16 }}
+          alignItems="center"
         >
-          {[...Array(20)].map((_, i) => (
-            <MotionBox
-              key={i}
-              position="absolute"
-              left={`${Math.random() * 100}%`}
-              top={`${Math.random() * 100}%`}
-              width={`${Math.random() * 5 + 2}px`}
-              height={`${Math.random() * 5 + 2}px`}
-              borderRadius="full"
-              animate={{
-                y: [0, 100, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: Math.random() * 5 + 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </Box>
-
-        <Container maxW="8xl" h="full">
-          <Grid
-            templateColumns={{ base: '1fr', lg: '1fr 1fr' }}
-            gap={{ base: 8, lg: 16 }}
-            h="full"
-            alignItems="center"
+          {/* Left Content */}
+          <VStack
+            align={{ base: 'center', lg: 'start' }}
+            spacing={{ base: 6, md: 8 }}
+            textAlign={{ base: 'center', lg: 'left' }}
           >
-            <VStack
-              align={{ base: 'center', lg: 'start' }}
-              spacing={8}
-              textAlign={{ base: 'center', lg: 'left' }}
+            <MotionBox
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              w="full"
             >
-              <MotionBox
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+              <Heading
+                fontSize={{ base: '4xl', md: '5xl', lg: '6xl' }}
+                fontWeight="black"
+                bgGradient="linear(to-r, brand.bitshop.400, brand.bitshop.700)"
+                bgClip="text"
+                lineHeight="1.2"
               >
-                <Badge
-                  colorScheme="blue"
-                  px={4}
-                  py={2}
-                  borderRadius="full"
-                  fontSize={{ base: 'md', lg: 'lg' }}
-                  textTransform="none"
-                >
-                  {t('hero_badge')}
-                </Badge>
-              </MotionBox>
-
-              <MotionBox
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <Heading
-                  fontSize={{ base: '4xl', md: '5xl', lg: '7xl' }}
-                  fontWeight="black"
-                  lineHeight="shorter"
-                  bgGradient={`linear(to-r, blue.500, purple.500 ${gradientPosition}%, blue.500)`}
-                  bgClip="text"
-                  style={{ backgroundSize: '200% auto' }}
-                >
-                  {t('hero_title')}
-                </Heading>
-              </MotionBox>
-
-              <MotionText
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                {t('hero_title')}
+              </Heading>
+              <Text 
+                mt={4}
                 fontSize={{ base: 'lg', md: 'xl' }}
                 color="gray.500"
-                maxW="600px"
+                maxW={{ base: 'full', lg: '80%' }}
               >
                 {t('hero_description')}
-              </MotionText>
+              </Text>
+            </MotionBox>
+          </VStack>
 
-              <MotionBox
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                w="full"
-                maxW="500px"
-              >
-                <InputGroup size="lg">
-                  <InputLeftElement>
-                    <Search />
-                  </InputLeftElement>
-                  <Input
-                    placeholder={t('search_placeholder')}
-                    bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
-backdropFilter="blur(10px)"
-                    borderRadius="xl"
-                    borderWidth={2}
-                    _focus={{
-                      borderColor: 'blue.500',
-                      boxShadow: 'xl'
-                    }}
-                  />
-                  <Button
-                    variant="bitshop-outline"
-                    zIndex={2}
-                    display={{ base: 'none', md: 'flex' }}
-                  >
-                    {t('search_button')}
-                  </Button>
-                </InputGroup>
-              </MotionBox>
+          {/* Right Animation */}
+          <Box
+            position="relative"
+            height={{ base: '300px', md: '400px', lg: '500px' }}
+            width="full"
+            overflow="hidden"
+            borderRadius="2xl"
+          >
+            <MarketplaceAnimation />
+          </Box>
+        </Grid>
 
-              <Wrap spacing={4} justify={{ base: 'center', lg: 'start' }}>
-                {stats.slice(0, 3).map((stat, index) => (
-                  <WrapItem key={index}>
-                    <MotionBox
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
-                    >
-                      <HStack
-                        spacing={2}
-                        p={2}
-                        borderRadius="lg"
-                        bg={isDark ? 'whiteAlpha.100' : 'blackAlpha.50'}
-                      >
-                        <stat.icon size={20} />
-                        <Text>{stat.value}</Text>
-                      </HStack>
-                    </MotionBox>
-                  </WrapItem>
-                ))}
-              </Wrap>
-            </VStack>
+        {/* Categories */}
+        <Box mt={{ base: 8, md: 12 }}>
+          <ScrollableCategories />
+        </Box>
 
-            <Box
-              display={{ base: 'none', lg: 'block' }}
-              position="relative"
-              height="100%"
-            >
-              <MarketplaceAnimation />
-            </Box>
-          </Grid>
-        </Container>
-      </Box>
+        {/* MarketplacePreview */}
+        <Box mt={{ base: 8, md: 12 }}>
+          <MarketplacePreview />
+        </Box>
+      </Container>
 
       <Box py={20}>
-        <Container maxW="8xl">
-          <VStack spacing={16}>
-            <Heading textAlign="center" size="2xl">
-              {t('marketplace_title')}
-            </Heading>
-            <MarketplacePreview />
-          </VStack>
-        </Container>
-      </Box>
-
-      <Box py={20} bg={isDark ? 'gray.900' : 'gray.50'}>
         <Container maxW="7xl">
           <VStack spacing={16}>
             <VStack spacing={4} textAlign="center">
@@ -445,12 +458,11 @@ backdropFilter="blur(10px)"
       </Box>
 
       <Box 
-        py={20} 
-        bg={isDark ? 'gray.900' : 'gray.50'}
         position="relative"
+        spacing={20}
         overflow="hidden"
       >
-        <Container columns={{ base: 1, lg: 2 }} spacing={16} alignItems="center">
+        <Container columns={{ base: 1, lg: 2 }} spacing={20} alignItems="center">
           <Grid>
             <MotionBox
               initial={{ opacity: 0, x: -50 }}
@@ -458,141 +470,112 @@ backdropFilter="blur(10px)"
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <VStack align="start">
-                <Badge
-                  colorScheme="blue"
-                  px={4}
-                  py={2}
-                  borderRadius="full"
-                  fontSize="md"
-                >
-                  {t('start_selling_badge')}
-                </Badge>
+              <VStack align="start" mb={8}>
                 <Heading size="2xl">
                   {t('start_selling_title')}
                 </Heading>
-                <Text color="gray.500" fontSize="xl">
-                  {t('start_selling_description')}
-                </Text>
-                <HStack spacing={4}>
-                  <Button
-                    size="lg"
-                    colorScheme="bitshop-solid"
-                    rightIcon={<ChevronRight />}
-                  >
-                    {t('create_store_button')}
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="ghost"
-                    rightIcon={<ChevronRight />}
-                  >
-                    {t('learn_more_button')}
-                  </Button>
-                </HStack>
               </VStack>
             </MotionBox>
 
             <MotionBox
-  initial={{ opacity: 0, x: 50 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.5 }}
-  w="full"
->
-  <SimpleGrid 
-    columns={{ base: 1, md: 2 }} 
-    spacing={6}
-    maxW="7xl"
-    mx="auto"
-  >
-    {[
-      {
-        icon: Clock,
-        title: t('quick_setup_title'),
-        description: t('quick_setup_description'),
-        gradient: 'linear(to-r, blue.400, purple.500)'
-      },
-      {
-        icon: Shield,
-        title: t('secure_payments_title'),
-        description: t('secure_payments_description'),
-        gradient: 'linear(to-r, cyan.400, blue.500)'
-      },
-      {
-        icon: Globe,
-        title: t('reach_customers_title'),
-        description: t('reach_customers_description'),
-        gradient: 'linear(to-r, blue.400, teal.500)'
-      },
-      {
-        icon: Heart,
-        title: t('customer_support_title'),
-        description: t('customer_support_description'),
-        gradient: 'linear(to-r, purple.400, pink.500)'
-      }
-    ].map((item, index) => (
-      <MotionBox
-        key={index}
-        whileHover={{ y: -5, scale: 1.02 }}
-        transition={{ duration: 0.2 }}
-      >
-        <Card
-          bg={isDark ? 'whiteAlpha.100' : 'whiteAlpha.500'}
-          backdropFilter="blur(16px)"
-          borderWidth="1px"
-          borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
-          borderRadius="2xl"
-          overflow="hidden"
-          boxShadow="xl"
-          position="relative"
-          _before={{
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '2px',
-            bgGradient: item.gradient,
-          }}
-        >
-          <CardBody p={8}>
-            <VStack spacing={6} align="start">
-              <Box
-                p={3}
-                borderRadius="xl"
-                bgGradient={item.gradient}
-                boxShadow="lg"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              w="full"
+            >
+              <SimpleGrid 
+                columns={{ base: 1, md: 2 }} 
+                spacing={6}
+                maxW="7xl"
+                mx="auto"
               >
-                <item.icon 
-                  size={28} 
-                  color="white"
-                  style={{ filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.2))' }}
-                />
-              </Box>
-              <VStack align="start" spacing={2}>
-                <Heading 
-                  size="md"
-                  bgGradient={item.gradient}
-                  bgClip="text"
-                >
-                  {item.title}
-                </Heading>
-                <Text 
-                  color={isDark ? 'gray.300' : 'gray.600'}
-                  fontSize="md"
-                  lineHeight="tall"
-                >
-                  {item.description}
-                </Text>
-              </VStack>
-            </VStack>
-          </CardBody>
-        </Card>
-      </MotionBox>
-    ))}
-  </SimpleGrid>
-</MotionBox>
+                {[
+                  {
+                    icon: Clock,
+                    title: t('quick_setup_title'),
+                    description: t('quick_setup_description'),
+                    gradient: 'linear(to-r, blue.400, purple.500)'
+                  },
+                  {
+                    icon: Shield,
+                    title: t('secure_payments_title'),
+                    description: t('secure_payments_description'),
+                    gradient: 'linear(to-r, cyan.400, blue.500)'
+                  },
+                  {
+                    icon: Globe,
+                    title: t('reach_customers_title'),
+                    description: t('reach_customers_description'),
+                    gradient: 'linear(to-r, blue.400, teal.500)'
+                  },
+                  {
+                    icon: Heart,
+                    title: t('customer_support_title'),
+                    description: t('customer_support_description'),
+                    gradient: 'linear(to-r, purple.400, pink.500)'
+                  }
+                ].map((item, index) => (
+                  <MotionBox
+                    key={index}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Card
+                      backdropFilter="blur(16px)"
+                      borderWidth="1px"
+                      borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
+                      borderRadius="2xl"
+                      overflow="hidden"
+                      boxShadow="xl"
+                      position="relative"
+                      _before={{
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: '2px',
+                        bgGradient: item.gradient,
+                      }}
+                    >
+                      <CardBody p={8}>
+                        <VStack spacing={6} align="start">
+                          <Box
+                            p={3}
+                            borderRadius="xl"
+                            bgGradient="linear(to-r, brand.bitshop.400, brand.bitshop.700)"
+                            boxShadow="lg"
+                          >
+                            <item.icon 
+                              size={28} 
+                              color="white"
+                              style={{ filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.2))' }}
+                            />
+                          </Box>
+                          <VStack align="start" spacing={2}>
+                            <Heading 
+                              size="md"
+                              bgGradient="linear(to-r, brand.bitshop.400, brand.bitshop.700)"
+                              bgClip="text"
+                            >
+                              {item.title}
+                            </Heading>
+                            <Text 
+                              color={isDark ? 'gray.300' : 'gray.600'}
+                              fontSize="md"
+                              lineHeight="tall"
+                            >
+                              {item.description}
+                            </Text>
+                          </VStack>
+                        </VStack>
+                      </CardBody>
+                    </Card>
+                  </MotionBox>
+                ))}
+              </SimpleGrid>
+            </MotionBox>
           </Grid>
         </Container>
       </Box>
@@ -607,7 +590,7 @@ backdropFilter="blur(10px)"
               transition={{ duration: 0.5 }}
             >
               <Heading size="2xl">{t('cta_title')}</Heading>
-              <Text color="gray.500" fontSize="xl" mt={4}>
+              <Text color="gray.500" fontSize="xl">
                 {t('cta_description')}
               </Text>
             </MotionBox>
@@ -628,7 +611,7 @@ backdropFilter="blur(10px)"
               </Button>
             </MotionBox>
 
-            <Wrap spacing={4} justify="center" pt={8}>
+            <Wrap spacing={4} justify="center">
               {[
                 { label: t('support_247'), icon: Clock },
                 { label: t('secure_platform'), icon: Shield },
@@ -639,8 +622,6 @@ backdropFilter="blur(10px)"
                     spacing={2}
                     p={2}
                     borderRadius="lg"
-                    bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
-backdropFilter="blur(10px)"
                   >
                     <item.icon size={16} />
                     <Text fontSize="sm">{item.label}</Text>

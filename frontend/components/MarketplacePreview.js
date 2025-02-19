@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRouter } from 'react';
 import {
   Box,
   VStack,
@@ -33,6 +33,7 @@ import {
 const ITEMS_PER_PAGE = 12;
 
 const ProductCard = ({ product, onFavorite, isFavorited }) => {
+  const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   const { t } = useTranslation('common');
@@ -48,6 +49,11 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
     subcategory,
     description
   } = product;
+
+  const handleViewItem = () => {
+    const formattedProductName = product.name.toLowerCase().replace(/\s+/g, '-');
+    router.push(`/shop/${product.attributes.owner.data.attributes.shopName}/${formattedProductName}`);
+  };
 
   return (
     <Box
@@ -106,13 +112,14 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
             </HStack>
           </HStack>
 
-          <Button
+           <Button
             leftIcon={<ShoppingBag />}
             variant="bitshop-solid"
             size="sm"
             isDisabled={status !== 'available' || stock <= 0}
+            onClick={handleViewItem}
           >
-            {t('add_to_cart')}
+            {t('see_item')}
           </Button>
         </VStack>
       </Box>

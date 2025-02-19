@@ -1,0 +1,97 @@
+{
+  "kind": "collectionType",
+  "collectionName": "announcements",
+  "info": {
+    "singularName": "announcement",
+    "pluralName": "announcements",
+    "displayName": "Announcement",
+    "description": "Shop announcements and promotions ticker"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "🔥",
+        "⚡",
+        "🎁",
+        "💫",
+        "🌟",
+        "📢",
+        "🏷️",
+        "💎",
+        "🚀"
+      ],
+      "required": true,
+      "default": "📢"
+    },
+    "link": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "endDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "priority": {
+      "type": "integer",
+      "min": 1,
+      "max": 10,
+      "default": 5
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "scheduled",
+        "expired",
+        "disabled"
+      ],
+      "default": "scheduled",
+      "required": true
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "brand.bitshop.500",
+      "regex": "^[a-zA-Z0-9.]+$"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "white",
+      "regex": "^[a-zA-Z0-9.]+$"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "promotion",
+        "announcement",
+        "sale",
+        "news",
+        "update"
+      ],
+      "required": true,
+      "default": "announcement"
+    },
+    "target": {
+      "type": "enumeration",
+      "enum": [
+        "all",
+        "owner",
+        "authenticated",
+        "customer"
+      ],
+      "required": true,
+      "default": "all"
+    }
+  }
+}
