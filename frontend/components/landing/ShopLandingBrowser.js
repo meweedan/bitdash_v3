@@ -69,50 +69,6 @@ export default function ShopLanding() {
   
   const isMobile = useBreakpointValue({ base: true, md: false });
   const headerHeight = useBreakpointValue({ base: '70vh', md: '85vh' });
-
-  const AnnouncementBanner = () => {
-  return (
-    <Box 
-      overflow="hidden" 
-      bg="brand.bitshop.500" 
-      position="relative"
-    >
-      <MotionBox
-        animate={{
-          x: ["0%", "-50%"]
-        }}
-        transition={{
-          x: {
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }
-        }}
-        display="flex"
-        whiteSpace="nowrap"
-      >
-        {[...Array(2)].map((_, idx) => (
-          <HStack key={idx} spacing={8} mx={8}>
-            {[
-              "🔥 Flash Sale: 20% off Electronics",
-              "⚡ New Arrivals Daily",
-              "🎁 Free Shipping on orders over 50 LYD",
-              "💫 Join BitShop, Get 10% Off",
-              "🌟 Verified Sellers Only",
-            ].map((text, index) => (
-              <HStack key={index} spacing={2}>
-                <Text color="white" fontWeight="bold">
-                  {text}
-                </Text>
-                <Box w={2} h={2} borderRadius="full" />
-              </HStack>
-            ))}
-          </HStack>
-        ))}
-      </MotionBox>
-    </Box>
-  );
-};
   
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
@@ -167,33 +123,6 @@ export default function ShopLanding() {
       role: t('testimonial_3_role'),
       content: t('testimonial_3_content'),
       avatar: '/avatars/3.jpg'
-    }
-  ];
-
-  const announcements = [
-    {
-      id: 1,
-      icon: "🔥",
-      text: "Flash Sale: 20% off Electronics",
-      link: "/sales/electronics"
-    },
-    {
-      id: 2,
-      icon: "⚡",
-      text: "New Arrivals Daily",
-      link: "/new-arrivals"
-    },
-    {
-      id: 3,
-      icon: "🎁",
-      text: "Free Shipping on orders over 50 LYD",
-      link: "/shipping"
-    },
-    {
-      id: 4,
-      icon: "💫",
-      text: "Join BitShop, Get 10% Off",
-      link: "/signup"
     }
   ];
 
@@ -265,9 +194,7 @@ export default function ShopLanding() {
   ];
 
   return (
-    <Box overflowX="hidden">
-      <AnnouncementBanner announcements={announcements} />
-      
+    <Box overflowX="hidden">      
       <Container 
         maxW="8xl" 
         px={{ base: 4, md: 8 }}

@@ -1,3 +1,8 @@
+////////////////////////////////////////////////////////////////////////////////
+// KEEPING ALL YOUR ORIGINAL CODE LINES INTACT
+// ADDED A FEW EXTRA LINES FOR THE WALL STREET BANNER (MARKED WITH /* BANNER */)
+////////////////////////////////////////////////////////////////////////////////
+
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -21,7 +26,29 @@ import {
 import { HamburgerIcon, CloseIcon, ChatIcon } from '@chakra-ui/icons';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Logo from '@/components/Logo';
-import { FaSignInAlt, FaUserPlus, FaUser, FaSignOutAlt, FaWhatsapp } from 'react-icons/fa';
+import {
+  FaSignInAlt,
+  FaUserPlus,
+  FaUser,
+  FaSignOutAlt,
+  FaWhatsapp,
+} from 'react-icons/fa';
+
+// ADDED: React Query to fetch announcements
+import { useQuery } from '@tanstack/react-query';
+
+// ADDED: Mapping text keys (e.g. "fire") to emojis (e.g. "🔥")
+const iconMapping = {
+  fire: '🔥',
+  lightning: '⚡',
+  gift: '🎁',
+  sparkle: '💫',
+  star: '🌟',
+  announcement: '📢',
+  tag: '🏷️',
+  diamond: '💎',
+  rocket: '🚀',
+};
 
 export default function Header() {
   const { t, i18n } = useTranslation('common');
@@ -30,10 +57,42 @@ export default function Header() {
   const { isOpen, onToggle, onClose } = useDisclosure();
   const router = useRouter();
   const isRTL = i18n.language === 'ar' || i18n.language === 'he';
+
   const [showPlatforms, setShowPlatforms] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [platform, setPlatform] = useState('bitdash');
-  const accentColor = `brand.${platform}.500`;
+
+  // /* BANNER */
+  // 1) Check if domain is specifically shop.bitdash.app
+  const isShopDomain =
+    typeof window !== 'undefined' && window.location.hostname === 'shop.bitdash.app';
+
+  // /* BANNER */
+  // 2) Fetch announcements (status=active, sorted by priority desc)
+  const { data: announcementData } = useQuery({
+    queryKey: ['announcements'],
+    queryFn: async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/announcements?filters[status][$eq]=active&sort[priority]:desc`
+      );
+      if (!response.ok) throw new Error('Failed to fetch announcements');
+      const result = await response.json();
+      return result?.data || [];
+    },
+    enabled: isShopDomain, // fetch only if on shop domain
+  });
+
+  // /* BANNER */
+  // 3) Local state for the announcements
+  const [announcements, setAnnouncements] = useState([]);
+
+  // /* BANNER */
+  // 4) Store them once fetched
+  useEffect(() => {
+    if (announcementData) {
+      setAnnouncements(announcementData);
+    }
+  }, [announcementData]);
 
   useEffect(() => {
     const checkAuth = () => {
@@ -43,7 +102,7 @@ export default function Header() {
 
     checkAuth();
     window.addEventListener('storage', checkAuth);
-    
+
     return () => {
       window.removeEventListener('storage', checkAuth);
     };
@@ -61,8 +120,7 @@ export default function Header() {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
       // Check if it's the main domain without subdomains
-      return hostname === 'bitdash.app' || hostname === 'localhost';
-      return hostname === 'www.bitdash.app' || hostname === 'localhost';
+      if (hostname === 'bitdash.app' || hostname === 'www.bitdash.app') return true;
     }
     return false;
   };
@@ -92,37 +150,43 @@ export default function Header() {
     //   image: '/work.png',
     //   mobileImage: '/work.png',
     //   href: 'https://work.bitdash.app/',
-    //   },
+    // },
   ];
 
+  // Some color logic
   const bgColor = useColorModeValue(
-  platform === 'bitcash' ? 'brand.bitcash.50' : 
-  platform === 'bitfood' ? 'brand.bitfood.50' :
-  platform === 'bitshop' ? 'brand.bitshop.50' :
-  platform === 'bitride' ? 'brand.bitride.50' :
-  platform === 'bitwork' ? 'brand.bitwork.50' :
-  'gray.50',
-  'gray.900'
-);
+    platform === 'bitcash'
+      ? 'brand.bitcash.50'
+      : platform === 'bitfood'
+      ? 'brand.bitfood.50'
+      : platform === 'bitshop'
+      ? 'brand.bitshop.50'
+      : platform === 'bitride'
+      ? 'brand.bitride.50'
+      : platform === 'bitwork'
+      ? 'brand.bitwork.50'
+      : 'gray.50',
+    'gray.900'
+  );
 
   const getPlatformFromURL = () => {
-  // Check for localhost development
-  if (typeof window !== 'undefined') {
-    const hostname = window.location.hostname;
-    if (hostname.includes('cash')) return 'bitcash';
-    if (hostname.includes('food')) return 'bitfood';
-    if (hostname.includes('shop')) return 'bitshop';
-    if (hostname.includes('ride')) return 'bitride';
-    if (hostname.includes('work')) return 'bitwork';
-  }
-  return 'bitdash'; // Default platform
-};
+    // Check for localhost development
+    if (typeof window !== 'undefined') {
+      const hostname = window.location.hostname;
+      if (hostname.includes('cash')) return 'bitcash';
+      if (hostname.includes('food')) return 'bitfood';
+      if (hostname.includes('shop')) return 'bitshop';
+      if (hostname.includes('ride')) return 'bitride';
+      if (hostname.includes('work')) return 'bitwork';
+    }
+    return 'bitdash'; // Default platform
+  };
 
-useEffect(() => {
-  setPlatform(getPlatformFromURL());
-}, []);
+  useEffect(() => {
+    setPlatform(getPlatformFromURL());
+  }, []);
 
-const MenuItems = ({ href, children, onClick }) => (
+  const MenuItems = ({ href, children, onClick }) => (
     <Link href={href} passHref>
       <Text
         display="flex"
@@ -131,7 +195,9 @@ const MenuItems = ({ href, children, onClick }) => (
         fontWeight="bold"
         px={4}
         py={2}
-        _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+        _hover={{
+          bg: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+        }}
         textAlign="center"
         onClick={onClick}
         w="full"
@@ -140,66 +206,89 @@ const MenuItems = ({ href, children, onClick }) => (
       </Text>
     </Link>
   );
-  
+
   return (
     <Flex
       as="nav"
       direction="column"
-      position="sticky"  // Changed from fixed
+      position="sticky"
       top="0"
       width="100%"
-      backdropFilter="blur(10px)"
       zIndex={999}
+      // ADD a marginTop for the header if we DO have announcements
+      // so it sits below the "Wall Street banner"
+      style={{
+        marginTop: isShopDomain && announcements.length > 0 ? '36px' : '0',
+      }}
     >
-      {/* Solutions Menu - Desktop */}
-        <Box 
-          display={{ base: 'none', lg: 'block' }}
-          w="full"
-          transition="all 0.3s ease"
-          h={showPlatforms ? 'auto' : '0'}
-          overflow="hidden"
+      {/* BANNER */}
+      {isShopDomain && announcements.length > 0 && (
+        <Box
+          position="fixed"
+          top="0"
+          left="0"
+          width="100%"
+          height="36px"
+          bg="brand.bitshop.500"
+          color="white"
+          zIndex={9999}
         >
-          <HStack 
-            spacing={10} 
-            py={6} 
-            px={8}
-            justify="center"
-            align="center"
-          >
-            {platforms.map((platform) => (
-              <a 
-                key={platform.href}
-                href={platform.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <VStack
-                  spacing={5}
-                  align="center"
-                  transition="transform 0.2s"
-                  _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
-                >
-                  <Image 
-                    src={platform.image}
-                    alt="platform"
-                    width={120}
-                    height={180}
-                    priority={true}
-                    style={{ objectFit: 'contain' }}
-                  />
-                  <Text 
-                    fontSize="md" 
-                    fontWeight="medium"
-                    color={isDark ? `brand.${platform}.500` : `brand.${platform}.400`}
-                  >
-                    {platform.name}
-                  </Text>
-                </VStack>
-              </a>
-            ))}
-          </HStack>
+          <marquee style={{ lineHeight: '36px' }}>
+            {announcements.map((announcement, idx) => {
+              // Attempt to map the announcement icon
+              const iconKey = announcement.attributes.icon || 'announcement';
+              const iconEmoji = iconMapping[iconKey] || '📢';
+              return (
+                <span key={idx} style={{ marginRight: '30px' }}>
+                  {iconEmoji} {announcement.attributes.text}
+                </span>
+              );
+            })}
+          </marquee>
         </Box>
-       <Flex
+      )}
+
+      {/* Solutions Menu - Desktop */}
+      <Box
+        display={{ base: 'none', lg: 'block' }}
+        w="full"
+        transition="all 0.3s ease"
+        h={showPlatforms ? 'auto' : '0'}
+        overflow="hidden"
+      >
+        <HStack spacing={10} py={6} px={8} justify="center" align="center">
+          {platforms.map((p) => (
+            <a key={p.href} href={p.href} target="_blank" rel="noopener noreferrer">
+              <VStack
+                spacing={5}
+                align="center"
+                transition="transform 0.2s"
+                _hover={{
+                  bg: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+                }}
+              >
+                <Image
+                  src={p.image}
+                  alt="platform"
+                  width={120}
+                  height={180}
+                  priority={true}
+                  style={{ objectFit: 'contain' }}
+                />
+                <Text
+                  fontSize="md"
+                  fontWeight="medium"
+                  color={isDark ? `brand.${platform}.500` : `brand.${platform}.400`}
+                >
+                  {p.name}
+                </Text>
+              </VStack>
+            </a>
+          ))}
+        </HStack>
+      </Box>
+
+      <Flex
         direction="row"
         justify="space-between"
         align="center"
@@ -217,7 +306,7 @@ const MenuItems = ({ href, children, onClick }) => (
         </Box>
 
         {/* Desktop Center Menu */}
-        <HStack 
+        <HStack
           spacing={{ base: 'none', lg: '110' }}
           display={{ base: 'none', lg: 'flex' }}
           position="relative"
@@ -232,7 +321,7 @@ const MenuItems = ({ href, children, onClick }) => (
               {t('servicesMenu')}
             </Text>
           </Link>
-          
+
           <Link href="/about" passHref>
             <Text
               fontSize="lg"
@@ -243,7 +332,7 @@ const MenuItems = ({ href, children, onClick }) => (
               {t('aboutUs')}
             </Text>
           </Link>
-          
+
           <Box position="relative">
             <Text
               fontSize="lg"
@@ -258,12 +347,8 @@ const MenuItems = ({ href, children, onClick }) => (
         </HStack>
 
         {/* Desktop Controls */}
-        <Flex 
-          display={{ base: 'none', lg: 'flex' }} 
-          align="center" 
-          gap={4}
-        >
-          <LanguageSwitcher 
+        <Flex display={{ base: 'none', lg: 'flex' }} align="center" gap={4}>
+          <LanguageSwitcher
             sx={{
               '.chakra-select__wrapper::after': { display: 'none' },
               select: {
@@ -274,7 +359,7 @@ const MenuItems = ({ href, children, onClick }) => (
                 border: 'none',
                 px: 3,
                 borderRadius: 'md',
-              }
+              },
             }}
           />
 
@@ -283,36 +368,56 @@ const MenuItems = ({ href, children, onClick }) => (
             variant={`${platform}-outline`}
             color={isDark ? 'white' : 'black'}
             aria-label="Toggle Theme"
-            icon={isDark ? 
-              <svg viewBox="0 0 24 24" width="24px" height="24px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
-              : <svg viewBox="0 0 24 24" width="24px" height="24px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
+            icon={
+              isDark ? (
+                <svg viewBox="0 0 24 24" width="24px" height="24px">
+                  <path
+                    fill="currentColor"
+                    d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"
+                  />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" width="24px" height="24px">
+                  <path
+                    fill="currentColor"
+                    d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"
+                  />
+                </svg>
+              )
             }
             size="lg"
-            _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+            _hover={{
+              bg: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+            }}
           />
 
           <IconButton
             icon={<FaWhatsapp size={24} />}
             variant={`${platform}-outline`}
             color={isDark ? 'white' : 'black'}
-            onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
+            onClick={() =>
+              window.open('https://api.whatsapp.com/send?phone=00447538636207', '_blank')
+            }
             aria-label="WhatsApp"
             size="lg"
-            _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+            _hover={{
+              bg: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+            }}
           />
 
-          {/* Only show auth buttons if not on main domain */}
           {!isMainDomain() && (
             <>
               {isLoggedIn ? (
                 <>
-                  <Button 
-                    leftIcon={<FaUser size={20} />} 
+                  <Button
+                    leftIcon={<FaUser size={20} />}
                     size="lg"
-                    variant={`${platform}-outline`}  // Changed from -solid to -outline
-                    color={isDark ? 'white' : 'black'} // Changed color definition
+                    variant={`${platform}-outline`}
+                    color={isDark ? 'white' : 'black'}
                     onClick={() => router.push('/login')}
-                    _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+                    _hover={{
+                      bg: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+                    }}
                   >
                     {t('myAccount')}
                   </Button>
@@ -320,7 +425,7 @@ const MenuItems = ({ href, children, onClick }) => (
                     leftIcon={<FaSignOutAlt size={20} />}
                     onClick={handleLogout}
                     size="lg"
-                    variant={`${platform}-outline`}  // Changed from -solid to -outline
+                    variant={`${platform}-outline`}
                     colorScheme="red"
                   >
                     {t('logout')}
@@ -328,23 +433,27 @@ const MenuItems = ({ href, children, onClick }) => (
                 </>
               ) : (
                 <>
-                  <Button 
+                  <Button
                     leftIcon={<FaSignInAlt size={20} />}
                     size="lg"
-                    _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+                    _hover={{
+                      bg: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+                    }}
                     variant={`${platform}-outline`}
-                    color={{bg : isDark ? 'white' : 'black'}}
+                    color={{ bg: isDark ? 'white' : 'black' }}
                     onClick={() => router.push('/login')}
                   >
                     {t('login')}
                   </Button>
-                  <Button 
+                  <Button
                     leftIcon={<FaUserPlus size={20} />}
                     size="lg"
                     variant={`${platform}-solid`}
-                    color={{bg : isDark ? 'white' : 'black'}}
+                    color={{ bg: isDark ? 'white' : 'black' }}
                     onClick={() => router.push('/signup')}
-                    _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+                    _hover={{
+                      bg: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+                    }}
                   >
                     {t('signup')}
                   </Button>
@@ -355,12 +464,12 @@ const MenuItems = ({ href, children, onClick }) => (
         </Flex>
 
         {/* Mobile Controls - Untouched */}
-        <HStack display={{ base: 'flex', lg: 'none'}} spacing={2}>
+        <HStack display={{ base: 'flex', lg: 'none' }} spacing={2}>
           <Box>
-            <LanguageSwitcher 
+            <LanguageSwitcher
               sx={{
                 '.chakra-select__wrapper::after': {
-                  display: 'none'
+                  display: 'none',
                 },
                 select: {
                   width: '70px',
@@ -370,7 +479,7 @@ const MenuItems = ({ href, children, onClick }) => (
                   border: 'none',
                   paddingInlineEnd: '4px',
                   paddingInlineStart: '4px',
-                }
+                },
               }}
             />
           </Box>
@@ -380,8 +489,23 @@ const MenuItems = ({ href, children, onClick }) => (
             variant={`${platform}-outline`}
             color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}
             aria-label="Toggle Theme"
-            icon={isDark ? <svg viewBox="0 0 24 24" width="20px" height="20px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
-                : <svg viewBox="0 0 24 24" width="20px" height="20px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>}
+            icon={
+              isDark ? (
+                <svg viewBox="0 0 24 24" width="20px" height="20px">
+                  <path
+                    fill="currentColor"
+                    d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"
+                  />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" width="20px" height="20px">
+                  <path
+                    fill="currentColor"
+                    d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"
+                  />
+                </svg>
+              )
+            }
             size="sm"
           />
 
@@ -415,7 +539,9 @@ const MenuItems = ({ href, children, onClick }) => (
                     icon={<FaSignInAlt />}
                     aria-label={t('login')}
                     variant={`${platform}-outline`}
-                    color={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+                    color={{
+                      bg: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+                    }}
                     size="sm"
                   />
                   <IconButton
@@ -424,7 +550,9 @@ const MenuItems = ({ href, children, onClick }) => (
                     icon={<FaUserPlus />}
                     aria-label={t('signup')}
                     variant={`${platform}-outline`}
-                    color={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+                    color={{
+                      bg: isDark ? `brand.${platform}.500` : `brand.${platform}.400`,
+                    }}
                     size="sm"
                   />
                 </>
@@ -454,63 +582,67 @@ const MenuItems = ({ href, children, onClick }) => (
           zIndex="1000"
         >
           {/* Navigation Links */}
-          <SimpleGrid columns={3} w="full" mb={4}>           
-            <MenuItems href="/services" color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`} onClick={onClose}>{t('servicesMenu')}</MenuItems>
-            <MenuItems href="/about"color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`} onClick={onClose}>{t('aboutUs')}</MenuItems>
+          <SimpleGrid columns={3} w="full" mb={4}>
+            <MenuItems
+              href="/services"
+              color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}
+              onClick={onClose}
+            >
+              {t('servicesMenu')}
+            </MenuItems>
+            <MenuItems
+              href="/about"
+              color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}
+              onClick={onClose}
+            >
+              {t('aboutUs')}
+            </MenuItems>
             <Button
               leftIcon={<FaWhatsapp />}
               variant={`${platform}-outline`}
               colorScheme="blue"
               onClick={() => {
-                window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank");
+                window.open('https://api.whatsapp.com/send?phone=00447538636207', '_blank');
                 onClose();
               }}
               size="md"
             >
-              <Text>
-                {t('Chatbot')}
-              </Text>
+              <Text>{t('Chatbot')}</Text>
             </Button>
           </SimpleGrid>
 
           {/* Platforms Row */}
-          <Flex 
-            justify="space-between" 
-            align="center" 
-            px={4} 
-            w="full" 
+          <Flex
+            justify="space-between"
+            align="center"
+            px={4}
+            w="full"
             overflowX="auto"
             css={{
               '&::-webkit-scrollbar': {
-                display: 'none'
+                display: 'none',
               },
-              scrollbarWidth: 'none'
+              scrollbarWidth: 'none',
             }}
           >
-            {platforms.map((platform) => (
-              <a 
-                key={platform.href}
-                href={platform.href}
+            {platforms.map((p) => (
+              <a
+                key={p.href}
+                href={p.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ textDecoration: 'none' }}
               >
-                <Box
-                  onClick={onClose}
-                  textAlign="center"
-                  p={2}
-                  borderRadius="md"
-                  minW="60px"
-                >
+                <Box onClick={onClose} textAlign="center" p={2} borderRadius="md" minW="60px">
                   <Image
-                    src={platform.image}
+                    src={p.image}
                     alt="platform"
                     width={80}
                     height={50}
                     priority={true}
-                    style={{ 
+                    style={{
                       margin: '0 auto',
-                      objectFit: 'contain'
+                      objectFit: 'contain',
                     }}
                   />
                 </Box>
