@@ -66,10 +66,11 @@ const AnnouncementBanner = () => {
   return (
     <Box
       position="sticky"
-      top="85px"
+      top="100px"
       left={0}
       right={0}
       zIndex={998}
+      bg={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
       backdropFilter="blur(10px)"
       boxShadow="lg"
       overflow="hidden"
@@ -97,6 +98,7 @@ const AnnouncementBanner = () => {
                 spacing={3}
                 px={4}
                 py={2}
+                bg={isDark ? 'whiteAlpha.100' : 'whiteAlpha.200'}
                 cursor={announcement.attributes.link ? 'pointer' : 'default'}
                 onClick={() => {
                   if (announcement.attributes.link) {
@@ -105,7 +107,7 @@ const AnnouncementBanner = () => {
                 }}
                 _hover={{
                   bg: isDark ? 'whiteAlpha.200' : 'whiteAlpha.300',
-                  transform: 'translateY(-1px)',
+                  transform: 'translateY(-5px)',
                 }}
                 transition="all 0.2s"
               >
@@ -114,15 +116,14 @@ const AnnouncementBanner = () => {
                 </Text>
                 <Text
                   color={isDark ? 'white' : 'black'}
-                  fontWeight="xlarge"
-                  fontSize="xl"
+                  fontWeight="large"
+                  fontSize="lg"
                 >
                   {announcement.attributes.text}
                 </Text>
                 <Box
                   w="2px"
                   h="2px"
-                  bg={isDark ? 'white' : 'black'}
                 />
               </HStack>
             ))}

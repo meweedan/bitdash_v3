@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
-import {
-  Box,
-  Button,
-  Input,
-  FormControl,
-  FormLabel,
-  Heading,
-  Text,
-  VStack,
-  useToast,
-  useColorMode
+import { 
+  Box, 
+  Button, 
+  Input, 
+  FormControl, 
+  FormLabel, 
+  Heading, 
+  Text, 
+  VStack, 
+  useToast, 
+  useColorMode 
 } from '@chakra-ui/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -17,48 +17,31 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/components/Layout';
 
-/**
- * Platform route definitions: food, cash, shop
- * - The userType keys must match the ones we decide in code
- */
 const PLATFORM_ROUTES = {
   food: {
     operator: '/operator/dashboard',
     customer: '/customer/dashboard',
     captain: '/captain/dashboard',
-    baseUrl:
-      process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000'
-        : 'https://food.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://food.bitdash.app'
   },
   cash: {
     merchant: '/merchant/dashboard',
     agent: '/agent/dashboard',
     customer: '/client/dashboard',
-    baseUrl:
-      process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000'
-        : 'https://cash.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://cash.bitdash.app'
   },
   shop: {
     owner: '/owner/dashboard',
     customer: '/customer/dashboard',
-    baseUrl:
-      process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000'
-        : 'https://shop.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://shop.bitdash.app'
   }
 };
 
-/** 
- * For each platform (food, cash, shop), we have endpoints 
- * that define user profiles: owners, captains, etc.
- */
 const PROFILE_ENDPOINTS = {
   food: {
     operator: '/api/operators',
-    captain: '/api/captains',
-    customer: '/api/customer-profiles'
+    customer: '/api/customer-profiles',
+    captain: '/api/captains'
   },
   cash: {
     merchant: '/api/operators',
@@ -71,18 +54,24 @@ const PROFILE_ENDPOINTS = {
   }
 };
 
-/** 
- * Figure out if we are on bitfood, bitcash, or bitshop 
- * or fallback to bitdash 
- */
-function getPlatformFromURL() {
+const BUSINESS_TYPE_ROUTES = {
+  restaurant: { platform: 'food', userType: 'operator' },
+  captain: { platform: 'food', userType: 'captain' },
+  merchant: { platform: 'cash', userType: 'merchant' },
+  agent: { platform: 'cash', userType: 'agent' },
+  customer: { platform: 'cash', userType: 'customer' },
+  owner: { platform: 'shop', userType: 'owner' },
+  client: { platform: 'food', userType: 'customer' },
+  customer: { platform: 'shop', userType: 'customer' }
+};
+
+const getPlatformFromURL = () => {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
     if (hostname.includes('cash')) return 'bitcash';
     if (hostname.includes('food')) return 'bitfood';
     if (hostname.includes('shop')) return 'bitshop';
-
-    // dev usage
+    
     if (hostname === 'localhost') {
       const path = window.location.pathname;
       if (path.includes('/cash')) return 'bitcash';
@@ -91,12 +80,9 @@ function getPlatformFromURL() {
     }
   }
   return 'bitdash';
-}
+};
 
-/** 
- * Return brand color sets
- */
-function getColorScheme(platform, isDark) {
+const getColorScheme = (platform, isDark) => {
   const colorSchemes = {
     bitcash: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
@@ -127,65 +113,61 @@ function getColorScheme(platform, isDark) {
       border: 'brand.bitdash.500'
     }
   };
+
   return colorSchemes[platform] || colorSchemes.bitdash;
-}
+};
 
-export default function LoginPage() {
+const LoginPage = () => {
   const { t } = useTranslation('common');
-  const router = useRouter();
-  const toast = useToast();
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
-
-  const [currentPlatform, setCurrentPlatform] = useState('bitdash');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
+  const toast = useToast();
+  const router = useRouter();
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+  const [currentPlatform, setCurrentPlatform] = useState('bitdash');
   const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
-  const colors = getColorScheme(currentPlatform, isDark);
 
-  // On mount, figure out platform
   useEffect(() => {
     const platform = getPlatformFromURL();
     setCurrentPlatform(platform);
     checkAuth();
   }, []);
 
-  // Basic styling
+  const colors = getColorScheme(currentPlatform, isDark);
+
   const formStyles = {
-    maxWidth: '600px',
-    mx: 'auto',
+    maxWidth: "600px",
+    mx: "auto",
     mt: 8,
     p: 6,
-    borderColor: colors.border
+    borderColor: colors.border,
   };
 
   const inputStyles = {
-    variant: 'filled',
+    variant: "filled",
     bg: isDark ? 'whiteAlpha.50' : 'white',
-    borderWidth: '1px',
+    borderWidth: "1px",
     borderColor: colors.border,
     _hover: {
-      borderColor: colors.hover
+      borderColor: colors.hover,
     },
     _focus: {
-      borderColor: colors.hover
+      borderColor: colors.hover,
     }
   };
 
   const buttonStyles = {
-    variant: currentPlatform.includes('bit')
-      ? `${currentPlatform}-solid`
-      : 'bitdash-solid',
+    variant: currentPlatform.includes('bit') ? `${currentPlatform}-solid` : 'bitdash-solid',
     bg: colors.button,
     color: 'white',
     _hover: {
       bg: colors.hover,
-      transform: 'translateY(-2px)'
+      transform: 'translateY(-2px)',
     },
     _active: {
-      transform: 'translateY(0)'
+      transform: 'translateY(0)',
     },
     transition: 'all 0.2s',
     _disabled: {
@@ -194,172 +176,192 @@ export default function LoginPage() {
     }
   };
 
-  /** 
-   * Check if user has a wallet 
-   * (used for bitcash logic, possibly)
-   */
-  async function checkWalletExists(token, userId) {
+  const checkWalletExists = async (token, userId) => {
     try {
-      const res = await fetch(
-        `${BASE_URL}/api/wallets?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
+      const walletResponse = await fetch(
+        `${BASE_URL}/api/wallets?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+        { 
+          method: 'GET',
+          headers: { 
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
-          }
+          } 
         }
       );
-      if (!res.ok) return false;
-      const json = await res.json();
-      return json?.data && json.data.length > 0;
-    } catch (err) {
-      console.error('Error checking wallet:', err);
-      return false;
-    }
-  }
 
-  /** 
-   * For bitshop, we check owners 
-   * If found => 'owner'
-   */
-  async function checkBitshopOwner(token, userId) {
-    const res = await fetch(
-      `${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    if (!res.ok) return false;
-    const json = await res.json();
-    if (json?.data && json.data.length > 0) return true;
-    return false;
-  }
-
-  /** 
-   * Check or create fallback for e.g. 'customer' 
-   * in case no advanced record is found
-   */
-  async function checkProfileType(token, userId, endpoint) {
-    try {
-      const res = await fetch(
-        `${BASE_URL}${endpoint}?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        }
-      );
-      if (!res.ok) {
-        console.error('Profile type check fail:', await res.text());
+      if (!walletResponse.ok) {
+        console.error('Wallet check failed:', await walletResponse.text());
         return false;
       }
-      const { data } = await res.json();
+
+      const { data } = await walletResponse.json();
       return data && data.length > 0;
-    } catch (err) {
-      console.error('Profile type check error:', err);
+    } catch (error) {
+      console.error('Wallet existence check error:', error);
       return false;
     }
-  }
+  };
 
-  /**
-   * Decide userType for the current platform
-   * Return e.g. 'owner', 'customer', 'operator', 'merchant', etc.
-   * If no special record found, fallback to 'customer'
-   */
-  async function determineUserType(token, userId) {
-    const rawPlatform = currentPlatform.replace('bit', ''); // e.g. 'shop', 'food', 'cash', 'dash'
+  const checkBusinessType = async (token, userId) => {
+    try {
+      if (currentPlatform === 'bitshop') {
+        const ownerResponse = await fetch(
+          `${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
 
-    // 1) If it's 'shop', check if user is an owner
-    if (rawPlatform === 'shop') {
-      const isOwner = await checkBitshopOwner(token, userId);
-      if (isOwner) return 'owner';
-      // fallback => 'customer'
-      return 'customer';
+        if (ownerResponse.ok) {
+          const { data } = await ownerResponse.json();
+          if (data && data.length > 0) {
+            return 'owner';
+          }
+        }
+      }
+
+      const responses = await Promise.all([
+        fetch(`${BASE_URL}/api/operators?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+          { headers: { Authorization: `Bearer ${token}` } }),
+        fetch(`${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+          { headers: { Authorization: `Bearer ${token}` } })
+      ]);
+
+      for (const response of responses) {
+        if (response.ok) {
+          const { data } = await response.json();
+          if (data && data.length > 0) {
+            if (response.url.includes('/api/owners')) {
+              return 'owner';
+            }
+            return data[0]?.attributes?.businessType;
+          }
+        }
+      }
+
+      return null;
+    } catch (error) {
+      console.error('Business type check error:', error);
+      return null;
+    }
+  };
+
+  const checkProfileType = async (token, userId, endpoint) => {
+    try {
+      const response = await fetch(
+        `${BASE_URL}${endpoint}?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
+        { 
+          method: 'GET',
+          headers: { 
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          } 
+        }
+      );
+
+      if (!response.ok) {
+        console.error('Profile type check failed:', await response.text());
+        return false;
+      }
+
+      const { data } = await response.json();
+      return data && data.length > 0;
+    } catch (error) {
+      console.error('Profile type check error:', error);
+      return false;
+    }
+  };
+
+  const determineUserType = async (token, userId) => {
+    const platform = currentPlatform.replace('bit', '');
+    
+    if (platform === 'cash') {
+      const customerProfileResponse = await fetch(
+        `${BASE_URL}/api/customer-profiles?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+        { 
+          method: 'GET',
+          headers: { 
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          } 
+        }
+      );
+
+      if (customerProfileResponse.ok) {
+        const { data: customerData } = await customerProfileResponse.json();
+        
+        if (customerData && customerData.length > 0) {
+          const hasWallet = await checkWalletExists(token, userId);
+          
+          if (hasWallet) {
+            return 'customer';
+          }
+        }
+      }
     }
 
-    // 2) If it's 'cash'
-    if (rawPlatform === 'cash') {
-      // check if user has a wallet => if yes => 'customer'
-      // or if they exist in operator => 'merchant', or agent => 'agent'
-      // We'll keep it simple:
-      // if user has a wallet => 'customer'
-      const hasWallet = await checkWalletExists(token, userId);
-      if (hasWallet) return 'customer';
-
-      // else check if merchant
-      const merchantProfile = await checkProfileType(token, userId, '/api/operators');
-      if (merchantProfile) return 'merchant';
-
-      // else check if agent
-      const agentProfile = await checkProfileType(token, userId, '/api/agents');
-      if (agentProfile) return 'agent';
-
-      // fallback => 'customer'
-      return 'customer';
+    const businessType = await checkBusinessType(token, userId);
+    
+    if (businessType && BUSINESS_TYPE_ROUTES[businessType]) {
+      const route = BUSINESS_TYPE_ROUTES[businessType];
+      if (route.platform === platform) {
+        return route.userType;
+      }
     }
 
-    // 3) If it's 'food'
-    if (rawPlatform === 'food') {
-      // check operator => 'operator'
-      const operatorProfile = await checkProfileType(token, userId, '/api/operators');
-      if (operatorProfile) return 'operator';
-
-      // check captain => 'captain'
-      const captainProfile = await checkProfileType(token, userId, '/api/captains');
-      if (captainProfile) return 'captain';
-
-      // else => 'customer'
-      return 'customer';
+    const platformEndpoints = PROFILE_ENDPOINTS[platform];
+    if (!platformEndpoints) {
+      return null;
     }
 
-    // 4) If it's 'dash' or unknown => fallback 'customer'
-    return 'customer';
-  }
-
-  /**
-   * After we get userType, we route them to correct dash
-   */
-  function handleRedirect(userType) {
-    const rawPlatform = currentPlatform.replace('bit', '');
-    const routes = PLATFORM_ROUTES[rawPlatform];
-    if (!routes) {
-      // fallback if e.g. bitdash => do something or push '/'
-      router.push('/');
-      return;
+    for (const [userType, endpoint] of Object.entries(platformEndpoints)) {
+      const profileExists = await checkProfileType(token, userId, endpoint);
+      if (profileExists) {
+        return userType;
+      }
     }
 
-    const dashPath = routes[userType] || routes.customer;
+    return null;
+  };
+
+  const handleRedirect = (userType) => {
+    const platformConfig = PLATFORM_ROUTES[currentPlatform.replace('bit', '')];
+    if (!platformConfig || !platformConfig[userType]) return;
+
+    const route = platformConfig[userType];
+    
     if (process.env.NODE_ENV === 'development') {
-      router.push(dashPath);
+      router.push(route);
     } else {
-      window.location.href = `${routes.baseUrl}${dashPath}`;
+      window.location.href = `${platformConfig.baseUrl}${route}`;
     }
-  }
+  };
 
-  async function checkAuth() {
+  const checkAuth = async () => {
     const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
-    if (!token || !userData) {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+    if (!token || !user?.id) {
       setIsLoading(false);
       return;
     }
+
     try {
-      const user = JSON.parse(userData);
-      if (!user?.id) {
-        setIsLoading(false);
-        return;
-      }
       const userType = await determineUserType(token, user.id);
-      handleRedirect(userType);
+      if (userType) {
+        handleRedirect(userType);
+      } else {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setIsLoading(false);
+      }
     } catch (error) {
       console.error('Auth check error:', error);
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-    } finally {
       setIsLoading(false);
     }
-  }
+  };
 
-  async function handleLogin() {
+  const handleLogin = async () => {
     if (!email || !password) {
       toast({
         title: t('error'),
@@ -371,11 +373,12 @@ export default function LoginPage() {
     }
 
     setIsLoading(true);
+
     try {
       const loginRes = await fetch(`${BASE_URL}/api/auth/local`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ identifier: email, password })
+        body: JSON.stringify({ identifier: email, password }),
       });
 
       if (!loginRes.ok) {
@@ -387,16 +390,19 @@ export default function LoginPage() {
       localStorage.setItem('token', loginData.jwt);
       localStorage.setItem('user', JSON.stringify(loginData.user));
 
-      // Now see which userType they belong to
       const userType = await determineUserType(loginData.jwt, loginData.user.id);
-      handleRedirect(userType);
-
-      toast({
-        title: t('success'),
-        description: t('loginSuccess'),
-        status: 'success',
-        duration: 2000
-      });
+      
+      if (userType) {
+        handleRedirect(userType);
+        toast({
+          title: t('success'),
+          description: t('loginSuccess'),
+          status: 'success',
+          duration: 2000
+        });
+      } else {
+        throw new Error('Invalid account type for this platform');
+      }
     } catch (error) {
       console.error('Login error:', error);
       toast({
@@ -410,21 +416,25 @@ export default function LoginPage() {
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
-  function handleKeyPress(e) {
+  const handleKeyPress = (e) => {
     if (e.key === 'Enter') handleLogin();
-  }
+  };
 
   return (
     <Layout>
       <Head>
         <title>{t('login')}</title>
       </Head>
-
+      
       <Box {...formStyles} mt="20" p="8">
         <VStack spacing={6}>
-          <Heading as="h1" size="lg" color={colors.text}>
+          <Heading 
+            as="h1" 
+            size="lg" 
+            color={colors.text}
+          >
             {t('login')}
           </Heading>
 
@@ -456,11 +466,13 @@ export default function LoginPage() {
             />
           </FormControl>
 
-          <Button
-            width="100%"
-            {...buttonStyles}
+          <Button 
+            width="100%" 
+            {...buttonStyles} 
             onClick={handleLogin}
             isLoading={isLoading}
+            variant={`${currentPlatform}-solid`}
+            bg={colors.button} 
             loadingText={t('loggingIn')}
           >
             {t('login')}
@@ -468,9 +480,9 @@ export default function LoginPage() {
 
           <VStack spacing={2}>
             <Text color={colors.text}>
-              {t('noAccount')}{' '}
-              <Button
-                variant="link"
+              {t('noAccount')} {" "}
+              <Button 
+                variant="link" 
                 color={colors.button}
                 onClick={() => router.push('/signup')}
                 _hover={{ color: colors.hover }}
@@ -478,7 +490,7 @@ export default function LoginPage() {
                 {t('signup')}
               </Button>
             </Text>
-
+            
             <Button
               variant={`${currentPlatform}-outline`}
               onClick={() => router.push('/forgot-password')}
@@ -496,12 +508,14 @@ export default function LoginPage() {
       </Box>
     </Layout>
   );
-}
+};
 
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common']))
-    }
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
   };
 }
+
+export default LoginPage;
