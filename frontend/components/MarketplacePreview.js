@@ -16,6 +16,7 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  Icon,
   Badge,
   Skeleton,
   useColorMode,
