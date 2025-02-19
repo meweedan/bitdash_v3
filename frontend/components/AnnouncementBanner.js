@@ -66,11 +66,10 @@ const AnnouncementBanner = () => {
   return (
     <Box
       position="sticky"
-      top="72px"
+      top="85px"
       left={0}
       right={0}
       zIndex={998}
-      bg={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
       backdropFilter="blur(10px)"
       boxShadow="lg"
       overflow="hidden"
@@ -98,7 +97,6 @@ const AnnouncementBanner = () => {
                 spacing={3}
                 px={4}
                 py={2}
-                bg={isDark ? 'whiteAlpha.100' : 'whiteAlpha.200'}
                 cursor={announcement.attributes.link ? 'pointer' : 'default'}
                 onClick={() => {
                   if (announcement.attributes.link) {
@@ -116,15 +114,15 @@ const AnnouncementBanner = () => {
                 </Text>
                 <Text
                   color={isDark ? 'white' : 'black'}
-                  fontWeight="large"
-                  fontSize="lg"
+                  fontWeight="xlarge"
+                  fontSize="xl"
                 >
                   {announcement.attributes.text}
                 </Text>
                 <Box
                   w="2px"
                   h="2px"
-                  bg={isDark ? 'whiteAlpha.400' : 'black'}
+                  bg={isDark ? 'white' : 'black'}
                 />
               </HStack>
             ))}
