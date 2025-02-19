@@ -35,7 +35,7 @@ export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [platform, setPlatform] = useState('bitdash');
   const accentColor = `brand.${platform}.500`;
-  const showAnnouncements = platform === 'bitshop' || platform === 'bitcash';
+  const showAnnouncements = platform === 'bitshop' || platform === 'bitfood' || platform === 'bitcash';
 
   useEffect(() => {
     const checkAuth = () => {
@@ -75,11 +75,6 @@ export default function Header() {
       mobileImage: '/cash.png',
       href: 'https://cash.bitdash.app/',
     },
-    // {
-    //   image: '/ride.png',
-    //   mobileImage: '/ride.png',
-    //   href: 'https://ride.bitdash.app/',
-    // },
     {
       image: '/food.png',
       mobileImage: '/food.png',
@@ -90,19 +85,12 @@ export default function Header() {
       mobileImage: '/shop.png',
       href: 'https://shop.bitdash.app/',
     },
-    // {
-    //   image: '/work.png',
-    //   mobileImage: '/work.png',
-    //   href: 'https://work.bitdash.app/',
-    //   },
   ];
 
   const bgColor = useColorModeValue(
   platform === 'bitcash' ? 'brand.bitcash.50' : 
   platform === 'bitfood' ? 'brand.bitfood.50' :
   platform === 'bitshop' ? 'brand.bitshop.50' :
-  platform === 'bitride' ? 'brand.bitride.50' :
-  platform === 'bitwork' ? 'brand.bitwork.50' :
   'gray.50',
   'gray.900'
 );
@@ -114,8 +102,6 @@ export default function Header() {
     if (hostname.includes('cash')) return 'bitcash';
     if (hostname.includes('food')) return 'bitfood';
     if (hostname.includes('shop')) return 'bitshop';
-    if (hostname.includes('ride')) return 'bitride';
-    if (hostname.includes('work')) return 'bitwork';
   }
   return 'bitdash'; // Default platform
 };
