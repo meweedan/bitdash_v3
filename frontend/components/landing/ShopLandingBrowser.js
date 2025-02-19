@@ -200,6 +200,16 @@ export default function ShopLanding() {
         px={{ base: 4, md: 8 }}
         py={{ base: 6, md: 10 }}
       >
+
+        {/* Categories */}
+        <Box mt={{ base: 8, md: 12 }}>
+          <ScrollableCategories />
+        </Box>
+
+        {/* MarketplacePreview */}
+        <Box mt={{ base: 8, md: 12 }}>
+          <MarketplacePreview />
+        </Box>
         <Grid 
           templateColumns={{ 
             base: '1fr',
@@ -251,17 +261,9 @@ export default function ShopLanding() {
             <MarketplaceAnimation />
           </Box>
         </Grid>
-
-        {/* Categories */}
-        <Box mt={{ base: 8, md: 12 }}>
-          <ScrollableCategories />
-        </Box>
-
-        {/* MarketplacePreview */}
-        <Box mt={{ base: 8, md: 12 }}>
-          <MarketplacePreview />
-        </Box>
       </Container>
+
+      
 
       <Box py={20}>
         <Container maxW="7xl">

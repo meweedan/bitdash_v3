@@ -1,4 +1,4 @@
-// pages/[shopName].js
+// pages/shop/[shopName].js
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
