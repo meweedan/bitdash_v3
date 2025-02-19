@@ -45,7 +45,6 @@ import {
   FiFilter,
   FiGrid,
   FiList,
-  FiSliders,
   FiChevronDown,
   FiCheck,
   FiFacebook,
@@ -55,26 +54,35 @@ import {
 } from 'react-icons/fi';
 import Head from 'next/head';
 import Layout from '@/components/Layout';
+
+// Reusable
 import { useShopCart } from '@/contexts/ShopCartContext';
 import { useAuth } from '@/hooks/useAuth';
+import { useWallet } from '@/hooks/useWallet';
+
+// The Cart Drawer, Product Detail, Payment Confirmation
 import CartDrawer from '@/components/shop/CartDrawer';
 import ProductDetailModal from '@/components/shop/ProductDetailModal';
 import PaymentConfirmationModal from '@/components/shop/PaymentConfirmationModal';
-import { useWallet } from '@/hooks/useWallet';
 
 /**
- * This storefront page now uses the owner's `theme.colors` for a
- * customized, modern look that differs from the rest of the site.
- * The result is a "clean, modern, polished" design.
+ * Main ShopPage. 
+ * Gathers data from 
+ *   - GET /api/owners?filters[shopName][$eq]=...
+ *   - Then GET /api/owners/:id/public-shop
+ *   - Applies searching, sorting, filtering 
+ *   - Offers grid/list view 
+ *   - Uses modals for detail and cart
  */
-
-const ShopPage = () => {
+export default function ShopPage() {
   const router = useRouter();
   const { shopName } = router.query;
   const { cart, addToCart } = useShopCart();
   const { user } = useAuth();
   const toast = useToast();
+  const { data: walletData } = useWallet();
 
+  // local states
   const [addingToCart, setAddingToCart] = useState({});
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [viewType, setViewType] = useState('grid');
@@ -83,10 +91,7 @@ const ShopPage = () => {
   const [filterCategory, setFilterCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Fetch wallet data if user is logged in
-  const { data: walletData } = useWallet();
-
-  // Modal / drawer controls
+  // disclosures
   const {
     isOpen: isCartOpen,
     onOpen: onOpenCart,
@@ -111,54 +116,37 @@ const ShopPage = () => {
     onClose: onCloseFilter,
   } = useDisclosure();
 
-  // Fetch shop data
+  // 1) Fetch the Shop Data
   const { data: shopData, isLoading, error } = useQuery({
     queryKey: ['shop', shopName],
     queryFn: async () => {
       if (!shopName) return null;
-
-      try {
-        // Step 1: First find the owner by shopName
-        const ownerResponse = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?filters[shopName][$eq]=${shopName}`
-        );
-
-        if (!ownerResponse.ok) {
-          console.error('Owner lookup failed:', await ownerResponse.text());
-          throw new Error('Shop not found');
-        }
-
-        const ownerData = await ownerResponse.json();
-        console.log('Owner lookup result:', ownerData);
-
-        const ownerId = ownerData.data?.[0]?.id;
-        if (!ownerId) {
-          throw new Error('Shop not found');
-        }
-
-        // Step 2: Then use the public-shop endpoint
-        const publicShopResponse = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/${ownerId}/public-shop`
-        );
-
-        if (!publicShopResponse.ok) {
-          console.error('Public shop fetch failed:', await publicShopResponse.text());
-          throw new Error('Failed to fetch shop data');
-        }
-
-        const shopData = await publicShopResponse.json();
-        console.log('Public shop data:', shopData);
-
-        return shopData;
-      } catch (error) {
-        console.error('Shop fetch error:', error);
-        throw error;
+      // Step 1: find the owner ID
+      const ownerRes = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?filters[shopName][$eq]=${encodeURIComponent(shopName)}`
+      );
+      if (!ownerRes.ok) {
+        throw new Error('Owner lookup failed');
       }
+      const ownerJson = await ownerRes.json();
+      const ownerId = ownerJson.data?.[0]?.id;
+      if (!ownerId) {
+        throw new Error('Shop not found');
+      }
+      // Step 2: fetch public-shop
+      const publicRes = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/${ownerId}/public-shop`
+      );
+      if (!publicRes.ok) {
+        throw new Error('Failed to fetch public shop');
+      }
+      const publicJson = await publicRes.json();
+      return publicJson;
     },
-    enabled: Boolean(shopName)
+    enabled: !!shopName,
   });
 
-  // Loading state
+  // 2) If loading or error
   if (isLoading) {
     return (
       <Layout>
@@ -168,8 +156,6 @@ const ShopPage = () => {
       </Layout>
     );
   }
-
-  // Error state
   if (error || !shopData?.data) {
     return (
       <Layout>
@@ -179,7 +165,7 @@ const ShopPage = () => {
               Shop Not Found
             </Text>
             <Button onClick={() => router.push('/')} colorScheme="blue">
-              Return to Home
+              Return Home
             </Button>
           </VStack>
         </Flex>
@@ -187,18 +173,14 @@ const ShopPage = () => {
     );
   }
 
-  /* 
-   * Now we have shop (owner) data, including .theme.colors 
-   * Use them to style the store elements 
-   */
+  // 3) Destructure shop data
   const shop = shopData.data;
   const shopItems = shop.shop_items || [];
   const theme = shop.theme || {};
   const location = shop.location || {};
   const socialLinks = shop.social_links || {};
 
-  // Extract color palette from theme or fallback
-  // This is crucial for the "clean, modern" look
+  // color palette from theme
   const colors = theme.colors || {
     primary: '#3182CE',
     secondary: '#F7FAFC',
@@ -206,40 +188,39 @@ const ShopPage = () => {
     text: '#2D3748',
   };
 
-  // Filter & sort products
-  const filteredProducts = shopItems.filter((product) => {
-    const matchesSearch =
-      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.description?.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory =
-      filterCategory === 'all' || product.category === filterCategory;
-
-    const price = parseFloat(product.price);
-    let matchesPrice = true;
-
-    if (priceRange === 'under50') matchesPrice = price < 50;
-    else if (priceRange === '50to100')
-      matchesPrice = price >= 50 && price <= 100;
-    else if (priceRange === 'over100') matchesPrice = price > 100;
-
-    return matchesSearch && matchesCategory && matchesPrice;
+  // 4) Filter & sort logic
+  const filtered = shopItems.filter((prod) => {
+    const matchSearch =
+      prod.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (prod.description || '').toLowerCase().includes(searchTerm.toLowerCase());
+    const matchCat = filterCategory === 'all' || prod.category === filterCategory;
+    const price = parseFloat(prod.price);
+    let matchPrice = true;
+    if (priceRange === 'under50') matchPrice = price < 50;
+    else if (priceRange === '50to100') matchPrice = price >= 50 && price <= 100;
+    else if (priceRange === 'over100') matchPrice = price > 100;
+    return matchSearch && matchCat && matchPrice;
   });
 
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
+  const sorted = [...filtered].sort((a, b) => {
     if (sortBy === 'priceLow') return parseFloat(a.price) - parseFloat(b.price);
     if (sortBy === 'priceHigh') return parseFloat(b.price) - parseFloat(a.price);
     if (sortBy === 'newest')
       return new Date(b.createdAt) - new Date(a.createdAt);
-    if (sortBy === 'popular') return b.rating - a.rating;
-    return 0; // featured
+    if (sortBy === 'popular')
+      return parseFloat(b.rating || 0) - parseFloat(a.rating || 0);
+    // 'featured'
+    return 0;
   });
 
-  const handleProductClick = (product) => {
-    setSelectedProduct(product);
+  // 5) On product click => open product detail
+  function handleProductClick(p) {
+    setSelectedProduct(p);
     onOpenProductDetail();
-  };
+  }
 
-  const handleAddToCart = async (product, quantity = 1) => {
+  // 6) Add to cart
+  async function handleAddToCart(product, quantity = 1) {
     setAddingToCart((prev) => ({ ...prev, [product.id]: true }));
     try {
       if (!user) {
@@ -251,9 +232,8 @@ const ShopPage = () => {
         });
         return;
       }
-
-      const existingItem = cart.items.find((item) => item.id === product.id);
-      if (existingItem && existingItem.quantity + quantity > product.stock) {
+      const existing = cart.items.find((i) => i.id === product.id);
+      if (existing && existing.quantity + quantity > product.stock) {
         toast({
           title: 'Stock limit reached',
           description: 'Cannot add more of this item',
@@ -262,19 +242,18 @@ const ShopPage = () => {
         });
         return;
       }
-
       const productData = {
         id: product.id,
         name: product.name,
         price: parseFloat(product.price),
         stock: product.stock,
-        image: product.images?.[0]?.url
-          ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}`
-          : '/placeholder-product.jpg',
+        image:
+          product.images?.[0]?.url
+            ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}`
+            : '/placeholder-product.jpg',
         ownerId: shop.id,
         quantity,
       };
-
       addToCart(productData);
       toast({
         title: 'Added to cart',
@@ -285,9 +264,10 @@ const ShopPage = () => {
     } finally {
       setAddingToCart((prev) => ({ ...prev, [product.id]: false }));
     }
-  };
+  }
 
-  const handlePaymentConfirm = async (pin) => {
+  // Payment confirm
+  function handlePaymentConfirm(pin) {
     try {
       // Payment logic
       toast({
@@ -304,7 +284,7 @@ const ShopPage = () => {
         duration: 3000,
       });
     }
-  };
+  }
 
   return (
     <>
@@ -327,7 +307,7 @@ const ShopPage = () => {
 
       <Layout>
         <Box bg={colors.secondary} color={colors.text}>
-          {/* Cover and Logo Section */}
+          {/* Cover + Logo */}
           <Box position="relative" h={theme.coverHeight || '315px'}>
             <Image
               src={
@@ -367,58 +347,39 @@ const ShopPage = () => {
 
           {/* Shop Info */}
           <Container maxW="1400px" py={8}>
-            <Grid
-              templateColumns={{ base: '1fr', lg: '250px 1fr' }}
-              gap={8}
-              alignItems="start"
-            >
+            <Grid templateColumns={{ base: '1fr', lg: '250px 1fr' }} gap={8}>
               {/* Sidebar */}
               <GridItem display={{ base: 'none', lg: 'block' }}>
                 <VStack align="stretch" spacing={6}>
-                  {/* Categories */}
-                  <Card
-                    bg={colors.secondary}
-                    borderColor={colors.accent}
-                    borderWidth="1px"
-                  >
+                  {/* Example categories card */}
+                  <Card bg={colors.secondary} borderColor={colors.accent} borderWidth="1px">
                     <CardBody>
                       <VStack align="start" spacing={4}>
                         <Heading size="md">Categories</Heading>
-                        <VStack align="stretch" w="full">
-                          {['Electronics', 'Fashion', 'Home', 'Beauty'].map(
-                            (cat) => (
-                              <Button
-                                key={cat}
-                                variant="ghost"
-                                justifyContent="flex-start"
-                                w="full"
-                                leftIcon={
-                                  filterCategory === cat ? <FiCheck /> : undefined
-                                }
-                                onClick={() => setFilterCategory(cat)}
-                                color={
-                                  filterCategory === cat ? colors.primary : ''
-                                }
-                              >
-                                {cat}
-                              </Button>
-                            )
-                          )}
+                        <VStack align="stretch">
+                          {['Electronics', 'Fashion', 'Home', 'Beauty'].map((cat) => (
+                            <Button
+                              key={cat}
+                              variant="ghost"
+                              justifyContent="flex-start"
+                              leftIcon={filterCategory === cat ? <FiCheck /> : undefined}
+                              onClick={() => setFilterCategory(cat)}
+                              color={filterCategory === cat ? colors.primary : undefined}
+                            >
+                              {cat}
+                            </Button>
+                          ))}
                         </VStack>
                       </VStack>
                     </CardBody>
                   </Card>
 
                   {/* Price Range */}
-                  <Card
-                    bg={colors.secondary}
-                    borderColor={colors.accent}
-                    borderWidth="1px"
-                  >
+                  <Card bg={colors.secondary} borderColor={colors.accent} borderWidth="1px">
                     <CardBody>
                       <VStack align="start" spacing={4}>
                         <Heading size="md">Price Range</Heading>
-                        <VStack align="stretch" w="full">
+                        <VStack align="stretch">
                           {[
                             { value: 'all', label: 'All Prices' },
                             { value: 'under50', label: 'Under 50 LYD' },
@@ -429,14 +390,9 @@ const ShopPage = () => {
                               key={range.value}
                               variant="ghost"
                               justifyContent="flex-start"
-                              w="full"
-                              leftIcon={
-                                priceRange === range.value ? <FiCheck /> : undefined
-                              }
+                              leftIcon={priceRange === range.value ? <FiCheck /> : undefined}
                               onClick={() => setPriceRange(range.value)}
-                              color={
-                                priceRange === range.value ? colors.primary : ''
-                              }
+                              color={priceRange === range.value ? colors.primary : undefined}
                             >
                               {range.label}
                             </Button>
@@ -446,18 +402,13 @@ const ShopPage = () => {
                     </CardBody>
                   </Card>
 
-                  {/* Location */}
                   {theme.showLocation && location.showOnPublicPage && (
-                    <Card
-                      bg={colors.secondary}
-                      borderColor={colors.accent}
-                      borderWidth="1px"
-                    >
+                    <Card bg={colors.secondary} borderColor={colors.accent} borderWidth="1px">
                       <CardBody>
                         <VStack align="start" spacing={4}>
                           <Heading size="md">Location</Heading>
                           <HStack>
-                            <Icon as={FiMapPin} color="gray.500" />
+                            <Icon as={FiMapPin} />
                             <Text>
                               {location.address}, {location.city}
                             </Text>
@@ -467,13 +418,8 @@ const ShopPage = () => {
                     </Card>
                   )}
 
-                  {/* Social Links */}
                   {theme.showSocialLinks && (
-                    <Card
-                      bg={colors.secondary}
-                      borderColor={colors.accent}
-                      borderWidth="1px"
-                    >
+                    <Card bg={colors.secondary} borderColor={colors.accent} borderWidth="1px">
                       <CardBody>
                         <VStack align="start" spacing={4}>
                           <Heading size="md">Follow Us</Heading>
@@ -483,9 +429,7 @@ const ShopPage = () => {
                                 icon={<FiGlobe />}
                                 aria-label="Website"
                                 variant="ghost"
-                                onClick={() =>
-                                  window.open(socialLinks.website, '_blank')
-                                }
+                                onClick={() => window.open(socialLinks.website, '_blank')}
                               />
                             )}
                             {socialLinks.facebook && (
@@ -493,9 +437,7 @@ const ShopPage = () => {
                                 icon={<FiFacebook />}
                                 aria-label="Facebook"
                                 variant="ghost"
-                                onClick={() =>
-                                  window.open(socialLinks.facebook, '_blank')
-                                }
+                                onClick={() => window.open(socialLinks.facebook, '_blank')}
                               />
                             )}
                             {socialLinks.instagram && (
@@ -503,9 +445,7 @@ const ShopPage = () => {
                                 icon={<FiInstagram />}
                                 aria-label="Instagram"
                                 variant="ghost"
-                                onClick={() =>
-                                  window.open(socialLinks.instagram, '_blank')
-                                }
+                                onClick={() => window.open(socialLinks.instagram, '_blank')}
                               />
                             )}
                             {socialLinks.x && (
@@ -513,9 +453,7 @@ const ShopPage = () => {
                                 icon={<FiTwitter />}
                                 aria-label="Twitter"
                                 variant="ghost"
-                                onClick={() =>
-                                  window.open(socialLinks.x, '_blank')
-                                }
+                                onClick={() => window.open(socialLinks.x, '_blank')}
                               />
                             )}
                           </HStack>
@@ -526,22 +464,17 @@ const ShopPage = () => {
                 </VStack>
               </GridItem>
 
-              {/* Main Content */}
+              {/* Main */}
               <GridItem>
                 <VStack align="stretch" spacing={6}>
-                  {/* Shop Header */}
+                  {/* Shop header + cart */}
                   <Flex
                     justify="space-between"
                     align="center"
-                    w="full"
                     direction={{ base: 'column', md: 'row' }}
                     gap={4}
                   >
-                    <VStack
-                      align={{ base: 'center', md: 'start' }}
-                      spacing={1}
-                      w="full"
-                    >
+                    <VStack align={{ base: 'center', md: 'start' }} spacing={1} w="full">
                       <Heading size="2xl" color={colors.primary}>
                         {shop.shopName}
                       </Heading>
@@ -549,13 +482,7 @@ const ShopPage = () => {
                         {shop.description}
                       </Text>
                       <HStack spacing={4}>
-                        <Badge
-                          bg={colors.accent}
-                          color="white"
-                          px={2}
-                          py={1}
-                          borderRadius="md"
-                        >
+                        <Badge bg={colors.accent} color="white">
                           {shop.verificationStatus}
                         </Badge>
                         {theme.showRatings && (
@@ -567,15 +494,16 @@ const ShopPage = () => {
                       </HStack>
                     </VStack>
 
+                    {/* Cart icon */}
                     <IconButton
                       icon={<FiShoppingCart />}
                       onClick={onOpenCart}
                       size="lg"
-                      position="relative"
                       aria-label="Shopping Cart"
                       bg={colors.primary}
                       color="white"
                       _hover={{ bg: colors.accent }}
+                      position="relative"
                     >
                       {cart.items.length > 0 && (
                         <Badge
@@ -595,12 +523,8 @@ const ShopPage = () => {
                     </IconButton>
                   </Flex>
 
-                  {/* Filters and Search */}
-                  <Flex
-                    gap={4}
-                    direction={{ base: 'column', md: 'row' }}
-                    align={{ base: 'stretch', md: 'center' }}
-                  >
+                  {/* Filters, search, etc. */}
+                  <Flex gap={4} direction={{ base: 'column', md: 'row' }}>
                     <Input
                       placeholder="Search products..."
                       value={searchTerm}
@@ -610,24 +534,22 @@ const ShopPage = () => {
                       borderColor="gray.300"
                       _focus={{ borderColor: colors.accent }}
                     />
-
                     <HStack display={{ base: 'none', md: 'flex' }}>
                       <IconButton
                         icon={<FiGrid />}
+                        aria-label="Grid view"
                         variant={viewType === 'grid' ? 'solid' : 'ghost'}
                         onClick={() => setViewType('grid')}
-                        aria-label="Grid view"
                         colorScheme={viewType === 'grid' ? 'blue' : 'gray'}
                       />
                       <IconButton
                         icon={<FiList />}
+                        aria-label="List view"
                         variant={viewType === 'list' ? 'solid' : 'ghost'}
                         onClick={() => setViewType('list')}
-                        aria-label="List view"
                         colorScheme={viewType === 'list' ? 'blue' : 'gray'}
                       />
                     </HStack>
-
                     <Menu>
                       <MenuButton
                         as={Button}
@@ -656,7 +578,6 @@ const ShopPage = () => {
                         </MenuItem>
                       </MenuList>
                     </Menu>
-
                     <IconButton
                       icon={<FiFilter />}
                       display={{ base: 'flex', lg: 'none' }}
@@ -668,13 +589,13 @@ const ShopPage = () => {
                     />
                   </Flex>
 
-                  {/* Products Grid or List */}
+                  {/* Items list */}
                   {viewType === 'grid' ? (
                     <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} spacing={6}>
-                      {sortedProducts.map((product) => (
+                      {sorted.map((p) => (
                         <Card
-                          key={product.id}
-                          onClick={() => handleProductClick(product)}
+                          key={p.id}
+                          onClick={() => handleProductClick(p)}
                           cursor="pointer"
                           _hover={{ transform: 'translateY(-4px)' }}
                           transition="transform 0.2s"
@@ -686,11 +607,11 @@ const ShopPage = () => {
                           <Box position="relative" h="200px">
                             <Image
                               src={
-                                product.images?.[0]?.url
-                                  ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}`
+                                p.images?.[0]?.url
+                                  ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${p.images[0].url}`
                                   : '/placeholder-product.jpg'
                               }
-                              alt={product.name}
+                              alt={p.name}
                               objectFit="cover"
                               w="full"
                               h="full"
@@ -699,24 +620,24 @@ const ShopPage = () => {
                           <CardBody>
                             <VStack align="start" spacing={2}>
                               <Heading size="md" color={colors.text}>
-                                {product.name}
+                                {p.name}
                               </Heading>
                               <Text noOfLines={2} color="gray.600">
-                                {product.description}
+                                {p.description}
                               </Text>
                               <Text fontWeight="bold" fontSize="xl">
-                                {product.price} LYD
+                                {p.price} LYD
                               </Text>
                               <Button
                                 leftIcon={<FiShoppingBag />}
                                 bg={colors.accent}
                                 color="white"
                                 w="full"
-                                isLoading={addingToCart[product.id]}
+                                isLoading={addingToCart[p.id]}
                                 _hover={{ bg: colors.primary }}
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  handleAddToCart(product);
+                                  handleAddToCart(p);
                                 }}
                               >
                                 Add to Cart
@@ -728,10 +649,10 @@ const ShopPage = () => {
                     </SimpleGrid>
                   ) : (
                     <VStack spacing={4}>
-                      {sortedProducts.map((product) => (
+                      {sorted.map((p) => (
                         <Card
-                          key={product.id}
-                          onClick={() => handleProductClick(product)}
+                          key={p.id}
+                          onClick={() => handleProductClick(p)}
                           cursor="pointer"
                           _hover={{ transform: 'translateY(-4px)' }}
                           transition="transform 0.2s"
@@ -742,49 +663,39 @@ const ShopPage = () => {
                           borderWidth="1px"
                           w="full"
                         >
-                          <Box
-                            w={{ base: 'full', md: '200px' }}
-                            h={{ base: '200px', md: 'auto' }}
-                            position="relative"
-                          >
+                          <Box w={{ base: 'full', md: '200px' }} h={{ base: '200px' }}>
                             <Image
                               src={
-                                product.images?.[0]?.url
-                                  ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}`
+                                p.images?.[0]?.url
+                                  ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${p.images[0].url}`
                                   : '/placeholder-product.jpg'
                               }
-                              alt={product.name}
+                              alt={p.name}
                               objectFit="cover"
                               w="full"
                               h="full"
                             />
                           </Box>
                           <CardBody>
-                            <Grid
-                              templateColumns={{ md: '1fr auto' }}
-                              gap={4}
-                              alignItems="start"
-                            >
+                            <Grid templateColumns={{ md: '1fr auto' }} gap={4}>
                               <VStack align="start" spacing={2}>
                                 <Heading size="md" color={colors.text}>
-                                  {product.name}
+                                  {p.name}
                                 </Heading>
-                                <Text color="gray.600">
-                                  {product.description}
-                                </Text>
+                                <Text color="gray.600">{p.description}</Text>
                                 <Text fontWeight="bold" fontSize="xl">
-                                  {product.price} LYD
+                                  {p.price} LYD
                                 </Text>
                               </VStack>
                               <Button
                                 leftIcon={<FiShoppingBag />}
                                 bg={colors.accent}
                                 color="white"
-                                isLoading={addingToCart[product.id]}
+                                isLoading={addingToCart[p.id]}
                                 _hover={{ bg: colors.primary }}
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  handleAddToCart(product);
+                                  handleAddToCart(p);
                                 }}
                               >
                                 Add to Cart
@@ -800,7 +711,7 @@ const ShopPage = () => {
             </Grid>
           </Container>
 
-          {/* Modals and Drawers */}
+          {/* Overlays */}
           <CartDrawer isOpen={isCartOpen} onClose={onCloseCart} shopData={shopData} />
 
           {selectedProduct && (
@@ -822,16 +733,16 @@ const ShopPage = () => {
             onConfirmPayment={handlePaymentConfirm}
           />
 
-          {/* Mobile Filters Drawer */}
+          {/* Mobile Filter Drawer */}
           <Drawer isOpen={isFilterOpen} placement="right" onClose={onCloseFilter}>
             <DrawerOverlay />
             <DrawerContent>
               <DrawerCloseButton />
               <DrawerHeader>Filters</DrawerHeader>
               <DrawerBody>
-                {/* Implement any mobile-friendly filter UI here */}
+                {/* Mobile-friendly filter UI if needed */}
                 <VStack align="stretch" spacing={4}>
-                  {/* E.g. Category / Price Range, etc. */}
+                  {/* Category, Price Range, etc. */}
                 </VStack>
               </DrawerBody>
             </DrawerContent>
@@ -840,6 +751,4 @@ const ShopPage = () => {
       </Layout>
     </>
   );
-};
-
-export default ShopPage;
+}
