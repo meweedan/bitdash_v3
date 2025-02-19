@@ -41,6 +41,9 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   const { t } = useTranslation();
+  
+  // Destructure the Strapi data structure
+  const { attributes } = product;
 
   return (
     <Box
@@ -52,14 +55,14 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
       _hover={{ transform: 'translateY(-4px)', boxShadow: 'xl' }}
       position="relative"
     >
-      {/* Product Image */}
       <Box position="relative" h="200px">
         <Image
-          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images?.[0]?.url}`}
-          alt={product.name}
+          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${attributes.images?.data?.[0]?.attributes?.url}`}
+          alt={attributes.name}
           objectFit="cover"
           w="100%"
           h="100%"
+          fallbackSrc="/placeholder-product.jpg"
         />
         <IconButton
           icon={<Heart fill={isFavorited ? 'red' : 'none'} />}
@@ -73,55 +76,51 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
         />
       </Box>
 
-      {/* Product Info */}
       <Box p={4}>
         <VStack align="stretch" spacing={2}>
           <HStack justify="space-between">
             <Text fontWeight="bold" fontSize="lg" noOfLines={1}>
-              {product.name}
+              {attributes.name}
             </Text>
-            <Badge colorScheme={product.stock > 0 ? 'green' : 'red'}>
-              {product.stock > 0 ? t('in_stock') : t('out_of_stock')}
+            <Badge colorScheme={attributes.stock > 0 ? 'green' : 'red'}>
+              {attributes.stock > 0 ? t('in_stock') : t('out_of_stock')}
             </Badge>
           </HStack>
 
-          {/* Shop Info */}
           <HStack spacing={2}>
             <Avatar
               size="sm"
-              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.owner?.logo?.url}`}
-              name={product.owner?.shopName}
+              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${attributes.owner?.data?.attributes?.logo?.data?.attributes?.url}`}
+              name={attributes.owner?.data?.attributes?.shopName}
             />
             <VStack align="start" spacing={0}>
               <Text fontSize="sm" fontWeight="medium">
-                {product.owner?.shopName}
+                {attributes.owner?.data?.attributes?.shopName}
               </Text>
               <HStack spacing={1}>
                 <Icon as={Star} color="yellow.400" boxSize={3} />
                 <Text fontSize="xs" color="gray.500">
-                  {product.owner?.rating?.toFixed(1)}
+                  {attributes.owner?.data?.attributes?.rating?.toFixed(1)}
                 </Text>
               </HStack>
             </VStack>
           </HStack>
 
-          {/* Price and Rating */}
           <HStack justify="space-between" pt={2}>
             <Text fontWeight="bold" fontSize="xl" color="blue.500">
-              {product.price} LYD
+              {attributes.price} LYD
             </Text>
             <HStack spacing={1}>
               <Icon as={Star} color="yellow.400" />
-              <Text>{product.rating?.toFixed(1)}</Text>
+              <Text>{attributes.rating?.toFixed(1)}</Text>
             </HStack>
           </HStack>
 
-          {/* Action Buttons */}
           <Button
             leftIcon={<ShoppingBag />}
             colorScheme="blue"
             size="sm"
-            isDisabled={product.stock <= 0}
+            isDisabled={attributes.stock <= 0}
           >
             {t('add_to_cart')}
           </Button>
@@ -143,26 +142,21 @@ const MarketplacePreview = () => {
   const [page, setPage] = useState(1);
   const [favorites, setFavorites] = useState(new Set());
 
-  // In MarketplacePreview component, update the useQuery hook:
-const { data, isLoading, error } = useQuery({
+  const { data, isLoading, error } = useQuery({
   queryKey: ['products', searchTerm, sortBy, page],
   queryFn: async () => {
-    // Construct query params according to Strapi's format
     const params = new URLSearchParams({
       'filters[status][$eq]': 'available',
-      'pagination[page]': page,
-      'pagination[pageSize]': ITEMS_PER_PAGE,
-      'populate[owner][populate]': 'logo',
-      'populate': 'images',
+      'pagination[page]': page.toString(),
+      'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
+      'populate': 'images,owner.logo',
     });
 
-    // Add search if exists
     if (searchTerm) {
       params.append('filters[$or][0][name][$containsi]', searchTerm);
       params.append('filters[$or][1][description][$containsi]', searchTerm);
     }
 
-    // Add sorting
     if (sortBy) {
       const [field, order] = sortBy.split(':');
       params.append('sort', `${field}:${order}`);
@@ -173,10 +167,14 @@ const { data, isLoading, error } = useQuery({
     );
 
     if (!response.ok) {
+      console.error('API Error:', await response.text());
       throw new Error('Failed to fetch products');
     }
 
-    return response.json();
+    const result = await response.json();
+    console.log('API Response:', result);
+
+    return result;
   },
   keepPreviousData: true
 });
@@ -257,10 +255,7 @@ const { data, isLoading, error } = useQuery({
         </Box>
       ) : (
         <>
-          <Grid
-            templateColumns="repeat(auto-fill, minmax(280px, 1fr))"
-            gap={6}
-          >
+          <Grid templateColumns="repeat(auto-fill, minmax(280px, 1fr))" gap={6}>
             {data?.data?.map((product) => (
               <ProductCard
                 key={product.id}
