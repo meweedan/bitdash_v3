@@ -30,7 +30,7 @@ import { useTranslation } from 'next-i18next';
 import { ShoppingBag, Heart, Search, Star } from 'lucide-react';
 
 // Items per page
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 4;
 
 /** Card for a single product item (Amazon style) */
 const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
@@ -198,7 +198,9 @@ export default function MarketplacePreview() {
           'filters[status][$eq]': 'available',
           'pagination[page]': page.toString(),
           'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
-          'populate': '*', // This will populate all relations
+          'populate[images]': '*',
+          'populate[owner]': '*',
+          'populate[owner.shopName]': '*',
         });
 
         // Add search filters if search term exists
@@ -238,7 +240,7 @@ export default function MarketplacePreview() {
   });
 
   // Safely extract items
-  const items = Array.isArray(data?.data?.attributes?.results) ? data?.data?.attributes?.results : [];
+  const items = Array.isArray(data?.data) ? data.data : [];
   const pagination = data?.data?.attributes?.pagination || {};
 
   // Toggle favorites
@@ -348,11 +350,8 @@ export default function MarketplacePreview() {
             {items.map((product) => (
               <ProductCard
                 key={product.id}
-                product={{
-                  id: product.id,
-                  attributes: product
-                }}
-                onFavorite={handleFavoriteToggle}
+                product={product}  // product should already have the right structure
+                onFavoriteToggle={handleFavoriteToggle}
                 isFavorited={favorites.has(product.id)}
               />
             ))}

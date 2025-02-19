@@ -82,35 +82,79 @@ const ShopOwnerDashboard = () => {
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
 
+  useEffect(() => {
+    console.log('Current User:', user);
+    console.log('User ID:', user?.id);
+    console.log('Auth Token:', localStorage.getItem('token'));
+  }, [user]);
+O
+
   // Fetch shop owner data with proper API structure
   const { 
-    data: shopData,
-    isLoading: isShopLoading,
-    error: shopError,
-    refetch: refetchShop
-  } = useQuery({
-    queryKey: ['shopOwner', user?.id],
-    queryFn: async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
-        `populate[logo][fields][0]=url` +
-        `&populate[coverImage][fields][0]=url` +
-        `&populate[wallet][fields][0]=balance` +
-        `&populate[shop_items][populate][images]=*` +
-        `&populate[shop_items][populate][reviews]=*` +
-        `&populate[orders][populate][items]=*` +
-        `&filters[user][id][$eq]=${user.id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
+      data: shopData,
+      isLoading: isShopLoading,
+      error: shopError,
+      refetch: refetchShop
+    } = useQuery({
+      queryKey: ['shopOwner', user?.id],
+      queryFn: async () => {
+        if (!user?.id) {
+          throw new Error('No user authenticated');
         }
-      );
-      if (!response.ok) throw new Error('Failed to fetch shop data');
-      return response.json();
-    },
-    enabled: !!user?.id
-  });
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+          throw new Error('No authentication token');
+        }
+
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
+          `filters[user][id][$eq]=${user.id}` +
+          `&populate[user][fields][0]=username,email` +
+          `&populate[logo]=*` +
+          `&populate[coverImage]=*` +
+          `&populate[wallet][fields][0]=balance,currency` +
+          `&populate[shop_items][populate][images]=*` +
+          `&populate[shop_items][populate][reviews]=*` +
+          `&populate[orders][populate][items]=*`,
+          {
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+          }
+        );
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('Full error response:', errorText);
+          throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        }
+
+        const result = await response.json();
+        console.log('Full API Response:', result);
+
+        // Validate shop exists
+        if (!result.data || result.data.length === 0) {
+          throw new Error('No shop found for this user. Please create a shop.');
+        }
+
+        return result;
+      },
+      enabled: !!user?.id,
+      retry: 1,
+      onError: (error) => {
+        console.error('Shop Fetch Error:', error);
+        toast({
+          title: 'Shop Fetch Error',
+          description: error.message,
+          status: 'error',
+          duration: 5000,
+          isClosable: true
+        });
+      }
+    });
 
   const shop = shopData?.data?.[0]?.attributes;
   const shopId = shopData?.data?.[0]?.id;
