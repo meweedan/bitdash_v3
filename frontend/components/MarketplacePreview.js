@@ -56,25 +56,27 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
   const images = attributes?.images?.data || [];
   const owner = attributes?.owner?.data?.attributes || {};
   
-  // Get image URL
-  const imageUrl = images[0]?.attributes?.url
-    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${images[0].attributes.url}`
-    : '/placeholder-product.jpg';
+  // ProductCard component - fix image access
+const imageUrl = product?.attributes?.images?.data?.[0]?.attributes?.url
+  ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.attributes.images.data[0].attributes.url}`
+  : '/placeholder-product.jpg';
 
   // Handle view item with proper error checks
   const handleViewItem = () => {
-    if (!name || !owner?.shopName) {
-      console.error('Missing required data for navigation', { name, owner });
-      return;
-    }
-    
-    const productSlug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    const shopSlug = owner.shopName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    
-    const url = `/shop/${shopSlug}/${productSlug}`;
-    console.log('Navigating to:', url);
-    router.push(url);
-  };
+  if (!product?.attributes?.name || !product?.attributes?.owner?.data?.attributes?.shopName) {
+    console.error('Missing required data for navigation');
+    return;
+  }
+  
+  const shopSlug = product.attributes.owner.data.attributes.shopName
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-');
+  const productSlug = product.attributes.name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-');
+  
+  router.push(`/shop/${shopSlug}/${productSlug}`);
+};
 
   return (
     <Box
@@ -196,7 +198,9 @@ export default function MarketplacePreview() {
           'filters[status][$eq]': 'available',
           'pagination[page]': page.toString(),
           'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
-          'populate': '*', // This will populate all relations
+          'populate[images]': '*',
+          'populate[owner]': '*',
+          'populate[owner.shopName]': '*',
         });
 
         // Add search filters if search term exists
@@ -346,11 +350,8 @@ export default function MarketplacePreview() {
             {items.map((product) => (
               <ProductCard
                 key={product.id}
-                product={{
-                  id: product.id,
-                  attributes: product
-                }}
-                onFavorite={handleFavoriteToggle}
+                product={product}  // product should already have the right structure
+                onFavoriteToggle={handleFavoriteToggle}
                 isFavorited={favorites.has(product.id)}
               />
             ))}

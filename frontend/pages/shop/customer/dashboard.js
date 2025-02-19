@@ -1,6 +1,7 @@
 // pages/shop/customer/dashboard.js
 import React, { useState, useMemo, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import {
   Box,
   Container,
@@ -66,6 +67,7 @@ import {
   FiEyeOff,
   FiLogOut,
   FiSettings,
+  FiImage,
   FiShoppingCart
 } from 'react-icons/fi';
 import { useRouter } from 'next/router';
@@ -200,7 +202,17 @@ const CustomerDashboard = () => {
     };
   }, [ordersData]);
 
-  // Loading state
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+    
+    if (!token || !user) {
+      router.push('/login');
+      return;
+    }
+  }, [router]);
+
+  // THEN have your loading check
   if (isProfileLoading) {
     return (
       <Layout>
@@ -224,16 +236,6 @@ const CustomerDashboard = () => {
       </Layout>
     );
   }
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const user = localStorage.getItem('user');
-    
-    if (!token || !user) {
-      router.push('/login');
-      return;
-    }
-  }, []);
 
   // When accessing data
   const profile = profileData?.data?.[0]?.attributes || {};
@@ -685,5 +687,13 @@ const CustomerDashboard = () => {
     </Layout>
   );
 };
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
+}
 
 export default CustomerDashboard;

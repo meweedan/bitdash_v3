@@ -233,7 +233,7 @@ const LoginPage = () => {
       if (currentPlatform === 'bitshop') {
         console.log('Checking shop owner status...');
         const ownerResponse = await fetch(
-          `${BASE_URL}/api/owners?filters[user][id][$eq]=${userId}&populate=*`,
+          `${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
           { 
             headers: { 
               Authorization: `Bearer ${token}`,
