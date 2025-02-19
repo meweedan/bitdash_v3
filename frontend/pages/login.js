@@ -44,7 +44,7 @@ const PROFILE_ENDPOINTS = {
     captain: '/api/captains'
   },
   cash: {
-    merchant: '/api/operators',
+    merchant: '/api/merchants',
     agent: '/api/agents',
     customer: '/api/customer-profiles'
   },
@@ -61,8 +61,7 @@ const BUSINESS_TYPE_ROUTES = {
   agent: { platform: 'cash', userType: 'agent' },
   customer: { platform: 'cash', userType: 'customer' },
   owner: { platform: 'shop', userType: 'owner' },
-  client: { platform: 'food', userType: 'customer' },
-  customer: { platform: 'shop', userType: 'customer' }
+  client: { platform: 'food', userType: 'customer' }
 };
 
 const getPlatformFromURL = () => {
@@ -202,48 +201,6 @@ const LoginPage = () => {
     }
   };
 
-  const checkBusinessType = async (token, userId) => {
-    try {
-      if (currentPlatform === 'bitshop') {
-        const ownerResponse = await fetch(
-          `${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
-
-        if (ownerResponse.ok) {
-          const { data } = await ownerResponse.json();
-          if (data && data.length > 0) {
-            return 'owner';
-          }
-        }
-      }
-
-      const responses = await Promise.all([
-        fetch(`${BASE_URL}/api/operators?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
-          { headers: { Authorization: `Bearer ${token}` } }),
-        fetch(`${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
-          { headers: { Authorization: `Bearer ${token}` } })
-      ]);
-
-      for (const response of responses) {
-        if (response.ok) {
-          const { data } = await response.json();
-          if (data && data.length > 0) {
-            if (response.url.includes('/api/owners')) {
-              return 'owner';
-            }
-            return data[0]?.attributes?.businessType;
-          }
-        }
-      }
-
-      return null;
-    } catch (error) {
-      console.error('Business type check error:', error);
-      return null;
-    }
-  };
-
   const checkProfileType = async (token, userId, endpoint) => {
     try {
       const response = await fetch(
@@ -270,14 +227,83 @@ const LoginPage = () => {
     }
   };
 
+  const checkBusinessType = async (token, userId) => {
+    try {
+      // Special handling for shop platform
+      if (currentPlatform === 'bitshop') {
+        const ownerResponse = await fetch(
+          `${BASE_URL}/api/owners?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
+          { 
+            headers: { 
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            } 
+          }
+        );
+
+        if (ownerResponse.ok) {
+          const { data } = await ownerResponse.json();
+          if (data && data.length > 0) {
+            return 'owner';
+          }
+        }
+
+        const customerResponse = await fetch(
+          `${BASE_URL}/api/customer-profiles?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
+          { 
+            headers: { 
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            } 
+          }
+        );
+
+        if (customerResponse.ok) {
+          const { data } = await customerResponse.json();
+          if (data && data.length > 0) {
+            return 'customer';
+          }
+        }
+
+        return null;
+      }
+
+      // Standard business type check for other platforms
+      const operatorResponse = await fetch(
+        `${BASE_URL}/api/operators?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      if (operatorResponse.ok) {
+        const { data } = await operatorResponse.json();
+        if (data && data.length > 0) {
+          return data[0]?.attributes?.businessType;
+        }
+      }
+
+      return null;
+    } catch (error) {
+      console.error('Business type check error:', error);
+      return null;
+    }
+  };
+
   const determineUserType = async (token, userId) => {
     const platform = currentPlatform.replace('bit', '');
     
+    // Handle shop platform separately
+    if (platform === 'shop') {
+      const businessType = await checkBusinessType(token, userId);
+      if (businessType) {
+        return businessType; // Will be either 'owner' or 'customer'
+      }
+    }
+    
+    // Handle cash platform customer check
     if (platform === 'cash') {
       const customerProfileResponse = await fetch(
-        `${BASE_URL}/api/customer-profiles?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+        `${BASE_URL}/api/customer-profiles?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
         { 
-          method: 'GET',
           headers: { 
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -287,10 +313,8 @@ const LoginPage = () => {
 
       if (customerProfileResponse.ok) {
         const { data: customerData } = await customerProfileResponse.json();
-        
         if (customerData && customerData.length > 0) {
           const hasWallet = await checkWalletExists(token, userId);
-          
           if (hasWallet) {
             return 'customer';
           }
@@ -298,15 +322,18 @@ const LoginPage = () => {
       }
     }
 
-    const businessType = await checkBusinessType(token, userId);
-    
-    if (businessType && BUSINESS_TYPE_ROUTES[businessType]) {
-      const route = BUSINESS_TYPE_ROUTES[businessType];
-      if (route.platform === platform) {
-        return route.userType;
+    // Check business type for other platforms
+    if (platform !== 'shop') {
+      const businessType = await checkBusinessType(token, userId);
+      if (businessType && BUSINESS_TYPE_ROUTES[businessType]) {
+        const route = BUSINESS_TYPE_ROUTES[businessType];
+        if (route.platform === platform) {
+          return route.userType;
+        }
       }
     }
 
+    // Check against platform-specific profile endpoints
     const platformEndpoints = PROFILE_ENDPOINTS[platform];
     if (!platformEndpoints) {
       return null;
@@ -323,8 +350,13 @@ const LoginPage = () => {
   };
 
   const handleRedirect = (userType) => {
-    const platformConfig = PLATFORM_ROUTES[currentPlatform.replace('bit', '')];
-    if (!platformConfig || !platformConfig[userType]) return;
+    const platform = currentPlatform.replace('bit', '');
+    const platformConfig = PLATFORM_ROUTES[platform];
+    
+    if (!platformConfig || !platformConfig[userType]) {
+      console.error('Invalid platform config or user type:', platform, userType);
+      return;
+    }
 
     const route = platformConfig[userType];
     
@@ -362,61 +394,61 @@ const LoginPage = () => {
   };
 
   const handleLogin = async () => {
-    if (!email || !password) {
+  if (!email || !password) {
+    toast({
+      title: t('error'),
+      description: t('invalidInput.credentials'),
+      status: 'error',
+      duration: 2000
+    });
+    return;
+  }
+
+  setIsLoading(true);
+
+  try {
+    const loginRes = await fetch(`${BASE_URL}/api/auth/local`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ identifier: email, password }),
+    });
+
+    if (!loginRes.ok) {
+      const error = await loginRes.json();
+      throw new Error(error.error?.message || 'Login failed');
+    }
+
+    const loginData = await loginRes.json();
+    localStorage.setItem('token', loginData.jwt);
+    localStorage.setItem('user', JSON.stringify(loginData.user));
+
+    const userType = await determineUserType(loginData.jwt, loginData.user.id);
+    
+    if (userType) {
+      handleRedirect(userType);
       toast({
-        title: t('error'),
-        description: t('invalidInput.credentials'),
-        status: 'error',
+        title: t('success'),
+        description: t('loginSuccess'),
+        status: 'success',
         duration: 2000
       });
-      return;
+    } else {
+      throw new Error('Invalid account type for this platform');
     }
-
-    setIsLoading(true);
-
-    try {
-      const loginRes = await fetch(`${BASE_URL}/api/auth/local`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ identifier: email, password }),
-      });
-
-      if (!loginRes.ok) {
-        const error = await loginRes.json();
-        throw new Error(error.error?.message || 'Login failed');
-      }
-
-      const loginData = await loginRes.json();
-      localStorage.setItem('token', loginData.jwt);
-      localStorage.setItem('user', JSON.stringify(loginData.user));
-
-      const userType = await determineUserType(loginData.jwt, loginData.user.id);
-      
-      if (userType) {
-        handleRedirect(userType);
-        toast({
-          title: t('success'),
-          description: t('loginSuccess'),
-          status: 'success',
-          duration: 2000
-        });
-      } else {
-        throw new Error('Invalid account type for this platform');
-      }
-    } catch (error) {
-      console.error('Login error:', error);
-      toast({
-        title: t('error'),
-        description: error.message || t('unknownError'),
-        status: 'error',
-        duration: 3000
-      });
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  } catch (error) {
+    console.error('Login error:', error);
+    toast({
+      title: t('error'),
+      description: error.message || t('unknownError'),
+      status: 'error',
+      duration: 3000
+    });
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') handleLogin();
