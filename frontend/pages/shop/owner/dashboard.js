@@ -87,7 +87,6 @@ const ShopOwnerDashboard = () => {
     console.log('User ID:', user?.id);
     console.log('Auth Token:', localStorage.getItem('token'));
   }, [user]);
-O
 
   // Fetch shop owner data with proper API structure
   const { 
