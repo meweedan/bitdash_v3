@@ -15,6 +15,7 @@ import {
   Select,
   Input,
   InputGroup,
+  Image,
   InputLeftElement,
   Icon,
   Badge,
@@ -345,8 +346,11 @@ export default function MarketplacePreview() {
             {items.map((product) => (
               <ProductCard
                 key={product.id}
-                product={product}  // Pass the whole product object
-                onFavoriteToggle={handleFavoriteToggle}
+                product={{
+                  id: product.id,
+                  attributes: product
+                }}
+                onFavorite={handleFavoriteToggle}
                 isFavorited={favorites.has(product.id)}
               />
             ))}
