@@ -19,18 +19,18 @@
     "icon": {
       "type": "enumeration",
       "enum": [
-        "🔥",
-        "⚡",
-        "🎁",
-        "💫",
-        "🌟",
-        "📢",
-        "🏷️",
-        "💎",
-        "🚀"
+        "fire",
+        "lightning",
+        "gift",
+        "sparkle",
+        "star",
+        "announcement",
+        "tag",
+        "diamond",
+        "rocket"
       ],
       "required": true,
-      "default": "📢"
+      "default": "announcement"
     },
     "link": {
       "type": "string"
