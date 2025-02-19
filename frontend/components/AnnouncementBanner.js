@@ -1,5 +1,5 @@
 // components/AnnouncementBanner.js
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, HStack, Text, useColorMode } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
