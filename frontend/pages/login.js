@@ -229,7 +229,6 @@ const LoginPage = () => {
 
   const checkBusinessType = async (token, userId) => {
     try {
-      // Special handling for shop platform
       if (currentPlatform === 'bitshop') {
         console.log('Checking shop owner status...');
         const ownerResponse = await fetch(
@@ -245,11 +244,14 @@ const LoginPage = () => {
         if (ownerResponse.ok) {
           const { data } = await ownerResponse.json();
           console.log('Owner data:', data);
-          if (data && data.length > 0) {
+          // The fix is here - check the results array in attributes
+          if (data?.attributes?.results?.length > 0) {
+            // Found an owner record
             return 'owner';
           }
         }
 
+        // Check for customer profile only if not an owner
         const customerResponse = await fetch(
           `${BASE_URL}/api/customer-profiles?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
           { 
@@ -262,24 +264,9 @@ const LoginPage = () => {
 
         if (customerResponse.ok) {
           const { data } = await customerResponse.json();
-          if (data && data.length > 0) {
+          if (data?.attributes?.results?.length > 0) {
             return 'customer';
           }
-        }
-
-        return null;
-      }
-
-      // Standard business type check for other platforms
-      const operatorResponse = await fetch(
-        `${BASE_URL}/api/operators?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-
-      if (operatorResponse.ok) {
-        const { data } = await operatorResponse.json();
-        if (data && data.length > 0) {
-          return data[0]?.attributes?.businessType;
         }
       }
 
@@ -292,12 +279,14 @@ const LoginPage = () => {
 
   const determineUserType = async (token, userId) => {
     const platform = currentPlatform.replace('bit', '');
+    console.log('Current platform:', platform);
     
     if (platform === 'shop') {
       const businessType = await checkBusinessType(token, userId);
-      console.log('Determined business type:', businessType);
+      console.log('Business type check result:', businessType);
       
       if (businessType === 'owner') {
+        console.log('Returning owner type');
         return 'owner';
       }
 
@@ -307,7 +296,6 @@ const LoginPage = () => {
         return 'customer';
       }
     }
-
     
     // Handle cash platform customer check
     if (platform === 'cash') {

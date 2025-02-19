@@ -198,9 +198,7 @@ export default function MarketplacePreview() {
           'filters[status][$eq]': 'available',
           'pagination[page]': page.toString(),
           'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
-          'populate[images]': '*',
-          'populate[owner]': '*',
-          'populate[owner.shopName]': '*',
+          'populate': '*', // This will populate all relations
         });
 
         // Add search filters if search term exists
@@ -350,8 +348,11 @@ export default function MarketplacePreview() {
             {items.map((product) => (
               <ProductCard
                 key={product.id}
-                product={product}  // product should already have the right structure
-                onFavoriteToggle={handleFavoriteToggle}
+                product={{
+                  id: product.id,
+                  attributes: product
+                }}
+                onFavorite={handleFavoriteToggle}
                 isFavorited={favorites.has(product.id)}
               />
             ))}
