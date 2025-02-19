@@ -112,28 +112,44 @@ const ShopPage = () => {
   } = useDisclosure();
 
   // Fetch shop data
-  const {
-    data: shopData,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: shopData, isLoading, error } = useQuery({
     queryKey: ['shop', shopName],
     queryFn: async () => {
       if (!shopName) return null;
 
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/shop/${shopName}`,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      try {
+        // First, get owner ID from shop name
+        const ownersResponse = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?filters[shopName][$eq]=${shopName}`
+        );
 
-      if (!response.ok) throw new Error('Shop not found');
-      return response.json();
+        if (!ownersResponse.ok) {
+          throw new Error('Shop not found');
+        }
+
+        const ownersData = await ownersResponse.json();
+        const ownerId = ownersData.data?.[0]?.id;
+
+        if (!ownerId) {
+          throw new Error('Shop not found');
+        }
+
+        // Then use public-shop endpoint to get full shop data
+        const shopResponse = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/${ownerId}/public-shop`
+        );
+
+        if (!shopResponse.ok) {
+          throw new Error('Failed to fetch shop data');
+        }
+
+        return shopResponse.json();
+      } catch (error) {
+        console.error('Shop fetch error:', error);
+        throw error;
+      }
     },
-    enabled: !!shopName,
+    enabled: !!shopName
   });
 
   // Loading state

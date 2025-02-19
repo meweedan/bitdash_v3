@@ -44,23 +44,44 @@ const ProductPage = () => {
     queryFn: async () => {
       if (!shopName || !productName) return null;
 
+      // Clean up the product name by removing hyphens and special characters
+      const cleanProductName = decodeURIComponent(productName.replace(/-/g, ' ').trim());
+
+      // Construct the query params properly
+      const params = new URLSearchParams({
+        'populate[images]': '*',
+        'populate[owner]': '*',
+        'populate[specifications]': '*',
+        'populate[reviews]': '*',
+        'filters[name][$eq]': cleanProductName,
+        'filters[owner][shopName][$eq]': shopName
+      });
+
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?` +
-        `populate[images]=*` +
-        `&populate[owner]=*` +
-        `&filters[name][$containsi]=${productName.replace(/-/g, ' ')}` +
-        `&filters[owner][shopName][$eq]=${shopName}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`,
         {
           headers: {
             'Content-Type': 'application/json'
           }
         }
       );
-      
-      if (!response.ok) throw new Error('Product not found');
-      return response.json();
+
+      if (!response.ok) {
+        console.error('API Error:', await response.text());
+        throw new Error('Product not found');
+      }
+
+      const result = await response.json();
+      console.log('API Response:', result);
+
+      if (!result.data?.[0]) {
+        throw new Error('Product not found');
+      }
+
+      return result;
     },
-    enabled: !!shopName && !!productName
+    enabled: Boolean(shopName) && Boolean(productName),
+    retry: false
   });
 
   if (isLoading) {

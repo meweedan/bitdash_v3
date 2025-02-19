@@ -32,39 +32,36 @@ import { ShoppingBag, Heart, Search, Star } from 'lucide-react';
 const ITEMS_PER_PAGE = 12;
 
 /** Card for a single product item (Amazon style) */
-function ProductCard({ product, onFavoriteToggle, isFavorited }) {
+const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   const { t } = useTranslation('common');
 
-  // Safe destructuring
   const {
     id,
-    attributes = {},
-  } = product || {};
+    attributes: {
+      name,
+      description,
+      price,
+      stock,
+      status,
+      rating,
+      category,
+      subcategory,
+      images,
+      owner
+    }
+  } = product;
 
-  const {
-    name = '',
-    price = 0,
-    stock = 0,
-    rating = 0,
-    status = 'available',
-    images,
-    owner,
-    category,
-    subcategory,
-    description = '',
-  } = attributes;
+  // Get first image URL if exists
+  const imageUrl = images?.data?.[0]?.attributes?.url
+    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${images.data[0].attributes.url}`
+    : '/placeholder-product.jpg';
 
-  // Build slug for dynamic route
-  const slug = name.toLowerCase().replace(/\s+/g, '-');
-  const shopName = owner?.data?.attributes?.shopName || 'unknown-shop';
-
-  // Go to item page
-  const handleViewItem = () => {
-    router.push(`/shop/${shopName}/${slug}`);
-  };
+  // Get owner info
+  const shopName = owner?.data?.attributes?.shopName;
+  const ownerLogo = owner?.data?.attributes?.logo?.data?.attributes?.url;
 
   return (
     <Box
@@ -187,41 +184,52 @@ export default function MarketplacePreview() {
   const [favorites, setFavorites] = useState(new Set());
 
   // React Query fetch
-  const {
-    data,
-    isLoading,
-    isFetching,
-    error,
-  } = useQuery({
-    queryKey: ['shop-items', searchTerm, sortBy, page],
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['products', searchTerm, sortBy, page],
     queryFn: async () => {
-      const params = new URLSearchParams({
-        'filters[status][$eq]': 'available',
-        'pagination[page]': page.toString(),
-        'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
-        'populate[images]': '*',
-        'populate[owner]': '*',
-      });
+      try {
+        // Base params for pagination and population
+        const params = new URLSearchParams({
+          'filters[status][$eq]': 'available',
+          'pagination[page]': page.toString(),
+          'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
+          'populate': '*', // This will populate all relations
+        });
 
-      // Searching by name/description
-      if (searchTerm) {
-        params.append('filters[$or][0][name][$containsi]', searchTerm);
-        params.append('filters[$or][1][description][$containsi]', searchTerm);
-      }
+        // Add search filters if search term exists
+        if (searchTerm) {
+          params.append('filters[$or][0][name][$containsi]', searchTerm);
+          params.append('filters[$or][1][description][$containsi]', searchTerm);
+        }
 
-      // Sorting: e.g. "rating:desc"
-      if (sortBy) {
-        params.append('sort', sortBy); 
-      }
+        // Add sorting
+        if (sortBy) {
+          const [field, direction] = sortBy.split(':');
+          params.append('sort[0]', `${field}:${direction}`);
+        }
 
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`;
-      const res = await fetch(url);
-      if (!res.ok) {
-        throw new Error(`Failed to fetch products (${res.status})`);
+        console.log('Fetching URL:', `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`);
+
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`
+        );
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+
+        const result = await response.json();
+        console.log('API Response:', result);
+
+        return result;
+      } catch (error) {
+        console.error('API Error:', error);
+        throw error;
       }
-      return res.json();
     },
     keepPreviousData: true,
+    refetchOnWindowFocus: false,
+    staleTime: 30000, // Consider data fresh for 30 seconds
   });
 
   // Safely extract items
@@ -331,12 +339,12 @@ export default function MarketplacePreview() {
             <Text>{t('no_products_available')}</Text>
           </Box>
         ) : (
-          <Grid templateColumns="repeat(auto-fill, minmax(240px, 1fr))" gap={6}>
-            {items.map((product) => (
+          <Grid templateColumns="repeat(auto-fill, minmax(280px, 1fr))" gap={6}>
+            {data?.data?.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
-                onFavoriteToggle={handleFavoriteToggle}
+                onFavorite={handleFavoriteToggle}
                 isFavorited={favorites.has(product.id)}
               />
             ))}
