@@ -1,91 +1,87 @@
+// components/MarketplacePreview.js
+
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import {
   Box,
+  Heading,
+  Text,
+  Container,
   VStack,
   HStack,
-  Grid,
-  Text,
-  Image,
-  Badge,
-  Icon,
-  useColorMode,
-  Skeleton,
   Button,
+  Grid,
+  IconButton,
   Select,
   Input,
   InputGroup,
   InputLeftElement,
-  Avatar,
+  Badge,
+  Skeleton,
+  useColorMode,
+  useColorModeValue,
   useToast,
-  Container,
   Flex,
-  IconButton,
 } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'next-i18next';
-import { 
-  ShoppingBag, 
-  Heart,
-  Star,
-  Search,
-} from 'lucide-react';
+import { ShoppingBag, Heart, Search, Star } from 'lucide-react';
 
+// Items per page
 const ITEMS_PER_PAGE = 12;
 
-/** Card for each product item */
-const ProductCard = ({ product, onFavorite, isFavorited }) => {
+/** Card for a single product item (Amazon style) */
+function ProductCard({ product, onFavoriteToggle, isFavorited }) {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   const { t } = useTranslation('common');
 
-  // Strapi typically returns something like:
-  // product = { id, attributes: { name, price, stock, ...owner } }
+  // Safe destructuring
   const {
     id,
-    attributes: {
-      name,
-      price,
-      stock,
-      rating,
-      status,
-      category,
-      subcategory,
-      description,
-      images,
-      owner,
-    },
-  } = product;
+    attributes = {},
+  } = product || {};
 
-  // Build a dynamic route: /shop/[shopName]/[productName]
+  const {
+    name = '',
+    price = 0,
+    stock = 0,
+    rating = 0,
+    status = 'available',
+    images,
+    owner,
+    category,
+    subcategory,
+    description = '',
+  } = attributes;
+
+  // Build slug for dynamic route
+  const slug = name.toLowerCase().replace(/\s+/g, '-');
+  const shopName = owner?.data?.attributes?.shopName || 'unknown-shop';
+
+  // Go to item page
   const handleViewItem = () => {
-    // Slugify the product name (e.g. "My Product" -> "my-product")
-    const slug = name.toLowerCase().replace(/\s+/g, '-');
-
-    // Owner’s shopName
-    const shopName = owner?.data?.attributes?.shopName ?? 'unknown-shop';
-
-    // Push to dynamic route
     router.push(`/shop/${shopName}/${slug}`);
   };
 
   return (
     <Box
-      bg={isDark ? 'whiteAlpha.100' : 'whiteAlpha.500'}
-      backdropFilter="blur(10px)"
+      bg={isDark ? 'whiteAlpha.100' : 'whiteAlpha.700'}
+      backdropFilter="blur(6px)"
       borderRadius="xl"
       overflow="hidden"
-      boxShadow="xl"
+      boxShadow="lg"
       borderWidth="1px"
       borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
       transition="all 0.2s"
-      _hover={{ transform: 'translateY(-4px)', boxShadow: '2xl' }}
+      _hover={{ transform: 'translateY(-2px)', boxShadow: 'xl' }}
+      position="relative"
     >
       {/* Product Image */}
-      <Box position="relative" h="200px">
-        <Image
-          // If there's an uploaded image, display it; else placeholder
+      <Box position="relative" h="220px">
+        <Box
+          as="img"
           src={
             images?.data?.[0]?.attributes?.url
               ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${images.data[0].attributes.url}`
@@ -93,8 +89,8 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
           }
           alt={name}
           objectFit="cover"
-          w="100%"
-          h="100%"
+          w="full"
+          h="full"
         />
         <IconButton
           icon={<Heart fill={isFavorited ? 'red' : 'none'} />}
@@ -103,7 +99,7 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
           right={2}
           colorScheme={isFavorited ? 'red' : 'gray'}
           variant="ghost"
-          onClick={() => onFavorite(id)}
+          onClick={() => onFavoriteToggle(id)}
           aria-label="Favorite"
         />
       </Box>
@@ -111,9 +107,14 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
       {/* Product Details */}
       <Box p={4}>
         <VStack align="stretch" spacing={3}>
-          {/* Title + Stock Badge */}
+          {/* Title + Stock */}
           <HStack justify="space-between">
-            <Text fontWeight="bold" fontSize="lg" noOfLines={1}>
+            <Text
+              fontWeight="semibold"
+              fontSize="md"
+              noOfLines={1}
+              color={useColorModeValue('gray.800', 'whiteAlpha.900')}
+            >
               {name}
             </Text>
             <Badge colorScheme={status === 'available' ? 'green' : 'red'}>
@@ -122,26 +123,43 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
           </HStack>
 
           {/* Description */}
-          <Text color="gray.500" fontSize="sm" noOfLines={2}>
+          <Text
+            color="gray.500"
+            fontSize="sm"
+            noOfLines={2}
+            lineHeight="shorter"
+          >
             {description}
           </Text>
 
-          {/* Price + Category */}
-          <HStack justify="space-between" pt={2}>
-            <Text fontWeight="bold" fontSize="xl" color="brand.bitshop.500">
-              {parseFloat(price).toFixed(2)} LYD
-            </Text>
-            <HStack>
-              <Badge>{category}</Badge>
+          {/* Price, Category, Rating */}
+          <HStack justify="space-between" align="center">
+            <VStack align="start" spacing={0}>
+              <Text fontWeight="bold" fontSize="lg" color="blue.500">
+                {parseFloat(price).toFixed(2)} LYD
+              </Text>
+              <HStack spacing={1}>
+                {rating > 0 && (
+                  <>
+                    <Star size={14} color="#f6c84c" />
+                    <Text fontSize="xs" color="gray.600">
+                      {rating.toFixed(1)}
+                    </Text>
+                  </>
+                )}
+              </HStack>
+            </VStack>
+            <VStack align="end" spacing={0}>
+              {category && <Badge>{category}</Badge>}
               {subcategory && <Badge variant="outline">{subcategory}</Badge>}
-            </HStack>
+            </VStack>
           </HStack>
 
-          {/* View / See Item Button */}
+          {/* View item button */}
           <Button
-            leftIcon={<ShoppingBag />}
-            variant="bitshop-solid"
             size="sm"
+            colorScheme="blue"
+            leftIcon={<ShoppingBag size={16} />}
             isDisabled={status !== 'available' || stock <= 0}
             onClick={handleViewItem}
           >
@@ -151,12 +169,15 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
       </Box>
     </Box>
   );
-};
+}
 
-const MarketplacePreview = () => {
+/**
+ * Main MarketplacePreview
+ */
+export default function MarketplacePreview() {
+  const { t } = useTranslation('common');
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-  const { t } = useTranslation('common');
   const toast = useToast();
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -164,150 +185,187 @@ const MarketplacePreview = () => {
   const [page, setPage] = useState(1);
   const [favorites, setFavorites] = useState(new Set());
 
-  // Fetch shop-items from Strapi
+  // React Query fetch
   const {
-    data, 
-    isLoading, 
-    error 
+    data,
+    isLoading,
+    isFetching,
+    error,
   } = useQuery({
-    queryKey: ['shopItems', searchTerm, sortBy, page],
+    queryKey: ['shop-items', searchTerm, sortBy, page],
     queryFn: async () => {
-      // Build query params
       const params = new URLSearchParams({
         'filters[status][$eq]': 'available',
         'pagination[page]': page.toString(),
         'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
         'populate[images]': '*',
-        'populate[owner][populate][logo]': '*',
+        'populate[owner]': '*',
       });
 
+      // Searching by name/description
       if (searchTerm) {
         params.append('filters[$or][0][name][$containsi]', searchTerm);
         params.append('filters[$or][1][description][$containsi]', searchTerm);
       }
 
+      // Sorting: e.g. "rating:desc"
       if (sortBy) {
-        // e.g. 'rating:desc'
-        params.append('sort', sortBy);
+        params.append('sort', sortBy); 
       }
 
-      // Make request
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`
-      );
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`;
+      const res = await fetch(url);
       if (!res.ok) {
-        throw new Error('Failed to fetch products');
+        throw new Error(`Failed to fetch products (${res.status})`);
       }
-
-      // Typically returns { data: [...], meta: {...} }
-      const json = await res.json();
-      return json;
+      return res.json();
     },
     keepPreviousData: true,
   });
 
-  // Handle favorites
+  // Safely extract items
+  const items = Array.isArray(data?.data) ? data.data : [];
+  const pagination = data?.meta?.pagination || {};
+
+  // Toggle favorites
   const handleFavoriteToggle = (productId) => {
     setFavorites((prev) => {
-      const newFavorites = new Set(prev);
-      if (newFavorites.has(productId)) {
-        newFavorites.delete(productId);
+      const newSet = new Set(prev);
+      if (newSet.has(productId)) {
+        newSet.delete(productId);
         toast({
           title: t('removed_from_favorites'),
           status: 'info',
           duration: 2000,
         });
       } else {
-        newFavorites.add(productId);
+        newSet.add(productId);
         toast({
           title: t('added_to_favorites'),
           status: 'success',
           duration: 2000,
         });
       }
-      return newFavorites;
+      return newSet;
     });
   };
 
-  // Convert to an array we can .map over
-  const items = data?.data ?? [];
+  // Banner background
+  const heroBg = useColorModeValue('gray.100', 'gray.700');
 
   return (
-    <Container maxW="7xl" py={8}>
-      {/* Filter Row */}
-      <VStack spacing={6} w="full" mb={8}>
-        <HStack w="full" spacing={4}>
-          {/* Search Input */}
-          <InputGroup size="lg">
-            <InputLeftElement>
-              <Icon as={Search} color="gray.500" />
-            </InputLeftElement>
-            <Input
-              placeholder={t('search_products')}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+    <Box w="full" position="relative">
+      {/* Banner */}
+      <Flex
+        bg={heroBg}
+        py={8}
+        px={4}
+        mb={4}
+        align="center"
+        justify="center"
+        direction="column"
+        textAlign="center"
+      >
+        <Heading fontSize={{ base: '2xl', md: '4xl' }} color="blue.500">
+          {t('our_marketplace')}
+        </Heading>
+        <Text color="gray.500" mt={2} maxW="3xl">
+          {t('explore_best_deals')}
+        </Text>
+      </Flex>
+
+      {/* Container */}
+      <Container maxW="7xl" mb={8}>
+        {/* Search / Sort */}
+        <VStack spacing={4} mb={8}>
+          <HStack w="full">
+            {/* Search Input */}
+            <InputGroup size="lg" maxW="400px">
+              <InputLeftElement pointerEvents="none">
+                <Icon as={Search} color="gray.500" />
+              </InputLeftElement>
+              <Input
+                placeholder={t('search_products')}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
+                borderWidth="1px"
+                borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
+              />
+            </InputGroup>
+
+            {/* Sort Dropdown */}
+            <Select
+              size="lg"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              w="200px"
               bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
-              backdropFilter="blur(10px)"
               borderWidth="1px"
               borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
-            />
-          </InputGroup>
+            >
+              <option value="rating:desc">{t('top_rated')}</option>
+              <option value="createdAt:desc">{t('newest')}</option>
+              <option value="price:asc">{t('price_low_to_high')}</option>
+              <option value="price:desc">{t('price_high_to_low')}</option>
+            </Select>
+          </HStack>
+        </VStack>
 
-          {/* Sort Dropdown */}
-          <Select
-            size="lg"
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            w="200px"
-            bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
-            backdropFilter="blur(10px)"
-            borderWidth="1px"
-            borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
-          >
-            <option value="rating:desc">{t('top_rated')}</option>
-            <option value="createdAt:desc">{t('newest')}</option>
-            <option value="price:asc">{t('price_low_to_high')}</option>
-            <option value="price:desc">{t('price_high_to_low')}</option>
-          </Select>
-        </HStack>
-      </VStack>
+        {/* Main content area */}
+        {error ? (
+          <Box textAlign="center" p={6}>
+            <Text color="red.500" fontWeight="bold">
+              {error.message || t('error_loading_products')}
+            </Text>
+          </Box>
+        ) : isLoading || isFetching ? (
+          <Grid templateColumns="repeat(auto-fill, minmax(240px, 1fr))" gap={4}>
+            {[...Array(ITEMS_PER_PAGE)].map((_, i) => (
+              <Skeleton key={i} height="320px" borderRadius="lg" />
+            ))}
+          </Grid>
+        ) : items.length === 0 ? (
+          <Box textAlign="center" p={6}>
+            <Text>{t('no_products_available')}</Text>
+          </Box>
+        ) : (
+          <Grid templateColumns="repeat(auto-fill, minmax(240px, 1fr))" gap={6}>
+            {items.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onFavoriteToggle={handleFavoriteToggle}
+                isFavorited={favorites.has(product.id)}
+              />
+            ))}
+          </Grid>
+        )}
 
-      {/* Main Content */}
-      {isLoading ? (
-        <Grid templateColumns="repeat(auto-fill, minmax(280px, 1fr))" gap={6}>
-          {[...Array(ITEMS_PER_PAGE)].map((_, i) => (
-            <Skeleton key={i} h="400px" borderRadius="xl" />
-          ))}
-        </Grid>
-      ) : error ? (
-        <Box
-          p={8}
-          bg={isDark ? 'red.900' : 'red.50'}
-          color={isDark ? 'red.200' : 'red.600'}
-          borderRadius="xl"
-          textAlign="center"
-        >
-          <Text>{t('error_loading_products')}</Text>
-        </Box>
-      ) : items.length === 0 ? (
-        <Box textAlign="center">
-          <Text>{t('no_products_available')}</Text>
-        </Box>
-      ) : (
-        <Grid templateColumns="repeat(auto-fill, minmax(280px, 1fr))" gap={6}>
-          {items.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onFavorite={handleFavoriteToggle}
-              isFavorited={favorites.has(product.id)}
-            />
-          ))}
-        </Grid>
-      )}
-      {/* If you want pagination controls, handle them using data.meta.pagination */}
-    </Container>
+        {/* Pagination */}
+        {pagination && (
+          <HStack justify="center" mt={8} spacing={4}>
+            <Button
+              isDisabled={page <= 1}
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+            >
+              {t('previous')}
+            </Button>
+            <Text>
+              {t('page_x_of_y', {
+                x: page,
+                y: pagination.pageCount || 1,
+              })}
+            </Text>
+            <Button
+              isDisabled={page >= (pagination.pageCount || 1)}
+              onClick={() => setPage((p) => p + 1)}
+            >
+              {t('next')}
+            </Button>
+          </HStack>
+        )}
+      </Container>
+    </Box>
   );
 };
-
-export default MarketplacePreview;
