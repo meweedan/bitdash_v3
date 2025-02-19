@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { Search, ShoppingBag, Clock, BellRing, Package, BarChart2, Car, Tool, DollarSign } from 'lucide-react';
 
-// Menu PWA Landing
+// Food PWA Landing
 const FoodPWALanding = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
@@ -37,7 +37,7 @@ const FoodPWALanding = () => {
       <Container maxW="container.lg">
         <VStack spacing={8} align="center" pb={20}>
           <Image
-            src="/food-logo.png"
+            src="/food.png"
             alt="BitFood"
             w="150px"
             h="150px"
@@ -67,8 +67,8 @@ const FoodPWALanding = () => {
   );
 };
 
-// Auto PWA Landing
-const AutoPWALanding = () => {
+// shop PWA Landing
+const ShopPWALanding = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -88,15 +88,15 @@ const AutoPWALanding = () => {
       <Container maxW="container.lg">
         <VStack spacing={8} align="center" pb={20}>
           <Image
-            src="/auto-logo.png"
-            alt="BitAuto"
+            src="/shop.png"
+            alt="Bitshop"
             w="150px"
             h="150px"
             objectFit="contain"
           />
-          <Heading size="2xl" color="blue.500">BitAuto</Heading>
+          <Heading size="2xl" color="blue.500">BitShop</Heading>
           <Text fontSize="xl" textAlign="center" color={isDark ? 'gray.400' : 'gray.600'}>
-            Complete automotive management solution
+            Shopping never been easier.
           </Text>
           
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} w="full" pt={8}>
@@ -118,8 +118,8 @@ const AutoPWALanding = () => {
   );
 };
 
-// Stock PWA Landing
-const StockPWALanding = () => {
+// Cash PWA Landing
+const CashPWALanding = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -139,15 +139,15 @@ const StockPWALanding = () => {
       <Container maxW="container.lg">
         <VStack spacing={8} align="center" pb={20}>
           <Image
-            src="/stock-logo.png"
-            alt="BitStock"
+            src="/cash.png"
+            alt="BitCash"
             w="150px"
             h="150px"
             objectFit="contain"
           />
           <Heading size="2xl" color="orange.500">BitStock</Heading>
           <Text fontSize="xl" textAlign="center" color={isDark ? 'gray.400' : 'gray.600'}>
-            Intelligent stock and inventory control
+            Cash revolutionized for Libya
           </Text>
           
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} w="full" pt={8}>
@@ -181,11 +181,11 @@ const PWALayout = ({ children }) => {
         case 'food.bitdash.app':
           router.replace('/food');
           break;
-        case 'auto.bitdash.app':
-          router.replace('/auto');
+        case 'shop.bitdash.app':
+          router.replace('/shop');
           break;
-        case 'stock.bitdash.app':
-          router.replace('/stock');
+        case 'cash.bitdash.app':
+          router.replace('/cash');
           break;
         default:
           router.replace('/');
@@ -196,4 +196,4 @@ const PWALayout = ({ children }) => {
   return children;
 };
 
-export { FoodPWALanding, AutoPWALanding, StockPWALanding, PWALayout };
+export { FoodPWALanding, ShopPWALanding, CashPWALanding, PWALayout };

@@ -3,7 +3,7 @@ export const checkIsPWA = () => {
   if (typeof window !== 'undefined') {
     return (
       window.matchMedia('(display-mode: standalone)').matches ||
-      window.navigator.standalone || // iOS
+      window.navigator.standalone || // iOS detection
       document.referrer.includes('android-app://')
     );
   }
@@ -12,19 +12,13 @@ export const checkIsPWA = () => {
 
 export const getPlatformInfo = () => {
   if (typeof window !== 'undefined') {
-    const hostname = window.location.hostname;
-    if (hostname.includes('auto')) {
-      return {
-        name: 'BitAuto',
-        platform: 'auto',
-        description: 'Automotive dealership management system'
-      };
-    }
+    const hostname = window.location.hostname.toLowerCase();
+
     if (hostname.includes('food')) {
       return {
         name: 'BitFood',
         platform: 'food',
-        description: 'Digital menu and ordering system'
+        description: 'Digital menus and ordering solution'
       };
     }
     if (hostname.includes('cash')) {
@@ -34,21 +28,16 @@ export const getPlatformInfo = () => {
         description: 'Digital payments and remittance system'
       };
     }
-    if (hostname.includes('eats')) {
+    if (hostname.includes('shop')) {
       return {
-        name: 'BitEats',
-        platform: 'eats',
-        description: 'Food and groceries ordering system'
-      };
-    }
-    if (hostname.includes('stock')) {
-      return {
-        name: 'BitStock',
-        platform: 'stock',
-        description: 'Stock management and inventory control'
+        name: 'BitShop',
+        platform: 'shop',
+        description: 'E-commerce and online store platform'
       };
     }
   }
+
+  // Default fallback: main domain
   return {
     name: 'BitDash',
     platform: 'main',

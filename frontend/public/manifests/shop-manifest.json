@@ -1,6 +1,7 @@
 {
-  "name": "BitDash Shop",
+  "name": "BitShop - Online Stores & E-Commerce",
   "short_name": "BitShop",
+  "description": "Create your own online store in minutes with BitShop. Sell products, manage orders, and grow your business.",
   "theme_color": "#000000",
   "background_color": "#ffffff",
   "display": "standalone",
@@ -54,7 +55,12 @@
     {
       "name": "Shop Home",
       "url": "/",
-      "icons": [{ "src": "/shop-icons/icon-96x96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/shop-icons/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ]
 }

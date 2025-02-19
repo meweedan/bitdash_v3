@@ -1,3 +1,4 @@
+// components/InstallPrompt.js
 import React, { useState, useEffect } from 'react';
 import {
   Box,
@@ -13,11 +14,29 @@ import {
 } from '@chakra-ui/react';
 import { X } from 'lucide-react';
 
+/**
+ * For domain-based icon switching.
+ * Add more subdomains if needed.
+ */
+function getAppIconByDomain() {
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname.toLowerCase();
+    if (hostname.includes('food')) return '/food.png';
+    if (hostname.includes('cash')) return '/cash.png';
+    if (hostname.includes('shop')) return '/shop.png';
+  }
+  // fallback
+  return '/app-logo.png';
+}
+
 const InstallPrompt = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showPrompt, setShowPrompt] = useState(false);
   const { colorMode } = useColorMode();
   const toast = useToast();
+
+  // We'll choose an icon once at mount
+  const [iconSrc, setIconSrc] = useState('/app-logo.png');
 
   // Responsive positioning
   const positioning = useBreakpointValue({
@@ -28,19 +47,19 @@ const InstallPrompt = () => {
       right: 4,
       width: 'auto',
       margin: 'auto',
-      maxWidth: '400px'
+      maxWidth: '400px',
     },
     md: {
       position: 'fixed',
       bottom: 6,
       right: 6,
-      width: '300px'
-    }
+      width: '300px',
+    },
   });
 
   // Quirky messages array
   const quirkySlogans = [
-    "Pssst, you can add us as a PWA (a cool app for your laptop) or even on your phone!",
+    "Pssst, you can add us as a PWA (a cool app for your laptop) or on your phone!",
     "Yo, wanna make this website feel like a real app? We've got the magic sauce!",
     "One-click transformation from boring website to epic app. Interested? 👀",
     "Turn this website into your personal digital sidekick. Install now!",
@@ -49,32 +68,34 @@ const InstallPrompt = () => {
   ];
 
   useEffect(() => {
+    // Decide which icon to show at mount
+    setIconSrc(getAppIconByDomain());
+
     // Check if the app is already installed
     const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
     if (isInstalled) return;
 
     // Check local storage for last shown timestamp
     const lastShownTimestamp = localStorage.getItem('installPromptLastShown');
-    const sevenDaysAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
+    const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
 
     // Only show if never shown before or more than 7 days have passed
     if (!lastShownTimestamp || parseInt(lastShownTimestamp) < sevenDaysAgo) {
       const handleBeforeInstallPrompt = (e) => {
-        // Prevent Chrome 67 and earlier from automatically showing the prompt
+        // Prevent Chrome <68 from auto showing the prompt
         e.preventDefault();
-        // Stash the event so it can be triggered later
         setDeferredPrompt(e);
-        // Show our custom prompt
         setShowPrompt(true);
-
-        // Store the timestamp of when the prompt is shown
         localStorage.setItem('installPromptLastShown', Date.now().toString());
       };
 
       window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
       return () => {
-        window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+        window.removeEventListener(
+          'beforeinstallprompt',
+          handleBeforeInstallPrompt
+        );
       };
     }
   }, []);
@@ -83,11 +104,11 @@ const InstallPrompt = () => {
     if (!deferredPrompt) return;
 
     try {
-      // Show the install prompt
+      // Show the native prompt
       const result = await deferredPrompt.prompt();
       console.log('Install prompt result:', result);
-      
-      // Clear the deferredPrompt for the next time
+
+      // Clear it
       setDeferredPrompt(null);
       setShowPrompt(false);
 
@@ -96,7 +117,7 @@ const InstallPrompt = () => {
         description: 'Your digital companion is ready to roll!',
         status: 'success',
         duration: 3000,
-        position: 'bottom-right'
+        position: 'bottom-right',
       });
     } catch (error) {
       console.error('Error installing app:', error);
@@ -105,28 +126,29 @@ const InstallPrompt = () => {
         description: 'Try again or install manually, tech ninja',
         status: 'error',
         duration: 3000,
-        position: 'bottom-right'
+        position: 'bottom-right',
       });
     }
   };
 
   if (!showPrompt) return null;
 
-  // Randomly select a quirky slogan
-  const randomSlogan = quirkySlogans[Math.floor(Math.random() * quirkySlogans.length)];
+  // Random slogan
+  const randomSlogan =
+    quirkySlogans[Math.floor(Math.random() * quirkySlogans.length)];
 
-  // Dynamic background and text colors for dark/light mode
-  const bgColor = colorMode === 'dark' ? 'gray.700' : 'white';
-  const textColor = colorMode === 'dark' ? 'gray.200' : 'gray.600';
-  const borderColor = colorMode === 'dark' ? 'gray.600' : 'blue.100';
+  // Hard-coded black background
+  const bgColor = 'black';
+  const textColor = 'white';
+  const borderColor = 'gray.600';
 
   return (
-    <Box 
+    <Box
       {...positioning}
       bg={bgColor}
-      boxShadow="lg" 
-      borderRadius="lg" 
-      p={4} 
+      boxShadow="lg"
+      borderRadius="lg"
+      p={4}
       zIndex={1000}
       border="2px solid"
       borderColor={borderColor}
@@ -134,20 +156,20 @@ const InstallPrompt = () => {
       <VStack spacing={3} align="stretch">
         <HStack justifyContent="space-between" alignItems="center">
           <HStack>
-            <Image 
-              src="/app-logo.png" 
-              alt="App Logo" 
-              boxSize="40px" 
+            <Image
+              src={iconSrc}
+              alt="App Icon"
+              boxSize="40px"
               borderRadius="md"
             />
-            <Text fontWeight="bold" color={colorMode === 'dark' ? 'white' : 'black'}>
+            <Text fontWeight="bold" color={textColor}>
               Add to Your Device
             </Text>
           </HStack>
           <IconButton
             icon={<X size={20} />}
             variant="ghost"
-            colorScheme={colorMode === 'dark' ? 'whiteAlpha' : 'gray'}
+            colorScheme="whiteAlpha"
             size="sm"
             onClick={() => setShowPrompt(false)}
             aria-label="Close install prompt"
@@ -159,17 +181,12 @@ const InstallPrompt = () => {
         </Text>
 
         <HStack>
-          <Button 
-            colorScheme="blue" 
-            size="sm" 
-            onClick={handleInstall}
-            flex={1}
-          >
+          <Button colorScheme="blue" size="sm" onClick={handleInstall} flex={1}>
             Install Now
           </Button>
-          <Button 
-            variant="ghost" 
-            colorScheme={colorMode === 'dark' ? 'whiteAlpha' : 'gray'}
+          <Button
+            variant="ghost"
+            colorScheme="whiteAlpha"
             size="sm"
             onClick={() => setShowPrompt(false)}
           >

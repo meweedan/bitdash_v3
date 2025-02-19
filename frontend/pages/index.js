@@ -5,19 +5,20 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/components/Layout';
 
-// Landing components
+// Subdomain landings
 import MainLanding from '@/components/Landing';
 import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
 import FoodLandingBrowser from '@/components/landing/FoodLandingBrowser';
 import ShopLandingBrowser from '@/components/landing/ShopLandingBrowser';
-// etc.
 
 export default function HomePage() {
   const { t } = useTranslation('common');
   const [platform, setPlatform] = useState(null);
 
   useEffect(() => {
-    const hostname = window.location.hostname;
+    // 1) Detect subdomain by checking window.location.hostname
+    const hostname = window.location.hostname.toLowerCase();
+
     if (hostname.includes('cash.')) {
       setPlatform('cash');
     } else if (hostname.includes('food.')) {
@@ -25,47 +26,51 @@ export default function HomePage() {
     } else if (hostname.includes('shop.')) {
       setPlatform('shop');
     } else if (process.env.NODE_ENV === 'development') {
-      // for dev, we can pass ?platform=cash etc.
+      // For dev, e.g. http://localhost:3000?platform=cash
       const param = new URLSearchParams(window.location.search).get('platform');
       setPlatform(param || 'main');
     } else {
+      // main domain fallback
       setPlatform('main');
     }
-  }, []);
 
-  // Determine the correct metadata: title, favicon, manifest
+    // Debugging: see what we got
+    console.log('Subdomain detection => platform:', platform);
+  }, [platform]);
+
+  // 2) For each platform, choose a distinct manifest + icons
   const getPlatformMeta = () => {
     switch (platform) {
       case 'cash':
         return {
           title: t('cash.title', 'BitCash'),
           favicon: '/cash-icons/favicon.ico',
-          manifest: '/manifests/cash-manifest.json'
+          manifest: '/manifests/cash-manifest.json',
         };
       case 'food':
         return {
           title: t('food.title', 'BitFood'),
           favicon: '/food-icons/favicon.ico',
-          manifest: '/manifests/food-manifest.json'
+          manifest: '/manifests/food-manifest.json',
         };
       case 'shop':
         return {
           title: t('shop.title', 'BitShop'),
           favicon: '/shop-icons/favicon.ico',
-          manifest: '/manifests/shop-manifest.json'
+          manifest: '/manifests/shop-manifest.json',
         };
       default:
         return {
           title: t('home', 'BitDash'),
           favicon: '/favicon.ico',
-          manifest: '/manifest.json' // main bitdash
+          manifest: '/manifest.json', // fallback for main domain
         };
     }
   };
 
   const meta = getPlatformMeta();
 
-  // Decide which landing to render
+  // 3) Render subdomain landing
   const renderPlatform = () => {
     switch (platform) {
       case 'cash':
@@ -83,8 +88,8 @@ export default function HomePage() {
     <Layout>
       <Head>
         <title>{meta.title}</title>
+        {/* Distinct subdomain icons + manifest */}
         <link rel="icon" href={meta.favicon} />
-        {/* Override manifest for each domain */}
         <link rel="manifest" href={meta.manifest} />
       </Head>
 

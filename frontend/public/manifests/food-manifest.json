@@ -1,6 +1,7 @@
 {
-  "name": "BitDash Food",
+  "name": "BitFood - Digital Menus & Ordering",
   "short_name": "BitFood",
+  "description": "Online menu and ordering for restaurants in Libya. Transform your restaurant’s digital presence with BitFood’s PWA.",
   "theme_color": "#000000",
   "background_color": "#ffffff",
   "display": "standalone",
@@ -54,7 +55,12 @@
     {
       "name": "Food Home",
       "url": "/",
-      "icons": [{ "src": "/food-icons/icon-96x96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/food-icons/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ]
 }

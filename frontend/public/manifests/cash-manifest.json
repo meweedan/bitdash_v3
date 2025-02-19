@@ -1,6 +1,7 @@
 {
-  "name": "BitDash Cash",
+  "name": "BitCash - Reimagining Libyan Finances",
   "short_name": "BitCash",
+  "description": "Payment processing, remittance, and instant transfers for Libyans at home and abroad.",
   "theme_color": "#000000",
   "background_color": "#ffffff",
   "display": "standalone",
@@ -54,7 +55,12 @@
     {
       "name": "Cash Home",
       "url": "/",
-      "icons": [{ "src": "/cash-icons/icon-96x96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/cash-icons/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ]
 }
