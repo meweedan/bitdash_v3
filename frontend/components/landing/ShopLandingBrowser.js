@@ -110,19 +110,16 @@ export default function ShopLanding() {
       name: t('testimonial_1_name'),
       role: t('testimonial_1_role'),
       content: t('testimonial_1_content'),
-      avatar: '/avatars/1.jpg'
     },
     {
       name: t('testimonial_2_name'),
       role: t('testimonial_2_role'),
       content: t('testimonial_2_content'),
-      avatar: '/avatars/2.jpg'
     },
     {
       name: t('testimonial_3_name'),
       role: t('testimonial_3_role'),
       content: t('testimonial_3_content'),
-      avatar: '/avatars/3.jpg'
     }
   ];
 
