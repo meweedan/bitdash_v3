@@ -269,10 +269,7 @@ backdropFilter="blur(10px)"
                     }}
                   />
                   <Button
-                    position="absolute"
-                    right={2}
-                    top={2}
-                    variant="bitshop-solid"
+                    variant="bitshop-outline"
                     zIndex={2}
                     display={{ base: 'none', md: 'flex' }}
                   >
@@ -453,15 +450,15 @@ backdropFilter="blur(10px)"
         position="relative"
         overflow="hidden"
       >
-        <Container maxW="7xl" position="relative" zIndex={2}>
-          <Grid templateColumns={{ base: '1fr', lg: '1fr 1fr' }} gap={16} alignItems="center">
+        <Container columns={{ base: 1, lg: 2 }} spacing={16} alignItems="center">
+          <Grid>
             <MotionBox
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <VStack align="start" spacing={8}>
+              <VStack align="start">
                 <Badge
                   colorScheme="blue"
                   px={4}
@@ -497,64 +494,105 @@ backdropFilter="blur(10px)"
             </MotionBox>
 
             <MotionBox
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <Grid templateColumns="repeat(2, 1fr)" gap={8}>
-                {[
-                  {
-                    icon: Clock,
-                    title: t('quick_setup_title'),
-                    description: t('quick_setup_description')
-                  },
-                  {
-                    icon: Shield,
-                    title: t('secure_payments_title'),
-                    description: t('secure_payments_description')
-                  },
-                  {
-                    icon: Globe,
-                    title: t('reach_customers_title'),
-                    description: t('reach_customers_description')
-                  },
-                  {
-                    icon: Heart,
-                    title: t('customer_support_title'),
-                    description: t('customer_support_description')
-                  }
-                ].map((item, index) => (
-                  <Card
-                    key={index}
-                    bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
-backdropFilter="blur(10px)"
-                    height="full"
-                    _hover={{ transform: 'translateY(-5px)' }}
-                    transition="all 0.2s"
-                  >
-                    <CardBody>
-                      <VStack spacing={4}>
-                        <Box
-                          p={3}
-                          borderRadius="lg"
-                          bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
-backdropFilter="blur(10px)"
-                        >
-                          <item.icon size={24} color={isDark ? '#90CDF4' : '#2B6CB0'} />
-                        </Box>
-                        <Heading size="sm" textAlign="center">
-                          {item.title}
-                        </Heading>
-                        <Text color="gray.500" fontSize="sm" textAlign="center">
-                          {item.description}
-                        </Text>
-                      </VStack>
-                    </CardBody>
-                  </Card>
-                ))}
-              </Grid>
-            </MotionBox>
+  initial={{ opacity: 0, x: 50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.5 }}
+  w="full"
+>
+  <SimpleGrid 
+    columns={{ base: 1, md: 2 }} 
+    spacing={6}
+    maxW="7xl"
+    mx="auto"
+  >
+    {[
+      {
+        icon: Clock,
+        title: t('quick_setup_title'),
+        description: t('quick_setup_description'),
+        gradient: 'linear(to-r, blue.400, purple.500)'
+      },
+      {
+        icon: Shield,
+        title: t('secure_payments_title'),
+        description: t('secure_payments_description'),
+        gradient: 'linear(to-r, cyan.400, blue.500)'
+      },
+      {
+        icon: Globe,
+        title: t('reach_customers_title'),
+        description: t('reach_customers_description'),
+        gradient: 'linear(to-r, blue.400, teal.500)'
+      },
+      {
+        icon: Heart,
+        title: t('customer_support_title'),
+        description: t('customer_support_description'),
+        gradient: 'linear(to-r, purple.400, pink.500)'
+      }
+    ].map((item, index) => (
+      <MotionBox
+        key={index}
+        whileHover={{ y: -5, scale: 1.02 }}
+        transition={{ duration: 0.2 }}
+      >
+        <Card
+          bg={isDark ? 'whiteAlpha.100' : 'whiteAlpha.500'}
+          backdropFilter="blur(16px)"
+          borderWidth="1px"
+          borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
+          borderRadius="2xl"
+          overflow="hidden"
+          boxShadow="xl"
+          position="relative"
+          _before={{
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '2px',
+            bgGradient: item.gradient,
+          }}
+        >
+          <CardBody p={8}>
+            <VStack spacing={6} align="start">
+              <Box
+                p={3}
+                borderRadius="xl"
+                bgGradient={item.gradient}
+                boxShadow="lg"
+              >
+                <item.icon 
+                  size={28} 
+                  color="white"
+                  style={{ filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.2))' }}
+                />
+              </Box>
+              <VStack align="start" spacing={2}>
+                <Heading 
+                  size="md"
+                  bgGradient={item.gradient}
+                  bgClip="text"
+                >
+                  {item.title}
+                </Heading>
+                <Text 
+                  color={isDark ? 'gray.300' : 'gray.600'}
+                  fontSize="md"
+                  lineHeight="tall"
+                >
+                  {item.description}
+                </Text>
+              </VStack>
+            </VStack>
+          </CardBody>
+        </Card>
+      </MotionBox>
+    ))}
+  </SimpleGrid>
+</MotionBox>
           </Grid>
         </Container>
       </Box>

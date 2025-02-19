@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   VStack,
@@ -20,7 +20,6 @@ import {
   Container,
   Flex,
   IconButton,
-  Tooltip
 } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'next-i18next';
@@ -29,10 +28,6 @@ import {
   Heart,
   Star,
   Search,
-  TrendingUp,
-  Clock,
-  DollarSign,
-  Filter
 } from 'lucide-react';
 
 const ITEMS_PER_PAGE = 12;
@@ -40,29 +35,47 @@ const ITEMS_PER_PAGE = 12;
 const ProductCard = ({ product, onFavorite, isFavorited }) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-  const { t } = useTranslation();
-  
-  // Destructure the Strapi data structure
-  const { attributes } = product;
+  const { t } = useTranslation('common');
+
+  // Destructure data based on your Strapi schema
+  const {
+    id,
+    attributes: {
+      name,
+      price,
+      stock,
+      rating,
+      status,
+      images,
+      owner,
+    }
+  } = product;
+
+  const imageUrl = images?.data?.[0]?.attributes?.url;
+  const ownerLogo = owner?.data?.attributes?.logo?.data?.attributes?.url;
+  const ownerName = owner?.data?.attributes?.shopName;
+  const ownerRating = owner?.data?.attributes?.rating;
 
   return (
     <Box
-      bg={isDark ? 'gray.800' : 'white'}
-      borderRadius="lg"
+      bg={isDark ? 'whiteAlpha.100' : 'whiteAlpha.500'}
+      backdropFilter="blur(10px)"
+      borderRadius="xl"
       overflow="hidden"
-      boxShadow="lg"
+      boxShadow="xl"
+      borderWidth="1px"
+      borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
       transition="all 0.2s"
-      _hover={{ transform: 'translateY(-4px)', boxShadow: 'xl' }}
+      _hover={{ transform: 'translateY(-4px)', boxShadow: '2xl' }}
       position="relative"
     >
       <Box position="relative" h="200px">
         <Image
-          src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${attributes.images?.data?.[0]?.attributes?.url}`}
-          alt={attributes.name}
+          src={imageUrl ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${imageUrl}` : '/placeholder-product.jpg'}
+          alt={name}
           objectFit="cover"
           w="100%"
           h="100%"
-          fallbackSrc="/placeholder-product.jpg"
         />
         <IconButton
           icon={<Heart fill={isFavorited ? 'red' : 'none'} />}
@@ -71,56 +84,60 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
           right={2}
           colorScheme={isFavorited ? 'red' : 'gray'}
           variant="ghost"
-          onClick={() => onFavorite(product.id)}
+          onClick={() => onFavorite(id)}
           aria-label="Favorite"
         />
       </Box>
 
       <Box p={4}>
-        <VStack align="stretch" spacing={2}>
+        <VStack align="stretch" spacing={3}>
           <HStack justify="space-between">
             <Text fontWeight="bold" fontSize="lg" noOfLines={1}>
-              {attributes.name}
+              {name}
             </Text>
-            <Badge colorScheme={attributes.stock > 0 ? 'green' : 'red'}>
-              {attributes.stock > 0 ? t('in_stock') : t('out_of_stock')}
+            <Badge colorScheme={status === 'available' ? 'green' : 'red'}>
+              {status === 'available' ? t('in_stock') : t('out_of_stock')}
             </Badge>
           </HStack>
 
           <HStack spacing={2}>
             <Avatar
               size="sm"
-              src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${attributes.owner?.data?.attributes?.logo?.data?.attributes?.url}`}
-              name={attributes.owner?.data?.attributes?.shopName}
+              src={ownerLogo ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${ownerLogo}` : undefined}
+              name={ownerName}
             />
             <VStack align="start" spacing={0}>
               <Text fontSize="sm" fontWeight="medium">
-                {attributes.owner?.data?.attributes?.shopName}
+                {ownerName}
               </Text>
-              <HStack spacing={1}>
-                <Icon as={Star} color="yellow.400" boxSize={3} />
-                <Text fontSize="xs" color="gray.500">
-                  {attributes.owner?.data?.attributes?.rating?.toFixed(1)}
-                </Text>
-              </HStack>
+              {ownerRating && (
+                <HStack spacing={1}>
+                  <Icon as={Star} color="yellow.400" boxSize={3} />
+                  <Text fontSize="xs" color="gray.500">
+                    {ownerRating.toFixed(1)}
+                  </Text>
+                </HStack>
+              )}
             </VStack>
           </HStack>
 
           <HStack justify="space-between" pt={2}>
-            <Text fontWeight="bold" fontSize="xl" color="blue.500">
-              {attributes.price} LYD
+            <Text fontWeight="bold" fontSize="xl" color="brand.bitshop.500">
+              {price.toFixed(2)} LYD
             </Text>
-            <HStack spacing={1}>
-              <Icon as={Star} color="yellow.400" />
-              <Text>{attributes.rating?.toFixed(1)}</Text>
-            </HStack>
+            {rating && (
+              <HStack spacing={1}>
+                <Icon as={Star} color="yellow.400" />
+                <Text>{rating.toFixed(1)}</Text>
+              </HStack>
+            )}
           </HStack>
 
           <Button
             leftIcon={<ShoppingBag />}
-            colorScheme="blue"
+            variant="bitshop-solid"
             size="sm"
-            isDisabled={attributes.stock <= 0}
+            isDisabled={status !== 'available' || stock <= 0}
           >
             {t('add_to_cart')}
           </Button>
@@ -133,53 +150,55 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
 const MarketplacePreview = () => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const toast = useToast();
 
-  // State
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('rating:desc');
   const [page, setPage] = useState(1);
   const [favorites, setFavorites] = useState(new Set());
 
   const { data, isLoading, error } = useQuery({
-  queryKey: ['products', searchTerm, sortBy, page],
-  queryFn: async () => {
-    const params = new URLSearchParams({
-      'filters[status][$eq]': 'available',
-      'pagination[page]': page.toString(),
-      'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
-      'populate': 'images,owner.logo',
-    });
+    queryKey: ['products', searchTerm, sortBy, page],
+    queryFn: async () => {
+      try {
+        const params = new URLSearchParams({
+          'pagination[page]': page.toString(),
+          'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
+          'populate[images]': '*',
+          'populate[owner][populate][logo]': '*',
+          'filters[status][$eq]': 'available',
+        });
 
-    if (searchTerm) {
-      params.append('filters[$or][0][name][$containsi]', searchTerm);
-      params.append('filters[$or][1][description][$containsi]', searchTerm);
-    }
+        if (searchTerm) {
+          params.append('filters[$or][0][name][$containsi]', searchTerm);
+          params.append('filters[$or][1][description][$containsi]', searchTerm);
+        }
 
-    if (sortBy) {
-      const [field, order] = sortBy.split(':');
-      params.append('sort', `${field}:${order}`);
-    }
+        if (sortBy) {
+          const [field, order] = sortBy.split(':');
+          params.append('sort', field);
+          params.append('order', order);
+        }
 
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`
-    );
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`
+        );
 
-    if (!response.ok) {
-      console.error('API Error:', await response.text());
-      throw new Error('Failed to fetch products');
-    }
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
 
-    const result = await response.json();
-    console.log('API Response:', result);
+        const result = await response.json();
+        return result;
+      } catch (error) {
+        console.error('API Error:', error);
+        return { data: [], meta: { pagination: { page: 1, pageCount: 1, total: 0 } } };
+      }
+    },
+    keepPreviousData: true,
+  });
 
-    return result;
-  },
-  keepPreviousData: true
-});
-
-  // Handle favorite toggle
   const handleFavoriteToggle = (productId) => {
     setFavorites(prev => {
       const newFavorites = new Set(prev);
@@ -204,7 +223,6 @@ const MarketplacePreview = () => {
 
   return (
     <Container maxW="7xl" py={8}>
-      {/* Search and Filters */}
       <VStack spacing={6} w="full" mb={8}>
         <HStack w="full" spacing={4}>
           <InputGroup size="lg">
@@ -215,7 +233,10 @@ const MarketplacePreview = () => {
               placeholder={t('search_products')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              bg={isDark ? 'gray.800' : 'white'}
+              bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
+              backdropFilter="blur(10px)"
+              borderWidth="1px"
+              borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
             />
           </InputGroup>
           <Select
@@ -223,7 +244,10 @@ const MarketplacePreview = () => {
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
             w="200px"
-            bg={isDark ? 'gray.800' : 'white'}
+            bg={isDark ? 'whiteAlpha.50' : 'whiteAlpha.500'}
+            backdropFilter="blur(10px)"
+            borderWidth="1px"
+            borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
           >
             <option value="rating:desc">{t('top_rated')}</option>
             <option value="createdAt:desc">{t('newest')}</option>
@@ -233,14 +257,10 @@ const MarketplacePreview = () => {
         </HStack>
       </VStack>
 
-      {/* Products Grid */}
       {isLoading ? (
-        <Grid
-          templateColumns="repeat(auto-fill, minmax(280px, 1fr))"
-          gap={6}
-        >
+        <Grid templateColumns="repeat(auto-fill, minmax(280px, 1fr))" gap={6}>
           {[...Array(ITEMS_PER_PAGE)].map((_, i) => (
-            <Skeleton key={i} h="400px" borderRadius="lg" />
+            <Skeleton key={i} h="400px" borderRadius="xl" />
           ))}
         </Grid>
       ) : error ? (
@@ -248,7 +268,7 @@ const MarketplacePreview = () => {
           p={8}
           bg={isDark ? 'red.900' : 'red.50'}
           color={isDark ? 'red.200' : 'red.600'}
-          borderRadius="lg"
+          borderRadius="xl"
           textAlign="center"
         >
           <Text>{t('error_loading_products')}</Text>
@@ -256,7 +276,7 @@ const MarketplacePreview = () => {
       ) : (
         <>
           <Grid templateColumns="repeat(auto-fill, minmax(280px, 1fr))" gap={6}>
-            {data?.data?.map((product) => (
+            {Array.isArray(data?.data) && data.data.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
@@ -266,26 +286,32 @@ const MarketplacePreview = () => {
             ))}
           </Grid>
 
-          {/* Pagination */}
-          <Flex justify="center" mt={8}>
-            <HStack>
-              <Button
-                onClick={() => setPage(p => Math.max(1, p - 1))}
-                isDisabled={page === 1}
-              >
-                {t('previous')}
-              </Button>
-              <Text>
-                {t('page_x_of_y', { x: page, y: Math.ceil((data?.meta?.total || 0) / ITEMS_PER_PAGE) })}
-              </Text>
-              <Button
-                onClick={() => setPage(p => p + 1)}
-                isDisabled={!data?.meta?.hasNextPage}
-              >
-                {t('next')}
-              </Button>
-            </HStack>
-          </Flex>
+          {data?.meta?.pagination && (
+            <Flex justify="center" mt={8}>
+              <HStack>
+                <Button
+                  variant="bitshop-solid"
+                  onClick={() => setPage(p => Math.max(1, p - 1))}
+                  isDisabled={page === 1}
+                >
+                  {t('previous')}
+                </Button>
+                <Text>
+                  {t('page_x_of_y', { 
+                    x: page, 
+                    y: Math.ceil((data.meta.pagination.total || 0) / ITEMS_PER_PAGE) 
+                  })}
+                </Text>
+                <Button
+                  variant="bitshop-solid"
+                  onClick={() => setPage(p => p + 1)}
+                  isDisabled={page >= (data.meta.pagination.pageCount || 1)}
+                >
+                  {t('next')}
+                </Button>
+              </HStack>
+            </Flex>
+          )}
         </>
       )}
     </Container>
