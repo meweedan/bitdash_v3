@@ -111,47 +111,81 @@ const ShopPage = () => {
 
       try {
         const publicShopResponse = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/findByShopName/${shopName}`
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
+          `filters[shopName][$eq]=${shopName}` +
+          `&populate[logo]=*` +
+          `&populate[coverImage]=*` +
+          `&populate[shop_items][populate][images]=*` +
+          `&populate[theme]=*` +
+          `&populate[location]=*` +
+          `&populate[social_links]=*`
         );
 
         if (!publicShopResponse.ok) {
+          const errorText = await publicShopResponse.text();
+          console.error('Fetch error:', errorText);
           throw new Error('Failed to fetch shop data');
         }
 
-        const shopData = await publicShopResponse.json();
-        return shopData;
+        const result = await publicShopResponse.json();
+        console.log('Shop fetch result:', result);
+
+        // Handle the different response structure
+        return {
+          data: result.data?.[0] || null
+        };
       } catch (error) {
-        console.error('Shop fetch error:', error);
+        console.error('Complete shop fetch error:', error);
         throw error;
       }
     },
     enabled: Boolean(shopName)
   });
 
-  if (isLoading) {
-    return (
-      <Layout>
-        <Flex minH="100vh" justify="center" align="center">
-          <Spinner size="xl" />
-        </Flex>
-      </Layout>
-    );
-  }
+  useEffect(() => {
+  console.log('Shop Name:', shopName);
+  console.log('Shop Data:', shopData);
+  console.log('Loading:', isLoading);
+  console.log('Error:', error);
+}, [shopName, shopData, isLoading, error]);
 
-  if (error || !shopData?.data) {
-    return (
-      <Layout>
-        <Flex minH="100vh" justify="center" align="center">
-          <VStack spacing={4}>
-            <Text fontSize="2xl" color="red.500">Shop Not Found</Text>
-            <Button onClick={() => router.push('/')} colorScheme="blue">
-              Return to Home
-            </Button>
-          </VStack>
-        </Flex>
-      </Layout>
-    );
-  }
+  if (isLoading) {
+  return (
+    <Layout>
+      <Flex minH="100vh" justify="center" align="center">
+        <VStack>
+          <Spinner size="xl" />
+          <Text>Loading {shopName}'s shop...</Text>
+          <Text color="gray.500">Shop Name: {shopName}</Text>
+        </VStack>
+      </Flex>
+    </Layout>
+  );
+}
+
+if (error || !shopData?.data) {
+  return (
+    <Layout>
+      <Flex minH="100vh" justify="center" align="center">
+        <VStack spacing={4} textAlign="center">
+          <Text fontSize="2xl" color="red.500">Shop Not Found</Text>
+          <Text color="gray.600">Shop Name: {shopName}</Text>
+          {error && (
+            <Text color="red.300">
+              Error Details: {error.message}
+            </Text>
+          )}
+          <Button 
+            onClick={() => router.push('/')} 
+            colorScheme="blue"
+          >
+            Return to Home
+          </Button>
+        </VStack>
+      </Flex>
+    </Layout>
+  );
+}
 
   const shop = shopData.data;
   const shopItems = shop.shop_items || [];

@@ -15,6 +15,15 @@ module.exports = {
       config: {
         auth: false
       }
+    },
+    {
+     method: 'GET',
+      path: '/owners',
+      handler: 'owner.find',
+      config: {
+        auth: false,  // Public access
+        policies: []
+      }
     }
   ]
 };
