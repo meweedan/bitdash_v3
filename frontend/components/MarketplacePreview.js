@@ -1,4 +1,5 @@
-import React, { useState, useRouter } from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import {
   Box,
   VStack,
@@ -31,6 +32,8 @@ import {
 } from 'lucide-react';
 
 const ITEMS_PER_PAGE = 12;
+
+const router = useRouter();
 
 const ProductCard = ({ product, onFavorite, isFavorited }) => {
   const router = useRouter();
