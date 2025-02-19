@@ -37,24 +37,17 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
   const isDark = colorMode === 'dark';
   const { t } = useTranslation('common');
 
-  // Destructure data based on your Strapi schema
   const {
     id,
-    attributes: {
-      name,
-      price,
-      stock,
-      rating,
-      status,
-      images,
-      owner,
-    }
+    name,
+    price,
+    stock,
+    rating,
+    status,
+    category,
+    subcategory,
+    description
   } = product;
-
-  const imageUrl = images?.data?.[0]?.attributes?.url;
-  const ownerLogo = owner?.data?.attributes?.logo?.data?.attributes?.url;
-  const ownerName = owner?.data?.attributes?.shopName;
-  const ownerRating = owner?.data?.attributes?.rating;
 
   return (
     <Box
@@ -67,11 +60,10 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
       borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
       transition="all 0.2s"
       _hover={{ transform: 'translateY(-4px)', boxShadow: '2xl' }}
-      position="relative"
     >
       <Box position="relative" h="200px">
         <Image
-          src={imageUrl ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${imageUrl}` : '/placeholder-product.jpg'}
+          src="/placeholder-product.jpg"
           alt={name}
           objectFit="cover"
           w="100%"
@@ -100,37 +92,18 @@ const ProductCard = ({ product, onFavorite, isFavorited }) => {
             </Badge>
           </HStack>
 
-          <HStack spacing={2}>
-            <Avatar
-              size="sm"
-              src={ownerLogo ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${ownerLogo}` : undefined}
-              name={ownerName}
-            />
-            <VStack align="start" spacing={0}>
-              <Text fontSize="sm" fontWeight="medium">
-                {ownerName}
-              </Text>
-              {ownerRating && (
-                <HStack spacing={1}>
-                  <Icon as={Star} color="yellow.400" boxSize={3} />
-                  <Text fontSize="xs" color="gray.500">
-                    {ownerRating.toFixed(1)}
-                  </Text>
-                </HStack>
-              )}
-            </VStack>
-          </HStack>
+          <Text color="gray.500" fontSize="sm" noOfLines={2}>
+            {description}
+          </Text>
 
           <HStack justify="space-between" pt={2}>
             <Text fontWeight="bold" fontSize="xl" color="brand.bitshop.500">
               {price.toFixed(2)} LYD
             </Text>
-            {rating && (
-              <HStack spacing={1}>
-                <Icon as={Star} color="yellow.400" />
-                <Text>{rating.toFixed(1)}</Text>
-              </HStack>
-            )}
+            <HStack>
+              <Badge>{category}</Badge>
+              {subcategory && <Badge variant="outline">{subcategory}</Badge>}
+            </HStack>
           </HStack>
 
           <Button
@@ -159,45 +132,46 @@ const MarketplacePreview = () => {
   const [favorites, setFavorites] = useState(new Set());
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ['products', searchTerm, sortBy, page],
-    queryFn: async () => {
-      try {
-        const params = new URLSearchParams({
-          'pagination[page]': page.toString(),
-          'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
-          'populate[images]': '*',
-          'populate[owner][populate][logo]': '*',
-          'filters[status][$eq]': 'available',
-        });
+  queryKey: ['products', searchTerm, sortBy, page],
+  queryFn: async () => {
+    try {
+      const params = new URLSearchParams({
+        'pagination[page]': page.toString(),
+        'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
+        'populate[images]': '*',
+        'populate[owner][populate][logo]': '*',
+        'filters[status][$eq]': 'available',
+      });
 
-        if (searchTerm) {
-          params.append('filters[$or][0][name][$containsi]', searchTerm);
-          params.append('filters[$or][1][description][$containsi]', searchTerm);
-        }
-
-        if (sortBy) {
-          const [field, order] = sortBy.split(':');
-          params.append('sort', field);
-          params.append('order', order);
-        }
-
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`
-        );
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch products');
-        }
-
-        const result = await response.json();
-        return result;
-      } catch (error) {
-        console.error('API Error:', error);
-        return { data: [], meta: { pagination: { page: 1, pageCount: 1, total: 0 } } };
+      if (searchTerm) {
+        params.append('filters[$or][0][name][$containsi]', searchTerm);
+        params.append('filters[$or][1][description][$containsi]', searchTerm);
       }
-    },
-    keepPreviousData: true,
-  });
+
+      if (sortBy) {
+        const [field, order] = sortBy.split(':');
+        params.append('sort', field);
+        params.append('order', order);
+      }
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+
+      const result = await response.json();
+      console.log('API Response:', result);
+      return result.data?.attributes || { results: [], pagination: { page: 1, pageCount: 1, total: 0 } };
+    } catch (error) {
+      console.error('API Error:', error);
+      return { results: [], pagination: { page: 1, pageCount: 1, total: 0 } };
+    }
+  },
+  keepPreviousData: true,
+});
 
   const handleFavoriteToggle = (productId) => {
     setFavorites(prev => {
@@ -276,7 +250,7 @@ const MarketplacePreview = () => {
       ) : (
         <>
           <Grid templateColumns="repeat(auto-fill, minmax(280px, 1fr))" gap={6}>
-            {Array.isArray(data?.data) && data.data.map((product) => (
+            {Array.isArray(data?.results) && data.results.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
