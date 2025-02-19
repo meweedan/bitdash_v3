@@ -32,6 +32,15 @@
       "required": true,
       "default": "announcement"
     },
+    "platform": {
+      "type": "enumeration",
+      "enum": [
+        "bitshop",
+        "bitcash",
+        "bitfood"
+      ],
+      "required": true
+    },
     "link": {
       "type": "string"
     },

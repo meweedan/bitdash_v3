@@ -99,7 +99,6 @@ const AnnouncementBanner = () => {
                 px={4}
                 py={2}
                 bg={isDark ? 'whiteAlpha.100' : 'whiteAlpha.200'}
-                borderRadius="full"
                 cursor={announcement.attributes.link ? 'pointer' : 'default'}
                 onClick={() => {
                   if (announcement.attributes.link) {
@@ -125,7 +124,6 @@ const AnnouncementBanner = () => {
                 <Box
                   w="2px"
                   h="2px"
-                  borderRadius="full"
                   bg={isDark ? 'whiteAlpha.400' : 'black'}
                 />
               </HStack>
