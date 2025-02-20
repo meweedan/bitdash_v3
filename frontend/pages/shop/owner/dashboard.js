@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import {
   Box,
   Container,
@@ -11,350 +9,438 @@ import {
   Text,
   Button,
   SimpleGrid,
-  Skeleton,
-  Alert,
-  AlertIcon,
+  Spinner,
   Badge,
+  Image,
   useColorModeValue,
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  Icon,
+  Flex,
   useToast,
   Tabs,
   TabList,
   TabPanels,
   Tab,
   TabPanel,
-  IconButton,
-  Flex,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem
+  Card,
+  CardBody,
+  useDisclosure
 } from '@chakra-ui/react';
+
 import {
-  FiTrendingUp,
+  FiPlus,
   FiPackage,
+  FiDollarSign,
   FiStar,
+  FiTrendingUp,
+  FiGrid,
   FiList,
   FiAlertCircle,
-  FiSettings,
-  FiRefreshCw,
-  FiMoreVertical,
-  FiPlus
+  FiEdit
 } from 'react-icons/fi';
-import { useRouter } from 'next/router';
 
-// Hooks, Layout, and Components
-import { useAuth } from '@/hooks/useAuth';
-import Layout from '@/components/Layout';
-import Head from 'next/head';
-// The following are placeholders for your custom components:
-import ProductsList from '@/components/shop/owner/ProductsList';
-import OrdersList from '@/components/shop/owner/OrdersList';
-import ReviewsList from '@/components/shop/owner/ReviewsList';
-import SalesChart from '@/components/shop/owner/SalesChart';
-import ThemeEditor from '@/components/shop/owner/ThemeEditor'; // if you have a theme editor
+// Placeholder for authentication hook
+const useAuth = () => {
+  // Implement actual authentication logic
+  return { user: { id: 1 } };
+};
 
-/**
- * Skeleton loader for initial data fetch
- */
-const DashboardSkeleton = () => (
-  <VStack spacing={6} w="full">
-    <Skeleton height="200px" w="full" borderRadius="xl" />
-    <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} w="full">
-      {Array.from({ length: 3 }).map((_, i) => (
-        <Skeleton key={i} height="120px" borderRadius="xl" />
-      ))}
-    </SimpleGrid>
-    <Skeleton height="50px" w="50%" borderRadius="xl" />
-    <Skeleton height="300px" w="full" borderRadius="xl" />
+// Placeholder components - replace with actual implementations
+const ProductsList = ({ products, onEdit, onDelete }) => (
+  <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
+    {products.map((product) => (
+      <Card key={product.id}>
+        <CardBody>
+          <VStack align="start" spacing={3}>
+            <Image 
+              src={product.image} 
+              alt={product.name} 
+              boxSize="200px" 
+              objectFit="cover" 
+              borderRadius="md"
+            />
+            <Heading size="sm">{product.name}</Heading>
+            <Text>${product.price}</Text>
+            <HStack>
+              <Button 
+                size="sm" 
+                leftIcon={<FiEdit />} 
+                onClick={() => onEdit(product)}
+              >
+                Edit
+              </Button>
+              <Button 
+                size="sm" 
+                colorScheme="red" 
+                onClick={() => onDelete(product.id)}
+              >
+                Delete
+              </Button>
+            </HStack>
+          </VStack>
+        </CardBody>
+      </Card>
+    ))}
+  </SimpleGrid>
+);
+
+const OrdersList = ({ orders }) => (
+  <VStack spacing={4} align="stretch">
+    {orders.map((order) => (
+      <Card key={order.id}>
+        <CardBody>
+          <VStack align="start" spacing={2}>
+            <HStack justify="space-between" width="full">
+              <Heading size="sm">Order #{order.id}</Heading>
+              <Badge 
+                colorScheme={
+                  order.status === 'completed' ? 'green' :
+                  order.status === 'pending' ? 'yellow' : 'blue'
+                }
+              >
+                {order.status}
+              </Badge>
+            </HStack>
+            <Text>Total: ${order.total}</Text>
+            <Text>Items: {order.items.length}</Text>
+          </VStack>
+        </CardBody>
+      </Card>
+    ))}
   </VStack>
 );
 
+const SalesChart = ({ orders }) => (
+  <Box height="300px" display="flex" justifyContent="center" alignItems="center">
+    <Text>Sales Chart Placeholder</Text>
+  </Box>
+);
+
 const OwnerDashboard = () => {
-  const router = useRouter();
-  const { t } = useTranslation(['dashboard', 'common']);
+  const { user } = useAuth();
   const toast = useToast();
-  const { user, loading: authLoading } = useAuth();
+  const { 
+    isOpen: isAddProductOpen, 
+    onOpen: onAddProductOpen, 
+    onClose: onAddProductClose 
+  } = useDisclosure();
 
-  const bgColor = useColorModeValue('white', 'gray.800');
+  const { 
+    isOpen: isEditProductOpen, 
+    onOpen: onEditProductOpen, 
+    onClose: onEditProductClose 
+  } = useDisclosure();
 
-  // Example modals or theme editor usage
-  const [isThemeEditorOpen, setIsThemeEditorOpen] = useState(false);
-  const openThemeEditor = () => setIsThemeEditorOpen(true);
-  const closeThemeEditor = () => setIsThemeEditorOpen(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  /**
-   *  Fetch the owner's shop data
-   *  We expect: /api/owners?filters[user][id][$eq]={user.id}
-   *  with multiple populates for shop_items, orders, etc.
-   */
-  const {
-    data: ownerData,
-    isLoading: isOwnerLoading,
-    error: ownerError,
-    refetch: refetchOwner
+  // Fetch shop owner data
+  const { 
+    data: shopData, 
+    isLoading: isShopLoading,
+    error: shopError,
+    refetch: refetchShop
   } = useQuery({
-    queryKey: ['owner', user?.id],
+    queryKey: ['shopOwner', user?.id],
     queryFn: async () => {
-      if (!user?.id) throw new Error('No user ID found');
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
+        `populate[shop_items][populate][images]=*` +
+        `&populate[orders][populate][items]=*` +
+        `&filters[user][id][$eq]=${user.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      );
+      if (!response.ok) throw new Error('Failed to fetch shop data');
+      return response.json();
+    },
+    enabled: !!user?.id
+  });
 
-      // Adjust the query params based on your exact needs:
-      const queryParams = new URLSearchParams({
-        'filters[user][id][$eq]': user.id.toString(),
-        // Populate all relevant fields
-        'populate[logo]': 'true',
-        'populate[coverImage]': 'true',
-        'populate[shop_items][populate][0]': 'images',
-        'populate[shop_items][populate][1]': 'reviews',
-        'populate[orders]': 'true'
-      });
+  // Calculate shop statistics
+  const shopStats = useMemo(() => {
+    const shop = shopData?.data?.[0]?.attributes;
+    if (!shop?.orders?.data) return {
+      totalRevenue: 0,
+      monthlyRevenue: 0,
+      totalOrders: 0,
+      pendingOrders: 0,
+      lowStockItems: 0
+    };
 
-      // Combine into final URL
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?${queryParams.toString()}`;
+    const orders = shop.orders.data;
+    const now = new Date();
+    const shopItems = shop.shop_items?.data || [];
+    
+    return {
+      totalRevenue: orders.reduce((sum, order) => 
+        sum + (parseFloat(order.attributes.total) || 0), 0),
+      monthlyRevenue: orders
+        .filter(order => {
+          const orderDate = new Date(order.attributes.createdAt);
+          return orderDate.getMonth() === now.getMonth() && 
+                 orderDate.getFullYear() === now.getFullYear();
+        })
+        .reduce((sum, order) => sum + (parseFloat(order.attributes.total) || 0), 0),
+      totalOrders: orders.length,
+      pendingOrders: orders.filter(order => 
+        order.attributes.status === 'pending').length,
+      lowStockItems: shopItems.filter(item => 
+        item.attributes.stock < 10).length
+    };
+  }, [shopData]);
 
-      const res = await fetch(url, {
+  // Product edit handler
+  const handleEditProduct = (product) => {
+    setSelectedProduct(product);
+    onEditProductOpen();
+  };
+
+  // Product delete handler
+  const handleDeleteProduct = async (productId) => {
+    try {
+      await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items/${productId}`, {
+        method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       });
+      
+      toast({
+        title: 'Product deleted',
+        status: 'success',
+        duration: 2000
+      });
+      refetchShop();
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: error.message,
+        status: 'error',
+        duration: 3000
+      });
+    }
+  };
 
-      if (!res.ok) {
-        const errorText = await res.text();
-        console.error('Failed to fetch owner data:', errorText);
-        throw new Error('Failed to fetch shop data');
-      }
-      return res.json();
-    },
-    enabled: !!user?.id && !authLoading,
-    retry: 1
-  });
-
-  /**
-   *  Loading state
-   */
-  if (isOwnerLoading || authLoading) {
+  // Loading state
+  if (isShopLoading) {
     return (
-      <Layout>
-        <Container maxW="1200px" py={6}>
-          <DashboardSkeleton />
-        </Container>
-      </Layout>
+      <Flex justify="center" align="center" minH="100vh">
+        <Spinner size="xl" />
+      </Flex>
     );
   }
 
-  /**
-   *  Error state
-   */
-  if (ownerError || !ownerData?.data?.[0]) {
+  // Error state
+  if (shopError || !shopData?.data?.[0]) {
     return (
-      <Layout>
-        <Container maxW="1200px" py={6}>
-          <Alert status="error">
-            <AlertIcon />
-            {ownerError?.message || t('errors.load_owner', { ns: 'common' })}
-          </Alert>
-        </Container>
-      </Layout>
+      <Container maxW="container.xl" py={6}>
+        <VStack spacing={4} align="center">
+          <Icon as={FiAlertCircle} boxSize={12} color="red.500" />
+          <Text color="red.500">
+            {shopError?.message || 'Failed to load shop data'}
+          </Text>
+        </VStack>
+      </Container>
     );
   }
 
-  // The first owner object
-  const owner = ownerData.data[0];
-  const shop = owner?.attributes || {};
-  const shopItems = shop?.shop_items?.data || [];
-  const orders = shop?.orders?.data || [];
+  const shop = shopData.data[0].attributes;
+  const shopId = shopData.data[0].id;
 
-  /**
-   *  Example stats computation
-   */
-  const stats = useMemo(() => {
-    const totalOrders = orders.length;
-    const totalProducts = shopItems.length;
-    // Simple revenue (if you store 'total' in each order)
-    const totalRevenue = orders.reduce((sum, o) => {
-      const orderTotal = o.attributes.total || 0;
-      return sum + parseFloat(orderTotal);
-    }, 0);
-
-    return {
-      totalOrders,
-      totalProducts,
-      totalRevenue
-    };
-  }, [orders, shopItems]);
-
-  /**
-   *  Return the main Dashboard
-   */
   return (
-    <Layout>
-      <Head>
-        <title>{shop?.shopName || t('shop.default_name')} - Dashboard</title>
-      </Head>
-
-      <Container maxW="1200px" py={{ base: 4, md: 8 }}>
-        {/* Header row */}
-        <Flex
-          direction={{ base: 'column', md: 'row' }}
-          justify="space-between"
-          align={{ base: 'start', md: 'center' }}
-          mb={6}
-          gap={4}
-        >
-          <VStack align="start">
-            <Heading size="lg">
-              {shop?.shopName || t('shop.default_name')}
-            </Heading>
-            <HStack spacing={2}>
-              <Badge colorScheme="blue">{shopItems.length} {t('dashboard:labels.products')}</Badge>
-              <Badge colorScheme={shop.verificationStatus === 'verified' ? 'green' : 'yellow'}>
-                {shop?.verificationStatus || 'pending'}
-              </Badge>
-            </HStack>
-          </VStack>
-          <HStack>
-            {/* Quick actions menu */}
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Owner Actions"
-                icon={<FiMoreVertical />}
-                variant="outline"
+    <Container maxW="1400px" py={6}>
+      {/* Shop Header */}
+      <Card mb={6}>
+        <CardBody>
+          <Flex direction={{ base: 'column', md: 'row' }} gap={6} align="center">
+            <Box 
+              position="relative" 
+              minW={{ base: "full", md: "200px" }}
+              h="315px"
+              w="full" 
+              overflow="hidden"
+              borderRadius="lg"
+            >
+              <Image
+                src={shop.coverImage?.url || '/default-shop-cover.jpg'}
+                alt={shop.shopName}
+                objectFit="cover"
+                w="full"
+                h="full"
               />
-              <MenuList>
-                <MenuItem icon={<FiSettings />} onClick={openThemeEditor}>
-                  {t('dashboard:actions.theme_settings')}
-                </MenuItem>
-                <MenuItem
-                  icon={<FiRefreshCw />}
-                  onClick={() => {
-                    refetchOwner();
-                    toast({ title: t('common:refreshed'), status: 'info' });
-                  }}
-                >
-                  {t('dashboard:actions.refresh')}
-                </MenuItem>
-              </MenuList>
-            </Menu>
+              <Box
+                position="absolute"
+                bottom={4}
+                left={4}
+                bg="white"
+                p={1}
+                borderRadius="full"
+                boxShadow="lg"
+                border="4px solid white"
+              >
+                <Image
+                  src={shop.logo?.url || '/default-shop-logo.jpg'}
+                  alt={`${shop.shopName} logo`}
+                  boxSize="160px"
+                  borderRadius="full"
+                  objectFit="cover"
+                />
+              </Box>
+            </Box>
+
+            <VStack align="start" flex={1} spacing={2}>
+              <HStack>
+                <Heading size="lg">{shop.shopName}</Heading>
+                <Badge colorScheme={
+                  shop.verificationStatus === 'verified' ? 'green' :
+                  shop.verificationStatus === 'pending' ? 'yellow' : 'red'
+                }>
+                  {shop.verificationStatus}
+                </Badge>
+              </HStack>
+              <Text color="gray.600" noOfLines={2}>
+                {shop.description}
+              </Text>
+              <HStack>
+                <Badge colorScheme="blue">
+                  {shop.shop_items?.data?.length || 0} Products
+                </Badge>
+                <HStack color="yellow.500">
+                  <Icon as={FiStar} />
+                  <Text>{shop.rating?.toFixed(1) || '0.0'}</Text>
+                </HStack>
+              </HStack>
+            </VStack>
             <Button
               leftIcon={<FiPlus />}
               colorScheme="blue"
-              onClick={() => router.push('/owner/add-product')}
+              onClick={onAddProductOpen}
             >
-              {t('dashboard:actions.add_product')}
+              Add Product
             </Button>
-          </HStack>
-        </Flex>
+          </Flex>
+        </CardBody>
+      </Card>
 
-        {/* Shop Stats */}
-        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} mb={6}>
-          <Box p={6} bg={bgColor} borderRadius="lg" boxShadow="md">
-            <Text fontSize="sm" color="gray.500">{t('dashboard:stats.revenue')}</Text>
-            <Heading size="md">{stats.totalRevenue.toLocaleString()} LYD</Heading>
-            <HStack mt={2}>
-              <FiTrendingUp />
-              <Text fontSize="sm">{t('dashboard:stats.all_time')}</Text>
-            </HStack>
-          </Box>
-          <Box p={6} bg={bgColor} borderRadius="lg" boxShadow="md">
-            <Text fontSize="sm" color="gray.500">{t('dashboard:stats.orders')}</Text>
-            <Heading size="md">{stats.totalOrders}</Heading>
-            <HStack mt={2}>
-              <FiPackage />
-              <Text fontSize="sm">{t('dashboard:stats.order_history')}</Text>
-            </HStack>
-          </Box>
-          <Box p={6} bg={bgColor} borderRadius="lg" boxShadow="md">
-            <Text fontSize="sm" color="gray.500">{t('dashboard:stats.products')}</Text>
-            <Heading size="md">{stats.totalProducts}</Heading>
-            <HStack mt={2}>
-              <FiList />
-              <Text fontSize="sm">{t('dashboard:stats.inventory')}</Text>
-            </HStack>
-          </Box>
-        </SimpleGrid>
+      {/* Stats Grid */}
+      <SimpleGrid columns={{ base: 1, md: 4 }} spacing={6} mb={6}>
+        <Card>
+          <CardBody>
+            <Stat>
+              <StatLabel>Total Revenue</StatLabel>
+              <StatNumber>{shopStats.totalRevenue.toLocaleString()} LYD</StatNumber>
+              <StatHelpText>
+                <Icon as={FiTrendingUp} /> All time sales
+              </StatHelpText>
+            </Stat>
+          </CardBody>
+        </Card>
 
-        {/* Main Tabs */}
-        <Tabs isLazy variant="soft-rounded" colorScheme="blue">
-          <TabList overflowX="auto" whiteSpace="nowrap">
-            <Tab><FiPackage style={{ marginRight: 4 }} />{t('dashboard:tabs.products')}</Tab>
-            <Tab><FiList style={{ marginRight: 4 }} />{t('dashboard:tabs.orders')}</Tab>
-            <Tab><FiTrendingUp style={{ marginRight: 4 }} />{t('dashboard:tabs.analytics')}</Tab>
-            <Tab><FiStar style={{ marginRight: 4 }} />{t('dashboard:tabs.reviews')}</Tab>
-          </TabList>
-          <TabPanels mt={4}>
-            {/* Products */}
-            <TabPanel px={0}>
-              <ProductsList 
-                products={shopItems} 
-                // If your component needs a refetch callback or ownerId, pass them:
-                onRefetch={refetchOwner} 
-              />
-            </TabPanel>
+        <Card>
+          <CardBody>
+            <Stat>
+              <StatLabel>Monthly Revenue</StatLabel>
+              <StatNumber>{shopStats.monthlyRevenue.toLocaleString()} LYD</StatNumber>
+              <StatHelpText>
+                <Icon as={FiDollarSign} /> This month
+              </StatHelpText>
+            </Stat>
+          </CardBody>
+        </Card>
 
-            {/* Orders */}
-            <TabPanel px={0}>
-              <OrdersList 
-                orders={orders} 
-                onRefetch={refetchOwner}
-              />
-            </TabPanel>
+        <Card>
+          <CardBody>
+            <Stat>
+              <StatLabel>Total Orders</StatLabel>
+              <HStack>
+                <StatNumber>{shopStats.totalOrders}</StatNumber>
+                {shopStats.pendingOrders > 0 && (
+                  <Badge colorScheme="yellow">
+                    {shopStats.pendingOrders} pending
+                  </Badge>
+                )}
+              </HStack>
+              <StatHelpText>
+                <Icon as={FiPackage} /> Order history
+              </StatHelpText>
+            </Stat>
+          </CardBody>
+        </Card>
 
-            {/* Analytics */}
-            <TabPanel px={0}>
-              <Box p={4} bg={bgColor} borderRadius="lg" boxShadow="md">
-                <SalesChart orders={orders} />
-              </Box>
-            </TabPanel>
+        <Card>
+          <CardBody>
+            <Stat>
+              <StatLabel>Inventory Alert</StatLabel>
+              <StatNumber>{shopStats.lowStockItems}</StatNumber>
+              <StatHelpText>
+                <Icon as={FiAlertCircle} /> Low stock items
+              </StatHelpText>
+            </Stat>
+          </CardBody>
+        </Card>
+      </SimpleGrid>
 
-            {/* Reviews */}
-            <TabPanel px={0}>
-              <ReviewsList 
-                ownerId={owner.id} 
-                // If your reviews are nested differently, adjust here
-                // or fetch them in a separate query
-              />
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-      </Container>
+      {/* Main Content Tabs */}
+      <Tabs colorScheme="blue" isLazy>
+        <TabList>
+          <Tab><Icon as={FiGrid} mr={2} /> Products</Tab>
+          <Tab><Icon as={FiList} mr={2} /> Orders</Tab>
+          <Tab><Icon as={FiTrendingUp} mr={2} /> Analytics</Tab>
+          <Tab><Icon as={FiStar} mr={2} /> Reviews</Tab>
+        </TabList>
 
-      {/* Optional Theme Editor Modal */}
-      {isThemeEditorOpen && (
-        <ThemeEditor
-          isOpen={isThemeEditorOpen}
-          onClose={closeThemeEditor}
-          // If you store theme in shop.theme, pass it here:
-          themeData={shop.theme}
-          onSave={async (newTheme) => {
-            try {
-              const updateUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/${owner.id}`;
-              const res = await fetch(updateUrl, {
-                method: 'PUT',
-                headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: `Bearer ${localStorage.getItem('token')}`
-                },
-                body: JSON.stringify({ data: { theme: newTheme } })
-              });
-              if (!res.ok) throw new Error('Failed to update theme');
-              toast({ title: t('dashboard:theme_updated'), status: 'success' });
-              refetchOwner();
-            } catch (err) {
-              toast({ title: t('common:error'), description: err.message, status: 'error' });
-            } finally {
-              closeThemeEditor();
-            }
-          }}
-        />
-      )}
-    </Layout>
+        <TabPanels>
+          {/* Products Tab */}
+          <TabPanel px={0}>
+            <ProductsList 
+              products={shop.shop_items?.data.map(item => ({
+                id: item.id,
+                name: item.attributes.name,
+                price: item.attributes.price,
+                image: item.attributes.images?.data?.[0]?.attributes?.url || '/default-product.jpg'
+              })) || []}
+              onEdit={handleEditProduct}
+              onDelete={handleDeleteProduct}
+            />
+          </TabPanel>
+
+          {/* Orders Tab */}
+          <TabPanel px={0}>
+            <OrdersList 
+              orders={shop.orders?.data.map(order => ({
+                id: order.id,
+                status: order.attributes.status,
+                total: order.attributes.total,
+                items: order.attributes.order_items || []
+              })) || []}
+            />
+          </TabPanel>
+
+          {/* Analytics Tab */}
+          <TabPanel px={0}>
+            <SalesChart 
+              orders={shop.orders?.data || []}
+            />
+          </TabPanel>
+
+          {/* Reviews Tab */}
+          <TabPanel px={0}>
+            <VStack spacing={4} align="stretch">
+              <Text>Reviews will be displayed here</Text>
+            </VStack>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+
+      {/* Modals for Add and Edit Products would go here */}
+    </Container>
   );
 };
-
-export const getServerSideProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ['common', 'dashboard'])),
-  },
-});
 
 export default OwnerDashboard;

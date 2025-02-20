@@ -27,26 +27,24 @@ import {
 } from '@chakra-ui/react';
 import { Search, ShoppingBag, Heart, Star } from 'lucide-react';
 
-const ITEMS_PER_PAGE = 12;
-
+// Display a single product
 const ProductCard = ({ product }) => {
   const router = useRouter();
   const toast = useToast();
   const [isFavorited, setIsFavorited] = useState(false);
   const cardBg = useColorModeValue('white', 'gray.800');
 
-  // Build image URL from Strapi data or fallback to a placeholder.
-  const imageUrl = product?.attributes?.images?.data?.[0]?.attributes?.url 
-    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.attributes.images.data[0].attributes.url}`
-    : '/placeholder-product.jpg';
+  // If your real API eventually includes `images`, adapt here:
+  const imageUrl = '/placeholder-product.jpg';
 
   return (
     <Card bg={cardBg} overflow="hidden" boxShadow="md" borderRadius="md">
       <CardBody p={0}>
+        {/* Image Section */}
         <Box position="relative" h="260px">
           <Image
             src={imageUrl}
-            alt={product.attributes.name}
+            alt={product.name}
             objectFit="cover"
             w="full"
             h="full"
@@ -70,49 +68,55 @@ const ProductCard = ({ product }) => {
             }}
           />
         </Box>
+
+        {/* Text Content Section */}
         <VStack p={4} spacing={3} align="stretch">
           <HStack justify="space-between">
             <Heading size="md" noOfLines={1}>
-              {product.attributes.name}
+              {product.name}
             </Heading>
-            <Badge colorScheme={product.attributes.status === 'available' ? 'green' : 'red'}>
-              {product.attributes.status === 'available' ? 'In Stock' : 'Out of Stock'}
+            <Badge colorScheme={product.status === 'available' ? 'green' : 'red'}>
+              {product.status === 'available' ? 'In Stock' : 'Out of Stock'}
             </Badge>
           </HStack>
           <Text noOfLines={2} color="gray.600">
-            {product.attributes.description}
+            {product.description}
           </Text>
           <HStack justify="space-between">
             <Text fontWeight="bold" fontSize="xl" color="blue.500">
-              {product.attributes.price} LYD
+              {product.price} LYD
             </Text>
             <HStack>
               <Star size={16} fill="#F6E05E" />
               <Text>
-                {product.attributes.rating?.toFixed(1) || '0.0'}
+                {product.rating?.toFixed(1) || '0.0'}
                 <Text as="span" color="gray.500" ml={1}>
-                  ({product.attributes.reviews?.data?.length || 0})
+                  (0 reviews)
                 </Text>
               </Text>
             </HStack>
           </HStack>
-          {product.attributes.category && (
+
+          {/* Category & Subcategory */}
+          {(product.category || product.subcategory) && (
             <HStack spacing={2}>
-              <Badge colorScheme="purple">
-                {product.attributes.category}
-              </Badge>
-              {product.attributes.subcategory && (
+              {product.category && (
+                <Badge colorScheme="purple">{product.category}</Badge>
+              )}
+              {product.subcategory && (
                 <Badge colorScheme="purple" variant="outline">
-                  {product.attributes.subcategory}
+                  {product.subcategory}
                 </Badge>
               )}
             </HStack>
           )}
+
+          {/* Action Button */}
           <Button
             colorScheme="blue"
             leftIcon={<ShoppingBag size={18} />}
             onClick={() => router.push(`/shop-items/${product.id}/public`)}
-            isDisabled={product.attributes.status !== 'available' || product.attributes.stock <= 0}
+            isDisabled={product.status !== 'available' || product.stock <= 0}
           >
             View Details
           </Button>
@@ -121,6 +125,8 @@ const ProductCard = ({ product }) => {
     </Card>
   );
 };
+
+const ITEMS_PER_PAGE = 12;
 
 const MarketplacePreview = () => {
   const router = useRouter();
@@ -131,15 +137,16 @@ const MarketplacePreview = () => {
   const [page, setPage] = useState(1);
   const bgColor = useColorModeValue('gray.50', 'gray.900');
 
-  // Debounce search input to reduce API calls.
+  // Debounce the searchTerm
   useEffect(() => {
-    const handler = setTimeout(() => {
+    const timer = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm);
-      setPage(1); // Reset to first page on new search.
+      setPage(1);
     }, 300);
-    return () => clearTimeout(handler);
+    return () => clearTimeout(timer);
   }, [searchTerm]);
 
+  // Query: fetch the shop items
   const { data, isLoading, error } = useQuery({
     queryKey: ['products', debouncedSearchTerm, selectedCategory, page],
     queryFn: async () => {
@@ -147,63 +154,62 @@ const MarketplacePreview = () => {
         'pagination[page]': page.toString(),
         'pagination[pageSize]': ITEMS_PER_PAGE.toString()
       });
+      // If you do have images in your real data, add more populate fields
+      // Otherwise, this example JSON doesn't have images or owner
+      // params.append('populate[images]', '*');
+      // params.append('populate[owner]', '*');
 
-      // Populate necessary relations.
-      params.append('populate[images]', '*');
-      params.append('populate[owner]', '*');
-      params.append('populate[reviews]', '*');
-
-      // Apply search filters if provided.
+      // Filter by search
       if (debouncedSearchTerm) {
         params.append('filters[$or][0][name][$containsi]', debouncedSearchTerm);
         params.append('filters[$or][1][description][$containsi]', debouncedSearchTerm);
       }
+      // Filter by category
       if (selectedCategory) {
         params.append('filters[category]', selectedCategory);
       }
-      // Only fetch available items.
+      // Only available items
       params.append('filters[status][$eq]', 'available');
 
       const requestUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`;
-      const response = await fetch(requestUrl, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-      });
+      console.log('[MarketplacePreview] GET =>', requestUrl);
+
+      const response = await fetch(requestUrl);
       if (!response.ok) {
+        const text = await response.text();
+        console.error('[MarketplacePreview] Error =>', text);
         throw new Error('Failed to fetch products');
       }
-      return response.json();
+      const json = await response.json();
+      console.log('[MarketplacePreview] API response =>', json);
+      return json;
     },
     keepPreviousData: true,
-    staleTime: 60000 // Cache for 1 minute.
+    staleTime: 60000
   });
 
-  // Robustly handle different API response shapes.
-  let products = [];
-  let pagination = null;
-  if (data) {
-    if (Array.isArray(data.data)) {
-      // If the API returns an array directly.
-      products = data.data;
-    } else if (data.data?.results) {
-      // If the API returns an object with a "results" key.
-      products = data.data.results;
-      pagination = data.data.attributes?.pagination;
-    } else {
-      // Fallback: if data.data is an object but not an array.
-      products = [];
-    }
-  }
+  // According to your final shape:
+  // {
+  //   "data": {
+  //     "attributes": {
+  //       "results": [...],
+  //       "pagination": {...}
+  //     }
+  //   },
+  //   "meta": {}
+  // }
+  const products = data?.data?.attributes?.results || [];
+  const pagination = data?.data?.attributes?.pagination;
 
-  // Compute unique categories from the fetched products.
+  // Compute categories from the returned items
   const categories = useMemo(() => {
-    const uniqueCategories = new Set();
-    products.forEach(product => {
-      if (product.attributes.category) {
-        uniqueCategories.add(product.attributes.category);
+    const setOfCategories = new Set();
+    products.forEach((item) => {
+      if (item.category) {
+        setOfCategories.add(item.category);
       }
     });
-    return Array.from(uniqueCategories);
+    return Array.from(setOfCategories);
   }, [products]);
 
   if (error) {
@@ -222,6 +228,8 @@ const MarketplacePreview = () => {
       <Container maxW="7xl">
         <VStack spacing={8}>
           <Heading size="2xl">Marketplace</Heading>
+
+          {/* Search + Category Filter */}
           <HStack w="full" spacing={4}>
             <InputGroup>
               <InputLeftElement pointerEvents="none">
@@ -239,18 +247,20 @@ const MarketplacePreview = () => {
               value={selectedCategory}
               onChange={(e) => {
                 setSelectedCategory(e.target.value);
-                setPage(1); // Reset page when changing category.
+                setPage(1);
               }}
               w="200px"
               bg="white"
             >
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
+              {categories.map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat}
                 </option>
               ))}
             </Select>
           </HStack>
+
+          {/* Loading Skeleton */}
           {isLoading ? (
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} w="full">
               {Array.from({ length: ITEMS_PER_PAGE }).map((_, i) => (
@@ -259,11 +269,14 @@ const MarketplacePreview = () => {
             </SimpleGrid>
           ) : (
             <>
+              {/* Render the products */}
               <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} w="full">
-                {products.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                {products.map((p) => (
+                  <ProductCard key={p.id} product={p} />
                 ))}
               </SimpleGrid>
+
+              {/* Pagination Controls */}
               {pagination && (
                 <HStack justify="center" mt={8}>
                   <Button
@@ -276,9 +289,10 @@ const MarketplacePreview = () => {
                     Page {page} of {pagination.pageCount}
                   </Text>
                   <Button
-                    onClick={() =>
-                      setPage((prev) => Math.min(prev + 1, pagination.pageCount))
-                    }
+                    onClick={() => {
+                      const nextPage = Math.min(page + 1, pagination.pageCount);
+                      setPage(nextPage);
+                    }}
                     isDisabled={page >= pagination.pageCount}
                   >
                     Next
