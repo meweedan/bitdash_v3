@@ -31,8 +31,12 @@ import {
 // Icons
 import { RefreshCw, PlusCircle } from 'lucide-react';
 
+// Ensure react-i18next is initialized properly
+import { useTranslation } from 'react-i18next';
+
 const OwnerDashboard = () => {
   const router = useRouter();
+  const { t } = useTranslation(); // Ensure i18n is loaded properly
   const { user, isAuthenticated, loading: authLoading } = useAuth();
 
   // Fetch Owner Data
@@ -53,8 +57,16 @@ const OwnerDashboard = () => {
 
   const owner = ownerData?.attributes || {};
   const products = owner?.shop_items?.data || [];
-  const theme = owner?.theme || {}; // Ensure theme exists
-  const colors = theme.colors || { primary: '#3182CE', secondary: '#F7FAFC' }; // Default fallback
+  
+  // 🛠 Fix Undefined Theme Issue
+  const theme = owner?.theme || {
+    colors: {
+      primary: '#3182CE',
+      secondary: '#F7FAFC',
+      accent: '#48BB78',
+      text: '#2D3748',
+    },
+  };
 
   // Show Loading State
   if (authLoading || isLoading) {
@@ -63,7 +75,7 @@ const OwnerDashboard = () => {
         <Flex justify="center" align="center" minH="100vh">
           <VStack spacing={4}>
             <Spinner size="xl" />
-            <Text>Loading your dashboard...</Text>
+            <Text>{t('Loading your dashboard...')}</Text>
           </VStack>
         </Flex>
       </Layout>
@@ -73,7 +85,7 @@ const OwnerDashboard = () => {
   return (
     <Layout>
       <Head>
-        <title>Owner Dashboard | BitShop</title>
+        <title>{t('Owner Dashboard | BitShop')}</title>
       </Head>
 
       <Container maxW="1200px" py={4}>
@@ -81,15 +93,15 @@ const OwnerDashboard = () => {
           {/* Dashboard Header */}
           <Flex justify="space-between" align="center" w="full">
             <VStack align="start">
-              <Heading size="lg">Owner Dashboard</Heading>
-              <Text color="gray.500">{owner?.shopName || 'No Shop Name'}</Text>
+              <Heading size="lg">{t('Owner Dashboard')}</Heading>
+              <Text color="gray.500">{owner?.shopName || t('No Shop Name')}</Text>
               <Badge colorScheme={owner?.verificationStatus === 'verified' ? 'green' : 'orange'}>
                 {owner?.verificationStatus?.toUpperCase()}
               </Badge>
             </VStack>
             <HStack spacing={4}>
               <Button leftIcon={<RefreshCw />} colorScheme="bitshop-solid" onClick={refetch}>
-                Refresh
+                {t('Refresh')}
               </Button>
             </HStack>
           </Flex>
@@ -108,9 +120,9 @@ const OwnerDashboard = () => {
           <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={6} w="full">
             <GlassCard p={6}>
               <Flex justify="space-between" align="center">
-                <Heading size="md">Your Products</Heading>
+                <Heading size="md">{t('Your Products')}</Heading>
                 <Button leftIcon={<PlusCircle />} colorScheme="bitshop-solid">
-                  Add Product
+                  {t('Add Product')}
                 </Button>
               </Flex>
               <ProductsList products={products} />

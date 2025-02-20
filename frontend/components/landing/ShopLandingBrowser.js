@@ -155,7 +155,7 @@ export default function ShopLanding() {
       >
 
         {/* MarketplacePreview */}
-        <Box mt={{ base: 8, md: 12 }}>
+        <Box>
           <MarketplacePreview />
         </Box>
         <Grid 

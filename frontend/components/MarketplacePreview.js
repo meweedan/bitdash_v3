@@ -224,8 +224,6 @@ const MarketplacePreview = () => {
     <Box py={8}>
       <Container maxW="7xl">
         <VStack spacing={8}>
-          <Heading size="2xl">Marketplace</Heading>
-
           {/* Search + Category Filter */}
           <HStack w="full" spacing={4}>
             <InputGroup>

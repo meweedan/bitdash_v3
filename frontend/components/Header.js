@@ -34,7 +34,7 @@ export default function Header() {
   const [showPlatforms, setShowPlatforms] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [platform, setPlatform] = useState('bitdash');
-  const accentColor = `brand.${platform}.500`;
+  const accentColor = `brand.${platform}.700`;
   const showAnnouncements = platform === 'bitshop' || platform === 'bitfood' || platform === 'bitcash';
 
   useEffect(() => {
@@ -119,7 +119,7 @@ const MenuItems = ({ href, children, onClick }) => (
         fontWeight="bold"
         px={4}
         py={2}
-        _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+        _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
         textAlign="center"
         onClick={onClick}
         w="full"
@@ -136,7 +136,7 @@ const MenuItems = ({ href, children, onClick }) => (
       position="sticky"  // Changed from fixed
       top="0"
       width="100%"
-      backdropFilter="blur(10px)"
+      backdropFilter="blur(40px)"
       zIndex={999}
     >
       {/* Solutions Menu - Desktop */}
@@ -165,7 +165,7 @@ const MenuItems = ({ href, children, onClick }) => (
                   spacing={5}
                   align="center"
                   transition="transform 0.2s"
-                  _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+                  _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
                 >
                   <Image 
                     src={platform.image}
@@ -178,7 +178,7 @@ const MenuItems = ({ href, children, onClick }) => (
                   <Text 
                     fontSize="md" 
                     fontWeight="medium"
-                    color={isDark ? `brand.${platform}.500` : `brand.${platform}.400`}
+                    color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
                   >
                     {platform.name}
                   </Text>
@@ -215,7 +215,7 @@ const MenuItems = ({ href, children, onClick }) => (
               fontSize="lg"
               fontWeight="bold"
               cursor="pointer"
-              color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}
+              color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
             >
               {t('servicesMenu')}
             </Text>
@@ -226,7 +226,7 @@ const MenuItems = ({ href, children, onClick }) => (
               fontSize="lg"
               fontWeight="bold"
               cursor="pointer"
-              color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}
+              color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
             >
               {t('aboutUs')}
             </Text>
@@ -237,7 +237,7 @@ const MenuItems = ({ href, children, onClick }) => (
               fontSize="lg"
               fontWeight="bold"
               cursor="pointer"
-              color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}
+              color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
               onClick={() => setShowPlatforms(!showPlatforms)}
             >
               {t('ourSolutions')}
@@ -258,9 +258,7 @@ const MenuItems = ({ href, children, onClick }) => (
                 width: '80px',
                 fontSize: '16px',
                 height: '40px',
-                bg: isDark ? 'whiteAlpha.200' : 'blackAlpha.50',
                 border: 'none',
-                px: 3,
                 borderRadius: 'md',
               }
             }}
@@ -269,24 +267,22 @@ const MenuItems = ({ href, children, onClick }) => (
           <IconButton
             onClick={toggleColorMode}
             variant={`${platform}-outline`}
-            color={isDark ? 'white' : 'black'}
             aria-label="Toggle Theme"
             icon={isDark ? 
               <svg viewBox="0 0 24 24" width="24px" height="24px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
               : <svg viewBox="0 0 24 24" width="24px" height="24px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
             }
             size="lg"
-            _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+            _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
           />
 
           <IconButton
             icon={<FaWhatsapp size={24} />}
             variant={`${platform}-outline`}
-            color={isDark ? 'white' : 'black'}
             onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
             aria-label="WhatsApp"
             size="lg"
-            _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+            _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
           />
 
           {/* Only show auth buttons if not on main domain */}
@@ -298,9 +294,8 @@ const MenuItems = ({ href, children, onClick }) => (
                     leftIcon={<FaUser size={20} />} 
                     size="lg"
                     variant={`${platform}-outline`}  // Changed from -solid to -outline
-                    color={isDark ? 'white' : 'black'} // Changed color definition
                     onClick={() => router.push('/login')}
-                    _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+                    _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
                   >
                     {t('myAccount')}
                   </Button>
@@ -319,7 +314,7 @@ const MenuItems = ({ href, children, onClick }) => (
                   <Button 
                     leftIcon={<FaSignInAlt size={20} />}
                     size="lg"
-                    _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+                    _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
                     variant={`${platform}-outline`}
                     color={{bg : isDark ? 'white' : 'black'}}
                     onClick={() => router.push('/login')}
@@ -332,7 +327,7 @@ const MenuItems = ({ href, children, onClick }) => (
                     variant={`${platform}-solid`}
                     color={{bg : isDark ? 'white' : 'black'}}
                     onClick={() => router.push('/signup')}
-                    _hover={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+                    _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
                   >
                     {t('signup')}
                   </Button>
@@ -366,7 +361,7 @@ const MenuItems = ({ href, children, onClick }) => (
           <IconButton
             onClick={toggleColorMode}
             variant={`${platform}-outline`}
-            color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`}
+            color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
             aria-label="Toggle Theme"
             icon={isDark ? <svg viewBox="0 0 24 24" width="20px" height="20px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
                 : <svg viewBox="0 0 24 24" width="20px" height="20px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>}
@@ -403,7 +398,7 @@ const MenuItems = ({ href, children, onClick }) => (
                     icon={<FaSignInAlt />}
                     aria-label={t('login')}
                     variant={`${platform}-outline`}
-                    color={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+                    color={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
                     size="sm"
                   />
                   <IconButton
@@ -412,7 +407,7 @@ const MenuItems = ({ href, children, onClick }) => (
                     icon={<FaUserPlus />}
                     aria-label={t('signup')}
                     variant={`${platform}-outline`}
-                    color={{bg : isDark ? `brand.${platform}.500` : `brand.${platform}.400`}}
+                    color={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
                     size="sm"
                   />
                 </>
@@ -443,8 +438,8 @@ const MenuItems = ({ href, children, onClick }) => (
         >
           {/* Navigation Links */}
           <SimpleGrid columns={3} w="full" mb={4}>           
-            <MenuItems href="/services" color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`} onClick={onClose}>{t('servicesMenu')}</MenuItems>
-            <MenuItems href="/about"color={isDark ? `brand.${platform}.500` : `brand.${platform}.700`} onClick={onClose}>{t('aboutUs')}</MenuItems>
+            <MenuItems href="/services" color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`} onClick={onClose}>{t('servicesMenu')}</MenuItems>
+            <MenuItems href="/about"color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`} onClick={onClose}>{t('aboutUs')}</MenuItems>
             <Button
               leftIcon={<FaWhatsapp />}
               variant={`${platform}-outline`}
