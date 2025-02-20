@@ -26,6 +26,7 @@ import {
   Tab,
   TabPanel,
   IconButton,
+  AlertIcon,
   Menu,
   MenuButton,
   MenuList,
@@ -71,7 +72,7 @@ import ThemeEditor from '@/components/shop/owner/ThemeEditor';
 const MotionStat = motion(Stat);
 
 const ShopOwnerDashboard = () => {
-  const { user } = useAuth();
+  const { user, isLoading: isAuthLoading } = useAuth();
   const toast = useToast();
   const { isOpen: isAddProductOpen, onOpen: onAddProductOpen, onClose: onAddProductClose } = useDisclosure();
   const { isOpen: isEditProductOpen, onOpen: onEditProductOpen, onClose: onEditProductClose } = useDisclosure();
@@ -82,23 +83,44 @@ const ShopOwnerDashboard = () => {
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
 
+   if (isAuthLoading) {
+      return (
+        <Layout>
+          <Flex justify="center" align="center" minH="100vh">
+            <Spinner size="xl" />
+          </Flex>
+        </Layout>
+      );
+    }
+
+    if (!user) {
+      return (
+        <Layout>
+          <Container maxW="container.xl" py={6}>
+            <Alert status="error">
+              <AlertIcon />
+              Please login to access your shop dashboard
+            </Alert>
+          </Container>
+        </Layout>
+      );
+    }
+
   useEffect(() => {
     console.log('Current User:', user);
     console.log('User ID:', user?.id);
     console.log('Auth Token:', localStorage.getItem('token'));
   }, [user]);
 
-  // Fetch shop owner data with proper API structure
+ // Fetch shop owner data
   const { 
-      data: shopData,
-      isLoading: isShopLoading,
-      error: shopError,
-      refetch: refetchShop
-    } = useQuery({
-      queryKey: ['shopOwner', user?.id],
+    data: shopData,
+    isLoading: isShopLoading,
+    error: shopError,
+    refetch: refetchShop
+  } = useQuery({
+    queryKey: ['shopOwner', user?.id],
     queryFn: async () => {
-      if (!user?.id) throw new Error('User not authenticated');
-
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No authentication token');
 
@@ -106,13 +128,12 @@ const ShopOwnerDashboard = () => {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
           `filters[user][id][$eq]=${user.id}` +
-          `&populate[logo][fields][0]=url` +
-          `&populate[coverImage][fields][0]=url` +
-          `&populate[wallet][fields][0]=balance` +
-          `&populate[wallet][fields][1]=currency` +
-          `&populate[shop_items][populate][images][fields][0]=url` +
-          `&populate[shop_items][populate][reviews]=*` +
-          `&populate[orders][populate][items]=*`,
+          `&populate[logo]=*` +
+          `&populate[coverImage]=*` +
+          `&populate[wallet]=*` +
+          `&populate[shop_items][populate][0]=images` +
+          `&populate[shop_items][populate][1]=reviews` +
+          `&populate[orders][populate]=*`,
           {
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -122,20 +143,88 @@ const ShopOwnerDashboard = () => {
         );
 
         if (!response.ok) {
-          throw new Error('Failed to fetch shop data');
+          const errorData = await response.json();
+          throw new Error(errorData.error?.message || 'Failed to fetch shop data');
         }
 
-        return await response.json();
+        const data = await response.json();
+        return data;
       } catch (error) {
         console.error('Shop Fetch Error:', error);
         throw error;
       }
     },
     enabled: Boolean(user?.id)
-  });
+    });
 
-  const shop = shopData?.data?.[0]?.attributes;
-  const shopId = shopData?.data?.[0]?.id;
+    // Auth loading check
+    if (isAuthLoading) {
+      return (
+        <Layout>
+          <Flex justify="center" align="center" minH="100vh">
+            <Spinner size="xl" />
+          </Flex>
+        </Layout>
+      );
+    }
+
+    // Auth check
+    if (!user) {
+      return (
+        <Layout>
+          <Container maxW="container.xl" py={6}>
+            <Alert status="error">
+              <AlertIcon />
+              Please login to access your shop dashboard
+            </Alert>
+          </Container>
+        </Layout>
+      );
+    }
+
+    // Shop data loading check
+    if (isShopLoading) {
+      return (
+        <Layout>
+          <Flex justify="center" align="center" minH="100vh">
+            <Spinner size="xl" />
+          </Flex>
+        </Layout>
+      );
+    }
+
+    // Shop error check
+    if (shopError) {
+      return (
+        <Layout>
+          <Container maxW="container.xl" py={6}>
+            <Alert status="error">
+              <AlertIcon />
+              {shopError.message || 'Failed to load shop data'}
+            </Alert>
+          </Container>
+        </Layout>
+      );
+    }
+
+    // Get shop data
+    const shopDataResult = shopData?.data?.[0];
+    if (!shopDataResult) {
+      return (
+        <Layout>
+          <Container maxW="container.xl" py={6}>
+            <Alert status="warning">
+              <AlertIcon />
+              No shop found. Please create a shop to continue.
+            </Alert>
+          </Container>
+        </Layout>
+      );
+    }
+
+    // Now we can safely use shop data
+    const shop = shopDataResult.attributes;
+    const shopId = shopDataResult.id;
 
   // Calculate shop statistics
   const shopStats = useMemo(() => {

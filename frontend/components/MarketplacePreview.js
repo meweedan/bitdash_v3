@@ -21,14 +21,9 @@ import {
   useColorModeValue,
   useToast,
   Flex,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Portal,
 } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
-import { ShoppingBag, Heart, Search, Star, Filter, ArrowUpDown } from 'lucide-react';
+import { ShoppingBag, Heart, Search, Star } from 'lucide-react';
 
 const ITEMS_PER_PAGE = 12;
 
@@ -41,11 +36,13 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
   const textColor = useColorModeValue('gray.800', 'white');
   const descriptionColor = useColorModeValue('gray.600', 'gray.400');
 
-  // Transform image URL to handle Strapi's data structure
-  const imageUrl = product?.attributes?.images?.data?.[0]?.attributes?.url || '/placeholder-product.jpg';
-  
+  // Correctly handle Strapi media URL
+  const imageUrl = product?.attributes?.images?.data?.[0]?.attributes?.url 
+    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.attributes.images.data[0].attributes.url}`
+    : '/placeholder-product.jpg';
+
   const handleViewProduct = () => {
-    router.push(`/products/${product.id}/public`);
+    router.push(`/products/${product.id}`);
   };
 
   return (
@@ -64,6 +61,7 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
           objectFit="cover"
           w="full"
           h="full"
+          fallback={<Skeleton h="full" w="full" />}
         />
         <IconButton
           icon={<Heart fill={isFavorited ? 'red' : 'none'} />}
@@ -75,6 +73,16 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
           onClick={() => onFavoriteToggle(product.id)}
           aria-label="Favorite"
         />
+        {product.attributes.stock <= 5 && product.attributes.stock > 0 && (
+          <Badge
+            position="absolute"
+            top={4}
+            left={4}
+            colorScheme="orange"
+          >
+            Only {product.attributes.stock} left
+          </Badge>
+        )}
       </Box>
 
       <VStack p={6} align="stretch" spacing={4}>
@@ -97,20 +105,29 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
 
         <HStack justify="space-between">
           <Text fontWeight="bold" fontSize="xl" color="blue.500">
-            ${Number(product.attributes.price).toFixed(2)}
+            {parseFloat(product.attributes.price).toFixed(2)} LYD
           </Text>
-          {product.attributes.rating > 0 && (
-            <HStack>
-              <Star size={16} fill="#F6E05E" />
-              <Text fontSize="sm">{product.attributes.rating.toFixed(1)}</Text>
-            </HStack>
-          )}
+          <HStack>
+            <Star size={16} fill="#F6E05E" />
+            <Text fontSize="sm">
+              {(product.attributes.rating || 0).toFixed(1)}
+              <Text as="span" color="gray.500" ml={1}>
+                ({product.attributes.reviews?.data?.length || 0})
+              </Text>
+            </Text>
+          </HStack>
         </HStack>
+
+        {product.attributes.category && (
+          <Badge alignSelf="start" colorScheme="purple">
+            {product.attributes.category}
+          </Badge>
+        )}
 
         <Button
           colorScheme="blue"
           leftIcon={<ShoppingBag size={18} />}
-          isDisabled={product.attributes.status !== 'available'}
+          isDisabled={product.attributes.status !== 'available' || product.attributes.stock <= 0}
           onClick={handleViewProduct}
         >
           View Details
@@ -123,47 +140,58 @@ const ProductCard = ({ product, onFavoriteToggle, isFavorited }) => {
 export default function MarketplacePreview() {
   const router = useRouter();
   const toast = useToast();
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
-
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
   const [sortBy, setSortBy] = useState('rating:desc');
   const [page, setPage] = useState(1);
   const [favorites, setFavorites] = useState(new Set());
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ['products', searchTerm, selectedCategory, sortBy, page],
+    queryKey: ['products', searchTerm, sortBy, page],
     queryFn: async () => {
-      // Determine which endpoint to use
-      const endpoint = searchTerm ? '/api/shop-items/search' : '/api/shop-items';
-      
-      // Build query parameters
-      const params = new URLSearchParams({
-        'pagination[page]': page.toString(),
-        'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
-        'populate': '*'  // Populate all relations
-      });
+      try {
+        // Base parameters
+        const params = new URLSearchParams({
+          'filters[status][$eq]': 'available',
+          'pagination[page]': page.toString(),
+          'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
+          'populate[0]': 'images',
+          'populate[1]': 'reviews',
+          'populate[2]': 'owner'
+        });
 
-      // Add search filters if using search endpoint
-      if (searchTerm) {
-        params.append('search', searchTerm);
+        // Add search filter if search term exists
+        if (searchTerm) {
+          params.append('filters[$or][0][name][$containsi]', searchTerm);
+          params.append('filters[$or][1][description][$containsi]', searchTerm);
+        }
+
+        // Add sorting
+        if (sortBy) {
+          const [field, direction] = sortBy.split(':');
+          params.append('sort[0]', `${field}:${direction}`);
+        }
+
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
+        );
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error?.message || 'Failed to fetch products');
+        }
+
+        const data = await response.json();
+        console.log('API Response:', data);
+        return data;
+      } catch (error) {
+        console.error('Fetch Error:', error);
+        throw error;
       }
-
-      // Add category filter
-      if (selectedCategory) {
-        params.append('filters[category][$eq]', selectedCategory);
-      }
-
-      // Add sort parameter
-      if (sortBy) {
-        const [field, direction] = sortBy.split(':');
-        params.append('sort', `${field}:${direction}`);
-      }
-
-      const response = await fetch(`${endpoint}?${params}`);
-      if (!response.ok) throw new Error('Failed to fetch products');
-      return response.json();
     },
     keepPreviousData: true
   });
