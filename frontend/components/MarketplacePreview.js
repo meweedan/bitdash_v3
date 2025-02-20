@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
     : '/placeholder-product.jpg';
 
   return (
-    <Card bg={cardBg} overflow="hidden" boxShadow="md" borderRadius="md">
+    <Card overflow="hidden" boxShadow="md" borderRadius="md">
       <CardBody p={0}>
         {/* Image Section */}
         <Box position="relative" h="260px">
@@ -221,7 +221,7 @@ const MarketplacePreview = () => {
   }
 
   return (
-    <Box minH="100vh" bg={bgColor} py={8}>
+    <Box py={8}>
       <Container maxW="7xl">
         <VStack spacing={8}>
           <Heading size="2xl">Marketplace</Heading>
@@ -236,7 +236,6 @@ const MarketplacePreview = () => {
                 placeholder="Search products..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                bg="white"
               />
             </InputGroup>
             <Select
@@ -247,7 +246,6 @@ const MarketplacePreview = () => {
                 setPage(1);
               }}
               w="200px"
-              bg="white"
             >
               {categories.map((cat) => (
                 <option key={cat} value={cat}>
