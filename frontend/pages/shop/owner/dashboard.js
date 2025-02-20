@@ -1,134 +1,359 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import {
-  Box, Container, VStack, HStack, Heading, Text, Button, SimpleGrid, Skeleton, Badge,
-  Image, useColorModeValue, Stat, StatLabel, StatNumber, Icon, Flex, useToast,
-  Tabs, TabList, TabPanels, Tab, TabPanel, IconButton, Modal, ModalOverlay, ModalContent,
-  ModalHeader, ModalBody, ModalCloseButton, Alert, AlertIcon, Divider, Tooltip
+  Box,
+  Container,
+  VStack,
+  HStack,
+  Heading,
+  Text,
+  Button,
+  SimpleGrid,
+  Skeleton,
+  Alert,
+  AlertIcon,
+  Badge,
+  useColorModeValue,
+  useToast,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  IconButton,
+  Flex,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem
 } from '@chakra-ui/react';
 import {
-  FiPlus, FiTrendingUp, FiPackage, FiList, FiSettings, FiRefreshCw, FiMoreVertical,
-  FiEdit, FiTrash2, FiAlertCircle, FiEye
+  FiTrendingUp,
+  FiPackage,
+  FiStar,
+  FiList,
+  FiAlertCircle,
+  FiSettings,
+  FiRefreshCw,
+  FiMoreVertical,
+  FiPlus
 } from 'react-icons/fi';
 import { useRouter } from 'next/router';
+
+// Hooks, Layout, and Components
 import { useAuth } from '@/hooks/useAuth';
 import Layout from '@/components/Layout';
 import Head from 'next/head';
+// The following are placeholders for your custom components:
 import ProductsList from '@/components/shop/owner/ProductsList';
 import OrdersList from '@/components/shop/owner/OrdersList';
-import SalesChart from '@/components/shop/owner/SalesChart';
 import ReviewsList from '@/components/shop/owner/ReviewsList';
-import ThemeEditor from '@/components/shop/owner/ThemeEditor';
+import SalesChart from '@/components/shop/owner/SalesChart';
+import ThemeEditor from '@/components/shop/owner/ThemeEditor'; // if you have a theme editor
+
+/**
+ * Skeleton loader for initial data fetch
+ */
+const DashboardSkeleton = () => (
+  <VStack spacing={6} w="full">
+    <Skeleton height="200px" w="full" borderRadius="xl" />
+    <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} w="full">
+      {Array.from({ length: 3 }).map((_, i) => (
+        <Skeleton key={i} height="120px" borderRadius="xl" />
+      ))}
+    </SimpleGrid>
+    <Skeleton height="50px" w="50%" borderRadius="xl" />
+    <Skeleton height="300px" w="full" borderRadius="xl" />
+  </VStack>
+);
 
 const OwnerDashboard = () => {
   const router = useRouter();
-  const { user } = useAuth();
-  const toast = useToast();
   const { t } = useTranslation(['dashboard', 'common']);
+  const toast = useToast();
+  const { user, loading: authLoading } = useAuth();
+
   const bgColor = useColorModeValue('white', 'gray.800');
 
-  // Fetch shop owner data
-  const { data: shopData, isLoading, error, refetch } = useQuery({
-    queryKey: ['shopOwner', user?.id],
+  // Example modals or theme editor usage
+  const [isThemeEditorOpen, setIsThemeEditorOpen] = useState(false);
+  const openThemeEditor = () => setIsThemeEditorOpen(true);
+  const closeThemeEditor = () => setIsThemeEditorOpen(false);
+
+  /**
+   *  Fetch the owner's shop data
+   *  We expect: /api/owners?filters[user][id][$eq]={user.id}
+   *  with multiple populates for shop_items, orders, etc.
+   */
+  const {
+    data: ownerData,
+    isLoading: isOwnerLoading,
+    error: ownerError,
+    refetch: refetchOwner
+  } = useQuery({
+    queryKey: ['owner', user?.id],
     queryFn: async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?populate=shop_items,orders,wallet,logo,coverImage&filters[user][id][$eq]=${user.id}`,
-        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
-      );
-      if (!response.ok) throw new Error('Failed to fetch shop data');
-      return response.json();
+      if (!user?.id) throw new Error('No user ID found');
+
+      // Adjust the query params based on your exact needs:
+      const queryParams = new URLSearchParams({
+        'filters[user][id][$eq]': user.id.toString(),
+        // Populate all relevant fields
+        'populate[logo]': 'true',
+        'populate[coverImage]': 'true',
+        'populate[shop_items][populate][0]': 'images',
+        'populate[shop_items][populate][1]': 'reviews',
+        'populate[orders]': 'true'
+      });
+
+      // Combine into final URL
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?${queryParams.toString()}`;
+
+      const res = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error('Failed to fetch owner data:', errorText);
+        throw new Error('Failed to fetch shop data');
+      }
+      return res.json();
     },
-    enabled: !!user?.id
+    enabled: !!user?.id && !authLoading,
+    retry: 1
   });
 
-  if (isLoading) {
+  /**
+   *  Loading state
+   */
+  if (isOwnerLoading || authLoading) {
     return (
       <Layout>
-        <Container maxW="container.xl" py={6}>
-          <Skeleton height="300px" borderRadius="lg" />
-          <SimpleGrid columns={3} spacing={6} mt={6}>
-            {[...Array(3)].map((_, i) => <Skeleton key={i} height="150px" borderRadius="lg" />)}
-          </SimpleGrid>
+        <Container maxW="1200px" py={6}>
+          <DashboardSkeleton />
         </Container>
       </Layout>
     );
   }
 
-  if (error || !shopData?.data?.[0]) {
+  /**
+   *  Error state
+   */
+  if (ownerError || !ownerData?.data?.[0]) {
     return (
       <Layout>
-        <Container maxW="container.xl" py={6}>
+        <Container maxW="1200px" py={6}>
           <Alert status="error">
             <AlertIcon />
-            {error?.message || 'Failed to load shop data'}
+            {ownerError?.message || t('errors.load_owner', { ns: 'common' })}
           </Alert>
         </Container>
       </Layout>
     );
   }
 
-  const shop = shopData.data[0].attributes;
+  // The first owner object
+  const owner = ownerData.data[0];
+  const shop = owner?.attributes || {};
+  const shopItems = shop?.shop_items?.data || [];
+  const orders = shop?.orders?.data || [];
 
+  /**
+   *  Example stats computation
+   */
+  const stats = useMemo(() => {
+    const totalOrders = orders.length;
+    const totalProducts = shopItems.length;
+    // Simple revenue (if you store 'total' in each order)
+    const totalRevenue = orders.reduce((sum, o) => {
+      const orderTotal = o.attributes.total || 0;
+      return sum + parseFloat(orderTotal);
+    }, 0);
+
+    return {
+      totalOrders,
+      totalProducts,
+      totalRevenue
+    };
+  }, [orders, shopItems]);
+
+  /**
+   *  Return the main Dashboard
+   */
   return (
     <Layout>
       <Head>
-        <title>{shop.shopName} Dashboard</title>
+        <title>{shop?.shopName || t('shop.default_name')} - Dashboard</title>
       </Head>
 
-      <Container maxW="1400px" py={6}>
-        <HStack justify="space-between" mb={6}>
-          <Heading size="lg">{shop.shopName}</Heading>
-          <Button leftIcon={<FiSettings />} onClick={() => router.push('/settings')}>
-            {t('settings')}
-          </Button>
-        </HStack>
-        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-          <Stat bg={bgColor} p={6} borderRadius="lg">
-            <StatLabel>Total Revenue</StatLabel>
-            <StatNumber>{shop.wallet?.balance?.toLocaleString()} LYD</StatNumber>
-          </Stat>
-          <Stat bg={bgColor} p={6} borderRadius="lg">
-            <StatLabel>Total Orders</StatLabel>
-            <StatNumber>{shop.orders?.length || 0}</StatNumber>
-          </Stat>
-          <Stat bg={bgColor} p={6} borderRadius="lg">
-            <StatLabel>Available Products</StatLabel>
-            <StatNumber>{shop.shop_items?.length || 0}</StatNumber>
-          </Stat>
+      <Container maxW="1200px" py={{ base: 4, md: 8 }}>
+        {/* Header row */}
+        <Flex
+          direction={{ base: 'column', md: 'row' }}
+          justify="space-between"
+          align={{ base: 'start', md: 'center' }}
+          mb={6}
+          gap={4}
+        >
+          <VStack align="start">
+            <Heading size="lg">
+              {shop?.shopName || t('shop.default_name')}
+            </Heading>
+            <HStack spacing={2}>
+              <Badge colorScheme="blue">{shopItems.length} {t('dashboard:labels.products')}</Badge>
+              <Badge colorScheme={shop.verificationStatus === 'verified' ? 'green' : 'yellow'}>
+                {shop?.verificationStatus || 'pending'}
+              </Badge>
+            </HStack>
+          </VStack>
+          <HStack>
+            {/* Quick actions menu */}
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                aria-label="Owner Actions"
+                icon={<FiMoreVertical />}
+                variant="outline"
+              />
+              <MenuList>
+                <MenuItem icon={<FiSettings />} onClick={openThemeEditor}>
+                  {t('dashboard:actions.theme_settings')}
+                </MenuItem>
+                <MenuItem
+                  icon={<FiRefreshCw />}
+                  onClick={() => {
+                    refetchOwner();
+                    toast({ title: t('common:refreshed'), status: 'info' });
+                  }}
+                >
+                  {t('dashboard:actions.refresh')}
+                </MenuItem>
+              </MenuList>
+            </Menu>
+            <Button
+              leftIcon={<FiPlus />}
+              colorScheme="blue"
+              onClick={() => router.push('/owner/add-product')}
+            >
+              {t('dashboard:actions.add_product')}
+            </Button>
+          </HStack>
+        </Flex>
+
+        {/* Shop Stats */}
+        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} mb={6}>
+          <Box p={6} bg={bgColor} borderRadius="lg" boxShadow="md">
+            <Text fontSize="sm" color="gray.500">{t('dashboard:stats.revenue')}</Text>
+            <Heading size="md">{stats.totalRevenue.toLocaleString()} LYD</Heading>
+            <HStack mt={2}>
+              <FiTrendingUp />
+              <Text fontSize="sm">{t('dashboard:stats.all_time')}</Text>
+            </HStack>
+          </Box>
+          <Box p={6} bg={bgColor} borderRadius="lg" boxShadow="md">
+            <Text fontSize="sm" color="gray.500">{t('dashboard:stats.orders')}</Text>
+            <Heading size="md">{stats.totalOrders}</Heading>
+            <HStack mt={2}>
+              <FiPackage />
+              <Text fontSize="sm">{t('dashboard:stats.order_history')}</Text>
+            </HStack>
+          </Box>
+          <Box p={6} bg={bgColor} borderRadius="lg" boxShadow="md">
+            <Text fontSize="sm" color="gray.500">{t('dashboard:stats.products')}</Text>
+            <Heading size="md">{stats.totalProducts}</Heading>
+            <HStack mt={2}>
+              <FiList />
+              <Text fontSize="sm">{t('dashboard:stats.inventory')}</Text>
+            </HStack>
+          </Box>
         </SimpleGrid>
 
-        <Tabs variant="soft-rounded" colorScheme="blue" mt={6}>
-          <TabList>
-            <Tab><FiPackage /> Products</Tab>
-            <Tab><FiList /> Orders</Tab>
-            <Tab><FiTrendingUp /> Analytics</Tab>
-            <Tab><FiEye /> Reviews</Tab>
+        {/* Main Tabs */}
+        <Tabs isLazy variant="soft-rounded" colorScheme="blue">
+          <TabList overflowX="auto" whiteSpace="nowrap">
+            <Tab><FiPackage style={{ marginRight: 4 }} />{t('dashboard:tabs.products')}</Tab>
+            <Tab><FiList style={{ marginRight: 4 }} />{t('dashboard:tabs.orders')}</Tab>
+            <Tab><FiTrendingUp style={{ marginRight: 4 }} />{t('dashboard:tabs.analytics')}</Tab>
+            <Tab><FiStar style={{ marginRight: 4 }} />{t('dashboard:tabs.reviews')}</Tab>
           </TabList>
-          <TabPanels>
-            <TabPanel>
-              <ProductsList products={shop.shop_items || []} refetch={refetch} />
+          <TabPanels mt={4}>
+            {/* Products */}
+            <TabPanel px={0}>
+              <ProductsList 
+                products={shopItems} 
+                // If your component needs a refetch callback or ownerId, pass them:
+                onRefetch={refetchOwner} 
+              />
             </TabPanel>
-            <TabPanel>
-              <OrdersList orders={shop.orders || []} refetch={refetch} />
+
+            {/* Orders */}
+            <TabPanel px={0}>
+              <OrdersList 
+                orders={orders} 
+                onRefetch={refetchOwner}
+              />
             </TabPanel>
-            <TabPanel>
-              <SalesChart orders={shop.orders || []} />
+
+            {/* Analytics */}
+            <TabPanel px={0}>
+              <Box p={4} bg={bgColor} borderRadius="lg" boxShadow="md">
+                <SalesChart orders={orders} />
+              </Box>
             </TabPanel>
-            <TabPanel>
-              <ReviewsList reviews={shop.reviews || []} />
+
+            {/* Reviews */}
+            <TabPanel px={0}>
+              <ReviewsList 
+                ownerId={owner.id} 
+                // If your reviews are nested differently, adjust here
+                // or fetch them in a separate query
+              />
             </TabPanel>
           </TabPanels>
         </Tabs>
       </Container>
+
+      {/* Optional Theme Editor Modal */}
+      {isThemeEditorOpen && (
+        <ThemeEditor
+          isOpen={isThemeEditorOpen}
+          onClose={closeThemeEditor}
+          // If you store theme in shop.theme, pass it here:
+          themeData={shop.theme}
+          onSave={async (newTheme) => {
+            try {
+              const updateUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/${owner.id}`;
+              const res = await fetch(updateUrl, {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({ data: { theme: newTheme } })
+              });
+              if (!res.ok) throw new Error('Failed to update theme');
+              toast({ title: t('dashboard:theme_updated'), status: 'success' });
+              refetchOwner();
+            } catch (err) {
+              toast({ title: t('common:error'), description: err.message, status: 'error' });
+            } finally {
+              closeThemeEditor();
+            }
+          }}
+        />
+      )}
     </Layout>
   );
 };
 
 export const getServerSideProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common'])),
+    ...(await serverSideTranslations(locale, ['common', 'dashboard'])),
   },
 });
 
