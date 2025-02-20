@@ -123,50 +123,6 @@ export default function ShopLanding() {
     }
   ];
 
-  const ScrollableCategories = () => {
-  return (
-    <Box
-      position="relative"
-      _after={{
-        content: '""',
-        position: 'absolute',
-        right: 0,
-        top: 0,
-        bottom: 0,
-        width: '20px',
-        bgGradient: 'linear(to-l, white, transparent)',
-        pointerEvents: 'none',
-      }}
-      _before={{
-        content: '""',
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        bottom: 0,
-        width: '20px',
-        bgGradient: 'linear(to-r, white, transparent)',
-        pointerEvents: 'none',
-        zIndex: 1,
-      }}
-    >
-      <HStack
-        spacing={4}
-        overflowX="auto"
-        py={2}
-        px={4}
-        className="hide-scrollbar"
-        position="relative"
-      >
-        <Button>
-          <Link href="/categories" passHref>
-          </Link>
-          <Text fontSize="lg" fontWeight="bold">Categories</Text>
-          </Button>
-      </HStack>
-    </Box>
-  );
-};
-
   const stats = [
     {
       label: t('stats_products'),
@@ -197,11 +153,6 @@ export default function ShopLanding() {
         px={{ base: 4, md: 8 }}
         py={{ base: 6, md: 10 }}
       >
-
-        {/* Categories */}
-        <Box mt={{ base: 8, md: 12 }}>
-          <ScrollableCategories />
-        </Box>
 
         {/* MarketplacePreview */}
         <Box mt={{ base: 8, md: 12 }}>

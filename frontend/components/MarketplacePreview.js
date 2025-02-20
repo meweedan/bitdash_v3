@@ -35,8 +35,8 @@ const ProductCard = ({ product }) => {
   const cardBg = useColorModeValue('white', 'gray.800');
 
   // Get the first image or use a placeholder
-  const imageUrl = product.images?.data?.[0]?.attributes?.url 
-    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images.data[0].attributes.url}` 
+  const imageUrl = product.images?.[0]?.url 
+    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}` 
     : '/placeholder-product.jpg';
 
   return (
@@ -85,12 +85,18 @@ const ProductCard = ({ product }) => {
             {product.description}
           </Text>
           <HStack justify="space-between">
-            <Text fontWeight="bold" fontSize="xl">
+            <Text fontWeight="bold" fontSize="xl" color="blue.500">
               {product.price} LYD
             </Text>
             <HStack>
               <Star size={16} fill="#F6E05E" />
-              </HStack>
+              <Text>
+                {product.rating?.toFixed(1) || '0.0'}
+                <Text as="span" color="gray.500" ml={1}>
+                  (0 reviews)
+                </Text>
+              </Text>
+            </HStack>
           </HStack>
 
           {/* Category & Subcategory */}
@@ -184,13 +190,13 @@ const MarketplacePreview = () => {
   });
 
   // Transform Strapi response to flat product objects
-  const products = data?.data?.map(item => ({
+  const products = data?.data?.attributes?.results?.map(item => ({
+    ...item,
     id: item.id,
-    ...item.attributes,
-    images: item.attributes.images
+    images: item.images
   })) || [];
 
-  const pagination = data?.meta?.pagination;
+  const pagination = data?.data?.attributes?.pagination;
 
   // Compute categories from the returned items
   const categories = useMemo(() => {
