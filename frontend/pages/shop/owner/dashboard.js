@@ -81,36 +81,39 @@ const ShopOwnerDashboard = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   
   const bgColor = useColorModeValue('white', 'gray.800');
-  const borderColor = useColorModeValue('gray.200', 'gray.700');
+    const borderColor = useColorModeValue('gray.200', 'gray.700');
 
-   if (isAuthLoading) {
-      return (
-        <Layout>
-          <Flex justify="center" align="center" minH="100vh">
-            <Spinner size="xl" />
-          </Flex>
-        </Layout>
-      );
-    }
-
-    if (!user) {
-      return (
-        <Layout>
-          <Container maxW="container.xl" py={6}>
-            <Alert status="error">
-              <AlertIcon />
-              Please login to access your shop dashboard
-            </Alert>
-          </Container>
-        </Layout>
-      );
-    }
-
+  // Move useEffect here, before any returns
   useEffect(() => {
     console.log('Current User:', user);
     console.log('User ID:', user?.id);
     console.log('Auth Token:', localStorage.getItem('token'));
   }, [user]);
+
+  // FIRST check - Auth loading
+  if (isAuthLoading) {
+    return (
+      <Layout>
+        <Flex justify="center" align="center" minH="100vh">
+          <Spinner size="xl" />
+        </Flex>
+      </Layout>
+    );
+  }
+
+  // SECOND check - No user
+  if (!user) {
+    return (
+      <Layout>
+        <Container maxW="container.xl" py={6}>
+          <Alert status="error">
+            <AlertIcon />
+            Please login to access your shop dashboard
+          </Alert>
+        </Container>
+      </Layout>
+    );
+  }
 
  // Fetch shop owner data
   const { 

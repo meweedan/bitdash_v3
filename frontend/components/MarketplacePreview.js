@@ -148,50 +148,37 @@ export default function MarketplacePreview() {
   const { data, isLoading, error } = useQuery({
     queryKey: ['products', searchTerm, sortBy, page],
     queryFn: async () => {
-      try {
-        // Base parameters
-        const params = new URLSearchParams({
-          'filters[status][$eq]': 'available',
-          'pagination[page]': page.toString(),
-          'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
-          'populate[0]': 'images',
-          'populate[1]': 'reviews',
-          'populate[2]': 'owner'
-        });
+      const params = new URLSearchParams({
+        'pagination[page]': page.toString(),
+        'pagination[pageSize]': ITEMS_PER_PAGE.toString()
+      });
 
-        // Add search filter if search term exists
-        if (searchTerm) {
-          params.append('filters[$or][0][name][$containsi]', searchTerm);
-          params.append('filters[$or][1][description][$containsi]', searchTerm);
-        }
-
-        // Add sorting
-        if (sortBy) {
-          const [field, direction] = sortBy.split(':');
-          params.append('sort[0]', `${field}:${direction}`);
-        }
-
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params}`,
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            }
-          }
-        );
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error?.message || 'Failed to fetch products');
-        }
-
-        const data = await response.json();
-        console.log('API Response:', data);
-        return data;
-      } catch (error) {
-        console.error('Fetch Error:', error);
-        throw error;
+      if (searchTerm) {
+        params.append('filters[$or][0][name][$containsi]', searchTerm);
+        params.append('filters[$or][1][description][$containsi]', searchTerm);
       }
+
+      if (sortBy) {
+        const [field, direction] = sortBy.split(':');
+        params.append('sort[0]', `${field}:${direction}`);
+      }
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+
+      const result = await response.json();
+      // This matches your exact API response structure
+      return result;
     },
     keepPreviousData: true
   });
@@ -271,17 +258,34 @@ export default function MarketplacePreview() {
                 templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}
                 gap={6}
               >
-                {data?.data?.map((product) => (
+                {data?.data?.results?.map((product) => (
                   <ProductCard
                     key={product.id}
-                    product={product}
+                    product={{
+                      id: product.id,
+                      attributes: {
+                        name: product.name,
+                        description: product.description,
+                        price: product.price,
+                        status: product.status,
+                        stock: product.stock,
+                        category: product.category,
+                        subcategory: product.subcategory,
+                        rating: product.rating,
+                        images: { 
+                          data: product.images?.map(img => ({
+                            attributes: { url: img }
+                          })) || []
+                        }
+                      }
+                    }}
                     onFavoriteToggle={handleFavoriteToggle}
                     isFavorited={favorites.has(product.id)}
                   />
                 ))}
               </Grid>
 
-              {data?.meta?.pagination && (
+              {data?.data?.attributes?.pagination && (
                 <HStack justify="center" mt={8}>
                   <Button
                     isDisabled={page <= 1}
@@ -290,10 +294,10 @@ export default function MarketplacePreview() {
                     Previous
                   </Button>
                   <Text>
-                    Page {page} of {data.meta.pagination.pageCount}
+                    Page {page} of {data.data.attributes.pagination.pageCount}
                   </Text>
                   <Button
-                    isDisabled={page >= data.meta.pagination.pageCount}
+                    isDisabled={page >= data.data.attributes.pagination.pageCount}
                     onClick={() => setPage(p => p + 1)}
                   >
                     Next
