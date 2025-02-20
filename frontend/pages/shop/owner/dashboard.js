@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   Box,
@@ -36,30 +36,25 @@ import {
   Card,
   CardBody,
 } from '@chakra-ui/react';
-
 import {
   FiPlus,
   FiPackage,
-  FiShoppingBag,
   FiDollarSign,
   FiStar,
   FiTrendingUp,
   FiGrid,
   FiList,
-  FiSettings,
+  FiEdit,
   FiUpload,
   FiMoreVertical,
-  FiEdit,
-  FiTrash2,
   FiAlertCircle,
 } from 'react-icons/fi';
-
 import { useAuth } from '@/hooks/useAuth';
 import Layout from '@/components/Layout';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 
-// Shop Owner Components
+// Import your components
 import ProductsList from '@/components/shop/owner/ProductsList';
 import ProductEditModal from '@/components/shop/owner/ProductEditModal';
 import AddProductModal from '@/components/shop/owner/AddProductModal';
@@ -72,14 +67,14 @@ import ThemeEditor from '@/components/shop/owner/ThemeEditor';
 const MotionStat = motion(Stat);
 
 const ShopOwnerDashboard = () => {
-  // 1. All hooks at the top
-  const { user, isLoading: isAuthLoading } = useAuth();
+  // ALL hooks at the top
+  const { user } = useAuth();
   const toast = useToast();
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const {
-    isOpen: isAddProductOpen,
-    onOpen: onAddProductOpen,
-    onClose: onAddProductClose
+  const { 
+    isOpen: isAddProductOpen, 
+    onOpen: onAddProductOpen, 
+    onClose: onAddProductClose 
   } = useDisclosure();
   const {
     isOpen: isEditProductOpen,
@@ -94,53 +89,50 @@ const ShopOwnerDashboard = () => {
 
   const bgColor = useColorModeValue('white', 'gray.800');
 
-  // 2. Data fetching with proper enabled condition
+  // Data fetching
   const {
     data: shopData,
-    isLoading: isShopLoading,
-    error: shopError,
+    isLoading,
+    error,
     refetch: refetchShop
   } = useQuery({
     queryKey: ['shopOwner', user?.id],
     queryFn: async () => {
-      if (!user?.id) return null;
       const token = localStorage.getItem('token');
-      if (!token) throw new Error('No authentication token');
+      if (!token) throw new Error('Authorization token required');
 
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
-          `filters[user][id][$eq]=${user.id}` +
-          `&populate[logo]=*` +
-          `&populate[coverImage]=*` +
-          `&populate[wallet]=*` +
-          `&populate[shop_items][populate][0]=images` +
-          `&populate[shop_items][populate][1]=reviews` +
-          `&populate[orders][populate]=*`,
-          {
-            headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-            }
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
+        `filters[user][id][$eq]=${user.id}` +
+        `&populate[logo]=*` +
+        `&populate[coverImage]=*` +
+        `&populate[wallet]=*` +
+        `&populate[shop_items][populate][images]=*` +
+        `&populate[shop_items][populate][reviews]=*` +
+        `&populate[orders][populate][items]=*` +
+        `&populate[theme]=*` +
+        `&populate[location]=*` +
+        `&populate[social_links]=*`,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
           }
-        );
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error?.message || 'Failed to fetch shop data');
         }
+      );
 
-        return await response.json();
-      } catch (error) {
-        console.error('Shop Fetch Error:', error);
-        throw error;
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error?.message || 'Failed to fetch shop data');
       }
+
+      return response.json();
     },
     enabled: Boolean(user?.id)
   });
 
-  // 3. Single set of loading/error checks
-  if (isAuthLoading || isShopLoading) {
+  // Loading state
+  if (isLoading) {
     return (
       <Layout>
         <Flex justify="center" align="center" minH="100vh">
@@ -150,32 +142,21 @@ const ShopOwnerDashboard = () => {
     );
   }
 
-  if (!user) {
+  // Error state
+  if (error) {
     return (
       <Layout>
         <Container maxW="container.xl" py={6}>
           <Alert status="error">
             <AlertIcon />
-            Please login to access your shop dashboard
+            {error.message}
           </Alert>
         </Container>
       </Layout>
     );
   }
 
-  if (shopError) {
-    return (
-      <Layout>
-        <Container maxW="container.xl" py={6}>
-          <Alert status="error">
-            <AlertIcon />
-            {shopError.message || 'Failed to load shop data'}
-          </Alert>
-        </Container>
-      </Layout>
-    );
-  }
-
+  // No shop found
   const shopDataResult = shopData?.data?.[0];
   if (!shopDataResult) {
     return (
@@ -193,16 +174,8 @@ const ShopOwnerDashboard = () => {
   const shop = shopDataResult.attributes;
   const shopId = shopDataResult.id;
 
-  // Calculate shop statistics
+  // Shop statistics calculation
   const shopStats = useMemo(() => {
-    if (!shop) return {
-      totalRevenue: 0,
-      monthlyRevenue: 0,
-      totalOrders: 0,
-      pendingOrders: 0,
-      lowStockItems: 0
-    };
-
     const orders = shop.orders?.data || [];
     const now = new Date();
     const shopItems = shop.shop_items?.data || [];
@@ -214,7 +187,7 @@ const ShopOwnerDashboard = () => {
         .filter(order => {
           const orderDate = new Date(order.attributes.createdAt);
           return orderDate.getMonth() === now.getMonth() && 
-                orderDate.getFullYear() === now.getFullYear();
+                 orderDate.getFullYear() === now.getFullYear();
         })
         .reduce((sum, order) => sum + (parseFloat(order.attributes.total) || 0), 0),
       totalOrders: orders.length,
@@ -225,6 +198,7 @@ const ShopOwnerDashboard = () => {
     };
   }, [shop]);
 
+  // Product actions
   const handleEditProduct = (product) => {
     setSelectedProduct(product);
     onEditProductOpen();
@@ -232,24 +206,21 @@ const ShopOwnerDashboard = () => {
 
   const handleProductAction = async (productId, action) => {
     try {
+      const token = localStorage.getItem('token');
       if (action === 'delete') {
         await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items/${productId}`, {
           method: 'DELETE',
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
+          headers: { Authorization: `Bearer ${token}` }
         });
       } else {
         await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items/${productId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('token')}`
+            Authorization: `Bearer ${token}`
           },
           body: JSON.stringify({
-            data: {
-              status: action
-            }
+            data: { status: action }
           })
         });
       }
@@ -270,29 +241,6 @@ const ShopOwnerDashboard = () => {
     }
   };
 
-  if (isShopLoading) {
-    return (
-      <Layout>
-        <Flex justify="center" align="center" minH="100vh">
-          <Spinner size="xl" />
-        </Flex>
-      </Layout>
-    );
-  }
-
-  if (shopError || !shop) {
-    return (
-      <Layout>
-        <Container maxW="container.xl" py={6}>
-          <Alert status="error">
-            <Icon as={FiAlertCircle} />
-            {shopError?.message || 'Failed to load shop data'}
-          </Alert>
-        </Container>
-      </Layout>
-    );
-  }
-
   return (
     <Layout>
       <Head>
@@ -304,6 +252,7 @@ const ShopOwnerDashboard = () => {
         <Card mb={6}>
           <CardBody>
             <Flex direction={{ base: 'column', md: 'row' }} gap={6} align="center">
+              {/* Cover Image */}
               <Box 
                 position="relative" 
                 minW={{ base: "full", md: "200px" }}
@@ -322,6 +271,7 @@ const ShopOwnerDashboard = () => {
                   w="full"
                   h="full"
                 />
+                {/* Logo */}
                 <Box
                   position="absolute"
                   bottom={4}
@@ -345,6 +295,7 @@ const ShopOwnerDashboard = () => {
                 </Box>
               </Box>
 
+              {/* Shop Info */}
               <VStack align="start" flex={1} spacing={2}>
                 <HStack>
                   <Heading size="lg">{shop.shopName}</Heading>
@@ -368,29 +319,31 @@ const ShopOwnerDashboard = () => {
                   </HStack>
                 </HStack>
               </VStack>
-            <HStack>
-              <Button
-                leftIcon={<FiEdit />}
-                colorScheme="purple"
-                variant="outline"
-                onClick={onThemeOpen}
-              >
-                Edit Theme
-              </Button>
-              <Button
-                leftIcon={<FiPlus />}
-                colorScheme="blue"
-                onClick={onAddProductOpen}
-              >
-                Add Product
-              </Button>
-            </HStack>
-          </Flex>
-        </CardBody>
-      </Card>
+
+              {/* Actions */}
+              <HStack>
+                <Button
+                  leftIcon={<FiEdit />}
+                  colorScheme="purple"
+                  variant="outline"
+                  onClick={onThemeOpen}
+                >
+                  Edit Theme
+                </Button>
+                <Button
+                  leftIcon={<FiPlus />}
+                  colorScheme="blue"
+                  onClick={onAddProductOpen}
+                >
+                  Add Product
+                </Button>
+              </HStack>
+            </Flex>
+          </CardBody>
+        </Card>
 
         {/* Stats Grid */}
-        <SimpleGrid columns={{ base: 1, md: 4 }} spacing={6} mb={6}>
+        <SimpleGrid columns={{ base: 1, md: 5 }} spacing={6} mb={6}>
           <MotionStat
             p={6}
             bg={bgColor}
@@ -495,16 +448,15 @@ const ShopOwnerDashboard = () => {
                 orders={shop.orders?.data || []}
                 onStatusChange={async (orderId, newStatus) => {
                   try {
+                    const token = localStorage.getItem('token');
                     await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders/${orderId}`, {
                       method: 'PUT',
                       headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                        Authorization: `Bearer ${token}`
                       },
                       body: JSON.stringify({
-                        data: {
-                          status: newStatus
-                        }
+                        data: { status: newStatus }
                       })
                     });
                     
@@ -522,7 +474,7 @@ const ShopOwnerDashboard = () => {
                       duration: 3000
                     });
                   }
-                }}
+                  }}
               />
             </TabPanel>
 
@@ -548,11 +500,12 @@ const ShopOwnerDashboard = () => {
                 shopId={shopId}
                 onReply={async (reviewId, reply) => {
                   try {
+                    const token = localStorage.getItem('token');
                     await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reviews/${reviewId}`, {
                       method: 'PUT',
                       headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                        Authorization: `Bearer ${token}`
                       },
                       body: JSON.stringify({
                         data: {
@@ -586,24 +539,25 @@ const ShopOwnerDashboard = () => {
         <AddProductModal
           isOpen={isAddProductOpen}
           onClose={onAddProductClose}
-          onSubmit={async (productData) => {
+          shopId={shopId}
+          onSubmit={async (formData) => {
             try {
-              const formDataObj = JSON.parse(productData.get('data'));
-              formDataObj.owner = shopId;
-              productData.set('data', JSON.stringify(formDataObj));
-
+              const token = localStorage.getItem('token');
               const response = await fetch(
                 `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items`,
                 {
                   method: 'POST',
                   headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                    Authorization: `Bearer ${token}`
                   },
-                  body: productData
+                  body: formData
                 }
               );
 
-              if (!response.ok) throw new Error('Failed to create product');
+              if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error?.message || 'Failed to create product');
+              }
 
               toast({
                 title: "Product added successfully",
@@ -613,7 +567,6 @@ const ShopOwnerDashboard = () => {
               onAddProductClose();
               refetchShop();
             } catch (error) {
-              console.error('Error creating product:', error);
               toast({
                 title: "Error adding product",
                 description: error.message,
@@ -631,18 +584,22 @@ const ShopOwnerDashboard = () => {
           product={selectedProduct}
           onSave={async (formData) => {
             try {
+              const token = localStorage.getItem('token');
               const response = await fetch(
                 `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items/${selectedProduct.id}`,
                 {
                   method: 'PUT',
                   headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                    Authorization: `Bearer ${token}`
                   },
                   body: formData
                 }
               );
 
-              if (!response.ok) throw new Error('Failed to update product');
+              if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error?.message || 'Failed to update product');
+              }
 
               toast({
                 title: "Product updated successfully",
@@ -670,18 +627,25 @@ const ShopOwnerDashboard = () => {
           theme={shop.theme}
           onSave={async (newTheme) => {
             try {
-              await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/${shopId}`, {
-                method: 'PUT',
-                headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: `Bearer ${localStorage.getItem('token')}`
-                },
-                body: JSON.stringify({
-                  data: {
-                    theme: newTheme
-                  }
-                })
-              });
+              const token = localStorage.getItem('token');
+              const response = await fetch(
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/${shopId}`,
+                {
+                  method: 'PUT',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                  },
+                  body: JSON.stringify({
+                    data: { theme: newTheme }
+                  })
+                }
+              );
+
+              if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error?.message || 'Failed to update theme');
+              }
 
               toast({
                 title: "Theme updated successfully",
@@ -731,7 +695,6 @@ const ShopOwnerDashboard = () => {
             <MenuItem
               icon={<FiPackage />}
               onClick={() => {
-                // Toggle quick view of low stock items
                 const lowStockItems = shop.shop_items?.data.filter(item => 
                   item.attributes.stock < 10
                 ) || [];
