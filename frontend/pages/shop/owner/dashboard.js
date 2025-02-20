@@ -26,12 +26,12 @@ import {
   Tab,
   TabPanel,
   IconButton,
-  AlertIcon,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
   Alert,
+  AlertIcon,
   useDisclosure,
   Card,
   CardBody,
@@ -49,28 +49,55 @@ import {
   FiMoreVertical,
   FiAlertCircle,
 } from 'react-icons/fi';
-import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 import Layout from '@/components/Layout';
 import Head from 'next/head';
-import { motion } from 'framer-motion';
 
-// Import your components
-import ProductsList from '@/components/shop/owner/ProductsList';
-import ProductEditModal from '@/components/shop/owner/ProductEditModal';
-import AddProductModal from '@/components/shop/owner/AddProductModal';
-import OrdersList from '@/components/shop/owner/OrdersList';
-import ReviewsList from '@/components/shop/owner/ReviewsList';
-import SalesChart from '@/components/shop/owner/SalesChart';
-import TopProductsChart from '@/components/shop/owner/TopProductsChart';
-import ThemeEditor from '@/components/shop/owner/ThemeEditor';
+// Safer imports with dynamic loading
+import dynamic from 'next/dynamic';
+
+const ProductsList = dynamic(() => import('@/components/shop/owner/ProductsList'), { 
+  loading: () => <Spinner />,
+  ssr: false 
+});
+const ProductEditModal = dynamic(() => import('@/components/shop/owner/ProductEditModal'), { 
+  loading: () => <Spinner />,
+  ssr: false 
+});
+const AddProductModal = dynamic(() => import('@/components/shop/owner/AddProductModal'), { 
+  loading: () => <Spinner />,
+  ssr: false 
+});
+const OrdersList = dynamic(() => import('@/components/shop/owner/OrdersList'), { 
+  loading: () => <Spinner />,
+  ssr: false 
+});
+const ReviewsList = dynamic(() => import('@/components/shop/owner/ReviewsList'), { 
+  loading: () => <Spinner />,
+  ssr: false 
+});
+const SalesChart = dynamic(() => import('@/components/shop/owner/SalesChart'), { 
+  loading: () => <Spinner />,
+  ssr: false 
+});
+const TopProductsChart = dynamic(() => import('@/components/shop/owner/TopProductsChart'), { 
+  loading: () => <Spinner />,
+  ssr: false 
+});
+const ThemeEditor = dynamic(() => import('@/components/shop/owner/ThemeEditor'), { 
+  loading: () => <Spinner />,
+  ssr: false 
+});
 
 const MotionStat = motion(Stat);
 
 const ShopOwnerDashboard = () => {
-  // ALL hooks at the top
-  const { user } = useAuth();
+  const router = useRouter();
   const toast = useToast();
   const [selectedProduct, setSelectedProduct] = useState(null);
+  
+  // Disclosure hooks
   const { 
     isOpen: isAddProductOpen, 
     onOpen: onAddProductOpen, 
@@ -89,23 +116,39 @@ const ShopOwnerDashboard = () => {
 
   const bgColor = useColorModeValue('white', 'gray.800');
 
+  // Fetch user from localStorage to ensure client-side rendering
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
-  console.log('User Data:', user);
-  console.log('Owner Query Response:', shopData);
-}, [user, shopData]);
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (error) {
+        console.error('Error parsing user:', error);
+      }
+    } else {
+      // Redirect to login if no user found
+      router.push('/login');
+    }
+  }, [router]);
 
   // Data fetching
-  const { data: shopData, isLoading, error } = useQuery({
+  const { 
+    data: shopData, 
+    isLoading, 
+    error,
+    refetch: refetchShop 
+  } = useQuery({
     queryKey: ['shopOwner', user?.id],
     queryFn: async () => {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No authentication token');
 
       try {
-        // Correctly query for an owner with the user ID
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
-          `filters[user][id]=${user.id}` + // Removed the $eq operator
+          `filters[user][id]=${user.id}` +
           `&populate[logo]=*` +
           `&populate[coverImage]=*` +
           `&populate[wallet]=*` +
@@ -125,39 +168,33 @@ const ShopOwnerDashboard = () => {
           throw new Error(errorData.error?.message || 'Failed to fetch shop data');
         }
 
-        const data = await response.json();
-        console.log('Owner Data:', data); // Debug log
-        return data;
+        return await response.json();
       } catch (error) {
         console.error('Shop Fetch Error:', error);
         throw error;
       }
     },
-    enabled: Boolean(user?.id)
+    enabled: !!user?.id
   });
 
   // Loading state
-  if (isLoading) {
+  if (isLoading || !user) {
     return (
-      <Layout>
-        <Flex justify="center" align="center" minH="100vh">
-          <Spinner size="xl" />
-        </Flex>
-      </Layout>
+      <Flex justify="center" align="center" minH="100vh">
+        <Spinner size="xl" />
+      </Flex>
     );
   }
 
   // Error state
   if (error) {
     return (
-      <Layout>
-        <Container maxW="container.xl" py={6}>
-          <Alert status="error">
-            <AlertIcon />
-            {error.message}
-          </Alert>
-        </Container>
-      </Layout>
+      <Container maxW="container.xl" py={6}>
+        <Alert status="error">
+          <AlertIcon />
+          {error.message}
+        </Alert>
+      </Container>
     );
   }
 
@@ -165,19 +202,19 @@ const ShopOwnerDashboard = () => {
   const shopDataResult = shopData?.data?.[0];
   if (!shopDataResult) {
     return (
-      <Layout>
-        <Container maxW="container.xl" py={6}>
-          <Alert status="warning">
-            <AlertIcon />
-            No shop found. Please create a shop to continue.
-          </Alert>
-        </Container>
-      </Layout>
+      <Container maxW="container.xl" py={6}>
+        <Alert status="warning">
+          <AlertIcon />
+          No shop found. Please create a shop to continue.
+        </Alert>
+      </Container>
     );
   }
 
   const shop = shopDataResult.attributes;
   const shopId = shopDataResult.id;
+
+  // Rest of the component remains the same as your original implementation
 
   // Shop statistics calculation
   const shopStats = useMemo(() => {
