@@ -135,40 +135,58 @@ const MarketplacePreview = () => {
  const bgColor = useColorModeValue('gray.50', 'gray.900');
 
  const { data, isLoading, error } = useQuery({
-   queryKey: ['products', searchTerm, selectedCategory, page],
-   queryFn: async () => {
-     try {
-       const params = new URLSearchParams({
-         'filters[status][$eq]': 'available',
-         'pagination[page]': page.toString(),
-         'pagination[pageSize]': ITEMS_PER_PAGE.toString(),
-         'populate[images]': '*',
-         'populate[owner]': '*',
-         'populate[reviews]': '*'
-       });
+  queryKey: ['products', searchTerm, selectedCategory, page],
+  queryFn: async () => {
+    try {
+      const params = new URLSearchParams({
+        'pagination[page]': page.toString(),
+        'pagination[pageSize]': ITEMS_PER_PAGE.toString()
+      });
 
-       if (searchTerm) {
-         params.append('filters[$or][0][name][$containsi]', searchTerm);
-         params.append('filters[$or][1][description][$containsi]', searchTerm);
-       }
+      // First populate all relations
+      params.append('populate[images]', '*');
+      params.append('populate[owner]', '*');
+      params.append('populate[reviews]', '*');
 
-       if (selectedCategory) {
-         params.append('filters[category][$eq]', selectedCategory);
-       }
+      // Then add filters correctly
+      if (searchTerm) {
+        params.append('filters[$or][0][name][$containsi]', searchTerm);
+        params.append('filters[$or][1][description][$containsi]', searchTerm);
+      }
 
-       const response = await fetch(
-         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items/search?${params}`
-       );
+      if (selectedCategory) {
+        params.append('filters[category]', selectedCategory);
+      }
 
-       if (!response.ok) throw new Error('Failed to fetch products');
-       
-       return response.json();
-     } catch (error) {
-       console.error('Error fetching products:', error);
-       throw error;
-     }
-   }
- });
+      // Status filter for available items
+      params.append('filters[status][$eq]', 'available');
+
+      console.log('Request URL:', `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params}`);
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+
+      const data = await response.json();
+      console.log('API Response:', data);
+      return data;
+    } catch (error) {
+      console.error('Fetch Error:', error);
+      throw error;
+    }
+  },
+  keepPreviousData: true
+});
 
  // Get unique categories from products
  const categories = useMemo(() => {

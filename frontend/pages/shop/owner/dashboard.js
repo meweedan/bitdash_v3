@@ -89,44 +89,49 @@ const ShopOwnerDashboard = () => {
 
   const bgColor = useColorModeValue('white', 'gray.800');
 
+  useEffect(() => {
+  console.log('User Data:', user);
+  console.log('Owner Query Response:', shopData);
+}, [user, shopData]);
+
   // Data fetching
-  const {
-    data: shopData,
-    isLoading,
-    error,
-    refetch: refetchShop
-  } = useQuery({
+  const { data: shopData, isLoading, error } = useQuery({
     queryKey: ['shopOwner', user?.id],
     queryFn: async () => {
       const token = localStorage.getItem('token');
-      if (!token) throw new Error('Authorization token required');
+      if (!token) throw new Error('No authentication token');
 
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
-        `filters[user][id][$eq]=${user.id}` +
-        `&populate[logo]=*` +
-        `&populate[coverImage]=*` +
-        `&populate[wallet]=*` +
-        `&populate[shop_items][populate][images]=*` +
-        `&populate[shop_items][populate][reviews]=*` +
-        `&populate[orders][populate][items]=*` +
-        `&populate[theme]=*` +
-        `&populate[location]=*` +
-        `&populate[social_links]=*`,
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
+      try {
+        // Correctly query for an owner with the user ID
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
+          `filters[user][id]=${user.id}` + // Removed the $eq operator
+          `&populate[logo]=*` +
+          `&populate[coverImage]=*` +
+          `&populate[wallet]=*` +
+          `&populate[shop_items][populate][0]=images` +
+          `&populate[shop_items][populate][1]=reviews` +
+          `&populate[orders][populate]=*`,
+          {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
           }
+        );
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error?.message || 'Failed to fetch shop data');
         }
-      );
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error?.message || 'Failed to fetch shop data');
+        const data = await response.json();
+        console.log('Owner Data:', data); // Debug log
+        return data;
+      } catch (error) {
+        console.error('Shop Fetch Error:', error);
+        throw error;
       }
-
-      return response.json();
     },
     enabled: Boolean(user?.id)
   });
