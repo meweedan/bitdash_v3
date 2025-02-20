@@ -88,9 +88,9 @@ export default function Header() {
   ];
 
   const bgColor = useColorModeValue(
-  platform === 'bitcash' ? 'brand.bitcash.50' : 
-  platform === 'bitfood' ? 'brand.bitfood.50' :
-  platform === 'bitshop' ? 'brand.bitshop.50' :
+  platform === 'bitcash' ? 'brand.bitcash.500' : 
+  platform === 'bitfood' ? 'brand.bitfood.500' :
+  platform === 'bitshop' ? 'brand.bitshop.500' :
   'gray.50',
   'gray.900'
 );
