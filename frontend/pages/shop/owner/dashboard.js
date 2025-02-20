@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '@/hooks/useAuth';
-import { useTranslation } from 'react-i18next'; // Ensure translations work
+import { useTranslation } from 'react-i18next'; // i18next Fix
 
 // Layout & Components
 import Layout from '@/components/Layout';
@@ -38,7 +38,7 @@ const OwnerDashboard = () => {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
 
   // Fetch Owner Data
-  const { data: ownerData, isLoading, refetch } = useQuery({
+  const { data: ownerData, isLoading, refetch, error } = useQuery({
     queryKey: ['ownerData', user?.id],
     queryFn: async () => {
       const res = await fetch(
@@ -47,17 +47,24 @@ const OwnerDashboard = () => {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         }
       );
+      if (!res.ok) throw new Error('Failed to fetch owner data');
       const data = await res.json();
       return data.data.length ? data.data[0] : null;
     },
     enabled: !!user?.id && isAuthenticated,
+    retry: 1, // Prevent unnecessary retries
   });
 
+  if (error) {
+    console.error('Error fetching owner data:', error);
+  }
+
+  // Ensure owner data is available
   const owner = ownerData?.attributes || {};
   const products = owner?.shop_items?.data || [];
 
-  // 🛠 Ensure theme always has default values
-  const theme = owner?.theme || {
+  // 🛠 Fix Undefined Theme Issue
+  const defaultTheme = {
     colors: {
       primary: '#3182CE',
       secondary: '#F7FAFC',
@@ -66,13 +73,8 @@ const OwnerDashboard = () => {
     },
   };
 
-  // Check for missing `colors` field
-  const colors = theme?.colors || {
-    primary: '#3182CE',
-    secondary: '#F7FAFC',
-    accent: '#48BB78',
-    text: '#2D3748',
-  };
+  const theme = owner?.theme || defaultTheme;
+  const colors = theme?.colors || defaultTheme.colors;
 
   // Show Loading State
   if (authLoading || isLoading) {
