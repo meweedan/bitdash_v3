@@ -34,8 +34,10 @@ const ProductCard = ({ product }) => {
   const [isFavorited, setIsFavorited] = useState(false);
   const cardBg = useColorModeValue('white', 'gray.800');
 
-  // If your real API eventually includes `images`, adapt here:
-  const imageUrl = '/placeholder-product.jpg';
+  // Get the first image or use a placeholder
+  const imageUrl = product.images?.data?.[0]?.attributes?.url 
+    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images.data[0].attributes.url}` 
+    : '/placeholder-product.jpg';
 
   return (
     <Card bg={cardBg} overflow="hidden" boxShadow="md" borderRadius="md">
@@ -83,18 +85,12 @@ const ProductCard = ({ product }) => {
             {product.description}
           </Text>
           <HStack justify="space-between">
-            <Text fontWeight="bold" fontSize="xl" color="blue.500">
+            <Text fontWeight="bold" fontSize="xl">
               {product.price} LYD
             </Text>
             <HStack>
               <Star size={16} fill="#F6E05E" />
-              <Text>
-                {product.rating?.toFixed(1) || '0.0'}
-                <Text as="span" color="gray.500" ml={1}>
-                  (0 reviews)
-                </Text>
-              </Text>
-            </HStack>
+              </HStack>
           </HStack>
 
           {/* Category & Subcategory */}
@@ -154,10 +150,9 @@ const MarketplacePreview = () => {
         'pagination[page]': page.toString(),
         'pagination[pageSize]': ITEMS_PER_PAGE.toString()
       });
-      // If you do have images in your real data, add more populate fields
-      // Otherwise, this example JSON doesn't have images or owner
-      // params.append('populate[images]', '*');
-      // params.append('populate[owner]', '*');
+
+      // Populate images
+      params.append('populate[images]', '*');
 
       // Filter by search
       if (debouncedSearchTerm) {
@@ -188,18 +183,14 @@ const MarketplacePreview = () => {
     staleTime: 60000
   });
 
-  // According to your final shape:
-  // {
-  //   "data": {
-  //     "attributes": {
-  //       "results": [...],
-  //       "pagination": {...}
-  //     }
-  //   },
-  //   "meta": {}
-  // }
-  const products = data?.data?.attributes?.results || [];
-  const pagination = data?.data?.attributes?.pagination;
+  // Transform Strapi response to flat product objects
+  const products = data?.data?.map(item => ({
+    id: item.id,
+    ...item.attributes,
+    images: item.attributes.images
+  })) || [];
+
+  const pagination = data?.meta?.pagination;
 
   // Compute categories from the returned items
   const categories = useMemo(() => {
