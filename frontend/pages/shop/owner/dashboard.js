@@ -31,194 +31,101 @@ import {
   MenuList,
   MenuItem,
   Alert,
-  AlertIcon,
   useDisclosure,
   Card,
   CardBody,
 } from '@chakra-ui/react';
+
 import {
   FiPlus,
   FiPackage,
+  FiShoppingBag,
   FiDollarSign,
   FiStar,
   FiTrendingUp,
   FiGrid,
   FiList,
-  FiEdit,
+  FiSettings,
   FiUpload,
   FiMoreVertical,
+  FiEdit,
+  FiTrash2,
   FiAlertCircle,
 } from 'react-icons/fi';
-import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
+
+import { useAuth } from '@/hooks/useAuth';
 import Layout from '@/components/Layout';
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 
-// Safer imports with dynamic loading
-import dynamic from 'next/dynamic';
-
-const ProductsList = dynamic(() => import('@/components/shop/owner/ProductsList'), { 
-  loading: () => <Spinner />,
-  ssr: false 
-});
-const ProductEditModal = dynamic(() => import('@/components/shop/owner/ProductEditModal'), { 
-  loading: () => <Spinner />,
-  ssr: false 
-});
-const AddProductModal = dynamic(() => import('@/components/shop/owner/AddProductModal'), { 
-  loading: () => <Spinner />,
-  ssr: false 
-});
-const OrdersList = dynamic(() => import('@/components/shop/owner/OrdersList'), { 
-  loading: () => <Spinner />,
-  ssr: false 
-});
-const ReviewsList = dynamic(() => import('@/components/shop/owner/ReviewsList'), { 
-  loading: () => <Spinner />,
-  ssr: false 
-});
-const SalesChart = dynamic(() => import('@/components/shop/owner/SalesChart'), { 
-  loading: () => <Spinner />,
-  ssr: false 
-});
-const TopProductsChart = dynamic(() => import('@/components/shop/owner/TopProductsChart'), { 
-  loading: () => <Spinner />,
-  ssr: false 
-});
-const ThemeEditor = dynamic(() => import('@/components/shop/owner/ThemeEditor'), { 
-  loading: () => <Spinner />,
-  ssr: false 
-});
+// Shop Owner Components
+import ProductsList from '@/components/shop/owner/ProductsList';
+import ProductEditModal from '@/components/shop/owner/ProductEditModal';
+import AddProductModal from '@/components/shop/owner/AddProductModal';
+import OrdersList from '@/components/shop/owner/OrdersList';
+import ReviewsList from '@/components/shop/owner/ReviewsList';
+import SalesChart from '@/components/shop/owner/SalesChart';
+import TopProductsChart from '@/components/shop/owner/TopProductsChart';
+import ThemeEditor from '@/components/shop/owner/ThemeEditor';
 
 const MotionStat = motion(Stat);
 
 const ShopOwnerDashboard = () => {
-  const router = useRouter();
+  const { user } = useAuth();
   const toast = useToast();
+  const { isOpen: isAddProductOpen, onOpen: onAddProductOpen, onClose: onAddProductClose } = useDisclosure();
+  const { isOpen: isEditProductOpen, onOpen: onEditProductOpen, onClose: onEditProductClose } = useDisclosure();
+  const { isOpen: isThemeOpen, onOpen: onThemeOpen, onClose: onThemeClose } = useDisclosure();
+  
   const [selectedProduct, setSelectedProduct] = useState(null);
   
-  // Disclosure hooks
-  const { 
-    isOpen: isAddProductOpen, 
-    onOpen: onAddProductOpen, 
-    onClose: onAddProductClose 
-  } = useDisclosure();
-  const {
-    isOpen: isEditProductOpen,
-    onOpen: onEditProductOpen,
-    onClose: onEditProductClose
-  } = useDisclosure();
-  const {
-    isOpen: isThemeOpen,
-    onOpen: onThemeOpen,
-    onClose: onThemeClose
-  } = useDisclosure();
-
   const bgColor = useColorModeValue('white', 'gray.800');
+  const borderColor = useColorModeValue('gray.200', 'gray.700');
 
-  // Fetch user from localStorage to ensure client-side rendering
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch (error) {
-        console.error('Error parsing user:', error);
-      }
-    } else {
-      // Redirect to login if no user found
-      router.push('/login');
-    }
-  }, [router]);
-
-  // Data fetching
+  // Fetch shop owner data with proper API structure
   const { 
-    data: shopData, 
-    isLoading, 
-    error,
-    refetch: refetchShop 
+    data: shopData,
+    isLoading: isShopLoading,
+    error: shopError,
+    refetch: refetchShop
   } = useQuery({
     queryKey: ['shopOwner', user?.id],
     queryFn: async () => {
-      const token = localStorage.getItem('token');
-      if (!token) throw new Error('No authentication token');
-
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
-          `filters[user][id]=${user.id}` +
-          `&populate[logo]=*` +
-          `&populate[coverImage]=*` +
-          `&populate[wallet]=*` +
-          `&populate[shop_items][populate][0]=images` +
-          `&populate[shop_items][populate][1]=reviews` +
-          `&populate[orders][populate]=*`,
-          {
-            headers: {
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-            }
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
+        `populate[logo][fields][0]=url` +
+        `&populate[coverImage][fields][0]=url` +
+        `&populate[wallet][fields][0]=balance` +
+        `&populate[shop_items][populate][images]=*` +
+        `&populate[shop_items][populate][reviews]=*` +
+        `&populate[orders][populate][items]=*` +
+        `&filters[user][id][$eq]=${user.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
           }
-        );
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error?.message || 'Failed to fetch shop data');
         }
-
-        return await response.json();
-      } catch (error) {
-        console.error('Shop Fetch Error:', error);
-        throw error;
-      }
+      );
+      if (!response.ok) throw new Error('Failed to fetch shop data');
+      return response.json();
     },
     enabled: !!user?.id
   });
 
-  // Loading state
-  if (isLoading || !user) {
-    return (
-      <Flex justify="center" align="center" minH="100vh">
-        <Spinner size="xl" />
-      </Flex>
-    );
-  }
+  const shop = shopData?.data?.[0]?.attributes;
+  const shopId = shopData?.data?.[0]?.id;
 
-  // Error state
-  if (error) {
-    return (
-      <Container maxW="container.xl" py={6}>
-        <Alert status="error">
-          <AlertIcon />
-          {error.message}
-        </Alert>
-      </Container>
-    );
-  }
-
-  // No shop found
-  const shopDataResult = shopData?.data?.[0];
-  if (!shopDataResult) {
-    return (
-      <Container maxW="container.xl" py={6}>
-        <Alert status="warning">
-          <AlertIcon />
-          No shop found. Please create a shop to continue.
-        </Alert>
-      </Container>
-    );
-  }
-
-  const shop = shopDataResult.attributes;
-  const shopId = shopDataResult.id;
-
-  // Rest of the component remains the same as your original implementation
-
-  // Shop statistics calculation
+  // Calculate shop statistics
   const shopStats = useMemo(() => {
-    const orders = shop.orders?.data || [];
+    if (!shop?.orders?.data) return {
+      totalRevenue: 0,
+      monthlyRevenue: 0,
+      totalOrders: 0,
+      pendingOrders: 0,
+      lowStockItems: 0
+    };
+
+    const orders = shop.orders.data;
     const now = new Date();
     const shopItems = shop.shop_items?.data || [];
     
@@ -240,7 +147,6 @@ const ShopOwnerDashboard = () => {
     };
   }, [shop]);
 
-  // Product actions
   const handleEditProduct = (product) => {
     setSelectedProduct(product);
     onEditProductOpen();
@@ -248,21 +154,24 @@ const ShopOwnerDashboard = () => {
 
   const handleProductAction = async (productId, action) => {
     try {
-      const token = localStorage.getItem('token');
       if (action === 'delete') {
         await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items/${productId}`, {
           method: 'DELETE',
-          headers: { Authorization: `Bearer ${token}` }
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
         });
       } else {
         await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items/${productId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${localStorage.getItem('token')}`
           },
           body: JSON.stringify({
-            data: { status: action }
+            data: {
+              status: action
+            }
           })
         });
       }
@@ -283,6 +192,29 @@ const ShopOwnerDashboard = () => {
     }
   };
 
+  if (isShopLoading) {
+    return (
+      <Layout>
+        <Flex justify="center" align="center" minH="100vh">
+          <Spinner size="xl" />
+        </Flex>
+      </Layout>
+    );
+  }
+
+  if (shopError || !shop) {
+    return (
+      <Layout>
+        <Container maxW="container.xl" py={6}>
+          <Alert status="error">
+            <Icon as={FiAlertCircle} />
+            {shopError?.message || 'Failed to load shop data'}
+          </Alert>
+        </Container>
+      </Layout>
+    );
+  }
+
   return (
     <Layout>
       <Head>
@@ -294,7 +226,6 @@ const ShopOwnerDashboard = () => {
         <Card mb={6}>
           <CardBody>
             <Flex direction={{ base: 'column', md: 'row' }} gap={6} align="center">
-              {/* Cover Image */}
               <Box 
                 position="relative" 
                 minW={{ base: "full", md: "200px" }}
@@ -313,7 +244,6 @@ const ShopOwnerDashboard = () => {
                   w="full"
                   h="full"
                 />
-                {/* Logo */}
                 <Box
                   position="absolute"
                   bottom={4}
@@ -337,7 +267,6 @@ const ShopOwnerDashboard = () => {
                 </Box>
               </Box>
 
-              {/* Shop Info */}
               <VStack align="start" flex={1} spacing={2}>
                 <HStack>
                   <Heading size="lg">{shop.shopName}</Heading>
@@ -361,31 +290,29 @@ const ShopOwnerDashboard = () => {
                   </HStack>
                 </HStack>
               </VStack>
-
-              {/* Actions */}
-              <HStack>
-                <Button
-                  leftIcon={<FiEdit />}
-                  colorScheme="purple"
-                  variant="outline"
-                  onClick={onThemeOpen}
-                >
-                  Edit Theme
-                </Button>
-                <Button
-                  leftIcon={<FiPlus />}
-                  colorScheme="blue"
-                  onClick={onAddProductOpen}
-                >
-                  Add Product
-                </Button>
-              </HStack>
-            </Flex>
-          </CardBody>
-        </Card>
+            <HStack>
+              <Button
+                leftIcon={<FiEdit />}
+                colorScheme="purple"
+                variant="outline"
+                onClick={onThemeOpen}
+              >
+                Edit Theme
+              </Button>
+              <Button
+                leftIcon={<FiPlus />}
+                colorScheme="blue"
+                onClick={onAddProductOpen}
+              >
+                Add Product
+              </Button>
+            </HStack>
+          </Flex>
+        </CardBody>
+      </Card>
 
         {/* Stats Grid */}
-        <SimpleGrid columns={{ base: 1, md: 5 }} spacing={6} mb={6}>
+        <SimpleGrid columns={{ base: 1, md: 4 }} spacing={6} mb={6}>
           <MotionStat
             p={6}
             bg={bgColor}
@@ -448,23 +375,6 @@ const ShopOwnerDashboard = () => {
               <Icon as={FiAlertCircle} /> Low stock items
             </StatHelpText>
           </MotionStat>
-
-          <MotionStat
-            p={6}
-            bg={bgColor}
-            borderRadius="lg"
-            boxShadow="sm"
-            whileHover={{ scale: 1.02 }}
-          >
-            <StatLabel>Wallet Balance</StatLabel>
-            <StatNumber>
-              {shop?.wallet?.data?.attributes?.balance?.toLocaleString() || 0} 
-              {shop?.wallet?.data?.attributes?.currency || 'LYD'}
-            </StatNumber>
-            <StatHelpText>
-              <Icon as={FiDollarSign} /> Available balance
-            </StatHelpText>
-          </MotionStat>
         </SimpleGrid>
 
         {/* Main Content */}
@@ -479,7 +389,7 @@ const ShopOwnerDashboard = () => {
           <TabPanels>
             <TabPanel px={0}>
               <ProductsList 
-                products={shop?.shop_items?.data || []}
+                products={shop.shop_items?.data || []}
                 onEdit={handleEditProduct}
                 onDelete={handleProductAction}
               />
@@ -490,15 +400,16 @@ const ShopOwnerDashboard = () => {
                 orders={shop.orders?.data || []}
                 onStatusChange={async (orderId, newStatus) => {
                   try {
-                    const token = localStorage.getItem('token');
                     await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders/${orderId}`, {
                       method: 'PUT',
                       headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
                       },
                       body: JSON.stringify({
-                        data: { status: newStatus }
+                        data: {
+                          status: newStatus
+                        }
                       })
                     });
                     
@@ -516,7 +427,7 @@ const ShopOwnerDashboard = () => {
                       duration: 3000
                     });
                   }
-                  }}
+                }}
               />
             </TabPanel>
 
@@ -542,12 +453,11 @@ const ShopOwnerDashboard = () => {
                 shopId={shopId}
                 onReply={async (reviewId, reply) => {
                   try {
-                    const token = localStorage.getItem('token');
                     await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/reviews/${reviewId}`, {
                       method: 'PUT',
                       headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
                       },
                       body: JSON.stringify({
                         data: {
@@ -581,25 +491,24 @@ const ShopOwnerDashboard = () => {
         <AddProductModal
           isOpen={isAddProductOpen}
           onClose={onAddProductClose}
-          shopId={shopId}
-          onSubmit={async (formData) => {
+          onSubmit={async (productData) => {
             try {
-              const token = localStorage.getItem('token');
+              const formDataObj = JSON.parse(productData.get('data'));
+              formDataObj.owner = shopId;
+              productData.set('data', JSON.stringify(formDataObj));
+
               const response = await fetch(
                 `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items`,
                 {
                   method: 'POST',
                   headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
                   },
-                  body: formData
+                  body: productData
                 }
               );
 
-              if (!response.ok) {
-                const error = await response.json();
-                throw new Error(error.error?.message || 'Failed to create product');
-              }
+              if (!response.ok) throw new Error('Failed to create product');
 
               toast({
                 title: "Product added successfully",
@@ -609,6 +518,7 @@ const ShopOwnerDashboard = () => {
               onAddProductClose();
               refetchShop();
             } catch (error) {
+              console.error('Error creating product:', error);
               toast({
                 title: "Error adding product",
                 description: error.message,
@@ -626,22 +536,18 @@ const ShopOwnerDashboard = () => {
           product={selectedProduct}
           onSave={async (formData) => {
             try {
-              const token = localStorage.getItem('token');
               const response = await fetch(
                 `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items/${selectedProduct.id}`,
                 {
                   method: 'PUT',
                   headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
                   },
                   body: formData
                 }
               );
 
-              if (!response.ok) {
-                const error = await response.json();
-                throw new Error(error.error?.message || 'Failed to update product');
-              }
+              if (!response.ok) throw new Error('Failed to update product');
 
               toast({
                 title: "Product updated successfully",
@@ -669,25 +575,18 @@ const ShopOwnerDashboard = () => {
           theme={shop.theme}
           onSave={async (newTheme) => {
             try {
-              const token = localStorage.getItem('token');
-              const response = await fetch(
-                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/${shopId}`,
-                {
-                  method: 'PUT',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
-                  },
-                  body: JSON.stringify({
-                    data: { theme: newTheme }
-                  })
-                }
-              );
-
-              if (!response.ok) {
-                const error = await response.json();
-                throw new Error(error.error?.message || 'Failed to update theme');
-              }
+              await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners/${shopId}`, {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({
+                  data: {
+                    theme: newTheme
+                  }
+                })
+              });
 
               toast({
                 title: "Theme updated successfully",
@@ -737,6 +636,7 @@ const ShopOwnerDashboard = () => {
             <MenuItem
               icon={<FiPackage />}
               onClick={() => {
+                // Toggle quick view of low stock items
                 const lowStockItems = shop.shop_items?.data.filter(item => 
                   item.attributes.stock < 10
                 ) || [];
