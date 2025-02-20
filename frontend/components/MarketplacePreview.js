@@ -16,7 +16,6 @@ import {
   HStack,
   Select
 } from '@chakra-ui/react';
-import { api } from '@/services/api';
 
 const MarketplacePreview = () => {
   const [shops, setShops] = useState([]);
@@ -29,8 +28,12 @@ const MarketplacePreview = () => {
   useEffect(() => {
     const fetchShops = async () => {
       try {
-        const response = await api.get('/api/owners?populate=shop_items,logo,theme');
-        setShops(response.data.data);
+        const response = await fetch(`${BASE_URL}/api/owners?populate=shop_items,logo,theme`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch marketplace data');
+        }
+        const data = await response.json();
+        setShops(data.data);
       } catch (error) {
         toast({
           title: 'Error',
@@ -63,7 +66,7 @@ const MarketplacePreview = () => {
     <Container maxW="container.xl" py={8}>
       <Heading textAlign="center" mb={6}>BitShop Marketplace</Heading>
 
-      {/* Search Bar */}
+      {/* Search & Filter Bar */}
       <HStack spacing={4} mb={6} justify="center">
         <Input
           placeholder="Search stores..."
