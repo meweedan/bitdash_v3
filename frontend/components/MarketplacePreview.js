@@ -148,7 +148,7 @@ const MarketplacePreview = () => {
         'pagination[pageSize]': ITEMS_PER_PAGE.toString()
       });
 
-      // Populate all necessary relations.
+      // Populate necessary relations.
       params.append('populate[images]', '*');
       params.append('populate[owner]', '*');
       params.append('populate[reviews]', '*');
@@ -178,9 +178,22 @@ const MarketplacePreview = () => {
     staleTime: 60000 // Cache for 1 minute.
   });
 
-  // Our API response structure returns products under data.results and pagination info under data.attributes.pagination.
-  const products = data?.data?.results || [];
-  const pagination = data?.data?.attributes?.pagination;
+  // Robustly handle different API response shapes.
+  let products = [];
+  let pagination = null;
+  if (data) {
+    if (Array.isArray(data.data)) {
+      // If the API returns an array directly.
+      products = data.data;
+    } else if (data.data?.results) {
+      // If the API returns an object with a "results" key.
+      products = data.data.results;
+      pagination = data.data.attributes?.pagination;
+    } else {
+      // Fallback: if data.data is an object but not an array.
+      products = [];
+    }
+  }
 
   // Compute unique categories from the fetched products.
   const categories = useMemo(() => {
