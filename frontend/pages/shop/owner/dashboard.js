@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '@/hooks/useAuth';
+import { useTranslation } from 'react-i18next'; // Ensure translations work
 
 // Layout & Components
 import Layout from '@/components/Layout';
@@ -31,12 +32,9 @@ import {
 // Icons
 import { RefreshCw, PlusCircle } from 'lucide-react';
 
-// Ensure react-i18next is initialized properly
-import { useTranslation } from 'react-i18next';
-
 const OwnerDashboard = () => {
   const router = useRouter();
-  const { t } = useTranslation(); // Ensure i18n is loaded properly
+  const { t } = useTranslation();
   const { user, isAuthenticated, loading: authLoading } = useAuth();
 
   // Fetch Owner Data
@@ -57,8 +55,8 @@ const OwnerDashboard = () => {
 
   const owner = ownerData?.attributes || {};
   const products = owner?.shop_items?.data || [];
-  
-  // 🛠 Fix Undefined Theme Issue
+
+  // 🛠 Ensure theme always has default values
   const theme = owner?.theme || {
     colors: {
       primary: '#3182CE',
@@ -66,6 +64,14 @@ const OwnerDashboard = () => {
       accent: '#48BB78',
       text: '#2D3748',
     },
+  };
+
+  // Check for missing `colors` field
+  const colors = theme?.colors || {
+    primary: '#3182CE',
+    secondary: '#F7FAFC',
+    accent: '#48BB78',
+    text: '#2D3748',
   };
 
   // Show Loading State
