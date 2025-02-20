@@ -74,23 +74,28 @@ const MotionStat = motion(Stat);
 const ShopOwnerDashboard = () => {
   const { user, isLoading: isAuthLoading } = useAuth();
   const toast = useToast();
-  const { isOpen: isAddProductOpen, onOpen: onAddProductOpen, onClose: onAddProductClose } = useDisclosure();
-  const { isOpen: isEditProductOpen, onOpen: onEditProductOpen, onClose: onEditProductClose } = useDisclosure();
-  const { isOpen: isThemeOpen, onOpen: onThemeOpen, onClose: onThemeClose } = useDisclosure();
-  
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  
+  const [ selectedProduct, setSelectedProduct ] = useState(null);
+  const { 
+    isOpen: isAddProductOpen, 
+    onOpen: onAddProductOpen, 
+    onClose: onAddProductClose 
+  } = useDisclosure();
+
+  const { 
+    isOpen: isEditProductOpen, 
+    onOpen: onEditProductOpen, 
+    onClose: onEditProductClose 
+  } = useDisclosure();
+
+  const { 
+    isOpen: isThemeOpen, 
+    onOpen: onThemeOpen, 
+    onClose: onThemeClose 
+  } = useDisclosure();
+
   const bgColor = useColorModeValue('white', 'gray.800');
-    const borderColor = useColorModeValue('gray.200', 'gray.700');
 
-  // Move useEffect here, before any returns
-  useEffect(() => {
-    console.log('Current User:', user);
-    console.log('User ID:', user?.id);
-    console.log('Auth Token:', localStorage.getItem('token'));
-  }, [user]);
-
-  // FIRST check - Auth loading
+  // FIRST: Auth check
   if (isAuthLoading) {
     return (
       <Layout>
@@ -101,7 +106,7 @@ const ShopOwnerDashboard = () => {
     );
   }
 
-  // SECOND check - No user
+  // SECOND: User check
   if (!user) {
     return (
       <Layout>
@@ -115,14 +120,9 @@ const ShopOwnerDashboard = () => {
     );
   }
 
- // Fetch shop owner data
-  const { 
-    data: shopData,
-    isLoading: isShopLoading,
-    error: shopError,
-    refetch: refetchShop
-  } = useQuery({
-    queryKey: ['shopOwner', user?.id],
+  // THIRD: Data fetch
+  const { data: shopData, isLoading, error } = useQuery({
+    queryKey: ['shopOwner', user.id],
     queryFn: async () => {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No authentication token');
@@ -150,84 +150,58 @@ const ShopOwnerDashboard = () => {
           throw new Error(errorData.error?.message || 'Failed to fetch shop data');
         }
 
-        const data = await response.json();
-        return data;
+        return await response.json();
       } catch (error) {
         console.error('Shop Fetch Error:', error);
         throw error;
       }
     },
     enabled: Boolean(user?.id)
-    });
+  });
 
-    // Auth loading check
-    if (isAuthLoading) {
-      return (
-        <Layout>
-          <Flex justify="center" align="center" minH="100vh">
-            <Spinner size="xl" />
-          </Flex>
-        </Layout>
-      );
-    }
+  // FOURTH: Loading check
+  if (isLoading) {
+    return (
+      <Layout>
+        <Flex justify="center" align="center" minH="100vh">
+          <Spinner size="xl" />
+        </Flex>
+      </Layout>
+    );
+  }
 
-    // Auth check
-    if (!user) {
-      return (
-        <Layout>
-          <Container maxW="container.xl" py={6}>
-            <Alert status="error">
-              <AlertIcon />
-              Please login to access your shop dashboard
-            </Alert>
-          </Container>
-        </Layout>
-      );
-    }
+  // FIFTH: Error check
+  if (error) {
+    return (
+      <Layout>
+        <Container maxW="container.xl" py={6}>
+          <Alert status="error">
+            <AlertIcon />
+            {error.message || 'Failed to load shop data'}
+          </Alert>
+        </Container>
+      </Layout>
+    );
+  }
 
-    // Shop data loading check
-    if (isShopLoading) {
-      return (
-        <Layout>
-          <Flex justify="center" align="center" minH="100vh">
-            <Spinner size="xl" />
-          </Flex>
-        </Layout>
-      );
-    }
+  // SIXTH: Data validation
+  const shopDataResult = shopData?.data?.[0];
+  if (!shopDataResult) {
+    return (
+      <Layout>
+        <Container maxW="container.xl" py={6}>
+          <Alert status="warning">
+            <AlertIcon />
+            No shop found. Please create a shop to continue.
+          </Alert>
+        </Container>
+      </Layout>
+    );
+  }
 
-    // Shop error check
-    if (shopError) {
-      return (
-        <Layout>
-          <Container maxW="container.xl" py={6}>
-            <Alert status="error">
-              <AlertIcon />
-              {shopError.message || 'Failed to load shop data'}
-            </Alert>
-          </Container>
-        </Layout>
-      );
-    }
-
-    // Get shop data
-    const shopDataResult = shopData?.data?.[0];
-    if (!shopDataResult) {
-      return (
-        <Layout>
-          <Container maxW="container.xl" py={6}>
-            <Alert status="warning">
-              <AlertIcon />
-              No shop found. Please create a shop to continue.
-            </Alert>
-          </Container>
-        </Layout>
-      );
-    }
-
-    // Now we can safely use shop data
-    const shop = shopDataResult.attributes;
-    const shopId = shopDataResult.id;
+  // NOW we can safely use the data
+  const shop = shopDataResult.attributes;
+  const shopId = shopDataResult.id;
 
   // Calculate shop statistics
   const shopStats = useMemo(() => {
