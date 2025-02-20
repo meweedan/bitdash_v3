@@ -53,6 +53,8 @@ const OwnerDashboard = () => {
 
   const owner = ownerData?.attributes || {};
   const products = owner?.shop_items?.data || [];
+  const theme = owner?.theme || {}; // Ensure theme exists
+  const colors = theme.colors || { primary: '#3182CE', secondary: '#F7FAFC' }; // Default fallback
 
   // Show Loading State
   if (authLoading || isLoading) {
