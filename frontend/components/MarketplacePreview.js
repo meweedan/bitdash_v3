@@ -13,6 +13,8 @@ import {
  IconButton,
  Image,
  Badge,
+ Alert,
+ AlertIcon,
  Input,
  InputGroup,
  InputLeftElement,
@@ -191,8 +193,6 @@ const MarketplacePreview = () => {
        <VStack spacing={8}>
          <Heading 
            size="2xl" 
-           bgGradient="linear(to-r, blue.400, purple.500)"
-           bgClip="text"
          >
            Marketplace
          </Heading>

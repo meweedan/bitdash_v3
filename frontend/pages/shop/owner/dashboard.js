@@ -72,58 +72,38 @@ import ThemeEditor from '@/components/shop/owner/ThemeEditor';
 const MotionStat = motion(Stat);
 
 const ShopOwnerDashboard = () => {
+  // 1. All hooks at the top
   const { user, isLoading: isAuthLoading } = useAuth();
   const toast = useToast();
-  const [ selectedProduct, setSelectedProduct ] = useState(null);
-  const { 
-    isOpen: isAddProductOpen, 
-    onOpen: onAddProductOpen, 
-    onClose: onAddProductClose 
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const {
+    isOpen: isAddProductOpen,
+    onOpen: onAddProductOpen,
+    onClose: onAddProductClose
   } = useDisclosure();
-
-  const { 
-    isOpen: isEditProductOpen, 
-    onOpen: onEditProductOpen, 
-    onClose: onEditProductClose 
+  const {
+    isOpen: isEditProductOpen,
+    onOpen: onEditProductOpen,
+    onClose: onEditProductClose
   } = useDisclosure();
-
-  const { 
-    isOpen: isThemeOpen, 
-    onOpen: onThemeOpen, 
-    onClose: onThemeClose 
+  const {
+    isOpen: isThemeOpen,
+    onOpen: onThemeOpen,
+    onClose: onThemeClose
   } = useDisclosure();
 
   const bgColor = useColorModeValue('white', 'gray.800');
 
-  // FIRST: Auth check
-  if (isAuthLoading) {
-    return (
-      <Layout>
-        <Flex justify="center" align="center" minH="100vh">
-          <Spinner size="xl" />
-        </Flex>
-      </Layout>
-    );
-  }
-
-  // SECOND: User check
-  if (!user) {
-    return (
-      <Layout>
-        <Container maxW="container.xl" py={6}>
-          <Alert status="error">
-            <AlertIcon />
-            Please login to access your shop dashboard
-          </Alert>
-        </Container>
-      </Layout>
-    );
-  }
-
-  // THIRD: Data fetch
-  const { data: shopData, isLoading, error } = useQuery({
-    queryKey: ['shopOwner', user.id],
+  // 2. Data fetching with proper enabled condition
+  const {
+    data: shopData,
+    isLoading: isShopLoading,
+    error: shopError,
+    refetch: refetchShop
+  } = useQuery({
+    queryKey: ['shopOwner', user?.id],
     queryFn: async () => {
+      if (!user?.id) return null;
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No authentication token');
 
@@ -159,8 +139,8 @@ const ShopOwnerDashboard = () => {
     enabled: Boolean(user?.id)
   });
 
-  // FOURTH: Loading check
-  if (isLoading) {
+  // 3. Single set of loading/error checks
+  if (isAuthLoading || isShopLoading) {
     return (
       <Layout>
         <Flex justify="center" align="center" minH="100vh">
@@ -170,21 +150,32 @@ const ShopOwnerDashboard = () => {
     );
   }
 
-  // FIFTH: Error check
-  if (error) {
+  if (!user) {
     return (
       <Layout>
         <Container maxW="container.xl" py={6}>
           <Alert status="error">
             <AlertIcon />
-            {error.message || 'Failed to load shop data'}
+            Please login to access your shop dashboard
           </Alert>
         </Container>
       </Layout>
     );
   }
 
-  // SIXTH: Data validation
+  if (shopError) {
+    return (
+      <Layout>
+        <Container maxW="container.xl" py={6}>
+          <Alert status="error">
+            <AlertIcon />
+            {shopError.message || 'Failed to load shop data'}
+          </Alert>
+        </Container>
+      </Layout>
+    );
+  }
+
   const shopDataResult = shopData?.data?.[0];
   if (!shopDataResult) {
     return (
@@ -199,7 +190,6 @@ const ShopOwnerDashboard = () => {
     );
   }
 
-  // NOW we can safely use the data
   const shop = shopDataResult.attributes;
   const shopId = shopDataResult.id;
 
