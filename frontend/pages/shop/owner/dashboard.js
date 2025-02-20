@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '@/hooks/useAuth';
-import { useTranslation } from 'react-i18next'; // i18next Fix
+import { useTranslation } from 'react-i18next';
 
 // Layout & Components
 import Layout from '@/components/Layout';
@@ -27,15 +27,17 @@ import {
   Spinner,
   Text,
   HStack,
+  useDisclosure,
 } from '@chakra-ui/react';
 
 // Icons
-import { RefreshCw, PlusCircle } from 'lucide-react';
+import { RefreshCw, PlusCircle, PaintBrush } from 'lucide-react';
 
 const OwnerDashboard = () => {
   const router = useRouter();
   const { t } = useTranslation();
   const { user, isAuthenticated, loading: authLoading } = useAuth();
+  const { isOpen, onOpen, onClose } = useDisclosure(); // ThemeEditor modal control
 
   // Fetch Owner Data
   const { data: ownerData, isLoading, refetch, error } = useQuery({
@@ -52,7 +54,7 @@ const OwnerDashboard = () => {
       return data.data.length ? data.data[0] : null;
     },
     enabled: !!user?.id && isAuthenticated,
-    retry: 1, // Prevent unnecessary retries
+    retry: 1,
   });
 
   if (error) {
@@ -111,6 +113,9 @@ const OwnerDashboard = () => {
               <Button leftIcon={<RefreshCw />} colorScheme="bitshop-solid" onClick={refetch}>
                 {t('Refresh')}
               </Button>
+              <Button leftIcon={<PaintBrush />} colorScheme="bitshop-outline" onClick={onOpen}>
+                {t('Customize Theme')}
+              </Button>
             </HStack>
           </Flex>
 
@@ -146,13 +151,22 @@ const OwnerDashboard = () => {
             <GlassCard p={6}>
               <ReviewsList ownerData={owner} />
             </GlassCard>
-
-            <GlassCard p={6}>
-              <ThemeEditor ownerData={owner} />
-            </GlassCard>
           </SimpleGrid>
         </VStack>
       </Container>
+
+      {/* Theme Editor Modal */}
+      <ThemeEditor
+        isOpen={isOpen}
+        onClose={onClose}
+        theme={theme}
+        ownerId={owner?.id}
+        token={localStorage.getItem('token')}
+        onSave={(updatedTheme) => {
+          console.log('Theme updated:', updatedTheme);
+          refetch();
+        }}
+      />
     </Layout>
   );
 };
