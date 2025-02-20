@@ -96,77 +96,50 @@ const ShopOwnerDashboard = () => {
       refetch: refetchShop
     } = useQuery({
       queryKey: ['shopOwner', user?.id],
-  queryFn: async () => {
-    if (!user?.id) {
-      console.error('No user ID found');
-      throw new Error('User not authenticated');
-    }
+    queryFn: async () => {
+      if (!user?.id) throw new Error('User not authenticated');
 
-    const token = localStorage.getItem('token');
-    if (!token) {
-      console.error('No authentication token');
-      throw new Error('No authentication token');
-    }
+      const token = localStorage.getItem('token');
+      if (!token) throw new Error('No authentication token');
 
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
-        `filters[user][id][$eq]=${user.id}` +
-        `&populate[logo]=*` +
-        `&populate[coverImage]=*` +
-        `&populate[wallet][fields][0]=balance,currency` +
-        `&populate[shop_items][populate][images]=*` +
-        `&populate[shop_items][populate][reviews]=*` +
-        `&populate[orders][populate][items]=*`,
-        {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
+          `filters[user][id][$eq]=${user.id}` +
+          `&populate[logo][fields][0]=url` +
+          `&populate[coverImage][fields][0]=url` +
+          `&populate[wallet][fields][0]=balance` +
+          `&populate[wallet][fields][1]=currency` +
+          `&populate[shop_items][populate][images][fields][0]=url` +
+          `&populate[shop_items][populate][reviews]=*` +
+          `&populate[orders][populate][items]=*`,
+          {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
           }
+        );
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch shop data');
         }
-      );
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Full error response:', errorText);
-        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        return await response.json();
+      } catch (error) {
+        console.error('Shop Fetch Error:', error);
+        throw error;
       }
-
-      const result = await response.json();
-      console.log('Full API Response:', result);
-
-      // Validate shop exists
-      if (!result.data || result.data.length === 0) {
-        throw new Error('No shop found for this user. Please create a shop.');
-      }
-
-      return result;
-    } catch (error) {
-      console.error('Shop Fetch Error:', error);
-      throw error;
-    }
-  },
-  enabled: !!user?.id,
-  retry: 1,
-  onError: (error) => {
-    console.error('Shop Fetch Error:', error);
-    toast({
-      title: 'Shop Fetch Error',
-      description: error.message,
-      status: 'error',
-      duration: 5000,
-      isClosable: true
-    });
-  }
-});
+    },
+    enabled: Boolean(user?.id)
+  });
 
   const shop = shopData?.data?.[0]?.attributes;
   const shopId = shopData?.data?.[0]?.id;
 
   // Calculate shop statistics
   const shopStats = useMemo(() => {
-    if (!shop?.orders?.data) return {
+    if (!shop) return {
       totalRevenue: 0,
       monthlyRevenue: 0,
       totalOrders: 0,
@@ -174,7 +147,7 @@ const ShopOwnerDashboard = () => {
       lowStockItems: 0
     };
 
-    const orders = shop.orders.data;
+    const orders = shop.orders?.data || [];
     const now = new Date();
     const shopItems = shop.shop_items?.data || [];
     
@@ -185,7 +158,7 @@ const ShopOwnerDashboard = () => {
         .filter(order => {
           const orderDate = new Date(order.attributes.createdAt);
           return orderDate.getMonth() === now.getMonth() && 
-                 orderDate.getFullYear() === now.getFullYear();
+                orderDate.getFullYear() === now.getFullYear();
         })
         .reduce((sum, order) => sum + (parseFloat(order.attributes.total) || 0), 0),
       totalOrders: orders.length,
@@ -424,6 +397,23 @@ const ShopOwnerDashboard = () => {
               <Icon as={FiAlertCircle} /> Low stock items
             </StatHelpText>
           </MotionStat>
+
+          <MotionStat
+            p={6}
+            bg={bgColor}
+            borderRadius="lg"
+            boxShadow="sm"
+            whileHover={{ scale: 1.02 }}
+          >
+            <StatLabel>Wallet Balance</StatLabel>
+            <StatNumber>
+              {shop?.wallet?.data?.attributes?.balance?.toLocaleString() || 0} 
+              {shop?.wallet?.data?.attributes?.currency || 'LYD'}
+            </StatNumber>
+            <StatHelpText>
+              <Icon as={FiDollarSign} /> Available balance
+            </StatHelpText>
+          </MotionStat>
         </SimpleGrid>
 
         {/* Main Content */}
@@ -438,7 +428,7 @@ const ShopOwnerDashboard = () => {
           <TabPanels>
             <TabPanel px={0}>
               <ProductsList 
-                products={shop.shop_items?.data || []}
+                products={shop?.shop_items?.data || []}
                 onEdit={handleEditProduct}
                 onDelete={handleProductAction}
               />
