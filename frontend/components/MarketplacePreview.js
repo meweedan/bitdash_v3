@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
   const [isFavorited, setIsFavorited] = useState(false);
   const cardBg = useColorModeValue('white', 'gray.800');
 
-  // Construct image URL from Strapi data or fallback to placeholder.
+  // Build image URL from Strapi data or fallback to a placeholder.
   const imageUrl = product?.attributes?.images?.data?.[0]?.attributes?.url 
     ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.attributes.images.data[0].attributes.url}`
     : '/placeholder-product.jpg';
@@ -131,11 +131,11 @@ const MarketplacePreview = () => {
   const [page, setPage] = useState(1);
   const bgColor = useColorModeValue('gray.50', 'gray.900');
 
-  // Debounce the search term to avoid excessive refetching
+  // Debounce search input to reduce API calls.
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm);
-      setPage(1); // Reset to first page on new search
+      setPage(1); // Reset to first page on new search.
     }, 300);
     return () => clearTimeout(handler);
   }, [searchTerm]);
@@ -148,12 +148,12 @@ const MarketplacePreview = () => {
         'pagination[pageSize]': ITEMS_PER_PAGE.toString()
       });
 
-      // Populate all necessary relations
+      // Populate all necessary relations.
       params.append('populate[images]', '*');
       params.append('populate[owner]', '*');
       params.append('populate[reviews]', '*');
 
-      // Apply search filters if provided
+      // Apply search filters if provided.
       if (debouncedSearchTerm) {
         params.append('filters[$or][0][name][$containsi]', debouncedSearchTerm);
         params.append('filters[$or][1][description][$containsi]', debouncedSearchTerm);
@@ -161,11 +161,10 @@ const MarketplacePreview = () => {
       if (selectedCategory) {
         params.append('filters[category]', selectedCategory);
       }
-      // Only fetch available items
+      // Only fetch available items.
       params.append('filters[status][$eq]', 'available');
 
       const requestUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`;
-
       const response = await fetch(requestUrl, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
@@ -176,20 +175,23 @@ const MarketplacePreview = () => {
       return response.json();
     },
     keepPreviousData: true,
-    staleTime: 60000, // Cache data for 1 minute
+    staleTime: 60000 // Cache for 1 minute.
   });
 
-  // Compute unique categories from the fetched data
+  // Our API response structure returns products under data.results and pagination info under data.attributes.pagination.
+  const products = data?.data?.results || [];
+  const pagination = data?.data?.attributes?.pagination;
+
+  // Compute unique categories from the fetched products.
   const categories = useMemo(() => {
-    if (!data?.data) return [];
     const uniqueCategories = new Set();
-    data.data.forEach(product => {
+    products.forEach(product => {
       if (product.attributes.category) {
         uniqueCategories.add(product.attributes.category);
       }
     });
     return Array.from(uniqueCategories);
-  }, [data]);
+  }, [products]);
 
   if (error) {
     return (
@@ -207,7 +209,6 @@ const MarketplacePreview = () => {
       <Container maxW="7xl">
         <VStack spacing={8}>
           <Heading size="2xl">Marketplace</Heading>
-
           <HStack w="full" spacing={4}>
             <InputGroup>
               <InputLeftElement pointerEvents="none">
@@ -220,13 +221,12 @@ const MarketplacePreview = () => {
                 bg="white"
               />
             </InputGroup>
-
             <Select
               placeholder="All Categories"
               value={selectedCategory}
               onChange={(e) => {
                 setSelectedCategory(e.target.value);
-                setPage(1); // Reset to first page when category changes
+                setPage(1); // Reset page when changing category.
               }}
               w="200px"
               bg="white"
@@ -238,7 +238,6 @@ const MarketplacePreview = () => {
               ))}
             </Select>
           </HStack>
-
           {isLoading ? (
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} w="full">
               {Array.from({ length: ITEMS_PER_PAGE }).map((_, i) => (
@@ -248,11 +247,11 @@ const MarketplacePreview = () => {
           ) : (
             <>
               <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} w="full">
-                {data?.data?.map((product) => (
+                {products.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
               </SimpleGrid>
-              {data?.meta?.pagination && (
+              {pagination && (
                 <HStack justify="center" mt={8}>
                   <Button
                     onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
@@ -261,15 +260,13 @@ const MarketplacePreview = () => {
                     Previous
                   </Button>
                   <Text>
-                    Page {page} of {data.meta.pagination.pageCount}
+                    Page {page} of {pagination.pageCount}
                   </Text>
                   <Button
                     onClick={() =>
-                      setPage((prev) =>
-                        Math.min(prev + 1, data.meta.pagination.pageCount)
-                      )
+                      setPage((prev) => Math.min(prev + 1, pagination.pageCount))
                     }
-                    isDisabled={page >= data.meta.pagination.pageCount}
+                    isDisabled={page >= pagination.pageCount}
                   >
                     Next
                   </Button>
