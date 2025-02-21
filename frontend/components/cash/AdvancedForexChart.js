@@ -98,18 +98,30 @@ const AdvancedForexChart = () => {
   };
 
   const chartData = useMemo(() => {
-    if (!historicalData) return [];
-    return historicalData.map(d => ({
-      date: new Date(d.timestamp).toLocaleDateString(),
-      open: d.open_rate || d.rate,
-      high: d.high_rate || d.rate,
-      low: d.low_rate || d.rate,
-      close: d.rate,
+  console.log('Raw historical data:', historicalData);
+  
+  if (!historicalData || !Array.isArray(historicalData)) {
+    console.warn('Historical data is not an array:', historicalData);
+    return [];
+  }
+
+  return historicalData.map(d => {
+    if (!d) {
+      console.warn('Encountered null/undefined data point:', d);
+      return null;
+    }
+    return {
+      date: d.timestamp ? new Date(d.timestamp).toLocaleDateString() : 'N/A',
+      open: d.open_rate || d.rate || 0,
+      high: d.high_rate || d.rate || 0,
+      low: d.low_rate || d.rate || 0,
+      close: d.rate || 0,
       volume: d.volume || 0,
-      ma20: d.ma20, // 20-day moving average
-      ma50: d.ma50, // 50-day moving average
-    }));
-  }, [historicalData]);
+      ma20: d.ma20 || null, 
+      ma50: d.ma50 || null
+    };
+  }).filter(Boolean); // Remove any null entries
+}, [historicalData]);
 
   const bgColor = useColorModeValue('gray.900', 'black');
   const textColor = useColorModeValue('white', 'gray.200');
