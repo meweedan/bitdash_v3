@@ -14,7 +14,17 @@ import {
   AlertIcon,
 } from '@chakra-ui/react';
 import { ArrowUpDown } from 'lucide-react';
-import { ComposedChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Candlestick, Line, Bar } from 'recharts';
+import {
+  ComposedChart,
+  Line,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ReferenceLine
+} from 'recharts';
 import { useQuery } from '@tanstack/react-query';
 
 const AVAILABLE_CURRENCIES = {
@@ -28,13 +38,41 @@ const formatPrice = (price, currency) => {
   return price.toFixed(currency === 'BTC' ? 8 : 4);
 };
 
+const CustomCandlestick = (props) => {
+  const { x, y, width, height, open, close, high, low } = props;
+  const color = close > open ? "#00b894" : "#ff7675";
+  const bodyHeight = Math.max(1, Math.abs(close - open));
+  const bodyY = Math.min(close, open);
+
+  return (
+    <g>
+      {/* Wick */}
+      <line
+        x1={x + width / 2}
+        y1={y + high}
+        x2={x + width / 2}
+        y2={y + low}
+        stroke={color}
+        strokeWidth={1}
+      />
+      {/* Body */}
+      <rect
+        x={x}
+        y={y + bodyY}
+        width={width}
+        height={bodyHeight}
+        fill={color}
+      />
+    </g>
+  );
+};
+
 const AdvancedForexChart = () => {
   const [baseCurrency, setBaseCurrency] = useState('USD');
   const [quoteCurrency, setQuoteCurrency] = useState('LYD');
   const [timeframe, setTimeframe] = useState('1D');
   const [showVolume, setShowVolume] = useState(true);
 
-  // Combine all currencies for the selectors
   const allCurrencies = useMemo(() => [
     ...AVAILABLE_CURRENCIES.FIAT,
     ...AVAILABLE_CURRENCIES.CRYPTO,
@@ -45,7 +83,7 @@ const AdvancedForexChart = () => {
     queryKey: ['historical-rates', baseCurrency, quoteCurrency, timeframe],
     queryFn: async () => {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/historical?base=${baseCurrency}&quote=${quoteCurrency}&timeframe=${timeframe}`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/historical?base=${baseCurrency}&quote=${quoteCurrency}&timeframe=${timeframe}`
       );
       if (!response.ok) throw new Error('Failed to fetch historical data');
       return response.json();
@@ -63,11 +101,11 @@ const AdvancedForexChart = () => {
     if (!historicalData) return [];
     return historicalData.map(d => ({
       date: new Date(d.timestamp).toLocaleDateString(),
-      open: d.open_rate,
-      high: d.high_rate,
-      low: d.low_rate,
+      open: d.open_rate || d.rate,
+      high: d.high_rate || d.rate,
+      low: d.low_rate || d.rate,
       close: d.rate,
-      volume: d.volume,
+      volume: d.volume || 0,
       ma20: d.ma20, // 20-day moving average
       ma50: d.ma50, // 50-day moving average
     }));
@@ -180,13 +218,19 @@ const AdvancedForexChart = () => {
                 }}
               />
               <Legend />
-              <Candlestick
-                yAxisId="price"
-                name={`${baseCurrency}/${quoteCurrency}`}
-                dataKey={['open', 'close', 'high', 'low']}
-                fill="#8884d8"
-                stroke="#8884d8"
-              />
+              {chartData.map((d, i) => (
+                <CustomCandlestick
+                  key={i}
+                  x={i * (800 / chartData.length)}
+                  y={0}
+                  width={10}
+                  height={500}
+                  open={d.open}
+                  close={d.close}
+                  high={d.high}
+                  low={d.low}
+                />
+              ))}
               <Line
                 yAxisId="price"
                 type="monotone"
