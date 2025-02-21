@@ -1,4 +1,3 @@
-// pages/shop/[ownerName]/[itemName].js
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -47,47 +46,31 @@ export default function ShopItemDetails() {
   const { data, isLoading, error } = useQuery({
     queryKey: ['shop-item', ownerName, itemName],
     queryFn: async () => {
+      const params = new URLSearchParams({
+        'populate[owner][fields][0]': 'shopName',
+        'populate[images]': '*',
+        'populate[reviews]': '*',
+        'filters[owner][shopName][$eq]': ownerName,
+        'filters[name][$eq]': itemName,
+      });
+
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?` +
-        `populate[images]=*` +
-        `&populate[owner][fields][0]=shopName` +
-        `&populate[reviews]=*` +
-        `&filters[owner][shopName][$eq]=${ownerName}` +
-        `&filters[name][$eq]=${itemName}`,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        }
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/shop-items?${params.toString()}`,
+        { headers: { 'Content-Type': 'application/json' } }
       );
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch product details');
-      }
-
-      const data = await response.json();
-      if (!data.data?.results?.[0]) {
-        throw new Error('Product not found');
-      }
-
-      return data.data.results[0];
+      if (!response.ok) throw new Error('Failed to fetch product details');
+      const json = await response.json();
+      return json.data?.results?.[0] || null;
     },
-    enabled: !!ownerName && !!itemName
+    enabled: !!ownerName && !!itemName,
   });
 
   if (isLoading) {
     return (
       <Layout>
         <Container maxW="7xl" py={8}>
-          <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gap={8}>
-            <Skeleton height="500px" />
-            <VStack align="stretch" spacing={6}>
-              <Skeleton height="40px" />
-              <Skeleton height="20px" />
-              <Skeleton height="30px" />
-              <Skeleton height="100px" />
-            </VStack>
-          </Grid>
+          <Skeleton height="500px" />
         </Container>
       </Layout>
     );
@@ -108,8 +91,8 @@ export default function ShopItemDetails() {
 
   const product = data;
   const images = product.images || [];
-  const currentImage = images[currentImageIndex]?.url
-    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${images[currentImageIndex].url}`
+  const imageUrl = images.length > 0 
+    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${images[currentImageIndex].url}` 
     : '/placeholder-product.jpg';
 
   return (
@@ -125,7 +108,7 @@ export default function ShopItemDetails() {
           <GridItem position="relative">
             <Box position="relative" height="500px">
               <Image
-                src={currentImage}
+                src={imageUrl}
                 alt={product.name}
                 objectFit="cover"
                 w="full"
@@ -140,9 +123,7 @@ export default function ShopItemDetails() {
                     left={2}
                     top="50%"
                     transform="translateY(-50%)"
-                    onClick={() => setCurrentImageIndex((prev) => 
-                      prev === 0 ? images.length - 1 : prev - 1
-                    )}
+                    onClick={() => setCurrentImageIndex((prev) => prev === 0 ? images.length - 1 : prev - 1)}
                     isRound
                   />
                   <IconButton
@@ -151,65 +132,38 @@ export default function ShopItemDetails() {
                     right={2}
                     top="50%"
                     transform="translateY(-50%)"
-                    onClick={() => setCurrentImageIndex((prev) => 
-                      prev === images.length - 1 ? 0 : prev + 1
-                    )}
+                    onClick={() => setCurrentImageIndex((prev) => prev === images.length - 1 ? 0 : prev + 1)}
                     isRound
                   />
                 </>
               )}
             </Box>
-            
-            {/* Thumbnail Strip */}
-            {images.length > 1 && (
-              <HStack mt={4} spacing={2} overflowX="auto" p={2}>
-                {images.map((img, idx) => (
-                  <Image
-                    key={idx}
-                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${img.url}`}
-                    alt={`${product.name} thumbnail ${idx + 1}`}
-                    boxSize="60px"
-                    objectFit="cover"
-                    cursor="pointer"
-                    opacity={currentImageIndex === idx ? 1 : 0.6}
-                    onClick={() => setCurrentImageIndex(idx)}
-                    borderRadius="md"
-                  />
-                ))}
-              </HStack>
-            )}
           </GridItem>
 
           {/* Product Details */}
           <GridItem>
             <VStack align="stretch" spacing={6}>
-              <Box>
-                <HStack justify="space-between">
-                  <Heading size="lg">{product.name}</Heading>
-                  <IconButton
-                    aria-label="Add to favorites"
-                    icon={<Heart />}
-                    variant="ghost"
-                    onClick={() => {
-                      toast({
-                        title: 'Added to favorites',
-                        status: 'success',
-                        duration: 2000,
-                      });
-                    }}
-                  />
-                </HStack>
-                <Text color="gray.500" mt={2}>By {ownerName}</Text>
-              </Box>
+              <HStack justify="space-between">
+                <Heading size="lg">{product.name}</Heading>
+                <IconButton
+                  aria-label="Add to favorites"
+                  icon={<Heart />}
+                  variant="ghost"
+                  onClick={() => toast({ title: 'Added to favorites', status: 'success', duration: 2000 })}
+                />
+              </HStack>
 
               <HStack>
                 <Badge colorScheme={product.status === 'available' ? 'green' : 'red'}>
                   {product.status === 'available' ? 'In Stock' : 'Out of Stock'}
                 </Badge>
-                <HStack>
-                  <Star size={16} fill="#F6E05E" />
-                  <Text>{product.rating?.toFixed(1) || '0.0'} ({product.reviews?.length || 0} reviews)</Text>
-                </HStack>
+                {product.category && <Badge colorScheme="purple">{product.category}</Badge>}
+                {product.subcategory && <Badge colorScheme="purple" variant="outline">{product.subcategory}</Badge>}
+              </HStack>
+
+              <HStack>
+                <Star size={16} fill="#F6E05E" />
+                <Text>{product.rating?.toFixed(1) || '0.0'} ({product.reviews?.length || 0} reviews)</Text>
               </HStack>
 
               <Text fontSize="2xl" fontWeight="bold" color="blue.500">
@@ -218,21 +172,8 @@ export default function ShopItemDetails() {
 
               <Text>{product.description}</Text>
 
-              {product.specifications && (
-                <Box>
-                  <Text fontWeight="bold" mb={2}>Specifications:</Text>
-                  <Text>{product.specifications}</Text>
-                </Box>
-              )}
-
               <HStack>
-                <NumberInput
-                  value={quantity}
-                  onChange={(_, val) => setQuantity(val)}
-                  min={1}
-                  max={product.stock}
-                  w="100px"
-                >
+                <NumberInput value={quantity} onChange={(_, val) => setQuantity(val)} min={1} max={product.stock} w="100px">
                   <NumberInputField />
                   <NumberInputStepper>
                     <NumberIncrementStepper />
@@ -243,13 +184,7 @@ export default function ShopItemDetails() {
                   colorScheme="blue"
                   leftIcon={<ShoppingBag />}
                   isDisabled={product.status !== 'available' || product.stock <= 0}
-                  onClick={() => {
-                    toast({
-                      title: 'Added to cart',
-                      status: 'success',
-                      duration: 2000,
-                    });
-                  }}
+                  onClick={() => toast({ title: 'Added to cart', status: 'success', duration: 2000 })}
                   flex={1}
                 >
                   Add to Cart
@@ -268,11 +203,7 @@ export default function ShopItemDetails() {
                     <HStack>
                       <Text fontWeight="bold">Category:</Text>
                       <Badge colorScheme="purple">{product.category}</Badge>
-                      {product.subcategory && (
-                        <Badge colorScheme="purple" variant="outline">
-                          {product.subcategory}
-                        </Badge>
-                      )}
+                      {product.subcategory && <Badge colorScheme="purple" variant="outline">{product.subcategory}</Badge>}
                     </HStack>
                     <HStack>
                       <Text fontWeight="bold">Stock:</Text>
