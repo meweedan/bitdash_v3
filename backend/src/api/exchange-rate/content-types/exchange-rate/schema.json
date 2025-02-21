@@ -1,31 +1,53 @@
 {
-    "kind": "collectionType",
-    "collectionName": "exchange_rates",
-    "info": {
-      "singularName": "exchange-rate",
-      "pluralName": "exchange-rates",
-      "displayName": "Exchange Rate"
+  "kind": "collectionType",
+  "collectionName": "exchange_rates",
+  "info": {
+    "singularName": "exchange-rate",
+    "pluralName": "exchange-rates",
+    "displayName": "Exchange Rate"
+  },
+  "attributes": {
+    "from_currency": {
+      "type": "string",
+      "required": true
     },
-    "attributes": {
-      "from_currency": {
-        "type": "string",
-        "required": true
-      },
-      "to_currency": {
-        "type": "string",
-        "required": true
-      },
-      "rate": {
-        "type": "decimal",
-        "required": true
-      },
-      "source": {
-        "type": "string",
-        "required": true
-      },
-      "timestamp": {
-        "type": "datetime",
-        "required": true
-      }
+    "to_currency": {
+      "type": "string",
+      "required": true
+    },
+    "rate": {
+      "type": "decimal",
+      "required": true
+    },
+    "source": {
+      "type": "string",
+      "required": true
+    },
+    "source_url": {
+      "type": "string",
+      "default": "N/A"
+    },
+    "source_priority": {
+      "type": "integer",
+      "default": 1
+    },
+    "timestamp": {
+      "type": "datetime",
+      "required": true
+    },
+    "auto_update": {
+      "type": "boolean",
+      "default": false
+    },
+    "last_updated_by": {
+      "type": "string",
+      "default": "manual",
+      "enum": ["manual", "bot", "external_api"]
+    },
+    "unique_pair": {
+      "type": "uid",
+      "targetField": "from_currency_to_currency",
+      "required": true
     }
   }
+}
