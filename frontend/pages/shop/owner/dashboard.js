@@ -119,11 +119,17 @@ const OwnerDashboard = () => {
     queryFn: async () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
-        `populate[user][select][0]=username` +
-        `&populate[user][select][1]=email` +
-        `&populate[logo][select][0]=url` +
-        `&populate[wallet][select][0]=balance` +
-        `&populate[wallet][select][1]=walletId` +
+        `populate[user][fields][0]=username` +
+        `&populate[user][fields][1]=email` +
+        `&populate[logo]=*` +
+        `&populate[coverImage]=*` +
+        `&populate[wallet]=*` +
+        `&populate[shop_items][fields][0]=name` +
+        `&populate[shop_items][fields][1]=price` +
+        `&populate[shop_items][fields][2]=stock` +
+        `&populate[shop_items][fields][3]=status` +
+        `&populate[shop_items][fields][4]=rating` +
+        `&populate[shop_items][populate][images]=*` +
         `&filters[user][id][$eq]=${user.id}`,
         {
           headers: {
@@ -131,7 +137,10 @@ const OwnerDashboard = () => {
           }
         }
       );
-      if (!response.ok) throw new Error('Failed to fetch owner data');
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error?.message || 'Failed to fetch owner data');
+      }
       return response.json();
     },
     enabled: !!user?.id
@@ -177,8 +186,10 @@ const OwnerDashboard = () => {
     );
   }
 
-  const owner = ownerData.data[0].attributes;
-  const wallet = owner.wallet?.data?.attributes;
+  const owner = ownerData.data[0];
+  const ownerAttributes = owner.attributes;
+  const wallet = ownerAttributes.wallet?.data?.attributes;
+  const shopItems = ownerAttributes.shop_items?.data || [];
 
   const handleEditProduct = (product) => {
     setSelectedProduct(product);
@@ -207,16 +218,20 @@ const OwnerDashboard = () => {
             <HStack spacing={4}>
               <Avatar
                 size="xl"
-                name={owner.shopName}
-                src={owner.logo?.data?.attributes?.url}
+                name={ownerAttributes.shopName}
+                src={
+                  ownerAttributes.logo?.data?.attributes?.url
+                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${ownerAttributes.logo.data.attributes.url}`
+                    : undefined
+                }
               />
               <VStack align="start" spacing={1}>
-                <Heading size="lg">{owner.shopName}</Heading>
-                <Badge colorScheme={owner.verificationStatus === 'verified' ? 'green' : 'yellow'}>
-                  {owner.verificationStatus.toUpperCase()}
+                <Heading size="lg">{ownerAttributes.shopName}</Heading>
+                <Badge colorScheme={ownerAttributes.verificationStatus === 'verified' ? 'green' : 'yellow'}>
+                  {ownerAttributes.verificationStatus.toUpperCase()}
                 </Badge>
                 <Text color="gray.500">
-                  Wallet ID: {wallet?.walletId}
+                  Wallet ID: {wallet?.walletId || 'N/A'}
                 </Text>
               </VStack>
             </HStack>
@@ -278,7 +293,7 @@ const OwnerDashboard = () => {
               <StatLabel>Total Products</StatLabel>
               <HStack>
                 <Icon as={FiBox} />
-                <StatNumber>{owner.shop_items?.data?.length || 0}</StatNumber>
+                <StatNumber>                {shopItems.length}</StatNumber>
               </HStack>
             </MotionStat>
 
@@ -292,7 +307,7 @@ const OwnerDashboard = () => {
               <StatLabel>Shop Rating</StatLabel>
               <HStack>
                 <Icon as={FiStar} color="yellow.400" />
-                <StatNumber>{owner.rating?.toFixed(1) || '0.0'}/5.0</StatNumber>
+                <StatNumber>{ownerAttributes.rating?.toFixed(1) || '0.0'}/5.0</StatNumber>
               </HStack>
             </MotionStat>
 
@@ -306,7 +321,7 @@ const OwnerDashboard = () => {
               <StatLabel>Total Orders</StatLabel>
               <HStack>
                 <Icon as={FiShoppingBag} />
-                <StatNumber>{owner.orders?.data?.length || 0}</StatNumber>
+                <StatNumber>{ownerAttributes.orders?.data?.length || 0}</StatNumber>
               </HStack>
             </MotionStat>
           </SimpleGrid>
