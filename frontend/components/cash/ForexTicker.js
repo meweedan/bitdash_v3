@@ -12,7 +12,7 @@ import {
 import { ArrowUp, ArrowDown } from "lucide-react";
 
 const ForexTicker = () => {
-  const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/latest`;
+  const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/latest`;
 
   // Store previous rates to calculate movement
   const [previousRates, setPreviousRates] = useState({});

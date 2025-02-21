@@ -54,11 +54,7 @@ module.exports = createCoreController("api::exchange-rate.exchange-rate", ({ str
   // ✅ Public API for latest exchange rates (no auth required)
   async latestRates(ctx) {
     try {
-      const { query } = ctx;
-
-      // Filter to show only the latest rates
       const rates = await strapi.entityService.findMany("api::exchange-rate.exchange-rate", {
-        filters: query,
         sort: { timestamp: "desc" },
         pagination: { pageSize: 10 },
       });

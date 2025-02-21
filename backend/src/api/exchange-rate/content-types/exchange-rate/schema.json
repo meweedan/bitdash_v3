@@ -6,6 +6,9 @@
     "pluralName": "exchange-rates",
     "displayName": "Exchange Rate"
   },
+  "options": {
+    "draftAndPublish": false
+  },
   "attributes": {
     "from_currency": {
       "type": "string",
@@ -24,24 +27,20 @@
       "required": true
     },
     "source_url": {
-      "type": "string",
-      "default": "N/A"
+      "type": "string"
     },
     "source_priority": {
-      "type": "integer",
-      "default": 1
+      "type": "integer"
     },
     "timestamp": {
       "type": "datetime",
       "required": true
     },
     "auto_update": {
-      "type": "boolean",
-      "default": false
+      "type": "boolean"
     },
     "last_updated_by": {
       "type": "string",
-      "default": "manual",
       "enum": ["manual", "bot", "external_api"]
     },
     "unique_pair": {

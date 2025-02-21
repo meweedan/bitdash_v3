@@ -21,9 +21,7 @@ module.exports = {
       path: "/exchange-rates",
       handler: "exchange-rate.create",
       config: {
-        auth: {
-          scope: ["admin"], // Admin only
-        },
+        auth: { scope: ["admin"] }, // Admin-only
       },
     },
     {
@@ -31,9 +29,7 @@ module.exports = {
       path: "/exchange-rates/:id",
       handler: "exchange-rate.update",
       config: {
-        auth: {
-          scope: ["admin"], // Admin only
-        },
+        auth: { scope: ["admin"] }, // Admin-only
       },
     },
     {
@@ -41,9 +37,7 @@ module.exports = {
       path: "/exchange-rates/:id",
       handler: "exchange-rate.delete",
       config: {
-        auth: {
-          scope: ["admin"], // Admin only
-        },
+        auth: { scope: ["admin"] }, // Admin-only
       },
     },
     {
