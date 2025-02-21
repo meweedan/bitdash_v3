@@ -43,7 +43,7 @@ const METAL_SYMBOLS = ['XAU', 'XAG'];
 
 const fetchForexRates = async ({ queryKey }) => {
   const [, baseCurrency] = queryKey;
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/latest?base=${baseCurrency}`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/latest?base=${baseCurrency}`);
   
   if (!response.ok) throw new Error(`Failed to fetch Forex rates for ${baseCurrency}`);
   
