@@ -42,6 +42,14 @@ module.exports = {
     },
     {
       method: "GET",
+      path: "/exchange-rates/historical",
+      handler: "exchange-rate.historical",
+      config: {
+        auth: false,
+      },
+    },
+    {
+      method: "GET",
       path: "/exchange-rates/latest",
       handler: "exchange-rate.latestRates",
       config: {

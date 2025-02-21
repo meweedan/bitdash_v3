@@ -30,41 +30,36 @@
       "type": "decimal",
       "required": true
     },
-    "profit_margin": {
-      "type": "decimal",
-      "default": 0.02,
-      "required": false
+    "open_rate": {
+      "type": "decimal"
+    },
+    "high_rate": {
+      "type": "decimal"
+    },
+    "low_rate": {
+      "type": "decimal"
+    },
+    "volume": {
+      "type": "decimal"
+    },
+    "change_percentage": {
+      "type": "decimal"
     },
     "source": {
       "type": "string",
       "required": true
     },
-    "source_url": {
-      "type": "string"
-    },
-    "source_priority": {
-      "type": "integer"
-    },
     "timestamp": {
       "type": "datetime",
       "required": true
     },
-    "auto_update": {
-      "type": "boolean",
-      "default": true
-    },
-    "last_updated_by": {
-      "type": "enumeration",
-      "enum": ["manual", "bot", "external_api"]
+    "market_multiplier": {
+      "type": "decimal",
+      "default": 1
     },
     "is_crypto": {
       "type": "boolean",
       "default": false
-    },
-    "unique_pair": {
-      "type": "uid",
-      "targetField": "from_currency_to_currency",
-      "required": true
     }
   }
 }
