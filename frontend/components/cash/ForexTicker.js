@@ -1,17 +1,21 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   Box,
   HStack,
   Text,
   Skeleton,
-  useColorModeValue
+  useColorModeValue,
+  VStack,
+  Icon
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { ArrowUp, ArrowDown } from "lucide-react";
 
 const ForexTicker = () => {
-  const tickerRef = useRef(null);
-  const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/latest`;
+  const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/latest`;
+
+  // Store previous rates to calculate movement
+  const [previousRates, setPreviousRates] = useState({});
 
   // ✅ Fetch exchange rates using React Query
   const { data, isLoading, error } = useQuery({
@@ -29,18 +33,38 @@ const ForexTicker = () => {
         throw new Error("Invalid response format from API");
       }
 
-      return json;
+      return json.data.attributes.results;
     },
     staleTime: 60000, // Cache data for 1 min
     refetchInterval: 60000, // Auto-refresh every 60 sec
   });
 
-  // ✅ Process data to extract rates correctly
-  const rates = data?.data?.attributes?.results?.map((item) => ({
-    from: item.from_currency,
-    to: item.to_currency,
-    rate: parseFloat(item.rate).toFixed(2),
-  })).filter(rate => 
+  useEffect(() => {
+    if (data) {
+      // Store the last known rates
+      const rateMap = {};
+      data.forEach(rate => {
+        rateMap[`${rate.from_currency}-${rate.to_currency}`] = rate.rate;
+      });
+      setPreviousRates(rateMap);
+    }
+  }, [data]);
+
+  // ✅ Process data to extract rates correctly and determine price movement
+  const rates = data?.map((item) => {
+    const pairKey = `${item.from_currency}-${item.to_currency}`;
+    const previousRate = previousRates[pairKey] || item.rate;
+    const currentRate = item.rate;
+    const change = ((currentRate - previousRate) / previousRate) * 100;
+
+    return {
+      from: item.from_currency,
+      to: item.to_currency,
+      rate: parseFloat(currentRate).toFixed(2),
+      change: change.toFixed(2),
+      direction: currentRate > previousRate ? "up" : "down"
+    };
+  }).filter(rate => 
     ["USD", "EUR", "GBP", "EGP", "USDT"].includes(rate.to)
   ) || [];
 
@@ -50,41 +74,60 @@ const ForexTicker = () => {
 
   return (
     <Box
-      ref={tickerRef}
-      overflow="hidden"
       w="full"
-      py={2}
-      px={4}
+      py={4}
+      px={6}
       bg={bgColor}
       color={textColor}
       borderRadius="md"
-      boxShadow="lg"
-      border="1px solid"
+      boxShadow="xl"
+      border="2px solid"
       borderColor="gray.700"
     >
+      {/* Title */}
+      <Text fontSize="xl" fontWeight="bold" textAlign="center" mb={3}>
+        Live Exchange Rates
+      </Text>
+
       {/* Handle Loading State */}
       {isLoading ? (
-        <Skeleton height="20px" width="80%" mt={2} />
+        <Skeleton height="20px" width="full" mt={2} />
       ) : error ? (
-        <Text color="red.400">Error loading exchange rates.</Text>
+        <Text color="red.400" textAlign="center">Error loading exchange rates.</Text>
       ) : (
-        <motion.div
-          style={{ display: "flex", whiteSpace: "nowrap", alignItems: "center" }}
-          animate={{ x: ["0%", "-100%"] }}
-          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-        >
-          {/* Smooth Scrolling Ticker */}
-          {[...rates, ...rates].map((rate, index) => (
-            <HStack key={index} mx={6} spacing={2}>
-              <Text fontSize="sm" fontWeight="bold" color="yellow.400">
+        <VStack spacing={2} align="stretch">
+          {rates.map((rate, index) => (
+            <HStack
+              key={index}
+              justify="space-between"
+              p={2}
+              borderBottom="1px solid"
+              borderColor="gray.600"
+            >
+              {/* Currency Pair */}
+              <Text fontSize="lg" fontWeight="bold">
                 {rate.from} → {rate.to}
               </Text>
-              <Text fontSize="md" fontWeight="bold" color={accentColor}>
+
+              {/* Exchange Rate */}
+              <Text fontSize="lg" fontWeight="bold" color={accentColor}>
                 {rate.rate}
               </Text>
+
+              {/* Price Movement */}
+              <HStack spacing={2}>
+                <Icon
+                  as={rate.direction === "up" ? ArrowUp : ArrowDown}
+                  color={rate.direction === "up" ? "green.400" : "red.400"}
+                  boxSize={5}
+                />
+                <Text color={rate.direction === "up" ? "green.400" : "red.400"}>
+                  {rate.change}%
+                </Text>
+              </HStack>
             </HStack>
           ))}
-        </motion.div>
+        </VStack>
       )}
     </Box>
   );
