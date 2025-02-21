@@ -1,131 +1,126 @@
 import React, { useState, useMemo } from 'react';
 import {
   Box,
-  HStack,
   VStack,
+  HStack,
   Text,
   Select,
   Button,
-  Grid,
-  GridItem,
   useColorModeValue,
   Spinner,
   Alert,
   AlertIcon,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import { ArrowUpDown } from 'lucide-react';
 import {
+  ResponsiveContainer,
   ComposedChart,
-  Line,
-  Bar,
+  Candlestick,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
-  ReferenceLine
+  Bar
 } from 'recharts';
 import { useQuery } from '@tanstack/react-query';
 
+// Currency Configuration
 const AVAILABLE_CURRENCIES = {
   FIAT: ['USD', 'LYD', 'EGP', 'EUR', 'GBP', 'TND'],
   CRYPTO: ['BTC', 'ETH', 'USDT'],
   METALS: ['XAU', 'XAG']
 };
 
+// Utility Functions
 const formatPrice = (price, currency) => {
   if (!price) return '-';
-  return price.toFixed(currency === 'BTC' ? 8 : 4);
+  return price.toLocaleString('en-US', {
+    minimumFractionDigits: currency === 'BTC' ? 8 : 4,
+    maximumFractionDigits: currency === 'BTC' ? 8 : 4
+  });
 };
 
-const CustomCandlestick = (props) => {
-  const { x, y, width, height, open, close, high, low } = props;
-  const color = close > open ? "#00b894" : "#ff7675";
-  const bodyHeight = Math.max(1, Math.abs(close - open));
-  const bodyY = Math.min(close, open);
-
-  return (
-    <g>
-      {/* Wick */}
-      <line
-        x1={x + width / 2}
-        y1={y + high}
-        x2={x + width / 2}
-        y2={y + low}
-        stroke={color}
-        strokeWidth={1}
-      />
-      {/* Body */}
-      <rect
-        x={x}
-        y={y + bodyY}
-        width={width}
-        height={bodyHeight}
-        fill={color}
-      />
-    </g>
-  );
-};
+const getTrendColor = (open, close) => 
+  close >= open ? '#26a69a' : '#ef5350';
 
 const AdvancedForexChart = () => {
+  // State Management
   const [baseCurrency, setBaseCurrency] = useState('USD');
   const [quoteCurrency, setQuoteCurrency] = useState('LYD');
-  const [timeframe, setTimeframe] = useState('1D');
+  const [timeframe, setTimeframe] = useState('1M');
   const [showVolume, setShowVolume] = useState(true);
 
+  // Responsive Design
+  const isMobile = useBreakpointValue({ base: true, md: false });
+  const chartHeight = useBreakpointValue({ base: 300, md: 500 });
+
+  // Currency List
   const allCurrencies = useMemo(() => [
     ...AVAILABLE_CURRENCIES.FIAT,
     ...AVAILABLE_CURRENCIES.CRYPTO,
     ...AVAILABLE_CURRENCIES.METALS
   ], []);
 
-  const { data: historicalData, isLoading, error } = useQuery({
+  // Fetch Historical Rates
+  const { 
+    data: historicalData, 
+    isLoading, 
+    error 
+  } = useQuery({
     queryKey: ['historical-rates', baseCurrency, quoteCurrency, timeframe],
     queryFn: async () => {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/historical?base=${baseCurrency}&quote=${quoteCurrency}&timeframe=${timeframe}`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/historical?base=${baseCurrency}&quote=${quoteCurrency}&days=${getDaysFromTimeframe(timeframe)}`
       );
+      
       if (!response.ok) throw new Error('Failed to fetch historical data');
-      return response.json();
+      
+      const result = await response.json();
+      return result.data || [];
     },
     refetchInterval: 60000
   });
 
+  // Utility to convert timeframe to days
+  const getDaysFromTimeframe = (tf) => {
+    const timeframeDays = {
+      '1D': 1,
+      '1W': 7,
+      '1M': 30,
+      '3M': 90,
+      '6M': 180,
+      '1Y': 365
+    };
+    return timeframeDays[tf] || 30;
+  };
+
+  // Currency Switch Handler
   const switchCurrencies = () => {
     const temp = baseCurrency;
     setBaseCurrency(quoteCurrency);
     setQuoteCurrency(temp);
   };
 
+  // Prepare Chart Data
   const chartData = useMemo(() => {
-  console.log('Raw historical data:', historicalData);
-  
-  if (!historicalData || !Array.isArray(historicalData)) {
-    console.warn('Historical data is not an array:', historicalData);
-    return [];
-  }
+    if (!historicalData || historicalData.length === 0) return [];
+    
+    return historicalData.map(item => ({
+      date: new Date(item.attributes.timestamp).toLocaleDateString(),
+      open: item.attributes.open_rate,
+      high: item.attributes.high_rate,
+      low: item.attributes.low_rate,
+      close: item.attributes.rate,
+      volume: item.attributes.volume || 0
+    }));
+  }, [historicalData]);
 
-  return historicalData.map(d => {
-    if (!d) {
-      console.warn('Encountered null/undefined data point:', d);
-      return null;
-    }
-    return {
-      date: d.timestamp ? new Date(d.timestamp).toLocaleDateString() : 'N/A',
-      open: d.open_rate || d.rate || 0,
-      high: d.high_rate || d.rate || 0,
-      low: d.low_rate || d.rate || 0,
-      close: d.rate || 0,
-      volume: d.volume || 0,
-      ma20: d.ma20 || null, 
-      ma50: d.ma50 || null
-    };
-  }).filter(Boolean); // Remove any null entries
-}, [historicalData]);
+  // Color Theming
+  const bgColor = useColorModeValue('white', 'gray.900');
+  const textColor = useColorModeValue('gray.800', 'white');
+  const selectBg = useColorModeValue('gray.100', 'gray.700');
 
-  const bgColor = useColorModeValue('gray.900', 'black');
-  const textColor = useColorModeValue('white', 'gray.200');
-
+  // Render
   if (error) {
     return (
       <Alert status="error">
@@ -136,61 +131,89 @@ const AdvancedForexChart = () => {
   }
 
   return (
-    <Box bg={bgColor} color={textColor} p={6} borderRadius="xl" w="full">
-      <VStack spacing={6} align="stretch">
-        {/* Currency Selection */}
-        <Grid templateColumns="repeat(5, 1fr)" gap={4} alignItems="center">
-          <GridItem colSpan={2}>
-            <Select
-              value={baseCurrency}
-              onChange={(e) => setBaseCurrency(e.target.value)}
-              bg="gray.800"
-            >
-              {allCurrencies.map(currency => (
-                <option key={currency} value={currency}>{currency}</option>
-              ))}
-            </Select>
-          </GridItem>
-          
-          <GridItem colSpan={1}>
-            <Button 
-              onClick={switchCurrencies}
-              variant="ghost"
-              w="full"
-            >
-              <ArrowUpDown />
-            </Button>
-          </GridItem>
+    <Box 
+      bg={bgColor} 
+      color={textColor} 
+      p={isMobile ? 2 : 6} 
+      borderRadius="xl" 
+      w="full"
+      boxShadow="md"
+    >
+      {/* Currency & Timeframe Selection */}
+      <VStack spacing={4} align="stretch">
+        <HStack 
+          spacing={isMobile ? 2 : 4} 
+          flexDirection={isMobile ? 'column' : 'row'}
+          w="full"
+        >
+          {/* Base Currency Selector */}
+          <Select
+            value={baseCurrency}
+            onChange={(e) => setBaseCurrency(e.target.value)}
+            flex={1}
+            size={isMobile ? 'sm' : 'md'}
+            bg={selectBg}
+            borderColor="transparent"
+            _hover={{ borderColor: 'blue.500' }}
+          >
+            {allCurrencies.map(currency => (
+              <option key={currency} value={currency}>
+                {currency}
+              </option>
+            ))}
+          </Select>
 
-          <GridItem colSpan={2}>
-            <Select
-              value={quoteCurrency}
-              onChange={(e) => setQuoteCurrency(e.target.value)}
-              bg="gray.800"
-            >
-              {allCurrencies.map(currency => (
-                <option key={currency} value={currency}>{currency}</option>
-              ))}
-            </Select>
-          </GridItem>
-        </Grid>
+          {/* Switch Button */}
+          <Button 
+            onClick={switchCurrencies} 
+            variant="outline"
+            size={isMobile ? 'sm' : 'md'}
+            colorScheme="blue"
+          >
+            <ArrowUpDown />
+          </Button>
 
-        {/* Timeframe Selection */}
-        <HStack spacing={4}>
+          {/* Quote Currency Selector */}
+          <Select
+            value={quoteCurrency}
+            onChange={(e) => setQuoteCurrency(e.target.value)}
+            flex={1}
+            size={isMobile ? 'sm' : 'md'}
+            bg={selectBg}
+            borderColor="transparent"
+            _hover={{ borderColor: 'blue.500' }}
+          >
+            {allCurrencies.map(currency => (
+              <option key={currency} value={currency}>
+                {currency}
+              </option>
+            ))}
+          </Select>
+        </HStack>
+
+        {/* Timeframe Buttons */}
+        <HStack 
+          spacing={isMobile ? 1 : 2} 
+          justify="center" 
+          overflowX={isMobile ? 'auto' : 'visible'}
+          maxW="full"
+        >
           {['1D', '1W', '1M', '3M', '6M', '1Y'].map(tf => (
             <Button
               key={tf}
               onClick={() => setTimeframe(tf)}
               variant={timeframe === tf ? 'solid' : 'ghost'}
-              size="sm"
+              size={isMobile ? 'xs' : 'sm'}
+              colorScheme="blue"
             >
               {tf}
             </Button>
           ))}
           <Button
-            size="sm"
-            variant={showVolume ? 'solid' : 'ghost'}
             onClick={() => setShowVolume(!showVolume)}
+            variant={showVolume ? 'solid' : 'outline'}
+            size={isMobile ? 'xs' : 'sm'}
+            colorScheme="green"
           >
             Volume
           </Button>
@@ -200,75 +223,79 @@ const AdvancedForexChart = () => {
         {isLoading ? (
           <Spinner />
         ) : (
-          <Box h="500px" w="full">
-            <ComposedChart
-              width={800}
-              height={500}
-              data={chartData}
-              margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" />
-              <YAxis yAxisId="price" domain={['auto', 'auto']} />
-              {showVolume && (
-                <YAxis yAxisId="volume" orientation="right" domain={['auto', 'auto']} />
-              )}
-              <Tooltip
-                content={({ payload, label }) => {
-                  if (!payload?.length) return null;
-                  const data = payload[0].payload;
-                  return (
-                    <Box bg="gray.800" p={3} borderRadius="md">
-                      <Text fontWeight="bold">{label}</Text>
-                      <Text>Open: {formatPrice(data.open, quoteCurrency)}</Text>
-                      <Text>High: {formatPrice(data.high, quoteCurrency)}</Text>
-                      <Text>Low: {formatPrice(data.low, quoteCurrency)}</Text>
-                      <Text>Close: {formatPrice(data.close, quoteCurrency)}</Text>
-                      {showVolume && <Text>Volume: {data.volume?.toLocaleString()}</Text>}
-                    </Box>
-                  );
+          <Box h={`${chartHeight}px`} w="full">
+            <ResponsiveContainer width="100%" height="100%">
+              <ComposedChart
+                data={chartData}
+                margin={{ 
+                  top: 10, 
+                  right: 10, 
+                  left: 10, 
+                  bottom: 10 
                 }}
-              />
-              <Legend />
-              {chartData.map((d, i) => (
-                <CustomCandlestick
-                  key={i}
-                  x={i * (800 / chartData.length)}
-                  y={0}
-                  width={10}
-                  height={500}
-                  open={d.open}
-                  close={d.close}
-                  high={d.high}
-                  low={d.low}
+              >
+                <XAxis 
+                  dataKey="date" 
+                  tick={{ fontSize: isMobile ? 8 : 12 }}
+                  stroke={textColor}
                 />
-              ))}
-              <Line
-                yAxisId="price"
-                type="monotone"
-                dataKey="ma20"
-                stroke="#ff7300"
-                name="MA20"
-                dot={false}
-              />
-              <Line
-                yAxisId="price"
-                type="monotone"
-                dataKey="ma50"
-                stroke="#387908"
-                name="MA50"
-                dot={false}
-              />
-              {showVolume && (
-                <Bar
-                  yAxisId="volume"
-                  dataKey="volume"
-                  fill="#82ca9d"
-                  opacity={0.3}
-                  name="Volume"
+                <YAxis 
+                  yAxisId="price" 
+                  domain={['auto', 'auto']} 
+                  tick={{ fontSize: isMobile ? 8 : 12 }}
+                  stroke={textColor}
                 />
-              )}
-            </ComposedChart>
+                {showVolume && (
+                  <YAxis 
+                    yAxisId="volume" 
+                    orientation="right" 
+                    domain={['auto', 'auto']} 
+                    tick={{ fontSize: isMobile ? 8 : 12 }}
+                    stroke={textColor}
+                  />
+                )}
+
+                <Candlestick 
+                  yAxisId="price"
+                  dataKey="close"
+                  fill={(data) => getTrendColor(data.open, data.close)}
+                  stroke={(data) => getTrendColor(data.open, data.close)}
+                />
+
+                {showVolume && (
+                  <Bar 
+                    yAxisId="volume" 
+                    dataKey="volume" 
+                    fill="#82ca9d" 
+                    opacity={0.3} 
+                  />
+                )}
+
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: bgColor, 
+                    border: '1px solid #333',
+                    borderRadius: '8px'
+                  }}
+                  content={({ payload, label }) => {
+                    if (!payload?.length) return null;
+                    const data = payload[0].payload;
+                    return (
+                      <Box p={2} bg={bgColor} borderRadius="md">
+                        <Text fontWeight="bold">{label}</Text>
+                        <Text>Open: {formatPrice(data.open, quoteCurrency)}</Text>
+                        <Text>High: {formatPrice(data.high, quoteCurrency)}</Text>
+                        <Text>Low: {formatPrice(data.low, quoteCurrency)}</Text>
+                        <Text>Close: {formatPrice(data.close, quoteCurrency)}</Text>
+                        {showVolume && (
+                          <Text>Volume: {data.volume.toLocaleString()}</Text>
+                        )}
+                      </Box>
+                    );
+                  }}
+                />
+              </ComposedChart>
+            </ResponsiveContainer>
           </Box>
         )}
       </VStack>
