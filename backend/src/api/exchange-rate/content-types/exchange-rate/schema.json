@@ -22,6 +22,19 @@
       "type": "decimal",
       "required": true
     },
+    "buy_price": {
+      "type": "decimal",
+      "required": true
+    },
+    "sell_price": {
+      "type": "decimal",
+      "required": true
+    },
+    "profit_margin": {
+      "type": "decimal",
+      "default": 0.02,
+      "required": false
+    },
     "source": {
       "type": "string",
       "required": true
@@ -37,11 +50,16 @@
       "required": true
     },
     "auto_update": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     },
     "last_updated_by": {
-      "type": "string",
+      "type": "enumeration",
       "enum": ["manual", "bot", "external_api"]
+    },
+    "is_crypto": {
+      "type": "boolean",
+      "default": false
     },
     "unique_pair": {
       "type": "uid",

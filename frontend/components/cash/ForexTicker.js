@@ -1,136 +1,156 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   Box,
-  HStack,
-  Text,
-  Skeleton,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  Spinner,
+  Alert,
+  AlertIcon,
   useColorModeValue,
-  VStack,
-  Icon
 } from "@chakra-ui/react";
 import { ArrowUp, ArrowDown } from "lucide-react";
 
-const ForexTicker = () => {
-  const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/latest`;
+const profitMargin = 0.02; // 2% profit margin
 
-  // Store previous rates to calculate movement
-  const [previousRates, setPreviousRates] = useState({});
+const fetchRates = async (baseCurrency, isCrypto = false) => {
+  let API_URL;
+  if (isCrypto) {
+    API_URL = `https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${process.env.NEXT_PUBLIC_CURRENCYFREAKS_API}&symbols=BTC,ETH,USDT`;
+  } else {
+    API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/latest?base=${baseCurrency}`;
+  }
 
-  // ✅ Fetch exchange rates using React Query
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["exchange-rates"],
-    queryFn: async () => {
-      const response = await fetch(API_URL);
-      if (!response.ok) {
-        throw new Error(`API responded with status ${response.status}`);
-      }
+  const response = await fetch(API_URL);
+  if (!response.ok) {
+    throw new Error("Failed to fetch exchange rates");
+  }
 
-      const json = await response.json();
-      console.log("✅ Exchange Rates API Response:", json);
-
-      if (!json?.data?.attributes?.results) {
-        throw new Error("Invalid response format from API");
-      }
-
-      return json.data.attributes.results;
-    },
-    staleTime: 60000, // Cache data for 1 min
-    refetchInterval: 60000, // Auto-refresh every 60 sec
-  });
-
-  useEffect(() => {
-    if (data) {
-      // Store the last known rates
-      const rateMap = {};
-      data.forEach(rate => {
-        rateMap[`${rate.from_currency}-${rate.to_currency}`] = rate.rate;
-      });
-      setPreviousRates(rateMap);
-    }
-  }, [data]);
-
-  // ✅ Process data to extract rates correctly and determine price movement
-  const rates = data?.map((item) => {
-    const pairKey = `${item.from_currency}-${item.to_currency}`;
-    const previousRate = previousRates[pairKey] || item.rate;
-    const currentRate = item.rate;
-    const change = ((currentRate - previousRate) / previousRate) * 100;
-
-    return {
+  const data = await response.json();
+  if (isCrypto) {
+    return Object.keys(data.rates).map((symbol) => ({
+      from: baseCurrency,
+      to: symbol,
+      rate: parseFloat(data.rates[symbol]),
+      buy: parseFloat(data.rates[symbol]) * (1 + profitMargin),
+      sell: parseFloat(data.rates[symbol]) * (1 - profitMargin),
+    }));
+  } else {
+    return data.data.attributes.results.map((item) => ({
       from: item.from_currency,
       to: item.to_currency,
-      rate: parseFloat(currentRate).toFixed(2),
-      change: change.toFixed(2),
-      direction: currentRate > previousRate ? "up" : "down"
-    };
-  }).filter(rate => 
-    ["USD", "EUR", "GBP", "EGP", "USDT"].includes(rate.to)
-  ) || [];
+      rate: parseFloat(item.rate),
+      buy: parseFloat(item.buy_price),
+      sell: parseFloat(item.sell_price),
+    }));
+  }
+};
+
+const ForexCryptoTicker = () => {
+  const [activeBase, setActiveBase] = useState("LYD");
+  const { data: forexRates, isLoading: forexLoading, error: forexError } = useQuery(
+    ["forex-rates", activeBase],
+    () => fetchRates(activeBase, false),
+    { refetchInterval: 60000 }
+  );
+
+  const { data: cryptoRates, isLoading: cryptoLoading, error: cryptoError } = useQuery(
+    ["crypto-rates"],
+    () => fetchRates("USDT", true),
+    { refetchInterval: 60000 }
+  );
 
   const bgColor = useColorModeValue("gray.900", "black");
   const textColor = useColorModeValue("white", "gray.200");
-  const accentColor = useColorModeValue("green.400", "green.300");
 
   return (
-    <Box
-      w="full"
-      py={4}
-      px={6}
-      bg={bgColor}
-      color={textColor}
-      borderRadius="md"
-      boxShadow="xl"
-      border="2px solid"
-      borderColor="gray.700"
-    >
-      {/* Title */}
-      <Text fontSize="xl" fontWeight="bold" textAlign="center" mb={3}>
-        Live Exchange Rates
-      </Text>
+    <Box bg={bgColor} color={textColor} borderRadius="md" p={6} boxShadow="xl">
+      <Tabs variant="solid-rounded" isFitted>
+        <TabList>
+          <Tab onClick={() => setActiveBase("LYD")}>Forex (LYD Base)</Tab>
+          <Tab onClick={() => setActiveBase("EGP")}>Forex (EGP Base)</Tab>
+          <Tab>Crypto</Tab>
+        </TabList>
 
-      {/* Handle Loading State */}
-      {isLoading ? (
-        <Skeleton height="20px" width="full" mt={2} />
-      ) : error ? (
-        <Text color="red.400" textAlign="center">Error loading exchange rates.</Text>
-      ) : (
-        <VStack spacing={2} align="stretch">
-          {rates.map((rate, index) => (
-            <HStack
-              key={index}
-              justify="space-between"
-              p={2}
-              borderBottom="1px solid"
-              borderColor="gray.600"
-            >
-              {/* Currency Pair */}
-              <Text fontSize="lg" fontWeight="bold">
-                {rate.from} → {rate.to}
-              </Text>
+        <TabPanels>
+          {/* Forex Panel */}
+          <TabPanel>
+            {forexLoading ? (
+              <Spinner />
+            ) : forexError ? (
+              <Alert status="error">
+                <AlertIcon />
+                {forexError.message}
+              </Alert>
+            ) : (
+              <Table variant="simple">
+                <Thead>
+                  <Tr>
+                    <Th>Currency</Th>
+                    <Th isNumeric>Rate</Th>
+                    <Th isNumeric>Buy</Th>
+                    <Th isNumeric>Sell</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {forexRates.map((rate) => (
+                    <Tr key={`${rate.from}-${rate.to}`}>
+                      <Td>{rate.from} → {rate.to}</Td>
+                      <Td isNumeric>{rate.rate.toFixed(4)}</Td>
+                      <Td isNumeric>{rate.buy.toFixed(4)}</Td>
+                      <Td isNumeric>{rate.sell.toFixed(4)}</Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+              </Table>
+            )}
+          </TabPanel>
 
-              {/* Exchange Rate */}
-              <Text fontSize="lg" fontWeight="bold" color={accentColor}>
-                {rate.rate}
-              </Text>
-
-              {/* Price Movement */}
-              <HStack spacing={2}>
-                <Icon
-                  as={rate.direction === "up" ? ArrowUp : ArrowDown}
-                  color={rate.direction === "up" ? "green.400" : "red.400"}
-                  boxSize={5}
-                />
-                <Text color={rate.direction === "up" ? "green.400" : "red.400"}>
-                  {rate.change}%
-                </Text>
-              </HStack>
-            </HStack>
-          ))}
-        </VStack>
-      )}
+          {/* Crypto Panel */}
+          <TabPanel>
+            {cryptoLoading ? (
+              <Spinner />
+            ) : cryptoError ? (
+              <Alert status="error">
+                <AlertIcon />
+                {cryptoError.message}
+              </Alert>
+            ) : (
+              <Table variant="simple">
+                <Thead>
+                  <Tr>
+                    <Th>Crypto</Th>
+                    <Th isNumeric>Rate (USDT)</Th>
+                    <Th isNumeric>Buy</Th>
+                    <Th isNumeric>Sell</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {cryptoRates.map((rate) => (
+                    <Tr key={`${rate.from}-${rate.to}`}>
+                      <Td>{rate.from} → {rate.to}</Td>
+                      <Td isNumeric>{rate.rate.toFixed(4)}</Td>
+                      <Td isNumeric>{rate.buy.toFixed(4)}</Td>
+                      <Td isNumeric>{rate.sell.toFixed(4)}</Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+              </Table>
+            )}
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
     </Box>
   );
 };
 
-export default ForexTicker;
+export default ForexCryptoTicker;
