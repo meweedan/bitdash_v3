@@ -117,26 +117,39 @@ const OwnerDashboard = () => {
   } = useQuery({
     queryKey: ['owner', user?.id],
     queryFn: async () => {
+      // First check if we have a token
+      const token = localStorage.getItem('token');
+      if (!token) throw new Error('No authentication token found');
+
+      // Log the user ID we're querying with
+      console.log('Fetching owner data for user ID:', user?.id);
+
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
-        `populate[user][fields][0]=username` +
-        `&populate[user][fields][1]=email` +
-        `&populate[logo]=*` +
-        `&populate[coverImage]=*` +
-        `&populate[wallet]=*` +
-        `&populate[shop_items][fields][0]=name` +
-        `&populate[shop_items][fields][1]=price` +
-        `&populate[shop_items][fields][2]=stock` +
-        `&populate[shop_items][fields][3]=status` +
-        `&populate[shop_items][fields][4]=rating` +
-        `&populate[shop_items][populate][images]=*` +
-        `&filters[user][id][$eq]=${user.id}`,
+        `populate=user,logo,coverImage,wallet,shop_items.images` +
+        `&filters[user][id][$eq]=${user?.id}`,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
+            Authorization: `Bearer ${token}`
           }
         }
       );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('API Error:', errorData);
+        throw new Error(errorData.error?.message || 'Failed to fetch owner data');
+      }
+
+      const data = await response.json();
+      console.log('Owner data received:', data);
+
+      // If no owner found, throw error
+      if (!data.data || data.data.length === 0) {
+        throw new Error('No owner profile found for this user');
+      }
+
+      return data;
       if (!response.ok) {
         const error = await response.json();
         throw new Error(error.error?.message || 'Failed to fetch owner data');
@@ -177,10 +190,22 @@ const OwnerDashboard = () => {
     return (
       <Layout>
         <Container maxW="container.xl" py={6}>
-          <Alert status="error">
-            <AlertIcon />
-            Failed to load shop data
-          </Alert>
+          <VStack spacing={4} align="stretch">
+            <Alert status="error">
+              <AlertIcon />
+              {ownerError?.message || 'Failed to load shop data'}
+            </Alert>
+            
+            {/* Debug info in development */}
+            {process.env.NODE_ENV === 'development' && (
+              <Box p={4} bg="gray.100" borderRadius="md">
+                <Text fontWeight="bold">Debug Info:</Text>
+                <Text>User ID: {user?.id || 'No user ID'}</Text>
+                <Text>Token exists: {!!localStorage.getItem('token')}</Text>
+                <Text>Error details: {JSON.stringify(ownerError, null, 2)}</Text>
+              </Box>
+            )}
+          </VStack>
         </Container>
       </Layout>
     );
