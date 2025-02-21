@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   Box,
   Tabs,
@@ -46,51 +46,65 @@ const fetchForexRates = async ({ queryKey }) => {
   if (!response.ok) throw new Error(`Failed to fetch Forex rates for ${baseCurrency}`);
   
   const data = await response.json();
-  return processRates(data?.data?.attributes?.results, baseCurrency);
+  return processRates(data?.data?.attributes?.results || [], baseCurrency);
 };
 
-const fetchCryptoRates = async ({ queryKey }) => {
-  const [, base = 'USDT'] = queryKey;
+const fetchCryptoRates = async () => {
   const response = await fetch(
-    `https://api.currencyfreaks.com/latest?apikey=9cd5b2412b1749a7b9c44ba9f9b2446f&symbols=${CRYPTO_SYMBOLS.join(',')}`
+    `${process.env.NEXT_PUBLIC_CURRENCYFREAKS_URL}/latest?apikey=${process.env.NEXT_PUBLIC_CURRENCYFREAKS_KEY}&symbols=${CRYPTO_SYMBOLS.join(',')}`
   );
   
   if (!response.ok) throw new Error("Failed to fetch Crypto rates");
   
   const data = await response.json();
-  return Object.entries(data.rates).map(([symbol, rate]) => ({
-    from: base,
-    to: symbol,
-    rate: parseFloat(rate),
-    buy: parseFloat(rate) * (1 + PROFIT_MARGINS.CRYPTO.buy),
-    sell: parseFloat(rate) * (1 - PROFIT_MARGINS.CRYPTO.sell),
-    change: 0,
-    timestamp: new Date().toISOString()
-  }));
+  const rates = [];
+  
+  for (const [symbol, rate] of Object.entries(data.rates || {})) {
+    if (CRYPTO_SYMBOLS.includes(symbol)) {
+      rates.push({
+        from: "USDT",
+        to: symbol,
+        rate: parseFloat(rate),
+        buy: parseFloat(rate) * (1 + PROFIT_MARGINS.CRYPTO.buy),
+        sell: parseFloat(rate) * (1 - PROFIT_MARGINS.CRYPTO.sell),
+        change: 0,
+        timestamp: new Date().toISOString()
+      });
+    }
+  }
+  
+  return rates;
 };
 
-const fetchMetalRates = async ({ queryKey }) => {
-  const [, base = 'USD'] = queryKey;
+const fetchMetalRates = async () => {
   const response = await fetch(
-    `https://api.currencyfreaks.com/latest?apikey=9cd5b2412b1749a7b9c44ba9f9b2446f&symbols=${METAL_SYMBOLS.join(',')}`
+    `${process.env.NEXT_PUBLIC_CURRENCYFREAKS_URL}/latest?apikey=${process.env.NEXT_PUBLIC_CURRENCYFREAKS_KEY}&symbols=${METAL_SYMBOLS.join(',')}`
   );
   
   if (!response.ok) throw new Error("Failed to fetch Metal rates");
   
   const data = await response.json();
-  return Object.entries(data.rates).map(([symbol, rate]) => ({
-    from: base,
-    to: symbol,
-    rate: parseFloat(rate),
-    buy: parseFloat(rate) * (1 + PROFIT_MARGINS.CRYPTO.buy),
-    sell: parseFloat(rate) * (1 - PROFIT_MARGINS.CRYPTO.sell),
-    change: 0,
-    timestamp: new Date().toISOString()
-  }));
+  const rates = [];
+  
+  for (const [symbol, rate] of Object.entries(data.rates || {})) {
+    if (METAL_SYMBOLS.includes(symbol)) {
+      rates.push({
+        from: "USD",
+        to: symbol,
+        rate: parseFloat(rate),
+        buy: parseFloat(rate) * (1 + PROFIT_MARGINS.CRYPTO.buy),
+        sell: parseFloat(rate) * (1 - PROFIT_MARGINS.CRYPTO.sell),
+        change: 0,
+        timestamp: new Date().toISOString()
+      });
+    }
+  }
+  
+  return rates;
 };
 
 const processRates = (rates, baseCurrency) => {
-  if (!rates) return [];
+  if (!Array.isArray(rates)) return [];
   
   return rates.map(item => {
     const margin = PROFIT_MARGINS[baseCurrency] || PROFIT_MARGINS.CRYPTO;
@@ -111,115 +125,102 @@ const processRates = (rates, baseCurrency) => {
 const RatePanel = ({ rates, isLoading, error, onSwitch }) => {
   if (isLoading) return <Spinner />;
   if (error) return <Alert status="error"><AlertIcon />{error.message}</Alert>;
+  if (!Array.isArray(rates) || rates.length === 0) return <Text>No data available</Text>;
   
   return (
     <VStack spacing={3} w="full">
-      {Array.isArray(rates) && rates.length > 0 ? (
-        rates.map((rate) => (
-          <HStack
-            key={`${rate.from}-${rate.to}`}
-            justify="space-between"
-            w="full"
-            p={3}
-            borderRadius="md"
-            bg="gray.800"
-          >
-            <HStack>
-              <Text fontSize="md" fontWeight="bold">
-                {rate.from} → {rate.to}
-              </Text>
-              <Button 
-                onClick={() => onSwitch(rate)} 
-                variant="ghost" 
-                size="sm"
-                p={1}
-              >
-                <ArrowUpDown size={16} />
-              </Button>
-            </HStack>
-            <Text fontSize="lg" fontWeight="bold" color="green.300">
-              {rate.rate.toFixed(4)}
+      {rates.map((rate) => (
+        <HStack
+          key={`${rate.from}-${rate.to}`}
+          justify="space-between"
+          w="full"
+          p={3}
+          borderRadius="md"
+          bg="gray.800"
+        >
+          <HStack>
+            <Text fontSize="md" fontWeight="bold">
+              {rate.from} → {rate.to}
             </Text>
-            <Text fontSize="sm" fontWeight="bold" color="blue.300">
-              Buy: {rate.buy.toFixed(4)}
-            </Text>
-            <Text fontSize="sm" fontWeight="bold" color="red.300">
-              Sell: {rate.sell.toFixed(4)}
-            </Text>
-            <HStack>
-              {rate.change > 0 ? (
-                <ArrowUp color="green" size={16} />
-              ) : (
-                <ArrowDown color="red" size={16} />
-              )}
-              <Text color={rate.change > 0 ? "green.400" : "red.400"}>
-                {rate.change.toFixed(2)}%
-              </Text>
-            </HStack>
+            <Button 
+              onClick={() => onSwitch(rate)} 
+              variant="ghost" 
+              size="sm"
+              p={1}
+            >
+              <ArrowUpDown size={16} />
+            </Button>
           </HStack>
-        ))
-      ) : (
-        <Text>No data available</Text>
-      )}
+          <Text fontSize="lg" fontWeight="bold" color="green.300">
+            {rate.rate.toFixed(4)}
+          </Text>
+          <Text fontSize="sm" fontWeight="bold" color="blue.300">
+            Buy: {rate.buy.toFixed(4)}
+          </Text>
+          <Text fontSize="sm" fontWeight="bold" color="red.300">
+            Sell: {rate.sell.toFixed(4)}
+          </Text>
+          <HStack>
+            {rate.change > 0 ? (
+              <ArrowUp color="green" size={16} />
+            ) : (
+              <ArrowDown color="red" size={16} />
+            )}
+            <Text color={rate.change > 0 ? "green.400" : "red.400"}>
+              {Math.abs(rate.change).toFixed(2)}%
+            </Text>
+          </HStack>
+        </HStack>
+      ))}
     </VStack>
   );
 };
 
 const ForexTicker = () => {
-  const [activeBase, setActiveBase] = useState("LYD");
-  const [activeTab, setActiveTab] = useState(0);
-  const queryClient = useQueryClient();
+  const [activeTab, setActiveTab] = useState("LYD");
 
-  const forexQuery = useQuery({
-    queryKey: ["forex-rates", activeBase],
+  const { data: forexData, isLoading: forexLoading, error: forexError } = useQuery({
+    queryKey: ["forex-rates", activeTab],
     queryFn: fetchForexRates,
     refetchInterval: 60000,
+    enabled: ["LYD", "EGP"].includes(activeTab)
   });
 
-  const cryptoQuery = useQuery({
-    queryKey: ["crypto-rates", "USDT"],
+  const { data: cryptoData, isLoading: cryptoLoading, error: cryptoError } = useQuery({
+    queryKey: ["crypto-rates"],
     queryFn: fetchCryptoRates,
     refetchInterval: 60000,
+    enabled: activeTab === "CRYPTO"
   });
 
-  const metalQuery = useQuery({
-    queryKey: ["metal-rates", "USD"],
+  const { data: metalData, isLoading: metalLoading, error: metalError } = useQuery({
+    queryKey: ["metal-rates"],
     queryFn: fetchMetalRates,
     refetchInterval: 60000,
+    enabled: activeTab === "METALS"
   });
 
-  const handleSwitch = async (rate) => {
-    const newBase = rate.to;
-    const prevBase = rate.from;
+  const handleSwitch = (rate) => {
+    if (!rate) return;
+
+    const newRate = {
+      ...rate,
+      from: rate.to,
+      to: rate.from,
+      rate: 1 / rate.rate,
+      buy: 1 / rate.sell,
+      sell: 1 / rate.buy
+    };
+
+    // Update the appropriate data based on active tab
+    const queryKey = activeTab === "CRYPTO" ? "crypto-rates" : 
+                    activeTab === "METALS" ? "metal-rates" : 
+                    ["forex-rates", activeTab];
     
-    if (activeTab === 0 || activeTab === 1) {
-      setActiveBase(newBase);
-      await queryClient.invalidateQueries(["forex-rates", newBase]);
-    } else if (activeTab === 2) {
-      await queryClient.invalidateQueries(["crypto-rates", newBase]);
-      queryClient.setQueryData(["crypto-rates", newBase], (old) => 
-        old?.map(r => ({
-          ...r,
-          from: newBase,
-          to: r.to === newBase ? prevBase : r.to,
-          rate: r.to === newBase ? 1 / r.rate : r.rate,
-          buy: r.to === newBase ? 1 / r.sell : r.buy,
-          sell: r.to === newBase ? 1 / r.buy : r.sell
-        }))
-      );
-    } else {
-      await queryClient.invalidateQueries(["metal-rates", newBase]);
-      queryClient.setQueryData(["metal-rates", newBase], (old) => 
-        old?.map(r => ({
-          ...r,
-          from: newBase,
-          to: r.to === newBase ? prevBase : r.to,
-          rate: r.to === newBase ? 1 / r.rate : r.rate,
-          buy: r.to === newBase ? 1 / r.sell : r.buy,
-          sell: r.to === newBase ? 1 / r.buy : r.sell
-        }))
-      );
-    }
+    queryClient.setQueryData(queryKey, (old) => {
+      if (!Array.isArray(old)) return [newRate];
+      return old.map(r => r.from === rate.from && r.to === rate.to ? newRate : r);
+    });
   };
 
   const bgColor = useColorModeValue("gray.900", "black");
@@ -231,10 +232,7 @@ const ForexTicker = () => {
       <Tabs 
         variant="solid-rounded" 
         isFitted 
-        onChange={(index) => {
-          setActiveTab(index);
-          setActiveBase(["LYD", "EGP", "CRYPTO", "METALS"][index]);
-        }}
+        onChange={(index) => setActiveTab(["LYD", "EGP", "CRYPTO", "METALS"][index])}
       >
         <TabList bg={brandGradient} borderRadius="lg" p={2}>
           <Tab _selected={{ color: "white", bg: "brand.bitcash.500" }}>LYD</Tab>
@@ -246,36 +244,36 @@ const ForexTicker = () => {
         <TabPanels>
           <TabPanel>
             <RatePanel 
-              rates={forexQuery.data} 
-              isLoading={forexQuery.isLoading} 
-              error={forexQuery.error}
+              rates={forexData} 
+              isLoading={forexLoading} 
+              error={forexError}
               onSwitch={handleSwitch}
             />
           </TabPanel>
 
           <TabPanel>
             <RatePanel 
-              rates={forexQuery.data} 
-              isLoading={forexQuery.isLoading} 
-              error={forexQuery.error}
+              rates={forexData} 
+              isLoading={forexLoading} 
+              error={forexError}
               onSwitch={handleSwitch}
             />
           </TabPanel>
 
           <TabPanel>
             <RatePanel 
-              rates={cryptoQuery.data} 
-              isLoading={cryptoQuery.isLoading} 
-              error={cryptoQuery.error}
+              rates={cryptoData} 
+              isLoading={cryptoLoading} 
+              error={cryptoError}
               onSwitch={handleSwitch}
             />
           </TabPanel>
 
           <TabPanel>
             <RatePanel 
-              rates={metalQuery.data} 
-              isLoading={metalQuery.isLoading} 
-              error={metalQuery.error}
+              rates={metalData} 
+              isLoading={metalLoading} 
+              error={metalError}
               onSwitch={handleSwitch}
             />
           </TabPanel>

@@ -83,7 +83,7 @@ const AdvancedForexChart = () => {
     queryKey: ['historical-rates', baseCurrency, quoteCurrency, timeframe],
     queryFn: async () => {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/historical?base=${baseCurrency}&quote=${quoteCurrency}&timeframe=${timeframe}`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/historical?base=${baseCurrency}&quote=${quoteCurrency}&timeframe=${timeframe}`
       );
       if (!response.ok) throw new Error('Failed to fetch historical data');
       return response.json();
