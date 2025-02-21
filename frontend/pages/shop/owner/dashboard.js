@@ -1,50 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'next-i18next';
 import {
-  Box,
-  Container,
-  VStack,
-  HStack,
-  Heading,
-  Text,
-  Button,
-  SimpleGrid,
-  Skeleton,
-  Badge,
-  Avatar,
-  useColorModeValue,
-  Stat,
-  StatLabel,
-  StatNumber,
-  Icon,
-  Flex,
-  useToast,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  IconButton,
-  Alert,
-  AlertIcon,
-  useDisclosure,
-  Wrap,
-  WrapItem,
+  Box, Container, VStack, HStack, Heading, Text, Button, SimpleGrid, 
+  Skeleton, Badge, Avatar, useColorModeValue, Stat, StatLabel, StatNumber,
+  Icon, Flex, useToast, Tabs, TabList, TabPanels, Tab, TabPanel,
+  IconButton, Alert, AlertIcon, Progress, Tooltip, Wrap, WrapItem
 } from '@chakra-ui/react';
 import { 
-  FiPackage,
-  FiDollarSign,
-  FiShoppingBag,
-  FiTrendingUp,
-  FiSettings,
-  FiPlusCircle,
-  FiStar,
-  FiList,
-  FiMessageSquare,
-  FiEdit3,
-  FiCreditCard,
-  FiBox
+  FiPackage, FiDollarSign, FiShoppingBag, FiTrendingUp, FiSettings,
+  FiPlusCircle, FiEdit2, FiTrash2, FiEye, FiArchive, FiStar
 } from 'react-icons/fi';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
@@ -52,7 +17,6 @@ import Layout from '@/components/Layout';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 
-// Import custom components
 import AddProductModal from '@/components/shop/owner/AddProductModal';
 import CartDrawer from '@/components/shop/owner/CartDrawer';
 import OrdersList from '@/components/shop/owner/OrdersList';
@@ -61,10 +25,8 @@ import ProductEditModal from '@/components/shop/owner/ProductEditModal';
 import ProductsList from '@/components/shop/owner/ProductsList';
 import ReviewsList from '@/components/shop/owner/ReviewsList';
 import SalesChart from '@/components/shop/owner/SalesChart';
-import ShopPaymentGenerator from '@/components/shop/owner/ShopPaymentGenerator';
-import ThemeEditor from '@/components/shop/owner/ThemeEditor';
 import TopProductsChart from '@/components/shop/owner/TopProductsChart';
-import WelcomeModal from '@/components/shop/owner/WelcomeModal';
+import ThemeEditor from '@/components/shop/owner/ThemeEditor';
 
 const MotionStat = motion(Stat);
 
@@ -74,99 +36,43 @@ const OwnerDashboard = () => {
   const toast = useToast();
   const { t } = useTranslation(['dashboard', 'common']);
   const bgColor = useColorModeValue('white', 'gray.800');
-  
-  // Disclosure hooks for modals and drawers
-  const {
-    isOpen: isAddProductOpen,
-    onOpen: onAddProductOpen,
-    onClose: onAddProductClose
-  } = useDisclosure();
-  
-  const {
-    isOpen: isEditProductOpen,
-    onOpen: onEditProductOpen,
-    onClose: onEditProductClose
-  } = useDisclosure();
-  
-  const {
-    isOpen: isCartOpen,
-    onOpen: onCartOpen,
-    onClose: onCartClose
-  } = useDisclosure();
-  
-  const {
-    isOpen: isPaymentOpen,
-    onOpen: onPaymentOpen,
-    onClose: onPaymentClose
-  } = useDisclosure();
-  
-  const {
-    isOpen: isWelcomeOpen,
-    onOpen: onWelcomeOpen,
-    onClose: onWelcomeClose
-  } = useDisclosure();
-
-  const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Fetch owner data
   const { 
     data: ownerData,
     isLoading: isOwnerLoading,
-    error: ownerError
+    error: ownerError,
+    refetch: refetchOwner
   } = useQuery({
     queryKey: ['owner', user?.id],
     queryFn: async () => {
-      // First check if we have a token
-      const token = localStorage.getItem('token');
-      if (!token) throw new Error('No authentication token found');
-
-      // Log the user ID we're querying with
-      console.log('Fetching owner data for user ID:', user?.id);
-
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
-        `populate=user,logo,coverImage,wallet,shop_items.images` +
-        `&filters[user][id][$eq]=${user?.id}`,
+        `populate[users_permissions_user]=*` +
+        `&populate[wallet]=*` +
+        `&populate[shop_items][populate]=images` +
+        `&populate[logo]=*` +
+        `&populate[orders]=*` +
+        `&filters[user][id][$eq]=${user.id}`,
         {
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${localStorage.getItem('token')}`
           }
         }
       );
 
       if (!response.ok) {
-        const errorData = await response.json();
-        console.error('API Error:', errorData);
-        throw new Error(errorData.error?.message || 'Failed to fetch owner data');
-      }
-
-      const data = await response.json();
-      console.log('Owner data received:', data);
-
-      // If no owner found, throw error
-      if (!data.data || data.data.length === 0) {
-        throw new Error('No owner profile found for this user');
-      }
-
-      return data;
-      if (!response.ok) {
         const error = await response.json();
         throw new Error(error.error?.message || 'Failed to fetch owner data');
       }
-      return response.json();
+
+      const data = await response.json();
+      console.log('Raw owner data:', data);
+      return data;
     },
     enabled: !!user?.id
   });
-
-  // Show welcome modal for first-time users
-  useEffect(() => {
-    const hasSeenWelcome = localStorage.getItem('hasSeenWelcomeModal');
-    if (!hasSeenWelcome && ownerData?.data?.[0]) {
-      onWelcomeOpen();
-      localStorage.setItem('hasSeenWelcomeModal', 'true');
-    }
-  }, [ownerData]);
 
   if (isOwnerLoading) {
     return (
@@ -186,50 +92,54 @@ const OwnerDashboard = () => {
     );
   }
 
-  if (ownerError || !ownerData?.data?.[0]) {
+  if (ownerError) {
     return (
       <Layout>
         <Container maxW="container.xl" py={6}>
-          <VStack spacing={4} align="stretch">
-            <Alert status="error">
-              <AlertIcon />
-              {ownerError?.message || 'Failed to load shop data'}
-            </Alert>
-            
-            {/* Debug info in development */}
-            {process.env.NODE_ENV === 'development' && (
-              <Box p={4} bg="gray.100" borderRadius="md">
-                <Text fontWeight="bold">Debug Info:</Text>
-                <Text>User ID: {user?.id || 'No user ID'}</Text>
-                <Text>Token exists: {!!localStorage.getItem('token')}</Text>
-                <Text>Error details: {JSON.stringify(ownerError, null, 2)}</Text>
-              </Box>
-            )}
-          </VStack>
+          <Alert status="error" flexDirection="column" alignItems="start" gap={2}>
+            <AlertIcon />
+            <AlertTitle>Error Loading Shop Data</AlertTitle>
+            <AlertDescription>
+              {ownerError.message}
+              {process.env.NODE_ENV === 'development' && (
+                <Box mt={2}>
+                  <Text>Debug Info:</Text>
+                  <Text>User ID: {user?.id}</Text>
+                  <Text>Has Token: {!!localStorage.getItem('token')}</Text>
+                </Box>
+              )}
+            </AlertDescription>
+            <Button mt={4} onClick={() => refetchOwner()}>
+              Try Again
+            </Button>
+          </Alert>
         </Container>
       </Layout>
     );
   }
 
-  const owner = ownerData.data[0];
-  const ownerAttributes = owner.attributes;
-  const wallet = ownerAttributes.wallet?.data?.attributes;
-  const shopItems = ownerAttributes.shop_items?.data || [];
-
-  const handleEditProduct = (product) => {
-    setSelectedProduct(product);
-    onEditProductOpen();
-  };
+  const owner = ownerData?.data?.results?.[0];
+  if (!owner) {
+    return (
+      <Layout>
+        <Container maxW="container.xl" py={6}>
+          <Alert status="error">
+            <AlertIcon />
+            No owner profile found
+          </Alert>
+        </Container>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
       <Head>
-        <title>Shop Dashboard | {owner.shopName}</title>
+        <title>{ownerAttributes.shopName} - Dashboard</title>
       </Head>
       
       <Container maxW="container.xl" py={6}>
         <VStack spacing={6} align="stretch">
-          {/* Header */}
           <Flex 
             p={6}
             bg={bgColor}
@@ -244,20 +154,14 @@ const OwnerDashboard = () => {
               <Avatar
                 size="xl"
                 name={ownerAttributes.shopName}
-                src={
-                  ownerAttributes.logo?.data?.attributes?.url
-                    ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${ownerAttributes.logo.data.attributes.url}`
-                    : undefined
-                }
+                src={ownerAttributes.logo?.data?.attributes?.url}
               />
               <VStack align="start" spacing={1}>
                 <Heading size="lg">{ownerAttributes.shopName}</Heading>
                 <Badge colorScheme={ownerAttributes.verificationStatus === 'verified' ? 'green' : 'yellow'}>
                   {ownerAttributes.verificationStatus.toUpperCase()}
                 </Badge>
-                <Text color="gray.500">
-                  Wallet ID: {wallet?.walletId || 'N/A'}
-                </Text>
+                <Text color="gray.500">Wallet ID: {wallet?.walletId || 'N/A'}</Text>
               </VStack>
             </HStack>
             
@@ -266,34 +170,23 @@ const OwnerDashboard = () => {
                 <Button
                   leftIcon={<FiPlusCircle />}
                   colorScheme="blue"
-                  onClick={onAddProductOpen}
+                  onClick={() => router.push('/shop/owner/add-item')}
                 >
-                  Add New Product
+                  Add New Item
                 </Button>
               </WrapItem>
               <WrapItem>
                 <Button
-                  leftIcon={<FiCreditCard />}
-                  colorScheme="green"
+                  leftIcon={<FiSettings />}
                   variant="outline"
-                  onClick={onPaymentOpen}
+                  onClick={() => setSelectedTab(4)}
                 >
-                  Generate Payment Link
-                </Button>
-              </WrapItem>
-              <WrapItem>
-                <Button
-                  leftIcon={<FiEdit3 />}
-                  onClick={() => setSelectedTab(5)}
-                  variant="outline"
-                >
-                  Edit Theme
+                  Shop Settings
                 </Button>
               </WrapItem>
             </Wrap>
           </Flex>
 
-          {/* Stats Grid */}
           <SimpleGrid columns={{ base: 1, md: 4 }} spacing={6}>
             <MotionStat
               p={6}
@@ -304,7 +197,7 @@ const OwnerDashboard = () => {
             >
               <StatLabel>Available Balance</StatLabel>
               <StatNumber fontSize="2xl">
-                ${wallet?.balance?.toFixed(2) || '0.00'}
+                {wallet?.balance?.toFixed(2) || '0.00'} {wallet?.currency || 'LYD'}
               </StatNumber>
             </MotionStat>
 
@@ -317,8 +210,8 @@ const OwnerDashboard = () => {
             >
               <StatLabel>Total Products</StatLabel>
               <HStack>
-                <Icon as={FiBox} />
-                <StatNumber>                {shopItems.length}</StatNumber>
+                <Icon as={FiPackage} />
+                <StatNumber>{shopItems.length}</StatNumber>
               </HStack>
             </MotionStat>
 
@@ -351,39 +244,32 @@ const OwnerDashboard = () => {
             </MotionStat>
           </SimpleGrid>
 
-          {/* Main Content */}
           <Box bg={bgColor} borderRadius="xl" boxShadow="sm" overflow="hidden">
-            <Tabs index={selectedTab} onChange={setSelectedTab} variant="enclosed">
+            <Tabs index={selectedTab} onChange={setSelectedTab}>
               <TabList px={4}>
                 <Tab><Icon as={FiTrendingUp} mr={2} /> Analytics</Tab>
                 <Tab><Icon as={FiPackage} mr={2} /> Products</Tab>
-                <Tab><Icon as={FiList} mr={2} /> Orders</Tab>
-                <Tab><Icon as={FiMessageSquare} mr={2} /> Reviews</Tab>
-                <Tab><Icon as={FiDollarSign} mr={2} /> Payments</Tab>
-                <Tab><Icon as={FiSettings} mr={2} /> Theme</Tab>
+                <Tab><Icon as={FiShoppingBag} mr={2} /> Orders</Tab>
+                <Tab><Icon as={FiStar} mr={2} /> Reviews</Tab>
+                <Tab><Icon as={FiSettings} mr={2} /> Settings</Tab>
               </TabList>
 
               <TabPanels>
                 <TabPanel>
-                  <VStack spacing={6}>
-                    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} w="full">
-                      <Box bg={bgColor} p={4} borderRadius="lg" boxShadow="sm">
-                        <Heading size="md" mb={4}>Sales Trend</Heading>
-                        <SalesChart ownerId={owner.id} />
-                      </Box>
-                      <Box bg={bgColor} p={4} borderRadius="lg" boxShadow="sm">
-                        <Heading size="md" mb={4}>Top Products</Heading>
-                        <TopProductsChart ownerId={owner.id} />
-                      </Box>
-                    </SimpleGrid>
-                  </VStack>
+                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+                    <Box bg={bgColor} p={4} borderRadius="lg">
+                      <SalesChart ownerId={owner.id} />
+                    </Box>
+                    <Box bg={bgColor} p={4} borderRadius="lg">
+                      <TopProductsChart ownerId={owner.id} />
+                    </Box>
+                  </SimpleGrid>
                 </TabPanel>
 
                 <TabPanel>
                   <ProductsList 
                     ownerId={owner.id}
-                    onEdit={handleEditProduct}
-                    onAdd={onAddProductOpen}
+                    onEdit={setSelectedProduct}
                   />
                 </TabPanel>
 
@@ -396,13 +282,9 @@ const OwnerDashboard = () => {
                 </TabPanel>
 
                 <TabPanel>
-                  <ShopPaymentGenerator ownerId={owner.id} />
-                </TabPanel>
-
-                <TabPanel>
                   <ThemeEditor 
                     ownerId={owner.id}
-                    currentTheme={owner.theme}
+                    currentTheme={ownerAttributes.theme}
                   />
                 </TabPanel>
               </TabPanels>
@@ -411,35 +293,14 @@ const OwnerDashboard = () => {
         </VStack>
       </Container>
 
-      {/* Modals and Drawers */}
-      <AddProductModal
-        isOpen={isAddProductOpen}
-        onClose={onAddProductClose}
-        ownerId={owner.id}
-      />
-      
       <ProductEditModal
-        isOpen={isEditProductOpen}
-        onClose={onEditProductClose}
+        isOpen={!!selectedProduct}
+        onClose={() => setSelectedProduct(null)}
         product={selectedProduct}
-      />
-      
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={onCartClose}
-        ownerId={owner.id}
-      />
-      
-      <PaymentConfirmationModal
-        isOpen={isPaymentOpen}
-        onClose={onPaymentClose}
-        ownerId={owner.id}
-      />
-      
-      <WelcomeModal
-        isOpen={isWelcomeOpen}
-        onClose={onWelcomeClose}
-        ownerName={owner.shopName}
+        onSuccess={() => {
+          setSelectedProduct(null);
+          refetchOwner();
+        }}
       />
     </Layout>
   );
