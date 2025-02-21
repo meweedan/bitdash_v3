@@ -132,15 +132,6 @@ const BitCashLanding = () => {
 
               <ForexTicker/>
 
-              <Text
-                fontSize={{ base: 'xl', md: '2xl' }}
-                color={useColorModeValue('gray.600', 'gray.300')}
-                maxW="3xl"
-                lineHeight="tall"
-              >
-                {t('cash.hero.subtitle', 'Transfer money instantly, pay merchants in real-time, and shop globally with BitCashs secure payment network')}
-              </Text>
-
               <HStack spacing={6} pt={8}>
                 <Button
                   size="lg"

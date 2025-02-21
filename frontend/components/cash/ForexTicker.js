@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Box, HStack, Text, Skeleton } from '@chakra-ui/react';
+import { Box, HStack, Text, Skeleton, useColorModeValue } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 const ForexTicker = () => {
@@ -10,12 +10,16 @@ const ForexTicker = () => {
     const fetchExchangeRates = async () => {
       try {
         const res = await fetch('/api/exchange-rates');
-        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(`API responded with status ${res.status}`);
+        }
+        const response = await res.json();
 
-        const filteredRates = data.map(item => ({
-          from: item.from_currency,
-          to: item.to_currency,
-          rate: parseFloat(item.rate).toFixed(2),
+        // Extract exchange rate data from API response
+        const filteredRates = response.data.map(item => ({
+          from: item.attributes.from_currency,
+          to: item.attributes.to_currency,
+          rate: parseFloat(item.attributes.rate).toFixed(2),
         })).filter(rate => 
           ['USD', 'EUR', 'GBP', 'EGP', 'USDT'].includes(rate.to)
         );
@@ -27,36 +31,45 @@ const ForexTicker = () => {
     };
 
     fetchExchangeRates();
-    const interval = setInterval(fetchExchangeRates, 60000); // Update every 60 seconds
+    const interval = setInterval(fetchExchangeRates, 60000); // Update every 60 sec
 
     return () => clearInterval(interval);
   }, []);
 
+  const bgColor = useColorModeValue('gray.900', 'black');
+  const textColor = useColorModeValue('white', 'gray.200');
+  const accentColor = useColorModeValue('green.400', 'green.300');
+
   return (
-    <Box 
-      ref={tickerRef} 
-      overflow="hidden" 
-      whiteSpace="nowrap" 
+    <Box
+      ref={tickerRef}
+      overflow="hidden"
       w="full"
-      py={2} 
-      bg="gray.900"
-      color="white"
-      borderRadius="lg"
+      py={2}
+      bg={bgColor}
+      color={textColor}
+      borderRadius="md"
+      boxShadow="lg"
+      border="1px solid"
+      borderColor="gray.700"
     >
+      {/* Animated Scrolling Container */}
       <motion.div
-        initial={{ x: '100%' }}
-        animate={{ x: '-100%' }}
-        transition={{ repeat: Infinity, duration: 15, ease: 'linear' }}
-        style={{ display: 'inline-flex' }}
+        style={{ display: 'flex', whiteSpace: 'nowrap', alignItems: 'center' }}
+        animate={{ x: ['0%', '-100%'] }}
+        transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
       >
-        {rates.length > 0 ? rates.map((rate, index) => (
-          <HStack key={index} mx={6}>
-            <Text fontWeight="bold" color="green.300">{rate.from} → {rate.to}</Text>
-            <Text fontWeight="bold" color="yellow.400">{rate.rate}</Text>
+        {/* Duplicate Content to Ensure Seamless Looping */}
+        {[...rates, ...rates].map((rate, index) => (
+          <HStack key={index} mx={6} spacing={2}>
+            <Text fontSize="sm" fontWeight="bold" color="yellow.400">
+              {rate.from} → {rate.to}
+            </Text>
+            <Text fontSize="md" fontWeight="bold" color={accentColor}>
+              {rate.rate}
+            </Text>
           </HStack>
-        )) : (
-          <Skeleton height="20px" width="80%" />
-        )}
+        ))}
       </motion.div>
     </Box>
   );
