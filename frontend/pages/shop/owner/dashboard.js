@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useTranslation } from 'next-i18next';
 import {
   Box, Container, VStack, HStack, Heading, Text, Button, SimpleGrid, 
   Skeleton, Badge, Avatar, useColorModeValue, Stat, StatLabel, StatNumber,
@@ -9,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { 
   FiPackage, FiDollarSign, FiShoppingBag, FiTrendingUp, FiSettings,
-  FiPlusCircle, FiEdit2, FiTrash2, FiEye, FiArchive, FiStar
+  FiPlusCircle, FiEdit2, FiStar
 } from 'react-icons/fi';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
@@ -18,9 +17,7 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 
 import AddProductModal from '@/components/shop/owner/AddProductModal';
-import CartDrawer from '@/components/shop/owner/CartDrawer';
 import OrdersList from '@/components/shop/owner/OrdersList';
-import PaymentConfirmationModal from '@/components/shop/owner/PaymentConfirmationModal';
 import ProductEditModal from '@/components/shop/owner/ProductEditModal';
 import ProductsList from '@/components/shop/owner/ProductsList';
 import ReviewsList from '@/components/shop/owner/ReviewsList';
@@ -34,7 +31,6 @@ const OwnerDashboard = () => {
   const router = useRouter();
   const { user } = useAuth();
   const toast = useToast();
-  const { t } = useTranslation(['dashboard', 'common']);
   const bgColor = useColorModeValue('white', 'gray.800');
   const [selectedTab, setSelectedTab] = useState(0);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -49,11 +45,7 @@ const OwnerDashboard = () => {
     queryFn: async () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
-        `populate[users_permissions_user]=*` +
-        `&populate[wallet]=*` +
-        `&populate[shop_items][populate]=images` +
-        `&populate[logo]=*` +
-        `&populate[orders]=*` +
+        `populate=*` +
         `&filters[user][id][$eq]=${user.id}`,
         {
           headers: {
@@ -68,7 +60,6 @@ const OwnerDashboard = () => {
       }
 
       const data = await response.json();
-      console.log('Raw owner data:', data);
       return data;
     },
     enabled: !!user?.id
@@ -92,32 +83,6 @@ const OwnerDashboard = () => {
     );
   }
 
-  if (ownerError) {
-    return (
-      <Layout>
-        <Container maxW="container.xl" py={6}>
-          <Alert status="error" flexDirection="column" alignItems="start" gap={2}>
-            <AlertIcon />
-            <AlertTitle>Error Loading Shop Data</AlertTitle>
-            <AlertDescription>
-              {ownerError.message}
-              {process.env.NODE_ENV === 'development' && (
-                <Box mt={2}>
-                  <Text>Debug Info:</Text>
-                  <Text>User ID: {user?.id}</Text>
-                  <Text>Has Token: {!!localStorage.getItem('token')}</Text>
-                </Box>
-              )}
-            </AlertDescription>
-            <Button mt={4} onClick={() => refetchOwner()}>
-              Try Again
-            </Button>
-          </Alert>
-        </Container>
-      </Layout>
-    );
-  }
-
   const owner = ownerData?.data?.results?.[0];
   if (!owner) {
     return (
@@ -125,17 +90,21 @@ const OwnerDashboard = () => {
         <Container maxW="container.xl" py={6}>
           <Alert status="error">
             <AlertIcon />
-            No owner profile found
+            No owner profile found for this user
           </Alert>
         </Container>
       </Layout>
     );
   }
 
+  const shopItems = owner.shop_items || [];
+  const wallet = owner.wallet || {};
+  const logoUrl = owner.logo?.url ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${owner.logo.url}` : null;
+
   return (
     <Layout>
       <Head>
-        <title>{ownerAttributes.shopName} - Dashboard</title>
+        <title>{owner.shopName} - Dashboard</title>
       </Head>
       
       <Container maxW="container.xl" py={6}>
@@ -153,15 +122,15 @@ const OwnerDashboard = () => {
             <HStack spacing={4}>
               <Avatar
                 size="xl"
-                name={ownerAttributes.shopName}
-                src={ownerAttributes.logo?.data?.attributes?.url}
+                name={owner.shopName}
+                src={logoUrl}
               />
               <VStack align="start" spacing={1}>
-                <Heading size="lg">{ownerAttributes.shopName}</Heading>
-                <Badge colorScheme={ownerAttributes.verificationStatus === 'verified' ? 'green' : 'yellow'}>
-                  {ownerAttributes.verificationStatus.toUpperCase()}
+                <Heading size="lg">{owner.shopName}</Heading>
+                <Badge colorScheme={owner.verificationStatus === 'verified' ? 'green' : 'yellow'}>
+                  {owner.verificationStatus.toUpperCase()}
                 </Badge>
-                <Text color="gray.500">Wallet ID: {wallet?.walletId || 'N/A'}</Text>
+                <Text color="gray.500">Wallet ID: {wallet.walletId || 'N/A'}</Text>
               </VStack>
             </HStack>
             
@@ -197,7 +166,7 @@ const OwnerDashboard = () => {
             >
               <StatLabel>Available Balance</StatLabel>
               <StatNumber fontSize="2xl">
-                {wallet?.balance?.toFixed(2) || '0.00'} {wallet?.currency || 'LYD'}
+                {wallet.balance?.toFixed(2) || '0.00'} {wallet.currency || 'LYD'}
               </StatNumber>
             </MotionStat>
 
@@ -225,7 +194,7 @@ const OwnerDashboard = () => {
               <StatLabel>Shop Rating</StatLabel>
               <HStack>
                 <Icon as={FiStar} color="yellow.400" />
-                <StatNumber>{ownerAttributes.rating?.toFixed(1) || '0.0'}/5.0</StatNumber>
+                <StatNumber>{owner.rating?.toFixed(1) || '0.0'}/5.0</StatNumber>
               </HStack>
             </MotionStat>
 
@@ -236,10 +205,10 @@ const OwnerDashboard = () => {
               boxShadow="sm"
               whileHover={{ scale: 1.02 }}
             >
-              <StatLabel>Total Orders</StatLabel>
+              <StatLabel>Daily Limit</StatLabel>
               <HStack>
-                <Icon as={FiShoppingBag} />
-                <StatNumber>{ownerAttributes.orders?.data?.length || 0}</StatNumber>
+                <Icon as={FiDollarSign} />
+                <StatNumber>{wallet.dailyLimit?.toLocaleString() || '0'}</StatNumber>
               </HStack>
             </MotionStat>
           </SimpleGrid>
@@ -269,6 +238,7 @@ const OwnerDashboard = () => {
                 <TabPanel>
                   <ProductsList 
                     ownerId={owner.id}
+                    products={shopItems}
                     onEdit={setSelectedProduct}
                   />
                 </TabPanel>
@@ -284,7 +254,7 @@ const OwnerDashboard = () => {
                 <TabPanel>
                   <ThemeEditor 
                     ownerId={owner.id}
-                    currentTheme={ownerAttributes.theme}
+                    currentTheme={owner.theme}
                   />
                 </TabPanel>
               </TabPanels>
