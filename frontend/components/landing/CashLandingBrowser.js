@@ -132,7 +132,7 @@ const BitCashLanding = () => {
 
               <ForexTicker/>
 
-              <HStack spacing={6} pt={8}>
+              <HStack spacing={6}>
                 <Button
                   size="lg"
                   colorScheme="green"
@@ -159,10 +159,7 @@ const BitCashLanding = () => {
 
             {/* Payment Demo Preview */}
             <Box
-              mt={16}
-              w="full"
               maxW="6xl"
-              p={8}
               borderRadius="3xl"
               bg={glassCardBg}
               borderColor="brand.bitcash.500"
@@ -179,11 +176,10 @@ const BitCashLanding = () => {
                   <Icon as={FaBolt} boxSize={8} color="brand.bitcash.500" />
                   <Text fontWeight="bold">{t('demo.instant_transfer', 'Transfer Speed')}</Text>
                   <Text fontSize="3xl" fontWeight="bold" color="brand.bitcash.500">
-                    &lt; 1s
+                    &lt; 2.5s
                   </Text>
                 </VStack>
                 <VStack
-                  p={6}
                   borderRadius="xl"
                   bg={useColorModeValue('white', 'gray.800')}
                   spacing={4}
@@ -214,8 +210,6 @@ const BitCashLanding = () => {
         {/* Features Grid */}
         <SimpleGrid
           columns={{ base: 1, md: 2, lg: 4 }}
-          spacing={8}
-          py={{ base: 20, md: 28 }}
         >
           {features.map((feature, index) => (
             <motion.div
@@ -225,8 +219,6 @@ const BitCashLanding = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Box
-                p={8}
-                h="full"
                 bg={glassCardBg}
                 borderRadius="xl"
                 borderColor={feature.color}
@@ -237,13 +229,6 @@ const BitCashLanding = () => {
                 }}
                 transition="all 0.3s ease"
               >
-                <VStack align="start" spacing={6}>
-                  <Icon as={feature.icon} boxSize={12} color={feature.color} />
-                  <Heading size="md">{t(feature.title, 'Feature')}</Heading>
-                  <Text color={useColorModeValue('gray.600', 'gray.300')}>
-                    {t(feature.description, 'Feature description')}
-                  </Text>
-                </VStack>
               </Box>
             </motion.div>
           ))}

@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 
 const ForexTicker = () => {
   const tickerRef = useRef(null);
-  const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/latest`;
+  const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/latest`;
 
   // ✅ Fetch exchange rates using React Query
   const { data, isLoading, error } = useQuery({
