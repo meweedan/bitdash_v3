@@ -46,7 +46,7 @@ const OwnerDashboard = () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/owners?` +
         `populate=*` +
-        `&filters[user][id][$eq]=${user.id}`,
+        `&filters[users_permissions_user][id][$eq]=${user?.id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -56,11 +56,18 @@ const OwnerDashboard = () => {
 
       if (!response.ok) {
         const error = await response.json();
+        console.error('API Error:', error);
         throw new Error(error.error?.message || 'Failed to fetch owner data');
       }
 
       const data = await response.json();
-      return data;
+      console.log('Raw owner data:', data);
+
+      if (!data?.data?.results?.[0]) {
+        throw new Error('No owner profile found');
+      }
+
+      return data.data.results[0];
     },
     enabled: !!user?.id
   });

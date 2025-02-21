@@ -117,7 +117,7 @@ const ProductCard = ({ product }) => {
           <Button
             colorScheme="blue"
             leftIcon={<ShoppingBag size={18} />}
-            onClick={() => router.push(`/shop-items/${product.id}/public`)}
+            onClick={() => router.push(`/${product.owner.shopName}/${product.name}`)}
             isDisabled={product.status !== 'available' || product.stock <= 0}
           >
             View Details
@@ -156,6 +156,8 @@ const MarketplacePreview = () => {
         'pagination[page]': page.toString(),
         'pagination[pageSize]': ITEMS_PER_PAGE.toString()
       });
+
+      params.append('populate[owner][fields][0]', 'shopName');
 
       // Populate images
       params.append('populate[images]', '*');
