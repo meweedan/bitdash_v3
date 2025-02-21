@@ -25,7 +25,7 @@ const ForexTicker = () => {
       const json = await response.json();
       console.log("✅ Exchange Rates API Response:", json);
 
-      if (!json || !json.data) {
+      if (!json?.data?.attributes?.results) {
         throw new Error("Invalid response format from API");
       }
 
@@ -35,11 +35,11 @@ const ForexTicker = () => {
     refetchInterval: 60000, // Auto-refresh every 60 sec
   });
 
-  // ✅ Process data to extract rates
-  const rates = data?.data?.map((item) => ({
-    from: item.attributes.from_currency,
-    to: item.attributes.to_currency,
-    rate: parseFloat(item.attributes.rate).toFixed(2),
+  // ✅ Process data to extract rates correctly
+  const rates = data?.data?.attributes?.results?.map((item) => ({
+    from: item.from_currency,
+    to: item.to_currency,
+    rate: parseFloat(item.rate).toFixed(2),
   })).filter(rate => 
     ["USD", "EUR", "GBP", "EGP", "USDT"].includes(rate.to)
   ) || [];
