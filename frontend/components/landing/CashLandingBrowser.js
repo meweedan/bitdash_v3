@@ -108,8 +108,8 @@ const BitCashLanding = () => {
   ];
 
   return (
-    <Box ref={containerRef} bg={bgGradient} minH="100vh" overflow="hidden">
-      <Container maxW="8xl" px={{ base: 4, lg: 0 }}>
+    <Box ref={containerRef} bg={bgGradient} overflow="hidden">
+      <Container maxW="8xl">
         {/* Hero Section */}
         <motion.div style={{ scale: heroScale }}>
           <Flex
@@ -132,7 +132,7 @@ const BitCashLanding = () => {
 
               <ForexTicker/>
 
-              <HStack spacing={6}>
+              <HStack spacing={6} pt={8}>
                 <Button
                   size="lg"
                   colorScheme="green"
@@ -159,7 +159,10 @@ const BitCashLanding = () => {
 
             {/* Payment Demo Preview */}
             <Box
+              mt={16}
+              w="full"
               maxW="6xl"
+              p={8}
               borderRadius="3xl"
               bg={glassCardBg}
               borderColor="brand.bitcash.500"
@@ -176,10 +179,11 @@ const BitCashLanding = () => {
                   <Icon as={FaBolt} boxSize={8} color="brand.bitcash.500" />
                   <Text fontWeight="bold">{t('demo.instant_transfer', 'Transfer Speed')}</Text>
                   <Text fontSize="3xl" fontWeight="bold" color="brand.bitcash.500">
-                    &lt; 2.5s
+                    &lt; 1s
                   </Text>
                 </VStack>
                 <VStack
+                  p={6}
                   borderRadius="xl"
                   bg={useColorModeValue('white', 'gray.800')}
                   spacing={4}
@@ -210,6 +214,7 @@ const BitCashLanding = () => {
         {/* Features Grid */}
         <SimpleGrid
           columns={{ base: 1, md: 2, lg: 4 }}
+          spacing={8}
         >
           {features.map((feature, index) => (
             <motion.div
@@ -219,6 +224,8 @@ const BitCashLanding = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Box
+                p={8}
+                h="full"
                 bg={glassCardBg}
                 borderRadius="xl"
                 borderColor={feature.color}
@@ -229,6 +236,21 @@ const BitCashLanding = () => {
                 }}
                 transition="all 0.3s ease"
               >
+                <VStack align="start" spacing={6}>
+                  <Icon as={feature.icon} boxSize={12} color={feature.color} />
+                  <Heading
+                    bgGradient="linear(to-r, brand.bitcash.500, brand.bitcash.700)"
+                    bgClip="text"
+                  >
+                {t(feature.title, 'Feature')}
+                </Heading>
+                  <Text
+                    bgGradient="linear(to-r, brand.bitcash.500, brand.bitcash.700)"
+                    bgClip="text"
+                  >
+                    {t(feature.description, 'Feature description')}
+                  </Text>
+                </VStack>
               </Box>
             </motion.div>
           ))}
