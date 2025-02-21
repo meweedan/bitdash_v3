@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   Box,
   Tabs,
@@ -106,7 +106,7 @@ const fetchMetalRates = async () => {
 const processRates = (rates, baseCurrency) => {
   if (!Array.isArray(rates)) return [];
   
-  return rates.map(item => {
+  return rates.filter(item => item && item.rate).map(item => {
     const margin = PROFIT_MARGINS[baseCurrency] || PROFIT_MARGINS.CRYPTO;
     const marketRate = parseFloat(item.rate) * margin.market_multiplier;
     
@@ -177,6 +177,7 @@ const RatePanel = ({ rates, isLoading, error, onSwitch }) => {
 };
 
 const ForexTicker = () => {
+  const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState("LYD");
 
   const { data: forexData, isLoading: forexLoading, error: forexError } = useQuery({
@@ -204,24 +205,37 @@ const ForexTicker = () => {
     if (!rate) return;
 
     const newRate = {
-      ...rate,
-      from: rate.to,
-      to: rate.from,
-      rate: 1 / rate.rate,
-      buy: 1 / rate.sell,
-      sell: 1 / rate.buy
+        ...rate,
+        from: rate.to,
+        to: rate.from,
+        rate: 1 / rate.rate,
+        buy: 1 / rate.sell,
+        sell: 1 / rate.buy
     };
 
-    // Update the appropriate data based on active tab
-    const queryKey = activeTab === "CRYPTO" ? "crypto-rates" : 
-                    activeTab === "METALS" ? "metal-rates" : 
-                    ["forex-rates", activeTab];
-    
-    queryClient.setQueryData(queryKey, (old) => {
-      if (!Array.isArray(old)) return [newRate];
-      return old.map(r => r.from === rate.from && r.to === rate.to ? newRate : r);
-    });
-  };
+    let currentData;
+    if (activeTab === "CRYPTO") {
+        currentData = queryClient.getQueryData(["crypto-rates"]) || [];
+    } else if (activeTab === "METALS") {
+        currentData = queryClient.getQueryData(["metal-rates"]) || [];
+    } else {
+        currentData = queryClient.getQueryData(["forex-rates", activeTab]) || [];
+    }
+
+    if (!Array.isArray(currentData)) return;
+
+    const updatedData = currentData.map(r => 
+        r.from === rate.from && r.to === rate.to ? newRate : r
+    );
+
+    if (activeTab === "CRYPTO") {
+        queryClient.setQueryData(["crypto-rates"], updatedData);
+    } else if (activeTab === "METALS") {
+        queryClient.setQueryData(["metal-rates"], updatedData);
+    } else {
+        queryClient.setQueryData(["forex-rates", activeTab], updatedData);
+    }
+    };
 
   const bgColor = useColorModeValue("gray.900", "black");
   const textColor = useColorModeValue("white", "gray.200");
