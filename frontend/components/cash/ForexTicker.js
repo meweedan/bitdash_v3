@@ -27,9 +27,9 @@ const fetchRates = async ({ queryKey }) => {
   let API_URL;
 
   if (type === "crypto-rates") {
-    API_URL = `https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${process.env.NEXT_PUBLIC_CURRENCYFREAKS_API}&symbols=BTC,ETH,USDT`;
+    API_URL = `https://api.currencyfreaks.com/latest?apikey=9cd5b2412b1749a7b9c44ba9f9b2446f&symbols=BTC,ETH,USDT`;
   } else {
-    API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/latest?base=${baseCurrency}`;
+    API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/latest?base=${baseCurrency}`;
   }
 
   const response = await fetch(API_URL);
@@ -89,8 +89,8 @@ const ForexTicker = () => {
     <Box bg={bgColor} color={textColor} borderRadius="md" p={6} boxShadow="xl">
       <Tabs variant="solid-rounded" isFitted>
         <TabList>
-          <Tab onClick={() => setActiveBase("LYD")}>Forex (LYD Base)</Tab>
-          <Tab onClick={() => setActiveBase("EGP")}>Forex (EGP Base)</Tab>
+          <Tab onClick={() => setActiveBase("LYD")}>LYD Base</Tab>
+          <Tab onClick={() => setActiveBase("EGP")}>EGP Base</Tab>
           <Tab>Crypto</Tab>
         </TabList>
 
