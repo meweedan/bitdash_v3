@@ -22,9 +22,11 @@ import { ArrowUp, ArrowDown } from "lucide-react";
 
 const profitMargin = 0.02; // 2% profit margin
 
-const fetchRates = async (baseCurrency, isCrypto = false) => {
+const fetchRates = async ({ queryKey }) => {
+  const [type, baseCurrency] = queryKey;
   let API_URL;
-  if (isCrypto) {
+
+  if (type === "crypto-rates") {
     API_URL = `https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${process.env.NEXT_PUBLIC_CURRENCYFREAKS_API}&symbols=BTC,ETH,USDT`;
   } else {
     API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/latest?base=${baseCurrency}`;
@@ -32,13 +34,14 @@ const fetchRates = async (baseCurrency, isCrypto = false) => {
 
   const response = await fetch(API_URL);
   if (!response.ok) {
-    throw new Error("Failed to fetch exchange rates");
+    throw new Error(`Failed to fetch ${type}`);
   }
 
   const data = await response.json();
-  if (isCrypto) {
+
+  if (type === "crypto-rates") {
     return Object.keys(data.rates).map((symbol) => ({
-      from: baseCurrency,
+      from: "USDT",
       to: symbol,
       rate: parseFloat(data.rates[symbol]),
       buy: parseFloat(data.rates[symbol]) * (1 + profitMargin),
@@ -51,23 +54,33 @@ const fetchRates = async (baseCurrency, isCrypto = false) => {
       rate: parseFloat(item.rate),
       buy: parseFloat(item.buy_price),
       sell: parseFloat(item.sell_price),
+      change: item.change_percentage, // Ensure your backend provides this
     }));
   }
 };
 
-const ForexCryptoTicker = () => {
+const ForexTicker = () => {
   const [activeBase, setActiveBase] = useState("LYD");
-  const { data: forexRates, isLoading: forexLoading, error: forexError } = useQuery(
-    ["forex-rates", activeBase],
-    () => fetchRates(activeBase, false),
-    { refetchInterval: 60000 }
-  );
 
-  const { data: cryptoRates, isLoading: cryptoLoading, error: cryptoError } = useQuery(
-    ["crypto-rates"],
-    () => fetchRates("USDT", true),
-    { refetchInterval: 60000 }
-  );
+  const {
+    data: forexRates,
+    isLoading: forexLoading,
+    error: forexError,
+  } = useQuery({
+    queryKey: ["forex-rates", activeBase],
+    queryFn: fetchRates,
+    refetchInterval: 60000,
+  });
+
+  const {
+    data: cryptoRates,
+    isLoading: cryptoLoading,
+    error: cryptoError,
+  } = useQuery({
+    queryKey: ["crypto-rates"],
+    queryFn: fetchRates,
+    refetchInterval: 60000,
+  });
 
   const bgColor = useColorModeValue("gray.900", "black");
   const textColor = useColorModeValue("white", "gray.200");
@@ -99,17 +112,35 @@ const ForexCryptoTicker = () => {
                     <Th isNumeric>Rate</Th>
                     <Th isNumeric>Buy</Th>
                     <Th isNumeric>Sell</Th>
+                    <Th isNumeric>Change (%)</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {forexRates.map((rate) => (
-                    <Tr key={`${rate.from}-${rate.to}`}>
-                      <Td>{rate.from} → {rate.to}</Td>
-                      <Td isNumeric>{rate.rate.toFixed(4)}</Td>
-                      <Td isNumeric>{rate.buy.toFixed(4)}</Td>
-                      <Td isNumeric>{rate.sell.toFixed(4)}</Td>
+                  {forexRates?.length > 0 ? (
+                    forexRates.map((rate) => (
+                      <Tr key={`${rate.from}-${rate.to}`}>
+                        <Td>
+                          {rate.from} → {rate.to}
+                        </Td>
+                        <Td isNumeric>{rate.rate.toFixed(4)}</Td>
+                        <Td isNumeric>{rate.buy.toFixed(4)}</Td>
+                        <Td isNumeric>{rate.sell.toFixed(4)}</Td>
+                        <Td
+                          isNumeric
+                          color={rate.change > 0 ? "green.400" : "red.400"}
+                        >
+                          {rate.change > 0 ? <ArrowUp size={16} /> : <ArrowDown size={16} />}
+                          {rate.change ? `${rate.change.toFixed(2)}%` : "N/A"}
+                        </Td>
+                      </Tr>
+                    ))
+                  ) : (
+                    <Tr>
+                      <Td colSpan="5" textAlign="center">
+                        No data available
+                      </Td>
                     </Tr>
-                  ))}
+                  )}
                 </Tbody>
               </Table>
             )}
@@ -135,14 +166,24 @@ const ForexCryptoTicker = () => {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {cryptoRates.map((rate) => (
-                    <Tr key={`${rate.from}-${rate.to}`}>
-                      <Td>{rate.from} → {rate.to}</Td>
-                      <Td isNumeric>{rate.rate.toFixed(4)}</Td>
-                      <Td isNumeric>{rate.buy.toFixed(4)}</Td>
-                      <Td isNumeric>{rate.sell.toFixed(4)}</Td>
+                  {cryptoRates?.length > 0 ? (
+                    cryptoRates.map((rate) => (
+                      <Tr key={`${rate.from}-${rate.to}`}>
+                        <Td>
+                          {rate.from} → {rate.to}
+                        </Td>
+                        <Td isNumeric>{rate.rate.toFixed(4)}</Td>
+                        <Td isNumeric>{rate.buy.toFixed(4)}</Td>
+                        <Td isNumeric>{rate.sell.toFixed(4)}</Td>
+                      </Tr>
+                    ))
+                  ) : (
+                    <Tr>
+                      <Td colSpan="4" textAlign="center">
+                        No data available
+                      </Td>
                     </Tr>
-                  ))}
+                  )}
                 </Tbody>
               </Table>
             )}
@@ -153,4 +194,4 @@ const ForexCryptoTicker = () => {
   );
 };
 
-export default ForexCryptoTicker;
+export default ForexTicker;
