@@ -4,7 +4,7 @@ import {
   Box, Container, VStack, HStack, Heading, Text, Button, SimpleGrid, 
   Skeleton, Badge, Avatar, useColorModeValue, Stat, StatLabel, StatNumber,
   Icon, Flex, useToast, Tabs, TabList, TabPanels, Tab, TabPanel,
-  Table, Thead, Tbody, Tr, Th, Td, Image, IconButton, Alert, AlertIcon,
+  Table, Thead, Tbody, Tr, Th, Td, Image, IconButton, Alert, AlertIcon, AlertTitle,
   Progress
 } from '@chakra-ui/react';
 import { 
