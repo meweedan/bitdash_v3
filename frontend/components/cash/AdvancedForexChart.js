@@ -69,13 +69,20 @@ const AdvancedForexChart = () => {
   } = useQuery({
     queryKey: ['historical-rates', baseCurrency, quoteCurrency, timeframe],
     queryFn: async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/historical?base=${baseCurrency}&quote=${quoteCurrency}&days=${getDaysFromTimeframe(timeframe)}`
-      );
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/historical?base=${baseCurrency}&quote=${quoteCurrency}&days=${getDaysFromTimeframe(timeframe)}`;
+      console.log('Fetching URL:', url);
+
+      const response = await fetch(url);
       
-      if (!response.ok) throw new Error('Failed to fetch historical data');
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Fetch error details:', errorText);
+        throw new Error(`Failed to fetch historical data: ${errorText}`);
+      }
       
       const result = await response.json();
+      console.log('Raw response:', result);
+      
       return result.data || [];
     },
     refetchInterval: 60000
@@ -103,17 +110,36 @@ const AdvancedForexChart = () => {
 
   // Prepare Chart Data
   const chartData = useMemo(() => {
-    if (!historicalData || historicalData.length === 0) return [];
-    
-    return historicalData.map(item => ({
-      date: new Date(item.attributes.timestamp).toLocaleDateString(),
-      open: item.attributes.open_rate,
-      high: item.attributes.high_rate,
-      low: item.attributes.low_rate,
-      close: item.attributes.rate,
-      volume: item.attributes.volume || 0
-    }));
-  }, [historicalData]);
+  console.log('Raw historical data:', historicalData);
+  
+  // Check if historicalData exists and is an array
+  if (!historicalData || !Array.isArray(historicalData)) {
+    console.warn('Historical data is not an array:', historicalData);
+    return [];
+  }
+
+  // Safely process the data
+  return historicalData.map(item => {
+    // Check if item and item.attributes exist
+    if (!item || !item.attributes) {
+      console.warn('Invalid data item:', item);
+      return null;
+    }
+
+    return {
+      date: item.attributes.timestamp 
+        ? new Date(item.attributes.timestamp).toLocaleDateString() 
+        : 'N/A',
+      open: item.attributes.open_rate || item.attributes.rate || 0,
+      high: item.attributes.high_rate || item.attributes.rate || 0,
+      low: item.attributes.low_rate || item.attributes.rate || 0,
+      close: item.attributes.rate || 0,
+      volume: item.attributes.volume || 0,
+      ma20: item.attributes.ma20 || null, 
+      ma50: item.attributes.ma50 || null
+    };
+  }).filter(Boolean); // Remove any null entries
+}, [historicalData]);
 
   // Color Theming
   const bgColor = useColorModeValue('white', 'gray.900');
@@ -154,7 +180,7 @@ const AdvancedForexChart = () => {
             size={isMobile ? 'sm' : 'md'}
             bg={selectBg}
             borderColor="transparent"
-            _hover={{ borderColor: 'blue.500' }}
+            _hover={{ borderColor: 'brand.bitcash.700' }}
           >
             {allCurrencies.map(currency => (
               <option key={currency} value={currency}>
@@ -166,9 +192,9 @@ const AdvancedForexChart = () => {
           {/* Switch Button */}
           <Button 
             onClick={switchCurrencies} 
-            variant="outline"
+            variant="bitcash-outline"
             size={isMobile ? 'sm' : 'md'}
-            colorScheme="blue"
+            colorScheme="brand.bitcash.700"
           >
             <ArrowUpDown />
           </Button>
@@ -181,7 +207,7 @@ const AdvancedForexChart = () => {
             size={isMobile ? 'sm' : 'md'}
             bg={selectBg}
             borderColor="transparent"
-            _hover={{ borderColor: 'blue.500' }}
+            _hover={{ borderColor: 'brand.bitcash.700' }}
           >
             {allCurrencies.map(currency => (
               <option key={currency} value={currency}>
@@ -204,7 +230,7 @@ const AdvancedForexChart = () => {
               onClick={() => setTimeframe(tf)}
               variant={timeframe === tf ? 'solid' : 'ghost'}
               size={isMobile ? 'xs' : 'sm'}
-              colorScheme="blue"
+              colorScheme="brand.bitcash.700"
             >
               {tf}
             </Button>

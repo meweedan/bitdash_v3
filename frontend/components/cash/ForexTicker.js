@@ -129,12 +129,12 @@ const RatePanel = ({ rates, isLoading, error, onSwitch }) => {
   const bgColor = useColorModeValue('gray.100', 'gray.800');
   const textColor = useColorModeValue('gray.800', 'white');
 
-  if (isLoading) return <Spinner color="blue.500" />;
+  if (isLoading) return <Spinner color="brand.bitcash.700" />;
   if (error) return <Alert status="error"><AlertIcon />{error.message}</Alert>;
   if (!Array.isArray(rates) || rates.length === 0) return <Text>No data available</Text>;
   
   return (
-    <VStack spacing={3} w="full">
+    <VStack spacing={4} w="full">
       {rates.map((rate) => (
         <Flex
           key={`${rate.from}-${rate.to}`}
@@ -147,23 +147,23 @@ const RatePanel = ({ rates, isLoading, error, onSwitch }) => {
           boxShadow="sm"
           flexDirection={isMobile ? 'column' : 'row'}
         >
-          <HStack mb={isMobile ? 2 : 0} w="full" justify="space-between">
+          <HStack mb={isMobile ? 4 : 0} w="full" justify="start">
             <HStack>
-              <Text fontSize={isMobile ? 'sm' : 'md'} fontWeight="bold" color={textColor}>
+              <Text fontSize={isMobile ? 'md' : 'lg'} fontWeight="bold" color={textColor}>
                 {rate.from} → {rate.to}
               </Text>
               <Button 
                 onClick={() => onSwitch(rate)} 
                 variant="ghost" 
                 size="xs"
-                p={1}
-                color="blue.500"
+                p={2}
+                color="brand.bitcash.400"
               >
                 <ArrowUpDown size={16} />
               </Button>
             </HStack>
             
-            <Text fontSize={isMobile ? 'lg' : 'xl'} fontWeight="bold" color="green.500">
+            <Text fontSize={isMobile ? 'lg' : 'xl'} fontWeight="bold" color="brand.bitcash.700">
               {rate.rate.toFixed(4)}
             </Text>
           </HStack>
@@ -174,8 +174,8 @@ const RatePanel = ({ rates, isLoading, error, onSwitch }) => {
             alignItems="center"
             flexDirection={isMobile ? 'column' : 'row'}
           >
-            <HStack spacing={2}>
-              <Text fontSize="sm" fontWeight="bold" color="blue.400">
+            <HStack spacing={4}>
+              <Text fontSize="sm" fontWeight="bold" color="brand.bitcash.400">
                 Buy: {rate.buy.toFixed(4)}
               </Text>
               <Text fontSize="sm" fontWeight="bold" color="red.400">
@@ -210,7 +210,7 @@ const ForexTicker = () => {
   // Color theming
   const bgColor = useColorModeValue('white', 'gray.900');
   const tabBg = useColorModeValue('gray.100', 'gray.800');
-  const brandGradient = "linear(to-r, blue.500, blue.700)";
+  const brandGradient = "linear(to-r, brand.bitcash.500, brand.bitcash.700)";
 
   // Queries
   const { 
@@ -316,32 +316,32 @@ const ForexTicker = () => {
         >
           <Tab 
             _selected={{ 
-              color: "white", 
-              bg: "blue.500" 
+              color: "black", 
+              bg: "brand.bitcash.700" 
             }}
           >
             LYD
           </Tab>
           <Tab 
             _selected={{ 
-              color: "white", 
-              bg: "blue.500" 
+              color: "black", 
+              bg: "brand.bitcash.700" 
             }}
           >
             EGP
           </Tab>
           <Tab 
             _selected={{ 
-              color: "white", 
-              bg: "blue.500" 
+              color: "black", 
+              bg: "brand.bitcash.700" 
             }}
           >
             Crypto
           </Tab>
           <Tab 
             _selected={{ 
-              color: "white", 
-              bg: "blue.500" 
+              color: "black", 
+              bg: "brand.bitcash.700" 
             }}
           >
             Metals
@@ -354,7 +354,7 @@ const ForexTicker = () => {
             variant="ghost" 
             size="sm" 
             leftIcon={<RefreshCw size={16} />}
-            color="blue.500"
+            color="brand.bitcash.500"
           >
             Refresh
           </Button>
