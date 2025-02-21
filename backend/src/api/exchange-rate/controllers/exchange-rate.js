@@ -51,6 +51,49 @@ module.exports = createCoreController("api::exchange-rate.exchange-rate", ({ str
     return this.transformResponse(deletedRate);
   },
 
+   async historical(ctx) {
+    try {
+      const { base, quote, days = 30 } = ctx.query;
+
+      // Calculate the date range
+      const endDate = new Date();
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - parseInt(days));
+
+      // Fetch historical rates
+      const rates = await strapi.entityService.findMany("api::exchange-rate.exchange-rate", {
+        filters: {
+          from_currency: base,
+          to_currency: quote,
+          timestamp: {
+            $between: [startDate, endDate]
+          }
+        },
+        sort: { timestamp: 'asc' },
+        populate: {
+          high_rate: true,
+          low_rate: true,
+          open_rate: true
+        }
+      });
+
+      // Process rates for candlestick format
+      const processedRates = rates.map(rate => ({
+        timestamp: rate.timestamp,
+        date: new Date(rate.timestamp).toISOString(),
+        open: rate.open_rate || rate.rate,
+        high: rate.high_rate || rate.rate,
+        low: rate.low_rate || rate.rate,
+        close: rate.rate,
+        volume: rate.volume || 0
+      }));
+
+      return this.transformResponse(processedRates);
+    } catch (error) {
+      ctx.throw(500, error);
+    }
+  },
+
   // ✅ Public API for latest exchange rates (no auth required)
   async latestRates(ctx) {
     try {
