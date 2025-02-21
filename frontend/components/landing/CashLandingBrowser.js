@@ -116,7 +116,6 @@ const BitCashLanding = () => {
             direction="column"
             align="center"
             textAlign="center"
-            py={{ base: 20, md: 28 }}
             position="relative"
           >
             <VStack spacing={8} maxW="4xl">
