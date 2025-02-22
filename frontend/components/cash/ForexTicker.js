@@ -43,12 +43,26 @@ const METAL_SYMBOLS = ['XAU', 'XAG'];
 
 const fetchForexRates = async ({ queryKey }) => {
   const [, baseCurrency] = queryKey;
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/latest?base=${baseCurrency}`);
   
-  if (!response.ok) throw new Error(`Failed to fetch Forex rates for ${baseCurrency}`);
-  
-  const data = await response.json();
-  return processRates(data?.data?.attributes?.results || [], baseCurrency);
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/latest?base=${baseCurrency}`
+    );
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`Forex rates fetch error for ${baseCurrency}:`, errorText);
+      throw new Error(`Failed to fetch Forex rates for ${baseCurrency}: ${errorText}`);
+    }
+    
+    const data = await response.json();
+    console.log('Raw forex data:', data);
+
+    return processRates(data.data || [], baseCurrency);
+  } catch (error) {
+    console.error('Forex rates fetch failed:', error);
+    throw error;
+  }
 };
 
 const fetchCryptoRates = async () => {

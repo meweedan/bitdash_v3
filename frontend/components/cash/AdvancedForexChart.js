@@ -69,22 +69,27 @@ const AdvancedForexChart = () => {
   } = useQuery({
     queryKey: ['historical-rates', baseCurrency, quoteCurrency, timeframe],
     queryFn: async () => {
+    try {
       const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/historical?base=${baseCurrency}&quote=${quoteCurrency}&days=${getDaysFromTimeframe(timeframe)}`;
-      console.log('Fetching URL:', url);
+      console.log('Fetching historical rates URL:', url);
 
       const response = await fetch(url);
       
       if (!response.ok) {
         const errorText = await response.text();
-        console.error('Fetch error details:', errorText);
+        console.error('Failed to fetch historical data:', errorText);
         throw new Error(`Failed to fetch historical data: ${errorText}`);
       }
       
       const result = await response.json();
-      console.log('Raw response:', result);
+      console.log('Raw historical data response:', result);
       
       return result.data || [];
-    },
+    } catch (error) {
+      console.error('Error in historical rates fetch:', error);
+      throw error;
+    }
+  },
     refetchInterval: 60000
   });
 
