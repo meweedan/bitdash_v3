@@ -46,7 +46,7 @@ const fetchForexRates = async ({ queryKey }) => {
   
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/latest?base=${baseCurrency}`
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/latest?base=${baseCurrency}`
     );
     
     if (!response.ok) {

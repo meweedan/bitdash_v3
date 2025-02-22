@@ -70,7 +70,7 @@ const AdvancedForexChart = () => {
     queryKey: ['historical-rates', baseCurrency, quoteCurrency, timeframe],
     queryFn: async () => {
     try {
-      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates/historical?base=${baseCurrency}&quote=${quoteCurrency}&days=${getDaysFromTimeframe(timeframe)}`;
+      const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/historical?base=${baseCurrency}&quote=${quoteCurrency}&days=${getDaysFromTimeframe(timeframe)}`;
       console.log('Fetching historical rates URL:', url);
 
       const response = await fetch(url);
