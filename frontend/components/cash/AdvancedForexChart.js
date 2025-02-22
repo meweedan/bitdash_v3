@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   Box,
   VStack,
@@ -13,7 +13,6 @@ import {
   useBreakpointValue,
 } from '@chakra-ui/react';
 
-// Use valid icons from lucide-react
 import { ArrowUpDown, LineChart, CandlestickChart } from 'lucide-react';
 
 import {
@@ -25,15 +24,13 @@ import {
   Tooltip,
   Bar,
   Legend,
-  // No built-in Candlestick in recharts
+  Layer,
+  Rectangle,
 } from 'recharts';
 
 import { useQuery } from '@tanstack/react-query';
-import { Layer, Rectangle } from 'recharts';
 
-// ----------------------
-// CONFIGURATION
-// ----------------------
+// ----- Configuration -----
 const AVAILABLE_CURRENCIES = {
   FIAT: ['USD', 'LYD', 'EGP', 'EUR', 'GBP', 'TND'],
   CRYPTO: ['BTC', 'ETH', 'USDT'],
@@ -45,9 +42,7 @@ const CHART_TYPES = {
   LINE: 'line'
 };
 
-// ----------------------
-// UTILITY FUNCTIONS
-// ----------------------
+// ----- Utility Functions -----
 const formatPrice = (price, currency) => {
   if (!price) return '-';
   return price.toLocaleString('en-US', {
@@ -59,10 +54,9 @@ const formatPrice = (price, currency) => {
 const getTrendColor = (open, close) =>
   close >= open ? '#26a69a' : '#ef5350';
 
-// ----------------------
-// Custom Candlestick Shape
-// ----------------------
-const CustomCandle = ({ x, y, width, height, payload }) => {
+// ----- Custom Candlestick Shape -----
+const CustomCandle = (props) => {
+  const { x, y, width, height, payload } = props;
   const fillColor = getTrendColor(payload.open, payload.close);
   return (
     <Layer>
@@ -71,99 +65,85 @@ const CustomCandle = ({ x, y, width, height, payload }) => {
   );
 };
 
-// ----------------------
-// Fetch Historical Data via TraderMade API
-// ----------------------
+// ----- Fetch Historical Data with Fallback -----
 const fetchHistoricalRates = async ({ queryKey }) => {
   const [, baseCurrency, quoteCurrency, timeframe] = queryKey;
+  // Get one year of data.
+  const today = new Date();
+  const endDate = today.toISOString().split('T')[0];
+  const pastDate = new Date();
+  pastDate.setFullYear(pastDate.getFullYear() - 1);
+  const startDate = pastDate.toISOString().split('T')[0];
 
-  // Determine the date range based on the timeframe button selected
-  const now = new Date();
-  let startDate = new Date();
-  switch (timeframe) {
-    case "1D":
-      startDate = new Date(now.getTime() - 1 * 24 * 60 * 60 * 1000);
-      break;
-    case "1W":
-      startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-      break;
-    case "1M":
-      startDate = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
-      break;
-    case "3M":
-      startDate = new Date(now.getFullYear(), now.getMonth() - 3, now.getDate());
-      break;
-    case "6M":
-      startDate = new Date(now.getFullYear(), now.getMonth() - 6, now.getDate());
-      break;
-    case "1Y":
-    default:
-      startDate = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
-      break;
+  // Primary API: exchangerate.host
+  const primaryUrl = `https://api.exchangerate.host/timeseries?start_date=${startDate}&end_date=${endDate}&base=${baseCurrency}&symbols=${quoteCurrency}&apikey=00501cab070cfa4550c2f9c0eed2d61e`;
+  console.log("Fetching primary URL:", primaryUrl);
+  try {
+    const res = await fetch(primaryUrl);
+    if (!res.ok) throw new Error("Primary API request failed");
+    const data = await res.json();
+    if (!data.success) throw new Error("Primary API call unsuccessful");
+    const dates = Object.keys(data.rates).sort(); // ascending order
+    const margin = 0.005; // simulate OHLC by applying a 0.5% margin
+    const historicalData = dates.map(date => {
+      const rate = data.rates[date][quoteCurrency];
+      return {
+        date,
+        open: rate * (1 - margin),
+        high: rate * (1 + margin),
+        low: rate * (1 - margin * 1.5),
+        close: rate,
+        volume: Math.floor(Math.random() * 1000) // simulated volume
+      };
+    });
+    return historicalData;
+  } catch (primaryError) {
+    console.error("Primary API failed:", primaryError);
+    // Fallback API call:
+    const fallbackUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/latest?base=${baseCurrency}`;
+    console.log("Fetching fallback URL:", fallbackUrl);
+    const fallbackRes = await fetch(fallbackUrl);
+    if (!fallbackRes.ok) {
+      throw new Error("Fallback API request failed");
+    }
+    const fallbackData = await fallbackRes.json();
+    // Assume fallbackData.data is an array of rate objects with attributes.
+    const margin = 0.005;
+    const fallbackHistoricalData = fallbackData.data.map(item => {
+      const { timestamp, rate, volume } = item.attributes;
+      return {
+        date: new Date(timestamp).toISOString().split('T')[0],
+        open: rate * (1 - margin),
+        high: rate * (1 + margin),
+        low: rate * (1 - margin * 1.5),
+        close: rate,
+        volume: volume || Math.floor(Math.random() * 1000)
+      };
+    });
+    return fallbackHistoricalData;
   }
-  const formatDate = (date) => date.toISOString().slice(0, 10);
-  const start_date = formatDate(startDate);
-  const end_date = formatDate(now);
-
-  // Use your TraderMade API key and build the currency pair (e.g. "USDLYD")
-  const apiKey = "JAvk5zeVBW6ml3oTZfXN";
-  const currencyPair = baseCurrency + quoteCurrency;
-  const url = `https://api.tradermade.com/v1/timeseries?currency=${currencyPair}&api_key=${apiKey}&start_date=${start_date}&end_date=${end_date}&interval=day`;
-
-  console.log('Fetching TraderMade URL:', url);
-
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error('Failed to fetch from TraderMade');
-  }
-  const data = await response.json();
-  if (!data.rates) {
-    throw new Error(`No historical data found for ${baseCurrency}-${quoteCurrency}`);
-  }
-
-  // Process the returned data:
-  // TraderMade returns an object with dates as keys.
-  const dates = Object.keys(data.rates);
-  dates.sort(); // ascending order (oldest to newest)
-  const processedData = dates.map(date => {
-    const dayData = data.rates[date];
-    return {
-      date,
-      open: parseFloat(dayData.open),
-      high: parseFloat(dayData.high),
-      low: parseFloat(dayData.low),
-      close: parseFloat(dayData.close),
-      volume: dayData.volume ? parseInt(dayData.volume) : 0,
-    };
-  });
-  return processedData;
 };
 
-// ----------------------
-// AdvancedForexChart Component
-// ----------------------
 const AdvancedForexChart = () => {
-  // State Management
+  // Local state for currency pair, timeframe, chart type, and volume toggle.
   const [baseCurrency, setBaseCurrency] = useState('USD');
-  const [quoteCurrency, setQuoteCurrency] = useState('LYD');
-  const [timeframe, setTimeframe] = useState('1Y'); // default to 1 year for accuracy
+  const [quoteCurrency, setQuoteCurrency] = useState('EUR'); // default pair
+  const [timeframe, setTimeframe] = useState('1Y'); // default view: 1 Year
   const [showVolume, setShowVolume] = useState(true);
   const [chartType, setChartType] = useState(CHART_TYPES.CANDLESTICK);
 
-  // Responsive Design
+  // Responsive design
   const isMobile = useBreakpointValue({ base: true, md: false });
   const chartHeight = useBreakpointValue({ base: 300, md: 500 });
 
-  // Currency List
-  const allCurrencies = useMemo(() => {
-    return [
-      ...AVAILABLE_CURRENCIES.FIAT,
-      ...AVAILABLE_CURRENCIES.CRYPTO,
-      ...AVAILABLE_CURRENCIES.METALS
-    ];
-  }, []);
+  // Available currency list
+  const allCurrencies = useMemo(() => [
+    ...AVAILABLE_CURRENCIES.FIAT,
+    ...AVAILABLE_CURRENCIES.CRYPTO,
+    ...AVAILABLE_CURRENCIES.METALS
+  ], []);
 
-  // Fetch Historical Rates using TraderMade API
+  // Fetch historical data (one year) with React Query.
   const { data: historicalData, isLoading, error } = useQuery({
     queryKey: ['historical-rates', baseCurrency, quoteCurrency, timeframe],
     queryFn: fetchHistoricalRates,
@@ -171,71 +151,82 @@ const AdvancedForexChart = () => {
     retry: 1
   });
 
-  // Currency Switch Handler
+  // Allow switching the currency pair.
   const switchCurrencies = () => {
     setBaseCurrency(quoteCurrency);
     setQuoteCurrency(baseCurrency);
   };
 
-  // Prepare Chart Data
-  const chartData = useMemo(() => {
-    if (!historicalData || !Array.isArray(historicalData)) {
-      return [];
-    }
-    return historicalData.map(item => ({
-      date: new Date(item.date).toLocaleDateString(),
-      open: item.open,
-      high: item.high,
-      low: item.low,
-      close: item.close,
-      volume: item.volume || 0
-    }));
-  }, [historicalData]);
+  // Map timeframe to the number of days to display.
+  const timeframeDaysMap = {
+    '1D': 1,
+    '1W': 7,
+    '1M': 30,
+    '3M': 90,
+    '6M': 180,
+    '1Y': 365
+  };
+  const daysToShow = timeframeDaysMap[timeframe] || 365;
 
-  // Color Theming
+  // Process fetched data: sort by date and filter by timeframe.
+  const chartData = useMemo(() => {
+    if (!historicalData || !Array.isArray(historicalData)) return [];
+    const sortedData = historicalData.sort((a, b) => new Date(a.date) - new Date(b.date));
+    return sortedData.slice(-daysToShow);
+  }, [historicalData, daysToShow]);
+
   const bgColor = useColorModeValue('white', 'gray.900');
   const textColor = useColorModeValue('gray.800', 'white');
   const selectBg = useColorModeValue('gray.100', 'gray.700');
 
   return (
     <Box bg={bgColor} color={textColor} p={isMobile ? 2 : 6} borderRadius="xl" w="full" boxShadow="md">
-      {/* Navigation Bar (always visible) for selecting currency pair */}
-      <HStack spacing={isMobile ? 2 : 4} flexDirection={isMobile ? 'column' : 'row'} w="full" mb={4}>
-        <Select
-          value={baseCurrency}
-          onChange={(e) => setBaseCurrency(e.target.value)}
-          flex={1}
-          size={isMobile ? 'sm' : 'md'}
-          bg={selectBg}
-        >
-          {allCurrencies.map(currency => (
-            <option key={currency} value={currency}>
-              {currency}
-            </option>
-          ))}
-        </Select>
-        <Button onClick={switchCurrencies} variant="outline" size={isMobile ? 'sm' : 'md'}>
-          <ArrowUpDown />
-        </Button>
-        <Select
-          value={quoteCurrency}
-          onChange={(e) => setQuoteCurrency(e.target.value)}
-          flex={1}
-          size={isMobile ? 'sm' : 'md'}
-          bg={selectBg}
-        >
-          {allCurrencies.map(currency => (
-            <option key={currency} value={currency}>
-              {currency}
-            </option>
-          ))}
-        </Select>
-      </HStack>
-
       <VStack spacing={4} align="stretch">
+        {/* Always show currency navigation even if error */}
+        {error && (
+          <Alert status="error">
+            <AlertIcon />
+            {error.message || 'Failed to fetch exchange rate data.'}
+          </Alert>
+        )}
+
+        <HStack spacing={isMobile ? 2 : 4} flexDirection={isMobile ? 'column' : 'row'} w="full">
+          <Select
+            value={baseCurrency}
+            onChange={(e) => setBaseCurrency(e.target.value)}
+            flex={1}
+            size={isMobile ? 'sm' : 'md'}
+            bg={selectBg}
+          >
+            {allCurrencies.map(currency => (
+              <option key={currency} value={currency}>
+                {currency}
+              </option>
+            ))}
+          </Select>
+
+          <Button onClick={switchCurrencies} variant="outline" size={isMobile ? 'sm' : 'md'}>
+            <ArrowUpDown />
+          </Button>
+
+          <Select
+            value={quoteCurrency}
+            onChange={(e) => setQuoteCurrency(e.target.value)}
+            flex={1}
+            size={isMobile ? 'sm' : 'md'}
+            bg={selectBg}
+          >
+            {allCurrencies.map(currency => (
+              <option key={currency} value={currency}>
+                {currency}
+              </option>
+            ))}
+          </Select>
+        </HStack>
+
         {/* Chart Controls */}
         <HStack spacing={2} justify="center" wrap="wrap">
-          {['1D', '1W', '1M', '3M', '6M', '1Y'].map((tf) => (
+          {['1D', '1W', '1M', '3M', '6M', '1Y'].map(tf => (
             <Button
               key={tf}
               onClick={() => setTimeframe(tf)}
@@ -246,20 +237,16 @@ const AdvancedForexChart = () => {
               {tf}
             </Button>
           ))}
+
           <Button
             onClick={() => setChartType(chartType === CHART_TYPES.CANDLESTICK ? CHART_TYPES.LINE : CHART_TYPES.CANDLESTICK)}
             size="xs"
             variant="ghost"
-            leftIcon={
-              chartType === CHART_TYPES.CANDLESTICK ? (
-                <LineChart size={16} />
-              ) : (
-                <CandlestickChart size={16} />
-              )
-            }
+            leftIcon={chartType === CHART_TYPES.CANDLESTICK ? <LineChart size={16} /> : <CandlestickChart size={16} />}
           >
             {chartType === CHART_TYPES.CANDLESTICK ? 'Line' : 'Candle'}
           </Button>
+
           <Button
             onClick={() => setShowVolume(!showVolume)}
             size="xs"
@@ -274,10 +261,7 @@ const AdvancedForexChart = () => {
         {isLoading ? (
           <Spinner />
         ) : chartData.length === 0 ? (
-          <Alert status="warning">
-            <AlertIcon />
-            No exchange rate data found.
-          </Alert>
+          <Text>No historical data available for this pair.</Text>
         ) : (
           <Box h={`${chartHeight}px`} w="full">
             <ResponsiveContainer width="100%" height="100%">
@@ -292,30 +276,17 @@ const AdvancedForexChart = () => {
                     tick={{ fontSize: isMobile ? 8 : 12 }}
                   />
                 )}
+
                 {chartType === CHART_TYPES.CANDLESTICK ? (
-                  <Bar
-                    yAxisId="price"
-                    dataKey="close"
-                    shape={(barProps) => <CustomCandle {...barProps} />}
-                  />
+                  <Bar yAxisId="price" dataKey="close" shape={(barProps) => <CustomCandle {...barProps} />} />
                 ) : (
-                  <Line
-                    yAxisId="price"
-                    type="monotone"
-                    dataKey="close"
-                    stroke="#8884d8"
-                    strokeWidth={2}
-                  />
+                  <Line yAxisId="price" type="monotone" dataKey="close" stroke="#8884d8" strokeWidth={2} />
                 )}
+
                 {showVolume && (
-                  <Bar
-                    yAxisId="volume"
-                    dataKey="volume"
-                    fill="#82ca9d"
-                    opacity={0.3}
-                    barSize={10}
-                  />
+                  <Bar yAxisId="volume" dataKey="volume" fill="#82ca9d" opacity={0.3} barSize={10} />
                 )}
+
                 <Tooltip
                   contentStyle={{ backgroundColor: bgColor, borderRadius: '8px' }}
                   content={({ payload, label }) => {
