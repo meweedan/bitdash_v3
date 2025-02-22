@@ -55,14 +55,6 @@ module.exports = {
       config: {
         auth: false, // Public access for real-time rates
       },
-    }, 
-    {
-    method: 'GET',
-      path: '/exchange-rates/fetch-historical',
-      handler: 'exchange-rate.fetchHistoricalData',
-      config: {
-        auth: false
-      }
-    }
-  ]
+    },
+  ],
 };

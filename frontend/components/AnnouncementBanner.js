@@ -77,7 +77,6 @@ const AnnouncementBanner = () => {
     >
       <MotionBox
         display="flex"
-        whiteSpace="nowrap"
         animate={{
           x: [0, -1000],
         }}
@@ -98,7 +97,6 @@ const AnnouncementBanner = () => {
                 spacing={3}
                 px={4}
                 py={2}
-                bg={isDark ? 'whiteAlpha.100' : 'whiteAlpha.200'}
                 cursor={announcement.attributes.link ? 'pointer' : 'default'}
                 onClick={() => {
                   if (announcement.attributes.link) {
@@ -106,7 +104,6 @@ const AnnouncementBanner = () => {
                   }
                 }}
                 _hover={{
-                  bg: isDark ? 'whiteAlpha.200' : 'whiteAlpha.300',
                   transform: 'translateY(-5px)',
                 }}
                 transition="all 0.2s"
@@ -115,7 +112,7 @@ const AnnouncementBanner = () => {
                   {iconMap[announcement.attributes.icon]}
                 </Text>
                 <Text
-                  color={isDark ? 'white' : 'black'}
+                  color={isDark ? 'black' : 'black'}
                   fontWeight="large"
                   fontSize="lg"
                 >
