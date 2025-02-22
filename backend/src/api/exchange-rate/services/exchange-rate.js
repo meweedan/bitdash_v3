@@ -1,4 +1,4 @@
-// api/exchange-rate/services/custom-exchange-rate.js
+// api/exchange-rate/services/exchange-rate.js
 module.exports = {
   async fetchHistoricalCryptoAndMetalRates() {
     const CRYPTO_SYMBOLS = ['BTC', 'ETH', 'USDT'];

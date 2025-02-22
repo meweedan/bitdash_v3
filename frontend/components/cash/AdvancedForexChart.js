@@ -33,6 +33,14 @@ const AVAILABLE_CURRENCIES = {
   METALS: ['XAU', 'XAG']
 };
 
+const PROFIT_MARGINS = {
+  LYD: { buy: 0.04, sell: 0.04, market_multiplier: 1.5 },
+  EGP: { buy: 0.05, sell: 0.025, market_multiplier: 1.4 },
+  CRYPTO: { buy: 0.02, sell: 0.015, market_multiplier: 1.2 },
+  METALS: { buy: 0.02, sell: 0.015, market_multiplier: 1.2 },
+  DEFAULT: { buy: 0.02, sell: 0.015, market_multiplier: 1.1 }
+};
+
 // Chart Types
 const CHART_TYPES = {
   CANDLESTICK: 'candlestick',
@@ -51,47 +59,75 @@ const formatPrice = (price, currency) => {
 const getTrendColor = (open, close) => 
   close >= open ? '#26a69a' : '#ef5350';
 
-const getAllCurrencies = () => [
-  ...AVAILABLE_CURRENCIES.FIAT,
-  ...AVAILABLE_CURRENCIES.CRYPTO,
-  ...AVAILABLE_CURRENCIES.METALS
-];
-
 const fetchHistoricalRates = async ({ queryKey }) => {
   const [, baseCurrency, quoteCurrency, timeframe] = queryKey;
   
   try {
-    const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates?/fetch-historical?base=${baseCurrency}&quote=${quoteCurrency}&days=${getDaysFromTimeframe(timeframe)}`;
-    console.log('Fetching URL:', url);
+    const apiKey = process.env.NEXT_PUBLIC_ALPHA_VANTAGE_KEY;
+    const url = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${baseCurrency}&to_currency=${quoteCurrency}&apikey=${apiKey}`;
+    
+    console.log('Fetching Alpha Vantage URL:', url);
 
     const response = await fetch(url);
     
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Failed to fetch historical data:', errorText);
-      throw new Error(`Failed to fetch historical data: ${errorText}`);
+      throw new Error('Failed to fetch from Alpha Vantage');
     }
     
-    const result = await response.json();
-    console.log('Raw historical data response:', result);
+    const data = await response.json();
+    const exchangeRate = data['Realtime Currency Exchange Rate'];
     
-    return result.data || [];
+    if (!exchangeRate) {
+      throw new Error('No exchange rate data found');
+    }
+
+    // Apply profit margins
+    const margin = PROFIT_MARGINS[baseCurrency] || PROFIT_MARGINS.DEFAULT;
+    const rate = parseFloat(exchangeRate['5. Exchange Rate']);
+    const processedRate = {
+      from_currency: baseCurrency,
+      to_currency: quoteCurrency,
+      rate: rate * margin.market_multiplier,
+      open_rate: rate * margin.market_multiplier,
+      high_rate: rate * margin.market_multiplier * 1.01,
+      low_rate: rate * margin.market_multiplier * 0.99,
+      buy_price: rate * (1 + margin.buy),
+      sell_price: rate * (1 - margin.sell),
+      timestamp: new Date().toISOString(),
+      source: 'Alpha Vantage'
+    };
+
+    // Save to backend
+    const saveResponse = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates`, 
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ data: processedRate })
+      }
+    );
+
+    if (!saveResponse.ok) {
+      console.warn('Failed to save exchange rate to backend');
+    }
+
+    // Generate simulated historical data
+    return Array(30).fill(null).map((_, index) => ({
+      attributes: {
+        timestamp: new Date(Date.now() - index * 24 * 60 * 60 * 1000).toISOString(),
+        rate: rate * (1 + (Math.random() - 0.5) * 0.1),
+        open_rate: rate * (1 + (Math.random() - 0.5) * 0.1),
+        high_rate: rate * (1 + (Math.random() - 0.5) * 0.1) * 1.01,
+        low_rate: rate * (1 + (Math.random() - 0.5) * 0.1) * 0.99,
+        volume: Math.random() * 1000
+      }
+    })).reverse();
   } catch (error) {
     console.error('Error in historical rates fetch:', error);
     throw error;
   }
-};
-
-const getDaysFromTimeframe = (tf) => {
-  const timeframeDays = {
-    '1D': 1,
-    '1W': 7,
-    '1M': 30,
-    '3M': 90,
-    '6M': 180,
-    '1Y': 365
-  };
-  return timeframeDays[tf] || 30;
 };
 
 const AdvancedForexChart = () => {
@@ -101,14 +137,17 @@ const AdvancedForexChart = () => {
   const [timeframe, setTimeframe] = useState('1M');
   const [showVolume, setShowVolume] = useState(true);
   const [chartType, setChartType] = useState(CHART_TYPES.CANDLESTICK);
-  const [showMovingAverages, setShowMovingAverages] = useState(false);
 
   // Responsive Design
   const isMobile = useBreakpointValue({ base: true, md: false });
   const chartHeight = useBreakpointValue({ base: 300, md: 500 });
 
   // Currency List
-  const allCurrencies = useMemo(() => getAllCurrencies(), []);
+  const allCurrencies = useMemo(() => [
+    ...AVAILABLE_CURRENCIES.FIAT,
+    ...AVAILABLE_CURRENCIES.CRYPTO,
+    ...AVAILABLE_CURRENCIES.METALS
+  ], []);
 
   // Fetch Historical Rates
   const { 
@@ -130,42 +169,28 @@ const AdvancedForexChart = () => {
 
   // Prepare Chart Data
   const chartData = useMemo(() => {
-    console.log('Raw historical data:', historicalData);
-    
     if (!historicalData || !Array.isArray(historicalData)) {
-      console.warn('Historical data is not an array:', historicalData);
       return [];
     }
 
     return historicalData.map(item => {
       if (!item || !item.attributes) {
-        console.warn('Invalid data item:', item);
         return null;
       }
 
-      const rates = {
-        date: item.attributes.timestamp 
-          ? new Date(item.attributes.timestamp).toLocaleDateString() 
-          : 'N/A',
-        open: item.attributes.open_rate || item.attributes.rate || 0,
-        high: item.attributes.high_rate || item.attributes.rate || 0,
-        low: item.attributes.low_rate || item.attributes.rate || 0,
-        close: item.attributes.rate || 0,
+      return {
+        date: new Date(item.attributes.timestamp).toLocaleDateString(),
+        open: item.attributes.open_rate,
+        high: item.attributes.high_rate,
+        low: item.attributes.low_rate,
+        close: item.attributes.rate,
         volume: item.attributes.volume || 0
       };
-
-      // Calculate Moving Averages
-      if (showMovingAverages) {
-        rates.ma20 = calculateMovingAverage(historicalData, 20, 'rate');
-        rates.ma50 = calculateMovingAverage(historicalData, 50, 'rate');
-      }
-
-      return rates;
     }).filter(Boolean);
-  }, [historicalData, showMovingAverages]);
+  }, [historicalData]);
 
   // Color Theming
-  const bgColor = useColorModeValue('brand.bitcash.400', 'brand.bitcash.700');
+  const bgColor = useColorModeValue('white', 'gray.900');
   const textColor = useColorModeValue('gray.800', 'white');
   const selectBg = useColorModeValue('gray.100', 'gray.700');
 
@@ -239,9 +264,9 @@ const AdvancedForexChart = () => {
             <Button
               key={tf}
               onClick={() => setTimeframe(tf)}
-              variant={timeframe === tf ? 'solid' : 'ghost'}
+              variant={timeframe === tf ? 'bitcash-solid' : 'bitcash-outline'}
               size="xs"
-              colorScheme="blue"
+              colorScheme="brand.bitcash.400"
             >
               {tf}
             </Button>
@@ -273,16 +298,6 @@ const AdvancedForexChart = () => {
             colorScheme="green"
           >
             Volume
-          </Button>
-
-          {/* Moving Averages Toggle */}
-          <Button
-            onClick={() => setShowMovingAverages(!showMovingAverages)}
-            size="xs"
-            variant={showMovingAverages ? 'solid' : 'ghost'}
-            colorScheme="purple"
-          >
-            MA
           </Button>
         </HStack>
 
@@ -331,27 +346,6 @@ const AdvancedForexChart = () => {
                   />
                 )}
 
-                {showMovingAverages && (
-                  <>
-                    <Line
-                      yAxisId="price"
-                      type="monotone"
-                      dataKey="ma20"
-                      stroke="#ff7300"
-                      name="20-Day MA"
-                      dot={false}
-                    />
-                    <Line
-                      yAxisId="price"
-                      type="monotone"
-                      dataKey="ma50"
-                      stroke="#387908"
-                      name="50-Day MA"
-                      dot={false}
-                    />
-                  </>
-                )}
-
                 {showVolume && (
                   <Bar 
                     yAxisId="volume" 
@@ -383,7 +377,6 @@ const AdvancedForexChart = () => {
                     );
                   }}
                 />
-                <Legend />
               </ComposedChart>
             </ResponsiveContainer>
           </Box>
@@ -391,17 +384,6 @@ const AdvancedForexChart = () => {
       </VStack>
     </Box>
   );
-};
-
-// Helper function for Moving Average calculation
-const calculateMovingAverage = (data, period, key) => {
-  return data.map((_, index, array) => {
-    if (index < period - 1) return null;
-    const startIndex = index - (period - 1);
-    const subset = array.slice(startIndex, index + 1);
-    const avg = subset.reduce((sum, item) => sum + (item.attributes[key] || 0), 0) / period;
-    return avg;
-  });
 };
 
 export default AdvancedForexChart;
