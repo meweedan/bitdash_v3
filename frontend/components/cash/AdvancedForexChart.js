@@ -12,18 +12,22 @@ import {
   AlertIcon,
   useBreakpointValue,
 } from '@chakra-ui/react';
-import { ArrowUpDown, LineChart, Candles } from 'lucide-react';
+
+// Replace invalid `Candles` icon with a valid icon from lucide-react
+import { ArrowUpDown, LineChart, CandlestickChart } from 'lucide-react';
+
 import {
   ResponsiveContainer,
   ComposedChart,
-  Candlestick,
   Line,
   XAxis,
   YAxis,
   Tooltip,
   Bar,
-  Legend
+  Legend,
+  // We remove Candlestick from here
 } from 'recharts';
+
 import { useQuery } from '@tanstack/react-query';
 
 // Currency Configuration
@@ -56,24 +60,52 @@ const formatPrice = (price, currency) => {
   });
 };
 
-const getTrendColor = (open, close) => 
+const getTrendColor = (open, close) =>
   close >= open ? '#26a69a' : '#ef5350';
+
+// ----------------------
+// Custom Candlestick Shape
+// ----------------------
+import { Layer, Rectangle } from 'recharts';
+
+const CustomCandle = (props) => {
+  // Each bar's props include x, y, width, height, data, etc.
+  // We can retrieve the data point from props.payload:
+  const { x, y, width, height, payload } = props;
+  const fillColor = getTrendColor(payload.open, payload.close);
+
+  // This is a simplified rectangle for demonstration.
+  // For "TradingView-like" wicks, you’d draw lines for high/low and a rect for open/close.
+  return (
+    <Layer>
+      <Rectangle
+        x={x}
+        y={y}
+        width={width}
+        height={height}
+        fill={fillColor}
+      />
+    </Layer>
+  );
+};
 
 const fetchHistoricalRates = async ({ queryKey }) => {
   const [, baseCurrency, quoteCurrency, timeframe] = queryKey;
   
   try {
     const apiKey = process.env.NEXT_PUBLIC_ALPHA_VANTAGE_KEY;
+    if (!apiKey) {
+      throw new Error('Alpha Vantage API key is missing.');
+    }
+
     const url = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${baseCurrency}&to_currency=${quoteCurrency}&apikey=${apiKey}`;
-    
     console.log('Fetching Alpha Vantage URL:', url);
 
     const response = await fetch(url);
-    
     if (!response.ok) {
       throw new Error('Failed to fetch from Alpha Vantage');
     }
-    
+
     const data = await response.json();
     const exchangeRate = data['Realtime Currency Exchange Rate'];
     
@@ -97,33 +129,36 @@ const fetchHistoricalRates = async ({ queryKey }) => {
       source: 'Alpha Vantage'
     };
 
-    // Save to backend
+    // Save to backend (optional)
     const saveResponse = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/exchange-rates`, 
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ data: processedRate })
       }
     );
-
     if (!saveResponse.ok) {
       console.warn('Failed to save exchange rate to backend');
     }
 
-    // Generate simulated historical data
-    return Array(30).fill(null).map((_, index) => ({
-      attributes: {
-        timestamp: new Date(Date.now() - index * 24 * 60 * 60 * 1000).toISOString(),
-        rate: rate * (1 + (Math.random() - 0.5) * 0.1),
-        open_rate: rate * (1 + (Math.random() - 0.5) * 0.1),
-        high_rate: rate * (1 + (Math.random() - 0.5) * 0.1) * 1.01,
-        low_rate: rate * (1 + (Math.random() - 0.5) * 0.1) * 0.99,
-        volume: Math.random() * 1000
-      }
-    })).reverse();
+    // Simulate historical data (30 days)
+    return Array(30)
+      .fill(null)
+      .map((_, index) => {
+        const randomFactor = 1 + (Math.random() - 0.5) * 0.1; // +/- 5%
+        return {
+          attributes: {
+            timestamp: new Date(Date.now() - index * 24 * 60 * 60 * 1000).toISOString(),
+            rate: rate * randomFactor,
+            open_rate: rate * randomFactor * 0.99,
+            high_rate: rate * randomFactor * 1.01,
+            low_rate: rate * randomFactor * 0.97,
+            volume: Math.floor(Math.random() * 1000)
+          }
+        };
+      })
+      .reverse();
   } catch (error) {
     console.error('Error in historical rates fetch:', error);
     throw error;
@@ -143,28 +178,27 @@ const AdvancedForexChart = () => {
   const chartHeight = useBreakpointValue({ base: 300, md: 500 });
 
   // Currency List
-  const allCurrencies = useMemo(() => [
-    ...AVAILABLE_CURRENCIES.FIAT,
-    ...AVAILABLE_CURRENCIES.CRYPTO,
-    ...AVAILABLE_CURRENCIES.METALS
-  ], []);
+  const allCurrencies = useMemo(
+    () => [
+      ...AVAILABLE_CURRENCIES.FIAT,
+      ...AVAILABLE_CURRENCIES.CRYPTO,
+      ...AVAILABLE_CURRENCIES.METALS
+    ],
+    []
+  );
 
   // Fetch Historical Rates
-  const { 
-    data: historicalData, 
-    isLoading, 
-    error 
-  } = useQuery({
+  const { data: historicalData, isLoading, error } = useQuery({
     queryKey: ['historical-rates', baseCurrency, quoteCurrency, timeframe],
     queryFn: fetchHistoricalRates,
-    refetchInterval: 60000
+    refetchInterval: 60000,
+    retry: 1
   });
 
   // Currency Switch Handler
   const switchCurrencies = () => {
-    const temp = baseCurrency;
     setBaseCurrency(quoteCurrency);
-    setQuoteCurrency(temp);
+    setQuoteCurrency(baseCurrency);
   };
 
   // Prepare Chart Data
@@ -173,20 +207,20 @@ const AdvancedForexChart = () => {
       return [];
     }
 
-    return historicalData.map(item => {
-      if (!item || !item.attributes) {
-        return null;
-      }
-
-      return {
-        date: new Date(item.attributes.timestamp).toLocaleDateString(),
-        open: item.attributes.open_rate,
-        high: item.attributes.high_rate,
-        low: item.attributes.low_rate,
-        close: item.attributes.rate,
-        volume: item.attributes.volume || 0
-      };
-    }).filter(Boolean);
+    return historicalData
+      .map((item) => {
+        if (!item?.attributes) return null;
+        const { timestamp, rate, open_rate, high_rate, low_rate, volume } = item.attributes;
+        return {
+          date: new Date(timestamp).toLocaleDateString(),
+          open: open_rate,
+          high: high_rate,
+          low: low_rate,
+          close: rate,
+          volume: volume || 0
+        };
+      })
+      .filter(Boolean);
   }, [historicalData]);
 
   // Color Theming
@@ -199,24 +233,24 @@ const AdvancedForexChart = () => {
     return (
       <Alert status="error">
         <AlertIcon />
-        {error.message}
+        {error.message || 'Failed to fetch exchange rates.'}
       </Alert>
     );
   }
 
   return (
-    <Box 
-      bg={bgColor} 
-      color={textColor} 
-      p={isMobile ? 2 : 6} 
-      borderRadius="xl" 
+    <Box
+      bg={bgColor}
+      color={textColor}
+      p={isMobile ? 2 : 6}
+      borderRadius="xl"
       w="full"
       boxShadow="md"
     >
       <VStack spacing={4} align="stretch">
         {/* Currency Selection */}
-        <HStack 
-          spacing={isMobile ? 2 : 4} 
+        <HStack
+          spacing={isMobile ? 2 : 4}
           flexDirection={isMobile ? 'column' : 'row'}
           w="full"
         >
@@ -227,18 +261,14 @@ const AdvancedForexChart = () => {
             size={isMobile ? 'sm' : 'md'}
             bg={selectBg}
           >
-            {allCurrencies.map(currency => (
+            {allCurrencies.map((currency) => (
               <option key={currency} value={currency}>
                 {currency}
               </option>
             ))}
           </Select>
 
-          <Button 
-            onClick={switchCurrencies} 
-            variant="outline"
-            size={isMobile ? 'sm' : 'md'}
-          >
+          <Button onClick={switchCurrencies} variant="outline" size={isMobile ? 'sm' : 'md'}>
             <ArrowUpDown />
           </Button>
 
@@ -249,7 +279,7 @@ const AdvancedForexChart = () => {
             size={isMobile ? 'sm' : 'md'}
             bg={selectBg}
           >
-            {allCurrencies.map(currency => (
+            {allCurrencies.map((currency) => (
               <option key={currency} value={currency}>
                 {currency}
               </option>
@@ -260,13 +290,13 @@ const AdvancedForexChart = () => {
         {/* Chart Controls */}
         <HStack spacing={2} justify="center" wrap="wrap">
           {/* Timeframe Buttons */}
-          {['1D', '1W', '1M', '3M', '6M', '1Y'].map(tf => (
+          {['1D', '1W', '1M', '3M', '6M', '1Y'].map((tf) => (
             <Button
               key={tf}
               onClick={() => setTimeframe(tf)}
-              variant={timeframe === tf ? 'bitcash-solid' : 'bitcash-outline'}
+              variant={timeframe === tf ? 'solid' : 'outline'}
               size="xs"
-              colorScheme="brand.bitcash.400"
+              colorScheme="blue"
             >
               {tf}
             </Button>
@@ -274,17 +304,19 @@ const AdvancedForexChart = () => {
 
           {/* Chart Type Toggle */}
           <Button
-            onClick={() => setChartType(
-              chartType === CHART_TYPES.CANDLESTICK 
-                ? CHART_TYPES.LINE 
-                : CHART_TYPES.CANDLESTICK
-            )}
+            onClick={() =>
+              setChartType(
+                chartType === CHART_TYPES.CANDLESTICK ? CHART_TYPES.LINE : CHART_TYPES.CANDLESTICK
+              )
+            }
             size="xs"
             variant="ghost"
             leftIcon={
-              chartType === CHART_TYPES.CANDLESTICK 
-                ? <LineChart size={16} /> 
-                : <Candles size={16} />
+              chartType === CHART_TYPES.CANDLESTICK ? (
+                <LineChart size={16} />
+              ) : (
+                <CandlestickChart size={16} />
+              )
             }
           >
             {chartType === CHART_TYPES.CANDLESTICK ? 'Line' : 'Candle'}
@@ -307,34 +339,35 @@ const AdvancedForexChart = () => {
         ) : (
           <Box h={`${chartHeight}px`} w="full">
             <ResponsiveContainer width="100%" height="100%">
-              <ComposedChart
-                data={chartData}
-                margin={{ top: 10, right: 10, left: 10, bottom: 10 }}
-              >
-                <XAxis 
-                  dataKey="date" 
+              <ComposedChart data={chartData} margin={{ top: 10, right: 10, left: 10, bottom: 10 }}>
+                <XAxis dataKey="date" tick={{ fontSize: isMobile ? 8 : 12 }} />
+                <YAxis
+                  yAxisId="price"
+                  domain={['auto', 'auto']}
                   tick={{ fontSize: isMobile ? 8 : 12 }}
                 />
-                <YAxis 
-                  yAxisId="price" 
-                  domain={['auto', 'auto']} 
-                  tick={{ fontSize: isMobile ? 8 : 12 }}
-                />
+
+                {/* Optional volume Y-axis */}
                 {showVolume && (
-                  <YAxis 
-                    yAxisId="volume" 
-                    orientation="right" 
-                    domain={['auto', 'auto']} 
+                  <YAxis
+                    yAxisId="volume"
+                    orientation="right"
+                    domain={['auto', 'auto']}
                     tick={{ fontSize: isMobile ? 8 : 12 }}
                   />
                 )}
 
+                {/* Candlestick vs. Line Toggle */}
                 {chartType === CHART_TYPES.CANDLESTICK ? (
-                  <Candlestick 
+                  <Bar
                     yAxisId="price"
                     dataKey="close"
-                    fill={(data) => getTrendColor(data.open, data.close)}
-                    stroke={(data) => getTrendColor(data.open, data.close)}
+                    // We use a custom shape for a candlestick-like bar
+                    shape={(barProps) => {
+                      // barProps.payload has open, high, low, close, etc.
+                      // We'll forward it into our CustomCandle shape
+                      return <CustomCandle {...barProps} />;
+                    }}
                   />
                 ) : (
                   <Line
@@ -346,19 +379,21 @@ const AdvancedForexChart = () => {
                   />
                 )}
 
+                {/* Volume bars */}
                 {showVolume && (
-                  <Bar 
-                    yAxisId="volume" 
-                    dataKey="volume" 
-                    fill="#82ca9d" 
-                    opacity={0.3} 
+                  <Bar
+                    yAxisId="volume"
+                    dataKey="volume"
+                    fill="#82ca9d"
+                    opacity={0.3}
+                    barSize={10}
                   />
                 )}
 
-                <Tooltip 
-                  contentStyle={{ 
-                    backgroundColor: bgColor, 
-                    borderRadius: '8px' 
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: bgColor,
+                    borderRadius: '8px'
                   }}
                   content={({ payload, label }) => {
                     if (!payload?.length) return null;
@@ -377,6 +412,7 @@ const AdvancedForexChart = () => {
                     );
                   }}
                 />
+                <Legend />
               </ComposedChart>
             </ResponsiveContainer>
           </Box>
