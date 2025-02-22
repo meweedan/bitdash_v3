@@ -293,9 +293,9 @@ const AdvancedForexChart = () => {
             <Button
               key={tf}
               onClick={() => setTimeframe(tf)}
-              variant={timeframe === tf ? 'solid' : 'outline'}
+              variant={timeframe === tf ? 'bitcash-solid' : 'bitcash-outline'}
               size="xs"
-              colorScheme="blue"
+              colorScheme="brand.bitcash.700"
             >
               {tf}
             </Button>
