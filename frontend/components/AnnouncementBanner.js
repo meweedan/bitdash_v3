@@ -77,6 +77,7 @@ const AnnouncementBanner = () => {
     >
       <MotionBox
         display="flex"
+        whiteSpace="nowrap"
         animate={{
           x: [0, -1000],
         }}
