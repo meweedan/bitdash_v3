@@ -58,11 +58,35 @@ const fetchForexRates = async ({ queryKey }) => {
     const data = await response.json();
     console.log('Raw forex data:', data);
 
-    return processRates(data.data || [], baseCurrency);
+    // Filter rates for the specific base currency
+    const filteredRates = data.data.filter(item => 
+      item.attributes.from_currency === baseCurrency
+    );
+
+    return processRates(filteredRates, baseCurrency);
   } catch (error) {
     console.error('Forex rates fetch failed:', error);
     throw error;
   }
+};
+
+const processRates = (rates, baseCurrency) => {
+  if (!Array.isArray(rates)) return [];
+  
+  return rates.map(item => {
+    const margin = PROFIT_MARGINS[baseCurrency] || PROFIT_MARGINS.CRYPTO;
+    const marketRate = parseFloat(item.attributes.rate) * margin.market_multiplier;
+    
+    return {
+      from: item.attributes.from_currency,
+      to: item.attributes.to_currency,
+      rate: marketRate,
+      buy: marketRate * (1 + margin.buy),
+      sell: marketRate * (1 - margin.sell),
+      change: item.attributes.change_percentage || 0,
+      timestamp: item.attributes.timestamp
+    };
+  });
 };
 
 const fetchCryptoRates = async () => {
@@ -117,25 +141,6 @@ const fetchMetalRates = async () => {
   }
   
   return rates;
-};
-
-const processRates = (rates, baseCurrency) => {
-  if (!Array.isArray(rates)) return [];
-  
-  return rates.filter(item => item && item.rate).map(item => {
-    const margin = PROFIT_MARGINS[baseCurrency] || PROFIT_MARGINS.CRYPTO;
-    const marketRate = parseFloat(item.rate) * margin.market_multiplier;
-    
-    return {
-      from: item.from_currency,
-      to: item.to_currency,
-      rate: marketRate,
-      buy: marketRate * (1 + margin.buy),
-      sell: marketRate * (1 - margin.sell),
-      change: item.change_percentage || 0,
-      timestamp: item.timestamp
-    };
-  });
 };
 
 const RatePanel = ({ rates, isLoading, error, onSwitch }) => {
