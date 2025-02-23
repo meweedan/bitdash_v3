@@ -3,7 +3,8 @@ import {
   Box,
   VStack,
   HStack,
-  Select,
+  Select,  
+  SimpleGrid,
   Button,
   Spinner,
   Alert,
@@ -20,7 +21,6 @@ import {
   YAxis,
   Tooltip,
   Legend,
-  SimpleGrid,
   Bar,
   Line
 } from 'recharts';
