@@ -227,30 +227,51 @@ export default function AdvancedForexChart() {
           <Box height={chartHeight} width="full">
             <ResponsiveContainer>
               <ComposedChart
-  data={finalData}
-  margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
->
-  <XAxis
-    dataKey="day"
-    type="category"
-    scale="band"
-    stroke={textColor}
-  />
-  <YAxis
-    stroke={textColor}
-    domain={['auto', 'auto']}
-    tickFormatter={(val) => formatPrice(val, quoteCurrency)}
-    allowDataOverflow={false}
-  />
-  
-  <Bar
-    dataKey="high" // We use high as primary key
-    fill="transparent"
-    isAnimationActive={false}
-    shape={<CandleBarShape />}
-    barSize={40}
-  />
-</ComposedChart>
+                data={finalData}
+                margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
+              >
+                <SimpleGrid strokeDasharray="3 3" />
+                <XAxis
+                  dataKey="day"
+                  type="category"
+                  scale="band"
+                  stroke={textColor}
+                />
+                <YAxis
+                stroke={textColor}
+                domain={[(dataMin) => dataMin * 0.995, (dataMax) => dataMax * 1.005]} // Add padding
+                tickFormatter={(val) => formatPrice(val, quoteCurrency)}
+              />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: bgColor,
+                    border: '1px solid #ccc',
+                    borderRadius: '8px',
+                  }}
+                  labelFormatter={(label) => label}
+                  formatter={(value) => formatPrice(value, quoteCurrency)}
+                />
+                <Legend />
+
+                {isLineChart ? (
+                  <Line
+                    dataKey="close"
+                    stroke="#84d8bf"
+                    dot={false}
+                    type="monotone"
+                    {...lineAnimationProps}
+                  />
+                ) : (
+                  <Bar
+                    dataKey="high" // Use high as primary data key
+                    fill="transparent"
+                    isAnimationActive={false}
+                    shape={<CandleBarShape />}
+                    barCategoryGap="40%"
+                    barSize={20} // Control overall bar width
+                  />
+                )}
+              </ComposedChart>
             </ResponsiveContainer>
           </Box>
         )}
