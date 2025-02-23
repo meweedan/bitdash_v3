@@ -110,7 +110,7 @@ const BitCashLanding = () => {
 
   return (
     <Box ref={containerRef} bg={bgGradient} overflow="hidden">
-      <Container maxW="8xl">
+      <Container maxW="8xl" pt={8}>
         {/* Hero Section */}
         <motion.div style={{ scale: heroScale }}>
           <Flex
@@ -217,6 +217,7 @@ const BitCashLanding = () => {
         <SimpleGrid
           columns={{ base: 1, md: 2, lg: 4 }}
           spacing={8}
+          mb={8}
         >
           {features.map((feature, index) => (
             <motion.div

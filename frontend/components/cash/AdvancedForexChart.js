@@ -10,6 +10,7 @@ import {
   AlertIcon,
   Text,
   useColorModeValue,
+  IconButton,
   useBreakpointValue,
 } from '@chakra-ui/react';
 import {
@@ -23,7 +24,7 @@ import {
   Bar,
   Line
 } from 'recharts';
-import { ArrowUpDown, LineChart, CandlestickChart } from 'lucide-react';
+import { ArrowUpDown, LineChart, CandlestickChart, ZoomOut, ZoomIn } from 'lucide-react';
 
 /** ----- Configuration ----- */
 const AVAILABLE_CURRENCIES = {
@@ -55,33 +56,52 @@ function formatPrice(value, currency = 'USD') {
 function CandleBarShape(props) {
   const { x, y, width, height, payload } = props;
   
-  if (!payload) return null;
-  const { open, high, low, close } = payload;
-  const color = getCandleColor(open, close);
+  if (!payload || !height) return null;
 
-  // Calculate relative positions within the bar's allocated space
-  const priceRange = high - low;
-  const bodyTop = ((high - Math.max(open, close)) / priceRange * height);
-  const bodyHeight = (Math.abs(close - open) / priceRange * height);
-  const candleWidth = Math.min(width * 0.6, 8); // Max width 8px
+  // Extract OHLC values correctly from payload
+  const open = payload.open;
+  const high = payload.high;
+  const low = payload.low;
+  const close = payload.close;
+  
+  // TradingView colors
+  const color = close >= open ? '#26a69a' : '#ef5350';
+  
+  // Calculate positions within the allocated space
+  const maxPrice = Math.max(high, low);
+  const minPrice = Math.min(high, low);
+  const priceRange = maxPrice - minPrice;
+  
+  // Convert prices to y-coordinates
+  const getY = (price) => {
+    return y + (maxPrice - price) / priceRange * height;
+  };
+
+  const highY = getY(high);
+  const lowY = getY(low);
+  const openY = getY(open);
+  const closeY = getY(close);
+  
+  const candleWidth = Math.min(width * 0.75, 8); // TradingView width
 
   return (
     <g>
-      {/* Wick from high to low */}
+      {/* Wick */}
       <line
         x1={x + width/2}
-        y1={0} // Top of the allocated space (high)
+        y1={highY}
         x2={x + width/2}
-        y2={height} // Bottom of allocated space (low)
+        y2={lowY}
         stroke={color}
         strokeWidth={1}
       />
-      {/* Candle body */}
+      
+      {/* Body */}
       <rect
         x={x + (width - candleWidth)/2}
-        y={bodyTop}
+        y={Math.min(openY, closeY)}
         width={candleWidth}
-        height={Math.max(bodyHeight, 1)}
+        height={Math.max(Math.abs(openY - closeY), 1)}
         fill={color}
       />
     </g>
@@ -89,6 +109,8 @@ function CandleBarShape(props) {
 }
 
 export default function AdvancedForexChart() {
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const [visibleStartIndex, setVisibleStartIndex] = useState(0);
   const [baseCurrency, setBaseCurrency] = useState('USD');
   const [quoteCurrency, setQuoteCurrency] = useState('GBP');
   const [timeframe, setTimeframe] = useState('1M');
@@ -147,12 +169,24 @@ export default function AdvancedForexChart() {
     .sort((a, b) => (a.day > b.day ? 1 : -1));
   }, [rawData, baseCurrency, quoteCurrency]);
 
-  const finalData = useMemo(() => {
+   const finalData = useMemo(() => {
     if (!chartData.length) return [];
-    if (timeframe === 'All') return chartData;
-    const daysToShow = timeframeDaysMap[timeframe] || 30;
-    return chartData.slice(-daysToShow);
-  }, [chartData, timeframe]);
+    let data = timeframe === 'All' ? chartData : chartData.slice(-timeframeDaysMap[timeframe]);
+    
+    // Apply zoom
+    const visibleItems = Math.floor(data.length / zoomLevel);
+    return data.slice(visibleStartIndex, visibleStartIndex + visibleItems);
+  }, [chartData, timeframe, zoomLevel, visibleStartIndex]);
+
+   const handleZoomIn = () => setZoomLevel(prev => Math.min(prev + 0.5, 4));
+  const handleZoomOut = () => setZoomLevel(prev => Math.max(prev - 0.5, 1));
+
+  // Navigation controls
+  const handleScroll = (direction) => {
+    setVisibleStartIndex(prev => Math.max(0, 
+      direction === 'left' ? prev - 10 : prev + 10
+    ));
+  };
 
   const switchCurrencies = () => {
     setBaseCurrency(quoteCurrency);
@@ -224,7 +258,23 @@ export default function AdvancedForexChart() {
         ) : !finalData.length ? (
           <Text>No historical data available for this pair.</Text>
         ) : (
-          <Box height={chartHeight} width="full">
+          <Box height={chartHeight} width="full" position="relative">
+            {/* Zoom controls */}
+            <HStack position="absolute" top={2} right={4} zIndex={1}>
+              <IconButton
+                icon={<ZoomOut size={16} />}
+                onClick={handleZoomOut}
+                size="sm"
+                aria-label="Zoom out"
+              />
+              <IconButton
+                icon={<ZoomIn size={16} />}
+                onClick={handleZoomIn}
+                size="sm"
+                aria-label="Zoom in"
+              />
+            </HStack>
+
             <ResponsiveContainer>
               <ComposedChart
                 data={finalData}
@@ -263,12 +313,12 @@ export default function AdvancedForexChart() {
                   />
                 ) : (
                   <Bar
-                    dataKey="high" // Use high as primary data key
+                    dataKey="high"
                     fill="transparent"
                     isAnimationActive={false}
                     shape={<CandleBarShape />}
-                    barCategoryGap="40%"
-                    barSize={20} // Control overall bar width
+                    barCategoryGap={20}
+                    barSize={14}
                   />
                 )}
               </ComposedChart>
