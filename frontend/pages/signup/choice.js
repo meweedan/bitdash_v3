@@ -107,7 +107,6 @@ const PLATFORMS = {
         descriptionKey: 'bitcash.merchant.description',
         icon: FaStore,
         signupPath: '/signup/merchant',
-        commission: '1.5%'
       },
       {
         type: 'agent',
@@ -117,7 +116,6 @@ const PLATFORMS = {
         descriptionKey: 'bitcash.agent.description',
         icon: FaHandshake,
         signupPath: '/signup/agent',
-        commission: '1%'
       },
       {
         type: 'customer',
@@ -149,7 +147,6 @@ const PLATFORMS = {
         descriptionKey: 'bitfund.trader.description',
         icon: FaChartBar,
         signupPath: '/signup/challenger',
-        accountTypes: 'Standard, Pro, Elite, Super'
       }
     ]
   },
@@ -172,7 +169,6 @@ const PLATFORMS = {
         descriptionKey: 'bitinvest.individual.description',
         icon: FaUserTie,
         signupPath: '/signup/individual',
-        minDeposit: '$150'
       },
       {
         type: 'institutional',
@@ -182,7 +178,6 @@ const PLATFORMS = {
         descriptionKey: 'bitinvest.institutional.description',
         icon: FaBuilding,
         signupPath: '/signup/institutional',
-        minDeposit: '$100,000'
       }
     ]
   },
@@ -473,14 +468,16 @@ export default function SignupChoice() {
                 <Heading
                   size="md"
                   color={isDark ? 'gray.300' : 'gray.600'}
+                  textAlign="center"
                 >
                   {t('chooseAccountType', 'Select Your Account Type')}
                 </Heading>
                 
                 <SimpleGrid 
-                  columns={{ base: 1, lg: currentPlatform.options.length > 2 ? 3 : 2 }} 
+                  columns={currentPlatform.subdomain === 'fund' ? 1 : { base: 1, lg: currentPlatform.options.length > 2 ? 3 : 2 }}
                   spacing={8} 
                   w="full"
+                  justifyItems="center"
                 >
                   {currentPlatform.options.map((option) => (
                     <AccountTypeCard 
