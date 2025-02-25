@@ -31,11 +31,11 @@ import {
 import { QuestionOutlineIcon, CheckIcon } from '@chakra-ui/icons';
 
 const PLATFORM_CONFIG = {
-  food: {
+  fund: {
     type: 'Operator',
     roleId: 3,
     route: '/operator/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://food.bitdash.app',
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://fund.bitdash.app',
   },
   auto: {
     type: 'Dealer',

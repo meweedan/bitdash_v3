@@ -2,24 +2,24 @@
 import { useState, useEffect } from 'react';
 
 export default function useSubdomain() {
-  const [platform, setPlatform] = useState('food'); // Default to food
+  const [platform, setPlatform] = useState('trade'); // Default to trade
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // For development
       if (window.location.hostname === 'localhost' || window.location.hostname.includes('vercel.app')) {
         const pathParts = window.location.pathname.split('/');
-        const platformFromPath = pathParts.find(part => ['food', 'ride', 'shop', 'cash', 'work'].includes(part));
-        setPlatform(platformFromPath || 'food');
+        const platformFromPath = pathParts.find(part => ['fund', 'trade', 'invest', 'cash'].includes(part));
+        setPlatform(platformFromPath || 'trade');
         return;
       }
 
       // For production
       const subdomain = window.location.hostname.split('.')[0];
-      if (['food', 'ride', 'shop', 'cash', 'work'].includes(subdomain)) {
+      if (['fund', 'trade', 'invest', 'cash'].includes(subdomain)) {
         setPlatform(subdomain);
       } else {
-        setPlatform('food');
+        setPlatform('trade');
       }
     }
   }, []);

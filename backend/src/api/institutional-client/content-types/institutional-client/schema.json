@@ -1,0 +1,141 @@
+{
+  "kind": "collectionType",
+  "collectionName": "institutional_clients",
+  "info": {
+    "singularName": "institutional-client",
+    "pluralName": "institutional-clients",
+    "displayName": "Institutional Client",
+    "description": "Corporate and institutional clients across all BitDash platforms"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "timestamps": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "active", "suspended", "terminated"],
+      "default": "pending"
+    },
+    "companyName": {
+      "type": "string",
+      "required": true
+    },
+    "legalEntityType": {
+      "type": "enumeration",
+      "enum": ["corporation", "fund", "bank", "trust", "insurance", "pension_fund", "family_office", "other"],
+      "default": "corporation"
+    },
+    "businessRegistrationNumber": {
+      "type": "string",
+      "required": true
+    },
+    "countryOfIncorporation": {
+      "type": "string",
+      "required": true
+    },
+    "taxIdentificationNumber": {
+      "type": "string"
+    },
+    "platformType": {
+      "type": "enumeration",
+      "enum": ["bitfund", "bitinvest", "bittrade", "bitcash", "multi_platform"],
+      "default": "multi_platform"
+    },
+    "primaryContactPerson": {
+      "type": "json"
+    },
+    "authorizedPersons": {
+      "type": "json"
+    },
+    "billingAddress": {
+      "type": "json"
+    },
+    "operationalAddress": {
+      "type": "json"
+    },
+    "kycVerified": {
+      "type": "boolean",
+      "default": false
+    },
+    "amlChecked": {
+      "type": "boolean",
+      "default": false
+    },
+    "serviceAgreementSigned": {
+      "type": "boolean",
+      "default": false
+    },
+    "serviceAgreementDetails": {
+      "type": "json"
+    },
+    "regulatoryApprovals": {
+      "type": "json"
+    },
+    "apiAccess": {
+      "type": "boolean",
+      "default": false
+    },
+    "apiCredentials": {
+      "type": "json"
+    },
+    "supportLevel": {
+      "type": "enumeration",
+      "enum": ["standard", "premium", "enterprise", "custom"],
+      "default": "standard"
+    },
+    "dedicatedManager": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "creditRating": {
+      "type": "string"
+    },
+    "totalAssets": {
+      "type": "decimal"
+    },
+    "annualRevenue": {
+      "type": "decimal"
+    },
+    "establishedDate": {
+      "type": "date"
+    },
+    "customFeePlan": {
+      "type": "json"
+    },
+    "tradingVolume": {
+      "type": "decimal",
+      "default": 0
+    },
+    "transactionHistory": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::transaction.transaction",
+      "mappedBy": "institutionalClient"
+    },
+    "wallets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wallet.wallet"
+    },
+    "legalDocuments": {
+      "type": "json"
+    },
+    "riskProfile": {
+      "type": "json"
+    },
+    "customSettings": {
+      "type": "json"
+    },
+    "withdrawalInstructions": {
+      "type": "json"
+    }
+  }
+}

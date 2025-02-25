@@ -53,46 +53,11 @@
       "min": 100000,
       "max": 999999
     },
-    "wallet_qr_code": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "orders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order",
-      "mappedBy": "customer_profile"
-    },
     "contacts": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::contact.contact",
       "mappedBy": "customer_profile"
-    },
-    "recent_orders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order"
-    },
-    "favourites": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::menu-item.menu-item"
-    },
-    "allergies": {
-      "type": "json"
-    },
-    "dietary_preferences": {
-      "type": "json"
     },
     "avatar": {
       "type": "media",
@@ -104,18 +69,6 @@
           "localized": false
         }
       }
-    },
-    "shopOrders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::order.order",
-      "mappedBy": "customer"
-    },
-     "reviews": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::review.review",
-      "mappedBy": "customer_profile"
     }
   }
 }

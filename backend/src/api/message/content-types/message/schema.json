@@ -29,18 +29,6 @@
     "timestamp": {
       "type": "datetime",
       "required": true
-    },
-    "order": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::order.order",
-      "inversedBy": "messages"
-    },
-    "captain": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::captain.captain",
-      "inversedBy": "messages"
     }
   }
 }

@@ -227,14 +227,14 @@ const TradeLandingBrowser = () => {
             position="relative"
           >
             <VStack spacing={8} maxW="4xl">
-              <Heading
-                fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
-                bgGradient="linear(to-r, brand.tradebrowser.500, brand.tradebrowser.700)"
-                bgClip="text"
+              <Text
+                // fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
+                // bgGradient="linear(to-r, brand.bittrade.400, brand.bittrade.700)"
+                // bgClip="text"
               >
                 {t('trade.hero.title', 'Trade with Confidence')}
-              </Heading>
-              <Text fontSize={{ base: 'xl', md: '2xl' }} opacity={0.8} maxW="3xl">
+              </Text>
+              <Text fontSize={{ base: 'xl', md: '2xl' }} opacity={0.9} maxW="3xl">
                 {t('trade.hero.subtitle', 'Global markets, institutional-grade technology, regulated for your protection')}
               </Text>
 

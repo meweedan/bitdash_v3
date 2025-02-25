@@ -79,8 +79,6 @@ export default function CustomerSignup() {
     confirmPassword: '',
     fullName: '',
     phone: '',
-    allergies: '',
-    dietary_preferences: '',
     wallet_pin: '',
     avatar: null
   });
@@ -224,8 +222,6 @@ export default function CustomerSignup() {
           fullName: formData.fullName,
           phone: formData.phone,
           wallet_pin: parseInt(formData.wallet_pin),
-          allergies: formData.allergies ? formData.allergies.split(',').map(item => item.trim()) : [],
-          dietary_preferences: formData.dietary_preferences ? formData.dietary_preferences.split(',').map(item => item.trim()) : [],
           users_permissions_user: userData.user.id,
           wallet_status: 'pending_verification',
           publishedAt: new Date().toISOString()
@@ -432,9 +428,9 @@ export default function CustomerSignup() {
                   value={formData.wallet_pin}
                   onChange={(value) => setFormData(prev => ({ ...prev, wallet_pin: value }))}
                   type="number"
+                    mask
+                    size="lg"
                   p={2}
-                  mask
-                  size="lg"
                 >
                   {[...Array(6)].map((_, i) => (
                     <PinInputField
@@ -455,71 +451,31 @@ export default function CustomerSignup() {
                   {t('Enter 6-digit PIN for your wallet security')}
                 </FormHelperText>
               </FormControl>
-
-              {/* Optional Preferences */}
-              <Accordion allowToggle w="full">
-                <AccordionItem border="none">
-                  <AccordionButton 
-                    _hover={{ bg: 'transparent' }}
-                    p={0}
-                    color="blue.400"
-                  >
-                    <Box flex="1" textAlign="left">
-                      {t('additionalPreferences')}
-                    </Box>
-                    <AccordionIcon />
-                  </AccordionButton>
-                  <AccordionPanel pb={4}>
-                    <VStack spacing={4}>
-                      <FormControl>
-                        <FormLabel>{t('profilePicture')}</FormLabel>
-                        <HStack spacing={4} align="center">
-                          {previewAvatar && (
-                            <Avatar 
-                              size="lg" 
-                              src={previewAvatar} 
-                              name={formData.fullName}
-                            />
-                          )}
-                          <Input
-                            type="file"
-                            accept="image/jpeg,image/png,image/gif"
-                            onChange={handleFileChange}
-                            variant="filled"
-                            size="lg"
-                            {...inputStyles}
-                          />
-                        </HStack>
-                        <FormHelperText>
-                          Optional: Upload a profile picture (max 5MB)
-                        </FormHelperText>
-                      </FormControl>
-
-                      <FormControl>
-                        <FormLabel>{t('allergies')}</FormLabel>
-                        <Input
-                          name="allergies"
-                          value={formData.allergies}
-                          onChange={handleInputChange}
-                          placeholder={t('allergiesPlaceholder')}
-                          {...inputStyles}
-                        />
-                      </FormControl>
-                      <FormControl>
-                        <FormLabel>{t('dietaryPreferences')}</FormLabel>
-                        <Input
-                          name="dietary_preferences"
-                          value={formData.dietary_preferences}
-                          onChange={handleInputChange}
-                          placeholder={t('dietaryPreferencesPlaceholder')}
-                          {...inputStyles}
-                        />
-                      </FormControl>
-                    </VStack>
-                  </AccordionPanel>
-                </AccordionItem>
-              </Accordion>
-
+              <VStack spacing={4}>
+                <FormControl>
+                  <FormLabel>{t('profilePicture')}</FormLabel>
+                  <HStack spacing={4} align="center">
+                    {previewAvatar && (
+                      <Avatar 
+                        size="lg" 
+                        src={previewAvatar} 
+                        name={formData.fullName}
+                      />
+                    )}
+                    <Input
+                      type="file"
+                      accept="image/jpeg,image/png,image/gif"
+                      onChange={handleFileChange}
+                      variant="filled"
+                      size="lg"
+                      {...inputStyles}
+                    />
+                  </HStack>
+                  <FormHelperText>
+                    Optional: Upload a profile picture (max 5MB)
+                  </FormHelperText>
+                </FormControl>
+              </VStack>
               <Button
                 type="submit"
                 colorScheme="blue"

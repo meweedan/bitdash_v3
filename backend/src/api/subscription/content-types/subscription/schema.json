@@ -27,12 +27,6 @@
       "type": "decimal",
       "required": true
     },
-    "restaurant": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::restaurant.restaurant",
-      "inversedBy": "subscription"
-    },
     "start_date": {
       "type": "datetime",
       "required": true

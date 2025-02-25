@@ -58,18 +58,6 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "operator"
     },
-    "restaurant": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::restaurant.restaurant",
-      "inversedBy": "operator"
-    },
-    "orders": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::order.order",
-      "mappedBy": "operators"
-    },
     "status": {
       "type": "enumeration",
       "enum": [

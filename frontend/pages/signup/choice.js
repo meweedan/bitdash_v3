@@ -14,25 +14,51 @@ import {
   Icon,
   Badge,
   Divider,
+  Circle,
+  SimpleGrid,
+  Center,
+  useBreakpointValue
 } from '@chakra-ui/react';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Store, Car, Utensils, Package, User, DollarSign, UserPlus, Wallet, CarFront, User2Icon, CarTaxiFront } from 'lucide-react';
+import { 
+  DollarSign, 
+  Users,
+  User, 
+  Building, 
+  Briefcase, 
+  LineChart, 
+  BarChart2, 
+  TrendingUp,
+  Globe,
+  UserPlus,
+  Store,
+  ShieldCheck,
+  CreditCard,
+  Wallet,
+  HandCoins,
+  ArrowLeft,
+  ArrowRight
+} from 'lucide-react';
+import { 
+  FaMoneyBillWave, 
+  FaChartLine, 
+  FaUniversity, 
+  FaExchangeAlt, 
+  FaUserTie, 
+  FaUserPlus, 
+  FaBuilding,
+  FaHandshake,
+  FaStore,
+  FaCreditCard,
+  FaChartBar,
+  FaGlobeAmericas,
+  FaBriefcase
+} from 'react-icons/fa';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-// Reuse existing animations
-const colorChange = keyframes`
-  0% { color: #245b84; }
-  14% { color: #36739f; }
-  28% { color: #52a4e1; }
-  42% { color: #67bdfd; }
-  56% { color: #70b4e6; }
-  70% { color: #65a6fa; }
-  85% { color: #6a9ce8; }
-  100% { color: #245b84; }
-`;
-
+// Animation keyframes
 const backgroundColorChange = keyframes`
   0% { background-color: rgba(36, 91, 132, 0.05); }
   14% { background-color: rgba(54, 115, 159, 0.05); }
@@ -44,92 +70,191 @@ const backgroundColorChange = keyframes`
   100% { background-color: rgba(36, 91, 132, 0.05); }
 `;
 
-// Modify this to use Chakra UI theme variants
+// Styled components - increased size
 const PlatformBox = styled(Box)`
-  padding: 2rem;
+  padding: 2.5rem;
   width: 100%;
-  border-width: 5px;
+  border-width: 2px;
   border-radius: var(--chakra-radii-xl);
-  box-shadow: var(--chakra-shadows-xl);
+  box-shadow: var(--chakra-shadows-lg);
   cursor: pointer;
   backdrop-filter: blur(10px);
-  transition: transform 0.3s;
+  transition: all 0.3s ease;
   &:hover {
-    transform: scale(1.05);
-    box-shadow: var(--chakra-shadows-dark-lg);
+    transform: translateY(-5px);
+    box-shadow: var(--chakra-shadows-xl);
   }
-  animation: ${backgroundColorChange} 10s infinite;
 `;
 
+// Updated platforms with fintech focus - using i18n keys
 const PLATFORMS = {
-  FOOD: {
-    subdomain: 'food',
-    name: 'BitFood',
-    themeKey: 'bitfood',
-    title: 'restaurantOwner',
-    description: 'restaurantDescription',
-    icon: Store,
-    signupPath: '/signup/operator?platform=food'
-  },
-  RIDE: {
-    subdomain: 'ride',
-    name: 'BitRide',
-    themeKey: 'bitride',
-    icon: CarFront,
-    options: [
-      {
-        type: 'captain',
-        title: 'captainSignup',
-        icon: CarTaxiFront,
-        signupPath: '/signup/captain'
-      },
-      {
-        type: 'rider',
-        title: 'rider',
-        icon: User,
-        signupPath: '/signup/customer',
-      }
-    ]
-  },
-  SHOP: {
-    subdomain: 'shop',
-    name: 'BitShop',
-    themeKey: 'bitshop',
-    icon: Store,
-    options: [
-      {
-        type: 'shop',
-        title: 'shopSignup',
-        icon: Store,
-        signupPath: '/signup/owner'
-      },
-      {
-        type: 'customer',
-        title: 'customer',
-        icon: User,
-        signupPath: '/signup/customer'
-      }
-    ]
-  },
   CASH: {
     subdomain: 'cash',
     name: 'BitCash',
+    nameKey: 'bitcash.name',
     themeKey: 'bitcash',
-    icon: DollarSign,
+    title: 'Digital Payment Solutions',
+    titleKey: 'bitcash.title',
+    description: 'Streamlined payment processing and financial services for businesses and individuals.',
+    descriptionKey: 'bitcash.description',
+    icon: FaMoneyBillWave,
     options: [
       {
+        type: 'merchant',
+        title: 'Business Account',
+        titleKey: 'bitcash.merchant.title',
+        description: 'Accept payments, manage transactions, and access financial tools for your business.',
+        descriptionKey: 'bitcash.merchant.description',
+        icon: FaStore,
+        signupPath: '/signup/merchant',
+        commission: '1.5%'
+      },
+      {
         type: 'agent',
-        title: 'agentSignup',
-        icon: UserPlus,
+        title: 'Payment Agent',
+        titleKey: 'bitcash.agent.title',
+        description: 'Facilitate payments and earn commission on processed transactions.',
+        descriptionKey: 'bitcash.agent.description',
+        icon: FaHandshake,
         signupPath: '/signup/agent',
         commission: '1%'
       },
       {
-        type: 'merchant',
-        title: 'merchant',
-        icon: Store,
-        signupPath: '/signup/merchant',
-        commission: '1.5%'
+        type: 'customer',
+        title: 'Customer Account',
+        titleKey: 'bitcash.customer.title',
+        description: 'Send and receive money instantly with low fees and global coverage.',
+        descriptionKey: 'bitcash.customer.description',
+        icon: FaUserTie,
+        signupPath: '/signup/customer'
+      }
+    ]
+  },
+  FUND: {
+    subdomain: 'fund',
+    name: 'BitFund',
+    nameKey: 'bitfund.name',
+    themeKey: 'bitfund',
+    title: 'Proprietary Trading Platform',
+    titleKey: 'bitfund.title',
+    description: 'Performance-based funding for skilled traders with comprehensive evaluation.',
+    descriptionKey: 'bitfund.description',
+    icon: FaChartLine,
+    options: [
+      {
+        type: 'trader',
+        title: 'Challenge Account',
+        titleKey: 'bitfund.trader.title',
+        description: 'Prove your trading skill and get funded up to $200,000 with our evaluation process.',
+        descriptionKey: 'bitfund.trader.description',
+        icon: FaChartBar,
+        signupPath: '/signup/trader',
+        accountTypes: 'Standard, Professional, Elite'
+      },
+      {
+        type: 'investor',
+        title: 'Capital Provider',
+        titleKey: 'bitfund.investor.title',
+        description: 'Invest in our trader ecosystem and earn returns from successful traders.',
+        descriptionKey: 'bitfund.investor.description',
+        icon: FaBriefcase,
+        signupPath: '/signup/investor',
+        minInvestment: '$10,000'
+      },
+      {
+        type: 'institutional',
+        title: 'Institutional Client',
+        titleKey: 'bitfund.institutional.title',
+        description: 'Custom prop trading solutions for financial institutions and corporate clients.',
+        descriptionKey: 'bitfund.institutional.description',
+        icon: FaBuilding,
+        signupPath: '/signup/institutional'
+      }
+    ]
+  },
+  INVEST: {
+    subdomain: 'invest',
+    name: 'BitInvest',
+    nameKey: 'bitinvest.name',
+    themeKey: 'bitinvest',
+    title: 'Global Investment Platform',
+    titleKey: 'bitinvest.title',
+    description: 'Access US and EU markets, private assets, commodities, and more from MENA and GCC regions.',
+    descriptionKey: 'bitinvest.description',
+    icon: FaUniversity,
+    options: [
+      {
+        type: 'individual',
+        title: 'Individual Investor',
+        titleKey: 'bitinvest.individual.title',
+        description: 'Invest in global markets with access to stocks, ETFs, and alternative assets.',
+        descriptionKey: 'bitinvest.individual.description',
+        icon: FaUserTie,
+        signupPath: '/signup/individual',
+        minDeposit: '$100'
+      },
+      {
+        type: 'advisor',
+        title: 'Financial Advisor',
+        titleKey: 'bitinvest.advisor.title',
+        description: 'Manage client portfolios with professional tools and multi-account features.',
+        descriptionKey: 'bitinvest.advisor.description',
+        icon: FaUserPlus,
+        signupPath: '/signup/advisor',
+        commission: '0.5%'
+      },
+      {
+        type: 'institutional',
+        title: 'Institutional Account',
+        titleKey: 'bitinvest.institutional.title',
+        description: 'Customized investment solutions for funds, family offices, and corporations.',
+        descriptionKey: 'bitinvest.institutional.description',
+        icon: FaBuilding,
+        signupPath: '/signup/institutional',
+        minDeposit: '$100,000'
+      }
+    ]
+  },
+  TRADE: {
+    subdomain: 'trade',
+    name: 'BitTrade',
+    nameKey: 'bittrade.name',
+    themeKey: 'bittrade',
+    title: 'Regulated Forex & Crypto Exchange',
+    titleKey: 'bittrade.title',
+    description: 'Professional trading platform for forex, cryptocurrencies and commodities with institutional liquidity.',
+    descriptionKey: 'bittrade.description',
+    icon: FaExchangeAlt,
+    options: [
+      {
+        type: 'retail',
+        title: 'Retail Trader',
+        titleKey: 'bittrade.retail.title',
+        description: 'Trade forex, crypto, indices and commodities with competitive spreads and leverage.',
+        descriptionKey: 'bittrade.retail.description',
+        icon: FaUserTie,
+        signupPath: '/signup/retail',
+        accounts: 'Standard, Premium, Professional'
+      },
+      {
+        type: 'introducing-broker',
+        title: 'Introducing Broker',
+        titleKey: 'bittrade.ib.title',
+        description: 'Refer clients and earn ongoing commissions on their trading activity.',
+        descriptionKey: 'bittrade.ib.description',
+        icon: FaHandshake,
+        signupPath: '/signup/ib',
+        commission: 'Up to 50% revenue share'
+      },
+      {
+        type: 'institutional',
+        title: 'Institutional Trading',
+        titleKey: 'bittrade.institutional.title',
+        description: 'Access deep liquidity pools, prime brokerage services, and custom API solutions.',
+        descriptionKey: 'bittrade.institutional.description',
+        icon: FaBuilding,
+        signupPath: '/signup/institutional-trading',
+        minDeposit: '$50,000'
       }
     ]
   }
@@ -146,105 +271,168 @@ export default function SignupChoice() {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-  const [platform, setPlatform] = useState('bitdash');
-  const accentColor = `brand.${platform}.500`;
   const [currentPlatform, setCurrentPlatform] = useState(null);
+  const isRTL = router.locale === 'ar';
+  
+  // Adjust sizes for different screen sizes
+  const boxPadding = useBreakpointValue({ base: 5, md: 8 });
+  const circleSizeLarge = useBreakpointValue({ base: "70px", md: "90px" });
+  const circleSizeMedium = useBreakpointValue({ base: "50px", md: "65px" });
+  const iconSizeLarge = useBreakpointValue({ base: 6, md: 8 });
+  const iconSizeMedium = useBreakpointValue({ base: 5, md: 6 });
+  const headingSize = useBreakpointValue({ base: "lg", md: "xl" });
+  const subheadingSize = useBreakpointValue({ base: "md", md: "lg" });
+  const textSize = useBreakpointValue({ base: "sm", md: "md" });
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const platform = getPlatformFromHostname(window.location.hostname);
       setCurrentPlatform(platform);
+      
+      // If platform specified in query, use that
+      if (router.query.platform) {
+        const platformFromQuery = Object.values(PLATFORMS).find(
+          p => p.subdomain.toLowerCase() === router.query.platform.toLowerCase()
+        );
+        if (platformFromQuery) {
+          setCurrentPlatform(platformFromQuery);
+        }
+      }
     }
-  }, []);
+  }, [router.query]);
 
-  const renderOperatorCard = (platform) => (
+  const AccountTypeCard = ({ option, platform }) => (
     <PlatformBox 
-      borderColor={`brand.${platform.themeKey}.500`}
+      borderColor={`brand.${platform.themeKey}.400`}
+      p={boxPadding}
       _hover={{ 
-        borderColor: `brand.${platform.themeKey}.600` 
+        borderColor: `brand.${platform.themeKey}.500`,
+        bg: isDark ? 'whiteAlpha.200' : `brand.${platform.themeKey}.50`
       }}
+      onClick={() => router.push(option.signupPath)}
+      textAlign={isRTL ? 'right' : 'left'}
+      dir={isRTL ? 'rtl' : 'ltr'}
     >
-      <VStack spacing={4}>
-        <Icon as={platform.icon} boxSize={10} color={`brand.${platform.themeKey}.500`} />
-        <Heading 
-          size="md" 
-          color={`brand.${platform.themeKey}.500`}
-        >
-          {t(platform.title)}
-        </Heading>
-        <Text 
-          textAlign="center" 
-          color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
-          fontSize="sm"
-        >
-          {t(platform.description)}
+      <VStack spacing={6} align={isRTL ? 'flex-end' : 'flex-start'}>
+        <HStack spacing={4} width="full">
+          <Circle 
+            size={circleSizeMedium}
+            bg={`brand.${platform.themeKey}.100`}
+            color={`brand.${platform.themeKey}.500`}
+            order={isRTL ? 2 : 1}
+          >
+            <Icon as={option.icon} boxSize={iconSizeMedium} />
+          </Circle>
+          
+          <VStack 
+            align={isRTL ? 'flex-end' : 'flex-start'} 
+            spacing={1}
+            flex="1"
+            order={isRTL ? 1 : 2}
+          >
+            <Heading 
+              size={subheadingSize}
+              color={isDark ? 'white' : 'gray.800'}
+            >
+              {t(option.titleKey, option.title)}
+            </Heading>
+            
+            <HStack spacing={2} flexWrap="wrap" justify={isRTL ? 'flex-end' : 'flex-start'}>
+              {option.commission && (
+                <Badge colorScheme={platform.themeKey} mt={1} px={2} py={1} fontSize={textSize}>
+                  {t('commission', 'Commission')}: {option.commission}
+                </Badge>
+              )}
+              
+              {option.minDeposit && (
+                <Badge colorScheme={platform.themeKey} mt={1} px={2} py={1} fontSize={textSize}>
+                  {t('minDeposit', 'Min Deposit')}: {option.minDeposit}
+                </Badge>
+              )}
+              
+              {option.accounts && (
+                <Badge colorScheme={platform.themeKey} mt={1} px={2} py={1} fontSize={textSize}>
+                  {option.accounts}
+                </Badge>
+              )}
+              
+              {option.accountTypes && (
+                <Badge colorScheme={platform.themeKey} mt={1} px={2} py={1} fontSize={textSize}>
+                  {option.accountTypes}
+                </Badge>
+              )}
+              
+              {option.minInvestment && (
+                <Badge colorScheme={platform.themeKey} mt={1} px={2} py={1} fontSize={textSize}>
+                  {t('minInvestment', 'Min Investment')}: {option.minInvestment}
+                </Badge>
+              )}
+            </HStack>
+          </VStack>
+        </HStack>
+        
+        <Text fontSize={textSize} color={isDark ? 'gray.300' : 'gray.600'}>
+          {t(option.descriptionKey, option.description)}
         </Text>
+        
         <Button
-          size="lg"
-          width="100%"
           variant={`${platform.themeKey}-solid`}
-          onClick={() => router.push(platform.signupPath)}
+          alignSelf={isRTL ? 'flex-start' : 'flex-end'}
+          rightIcon={<Icon as={isRTL ? ArrowLeft : ArrowRight} />}
+          size="lg"
+          px={6}
+          py={6}
         >
-          {t('businessSignup')}
+          {t('getStarted', 'Get Started')}
         </Button>
       </VStack>
     </PlatformBox>
   );
 
-  const renderPlatformOptions = (platform) => {
-    if (platform.options) {
-      return (
-        <VStack spacing={6} width="full">
-          <Heading 
-            size="lg" 
-            textAlign="center" 
-            color={`brand.${platform.themeKey}.500`}
-          >
-            {t('chooseAccountType')}
-          </Heading>
-          
-          {platform.options.map((option) => (
-            <PlatformBox 
-              key={option.type}
-              borderColor={`brand.${platform.themeKey}.500`}
-              _hover={{ 
-                borderColor: `brand.${platform.themeKey}.600` 
-              }}
-              onClick={() => router.push(option.signupPath)}
+  const PlatformSelection = () => (
+    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} w="full">
+      {Object.values(PLATFORMS).map((platform) => (
+        <PlatformBox 
+          key={platform.subdomain}
+          borderColor={`brand.${platform.themeKey}.400`}
+          bg={isDark ? 'whiteAlpha.100' : 'white'}
+          p={boxPadding}
+          _hover={{ 
+            borderColor: `brand.${platform.themeKey}.500`,
+            bg: isDark ? 'whiteAlpha.200' : `brand.${platform.themeKey}.50`
+          }}
+          onClick={() => router.push(`/signup?platform=${platform.subdomain}`)}
+          textAlign={isRTL ? 'right' : 'left'}
+          dir={isRTL ? 'rtl' : 'ltr'}
+        >
+          <HStack spacing={6} align="center">
+            <Circle
+              size={circleSizeMedium}
+              bg={`brand.${platform.themeKey}.100`}
+              color={`brand.${platform.themeKey}.500`}
+              order={isRTL ? 2 : 1}
             >
-              <HStack spacing={4} align="center">
-                <Icon 
-                  as={option.icon} 
-                  boxSize={10} 
-                  color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
-                />
-                <VStack spacing={2} flex={1}>
-                  <Heading 
-                    size="md" 
-                    color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
-                  >
-                    {t(option.title)}
-                  </Heading>
-                  {option.commission && (
-                    <Badge colorScheme={platform.themeKey}>
-                      {option.commission} {t('commission')}
-                    </Badge>
-                  )}
-                </VStack>
-                <Button
-                  variant={`${platform.themeKey}-solid`}
-                  size="lg"
-                >
-                  {t('getStarted')}
-                </Button>
-              </HStack>
-            </PlatformBox>
-          ))}
-        </VStack>
-      );
-    }
-    return renderOperatorCard(platform);
-  };
+              <Icon as={platform.icon} boxSize={iconSizeMedium} />
+            </Circle>
+            
+            <VStack 
+              align={isRTL ? 'flex-end' : 'flex-start'} 
+              spacing={2}
+              flex="1"
+              order={isRTL ? 1 : 2}
+            >
+              <Heading size={subheadingSize} color={isDark ? 'white' : 'gray.800'}>
+                {t(platform.nameKey, platform.name)}
+              </Heading>
+              <Text fontSize={textSize} color={isDark ? 'gray.300' : 'gray.600'}>
+                {t(platform.titleKey, platform.title)}
+              </Text>
+            </VStack>
+          </HStack>
+        </PlatformBox>
+      ))}
+    </SimpleGrid>
+  );
 
   return (
     <Layout>
@@ -252,83 +440,123 @@ export default function SignupChoice() {
         minH="85vh"
         align="center"
         justify="center"
+        py={16}
+        bg={isDark ? 'gray.900' : 'gray.50'}
+        dir={isRTL ? 'rtl' : 'ltr'}
       >
-        <Container maxW="xl" centerContent>
+        <Container maxW={currentPlatform ? "5xl" : "2xl"} centerContent>
           <VStack spacing={12} w="full">
-            <Heading
-              textAlign="center"
-              size="xl"
-              color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
-            >
-              {currentPlatform 
-                ? t('joinPlatform', { name: currentPlatform.name })
-                : t('choosePlatform')}
-            </Heading>
+            {/* Header */}
+            <VStack spacing={6}>
+              {currentPlatform ? (
+                <>
+                  <Circle
+                    size={circleSizeLarge}
+                    bg={isDark ? `brand.${currentPlatform.themeKey}.900` : `brand.${currentPlatform.themeKey}.100`}
+                    color={`brand.${currentPlatform.themeKey}.500`}
+                  >
+                    <Icon as={currentPlatform.icon} boxSize={iconSizeLarge} />
+                  </Circle>
+                  
+                  <Heading
+                    textAlign="center"
+                    size={headingSize}
+                    bgGradient={`linear(to-r, brand.${currentPlatform.themeKey}.400, brand.${currentPlatform.themeKey}.600)`}
+                    bgClip="text"
+                  >
+                    {t('joinPlatform', { name: t(currentPlatform.nameKey, currentPlatform.name) })}
+                  </Heading>
+                  
+                  <Text 
+                    textAlign="center" 
+                    color={isDark ? 'gray.300' : 'gray.600'}
+                    maxW="2xl"
+                    fontSize={textSize}
+                  >
+                    {t(currentPlatform.descriptionKey, currentPlatform.description)}
+                  </Text>
+                </>
+              ) : (
+                <>
+                  <Heading
+                    textAlign="center"
+                    size={headingSize}
+                    bgGradient="linear(to-r, blue.400, blue.600)"
+                    bgClip="text"
+                  >
+                    {t('choosePlatform', 'Choose Your Financial Platform')}
+                  </Heading>
+                  
+                  <Text 
+                    textAlign="center" 
+                    color={isDark ? 'gray.300' : 'gray.600'}
+                    maxW="2xl"
+                    fontSize={textSize}
+                  >
+                    {t('platformChoice', 'Select the BitDash financial platform that best suits your needs')}
+                  </Text>
+                </>
+              )}
+            </VStack>
 
-            {/* Platform Options Section */}
+            {/* Platform Selection */}
+            {!currentPlatform && <PlatformSelection />}
+
+            {/* Account Type Selection */}
             {currentPlatform && (
-              <Box w="full">
-                {renderPlatformOptions(currentPlatform)}
-              </Box>
+              <VStack spacing={8} w="full">
+                <Heading
+                  size="md"
+                  color={isDark ? 'gray.300' : 'gray.600'}
+                >
+                  {t('chooseAccountType', 'Select Your Account Type')}
+                </Heading>
+                
+                <SimpleGrid 
+                  columns={{ base: 1, lg: currentPlatform.options.length > 2 ? 3 : 2 }} 
+                  spacing={8} 
+                  w="full"
+                >
+                  {currentPlatform.options.map((option) => (
+                    <AccountTypeCard 
+                      key={option.type} 
+                      option={option} 
+                      platform={currentPlatform} 
+                    />
+                  ))}
+                </SimpleGrid>
+              </VStack>
             )}
 
-            <Divider borderColor={isDark ? 'whiteAlpha.300' : 'gray.200'} />
-
-            {/* Customer Section */}
-            <PlatformBox
-              borderColor="gray.500"
-              _hover={{ 
-                borderColor: 'gray.600' 
-              }}
-              onClick={() => router.push('/signup/customer')}
-            >
-              <VStack spacing={4}>
-                <Icon 
-                  as={User} 
-                  boxSize={10}
-                  color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
-                />
-                <Heading 
-                  size="md" 
-                  color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
-                >
-                  {t('customerSignup')}
-                </Heading>
-                <Text 
-                  textAlign="center" 
-                  color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
-                  fontSize="sm"
-                >
-                  {t('customerDescription')}
-                </Text>
-                <Button
-                  size="lg"
-                  width="100%"
-                  variant="outline"
-                  borderWidth="1px"
-                  _hover={{
-                    transform: 'translateY(-2px)',
-                    bg: isDark ? 'whiteAlpha.100' : 'gray.50'
-                  }}
-                >
-                  {t('createCustomerAccount')}
-                </Button>
-              </VStack>
-            </PlatformBox>
-
-            <Text 
-              fontSize="sm" 
-              color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
-            >
-              {t('haveAccount')}{' '}
+            {/* Login Link */}
+            <HStack spacing={2}>
+              <Text 
+                fontSize={textSize} 
+                color={isDark ? 'gray.400' : 'gray.600'}
+              >
+                {t('haveAccount', 'Already have an account?')}
+              </Text>
               <Button
                 variant="link"
-                color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'gray.500'}
+                color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'blue.500'}
                 onClick={() => router.push('/login')}
+                fontSize={textSize}
               >
-                {t('login')}
+                {t('login', 'Log In')}
               </Button>
-            </Text>
+            </HStack>
+            
+            {/* Back Button (when on platform selection) */}
+            {currentPlatform && (
+              <Button
+                variant="ghost"
+                size="md"
+                onClick={() => router.push('/signup')}
+                leftIcon={isRTL ? <ArrowRight /> : <ArrowLeft />}
+              >
+                {t('backToPlatforms', 'Back to All Platforms')}
+              </Button>
+            )}
           </VStack>
         </Container>
       </Flex>
@@ -336,7 +564,7 @@ export default function SignupChoice() {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale, query }) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),

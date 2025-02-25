@@ -65,22 +65,6 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "menu": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::menu.menu"
-    },
-    "restaurant": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::restaurant.restaurant"
-    },
-    "tables": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::table.table",
-      "mappedBy": "user"
-    },
     "customer_profile": {
       "type": "relation",
       "relation": "oneToOne",
@@ -103,18 +87,6 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::merchant.merchant",
-      "mappedBy": "users_permissions_user"
-    },
-    "captain": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::captain.captain",
-      "mappedBy": "users_permissions_user"
-      },
-    "owner": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::owner.owner",
       "mappedBy": "users_permissions_user"
     }
   }

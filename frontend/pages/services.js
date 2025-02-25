@@ -21,111 +21,236 @@ import {
   AspectRatio,
   IconButton,
   Portal,
-  SimpleGrid
+  SimpleGrid,
+  Divider,
+  Badge
 } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
 import { useInView } from 'react-intersection-observer';
-import { ArrowUpRight, ChevronRight } from 'lucide-react';
+import { ArrowUpRight, ChevronRight, Shield, CheckCircle, Globe, FileText, Key, Lock } from 'lucide-react';
+import { FaMoneyBillWave, FaChartLine, FaUniversity, FaExchangeAlt, FaShieldAlt, FaGlobe, FaCheckCircle } from 'react-icons/fa';
 import Layout from '@/components/Layout';
 import Head from 'next/head';
 
 const platforms = [
   {
     id: 'cash',
-    tagline: 'Digital Banking Redefined',
-    description: 'Experience the future of financial transactions with our sophisticated digital payment platform.',
+    title: 'BitCash',
+    tagline: 'Digital Payment Solutions',
+    description: 'Experience seamless cross-border transactions with our institutional-grade payment infrastructure designed for businesses and consumers globally.',
     image: '/cash.png',
     imageAr: '/cash-ar.png',
     color: 'brand.bitcash.500',
     stats: [
-      { value: '1M+', label: 'Active Users' },
+      { value: '$2.5B+', label: 'Monthly Volume' },
       { value: '99.99%', label: 'Uptime' },
-      { value: '$2B+', label: 'Processed' }
+      { value: '180+', label: 'Countries' }
     ],
     features: [
-      'Instant Transfers',
-      'Business Solutions',
-      'Advanced Security',
-      'Smart Analytics'
+      'Instant Global Transfers',
+      'Multi-Currency Support',
+      'Enterprise APIs',
+      'Advanced Fraud Protection'
     ]
   },
   {
-    id: 'food',
-    tagline: 'Elevating Dining Experiences',
-    description: 'Transform your restaurant operations with our comprehensive digital solution.',
-    image: '/food.png',
-    imageAr: '/food-ar.png',
-    color: 'brand.bitfood.500',
+    id: 'fund',
+    title: 'BitFund',
+    tagline: 'Proprietary Trading Platform',
+    description: 'Access capital up to $200,000 by proving your trading skill through our rigorous evaluation process and performance-based funding program.',
+    image: '/fund.png',
+    imageAr: '/fund-ar.png',
+    color: 'brand.bitfund.500',
     stats: [
-      { value: '500+', label: 'Partners' },
-      { value: '4.9', label: 'Rating' },
-      { value: '2M+', label: 'Orders' }
+      { value: '12.5%', label: 'Pass Rate' },
+      { value: '$450M+', label: 'Capital Allocated' },
+      { value: '12K+', label: 'Active Traders' }
     ],
     features: [
-      'Smart Menu Management',
-      'Real-time Analytics',
-      'Inventory Control',
-      'Customer Insights'
+      'Challenge Accounts',
+      'Performance Metrics',
+      'Trading Education',
+      'Real-time Analytics'
     ]
   },
   {
-    id: 'shop',
-    tagline: 'Commerce Without Limits',
-    description: 'Unlock your business potential with our advanced e-commerce platform.',
-    image: '/shop.png',
-    imageAr: '/shop-ar.png',
-    color: 'brand.bitshop.500',
+    id: 'invest',
+    title: 'BitInvest',
+    tagline: 'Global Investment Platform',
+    description: 'Your gateway to US and EU markets tailored specifically for MENA and GCC investors with access to stocks, privately held assets, commodities and more.',
+    image: '/invest.png',
+    imageAr: '/invest-ar.png',
+    color: 'brand.bitinvest.500',
     stats: [
-      { value: '10K+', label: 'Merchants' },
-      { value: '24/7', label: 'Support' },
-      { value: '99%', label: 'Satisfaction' }
+      { value: '350K+', label: 'Active Investors' },
+      { value: '18', label: 'Countries Served' },
+      { value: '2.5M+', label: 'Daily Trades' }
     ],
     features: [
-      'Omnichannel Retail',
-      'Advanced Analytics',
-      'Smart Inventory',
-      'Marketing Tools'
+      'US & EU Market Access',
+      'Shariah-Compliant Options',
+      'Private Equity Access',
+      'Gold & Oil Trading'
     ]
   },
-  // {
-  //   id: 'ride',
-  //   tagline: 'Mobility of Tomorrow',
-  //   description: 'Revolutionize transportation with our intelligent mobility solutions.',
-  //   image: '/ride.png',
-  //   imageAr: '/ride-ar.png',
-  //   color: 'brand.bitride.500',
-  //   stats: [
-  //     { value: '50K+', label: 'Daily Rides' },
-  //     { value: '15+', label: 'Cities' },
-  //     { value: '4.8', label: 'Rating' }
-  //   ],
-  //   features: [
-  //     'Smart Routing',
-  //     'Fleet Management',
-  //     'Real-time Tracking',
-  //     'Driver Analytics'
-  //   ]
-  // },
-  // {
-  //   id: 'work',
-  //   tagline: 'Your Career & Service Marketplace',
-  //   description: 'Connect with top employers and skilled professionals. From corporate careers to handyman services, we bridge the gap between talent and opportunity.',
-  //   image: '/work.png',
-  //   imageAr: '/work-ar.png',
-  //   color: 'brand.bitwork.500',
-  //   stats: [
-  //     { value: '100K+', label: 'Active Users' },
-  //     { value: '20K+', label: 'Job Listings' },
-  //     { value: '95%', label: 'Success Rate' }
-  //   ],
-  //   features: [
-  //     'Corporate Job Listings',
-  //     'Skilled Labor Market',
-  //     'Instant Booking',
-  //     'Verified Professionals'
-  //   ]
-  //  }
+  {
+    id: 'trade',
+    title: 'BitTrade',
+    tagline: 'Regulated Forex & Crypto Exchange',
+    description: 'Trade forex pairs, cryptocurrencies and commodities on our secure, regulated platform with institutional liquidity and advanced trading tools.',
+    image: '/trade.png',
+    imageAr: '/trade-ar.png',
+    color: 'brand.bittrade.500',
+    stats: [
+      { value: '80+', label: 'Currency Pairs' },
+      { value: '50+', label: 'Cryptocurrencies' },
+      { value: '0.1', label: 'Min Spread (pips)' }
+    ],
+    features: [
+      'Institutional Liquidity',
+      'Advanced Trading Tools',
+      'Multiple Account Types',
+      'API Trading Solutions'
+    ]
+  }
 ];
+
+const licenses = [
+  {
+    authority: 'Financial Services Authority (FSA)',
+    country: 'Saint Vincent and the Grenadines',
+    licenseNumber: 'License No. 26898 BC 2022',
+    scope: 'Trading services, payment processing, financial technology solutions',
+    icon: FaShieldAlt
+  },
+  {
+    authority: 'Mwali International Services Authority (MISA)',
+    country: 'Comoros',
+    licenseNumber: 'Certificate No. C23-027-59721',
+    scope: 'Forex trading, cryptocurrency exchange, investment services',
+    icon: FaGlobe
+  }
+];
+
+const LicenseSection = () => {
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+  const { t } = useTranslation();
+  
+  return (
+    <Box
+      py={20}
+      borderRadius="xl"
+      mt={16}
+      mb={16}
+    >
+      <Container maxW="8xl" px={{ base: 4, lg: 8 }}>
+        <VStack spacing={12}>
+          <VStack spacing={4} textAlign="center">
+            <Badge 
+              colorScheme="blue" 
+              fontSize="md" 
+              px={4} 
+              py={2} 
+              borderRadius="full"
+            >
+              {t('fullyRegulated', 'Fully Regulated')}
+            </Badge>
+            
+            <Heading
+              fontSize={{ base: '3xl', md: '5xl' }}
+              bgClip="text"
+              letterSpacing="tight"
+            >
+              {t('regulatory.title', 'Licensed & Regulated Globally')}
+            </Heading>
+            
+            <Text
+              fontSize={{ base: 'lg', md: 'xl' }}
+              color={isDark ? 'whiteAlpha.700' : 'blackAlpha.700'}
+              maxW="3xl"
+            >
+              {t('regulatory.description', 'BitDash operates under strict regulatory oversight to ensure the highest standards of security, compliance, and transparency for our clients worldwide.')}
+            </Text>
+          </VStack>
+          
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} w="full">
+            {licenses.map((license, idx) => (
+              <Box
+                key={idx}
+                p={8}
+                borderRadius="xl"
+                boxShadow="lg"
+                borderWidth="1px"
+                borderColor={isDark ? 'whiteAlpha.200' : 'gray.100'}
+                transition="all 0.3s"
+                _hover={{
+                  transform: 'translateY(-5px)',
+                  boxShadow: '2xl',
+                }}
+              >
+                <VStack spacing={6} align="start">
+                  <Flex
+                    w="60px"
+                    h="60px"
+                    borderRadius="full"
+                    align="center"
+                    justify="center"
+                  >
+                    <Icon as={license.icon} color="blue.500" boxSize={6} />
+                  </Flex>
+                  
+                  <VStack spacing={1} align="start">
+                    <Heading size="md" color={isDark ? 'white' : 'gray.800'}>
+                      {license.authority}
+                    </Heading>
+                    <Text color="blue.500" fontWeight="bold">
+                      {license.country}
+                    </Text>
+                  </VStack>
+                  
+                  <Divider />
+                  
+                  <VStack spacing={4} align="start" w="full">
+                    <HStack>
+                      <Icon as={FileText} boxSize={5} color="blue.500" />
+                      <Text fontWeight="medium">{license.licenseNumber}</Text>
+                    </HStack>
+                    
+                    <HStack align="start">
+                      <Icon as={CheckCircle} boxSize={5} color="green.500" mt={1} />
+                      <Text>{license.scope}</Text>
+                    </HStack>
+                  </VStack>
+                </VStack>
+              </Box>
+            ))}
+          </SimpleGrid>
+          
+          <SimpleGrid columns={{ base: 2, md: 4 }} spacing={6} w="full">
+            {[
+              { icon: Shield, text: 'Segregated Client Funds', color: 'blue.500' },
+              { icon: Key, text: 'Enterprise-Grade Security', color: 'purple.500' },
+              { icon: Globe, text: 'Global Compliance', color: 'green.500' },
+              { icon: Lock, text: 'AML/KYC Protocols', color: 'orange.500' }
+            ].map((item, idx) => (
+              <HStack
+                key={idx}
+                p={4}
+                borderRadius="lg"
+                boxShadow="md"
+                spacing={3}
+              >
+                <Icon as={item.icon} color={item.color} boxSize={5} />
+                <Text fontWeight="medium" fontSize="sm">{item.text}</Text>
+              </HStack>
+            ))}
+          </SimpleGrid>
+        </VStack>
+      </Container>
+    </Box>
+  );
+};
 
 const PlatformShowcase = ({ platform, index, isRTL }) => {
   const controls = useAnimation();
@@ -134,6 +259,7 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
     triggerOnce: true
   });
   const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const containerRef = useRef(null);
   const { t } = useTranslation();
@@ -148,6 +274,14 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
   // Alternate layout for better mobile experience
   const isReversed = index % 2 === 1;
 
+  // Map platform IDs to appropriate icons
+  const platformIcons = {
+    cash: FaMoneyBillWave,
+    fund: FaChartLine,
+    invest: FaUniversity,
+    trade: FaExchangeAlt
+  };
+
   return (
     <Grid
       templateColumns={{ base: '1fr', lg: '1fr 1fr' }}
@@ -155,6 +289,7 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
       py={{ base: 16, lg: 32 }}
       px={{ base: 4, lg: 8 }}
       position="relative"
+      ref={containerRef}
     >
       {/* Image Section */}
       <GridItem 
@@ -164,7 +299,6 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
         h={{ base: "200px", md: "400px", lg: "300px" }}
         overflow="hidden"
         borderRadius={{ base: "24px", lg: "40px" }}
-        boxShadow="2xl"
       >
         <Box
           position="absolute"
@@ -187,7 +321,6 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
           <Box
             position="absolute"
             inset="0"
-            opacity={0.9}
             transition="opacity 0.3s"
             _groupHover={{ opacity: 0.7 }}
           />
@@ -207,20 +340,25 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
           spacing={{ base: 6, lg: 8 }}
         >
           <Box>
-            <Text 
-              fontSize={{ base: "sm", lg: "md" }}
-              textTransform="uppercase"
-              letterSpacing="wider"
-              color={platform.color}
-              fontWeight="bold"
-              mb={2}
-            >
-              {platform.tagline}
-            </Text>
+            <HStack spacing={3} mb={2}>
+              <Icon 
+                as={platformIcons[platform.id]} 
+                color={platform.color} 
+                boxSize={6} 
+              />
+              <Text 
+                fontSize={{ base: "sm", lg: "md" }}
+                textTransform="uppercase"
+                letterSpacing="wider"
+                color={platform.color}
+                fontWeight="bold"
+              >
+                {platform.tagline}
+              </Text>
+            </HStack>
             
             <Heading 
               fontSize={{ base: "4xl", lg: "6xl" }}
-              bgGradient={`linear(to-r, ${platform.color}, ${platform.color})`}
               bgClip="text"
               letterSpacing="tight"
               mb={4}
@@ -230,7 +368,7 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
 
             <Text 
               fontSize={{ base: "lg", lg: "xl" }}
-              color={colorMode === 'dark' ? 'whiteAlpha.800' : 'blackAlpha.800'}
+              color={isDark ? 'whiteAlpha.800' : 'blackAlpha.800'}
               lineHeight="tall"
             >
               {platform.description}
@@ -255,7 +393,7 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
                 </Text>
                 <Text 
                   fontSize={{ base: "xs", lg: "sm" }}
-                  color={colorMode === 'dark' ? 'whiteAlpha.600' : 'blackAlpha.600'}
+                  color={isDark ? 'whiteAlpha.600' : 'blackAlpha.600'}
                 >
                   {stat.label}
                 </Text>
@@ -275,7 +413,7 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
                 spacing={4}
                 p={4}
                 borderWidth="1px"
-                borderColor={colorMode === 'dark' ? 'whiteAlpha.200' : 'blackAlpha.200'}
+                borderColor={isDark ? 'whiteAlpha.200' : 'blackAlpha.200'}
                 borderRadius="xl"
                 transition="all 0.3s"
                 _hover={{
@@ -283,7 +421,7 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
                   transform: 'translateX(8px)',
                 }}
               >
-                <Icon as={ChevronRight} color={platform.color} />
+                <Icon as={FaCheckCircle} color={platform.color} />
                 <Text>{feature}</Text>
               </HStack>
             ))}
@@ -316,13 +454,14 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
 const Services = () => {
   const { t } = useTranslation();
   const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
   const router = useRouter();
   const isRTL = router.locale === 'ar';
 
   return (
     <>
     <Head>
-      <title>{t('services')}</title>
+      <title>{t('services', 'Financial Services')}</title>
     </Head>
     <Layout>
     <Box
@@ -339,6 +478,16 @@ const Services = () => {
       >
         <Container maxW="8xl" px={{ base: 4, lg: 8 }}>
           <VStack spacing={8} alignItems="center" textAlign="center">
+            <Badge 
+              colorScheme="blue" 
+              fontSize="md" 
+              px={4} 
+              py={2} 
+              borderRadius="full"
+            >
+              {t('svgAndComoros', 'SVG & Comoros Licensed')}
+            </Badge>
+            
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -346,12 +495,12 @@ const Services = () => {
             >
               <Heading
                 fontSize={{ base: '4xl', md: '7xl' }}
-                bgGradient="linear(to-r, brand.bitcash.500, brand.bitfood.500, brand.bitshop.500, brand.bitride.500)"
+                bgGradient="linear(to-r, brand.bitcash.500, brand.bitfund.500, brand.bitinvest.500, brand.bittrade.500)"
                 bgClip="text"
                 letterSpacing="tight"
                 lineHeight="shorter"
               >
-                {t('services.title')}
+                {t('services.title', 'Regulated Financial Technology Solutions')}
               </Heading>
             </motion.div>
 
@@ -362,12 +511,46 @@ const Services = () => {
             >
               <Text
                 fontSize={{ base: 'lg', md: '2xl' }}
-                color={colorMode === 'dark' ? 'whiteAlpha.700' : 'blackAlpha.700'}
+                color={isDark ? 'whiteAlpha.700' : 'blackAlpha.700'}
                 maxW="3xl"
               >
-                {t('services.description')}
+                {t('services.description', 'Access institutional-grade financial services for retail and institutional clients. Trade forex, cryptocurrencies, stocks, commodities, and more on our regulated platforms.')}
               </Text>
             </motion.div>
+            
+            <HStack spacing={4} pt={6}>
+              <Button
+                size="lg"
+                colorScheme="blue"
+                px={8}
+                height="60px"
+                fontSize="lg"
+                fontWeight="bold"
+                _hover={{
+                  transform: 'translateY(-2px)',
+                  boxShadow: 'lg'
+                }}
+                onClick={() => router.push('/signup')}
+              >
+                {t('openAccount', 'Open Account')}
+              </Button>
+              
+              <Button
+                size="lg"
+                variant="outline"
+                colorScheme="blue"
+                px={8}
+                height="60px"
+                fontSize="lg"
+                _hover={{
+                  transform: 'translateY(-2px)',
+                  boxShadow: 'lg'
+                }}
+                onClick={() => router.push('/contact')}
+              >
+                {t('contactUs', 'Contact Us')}
+              </Button>
+            </HStack>
           </VStack>
         </Container>
 
@@ -384,15 +567,15 @@ const Services = () => {
           }}
         >
           <VStack spacing={2}>
-            <Text fontSize="sm" color={colorMode === 'dark' ? 'whiteAlpha.600' : 'blackAlpha.600'}>
-              Scroll to Explore
+            <Text fontSize="sm" color={isDark ? 'whiteAlpha.600' : 'blackAlpha.600'}>
+              {t('scrollToExplore', 'Scroll to Explore')}
             </Text>
             <Box
               h="40px"
               w="24px"
               borderRadius="full"
               border="2px solid"
-              borderColor={colorMode === 'dark' ? 'whiteAlpha.200' : 'blackAlpha.200'}
+              borderColor={isDark ? 'whiteAlpha.200' : 'blackAlpha.200'}
               position="relative"
             >
               <motion.div
@@ -408,7 +591,7 @@ const Services = () => {
                   width: '6px',
                   height: '6px',
                   borderRadius: '50%',
-                  backgroundColor: colorMode === 'dark' ? 'white' : 'black',
+                  backgroundColor: isDark ? 'white' : 'black',
                   position: 'absolute',
                   top: '6px',
                   left: '50%',
@@ -419,6 +602,11 @@ const Services = () => {
           </VStack>
         </motion.div>
       </Box>
+
+      {/* Licensing Section */}
+      <Container maxW="8xl" px={{ base: 4, lg: 8 }}>
+        <LicenseSection />
+      </Container>
 
       {/* Platforms Showcase */}
       <Container maxW="8xl" px={{ base: 4, lg: 8 }}>
@@ -431,6 +619,61 @@ const Services = () => {
           />
         ))}
       </Container>
+    
+      {/* Final CTA Section */}
+      <Box py={20}>
+        <Container maxW="6xl" textAlign="center">
+          <VStack spacing={8}>
+            <Heading
+              fontSize={{ base: '3xl', md: '4xl' }}
+              bgClip="text"
+            >
+              {t('readyToStart', 'Ready to Elevate Your Financial Experience?')}
+            </Heading>
+            
+            <Text 
+              fontSize="lg" 
+              color={isDark ? 'gray.300' : 'gray.700'} 
+              maxW="3xl"
+            >
+              {t('ctaDescription', 'Join thousands of traders and investors who trust our regulated financial platforms. Start today and access global markets with confidence.')}
+            </Text>
+            
+            <HStack spacing={4}>
+              <Button
+                size="lg"
+                colorScheme="blue"
+                _hover={{
+                  transform: 'translateY(-2px)',
+                  boxShadow: 'xl'
+                }}
+                px={8}
+                height="60px"
+                fontSize="lg"
+                onClick={() => router.push('/signup')}
+              >
+                {t('createAccount', 'Create Account')}
+              </Button>
+              
+              <Button
+                size="lg"
+                variant="outline"
+                colorScheme="blue"
+                px={8}
+                height="60px"
+                fontSize="lg"
+                _hover={{
+                  transform: 'translateY(-2px)',
+                  boxShadow: 'md',
+                }}
+                onClick={() => router.push('/contact')}
+              >
+                {t('scheduleDemo', 'Schedule Demo')}
+              </Button>
+            </HStack>
+          </VStack>
+        </Container>
+      </Box>
     </Box>
     </Layout>
     </>

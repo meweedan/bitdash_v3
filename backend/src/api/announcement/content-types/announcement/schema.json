@@ -35,9 +35,10 @@
     "platform": {
       "type": "enumeration",
       "enum": [
-        "bitshop",
+        "bittrade",
         "bitcash",
-        "bitfood"
+        "bitfund",
+        "bitinvest"
       ],
       "required": true
     },
