@@ -8,8 +8,9 @@ import Layout from '@/components/Layout';
 // Subdomain landings
 import MainLanding from '@/components/Landing';
 import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
-import FoodLandingBrowser from '@/components/landing/FoodLandingBrowser';
-import ShopLandingBrowser from '@/components/landing/ShopLandingBrowser';
+import InvestLandingBrowser from '@/components/landing/InvestLandingBrowser';
+import FundLandingBrowser from '@/components/landing/FundLandingBrowser';
+import TradeLandingBrowser from '@/components/landing/TradeLandingBrowser';
 
 export default function HomePage() {
   const { t } = useTranslation('common');
@@ -21,10 +22,12 @@ export default function HomePage() {
 
     if (hostname.includes('cash.')) {
       setPlatform('cash');
-    } else if (hostname.includes('food.')) {
-      setPlatform('food');
-    } else if (hostname.includes('shop.')) {
-      setPlatform('shop');
+    } else if (hostname.includes('fund.')) {
+      setPlatform('fund');
+    } else if (hostname.includes('trade.')) {
+      setPlatform('trade');
+    } else if (hostname.includes('invest.')) {
+      setPlatform('invest');
     } else if (process.env.NODE_ENV === 'development') {
       // For dev, e.g. http://localhost:3000?platform=cash
       const param = new URLSearchParams(window.location.search).get('platform');
@@ -47,18 +50,24 @@ export default function HomePage() {
           favicon: '/cash-icons/favicon.ico',
           manifest: '/manifests/cash-manifest.json',
         };
-      case 'food':
+      case 'fund':
         return {
-          title: t('food.title', 'BitFood'),
-          favicon: '/food-icons/favicon.ico',
-          manifest: '/manifests/food-manifest.json',
+          title: t('fund.title', 'BitFund'),
+          favicon: '/fund-icons/favicon.ico',
+          manifest: '/manifests/fund-manifest.json',
         };
-      case 'shop':
+      case 'trade':
         return {
-          title: t('shop.title', 'BitShop'),
-          favicon: '/shop-icons/favicon.ico',
-          manifest: '/manifests/shop-manifest.json',
+          title: t('trade.title', 'BitTrade'),
+          favicon: '/trade-icons/favicon.ico',
+          manifest: '/manifests/trade-manifest.json',
         };
+      case 'invest':
+      return {
+        title: t('invest.title', 'BitInvest'),
+        favicon: '/invest-icons/favicon.ico',
+        manifest: '/manifests/invest-manifest.json',
+      };
       default:
         return {
           title: t('home', 'BitDash'),
@@ -75,10 +84,12 @@ export default function HomePage() {
     switch (platform) {
       case 'cash':
         return <CashLandingBrowser />;
-      case 'food':
-        return <FoodLandingBrowser />;
-      case 'shop':
-        return <ShopLandingBrowser />;
+      case 'fund':
+        return <FundLandingBrowser />;
+      case 'invest':
+        return <InvestLandingBrowser />;
+      case 'trade':
+        return <TradeLandingBrowser />;
       default:
         return <MainLanding />;
     }

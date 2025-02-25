@@ -12,14 +12,12 @@ const Logo = () => {
     const hostname = window.location.hostname;
     if (hostname.includes('cash')) {
       setPlatform('cash');
-    // } else if (hostname.includes('work')) {
-    //   setPlatform('work');
-    } else if (hostname.includes('food')) {
-      setPlatform('food');  
-    // } else if (hostname.includes('ride')) {
-    //   setPlatform('ride');
-    } else if (hostname.includes('shop')) {
-      setPlatform('shop');
+    } else if (hostname.includes('invest')) {
+      setPlatform('invest');
+    } else if (hostname.includes('fund')) {
+      setPlatform('fund');  
+    } else if (hostname.includes('trade')) {
+      setPlatform('trade');
     } else if (process.env.NODE_ENV === 'development') {
       const urlPlatform = new URLSearchParams(window.location.search).get('platform');
       setPlatform(urlPlatform);
@@ -33,22 +31,18 @@ const Logo = () => {
         en: { path: '/cash.png', width: 916, height: 289 },
         ar: { path: '/cash-ar.png', width: 801, height: 233}
       },
-      // work: {
-      //   en: { path: '/work.png', width: 778, height: 175 },
-      //   ar: { path: '/work-ar.png', width: 784, height: 233 }
-      // },
-      food: {
-        en: { path: '/food.png', width: 978, height: 275 },
-        ar: { path: '/food-ar.png', width: 784, height: 233 }
+      invest: {
+        en: { path: '/invest.png', width: 978, height: 275 },
+        ar: { path: '/invest-ar.png', width: 784, height: 233 }
       },
-      shop: {
-        en: { path: '/shop.png', width: 978, height: 275 },
-        ar: { path: '/shop-ar.png', width: 784, height: 233 }
+      trade: {
+        en: { path: '/trade.png', width: 978, height: 275 },
+        ar: { path: '/trade-ar.png', width: 784, height: 233 }
       },
-      // ride: {
-      //   en: { path: '/ride.png', width: 978, height: 275 },
-      //   ar: { path: '/ride-ar.png', width: 784, height: 233 }
-      // },
+      fund: {
+        en: { path: '/fund.png', width: 978, height: 275 },
+        ar: { path: '/fund-ar.png', width: 784, height: 233 }
+      },
       main: {
         en: { path: '/bitdash-logo.png', width: 875, height: 285 },
         ar: { path: '/bitdash-ar-logo.png', width: 875, height: 285 }

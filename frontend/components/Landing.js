@@ -224,41 +224,34 @@ export default function Landing() {
     color: "brand.bitcash"
   },
   {
-    name: t('bitfood.name'),
+    name: t('bitfund.name'),
     icon: Utensils,
-    description: t('bitfood.description'),
-    subdomain: "food.bitdash.app",
-    color: "brand.bitfood"
+    description: t('bitfund.description'),
+    subdomain: "fund.bitdash.app",
+    color: "brand.bitfund"
   },
   {
-    name: t('bitshop.name'),
+    name: t('bitinvest.name'),
     icon: ShoppingCart,
-    description: t('bitshop.description'),
-    subdomain: "shop.bitdash.app",
-    color: "brand.bitshop"
+    description: t('bitinvest.description'),
+    subdomain: "invest.bitdash.app",
+    color: "brand.bitinvest"
   },
-  // {
-  //   name: t('bitride.name'),
-  //   icon: CarFront,
-  //   description: t('bitride.description'),
-  //   subdomain: "ride.bitdash.app",
-  //   color: "brand.bitride"
-  // },
-  // {
-  //   name: t('bitwork.name'),
-  //   icon: Briefcase,
-  //   description: t('bitwork.description'),
-  //   subdomain: "work.bitdash.app",
-  //   color: "brand.bitwork"
-  // }
+  {
+    name: t('bittrade.name'),
+    icon: CarFront,
+    description: t('bittrade.description'),
+    subdomain: "trade.bitdash.app",
+    color: "brand.bittrade"
+  }
 ];
 
 const colorAnimation = keyframes`
-  0% { color: ${theme.colors.brand.bitcash[400]}; }    
-  25% { color: ${theme.colors.brand.bitfood[400]}; }   
-  50% { color: ${theme.colors.brand.bitshop[400]}; }   
-  75% { color: ${theme.colors.brand.bitride[400]}; }   
-  100% { color: ${theme.colors.brand.bitwork[400]}; }  
+  0% { color: ${theme.colors.brand.bitdash[400]}; }    
+  25% { color: ${theme.colors.brand.bitfund[400]}; }   
+  50% { color: ${theme.colors.brand.bitinvest[400]}; }   
+  75% { color: ${theme.colors.brand.bittrade[400]}; }   
+  100% { color: ${theme.colors.brand.bitcash[400]}; }  
 `;
 
 return (

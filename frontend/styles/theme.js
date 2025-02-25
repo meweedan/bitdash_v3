@@ -3,7 +3,7 @@ import { extendTheme } from '@chakra-ui/react';
 const theme = extendTheme({
   colors: {
     brand: {
-       bitdash: {
+      bitdash: {
         400: '#67bdfd', 
         500: '#67bdfd',
         600: '#67bdfd',
@@ -16,29 +16,23 @@ const theme = extendTheme({
         600: '#1eb495',    // Hover
         700: '#2d7b6a',    // Emphasis
       },
-      bitfood: {
-        400: '#ffd7ba',
-        500: '#ffa78a',    // Base
-        600: '#ffc8b6',    // Hover
-        700: '#ff8963',    // Emphasis
+      bitfund: {
+        400: '#305896',
+        500: '#5c87cb',    // Base
+        600: '#6e8fc4',    // Hover
+        700: '#859ec6',    // Emphasis
       },
-      bitshop: {
-        400: '#77a2e4',
-        500: '#8bcdfd',    // Base
-        600: '#74baed',    // Hover
-        700: '#5f94e6',    // Emphasis
+      bittrade: {
+        400: '#38a4a4',
+        500: '#59c6c6',    // Base
+        600: '#5fd8d8',    // Hover
+        700: '#84dfdf',    // Emphasis
       },
-      bitride: {
-        400: '#ebcdab',
-        500: '#e6c093',    // Base
-        600: '#c6a783',    // Hover
-        700: '#edb26d',    // Emphasis
-      },
-      bitwork: {
-        400: '#8C8C8C',    // Lighter grey for subtle highlights
-        500: '#525252',    // Base - your specified grey
-        600: '#424242',    // Hover - slightly darker
-        700: '#333333',    // Emphasis - even darker for contrast
+      bitinvest: {
+        400: '#b38f41',
+        500: '#2b4162',    // Base
+        600: '#849eb6',    // Hover
+        700: '#d6a35d',    // Emphasis
       }
     },
   },
@@ -50,7 +44,7 @@ const theme = extendTheme({
         fontWeight: 'bold',
       },
       variants: {
-         // BitDash variants
+        // BitDash variants
         'bitdash-solid': {
           bg: 'brand.bitdash.500',
           color: 'white',
@@ -58,13 +52,9 @@ const theme = extendTheme({
         },
         'bitdash-outline': {
           border: '2px solid',
-          borderImage: 'brand.bitdash.500',
-          borderImageSlice: 1,
-          color: props => props.colorMode === 'dark' ? 'white' : 'gray.800',
-          _hover: { 
-            bg: 'brand.bitdash.500', 
-            color: 'white'
-          }
+          borderColor: 'brand.bitdash.500',
+          color: 'brand.bitdash.500',
+          _hover: { bg: 'brand.bitdash.500', color: 'white' }
         },
         // BitCash variants
         'bitcash-solid': {
@@ -78,60 +68,41 @@ const theme = extendTheme({
           color: 'brand.bitcash.500',
           _hover: { bg: 'brand.bitcash.500', color: 'white' }
         },
-        
-        // BitFood variants
-        'bitfood-solid': {
-          bg: 'brand.bitfood.500',
+        // BitFund variants
+        'bitfund-solid': {
+          bg: 'brand.bitfund.500',
           color: 'white',
-          _hover: { bg: 'brand.bitfood.600' }
+          _hover: { bg: 'brand.bitfund.600' }
         },
-        'bitfood-outline': {
+        'bitfund-outline': {
           border: '2px solid',
-          borderColor: 'brand.bitfood.500',
-          color: 'brand.bitfood.500',
-          _hover: { bg: 'brand.bitfood.500', color: 'white' }
+          borderColor: 'brand.bitfund.500',
+          color: 'brand.bitfund.500',
+          _hover: { bg: 'brand.bitfund.500', color: 'white' }
         },
-        
-        // BitShop variants
-        'bitshop-solid': {
-          bg: 'brand.bitshop.500',
+        // BitTrade variants
+        'bittrade-solid': {
+          bg: 'brand.bittrade.500',
           color: 'white',
-          _hover: { bg: 'brand.bitshop.600' }
+          _hover: { bg: 'brand.bittrade.600' }
         },
-        'bitshop-outline': {
+        'bittrade-outline': {
           border: '2px solid',
-          borderColor: 'brand.bitshop.500',
-          color: 'brand.bitshop.500',
-          _hover: { bg: 'brand.bitshop.500', color: 'white' }
+          borderColor: 'brand.bittrade.500',
+          color: 'brand.bittrade.500',
+          _hover: { bg: 'brand.bittrade.500', color: 'white' }
         },
-        
-        // BitRide variants
-        'bitride-solid': {
-          bg: 'brand.bitride.500',
+        // BitInvest variants
+        'bitinvest-solid': {
+          bg: 'brand.bitinvest.500',
           color: 'white',
-          _hover: { bg: 'brand.bitride.600' }
+          _hover: { bg: 'brand.bitinvest.600' }
         },
-        'bitride-outline': {
+        'bitinvest-outline': {
           border: '2px solid',
-          borderColor: 'brand.bitride.500',
-          color: 'brand.bitride.500',
-          _hover: { bg: 'brand.bitride.500', color: 'white' }
-        },
-
-        // BitWork variants
-       'bitwork-solid': {
-          bg: 'brand.bitwork.500',
-          color: 'white', 
-          _hover: { bg: 'brand.bitwork.600' }
-        },
-        'bitwork-outline': {
-          border: '2px solid',
-          borderColor: 'brand.bitwork.500',
-          color: props => props.colorMode === 'dark' ? 'brand.bitwork.400' : 'brand.bitwork.500',
-          _hover: { 
-            bg: 'brand.bitwork.500', 
-            color: 'white'
-          }
+          borderColor: 'brand.bitinvest.500',
+          color: 'brand.bitinvest.500',
+          _hover: { bg: 'brand.bitinvest.500', color: 'white' }
         }
       },
     },
@@ -145,26 +116,19 @@ const theme = extendTheme({
       }),
       variants: {
         bitdash: {
-          borderImage: 'brand.bitdash.500',
-          borderImageSlice: 1,
+          borderColor: 'brand.bitdash.500',
         },
         bitcash: {
           borderColor: 'brand.bitcash.500',
         },
-        bitfood: {
-          borderColor: 'brand.bitfood.500',
+        bitfund: {
+          borderColor: 'brand.bitfund.500',
         },
-        bitshop: {
-          borderColor: 'brand.bitshop.500',
+        bittrade: {
+          borderColor: 'brand.bittrade.500',
         },
-        bitride: {
-          borderColor: 'brand.bitride.500',
-        },
-        bitwork: {
-          borderColor: 'brand.bitwork.500',
-          _hover: {
-            borderColor: 'brand.bitwork.400'
-          }
+        bitinvest: {
+          borderColor: 'brand.bitinvest.500',
         }
       }
     },

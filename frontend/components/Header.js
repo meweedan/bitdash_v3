@@ -35,7 +35,7 @@ export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [platform, setPlatform] = useState('bitdash');
   const accentColor = `brand.${platform}.700`;
-  const showAnnouncements = platform === 'bitshop' || platform === 'bitfood' || platform === 'bitcash';
+  const showAnnouncements = platform === 'bittrade' || platform === 'bitinvest' ||  platform === 'bitfund' || platform === 'bitcash';
 
   useEffect(() => {
     const checkAuth = () => {
@@ -71,26 +71,33 @@ export default function Header() {
 
   const platforms = [
     {
+      image: '/trade.png',
+      mobileImage: '/trade.png',
+      href: 'https://trade.bitdash.app/',
+    },
+    {
       image: '/cash.png',
       mobileImage: '/cash.png',
       href: 'https://cash.bitdash.app/',
     },
     {
-      image: '/food.png',
-      mobileImage: '/food.png',
-      href: 'https://food.bitdash.app/',
+      image: '/fund.png',
+      mobileImage: '/fund.png',
+      href: 'https://fund.bitdash.app/',
     },
     {
-      image: '/shop.png',
-      mobileImage: '/shop.png',
-      href: 'https://shop.bitdash.app/',
+      image: '/invest.png',
+      mobileImage: '/invest.png',
+      href: 'https://invest.bitdash.app/',
     },
+    
   ];
 
   const bgColor = useColorModeValue(
   platform === 'bitcash' ? 'brand.bitcash.500' : 
-  platform === 'bitfood' ? 'brand.bitfood.500' :
-  platform === 'bitshop' ? 'brand.bitshop.500' :
+  platform === 'bitinvest' ? 'brand.bitinvest.500' :
+  platform === 'bittrade' ? 'brand.bittrade.500' :
+  platform === 'bitfund' ? 'brand.bitfund.500' :
   'gray.50',
   'gray.900'
 );
@@ -100,8 +107,9 @@ export default function Header() {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
     if (hostname.includes('cash')) return 'bitcash';
-    if (hostname.includes('food')) return 'bitfood';
-    if (hostname.includes('shop')) return 'bitshop';
+    if (hostname.includes('fund')) return 'bitfund';
+    if (hostname.includes('trade')) return 'bittrade';
+    if (hostname.includes('invest')) return 'bitinvest';
   }
   return 'bitdash'; // Default platform
 };

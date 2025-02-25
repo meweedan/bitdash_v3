@@ -51,33 +51,27 @@ const nextConfig = {
       // Shop platform routes
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'shop.bitdash.app' }],
-        destination: '/shop/:path*',
+        has: [{ type: 'host', value: 'trade.bitdash.app' }],
+        destination: '/trade/:path*',
       },
-      // Food platform routes
+      // Fund platform routes
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'food.bitdash.app' }],
-        destination: '/food/:path*',
+        has: [{ type: 'host', value: 'fund.bitdash.app' }],
+        destination: '/fund/:path*',
       },
-      // Ride platform routes
-      // {
-      //   source: '/:path*',
-      //   has: [{ type: 'host', value: 'ride.bitdash.app' }],
-      //   destination: '/ride/:path*',
-      // },
       // Cash platform routes
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'cash.bitdash.app' }],
         destination: '/cash/:path*',
       },
-      // // Work platform routes
-      // {
-      //   source: '/:path*',
-      //   has: [{ type: 'host', value: 'work.bitdash.app' }],
-      //   destination: '/work/:path*',
-      // }
+      // Invest platform routes
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'invest.bitdash.app' }],
+        destination: '/invest/:path*',
+      }
     ];
   },
 
