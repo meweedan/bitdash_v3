@@ -1,96 +1,125 @@
 {
   "kind": "collectionType",
-  "collectionName": "prop-traders",
+  "collectionName": "prop_traders",
   "info": {
     "singularName": "prop-trader",
     "pluralName": "prop-traders",
     "displayName": "Prop Trader",
-    "description": "Proprietary Trading Platform Users"
+    "description": "BitFund proprietary traders"
   },
   "options": {
     "draftAndPublish": false,
     "timestamps": true
   },
-  "pluginOptions": {},
   "attributes": {
-    "user": {
+    "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "prop_trader"
     },
     "status": {
       "type": "enumeration",
-      "enum": ["pending", "active", "suspended", "terminated"],
+      "enum": ["pending", "challenge", "funded", "suspended", "terminated"],
       "default": "pending"
     },
-    "challengeType": {
+    "challenge_type": {
       "type": "enumeration",
       "enum": ["standard", "professional", "elite", "institutional"],
       "default": "standard"
     },
-    "challengeStatus": {
-      "type": "enumeration",
-      "enum": ["not_started", "phase1", "phase2", "evaluation", "funded", "failed"],
-      "default": "not_started"
-    },
-    "accountSize": {
+    "account_size": {
       "type": "decimal",
       "default": 10000
     },
-    "tradingStyle": {
-      "type": "enumeration",
-      "enum": ["day", "swing", "position", "scalping", "algorithmic"]
-    },
-    "profitTarget": {
+    "profit_target": {
       "type": "decimal",
       "default": 8
     },
-    "maxDailyDrawdown": {
-      "type": "decimal",
-      "default": 2
-    },
-    "maxTotalDrawdown": {
+    "max_drawdown": {
       "type": "decimal",
       "default": 5
     },
-    "challengeStartDate": {
-      "type": "datetime"
-    },
-    "challengeEndDate": {
-      "type": "datetime"
-    },
-    "profitSplitRatio": {
+    "current_balance": {
       "type": "decimal",
-      "default": 80
+      "default": 10000
     },
-    "kycVerified": {
-      "type": "boolean",
-      "default": false
+    "profit_loss": {
+      "type": "decimal",
+      "default": 0
     },
-    "tradingMetrics": {
+    "trading_metrics": {
       "type": "json"
     },
-    "tradingHistory": {
+    "challenge_start_date": {
+      "type": "datetime"
+    },
+    "challenge_end_date": {
+      "type": "datetime"
+    },
+    "funding_date": {
+      "type": "datetime"
+    },
+    "wallet": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wallet.wallet",
+      "inversedBy": "prop_trader"
+    },
+    "trading_history": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::transaction.transaction",
-      "mappedBy": "trader"
+      "mappedBy": "prop_trader"
     },
-    "preferredMarkets": {
-      "type": "json"
+    "funded_by": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::investor.investor",
+      "inversedBy": "fundedTraders"
+    },
+    "referredBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::introducing-broker.introducing-broker",
+      "inversedBy": "referredPropTraders"
+    },
+    "profitSplitRatio": {
+      "type": "decimal",
+      "default": 80,
+      "comment": "Percentage of profits that goes to the trader (e.g., 80%)"
+    },
+    "dailyDrawdownLimit": {
+      "type": "decimal",
+      "default": 2,
+      "comment": "Maximum daily drawdown percentage allowed"
+    },
+    "tradingRules": {
+      "type": "json",
+      "comment": "Custom rules for this trader"
+    },
+    "tradingPreferences": {
+      "type": "json",
+      "comment": "Trader's preferences for markets, instruments, etc."
     },
     "agreedToTerms": {
       "type": "boolean",
       "default": false,
       "required": true
     },
-    "paymentMethods": {
+    "agreement": {
+      "type": "json",
+      "comment": "Terms agreed to by the trader"
+    },
+    "kycVerified": {
+      "type": "boolean",
+      "default": false
+    },
+    "preferredPayoutMethod": {
       "type": "json"
     },
-    "wallet": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::wallet.wallet"
+    "notes": {
+      "type": "text"
     }
   }
 }

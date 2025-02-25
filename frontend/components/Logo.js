@@ -28,24 +28,24 @@ const Logo = () => {
     // Dimensions from the screenshots
     const configs = {
       cash: {
-        en: { path: '/cash.png', width: 916, height: 289 },
-        ar: { path: '/cash-ar.png', width: 801, height: 233}
+        en: { path: '/cash.png', width: 816, height: 289 },
+        ar: { path: '/cash-ar.png', width: 701, height: 233}
       },
       invest: {
-        en: { path: '/invest.png', width: 978, height: 275 },
-        ar: { path: '/invest-ar.png', width: 784, height: 233 }
+        en: { path: '/invest.png', width: 878, height: 275 },
+        ar: { path: '/invest-ar.png', width: 684, height: 233 }
       },
       trade: {
-        en: { path: '/trade.png', width: 978, height: 275 },
+        en: { path: '/trade.png', width: 878, height: 275 },
         ar: { path: '/trade-ar.png', width: 784, height: 233 }
       },
       fund: {
-        en: { path: '/fund.png', width: 978, height: 275 },
-        ar: { path: '/fund-ar.png', width: 784, height: 233 }
+        en: { path: '/fund.png', width: 878, height: 275 },
+        ar: { path: '/fund-ar.png', width: 684, height: 233 }
       },
       main: {
-        en: { path: '/bitdash-logo.png', width: 875, height: 285 },
-        ar: { path: '/bitdash-ar-logo.png', width: 875, height: 285 }
+        en: { path: '/bitdash-logo.png', width: 775, height: 285 },
+        ar: { path: '/bitdash-ar-logo.png', width: 675, height: 285 }
       }
     };
 
@@ -55,8 +55,8 @@ const Logo = () => {
 
   // Using the largest width (875px) and height (285px) as reference
   // to create consistent scaling while maintaining proportions
-  const CONTAINER_WIDTH = { base: '125px', md: '220px' };
-  const CONTAINER_HEIGHT = { base: '45px', md: '60px' };
+  const CONTAINER_WIDTH = { base: '115px', md: '170px' };
+  const CONTAINER_HEIGHT = { base: '50px', md: '50px' };
 
   const logoConfig = getLogoConfig();
 

@@ -5,7 +5,7 @@
     "singularName": "transaction",
     "pluralName": "transactions",
     "displayName": "Transaction",
-    "description": "Financial transaction records"
+    "description": "Financial transaction records across all BitDash platforms"
   },
   "options": {
     "draftAndPublish": true
@@ -15,18 +15,13 @@
       "type": "decimal",
       "required": true
     },
-    "contacts": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::contact.contact"
-    },
     "currency": {
       "type": "enumeration",
-      "enum": ["LYD", "USDT", "USD"],
+      "enum": ["LYD", "USDT", "USD", "BTC", "ETH", "EUR", "GBP", "AUD", "CAD", "CHF", "JPY", "CNY"],
       "required": true
     },
     "type": {
-       "type": "enumeration",
+      "type": "enumeration",
       "enum": [
         "transfer",
         "deposit",
@@ -34,7 +29,12 @@
         "conversion",
         "payment",
         "shop_sale",
-        "shop_payout"
+        "shop_payout",
+        "trade",
+        "commission",
+        "profit_split",
+        "challenge_fee",
+        "investment"
       ]
     },
     "sender": {
@@ -46,21 +46,6 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::wallet.wallet"
-    },
-    "merchant": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::merchant.merchant"
-    },
-    "payment_link": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::payment-link.payment-link"
-    },
-    "agent": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::agent.agent"
     },
     "status": {
       "type": "enumeration",
@@ -84,6 +69,60 @@
     },
     "metadata": {
       "type": "json"
+    },
+    "contacts": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::contact.contact"
+    },
+    "merchant": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::merchant.merchant"
+    },
+    "payment_link": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::payment-link.payment-link"
+    },
+    "agent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agent.agent"
+    },
+    "prop_trader": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::prop-trader.prop-trader",
+      "inversedBy": "trading_history"
+    },
+    "retail_trader": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::retail-trader.retail-trader",
+      "inversedBy": "trading_history"
+    },
+    "investor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::investor.investor",
+      "inversedBy": "investmentHistory"
+    },
+    "institutional_client": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::institutional-client.institutional-client",
+      "inversedBy": "transactionHistory"
+    },
+    "introducing_broker": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::introducing-broker.introducing-broker",
+      "inversedBy": "commissionHistory"
+    },
+    "trade_details": {
+      "type": "json",
+      "comment": "For trade transactions with details like symbol, entry/exit prices, etc."
     }
   }
 }

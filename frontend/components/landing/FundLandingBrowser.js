@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import {
   Box,
@@ -28,6 +29,18 @@ import {
   Badge,
   Grid,
   GridItem,
+  useBreakpointValue,
+  Stack,
+  Divider,
+  TableContainer,
+  IconButton,
+  Drawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure
 } from '@chakra-ui/react';
 import { 
   FaChartLine,
@@ -41,16 +54,26 @@ import {
   FaUsers,
   FaLaptopCode,
   FaCertificate,
-  FaMapMarkerAlt
+  FaMapMarkerAlt,
+  FaBars,
+  FaLanguage
 } from 'react-icons/fa';
-import TradingMatrix from '../TradingMatrix';
-import MarketTicker from '../MarketTicker';
-import TradingPerformanceChart from '../TradingPerformanceChart';
+import TradingMatrix from '@/components/TradingMatrix';
+import TradingPerformanceChart from '@/components/TradingPerformanceChart';
+import MarketTicker from '@/components/MarketTicker';
 
 const BitFundLanding = () => {
-  const { t } = useTranslation('common');
+  const { t, i18n } = useTranslation('common');
   const router = useRouter();
   const containerRef = useRef(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { locale } = router;
+  
+  // Set the HTML dir attribute based on language
+  useEffect(() => {
+    document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = locale;
+  }, [locale]);
   
   const bgGradient = useColorModeValue(
     'linear(to-b, blue.50, white)',
@@ -73,6 +96,24 @@ const BitFundLanding = () => {
     [0, 1],
     [1, 0.92]
   );
+
+  // Responsive adjustments
+  const buttonSize = useBreakpointValue({ base: "md", md: "lg" });
+  const buttonHeight = useBreakpointValue({ base: 12, md: 14 });
+  const headingSize = useBreakpointValue({ 
+    base: "2xl", 
+    sm: "3xl",
+    md: "4xl", 
+    lg: "6xl", 
+    xl: "7xl" 
+  });
+  const isDesktop = useBreakpointValue({ base: false, lg: true });
+  const statsColumns = useBreakpointValue({ base: 1, sm: 3 });
+  const featureColumns = useBreakpointValue({ base: 1, md: 2, lg: 4 });
+  const licenseColumns = useBreakpointValue({ base: 1, md: 2 });
+  const officeColumns = useBreakpointValue({ base: 1, md: 2 });
+  const padding = useBreakpointValue({ base: 4, md: 8 });
+  const spacing = useBreakpointValue({ base: 4, md: 8 });
 
   const challengeTypes = [
     {
@@ -224,8 +265,14 @@ const BitFundLanding = () => {
   ];
 
   return (
-    <Box ref={containerRef} bg={bgGradient} overflow="hidden">
-      <Container maxW="8xl" pt={8}>
+    <Box 
+      ref={containerRef} 
+      bg={bgGradient} 
+      overflow="hidden" 
+      minH="100vh" 
+      textAlign={locale === 'ar' ? 'right' : 'left'}
+    >
+      <Container maxW="8xl" pt={{ base: 4, md: 8 }} px={{ base: 4, md: 8 }}>
         {/* Hero Section */}
         <motion.div style={{ scale: heroScale }}>
           <Flex
@@ -234,95 +281,112 @@ const BitFundLanding = () => {
             textAlign="center"
             position="relative"
           >
-            <VStack spacing={8} maxW="4xl">
+            <VStack spacing={{ base: 4, md: 8 }} maxW="4xl">
               <Heading
-                fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
+                fontSize={headingSize}
                 bgGradient="linear(to-r, brand.bitfund.500, brand.bitfund.700)"
                 bgClip="text"
+                lineHeight="1.2"
+                textAlign="center"
+                px={{ base: 2, md: 0 }}
               >
                 {t('prop.hero.title', 'Fund Your Trading Career')}
               </Heading>
-              <Text fontSize={{ base: 'xl', md: '2xl' }} opacity={0.8} maxW="3xl">
+              <Text fontSize={{ base: "lg", md: "xl", lg: "2xl" }} opacity={0.8} maxW="3xl" px={{ base: 2, md: 0 }}>
                 {t('prop.hero.subtitle', 'Unlock capital up to $200,000 by proving your trading skills')}
               </Text>
 
-              <TradingMatrix />
+              <Box w="full" overflowX="auto" px={{ base: 0, md: 4 }}>
+                <TradingMatrix />
+              </Box>
 
-              <MarketTicker />
+              <Box w="full" overflowX="auto" px={{ base: 0, md: 4 }}>
+                <MarketTicker />
+              </Box>
 
-              <TradingPerformanceChart />
+              <Box w="full" h={{ base: "300px", md: "auto" }} px={{ base: 0, md: 4 }}>
+                <TradingPerformanceChart />
+              </Box>
 
-              <HStack spacing={6} pt={8}>
+              <Stack 
+                direction={{ base: "column", sm: "row" }} 
+                spacing={{ base: 4, md: 6 }} 
+                pt={{ base: 4, md: 8 }}
+                w={{ base: "full", sm: "auto" }}
+                flexDirection={locale === 'ar' && { sm: 'row-reverse' }}
+              >
                 <Button
-                  size="lg"
+                  size={buttonSize}
                   colorScheme="blue"
-                  px={8}
-                  h={14}
-                  fontSize="lg"
+                  px={{ base: 4, md: 8 }}
+                  h={buttonHeight}
+                  fontSize={{ base: "md", md: "lg" }}
+                  w={{ base: "full", sm: "auto" }}
                   onClick={() => router.push('/signup')}
                 >
                   {t('prop.hero.get_started', 'Start Challenge')}
                 </Button>
                 <Button
-                  size="lg"
+                  size={buttonSize}
                   variant="outline"
                   colorScheme="blue"
-                  px={8}
-                  h={14}
-                  fontSize="lg"
+                  px={{ base: 4, md: 8 }}
+                  h={buttonHeight}
+                  fontSize={{ base: "md", md: "lg" }}
+                  w={{ base: "full", sm: "auto" }}
                   onClick={() => router.push('/learn')}
                 >
                   {t('hero.learn_more', 'Learn More')}
                 </Button>
-              </HStack>
+              </Stack>
             </VStack>
 
             {/* Stats Preview */}
             <Box
-              mt={16}
+              mt={{ base: 8, md: 16 }}
               w="full"
               maxW="6xl"
-              p={8}
-              borderRadius="3xl"
+              p={{ base: 4, md: 8 }}
+              borderRadius={{ base: "xl", md: "3xl" }}
               bg={glassCardBg}
               borderColor="brand.bitfund.500"
               borderWidth={2}
               boxShadow="xl"
             >
-              <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8}>
+              <SimpleGrid columns={statsColumns} spacing={{ base: 4, md: 8 }}>
                 <VStack
-                  p={6}
+                  p={{ base: 4, md: 6 }}
                   borderRadius="xl"
                   bg={useColorModeValue('white', 'gray.800')}
                   spacing={4}
                 >
-                  <Icon as={FaLaptopCode} boxSize={8} color="brand.bitfund.500" />
+                  <Icon as={FaLaptopCode} boxSize={{ base: 6, md: 8 }} color="brand.bitfund.500" />
                   <Text fontWeight="bold">{t('demo.challenge_pass_rate', 'Pass Rate')}</Text>
-                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitfund.500">
+                  <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" color="brand.bitfund.500">
                     12.5%
                   </Text>
                 </VStack>
                 <VStack
-                  p={6}
+                  p={{ base: 4, md: 6 }}
                   borderRadius="xl"
                   bg={useColorModeValue('white', 'gray.800')}
                   spacing={4}
                 >
-                  <Icon as={FaGlobeAmericas} boxSize={8} color="brand.bitfund.500" />
+                  <Icon as={FaGlobeAmericas} boxSize={{ base: 6, md: 8 }} color="brand.bitfund.500" />
                   <Text fontWeight="bold">{t('demo.global_traders', 'Active Traders')}</Text>
-                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitfund.500">
+                  <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" color="brand.bitfund.500">
                     12k+
                   </Text>
                 </VStack>
                 <VStack
-                  p={6}
+                  p={{ base: 4, md: 6 }}
                   borderRadius="xl"
                   bg={useColorModeValue('white', 'gray.800')}
                   spacing={4}
                 >
-                  <Icon as={FaMoneyBillWave} boxSize={8} color="brand.bitfund.500" />
+                  <Icon as={FaMoneyBillWave} boxSize={{ base: 6, md: 8 }} color="brand.bitfund.500" />
                   <Text fontWeight="bold">{t('demo.capital_allocated', 'Capital Allocated')}</Text>
-                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitfund.500">
+                  <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" color="brand.bitfund.500">
                     $450M+
                   </Text>
                 </VStack>
@@ -332,18 +396,19 @@ const BitFundLanding = () => {
         </motion.div>
 
         {/* Features Grid */}
-        <Box mt={24}>
+        <Box mt={{ base: 12, md: 24 }}>
           <Heading
             textAlign="center"
-            mb={12}
-            fontSize={{ base: '3xl', md: '4xl' }}
+            mb={{ base: 6, md: 12 }}
+            fontSize={{ base: '2xl', md: '3xl', lg: '4xl' }}
             bgGradient="linear(to-r, brand.bitfund.500, brand.bitfund.700)"
             bgClip="text"
+            px={{ base: 2, md: 0 }}
           >
             {t('prop.why.choose.us', 'Why Choose BitFund')}
           </Heading>
           
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} mb={16}>
+          <SimpleGrid columns={featureColumns} spacing={spacing} mb={{ base: 8, md: 16 }}>
             {features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -352,7 +417,7 @@ const BitFundLanding = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Box
-                  p={8}
+                  p={{ base: 4, md: 8 }}
                   h="full"
                   bg={glassCardBg}
                   borderRadius="xl"
@@ -364,12 +429,12 @@ const BitFundLanding = () => {
                   }}
                   transition="all 0.3s ease"
                 >
-                  <VStack align="start" spacing={6}>
-                    <Icon as={feature.icon} boxSize={12} color={feature.color} />
-                    <Heading size="md" color={feature.color}>
+                  <VStack align="start" spacing={{ base: 3, md: 6 }}>
+                    <Icon as={feature.icon} boxSize={{ base: 8, md: 12 }} color={feature.color} />
+                    <Heading size={{ base: "sm", md: "md" }} color={feature.color}>
                       {t(feature.title, 'Feature')}
                     </Heading>
-                    <Text>
+                    <Text fontSize={{ base: "sm", md: "md" }}>
                       {t(feature.description, 'Feature description')}
                     </Text>
                   </VStack>
@@ -380,18 +445,19 @@ const BitFundLanding = () => {
         </Box>
         
         {/* Challenge Types */}
-        <Box mt={24}>
+        <Box mt={{ base: 12, md: 24 }}>
           <Heading
             textAlign="center"
-            mb={12}
-            fontSize={{ base: '3xl', md: '4xl' }}
+            mb={{ base: 6, md: 12 }}
+            fontSize={{ base: '2xl', md: '3xl', lg: '4xl' }}
             bgGradient="linear(to-r, brand.bitfund.500, brand.bitfund.700)"
             bgClip="text"
+            px={{ base: 2, md: 0 }}
           >
             {t('prop.challenge.types', 'Account Challenge Types')}
           </Heading>
           
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} mb={16}>
+          <SimpleGrid columns={featureColumns} spacing={spacing} mb={{ base: 8, md: 16 }}>
             {challengeTypes.map((challenge, index) => (
               <motion.div
                 key={index}
@@ -400,7 +466,7 @@ const BitFundLanding = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Box
-                  p={8}
+                  p={{ base: 4, md: 8 }}
                   h="full"
                   bg={glassCardBg}
                   borderRadius="xl"
@@ -412,34 +478,35 @@ const BitFundLanding = () => {
                   }}
                   transition="all 0.3s ease"
                 >
-                  <VStack align="center" spacing={6}>
-                    <Heading size="md" color={challenge.color}>
+                  <VStack align="center" spacing={{ base: 3, md: 6 }}>
+                    <Heading size={{ base: "sm", md: "md" }} color={challenge.color}>
                       {challenge.title}
                     </Heading>
-                    <Text fontSize="3xl" fontWeight="bold" color={challenge.color}>
+                    <Text fontSize={{ base: "2xl", md: "3xl" }} fontWeight="bold" color={challenge.color}>
                       {challenge.amount}
                     </Text>
-                    <VStack spacing={3} align="start" w="full">
-                      <Flex justify="space-between" w="full">
-                        <Text fontWeight="medium">Fee:</Text>
-                        <Text>{challenge.fee}</Text>
+                    <VStack spacing={{ base: 2, md: 3 }} align="start" w="full">
+                      <Flex justify="space-between" w="full" flexDirection={locale === 'ar' ? 'row-reverse' : 'row'}>
+                        <Text fontWeight="medium" fontSize={{ base: "sm", md: "md" }}>{t('challenge.fee', 'Fee')}:</Text>
+                        <Text fontSize={{ base: "sm", md: "md" }}>{challenge.fee}</Text>
                       </Flex>
-                      <Flex justify="space-between" w="full">
-                        <Text fontWeight="medium">Duration:</Text>
-                        <Text>{challenge.duration}</Text>
+                      <Flex justify="space-between" w="full" flexDirection={locale === 'ar' ? 'row-reverse' : 'row'}>
+                        <Text fontWeight="medium" fontSize={{ base: "sm", md: "md" }}>{t('challenge.duration', 'Duration')}:</Text>
+                        <Text fontSize={{ base: "sm", md: "md" }}>{challenge.duration}</Text>
                       </Flex>
-                      <Flex justify="space-between" w="full">
-                        <Text fontWeight="medium">Profit Target:</Text>
-                        <Text>{challenge.profitTarget}</Text>
+                      <Flex justify="space-between" w="full" flexDirection={locale === 'ar' ? 'row-reverse' : 'row'}>
+                        <Text fontWeight="medium" fontSize={{ base: "sm", md: "md" }}>{t('challenge.profit_target', 'Profit Target')}:</Text>
+                        <Text fontSize={{ base: "sm", md: "md" }}>{challenge.profitTarget}</Text>
                       </Flex>
-                      <Flex justify="space-between" w="full">
-                        <Text fontWeight="medium">Max Loss:</Text>
-                        <Text>{challenge.maxLoss}</Text>
+                      <Flex justify="space-between" w="full" flexDirection={locale === 'ar' ? 'row-reverse' : 'row'}>
+                        <Text fontWeight="medium" fontSize={{ base: "sm", md: "md" }}>{t('challenge.max_loss', 'Max Loss')}:</Text>
+                        <Text fontSize={{ base: "sm", md: "md" }}>{challenge.maxLoss}</Text>
                       </Flex>
                     </VStack>
                     <Button 
                       colorScheme="blue" 
                       w="full"
+                      size={{ base: "sm", md: "md" }}
                       onClick={() => router.push(`/challenge/${challenge.title.toLowerCase().replace(' ', '-')}`)}
                     >
                       Select
@@ -452,13 +519,14 @@ const BitFundLanding = () => {
         </Box>
         
         {/* Trading Rules */}
-        <Box mt={24}>
+        <Box mt={{ base: 12, md: 24 }}>
           <Heading
             textAlign="center"
-            mb={12}
-            fontSize={{ base: '3xl', md: '4xl' }}
+            mb={{ base: 6, md: 12 }}
+            fontSize={{ base: '2xl', md: '3xl', lg: '4xl' }}
             bgGradient="linear(to-r, brand.bitfund.500, brand.bitfund.700)"
             bgClip="text"
+            px={{ base: 2, md: 0 }}
           >
             {t('prop.trading.rules', 'Trading Rules')}
           </Heading>
@@ -474,17 +542,20 @@ const BitFundLanding = () => {
             <Accordion allowToggle>
               {tradingRules.map((rule, index) => (
                 <AccordionItem key={index} border="none">
-                  <AccordionButton py={4} px={6} _hover={{ bg: 'whiteAlpha.200' }}>
+                  <AccordionButton py={{ base: 3, md: 4 }} px={{ base: 3, md: 6 }} _hover={{ bg: 'whiteAlpha.200' }}>
                     <Box flex="1" textAlign="left">
-                      <Text fontWeight="bold" fontSize="lg">{rule.title}</Text>
+                      <Text fontWeight="bold" fontSize={{ base: "md", md: "lg" }}>{rule.title}</Text>
                     </Box>
-                    <Badge colorScheme="blue" fontSize="md" px={3} py={1}>
+                    <Badge colorScheme="blue" fontSize={{ base: "xs", md: "md" }} px={3} py={1} display={{ base: "none", md: "block" }}>
                       {rule.rule}
                     </Badge>
                     <AccordionIcon ml={4} />
                   </AccordionButton>
-                  <AccordionPanel pb={4} px={6} bg={useColorModeValue('gray.50', 'whiteAlpha.50')}>
-                    <Text>{rule.description}</Text>
+                  <AccordionPanel pb={4} px={{ base: 3, md: 6 }} bg={useColorModeValue('gray.50', 'whiteAlpha.50')}>
+                    <Text fontSize={{ base: "sm", md: "md" }}>{rule.description}</Text>
+                    <Badge colorScheme="blue" fontSize="xs" px={2} py={1} mt={2} display={{ base: "inline-flex", md: "none" }}>
+                      {rule.rule}
+                    </Badge>
                   </AccordionPanel>
                 </AccordionItem>
               ))}
@@ -493,85 +564,88 @@ const BitFundLanding = () => {
         </Box>
         
         {/* Licensing and Regulation */}
-        <Box mt={24}>
+        <Box mt={{ base: 12, md: 24 }}>
           <Heading
             textAlign="center"
-            mb={12}
-            fontSize={{ base: '3xl', md: '4xl' }}
+            mb={{ base: 6, md: 12 }}
+            fontSize={{ base: '2xl', md: '3xl', lg: '4xl' }}
             bgGradient="linear(to-r, brand.bitfund.500, brand.bitfund.700)"
             bgClip="text"
+            px={{ base: 2, md: 0 }}
           >
             {t('prop.licensing', 'Licensing & Regulation')}
           </Heading>
           
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mb={16}>
+          <SimpleGrid columns={licenseColumns} spacing={spacing} mb={{ base: 8, md: 16 }}>
             <Box
-              p={8}
+              p={{ base: 4, md: 8 }}
               bg={glassCardBg}
               borderRadius="xl"
               borderColor="brand.bitfund.500"
               borderWidth={2}
               boxShadow="xl"
             >
-              <VStack align="start" spacing={6}>
+              <VStack align="start" spacing={{ base: 3, md: 6 }}>
                 <Flex align="center">
-                  <Icon as={FaCertificate} boxSize={8} color="brand.bitfund.500" mr={4} />
-                  <Heading size="md" color="brand.bitfund.500">
+                  <Icon as={FaCertificate} boxSize={{ base: 6, md: 8 }} color="brand.bitfund.500" mr={4} />
+                  <Heading size={{ base: "sm", md: "md" }} color="brand.bitfund.500">
                     {t('prop.regulatory.compliance', 'Regulatory Compliance')}
                   </Heading>
                 </Flex>
-                <Text>
+                <Text fontSize={{ base: "sm", md: "md" }}>
                   BitFund operates with full regulatory compliance across multiple jurisdictions, 
                   ensuring the highest standards of transparency and security for our traders.
                 </Text>
-                <Table variant="simple" size="sm">
-                  <Thead>
-                    <Tr>
-                      <Th>Regulatory Authority</Th>
-                      <Th>License Number</Th>
-                      <Th>Jurisdiction</Th>
-                    </Tr>
-                  </Thead>
-                  <Tbody>
-                    {licenseInfo.map((license, index) => (
-                      <Tr key={index}>
-                        <Td>{license.authority}</Td>
-                        <Td>{license.license}</Td>
-                        <Td>{license.country}</Td>
+                <TableContainer w="full" overflowX="auto">
+                  <Table variant="simple" size={{ base: "sm", md: "sm" }}>
+                    <Thead>
+                      <Tr>
+                        <Th fontSize={{ base: "xs", md: "sm" }}>Regulatory Authority</Th>
+                        <Th fontSize={{ base: "xs", md: "sm" }}>License Number</Th>
+                        <Th fontSize={{ base: "xs", md: "sm" }}>Jurisdiction</Th>
                       </Tr>
-                    ))}
-                  </Tbody>
-                </Table>
+                    </Thead>
+                    <Tbody>
+                      {licenseInfo.map((license, index) => (
+                        <Tr key={index}>
+                          <Td fontSize={{ base: "xs", md: "sm" }}>{license.authority}</Td>
+                          <Td fontSize={{ base: "xs", md: "sm" }}>{license.license}</Td>
+                          <Td fontSize={{ base: "xs", md: "sm" }}>{license.country}</Td>
+                        </Tr>
+                      ))}
+                    </Tbody>
+                  </Table>
+                </TableContainer>
               </VStack>
             </Box>
             
             <Box
-              p={8}
+              p={{ base: 4, md: 8 }}
               bg={glassCardBg}
               borderRadius="xl"
               borderColor="brand.bitfund.500"
               borderWidth={2}
               boxShadow="xl"
             >
-              <VStack align="start" spacing={6}>
+              <VStack align="start" spacing={{ base: 3, md: 6 }}>
                 <Flex align="center">
-                  <Icon as={FaMapMarkerAlt} boxSize={8} color="brand.bitfund.500" mr={4} />
-                  <Heading size="md" color="brand.bitfund.500">
+                  <Icon as={FaMapMarkerAlt} boxSize={{ base: 6, md: 8 }} color="brand.bitfund.500" mr={4} />
+                  <Heading size={{ base: "sm", md: "md" }} color="brand.bitfund.500">
                     {t('prop.global.offices', 'Global Offices')}
                   </Heading>
                 </Flex>
-                <Text>
+                <Text fontSize={{ base: "sm", md: "md" }}>
                   With offices in key financial centers around the world, BitFund provides localized 
                   support and maintains a strong global presence.
                 </Text>
-                <Grid templateColumns="repeat(2, 1fr)" gap={6} w="full">
+                <Grid templateColumns={`repeat(${officeColumns}, 1fr)`} gap={{ base: 4, md: 6 }} w="full">
                   {officeLocations.map((office, index) => (
                     <GridItem key={index}>
-                      <VStack align="start" spacing={2}>
-                        <Text fontWeight="bold" color="brand.bitfund.500">{office.city}</Text>
-                        <Text fontSize="sm">{office.address}</Text>
-                        <Text fontSize="sm">{office.phone}</Text>
-                        <Text fontSize="sm">{office.email}</Text>
+                      <VStack align="start" spacing={{ base: 1, md: 2 }}>
+                        <Text fontWeight="bold" color="brand.bitfund.500" fontSize={{ base: "sm", md: "md" }}>{office.city}</Text>
+                        <Text fontSize={{ base: "xs", md: "sm" }}>{office.address}</Text>
+                        <Text fontSize={{ base: "xs", md: "sm" }}>{office.phone}</Text>
+                        <Text fontSize={{ base: "xs", md: "sm" }}>{office.email}</Text>
                       </VStack>
                     </GridItem>
                   ))}
@@ -583,27 +657,27 @@ const BitFundLanding = () => {
         
         {/* Call to Action */}
         <Box
-          mt={24}
-          mb={16}
-          p={12}
-          borderRadius="2xl"
+          mt={{ base: 12, md: 24 }}
+          mb={{ base: 8, md: 16 }}
+          p={{ base: 6, md: 12 }}
+          borderRadius={{ base: "xl", md: "2xl" }}
           bg="brand.bitfund.600"
           color="white"
           textAlign="center"
         >
-          <VStack spacing={6}>
-            <Heading size="xl">
+          <VStack spacing={{ base: 4, md: 6 }}>
+            <Heading size={{ base: "lg", md: "xl" }} px={{ base: 2, md: 0 }}>
               {t('prop.cta.title', 'Ready to Prove Your Trading Skills?')}
             </Heading>
-            <Text fontSize="lg" maxW="2xl">
+            <Text fontSize={{ base: "md", md: "lg" }} maxW="2xl" px={{ base: 2, md: 0 }}>
               {t('prop.cta.description', 'Join thousands of traders who have successfully secured funding through BitFund challenges. Start your journey to becoming a funded trader today.')}
             </Text>
             <Button
-              size="lg"
+              size={buttonSize}
               colorScheme="whiteAlpha"
-              px={8}
-              h={14}
-              fontSize="lg"
+              px={{ base: 4, md: 8 }}
+              h={buttonHeight}
+              fontSize={{ base: "md", md: "lg" }}
               onClick={() => router.push('/signup')}
             >
               {t('prop.cta.button', 'Begin Challenge Now')}

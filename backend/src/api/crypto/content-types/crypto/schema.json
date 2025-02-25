@@ -4,7 +4,8 @@
   "info": {
     "singularName": "crypto",
     "pluralName": "cryptos",
-    "displayName": "Crypto"
+    "displayName": "Crypto",
+    "description": "Cryptocurrency transaction records"
   },
   "options": {
     "draftAndPublish": false
@@ -17,7 +18,7 @@
     },
     "network": {
       "type": "enumeration",
-      "enum": ["TRC20", "ERC20"],
+      "enum": ["TRC20", "ERC20", "BEP20", "SOL", "BTC"],
       "required": true
     },
     "amount": {
@@ -41,10 +42,29 @@
       "type": "integer",
       "default": 0
     },
+    "currency": {
+      "type": "enumeration",
+      "enum": ["USDT", "USDC", "BTC", "ETH", "BNB", "SOL"],
+      "default": "USDT"
+    },
     "wallet": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::wallet.wallet"
+      "target": "api::wallet.wallet",
+      "inversedBy": "crypto_transactions"
+    },
+    "feeAmount": {
+      "type": "decimal",
+      "default": 0
+    },
+    "transactionTimestamp": {
+      "type": "datetime"
+    },
+    "explorerUrl": {
+      "type": "string"
+    },
+    "memo": {
+      "type": "string"
     }
   }
 }

@@ -4,26 +4,17 @@
   "info": {
     "singularName": "audit-log",
     "pluralName": "audit-logs",
-    "displayName": "Audit Log"
+    "displayName": "Audit Log",
+    "description": "Comprehensive audit trail across all BitDash platforms"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false,
+    "timestamps": true
   },
   "attributes": {
     "action": {
       "type": "enumeration",
       "enum": [
-        "review_created",
-        "review_updated",
-        "review_approved",
-        "review_rejected",
-        "review_replied",
-        "shop_owner_registered",
-        "shop_owner_verified",
-        "shop_item_created",
-        "shop_item_updated",
-        "shop_item_deleted",
-        "inventory_updated",
         "transfer_initiated",
         "transfer_completed",
         "transfer_failed",
@@ -44,13 +35,55 @@
         "limits_updated",
         "payment_link_created",
         "payment_link_updated",
-        "payment_link_expired"
-      ]
+        "payment_link_expired",
+        "challenge_started",
+        "challenge_completed",
+        "challenge_failed",
+        "trader_funded",
+        "trader_suspended",
+        "trader_terminated",
+        "trade_executed",
+        "trade_closed",
+        "profit_split_processed",
+        "account_opened",
+        "account_upgraded",
+        "leverage_changed",
+        "margin_call_issued",
+        "stop_out_executed",
+        "investment_made",
+        "investment_withdrawn",
+        "trader_allocation_changed",
+        "dividend_paid",
+        "user_registered",
+        "user_logged_in",
+        "user_logged_out",
+        "password_changed",
+        "password_reset_requested",
+        "email_changed",
+        "profile_updated",
+        "2fa_enabled",
+        "2fa_disabled",
+        "kyc_submitted",
+        "kyc_approved",
+        "kyc_rejected",
+        "user_suspended",
+        "user_reinstated",
+        "role_changed",
+        "permissions_updated",
+        "system_setting_changed"
+      ],
+      "required": true
     },
     "user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "operator": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::operator.operator",
+      "inversedBy": "activityLog"
     },
     "ip_address": {
       "type": "string"
@@ -93,6 +126,29 @@
     },
     "transaction_reference": {
       "type": "string"
+    },
+    "platform": {
+      "type": "enumeration",
+      "enum": ["bitcash", "bitfund", "bittrade", "bitinvest", "admin", "api"],
+      "default": "bitcash",
+      "required": true
+    },
+    "request_url": {
+      "type": "string"
+    },
+    "request_method": {
+      "type": "string"
+    },
+    "response_status": {
+      "type": "integer"
+    },
+    "execution_time": {
+      "type": "decimal",
+      "comment": "Time in milliseconds to execute the action"
+    },
+    "related_entities": {
+      "type": "json",
+      "comment": "IDs of other entities involved in this action"
     }
   }
 }

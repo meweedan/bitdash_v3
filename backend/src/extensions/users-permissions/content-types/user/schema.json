@@ -3,7 +3,7 @@
   "collectionName": "up_users",
   "info": {
     "name": "user",
-    "description": "",
+    "description": "BitDash unified user schema with role-based profiles",
     "singularName": "user",
     "pluralName": "users",
     "displayName": "User"
@@ -88,6 +88,90 @@
       "relation": "oneToOne",
       "target": "api::merchant.merchant",
       "mappedBy": "users_permissions_user"
+    },
+    "prop_trader": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::prop-trader.prop-trader",
+      "mappedBy": "users_permissions_user"
+    },
+    "retail_trader": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::retail-trader.retail-trader",
+      "mappedBy": "users_permissions_user"
+    },
+    "investor": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::investor.investor",
+      "mappedBy": "users_permissions_user"
+    },
+    "institutional_client": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::institutional-client.institutional-client",
+      "mappedBy": "users_permissions_user"
+    },
+    "introducing_broker": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::introducing-broker.introducing-broker",
+      "mappedBy": "users_permissions_user"
+    },
+    "primaryPlatform": {
+      "type": "enumeration",
+      "enum": ["bitfund", "bitinvest", "bittrade", "bitcash", "multiple"],
+      "default": "bitcash"
+    },
+    "registrationDate": {
+      "type": "datetime"
+    },
+    "lastLoginDate": {
+      "type": "datetime"
+    },
+    "ipAddress": {
+      "type": "string"
+    },
+    "userAgent": {
+      "type": "string"
+    },
+    "referralCode": {
+      "type": "string"
+    },
+    "referredBy": {
+      "type": "string"
+    },
+    "preferredLanguage": {
+      "type": "string",
+      "default": "en"
+    },
+    "profileCompleted": {
+      "type": "boolean",
+      "default": false
+    },
+    "twoFactorEnabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "twoFactorMethod": {
+      "type": "enumeration",
+      "enum": ["none", "sms", "email", "app"],
+      "default": "none"
+    },
+    "twoFactorSecret": {
+      "type": "string",
+      "private": true
+    },
+    "notifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::notification.notification",
+      "mappedBy": "user"
+    },
+    "deviceTokens": {
+      "type": "json",
+      "comment": "Mobile device tokens for push notifications"
     }
   }
 }

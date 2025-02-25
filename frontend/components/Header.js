@@ -204,7 +204,7 @@ const MenuItems = ({ href, children, onClick }) => (
         dir={isRTL ? 'rtl' : 'ltr'}
       >
         {/* Logo */}
-        <Box width={{ base: '110px', md: '190px' }}>
+        <Box width={{ base: '110px', md: '120px' }}>
           <Link href="/" passHref>
             <Box display="block">
               <Logo />
@@ -223,7 +223,7 @@ const MenuItems = ({ href, children, onClick }) => (
               fontSize="lg"
               fontWeight="bold"
               cursor="pointer"
-              color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
+              color={isDark ? `brand.${platform}.400` : `brand.${platform}.400`}
             >
               {t('servicesMenu')}
             </Text>
@@ -234,7 +234,7 @@ const MenuItems = ({ href, children, onClick }) => (
               fontSize="lg"
               fontWeight="bold"
               cursor="pointer"
-              color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
+              color={isDark ? `brand.${platform}.400` : `brand.${platform}.400`}
             >
               {t('aboutUs')}
             </Text>
@@ -260,6 +260,7 @@ const MenuItems = ({ href, children, onClick }) => (
           gap={4}
         >
           <LanguageSwitcher 
+            color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
             sx={{
               '.chakra-select__wrapper::after': { display: 'none' },
               select: {
@@ -451,7 +452,7 @@ const MenuItems = ({ href, children, onClick }) => (
             <Button
               leftIcon={<FaWhatsapp />}
               variant={`${platform}-outline`}
-              colorScheme="blue"
+              colorScheme="brand.${platform}.400"
               onClick={() => {
                 window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank");
                 onClose();

@@ -148,27 +148,8 @@ const PLATFORMS = {
         description: 'Prove your trading skill and get funded up to $200,000 with our evaluation process.',
         descriptionKey: 'bitfund.trader.description',
         icon: FaChartBar,
-        signupPath: '/signup/trader',
-        accountTypes: 'Standard, Professional, Elite'
-      },
-      {
-        type: 'investor',
-        title: 'Capital Provider',
-        titleKey: 'bitfund.investor.title',
-        description: 'Invest in our trader ecosystem and earn returns from successful traders.',
-        descriptionKey: 'bitfund.investor.description',
-        icon: FaBriefcase,
-        signupPath: '/signup/investor',
-        minInvestment: '$10,000'
-      },
-      {
-        type: 'institutional',
-        title: 'Institutional Client',
-        titleKey: 'bitfund.institutional.title',
-        description: 'Custom prop trading solutions for financial institutions and corporate clients.',
-        descriptionKey: 'bitfund.institutional.description',
-        icon: FaBuilding,
-        signupPath: '/signup/institutional'
+        signupPath: '/signup/challenger',
+        accountTypes: 'Standard, Pro, Elite, Super'
       }
     ]
   },
@@ -191,17 +172,7 @@ const PLATFORMS = {
         descriptionKey: 'bitinvest.individual.description',
         icon: FaUserTie,
         signupPath: '/signup/individual',
-        minDeposit: '$100'
-      },
-      {
-        type: 'advisor',
-        title: 'Financial Advisor',
-        titleKey: 'bitinvest.advisor.title',
-        description: 'Manage client portfolios with professional tools and multi-account features.',
-        descriptionKey: 'bitinvest.advisor.description',
-        icon: FaUserPlus,
-        signupPath: '/signup/advisor',
-        commission: '0.5%'
+        minDeposit: '$150'
       },
       {
         type: 'institutional',
@@ -233,8 +204,7 @@ const PLATFORMS = {
         description: 'Trade forex, crypto, indices and commodities with competitive spreads and leverage.',
         descriptionKey: 'bittrade.retail.description',
         icon: FaUserTie,
-        signupPath: '/signup/retail',
-        accounts: 'Standard, Premium, Professional'
+        signupPath: '/signup/trader',
       },
       {
         type: 'introducing-broker',
@@ -244,7 +214,6 @@ const PLATFORMS = {
         descriptionKey: 'bittrade.ib.description',
         icon: FaHandshake,
         signupPath: '/signup/ib',
-        commission: 'Up to 50% revenue share'
       },
       {
         type: 'institutional',
@@ -253,8 +222,7 @@ const PLATFORMS = {
         description: 'Access deep liquidity pools, prime brokerage services, and custom API solutions.',
         descriptionKey: 'bittrade.institutional.description',
         icon: FaBuilding,
-        signupPath: '/signup/institutional-trading',
-        minDeposit: '$50,000'
+        signupPath: '/signup/institute',
       }
     ]
   }
@@ -437,11 +405,8 @@ export default function SignupChoice() {
   return (
     <Layout>
       <Flex
-        minH="85vh"
         align="center"
         justify="center"
-        py={16}
-        bg={isDark ? 'gray.900' : 'gray.50'}
         dir={isRTL ? 'rtl' : 'ltr'}
       >
         <Container maxW={currentPlatform ? "5xl" : "2xl"} centerContent>
@@ -529,7 +494,7 @@ export default function SignupChoice() {
             )}
 
             {/* Login Link */}
-            <HStack spacing={2}>
+            <HStack spacing={2} mb={8}>
               <Text 
                 fontSize={textSize} 
                 color={isDark ? 'gray.400' : 'gray.600'}
@@ -545,18 +510,6 @@ export default function SignupChoice() {
                 {t('login', 'Log In')}
               </Button>
             </HStack>
-            
-            {/* Back Button (when on platform selection) */}
-            {currentPlatform && (
-              <Button
-                variant="ghost"
-                size="md"
-                onClick={() => router.push('/signup')}
-                leftIcon={isRTL ? <ArrowRight /> : <ArrowLeft />}
-              >
-                {t('backToPlatforms', 'Back to All Platforms')}
-              </Button>
-            )}
           </VStack>
         </Container>
       </Flex>

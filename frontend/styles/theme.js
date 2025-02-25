@@ -29,10 +29,10 @@ const theme = extendTheme({
         700: '#84dfdf',    // Emphasis
       },
       bitinvest: {
-        400: '#b38f41',
-        500: '#2b4162',    // Base
-        600: '#849eb6',    // Hover
-        700: '#d6a35d',    // Emphasis
+        400: '#efba72',
+        500: '#cfa872',    // Base
+        600: '#ab7c39',    // Hover
+        700: '#ab7c39',    // Emphasis
       }
     },
   },

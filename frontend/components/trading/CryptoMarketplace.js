@@ -471,7 +471,7 @@ const CryptoMarketplace = () => {
           <VStack spacing={1} align="start">
             <Text fontSize="xs" color="gray.500">Trading Hours</Text>
             <HStack>
-              <Icon as={FaRegClock} color="brand.tradebrowser.500" boxSize={3} />
+              <Icon as={FaRegClock} color="brand.bittrade.500" boxSize={3} />
               <Text fontWeight="bold">24/7</Text>
             </HStack>
           </VStack>

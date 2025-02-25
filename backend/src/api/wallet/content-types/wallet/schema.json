@@ -4,7 +4,8 @@
   "info": {
     "singularName": "wallet",
     "pluralName": "wallets",
-    "displayName": "Wallet"
+    "displayName": "Wallet",
+    "description": "Unified wallet system for all BitDash platforms"
   },
   "options": {
     "draftAndPublish": false
@@ -30,6 +31,12 @@
       "type": "uid",
       "required": true
     },
+    "wallet_type": {
+      "type": "enumeration",
+      "enum": ["customer", "agent", "merchant", "operator", "trader", "investor", "corporate", "platform"],
+      "default": "customer",
+      "required": true
+    },
     "customer": {
       "type": "relation",
       "relation": "oneToOne",
@@ -45,15 +52,56 @@
       "relation": "oneToOne",
       "target": "api::merchant.merchant"
     },
-     "operator": {
+    "operator": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::operator.operator"
     },
-    "transactions": {
+    "prop_trader": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::prop-trader.prop-trader",
+      "inversedBy": "wallet"
+    },
+    "retail_trader": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::retail-trader.retail-trader",
+      "inversedBy": "wallet"
+    },
+    "investor": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::investor.investor"
+    },
+    "institutional_client": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::institutional-client.institutional-client",
+      "inversedBy": "wallets"
+    },
+    "introducing_broker": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::introducing-broker.introducing-broker",
+      "inversedBy": "wallet"
+    },
+    "sent_transactions": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::transaction.transaction",
+      "mappedBy": "sender"
+    },
+    "received_transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::transaction.transaction",
+      "mappedBy": "receiver"
+    },
+    "crypto_transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::crypto.crypto",
       "mappedBy": "wallet"
     },
     "dailyLimit": {

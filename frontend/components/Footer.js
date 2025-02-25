@@ -69,11 +69,10 @@ const Footer = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
-      if (hostname.includes('food')) setPlatform('food');
-      else if (hostname.includes('auto')) setPlatform('auto');
-      else if (hostname.includes('stock')) setPlatform('stock');
-      else if (hostname.includes('eats')) setPlatform('eats');
+      if (hostname.includes('fund')) setPlatform('fund');
+      else if (hostname.includes('trade')) setPlatform('trade');
       else if (hostname.includes('cash')) setPlatform('cash');
+      else if (hostname.includes('invest')) setPlatform('invest');
       else setPlatform('main');
 
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
@@ -93,17 +92,17 @@ const Footer = () => {
       { label: 'Privacy', href: '/privacy', icon: Shield },
       { label: 'Terms', href: '/terms', icon: FileText },
     ],
-    food: [
+    fund: [
       { label: 'Browse Menus', href: '/browse', icon: Search },
       { label: 'Track Order', href: '/order-tracking', icon: PackageSearch },
       { label: 'Privacy', href: '/privacy', icon: Shield },
     ],
-    auto: [
+    invest: [
       { label: 'Browse Cars', href: '/auto/browse', icon: Car },
       { label: 'Dealers', href: '/auto/dealers', icon: Store },
       { label: 'Privacy', href: '/privacy', icon: Shield },
     ],
-    stock: [
+    trade: [
       { label: 'Market', href: '/stock/market', icon: BarChart },
       { label: 'Inventory', href: '/stock/inventory', icon: Warehouse },
       { label: 'Privacy', href: '/privacy', icon: Shield },
@@ -112,28 +111,22 @@ const Footer = () => {
       { label: 'Transfer Money', href: '/client/transfer', icon: FiArrowRightCircle },
       { label: 'Dashboard', href: '/client/dashboard', icon: DollarSign },
       { label: 'Profile', href: '/profile/[clientName]', icon: FiUser },
-    ],
-    eats: [
-      { label: 'Order Food', href: '/eats/order', icon: Utensils },
-      { label: 'Dashboard', href: '/eats/customer/dashboard', icon: FiUser },
-      { label: 'Track', href: '/eats/order-tracking', icon: PackageSearch },
-      { label: 'Pay', href: '/eats/bitcash', icon: DollarSign },
     ]
   };
 
   const getPWANavItems = (isLoggedIn) => {
     const navItems = {
-      food: [
+      fund: [
         { label: 'Operators', action: 'search', icon: Search, color: 'blue.500' },
         { label: 'Track Orders', action: 'tracking', icon: PackageSearch, color: 'blue.400' },
         { label: 'Scanner', action: 'scan', icon: Camera, color: 'blue.300' },
       ],
-      auto: [
+      invest: [
         { label: 'Dealers', action: 'dealers', icon: Store, color: 'blue.500' },
         { label: 'Listings', action: 'listings', icon: Car, color: 'blue.400' },
         { label: 'My Cars', action: 'mycars', icon: ShoppingBag, color: 'blue.300' },
       ],
-      stock: [
+      trade: [
         { label: 'Market', action: 'market', icon: BarChart, color: 'blue.500' },
         { label: 'Trades', action: 'trades', icon: DollarSign, color: 'blue.400' },
         { label: 'Inventory', action: 'inventory', icon: Warehouse, color: 'blue.300' },
@@ -142,11 +135,6 @@ const Footer = () => {
         { label: 'Transfer', action: 'transfer', icon: FiArrowRightCircle, color: 'blue.500' },
         { label: 'Dashboard', href: 'dashboard', icon: DollarSign, color: 'blue.400' },
         { label: 'Profile', action: 'publicProfile', icon: FiUser, color: 'blue.200' },
-      ],
-      eats: [
-        { label: 'Order', action: 'order', icon: Utensils, color: 'blue.400' },
-        { label: 'Track', action: 'orderTracking', icon: PackageSearch, color: 'blue.300' },
-        { label: 'Pay', action: 'pay', icon: DollarSign, color: 'blue.200' }, 
       ]
     };
     

@@ -13,10 +13,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "user": {
+    "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "institutional_client"
     },
     "status": {
       "type": "enumeration",
@@ -93,7 +94,8 @@
     "dedicatedManager": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "api::operator.operator",
+      "inversedBy": "managedInstitutionalClients"
     },
     "creditRating": {
       "type": "string"
@@ -123,7 +125,8 @@
     "wallets": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::wallet.wallet"
+      "target": "api::wallet.wallet",
+      "inversedBy": "institutional_client"
     },
     "legalDocuments": {
       "type": "json"

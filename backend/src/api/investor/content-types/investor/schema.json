@@ -5,7 +5,7 @@
     "singularName": "investor",
     "pluralName": "investors",
     "displayName": "Investor",
-    "description": "Capital Provider for BitFund Platform"
+    "description": "BitInvest platform investors"
   },
   "options": {
     "draftAndPublish": false,
@@ -13,10 +13,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "user": {
+    "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "investor"
     },
     "status": {
       "type": "enumeration",
@@ -64,7 +65,7 @@
     "fundedTraders": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::trader.trader"
+      "target": "api::prop-trader.prop-trader"
     },
     "profitShareRatio": {
       "type": "decimal",
@@ -88,7 +89,8 @@
     "wallets": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::wallet.wallet"
+      "target": "api::wallet.wallet",
+      "mappedBy": "investor"
     },
     "preferredPaymentMethod": {
       "type": "json"

@@ -1,51 +1,107 @@
 {
-    "kind": "collectionType",
-    "collectionName": "kyc_verifications",
-    "info": {
-      "singularName": "kyc-verification",
-      "pluralName": "kyc-verifications",
-      "displayName": "KYC Verification"
+  "kind": "collectionType",
+  "collectionName": "kyc_verifications",
+  "info": {
+    "singularName": "kyc-verification",
+    "pluralName": "kyc-verifications",
+    "displayName": "KYC Verification",
+    "description": "User identity and KYC verification records"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "timestamps": true
+  },
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     },
-    "attributes": {
-      "customer": {
-        "type": "relation",
-        "relation": "oneToOne",
-        "target": "api::customer-profile.customer-profile"
-      },
-      "status": {
-        "type": "enumeration",
-        "enum": ["pending", "approved", "rejected", "review_required"],
-        "default": "pending"
-      },
-      "tier": {
-        "type": "enumeration",
-        "enum": ["basic", "intermediate", "advanced"],
-        "default": "basic"
-      },
-      "risk_score": {
-        "type": "integer",
-        "min": 0,
-        "max": 100
-      },
-      "verification_attempts": {
-        "type": "integer",
-        "default": 0
-      },
-      "last_verification": {
-        "type": "datetime"
-      },
-      "expiry_date": {
-        "type": "datetime"
-      },
-      "compliance_notes": {
-        "type": "text"
-      },
-      "aml_check_result": {
-        "type": "json"
-      },
-      "pep_check_result": {
-        "type": "boolean",
-        "default": false
-      }
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "in_progress", "approved", "rejected", "additional_info_required"],
+      "default": "pending"
+    },
+    "verificationLevel": {
+      "type": "enumeration",
+      "enum": ["basic", "intermediate", "advanced"],
+      "default": "basic"
+    },
+    "idDocumentType": {
+      "type": "enumeration",
+      "enum": ["passport", "national_id", "drivers_license", "residence_permit"],
+      "default": "passport"
+    },
+    "idDocumentNumber": {
+      "type": "string"
+    },
+    "idDocumentFront": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "idDocumentBack": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "selfie": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "verificationVideo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["videos"]
+    },
+    "proofOfAddress": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images", "files"]
+    },
+    "proofOfAddressType": {
+      "type": "enumeration",
+      "enum": ["utility_bill", "bank_statement", "tax_document", "residence_certificate"],
+      "default": "utility_bill"
+    },
+    "rejectionReason": {
+      "type": "text"
+    },
+    "additionalDocuments": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images", "files"]
+    },
+    "additionalInformation": {
+      "type": "json"
+    },
+    "verifiedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::operator.operator"
+    },
+    "verifiedAt": {
+      "type": "datetime"
+    },
+    "expiryDate": {
+      "type": "datetime"
+    },
+    "riskScore": {
+      "type": "decimal",
+      "default": 0
+    },
+    "ipAddressCountry": {
+      "type": "string"
+    },
+    "deviceInformation": {
+      "type": "json"
+    },
+    "thirdPartyVerificationResult": {
+      "type": "json"
+    },
+    "verificationHistory": {
+      "type": "json"
     }
   }
+}

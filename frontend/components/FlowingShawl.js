@@ -12,19 +12,18 @@ const FlowingShawl = () => {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
       if (hostname.includes('cash')) setPlatform('bitcash');
-      else if (hostname.includes('food')) setPlatform('bitfood');
-      else if (hostname.includes('shop')) setPlatform('bitshop');
-      else if (hostname.includes('ride')) setPlatform('bitride');
-      else if (hostname.includes('work')) setPlatform('bitwork');
+      else if (hostname.includes('fund')) setPlatform('bitfund');
+      else if (hostname.includes('invest')) setPlatform('bitinvest');
+      else if (hostname.includes('trade')) setPlatform('bittrade');
     }
   }, []);
 
   const themeColors = {
     bitdash: [
       new THREE.Color('#67bdfd'),
-      new THREE.Color('#8C8C8C'),
-      new THREE.Color('#edb26d'),
-      new THREE.Color('#525252')
+      new THREE.Color('#67bdfd'),
+      new THREE.Color('#67bdfd'),
+      new THREE.Color('#67bdfd')
     ],
     bitcash: [
       new THREE.Color('#7bcfbd'),
@@ -32,29 +31,23 @@ const FlowingShawl = () => {
       new THREE.Color('#1eb495'),
       new THREE.Color('#2d7b6a')
     ],
-    bitfood: [
-      new THREE.Color('#ffd7ba'),
-      new THREE.Color('#ffa78a'),
-      new THREE.Color('#ffc8b6'),
-      new THREE.Color('#ff8963')
+    bitfund: [
+      new THREE.Color('#305896'),
+      new THREE.Color('#5c87cb'),
+      new THREE.Color('#6e8fc4'),
+      new THREE.Color('#859ec6')
     ],
-    bitshop: [
-      new THREE.Color('#77a2e4'),
-      new THREE.Color('#8bcdfd'),
-      new THREE.Color('#74baed'),
-      new THREE.Color('#5f94e6')
+    bittrade: [
+      new THREE.Color('#38a4a4'),
+      new THREE.Color('#59c6c6'),
+      new THREE.Color('#5fd8d8'),
+      new THREE.Color('#84dfdf')
     ],
-    bitride: [
-      new THREE.Color('#ebcdab'),
-      new THREE.Color('#e6c093'),
-      new THREE.Color('#c6a783'),
-      new THREE.Color('#edb26d')
-    ],
-    bitwork: [
-      new THREE.Color('#8C8C8C'),
-      new THREE.Color('#525252'),
-      new THREE.Color('#424242'),
-      new THREE.Color('#333333')
+    bitinvest: [
+      new THREE.Color('#efba72'),
+      new THREE.Color('#cfa872'),
+      new THREE.Color('#ab7c39'),
+      new THREE.Color('#ab7c39')
     ]
   };
 

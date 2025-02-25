@@ -5,7 +5,7 @@
     "singularName": "operator",
     "pluralName": "operators",
     "displayName": "Operator",
-    "description": ""
+    "description": "Administrative operators for BitDash platforms"
   },
   "options": {
     "draftAndPublish": true
@@ -64,22 +64,40 @@
         "Active",
         "Inactive",
         "Pending"
-      ]
+      ],
+      "default": "Pending"
     },
     "dateJoined": {
       "type": "datetime"
     },
     "verificationStatus": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     },
-    "businessType": {
+    "operatorType": {
       "type": "enumeration",
       "enum": [
-        "restaurant",
-        "owner",
-        "agent",
-        "merchant"
-      ]
+        "admin",
+        "manager",
+        "support",
+        "compliance",
+        "finance"
+      ],
+      "default": "support"
+    },
+    "accessLevel": {
+      "type": "enumeration",
+      "enum": [
+        "read_only",
+        "standard",
+        "advanced",
+        "full_access"
+      ],
+      "default": "standard"
+    },
+    "platformAccess": {
+      "type": "json",
+      "comment": "Which BitDash platforms this operator can access"
     },
     "taxId": {
       "type": "string"
@@ -92,23 +110,29 @@
         "images"
       ]
     },
+    "wallet": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wallet.wallet",
+      "inversedBy": "operator"
+    },
     "subscription": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::subscription.subscription",
       "mappedBy": "operator"
     },
-    "agent": {
+    "activityLog": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::agent.agent",
+      "relation": "oneToMany",
+      "target": "api::audit-log.audit-log",
       "mappedBy": "operator"
     },
-    "merchant": {
+    "managedInstitutionalClients": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::merchant.merchant",
-      "mappedBy": "operator"
+      "relation": "oneToMany",
+      "target": "api::institutional-client.institutional-client",
+      "mappedBy": "dedicatedManager"
     }
   }
 }

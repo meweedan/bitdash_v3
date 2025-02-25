@@ -5,7 +5,7 @@
     "singularName": "introducing-broker",
     "pluralName": "introducing-brokers",
     "displayName": "Introducing Broker",
-    "description": "Affiliate and referring partners for BitTrade platform"
+    "description": "Affiliate and referring partners for all BitDash platforms"
   },
   "options": {
     "draftAndPublish": false,
@@ -13,10 +13,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "user": {
+    "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "introducing_broker"
     },
     "status": {
       "type": "enumeration",
@@ -68,10 +69,16 @@
       "type": "integer",
       "default": 0
     },
-    "referredTraders": {
+    "referredRetailTraders": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::retail-trader.retail-trader",
+      "mappedBy": "referredBy"
+    },
+    "referredPropTraders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::prop-trader.prop-trader",
       "mappedBy": "referredBy"
     },
     "totalCommissionEarned": {
@@ -109,13 +116,14 @@
     "wallet": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::wallet.wallet"
+      "target": "api::wallet.wallet",
+      "inversedBy": "introducing_broker"
     },
     "commissionHistory": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::transaction.transaction",
-      "mappedBy": "introducingBroker"
+      "mappedBy": "introducing_broker"
     },
     "performanceMetrics": {
       "type": "json"

@@ -49,7 +49,7 @@ const TradingPlatformPreview = () => {
   
   const cardBg = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
-  const accentColor = useColorModeValue('brand.tradebrowser.500', 'brand.tradebrowser.400');
+  const accentColor = useColorModeValue('brand.bittrade.500', 'brand.bittrade.400');
   const secondaryBg = useColorModeValue('gray.50', 'gray.700');
 
   // Platform features
@@ -433,7 +433,7 @@ const TradingPlatformPreview = () => {
             Choose the Platform That Suits Your Trading Style
           </Text>
           <Text fontSize="sm" textAlign="center" maxW="xl">
-            All platforms sync seamlessly with your TradeBrowser account, allowing you to trade with your preferred tools while maintaining a unified portfolio.
+            All platforms sync seamlessly with your BitTrade account, allowing you to trade with your preferred tools while maintaining a unified portfolio.
           </Text>
         </VStack>
         
@@ -504,7 +504,7 @@ const Heading = ({ platformType }) => {
   
   return (
     <HStack spacing={2}>
-      <Icon as={icons[platformType]} color="brand.tradebrowser.500" boxSize={5} />
+      <Icon as={icons[platformType]} color="brand.bittrade.500" boxSize={5} />
       <Text fontSize="lg" fontWeight="bold">
         {headings[platformType]}
       </Text>

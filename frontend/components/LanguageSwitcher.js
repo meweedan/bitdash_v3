@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
 import { Box, HStack, Text, useBreakpointValue } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import { useColorModeValue, useColorMode } from '@chakra-ui/react';
 
 const languageOptions = [
   { code: 'ar', fullName: 'العربية', shortName: 'AR', flag: '🇱🇾' },
@@ -10,6 +12,29 @@ const languageOptions = [
 const LanguageSwitcher = () => {
   const router = useRouter();
   const { locale } = router;
+ const [platform, setPlatform] = useState('bitdash');
+
+  // Get current platform based on URL/hostname
+  useEffect(() => {
+    const hostname = window.location.hostname;
+    if (hostname.includes('invest')) setPlatform('bitinvest');
+    else if (hostname.includes('cash')) setPlatform('bitcash');
+    else if (hostname.includes('trade')) setPlatform('bittrade');
+    else if (hostname.includes('fund')) setPlatform('bitfund');
+    
+    // For local development
+    if (hostname === 'localhost') {
+      const path = window.location.pathname;
+      if (path.includes('/invest')) setPlatform('bitinvest');
+      if (path.includes('/cash')) setPlatform('bitcash');
+      if (path.includes('/fund')) setPlatform('bitfund');
+      if (path.includes('/trade')) setPlatform('bittrade');
+    }
+  }, []);
+
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+  
 
   const changeLanguage = (newLocale) => {
     const { pathname, asPath, query } = router;
@@ -50,6 +75,7 @@ const LanguageSwitcher = () => {
             cursor="pointer"
             flex="1"
             pt={2}
+            color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
             p={2} 
             textAlign="center"
             position="relative"

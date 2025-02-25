@@ -55,9 +55,9 @@ import {
   FaTimes,
   FaPhoneAlt
 } from 'react-icons/fa';
-import ForexPairDisplay from '../trading/ForexPairDisplay';
-import CryptoMarketplace from '../trading/CryptoMarketplace';
-import TradingPlatformPreview from '../trading/TradingPlatformPreview';
+import ForexPairDisplay from '@/components/trading/ForexPairDisplay';
+import CryptoMarketplace from '@/components/trading/CryptoMarketplace';
+import TradingPlatformPreview from '@/components/trading/TradingPlatformPreview';
 
 const TradeLandingBrowser = () => {
   const { t } = useTranslation('common');
@@ -93,28 +93,28 @@ const TradeLandingBrowser = () => {
       title: 'Forex',
       description: 'Trade 80+ currency pairs with tight spreads starting from 0.1 pips and leverage up to 1:500',
       highlights: ['Major, Minor & Exotic Pairs', 'Institutional-grade liquidity', 'Advanced charting tools'],
-      color: 'brand.tradebrowser.400'
+      color: 'brand.bittrade.400'
     },
     {
       icon: FaBitcoin,
       title: 'Cryptocurrencies',
       description: 'Access 50+ cryptocurrencies with institutional liquidity and competitive fees',
       highlights: ['BTC, ETH, SOL, ADA & more', '24/7 trading availability', 'Cold storage security'],
-      color: 'brand.tradebrowser.500'
+      color: 'brand.bittrade.400'
     },
     {
       icon: FaChartLine,
       title: 'Indices & Stocks',
       description: 'Diversify with global indices and stocks from US, EU, and Asian markets',
       highlights: ['0% commission on stocks', 'Fractional shares available', 'Extended market hours'],
-      color: 'brand.tradebrowser.600'
+      color: 'brand.bittrade.400'
     },
     {
       icon: FaMoneyBillWave,
       title: 'Commodities',
       description: 'Trade gold, silver, oil and other commodities with competitive pricing',
       highlights: ['Spot & futures contracts', 'Low margin requirements', 'Hedge against inflation'],
-      color: 'brand.tradebrowser.700'
+      color: 'brand.bittrade.400'
     }
   ];
 
@@ -124,25 +124,25 @@ const TradeLandingBrowser = () => {
       icon: FaDesktop,
       title: 'Advanced Trading Platforms',
       description: 'Trade on our proprietary platform, MetaTrader 5, or via robust API solutions',
-      color: 'brand.tradebrowser.400'
+      color: 'brand.bittrade.400'
     },
     {
       icon: FaLock,
       title: 'Bank-Grade Security',
       description: 'Funds held in segregated accounts with multi-layer security protocols',
-      color: 'brand.tradebrowser.500'
+      color: 'brand.bittrade.500'
     },
     {
       icon: FaMobileAlt,
       title: 'Mobile Trading',
       description: 'Trade anytime, anywhere with our award-winning mobile applications',
-      color: 'brand.tradebrowser.600'
+      color: 'brand.bittrade.600'
     },
     {
       icon: FaHeadset,
       title: '24/7 Support',
       description: 'Dedicated customer support in multiple languages via chat, email, and phone',
-      color: 'brand.tradebrowser.700'
+      color: 'brand.bittrade.700'
     }
   ];
 
@@ -183,7 +183,7 @@ const TradeLandingBrowser = () => {
       leverage: 'Up to 1:200',
       features: ['100+ trading instruments', '24/5 support', 'Standard execution'],
       ideal: 'Beginner traders',
-      color: 'brand.tradebrowser.400'
+      color: 'brand.bittrade.400'
     },
     {
       name: 'Premium',
@@ -192,7 +192,7 @@ const TradeLandingBrowser = () => {
       leverage: 'Up to 1:300',
       features: ['100+ trading instruments', '24/5 dedicated support', 'Priority execution'],
       ideal: 'Active traders',
-      color: 'brand.tradebrowser.500',
+      color: 'brand.bittrade.500',
       popular: true
     },
     {
@@ -202,7 +202,7 @@ const TradeLandingBrowser = () => {
       leverage: 'Up to 1:500',
       features: ['All available instruments', '24/7 personal account manager', 'Ultra-fast execution'],
       ideal: 'Professional traders',
-      color: 'brand.tradebrowser.600'
+      color: 'brand.bittrade.600'
     },
     {
       name: 'Institutional',
@@ -211,7 +211,7 @@ const TradeLandingBrowser = () => {
       leverage: 'Customized',
       features: ['All available instruments', 'API trading', 'Custom solutions'],
       ideal: 'Institutions & funds',
-      color: 'brand.tradebrowser.700'
+      color: 'brand.bittrade.700'
     }
   ];
 
@@ -227,22 +227,22 @@ const TradeLandingBrowser = () => {
             position="relative"
           >
             <VStack spacing={8} maxW="4xl">
-              <Text
-                // fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
-                // bgGradient="linear(to-r, brand.bittrade.400, brand.bittrade.700)"
-                // bgClip="text"
+              <Heading
+                fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
+                bgGradient="linear(to-r, brand.bittrade.500, brand.bittrade.700)"
+                bgClip="text"
               >
                 {t('trade.hero.title', 'Trade with Confidence')}
-              </Text>
-              <Text fontSize={{ base: 'xl', md: '2xl' }} opacity={0.9} maxW="3xl">
+              </Heading>
+              <Text fontSize={{ base: 'xl', md: '2xl' }} opacity={0.8} maxW="3xl">
                 {t('trade.hero.subtitle', 'Global markets, institutional-grade technology, regulated for your protection')}
               </Text>
 
               <HStack spacing={6} pt={8}>
                 <Button
                   size="lg"
-                  colorScheme="blue"
                   px={8}
+                  variant="bittrade-solid"
                   h={14}
                   fontSize="lg"
                   onClick={() => router.push('/signup')}
@@ -251,8 +251,7 @@ const TradeLandingBrowser = () => {
                 </Button>
                 <Button
                   size="lg"
-                  variant="outline"
-                  colorScheme="blue"
+                  variant="bittrade-outline"
                   px={8}
                   h={14}
                   fontSize="lg"
@@ -302,12 +301,12 @@ const TradeLandingBrowser = () => {
               maxW="6xl"
               borderRadius="3xl"
               bg={glassCardBg}
-              borderColor="brand.tradebrowser.500"
+              borderColor="brand.bittrade.500"
               borderWidth={2}
               boxShadow="xl"
               overflow="hidden"
             >
-              <Tabs variant="soft-rounded" colorScheme="blue" p={6}>
+              <Tabs variant="soft-rounded" p={6}>
                 <TabList mb={6} justifyContent="center">
                   <Tab>Forex</Tab>
                   <Tab>Crypto</Tab>
@@ -335,7 +334,7 @@ const TradeLandingBrowser = () => {
             textAlign="center"
             mb={12}
             fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.tradebrowser.500, brand.tradebrowser.700)"
+            bgGradient="linear(to-r, brand.bittrade.500, brand.bittrade.700)"
             bgClip="text"
           >
             {t('trade.products.title', 'Trading Products')}
@@ -379,7 +378,7 @@ const TradeLandingBrowser = () => {
                       ))}
                     </List>
                     <Button
-                      variant="outline"
+                      variant="bittrade-outline"
                       colorScheme="blue"
                       size="sm"
                       w="full"
@@ -400,10 +399,10 @@ const TradeLandingBrowser = () => {
             textAlign="center"
             mb={12}
             fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.tradebrowser.500, brand.tradebrowser.700)"
+            bgGradient="linear(to-r, brand.bittrade.500, brand.bittrade.700)"
             bgClip="text"
           >
-            {t('trade.platform.title', 'Why Choose TradeBrowser')}
+            {t('trade.platform.title', 'Why Choose BitTrade')}
           </Heading>
           
           <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} mb={16}>
@@ -448,7 +447,7 @@ const TradeLandingBrowser = () => {
             textAlign="center"
             mb={12}
             fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.tradebrowser.500, brand.tradebrowser.700)"
+            bgGradient="linear(to-r, brand.bittrade.500, brand.bittrade.700)"
             bgClip="text"
           >
             {t('trade.accounts.title', 'Account Types')}
@@ -543,7 +542,7 @@ const TradeLandingBrowser = () => {
             textAlign="center"
             mb={12}
             fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.tradebrowser.500, brand.tradebrowser.700)"
+            bgGradient="linear(to-r, brand.bittrade.500, brand.bittrade.700)"
             bgClip="text"
           >
             {t('trade.regulatory.title', 'Regulated & Trusted Globally')}
@@ -553,7 +552,7 @@ const TradeLandingBrowser = () => {
             p={8}
             bg={glassCardBg}
             borderRadius="xl"
-            borderColor="brand.tradebrowser.500"
+            borderColor="brand.bittrade.500"
             borderWidth={2}
             boxShadow="xl"
           >
@@ -564,18 +563,18 @@ const TradeLandingBrowser = () => {
               mb={8}
             >
               <VStack align={{ base: "center", md: "start" }} mb={{ base: 6, md: 0 }}>
-                <Heading size="lg" color="brand.tradebrowser.500">
+                <Heading size="lg" color="brand.bittrade.500">
                   {t('trade.regulatory.subtitle', 'Your Security is Our Priority')}
                 </Heading>
                 <Text maxW="xl">
-                  {t('trade.regulatory.description', 'TradeBrowser is regulated by leading financial authorities across multiple jurisdictions, ensuring a secure and compliant trading environment for all clients.')}
+                  {t('trade.regulatory.description', 'BitTrade is regulated by leading financial authorities across multiple jurisdictions, ensuring a secure and compliant trading environment for all clients.')}
                 </Text>
               </VStack>
               
               <Icon 
                 as={FaShieldAlt} 
                 boxSize={{ base: 16, md: 24 }} 
-                color="brand.tradebrowser.400" 
+                color="brand.bittrade.400" 
                 opacity={0.8}
               />
             </Flex>
@@ -584,7 +583,7 @@ const TradeLandingBrowser = () => {
               {regulatoryInfo.map((reg, index) => (
                 <Flex 
                   key={index} 
-                  bg={useColorModeValue('white', 'gray.700')}
+                  bg={useColorModeValue('brand.bittrade.700', 'gray.700')}
                   p={4}
                   borderRadius="md"
                   boxShadow="sm"
@@ -647,7 +646,7 @@ const TradeLandingBrowser = () => {
           mb={16}
           p={12}
           borderRadius="2xl"
-          bg="brand.tradebrowser.600"
+          bg="brand.bittrade.400"
           color="white"
           textAlign="center"
         >
@@ -656,12 +655,12 @@ const TradeLandingBrowser = () => {
               {t('trade.cta.title', 'Ready to Start Trading?')}
             </Heading>
             <Text fontSize="lg" maxW="2xl">
-              {t('trade.cta.description', 'Join thousands of traders worldwide who trust TradeBrowser for their forex and cryptocurrency trading needs.')}
+              {t('trade.cta.description', 'Join thousands of traders worldwide who trust BitTrade for their forex and cryptocurrency trading needs.')}
             </Text>
             <HStack spacing={4}>
               <Button
                 size="lg"
-                colorScheme="whiteAlpha"
+                variant="bittrade-solid"
                 px={8}
                 h={14}
                 fontSize="lg"
@@ -672,7 +671,7 @@ const TradeLandingBrowser = () => {
               </Button>
               <Button
                 size="lg"
-                variant="outline"
+                variant="bittrade-solid"
                 colorScheme="whiteAlpha"
                 px={8}
                 h={14}
