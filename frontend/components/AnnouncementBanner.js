@@ -18,28 +18,9 @@ const iconMap = {
   rocket: "🚀"
 };
 
-const AnnouncementBanner = () => {
+const AnnouncementBanner = ({ platform }) => {  // Accept the platform prop
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-  const [platform, setPlatform] = useState('bitdash');
-
-  // Get current platform based on URL/hostname
-  useEffect(() => {
-    const hostname = window.location.hostname;
-    if (hostname.includes('invest')) setPlatform('bitinvest');
-    else if (hostname.includes('cash')) setPlatform('bitcash');
-    else if (hostname.includes('trade')) setPlatform('bittrade');
-    else if (hostname.includes('fund')) setPlatform('bitfund');
-    
-    // For local development
-    if (hostname === 'localhost') {
-      const path = window.location.pathname;
-      if (path.includes('/invest')) setPlatform('bitinvest');
-      if (path.includes('/cash')) setPlatform('bitcash');
-      if (path.includes('/fund')) setPlatform('bitfund');
-      if (path.includes('/trade')) setPlatform('bittrade');
-    }
-  }, []);
 
   // Fetch platform-specific announcements
   const { data: announcements } = useQuery({

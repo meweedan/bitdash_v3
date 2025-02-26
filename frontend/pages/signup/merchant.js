@@ -5,12 +5,14 @@ import Head from 'next/head';
 import {
   Box,
   Container,
+  HStack,
   VStack,
   Heading,
   FormControl,
   FormLabel,
   Input,
   Button,
+  Checkbox,
   Text,
   useToast,
   Divider,
@@ -23,15 +25,27 @@ import {
   Select,
 } from '@chakra-ui/react';
 import Layout from '@/components/Layout';
+import RiskDisclosure from '@/components/RiskDisclosure';
+import { useTranslation } from 'react-i18next';
 
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 const PAYMENT_URL = 'https://cash.bitdash.app';
 
 const MerchantSignup = () => {
   const router = useRouter();
+  const [agreedToRiskDisclosure, setAgreedToRiskDisclosure] = useState(false);
   const toast = useToast();
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
+
+  // Handle risk disclosure acceptance from the modal
+  const handleRiskAcceptance = (accepted) => {
+    if (accepted) {
+      setAgreedToRiskDisclosure(true);
+    }
+  };
+
 
   const [formData, setFormData] = useState({
     // User credentials
@@ -602,6 +616,26 @@ await Promise.all([
                     </FormControl>
                   </SimpleGrid>
                 </Box>
+
+                <FormControl isRequired>
+                  <HStack spacing={2} align="center">
+                    <Checkbox
+                      isChecked={agreedToRiskDisclosure}
+                      onChange={(e) => setAgreedToRiskDisclosure(e.target.checked)}
+                      colorScheme="blue"
+                    >
+                      <Text fontSize="sm">
+                        {t('agreeToRiskDisclosure', 'I have read and agree to the Risk Disclosure Statement')}
+                      </Text>
+                    </Checkbox>
+                    
+                    <RiskDisclosure 
+                      platform="BitCash" 
+                      accountType="merchant" 
+                      onAccept={handleRiskAcceptance}
+                    />
+                  </HStack>
+                </FormControl>
 
                 <Button
                   type="submit"

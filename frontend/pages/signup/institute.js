@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import RiskDisclosure from '@/components/RiskDisclosure';
 import {
   Box,
   VStack,
@@ -130,12 +131,19 @@ const inputStyles = {
 export default function InstituteSignup() {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const [agreedToRiskDisclosure, setAgreedToRiskDisclosure] = useState(false);
   const toast = useToast();
   const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   const [loading, setLoading] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
+
+  const handleRiskAcceptance = (accepted) => {
+    if (accepted) {
+      setAgreedToRiskDisclosure(true);
+    }
+  };
   
   const [formData, setFormData] = useState({
     // Account credentials
@@ -965,54 +973,53 @@ export default function InstituteSignup() {
       <Divider my={2} />
 
       <Text fontWeight="medium" mb={2}>{t('additionalRequirements')}</Text>
-      <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={3}></SimpleGrid>
-            <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={3}>
-        <Checkbox
-          name="needPrimeBrokerage"
-          isChecked={formData.needPrimeBrokerage}
-          onChange={handleCheckboxChange}
-          colorScheme="blue"
-        >
-          {t('needPrimeBrokerage')}
-        </Checkbox>
-        <Checkbox
-          name="needRiskManagement"
-          isChecked={formData.needRiskManagement}
-          onChange={handleCheckboxChange}
-          colorScheme="blue"
-        >
-          {t('needRiskManagement')}
-        </Checkbox>
-        <Checkbox
-          name="needMarketData"
-          isChecked={formData.needMarketData}
-          onChange={handleCheckboxChange}
-          colorScheme="blue"
-        >
-          {t('needMarketData')}
-        </Checkbox>
-        <Checkbox
-          name="needReporting"
-          isChecked={formData.needReporting}
-          onChange={handleCheckboxChange}
-          colorScheme="blue"
-        >
-          {t('needReporting')}
-        </Checkbox>
-      </SimpleGrid>
+        <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={3}>
+          <Checkbox
+            name="customLiquidity"
+            isChecked={formData.customLiquidity}
+            onChange={handleCheckboxChange}
+            colorScheme="blue"
+          >
+            {t('customLiquidity')}
+          </Checkbox>
+          
+          <Checkbox
+            name="dmaAccess"
+            isChecked={formData.dmaAccess}
+            onChange={handleCheckboxChange}
+            colorScheme="blue"
+          >
+            {t('dmaAccess')}
+          </Checkbox>
+          
+          <Checkbox
+            name="collocationNeeded"
+            isChecked={formData.collocationNeeded}
+            onChange={handleCheckboxChange}
+            colorScheme="blue"
+          >
+            {t('collocationServices')}
+          </Checkbox>
+        </SimpleGrid>
 
       <HStack justify="space-between" pt={4}>
-        <Button variant="outline" onClick={prevTab}>
+        <Button
+          variant="outline"
+          onClick={prevTab}
+        >
           {t('back')}
         </Button>
-        <Button colorScheme="blue" onClick={nextTab}>
+        <Button
+          colorScheme="blue"
+          onClick={nextTab}
+        >
           {t('next')}
         </Button>
       </HStack>
     </VStack>
   );
 
-  // Contact Information Tab
+  // Tab content - Contact Information
   const renderContactTab = () => (
     <VStack spacing={6} align="stretch">
       <Heading size="md" color={useColorModeValue('gray.700', 'gray.300')}>
@@ -1022,227 +1029,486 @@ export default function InstituteSignup() {
         </Flex>
       </Heading>
 
-      <FormControl isRequired>
-        <FormLabel>{t('primaryContactName')}</FormLabel>
-        <Input
-          name="primaryContactPerson.name"
-          value={formData.primaryContactPerson.name}
-          onChange={(e) =>
-            handleNestedInputChange('primaryContactPerson', 'name', e.target.value)
-          }
-          placeholder={t('enterName')}
-          size="lg"
-          {...inputStyles}
-        />
-      </FormControl>
+      <Box bg={useColorModeValue('blue.50', 'blue.900')} p={4} borderRadius="md">
+        <Heading size="sm" mb={3}>{t('primaryContactPerson')}</Heading>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+          <FormControl isRequired>
+            <FormLabel>{t('name')}</FormLabel>
+            <Input
+              value={formData.primaryContactPerson.name}
+              onChange={(e) => handleNestedInputChange('primaryContactPerson', 'name', e.target.value)}
+              placeholder={t('enterName')}
+              size="lg"
+              {...inputStyles}
+            />
+          </FormControl>
+
+          <FormControl>
+            <FormLabel>{t('position')}</FormLabel>
+            <Input
+              value={formData.primaryContactPerson.position}
+              onChange={(e) => handleNestedInputChange('primaryContactPerson', 'position', e.target.value)}
+              placeholder={t('enterPosition')}
+              size="lg"
+              {...inputStyles}
+            />
+          </FormControl>
+
+          <FormControl isRequired>
+            <FormLabel>{t('email')}</FormLabel>
+            <Input
+              type="email"
+              value={formData.primaryContactPerson.email}
+              onChange={(e) => handleNestedInputChange('primaryContactPerson', 'email', e.target.value)}
+              placeholder={t('enterEmail')}
+              size="lg"
+              {...inputStyles}
+            />
+          </FormControl>
+
+          <FormControl>
+            <FormLabel>{t('phone')}</FormLabel>
+            <Input
+              value={formData.primaryContactPerson.phone}
+              onChange={(e) => handleNestedInputChange('primaryContactPerson', 'phone', e.target.value)}
+              placeholder={t('enterPhone')}
+              size="lg"
+              {...inputStyles}
+            />
+          </FormControl>
+        </SimpleGrid>
+      </Box>
 
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-        <FormControl isRequired>
-          <FormLabel>{t('primaryContactEmail')}</FormLabel>
-          <Input
-            name="primaryContactPerson.email"
-            type="email"
-            value={formData.primaryContactPerson.email}
-            onChange={(e) =>
-              handleNestedInputChange('primaryContactPerson', 'email', e.target.value)
-            }
-            placeholder={t('enterEmail')}
-            size="lg"
-            {...inputStyles}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>{t('primaryContactPhone')}</FormLabel>
-          <Input
-            name="primaryContactPerson.phone"
-            value={formData.primaryContactPerson.phone}
-            onChange={(e) =>
-              handleNestedInputChange('primaryContactPerson', 'phone', e.target.value)
-            }
-            placeholder={t('enterPhone')}
-            size="lg"
-            {...inputStyles}
-          />
-        </FormControl>
+        <Box>
+          <Heading size="sm" mb={3}>{t('tradingDesk')}</Heading>
+          <FormControl mb={3}>
+            <FormLabel>{t('email')}</FormLabel>
+            <Input
+              type="email"
+              value={formData.tradingDesk.email}
+              onChange={(e) => handleNestedInputChange('tradingDesk', 'email', e.target.value)}
+              placeholder={t('enterEmail')}
+              size="lg"
+              {...inputStyles}
+            />
+            <FormHelperText>
+              {t('tradingDeskEmailHelper')}
+            </FormHelperText>
+          </FormControl>
+
+          <FormControl>
+            <FormLabel>{t('phone')}</FormLabel>
+            <Input
+              value={formData.tradingDesk.phone}
+              onChange={(e) => handleNestedInputChange('tradingDesk', 'phone', e.target.value)}
+              placeholder={t('enterPhone')}
+              size="lg"
+              {...inputStyles}
+            />
+          </FormControl>
+        </Box>
+
+        <Box>
+          <Heading size="sm" mb={3}>{t('technicalContact')}</Heading>
+          <FormControl mb={3}>
+            <FormLabel>{t('name')}</FormLabel>
+            <Input
+              value={formData.technicalContact.name}
+              onChange={(e) => handleNestedInputChange('technicalContact', 'name', e.target.value)}
+              placeholder={t('enterName')}
+              size="lg"
+              {...inputStyles}
+            />
+          </FormControl>
+
+          <FormControl mb={3}>
+            <FormLabel>{t('email')}</FormLabel>
+            <Input
+              type="email"
+              value={formData.technicalContact.email}
+              onChange={(e) => handleNestedInputChange('technicalContact', 'email', e.target.value)}
+              placeholder={t('enterEmail')}
+              size="lg"
+              {...inputStyles}
+            />
+          </FormControl>
+
+          <FormControl>
+            <FormLabel>{t('phone')}</FormLabel>
+            <Input
+              value={formData.technicalContact.phone}
+              onChange={(e) => handleNestedInputChange('technicalContact', 'phone', e.target.value)}
+              placeholder={t('enterPhone')}
+              size="lg"
+              {...inputStyles}
+            />
+          </FormControl>
+        </Box>
       </SimpleGrid>
 
-      <FormControl>
-        <FormLabel>{t('contactPosition')}</FormLabel>
-        <Input
-          name="primaryContactPerson.position"
-          value={formData.primaryContactPerson.position}
-          onChange={(e) =>
-            handleNestedInputChange('primaryContactPerson', 'position', e.target.value)
-          }
-          placeholder={t('enterPosition')}
+      <Box>
+        <Heading size="sm" mb={3}>{t('businessAddress')}</Heading>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+          <FormControl isRequired>
+            <FormLabel>{t('street')}</FormLabel>
+            <Input
+              value={formData.businessAddress.street}
+              onChange={(e) => handleNestedInputChange('businessAddress', 'street', e.target.value)}
+              placeholder={t('enterStreet')}
+              size="lg"
+              {...inputStyles}
+            />
+          </FormControl>
+
+          <FormControl isRequired>
+            <FormLabel>{t('city')}</FormLabel>
+            <Input
+              value={formData.businessAddress.city}
+              onChange={(e) => handleNestedInputChange('businessAddress', 'city', e.target.value)}
+              placeholder={t('enterCity')}
+              size="lg"
+              {...inputStyles}
+            />
+          </FormControl>
+
+          <FormControl>
+            <FormLabel>{t('state')}</FormLabel>
+            <Input
+              value={formData.businessAddress.state}
+              onChange={(e) => handleNestedInputChange('businessAddress', 'state', e.target.value)}
+              placeholder={t('enterState')}
+              size="lg"
+              {...inputStyles}
+            />
+          </FormControl>
+
+          <FormControl>
+            <FormLabel>{t('postalCode')}</FormLabel>
+            <Input
+              value={formData.businessAddress.postalCode}
+              onChange={(e) => handleNestedInputChange('businessAddress', 'postalCode', e.target.value)}
+              placeholder={t('enterPostalCode')}
+              size="lg"
+              {...inputStyles}
+            />
+          </FormControl>
+
+          <FormControl isRequired>
+            <FormLabel>{t('country')}</FormLabel>
+            <Input
+              value={formData.businessAddress.country}
+              onChange={(e) => handleNestedInputChange('businessAddress', 'country', e.target.value)}
+              placeholder={t('enterCountry')}
+              size="lg"
+              {...inputStyles}
+            />
+          </FormControl>
+        </SimpleGrid>
+      </Box>
+
+      <FormControl mb={4}>
+        <FormLabel>{t('regulatoryStatus')}</FormLabel>
+        <Textarea
+          name="regulatoryStatus"
+          value={formData.regulatoryStatus}
+          onChange={handleInputChange}
+          placeholder={t('enterRegulatoryDetails')}
           size="lg"
+          height="120px"
           {...inputStyles}
         />
+        <FormHelperText>
+          {t('regulatoryStatusHelper')}
+        </FormHelperText>
       </FormControl>
 
-      <Heading size="sm" mt={4}>
-        {t('businessAddress')}
-      </Heading>
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-        <FormControl isRequired>
-          <FormLabel>{t('street')}</FormLabel>
-          <Input
-            name="businessAddress.street"
-            value={formData.businessAddress.street}
-            onChange={(e) =>
-              handleNestedInputChange('businessAddress', 'street', e.target.value)
-            }
-            placeholder={t('enterStreet')}
-            size="lg"
-            {...inputStyles}
-          />
-        </FormControl>
-        <FormControl isRequired>
-          <FormLabel>{t('city')}</FormLabel>
-          <Input
-            name="businessAddress.city"
-            value={formData.businessAddress.city}
-            onChange={(e) =>
-              handleNestedInputChange('businessAddress', 'city', e.target.value)
-            }
-            placeholder={t('enterCity')}
-            size="lg"
-            {...inputStyles}
-          />
-        </FormControl>
+      <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={3}>
+        <Checkbox
+          name="amlPolicy"
+          isChecked={formData.amlPolicy}
+          onChange={handleCheckboxChange}
+          colorScheme="blue"
+        >
+          {t('haveAMLPolicy')}
+        </Checkbox>
+        
+        <Checkbox
+          name="kycProcedures"
+          isChecked={formData.kycProcedures}
+          onChange={handleCheckboxChange}
+          colorScheme="blue"
+        >
+          {t('haveKYCProcedures')}
+        </Checkbox>
       </SimpleGrid>
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-        <FormControl>
-          <FormLabel>{t('state')}</FormLabel>
-          <Input
-            name="businessAddress.state"
-            value={formData.businessAddress.state}
-            onChange={(e) =>
-              handleNestedInputChange('businessAddress', 'state', e.target.value)
-            }
-            placeholder={t('enterState')}
-            size="lg"
-            {...inputStyles}
-          />
-        </FormControl>
-        <FormControl isRequired>
-          <FormLabel>{t('postalCode')}</FormLabel>
-          <Input
-            name="businessAddress.postalCode"
-            value={formData.businessAddress.postalCode}
-            onChange={(e) =>
-              handleNestedInputChange('businessAddress', 'postalCode', e.target.value)
-            }
-            placeholder={t('enterPostalCode')}
-            size="lg"
-            {...inputStyles}
-          />
-        </FormControl>
-      </SimpleGrid>
-      <FormControl isRequired>
-        <FormLabel>{t('country')}</FormLabel>
-        <Input
-          name="businessAddress.country"
-          value={formData.businessAddress.country}
-          onChange={(e) =>
-            handleNestedInputChange('businessAddress', 'country', e.target.value)
-          }
-          placeholder={t('enterCountry')}
-          size="lg"
-          {...inputStyles}
-        />
-      </FormControl>
 
       <HStack justify="space-between" pt={4}>
-        <Button variant="outline" onClick={prevTab}>
+        <Button
+          variant="outline"
+          onClick={prevTab}
+        >
           {t('back')}
         </Button>
-        <Button colorScheme="blue" onClick={nextTab}>
+        <Button
+          colorScheme="blue"
+          onClick={nextTab}
+        >
           {t('next')}
         </Button>
       </HStack>
     </VStack>
   );
 
-  // Terms and Agreement Tab
-  const renderTermsTab = () => (
+  // Tab content - Services & Requirements
+  const renderServicesTab = () => (
     <VStack spacing={6} align="stretch">
       <Heading size="md" color={useColorModeValue('gray.700', 'gray.300')}>
         <Flex align="center">
-          <Icon as={FaLock} mr={2} color={accentColor} />
-          {t('termsAndAgreement')}
+          <Icon as={FaCogs} mr={2} color={accentColor} />
+          {t('additionalServices')}
         </Flex>
       </Heading>
 
-      <Accordion allowToggle>
-        <AccordionItem>
-          <AccordionButton>
-            <Box flex="1" textAlign="left">
-              {t('termsOfService')}
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel pb={4}>
-            <Text fontSize="sm">{t('termsContent')}</Text>
-          </AccordionPanel>
-        </AccordionItem>
-        <AccordionItem>
-          <AccordionButton>
-            <Box flex="1" textAlign="left">
-              {t('dataPolicy')}
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel pb={4}>
-            <Text fontSize="sm">{t('dataPolicyContent')}</Text>
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion>
+      <Alert status="info" borderRadius="md">
+        <AlertIcon />
+        <Box>
+          <Text fontWeight="bold">{t('institutionalTradingMinDeposit')}</Text>
+          <Text fontSize="sm">{t('minDepositInfo', 'Institutional trading accounts require a minimum initial deposit of $150,000 USD.')}</Text>
+        </Box>
+      </Alert>
 
-      <Checkbox
-        name="agreedToTerms"
-        isChecked={formData.agreedToTerms}
-        onChange={handleCheckboxChange}
-        colorScheme="blue"
-      >
-        {t('agreeToTerms')}
-      </Checkbox>
-      <Checkbox
-        name="agreedToDataPolicy"
-        isChecked={formData.agreedToDataPolicy}
-        onChange={handleCheckboxChange}
-        colorScheme="blue"
-      >
-        {t('agreeToDataPolicy')}
-      </Checkbox>
+      <Box bg={useColorModeValue('gray.50', 'gray.700')} p={4} borderRadius="md">
+        <Heading size="sm" mb={3}>{t('additionalServices')}</Heading>
+        <Text fontSize="sm" mb={4}>{t('selectServicesOfInterest')}</Text>
+        
+        <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={3}>
+          <Checkbox
+            name="needPrimeBrokerage"
+            isChecked={formData.needPrimeBrokerage}
+            onChange={handleCheckboxChange}
+            colorScheme="blue"
+          >
+            {t('primeBrokerage')}
+          </Checkbox>
+          
+          <Checkbox
+            name="needRiskManagement"
+            isChecked={formData.needRiskManagement}
+            onChange={handleCheckboxChange}
+            colorScheme="blue"
+          >
+            {t('riskManagementTools')}
+          </Checkbox>
+          
+          <Checkbox
+            name="needMarketData"
+            isChecked={formData.needMarketData}
+            onChange={handleCheckboxChange}
+            colorScheme="blue"
+          >
+            {t('marketDataFeeds')}
+          </Checkbox>
+          
+          <Checkbox
+            name="needReporting"
+            isChecked={formData.needReporting}
+            onChange={handleCheckboxChange}
+            colorScheme="blue"
+          >
+            {t('advancedReporting')}
+          </Checkbox>
+        </SimpleGrid>
+      </Box>
+
+      <Box>
+        <Heading size="sm" mb={3}>{t('selectedRequirements')}</Heading>
+        <Text fontSize="sm" mb={4}>{t('yourSelectedOptions')}</Text>
+        
+        <SimpleGrid columns={{ base: 2, md: 3 }} spacing={3}>
+          {selectedPlatforms.map(platform => (
+            <Tag key={platform} colorScheme="blue" size="md" borderRadius="full" px={3} py={2}>
+              {TRADING_PLATFORMS.find(p => p.value === platform)?.label || platform}
+            </Tag>
+          ))}
+          
+          {selectedInstruments.map(instrument => (
+            <Tag key={instrument} colorScheme="green" size="md" borderRadius="full" px={3} py={2}>
+              {INSTRUMENT_TYPES.find(i => i.value === instrument)?.label || instrument}
+            </Tag>
+          ))}
+        </SimpleGrid>
+      </Box>
+
+      <FormControl isRequired>
+        <Checkbox
+          name="agreedToTerms"
+          isChecked={formData.agreedToTerms}
+          onChange={handleCheckboxChange}
+          colorScheme="blue"
+          size="lg"
+          mb={3}
+        >
+          <Text fontSize="sm">
+            {t('institutionalTermsAgreement', 'I agree to the')} {' '}
+            <ChakraLink color="blue.400" href="/terms/institutional-trading-agreement" target="_blank">
+              {t('institutionalTradingTerms')}
+            </ChakraLink>
+          </Text>
+        </Checkbox>
+      </FormControl>
+
+      <FormControl isRequired>
+        <Checkbox
+          name="agreedToDataPolicy"
+          isChecked={formData.agreedToDataPolicy}
+          onChange={handleCheckboxChange}
+          colorScheme="blue"
+          size="lg"
+        >
+          <Text fontSize="sm">
+            {t('dataAgreement', 'I agree to the')} {' '}
+            <ChakraLink color="blue.400" href="/terms/data-policy" target="_blank">
+              {t('dataPolicy')}
+            </ChakraLink>
+            {' '} {t('andThe')} {' '}
+            <ChakraLink color="blue.400" href="/terms/privacy-policy" target="_blank">
+              {t('privacyPolicy')}
+            </ChakraLink>
+          </Text>
+        </Checkbox>
+      </FormControl>
+
+      <FormControl isRequired>
+        <HStack spacing={2} align="center">
+            <Checkbox
+              isChecked={agreedToRiskDisclosure}
+              onChange={(e) => setAgreedToRiskDisclosure(e.target.checked)}
+              colorScheme="blue"
+              >
+                <Text fontSize="sm">
+                  {t('agreeToRiskDisclosure', 'I have read and agree to the Risk Disclosure Statement')}
+                </Text>
+            </Checkbox>
+
+            <RiskDisclosure 
+            platform="BitTrade" 
+            accountType="institute" 
+            onAccept={handleRiskAcceptance}
+            />
+        </HStack>
+      </FormControl>
+
+      <Divider my={2} />
+
+      <Alert status="warning" borderRadius="md">
+        <AlertIcon />
+        <Box>
+          <Text fontWeight="bold">{t('applicationReviewNotice')}</Text>
+          <Text fontSize="sm">{t('institutionalTradingReviewInfo', 'After submission, our institutional team will review your application and contact you within 2 business days to complete the onboarding process.')}</Text>
+        </Box>
+      </Alert>
 
       <HStack justify="space-between" pt={4}>
-        <Button variant="outline" onClick={prevTab}>
+        <Button
+          variant="outline"
+          onClick={prevTab}
+        >
           {t('back')}
         </Button>
-        <Button colorScheme="blue" onClick={handleSubmit} isLoading={loading}>
-          {t('submit')}
+        <Button
+          colorScheme="blue"
+          size="lg"
+          isLoading={loading}
+          loadingText={t('submittingApplication')}
+          onClick={handleSubmit}
+        >
+          {t('submitApplication')}
         </Button>
       </HStack>
     </VStack>
   );
 
-  // Define an accent color based on the current color mode
-  const accentColor = useColorModeValue('blue.500', 'blue.300');
-
+  // Main component return
+  const accentColor = useColorModeValue('brand.bittrade.500', 'brand.bittrade.400');
+  
   return (
     <Layout>
       <Head>
-        <title>{t('instituteSignup')}</title>
+        <title>{t('institutionalTradingSignup')} | BitTrade</title>
       </Head>
-      <Box sx={formStyles}>
-        <form onSubmit={handleSubmit}>
-          {currentTab === 0 && renderAccountTab()}
-          {currentTab === 1 && renderCompanyTab()}
-          {currentTab === 2 && renderTradingTab()}
-          {currentTab === 3 && renderContactTab()}
-          {currentTab === 4 && renderTermsTab()}
-        </form>
+      <Box {...formStyles}>
+        <VStack spacing={8}>
+          <Heading 
+            as="h1" 
+            size="lg" 
+            color={isDark ? 'white' : 'gray.800'}
+            textAlign="center"
+            bgGradient="linear(to-r, brand.bittrade.400, brand.bittrade.600)"
+            bgClip="text"
+          >
+            {t('institutionalTradingAccount')}
+          </Heading>
+
+          <Tabs 
+            index={currentTab} 
+            onChange={setCurrentTab}
+            variant="enclosed"
+            colorScheme="blue"
+            width="100%"
+            isFitted
+          >
+            <TabList mb="1em">
+              <Tab _selected={{ color: accentColor, borderColor: accentColor }}>
+                <Flex align="center" direction={{ base: "column", md: "row" }} py={1}>
+                  <Icon as={FaIdCard} mr={{ base: 0, md: 2 }} mb={{ base: 1, md: 0 }} />
+                  <Text fontSize={{ base: "xs", md: "sm" }}>{t('account')}</Text>
+                </Flex>
+              </Tab>
+              <Tab _selected={{ color: accentColor, borderColor: accentColor }}>
+                <Flex align="center" direction={{ base: "column", md: "row" }} py={1}>
+                  <Icon as={FaBuilding} mr={{ base: 0, md: 2 }} mb={{ base: 1, md: 0 }} />
+                  <Text fontSize={{ base: "xs", md: "sm" }}>{t('company')}</Text>
+                </Flex>
+              </Tab>
+              <Tab _selected={{ color: accentColor, borderColor: accentColor }}>
+                <Flex align="center" direction={{ base: "column", md: "row" }} py={1}>
+                  <Icon as={FaExchangeAlt} mr={{ base: 0, md: 2 }} mb={{ base: 1, md: 0 }} />
+                  <Text fontSize={{ base: "xs", md: "sm" }}>{t('trading')}</Text>
+                </Flex>
+              </Tab>
+              <Tab _selected={{ color: accentColor, borderColor: accentColor }}>
+                <Flex align="center" direction={{ base: "column", md: "row" }} py={1}>
+                  <Icon as={FaUsers} mr={{ base: 0, md: 2 }} mb={{ base: 1, md: 0 }} />
+                  <Text fontSize={{ base: "xs", md: "sm" }}>{t('contacts')}</Text>
+                </Flex>
+              </Tab>
+              <Tab _selected={{ color: accentColor, borderColor: accentColor }}>
+                <Flex align="center" direction={{ base: "column", md: "row" }} py={1}>
+                  <Icon as={FaCogs} mr={{ base: 0, md: 2 }} mb={{ base: 1, md: 0 }} />
+                  <Text fontSize={{ base: "xs", md: "sm" }}>{t('services')}</Text>
+                </Flex>
+              </Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel p={0}>{renderAccountTab()}</TabPanel>
+              <TabPanel p={0}>{renderCompanyTab()}</TabPanel>
+              <TabPanel p={0}>{renderTradingTab()}</TabPanel>
+              <TabPanel p={0}>{renderContactTab()}</TabPanel>
+              <TabPanel p={0}>{renderServicesTab()}</TabPanel>
+            </TabPanels>
+          </Tabs>
+
+          {/* Login Link at the bottom of the form */}
+          <Text textAlign="center" mt={6}>
+            {t('haveAccount')}{' '}
+            <Link href="/login" passHref>
+              <ChakraLink color="blue.400">
+                {t('login')}
+              </ChakraLink>
+            </Link>
+          </Text>
+        </VStack>
       </Box>
     </Layout>
   );
@@ -1251,7 +1517,7 @@ export default function InstituteSignup() {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common']))
-    }
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
   };
 }

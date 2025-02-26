@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
 import { useTranslation } from 'next-i18next';
+import RiskDisclosure from '@/components/RiskDisclosure';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import {
   Box,
@@ -15,6 +16,7 @@ import {
   useToast,
   SimpleGrid,
   Tooltip,
+  Checkbox,
   Heading,
   useColorMode,
   FormHelperText,
@@ -111,7 +113,7 @@ const steps = [
 
 const formStyles = {
   position: "relative",
-  maxW: "800px",
+  maxW: "1200px",
   mx: "auto",
   p: 8,
   borderRadius: "xl",
@@ -143,6 +145,7 @@ export default function ChallengerSignup() {
   const toast = useToast();
   const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
   const { colorMode } = useColorMode();
+  const [agreedToRiskDisclosure, setAgreedToRiskDisclosure] = useState(false);
   const isDark = colorMode === 'dark';
   const [loading, setLoading] = useState(false);
   const { activeStep, setActiveStep } = useSteps({
@@ -174,6 +177,12 @@ export default function ChallengerSignup() {
       ...prev,
       [name]: value
     }));
+  };
+
+  const handleRiskAcceptance = (accepted) => {
+    if (accepted) {
+      setAgreedToRiskDisclosure(true);
+    }
   };
 
   const handleFileChange = (e) => {
@@ -689,63 +698,83 @@ export default function ChallengerSignup() {
         </FormControl>
       </SimpleGrid>
 
-      <FormControl isRequired>
-        <FormLabel>
-          {t('walletPIN')}
-          <Tooltip label={t('walletPINHelper')}>
-            <InfoIcon ml={2} />
-          </Tooltip>
-        </FormLabel>
-        <PinInput 
-          value={formData.wallet_pin}
-          onChange={(value) => setFormData(prev => ({ ...prev, wallet_pin: value }))}
-          type="number"
-          mask
-          size="lg"
-          p={2}
-        >
-          {[...Array(6)].map((_, i) => (
-            <PinInputField
-              key={i}
-              fontSize="xl"
-              borderColor={useColorModeValue('gray.200', 'gray.600')}
-              _focus={{
-                borderColor: 'blue.400',
-                boxShadow: `0 0 0 1px ${useColorModeValue('blue.400', 'blue.300')}`
-              }}
-              _hover={{
-                borderColor: useColorModeValue('gray.300', 'gray.500')
-              }}
-            />
-          ))}
-        </PinInput>
-        <FormHelperText>
-          {t('Enter 6-digit PIN for your wallet security')}
-        </FormHelperText>
-      </FormControl>
-
-      <FormControl>
-        <FormLabel>{t('profilePicture')}</FormLabel>
-        <HStack spacing={4} align="center">
-          {previewAvatar && (
-            <Avatar 
-              size="lg" 
-              src={previewAvatar} 
-              name={formData.fullName}
-            />
-          )}
-          <Input
-            type="file"
-            accept="image/jpeg,image/png,image/gif"
-            onChange={handleFileChange}
-            variant="filled"
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} w="full">
+        <FormControl isRequired>
+          <FormLabel>
+            {t('walletPIN')}
+            <Tooltip label={t('walletPINHelper')}>
+              <InfoIcon ml={2} />
+            </Tooltip>
+          </FormLabel>
+          <PinInput 
+            value={formData.wallet_pin}
+            onChange={(value) => setFormData(prev => ({ ...prev, wallet_pin: value }))}
+            type="number"
+            mask
             size="lg"
-            {...inputStyles}
+            p={2}
+          >
+            {[...Array(6)].map((_, i) => (
+              <PinInputField
+                key={i}
+                fontSize="xl"
+                borderColor={useColorModeValue('gray.200', 'gray.600')}
+                _focus={{
+                  borderColor: 'blue.400',
+                  boxShadow: `0 0 0 1px ${useColorModeValue('blue.400', 'blue.300')}`
+                }}
+                _hover={{
+                  borderColor: useColorModeValue('gray.300', 'gray.500')
+                }}
+              />
+            ))}
+          </PinInput>
+
+          <FormHelperText>
+            {t('Enter 6-digit PIN for your wallet security')}
+          </FormHelperText>
+        </FormControl>
+
+        <FormControl>
+          <FormLabel>{t('profilePicture')}</FormLabel>
+          <HStack spacing={4}>
+            {previewAvatar && (
+              <Avatar 
+                src={previewAvatar} 
+                name={formData.fullName}
+              />
+            )}
+            <Input
+              type="file"
+              accept="image/jpeg,image/png,image/gif"
+              onChange={handleFileChange}
+              {...inputStyles}
+            />
+          </HStack>
+          <FormHelperText>
+            Optional: Upload a profile picture (max 5MB)
+          </FormHelperText>
+        </FormControl>
+      </SimpleGrid>
+
+      <FormControl isRequired>
+        <HStack spacing={2} align="center">
+          <Checkbox
+            isChecked={agreedToRiskDisclosure}
+            onChange={(e) => setAgreedToRiskDisclosure(e.target.checked)}
+            colorScheme="blue"
+          >
+            <Text>
+              {t('agreeToRiskDisclosure', 'I have read and agree to the Risk Disclosure Statement')}
+            </Text>
+          </Checkbox>
+          
+          <RiskDisclosure 
+            platform="BitFund" 
+            accountType="challenger" 
+            onAccept={handleRiskAcceptance}
           />
         </HStack>
-        <FormHelperText>
-          Optional: Upload a profile picture (max 5MB)
-        </FormHelperText>
       </FormControl>
 
       <Button

@@ -187,7 +187,7 @@ const AssetPerformanceChart = () => {
         </HStack>
       </Flex>
 
-      <Tabs colorScheme="purple" variant="soft-rounded" mt={2}>
+      <Tabs color="brand.bitinvest.500" variant="soft-rounded" mt={2}>
         <TabList>
           <Tab>Performance</Tab>
           <Tab>Comparison</Tab>

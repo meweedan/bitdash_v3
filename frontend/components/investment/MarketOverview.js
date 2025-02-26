@@ -128,8 +128,7 @@ const MarketOverview = () => {
       borderColor={borderColor}
     >
       <Tabs 
-        variant="soft-rounded" 
-        colorScheme="purple" 
+        variant="bitinvest-outline" 
         onChange={setActiveTab}
         index={activeTab}
         p={4}

@@ -47,9 +47,9 @@ import {
   FaRegCreditCard,
   FaHandshake
 } from 'react-icons/fa';
-import MarketOverview from '../investment/MarketOverview';
-import StockTicker from '../investment/StockTicker';
-import AssetPerformanceChart from '../investment/AssetPerformanceChart';
+import MarketOverview from '@/components/investment/MarketOverview';
+import StockTicker from '@/components/investment/StockTicker';
+import AssetPerformanceChart from '@/components/investment/AssetPerformanceChart';
 
 const BitInvestLanding = () => {
   const { t } = useTranslation('common');
@@ -57,7 +57,7 @@ const BitInvestLanding = () => {
   const containerRef = useRef(null);
   
   const bgGradient = useColorModeValue(
-    'linear(to-b, purple.50, white)',
+    'linear(to-b, brand.bitinvest.400, white)',
     'linear(to-b, gray.900, black)'
   );
   
@@ -242,7 +242,7 @@ const BitInvestLanding = () => {
               <HStack spacing={6} pt={8}>
                 <Button
                   size="lg"
-                  colorScheme="purple"
+                  colorScheme="brand.bitinvest.400"
                   px={8}
                   h={14}
                   fontSize="lg"
@@ -253,7 +253,7 @@ const BitInvestLanding = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  colorScheme="purple"
+                  colorScheme="brand.bitinvest.400"
                   px={8}
                   h={14}
                   fontSize="lg"
@@ -405,7 +405,7 @@ const BitInvestLanding = () => {
                       position="absolute"
                       top={3}
                       right={3}
-                      colorScheme="purple"
+                      colorScheme="brand.bitinvest.400"
                       variant="solid"
                       px={2}
                       py={1}
@@ -424,7 +424,7 @@ const BitInvestLanding = () => {
                     </Text>
                     <Button
                       variant="outline"
-                      colorScheme="purple"
+                      colorScheme="brand.bitinvest.400"
                       size="sm"
                       onClick={() => router.push(`/invest/${option.title.toLowerCase().replace(/[&\s]+/g, '-')}`)}
                     >
@@ -500,7 +500,7 @@ const BitInvestLanding = () => {
             textAlign="center"
             mb={12}
             fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.bitinvest.500, brand.bitinvest.700)"
+            bgGradient="linear(to-r, brand.bitinvest.400, brand.bitinvest.700)"
             bgClip="text"
           >
             {t('invest.testimonials', 'What Our Investors Say')}
@@ -559,7 +559,7 @@ const BitInvestLanding = () => {
             textAlign="center"
             mb={12}
             fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.bitinvest.500, brand.bitinvest.700)"
+            bgGradient="linear(to-r, brand.bitinvest.400, brand.bitinvest.700)"
             bgClip="text"
           >
             {t('invest.regulatory', 'Regulatory Information')}
@@ -569,14 +569,14 @@ const BitInvestLanding = () => {
             direction={{ base: "column", md: "row" }}
             bg={glassCardBg}
             borderRadius="xl"
-            borderColor="brand.bitinvest.500"
+            borderColor="brand.bitinvest.400"
             borderWidth={2}
             boxShadow="xl"
             overflow="hidden"
           >
             <Box 
               p={8} 
-              bg="brand.bitinvest.600" 
+              bg="brand.bitinvest.400" 
               color="white"
               width={{ base: "full", md: "40%" }}
               display="flex"
@@ -592,7 +592,7 @@ const BitInvestLanding = () => {
               </Text>
               <Button
                 mt={8}
-                colorScheme="whiteAlpha"
+                variant="bitinvest-solid"
                 leftIcon={<FaShieldAlt />}
                 onClick={() => router.push('/compliance')}
               >
@@ -613,7 +613,7 @@ const BitInvestLanding = () => {
                         <Text fontWeight="bold">{regulation.authority}</Text>
                         <Text fontSize="sm" color="gray.500">{regulation.country}</Text>
                       </VStack>
-                      <Badge colorScheme="purple" p={2}>
+                      <Badge colorScheme="brand.bitinvest.400" p={2}>
                         {regulation.license}
                       </Badge>
                     </Flex>
@@ -629,9 +629,12 @@ const BitInvestLanding = () => {
           mt={24}
           mb={16}
           p={12}
-          borderRadius="2xl"
-          bg="brand.bitinvest.600"
-          color="white"
+          borderRadius="xl"
+            borderColor="brand.bitinvest.400"
+            borderWidth={2}
+            boxShadow="xl"
+            overflow="hidden"
+          color="brand.bitinvest.400"
           textAlign="center"
         >
           <VStack spacing={6}>
@@ -644,10 +647,10 @@ const BitInvestLanding = () => {
             <HStack spacing={4}>
               <Button
                 size="lg"
-                colorScheme="whiteAlpha"
                 px={8}
                 h={14}
                 fontSize="lg"
+                variant="bitinvest-solid"
                 leftIcon={<FaUserTie />}
                 onClick={() => router.push('/signup')}
               >
@@ -655,8 +658,7 @@ const BitInvestLanding = () => {
               </Button>
               <Button
                 size="lg"
-                variant="outline"
-                colorScheme="whiteAlpha"
+                variant="bitinvest-solid"
                 px={8}
                 h={14}
                 fontSize="lg"

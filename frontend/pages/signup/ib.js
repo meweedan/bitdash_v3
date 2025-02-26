@@ -37,6 +37,7 @@ import {
   Divider
 } from '@chakra-ui/react';
 import { InfoIcon } from '@chakra-ui/icons';
+import RiskDisclosure from '@/components/RiskDisclosure';
 import Link from 'next/link';
 import Head from 'next/head';
 
@@ -82,6 +83,7 @@ const inputStyles = {
 
 export default function IBSignup() {
   const { t } = useTranslation('common');
+  const [agreedToRiskDisclosure, setAgreedToRiskDisclosure] = useState(false);
   const router = useRouter();
   const toast = useToast();
   const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
@@ -119,6 +121,12 @@ export default function IBSignup() {
       ...prev,
       [name]: value
     }));
+  };
+
+  const handleRiskAcceptance = (accepted) => {
+    if (accepted) {
+      setAgreedToRiskDisclosure(true);
+    }
   };
 
   const handleCheckboxChange = (e) => {
@@ -777,6 +785,26 @@ export default function IBSignup() {
                     </ChakraLink>
                   </Text>
                 </Checkbox>
+              </FormControl>
+
+              <FormControl isRequired>
+                <HStack spacing={2} align="center">
+                  <Checkbox
+                    isChecked={agreedToRiskDisclosure}
+                    onChange={(e) => setAgreedToRiskDisclosure(e.target.checked)}
+                    colorScheme="blue"
+                  >
+                    <Text fontSize="sm">
+                      {t('agreeToRiskDisclosure', 'I have read and agree to the Risk Disclosure Statement')}
+                    </Text>
+                  </Checkbox>
+                  
+                  <RiskDisclosure 
+                    platform="BitTrade" 
+                    accountType="ib" 
+                    onAccept={handleRiskAcceptance}
+                  />
+                </HStack>
               </FormControl>
 
               <Button

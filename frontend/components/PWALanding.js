@@ -3,7 +3,6 @@ import React from 'react';
 import Image from 'next/image';
 import { Container } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { ParallaxOrderFlow } from './ParallaxOrderFlow';
 import CryptoMatrix from './CryptoMatrix';
 
 const PWAContainer = ({ children }) => (
@@ -13,26 +12,6 @@ const PWAContainer = ({ children }) => (
     {children}
   </div>
 );
-
-export const FoodPWALanding = () => {
-  const router = useRouter();
-  const config = {
-    title: 'BitFund',
-    description: 'Online menus + ordering system for restaurants',
-    image: '/food.png',
-    color: '#4CAF50'
-  };
-
-  return (
-    <PWAContainer>
-      <Container config={config} router={router}>
-        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
-          <ParallaxOrderFlow />
-        </div>
-      </Container>
-    </PWAContainer>
-  );
-};
 
 export const CashPWALanding = () => {
   const router = useRouter();
@@ -54,12 +33,12 @@ export const CashPWALanding = () => {
   );
 };
 
-export const ShopPWALanding = () => {
+export const FundPWALanding = () => {
   const router = useRouter();
   const config = {
-    title: 'BitShop',
-    description: 'Shopping never felt so easy',
-    image: '/shop.png',
+    title: 'BitFund',
+    description: 'Reimagining Libyan Finances',
+    image: '/fund.png',
     color: '#4CAF50'
   };
 
@@ -67,7 +46,47 @@ export const ShopPWALanding = () => {
     <PWAContainer>
       <Container config={config} router={router}>
         <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
-          <ParallaxOrderFlow />
+          <CryptoMatrix />
+        </div>
+      </Container>
+    </PWAContainer>
+  );
+};
+
+export const TradePWALanding = () => {
+  const router = useRouter();
+  const config = {
+    title: 'BitTrade',
+    description: 'Reimagining Libyan Finances',
+    image: '/trade.png',
+    color: '#4CAF50'
+  };
+
+  return (
+    <PWAContainer>
+      <Container config={config} router={router}>
+        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
+          <CryptoMatrix />
+        </div>
+      </Container>
+    </PWAContainer>
+  );
+};
+
+export const InvestPWALanding = () => {
+  const router = useRouter();
+  const config = {
+    title: 'BitInvest',
+    description: 'Reimagining Libyan Finances',
+    image: '/invest.png',
+    color: '#4CAF50'
+  };
+
+  return (
+    <PWAContainer>
+      <Container config={config} router={router}>
+        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
+          <CryptoMatrix />
         </div>
       </Container>
     </PWAContainer>
@@ -80,8 +99,9 @@ const PWALanding = () => {
   const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
 
   if (hostname.includes('cash')) return <CashPWALanding />;
-  if (hostname.includes('food')) return <FoodPWALanding />;
-  if (hostname.includes('shop')) return <ShopPWALanding />;
+  if (hostname.includes('fund')) return <FundPWALanding />;
+  if (hostname.includes('trade')) return <TradePWALanding />;
+  if (hostname.includes('invest')) return <InvestPWALanding />;
 
   const config = {
     title: 'BitDash',

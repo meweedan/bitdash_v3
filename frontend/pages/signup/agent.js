@@ -6,6 +6,7 @@ import {
   Box,
   Container,
   VStack,
+  HStack,
   Heading,
   FormControl,
   FormLabel,
@@ -18,20 +19,25 @@ import {
   InputGroup,
   InputLeftAddon,
   SimpleGrid,
+  Checkbox,
   useColorModeValue,
   Progress,
   FormHelperText,
   Select,
 } from '@chakra-ui/react';
+import RiskDisclosure from '@/components/RiskDisclosure';
 
 import Layout from '@/components/Layout';
+import { useTranslation } from 'react-i18next';
 
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const AgentSignup = () => {
   const router = useRouter();
   const toast = useToast();
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
+  const [agreedToRiskDisclosure, setAgreedToRiskDisclosure] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const [formData, setFormData] = useState({
@@ -79,6 +85,12 @@ const AgentSignup = () => {
 
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
+
+  const handleRiskAcceptance = (accepted) => {
+    if (accepted) {
+      setAgreedToRiskDisclosure(true);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
@@ -575,6 +587,25 @@ const AgentSignup = () => {
                       <FormHelperText>Default: 200,000 LYD</FormHelperText>
                     </FormControl>
                   </SimpleGrid>
+                  <FormControl isRequired>
+                      <HStack spacing={2} align="center">
+                        <Checkbox
+                          isChecked={agreedToRiskDisclosure}
+                          onChange={(e) => setAgreedToRiskDisclosure(e.target.checked)}
+                          colorScheme="blue"
+                        >
+                          <Text>
+                            {t('agreeToRiskDisclosure', 'I have read and agree to the Risk Disclosure Statement')}
+                          </Text>
+                        </Checkbox>
+                        
+                        <RiskDisclosure 
+                          platform="BitCash" 
+                          accountType="agent" 
+                          onAccept={handleRiskAcceptance}
+                        />
+                      </HStack>
+                    </FormControl>
                 </Box>
 
                 <Button

@@ -51,6 +51,7 @@ import { InfoIcon, PhoneIcon, EmailIcon } from '@chakra-ui/icons';
 import { FaBuilding, FaIdCard, FaGlobe, FaUsers, FaFileContract, FaMoneyBillWave, FaUniversity } from 'react-icons/fa';
 import Link from 'next/link';
 import Head from 'next/head';
+import RiskDisclosure from '@/components/RiskDisclosure';
 
 const ROLES = {
   INSTITUTIONAL_CLIENT: 10, // Adjust this to match your actual institutional client role ID
@@ -104,10 +105,17 @@ export default function InstitutionalSignup() {
   const router = useRouter();
   const toast = useToast();
   const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+  const [agreedToRiskDisclosure, setAgreedToRiskDisclosure] = useState(false);
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   const [loading, setLoading] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
+
+  const handleRiskAcceptance = (accepted) => {
+    if (accepted) {
+      setAgreedToRiskDisclosure(true);
+    }
+  };
   
   const [formData, setFormData] = useState({
     // Account credentials
@@ -1246,6 +1254,26 @@ export default function InstitutionalSignup() {
             </ChakraLink>
           </Text>
         </Checkbox>
+      </FormControl>
+
+      <FormControl isRequired>
+        <HStack spacing={2} align="center">
+            <Checkbox
+              isChecked={agreedToRiskDisclosure}
+              onChange={(e) => setAgreedToRiskDisclosure(e.target.checked)}
+              colorScheme="blue"
+              >
+                <Text fontSize="sm">
+                  {t('agreeToRiskDisclosure', 'I have read and agree to the Risk Disclosure Statement')}
+                </Text>
+            </Checkbox>
+
+            <RiskDisclosure 
+            platform="BitInvest" 
+            accountType="institutional" 
+            onAccept={handleRiskAcceptance}
+            />
+        </HStack>
       </FormControl>
 
       <Divider my={2} />

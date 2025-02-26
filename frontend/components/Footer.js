@@ -28,25 +28,27 @@ import { useRouter } from 'next/router';
 import { 
   Search, 
   LogOut, 
-  PackageSearch, 
+  BarChart2, 
   Camera,
   Menu,
   ExternalLink,
   Info,
-  Mail,
   Shield,
   FileText,
-  Car,
   DollarSign,
-  ShoppingBag,
-  BarChart,
-  Utensils,
-  Warehouse,
-  Store
+  Globe,
+  LineChart,
+  ArrowUpRight,
+  Wallet,
+  User,
+  Settings,
+  HelpCircle,
+  Clock,
+  TrendingUp,
+  Building,
+  CreditCard
 } from 'lucide-react';
-import RestaurantLookup from './RestaurantLookup';
-import { FiArrowRightCircle, FiUser, FiLink, FiUsers, FiLock } from 'react-icons/fi';
-import { LuScanLine } from "react-icons/lu";
+import { FiArrowRightCircle, FiUser, FiUsers, FiLock } from 'react-icons/fi';
 
 const Footer = () => {
   const router = useRouter();
@@ -60,7 +62,7 @@ const Footer = () => {
   const scannerDisclosure = useDisclosure();
 
   const [isPWA, setIsPWA] = useState(false);
-  const [orderNumber, setOrderNumber] = useState('');
+  const [trackingNumber, setTrackingNumber] = useState('');
   const [error, setError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [scanning, setScanning] = useState(false);
@@ -86,6 +88,22 @@ const Footer = () => {
     setIsLoggedIn(!!token);
   }, []);
 
+  // Get platform-specific color based on the current platform
+  const getPlatformColor = (intensity) => {
+    switch(platform) {
+      case 'cash':
+        return `brand.cash.${intensity}`;
+      case 'fund':
+        return `brand.fund.${intensity}`;
+      case 'trade':
+        return `brand.trade.${intensity}`;
+      case 'invest':
+        return `brand.invest.${intensity}`;
+      default:
+        return `blue.${intensity}`;
+    }
+  };
+
   const mobileMenuItems = {
     main: [
       { label: 'About Us', href: '/about', icon: Info },
@@ -93,81 +111,129 @@ const Footer = () => {
       { label: 'Terms', href: '/terms', icon: FileText },
     ],
     fund: [
-      { label: 'Browse Menus', href: '/browse', icon: Search },
-      { label: 'Track Order', href: '/order-tracking', icon: PackageSearch },
-      { label: 'Privacy', href: '/privacy', icon: Shield },
+      { label: 'Funding Plans', href: '/fund/plans', icon: DollarSign },
+      { label: 'Trading Rules', href: '/fund/rules', icon: FileText },
+      { label: 'Challenge', href: '/fund/challenge', icon: TrendingUp },
+      { label: 'FAQ', href: '/fund/faq', icon: HelpCircle },
     ],
     invest: [
-      { label: 'Browse Cars', href: '/auto/browse', icon: Car },
-      { label: 'Dealers', href: '/auto/dealers', icon: Store },
-      { label: 'Privacy', href: '/privacy', icon: Shield },
+      { label: 'US Markets', href: '/invest/us-markets', icon: Globe },
+      { label: 'EU Markets', href: '/invest/eu-markets', icon: Building },
+      { label: 'Commodities', href: '/invest/commodities', icon: TrendingUp },
+      { label: 'Portfolio', href: '/invest/portfolio', icon: BarChart2 },
     ],
     trade: [
-      { label: 'Market', href: '/stock/market', icon: BarChart },
-      { label: 'Inventory', href: '/stock/inventory', icon: Warehouse },
-      { label: 'Privacy', href: '/privacy', icon: Shield },
+      { label: 'Forex Pairs', href: '/trade/forex', icon: Globe },
+      { label: 'Crypto', href: '/trade/crypto', icon: LineChart },
+      { label: 'Trading Tools', href: '/trade/tools', icon: Settings },
+      { label: 'Analysis', href: '/trade/analysis', icon: BarChart2 },
     ],
     cash: [
-      { label: 'Transfer Money', href: '/client/transfer', icon: FiArrowRightCircle },
-      { label: 'Dashboard', href: '/client/dashboard', icon: DollarSign },
-      { label: 'Profile', href: '/profile/[clientName]', icon: FiUser },
+      { label: 'Transfer Money', href: '/cash/transfer', icon: FiArrowRightCircle },
+      { label: 'Payment Solutions', href: '/cash/solutions', icon: CreditCard },
+      { label: 'Business Tools', href: '/cash/business', icon: Building },
+      { label: 'Account', href: '/cash/account', icon: User },
     ]
   };
 
   const getPWANavItems = (isLoggedIn) => {
+    // Define navigation items specific to each platform
     const navItems = {
       fund: [
-        { label: 'Operators', action: 'search', icon: Search, color: 'blue.500' },
-        { label: 'Track Orders', action: 'tracking', icon: PackageSearch, color: 'blue.400' },
-        { label: 'Scanner', action: 'scan', icon: Camera, color: 'blue.300' },
+        { label: 'Dashboard', action: 'dashboard', icon: BarChart2 },
+        { label: 'Challenges', action: 'challenges', icon: TrendingUp },
+        { label: 'History', action: 'history', icon: Clock },
+        { label: 'Account', action: 'account', icon: User },
       ],
       invest: [
-        { label: 'Dealers', action: 'dealers', icon: Store, color: 'blue.500' },
-        { label: 'Listings', action: 'listings', icon: Car, color: 'blue.400' },
-        { label: 'My Cars', action: 'mycars', icon: ShoppingBag, color: 'blue.300' },
+        { label: 'Portfolio', action: 'portfolio', icon: BarChart2 },
+        { label: 'Markets', action: 'markets', icon: Globe },
+        { label: 'Trade', action: 'invest-trade', icon: ArrowUpRight },
+        { label: 'Account', action: 'account', icon: User },
       ],
       trade: [
-        { label: 'Market', action: 'market', icon: BarChart, color: 'blue.500' },
-        { label: 'Trades', action: 'trades', icon: DollarSign, color: 'blue.400' },
-        { label: 'Inventory', action: 'inventory', icon: Warehouse, color: 'blue.300' },
+        { label: 'Trading', action: 'trading', icon: LineChart },
+        { label: 'Markets', action: 'markets', icon: Globe },
+        { label: 'Analysis', action: 'analysis', icon: BarChart2 },
+        { label: 'Account', action: 'account', icon: User },
       ],
       cash: [
-        { label: 'Transfer', action: 'transfer', icon: FiArrowRightCircle, color: 'blue.500' },
-        { label: 'Dashboard', href: 'dashboard', icon: DollarSign, color: 'blue.400' },
-        { label: 'Profile', action: 'publicProfile', icon: FiUser, color: 'blue.200' },
+        { label: 'Transfer', action: 'transfer', icon: FiArrowRightCircle },
+        { label: 'Wallet', action: 'wallet', icon: Wallet },
+        { label: 'History', action: 'history', icon: Clock },
+        { label: 'Account', action: 'account', icon: User },
       ]
     };
+
+    // Define color intensity for each item
+    const colorIntensities = ['500', '600', '400', '700'];
     
-    const items = navItems[platform] || [];
+    // Get the base items for the current platform
+    let items = navItems[platform] || [];
+    
+    // Add colors to each item
+    items = items.map((item, index) => {
+      return { 
+        ...item, 
+        color: getPlatformColor(colorIntensities[index]) 
+      };
+    });
+    
+    // Add logout button if logged in
     if (isLoggedIn) {
       items.push({ label: 'Logout', action: 'logout', icon: LogOut, color: 'red.500' });
     }
+    
     return items;
   };
 
   const handlePWAAction = async (action) => {
-    switch (action) {
-      case 'search':
-      case 'dealers':
-      case 'market':
-        searchDisclosure.onOpen();
-        break;
-      case 'scan':
-        setScanning(true);
-        scannerDisclosure.onOpen();
-        break;
-      case 'tracking':
-      case 'listings':
-      case 'trades':
-        trackingDisclosure.onOpen();
-        break;
-      case 'mycars':
-      case 'inventory':
-        router.push(`/${platform}/dashboard`);
-        break;
-      case 'logout':
-        handleLogout();
-        break;
+    // Define platform-specific paths
+    const platformPaths = {
+      fund: {
+        dashboard: '/fund/dashboard',
+        challenges: '/fund/challenges',
+        history: '/fund/history',
+        account: '/fund/account',
+      },
+      invest: {
+        portfolio: '/invest/portfolio',
+        markets: '/invest/markets',
+        'invest-trade': '/invest/trade',
+        account: '/invest/account',
+      },
+      trade: {
+        trading: '/trade/platform',
+        markets: '/trade/markets',
+        analysis: '/trade/analysis',
+        account: '/trade/account',
+      },
+      cash: {
+        transfer: '/cash/transfer',
+        wallet: '/cash/wallet',
+        history: '/cash/transactions',
+        account: '/cash/account',
+      }
+    };
+
+    // Handle common actions
+    if (action === 'logout') {
+      handleLogout();
+      return;
+    }
+
+    // Navigate to platform-specific paths
+    const path = platformPaths[platform]?.[action];
+    if (path) {
+      router.push(path);
+    } else {
+      // Fallback for actions that need special handling
+      switch (action) {
+        case 'scan':
+          setScanning(true);
+          scannerDisclosure.onOpen();
+          break;
+      }
     }
   };
 
@@ -175,20 +241,64 @@ const Footer = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setIsLoggedIn(false);
+    toast({
+      title: "Logged out",
+      description: "You have been successfully logged out.",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
     router.push('/login');
   };
 
-  const handleTrackOrder = () => {
-    if (!orderNumber) {
-      setError('Please enter an order number');
+  const handleTracking = () => {
+    if (!trackingNumber) {
+      setError('Please enter a tracking number');
       return;
     }
-    router.push(`/order-tracking/${orderNumber}`);
+
+    // Determine where to redirect based on platform
+    let path = '';
+    switch(platform) {
+      case 'fund':
+        path = `/fund/challenge/${trackingNumber}`;
+        break;
+      case 'invest':
+        path = `/invest/order/${trackingNumber}`;
+        break;
+      case 'trade':
+        path = `/trade/transaction/${trackingNumber}`;
+        break;
+      case 'cash':
+        path = `/cash/transaction/${trackingNumber}`;
+        break;
+      default:
+        path = `/tracking/${trackingNumber}`;
+    }
+    
+    router.push(path);
+    trackingDisclosure.onClose();
   };
 
   const QRScanner = dynamic(() => import('./QRScanner'), { ssr: false });
 
   const bgColor = isDark ? 'rgba(17, 17, 17, 0.9)' : 'rgba(255, 255, 255, 0.9)';
+
+  // Get the drawer title based on platform
+  const getDrawerTitle = () => {
+    switch(platform) {
+      case 'fund':
+        return 'Track Challenge';
+      case 'invest':
+        return 'Track Investment Order';
+      case 'trade':
+        return 'Track Transaction';
+      case 'cash':
+        return 'Track Payment';
+      default:
+        return 'Tracking';
+    }
+  };
 
   return (
     <>
@@ -222,17 +332,18 @@ const Footer = () => {
                 isExternal
                 color={isDark ? 'whiteAlpha.700' : 'gray.600'}
                 fontSize="sm"
-                _hover={{ textDecoration: 'none', color: 'blue.500' }}
+                _hover={{ textDecoration: 'none', color: getPlatformColor('500') }}
               >
                 Powered by BitDash™
               </Link>              
             </HStack>
-            <HStack spacing={2}>
-              {mobileMenuItems[platform].map((item) => (
+            <HStack spacing={4}>
+              {mobileMenuItems[platform].slice(0, 3).map((item) => (
                 <Link
                   key={item.href}
                   onClick={() => router.push(item.href)}
-                  _hover={{ textDecoration: 'none', color: 'blue.500' }}
+                  _hover={{ textDecoration: 'none', color: getPlatformColor('500') }}
+                  fontSize="sm"
                 >
                   {item.label}
                 </Link>
@@ -298,7 +409,7 @@ const Footer = () => {
                <Link 
                   href="https://bitdash.app" 
                   isExternal
-                  _hover={{ textDecoration: 'none', color: 'blue.500' }}
+                  _hover={{ textDecoration: 'none', color: getPlatformColor('500') }}
                 >
                   Powered by BitDash™
               </Link>              
@@ -313,25 +424,7 @@ const Footer = () => {
         </VStack>
       </Box>
 
-      {/* Drawers */}
-      <Drawer
-        placement="bottom"
-        onClose={searchDisclosure.onClose}
-        isOpen={searchDisclosure.isOpen}
-      >
-        <DrawerOverlay />
-        <DrawerContent maxH="100%" borderTopRadius="20px">
-          <DrawerHeader borderBottomWidth="1px">
-            {platform === 'food' ? 'Find Restaurants' : 
-             platform === 'auto' ? 'Find Dealers' : 
-             'Browse Market'}
-          </DrawerHeader>
-          <DrawerBody>
-            <RestaurantLookup onClose={searchDisclosure.onClose} />
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
-
+      {/* Menu Drawer */}
       <Drawer
         placement="bottom"
         onClose={menuDisclosure.onClose}
@@ -339,7 +432,14 @@ const Footer = () => {
       >
         <DrawerOverlay />
         <DrawerContent borderTopRadius="20px">
-          <DrawerHeader borderBottomWidth="1px">Menu</DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">
+            {platform === 'fund' ? 'BitFund Menu' : 
+             platform === 'invest' ? 'BitInvest Menu' : 
+             platform === 'trade' ? 'BitTrade Menu' :
+             platform === 'cash' ? 'BitCash Menu' :
+             'Menu'}
+          </DrawerHeader>
+          <DrawerCloseButton />
           <DrawerBody py={4}>
             <VStack spacing={4}>
               {mobileMenuItems[platform].map((item) => (
@@ -353,7 +453,7 @@ const Footer = () => {
                     menuDisclosure.onClose();
                   }}
                   cursor="pointer"
-                  _hover={{ bg: 'gray.100' }}
+                  _hover={{ bg: isDark ? 'whiteAlpha.100' : 'gray.100' }}
                   borderRadius="md"
                 >
                   <item.icon size={20} />
@@ -361,11 +461,29 @@ const Footer = () => {
                   <ExternalLink size={16} style={{ marginLeft: 'auto' }} />
                 </HStack>
               ))}
+              {isLoggedIn && (
+                <HStack
+                  w="100%"
+                  px={4}
+                  py={2}
+                  onClick={() => {
+                    handleLogout();
+                    menuDisclosure.onClose();
+                  }}
+                  cursor="pointer"
+                  _hover={{ bg: isDark ? 'whiteAlpha.100' : 'gray.100' }}
+                  borderRadius="md"
+                >
+                  <LogOut size={20} color="red" />
+                  <Text color="red.500">Logout</Text>
+                </HStack>
+              )}
             </VStack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
 
+      {/* Tracking Drawer */}
       <Drawer
         placement="bottom"
         onClose={trackingDisclosure.onClose}
@@ -374,40 +492,41 @@ const Footer = () => {
         <DrawerOverlay />
         <DrawerContent borderTopRadius="20px">
           <DrawerHeader borderBottomWidth="1px">
-            {platform === 'food' ? 'Track Order' : 
-             platform === 'auto' ? 'Vehicle Listings' : 
-             'Trade History'}
+            {getDrawerTitle()}
           </DrawerHeader>
+          <DrawerCloseButton />
           <DrawerBody py={4}>
             <FormControl isRequired isInvalid={!!error}>
               <FormLabel>
-                {platform === 'food' ? 'Order Number' : 
-                 platform === 'auto' ? 'Search Listings' : 
-                 'Search Trades'}
+                {platform === 'fund' ? 'Challenge ID' : 
+                 platform === 'invest' ? 'Order ID' : 
+                 platform === 'trade' ? 'Transaction ID' :
+                 platform === 'cash' ? 'Payment ID' :
+                 'Tracking Number'}
               </FormLabel>
               <Input
-                value={orderNumber}
+                value={trackingNumber}
                 onChange={(e) => {
-                  setOrderNumber(e.target.value);
+                  setTrackingNumber(e.target.value);
                   setError('');
                 }}
                 placeholder={
-                  platform === 'food' ? 'Enter your order number' : 
-                  platform === 'auto' ? 'Search vehicle listings' : 
-                  'Search trade history'
+                  platform === 'fund' ? 'Enter challenge ID' : 
+                  platform === 'invest' ? 'Enter order ID' : 
+                  platform === 'trade' ? 'Enter transaction ID' :
+                  platform === 'cash' ? 'Enter payment ID' :
+                  'Enter tracking number'
                 }
               />
               <FormErrorMessage>{error}</FormErrorMessage>
             </FormControl>
             <Button
               mt={4}
-              colorScheme="blue"
-              onClick={handleTrackOrder}
+              colorScheme={platform === 'cash' ? 'brand.cash' : platform}
+              onClick={handleTracking}
               isFullWidth
             >
-              {platform === 'food' ? 'Track Order' : 
-               platform === 'auto' ? 'Search Listings' : 
-               'Search Trades'}
+              Track
             </Button>
           </DrawerBody>
         </DrawerContent>
@@ -425,6 +544,14 @@ const Footer = () => {
       >
         <DrawerOverlay />
         <DrawerContent>
+          <DrawerCloseButton 
+            position="absolute" 
+            top={4} 
+            right={4} 
+            zIndex={2}
+            color="white"
+            bg="blackAlpha.600"
+          />
           {scannerDisclosure.isOpen && (
             <QRScanner
               isOpen={scannerDisclosure.isOpen}
