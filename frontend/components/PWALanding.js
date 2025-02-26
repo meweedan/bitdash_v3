@@ -17,7 +17,7 @@ const PWAContainer = ({ children }) => (
 export const FoodPWALanding = () => {
   const router = useRouter();
   const config = {
-    title: 'BitFood',
+    title: 'BitFund',
     description: 'Online menus + ordering system for restaurants',
     image: '/food.png',
     color: '#4CAF50'

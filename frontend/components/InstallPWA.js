@@ -21,9 +21,10 @@ import { X } from 'lucide-react';
 function getAppIconByDomain() {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname.toLowerCase();
-    if (hostname.includes('food')) return '/food.png';
+    if (hostname.includes('fund')) return '/fund.png';
     if (hostname.includes('cash')) return '/cash.png';
-    if (hostname.includes('shop')) return '/shop.png';
+    if (hostname.includes('trade')) return '/trade.png';
+    if (hostname.includes('invest')) return '/invest.png';
   }
   // fallback
   return '/app-logo.png';

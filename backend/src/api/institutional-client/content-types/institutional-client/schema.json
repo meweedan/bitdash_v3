@@ -126,7 +126,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::wallet.wallet",
-      "inversedBy": "institutional_client"
+      "mappedBy": "institutional_client"
     },
     "legalDocuments": {
       "type": "json"
