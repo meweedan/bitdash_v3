@@ -21,7 +21,7 @@ import {
 import { HamburgerIcon, CloseIcon, ChatIcon } from '@chakra-ui/icons';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Logo from '@/components/Logo';
-import { FaSignInAlt, FaUserPlus, FaUser, FaSignOutAlt, FaWhatsapp } from 'react-icons/fa';
+import { FaSignInAlt, FaUserPlus, FaUser, FaSignOutAlt, FaWhatsapp, FaTelegram } from 'react-icons/fa';
 import AnnouncementBanner from './AnnouncementBanner';
 
 export default function Header() {
@@ -231,7 +231,7 @@ export default function Header() {
               fontSize="lg"
               fontWeight="bold"
               cursor="pointer"
-              color={isDark ? `brand.${platform}.400` : `brand.${platform}.400`}
+              color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
             >
               {t('servicesMenu')}
             </Text>
@@ -242,9 +242,20 @@ export default function Header() {
               fontSize="lg"
               fontWeight="bold"
               cursor="pointer"
-              color={isDark ? `brand.${platform}.400` : `brand.${platform}.400`}
+              color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
             >
               {t('aboutUs')}
+            </Text>
+          </Link>
+
+          <Link href="/contact" passHref>
+            <Text
+              fontSize="lg"
+              fontWeight="bold"
+              cursor="pointer"
+              color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
+            >
+              {t('contactUs')}
             </Text>
           </Link>
           
@@ -253,7 +264,7 @@ export default function Header() {
               fontSize="lg"
               fontWeight="bold"
               cursor="pointer"
-              color={isDark ? `brand.${platform}.400` : `brand.${platform}.400`}
+              color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
               onClick={() => setShowPlatforms(!showPlatforms)}
             >
               {t('ourSolutions')}
@@ -268,7 +279,7 @@ export default function Header() {
           gap={4}
         >
           <LanguageSwitcher 
-            color={isDark ? `brand.${platform}.400` : `brand.${platform}.400`}
+            color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
             sx={{
               '.chakra-select__wrapper::after': { display: 'none' },
               select: {
@@ -297,6 +308,15 @@ export default function Header() {
             icon={<FaWhatsapp size={24} />}
             variant={`${platform}-outline`}
             onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
+            aria-label="WhatsApp"
+            size="lg"
+            _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
+          />
+
+          <IconButton
+            icon={<FaTelegram size={24} />}
+            variant={`${platform}-outline`}
+            onClick={() => window.open("https://t.me/BitDashSupport", "_blank")}
             aria-label="WhatsApp"
             size="lg"
             _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
@@ -333,7 +353,7 @@ export default function Header() {
                     size="lg"
                     _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
                     variant={`${platform}-outline`}
-                    color={{bg : isDark ? 'white' : 'black'}}
+                    color={isDark ? `brand.${platform}.400` : `brand.${platform}.400`}
                     onClick={() => router.push('/login')}
                   >
                     {t('login')}
@@ -378,7 +398,7 @@ export default function Header() {
           <IconButton
             onClick={toggleColorMode}
             variant={`${platform}-outline`}
-            color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
+            color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
             aria-label="Toggle Theme"
             icon={isDark ? <svg viewBox="0 0 24 24" width="20px" height="20px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
                 : <svg viewBox="0 0 24 24" width="20px" height="20px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>}
@@ -395,7 +415,7 @@ export default function Header() {
                     icon={<FaUser />}
                     aria-label={t('myAccount')}
                     variant={`${platform}-outline`}
-                    color={`brand.${platform}.700`}
+                    color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
                     size="sm"
                   />
                   <IconButton
@@ -415,7 +435,7 @@ export default function Header() {
                     icon={<FaSignInAlt />}
                     aria-label={t('login')}
                     variant={`${platform}-outline`}
-                    color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
+                    color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
                     size="sm"
                   />
                   <IconButton
@@ -424,7 +444,7 @@ export default function Header() {
                     icon={<FaUserPlus />}
                     aria-label={t('signup')}
                     variant={`${platform}-outline`}
-                    color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
+                    color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
                     size="sm"
                   />
                 </>
@@ -454,23 +474,27 @@ export default function Header() {
           zIndex="1000"
         >
           {/* Navigation Links */}
-          <SimpleGrid columns={3} w="full" mb={4}>           
-            <MenuItems href="/services" color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`} onClick={onClose}>{t('servicesMenu')}</MenuItems>
-            <MenuItems href="/about" color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`} onClick={onClose}>{t('aboutUs')}</MenuItems>
-            <Button
-              leftIcon={<FaWhatsapp />}
+          <SimpleGrid columns={5} w="full" mb={2}>           
+            <MenuItems href="/services" color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`} onClick={onClose}>{t('servicesMenu')}</MenuItems>
+            <MenuItems href="/about" color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`} onClick={onClose}>{t('aboutUs')}</MenuItems>
+            <MenuItems href="/contact" color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`} onClick={onClose}>{t('contactUs')}</MenuItems>
+            <IconButton
+              icon={<FaWhatsapp />}
               variant={`${platform}-outline`}
-              colorScheme="brand.${platform}.400"
+              color={`brand.${platform}.400`}
               onClick={() => {
                 window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank");
                 onClose();
               }}
-              size="md"
             >
-              <Text>
-                {t('Chatbot')}
-              </Text>
-            </Button>
+            </IconButton>
+            <IconButton
+              icon={<FaTelegram />}
+              variant={`${platform}-outline`}
+              onClick={() => window.open("https://t.me/BitDashSupport", "_blank")}
+              color={`brand.${platform}.400`}
+            >
+            </IconButton>
           </SimpleGrid>
 
           {/* Platforms Row */}

@@ -75,7 +75,7 @@ const LanguageSwitcher = () => {
             cursor="pointer"
             flex="1"
             pt={2}
-            color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
+            color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
             p={2} 
             textAlign="center"
             position="relative"

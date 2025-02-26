@@ -536,7 +536,7 @@ ${formData.message}`;
                           {t('fastResponse', "Fast Response Time")}
                         </Text>
                         <Text>
-                          {t('responseTimeDescription', "We typically respond to all inquiries within 24 hours")}
+                          {t('responseTimeDescription', "We typically respond to all inquiries within 2 to 4 hours")}
                         </Text>
                       </VStack>
                     </HStack>

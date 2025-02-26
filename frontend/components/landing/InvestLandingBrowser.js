@@ -424,7 +424,7 @@ const BitInvestLanding = () => {
                     </Text>
                     <Button
                       variant="outline"
-                      colorScheme="brand.bitinvest.400"
+                      color="brand.bitinvest.400"
                       size="sm"
                       onClick={() => router.push(`/invest/${option.title.toLowerCase().replace(/[&\s]+/g, '-')}`)}
                     >
