@@ -1,175 +1,551 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { 
   Box, 
+  Container,
   Heading, 
   VStack, 
+  HStack,
+  Text,
   Input, 
   Textarea, 
   Button, 
   FormControl,
   FormLabel,
+  Select,
   useToast,
-  useColorMode 
+  useColorMode,
+  FormErrorMessage,
+  IconButton,
+  SimpleGrid,
+  Flex,
+  Badge,
+  Divider,
+  useColorModeValue,
+  Card,
+  CardBody,
+  Stack,
+  Icon
 } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
 import Layout from '../components/Layout';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { 
+  FaWhatsapp, 
+  FaTelegram, 
+  FaEnvelope, 
+  FaArrowRight, 
+  FaLocationArrow,
+  FaUserAlt,
+  FaInfoCircle
+} from 'react-icons/fa';
 
-const formStyles = {
-  position: "fixed",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: { base: "90%", sm: "400px" },
-  maxWidth: "400px",
-  p: 8,
-  borderRadius: "xl",
-  boxShadow: "xl",
-  backdropFilter: "blur(10px)",
-  bg: "rgba(255, 255, 255, 0.05)",
-  border: "1px solid",
-  borderColor: "whiteAlpha.200"
+const MotionBox = motion(Box);
+const MotionFlex = motion(Flex);
+const MotionContainer = motion(Container);
+
+// Platform definitions
+const PLATFORMS = {
+  BITFUND: { themeKey: 'bitfund', subdomain: 'fund' },
+  BITINVEST: { themeKey: 'bitinvest', subdomain: 'invest' },
+  BITTRADE: { themeKey: 'bittrade', subdomain: 'trade' },
+  BITCASH: { themeKey: 'bitcash', subdomain: 'cash' },
+  DEFAULT: { themeKey: 'bitfund', subdomain: 'fund' }, // Default platform
 };
 
-const inputStyles = {
-  bg: "rgba(255, 255, 255, 0.05)",
-  borderColor: "whiteAlpha.300",
-  _hover: {
-    borderColor: "whiteAlpha.400",
-  },
-  _focus: {
-    borderColor: "blue.400",
-    bg: "rgba(255, 255, 255, 0.08)",
-  }
-};
-
-const buttonStyles = {
-  bg: "blue.500",
-  color: "white",
-  _hover: {
-    bg: "blue.600",
-  },
-  _active: {
-    bg: "blue.700",
-  }
+// Helper function to detect platform from hostname
+const getPlatformFromHostname = (hostname) => {
+  if (!hostname) return PLATFORMS.DEFAULT;
+  
+  // Check for each possible subdomain
+  if (hostname.includes('fund.')) return PLATFORMS.BITFUND;
+  if (hostname.includes('invest.')) return PLATFORMS.BITINVEST;
+  if (hostname.includes('trade.')) return PLATFORMS.BITTRADE;
+  if (hostname.includes('cash.')) return PLATFORMS.BITCASH;
+  
+  return PLATFORMS.DEFAULT;
 };
 
 const Contact = () => {
   const { t } = useTranslation('common');
   const { colorMode } = useColorMode();
+  const [currentPlatform, setCurrentPlatform] = useState(PLATFORMS.DEFAULT); // Initialize with default
   const isDark = colorMode === 'dark';
+  const router = useRouter();
   const toast = useToast();
 
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const platform = getPlatformFromHostname(window.location.hostname);
+      setCurrentPlatform(platform);
+      
+      // If platform specified in query, use that
+      if (router.query.platform) {
+        const platformFromQuery = Object.values(PLATFORMS).find(
+          p => p.subdomain.toLowerCase() === router.query.platform.toLowerCase()
+        );
+        if (platformFromQuery) {
+          setCurrentPlatform(platformFromQuery);
+        }
+      }
+    }
+  }, [router.query]);
+
+  const [formData, setFormData] = useState({ 
+    name: '', 
+    email: '', 
+    inquiryType: 'general',
+    platform: 'all',
+    message: '' 
+  });
+  
+  const [errors, setErrors] = useState({});
   const [isSending, setIsSending] = useState(false);
+  
+  // Get current theme key safely
+  const themeKey = currentPlatform?.themeKey || 'bitfund';
+  
+  const cardBg = useColorModeValue('white', 'black.800');
+  const highlightColor = useColorModeValue(`brand.${themeKey}.500`, `brand.${themeKey}.300`);
+  
+  const platforms = [
+    { value: 'all', label: t('allPlatforms', 'All Platforms') },
+    { value: 'BitFund', label: t('BitFund', 'BitFund') },
+    { value: 'BitInvest', label: t('BitInvest', 'BitInvest') },
+    { value: 'BitTrade', label: t('BitTrade', 'BitTrade') },
+    { value: 'BitCash', label: t('BitCash', 'BitCash') }
+  ];
+  
+  const contactInfo = [
+    { 
+      title: t('generalInquiries', 'General Inquiries'), 
+      value: 'info@bitdash.app',
+      color: 'brand.bitfund.400'
+    },
+    { 
+      title: t('technicalSupport', 'Technical Support'), 
+      value: 'help@bitdash.app',
+      color: 'brand.bittrade.400'
+    },
+    { 
+      title: t('accountQuestions', 'Account Questions'), 
+      value: 'contact@bitdash.app',
+      color: 'brand.bitcash.400'
+    }
+  ];
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.name.trim()) {
+      newErrors.name = t('nameRequired', 'Name is required');
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = t('emailRequired', 'Email is required');
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = t('invalidEmail', 'Invalid email format');
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = t('messageRequired', 'Message is required');
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = t('messageTooShort', 'Message is too short');
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    
+    // Clear error for this field when user types
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSending(true);
-
-    try {
-      const response = await fetch('/api/email/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        toast({
-          title: t('success'),
-          description: t('emailSent'),
-          status: 'success',
-          duration: 3000,
-        });
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        throw new Error('Failed to send email');
-      }
-    } catch (error) {
+    
+    if (!validateForm()) {
       toast({
-        title: t('error'),
-        description: t('failedToSendEmail'),
+        title: t('formError', 'Form Error'),
+        description: t('pleaseFixErrors', 'Please fix the errors in the form'),
         status: 'error',
         duration: 3000,
       });
-    } finally {
-      setIsSending(false);
+      return;
+    }
+    
+    setIsSending(true);
+
+    // Determine which email to use based on inquiryType
+    let emailTo;
+    switch(formData.inquiryType) {
+      case 'support':
+        emailTo = 'help@bitdash.app';
+        break;
+      case 'account':
+        emailTo = 'contact@bitdash.app';
+        break;
+      default:
+        emailTo = 'info@bitdash.app';
+    }
+    
+    // Construct mailto link with all the form data
+    const subject = `${formData.inquiryType.toUpperCase()} Inquiry - ${formData.platform !== 'all' ? formData.platform : 'All Platforms'}`;
+    const body = `Name: ${formData.name}
+Email: ${formData.email}
+Inquiry Type: ${formData.inquiryType}
+Platform: ${formData.platform}
+
+Message:
+${formData.message}`;
+
+    const mailtoLink = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open the user's email client
+    window.location.href = mailtoLink;
+    
+    toast({
+      title: t('success', 'Success'),
+      description: t('emailClientOpened', 'Your email client has been opened. Please send the email to complete your inquiry.'),
+      status: 'success',
+      duration: 5000,
+    });
+    
+    // Reset the form
+    setFormData({ name: '', email: '', inquiryType: 'general', platform: 'all', message: '' });
+    setIsSending(false);
+  };
+  
+  const handleSocialClick = (link) => {
+    if (link) {
+      window.open(link, '_blank');
+    }
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  };
+  
+  const staggerChildren = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
     }
   };
 
   return (
     <Layout>
-        <Head>
-        <title>{`${t('contact')}`}</title>
+      <Head>
+        <title>{t('contact', 'Contact Us')}</title>
         <link href="/favicon.ico" rel="icon"/>
       </Head>
-      <Box {...formStyles}>
-        <form onSubmit={handleSubmit}>
-          <VStack spacing={6}>
-            <Heading as="h1" size="lg" color={isDark ? 'white' : 'gray.800'}>
-              {t('contact')}
-            </Heading>
+      
+      <Box 
+        py={6} 
+        position="relative"
+        overflow="hidden"
+      > 
+        <MotionContainer 
+          maxW="6xl" 
+          initial="hidden"
+          animate="visible"
+          variants={staggerChildren}
+          zIndex="1"
+        >
+          <MotionBox
+            variants={fadeIn}
+            textAlign="center"
+            mb={10}
+          >
+          </MotionBox>
+          
+          <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={10}>
+            {/* Contact Form */}
+            <MotionBox variants={fadeIn}>
+              <Card 
+                shadow="xl" 
+                borderRadius="xl" 
+                overflow="hidden"
+                position="relative"
+              >
+                <Box 
+                  position="absolute" 
+                  top={0} 
+                  left={0} 
+                  right={0} 
+                  height="8px" 
+                  bgGradient={`linear(to-r, brand.${themeKey}.400, brand.${themeKey}.700)`}
+                />
+                <CardBody p={{ base: 6, md: 8 }}>
+                  <VStack spacing={6} align="stretch">
+                    <Heading size="md" color={`brand.${themeKey}.700`}>
+                      {t('messageUs', "Message Us")}
+                    </Heading>
+                    
+                    <form onSubmit={handleSubmit}>
+                      <VStack spacing={5} align="stretch">
+                        <FormControl isInvalid={!!errors.name}>
+                          <FormLabel>
+                            <HStack>
+                              <Icon as={FaUserAlt} color={`brand.${themeKey}.700`} />
+                              <Text>{t('name', 'Name')}</Text>
+                            </HStack>
+                          </FormLabel>
+                          <Input
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder={t('yourName', 'Your name')}
+                            size="lg"
+                          />
+                          <FormErrorMessage>{errors.name}</FormErrorMessage>
+                        </FormControl>
 
-            <FormControl isRequired>
-              <FormLabel color={isDark ? 'white' : 'gray.700'}>{t('name')}</FormLabel>
-              <Input
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder={t('name')}
-                {...inputStyles}
-                color={isDark ? 'white' : 'gray.800'}
-              />
-            </FormControl>
+                        <FormControl isInvalid={!!errors.email}>
+                          <FormLabel>
+                            <HStack>
+                              <Icon as={FaEnvelope} color={`brand.${themeKey}.700`} />
+                              <Text>{t('email', 'Email')}</Text>
+                            </HStack>
+                          </FormLabel>
+                          <Input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder={t('yourEmail', 'Your email address')}
+                            size="lg"
+                          />
+                          <FormErrorMessage>{errors.email}</FormErrorMessage>
+                        </FormControl>
+                        
+                        <HStack align="start" spacing={4}>
+                          <FormControl>
+                            <FormLabel>
+                              <HStack>
+                                <Icon as={FaInfoCircle} color={`brand.${themeKey}.700`} />
+                                <Text>{t('inquiryType', 'Inquiry Type')}</Text>
+                              </HStack>
+                            </FormLabel>
+                            <Select
+                              name="inquiryType"
+                              value={formData.inquiryType}
+                              onChange={handleChange}
+                              size="lg"
+                            >
+                              <option value="general">{t('general', 'General Inquiry')}</option>
+                              <option value="support">{t('support', 'Technical Support')}</option>
+                              <option value="account">{t('account', 'Account Help')}</option>
+                            </Select>
+                          </FormControl>
+                          
+                          <FormControl>
+                            <FormLabel>{t('platform', 'Platform')}</FormLabel>
+                            <Select
+                              name="platform"
+                              value={formData.platform}
+                              onChange={handleChange}
+                              size="lg"
+                            >
+                              {platforms.map(platform => (
+                                <option key={platform.value} value={platform.value}>
+                                  {platform.label}
+                                </option>
+                              ))}
+                            </Select>
+                          </FormControl>
+                        </HStack>
 
-            <FormControl isRequired>
-              <FormLabel color={isDark ? 'white' : 'gray.700'}>{t('email')}</FormLabel>
-              <Input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder={t('email')}
-                {...inputStyles}
-                color={isDark ? 'white' : 'gray.800'}
-              />
-            </FormControl>
+                        <FormControl isInvalid={!!errors.message}>
+                          <FormLabel>
+                            <HStack>
+                              <Icon as={FaLocationArrow} color={`brand.${themeKey}.700`} />
+                              <Text>{t('message', 'Message')}</Text>
+                            </HStack>
+                          </FormLabel>
+                          <Textarea
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            placeholder={t('yourMessage', 'Your message here...')}
+                            resize="vertical"
+                          />
+                          <FormErrorMessage>{errors.message}</FormErrorMessage>
+                        </FormControl>
 
-            <FormControl isRequired>
-              <FormLabel color={isDark ? 'white' : 'gray.700'}>{t('message')}</FormLabel>
-              <Textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder={t('message')}
-                height="150px"
-                {...inputStyles}
-                color={isDark ? 'white' : 'gray.800'}
-                resize="vertical"
-              />
-            </FormControl>
-
-            <Button 
-              width="100%" 
-              {...buttonStyles}
-              type="submit"
-              isLoading={isSending}
-              _hover={{
-                ...buttonStyles._hover,
-                transform: 'translateY(-2px)',
-              }}
-              transition="all 0.2s"
-            >
-              {t('send')}
-            </Button>
-          </VStack>
-        </form>
+                        <Button 
+                          type="submit"
+                          size="lg"
+                          color={`brand.${themeKey}.700`}
+                          variant={`${themeKey}-outline`}                          
+                          isLoading={isSending}
+                          loadingText={t('sending', 'Sending...')}
+                          rightIcon={<FaArrowRight />}
+                          _hover={{
+                            transform: 'translateY(-2px)',
+                            boxShadow: 'lg',
+                          }}
+                          transition="all 0.3s"
+                        >
+                          {t('sendMessage', 'Send Message')}
+                        </Button>
+                      </VStack>
+                    </form>
+                  </VStack>
+                </CardBody>
+              </Card>
+            </MotionBox>
+            
+            {/* Contact Info and Social */}
+            <MotionBox variants={fadeIn}>
+              <VStack spacing={8} align="stretch">
+                {/* Direct Contact */}
+                <Card bg={cardBg} shadow="xl" borderRadius="xl" overflow="hidden">
+                  <Box 
+                    position="absolute" 
+                    top={0} 
+                    left={0} 
+                    right={0} 
+                    height="8px" 
+                    bgGradient={`linear(to-r, brand.${themeKey}.400, brand.${themeKey}.600)`}
+                  />
+                  <CardBody p={{ base: 6, md: 8 }}>
+                    <VStack spacing={6} align="stretch">
+                      <Heading size="md" color={`brand.${themeKey}.700`}>
+                        {t('contactDirectly', "Contact Us Directly")}
+                      </Heading>
+                      
+                      <VStack spacing={4} align="stretch">
+                        {contactInfo.map((item, index) => (
+                          <MotionFlex
+                            key={index}
+                            p={4}
+                            borderRadius="md"
+                            align="center"
+                            justify="space-between"
+                            cursor={item.link ? "pointer" : "default"}
+                            onClick={() => handleSocialClick(item.link)}
+                            whileHover={{ scale: item.link ? 1.02 : 1 }}
+                            whileTap={{ scale: item.link ? 0.98 : 1 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <HStack>
+                              <VStack align="start" spacing={0}>
+                                <Text color={`brand.${themeKey}.400`}>{item.title}</Text>
+                                <Text fontSize="sm" opacity={0.8}>{item.value}</Text>
+                              </VStack>
+                            </HStack>
+                            {item.link && (
+                              <IconButton
+                                icon={<FaArrowRight />}
+                                variant={`${themeKey}-outline`}
+                                color={`brand.${themeKey}.400`}
+                                size="sm"
+                                aria-label={t('open', 'Open')}
+                              />
+                            )}
+                          </MotionFlex>
+                        ))}
+                      </VStack>
+                    </VStack>
+                  </CardBody>
+                </Card>
+                
+                {/* WhatsApp & Telegram Buttons */}
+                <Card bg={cardBg} shadow="xl" borderRadius="xl" overflow="hidden">
+                  <Box 
+                    position="absolute" 
+                    top={0} 
+                    left={0} 
+                    right={0} 
+                    height="8px" 
+                    bgGradient={`linear(to-r, brand.${themeKey}.400, brand.${themeKey}.600)`}
+                  />
+                  <CardBody p={{ base: 6, md: 8 }}>
+                    <VStack spacing={6} align="stretch">
+                      <Heading size="md" color={`brand.${themeKey}.700`}>
+                        {t('instantSupport', "Get Instant Support")}
+                      </Heading>
+                      
+                      <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={4}>
+                        <Button
+                          size="lg"
+                          leftIcon={<FaWhatsapp size="20px" />}
+                          onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
+                          color={`brand.${themeKey}.700`}
+                          variant={`${themeKey}-outline`}
+                          height="60px"
+                          _hover={{
+                            transform: 'translateY(-2px)',
+                            boxShadow: 'lg',
+                          }}
+                          transition="all 0.3s"
+                        >
+                          WhatsApp
+                        </Button>
+                        
+                        <Button
+                          size="lg"
+                          leftIcon={<FaTelegram size="20px" />}
+                          onClick={() => window.open("https://t.me/BitDashSupport", "_blank")}
+                          color={`brand.${themeKey}.700`}
+                          variant={`${themeKey}-outline`}
+                          height="60px"
+                          _hover={{
+                            transform: 'translateY(-2px)',
+                            boxShadow: 'lg',
+                          }}
+                          transition="all 0.3s"
+                        >
+                          Telegram
+                        </Button>
+                      </SimpleGrid>
+                    </VStack>
+                  </CardBody>
+                </Card>
+                
+                {/* Response Time Card */}
+                <Card bg={cardBg} shadow="xl" borderRadius="xl" overflow="hidden">
+                  <Box 
+                    top={0} 
+                    left={0} 
+                    right={0} 
+                    height="8px" 
+                    bgGradient={`linear(to-r, brand.${themeKey}.400, brand.${themeKey}.600)`}
+                  />
+                  <CardBody>
+                    <HStack spacing={4}>
+                      <VStack spacing={0}>
+                        <Text color={`brand.${themeKey}.700`}>
+                          {t('fastResponse', "Fast Response Time")}
+                        </Text>
+                        <Text>
+                          {t('responseTimeDescription', "We typically respond to all inquiries within 24 hours")}
+                        </Text>
+                      </VStack>
+                    </HStack>
+                  </CardBody>
+                </Card>
+              </VStack>
+            </MotionBox>
+          </SimpleGrid>
+        </MotionContainer>
       </Box>
     </Layout>
   );

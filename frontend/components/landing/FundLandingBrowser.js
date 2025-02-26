@@ -66,6 +66,7 @@ const BitFundLanding = () => {
   const { t, i18n } = useTranslation('common');
   const router = useRouter();
   const containerRef = useRef(null);
+  
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { locale } = router;
   

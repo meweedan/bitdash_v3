@@ -253,7 +253,7 @@ export default function Header() {
               fontSize="lg"
               fontWeight="bold"
               cursor="pointer"
-              color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
+              color={isDark ? `brand.${platform}.400` : `brand.${platform}.400`}
               onClick={() => setShowPlatforms(!showPlatforms)}
             >
               {t('ourSolutions')}
@@ -268,7 +268,7 @@ export default function Header() {
           gap={4}
         >
           <LanguageSwitcher 
-            color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
+            color={isDark ? `brand.${platform}.400` : `brand.${platform}.400`}
             sx={{
               '.chakra-select__wrapper::after': { display: 'none' },
               select: {
