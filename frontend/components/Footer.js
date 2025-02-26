@@ -92,13 +92,13 @@ const Footer = () => {
   const getPlatformColor = (intensity) => {
     switch(platform) {
       case 'cash':
-        return `brand.cash.${intensity}`;
+        return `brand.bitcash.${intensity}`;
       case 'fund':
-        return `brand.fund.${intensity}`;
+        return `brand.bitfund.${intensity}`;
       case 'trade':
-        return `brand.trade.${intensity}`;
+        return `brand.bittrade.${intensity}`;
       case 'invest':
-        return `brand.invest.${intensity}`;
+        return `brand.bitinvest.${intensity}`;
       default:
         return `blue.${intensity}`;
     }
@@ -129,7 +129,7 @@ const Footer = () => {
       { label: 'Analysis', href: '/trade/analysis', icon: BarChart2 },
     ],
     cash: [
-      { label: 'Transfer Money', href: '/cash/transfer', icon: FiArrowRightCircle },
+      { label: 'Transfer Money', href: '/cash/client/transfer', icon: FiArrowRightCircle },
       { label: 'Payment Solutions', href: '/cash/solutions', icon: CreditCard },
       { label: 'Business Tools', href: '/cash/business', icon: Building },
       { label: 'Account', href: '/cash/account', icon: User },
@@ -209,10 +209,10 @@ const Footer = () => {
         account: '/trade/account',
       },
       cash: {
-        transfer: '/cash/transfer',
+        transfer: 'cash/client/transfer',
         wallet: '/cash/wallet',
         history: '/cash/transactions',
-        account: '/cash/account',
+        account: '/cash/client/dashboard',
       }
     };
 
@@ -522,7 +522,7 @@ const Footer = () => {
             </FormControl>
             <Button
               mt={4}
-              colorScheme={platform === 'cash' ? 'brand.cash' : platform}
+              colorScheme={platform === 'cash' ? 'brand.bitcash.400' : platform}
               onClick={handleTracking}
               isFullWidth
             >

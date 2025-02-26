@@ -35,7 +35,9 @@ export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [platform, setPlatform] = useState('bitdash');
   const accentColor = `brand.${platform}.700`;
-  const showAnnouncements = platform === 'bittrade' || platform === 'bitinvest' ||  platform === 'bitfund' || platform === 'bitcash';
+  
+  // Always show announcements for these platforms
+  const showAnnouncements = platform === 'bittrade' || platform === 'bitinvest' || platform === 'bitfund' || platform === 'bitcash';
 
   useEffect(() => {
     const checkAuth = () => {
@@ -63,62 +65,75 @@ export default function Header() {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
       // Check if it's the main domain without subdomains
-      return hostname === 'bitdash.app' || hostname === 'localhost';
-      return hostname === 'www.bitdash.app' || hostname === 'localhost';
+      return hostname === 'bitdash.app' || hostname === 'www.bitdash.app' || hostname === 'localhost';
     }
     return false;
   };
 
   const platforms = [
     {
+      name: 'BitTrade',
       image: '/trade.png',
       mobileImage: '/trade.png',
       href: 'https://trade.bitdash.app/',
     },
     {
+      name: 'BitCash',
       image: '/cash.png',
       mobileImage: '/cash.png',
       href: 'https://cash.bitdash.app/',
     },
     {
+      name: 'BitFund',
       image: '/fund.png',
       mobileImage: '/fund.png',
       href: 'https://fund.bitdash.app/',
     },
     {
+      name: 'BitInvest',
       image: '/invest.png',
       mobileImage: '/invest.png',
       href: 'https://invest.bitdash.app/',
     },
-    
   ];
 
   const bgColor = useColorModeValue(
-  platform === 'bitcash' ? 'brand.bitcash.500' : 
-  platform === 'bitinvest' ? 'brand.bitinvest.500' :
-  platform === 'bittrade' ? 'brand.bittrade.500' :
-  platform === 'bitfund' ? 'brand.bitfund.500' :
-  'gray.50',
-  'gray.900'
-);
+    platform === 'bitcash' ? 'brand.bitcash.500' : 
+    platform === 'bitinvest' ? 'brand.bitinvest.500' :
+    platform === 'bittrade' ? 'brand.bittrade.500' :
+    platform === 'bitfund' ? 'brand.bitfund.500' :
+    'gray.50',
+    'gray.900'
+  );
 
   const getPlatformFromURL = () => {
-  // Check for localhost development
-  if (typeof window !== 'undefined') {
-    const hostname = window.location.hostname;
-    if (hostname.includes('cash')) return 'bitcash';
-    if (hostname.includes('fund')) return 'bitfund';
-    if (hostname.includes('trade')) return 'bittrade';
-    if (hostname.includes('invest')) return 'bitinvest';
-  }
-  return 'bitdash'; // Default platform
-};
+    // Check for localhost development
+    if (typeof window !== 'undefined') {
+      const hostname = window.location.hostname;
+      
+      // More specific checks to avoid partial matches
+      if (hostname.includes('cash.bitdash') || hostname === 'cash.localhost') return 'bitcash';
+      if (hostname.includes('fund.bitdash') || hostname === 'fund.localhost') return 'bitfund';
+      if (hostname.includes('trade.bitdash') || hostname === 'trade.localhost') return 'bittrade';
+      if (hostname.includes('invest.bitdash') || hostname === 'invest.localhost') return 'bitinvest';
+      
+      // Also check URL path for local development
+      const pathname = window.location.pathname;
+      if (pathname.startsWith('/cash')) return 'bitcash';
+      if (pathname.startsWith('/fund')) return 'bitfund';
+      if (pathname.startsWith('/trade')) return 'bittrade';
+      if (pathname.startsWith('/invest')) return 'bitinvest';
+    }
+    return 'bitdash'; // Default platform
+  };
 
-useEffect(() => {
-  setPlatform(getPlatformFromURL());
-}, []);
+  useEffect(() => {
+    const detected = getPlatformFromURL();
+    console.log('Detected platform:', detected);
+    setPlatform(detected);
+  }, []);
 
-const MenuItems = ({ href, children, onClick }) => (
+  const MenuItems = ({ href, children, onClick }) => (
     <Link href={href} passHref>
       <Text
         display="flex"
@@ -141,61 +156,62 @@ const MenuItems = ({ href, children, onClick }) => (
     <Flex
       as="nav"
       direction="column"
-      position="sticky"  // Changed from fixed
+      position="sticky"
       top="0"
       width="100%"
       backdropFilter="blur(40px)"
       zIndex={999}
     >
       {/* Solutions Menu - Desktop */}
-        <Box 
-          display={{ base: 'none', lg: 'block' }}
-          w="full"
-          transition="all 0.3s ease"
-          h={showPlatforms ? 'auto' : '0'}
-          overflow="hidden"
+      <Box 
+        display={{ base: 'none', lg: 'block' }}
+        w="full"
+        transition="all 0.3s ease"
+        h={showPlatforms ? 'auto' : '0'}
+        overflow="hidden"
+      >
+        <HStack 
+          spacing={10} 
+          py={6} 
+          px={8}
+          justify="center"
+          align="center"
         >
-          <HStack 
-            spacing={10} 
-            py={6} 
-            px={8}
-            justify="center"
-            align="center"
-          >
-            {platforms.map((platform) => (
-              <a 
-                key={platform.href}
-                href={platform.href}
-                target="_blank"
-                rel="noopener noreferrer"
+          {platforms.map((platform) => (
+            <a 
+              key={platform.href}
+              href={platform.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <VStack
+                spacing={5}
+                align="center"
+                transition="transform 0.2s"
+                _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
               >
-                <VStack
-                  spacing={5}
-                  align="center"
-                  transition="transform 0.2s"
-                  _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
+                <Image 
+                  src={platform.image}
+                  alt={platform.name}
+                  width={120}
+                  height={180}
+                  priority={true}
+                  style={{ objectFit: 'contain' }}
+                />
+                <Text 
+                  fontSize="md" 
+                  fontWeight="medium"
+                  color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
                 >
-                  <Image 
-                    src={platform.image}
-                    alt="platform"
-                    width={120}
-                    height={180}
-                    priority={true}
-                    style={{ objectFit: 'contain' }}
-                  />
-                  <Text 
-                    fontSize="md" 
-                    fontWeight="medium"
-                    color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
-                  >
-                    {platform.name}
-                  </Text>
-                </VStack>
-              </a>
-            ))}
-          </HStack>
-        </Box>
-       <Flex
+                  {platform.name}
+                </Text>
+              </VStack>
+            </a>
+          ))}
+        </HStack>
+      </Box>
+
+      <Flex
         direction="row"
         justify="space-between"
         align="center"
@@ -302,7 +318,7 @@ const MenuItems = ({ href, children, onClick }) => (
                   <Button 
                     leftIcon={<FaUser size={20} />} 
                     size="lg"
-                    variant={`${platform}-outline`}  // Changed from -solid to -outline
+                    variant={`${platform}-outline`}
                     onClick={() => router.push('/login')}
                     _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
                   >
@@ -312,7 +328,7 @@ const MenuItems = ({ href, children, onClick }) => (
                     leftIcon={<FaSignOutAlt size={20} />}
                     onClick={handleLogout}
                     size="lg"
-                    variant={`${platform}-outline`}  // Changed from -solid to -outline
+                    variant={`${platform}-outline`}
                     colorScheme="red"
                   >
                     {t('logout')}
@@ -346,7 +362,7 @@ const MenuItems = ({ href, children, onClick }) => (
           )}
         </Flex>
 
-        {/* Mobile Controls - Untouched */}
+        {/* Mobile Controls */}
         <HStack display={{ base: 'flex', lg: 'none'}} spacing={2}>
           <Box>
             <LanguageSwitcher 
@@ -407,7 +423,7 @@ const MenuItems = ({ href, children, onClick }) => (
                     icon={<FaSignInAlt />}
                     aria-label={t('login')}
                     variant={`${platform}-outline`}
-                    color={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
+                    color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
                     size="sm"
                   />
                   <IconButton
@@ -416,7 +432,7 @@ const MenuItems = ({ href, children, onClick }) => (
                     icon={<FaUserPlus />}
                     aria-label={t('signup')}
                     variant={`${platform}-outline`}
-                    color={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
+                    color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
                     size="sm"
                   />
                 </>
@@ -448,7 +464,7 @@ const MenuItems = ({ href, children, onClick }) => (
           {/* Navigation Links */}
           <SimpleGrid columns={3} w="full" mb={4}>           
             <MenuItems href="/services" color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`} onClick={onClose}>{t('servicesMenu')}</MenuItems>
-            <MenuItems href="/about"color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`} onClick={onClose}>{t('aboutUs')}</MenuItems>
+            <MenuItems href="/about" color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`} onClick={onClose}>{t('aboutUs')}</MenuItems>
             <Button
               leftIcon={<FaWhatsapp />}
               variant={`${platform}-outline`}
@@ -495,8 +511,8 @@ const MenuItems = ({ href, children, onClick }) => (
                   minW="60px"
                 >
                   <Image
-                    src={platform.image}
-                    alt="platform"
+                    src={platform.mobileImage}
+                    alt={platform.name}
                     width={80}
                     height={50}
                     priority={true}
@@ -511,10 +527,14 @@ const MenuItems = ({ href, children, onClick }) => (
           </Flex>
         </Box>
       </Collapse>
-       {/* Add the announcement banner */}
-    {showAnnouncements && (
-      <AnnouncementBanner platform={platform} />
-    )}
+
+      {/* Add the announcement banner with debug logging */}
+      {showAnnouncements && (
+        <>
+          {console.log(`Rendering announcement banner for platform: ${platform}`)}
+          <AnnouncementBanner platform={platform} />
+        </>
+      )}
     </Flex>
   );
 }

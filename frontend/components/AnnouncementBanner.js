@@ -18,33 +18,69 @@ const iconMap = {
   rocket: "🚀"
 };
 
-const AnnouncementBanner = ({ platform }) => {  // Accept the platform prop
+const AnnouncementBanner = ({ platform }) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
+  
+  console.log(`AnnouncementBanner received platform: ${platform}`);
 
+  // Normalize platform string to lowercase for consistency
+  const normalizedPlatform = platform ? platform.toLowerCase() : '';
+  
   // Fetch platform-specific announcements
-  const { data: announcements } = useQuery({
-    queryKey: ['announcements', platform],
+  const { data: announcements, isError, error, isLoading } = useQuery({
+    queryKey: ['announcements', normalizedPlatform],
     queryFn: async () => {
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/announcements?` +
+        console.log(`Fetching announcements for platform: ${normalizedPlatform}`);
+        
+        // Build the API URL
+        const apiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/announcements?` +
           'filters[status][$eq]=active&' +
-          `filters[platform][$eq]=${platform}&` +
-          'sort[priority]=desc'
-        );
+          `filters[platform][$eq]=${normalizedPlatform}&` +
+          'sort[priority]=desc';
+          
+        console.log(`API URL: ${apiUrl}`);
+        
+        const response = await fetch(apiUrl);
 
-        if (!response.ok) throw new Error('Failed to fetch announcements');
-        return response.json();
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('Error response from announcements API:', errorText);
+          throw new Error(`Failed to fetch announcements: ${response.status} ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        console.log('Announcements data received:', data);
+        return data;
       } catch (error) {
         console.error('Failed to fetch announcements:', error);
         return { data: [] };
       }
     },
-    staleTime: 60000 // Cache for 1 minute
+    staleTime: 60000, // Cache for 1 minute
+    retry: 2,         // Retry failed requests twice
+    refetchOnWindowFocus: false
   });
 
-  if (!announcements?.data?.length) return null;
+  // Handle loading and error states
+  useEffect(() => {
+    if (isLoading) {
+      console.log('Loading announcements...');
+    }
+    
+    if (isError) {
+      console.error('Error fetching announcements:', error);
+    }
+  }, [isLoading, isError, error]);
+
+  // Check if we have valid announcements data
+  if (!announcements?.data?.length) {
+    console.log(`No announcements found for platform: ${normalizedPlatform}`);
+    return null;
+  }
+
+  console.log(`Rendering ${announcements.data.length} announcements for platform: ${normalizedPlatform}`);
 
   return (
     <Box
@@ -53,7 +89,7 @@ const AnnouncementBanner = ({ platform }) => {  // Accept the platform prop
       left={0}
       right={0}
       zIndex={998}
-      bg={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
+      bg={isDark ? `brand.${normalizedPlatform}.400` : `brand.${normalizedPlatform}.700`}
       backdropFilter="blur(10px)"
       boxShadow="lg"
       overflow="hidden"
@@ -93,7 +129,7 @@ const AnnouncementBanner = ({ platform }) => {  // Accept the platform prop
                 transition="all 0.2s"
               >
                 <Text fontSize="xl">
-                  {iconMap[announcement.attributes.icon]}
+                  {iconMap[announcement.attributes.icon] || '📢'} {/* Default icon if not found */}
                 </Text>
                 <Text
                   color={isDark ? 'black' : 'black'}
