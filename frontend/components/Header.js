@@ -474,27 +474,10 @@ export default function Header() {
           zIndex="1000"
         >
           {/* Navigation Links */}
-          <SimpleGrid columns={5} w="full" mb={2}>           
+          <SimpleGrid columns={3} w="full" mb={2}>           
             <MenuItems href="/services" color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`} onClick={onClose}>{t('servicesMenu')}</MenuItems>
             <MenuItems href="/about" color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`} onClick={onClose}>{t('aboutUs')}</MenuItems>
             <MenuItems href="/contact" color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`} onClick={onClose}>{t('contactUs')}</MenuItems>
-            <IconButton
-              icon={<FaWhatsapp />}
-              variant={`${platform}-outline`}
-              color={`brand.${platform}.400`}
-              onClick={() => {
-                window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank");
-                onClose();
-              }}
-            >
-            </IconButton>
-            <IconButton
-              icon={<FaTelegram />}
-              variant={`${platform}-outline`}
-              onClick={() => window.open("https://t.me/BitDashSupport", "_blank")}
-              color={`brand.${platform}.400`}
-            >
-            </IconButton>
           </SimpleGrid>
 
           {/* Platforms Row */}

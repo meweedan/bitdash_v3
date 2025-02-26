@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_statuses",
+  "info": {
+    "singularName": "status",
+    "pluralName": "statuses",
+    "displayName": "Service Status",
+    "description": "Tracks status of various platform services"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "operational",
+        "degraded",
+        "outage",
+        "maintenance"
+      ],
+      "default": "operational",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "uptime": {
+      "type": "decimal",
+      "default": 100,
+      "min": 0,
+      "max": 100
+    },
+    "last_incident": {
+      "type": "datetime"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "platform": {
+      "type": "enumeration",
+      "enum": [
+        "all",
+        "bitdash",
+        "bitfund",
+        "bitcash",
+        "bittrade",
+        "bitinvest"
+      ],
+      "default": "all",
+      "required": true
+    }
+  }
+}

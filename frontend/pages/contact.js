@@ -25,7 +25,11 @@ import {
   Card,
   CardBody,
   Stack,
-  Icon
+  Icon,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
@@ -39,7 +43,8 @@ import {
   FaArrowRight, 
   FaLocationArrow,
   FaUserAlt,
-  FaInfoCircle
+  FaInfoCircle,
+  FaCheckCircle
 } from 'react-icons/fa';
 
 const MotionBox = motion(Box);
@@ -103,6 +108,9 @@ const Contact = () => {
   
   const [errors, setErrors] = useState({});
   const [isSending, setIsSending] = useState(false);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const [showErrorAlert, setShowErrorAlert] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   
   // Get current theme key safely
   const themeKey = currentPlatform?.themeKey || 'bitfund';
@@ -172,6 +180,10 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Reset alerts
+    setShowSuccessAlert(false);
+    setShowErrorAlert(false);
+    
     if (!validateForm()) {
       toast({
         title: t('formError', 'Form Error'),
@@ -184,44 +196,50 @@ const Contact = () => {
     
     setIsSending(true);
 
-    // Determine which email to use based on inquiryType
-    let emailTo;
-    switch(formData.inquiryType) {
-      case 'support':
-        emailTo = 'help@bitdash.app';
-        break;
-      case 'account':
-        emailTo = 'contact@bitdash.app';
-        break;
-      default:
-        emailTo = 'info@bitdash.app';
+    try {
+      // Use the API route to send the email
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setShowSuccessAlert(true);
+        
+        toast({
+          title: t('success', 'Success'),
+          description: t('emailSent', 'Your message has been sent successfully. We will contact you soon!'),
+          status: 'success',
+          duration: 5000,
+        });
+        
+        // Reset the form
+        setFormData({ name: '', email: '', inquiryType: 'general', platform: 'all', message: '' });
+      } else {
+        throw new Error(data.message || 'Failed to send email');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setShowErrorAlert(true);
+      setErrorMessage(error.message);
+      
+      toast({
+        title: t('error', 'Error'),
+        description: error.message || t('emailNotSent', 'Failed to send your message. Please try again.'),
+        status: 'error',
+        duration: 5000,
+      });
+    } finally {
+      setIsSending(false);
+      
+      // Scroll to the top to show the alert
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    
-    // Construct mailto link with all the form data
-    const subject = `${formData.inquiryType.toUpperCase()} Inquiry - ${formData.platform !== 'all' ? formData.platform : 'All Platforms'}`;
-    const body = `Name: ${formData.name}
-Email: ${formData.email}
-Inquiry Type: ${formData.inquiryType}
-Platform: ${formData.platform}
-
-Message:
-${formData.message}`;
-
-    const mailtoLink = `mailto:${emailTo}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Open the user's email client
-    window.location.href = mailtoLink;
-    
-    toast({
-      title: t('success', 'Success'),
-      description: t('emailClientOpened', 'Your email client has been opened. Please send the email to complete your inquiry.'),
-      status: 'success',
-      duration: 5000,
-    });
-    
-    // Reset the form
-    setFormData({ name: '', email: '', inquiryType: 'general', platform: 'all', message: '' });
-    setIsSending(false);
   };
   
   const handleSocialClick = (link) => {
@@ -268,11 +286,63 @@ ${formData.message}`;
           variants={staggerChildren}
           zIndex="1"
         >
+          {showSuccessAlert && (
+            <Alert
+              status="success"
+              variant="subtle"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+              textAlign="center"
+              borderRadius="xl"
+              py={6}
+              mb={8}
+            >
+              <AlertIcon boxSize={10} mr={0} mb={4} />
+              <AlertTitle fontSize="xl" mb={2}>
+                {t('emailSentTitle', 'Message Sent!')}
+              </AlertTitle>
+              <AlertDescription maxW="md">
+                {t('emailSentDescription', 'Thank you for contacting us. We will get back to you as soon as possible.')}
+              </AlertDescription>
+            </Alert>
+          )}
+
+          {showErrorAlert && (
+            <Alert
+              status="error"
+              variant="subtle"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+              textAlign="center"
+              borderRadius="xl"
+              py={6}
+              mb={8}
+            >
+              <AlertIcon boxSize={10} mr={0} mb={4} />
+              <AlertTitle fontSize="xl" mb={2}>
+                {t('emailErrorTitle', 'Message Not Sent')}
+              </AlertTitle>
+              <AlertDescription maxW="md">
+                {errorMessage || t('emailErrorDescription', 'There was an error sending your message. Please try again or contact us directly.')}
+              </AlertDescription>
+            </Alert>
+          )}
+          
           <MotionBox
             variants={fadeIn}
             textAlign="center"
             mb={10}
           >
+            <Heading
+              fontSize={{ base: "3xl", md: "4xl" }}
+              bgGradient={`linear(to-r, brand.${themeKey}.400, brand.${themeKey}.700)`}
+              bgClip="text"
+              mb={4}
+            >
+              {t('contactUs', 'Contact Us')}
+            </Heading>
           </MotionBox>
           
           <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={10}>
@@ -384,6 +454,8 @@ ${formData.message}`;
                             value={formData.message}
                             onChange={handleChange}
                             placeholder={t('yourMessage', 'Your message here...')}
+                            size="lg"
+                            minH="150px"
                             resize="vertical"
                           />
                           <FormErrorMessage>{errors.message}</FormErrorMessage>
@@ -392,8 +464,8 @@ ${formData.message}`;
                         <Button 
                           type="submit"
                           size="lg"
-                          color={`brand.${themeKey}.700`}
-                          variant={`${themeKey}-outline`}                          
+                          variant={`${themeKey}-outline`}
+                          color={themeKey}
                           isLoading={isSending}
                           loadingText={t('sending', 'Sending...')}
                           rightIcon={<FaArrowRight />}
@@ -439,27 +511,35 @@ ${formData.message}`;
                             borderRadius="md"
                             align="center"
                             justify="space-between"
-                            cursor={item.link ? "pointer" : "default"}
-                            onClick={() => handleSocialClick(item.link)}
-                            whileHover={{ scale: item.link ? 1.02 : 1 }}
-                            whileTap={{ scale: item.link ? 0.98 : 1 }}
+                            cursor="pointer"
+                            onClick={() => {
+                              navigator.clipboard.writeText(item.value);
+                              toast({
+                                title: t('emailCopied', 'Email Copied!'),
+                                description: `${item.value} ${t('copiedToClipboard', 'copied to clipboard')}`,
+                                status: 'success',
+                                duration: 2000,
+                              });
+                            }}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                             transition={{ duration: 0.2 }}
+                            bg={useColorModeValue("gray.50", "gray.700")}
                           >
                             <HStack>
+                              <Icon as={FaEnvelope} color={`brand.${themeKey}.700`} boxSize={5} mr={3} />
                               <VStack align="start" spacing={0}>
-                                <Text color={`brand.${themeKey}.400`}>{item.title}</Text>
+                                <Text fontWeight="medium">{item.title}</Text>
                                 <Text fontSize="sm" opacity={0.8}>{item.value}</Text>
                               </VStack>
                             </HStack>
-                            {item.link && (
-                              <IconButton
-                                icon={<FaArrowRight />}
-                                variant={`${themeKey}-outline`}
-                                color={`brand.${themeKey}.400`}
-                                size="sm"
-                                aria-label={t('open', 'Open')}
-                              />
-                            )}
+                            <IconButton
+                              icon={<FaArrowRight />}
+                              variant="ghost"
+                              color={`brand.${themeKey}.700`}
+                              size="sm"
+                              aria-label={t('copy', 'Copy')}
+                            />
                           </MotionFlex>
                         ))}
                       </VStack>
@@ -488,8 +568,7 @@ ${formData.message}`;
                           size="lg"
                           leftIcon={<FaWhatsapp size="20px" />}
                           onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
-                          color={`brand.${themeKey}.700`}
-                          variant={`${themeKey}-outline`}
+                          colorScheme="green"
                           height="60px"
                           _hover={{
                             transform: 'translateY(-2px)',
@@ -504,8 +583,7 @@ ${formData.message}`;
                           size="lg"
                           leftIcon={<FaTelegram size="20px" />}
                           onClick={() => window.open("https://t.me/BitDashSupport", "_blank")}
-                          color={`brand.${themeKey}.700`}
-                          variant={`${themeKey}-outline`}
+                          colorScheme="blue"
                           height="60px"
                           _hover={{
                             transform: 'translateY(-2px)',
@@ -516,32 +594,38 @@ ${formData.message}`;
                           Telegram
                         </Button>
                       </SimpleGrid>
+                      
+                      <Text fontSize="sm" textAlign="center" opacity={0.7}>
+                        {t('instantSupportDescription', "Our support team is available 24/7 to assist you with any questions or issues")}
+                      </Text>
                     </VStack>
                   </CardBody>
                 </Card>
                 
-                {/* Response Time Card */}
+                {/* Response Time Card
                 <Card bg={cardBg} shadow="xl" borderRadius="xl" overflow="hidden">
                   <Box 
+                    position="absolute"
                     top={0} 
                     left={0} 
                     right={0} 
                     height="8px" 
                     bgGradient={`linear(to-r, brand.${themeKey}.400, brand.${themeKey}.600)`}
                   />
-                  <CardBody>
+                  <CardBody p={6} w="100%">
                     <HStack spacing={4}>
-                      <VStack spacing={0}>
-                        <Text color={`brand.${themeKey}.700`}>
+                      <Icon as={FaCheckCircle} color="green.500" boxSize={6} />
+                      <VStack align="start" spacing={0}>
+                        <Text fontWeight="medium" color={`brand.${themeKey}.700`}>
                           {t('fastResponse', "Fast Response Time")}
                         </Text>
-                        <Text>
-                          {t('responseTimeDescription', "We typically respond to all inquiries within 2 to 4 hours")}
+                        <Text fontSize="sm">
+                          {t('responseTimeDescription', "We typically respond to all inquiries within 24 hours")}
                         </Text>
                       </VStack>
                     </HStack>
                   </CardBody>
-                </Card>
+                </Card> */}
               </VStack>
             </MotionBox>
           </SimpleGrid>

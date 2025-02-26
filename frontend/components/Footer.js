@@ -49,11 +49,13 @@ import {
   CreditCard
 } from 'lucide-react';
 import { FiArrowRightCircle, FiUser, FiUsers, FiLock } from 'react-icons/fi';
+import { FaWhatsapp, FaTelegram } from 'react-icons/fa';
 
 const Footer = () => {
   const router = useRouter();
   const toast = useToast();
   const { colorMode } = useColorMode();
+  const { isOpen, onToggle, onClose } = useDisclosure();
   const isDark = colorMode === 'dark';
   
   const menuDisclosure = useDisclosure();
@@ -335,7 +337,7 @@ const Footer = () => {
                 _hover={{ textDecoration: 'none', color: getPlatformColor('500') }}
               >
                 Powered by BitDash™
-              </Link>              
+              </Link>        
             </HStack>
             <HStack spacing={4}>
               {mobileMenuItems[platform].slice(0, 3).map((item) => (
@@ -412,7 +414,21 @@ const Footer = () => {
                   _hover={{ textDecoration: 'none', color: getPlatformColor('500') }}
                 >
                   Powered by BitDash™
-              </Link>              
+              </Link>    
+             <IconButton
+              icon={<FaWhatsapp />}
+              variant={`${platform}-outline`}
+              color={`brand.${platform}.400`}
+              onClick={() => {window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank");}}
+            >
+            </IconButton>
+            <IconButton
+              icon={<FaTelegram />}
+              variant={`${platform}-outline`}
+              onClick={() => window.open("https://t.me/BitDashSupport", "_blank")}
+              color={`brand.${platform}.400`}
+            >
+            </IconButton>          
               <IconButton
                 icon={<Menu size={24} />}
                 variant="ghost"

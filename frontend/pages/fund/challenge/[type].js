@@ -16,7 +16,7 @@ import {
   SimpleGrid,
   Flex,
   Icon,
-  List,
+  List,  // Make sure to import List
   ListItem,
   ListIcon,
   Divider,
@@ -377,6 +377,7 @@ const ChallengePage = () => {
                     <Heading size="md">Challenge Benefits</Heading>
                   </Flex>
                   
+                  {/* Fixed: Wrapped ListItem components in a List component */}
                   <List spacing={3}>
                     {challenge.benefits.map((benefit, index) => (
                       <ListItem key={index} display="flex" alignItems="center">
@@ -534,22 +535,26 @@ const ChallengePage = () => {
                       Our Islamic accounts feature:
                     </Text>
                     <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={3}>
-                      <ListItem display="flex">
-                        <ListIcon as={FaCheckCircle} color="green.500" mt={1} />
-                        <Text>No interest (riba) charges</Text>
-                      </ListItem>
-                      <ListItem display="flex">
-                        <ListIcon as={FaCheckCircle} color="green.500" mt={1} />
-                        <Text>No overnight swap fees</Text>
-                      </ListItem>
-                      <ListItem display="flex">
-                        <ListIcon as={FaCheckCircle} color="green.500" mt={1} />
-                        <Text>Immediate trade execution</Text>
-                      </ListItem>
-                      <ListItem display="flex">
-                        <ListIcon as={FaCheckCircle} color="green.500" mt={1} />
-                        <Text>Transparent fee structure</Text>
-                      </ListItem>
+                      <List spacing={2}>
+                        <ListItem display="flex">
+                          <ListIcon as={FaCheckCircle} color="green.500" mt={1} />
+                          <Text>No interest (riba) charges</Text>
+                        </ListItem>
+                        <ListItem display="flex">
+                          <ListIcon as={FaCheckCircle} color="green.500" mt={1} />
+                          <Text>No overnight swap fees</Text>
+                        </ListItem>
+                      </List>
+                      <List spacing={2}>
+                        <ListItem display="flex">
+                          <ListIcon as={FaCheckCircle} color="green.500" mt={1} />
+                          <Text>Immediate trade execution</Text>
+                        </ListItem>
+                        <ListItem display="flex">
+                          <ListIcon as={FaCheckCircle} color="green.500" mt={1} />
+                          <Text>Transparent fee structure</Text>
+                        </ListItem>
+                      </List>
                     </SimpleGrid>
                   </Box>
                 </Flex>
