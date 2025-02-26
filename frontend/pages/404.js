@@ -92,39 +92,41 @@ export default function Custom404() {
   }, []);
   
   // Fetch service status
-  useEffect(() => {
-    const fetchServiceStatus = async () => {
-      if (!brandKey) return;
-      
-      setIsLoadingStatus(true);
-      try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/public/status?platform=${brandKey}`);
-        if (!response.ok) throw new Error('Failed to fetch status');
-        
-        const data = await response.json();
-        setServiceStatus(data.data || []);
-        setOverallStatus(data.meta?.overallStatus || 'operational');
-        setLastUpdated(new Date().toLocaleTimeString(i18n.language, { 
-          hour: '2-digit', 
-          minute: '2-digit' 
-        }));
-      } catch (error) {
-        console.error('Error fetching service status:', error);
-        // Fallback status data
-        setServiceStatus([
-          { id: 1, attributes: { name: 'API', status: 'operational', icon: 'Server', uptime: '99.98' }},
-          { id: 2, attributes: { name: 'Dashboard', status: 'operational', icon: 'Globe', uptime: '99.95' }},
-          { id: 3, attributes: { name: 'Authentication', status: 'operational', icon: 'Database', uptime: '100' }},
-          { id: 4, attributes: { name: 'Payments', status: 'degraded', icon: 'Wifi', uptime: '97.50' }},
-          { id: 5, attributes: { name: 'Notifications', status: 'operational', icon: 'Send', uptime: '99.89' }}
-        ]);
-      } finally {
-        setIsLoadingStatus(false);
-      }
-    };
+useEffect(() => {
+  const fetchServiceStatus = async () => {
+    if (!brandKey) return;
     
-    fetchServiceStatus();
-  }, [brandKey, i18n.language]);
+    setIsLoadingStatus(true);
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/public/status?platform=${brandKey}`);
+      if (!response.ok) throw new Error('Failed to fetch status');
+      
+      const data = await response.json();
+      // Set the service status directly from data.data
+      setServiceStatus(data.data || []);
+      // Set overall status from meta.overallStatus
+      setOverallStatus(data.meta?.overallStatus || 'operational');
+      setLastUpdated(new Date().toLocaleTimeString(i18n.language, { 
+        hour: '2-digit', 
+        minute: '2-digit' 
+      }));
+    } catch (error) {
+      console.error('Error fetching service status:', error);
+      // Fallback status data with the correct structure
+      setServiceStatus([
+        { id: 1, name: 'API', status: 'operational', icon: 'Server', uptime: 99.98 },
+        { id: 2, name: 'Dashboard', status: 'operational', icon: 'Globe', uptime: 99.95 },
+        { id: 3, name: 'Authentication', status: 'operational', icon: 'Database', uptime: 100.00 },
+        { id: 4, name: 'Payments', status: 'degraded', icon: 'Wifi', uptime: 97.50 },
+        { id: 5, name: 'Notifications', status: 'operational', icon: 'Send', uptime: 99.89 }
+      ]);
+    } finally {
+      setIsLoadingStatus(false);
+    }
+  };
+  
+  fetchServiceStatus();
+}, [brandKey, i18n.language]);
   
   // Access the brand colors directly from theme
   const brandColors = theme.colors.brand[brandKey] || theme.colors.brand.bitdash;
@@ -407,22 +409,22 @@ export default function Custom404() {
                         >
                           <HStack spacing={3} direction={i18n.language === 'ar' ? "row-reverse" : "row"}>
                             <Icon 
-                              as={getIconComponent(service.attributes?.icon || 'Server')} 
+                              as={getIconComponent(service.icon || 'Server')} 
                               color={
-                                service.attributes?.status === 'operational' ? 'green.400' : 
-                                service.attributes?.status === 'degraded' ? 'orange.400' : 
-                                service.attributes?.status === 'outage' ? 'red.400' : 'purple.400'
+                                service.status === 'operational' ? 'green.400' : 
+                                service.status === 'degraded' ? 'orange.400' : 
+                                service.status === 'outage' ? 'red.400' : 'purple.400'
                               } 
                             />
-                            <Text fontWeight="medium">{service.attributes?.name}</Text>
+                            <Text fontWeight="medium">{service.name}</Text>
                           </HStack>
                           <HStack spacing={3} direction={i18n.language === 'ar' ? "row-reverse" : "row"}>
-                            <Text fontSize="sm" color={subtextColor}>{service.attributes?.uptime}%</Text>
+                            <Text fontSize="sm" color={subtextColor}>{service.uptime}%</Text>
                             <Badge
                               colorScheme={
-                                service.attributes?.status === 'operational' ? 'green' : 
-                                service.attributes?.status === 'degraded' ? 'orange' : 
-                                service.attributes?.status === 'outage' ? 'red' : 'purple'
+                                service.status === 'operational' ? 'green' : 
+                                service.status === 'degraded' ? 'orange' : 
+                                service.status === 'outage' ? 'red' : 'purple'
                               }
                               fontSize="xs"
                               textTransform="capitalize"
@@ -430,7 +432,7 @@ export default function Custom404() {
                               py={0.5}
                               borderRadius="full"
                             >
-                              {t(`status.${service.attributes?.status}`, service.attributes?.status)}
+                              {t(`status.${service.status}`, service.status)}
                             </Badge>
                           </HStack>
                         </Flex>
@@ -512,22 +514,22 @@ export default function Custom404() {
                 >
                   <HStack spacing={3} direction={i18n.language === 'ar' ? "row-reverse" : "row"}>
                     <Icon 
-                      as={getIconComponent(service.attributes?.icon || 'Server')} 
+                      as={getIconComponent(service.icon || 'Server')} 
                       color={
-                        service.attributes?.status === 'operational' ? 'green.400' : 
-                        service.attributes?.status === 'degraded' ? 'orange.400' : 
-                        service.attributes?.status === 'outage' ? 'red.400' : 'purple.400'
+                        service.status === 'operational' ? 'green.400' : 
+                        service.status === 'degraded' ? 'orange.400' : 
+                        service.status === 'outage' ? 'red.400' : 'purple.400'
                       } 
                     />
-                    <Text fontWeight="medium">{service.attributes?.name}</Text>
+                    <Text fontWeight="medium">{service.name}</Text>
                   </HStack>
                   <HStack spacing={3} direction={i18n.language === 'ar' ? "row-reverse" : "row"}>
-                    <Text fontSize="sm" color={subtextColor}>{service.attributes?.uptime}%</Text>
+                    <Text fontSize="sm" color={subtextColor}>{service.uptime}%</Text>
                     <Badge
                       colorScheme={
-                        service.attributes?.status === 'operational' ? 'green' : 
-                        service.attributes?.status === 'degraded' ? 'orange' : 
-                        service.attributes?.status === 'outage' ? 'red' : 'purple'
+                        service.status === 'operational' ? 'green' : 
+                        service.status === 'degraded' ? 'orange' : 
+                        service.status === 'outage' ? 'red' : 'purple'
                       }
                       fontSize="xs"
                       textTransform="capitalize"
@@ -535,7 +537,7 @@ export default function Custom404() {
                       py={0.5}
                       borderRadius="full"
                     >
-                      {t(`status.${service.attributes?.status}`, service.attributes?.status)}
+                      {t(`status.${service.status}`, service.status)}
                     </Badge>
                   </HStack>
                 </Flex>

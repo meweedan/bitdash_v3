@@ -21,8 +21,7 @@ const iconMap = {
 const AnnouncementBanner = ({ platform }) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-  
-  console.log(`AnnouncementBanner received platform: ${platform}`);
+
 
   // Normalize platform string to lowercase for consistency
   const normalizedPlatform = platform ? platform.toLowerCase() : '';
@@ -32,29 +31,17 @@ const AnnouncementBanner = ({ platform }) => {
     queryKey: ['announcements', normalizedPlatform],
     queryFn: async () => {
       try {
-        console.log(`Fetching announcements for platform: ${normalizedPlatform}`);
-        
         // Build the API URL
         const apiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/announcements?` +
           'filters[status][$eq]=active&' +
           `filters[platform][$eq]=${normalizedPlatform}&` +
           'sort[priority]=desc';
-          
-        console.log(`API URL: ${apiUrl}`);
         
         const response = await fetch(apiUrl);
-
-        if (!response.ok) {
-          const errorText = await response.text();
-          console.error('Error response from announcements API:', errorText);
-          throw new Error(`Failed to fetch announcements: ${response.status} ${response.statusText}`);
-        }
         
         const data = await response.json();
-        console.log('Announcements data received:', data);
         return data;
       } catch (error) {
-        console.error('Failed to fetch announcements:', error);
         return { data: [] };
       }
     },
@@ -63,24 +50,6 @@ const AnnouncementBanner = ({ platform }) => {
     refetchOnWindowFocus: false
   });
 
-  // Handle loading and error states
-  useEffect(() => {
-    if (isLoading) {
-      console.log('Loading announcements...');
-    }
-    
-    if (isError) {
-      console.error('Error fetching announcements:', error);
-    }
-  }, [isLoading, isError, error]);
-
-  // Check if we have valid announcements data
-  if (!announcements?.data?.length) {
-    console.log(`No announcements found for platform: ${normalizedPlatform}`);
-    return null;
-  }
-
-  console.log(`Rendering ${announcements.data.length} announcements for platform: ${normalizedPlatform}`);
 
   return (
     <Box

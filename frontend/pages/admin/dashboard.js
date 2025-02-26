@@ -458,15 +458,18 @@ const AdminDashboard = () => {
   };
 
   // Calculate stats
-  const statusStats = useMemo(() => {
-    if (!statusData?.data) return { operational: 0, degraded: 0, outage: 0, maintenance: 0 };
-    
-    return statusData.data.reduce((acc, service) => {
-      const status = service.attributes.status;
-      acc[status] = (acc[status] || 0) + 1;
-      return acc;
-    }, { operational: 0, degraded: 0, outage: 0, maintenance: 0 });
-  }, [statusData]);
+const statusStats = useMemo(() => {
+  if (!statusData?.data || !Array.isArray(statusData.data)) {
+    return { operational: 0, degraded: 0, outage: 0, maintenance: 0 };
+  }
+  
+  return statusData.data.reduce((acc, service) => {
+    // Check if service and attributes exist before accessing status
+    const status = service?.attributes?.status || 'unknown';
+    acc[status] = (acc[status] || 0) + 1;
+    return acc;
+  }, { operational: 0, degraded: 0, outage: 0, maintenance: 0 });
+}, [statusData]);
 
   // Loading state
   if (!adminToken && !isLoginOpen) {
@@ -570,10 +573,10 @@ const AdminDashboard = () => {
                 {t('admin:stats.totalUsers')}
               </StatLabel>
               <StatNumber fontSize="3xl" fontWeight="bold" color={platformColors.primary}>
-                {isLoadingStats ? (
-                  <Skeleton height="1.5rem" width="80px" />
+                {isLoadingStatus ? (
+                <Skeleton height="1.5rem" width="80px" />
                 ) : (
-                  statsData?.usersCount?.toLocaleString() || '0'
+                `${((statusStats.operational / (statusData?.data?.length || 1)) * 100).toFixed(0)}%`
                 )}
               </StatNumber>
               <HStack mt={2}>
@@ -876,57 +879,65 @@ const AdminDashboard = () => {
                                 </Tr>
                               </Thead>
                               <Tbody>
-                                {statusData?.data?.map((service) => (
-                                  <Tr key={service.id}>
+                                {statusData?.data && Array.isArray(statusData.data) ? (
+                                statusData.data.map((service) => (
+                                    <Tr key={service.id}>
                                     <Td>
-                                      <HStack>
+                                        <HStack>
                                         <Icon 
-                                          as={getIconForContentType(service.attributes.icon || '')} 
-                                          color={
-                                            service.attributes.status === 'operational' ? 'green.500' :
-                                            service.attributes.status === 'degraded' ? 'orange.500' :
-                                            service.attributes.status === 'outage' ? 'red.500' : 'purple.500'
-                                          }
+                                            as={getIconForContentType(service.attributes?.icon || '')} 
+                                            color={
+                                            service.attributes?.status === 'operational' ? 'green.500' :
+                                            service.attributes?.status === 'degraded' ? 'orange.500' :
+                                            service.attributes?.status === 'outage' ? 'red.500' : 'purple.500'
+                                            }
                                         />
-                                        <Text>{service.attributes.name}</Text>
-                                      </HStack>
+                                        <Text>{service.attributes?.name}</Text>
+                                        </HStack>
                                     </Td>
                                     <Td>
-                                      <Badge
+                                        <Badge
                                         colorScheme={
-                                          service.attributes.status === 'operational' ? 'green' :
-                                          service.attributes.status === 'degraded' ? 'orange' :
-                                          service.attributes.status === 'outage' ? 'red' : 'purple'
+                                            service.attributes?.status === 'operational' ? 'green' :
+                                            service.attributes?.status === 'degraded' ? 'orange' :
+                                            service.attributes?.status === 'outage' ? 'red' : 'purple'
                                         }
                                         textTransform="capitalize"
-                                      >
-                                        {service.attributes.status}
-                                      </Badge>
+                                        >
+                                        {service.attributes?.status || 'unknown'}
+                                        </Badge>
                                     </Td>
-                                    <Td>{service.attributes.uptime}%</Td>
+                                    <Td>{service.attributes?.uptime || 0}%</Td>
                                     <Td>
-                                      {service.attributes.last_incident 
+                                        {service.attributes?.last_incident 
                                         ? new Date(service.attributes.last_incident).toLocaleDateString() 
                                         : t('admin:status.none')}
                                     </Td>
                                     <Td>
-                                      <HStack spacing={1}>
+                                        <HStack spacing={1}>
                                         <IconButton
-                                          aria-label={t('admin:status.edit')}
-                                          icon={<FiEdit size={14} />}
-                                          size="xs"
-                                          variant="ghost"
+                                            aria-label={t('admin:status.edit')}
+                                            icon={<FiEdit size={14} />}
+                                            size="xs"
+                                            variant="ghost"
                                         />
                                         <IconButton
-                                          aria-label={t('admin:status.delete')}
-                                          icon={<FiTrash2 size={14} />}
-                                          size="xs"
-                                          variant="ghost"
+                                            aria-label={t('admin:status.delete')}
+                                            icon={<FiTrash2 size={14} />}
+                                            size="xs"
+                                            variant="ghost"
                                         />
-                                      </HStack>
+                                        </HStack>
                                     </Td>
-                                  </Tr>
-                                ))}
+                                    </Tr>
+                                ))
+                                ) : (
+                                <Tr>
+                                    <Td colSpan={5} textAlign="center">
+                                    {t('admin:status.noData')}
+                                    </Td>
+                                </Tr>
+                                )}
                               </Tbody>
                             </Table>
                           </Box>

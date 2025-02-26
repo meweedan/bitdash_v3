@@ -221,26 +221,28 @@ const StatusPage = () => {
 
   // Calculate aggregated stats
   const statusStats = useMemo(() => {
-    if (!servicesData) return { operational: 0, degraded: 0, outage: 0, maintenance: 0 };
-    
-    const data = servicesData.data || [];
-    return data.reduce((acc, service) => {
-      const status = service.attributes.status;
-      acc[status] = (acc[status] || 0) + 1;
-      return acc;
-    }, { operational: 0, degraded: 0, outage: 0, maintenance: 0 });
-  }, [servicesData]);
+  if (!servicesData?.data || !Array.isArray(servicesData.data)) {
+    return { operational: 0, degraded: 0, outage: 0, maintenance: 0 };
+  }
+  
+  return servicesData.data.reduce((acc, service) => {
+    // Access status directly from service, not from service.attributes
+    const status = service.status || 'unknown';
+    acc[status] = (acc[status] || 0) + 1;
+    return acc;
+  }, { operational: 0, degraded: 0, outage: 0, maintenance: 0 });
+}, [servicesData]);
   
   // Calculate overall health percentage
   const healthPercentage = useMemo(() => {
-    if (!servicesData) return 100;
-    
-    const data = servicesData.data || [];
-    if (data.length === 0) return 100;
-    
-    const operationalCount = statusStats.operational || 0;
-    return (operationalCount / data.length) * 100;
-  }, [servicesData, statusStats]);
+  if (!servicesData?.data || !Array.isArray(servicesData.data)) return 100;
+  
+  const data = servicesData.data;
+  if (data.length === 0) return 100;
+  
+  const operationalCount = statusStats.operational || 0;
+  return (operationalCount / data.length) * 100;
+}, [servicesData, statusStats]);
   
   // Platform options for filter
   const platformOptions = [
@@ -458,106 +460,106 @@ const StatusPage = () => {
             {/* Services Status */}
             <MotionBox variants={itemVariants} mb={10}>
               <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
-                {isLoading ? (
-                  // Loading skeletons
-                  Array(6).fill(0).map((_, i) => (
+               {isLoading ? (
+                // Loading skeletons remain unchanged
+                Array(6).fill(0).map((_, i) => (
                     <Skeleton 
-                      key={i} 
-                      height="140px" 
-                      borderRadius="xl" 
-                      startColor={isDark ? 'gray.700' : 'gray.100'}
-                      endColor={isDark ? 'gray.600' : 'gray.300'}
+                    key={i} 
+                    height="140px" 
+                    borderRadius="xl" 
+                    startColor={isDark ? 'gray.700' : 'gray.100'}
+                    endColor={isDark ? 'gray.600' : 'gray.300'}
                     />
-                  ))
+                ))
                 ) : (
                   // Service cards
                   servicesData?.data?.map(service => (
                     <MotionStat
-                      key={service.id}
-                      p={6}
-                      bg={cardBg}
-                      borderRadius="xl"
-                      boxShadow="md"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.2 }}
-                      position="relative"
-                      overflow="hidden"
+                    key={service.id}
+                    p={6}
+                    bg={cardBg}
+                    borderRadius="xl"
+                    boxShadow="md"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                    position="relative"
+                    overflow="hidden"
                     >
-                      <Box
+                    <Box
                         position="absolute"
                         top={0}
                         left={0}
                         width={2}
                         height="100%"
                         bg={
-                          service.attributes.status === 'operational' ? 'green.400' :
-                          service.attributes.status === 'degraded' ? 'orange.400' :
-                          service.attributes.status === 'outage' ? 'red.400' : 'purple.400'
+                        service.status === 'operational' ? 'green.400' :
+                        service.status === 'degraded' ? 'orange.400' :
+                        service.status === 'outage' ? 'red.400' : 'purple.400'
                         }
-                      />
-                      
-                      <Flex 
+                    />
+                    
+                    <Flex 
                         justify="space-between" 
                         mb={4}
                         direction={i18n.language === 'ar' ? "row-reverse" : "row"}
-                      >
+                    >
                         <HStack spacing={3}>
-                          <Icon 
-                            as={getIconComponent(service.attributes.icon)}
+                        <Icon 
+                            as={getIconComponent(service.icon)}
                             color={
-                              service.attributes.status === 'operational' ? 'green.400' :
-                              service.attributes.status === 'degraded' ? 'orange.400' :
-                              service.attributes.status === 'outage' ? 'red.400' : 'purple.400'
+                            service.status === 'operational' ? 'green.400' :
+                            service.status === 'degraded' ? 'orange.400' :
+                            service.status === 'outage' ? 'red.400' : 'purple.400'
                             }
                             boxSize={5}
-                          />
-                          <Text fontWeight="medium" fontSize="lg">
-                            {service.attributes.name}
-                          </Text>
+                        />
+                        <Text fontWeight="medium" fontSize="lg">
+                            {service.name}
+                        </Text>
                         </HStack>
                         
                         <Badge
-                          colorScheme={
-                            service.attributes.status === 'operational' ? 'green' :
-                            service.attributes.status === 'degraded' ? 'orange' :
-                            service.attributes.status === 'outage' ? 'red' : 'purple'
-                          }
-                          px={2}
-                          py={1}
-                          borderRadius="full"
-                          textTransform="capitalize"
+                        colorScheme={
+                            service.status === 'operational' ? 'green' :
+                            service.status === 'degraded' ? 'orange' :
+                            service.status === 'outage' ? 'red' : 'purple'
+                        }
+                        px={2}
+                        py={1}
+                        borderRadius="full"
+                        textTransform="capitalize"
                         >
-                          {t(`status.${service.attributes.status}`, service.attributes.status)}
+                        {t(`status.${service.status}`, service.status)}
                         </Badge>
-                      </Flex>
-                      
-                      <Divider mb={4} />
-                      
-                      <SimpleGrid columns={2} spacing={4}>
+                    </Flex>
+                    
+                    <Divider mb={4} />
+                    
+                    <SimpleGrid columns={2} spacing={4}>
                         <VStack align={i18n.language === 'ar' ? "end" : "start"} spacing={0}>
-                          <Text fontSize="sm" color="gray.500">
+                        <Text fontSize="sm" color="gray.500">
                             {t('status:uptime', 'Uptime')}
-                          </Text>
-                          <Text fontWeight="bold" fontSize="md">
-                            {typeof service.attributes.uptime === 'number' 
-                              ? service.attributes.uptime.toFixed(2)
-                              : service.attributes.uptime}%
-                          </Text>
+                        </Text>
+                        <Text fontWeight="bold" fontSize="md">
+                            {typeof service.uptime === 'number' 
+                            ? service.uptime.toFixed(2)
+                            : service.uptime}%
+                        </Text>
                         </VStack>
                         
                         <VStack align={i18n.language === 'ar' ? "end" : "start"} spacing={0}>
-                          <Text fontSize="sm" color="gray.500">
+                        <Text fontSize="sm" color="gray.500">
                             {t('status:lastIncident', 'Last Incident')}
-                          </Text>
-                          <Text fontSize="md">
-                            {service.attributes.last_incident 
-                              ? new Date(service.attributes.last_incident).toLocaleDateString(i18n.language)
-                              : t('status:none', 'None')}
-                          </Text>
+                        </Text>
+                        <Text fontSize="md">
+                            {service.last_incident 
+                            ? new Date(service.last_incident).toLocaleDateString(i18n.language)
+                            : t('status:none', 'None')}
+                        </Text>
                         </VStack>
-                      </SimpleGrid>
+                    </SimpleGrid>
                     </MotionStat>
-                  ))
+                ))
                 )}
               </SimpleGrid>
             </MotionBox>
