@@ -22,11 +22,6 @@
         "inventory_alert"
       ]
     },
-    "shop_item": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::shop-item.shop-item"
-    },
     "title": {
       "type": "string",
       "required": true
