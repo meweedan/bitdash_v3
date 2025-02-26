@@ -192,19 +192,11 @@ export default function Header() {
               >
                 <Image 
                   src={platform.image}
-                  alt={platform.name}
                   width={120}
                   height={180}
                   priority={true}
                   style={{ objectFit: 'contain' }}
                 />
-                <Text 
-                  fontSize="md" 
-                  fontWeight="medium"
-                  color={isDark ? `brand.${platform}.700` : `brand.${platform}.700`}
-                >
-                  {platform.name}
-                </Text>
               </VStack>
             </a>
           ))}
