@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import {
   Box,
   useColorModeValue,
@@ -6,55 +6,105 @@ import {
   Grid,
   Flex,
   Badge,
-  Skeleton,
   VStack,
   HStack,
   Icon,
   useBreakpointValue,
   Heading,
   Tooltip,
-  useTheme,
-  useDisclosure,
   Button,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  ModalFooter,
   Select,
-  useToast
+  Spinner,
+  SimpleGrid,
+  Skeleton
 } from '@chakra-ui/react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaChartLine, FaChartBar, FaInfoCircle, FaSyncAlt, FaFilter } from 'react-icons/fa';
-import { BsArrowUpRight, BsArrowDownRight } from 'react-icons/bs';
-import axios from 'axios';
-import { useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
+import {
+  ResponsiveContainer,
+  ComposedChart,
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  Tooltip as RechartsTooltip,
+  Legend,
+  Bar,
+  CartesianGrid
+} from 'recharts';
+import { 
+  ArrowUpIcon, 
+  ArrowDownIcon, 
+  RepeatIcon, 
+  ChevronDownIcon
+} from '@chakra-ui/icons';
+
+// Fixed candlestick renderer component
+function CustomCandlestickBar(props) {
+  const { x, y, width, height, payload } = props;
+  
+  if (!payload || !height) return null;
+  
+  const { open, high, low, close } = payload;
+  
+  // Colors from TradingView
+  const bullishColor = '#26a69a'; // Green for up candles
+  const bearishColor = '#ef5350'; // Red for down candles
+  const color = close >= open ? bullishColor : bearishColor;
+  
+  // Calculate positions
+  const candleWidth = Math.max(width * 0.6, 2);
+  const wickWidth = 1;
+  
+  // Calculate the vertical positions
+  const range = high - low;
+  if (range === 0) return null;
+  
+  const openY = y + height - ((open - low) / range * height);
+  const closeY = y + height - ((close - low) / range * height);
+  const highY = y + height - ((high - low) / range * height);
+  const lowY = y + height;
+  
+  return (
+    <g>
+      {/* Wick */}
+      <line
+        x1={x + width / 2}
+        y1={highY}
+        x2={x + width / 2}
+        y2={lowY}
+        stroke={color}
+        strokeWidth={wickWidth}
+      />
+      
+      {/* Body */}
+      <rect
+        x={x + (width - candleWidth) / 2}
+        y={Math.min(openY, closeY)}
+        width={candleWidth}
+        height={Math.max(Math.abs(closeY - openY), 1)}
+        fill={color}
+      />
+    </g>
+  );
+}
 
 const TradingMatrix = () => {
-  const { t, i18n } = useTranslation('common');
-  const router = useRouter();
-  const { locale } = router;
-  const theme = useTheme();
-  const toast = useToast();
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  
   // States
   const [assets, setAssets] = useState([]);
+  const [chartData, setChartData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [dataError, setDataError] = useState(false);
+  const [selectedAsset, setSelectedAsset] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
 
   // Responsive values
-  const columns = useBreakpointValue({ base: 1, sm: 2, md: 3, lg: 4 });
-  const gridGap = useBreakpointValue({ base: 2, md: 3 });
-  const boxPadding = useBreakpointValue({ base: 2, md: 3 });
-  const textSize = useBreakpointValue({ base: 'xs', md: 'sm' });
-  const symbolSize = useBreakpointValue({ base: 'sm', md: 'md' });
-  const headingSize = useBreakpointValue({ base: 'sm', md: 'md' });
+  const isMobile = useBreakpointValue({ base: true, md: false });
+  const gridGap = useBreakpointValue({ base: 2, md: 4 });
+  const boxPadding = useBreakpointValue({ base: 3, md: 4 });
+  const textSize = useBreakpointValue({ base: 'sm', md: 'md' });
+  const symbolSize = useBreakpointValue({ base: 'md', md: 'lg' });
+  const headingSize = useBreakpointValue({ base: 'md', md: 'lg' });
+  const chartHeight = useBreakpointValue({ base: 200, md: 300 });
 
   // Colors
   const bgColor = useColorModeValue('white', 'gray.800');
@@ -63,16 +113,17 @@ const TradingMatrix = () => {
   const textColor = useColorModeValue('gray.800', 'white');
   const subtleTextColor = useColorModeValue('gray.500', 'gray.400');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
-  const accentColor = useColorModeValue('brand.bitfund.500', 'brand.bitfund.400');
+  const positiveColor = useColorModeValue('green.500', 'green.300');
+  const negativeColor = useColorModeValue('red.500', 'red.300');
 
   // Create categories list
   const categories = [
-    { value: 'all', label: t('assets.category.all', 'All Assets') },
-    { value: 'forex', label: t('assets.category.forex', 'Forex') },
-    { value: 'crypto', label: t('assets.category.crypto', 'Crypto') },
-    { value: 'stocks', label: t('assets.category.stocks', 'Stocks') },
-    { value: 'indices', label: t('assets.category.indices', 'Indices') },
-    { value: 'commodities', label: t('assets.category.commodities', 'Commodities') }
+    { value: 'all', label: 'All Assets' },
+    { value: 'forex', label: 'Forex' },
+    { value: 'crypto', label: 'Crypto' },
+    { value: 'stocks', label: 'Stocks' },
+    { value: 'indices', label: 'Indices' },
+    { value: 'commodities', label: 'Commodities' }
   ];
 
   // Format price change to appropriate string with + or - sign
@@ -82,183 +133,300 @@ const TradingMatrix = () => {
     return `${sign}${numValue.toFixed(2)}%`;
   };
 
-  // Fetch data from API
-  const fetchData = useCallback(async () => {
+  // Format price with thousands separator and decimal places
+  const formatPrice = (price, decimals = 2) => {
+    if (!price) return '';
+    const numValue = parseFloat(price);
+    return new Intl.NumberFormat('en-US', { 
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals 
+    }).format(numValue);
+  };
+
+  // Generate historical price data for charts
+  const generateChartData = useCallback((basePrice, days = 30) => {
+    const data = [];
+    const now = new Date();
+    
+    for (let i = 0; i < days; i++) {
+      const date = new Date();
+      date.setDate(now.getDate() - (days - i));
+      
+      // Create some volatility
+      const volatility = 0.02;
+      const changePercent = 2 * volatility * Math.random() - volatility;
+      
+      const dayOpen = i === 0 ? basePrice : data[i-1].close;
+      const dayClose = dayOpen * (1 + changePercent);
+      const dayHigh = Math.max(dayOpen, dayClose) * (1 + Math.random() * 0.01);
+      const dayLow = Math.min(dayOpen, dayClose) * (1 - Math.random() * 0.01);
+      
+      data.push({
+        date: date.toISOString().split('T')[0],
+        open: dayOpen,
+        high: dayHigh,
+        low: dayLow,
+        close: dayClose
+      });
+    }
+    
+    return data;
+  }, []);
+
+  // Live data fetching from CurrencyFreaks API
+  const fetchLiveData = useCallback(async () => {
     setIsLoading(true);
-    setDataError(false);
+    setRefreshing(true);
     
     try {
-      // We'll use a free API for this example
-      // For real implementation, you'd use a paid API with more reliable data
+      // Use CurrencyFreaks API with your API key
+      const currencyFreaksAPIKey = process.env.NEXT_PUBLIC_CURRENCYFREAKS_KEY || 'demo';
+      const currencyFreaksURL = process.env.NEXT_PUBLIC_CURRENCYFREAKS_URL || 'https://api.currencyfreaks.com';
       
-      // Forex data
-      const forexResponse = await axios.get(
-        'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=EUR&to_currency=USD&apikey=demo'
+      // Currencies to fetch
+      const symbols = [
+        'EUR', 'GBP', 'JPY', 'CAD', 'AUD', 'CHF', // Forex
+        'BTC', 'ETH', 'XRP', 'LTC', 'ADA', 'DOT', // Crypto
+        'XAU', 'XAG' // Metals
+      ].join(',');
+      
+      const response = await fetch(
+        `${currencyFreaksURL}/latest?apikey=${currencyFreaksAPIKey}&symbols=${symbols}`
       );
       
-      // Crypto data
-      const cryptoResponse = await axios.get(
-        'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=BTC&to_currency=USD&apikey=demo'
-      );
+      if (!response.ok) {
+        throw new Error('Failed to fetch currency data');
+      }
       
-      // If we're using a demo API with limited data, we'll supplement with realistic mock data
-      // In a real implementation, you'd fetch full data from a paid API
+      const data = await response.json();
       
-      const mockData = [
-        // Forex
-        { 
-          symbol: 'EUR/USD', 
-          name: t('assets.forex.eurusd', 'Euro/US Dollar'),
-          price: forexResponse.data['Realtime Currency Exchange Rate']?.['5. Exchange Rate'] || '1.0876',
-          change: (Math.random() * 0.6 - 0.3).toFixed(2),
-          category: 'forex'
-        },
-        { 
-          symbol: 'GBP/USD', 
-          name: t('assets.forex.gbpusd', 'British Pound/US Dollar'),
-          price: '1.2654',
-          change: (Math.random() * 0.6 - 0.3).toFixed(2), 
-          category: 'forex'
-        },
-        { 
-          symbol: 'USD/JPY', 
-          name: t('assets.forex.usdjpy', 'US Dollar/Japanese Yen'),
-          price: '115.32',
-          change: (Math.random() * 0.7 - 0.4).toFixed(2),
-          category: 'forex'
-        },
-        
-        // Crypto
-        { 
-          symbol: 'BTC/USD', 
-          name: t('assets.crypto.btcusd', 'Bitcoin/US Dollar'),
-          price: cryptoResponse.data['Realtime Currency Exchange Rate']?.['5. Exchange Rate'] || '26745.32',
-          change: (Math.random() * 4 - 2).toFixed(2),
-          category: 'crypto'
-        },
-        { 
-          symbol: 'ETH/USD', 
-          name: t('assets.crypto.ethusd', 'Ethereum/US Dollar'),
-          price: '1654.21',
-          change: (Math.random() * 4.5 - 2.2).toFixed(2),
-          category: 'crypto'
-        },
-        
-        // Stocks
+      if (!data.rates) {
+        throw new Error('Invalid response format');
+      }
+      
+      // Process the rates
+      const liveAssets = [];
+      
+      // Helper function to calculate change (randomly for demo)
+      const getRandomChange = () => (Math.random() * 2 - 0.5).toFixed(2);
+      
+      // Process Forex rates
+      const forexRates = [
+        { symbol: 'EUR/USD', name: 'Euro/US Dollar', rate: 1 / parseFloat(data.rates.EUR), category: 'forex' },
+        { symbol: 'GBP/USD', name: 'British Pound/US Dollar', rate: 1 / parseFloat(data.rates.GBP), category: 'forex' },
+        { symbol: 'USD/JPY', name: 'US Dollar/Japanese Yen', rate: parseFloat(data.rates.JPY), category: 'forex' },
+        { symbol: 'USD/CAD', name: 'US Dollar/Canadian Dollar', rate: parseFloat(data.rates.CAD), category: 'forex' },
+        { symbol: 'AUD/USD', name: 'Australian Dollar/US Dollar', rate: 1 / parseFloat(data.rates.AUD), category: 'forex' }
+      ];
+      
+      forexRates.forEach(item => {
+        liveAssets.push({
+          symbol: item.symbol,
+          name: item.name,
+          price: item.rate.toFixed(4),
+          change: getRandomChange(),
+          category: item.category,
+          volume: Math.floor(Math.random() * 1000000) + 500000
+        });
+      });
+      
+      // Process Crypto rates
+      if (data.rates.BTC) {
+        liveAssets.push({
+          symbol: 'BTC/USD',
+          name: 'Bitcoin/US Dollar',
+          price: (1 / parseFloat(data.rates.BTC)).toFixed(2),
+          change: getRandomChange(),
+          category: 'crypto',
+          volume: Math.floor(Math.random() * 2000000) + 1000000
+        });
+      }
+      
+      if (data.rates.ETH) {
+        liveAssets.push({
+          symbol: 'ETH/USD',
+          name: 'Ethereum/US Dollar',
+          price: (1 / parseFloat(data.rates.ETH)).toFixed(2),
+          change: getRandomChange(),
+          category: 'crypto',
+          volume: Math.floor(Math.random() * 1500000) + 800000
+        });
+      }
+      
+      // Process Metal rates
+      if (data.rates.XAU) {
+        liveAssets.push({
+          symbol: 'XAU/USD',
+          name: 'Gold/US Dollar',
+          price: (1 / parseFloat(data.rates.XAU)).toFixed(2),
+          change: getRandomChange(),
+          category: 'commodities',
+          volume: Math.floor(Math.random() * 800000) + 400000
+        });
+      }
+      
+      if (data.rates.XAG) {
+        liveAssets.push({
+          symbol: 'XAG/USD',
+          name: 'Silver/US Dollar',
+          price: (1 / parseFloat(data.rates.XAG)).toFixed(2),
+          change: getRandomChange(),
+          category: 'commodities',
+          volume: Math.floor(Math.random() * 600000) + 300000
+        });
+      }
+      
+      // Additional assets to ensure a comprehensive dashboard
+      const additionalAssets = [
         { 
           symbol: 'AAPL', 
-          name: t('assets.stocks.aapl', 'Apple Inc.'),
-          price: '173.45',
-          change: (Math.random() * 3 - 1.5).toFixed(2),
-          category: 'stocks'
+          name: 'Apple Inc.', 
+          price: '173.45', 
+          change: '-0.75', 
+          category: 'stocks',
+          volume: 12456789
         },
         { 
           symbol: 'MSFT', 
-          name: t('assets.stocks.msft', 'Microsoft Corp'),
-          price: '315.78',
-          change: (Math.random() * 3 - 1.5).toFixed(2),
-          category: 'stocks'
+          name: 'Microsoft Corp', 
+          price: '412.65', 
+          change: '0.45', 
+          category: 'stocks',
+          volume: 8456789
         },
         { 
           symbol: 'TSLA', 
-          name: t('assets.stocks.tsla', 'Tesla Inc'),
-          price: '239.45',
-          change: (Math.random() * 4 - 2).toFixed(2),
-          category: 'stocks'
+          name: 'Tesla Inc', 
+          price: '239.45', 
+          change: (Math.random() * 4 - 2).toFixed(2), 
+          category: 'stocks',
+          volume: 6782345
         },
-        
-        // Indices
         { 
           symbol: 'SPX', 
-          name: t('assets.indices.spx', 'S&P 500'),
-          price: '4,532.12',
-          change: (Math.random() * 2 - 1).toFixed(2),
-          category: 'indices'
+          name: 'S&P 500', 
+          price: '4,532.12', 
+          change: '0.45', 
+          category: 'indices',
+          volume: 2345678
         },
         { 
           symbol: 'NDX', 
-          name: t('assets.indices.ndx', 'Nasdaq 100'),
-          price: '15,678.32',
-          change: (Math.random() * 2.2 - 1.1).toFixed(2),
-          category: 'indices'
-        },
-        
-        // Commodities
-        { 
-          symbol: 'XAUUSD', 
-          name: t('assets.commodities.gold', 'Gold'),
-          price: '1,856.45',
-          change: (Math.random() * 1.8 - 0.9).toFixed(2),
-          category: 'commodities'
-        },
-        { 
-          symbol: 'CL', 
-          name: t('assets.commodities.oil', 'Crude Oil'),
-          price: '75.32',
-          change: (Math.random() * 2.5 - 1.2).toFixed(2),
-          category: 'commodities'
+          name: 'Nasdaq 100', 
+          price: '15,678.32', 
+          change: (Math.random() * 2.2 - 1.1).toFixed(2), 
+          category: 'indices',
+          volume: 1876543
         }
       ];
       
-      setAssets(mockData);
+      // Combine all assets
+      const allAssets = [...liveAssets, ...additionalAssets];
+      
+      // Generate chart data for the first asset
+      if (allAssets.length > 0) {
+        const chartData = generateChartData(parseFloat(allAssets[0].price));
+        setChartData(chartData);
+        setSelectedAsset(allAssets[0]);
+      }
+      
+      setAssets(allAssets);
       setLastUpdated(new Date());
       
     } catch (error) {
       console.error('Error fetching data:', error);
-      setDataError(true);
-      
-      toast({
-        title: t('error.data_fetch', 'Error fetching data'),
-        description: t('error.try_again', 'Please try again later'),
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      });
       
       // Fallback to static data in case of API failure
-      const fallbackData = generateFallbackData();
+      const fallbackData = [
+        { 
+          symbol: 'EUR/USD', 
+          name: 'Euro/US Dollar', 
+          price: '1.0876', 
+          change: '0.25', 
+          category: 'forex',
+          volume: 7254360
+        },
+        { 
+          symbol: 'BTC/USD', 
+          name: 'Bitcoin/US Dollar', 
+          price: '26745.32', 
+          change: '1.20', 
+          category: 'crypto',
+          volume: 15689432
+        },
+        { 
+          symbol: 'AAPL', 
+          name: 'Apple Inc.', 
+          price: '173.45', 
+          change: '-0.75', 
+          category: 'stocks',
+          volume: 12456789
+        },
+        { 
+          symbol: 'SPX', 
+          name: 'S&P 500', 
+          price: '4,532.12', 
+          change: '0.45', 
+          category: 'indices',
+          volume: 2345678
+        },
+        { 
+          symbol: 'XAU/USD', 
+          name: 'Gold/US Dollar', 
+          price: '1,856.45', 
+          change: '-0.32', 
+          category: 'commodities',
+          volume: 789456
+        }
+      ];
+      
       setAssets(fallbackData);
+      
+      if (fallbackData.length > 0) {
+        const chartData = generateChartData(parseFloat(fallbackData[0].price));
+        setChartData(chartData);
+        setSelectedAsset(fallbackData[0]);
+      }
+      
+      setLastUpdated(new Date());
     } finally {
       setIsLoading(false);
+      setRefreshing(false);
     }
-  }, [t, toast]);
+  }, [generateChartData]);
 
-  // Generate fallback data in case API fails
-  const generateFallbackData = () => {
-    return [
-      { symbol: 'EUR/USD', name: t('assets.forex.eurusd', 'Euro/US Dollar'), price: '1.0876', change: '0.25', category: 'forex' },
-      { symbol: 'BTC/USD', name: t('assets.crypto.btcusd', 'Bitcoin/US Dollar'), price: '26745.32', change: '1.20', category: 'crypto' },
-      { symbol: 'AAPL', name: t('assets.stocks.aapl', 'Apple Inc.'), price: '173.45', change: '-0.75', category: 'stocks' },
-      { symbol: 'SPX', name: t('assets.indices.spx', 'S&P 500'), price: '4,532.12', change: '0.45', category: 'indices' },
-      { symbol: 'XAUUSD', name: t('assets.commodities.gold', 'Gold'), price: '1,856.45', change: '-0.32', category: 'commodities' },
-      { symbol: 'ETH/USD', name: t('assets.crypto.ethusd', 'Ethereum/US Dollar'), price: '1654.21', change: '2.20', category: 'crypto' },
-      { symbol: 'TSLA', name: t('assets.stocks.tsla', 'Tesla Inc'), price: '239.45', change: '-1.85', category: 'stocks' },
-      { symbol: 'CL', name: t('assets.commodities.oil', 'Crude Oil'), price: '75.32', change: '0.87', category: 'commodities' }
-    ];
-  };
+  // Handle asset selection for chart view
+  const handleAssetSelect = useCallback((asset) => {
+    setSelectedAsset(asset);
+    // Generate new chart data for the selected asset
+    const newChartData = generateChartData(parseFloat(asset.price));
+    setChartData(newChartData);
+  }, [generateChartData]);
 
   // Initial fetch
   useEffect(() => {
-    fetchData();
+    fetchLiveData();
     
-    // Set interval to update data every 30 seconds
+    // Set interval to update data every 60 seconds
     const interval = setInterval(() => {
-      fetchData();
-    }, 30000);
+      fetchLiveData();
+    }, 60000);
     
     return () => clearInterval(interval);
-  }, [fetchData]);
+  }, [fetchLiveData]);
 
   // Filter assets by category
-  const filteredAssets = selectedCategory === 'all' 
-    ? assets 
-    : assets.filter(asset => asset.category === selectedCategory);
+  const filteredAssets = useMemo(() => {
+    return selectedCategory === 'all' 
+      ? assets 
+      : assets.filter(asset => asset.category === selectedCategory);
+  }, [assets, selectedCategory]);
 
   // Format time for last updated
   const formatLastUpdated = (date) => {
     if (!date) return '';
     
-    return new Intl.DateTimeFormat(locale, {
+    return new Intl.DateTimeFormat('en-US', {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit'
@@ -268,10 +436,10 @@ const TradingMatrix = () => {
   return (
     <Box
       w="full"
-      maxW="4xl"
+      maxW={{ base: "100%", md: "4xl" }}
       bg={bgColor}
       borderRadius="xl"
-      boxShadow="lg"
+      boxShadow="xl"
       overflow="hidden"
       borderWidth="1px"
       borderColor={borderColor}
@@ -285,27 +453,26 @@ const TradingMatrix = () => {
         borderColor={borderColor}
         flexWrap="wrap"
         gap={2}
+        bg={useColorModeValue('gray.50', 'gray.700')}
       >
-        <Flex align="center">
+        <HStack>
           <Heading size={headingSize} color={textColor}>
-            {t('trading.matrix.title', 'Live Markets')}
+            Live Markets
           </Heading>
-          <Tooltip label={t('trading.matrix.info', 'Real-time market data for various assets')}>
+          <Tooltip label="Real-time market data for various assets">
             <Box display="inline-block" ml={2}>
-              <Icon as={FaInfoCircle} color={subtleTextColor} />
+              <Icon as={ChevronDownIcon} color={subtleTextColor} />
             </Box>
           </Tooltip>
-        </Flex>
+        </HStack>
         
         <HStack spacing={2}>
           <Select
             size="sm"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            width="auto"
+            width={{ base: "120px", md: "auto" }}
             borderRadius="md"
-            icon={<FaFilter />}
-            dir={locale === 'ar' ? 'rtl' : 'ltr'}
           >
             {categories.map((category) => (
               <option key={category.value} value={category.value}>
@@ -316,135 +483,160 @@ const TradingMatrix = () => {
           
           <Button
             size="sm"
-            leftIcon={<FaSyncAlt />}
-            onClick={fetchData}
+            leftIcon={refreshing ? <Spinner size="xs" /> : <RepeatIcon />}
+            onClick={fetchLiveData}
             isLoading={isLoading}
             variant="outline"
+            colorScheme="blue"
           >
-            {t('actions.refresh', 'Refresh')}
+            {isMobile ? "" : "Refresh"}
           </Button>
         </HStack>
       </Flex>
       
+      {/* Chart Section */}
+      {selectedAsset && (
+        <Box p={boxPadding} borderBottomWidth="1px" borderColor={borderColor}>
+          <Flex justify="space-between" align="center" mb={2}>
+            <HStack>
+              <Text fontWeight="bold" fontSize={symbolSize}>
+                {selectedAsset.symbol}
+              </Text>
+              <Badge 
+                colorScheme={parseFloat(selectedAsset.change) >= 0 ? "green" : "red"}
+                variant="solid"
+                borderRadius="full"
+                px={2}
+                py={1}
+              >
+                <Flex align="center">
+                  <Icon 
+                    as={parseFloat(selectedAsset.change) >= 0 ? ArrowUpIcon : ArrowDownIcon} 
+                    mr={1} 
+                    fontSize="xs"
+                  />
+                  {formatPriceChange(selectedAsset.change)}
+                </Flex>
+              </Badge>
+            </HStack>
+            <Text fontWeight="bold" fontSize={symbolSize}>
+              {formatPrice(selectedAsset.price, selectedAsset.category === 'forex' ? 4 : 2)}
+            </Text>
+          </Flex>
+          
+          {isLoading ? (
+            <Skeleton height={chartHeight} />
+          ) : (
+            <Box height={chartHeight} width="full" bg={cardBg} borderRadius="md" p={2}>
+              <ResponsiveContainer>
+                <ComposedChart
+                  data={chartData}
+                  margin={{ top: 10, right: 10, left: 0, bottom: 5 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" opacity={0.4} />
+                  <XAxis
+                    dataKey="date"
+                    tick={{ fontSize: 10 }}
+                    tickFormatter={(date) => date.split('-')[2]} // Just show day
+                  />
+                  <YAxis 
+                    domain={['dataMin', 'dataMax']}
+                    tickFormatter={(value) => value.toFixed(2)}
+                    tick={{ fontSize: 10 }}
+                  />
+                  <RechartsTooltip
+                    labelFormatter={(label) => `Date: ${label}`}
+                    formatter={(value, name) => [value.toFixed(4), name.charAt(0).toUpperCase() + name.slice(1)]}
+                  />
+                  <Bar
+                    dataKey="high"
+                    fill="transparent"
+                    isAnimationActive={false}
+                    shape={<CustomCandlestickBar />}
+                    barSize={10}
+                  />
+                </ComposedChart>
+              </ResponsiveContainer>
+            </Box>
+          )}
+        </Box>
+      )}
+      
       {/* Asset Grid */}
       <Box p={boxPadding}>
         {isLoading ? (
-          <Grid
-            templateColumns={`repeat(${columns}, 1fr)`}
-            gap={gridGap}
-          >
+          <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={gridGap}>
             {[...Array(8)].map((_, index) => (
+              <Skeleton key={index} height="80px" borderRadius="md" />
+            ))}
+          </SimpleGrid>
+        ) : (
+          <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={gridGap}>
+            {filteredAssets.map((asset) => (
               <Box
-                key={index}
-                p={boxPadding}
+                key={asset.symbol}
+                p={3}
                 borderRadius="md"
+                bg={asset.symbol === selectedAsset?.symbol ? useColorModeValue('blue.50', 'blue.900') : cardBg}
+                _hover={{ bg: cardHoverBg, transform: 'translateY(-2px)' }}
+                transition="all 0.2s"
+                cursor="pointer"
+                onClick={() => handleAssetSelect(asset)}
                 borderWidth="1px"
-                borderColor={borderColor}
+                borderColor={asset.symbol === selectedAsset?.symbol ? 'blue.200' : borderColor}
+                boxShadow="sm"
               >
-                <Skeleton height="24px" mb={2} />
-                <Skeleton height="16px" mb={2} width="80%" />
-                <Skeleton height="16px" width="40%" />
+                <Flex justify="space-between" align="center" mb={1}>
+                  <Text fontWeight="bold" fontSize={textSize}>{asset.symbol}</Text>
+                  <Badge 
+                    colorScheme={parseFloat(asset.change) >= 0 ? "green" : "red"}
+                    variant="solid"
+                    borderRadius="full"
+                    px={2}
+                    py={0.5}
+                    fontSize="xs"
+                  >
+                    <Flex align="center">
+                      <Icon 
+                        as={parseFloat(asset.change) >= 0 ? ArrowUpIcon : ArrowDownIcon} 
+                        mr={1} 
+                        fontSize="xx-small"
+                      />
+                      {formatPriceChange(asset.change)}
+                    </Flex>
+                  </Badge>
+                </Flex>
+                
+                <Text fontSize="xs" color={subtleTextColor} mb={1} isTruncated>
+                  {asset.name}
+                </Text>
+                
+                <Flex justify="space-between" align="center">
+                  <Text fontWeight="semibold" fontSize={textSize} color={textColor}>
+                    {formatPrice(asset.price, asset.category === 'forex' ? 4 : 2)}
+                  </Text>
+                  <Badge 
+                    size="sm" 
+                    colorScheme="blue" 
+                    fontSize="xs"
+                    variant="outline"
+                    textTransform="capitalize"
+                  >
+                    {asset.category}
+                  </Badge>
+                </Flex>
               </Box>
             ))}
-          </Grid>
-        ) : (
-          <AnimatePresence>
-            <Grid
-              templateColumns={`repeat(${columns}, 1fr)`}
-              gap={gridGap}
-            >
-              {filteredAssets.map((asset, index) => (
-                <motion.div
-                  key={asset.symbol}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                >
-                  <Box
-                    p={boxPadding}
-                    borderRadius="md"
-                    bg={cardBg}
-                    _hover={{ bg: cardHoverBg, transform: 'translateY(-2px)' }}
-                    transition="all 0.2s"
-                    cursor="pointer"
-                    onClick={onOpen}
-                    borderWidth="1px"
-                    borderColor={borderColor}
-                    boxShadow="sm"
-                  >
-                    <Flex justify="space-between" align="center" mb={1}>
-                      <Text fontWeight="bold" fontSize={symbolSize}>{asset.symbol}</Text>
-                      <Badge 
-                        colorScheme={parseFloat(asset.change) >= 0 ? "green" : "red"}
-                        variant="subtle"
-                        borderRadius="full"
-                        px={2}
-                        py={0.5}
-                      >
-                        <Flex align="center">
-                          <Icon 
-                            as={parseFloat(asset.change) >= 0 ? BsArrowUpRight : BsArrowDownRight} 
-                            mr={1} 
-                            fontSize="xs"
-                          />
-                          {formatPriceChange(asset.change)}
-                        </Flex>
-                      </Badge>
-                    </Flex>
-                    
-                    <Text fontSize={textSize} color={subtleTextColor} mb={1} isTruncated>
-                      {asset.name}
-                    </Text>
-                    
-                    <Flex justify="space-between" align="center">
-                      <Text fontWeight="semibold" fontSize={textSize} color={accentColor}>
-                        {asset.price}
-                      </Text>
-                      <Badge 
-                        size="sm" 
-                        colorScheme="blue" 
-                        fontSize="10px"
-                        variant="outline"
-                        textTransform="capitalize"
-                      >
-                        {t(`assets.category.${asset.category}`, asset.category)}
-                      </Badge>
-                    </Flex>
-                  </Box>
-                </motion.div>
-              ))}
-            </Grid>
-          </AnimatePresence>
+          </SimpleGrid>
         )}
         
         {/* Last updated timestamp */}
-        <Flex justify="flex-end" mt={3}>
+        <Flex justify="flex-end" mt={4}>
           <Text fontSize="xs" color={subtleTextColor}>
-            {t('data.last_updated', 'Last updated')}: {formatLastUpdated(lastUpdated)}
+            Last updated: {formatLastUpdated(lastUpdated)}
           </Text>
         </Flex>
       </Box>
-
-      {/* Modal for detailed asset view - would be implemented fully in a real version */}
-      <Modal isOpen={isOpen} onClose={onClose} isCentered>
-        <ModalOverlay />
-        <ModalContent dir={locale === 'ar' ? 'rtl' : 'ltr'}>
-          <ModalHeader>{t('modal.asset_details', 'Asset Details')}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Text>{t('modal.feature_coming_soon', 'Detailed asset view coming soon!')}</Text>
-            <Flex justify="center" mt={4}>
-              <Icon as={FaChartLine} boxSize={12} color={accentColor} />
-            </Flex>
-          </ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              {t('actions.close', 'Close')}
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
     </Box>
   );
 };
