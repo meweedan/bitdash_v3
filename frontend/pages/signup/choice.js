@@ -364,7 +364,7 @@ export default function SignupChoice() {
             borderColor: `brand.${platform.themeKey}.500`,
             bg: isDark ? 'whiteAlpha.200' : `brand.${platform.themeKey}.50`
           }}
-          onClick={() => router.push(`/signup?platform=${platform.subdomain}`)}
+          onClick={() => router.push(`${platform.subdomain}.bitdash.app/signup/choice`)}
           textAlign={isRTL ? 'right' : 'left'}
           dir={isRTL ? 'rtl' : 'ltr'}
         >
