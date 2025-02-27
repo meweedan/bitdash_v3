@@ -1,5 +1,5 @@
 // components/AnnouncementBanner.js
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Box, HStack, Text, useColorMode } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
@@ -21,13 +21,12 @@ const iconMap = {
 const AnnouncementBanner = ({ platform }) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-
-
-  // Normalize platform string to lowercase for consistency
-  const normalizedPlatform = platform ? platform.toLowerCase() : '';
+  
+  // Normalize platform string to lowercase for consistency and provide a fallback
+  const normalizedPlatform = platform ? platform.toLowerCase() : 'bitdash';
   
   // Fetch platform-specific announcements
-  const { data: announcements, isError, error, isLoading } = useQuery({
+  const { data: announcements, isLoading } = useQuery({
     queryKey: ['announcements', normalizedPlatform],
     queryFn: async () => {
       try {
@@ -36,12 +35,16 @@ const AnnouncementBanner = ({ platform }) => {
           'filters[status][$eq]=active&' +
           `filters[platform][$eq]=${normalizedPlatform}&` +
           'sort[priority]=desc';
-        
+          
         const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch announcements: ${response.status}`);
+        }
         
-        const data = await response.json();
-        return data;
+        return await response.json();
       } catch (error) {
+        // Return a valid structure on error to prevent rendering issues
         return { data: [] };
       }
     },
@@ -50,6 +53,10 @@ const AnnouncementBanner = ({ platform }) => {
     refetchOnWindowFocus: false
   });
 
+  // If we're loading or have no announcements, don't render anything
+  if (isLoading || !announcements || !announcements.data || !Array.isArray(announcements.data) || announcements.data.length === 0) {
+    return null;
+  }
 
   return (
     <Box
@@ -80,39 +87,47 @@ const AnnouncementBanner = ({ platform }) => {
       >
         {[...Array(10)].map((_, repeatIndex) => (
           <HStack key={repeatIndex} spacing={8}>
-            {announcements.data.map((announcement, index) => (
-              <HStack
-                key={`${repeatIndex}-${index}`}
-                spacing={3}
-                px={4}
-                py={2}
-                cursor={announcement.attributes.link ? 'pointer' : 'default'}
-                onClick={() => {
-                  if (announcement.attributes.link) {
-                    window.open(announcement.attributes.link, '_blank');
-                  }
-                }}
-                _hover={{
-                  transform: 'translateY(-5px)',
-                }}
-                transition="all 0.2s"
-              >
-                <Text fontSize="xl">
-                  {iconMap[announcement.attributes.icon] || '📢'} {/* Default icon if not found */}
-                </Text>
-                <Text
-                  color={isDark ? 'black' : 'black'}
-                  fontWeight="large"
-                  fontSize="lg"
+            {announcements.data.map((announcement, index) => {
+              // Safely access attributes with fallbacks
+              const attrs = announcement.attributes || {};
+              const text = attrs.text || '';
+              const icon = attrs.icon || 'announcement';
+              const link = attrs.link || '';
+              
+              return (
+                <HStack
+                  key={`${repeatIndex}-${index}`}
+                  spacing={3}
+                  px={4}
+                  py={2}
+                  cursor={link ? 'pointer' : 'default'}
+                  onClick={() => {
+                    if (link) {
+                      window.open(link, '_blank');
+                    }
+                  }}
+                  _hover={{
+                    transform: 'translateY(-5px)',
+                  }}
+                  transition="all 0.2s"
                 >
-                  {announcement.attributes.text}
-                </Text>
-                <Box
-                  w="2px"
-                  h="2px"
-                />
-              </HStack>
-            ))}
+                  <Text fontSize="xl">
+                    {iconMap[icon] || '📢'} {/* Default icon if not found */}
+                  </Text>
+                  <Text
+                    color={isDark ? 'black' : 'black'}
+                    fontWeight="large"
+                    fontSize="lg"
+                  >
+                    {text}
+                  </Text>
+                  <Box
+                    w="2px"
+                    h="2px"
+                  />
+                </HStack>
+              );
+            })}
           </HStack>
         ))}
       </MotionBox>
