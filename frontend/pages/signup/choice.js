@@ -441,6 +441,7 @@ export default function SignupChoice() {
                   <Heading
                     textAlign="center"
                     size={headingSize}
+                    p={8}
                     bgGradient="linear(to-r, blue.400, blue.600)"
                     bgClip="text"
                   >
