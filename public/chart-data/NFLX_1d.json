@@ -1,0 +1,2502 @@
+[
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-02-28T00:00:00",
+    "open": 595.78998,
+    "high": 598.16998,
+    "low": 590.01001,
+    "close": 596.47998,
+    "volume": 2605200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-02-29T00:00:00",
+    "open": 604.25,
+    "high": 604.52002,
+    "low": 595.15997,
+    "close": 602.91998,
+    "volume": 3572100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-01T00:00:00",
+    "open": 599.81,
+    "high": 620.28003,
+    "low": 599.5,
+    "close": 619.34003,
+    "volume": 4264200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-04T00:00:00",
+    "open": 621.56,
+    "high": 624.41998,
+    "low": 615.080017,
+    "close": 615.83002,
+    "volume": 3020300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-05T00:00:00",
+    "open": 610.099976,
+    "high": 610.90997,
+    "low": 592.0,
+    "close": 598.5,
+    "volume": 3849600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-06T00:00:00",
+    "open": 602.98999,
+    "high": 607.92999,
+    "low": 593.56,
+    "close": 597.69,
+    "volume": 2469600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-07T00:00:00",
+    "open": 599.34003,
+    "high": 610.53003,
+    "low": 595.90002,
+    "close": 608.51001,
+    "volume": 2742800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-08T00:00:00",
+    "open": 608.27002,
+    "high": 616.090027,
+    "low": 600.84003,
+    "close": 604.82001,
+    "volume": 2774600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-11T00:00:00",
+    "open": 608.080017,
+    "high": 611.0,
+    "low": 600.37,
+    "close": 600.92999,
+    "volume": 2500900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-12T00:00:00",
+    "open": 600.21002,
+    "high": 615.29999,
+    "low": 596.27002,
+    "close": 611.080017,
+    "volume": 2821600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-13T00:00:00",
+    "open": 613.37,
+    "high": 614.84998,
+    "low": 607.21002,
+    "close": 609.45001,
+    "volume": 2192100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-14T00:00:00",
+    "open": 615.0,
+    "high": 620.79999,
+    "low": 607.34998,
+    "close": 613.01001,
+    "volume": 3120500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-15T00:00:00",
+    "open": 622.91998,
+    "high": 622.91998,
+    "low": 603.82001,
+    "close": 605.88,
+    "volume": 6670900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-18T00:00:00",
+    "open": 613.56,
+    "high": 627.40997,
+    "low": 610.45001,
+    "close": 618.39001,
+    "volume": 3344200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-19T00:00:00",
+    "open": 615.62,
+    "high": 621.28003,
+    "low": 608.0,
+    "close": 620.73999,
+    "volume": 2142600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-20T00:00:00",
+    "open": 619.95001,
+    "high": 629.51001,
+    "low": 618.34003,
+    "close": 627.69,
+    "volume": 2639500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-21T00:00:00",
+    "open": 630.65002,
+    "high": 634.35999,
+    "low": 622.33002,
+    "close": 622.71002,
+    "volume": 2507700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-22T00:00:00",
+    "open": 624.15997,
+    "high": 629.049988,
+    "low": 621.0,
+    "close": 628.01001,
+    "volume": 2134100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-25T00:00:00",
+    "open": 627.90002,
+    "high": 630.46002,
+    "low": 623.15997,
+    "close": 627.46002,
+    "volume": 1803300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-26T00:00:00",
+    "open": 625.20001,
+    "high": 634.39001,
+    "low": 619.17999,
+    "close": 629.23999,
+    "volume": 2804500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-27T00:00:00",
+    "open": 629.01001,
+    "high": 631.34998,
+    "low": 610.72998,
+    "close": 613.53003,
+    "volume": 2628300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-03-28T00:00:00",
+    "open": 614.98999,
+    "high": 615.0,
+    "low": 601.59003,
+    "close": 607.33002,
+    "volume": 3708800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-01T00:00:00",
+    "open": 608.0,
+    "high": 615.10999,
+    "low": 605.57001,
+    "close": 614.31,
+    "volume": 2115900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-02T00:00:00",
+    "open": 611.0,
+    "high": 615.030029,
+    "low": 605.51001,
+    "close": 614.21002,
+    "volume": 2029200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-03T00:00:00",
+    "open": 612.75,
+    "high": 630.40997,
+    "low": 611.5,
+    "close": 630.080017,
+    "volume": 2931200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-04T00:00:00",
+    "open": 633.21002,
+    "high": 638.0,
+    "low": 616.58002,
+    "close": 617.14001,
+    "volume": 3064300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-05T00:00:00",
+    "open": 624.91998,
+    "high": 637.90997,
+    "low": 622.71002,
+    "close": 636.17999,
+    "volume": 3372800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-08T00:00:00",
+    "open": 636.39001,
+    "high": 639.0,
+    "low": 628.10999,
+    "close": 628.40997,
+    "volume": 2145700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-09T00:00:00",
+    "open": 631.98999,
+    "high": 631.98999,
+    "low": 615.63,
+    "close": 618.20001,
+    "volume": 2146600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-10T00:00:00",
+    "open": 610.96997,
+    "high": 620.14001,
+    "low": 609.34003,
+    "close": 618.58002,
+    "volume": 2806200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-11T00:00:00",
+    "open": 624.41998,
+    "high": 631.65997,
+    "low": 617.23999,
+    "close": 628.78003,
+    "volume": 2662700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-12T00:00:00",
+    "open": 628.22998,
+    "high": 633.12,
+    "low": 618.91998,
+    "close": 622.83002,
+    "volume": 2956500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-15T00:00:00",
+    "open": 630.16998,
+    "high": 630.16998,
+    "low": 603.87,
+    "close": 607.15002,
+    "volume": 3085400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-16T00:00:00",
+    "open": 607.5,
+    "high": 622.45001,
+    "low": 607.5,
+    "close": 617.52002,
+    "volume": 3519100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-17T00:00:00",
+    "open": 620.96997,
+    "high": 620.96997,
+    "low": 607.71002,
+    "close": 613.69,
+    "volume": 3312200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-18T00:00:00",
+    "open": 612.099976,
+    "high": 621.33002,
+    "low": 605.42999,
+    "close": 610.56,
+    "volume": 8468400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-19T00:00:00",
+    "open": 567.88,
+    "high": 579.0,
+    "low": 552.15997,
+    "close": 555.039978,
+    "volume": 16425000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-22T00:00:00",
+    "open": 550.65997,
+    "high": 558.60999,
+    "low": 542.01001,
+    "close": 554.59998,
+    "volume": 8597700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-23T00:00:00",
+    "open": 556.48999,
+    "high": 579.21002,
+    "low": 555.28003,
+    "close": 577.75,
+    "volume": 4975500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-24T00:00:00",
+    "open": 574.31,
+    "high": 576.90997,
+    "low": 551.29999,
+    "close": 555.12,
+    "volume": 5355300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-25T00:00:00",
+    "open": 549.46002,
+    "high": 566.53998,
+    "low": 545.71002,
+    "close": 564.79999,
+    "volume": 3807100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-26T00:00:00",
+    "open": 558.21002,
+    "high": 562.91998,
+    "low": 553.19,
+    "close": 561.22998,
+    "volume": 4332600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-29T00:00:00",
+    "open": 559.17999,
+    "high": 559.64001,
+    "low": 554.23999,
+    "close": 559.48999,
+    "volume": 2508900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-04-30T00:00:00",
+    "open": 560.0,
+    "high": 560.0,
+    "low": 549.38,
+    "close": 550.64001,
+    "volume": 3361500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-01T00:00:00",
+    "open": 547.84003,
+    "high": 560.39001,
+    "low": 544.25,
+    "close": 551.71002,
+    "volume": 3473200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-02T00:00:00",
+    "open": 556.02002,
+    "high": 565.46002,
+    "low": 555.59003,
+    "close": 565.15002,
+    "volume": 3068200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-03T00:00:00",
+    "open": 566.0,
+    "high": 580.26001,
+    "low": 565.15997,
+    "close": 579.34003,
+    "volume": 3307500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-06T00:00:00",
+    "open": 581.82001,
+    "high": 597.34003,
+    "low": 580.25,
+    "close": 596.96997,
+    "volume": 3686300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-07T00:00:00",
+    "open": 596.28003,
+    "high": 606.049988,
+    "low": 591.32001,
+    "close": 606.0,
+    "volume": 3614100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-08T00:00:00",
+    "open": 601.63,
+    "high": 618.21997,
+    "low": 601.63,
+    "close": 609.46997,
+    "volume": 3093900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-09T00:00:00",
+    "open": 614.40002,
+    "high": 615.71997,
+    "low": 605.75,
+    "close": 612.090027,
+    "volume": 2065400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-10T00:00:00",
+    "open": 619.0,
+    "high": 623.97998,
+    "low": 605.059998,
+    "close": 610.87,
+    "volume": 2653600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-13T00:00:00",
+    "open": 614.29999,
+    "high": 618.21997,
+    "low": 606.83002,
+    "close": 616.59003,
+    "volume": 2086200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-14T00:00:00",
+    "open": 615.16998,
+    "high": 621.47998,
+    "low": 608.40002,
+    "close": 613.65997,
+    "volume": 2792400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-15T00:00:00",
+    "open": 618.57001,
+    "high": 624.099976,
+    "low": 609.099976,
+    "close": 613.52002,
+    "volume": 5670600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-16T00:00:00",
+    "open": 615.75,
+    "high": 618.34003,
+    "low": 609.090027,
+    "close": 610.52002,
+    "volume": 3056400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-17T00:00:00",
+    "open": 617.0,
+    "high": 625.78998,
+    "low": 614.71002,
+    "close": 621.099976,
+    "volume": 3782700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-20T00:00:00",
+    "open": 620.40002,
+    "high": 644.37,
+    "low": 619.52002,
+    "close": 640.82001,
+    "volume": 3857900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-21T00:00:00",
+    "open": 636.76001,
+    "high": 650.88,
+    "low": 634.21997,
+    "close": 650.60999,
+    "volume": 2920200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-22T00:00:00",
+    "open": 647.14001,
+    "high": 649.25,
+    "low": 638.12,
+    "close": 640.46997,
+    "volume": 2176200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-23T00:00:00",
+    "open": 642.34003,
+    "high": 642.71002,
+    "low": 630.0,
+    "close": 635.66998,
+    "volume": 2313900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-24T00:00:00",
+    "open": 639.40002,
+    "high": 652.0,
+    "low": 637.59998,
+    "close": 646.75,
+    "volume": 2613300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-28T00:00:00",
+    "open": 647.049988,
+    "high": 649.75,
+    "low": 643.030029,
+    "close": 649.0,
+    "volume": 2609500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-29T00:00:00",
+    "open": 644.13,
+    "high": 664.25,
+    "low": 643.89001,
+    "close": 654.62,
+    "volume": 3695900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-30T00:00:00",
+    "open": 653.52002,
+    "high": 656.48999,
+    "low": 644.72998,
+    "close": 647.65997,
+    "volume": 2393400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-05-31T00:00:00",
+    "open": 644.01001,
+    "high": 648.58002,
+    "low": 628.29999,
+    "close": 641.62,
+    "volume": 4071000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-03T00:00:00",
+    "open": 645.21997,
+    "high": 646.78003,
+    "low": 627.27002,
+    "close": 633.78998,
+    "volume": 2323500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-04T00:00:00",
+    "open": 633.78003,
+    "high": 635.22998,
+    "low": 626.44,
+    "close": 631.62,
+    "volume": 3008200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-05T00:00:00",
+    "open": 634.02002,
+    "high": 651.25,
+    "low": 628.25,
+    "close": 650.27002,
+    "volume": 2682600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-06T00:00:00",
+    "open": 644.89001,
+    "high": 657.98999,
+    "low": 644.23999,
+    "close": 648.52002,
+    "volume": 2466700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-07T00:00:00",
+    "open": 649.38,
+    "high": 650.40002,
+    "low": 640.23999,
+    "close": 641.46997,
+    "volume": 1876600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-10T00:00:00",
+    "open": 641.01001,
+    "high": 644.78998,
+    "low": 635.59003,
+    "close": 644.5,
+    "volume": 2066800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-11T00:00:00",
+    "open": 640.71997,
+    "high": 650.19,
+    "low": 640.52002,
+    "close": 648.54999,
+    "volume": 2167400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-12T00:00:00",
+    "open": 652.21002,
+    "high": 655.78003,
+    "low": 643.10999,
+    "close": 650.059998,
+    "volume": 2094400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-13T00:00:00",
+    "open": 644.0,
+    "high": 655.25,
+    "low": 642.34998,
+    "close": 653.26001,
+    "volume": 1863600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-14T00:00:00",
+    "open": 655.049988,
+    "high": 675.58002,
+    "low": 652.64001,
+    "close": 669.38,
+    "volume": 4447100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-17T00:00:00",
+    "open": 669.10999,
+    "high": 682.71002,
+    "low": 665.10999,
+    "close": 675.83002,
+    "volume": 3631200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-18T00:00:00",
+    "open": 675.63,
+    "high": 687.059998,
+    "low": 674.64001,
+    "close": 685.66998,
+    "volume": 2943800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-20T00:00:00",
+    "open": 681.79999,
+    "high": 689.88,
+    "low": 673.71997,
+    "close": 679.030029,
+    "volume": 2585100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-21T00:00:00",
+    "open": 683.26001,
+    "high": 686.90002,
+    "low": 678.099976,
+    "close": 686.12,
+    "volume": 4557100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-24T00:00:00",
+    "open": 685.0,
+    "high": 685.5,
+    "low": 664.5,
+    "close": 669.02002,
+    "volume": 3916300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-25T00:00:00",
+    "open": 673.44,
+    "high": 673.66998,
+    "low": 662.29999,
+    "close": 672.40997,
+    "volume": 2278800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-26T00:00:00",
+    "open": 672.40997,
+    "high": 682.96002,
+    "low": 670.02002,
+    "close": 677.69,
+    "volume": 3545800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-27T00:00:00",
+    "open": 679.34998,
+    "high": 688.57001,
+    "low": 678.14001,
+    "close": 684.34003,
+    "volume": 2404800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-06-28T00:00:00",
+    "open": 679.0,
+    "high": 687.0,
+    "low": 673.080017,
+    "close": 674.88,
+    "volume": 3412400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-01T00:00:00",
+    "open": 674.89001,
+    "high": 675.02002,
+    "low": 663.78003,
+    "close": 673.60999,
+    "volume": 2212800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-02T00:00:00",
+    "open": 673.53998,
+    "high": 681.73999,
+    "low": 670.070007,
+    "close": 679.58002,
+    "volume": 2411400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-03T00:00:00",
+    "open": 677.47998,
+    "high": 683.75,
+    "low": 675.5,
+    "close": 682.51001,
+    "volume": 1403500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-05T00:00:00",
+    "open": 682.51001,
+    "high": 697.48999,
+    "low": 677.22998,
+    "close": 690.65002,
+    "volume": 2659100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-08T00:00:00",
+    "open": 687.0,
+    "high": 688.85999,
+    "low": 681.48999,
+    "close": 685.73999,
+    "volume": 1930800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-09T00:00:00",
+    "open": 690.0,
+    "high": 695.27002,
+    "low": 684.71997,
+    "close": 685.73999,
+    "volume": 2596100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-10T00:00:00",
+    "open": 685.02002,
+    "high": 687.21997,
+    "low": 673.15997,
+    "close": 677.65002,
+    "volume": 2651900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-11T00:00:00",
+    "open": 672.48999,
+    "high": 672.48999,
+    "low": 647.44,
+    "close": 652.75,
+    "volume": 5106600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-12T00:00:00",
+    "open": 652.75,
+    "high": 655.91998,
+    "low": 643.71002,
+    "close": 647.59998,
+    "volume": 3355200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-15T00:00:00",
+    "open": 647.5,
+    "high": 667.53998,
+    "low": 646.63,
+    "close": 656.45001,
+    "volume": 3208800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-16T00:00:00",
+    "open": 661.79999,
+    "high": 663.67999,
+    "low": 649.13,
+    "close": 656.32001,
+    "volume": 2685700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-17T00:00:00",
+    "open": 650.0,
+    "high": 650.45001,
+    "low": 639.46997,
+    "close": 647.46002,
+    "volume": 4017300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-18T00:00:00",
+    "open": 656.59998,
+    "high": 657.039978,
+    "low": 639.16998,
+    "close": 643.039978,
+    "volume": 7575800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-19T00:00:00",
+    "open": 660.64001,
+    "high": 678.96997,
+    "low": 629.12,
+    "close": 633.34003,
+    "volume": 9815600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-22T00:00:00",
+    "open": 639.5,
+    "high": 656.28998,
+    "low": 632.59998,
+    "close": 647.5,
+    "volume": 5219100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-23T00:00:00",
+    "open": 647.5,
+    "high": 649.90997,
+    "low": 641.0,
+    "close": 642.76001,
+    "volume": 2463600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-24T00:00:00",
+    "open": 635.73999,
+    "high": 652.41998,
+    "low": 632.66998,
+    "close": 635.98999,
+    "volume": 4888200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-25T00:00:00",
+    "open": 641.0,
+    "high": 649.97998,
+    "low": 621.70001,
+    "close": 634.090027,
+    "volume": 4554500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-26T00:00:00",
+    "open": 645.0,
+    "high": 646.98999,
+    "low": 629.77002,
+    "close": 631.37,
+    "volume": 3120700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-29T00:00:00",
+    "open": 634.60999,
+    "high": 634.60999,
+    "low": 623.92999,
+    "close": 626.96002,
+    "volume": 2400500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-30T00:00:00",
+    "open": 630.16998,
+    "high": 634.69,
+    "low": 617.0,
+    "close": 622.58002,
+    "volume": 3496600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-07-31T00:00:00",
+    "open": 626.57001,
+    "high": 633.59998,
+    "low": 622.58002,
+    "close": 628.34998,
+    "volume": 3134900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-01T00:00:00",
+    "open": 629.25,
+    "high": 646.71002,
+    "low": 617.60999,
+    "close": 624.84998,
+    "volume": 3720600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-02T00:00:00",
+    "open": 620.97998,
+    "high": 625.27002,
+    "low": 608.34998,
+    "close": 613.64001,
+    "volume": 3523000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-05T00:00:00",
+    "open": 587.039978,
+    "high": 604.56,
+    "low": 587.039978,
+    "close": 598.54999,
+    "volume": 4044200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-06T00:00:00",
+    "open": 600.62,
+    "high": 622.45001,
+    "low": 600.62,
+    "close": 609.57001,
+    "volume": 4319100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-07T00:00:00",
+    "open": 616.070007,
+    "high": 632.0,
+    "low": 610.64001,
+    "close": 611.47998,
+    "volume": 3187800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-08T00:00:00",
+    "open": 621.98999,
+    "high": 632.28998,
+    "low": 616.02002,
+    "close": 630.34998,
+    "volume": 3283500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-09T00:00:00",
+    "open": 622.98999,
+    "high": 636.62,
+    "low": 622.98999,
+    "close": 633.94,
+    "volume": 1980800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-12T00:00:00",
+    "open": 631.0,
+    "high": 639.0,
+    "low": 627.070007,
+    "close": 633.14001,
+    "volume": 2331700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-13T00:00:00",
+    "open": 638.56,
+    "high": 650.96997,
+    "low": 635.5,
+    "close": 648.02002,
+    "volume": 2639600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-14T00:00:00",
+    "open": 648.70001,
+    "high": 663.57001,
+    "low": 648.70001,
+    "close": 661.67999,
+    "volume": 4014300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-15T00:00:00",
+    "open": 668.48999,
+    "high": 673.19,
+    "low": 659.79999,
+    "close": 663.21997,
+    "volume": 3210200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-16T00:00:00",
+    "open": 669.42999,
+    "high": 680.22998,
+    "low": 665.35999,
+    "close": 674.070007,
+    "volume": 3511000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-19T00:00:00",
+    "open": 674.070007,
+    "high": 688.84003,
+    "low": 672.90997,
+    "close": 688.53003,
+    "volume": 3016200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-20T00:00:00",
+    "open": 688.85999,
+    "high": 711.33002,
+    "low": 688.25,
+    "close": 698.53998,
+    "volume": 4813100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-21T00:00:00",
+    "open": 697.0,
+    "high": 701.0,
+    "low": 691.38,
+    "close": 697.12,
+    "volume": 2235300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-22T00:00:00",
+    "open": 691.0,
+    "high": 701.5,
+    "low": 686.23999,
+    "close": 688.96002,
+    "volume": 2729400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-23T00:00:00",
+    "open": 694.13,
+    "high": 696.070007,
+    "low": 678.63,
+    "close": 686.72998,
+    "volume": 2354500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-26T00:00:00",
+    "open": 687.26001,
+    "high": 690.59003,
+    "low": 681.64001,
+    "close": 688.44,
+    "volume": 1354200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-27T00:00:00",
+    "open": 688.53003,
+    "high": 707.89001,
+    "low": 686.91998,
+    "close": 695.71997,
+    "volume": 3164900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-28T00:00:00",
+    "open": 695.83002,
+    "high": 696.66998,
+    "low": 677.099976,
+    "close": 683.84003,
+    "volume": 2430600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-29T00:00:00",
+    "open": 690.0,
+    "high": 699.79999,
+    "low": 686.070007,
+    "close": 692.47998,
+    "volume": 2187000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-08-30T00:00:00",
+    "open": 700.35999,
+    "high": 701.85999,
+    "low": 688.15997,
+    "close": 701.34998,
+    "volume": 3266700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-03T00:00:00",
+    "open": 700.099976,
+    "high": 703.85999,
+    "low": 671.01001,
+    "close": 675.32001,
+    "volume": 3161000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-04T00:00:00",
+    "open": 673.31,
+    "high": 684.65002,
+    "low": 673.059998,
+    "close": 679.67999,
+    "volume": 1785300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-05T00:00:00",
+    "open": 673.14001,
+    "high": 687.31,
+    "low": 671.85999,
+    "close": 683.62,
+    "volume": 1810100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-06T00:00:00",
+    "open": 681.85999,
+    "high": 683.15002,
+    "low": 662.34003,
+    "close": 665.77002,
+    "volume": 2991300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-09T00:00:00",
+    "open": 674.0,
+    "high": 683.5,
+    "low": 672.14001,
+    "close": 675.41998,
+    "volume": 2683100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-10T00:00:00",
+    "open": 676.87,
+    "high": 680.59003,
+    "low": 665.81,
+    "close": 673.62,
+    "volume": 2079200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-11T00:00:00",
+    "open": 677.46002,
+    "high": 682.96997,
+    "low": 660.79999,
+    "close": 681.46997,
+    "volume": 2391900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-12T00:00:00",
+    "open": 684.91998,
+    "high": 694.88,
+    "low": 682.20001,
+    "close": 686.79999,
+    "volume": 2588400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-13T00:00:00",
+    "open": 680.01001,
+    "high": 699.64001,
+    "low": 680.0,
+    "close": 697.059998,
+    "volume": 2276500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-16T00:00:00",
+    "open": 700.0,
+    "high": 703.02002,
+    "low": 688.63,
+    "close": 696.5,
+    "volume": 1843700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-17T00:00:00",
+    "open": 700.82001,
+    "high": 707.63,
+    "low": 698.37,
+    "close": 706.90997,
+    "volume": 2298600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-18T00:00:00",
+    "open": 707.54999,
+    "high": 707.54999,
+    "low": 688.0,
+    "close": 690.46997,
+    "volume": 2984400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-19T00:00:00",
+    "open": 705.0,
+    "high": 715.65997,
+    "low": 695.37,
+    "close": 704.32001,
+    "volume": 4228500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-20T00:00:00",
+    "open": 705.54999,
+    "high": 706.66998,
+    "low": 696.31,
+    "close": 701.030029,
+    "volume": 3998100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-23T00:00:00",
+    "open": 702.39001,
+    "high": 712.25,
+    "low": 699.15997,
+    "close": 705.37,
+    "volume": 3224300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-24T00:00:00",
+    "open": 706.63,
+    "high": 722.44,
+    "low": 704.45001,
+    "close": 722.26001,
+    "volume": 3565700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-25T00:00:00",
+    "open": 721.0,
+    "high": 725.12,
+    "low": 716.21002,
+    "close": 721.56,
+    "volume": 2259800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-26T00:00:00",
+    "open": 724.72998,
+    "high": 725.26001,
+    "low": 701.71997,
+    "close": 711.42999,
+    "volume": 2833000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-27T00:00:00",
+    "open": 708.35999,
+    "high": 710.71002,
+    "low": 701.25,
+    "close": 707.34998,
+    "volume": 2395600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-09-30T00:00:00",
+    "open": 707.0,
+    "high": 711.21002,
+    "low": 702.82001,
+    "close": 709.27002,
+    "volume": 1709900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-01T00:00:00",
+    "open": 713.64001,
+    "high": 717.76001,
+    "low": 698.59003,
+    "close": 706.13,
+    "volume": 2813500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-02T00:00:00",
+    "open": 706.13,
+    "high": 716.21002,
+    "low": 704.69,
+    "close": 711.090027,
+    "volume": 1758200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-03T00:00:00",
+    "open": 704.26001,
+    "high": 708.81,
+    "low": 700.0,
+    "close": 706.79999,
+    "volume": 2256400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-04T00:00:00",
+    "open": 713.32001,
+    "high": 721.01001,
+    "low": 708.82001,
+    "close": 719.70001,
+    "volume": 2229000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-07T00:00:00",
+    "open": 714.76001,
+    "high": 715.88,
+    "low": 696.42999,
+    "close": 701.91998,
+    "volume": 3360500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-08T00:00:00",
+    "open": 703.88,
+    "high": 725.059998,
+    "low": 703.54999,
+    "close": 721.76001,
+    "volume": 3187400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-09T00:00:00",
+    "open": 719.25,
+    "high": 728.59003,
+    "low": 718.87,
+    "close": 727.42999,
+    "volume": 1981100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-10T00:00:00",
+    "open": 723.28998,
+    "high": 733.84998,
+    "low": 722.5,
+    "close": 730.28998,
+    "volume": 2767900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-11T00:00:00",
+    "open": 734.90002,
+    "high": 736.0,
+    "low": 721.21997,
+    "close": 722.78998,
+    "volume": 2299500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-14T00:00:00",
+    "open": 725.0,
+    "high": 726.62,
+    "low": 711.31,
+    "close": 713.0,
+    "volume": 2797100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-15T00:00:00",
+    "open": 712.51001,
+    "high": 713.40002,
+    "low": 699.78003,
+    "close": 705.97998,
+    "volume": 2932800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-16T00:00:00",
+    "open": 703.42999,
+    "high": 705.59003,
+    "low": 697.82001,
+    "close": 702.0,
+    "volume": 2494300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-17T00:00:00",
+    "open": 704.34998,
+    "high": 704.40997,
+    "low": 677.88,
+    "close": 687.65002,
+    "volume": 8926700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-18T00:00:00",
+    "open": 737.64001,
+    "high": 766.28003,
+    "low": 736.22998,
+    "close": 763.89001,
+    "volume": 15974100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-21T00:00:00",
+    "open": 765.76001,
+    "high": 773.0,
+    "low": 756.59998,
+    "close": 772.070007,
+    "volume": 6057100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-22T00:00:00",
+    "open": 765.27002,
+    "high": 769.70001,
+    "low": 761.12,
+    "close": 764.23999,
+    "volume": 2987300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-23T00:00:00",
+    "open": 762.83002,
+    "high": 763.78998,
+    "low": 744.26001,
+    "close": 749.28998,
+    "volume": 3749000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-24T00:00:00",
+    "open": 751.96997,
+    "high": 755.82001,
+    "low": 746.25,
+    "close": 754.54999,
+    "volume": 2643000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-25T00:00:00",
+    "open": 756.16998,
+    "high": 768.5,
+    "low": 753.53003,
+    "close": 754.67999,
+    "volume": 2819500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-28T00:00:00",
+    "open": 758.67999,
+    "high": 758.67999,
+    "low": 747.88,
+    "close": 749.12,
+    "volume": 2862400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-29T00:00:00",
+    "open": 751.13,
+    "high": 763.88,
+    "low": 748.01001,
+    "close": 759.44,
+    "volume": 3660400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-30T00:00:00",
+    "open": 758.080017,
+    "high": 759.78998,
+    "low": 752.28003,
+    "close": 753.73999,
+    "volume": 1722000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-10-31T00:00:00",
+    "open": 753.92999,
+    "high": 760.78998,
+    "low": 752.22998,
+    "close": 756.030029,
+    "volume": 3057700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-01T00:00:00",
+    "open": 753.47998,
+    "high": 763.79999,
+    "low": 747.77002,
+    "close": 756.099976,
+    "volume": 2996800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-04T00:00:00",
+    "open": 753.14001,
+    "high": 762.47998,
+    "low": 749.69,
+    "close": 755.51001,
+    "volume": 1902200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-05T00:00:00",
+    "open": 757.34998,
+    "high": 767.53003,
+    "low": 756.27002,
+    "close": 763.90997,
+    "volume": 2200600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-06T00:00:00",
+    "open": 771.5,
+    "high": 781.48999,
+    "low": 757.38,
+    "close": 780.21002,
+    "volume": 3690800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-07T00:00:00",
+    "open": 781.37,
+    "high": 798.21997,
+    "low": 779.94,
+    "close": 796.53998,
+    "volume": 3295100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-08T00:00:00",
+    "open": 797.35999,
+    "high": 799.059998,
+    "low": 788.65002,
+    "close": 795.039978,
+    "volume": 1910600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-11T00:00:00",
+    "open": 795.90002,
+    "high": 806.82001,
+    "low": 795.57001,
+    "close": 805.44,
+    "volume": 2399200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-12T00:00:00",
+    "open": 807.5,
+    "high": 820.37,
+    "low": 803.75,
+    "close": 819.5,
+    "volume": 2814100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-13T00:00:00",
+    "open": 822.62,
+    "high": 836.98999,
+    "low": 820.53998,
+    "close": 830.46997,
+    "volume": 2767800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-14T00:00:00",
+    "open": 833.66998,
+    "high": 841.0,
+    "low": 830.02002,
+    "close": 837.26001,
+    "volume": 3038200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-15T00:00:00",
+    "open": 832.039978,
+    "high": 832.039978,
+    "low": 816.48999,
+    "close": 823.96002,
+    "volume": 3673700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-18T00:00:00",
+    "open": 815.5,
+    "high": 848.45001,
+    "low": 809.33002,
+    "close": 847.049988,
+    "volume": 4084100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-19T00:00:00",
+    "open": 839.75,
+    "high": 874.48999,
+    "low": 839.15997,
+    "close": 871.32001,
+    "volume": 3814200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-20T00:00:00",
+    "open": 879.97998,
+    "high": 890.59998,
+    "low": 868.40002,
+    "close": 883.84998,
+    "volume": 4093800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-21T00:00:00",
+    "open": 883.92999,
+    "high": 908.0,
+    "low": 877.23999,
+    "close": 897.47998,
+    "volume": 4511300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-22T00:00:00",
+    "open": 896.0,
+    "high": 906.0,
+    "low": 893.0,
+    "close": 897.78998,
+    "volume": 3214000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-25T00:00:00",
+    "open": 902.049988,
+    "high": 902.049988,
+    "low": 864.21997,
+    "close": 865.59003,
+    "volume": 6014200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-26T00:00:00",
+    "open": 867.48999,
+    "high": 886.35999,
+    "low": 867.25,
+    "close": 872.59998,
+    "volume": 3138300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-27T00:00:00",
+    "open": 872.059998,
+    "high": 880.95001,
+    "low": 858.90997,
+    "close": 877.34003,
+    "volume": 2578200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-11-29T00:00:00",
+    "open": 882.16998,
+    "high": 892.40997,
+    "low": 876.67999,
+    "close": 886.81,
+    "volume": 2027200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-02T00:00:00",
+    "open": 887.51001,
+    "high": 902.34003,
+    "low": 884.12,
+    "close": 897.73999,
+    "volume": 2389000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-03T00:00:00",
+    "open": 894.35999,
+    "high": 902.69,
+    "low": 888.030029,
+    "close": 902.16998,
+    "volume": 2401600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-04T00:00:00",
+    "open": 898.049988,
+    "high": 915.96997,
+    "low": 898.049988,
+    "close": 911.059998,
+    "volume": 2689600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-05T00:00:00",
+    "open": 917.84998,
+    "high": 927.0,
+    "low": 911.10999,
+    "close": 917.87,
+    "volume": 2835300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-06T00:00:00",
+    "open": 915.22998,
+    "high": 935.27002,
+    "low": 912.71002,
+    "close": 934.73999,
+    "volume": 2955400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-09T00:00:00",
+    "open": 928.0,
+    "high": 930.29999,
+    "low": 902.59003,
+    "close": 913.69,
+    "volume": 3350100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-10T00:00:00",
+    "open": 913.76001,
+    "high": 922.88,
+    "low": 909.58002,
+    "close": 913.34998,
+    "volume": 2388600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-11T00:00:00",
+    "open": 924.71002,
+    "high": 941.75,
+    "low": 923.080017,
+    "close": 936.56,
+    "volume": 3501700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-12T00:00:00",
+    "open": 933.34998,
+    "high": 934.090027,
+    "low": 922.59998,
+    "close": 925.54999,
+    "volume": 2486200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-13T00:00:00",
+    "open": 916.81,
+    "high": 925.54999,
+    "low": 909.60999,
+    "close": 918.87,
+    "volume": 2485800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-16T00:00:00",
+    "open": 923.94,
+    "high": 928.94,
+    "low": 919.5,
+    "close": 921.080017,
+    "volume": 2674900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-17T00:00:00",
+    "open": 921.53998,
+    "high": 928.45001,
+    "low": 916.41998,
+    "close": 919.13,
+    "volume": 2459500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-18T00:00:00",
+    "open": 919.13,
+    "high": 922.44,
+    "low": 886.56,
+    "close": 889.54999,
+    "volume": 2938200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-19T00:00:00",
+    "open": 908.17999,
+    "high": 912.62,
+    "low": 899.0,
+    "close": 902.039978,
+    "volume": 2815500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-20T00:00:00",
+    "open": 893.21002,
+    "high": 919.91998,
+    "low": 890.48999,
+    "close": 909.049988,
+    "volume": 4530500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-23T00:00:00",
+    "open": 913.41998,
+    "high": 915.0,
+    "low": 899.099976,
+    "close": 911.45001,
+    "volume": 2339400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-24T00:00:00",
+    "open": 915.0,
+    "high": 935.84998,
+    "low": 911.70001,
+    "close": 932.12,
+    "volume": 2320300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-26T00:00:00",
+    "open": 928.40002,
+    "high": 930.48999,
+    "low": 915.29999,
+    "close": 924.14001,
+    "volume": 2340300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-27T00:00:00",
+    "open": 916.01001,
+    "high": 918.13,
+    "low": 894.5,
+    "close": 907.54999,
+    "volume": 3226200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-30T00:00:00",
+    "open": 894.51001,
+    "high": 908.22998,
+    "low": 889.71002,
+    "close": 900.42999,
+    "volume": 2203000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2024-12-31T00:00:00",
+    "open": 901.79999,
+    "high": 902.67999,
+    "low": 889.46997,
+    "close": 891.32001,
+    "volume": 1875900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-02T00:00:00",
+    "open": 895.5,
+    "high": 898.58002,
+    "low": 877.0,
+    "close": 886.72998,
+    "volume": 2312300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-03T00:00:00",
+    "open": 893.13,
+    "high": 898.83002,
+    "low": 879.89001,
+    "close": 881.049988,
+    "volume": 2967300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-06T00:00:00",
+    "open": 888.76001,
+    "high": 892.83002,
+    "low": 871.69,
+    "close": 881.78998,
+    "volume": 3457700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-07T00:00:00",
+    "open": 879.38,
+    "high": 888.0,
+    "low": 869.10999,
+    "close": 879.19,
+    "volume": 2649800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-08T00:00:00",
+    "open": 880.0,
+    "high": 886.21997,
+    "low": 873.0,
+    "close": 875.0,
+    "volume": 2347900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-10T00:00:00",
+    "open": 866.40002,
+    "high": 866.40997,
+    "low": 834.40002,
+    "close": 837.69,
+    "volume": 4803300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-13T00:00:00",
+    "open": 831.53003,
+    "high": 847.070007,
+    "low": 829.14001,
+    "close": 840.28998,
+    "volume": 3024500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-14T00:00:00",
+    "open": 843.20001,
+    "high": 844.89001,
+    "low": 823.52002,
+    "close": 828.40002,
+    "volume": 3037700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-15T00:00:00",
+    "open": 836.44,
+    "high": 850.84003,
+    "low": 830.40997,
+    "close": 848.26001,
+    "volume": 3181400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-16T00:00:00",
+    "open": 860.96002,
+    "high": 868.97998,
+    "low": 842.02002,
+    "close": 842.37,
+    "volume": 4028500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-17T00:00:00",
+    "open": 859.78998,
+    "high": 865.0,
+    "low": 852.13,
+    "close": 858.099976,
+    "volume": 3617600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-21T00:00:00",
+    "open": 863.53003,
+    "high": 916.40002,
+    "low": 854.75,
+    "close": 869.67999,
+    "volume": 9851400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-22T00:00:00",
+    "open": 998.030029,
+    "high": 999.0,
+    "low": 950.76001,
+    "close": 953.98999,
+    "volume": 14273200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-23T00:00:00",
+    "open": 957.81,
+    "high": 985.0,
+    "low": 953.90002,
+    "close": 984.85999,
+    "volume": 7752100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-24T00:00:00",
+    "open": 984.40997,
+    "high": 986.28003,
+    "low": 967.67999,
+    "close": 977.59003,
+    "volume": 4550400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-27T00:00:00",
+    "open": 971.099976,
+    "high": 982.27002,
+    "low": 960.26001,
+    "close": 971.89001,
+    "volume": 4634200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-28T00:00:00",
+    "open": 966.71002,
+    "high": 977.92999,
+    "low": 957.29999,
+    "close": 971.83002,
+    "volume": 3434000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-29T00:00:00",
+    "open": 980.0,
+    "high": 987.64001,
+    "low": 968.22998,
+    "close": 978.15002,
+    "volume": 2930700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-30T00:00:00",
+    "open": 986.75,
+    "high": 994.59003,
+    "low": 970.01001,
+    "close": 973.23999,
+    "volume": 3867800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-01-31T00:00:00",
+    "open": 974.0,
+    "high": 990.28998,
+    "low": 974.0,
+    "close": 976.76001,
+    "volume": 3618700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-03T00:00:00",
+    "open": 973.0,
+    "high": 987.69,
+    "low": 964.38,
+    "close": 978.94,
+    "volume": 3724200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-04T00:00:00",
+    "open": 980.46997,
+    "high": 1008.0,
+    "low": 978.51001,
+    "close": 994.87,
+    "volume": 6000100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-05T00:00:00",
+    "open": 987.72998,
+    "high": 1011.83002,
+    "low": 986.67999,
+    "close": 1011.10999,
+    "volume": 3993400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-06T00:00:00",
+    "open": 1007.87,
+    "high": 1016.34998,
+    "low": 1002.60999,
+    "close": 1015.67999,
+    "volume": 3134300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-07T00:00:00",
+    "open": 1017.0,
+    "high": 1027.76001,
+    "low": 1005.66998,
+    "close": 1013.92999,
+    "volume": 3212900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-10T00:00:00",
+    "open": 1023.049988,
+    "high": 1032.84998,
+    "low": 1015.88,
+    "close": 1027.59998,
+    "volume": 3296600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-11T00:00:00",
+    "open": 1020.78998,
+    "high": 1022.69,
+    "low": 1002.95001,
+    "close": 1008.080017,
+    "volume": 3331800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-12T00:00:00",
+    "open": 1005.48999,
+    "high": 1027.73999,
+    "low": 998.34998,
+    "close": 1027.31006,
+    "volume": 3389000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-13T00:00:00",
+    "open": 1026.63,
+    "high": 1045.98999,
+    "low": 1025.099976,
+    "close": 1043.68994,
+    "volume": 3476100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-14T00:00:00",
+    "open": 1044.94995,
+    "high": 1064.5,
+    "low": 1041.68994,
+    "close": 1058.59998,
+    "volume": 3145400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-18T00:00:00",
+    "open": 1060.0,
+    "high": 1062.0,
+    "low": 1023.75,
+    "close": 1035.84998,
+    "volume": 4229300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-19T00:00:00",
+    "open": 1035.18005,
+    "high": 1045.0,
+    "low": 1024.51001,
+    "close": 1043.32996,
+    "volume": 2600000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-20T00:00:00",
+    "open": 1042.0,
+    "high": 1045.0,
+    "low": 1015.59003,
+    "close": 1024.54004,
+    "volume": 3111800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-21T00:00:00",
+    "open": 1029.42004,
+    "high": 1032.38,
+    "low": 999.39001,
+    "close": 1003.15002,
+    "volume": 3738700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-24T00:00:00",
+    "open": 1008.0,
+    "high": 1015.16998,
+    "low": 984.47998,
+    "close": 988.46997,
+    "volume": 4426200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 989.40002,
+    "high": 994.40002,
+    "low": 955.0,
+    "close": 977.23999,
+    "volume": 4738300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "NFLX",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 977.59998,
+    "high": 1000.89001,
+    "low": 976.90002,
+    "close": 990.059998,
+    "volume": 3393300.0,
+    "interval": "1d"
+  }
+]

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Flex,
@@ -16,6 +16,9 @@ import {
   Badge,
   Select,
   Icon,
+  Spinner,
+  Alert,
+  AlertIcon,
 } from '@chakra-ui/react';
 import {
   ResponsiveContainer,
@@ -36,42 +39,292 @@ import { FaChartLine, FaCoins, FaOilCan, FaBuilding } from 'react-icons/fa';
 const AssetPerformanceChart = () => {
   const [timeframe, setTimeframe] = useState('1M');
   const [assetType, setAssetType] = useState('stocks');
+  const [performanceData, setPerformanceData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   
   // Background and text colors
   const bgColor = useColorModeValue('white', 'gray.800');
   const textColor = useColorModeValue('gray.800', 'white');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   
-  // Sample performance data for different asset types and timeframes
-  const performanceData = {
-    stocks: {
-      '1M': generateStocksData(30, 'day'),
-      '3M': generateStocksData(90, 'week'),
-      '6M': generateStocksData(180, 'week'),
-      '1Y': generateStocksData(12, 'month'),
-    },
-    gold: {
-      '1M': generateGoldData(30, 'day'),
-      '3M': generateGoldData(90, 'week'),
-      '6M': generateGoldData(180, 'week'),
-      '1Y': generateGoldData(12, 'month'),
-    },
-    oil: {
-      '1M': generateOilData(30, 'day'),
-      '3M': generateOilData(90, 'week'),
-      '6M': generateOilData(180, 'week'),
-      '1Y': generateOilData(12, 'month'),
-    },
-    private: {
-      '1M': generatePrivateData(30, 'day'),
-      '3M': generatePrivateData(90, 'week'),
-      '6M': generatePrivateData(180, 'week'),
-      '1Y': generatePrivateData(12, 'month'),
-    }
+  // Asset categories to symbols mapping
+  const assetSymbols = {
+    stocks: ["SPY", "QQQ", "DIA", "IWM", "VTI"],
+    gold: ["GLD", "XAU", "XAG", "SLV", "IAU"],
+    oil: ["USO", "CL", "BZ", "OIL", "XLE"],
+    private: ["VOW.DE", "SIE.DE", "MC.PA", "SAP.DE", "TSLA"]
   };
 
-  // Current selected data based on asset type and timeframe
-  const currentData = performanceData[assetType][timeframe];
+  // Timeframe mapping
+  const timeframeDays = {
+    '1M': 30,
+    '3M': 90,
+    '6M': 180,
+    '1Y': 365
+  };
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setIsLoading(true);
+        
+        // Try to fetch from public/chart-data/asset_performance.json first
+        let response = await fetch('/chart-data/asset_performance.json');
+        
+        // If specific file doesn't exist, try to get data from symbol-specific file
+        if (!response.ok) {
+          // Get primary symbol for current asset type
+          const symbol = assetSymbols[assetType][0];
+          const interval = '1d'; // Daily data
+          
+          response = await fetch(`/chart-data/${symbol}_${interval}.json`);
+          
+          if (!response.ok) {
+            throw new Error(`Failed to fetch data for ${symbol}`);
+          }
+          
+          const symbolData = await response.json();
+          
+          // Process the data for the chart
+          const processedData = processSymbolData(symbolData, timeframe);
+          setPerformanceData({
+            [assetType]: {
+              [timeframe]: processedData,
+              // Add other standard data
+              comparison: generateComparisonData(assetType, timeframe),
+              volume: processVolumeData(symbolData, timeframe)
+            }
+          });
+        } else {
+          // Use the pre-processed asset_performance.json
+          const data = await response.json();
+          setPerformanceData(data);
+        }
+        
+        setIsLoading(false);
+      } catch (err) {
+        console.error("Error fetching performance data:", err);
+        setError(err.message);
+        setIsLoading(false);
+        
+        // Fallback to generated data
+        setPerformanceData({
+          [assetType]: {
+            [timeframe]: generateFallbackData(assetType, timeframe),
+            comparison: generateComparisonData(assetType, timeframe),
+            volume: generateVolumeData(assetType, timeframe)
+          }
+        });
+      }
+    }
+    
+    fetchData();
+  }, [assetType, timeframe]);
+  
+  // Process market data from symbol data
+  function processSymbolData(data, timeframe) {
+    if (!Array.isArray(data)) return [];
+    
+    // Sort by timestamp
+    const sortedData = [...data].sort((a, b) => 
+      new Date(a.timestamp) - new Date(b.timestamp)
+    );
+    
+    // Get the last N days based on timeframe
+    const days = timeframeDays[timeframe];
+    const filteredData = sortedData.slice(-days);
+    
+    // Normalize to start at 100
+    const initialValue = filteredData.length > 0 ? filteredData[0].close : 100;
+    
+    return filteredData.map((item, index) => {
+      const date = new Date(item.timestamp);
+      let dateLabel;
+      
+      if (timeframe === '1M') {
+        dateLabel = `D${date.getDate()}`;
+      } else if (timeframe === '3M' || timeframe === '6M') {
+        // Get week number
+        const weekNumber = Math.floor(index / 7) + 1;
+        dateLabel = `W${weekNumber}`;
+      } else {
+        // Month for yearly view
+        dateLabel = date.toLocaleString('default', { month: 'short' });
+      }
+      
+      return {
+        date: dateLabel,
+        value: (item.close / initialValue) * 100
+      };
+    });
+  }
+  
+  // Process volume data from symbol data
+  function processVolumeData(data, timeframe) {
+    if (!Array.isArray(data)) return [];
+    
+    // Sort by timestamp
+    const sortedData = [...data].sort((a, b) => 
+      new Date(a.timestamp) - new Date(b.timestamp)
+    );
+    
+    // Get the last N days based on timeframe
+    const days = timeframeDays[timeframe];
+    const filteredData = sortedData.slice(-days);
+    
+    return filteredData.map((item) => {
+      const date = new Date(item.timestamp);
+      let dateLabel;
+      
+      if (timeframe === '1M') {
+        dateLabel = `D${date.getDate()}`;
+      } else if (timeframe === '3M' || timeframe === '6M') {
+        // Use week number
+        const weekNum = Math.ceil((date.getDate() + 6 - date.getDay()) / 7);
+        dateLabel = `W${weekNum}`;
+      } else {
+        // Month for yearly view
+        dateLabel = date.toLocaleString('default', { month: 'short' });
+      }
+      
+      return {
+        date: dateLabel,
+        volume: item.volume || 0
+      };
+    });
+  }
+  
+  // Fallback functions if no data is available
+  function generateFallbackData(assetType, timeframe) {
+    const data = [];
+    const points = timeframe === '1M' ? 30 : 
+                  timeframe === '3M' ? 90 : 
+                  timeframe === '6M' ? 180 : 12;
+    
+    let value = 100;
+    for (let i = 0; i < points; i++) {
+      // Different trends for different asset categories
+      let change;
+      if (assetType === 'stocks') {
+        change = (Math.random() - 0.47) * 2;
+      } else if (assetType === 'gold') {
+        change = (Math.random() - 0.45) * 1.5;
+      } else if (assetType === 'oil') {
+        change = (Math.random() - 0.52) * 3;
+      } else {  // private assets
+        change = (Math.random() - 0.35) * 0.9;
+      }
+      
+      value = Math.max(80, value + change);
+      
+      let date;
+      if (timeframe === '1M') {
+        date = `D${i+1}`;
+      } else if (timeframe === '3M' || timeframe === '6M') {
+        date = `W${Math.floor(i/7) + 1}`;
+      } else {
+        date = `M${i+1}`;
+      }
+      
+      data.push({
+        date,
+        value
+      });
+    }
+    
+    return data;
+  }
+  
+  function generateComparisonData(assetType, timeframe) {
+    const points = timeframe === '1M' ? 30 : 
+                  timeframe === '3M' ? 12 : 
+                  timeframe === '6M' ? 24 : 12;
+    
+    const data = [];
+    let assetValue = 100;
+    let spValue = 100;
+    let msciValue = 100;
+    
+    for (let i = 0; i < points; i++) {
+      // Different volatility and trend for each asset type
+      let assetChange;
+      if (assetType === 'stocks') {
+        assetChange = (Math.random() - 0.47) * 2.2;
+      } else if (assetType === 'gold') {
+        assetChange = (Math.random() - 0.45) * 1.5;
+      } else if (assetType === 'oil') {
+        assetChange = (Math.random() - 0.52) * 3;
+      } else {
+        assetChange = (Math.random() - 0.35) * 0.9;
+      }
+      
+      const spChange = (Math.random() - 0.48) * 2;
+      const msciChange = (Math.random() - 0.49) * 1.8;
+      
+      assetValue = Math.max(80, assetValue + assetChange);
+      spValue = Math.max(80, spValue + spChange);
+      msciValue = Math.max(80, msciValue + msciChange);
+      
+      let date;
+      if (timeframe === '1M') {
+        date = `D${i+1}`;
+      } else if (timeframe === '3M' || timeframe === '6M') {
+        date = `W${i+1}`;
+      } else {
+        date = `M${i+1}`;
+      }
+      
+      data.push({
+        date,
+        assetValue,
+        sp500: spValue,
+        msciWorld: msciValue
+      });
+    }
+    
+    return data;
+  }
+  
+  function generateVolumeData(assetType, timeframe) {
+    const points = timeframe === '1M' ? 20 : 
+                  timeframe === '3M' ? 12 : 
+                  timeframe === '6M' ? 24 : 12;
+    
+    const data = [];
+    
+    // Base volume depends on asset type
+    const baseVolume = 
+      assetType === 'stocks' ? 3000000 : 
+      assetType === 'gold' ? 800000 : 
+      assetType === 'oil' ? 1200000 : 100000;
+    
+    for (let i = 0; i < points; i++) {
+      // Random volume with some spikes
+      let volume = baseVolume + (Math.random() - 0.5) * baseVolume * 0.5;
+      
+      // Occasional volume spikes
+      if (Math.random() > 0.85) {
+        volume = volume * (1 + Math.random());
+      }
+      
+      let date;
+      if (timeframe === '1M') {
+        date = `D${i+1}`;
+      } else if (timeframe === '3M' || timeframe === '6M') {
+        date = `W${i+1}`;
+      } else {
+        date = `M${i+1}`;
+      }
+      
+      data.push({
+        date,
+        volume: Math.round(volume)
+      });
+    }
+    
+    return data;
+  }
   
   // Functions to get asset-specific colors
   const getAssetColors = () => {
@@ -111,12 +364,6 @@ const AssetPerformanceChart = () => {
   
   const colors = getAssetColors();
   
-  // Calculate performance metrics
-  const initialValue = currentData[0].value;
-  const currentValue = currentData[currentData.length - 1].value;
-  const percentageChange = ((currentValue - initialValue) / initialValue * 100).toFixed(2);
-  const isPositive = parseFloat(percentageChange) >= 0;
-  
   // Icons for different asset types
   const assetIcons = {
     stocks: FaChartLine,
@@ -132,6 +379,77 @@ const AssetPerformanceChart = () => {
     oil: 'Oil & Commodities',
     private: 'Private Assets'
   };
+
+  // If data is loading or not available
+  if (isLoading) {
+    return (
+      <Box
+        w="full"
+        maxW="4xl"
+        bg={bgColor}
+        borderRadius="xl"
+        boxShadow="lg"
+        p={4}
+        borderWidth="1px"
+        borderColor={borderColor}
+        textAlign="center"
+        py={10}
+      >
+        <Spinner color="brand.bitinvest.500" size="xl" />
+        <Text mt={4}>Loading market data...</Text>
+      </Box>
+    );
+  }
+  
+  if (error) {
+    return (
+      <Box
+        w="full"
+        maxW="4xl"
+        bg={bgColor}
+        borderRadius="xl"
+        boxShadow="lg"
+        p={4}
+        borderWidth="1px"
+        borderColor={borderColor}
+      >
+        <Alert status="error" variant="left-accent">
+          <AlertIcon />
+          Error loading market data: {error}
+        </Alert>
+      </Box>
+    );
+  }
+  
+  // Check if we have the necessary data
+  if (!performanceData || !performanceData[assetType] || !performanceData[assetType][timeframe]) {
+    return (
+      <Box
+        w="full"
+        maxW="4xl"
+        bg={bgColor}
+        borderRadius="xl"
+        boxShadow="lg"
+        p={4}
+        borderWidth="1px"
+        borderColor={borderColor}
+      >
+        <Alert status="warning" variant="left-accent">
+          <AlertIcon />
+          No data available for {assetTitles[assetType]} with timeframe {timeframe}
+        </Alert>
+      </Box>
+    );
+  }
+  
+  // Get current data
+  const currentData = performanceData[assetType][timeframe];
+  
+  // Calculate performance metrics
+  const initialValue = currentData.length > 0 ? currentData[0].value : 100;
+  const currentValue = currentData.length > 0 ? currentData[currentData.length - 1].value : 100;
+  const percentageChange = ((currentValue - initialValue) / initialValue * 100).toFixed(2);
+  const isPositive = parseFloat(percentageChange) >= 0;
 
   return (
     <Box
@@ -284,7 +602,7 @@ const AssetPerformanceChart = () => {
             <Box h="250px" mt={2}>
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart
-                  data={generateComparisonData(assetType, timeframe)}
+                  data={performanceData[assetType].comparison[timeframe]}
                   margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" stroke={useColorModeValue('gray.200', 'gray.700')} />
@@ -308,7 +626,8 @@ const AssetPerformanceChart = () => {
                   <Legend />
                   <Line 
                     type="monotone" 
-                    dataKey={assetTitles[assetType]}
+                    dataKey="assetValue"
+                    name={assetTitles[assetType]}
                     stroke={colors.accent}
                     strokeWidth={2}
                     dot={false}
@@ -316,7 +635,8 @@ const AssetPerformanceChart = () => {
                   />
                   <Line 
                     type="monotone" 
-                    dataKey="S&P 500"
+                    dataKey="sp500"
+                    name="S&P 500"
                     stroke="#8884d8"
                     strokeWidth={2}
                     dot={false}
@@ -324,7 +644,8 @@ const AssetPerformanceChart = () => {
                   />
                   <Line 
                     type="monotone" 
-                    dataKey="MSCI World"
+                    dataKey="msciWorld"
+                    name="MSCI World"
                     stroke="#82ca9d"
                     strokeWidth={2}
                     dot={false}
@@ -371,7 +692,7 @@ const AssetPerformanceChart = () => {
             <Box h="250px" mt={2}>
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
-                  data={generateVolumeData(assetType, timeframe)}
+                  data={performanceData[assetType].volume[timeframe]}
                   margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" stroke={useColorModeValue('gray.200', 'gray.700')} />
@@ -449,238 +770,5 @@ const AssetPerformanceChart = () => {
     </Box>
   );
 };
-
-// Helper function to generate stocks data
-function generateStocksData(points, interval) {
-  const data = [];
-  let value = 100 + Math.random() * 20;
-  
-  for (let i = 0; i < points; i++) {
-    // Create more realistic market movements with occasional jumps
-    const change = (Math.random() - 0.48) * 2; // Slight upward bias
-    value = Math.max(80, value + change);
-    
-    // Add some volatility spikes
-    if (Math.random() > 0.95) {
-      value = value * (1 + (Math.random() * 0.06 - 0.03));
-    }
-    
-    let date;
-    if (interval === 'day') {
-      date = `Day ${i + 1}`;
-    } else if (interval === 'week') {
-      date = `Week ${Math.floor(i / 7) + 1}`;
-    } else {
-      date = `Month ${i + 1}`;
-    }
-    
-    data.push({
-      date,
-      value
-    });
-  }
-  
-  return data;
-}
-
-// Helper function to generate gold data
-function generateGoldData(points, interval) {
-  const data = [];
-  let value = 100 + Math.random() * 10;
-  
-  for (let i = 0; i < points; i++) {
-    // Gold tends to be less volatile but with occasional jumps
-    const change = (Math.random() - 0.45) * 1.2; // Slight upward bias
-    value = Math.max(90, value + change);
-    
-    // Add some volatility spikes
-    if (Math.random() > 0.97) {
-      value = value * (1 + (Math.random() * 0.04 - 0.02));
-    }
-    
-    let date;
-    if (interval === 'day') {
-      date = `Day ${i + 1}`;
-    } else if (interval === 'week') {
-      date = `Week ${Math.floor(i / 7) + 1}`;
-    } else {
-      date = `Month ${i + 1}`;
-    }
-    
-    data.push({
-      date,
-      value
-    });
-  }
-  
-  return data;
-}
-
-// Helper function to generate oil data
-function generateOilData(points, interval) {
-  const data = [];
-  let value = 100 + Math.random() * 15;
-  
-  for (let i = 0; i < points; i++) {
-    // Oil tends to be more volatile
-    const change = (Math.random() - 0.5) * 3;
-    value = Math.max(70, value + change);
-    
-    // Add some volatility spikes
-    if (Math.random() > 0.93) {
-      value = value * (1 + (Math.random() * 0.08 - 0.04));
-    }
-    
-    let date;
-    if (interval === 'day') {
-      date = `Day ${i + 1}`;
-    } else if (interval === 'week') {
-      date = `Week ${Math.floor(i / 7) + 1}`;
-    } else {
-      date = `Month ${i + 1}`;
-    }
-    
-    data.push({
-      date,
-      value
-    });
-  }
-  
-  return data;
-}
-
-// Helper function to generate private asset data
-function generatePrivateData(points, interval) {
-  const data = [];
-  let value = 100 + Math.random() * 5;
-  
-  for (let i = 0; i < points; i++) {
-    // Private assets tend to be much less volatile but with steady growth
-    const change = (Math.random() - 0.3) * 0.8; // Strong upward bias
-    value = Math.max(95, value + change);
-    
-    // Occasionally revalue (up or down)
-    if (Math.random() > 0.95) {
-      value = value * (1 + (Math.random() * 0.06 - 0.02)); // Upward bias in revaluations
-    }
-    
-    let date;
-    if (interval === 'day') {
-      date = `Day ${i + 1}`;
-    } else if (interval === 'week') {
-      date = `Week ${Math.floor(i / 7) + 1}`;
-    } else {
-      date = `Month ${i + 1}`;
-    }
-    
-    data.push({
-      date,
-      value
-    });
-  }
-  
-  return data;
-}
-
-// Helper function to generate comparison data
-function generateComparisonData(assetType, timeframe) {
-  const pointCount = timeframe === '1M' ? 30 : 
-                     timeframe === '3M' ? 12 : 
-                     timeframe === '6M' ? 24 : 12;
-  
-  const data = [];
-  let assetValue = 100;
-  let spValue = 100;
-  let msciValue = 100;
-  
-  const assetTitle = 
-    assetType === 'stocks' ? 'US & EU Stocks' : 
-    assetType === 'gold' ? 'Gold & Precious Metals' : 
-    assetType === 'oil' ? 'Oil & Commodities' : 'Private Assets';
-  
-  for (let i = 0; i < pointCount; i++) {
-    // Different volatility and trend for each asset type
-    let assetChange;
-    if (assetType === 'stocks') {
-      assetChange = (Math.random() - 0.47) * 2.2;
-    } else if (assetType === 'gold') {
-      assetChange = (Math.random() - 0.45) * 1.5;
-    } else if (assetType === 'oil') {
-      assetChange = (Math.random() - 0.52) * 3;
-    } else {
-      assetChange = (Math.random() - 0.35) * 0.9;
-    }
-    
-    const spChange = (Math.random() - 0.48) * 2;
-    const msciChange = (Math.random() - 0.49) * 1.8;
-    
-    assetValue = Math.max(80, assetValue + assetChange);
-    spValue = Math.max(80, spValue + spChange);
-    msciValue = Math.max(80, msciValue + msciChange);
-    
-    let date;
-    if (timeframe === '1M') {
-      date = `D${i + 1}`;
-    } else if (timeframe === '3M') {
-      date = `W${i + 1}`;
-    } else if (timeframe === '6M') {
-      date = `W${i + 1}`;
-    } else {
-      date = `M${i + 1}`;
-    }
-    
-    const dataPoint = { date };
-    dataPoint[assetTitle] = assetValue;
-    dataPoint['S&P 500'] = spValue;
-    dataPoint['MSCI World'] = msciValue;
-    
-    data.push(dataPoint);
-  }
-  
-  return data;
-}
-
-// Helper function to generate volume data
-function generateVolumeData(assetType, timeframe) {
-  const pointCount = timeframe === '1M' ? 20 : 
-                     timeframe === '3M' ? 12 : 
-                     timeframe === '6M' ? 24 : 12;
-  
-  const data = [];
-  
-  // Base volume depends on asset type
-  const baseVolume = 
-    assetType === 'stocks' ? 3000000 : 
-    assetType === 'gold' ? 800000 : 
-    assetType === 'oil' ? 1200000 : 100000;
-  
-  for (let i = 0; i < pointCount; i++) {
-    // Random volume with some spikes
-    let volume = baseVolume + (Math.random() - 0.5) * baseVolume * 0.5;
-    
-    // Occasional volume spikes
-    if (Math.random() > 0.85) {
-      volume = volume * (1 + Math.random());
-    }
-    
-    let date;
-    if (timeframe === '1M') {
-      date = `D${i + 1}`;
-    } else if (timeframe === '3M') {
-      date = `W${i + 1}`;
-    } else if (timeframe === '6M') {
-      date = `W${i + 1}`;
-    } else {
-      date = `M${i + 1}`;
-    }
-    
-    data.push({
-      date,
-      volume: Math.round(volume)
-    });
-  }
-  
-  return data;
-}
 
 export default AssetPerformanceChart;

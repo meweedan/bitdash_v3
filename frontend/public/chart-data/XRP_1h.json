@@ -1,0 +1,1692 @@
+[
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T00:00:00",
+    "open": 2.73748,
+    "high": 2.74864,
+    "low": 2.70404,
+    "close": 2.71465,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T01:00:00",
+    "open": 2.71409,
+    "high": 2.71957,
+    "low": 2.68601,
+    "close": 2.69544,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T02:00:00",
+    "open": 2.69652,
+    "high": 2.70592,
+    "low": 2.68195,
+    "close": 2.69155,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T03:00:00",
+    "open": 2.69178,
+    "high": 2.71191,
+    "low": 2.69162,
+    "close": 2.70439,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T04:00:00",
+    "open": 2.70439,
+    "high": 2.71661,
+    "low": 2.70003,
+    "close": 2.71291,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T05:00:00",
+    "open": 2.71319,
+    "high": 2.73253,
+    "low": 2.70814,
+    "close": 2.71871,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T06:00:00",
+    "open": 2.71879,
+    "high": 2.72429,
+    "low": 2.6846,
+    "close": 2.68552,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T07:00:00",
+    "open": 2.68616,
+    "high": 2.70114,
+    "low": 2.67017,
+    "close": 2.68614,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T08:00:00",
+    "open": 2.68604,
+    "high": 2.70535,
+    "low": 2.68205,
+    "close": 2.70485,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T09:00:00",
+    "open": 2.7051,
+    "high": 2.7121,
+    "low": 2.68993,
+    "close": 2.69276,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T10:00:00",
+    "open": 2.69275,
+    "high": 2.70816,
+    "low": 2.68354,
+    "close": 2.70648,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T11:00:00",
+    "open": 2.70653,
+    "high": 2.70814,
+    "low": 2.67679,
+    "close": 2.68093,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T12:00:00",
+    "open": 2.68098,
+    "high": 2.70884,
+    "low": 2.6809,
+    "close": 2.68678,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T13:00:00",
+    "open": 2.68695,
+    "high": 2.70466,
+    "low": 2.6811,
+    "close": 2.70392,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T14:00:00",
+    "open": 2.70385,
+    "high": 2.74596,
+    "low": 2.68649,
+    "close": 2.69235,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T15:00:00",
+    "open": 2.69235,
+    "high": 2.69968,
+    "low": 2.67088,
+    "close": 2.67246,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T16:00:00",
+    "open": 2.67268,
+    "high": 2.70655,
+    "low": 2.66608,
+    "close": 2.68706,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T17:00:00",
+    "open": 2.68748,
+    "high": 2.70556,
+    "low": 2.68722,
+    "close": 2.7036,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T18:00:00",
+    "open": 2.70338,
+    "high": 2.72773,
+    "low": 2.70317,
+    "close": 2.71177,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T19:00:00",
+    "open": 2.71175,
+    "high": 2.71932,
+    "low": 2.70297,
+    "close": 2.70745,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T20:00:00",
+    "open": 2.70732,
+    "high": 2.71372,
+    "low": 2.69234,
+    "close": 2.69664,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T21:00:00",
+    "open": 2.6969,
+    "high": 2.69778,
+    "low": 2.67036,
+    "close": 2.67581,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T22:00:00",
+    "open": 2.67583,
+    "high": 2.69338,
+    "low": 2.67568,
+    "close": 2.68581,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-20T23:00:00",
+    "open": 2.68578,
+    "high": 2.69985,
+    "low": 2.68389,
+    "close": 2.68909,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T00:00:00",
+    "open": 2.68371,
+    "high": 2.69328,
+    "low": 2.67016,
+    "close": 2.67907,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T01:00:00",
+    "open": 2.67866,
+    "high": 2.68266,
+    "low": 2.6522,
+    "close": 2.66402,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T02:00:00",
+    "open": 2.66396,
+    "high": 2.67286,
+    "low": 2.65411,
+    "close": 2.65708,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T03:00:00",
+    "open": 2.65703,
+    "high": 2.66225,
+    "low": 2.63968,
+    "close": 2.64386,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T04:00:00",
+    "open": 2.64377,
+    "high": 2.65909,
+    "low": 2.64151,
+    "close": 2.65571,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T05:00:00",
+    "open": 2.65561,
+    "high": 2.65971,
+    "low": 2.64633,
+    "close": 2.64849,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T06:00:00",
+    "open": 2.64862,
+    "high": 2.66943,
+    "low": 2.64365,
+    "close": 2.66654,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T07:00:00",
+    "open": 2.66678,
+    "high": 2.67439,
+    "low": 2.65753,
+    "close": 2.65994,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T08:00:00",
+    "open": 2.65995,
+    "high": 2.67529,
+    "low": 2.65485,
+    "close": 2.67119,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T09:00:00",
+    "open": 2.67149,
+    "high": 2.69426,
+    "low": 2.64681,
+    "close": 2.66687,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T10:00:00",
+    "open": 2.6669,
+    "high": 2.67856,
+    "low": 2.66001,
+    "close": 2.67604,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T11:00:00",
+    "open": 2.67598,
+    "high": 2.67756,
+    "low": 2.65092,
+    "close": 2.65113,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T12:00:00",
+    "open": 2.65103,
+    "high": 2.66671,
+    "low": 2.64558,
+    "close": 2.66532,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T13:00:00",
+    "open": 2.6653,
+    "high": 2.7146,
+    "low": 2.66515,
+    "close": 2.69862,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T14:00:00",
+    "open": 2.6982,
+    "high": 2.701,
+    "low": 2.65072,
+    "close": 2.6682,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T15:00:00",
+    "open": 2.66819,
+    "high": 2.69815,
+    "low": 2.56598,
+    "close": 2.61276,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T16:00:00",
+    "open": 2.61479,
+    "high": 2.64641,
+    "low": 2.59493,
+    "close": 2.62967,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T17:00:00",
+    "open": 2.62971,
+    "high": 2.63965,
+    "low": 2.55887,
+    "close": 2.5689,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T18:00:00",
+    "open": 2.56909,
+    "high": 2.58543,
+    "low": 2.55408,
+    "close": 2.57505,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T19:00:00",
+    "open": 2.57519,
+    "high": 2.58343,
+    "low": 2.50663,
+    "close": 2.52594,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T20:00:00",
+    "open": 2.52613,
+    "high": 2.54622,
+    "low": 2.51646,
+    "close": 2.52845,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T21:00:00",
+    "open": 2.52871,
+    "high": 2.54731,
+    "low": 2.5274,
+    "close": 2.53616,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T22:00:00",
+    "open": 2.53603,
+    "high": 2.57121,
+    "low": 2.53355,
+    "close": 2.56406,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-21T23:00:00",
+    "open": 2.56411,
+    "high": 2.57673,
+    "low": 2.55387,
+    "close": 2.57219,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T00:00:00",
+    "open": 2.57243,
+    "high": 2.58748,
+    "low": 2.55172,
+    "close": 2.58299,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T01:00:00",
+    "open": 2.58298,
+    "high": 2.59828,
+    "low": 2.57696,
+    "close": 2.58999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T02:00:00",
+    "open": 2.59007,
+    "high": 2.59007,
+    "low": 2.56501,
+    "close": 2.57312,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T03:00:00",
+    "open": 2.57298,
+    "high": 2.57459,
+    "low": 2.56164,
+    "close": 2.57205,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T04:00:00",
+    "open": 2.57206,
+    "high": 2.58562,
+    "low": 2.56761,
+    "close": 2.58192,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T05:00:00",
+    "open": 2.58193,
+    "high": 2.58551,
+    "low": 2.57117,
+    "close": 2.58327,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T06:00:00",
+    "open": 2.58317,
+    "high": 2.58781,
+    "low": 2.57854,
+    "close": 2.58444,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T07:00:00",
+    "open": 2.58556,
+    "high": 2.59472,
+    "low": 2.58155,
+    "close": 2.58167,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T08:00:00",
+    "open": 2.5817,
+    "high": 2.58528,
+    "low": 2.56582,
+    "close": 2.57185,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T09:00:00",
+    "open": 2.57212,
+    "high": 2.58393,
+    "low": 2.57194,
+    "close": 2.58301,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T10:00:00",
+    "open": 2.58245,
+    "high": 2.59588,
+    "low": 2.57752,
+    "close": 2.58551,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T11:00:00",
+    "open": 2.58569,
+    "high": 2.59315,
+    "low": 2.58346,
+    "close": 2.58912,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T12:00:00",
+    "open": 2.58912,
+    "high": 2.59567,
+    "low": 2.57976,
+    "close": 2.59088,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T13:00:00",
+    "open": 2.59094,
+    "high": 2.59924,
+    "low": 2.57873,
+    "close": 2.58001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T14:00:00",
+    "open": 2.58,
+    "high": 2.58835,
+    "low": 2.57996,
+    "close": 2.58349,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T15:00:00",
+    "open": 2.58346,
+    "high": 2.59676,
+    "low": 2.58045,
+    "close": 2.59043,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T16:00:00",
+    "open": 2.59048,
+    "high": 2.59884,
+    "low": 2.58582,
+    "close": 2.58741,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T17:00:00",
+    "open": 2.58725,
+    "high": 2.60543,
+    "low": 2.58406,
+    "close": 2.60543,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T18:00:00",
+    "open": 2.60551,
+    "high": 2.60929,
+    "low": 2.58751,
+    "close": 2.59018,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T19:00:00",
+    "open": 2.59065,
+    "high": 2.59363,
+    "low": 2.58283,
+    "close": 2.58712,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T20:00:00",
+    "open": 2.58738,
+    "high": 2.58877,
+    "low": 2.56952,
+    "close": 2.57806,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T21:00:00",
+    "open": 2.57789,
+    "high": 2.58314,
+    "low": 2.57327,
+    "close": 2.58074,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T22:00:00",
+    "open": 2.58074,
+    "high": 2.58743,
+    "low": 2.57862,
+    "close": 2.5817,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-22T23:00:00",
+    "open": 2.58168,
+    "high": 2.58407,
+    "low": 2.57401,
+    "close": 2.57422,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T00:00:00",
+    "open": 2.57422,
+    "high": 2.57527,
+    "low": 2.54324,
+    "close": 2.56537,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T01:00:00",
+    "open": 2.56538,
+    "high": 2.57025,
+    "low": 2.54718,
+    "close": 2.55682,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T02:00:00",
+    "open": 2.55681,
+    "high": 2.55972,
+    "low": 2.54334,
+    "close": 2.54411,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T03:00:00",
+    "open": 2.54472,
+    "high": 2.55629,
+    "low": 2.54148,
+    "close": 2.55249,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T04:00:00",
+    "open": 2.55252,
+    "high": 2.55977,
+    "low": 2.54644,
+    "close": 2.55915,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T05:00:00",
+    "open": 2.55863,
+    "high": 2.57075,
+    "low": 2.55652,
+    "close": 2.56447,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T06:00:00",
+    "open": 2.56482,
+    "high": 2.56909,
+    "low": 2.56071,
+    "close": 2.56567,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T07:00:00",
+    "open": 2.56566,
+    "high": 2.60114,
+    "low": 2.56447,
+    "close": 2.59043,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T08:00:00",
+    "open": 2.59069,
+    "high": 2.592,
+    "low": 2.57956,
+    "close": 2.58733,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T09:00:00",
+    "open": 2.58746,
+    "high": 2.58942,
+    "low": 2.56745,
+    "close": 2.57981,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T10:00:00",
+    "open": 2.57983,
+    "high": 2.58225,
+    "low": 2.56725,
+    "close": 2.57329,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T11:00:00",
+    "open": 2.57322,
+    "high": 2.57852,
+    "low": 2.56667,
+    "close": 2.56937,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T12:00:00",
+    "open": 2.56937,
+    "high": 2.57379,
+    "low": 2.54649,
+    "close": 2.55222,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T13:00:00",
+    "open": 2.5523,
+    "high": 2.56587,
+    "low": 2.55089,
+    "close": 2.56523,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T14:00:00",
+    "open": 2.56523,
+    "high": 2.5676,
+    "low": 2.54843,
+    "close": 2.55276,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T15:00:00",
+    "open": 2.5527,
+    "high": 2.55924,
+    "low": 2.5205,
+    "close": 2.52215,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T16:00:00",
+    "open": 2.52216,
+    "high": 2.55733,
+    "low": 2.52058,
+    "close": 2.53824,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T17:00:00",
+    "open": 2.53924,
+    "high": 2.56312,
+    "low": 2.53878,
+    "close": 2.55903,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T18:00:00",
+    "open": 2.55897,
+    "high": 2.5655,
+    "low": 2.54993,
+    "close": 2.5517,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T19:00:00",
+    "open": 2.55208,
+    "high": 2.55873,
+    "low": 2.54934,
+    "close": 2.55203,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T20:00:00",
+    "open": 2.5523,
+    "high": 2.55812,
+    "low": 2.54481,
+    "close": 2.55555,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T21:00:00",
+    "open": 2.5558,
+    "high": 2.5733,
+    "low": 2.55436,
+    "close": 2.57322,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T22:00:00",
+    "open": 2.5732,
+    "high": 2.57359,
+    "low": 2.55867,
+    "close": 2.56444,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-23T23:00:00",
+    "open": 2.56494,
+    "high": 2.58341,
+    "low": 2.56154,
+    "close": 2.57646,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T00:00:00",
+    "open": 2.57645,
+    "high": 2.60971,
+    "low": 2.57442,
+    "close": 2.57531,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T01:00:00",
+    "open": 2.57494,
+    "high": 2.5797,
+    "low": 2.548,
+    "close": 2.5568,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T02:00:00",
+    "open": 2.55673,
+    "high": 2.56631,
+    "low": 2.53851,
+    "close": 2.53931,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T03:00:00",
+    "open": 2.53941,
+    "high": 2.53956,
+    "low": 2.46972,
+    "close": 2.49062,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T04:00:00",
+    "open": 2.49066,
+    "high": 2.49325,
+    "low": 2.44402,
+    "close": 2.47472,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T05:00:00",
+    "open": 2.47455,
+    "high": 2.50499,
+    "low": 2.46668,
+    "close": 2.49438,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T06:00:00",
+    "open": 2.49439,
+    "high": 2.4962,
+    "low": 2.47705,
+    "close": 2.49149,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T07:00:00",
+    "open": 2.49136,
+    "high": 2.50046,
+    "low": 2.48493,
+    "close": 2.49399,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T08:00:00",
+    "open": 2.49408,
+    "high": 2.49431,
+    "low": 2.44674,
+    "close": 2.4514,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T09:00:00",
+    "open": 2.45371,
+    "high": 2.48822,
+    "low": 2.45094,
+    "close": 2.47475,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T10:00:00",
+    "open": 2.47544,
+    "high": 2.47853,
+    "low": 2.43373,
+    "close": 2.46774,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T11:00:00",
+    "open": 2.46789,
+    "high": 2.49285,
+    "low": 2.45473,
+    "close": 2.48829,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T12:00:00",
+    "open": 2.48832,
+    "high": 2.49058,
+    "low": 2.47559,
+    "close": 2.47983,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T13:00:00",
+    "open": 2.47922,
+    "high": 2.49775,
+    "low": 2.46385,
+    "close": 2.47849,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T14:00:00",
+    "open": 2.47858,
+    "high": 2.48429,
+    "low": 2.42639,
+    "close": 2.43025,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T15:00:00",
+    "open": 2.43037,
+    "high": 2.4543,
+    "low": 2.40233,
+    "close": 2.43077,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T16:00:00",
+    "open": 2.4314,
+    "high": 2.45694,
+    "low": 2.42302,
+    "close": 2.44085,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T17:00:00",
+    "open": 2.44077,
+    "high": 2.47573,
+    "low": 2.43921,
+    "close": 2.46413,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T18:00:00",
+    "open": 2.46456,
+    "high": 2.47411,
+    "low": 2.44412,
+    "close": 2.44522,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T19:00:00",
+    "open": 2.44432,
+    "high": 2.45152,
+    "low": 2.38089,
+    "close": 2.40145,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T20:00:00",
+    "open": 2.40171,
+    "high": 2.44908,
+    "low": 2.39103,
+    "close": 2.42456,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T21:00:00",
+    "open": 2.42397,
+    "high": 2.42764,
+    "low": 2.35626,
+    "close": 2.36477,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T22:00:00",
+    "open": 2.36507,
+    "high": 2.36648,
+    "low": 2.23444,
+    "close": 2.26582,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-24T23:00:00",
+    "open": 2.26588,
+    "high": 2.3217,
+    "low": 2.25773,
+    "close": 2.27771,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 2.27838,
+    "high": 2.33637,
+    "low": 2.21241,
+    "close": 2.30713,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T01:00:00",
+    "open": 2.30713,
+    "high": 2.32363,
+    "low": 2.265,
+    "close": 2.29162,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T02:00:00",
+    "open": 2.29157,
+    "high": 2.33077,
+    "low": 2.26949,
+    "close": 2.31779,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T03:00:00",
+    "open": 2.31783,
+    "high": 2.32472,
+    "low": 2.27991,
+    "close": 2.28278,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T04:00:00",
+    "open": 2.28353,
+    "high": 2.29903,
+    "low": 2.24782,
+    "close": 2.25437,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T05:00:00",
+    "open": 2.25437,
+    "high": 2.30726,
+    "low": 2.23514,
+    "close": 2.30536,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T06:00:00",
+    "open": 2.30536,
+    "high": 2.31009,
+    "low": 2.24799,
+    "close": 2.24995,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T07:00:00",
+    "open": 2.25062,
+    "high": 2.25723,
+    "low": 2.09117,
+    "close": 2.15276,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T08:00:00",
+    "open": 2.15158,
+    "high": 2.21233,
+    "low": 2.13777,
+    "close": 2.18631,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T09:00:00",
+    "open": 2.18616,
+    "high": 2.19525,
+    "low": 2.12942,
+    "close": 2.13936,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T10:00:00",
+    "open": 2.13955,
+    "high": 2.16404,
+    "low": 2.06902,
+    "close": 2.12979,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T11:00:00",
+    "open": 2.13007,
+    "high": 2.20539,
+    "low": 2.0647,
+    "close": 2.1883,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T12:00:00",
+    "open": 2.18852,
+    "high": 2.27221,
+    "low": 2.1729,
+    "close": 2.27164,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T13:00:00",
+    "open": 2.27201,
+    "high": 2.27847,
+    "low": 2.21777,
+    "close": 2.22354,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T14:00:00",
+    "open": 2.22354,
+    "high": 2.25526,
+    "low": 2.16434,
+    "close": 2.17455,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T15:00:00",
+    "open": 2.17457,
+    "high": 2.2319,
+    "low": 2.15736,
+    "close": 2.20638,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T16:00:00",
+    "open": 2.2065,
+    "high": 2.2481,
+    "low": 2.17175,
+    "close": 2.22215,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T17:00:00",
+    "open": 2.2212,
+    "high": 2.24299,
+    "low": 2.20311,
+    "close": 2.2207,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T18:00:00",
+    "open": 2.22057,
+    "high": 2.24955,
+    "low": 2.18738,
+    "close": 2.21096,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T19:00:00",
+    "open": 2.2109,
+    "high": 2.26404,
+    "low": 2.18325,
+    "close": 2.26244,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T20:00:00",
+    "open": 2.26253,
+    "high": 2.30938,
+    "low": 2.24518,
+    "close": 2.30135,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T21:00:00",
+    "open": 2.30009,
+    "high": 2.33444,
+    "low": 2.27898,
+    "close": 2.33174,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T22:00:00",
+    "open": 2.33135,
+    "high": 2.36512,
+    "low": 2.315,
+    "close": 2.33256,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-25T23:00:00",
+    "open": 2.33199,
+    "high": 2.35789,
+    "low": 2.31874,
+    "close": 2.32236,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 2.32238,
+    "high": 2.33063,
+    "low": 2.26524,
+    "close": 2.27623,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T01:00:00",
+    "open": 2.27647,
+    "high": 2.3111,
+    "low": 2.27647,
+    "close": 2.30087,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T02:00:00",
+    "open": 2.30065,
+    "high": 2.33053,
+    "low": 2.28479,
+    "close": 2.32011,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 2.31969,
+    "high": 2.33149,
+    "low": 2.30889,
+    "close": 2.3115,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T04:00:00",
+    "open": 2.31153,
+    "high": 2.32842,
+    "low": 2.29974,
+    "close": 2.30019,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T05:00:00",
+    "open": 2.30019,
+    "high": 2.30597,
+    "low": 2.2776,
+    "close": 2.27933,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T06:00:00",
+    "open": 2.27962,
+    "high": 2.30357,
+    "low": 2.27736,
+    "close": 2.30111,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 2.3011,
+    "high": 2.30785,
+    "low": 2.26791,
+    "close": 2.28729,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T08:00:00",
+    "open": 2.28727,
+    "high": 2.29534,
+    "low": 2.26483,
+    "close": 2.29208,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T09:00:00",
+    "open": 2.29091,
+    "high": 2.322,
+    "low": 2.28724,
+    "close": 2.32063,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T10:00:00",
+    "open": 2.31998,
+    "high": 2.32077,
+    "low": 2.29638,
+    "close": 2.31371,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 2.31361,
+    "high": 2.3182,
+    "low": 2.27811,
+    "close": 2.27993,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T12:00:00",
+    "open": 2.28101,
+    "high": 2.28464,
+    "low": 2.23596,
+    "close": 2.2455,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T13:00:00",
+    "open": 2.24513,
+    "high": 2.25136,
+    "low": 2.22512,
+    "close": 2.22766,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T14:00:00",
+    "open": 2.22781,
+    "high": 2.2645,
+    "low": 2.19487,
+    "close": 2.25962,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 2.26046,
+    "high": 2.30317,
+    "low": 2.25891,
+    "close": 2.2749,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T16:00:00",
+    "open": 2.27532,
+    "high": 2.28211,
+    "low": 2.22968,
+    "close": 2.25745,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T17:00:00",
+    "open": 2.25784,
+    "high": 2.26957,
+    "low": 2.20274,
+    "close": 2.21391,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T18:00:00",
+    "open": 2.21338,
+    "high": 2.22741,
+    "low": 2.14722,
+    "close": 2.16607,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 2.16598,
+    "high": 2.19763,
+    "low": 2.15933,
+    "close": 2.17991,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T20:00:00",
+    "open": 2.18077,
+    "high": 2.22622,
+    "low": 2.15438,
+    "close": 2.2172,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T21:00:00",
+    "open": 2.21701,
+    "high": 2.22864,
+    "low": 2.17983,
+    "close": 2.21254,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T22:00:00",
+    "open": 2.21254,
+    "high": 2.24617,
+    "low": 2.20352,
+    "close": 2.21479,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 2.21437,
+    "high": 2.22721,
+    "low": 2.18668,
+    "close": 2.19806,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "XRP",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 2.19817,
+    "high": 2.21064,
+    "low": 2.16476,
+    "close": 2.18383,
+    "volume": 0.0,
+    "interval": "1h"
+  }
+]

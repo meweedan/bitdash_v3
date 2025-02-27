@@ -1,0 +1,163 @@
+{
+  "indices": [
+    {
+      "name": "S&P 500",
+      "symbol": "^GSPC",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:22:22.074198"
+    },
+    {
+      "name": "Dow Jones",
+      "symbol": "^DJI",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:22:33.834001"
+    },
+    {
+      "name": "NASDAQ",
+      "symbol": "^IXIC",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:22:46.395276"
+    },
+    {
+      "name": "FTSE 100",
+      "symbol": "^FTSE",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:22:58.709548"
+    },
+    {
+      "name": "DAX",
+      "symbol": "^GDAXI",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:23:09.919743"
+    },
+    {
+      "name": "Nikkei 225",
+      "symbol": "^N225",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:23:20.472665"
+    }
+  ],
+  "forex": [
+    {
+      "name": "EUR/USD",
+      "symbol": "EURUSD",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:23:29.768767"
+    },
+    {
+      "name": "GBP/USD",
+      "symbol": "GBPUSD",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:23:39.231295"
+    },
+    {
+      "name": "USD/JPY",
+      "symbol": "USDJPY",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:23:50.336008"
+    },
+    {
+      "name": "USD/CAD",
+      "symbol": "USDCAD",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:24:01.698879"
+    },
+    {
+      "name": "AUD/USD",
+      "symbol": "AUDUSD",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:24:13.229881"
+    }
+  ],
+  "commodities": [
+    {
+      "name": "Gold",
+      "symbol": "XAU",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:24:23.898722"
+    },
+    {
+      "name": "Silver",
+      "symbol": "XAG",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:24:33.727596"
+    },
+    {
+      "name": "Oil (WTI)",
+      "symbol": "CL",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:24:43.490646"
+    },
+    {
+      "name": "Natural Gas",
+      "symbol": "NG",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:24:54.547901"
+    }
+  ],
+  "crypto": [
+    {
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:25:18.150195"
+    },
+    {
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:25:41.384767"
+    },
+    {
+      "name": "Binance Coin",
+      "symbol": "BNB",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:26:03.994965"
+    },
+    {
+      "name": "XRP",
+      "symbol": "XRP",
+      "price": 0,
+      "change": 0,
+      "direction": "neutral",
+      "timestamp": "2025-02-27T22:26:24.257988"
+    }
+  ],
+  "lastUpdated": "2025-02-27T22:26:24.257991"
+}

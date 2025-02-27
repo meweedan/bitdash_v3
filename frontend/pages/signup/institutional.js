@@ -1245,11 +1245,11 @@ export default function InstitutionalSignup() {
         >
           <Text fontSize="sm">
             {t('institutionalTermsAgreement', 'I agree to the')} {' '}
-            <ChakraLink color="blue.400" href="/terms/institutional-agreement" target="_blank">
+            <ChakraLink color="blue.400" href="/policies/institutional-agreement" target="_blank">
               {t('institutionalAgreementTerms')}
             </ChakraLink>
             {' '} {t('andThe')} {' '}
-            <ChakraLink color="blue.400" href="/terms/privacy-policy" target="_blank">
+            <ChakraLink color="blue.400" href="/policies/privacy" target="_blank">
               {t('privacyPolicy')}
             </ChakraLink>
           </Text>

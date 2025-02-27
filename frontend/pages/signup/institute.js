@@ -1351,7 +1351,7 @@ export default function InstituteSignup() {
         >
           <Text fontSize="sm">
             {t('institutionalTermsAgreement', 'I agree to the')} {' '}
-            <ChakraLink color="blue.400" href="/terms/institutional-trading-agreement" target="_blank">
+            <ChakraLink color="blue.400" href="/policies/institutional-trading-agreement" target="_blank">
               {t('institutionalTradingTerms')}
             </ChakraLink>
           </Text>
@@ -1368,11 +1368,11 @@ export default function InstituteSignup() {
         >
           <Text fontSize="sm">
             {t('dataAgreement', 'I agree to the')} {' '}
-            <ChakraLink color="blue.400" href="/terms/data-policy" target="_blank">
+            <ChakraLink color="blue.400" href="/policies/data-policy" target="_blank">
               {t('dataPolicy')}
             </ChakraLink>
             {' '} {t('andThe')} {' '}
-            <ChakraLink color="blue.400" href="/terms/privacy-policy" target="_blank">
+            <ChakraLink color="blue.400" href="/policies/privacy" target="_blank">
               {t('privacyPolicy')}
             </ChakraLink>
           </Text>

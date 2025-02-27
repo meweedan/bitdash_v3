@@ -1,0 +1,2872 @@
+[
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-02-28T00:00:00",
+    "open": 7.82475,
+    "high": 7.8281,
+    "low": 7.82255,
+    "close": 7.82768,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-02-29T00:00:00",
+    "open": 7.82767,
+    "high": 7.8294,
+    "low": 7.8259,
+    "close": 7.829,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-01T00:00:00",
+    "open": 7.82901,
+    "high": 7.8298,
+    "low": 7.8274,
+    "close": 7.82908,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-02T00:00:00",
+    "open": 7.82908,
+    "high": 7.83045,
+    "low": 7.8278,
+    "close": 7.82995,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-04T00:00:00",
+    "open": 7.8285,
+    "high": 7.82915,
+    "low": 7.8236,
+    "close": 7.8243,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-05T00:00:00",
+    "open": 7.82437,
+    "high": 7.8259,
+    "low": 7.82211,
+    "close": 7.8236,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-06T00:00:00",
+    "open": 7.8235,
+    "high": 7.82595,
+    "low": 7.8223,
+    "close": 7.8246,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-07T00:00:00",
+    "open": 7.82453,
+    "high": 7.8252,
+    "low": 7.8188,
+    "close": 7.8207,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-08T00:00:00",
+    "open": 7.8208,
+    "high": 7.822,
+    "low": 7.8193,
+    "close": 7.82028,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-09T00:00:00",
+    "open": 7.8201,
+    "high": 7.82275,
+    "low": 7.8196,
+    "close": 7.8203,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-11T00:00:00",
+    "open": 7.8208,
+    "high": 7.82218,
+    "low": 7.819,
+    "close": 7.8216,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-12T00:00:00",
+    "open": 7.82167,
+    "high": 7.82485,
+    "low": 7.8205,
+    "close": 7.82361,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-13T00:00:00",
+    "open": 7.8236,
+    "high": 7.82535,
+    "low": 7.8223,
+    "close": 7.8238,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-14T00:00:00",
+    "open": 7.82366,
+    "high": 7.82895,
+    "low": 7.8208,
+    "close": 7.8219,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-15T00:00:00",
+    "open": 7.8219,
+    "high": 7.82325,
+    "low": 7.8207,
+    "close": 7.82285,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-16T00:00:00",
+    "open": 7.8227,
+    "high": 7.82457,
+    "low": 7.8217,
+    "close": 7.822,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-18T00:00:00",
+    "open": 7.82232,
+    "high": 7.8235,
+    "low": 7.8178,
+    "close": 7.8201,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-19T00:00:00",
+    "open": 7.8201,
+    "high": 7.8236,
+    "low": 7.81845,
+    "close": 7.82335,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-20T00:00:00",
+    "open": 7.8233,
+    "high": 7.8243,
+    "low": 7.822,
+    "close": 7.8227,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-21T00:00:00",
+    "open": 7.8228,
+    "high": 7.82355,
+    "low": 7.8197,
+    "close": 7.821,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-22T00:00:00",
+    "open": 7.8211,
+    "high": 7.82245,
+    "low": 7.8172,
+    "close": 7.8211,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-23T00:00:00",
+    "open": 7.821,
+    "high": 7.8224,
+    "low": 7.81825,
+    "close": 7.8224,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-25T00:00:00",
+    "open": 7.8216,
+    "high": 7.82255,
+    "low": 7.8186,
+    "close": 7.8216,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-26T00:00:00",
+    "open": 7.8216,
+    "high": 7.82595,
+    "low": 7.8209,
+    "close": 7.8239,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-27T00:00:00",
+    "open": 7.8238,
+    "high": 7.82435,
+    "low": 7.82185,
+    "close": 7.82405,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-28T00:00:00",
+    "open": 7.824,
+    "high": 7.82985,
+    "low": 7.82085,
+    "close": 7.8269,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-29T00:00:00",
+    "open": 7.8269,
+    "high": 7.8278,
+    "low": 7.82198,
+    "close": 7.82445,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-03-30T00:00:00",
+    "open": 7.82485,
+    "high": 7.82545,
+    "low": 7.82295,
+    "close": 7.82515,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-01T00:00:00",
+    "open": 7.8261,
+    "high": 7.82832,
+    "low": 7.82423,
+    "close": 7.8255,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-02T00:00:00",
+    "open": 7.8255,
+    "high": 7.83065,
+    "low": 7.82401,
+    "close": 7.8288,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-03T00:00:00",
+    "open": 7.82875,
+    "high": 7.83005,
+    "low": 7.8276,
+    "close": 7.82885,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-04T00:00:00",
+    "open": 7.8287,
+    "high": 7.82987,
+    "low": 7.82705,
+    "close": 7.8285,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-05T00:00:00",
+    "open": 7.8285,
+    "high": 7.83005,
+    "low": 7.82725,
+    "close": 7.82869,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-06T00:00:00",
+    "open": 7.82869,
+    "high": 7.8303,
+    "low": 7.8286,
+    "close": 7.8292,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-08T00:00:00",
+    "open": 7.82895,
+    "high": 7.8329,
+    "low": 7.8285,
+    "close": 7.8317,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-09T00:00:00",
+    "open": 7.83215,
+    "high": 7.83365,
+    "low": 7.82965,
+    "close": 7.8307,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-10T00:00:00",
+    "open": 7.82995,
+    "high": 7.83811,
+    "low": 7.82765,
+    "close": 7.8356,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-11T00:00:00",
+    "open": 7.83665,
+    "high": 7.8388,
+    "low": 7.8331,
+    "close": 7.8379,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-12T00:00:00",
+    "open": 7.83805,
+    "high": 7.83935,
+    "low": 7.83565,
+    "close": 7.83745,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-15T00:00:00",
+    "open": 7.8375,
+    "high": 7.83805,
+    "low": 7.8273,
+    "close": 7.8287,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-16T00:00:00",
+    "open": 7.82855,
+    "high": 7.83353,
+    "low": 7.8262,
+    "close": 7.8318,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-17T00:00:00",
+    "open": 7.8319,
+    "high": 7.83325,
+    "low": 7.8299,
+    "close": 7.8306,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-18T00:00:00",
+    "open": 7.83025,
+    "high": 7.8333,
+    "low": 7.8293,
+    "close": 7.8315,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-19T00:00:00",
+    "open": 7.83155,
+    "high": 7.83395,
+    "low": 7.82786,
+    "close": 7.83255,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-22T00:00:00",
+    "open": 7.83247,
+    "high": 7.83685,
+    "low": 7.832,
+    "close": 7.8356,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-23T00:00:00",
+    "open": 7.83594,
+    "high": 7.8378,
+    "low": 7.8346,
+    "close": 7.8346,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-24T00:00:00",
+    "open": 7.83484,
+    "high": 7.8392,
+    "low": 7.83,
+    "close": 7.83185,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-25T00:00:00",
+    "open": 7.83165,
+    "high": 7.8335,
+    "low": 7.82721,
+    "close": 7.8279,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-26T00:00:00",
+    "open": 7.82805,
+    "high": 7.83089,
+    "low": 7.82676,
+    "close": 7.82784,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-29T00:00:00",
+    "open": 7.82897,
+    "high": 7.82995,
+    "low": 7.82345,
+    "close": 7.8255,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-04-30T00:00:00",
+    "open": 7.8255,
+    "high": 7.82745,
+    "low": 7.8177,
+    "close": 7.8243,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-01T00:00:00",
+    "open": 7.8236,
+    "high": 7.82885,
+    "low": 7.81981,
+    "close": 7.8233,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-02T00:00:00",
+    "open": 7.82301,
+    "high": 7.82516,
+    "low": 7.8098,
+    "close": 7.81335,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-03T00:00:00",
+    "open": 7.81275,
+    "high": 7.8175,
+    "low": 7.80465,
+    "close": 7.8118,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-06T00:00:00",
+    "open": 7.8117,
+    "high": 7.82025,
+    "low": 7.81043,
+    "close": 7.8183,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-07T00:00:00",
+    "open": 7.8184,
+    "high": 7.82699,
+    "low": 7.8168,
+    "close": 7.82215,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-08T00:00:00",
+    "open": 7.82255,
+    "high": 7.82525,
+    "low": 7.8157,
+    "close": 7.8175,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-09T00:00:00",
+    "open": 7.81847,
+    "high": 7.82195,
+    "low": 7.81112,
+    "close": 7.8141,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-10T00:00:00",
+    "open": 7.81355,
+    "high": 7.81682,
+    "low": 7.80835,
+    "close": 7.81445,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-13T00:00:00",
+    "open": 7.81441,
+    "high": 7.8159,
+    "low": 7.8111,
+    "close": 7.8124,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-14T00:00:00",
+    "open": 7.81215,
+    "high": 7.81475,
+    "low": 7.80948,
+    "close": 7.8118,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-15T00:00:00",
+    "open": 7.81195,
+    "high": 7.81305,
+    "low": 7.80665,
+    "close": 7.8096,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-16T00:00:00",
+    "open": 7.80978,
+    "high": 7.81141,
+    "low": 7.80065,
+    "close": 7.8014,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-17T00:00:00",
+    "open": 7.80105,
+    "high": 7.8039,
+    "low": 7.79835,
+    "close": 7.8018,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-20T00:00:00",
+    "open": 7.8014,
+    "high": 7.8041,
+    "low": 7.7974,
+    "close": 7.7985,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-21T00:00:00",
+    "open": 7.79845,
+    "high": 7.80672,
+    "low": 7.7964,
+    "close": 7.8048,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-22T00:00:00",
+    "open": 7.80408,
+    "high": 7.80884,
+    "low": 7.79738,
+    "close": 7.80755,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-23T00:00:00",
+    "open": 7.80715,
+    "high": 7.81135,
+    "low": 7.80303,
+    "close": 7.80945,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-24T00:00:00",
+    "open": 7.81015,
+    "high": 7.81475,
+    "low": 7.8081,
+    "close": 7.8125,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-27T00:00:00",
+    "open": 7.81206,
+    "high": 7.81455,
+    "low": 7.80639,
+    "close": 7.8079,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-28T00:00:00",
+    "open": 7.80765,
+    "high": 7.81225,
+    "low": 7.80567,
+    "close": 7.8116,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-29T00:00:00",
+    "open": 7.81175,
+    "high": 7.81493,
+    "low": 7.81069,
+    "close": 7.8136,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-30T00:00:00",
+    "open": 7.81385,
+    "high": 7.81924,
+    "low": 7.8121,
+    "close": 7.8175,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-05-31T00:00:00",
+    "open": 7.81805,
+    "high": 7.82675,
+    "low": 7.7914,
+    "close": 7.82015,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-03T00:00:00",
+    "open": 7.81973,
+    "high": 7.82372,
+    "low": 7.8182,
+    "close": 7.8198,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-04T00:00:00",
+    "open": 7.82135,
+    "high": 7.82255,
+    "low": 7.8125,
+    "close": 7.8135,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-05T00:00:00",
+    "open": 7.81405,
+    "high": 7.81875,
+    "low": 7.8078,
+    "close": 7.8117,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-06T00:00:00",
+    "open": 7.81205,
+    "high": 7.81325,
+    "low": 7.8081,
+    "close": 7.80941,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-07T00:00:00",
+    "open": 7.80945,
+    "high": 7.81555,
+    "low": 7.80791,
+    "close": 7.81293,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-10T00:00:00",
+    "open": 7.8128,
+    "high": 7.81425,
+    "low": 7.8093,
+    "close": 7.813,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-11T00:00:00",
+    "open": 7.81295,
+    "high": 7.81435,
+    "low": 7.80785,
+    "close": 7.8125,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-12T00:00:00",
+    "open": 7.81305,
+    "high": 7.81655,
+    "low": 7.808,
+    "close": 7.8095,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-13T00:00:00",
+    "open": 7.80875,
+    "high": 7.81157,
+    "low": 7.80723,
+    "close": 7.8104,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-14T00:00:00",
+    "open": 7.81125,
+    "high": 7.81315,
+    "low": 7.809,
+    "close": 7.8106,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-17T00:00:00",
+    "open": 7.81241,
+    "high": 7.81255,
+    "low": 7.8088,
+    "close": 7.8103,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-18T00:00:00",
+    "open": 7.81055,
+    "high": 7.81095,
+    "low": 7.80591,
+    "close": 7.8072,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-19T00:00:00",
+    "open": 7.80705,
+    "high": 7.8091,
+    "low": 7.8053,
+    "close": 7.8069,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-20T00:00:00",
+    "open": 7.80715,
+    "high": 7.80755,
+    "low": 7.80315,
+    "close": 7.8043,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-21T00:00:00",
+    "open": 7.80455,
+    "high": 7.80695,
+    "low": 7.8017,
+    "close": 7.8062,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-24T00:00:00",
+    "open": 7.80589,
+    "high": 7.8108,
+    "low": 7.803,
+    "close": 7.8079,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-25T00:00:00",
+    "open": 7.80845,
+    "high": 7.81365,
+    "low": 7.8063,
+    "close": 7.8088,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-26T00:00:00",
+    "open": 7.81125,
+    "high": 7.8158,
+    "low": 7.80774,
+    "close": 7.8091,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-27T00:00:00",
+    "open": 7.809,
+    "high": 7.81166,
+    "low": 7.8065,
+    "close": 7.8089,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-06-28T00:00:00",
+    "open": 7.80885,
+    "high": 7.81195,
+    "low": 7.80628,
+    "close": 7.80825,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-01T00:00:00",
+    "open": 7.80895,
+    "high": 7.81323,
+    "low": 7.80825,
+    "close": 7.8123,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-02T00:00:00",
+    "open": 7.81205,
+    "high": 7.81835,
+    "low": 7.81015,
+    "close": 7.8136,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-03T00:00:00",
+    "open": 7.81325,
+    "high": 7.8144,
+    "low": 7.80936,
+    "close": 7.8097,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-04T00:00:00",
+    "open": 7.80995,
+    "high": 7.81145,
+    "low": 7.8078,
+    "close": 7.8092,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-05T00:00:00",
+    "open": 7.81005,
+    "high": 7.81585,
+    "low": 7.8081,
+    "close": 7.81365,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-08T00:00:00",
+    "open": 7.813,
+    "high": 7.8132,
+    "low": 7.80885,
+    "close": 7.8099,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-09T00:00:00",
+    "open": 7.80985,
+    "high": 7.81255,
+    "low": 7.80875,
+    "close": 7.8119,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-10T00:00:00",
+    "open": 7.81135,
+    "high": 7.81385,
+    "low": 7.80895,
+    "close": 7.81165,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-11T00:00:00",
+    "open": 7.8109,
+    "high": 7.81355,
+    "low": 7.8064,
+    "close": 7.8077,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-12T00:00:00",
+    "open": 7.80755,
+    "high": 7.80965,
+    "low": 7.8053,
+    "close": 7.80815,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-15T00:00:00",
+    "open": 7.8076,
+    "high": 7.809,
+    "low": 7.80444,
+    "close": 7.8065,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-16T00:00:00",
+    "open": 7.80695,
+    "high": 7.8087,
+    "low": 7.80365,
+    "close": 7.8082,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-17T00:00:00",
+    "open": 7.80825,
+    "high": 7.80885,
+    "low": 7.805,
+    "close": 7.8074,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-18T00:00:00",
+    "open": 7.80745,
+    "high": 7.81138,
+    "low": 7.806,
+    "close": 7.8102,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-19T00:00:00",
+    "open": 7.81025,
+    "high": 7.81213,
+    "low": 7.8083,
+    "close": 7.80935,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-22T00:00:00",
+    "open": 7.81017,
+    "high": 7.811,
+    "low": 7.80435,
+    "close": 7.8072,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-23T00:00:00",
+    "open": 7.80475,
+    "high": 7.81134,
+    "low": 7.80195,
+    "close": 7.81005,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-24T00:00:00",
+    "open": 7.80948,
+    "high": 7.81186,
+    "low": 7.80094,
+    "close": 7.8086,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-25T00:00:00",
+    "open": 7.80865,
+    "high": 7.80945,
+    "low": 7.8032,
+    "close": 7.8066,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-26T00:00:00",
+    "open": 7.80735,
+    "high": 7.80955,
+    "low": 7.80435,
+    "close": 7.80525,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-29T00:00:00",
+    "open": 7.80676,
+    "high": 7.8117,
+    "low": 7.80605,
+    "close": 7.81005,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-30T00:00:00",
+    "open": 7.80819,
+    "high": 7.82295,
+    "low": 7.80819,
+    "close": 7.8131,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-07-31T00:00:00",
+    "open": 7.81315,
+    "high": 7.81695,
+    "low": 7.81063,
+    "close": 7.81315,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-01T00:00:00",
+    "open": 7.8125,
+    "high": 7.81735,
+    "low": 7.8121,
+    "close": 7.8149,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-02T00:00:00",
+    "open": 7.8148,
+    "high": 7.81925,
+    "low": 7.8051,
+    "close": 7.80734,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-05T00:00:00",
+    "open": 7.8067,
+    "high": 7.80672,
+    "low": 7.74528,
+    "close": 7.7887,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-06T00:00:00",
+    "open": 7.78985,
+    "high": 7.7965,
+    "low": 7.78355,
+    "close": 7.7947,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-07T00:00:00",
+    "open": 7.79455,
+    "high": 7.79975,
+    "low": 7.79215,
+    "close": 7.7985,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-08T00:00:00",
+    "open": 7.79825,
+    "high": 7.79905,
+    "low": 7.782,
+    "close": 7.795,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-09T00:00:00",
+    "open": 7.79475,
+    "high": 7.80495,
+    "low": 7.79262,
+    "close": 7.79785,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-12T00:00:00",
+    "open": 7.7979,
+    "high": 7.79985,
+    "low": 7.78865,
+    "close": 7.79114,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-13T00:00:00",
+    "open": 7.79175,
+    "high": 7.79569,
+    "low": 7.78272,
+    "close": 7.78655,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-14T00:00:00",
+    "open": 7.78845,
+    "high": 7.80005,
+    "low": 7.78125,
+    "close": 7.79267,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-15T00:00:00",
+    "open": 7.79275,
+    "high": 7.7993,
+    "low": 7.78911,
+    "close": 7.79705,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-16T00:00:00",
+    "open": 7.79715,
+    "high": 7.7986,
+    "low": 7.79337,
+    "close": 7.79445,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-19T00:00:00",
+    "open": 7.79373,
+    "high": 7.79548,
+    "low": 7.78346,
+    "close": 7.78861,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-20T00:00:00",
+    "open": 7.78785,
+    "high": 7.7911,
+    "low": 7.78573,
+    "close": 7.78815,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-21T00:00:00",
+    "open": 7.78855,
+    "high": 7.79495,
+    "low": 7.78705,
+    "close": 7.79335,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-22T00:00:00",
+    "open": 7.79365,
+    "high": 7.79845,
+    "low": 7.78825,
+    "close": 7.79775,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-23T00:00:00",
+    "open": 7.79785,
+    "high": 7.80085,
+    "low": 7.7933,
+    "close": 7.79619,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-26T00:00:00",
+    "open": 7.79748,
+    "high": 7.79936,
+    "low": 7.79374,
+    "close": 7.79585,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-27T00:00:00",
+    "open": 7.79615,
+    "high": 7.80758,
+    "low": 7.795,
+    "close": 7.80185,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-28T00:00:00",
+    "open": 7.80265,
+    "high": 7.80515,
+    "low": 7.79785,
+    "close": 7.80095,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-29T00:00:00",
+    "open": 7.80045,
+    "high": 7.80149,
+    "low": 7.79203,
+    "close": 7.79805,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-08-30T00:00:00",
+    "open": 7.79695,
+    "high": 7.80185,
+    "low": 7.79345,
+    "close": 7.7975,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-02T00:00:00",
+    "open": 7.79874,
+    "high": 7.79885,
+    "low": 7.79585,
+    "close": 7.79608,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-03T00:00:00",
+    "open": 7.79435,
+    "high": 7.79955,
+    "low": 7.79435,
+    "close": 7.79845,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-04T00:00:00",
+    "open": 7.79805,
+    "high": 7.79935,
+    "low": 7.79565,
+    "close": 7.79715,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-05T00:00:00",
+    "open": 7.79685,
+    "high": 7.79715,
+    "low": 7.79302,
+    "close": 7.79315,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-06T00:00:00",
+    "open": 7.79319,
+    "high": 7.80325,
+    "low": 7.78904,
+    "close": 7.79555,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-09T00:00:00",
+    "open": 7.79583,
+    "high": 7.79795,
+    "low": 7.79494,
+    "close": 7.79715,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-10T00:00:00",
+    "open": 7.79725,
+    "high": 7.79825,
+    "low": 7.79415,
+    "close": 7.79755,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-11T00:00:00",
+    "open": 7.79748,
+    "high": 7.79945,
+    "low": 7.79525,
+    "close": 7.79886,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-12T00:00:00",
+    "open": 7.79755,
+    "high": 7.80375,
+    "low": 7.79208,
+    "close": 7.80325,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-13T00:00:00",
+    "open": 7.80315,
+    "high": 7.80336,
+    "low": 7.79696,
+    "close": 7.79985,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-16T00:00:00",
+    "open": 7.7982,
+    "high": 7.79885,
+    "low": 7.79258,
+    "close": 7.79295,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-17T00:00:00",
+    "open": 7.79275,
+    "high": 7.79605,
+    "low": 7.78885,
+    "close": 7.79425,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-18T00:00:00",
+    "open": 7.79415,
+    "high": 7.79598,
+    "low": 7.78906,
+    "close": 7.79305,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-19T00:00:00",
+    "open": 7.79295,
+    "high": 7.79645,
+    "low": 7.79115,
+    "close": 7.79485,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-20T00:00:00",
+    "open": 7.79325,
+    "high": 7.79555,
+    "low": 7.78933,
+    "close": 7.79008,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-23T00:00:00",
+    "open": 7.79113,
+    "high": 7.79205,
+    "low": 7.78451,
+    "close": 7.78613,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-24T00:00:00",
+    "open": 7.787,
+    "high": 7.7894,
+    "low": 7.78182,
+    "close": 7.78365,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-25T00:00:00",
+    "open": 7.78295,
+    "high": 7.78845,
+    "low": 7.78137,
+    "close": 7.78485,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-26T00:00:00",
+    "open": 7.78515,
+    "high": 7.79045,
+    "low": 7.77355,
+    "close": 7.77785,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-27T00:00:00",
+    "open": 7.77915,
+    "high": 7.78345,
+    "low": 7.77001,
+    "close": 7.77213,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-09-30T00:00:00",
+    "open": 7.77281,
+    "high": 7.77501,
+    "low": 7.76296,
+    "close": 7.77365,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-01T00:00:00",
+    "open": 7.77435,
+    "high": 7.77955,
+    "low": 7.77068,
+    "close": 7.7713,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-02T00:00:00",
+    "open": 7.77135,
+    "high": 7.7755,
+    "low": 7.76205,
+    "close": 7.76231,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-03T00:00:00",
+    "open": 7.76265,
+    "high": 7.7718,
+    "low": 7.76205,
+    "close": 7.76445,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-04T00:00:00",
+    "open": 7.76475,
+    "high": 7.76979,
+    "low": 7.7622,
+    "close": 7.76673,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-07T00:00:00",
+    "open": 7.76475,
+    "high": 7.76765,
+    "low": 7.76356,
+    "close": 7.76574,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-08T00:00:00",
+    "open": 7.76588,
+    "high": 7.7757,
+    "low": 7.76535,
+    "close": 7.77556,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-09T00:00:00",
+    "open": 7.77564,
+    "high": 7.77725,
+    "low": 7.76841,
+    "close": 7.77083,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-10T00:00:00",
+    "open": 7.77085,
+    "high": 7.77357,
+    "low": 7.76635,
+    "close": 7.76982,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-11T00:00:00",
+    "open": 7.76981,
+    "high": 7.77205,
+    "low": 7.7689,
+    "close": 7.77135,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-12T00:00:00",
+    "open": 7.77115,
+    "high": 7.77758,
+    "low": 7.76954,
+    "close": 7.77758,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-14T00:00:00",
+    "open": 7.77005,
+    "high": 7.77325,
+    "low": 7.76095,
+    "close": 7.76346,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-15T00:00:00",
+    "open": 7.76345,
+    "high": 7.7688,
+    "low": 7.76214,
+    "close": 7.7662,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-16T00:00:00",
+    "open": 7.7662,
+    "high": 7.7721,
+    "low": 7.76555,
+    "close": 7.7709,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-17T00:00:00",
+    "open": 7.77112,
+    "high": 7.7758,
+    "low": 7.76866,
+    "close": 7.7737,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-18T00:00:00",
+    "open": 7.77374,
+    "high": 7.77625,
+    "low": 7.76767,
+    "close": 7.77094,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-19T00:00:00",
+    "open": 7.7706,
+    "high": 7.77275,
+    "low": 7.76807,
+    "close": 7.77075,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-21T00:00:00",
+    "open": 7.77025,
+    "high": 7.7744,
+    "low": 7.768,
+    "close": 7.7734,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-22T00:00:00",
+    "open": 7.77343,
+    "high": 7.7747,
+    "low": 7.7716,
+    "close": 7.772,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-23T00:00:00",
+    "open": 7.77191,
+    "high": 7.77385,
+    "low": 7.7689,
+    "close": 7.76895,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-24T00:00:00",
+    "open": 7.76895,
+    "high": 7.77145,
+    "low": 7.7672,
+    "close": 7.7697,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-25T00:00:00",
+    "open": 7.7696,
+    "high": 7.77681,
+    "low": 7.7685,
+    "close": 7.7702,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-26T00:00:00",
+    "open": 7.77045,
+    "high": 7.7718,
+    "low": 7.7699,
+    "close": 7.7702,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-28T00:00:00",
+    "open": 7.77058,
+    "high": 7.7735,
+    "low": 7.7699,
+    "close": 7.7721,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-29T00:00:00",
+    "open": 7.772,
+    "high": 7.77238,
+    "low": 7.7695,
+    "close": 7.77155,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-30T00:00:00",
+    "open": 7.7713,
+    "high": 7.7737,
+    "low": 7.7695,
+    "close": 7.7719,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-10-31T00:00:00",
+    "open": 7.7719,
+    "high": 7.77625,
+    "low": 7.7712,
+    "close": 7.77427,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-01T00:00:00",
+    "open": 7.7739,
+    "high": 7.77869,
+    "low": 7.77179,
+    "close": 7.7777,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-02T00:00:00",
+    "open": 7.7776,
+    "high": 7.77815,
+    "low": 7.7761,
+    "close": 7.77662,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-04T00:00:00",
+    "open": 7.77798,
+    "high": 7.7783,
+    "low": 7.7716,
+    "close": 7.7729,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-05T00:00:00",
+    "open": 7.7729,
+    "high": 7.7751,
+    "low": 7.7703,
+    "close": 7.772,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-06T00:00:00",
+    "open": 7.7721,
+    "high": 7.7786,
+    "low": 7.77075,
+    "close": 7.77617,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-07T00:00:00",
+    "open": 7.77615,
+    "high": 7.77863,
+    "low": 7.7707,
+    "close": 7.7709,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-08T00:00:00",
+    "open": 7.77074,
+    "high": 7.77595,
+    "low": 7.76825,
+    "close": 7.7753,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-09T00:00:00",
+    "open": 7.7753,
+    "high": 7.77595,
+    "low": 7.77415,
+    "close": 7.77445,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-11T00:00:00",
+    "open": 7.77529,
+    "high": 7.77685,
+    "low": 7.7725,
+    "close": 7.776,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-12T00:00:00",
+    "open": 7.776,
+    "high": 7.77975,
+    "low": 7.7744,
+    "close": 7.77855,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-13T00:00:00",
+    "open": 7.7784,
+    "high": 7.78175,
+    "low": 7.77649,
+    "close": 7.78144,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-14T00:00:00",
+    "open": 7.78146,
+    "high": 7.7843,
+    "low": 7.7793,
+    "close": 7.78222,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-15T00:00:00",
+    "open": 7.7823,
+    "high": 7.7865,
+    "low": 7.78035,
+    "close": 7.7861,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-16T00:00:00",
+    "open": 7.786,
+    "high": 7.78715,
+    "low": 7.78477,
+    "close": 7.78523,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-18T00:00:00",
+    "open": 7.78593,
+    "high": 7.7868,
+    "low": 7.7832,
+    "close": 7.78426,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-19T00:00:00",
+    "open": 7.78427,
+    "high": 7.78675,
+    "low": 7.7806,
+    "close": 7.7835,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-20T00:00:00",
+    "open": 7.78353,
+    "high": 7.78455,
+    "low": 7.7812,
+    "close": 7.78435,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-21T00:00:00",
+    "open": 7.784,
+    "high": 7.78445,
+    "low": 7.7816,
+    "close": 7.78305,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-22T00:00:00",
+    "open": 7.78315,
+    "high": 7.7851,
+    "low": 7.7814,
+    "close": 7.78446,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-23T00:00:00",
+    "open": 7.78443,
+    "high": 7.78485,
+    "low": 7.7839,
+    "close": 7.7844,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-25T00:00:00",
+    "open": 7.7835,
+    "high": 7.7837,
+    "low": 7.78017,
+    "close": 7.7828,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-26T00:00:00",
+    "open": 7.7828,
+    "high": 7.78545,
+    "low": 7.7806,
+    "close": 7.7828,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-27T00:00:00",
+    "open": 7.7827,
+    "high": 7.78545,
+    "low": 7.7805,
+    "close": 7.78102,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-28T00:00:00",
+    "open": 7.78103,
+    "high": 7.78445,
+    "low": 7.77985,
+    "close": 7.78414,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-29T00:00:00",
+    "open": 7.78424,
+    "high": 7.7847,
+    "low": 7.77986,
+    "close": 7.78125,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-11-30T00:00:00",
+    "open": 7.7813,
+    "high": 7.7821,
+    "low": 7.7808,
+    "close": 7.78205,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-02T00:00:00",
+    "open": 7.7815,
+    "high": 7.7838,
+    "low": 7.7807,
+    "close": 7.78187,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-03T00:00:00",
+    "open": 7.78195,
+    "high": 7.78445,
+    "low": 7.7811,
+    "close": 7.7827,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-04T00:00:00",
+    "open": 7.7828,
+    "high": 7.78565,
+    "low": 7.7822,
+    "close": 7.78455,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-05T00:00:00",
+    "open": 7.78465,
+    "high": 7.78485,
+    "low": 7.7815,
+    "close": 7.78226,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-06T00:00:00",
+    "open": 7.78229,
+    "high": 7.78415,
+    "low": 7.7786,
+    "close": 7.78055,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-07T00:00:00",
+    "open": 7.7805,
+    "high": 7.78075,
+    "low": 7.77904,
+    "close": 7.7792,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-09T00:00:00",
+    "open": 7.78006,
+    "high": 7.7816,
+    "low": 7.7726,
+    "close": 7.77405,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-10T00:00:00",
+    "open": 7.77408,
+    "high": 7.7774,
+    "low": 7.771,
+    "close": 7.77525,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-11T00:00:00",
+    "open": 7.7751,
+    "high": 7.77781,
+    "low": 7.77188,
+    "close": 7.77605,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-12T00:00:00",
+    "open": 7.77596,
+    "high": 7.7764,
+    "low": 7.77155,
+    "close": 7.77508,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-13T00:00:00",
+    "open": 7.77525,
+    "high": 7.77655,
+    "low": 7.773,
+    "close": 7.7758,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-14T00:00:00",
+    "open": 7.7757,
+    "high": 7.77625,
+    "low": 7.77475,
+    "close": 7.77545,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-16T00:00:00",
+    "open": 7.776,
+    "high": 7.7767,
+    "low": 7.7735,
+    "close": 7.77435,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-17T00:00:00",
+    "open": 7.7743,
+    "high": 7.7749,
+    "low": 7.76795,
+    "close": 7.7693,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-18T00:00:00",
+    "open": 7.7693,
+    "high": 7.77235,
+    "low": 7.76845,
+    "close": 7.7719,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-19T00:00:00",
+    "open": 7.772,
+    "high": 7.7739,
+    "low": 7.7685,
+    "close": 7.7716,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-20T00:00:00",
+    "open": 7.77165,
+    "high": 7.774,
+    "low": 7.769,
+    "close": 7.7702,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-21T00:00:00",
+    "open": 7.7702,
+    "high": 7.7764,
+    "low": 7.7699,
+    "close": 7.7759,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-23T00:00:00",
+    "open": 7.77455,
+    "high": 7.7747,
+    "low": 7.76875,
+    "close": 7.76925,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-24T00:00:00",
+    "open": 7.7692,
+    "high": 7.7712,
+    "low": 7.76545,
+    "close": 7.7676,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-25T00:00:00",
+    "open": 7.767,
+    "high": 7.7672,
+    "low": 7.7666,
+    "close": 7.7672,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-26T00:00:00",
+    "open": 7.7672,
+    "high": 7.7685,
+    "low": 7.76595,
+    "close": 7.7678,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-27T00:00:00",
+    "open": 7.76785,
+    "high": 7.76825,
+    "low": 7.7612,
+    "close": 7.76235,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-28T00:00:00",
+    "open": 7.7623,
+    "high": 7.7625,
+    "low": 7.76145,
+    "close": 7.76195,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-30T00:00:00",
+    "open": 7.76195,
+    "high": 7.7689,
+    "low": 7.7591,
+    "close": 7.7647,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2024-12-31T00:00:00",
+    "open": 7.7647,
+    "high": 7.76825,
+    "low": 7.76145,
+    "close": 7.7662,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-01T00:00:00",
+    "open": 7.7666,
+    "high": 7.769,
+    "low": 7.7666,
+    "close": 7.769,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-02T00:00:00",
+    "open": 7.7684,
+    "high": 7.7793,
+    "low": 7.7682,
+    "close": 7.7775,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-03T00:00:00",
+    "open": 7.7774,
+    "high": 7.7802,
+    "low": 7.7761,
+    "close": 7.7775,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-04T00:00:00",
+    "open": 7.7777,
+    "high": 7.7795,
+    "low": 7.7775,
+    "close": 7.7785,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-06T00:00:00",
+    "open": 7.779,
+    "high": 7.78,
+    "low": 7.7721,
+    "close": 7.7756,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-07T00:00:00",
+    "open": 7.7755,
+    "high": 7.7775,
+    "low": 7.7709,
+    "close": 7.7763,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-08T00:00:00",
+    "open": 7.7764,
+    "high": 7.7813,
+    "low": 7.7739,
+    "close": 7.7798,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-09T00:00:00",
+    "open": 7.7797,
+    "high": 7.7828,
+    "low": 7.778,
+    "close": 7.7826,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-10T00:00:00",
+    "open": 7.7826,
+    "high": 7.7877,
+    "low": 7.7805,
+    "close": 7.7868,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-11T00:00:00",
+    "open": 7.7869,
+    "high": 7.7881,
+    "low": 7.7868,
+    "close": 7.7874,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-13T00:00:00",
+    "open": 7.787,
+    "high": 7.7876,
+    "low": 7.7845,
+    "close": 7.7864,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-14T00:00:00",
+    "open": 7.7865,
+    "high": 7.7877,
+    "low": 7.7826,
+    "close": 7.7875,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-15T00:00:00",
+    "open": 7.7875,
+    "high": 7.79,
+    "low": 7.7848,
+    "close": 7.7878,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-16T00:00:00",
+    "open": 7.7878,
+    "high": 7.7892,
+    "low": 7.7845,
+    "close": 7.7878,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-17T00:00:00",
+    "open": 7.7879,
+    "high": 7.7889,
+    "low": 7.7823,
+    "close": 7.7851,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-18T00:00:00",
+    "open": 7.7851,
+    "high": 7.7862,
+    "low": 7.7849,
+    "close": 7.7861,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-20T00:00:00",
+    "open": 7.7849,
+    "high": 7.7865,
+    "low": 7.7788,
+    "close": 7.7803,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-21T00:00:00",
+    "open": 7.7804,
+    "high": 7.7866,
+    "low": 7.7785,
+    "close": 7.7863,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-22T00:00:00",
+    "open": 7.7864,
+    "high": 7.7904,
+    "low": 7.7849,
+    "close": 7.7882,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-23T00:00:00",
+    "open": 7.7882,
+    "high": 7.7917,
+    "low": 7.786,
+    "close": 7.7895,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-24T00:00:00",
+    "open": 7.7895,
+    "high": 7.7908,
+    "low": 7.7845,
+    "close": 7.7883,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-25T00:00:00",
+    "open": 7.7882,
+    "high": 7.789,
+    "low": 7.7867,
+    "close": 7.7871,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-27T00:00:00",
+    "open": 7.7883,
+    "high": 7.7922,
+    "low": 7.7854,
+    "close": 7.7892,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-28T00:00:00",
+    "open": 7.7894,
+    "high": 7.7922,
+    "low": 7.7871,
+    "close": 7.7905,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-29T00:00:00",
+    "open": 7.7904,
+    "high": 7.7923,
+    "low": 7.789,
+    "close": 7.7915,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-30T00:00:00",
+    "open": 7.7915,
+    "high": 7.7937,
+    "low": 7.7905,
+    "close": 7.792,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-01-31T00:00:00",
+    "open": 7.792,
+    "high": 7.7937,
+    "low": 7.791,
+    "close": 7.7926,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-01T00:00:00",
+    "open": 7.7925,
+    "high": 7.7933,
+    "low": 7.7913,
+    "close": 7.7924,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-03T00:00:00",
+    "open": 7.794,
+    "high": 7.7956,
+    "low": 7.7916,
+    "close": 7.7929,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-04T00:00:00",
+    "open": 7.7929,
+    "high": 7.7934,
+    "low": 7.7861,
+    "close": 7.7874,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-05T00:00:00",
+    "open": 7.7874,
+    "high": 7.7902,
+    "low": 7.785,
+    "close": 7.7872,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-06T00:00:00",
+    "open": 7.787,
+    "high": 7.7886,
+    "low": 7.7837,
+    "close": 7.7863,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-07T00:00:00",
+    "open": 7.7862,
+    "high": 7.7912,
+    "low": 7.7846,
+    "close": 7.7904,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-08T00:00:00",
+    "open": 7.7903,
+    "high": 7.7911,
+    "low": 7.7903,
+    "close": 7.7908,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-10T00:00:00",
+    "open": 7.7904,
+    "high": 7.7918,
+    "low": 7.7872,
+    "close": 7.7896,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-11T00:00:00",
+    "open": 7.7896,
+    "high": 7.7935,
+    "low": 7.7884,
+    "close": 7.7922,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-12T00:00:00",
+    "open": 7.7922,
+    "high": 7.7936,
+    "low": 7.7882,
+    "close": 7.7899,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-13T00:00:00",
+    "open": 7.79,
+    "high": 7.7908,
+    "low": 7.7854,
+    "close": 7.7887,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-14T00:00:00",
+    "open": 7.7888,
+    "high": 7.7889,
+    "low": 7.7819,
+    "close": 7.7829,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-15T00:00:00",
+    "open": 7.7831,
+    "high": 7.7848,
+    "low": 7.7819,
+    "close": 7.7845,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-17T00:00:00",
+    "open": 7.7835,
+    "high": 7.7849,
+    "low": 7.7786,
+    "close": 7.781,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-18T00:00:00",
+    "open": 7.7811,
+    "high": 7.7829,
+    "low": 7.7733,
+    "close": 7.7741,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-19T00:00:00",
+    "open": 7.774,
+    "high": 7.7779,
+    "low": 7.7722,
+    "close": 7.7777,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-20T00:00:00",
+    "open": 7.7777,
+    "high": 7.7809,
+    "low": 7.7747,
+    "close": 7.7763,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-21T00:00:00",
+    "open": 7.7764,
+    "high": 7.777,
+    "low": 7.7687,
+    "close": 7.7699,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-22T00:00:00",
+    "open": 7.7699,
+    "high": 7.771,
+    "low": 7.769,
+    "close": 7.7698,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-24T00:00:00",
+    "open": 7.7703,
+    "high": 7.775,
+    "low": 7.7686,
+    "close": 7.7749,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 7.7748,
+    "high": 7.7781,
+    "low": 7.7727,
+    "close": 7.774,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "HKD",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 7.774,
+    "high": 7.7747,
+    "low": 7.7701,
+    "close": 7.7726,
+    "volume": 0.0,
+    "interval": "1d"
+  }
+]

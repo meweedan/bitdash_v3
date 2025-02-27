@@ -1,0 +1,1442 @@
+[
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T00:00:00",
+    "open": 1.04619,
+    "high": 1.04686,
+    "low": 1.04612,
+    "close": 1.04676,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T00:30:00",
+    "open": 1.04678,
+    "high": 1.04782,
+    "low": 1.04667,
+    "close": 1.047543,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T01:00:00",
+    "open": 1.047532,
+    "high": 1.04806,
+    "low": 1.04714,
+    "close": 1.04767,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T01:30:00",
+    "open": 1.047713,
+    "high": 1.04933,
+    "low": 1.047,
+    "close": 1.048132,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T02:00:00",
+    "open": 1.04806,
+    "high": 1.04866,
+    "low": 1.04542,
+    "close": 1.04551,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T02:30:00",
+    "open": 1.04547,
+    "high": 1.04619,
+    "low": 1.04523,
+    "close": 1.045432,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T03:00:00",
+    "open": 1.045418,
+    "high": 1.04582,
+    "low": 1.0449,
+    "close": 1.04514,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T03:30:00",
+    "open": 1.04512,
+    "high": 1.04575,
+    "low": 1.04494,
+    "close": 1.04547,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T04:00:00",
+    "open": 1.04549,
+    "high": 1.04593,
+    "low": 1.04519,
+    "close": 1.0459,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T04:30:00",
+    "open": 1.04587,
+    "high": 1.04647,
+    "low": 1.04555,
+    "close": 1.04631,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T05:00:00",
+    "open": 1.0463,
+    "high": 1.04683,
+    "low": 1.04547,
+    "close": 1.045733,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T05:30:00",
+    "open": 1.04573,
+    "high": 1.04626,
+    "low": 1.04506,
+    "close": 1.04599,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T06:00:00",
+    "open": 1.04598,
+    "high": 1.04662,
+    "low": 1.0457,
+    "close": 1.04641,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T06:30:00",
+    "open": 1.04641,
+    "high": 1.04668,
+    "low": 1.046,
+    "close": 1.046233,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T07:00:00",
+    "open": 1.046202,
+    "high": 1.04649,
+    "low": 1.04606,
+    "close": 1.046153,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T07:30:00",
+    "open": 1.04616,
+    "high": 1.04633,
+    "low": 1.04573,
+    "close": 1.04608,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T08:00:00",
+    "open": 1.04608,
+    "high": 1.04625,
+    "low": 1.04585,
+    "close": 1.04597,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-22T08:30:00",
+    "open": 1.045962,
+    "high": 1.04684,
+    "low": 1.04554,
+    "close": 1.04609,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T09:30:00",
+    "open": 1.04661,
+    "high": 1.04854,
+    "low": 1.04629,
+    "close": 1.04743,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T10:00:00",
+    "open": 1.04744,
+    "high": 1.04854,
+    "low": 1.04685,
+    "close": 1.047993,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T10:30:00",
+    "open": 1.047967,
+    "high": 1.04821,
+    "low": 1.04728,
+    "close": 1.047397,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T11:00:00",
+    "open": 1.047413,
+    "high": 1.04991,
+    "low": 1.04714,
+    "close": 1.049682,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T11:30:00",
+    "open": 1.049713,
+    "high": 1.0508,
+    "low": 1.04903,
+    "close": 1.050402,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T12:00:00",
+    "open": 1.050438,
+    "high": 1.05132,
+    "low": 1.05025,
+    "close": 1.05082,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T12:30:00",
+    "open": 1.05083,
+    "high": 1.05215,
+    "low": 1.05021,
+    "close": 1.0518,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T13:00:00",
+    "open": 1.05181,
+    "high": 1.05248,
+    "low": 1.05154,
+    "close": 1.051957,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T13:30:00",
+    "open": 1.05194,
+    "high": 1.05287,
+    "low": 1.0519,
+    "close": 1.052293,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T14:00:00",
+    "open": 1.052293,
+    "high": 1.05262,
+    "low": 1.05184,
+    "close": 1.05192,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T14:30:00",
+    "open": 1.051918,
+    "high": 1.05223,
+    "low": 1.05163,
+    "close": 1.05193,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T15:00:00",
+    "open": 1.05196,
+    "high": 1.05211,
+    "low": 1.05122,
+    "close": 1.05129,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T15:30:00",
+    "open": 1.0513,
+    "high": 1.05165,
+    "low": 1.0511,
+    "close": 1.05157,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T16:00:00",
+    "open": 1.051552,
+    "high": 1.05169,
+    "low": 1.05098,
+    "close": 1.051478,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T16:30:00",
+    "open": 1.051543,
+    "high": 1.05202,
+    "low": 1.05121,
+    "close": 1.0516,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T17:00:00",
+    "open": 1.05164,
+    "high": 1.05168,
+    "low": 1.05076,
+    "close": 1.05104,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T17:30:00",
+    "open": 1.05103,
+    "high": 1.05118,
+    "low": 1.05009,
+    "close": 1.050882,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T18:00:00",
+    "open": 1.050903,
+    "high": 1.05154,
+    "low": 1.0503,
+    "close": 1.050463,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T18:30:00",
+    "open": 1.05045,
+    "high": 1.05084,
+    "low": 1.04865,
+    "close": 1.049117,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T19:00:00",
+    "open": 1.049148,
+    "high": 1.0493,
+    "low": 1.04691,
+    "close": 1.047808,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T19:30:00",
+    "open": 1.047843,
+    "high": 1.04854,
+    "low": 1.04747,
+    "close": 1.048018,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T20:00:00",
+    "open": 1.04799,
+    "high": 1.04852,
+    "low": 1.04728,
+    "close": 1.04748,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T20:30:00",
+    "open": 1.04747,
+    "high": 1.04769,
+    "low": 1.04686,
+    "close": 1.047217,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T21:00:00",
+    "open": 1.047208,
+    "high": 1.04752,
+    "low": 1.04667,
+    "close": 1.047005,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T21:30:00",
+    "open": 1.047015,
+    "high": 1.0481,
+    "low": 1.04683,
+    "close": 1.04804,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T22:00:00",
+    "open": 1.04805,
+    "high": 1.04817,
+    "low": 1.04678,
+    "close": 1.046955,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T22:30:00",
+    "open": 1.046955,
+    "high": 1.04721,
+    "low": 1.04634,
+    "close": 1.04686,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T23:00:00",
+    "open": 1.04685,
+    "high": 1.04729,
+    "low": 1.04643,
+    "close": 1.046483,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-24T23:30:00",
+    "open": 1.046467,
+    "high": 1.04697,
+    "low": 1.046,
+    "close": 1.0469,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 1.04691,
+    "high": 1.04742,
+    "low": 1.04646,
+    "close": 1.04714,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T00:30:00",
+    "open": 1.047148,
+    "high": 1.0476,
+    "low": 1.04643,
+    "close": 1.046728,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T01:00:00",
+    "open": 1.046698,
+    "high": 1.04701,
+    "low": 1.04612,
+    "close": 1.04659,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T01:30:00",
+    "open": 1.04661,
+    "high": 1.04666,
+    "low": 1.04525,
+    "close": 1.04604,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T02:00:00",
+    "open": 1.046063,
+    "high": 1.0471,
+    "low": 1.04597,
+    "close": 1.04675,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T02:30:00",
+    "open": 1.046712,
+    "high": 1.04703,
+    "low": 1.04605,
+    "close": 1.0469,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T03:00:00",
+    "open": 1.0469,
+    "high": 1.04724,
+    "low": 1.04653,
+    "close": 1.04703,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T03:30:00",
+    "open": 1.047023,
+    "high": 1.04809,
+    "low": 1.04697,
+    "close": 1.04778,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T04:00:00",
+    "open": 1.04779,
+    "high": 1.04796,
+    "low": 1.04678,
+    "close": 1.04768,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T04:30:00",
+    "open": 1.0477,
+    "high": 1.04842,
+    "low": 1.04711,
+    "close": 1.0473,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T05:00:00",
+    "open": 1.04723,
+    "high": 1.04862,
+    "low": 1.04704,
+    "close": 1.04851,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T05:30:00",
+    "open": 1.04849,
+    "high": 1.04857,
+    "low": 1.04778,
+    "close": 1.04805,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T06:00:00",
+    "open": 1.048053,
+    "high": 1.04845,
+    "low": 1.04739,
+    "close": 1.047547,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T06:30:00",
+    "open": 1.047623,
+    "high": 1.04824,
+    "low": 1.04723,
+    "close": 1.047483,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T07:00:00",
+    "open": 1.047532,
+    "high": 1.04799,
+    "low": 1.04675,
+    "close": 1.04722,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T07:30:00",
+    "open": 1.04721,
+    "high": 1.04746,
+    "low": 1.04642,
+    "close": 1.046503,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T08:00:00",
+    "open": 1.046533,
+    "high": 1.04668,
+    "low": 1.04615,
+    "close": 1.046413,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T08:30:00",
+    "open": 1.046407,
+    "high": 1.04694,
+    "low": 1.04633,
+    "close": 1.04679,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T09:00:00",
+    "open": 1.04664,
+    "high": 1.0471,
+    "low": 1.04618,
+    "close": 1.04683,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T09:30:00",
+    "open": 1.04682,
+    "high": 1.04721,
+    "low": 1.04623,
+    "close": 1.04688,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T10:00:00",
+    "open": 1.046873,
+    "high": 1.04714,
+    "low": 1.04613,
+    "close": 1.04624,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T10:30:00",
+    "open": 1.046228,
+    "high": 1.04649,
+    "low": 1.04601,
+    "close": 1.046132,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T11:00:00",
+    "open": 1.046148,
+    "high": 1.04635,
+    "low": 1.04594,
+    "close": 1.04608,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T11:30:00",
+    "open": 1.04608,
+    "high": 1.04645,
+    "low": 1.04601,
+    "close": 1.04633,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T12:00:00",
+    "open": 1.04635,
+    "high": 1.04661,
+    "low": 1.04604,
+    "close": 1.046292,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T12:30:00",
+    "open": 1.046312,
+    "high": 1.04661,
+    "low": 1.04606,
+    "close": 1.04652,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T13:00:00",
+    "open": 1.046533,
+    "high": 1.0471,
+    "low": 1.04649,
+    "close": 1.04686,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T13:30:00",
+    "open": 1.04686,
+    "high": 1.04755,
+    "low": 1.04681,
+    "close": 1.047467,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T14:00:00",
+    "open": 1.047467,
+    "high": 1.04768,
+    "low": 1.04712,
+    "close": 1.04729,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T14:30:00",
+    "open": 1.04727,
+    "high": 1.04754,
+    "low": 1.04721,
+    "close": 1.04733,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T15:00:00",
+    "open": 1.04733,
+    "high": 1.04777,
+    "low": 1.04726,
+    "close": 1.04764,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T15:30:00",
+    "open": 1.04763,
+    "high": 1.04773,
+    "low": 1.04723,
+    "close": 1.04733,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T16:00:00",
+    "open": 1.0473,
+    "high": 1.04755,
+    "low": 1.0472,
+    "close": 1.04747,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T16:30:00",
+    "open": 1.04746,
+    "high": 1.04786,
+    "low": 1.04733,
+    "close": 1.04771,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T17:00:00",
+    "open": 1.0477,
+    "high": 1.04806,
+    "low": 1.04751,
+    "close": 1.047837,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T17:30:00",
+    "open": 1.047837,
+    "high": 1.04793,
+    "low": 1.04723,
+    "close": 1.047697,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T18:00:00",
+    "open": 1.0477,
+    "high": 1.04782,
+    "low": 1.04666,
+    "close": 1.04734,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T18:30:00",
+    "open": 1.04731,
+    "high": 1.04738,
+    "low": 1.04632,
+    "close": 1.046442,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T19:00:00",
+    "open": 1.046442,
+    "high": 1.04792,
+    "low": 1.04559,
+    "close": 1.046733,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T19:30:00",
+    "open": 1.046747,
+    "high": 1.04725,
+    "low": 1.04583,
+    "close": 1.04703,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T20:00:00",
+    "open": 1.04703,
+    "high": 1.04794,
+    "low": 1.04686,
+    "close": 1.0474,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T20:30:00",
+    "open": 1.04738,
+    "high": 1.04757,
+    "low": 1.04683,
+    "close": 1.047313,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T21:00:00",
+    "open": 1.0474,
+    "high": 1.04748,
+    "low": 1.0465,
+    "close": 1.04691,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T21:30:00",
+    "open": 1.04693,
+    "high": 1.0474,
+    "low": 1.04678,
+    "close": 1.047287,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T22:00:00",
+    "open": 1.047273,
+    "high": 1.04799,
+    "low": 1.04711,
+    "close": 1.04777,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T22:30:00",
+    "open": 1.047765,
+    "high": 1.049,
+    "low": 1.04765,
+    "close": 1.048952,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T23:00:00",
+    "open": 1.048963,
+    "high": 1.05005,
+    "low": 1.04886,
+    "close": 1.04966,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-25T23:30:00",
+    "open": 1.049662,
+    "high": 1.05003,
+    "low": 1.04879,
+    "close": 1.049368,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 1.04939,
+    "high": 1.05003,
+    "low": 1.04932,
+    "close": 1.04992,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T00:30:00",
+    "open": 1.04989,
+    "high": 1.05104,
+    "low": 1.04982,
+    "close": 1.05004,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T01:00:00",
+    "open": 1.050042,
+    "high": 1.05054,
+    "low": 1.04916,
+    "close": 1.05042,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T01:30:00",
+    "open": 1.05039,
+    "high": 1.05052,
+    "low": 1.04975,
+    "close": 1.05029,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T02:00:00",
+    "open": 1.05029,
+    "high": 1.05197,
+    "low": 1.05014,
+    "close": 1.05177,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T02:30:00",
+    "open": 1.05176,
+    "high": 1.05181,
+    "low": 1.04946,
+    "close": 1.04989,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 1.04984,
+    "high": 1.05045,
+    "low": 1.04944,
+    "close": 1.05011,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T03:30:00",
+    "open": 1.05012,
+    "high": 1.05065,
+    "low": 1.04957,
+    "close": 1.0497,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T04:00:00",
+    "open": 1.04977,
+    "high": 1.04982,
+    "low": 1.04837,
+    "close": 1.049322,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T04:30:00",
+    "open": 1.049317,
+    "high": 1.05027,
+    "low": 1.04912,
+    "close": 1.050218,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T05:00:00",
+    "open": 1.05024,
+    "high": 1.05095,
+    "low": 1.05016,
+    "close": 1.05038,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T05:30:00",
+    "open": 1.050368,
+    "high": 1.05187,
+    "low": 1.05028,
+    "close": 1.05086,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T06:00:00",
+    "open": 1.050842,
+    "high": 1.05132,
+    "low": 1.05043,
+    "close": 1.0507,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T06:30:00",
+    "open": 1.05063,
+    "high": 1.05119,
+    "low": 1.05052,
+    "close": 1.05106,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 1.05106,
+    "high": 1.05196,
+    "low": 1.0509,
+    "close": 1.051677,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T07:30:00",
+    "open": 1.051667,
+    "high": 1.05182,
+    "low": 1.05108,
+    "close": 1.05164,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T08:00:00",
+    "open": 1.051597,
+    "high": 1.05183,
+    "low": 1.05137,
+    "close": 1.05175,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T08:30:00",
+    "open": 1.05174,
+    "high": 1.05181,
+    "low": 1.05114,
+    "close": 1.051422,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T09:00:00",
+    "open": 1.05133,
+    "high": 1.05177,
+    "low": 1.05103,
+    "close": 1.0514,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T09:30:00",
+    "open": 1.05141,
+    "high": 1.05172,
+    "low": 1.05089,
+    "close": 1.05133,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T10:00:00",
+    "open": 1.05134,
+    "high": 1.0521,
+    "low": 1.05099,
+    "close": 1.052037,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T10:30:00",
+    "open": 1.052048,
+    "high": 1.05234,
+    "low": 1.05193,
+    "close": 1.052058,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 1.052042,
+    "high": 1.05254,
+    "low": 1.05195,
+    "close": 1.05244,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T11:30:00",
+    "open": 1.052437,
+    "high": 1.05249,
+    "low": 1.05211,
+    "close": 1.052298,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T12:00:00",
+    "open": 1.052258,
+    "high": 1.05242,
+    "low": 1.05169,
+    "close": 1.05217,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T12:30:00",
+    "open": 1.05216,
+    "high": 1.05223,
+    "low": 1.05137,
+    "close": 1.05153,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T13:00:00",
+    "open": 1.05154,
+    "high": 1.05174,
+    "low": 1.05074,
+    "close": 1.050813,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T13:30:00",
+    "open": 1.050807,
+    "high": 1.051,
+    "low": 1.05039,
+    "close": 1.05065,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T14:00:00",
+    "open": 1.05067,
+    "high": 1.05091,
+    "low": 1.05011,
+    "close": 1.0503,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T14:30:00",
+    "open": 1.05032,
+    "high": 1.05061,
+    "low": 1.05019,
+    "close": 1.05045,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 1.05043,
+    "high": 1.05055,
+    "low": 1.05001,
+    "close": 1.05036,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T15:30:00",
+    "open": 1.050362,
+    "high": 1.05058,
+    "low": 1.04966,
+    "close": 1.04974,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T16:00:00",
+    "open": 1.049717,
+    "high": 1.04985,
+    "low": 1.04927,
+    "close": 1.04962,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T16:30:00",
+    "open": 1.04961,
+    "high": 1.04968,
+    "low": 1.04903,
+    "close": 1.049157,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T17:00:00",
+    "open": 1.049167,
+    "high": 1.0494,
+    "low": 1.04868,
+    "close": 1.048843,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T17:30:00",
+    "open": 1.048842,
+    "high": 1.04969,
+    "low": 1.04878,
+    "close": 1.04946,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T18:00:00",
+    "open": 1.049462,
+    "high": 1.05021,
+    "low": 1.04933,
+    "close": 1.04986,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T18:30:00",
+    "open": 1.04975,
+    "high": 1.05007,
+    "low": 1.04923,
+    "close": 1.049393,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 1.049382,
+    "high": 1.05112,
+    "low": 1.04912,
+    "close": 1.05097,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T19:30:00",
+    "open": 1.051,
+    "high": 1.05121,
+    "low": 1.04936,
+    "close": 1.050242,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T20:00:00",
+    "open": 1.05028,
+    "high": 1.05036,
+    "low": 1.04946,
+    "close": 1.049605,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T20:30:00",
+    "open": 1.049595,
+    "high": 1.05012,
+    "low": 1.04947,
+    "close": 1.04969,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T21:00:00",
+    "open": 1.049723,
+    "high": 1.05013,
+    "low": 1.04918,
+    "close": 1.049295,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T21:30:00",
+    "open": 1.049338,
+    "high": 1.05011,
+    "low": 1.04908,
+    "close": 1.04977,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T22:00:00",
+    "open": 1.04975,
+    "high": 1.05025,
+    "low": 1.04911,
+    "close": 1.04948,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T22:30:00",
+    "open": 1.049465,
+    "high": 1.04959,
+    "low": 1.04865,
+    "close": 1.049157,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 1.049148,
+    "high": 1.04953,
+    "low": 1.04854,
+    "close": 1.04895,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-26T23:30:00",
+    "open": 1.04893,
+    "high": 1.04936,
+    "low": 1.04746,
+    "close": 1.04764,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "EURUSD",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 1.047667,
+    "high": 1.04952,
+    "low": 1.04761,
+    "close": 1.049198,
+    "volume": 0.0,
+    "interval": "30m"
+  }
+]

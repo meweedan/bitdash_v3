@@ -1,0 +1,2892 @@
+[
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T00:00:00",
+    "open": 157.42999,
+    "high": 157.50999,
+    "low": 157.39999,
+    "close": 157.46001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T00:15:00",
+    "open": 157.46001,
+    "high": 157.46001,
+    "low": 157.34,
+    "close": 157.39,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T00:30:00",
+    "open": 157.39,
+    "high": 157.59,
+    "low": 157.39,
+    "close": 157.57001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T00:45:00",
+    "open": 157.58,
+    "high": 157.69,
+    "low": 157.58,
+    "close": 157.59,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T01:00:00",
+    "open": 157.59,
+    "high": 157.64,
+    "low": 157.49001,
+    "close": 157.49001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T01:15:00",
+    "open": 157.5,
+    "high": 157.53999,
+    "low": 157.42999,
+    "close": 157.45,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T01:30:00",
+    "open": 157.45,
+    "high": 157.45,
+    "low": 157.25999,
+    "close": 157.33,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T01:45:00",
+    "open": 157.31,
+    "high": 157.31,
+    "low": 156.97,
+    "close": 157.020004,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T02:00:00",
+    "open": 157.0099945,
+    "high": 157.050003,
+    "low": 156.72,
+    "close": 156.75,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T02:15:00",
+    "open": 156.75,
+    "high": 156.81,
+    "low": 156.42,
+    "close": 156.45,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T02:30:00",
+    "open": 156.44,
+    "high": 156.57001,
+    "low": 156.38,
+    "close": 156.38,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T02:45:00",
+    "open": 156.38,
+    "high": 156.50999,
+    "low": 156.32001,
+    "close": 156.35001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T03:00:00",
+    "open": 156.35001,
+    "high": 156.42999,
+    "low": 156.28,
+    "close": 156.37,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T03:15:00",
+    "open": 156.37,
+    "high": 156.42,
+    "low": 156.16,
+    "close": 156.21001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T03:30:00",
+    "open": 156.21001,
+    "high": 156.36,
+    "low": 156.16,
+    "close": 156.32001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T03:45:00",
+    "open": 156.32001,
+    "high": 156.36,
+    "low": 156.24001,
+    "close": 156.3,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T04:00:00",
+    "open": 156.3,
+    "high": 156.35001,
+    "low": 156.25,
+    "close": 156.3,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T04:15:00",
+    "open": 156.31,
+    "high": 156.33,
+    "low": 156.17,
+    "close": 156.2,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T04:30:00",
+    "open": 156.2,
+    "high": 156.25,
+    "low": 156.11,
+    "close": 156.25,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T04:45:00",
+    "open": 156.24001,
+    "high": 156.24001,
+    "low": 156.10001,
+    "close": 156.13,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T05:00:00",
+    "open": 156.13,
+    "high": 156.13,
+    "low": 155.89999,
+    "close": 155.97,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T05:15:00",
+    "open": 155.97,
+    "high": 156.029999,
+    "low": 155.89,
+    "close": 155.89999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T05:30:00",
+    "open": 155.89999,
+    "high": 156.039993,
+    "low": 155.85001,
+    "close": 156.0099945,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T05:45:00",
+    "open": 156.0099945,
+    "high": 156.059998,
+    "low": 155.95,
+    "close": 155.99001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T06:00:00",
+    "open": 155.99001,
+    "high": 156.0,
+    "low": 155.82001,
+    "close": 155.89999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T06:15:00",
+    "open": 155.89999,
+    "high": 155.99001,
+    "low": 155.84,
+    "close": 155.87,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T06:30:00",
+    "open": 155.87,
+    "high": 155.98,
+    "low": 155.87,
+    "close": 155.94,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T06:45:00",
+    "open": 155.94,
+    "high": 156.020004,
+    "low": 155.92,
+    "close": 155.97,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T07:00:00",
+    "open": 155.97,
+    "high": 155.99001,
+    "low": 155.92999,
+    "close": 155.96001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T07:15:00",
+    "open": 155.96001,
+    "high": 155.97,
+    "low": 155.89,
+    "close": 155.89999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T07:30:00",
+    "open": 155.92,
+    "high": 156.080002,
+    "low": 155.89999,
+    "close": 156.050003,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T07:45:00",
+    "open": 156.050003,
+    "high": 156.050003,
+    "low": 155.99001,
+    "close": 156.0099945,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T08:00:00",
+    "open": 156.0099945,
+    "high": 156.070007,
+    "low": 156.0,
+    "close": 156.050003,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T08:15:00",
+    "open": 156.050003,
+    "high": 156.059998,
+    "low": 156.0099945,
+    "close": 156.020004,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T08:30:00",
+    "open": 156.020004,
+    "high": 156.14,
+    "low": 156.0099945,
+    "close": 156.14,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-22T08:45:00",
+    "open": 156.14,
+    "high": 156.22,
+    "low": 156.13,
+    "close": 156.17999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T09:00:00",
+    "open": 156.33,
+    "high": 156.39,
+    "low": 156.2,
+    "close": 156.21001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T09:15:00",
+    "open": 156.21001,
+    "high": 156.22,
+    "low": 156.13,
+    "close": 156.2,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T09:30:00",
+    "open": 156.2,
+    "high": 156.32001,
+    "low": 156.2,
+    "close": 156.32001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T09:45:00",
+    "open": 156.32001,
+    "high": 156.39999,
+    "low": 156.28999,
+    "close": 156.31,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T10:00:00",
+    "open": 156.3,
+    "high": 156.46001,
+    "low": 156.25999,
+    "close": 156.42,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T10:15:00",
+    "open": 156.42,
+    "high": 156.53999,
+    "low": 156.39999,
+    "close": 156.5,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T10:30:00",
+    "open": 156.49001,
+    "high": 156.52,
+    "low": 156.27,
+    "close": 156.3,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T10:45:00",
+    "open": 156.28999,
+    "high": 156.49001,
+    "low": 156.25999,
+    "close": 156.48,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T11:00:00",
+    "open": 156.49001,
+    "high": 156.49001,
+    "low": 156.34,
+    "close": 156.39,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T11:15:00",
+    "open": 156.39,
+    "high": 156.47,
+    "low": 156.32001,
+    "close": 156.44,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T11:30:00",
+    "open": 156.45,
+    "high": 156.47,
+    "low": 156.35001,
+    "close": 156.42,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T11:45:00",
+    "open": 156.42,
+    "high": 156.49001,
+    "low": 156.37,
+    "close": 156.42999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T12:00:00",
+    "open": 156.45,
+    "high": 156.69,
+    "low": 156.45,
+    "close": 156.55,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T12:15:00",
+    "open": 156.55,
+    "high": 156.66,
+    "low": 156.53,
+    "close": 156.64999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T12:30:00",
+    "open": 156.64,
+    "high": 156.81,
+    "low": 156.60001,
+    "close": 156.77,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T12:45:00",
+    "open": 156.78,
+    "high": 157.0,
+    "low": 156.73,
+    "close": 156.97,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T13:00:00",
+    "open": 156.98,
+    "high": 157.21001,
+    "low": 156.97,
+    "close": 157.19,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T13:15:00",
+    "open": 157.17999,
+    "high": 157.25999,
+    "low": 157.059998,
+    "close": 157.11,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T13:30:00",
+    "open": 157.12,
+    "high": 157.23,
+    "low": 157.11,
+    "close": 157.17,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T13:45:00",
+    "open": 157.17,
+    "high": 157.19,
+    "low": 157.029999,
+    "close": 157.029999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T14:00:00",
+    "open": 157.029999,
+    "high": 157.11,
+    "low": 157.0099945,
+    "close": 157.11,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T14:15:00",
+    "open": 157.10001,
+    "high": 157.17999,
+    "low": 157.039993,
+    "close": 157.070007,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T14:30:00",
+    "open": 157.070007,
+    "high": 157.089996,
+    "low": 156.89999,
+    "close": 156.94,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T14:45:00",
+    "open": 156.94,
+    "high": 156.96001,
+    "low": 156.85001,
+    "close": 156.92,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T15:00:00",
+    "open": 156.92,
+    "high": 156.95,
+    "low": 156.87,
+    "close": 156.94,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T15:15:00",
+    "open": 156.94,
+    "high": 156.97,
+    "low": 156.89,
+    "close": 156.94,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T15:30:00",
+    "open": 156.94,
+    "high": 156.97,
+    "low": 156.89,
+    "close": 156.92999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T15:45:00",
+    "open": 156.92,
+    "high": 156.96001,
+    "low": 156.89,
+    "close": 156.89999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T16:00:00",
+    "open": 156.89999,
+    "high": 156.94,
+    "low": 156.85001,
+    "close": 156.92,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T16:15:00",
+    "open": 156.92,
+    "high": 157.070007,
+    "low": 156.89,
+    "close": 157.059998,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T16:30:00",
+    "open": 157.050003,
+    "high": 157.16,
+    "low": 157.029999,
+    "close": 157.14999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T16:45:00",
+    "open": 157.16,
+    "high": 157.19,
+    "low": 157.10001,
+    "close": 157.12,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T17:00:00",
+    "open": 157.12,
+    "high": 157.17,
+    "low": 157.0099945,
+    "close": 157.11,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T17:15:00",
+    "open": 157.12,
+    "high": 157.14999,
+    "low": 157.050003,
+    "close": 157.059998,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T17:30:00",
+    "open": 157.050003,
+    "high": 157.089996,
+    "low": 156.98,
+    "close": 156.99001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T17:45:00",
+    "open": 157.0,
+    "high": 157.089996,
+    "low": 157.0,
+    "close": 157.070007,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T18:00:00",
+    "open": 157.059998,
+    "high": 157.17,
+    "low": 157.029999,
+    "close": 157.10001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T18:15:00",
+    "open": 157.10001,
+    "high": 157.11,
+    "low": 157.029999,
+    "close": 157.039993,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T18:30:00",
+    "open": 157.039993,
+    "high": 157.11,
+    "low": 156.66,
+    "close": 156.66,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T18:45:00",
+    "open": 156.67,
+    "high": 156.81,
+    "low": 156.61,
+    "close": 156.8,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T19:00:00",
+    "open": 156.8,
+    "high": 156.88,
+    "low": 156.56,
+    "close": 156.58,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T19:15:00",
+    "open": 156.57001,
+    "high": 156.60001,
+    "low": 156.36,
+    "close": 156.44,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T19:30:00",
+    "open": 156.46001,
+    "high": 156.57001,
+    "low": 156.36,
+    "close": 156.44,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T19:45:00",
+    "open": 156.42999,
+    "high": 156.67,
+    "low": 156.41,
+    "close": 156.60001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T20:00:00",
+    "open": 156.59,
+    "high": 156.73,
+    "low": 156.53999,
+    "close": 156.69,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T20:15:00",
+    "open": 156.7,
+    "high": 156.77,
+    "low": 156.57001,
+    "close": 156.67,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T20:30:00",
+    "open": 156.67,
+    "high": 156.7,
+    "low": 156.60001,
+    "close": 156.69,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T20:45:00",
+    "open": 156.67999,
+    "high": 156.69,
+    "low": 156.53,
+    "close": 156.63,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T21:00:00",
+    "open": 156.62,
+    "high": 156.71001,
+    "low": 156.57001,
+    "close": 156.71001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T21:15:00",
+    "open": 156.7,
+    "high": 156.75999,
+    "low": 156.63,
+    "close": 156.66,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T21:30:00",
+    "open": 156.67,
+    "high": 156.74001,
+    "low": 156.64,
+    "close": 156.67999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T21:45:00",
+    "open": 156.67999,
+    "high": 156.82001,
+    "low": 156.67999,
+    "close": 156.81,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T22:00:00",
+    "open": 156.81,
+    "high": 156.87,
+    "low": 156.78,
+    "close": 156.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T22:15:00",
+    "open": 156.8,
+    "high": 156.82001,
+    "low": 156.7,
+    "close": 156.71001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T22:30:00",
+    "open": 156.71001,
+    "high": 156.78999,
+    "low": 156.61,
+    "close": 156.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T22:45:00",
+    "open": 156.78999,
+    "high": 156.82001,
+    "low": 156.73,
+    "close": 156.75,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T23:00:00",
+    "open": 156.74001,
+    "high": 156.77,
+    "low": 156.64999,
+    "close": 156.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T23:15:00",
+    "open": 156.72,
+    "high": 156.78999,
+    "low": 156.7,
+    "close": 156.74001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T23:30:00",
+    "open": 156.74001,
+    "high": 156.75999,
+    "low": 156.67999,
+    "close": 156.67999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-24T23:45:00",
+    "open": 156.67999,
+    "high": 156.82001,
+    "low": 156.64999,
+    "close": 156.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 156.78999,
+    "high": 156.89,
+    "low": 156.77,
+    "close": 156.85001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T00:15:00",
+    "open": 156.85001,
+    "high": 156.87,
+    "low": 156.66,
+    "close": 156.78,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T00:30:00",
+    "open": 156.78,
+    "high": 156.83,
+    "low": 156.72,
+    "close": 156.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T00:45:00",
+    "open": 156.8,
+    "high": 156.89999,
+    "low": 156.75999,
+    "close": 156.75999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T01:00:00",
+    "open": 156.78,
+    "high": 156.81,
+    "low": 156.67,
+    "close": 156.75,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T01:15:00",
+    "open": 156.75,
+    "high": 156.75,
+    "low": 156.63,
+    "close": 156.63,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T01:30:00",
+    "open": 156.61,
+    "high": 156.67999,
+    "low": 156.33,
+    "close": 156.34,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T01:45:00",
+    "open": 156.35001,
+    "high": 156.39999,
+    "low": 156.14999,
+    "close": 156.2,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T02:00:00",
+    "open": 156.2,
+    "high": 156.39999,
+    "low": 156.14,
+    "close": 156.39,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T02:15:00",
+    "open": 156.39,
+    "high": 156.42999,
+    "low": 156.28999,
+    "close": 156.32001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T02:30:00",
+    "open": 156.32001,
+    "high": 156.37,
+    "low": 156.21001,
+    "close": 156.23,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T02:45:00",
+    "open": 156.24001,
+    "high": 156.31,
+    "low": 156.089996,
+    "close": 156.3,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T03:00:00",
+    "open": 156.3,
+    "high": 156.52,
+    "low": 156.3,
+    "close": 156.45,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T03:15:00",
+    "open": 156.45,
+    "high": 156.75,
+    "low": 156.42999,
+    "close": 156.67999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T03:30:00",
+    "open": 156.67999,
+    "high": 156.83,
+    "low": 156.66,
+    "close": 156.83,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T03:45:00",
+    "open": 156.83,
+    "high": 156.84,
+    "low": 156.7,
+    "close": 156.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T04:00:00",
+    "open": 156.72,
+    "high": 156.77,
+    "low": 156.67,
+    "close": 156.73,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T04:15:00",
+    "open": 156.73,
+    "high": 156.8,
+    "low": 156.73,
+    "close": 156.75999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T04:30:00",
+    "open": 156.75999,
+    "high": 156.82001,
+    "low": 156.72,
+    "close": 156.82001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T04:45:00",
+    "open": 156.82001,
+    "high": 156.86,
+    "low": 156.64,
+    "close": 156.64999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T05:00:00",
+    "open": 156.64999,
+    "high": 156.66,
+    "low": 156.58,
+    "close": 156.59,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T05:15:00",
+    "open": 156.60001,
+    "high": 156.69,
+    "low": 156.59,
+    "close": 156.64,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T05:30:00",
+    "open": 156.64,
+    "high": 156.72,
+    "low": 156.62,
+    "close": 156.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T05:45:00",
+    "open": 156.72,
+    "high": 156.78,
+    "low": 156.71001,
+    "close": 156.78,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T06:00:00",
+    "open": 156.78,
+    "high": 156.88,
+    "low": 156.78,
+    "close": 156.86,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T06:15:00",
+    "open": 156.86,
+    "high": 156.86,
+    "low": 156.73,
+    "close": 156.81,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T06:30:00",
+    "open": 156.82001,
+    "high": 156.99001,
+    "low": 156.82001,
+    "close": 156.84,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T06:45:00",
+    "open": 156.84,
+    "high": 156.88,
+    "low": 156.77,
+    "close": 156.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T07:00:00",
+    "open": 156.78999,
+    "high": 156.81,
+    "low": 156.71001,
+    "close": 156.8,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T07:15:00",
+    "open": 156.8,
+    "high": 156.85001,
+    "low": 156.72,
+    "close": 156.81,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T07:30:00",
+    "open": 156.81,
+    "high": 156.84,
+    "low": 156.67999,
+    "close": 156.69,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T07:45:00",
+    "open": 156.67999,
+    "high": 156.77,
+    "low": 156.61,
+    "close": 156.67999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T08:00:00",
+    "open": 156.69,
+    "high": 156.75,
+    "low": 156.64999,
+    "close": 156.74001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T08:15:00",
+    "open": 156.74001,
+    "high": 156.77,
+    "low": 156.7,
+    "close": 156.71001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T08:30:00",
+    "open": 156.71001,
+    "high": 156.75,
+    "low": 156.71001,
+    "close": 156.73,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T08:45:00",
+    "open": 156.73,
+    "high": 156.74001,
+    "low": 156.71001,
+    "close": 156.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T09:00:00",
+    "open": 156.71001,
+    "high": 156.75,
+    "low": 156.64,
+    "close": 156.7,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T09:15:00",
+    "open": 156.7,
+    "high": 156.74001,
+    "low": 156.69,
+    "close": 156.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T09:30:00",
+    "open": 156.73,
+    "high": 156.75,
+    "low": 156.67999,
+    "close": 156.71001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T09:45:00",
+    "open": 156.71001,
+    "high": 156.78,
+    "low": 156.67999,
+    "close": 156.75999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T10:00:00",
+    "open": 156.75,
+    "high": 156.86,
+    "low": 156.72,
+    "close": 156.84,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T10:15:00",
+    "open": 156.84,
+    "high": 156.84,
+    "low": 156.77,
+    "close": 156.82001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T10:30:00",
+    "open": 156.83,
+    "high": 156.83,
+    "low": 156.71001,
+    "close": 156.8,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T10:45:00",
+    "open": 156.8,
+    "high": 156.83,
+    "low": 156.75,
+    "close": 156.83,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T11:00:00",
+    "open": 156.83,
+    "high": 156.98,
+    "low": 156.83,
+    "close": 156.97,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T11:15:00",
+    "open": 156.97,
+    "high": 157.020004,
+    "low": 156.94,
+    "close": 156.99001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T11:30:00",
+    "open": 157.0,
+    "high": 157.070007,
+    "low": 156.98,
+    "close": 157.050003,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T11:45:00",
+    "open": 157.039993,
+    "high": 157.13,
+    "low": 157.0099945,
+    "close": 157.10001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T12:00:00",
+    "open": 157.11,
+    "high": 157.2,
+    "low": 157.039993,
+    "close": 157.17,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T12:15:00",
+    "open": 157.17,
+    "high": 157.24001,
+    "low": 157.089996,
+    "close": 157.12,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T12:30:00",
+    "open": 157.13,
+    "high": 157.17,
+    "low": 157.0099945,
+    "close": 157.050003,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T12:45:00",
+    "open": 157.050003,
+    "high": 157.12,
+    "low": 157.020004,
+    "close": 157.029999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T13:00:00",
+    "open": 157.029999,
+    "high": 157.10001,
+    "low": 157.020004,
+    "close": 157.059998,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T13:15:00",
+    "open": 157.050003,
+    "high": 157.059998,
+    "low": 156.97,
+    "close": 157.0099945,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T13:30:00",
+    "open": 157.0099945,
+    "high": 157.039993,
+    "low": 156.96001,
+    "close": 157.020004,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T13:45:00",
+    "open": 157.020004,
+    "high": 157.020004,
+    "low": 156.92999,
+    "close": 156.95,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T14:00:00",
+    "open": 156.94,
+    "high": 156.99001,
+    "low": 156.92,
+    "close": 156.99001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T14:15:00",
+    "open": 156.99001,
+    "high": 157.0,
+    "low": 156.92999,
+    "close": 156.96001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T14:30:00",
+    "open": 156.95,
+    "high": 156.96001,
+    "low": 156.75,
+    "close": 156.75999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T14:45:00",
+    "open": 156.75999,
+    "high": 156.81,
+    "low": 156.7,
+    "close": 156.75,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T15:00:00",
+    "open": 156.75,
+    "high": 156.8,
+    "low": 156.66,
+    "close": 156.67,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T15:15:00",
+    "open": 156.67,
+    "high": 156.72,
+    "low": 156.63,
+    "close": 156.64,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T15:30:00",
+    "open": 156.64,
+    "high": 156.67,
+    "low": 156.56,
+    "close": 156.59,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T15:45:00",
+    "open": 156.60001,
+    "high": 156.66,
+    "low": 156.55,
+    "close": 156.64,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T16:00:00",
+    "open": 156.64,
+    "high": 156.67999,
+    "low": 156.62,
+    "close": 156.64999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T16:15:00",
+    "open": 156.66,
+    "high": 156.73,
+    "low": 156.59,
+    "close": 156.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T16:30:00",
+    "open": 156.72,
+    "high": 156.8,
+    "low": 156.69,
+    "close": 156.75999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T16:45:00",
+    "open": 156.75999,
+    "high": 156.91,
+    "low": 156.72,
+    "close": 156.86,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T17:00:00",
+    "open": 156.85001,
+    "high": 156.89,
+    "low": 156.75,
+    "close": 156.81,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T17:15:00",
+    "open": 156.81,
+    "high": 156.97,
+    "low": 156.78999,
+    "close": 156.95,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T17:30:00",
+    "open": 156.94,
+    "high": 156.95,
+    "low": 156.85001,
+    "close": 156.92,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T17:45:00",
+    "open": 156.92999,
+    "high": 156.98,
+    "low": 156.87,
+    "close": 156.91,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T18:00:00",
+    "open": 156.91,
+    "high": 156.92999,
+    "low": 156.62,
+    "close": 156.63,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T18:15:00",
+    "open": 156.63,
+    "high": 156.72,
+    "low": 156.49001,
+    "close": 156.50999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T18:30:00",
+    "open": 156.50999,
+    "high": 156.52,
+    "low": 156.3,
+    "close": 156.39999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T18:45:00",
+    "open": 156.39,
+    "high": 156.44,
+    "low": 156.2,
+    "close": 156.22,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T19:00:00",
+    "open": 156.21001,
+    "high": 156.61,
+    "low": 156.089996,
+    "close": 156.59,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T19:15:00",
+    "open": 156.59,
+    "high": 156.59,
+    "low": 156.41,
+    "close": 156.42999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T19:30:00",
+    "open": 156.42999,
+    "high": 156.49001,
+    "low": 156.27,
+    "close": 156.49001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T19:45:00",
+    "open": 156.49001,
+    "high": 156.61,
+    "low": 156.45,
+    "close": 156.49001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T20:00:00",
+    "open": 156.49001,
+    "high": 156.63,
+    "low": 156.47,
+    "close": 156.59,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T20:15:00",
+    "open": 156.59,
+    "high": 156.82001,
+    "low": 156.58,
+    "close": 156.78,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T20:30:00",
+    "open": 156.78,
+    "high": 156.83,
+    "low": 156.7,
+    "close": 156.73,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T20:45:00",
+    "open": 156.73,
+    "high": 156.78,
+    "low": 156.64999,
+    "close": 156.67999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T21:00:00",
+    "open": 156.67999,
+    "high": 156.83,
+    "low": 156.66,
+    "close": 156.77,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T21:15:00",
+    "open": 156.77,
+    "high": 156.83,
+    "low": 156.75,
+    "close": 156.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T21:30:00",
+    "open": 156.8,
+    "high": 156.86,
+    "low": 156.72,
+    "close": 156.86,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T21:45:00",
+    "open": 156.86,
+    "high": 156.88,
+    "low": 156.74001,
+    "close": 156.85001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T22:00:00",
+    "open": 156.85001,
+    "high": 156.89,
+    "low": 156.78,
+    "close": 156.8,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T22:15:00",
+    "open": 156.81,
+    "high": 157.0,
+    "low": 156.81,
+    "close": 156.98,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T22:30:00",
+    "open": 156.98,
+    "high": 157.2,
+    "low": 156.96001,
+    "close": 157.10001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T22:45:00",
+    "open": 157.10001,
+    "high": 157.16,
+    "low": 157.059998,
+    "close": 157.14,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T23:00:00",
+    "open": 157.14,
+    "high": 157.16,
+    "low": 157.0099945,
+    "close": 157.0099945,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T23:15:00",
+    "open": 157.0099945,
+    "high": 157.059998,
+    "low": 156.95,
+    "close": 156.97,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T23:30:00",
+    "open": 156.97,
+    "high": 157.020004,
+    "low": 156.92999,
+    "close": 156.99001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-25T23:45:00",
+    "open": 157.0,
+    "high": 157.080002,
+    "low": 156.92999,
+    "close": 157.080002,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 157.080002,
+    "high": 157.24001,
+    "low": 157.070007,
+    "close": 157.23,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T00:15:00",
+    "open": 157.23,
+    "high": 157.25,
+    "low": 157.14999,
+    "close": 157.21001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T00:30:00",
+    "open": 157.21001,
+    "high": 157.31,
+    "low": 157.070007,
+    "close": 157.070007,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T00:45:00",
+    "open": 157.059998,
+    "high": 157.10001,
+    "low": 156.89,
+    "close": 156.91,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T01:00:00",
+    "open": 156.92,
+    "high": 156.98,
+    "low": 156.73,
+    "close": 156.75,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T01:15:00",
+    "open": 156.75999,
+    "high": 156.86,
+    "low": 156.7,
+    "close": 156.82001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T01:30:00",
+    "open": 156.83,
+    "high": 156.94,
+    "low": 156.8,
+    "close": 156.85001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T01:45:00",
+    "open": 156.85001,
+    "high": 156.87,
+    "low": 156.62,
+    "close": 156.67999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T02:00:00",
+    "open": 156.67999,
+    "high": 156.67999,
+    "low": 156.46001,
+    "close": 156.52,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T02:15:00",
+    "open": 156.50999,
+    "high": 156.58,
+    "low": 156.32001,
+    "close": 156.35001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T02:30:00",
+    "open": 156.34,
+    "high": 156.53,
+    "low": 156.24001,
+    "close": 156.41,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T02:45:00",
+    "open": 156.41,
+    "high": 156.52,
+    "low": 156.25999,
+    "close": 156.5,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 156.49001,
+    "high": 156.55,
+    "low": 156.39999,
+    "close": 156.48,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T03:15:00",
+    "open": 156.47,
+    "high": 156.53999,
+    "low": 156.35001,
+    "close": 156.36,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T03:30:00",
+    "open": 156.36,
+    "high": 156.41,
+    "low": 156.17,
+    "close": 156.38,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T03:45:00",
+    "open": 156.37,
+    "high": 156.53999,
+    "low": 156.34,
+    "close": 156.50999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T04:00:00",
+    "open": 156.50999,
+    "high": 156.53,
+    "low": 156.42,
+    "close": 156.44,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T04:15:00",
+    "open": 156.44,
+    "high": 156.49001,
+    "low": 156.28,
+    "close": 156.49001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T04:30:00",
+    "open": 156.49001,
+    "high": 156.52,
+    "low": 156.44,
+    "close": 156.45,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T04:45:00",
+    "open": 156.45,
+    "high": 156.57001,
+    "low": 156.45,
+    "close": 156.56,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T05:00:00",
+    "open": 156.56,
+    "high": 156.78999,
+    "low": 156.56,
+    "close": 156.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T05:15:00",
+    "open": 156.72,
+    "high": 156.78,
+    "low": 156.64,
+    "close": 156.64999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T05:30:00",
+    "open": 156.64,
+    "high": 156.92999,
+    "low": 156.57001,
+    "close": 156.89999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T05:45:00",
+    "open": 156.89,
+    "high": 156.91,
+    "low": 156.75,
+    "close": 156.75,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T06:00:00",
+    "open": 156.75,
+    "high": 156.78,
+    "low": 156.58,
+    "close": 156.61,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T06:15:00",
+    "open": 156.62,
+    "high": 156.64,
+    "low": 156.56,
+    "close": 156.60001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T06:30:00",
+    "open": 156.61,
+    "high": 156.75,
+    "low": 156.60001,
+    "close": 156.74001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T06:45:00",
+    "open": 156.74001,
+    "high": 156.75,
+    "low": 156.67,
+    "close": 156.69,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 156.7,
+    "high": 156.72,
+    "low": 156.63,
+    "close": 156.66,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T07:15:00",
+    "open": 156.66,
+    "high": 156.78999,
+    "low": 156.64999,
+    "close": 156.74001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T07:30:00",
+    "open": 156.74001,
+    "high": 156.75,
+    "low": 156.62,
+    "close": 156.64999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T07:45:00",
+    "open": 156.64,
+    "high": 156.7,
+    "low": 156.60001,
+    "close": 156.64,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T08:00:00",
+    "open": 156.63,
+    "high": 156.73,
+    "low": 156.62,
+    "close": 156.7,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T08:15:00",
+    "open": 156.69,
+    "high": 156.73,
+    "low": 156.66,
+    "close": 156.71001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T08:30:00",
+    "open": 156.71001,
+    "high": 156.71001,
+    "low": 156.64,
+    "close": 156.66,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T08:45:00",
+    "open": 156.67,
+    "high": 156.72,
+    "low": 156.66,
+    "close": 156.69,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T09:00:00",
+    "open": 156.7,
+    "high": 156.75999,
+    "low": 156.67999,
+    "close": 156.73,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T09:15:00",
+    "open": 156.73,
+    "high": 156.78,
+    "low": 156.71001,
+    "close": 156.75999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T09:30:00",
+    "open": 156.74001,
+    "high": 156.75,
+    "low": 156.72,
+    "close": 156.73,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T09:45:00",
+    "open": 156.73,
+    "high": 156.8,
+    "low": 156.72,
+    "close": 156.8,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T10:00:00",
+    "open": 156.8,
+    "high": 156.89,
+    "low": 156.75,
+    "close": 156.77,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T10:15:00",
+    "open": 156.75999,
+    "high": 156.78,
+    "low": 156.69,
+    "close": 156.7,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T10:30:00",
+    "open": 156.69,
+    "high": 156.74001,
+    "low": 156.63,
+    "close": 156.67,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T10:45:00",
+    "open": 156.67999,
+    "high": 156.86,
+    "low": 156.63,
+    "close": 156.82001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 156.81,
+    "high": 156.84,
+    "low": 156.45,
+    "close": 156.48,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T11:15:00",
+    "open": 156.47,
+    "high": 156.63,
+    "low": 156.42,
+    "close": 156.60001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T11:30:00",
+    "open": 156.60001,
+    "high": 156.64,
+    "low": 156.47,
+    "close": 156.49001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T11:45:00",
+    "open": 156.49001,
+    "high": 156.7,
+    "low": 156.48,
+    "close": 156.69,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T12:00:00",
+    "open": 156.69,
+    "high": 156.81,
+    "low": 156.50999,
+    "close": 156.50999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T12:15:00",
+    "open": 156.50999,
+    "high": 156.87,
+    "low": 156.48,
+    "close": 156.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T12:30:00",
+    "open": 156.78999,
+    "high": 156.87,
+    "low": 156.73,
+    "close": 156.83,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T12:45:00",
+    "open": 156.82001,
+    "high": 156.92,
+    "low": 156.78999,
+    "close": 156.92,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T13:00:00",
+    "open": 156.92999,
+    "high": 157.0099945,
+    "low": 156.87,
+    "close": 156.97,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T13:15:00",
+    "open": 156.96001,
+    "high": 156.97,
+    "low": 156.82001,
+    "close": 156.87,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T13:30:00",
+    "open": 156.88,
+    "high": 156.95,
+    "low": 156.82001,
+    "close": 156.92,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T13:45:00",
+    "open": 156.92,
+    "high": 157.059998,
+    "low": 156.88,
+    "close": 157.039993,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T14:00:00",
+    "open": 157.039993,
+    "high": 157.10001,
+    "low": 157.0,
+    "close": 157.0099945,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T14:15:00",
+    "open": 157.0099945,
+    "high": 157.0099945,
+    "low": 156.89999,
+    "close": 156.95,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T14:30:00",
+    "open": 156.96001,
+    "high": 156.99001,
+    "low": 156.88,
+    "close": 156.91,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T14:45:00",
+    "open": 156.91,
+    "high": 156.95,
+    "low": 156.85001,
+    "close": 156.92999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 156.94,
+    "high": 157.0,
+    "low": 156.91,
+    "close": 157.0,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T15:15:00",
+    "open": 157.0,
+    "high": 157.039993,
+    "low": 156.85001,
+    "close": 156.89,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T15:30:00",
+    "open": 156.89,
+    "high": 156.89999,
+    "low": 156.81,
+    "close": 156.87,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T15:45:00",
+    "open": 156.88,
+    "high": 156.89999,
+    "low": 156.85001,
+    "close": 156.87,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T16:00:00",
+    "open": 156.87,
+    "high": 157.020004,
+    "low": 156.87,
+    "close": 156.97,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T16:15:00",
+    "open": 156.99001,
+    "high": 157.020004,
+    "low": 156.92999,
+    "close": 156.94,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T16:30:00",
+    "open": 156.92999,
+    "high": 156.97,
+    "low": 156.89,
+    "close": 156.94,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T16:45:00",
+    "open": 156.94,
+    "high": 156.96001,
+    "low": 156.75,
+    "close": 156.78,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T17:00:00",
+    "open": 156.78,
+    "high": 156.87,
+    "low": 156.75999,
+    "close": 156.75999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T17:15:00",
+    "open": 156.75999,
+    "high": 156.89,
+    "low": 156.75999,
+    "close": 156.88,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T17:30:00",
+    "open": 156.89,
+    "high": 156.94,
+    "low": 156.86,
+    "close": 156.86,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T17:45:00",
+    "open": 156.87,
+    "high": 157.0099945,
+    "low": 156.86,
+    "close": 156.97,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T18:00:00",
+    "open": 156.98,
+    "high": 157.0099945,
+    "low": 156.83,
+    "close": 156.89,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T18:15:00",
+    "open": 156.88,
+    "high": 156.89,
+    "low": 156.78999,
+    "close": 156.82001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T18:30:00",
+    "open": 156.82001,
+    "high": 156.89999,
+    "low": 156.77,
+    "close": 156.89999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T18:45:00",
+    "open": 156.91,
+    "high": 156.96001,
+    "low": 156.86,
+    "close": 156.92,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 156.92,
+    "high": 157.0099945,
+    "low": 156.77,
+    "close": 156.99001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T19:15:00",
+    "open": 156.98,
+    "high": 157.050003,
+    "low": 156.89999,
+    "close": 157.039993,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T19:30:00",
+    "open": 157.039993,
+    "high": 157.050003,
+    "low": 156.75,
+    "close": 156.77,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T19:45:00",
+    "open": 156.75999,
+    "high": 156.81,
+    "low": 156.67,
+    "close": 156.8,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T20:00:00",
+    "open": 156.8,
+    "high": 156.84,
+    "low": 156.71001,
+    "close": 156.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T20:15:00",
+    "open": 156.72,
+    "high": 156.83,
+    "low": 156.69,
+    "close": 156.75999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T20:30:00",
+    "open": 156.77,
+    "high": 156.88,
+    "low": 156.75,
+    "close": 156.84,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T20:45:00",
+    "open": 156.84,
+    "high": 156.88,
+    "low": 156.75999,
+    "close": 156.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T21:00:00",
+    "open": 156.78999,
+    "high": 156.82001,
+    "low": 156.62,
+    "close": 156.66,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T21:15:00",
+    "open": 156.66,
+    "high": 156.73,
+    "low": 156.64,
+    "close": 156.71001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T21:30:00",
+    "open": 156.71001,
+    "high": 156.81,
+    "low": 156.69,
+    "close": 156.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T21:45:00",
+    "open": 156.78999,
+    "high": 156.97,
+    "low": 156.78999,
+    "close": 156.96001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T22:00:00",
+    "open": 156.97,
+    "high": 157.0,
+    "low": 156.92999,
+    "close": 157.0,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T22:15:00",
+    "open": 157.0,
+    "high": 157.020004,
+    "low": 156.89999,
+    "close": 156.89999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T22:30:00",
+    "open": 156.89999,
+    "high": 156.94,
+    "low": 156.86,
+    "close": 156.94,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T22:45:00",
+    "open": 156.92999,
+    "high": 156.94,
+    "low": 156.81,
+    "close": 156.89999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 156.89999,
+    "high": 156.94,
+    "low": 156.84,
+    "close": 156.88,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T23:15:00",
+    "open": 156.88,
+    "high": 156.89,
+    "low": 156.78999,
+    "close": 156.86,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T23:30:00",
+    "open": 156.87,
+    "high": 156.89,
+    "low": 156.81,
+    "close": 156.84,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-26T23:45:00",
+    "open": 156.83,
+    "high": 156.83,
+    "low": 156.64,
+    "close": 156.75,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "EURJPY",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 156.75999,
+    "high": 156.85001,
+    "low": 156.67999,
+    "close": 156.71001,
+    "volume": 0.0,
+    "interval": "15m"
+  }
+]

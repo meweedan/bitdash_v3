@@ -1,0 +1,1452 @@
+[
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T00:00:00",
+    "open": 0.63840002,
+    "high": 0.63859999,
+    "low": 0.63800001,
+    "close": 0.6383,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T00:30:00",
+    "open": 0.63849998,
+    "high": 0.63859999,
+    "low": 0.63819999,
+    "close": 0.63840002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T01:00:00",
+    "open": 0.63849998,
+    "high": 0.63889998,
+    "low": 0.63819999,
+    "close": 0.63859999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T01:30:00",
+    "open": 0.63859999,
+    "high": 0.63929999,
+    "low": 0.63810003,
+    "close": 0.63870001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T02:00:00",
+    "open": 0.63849998,
+    "high": 0.63889998,
+    "low": 0.63739997,
+    "close": 0.63749999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T02:30:00",
+    "open": 0.63739997,
+    "high": 0.63770002,
+    "low": 0.63709998,
+    "close": 0.63749999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T03:00:00",
+    "open": 0.63739997,
+    "high": 0.63770002,
+    "low": 0.6372,
+    "close": 0.63749999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T03:30:00",
+    "open": 0.63749999,
+    "high": 0.63779998,
+    "low": 0.63709998,
+    "close": 0.63749999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T04:00:00",
+    "open": 0.63749999,
+    "high": 0.63779998,
+    "low": 0.63709998,
+    "close": 0.63730001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T04:30:00",
+    "open": 0.6372,
+    "high": 0.63749999,
+    "low": 0.63700002,
+    "close": 0.6372,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T05:00:00",
+    "open": 0.63709998,
+    "high": 0.6372,
+    "low": 0.63599998,
+    "close": 0.63620001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T05:30:00",
+    "open": 0.63609999,
+    "high": 0.63639998,
+    "low": 0.63569999,
+    "close": 0.63599998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T06:00:00",
+    "open": 0.63599998,
+    "high": 0.63620001,
+    "low": 0.63550001,
+    "close": 0.63550001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T06:30:00",
+    "open": 0.63559997,
+    "high": 0.6358,
+    "low": 0.63520002,
+    "close": 0.6354,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T07:00:00",
+    "open": 0.63529998,
+    "high": 0.63590002,
+    "low": 0.63529998,
+    "close": 0.63569999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T07:30:00",
+    "open": 0.6358,
+    "high": 0.63590002,
+    "low": 0.63559997,
+    "close": 0.63590002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T08:00:00",
+    "open": 0.6358,
+    "high": 0.63590002,
+    "low": 0.63559997,
+    "close": 0.63559997,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-22T08:30:00",
+    "open": 0.63559997,
+    "high": 0.63590002,
+    "low": 0.6354,
+    "close": 0.63569999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T09:00:00",
+    "open": 0.63660002,
+    "high": 0.63690001,
+    "low": 0.63609999,
+    "close": 0.63669997,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T09:30:00",
+    "open": 0.63679999,
+    "high": 0.63730001,
+    "low": 0.63630003,
+    "close": 0.63669997,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T10:00:00",
+    "open": 0.63660002,
+    "high": 0.63739997,
+    "low": 0.6365,
+    "close": 0.63730001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T10:30:00",
+    "open": 0.6372,
+    "high": 0.63739997,
+    "low": 0.63679999,
+    "close": 0.63690001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T11:00:00",
+    "open": 0.63690001,
+    "high": 0.63739997,
+    "low": 0.63679999,
+    "close": 0.63739997,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T11:30:00",
+    "open": 0.63739997,
+    "high": 0.63770002,
+    "low": 0.63690001,
+    "close": 0.6372,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T12:00:00",
+    "open": 0.63709998,
+    "high": 0.63709998,
+    "low": 0.63639998,
+    "close": 0.6365,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T12:30:00",
+    "open": 0.63660002,
+    "high": 0.63730001,
+    "low": 0.63609999,
+    "close": 0.63700002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T13:00:00",
+    "open": 0.63700002,
+    "high": 0.63770002,
+    "low": 0.63679999,
+    "close": 0.63770002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T13:30:00",
+    "open": 0.63779998,
+    "high": 0.63919997,
+    "low": 0.63770002,
+    "close": 0.63880002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T14:00:00",
+    "open": 0.63870001,
+    "high": 0.63929999,
+    "low": 0.63849998,
+    "close": 0.63849998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T14:30:00",
+    "open": 0.63849998,
+    "high": 0.63859999,
+    "low": 0.63810003,
+    "close": 0.6383,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T15:00:00",
+    "open": 0.63840002,
+    "high": 0.63849998,
+    "low": 0.63789999,
+    "close": 0.63789999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T15:30:00",
+    "open": 0.63789999,
+    "high": 0.63819999,
+    "low": 0.63779998,
+    "close": 0.63810003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T16:00:00",
+    "open": 0.63810003,
+    "high": 0.63819999,
+    "low": 0.63789999,
+    "close": 0.63810003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T16:30:00",
+    "open": 0.63819999,
+    "high": 0.63819999,
+    "low": 0.63770002,
+    "close": 0.63770002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T17:00:00",
+    "open": 0.6376,
+    "high": 0.63789999,
+    "low": 0.63730001,
+    "close": 0.63770002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T17:30:00",
+    "open": 0.63770002,
+    "high": 0.63800001,
+    "low": 0.6372,
+    "close": 0.63789999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T18:00:00",
+    "open": 0.63800001,
+    "high": 0.63819999,
+    "low": 0.63739997,
+    "close": 0.63739997,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T18:30:00",
+    "open": 0.63749999,
+    "high": 0.63779998,
+    "low": 0.63660002,
+    "close": 0.63709998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T19:00:00",
+    "open": 0.6372,
+    "high": 0.63730001,
+    "low": 0.63609999,
+    "close": 0.63679999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T19:30:00",
+    "open": 0.63679999,
+    "high": 0.63730001,
+    "low": 0.63639998,
+    "close": 0.63700002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T20:00:00",
+    "open": 0.63690001,
+    "high": 0.63739997,
+    "low": 0.63679999,
+    "close": 0.63709998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T20:30:00",
+    "open": 0.63700002,
+    "high": 0.6372,
+    "low": 0.6365,
+    "close": 0.6365,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T21:00:00",
+    "open": 0.63660002,
+    "high": 0.63660002,
+    "low": 0.63609999,
+    "close": 0.63639998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T21:30:00",
+    "open": 0.6365,
+    "high": 0.63669997,
+    "low": 0.63630003,
+    "close": 0.63660002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T22:00:00",
+    "open": 0.6365,
+    "high": 0.63690001,
+    "low": 0.63639998,
+    "close": 0.63669997,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T22:30:00",
+    "open": 0.63660002,
+    "high": 0.63700002,
+    "low": 0.63639998,
+    "close": 0.63669997,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T23:00:00",
+    "open": 0.63660002,
+    "high": 0.63700002,
+    "low": 0.63639998,
+    "close": 0.63639998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-24T23:30:00",
+    "open": 0.6365,
+    "high": 0.63690001,
+    "low": 0.63630003,
+    "close": 0.63690001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 0.63690001,
+    "high": 0.6372,
+    "low": 0.63679999,
+    "close": 0.63700002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T00:30:00",
+    "open": 0.63700002,
+    "high": 0.6372,
+    "low": 0.63679999,
+    "close": 0.63690001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T01:00:00",
+    "open": 0.63679999,
+    "high": 0.6372,
+    "low": 0.63609999,
+    "close": 0.63620001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T01:30:00",
+    "open": 0.63609999,
+    "high": 0.63630003,
+    "low": 0.63440001,
+    "close": 0.6347,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T02:00:00",
+    "open": 0.63480002,
+    "high": 0.63559997,
+    "low": 0.63450003,
+    "close": 0.63489997,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T02:30:00",
+    "open": 0.63499999,
+    "high": 0.63550001,
+    "low": 0.63459998,
+    "close": 0.63550001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T03:00:00",
+    "open": 0.6354,
+    "high": 0.63609999,
+    "low": 0.63520002,
+    "close": 0.63599998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T03:30:00",
+    "open": 0.63599998,
+    "high": 0.63620001,
+    "low": 0.63559997,
+    "close": 0.63599998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T04:00:00",
+    "open": 0.63599998,
+    "high": 0.63620001,
+    "low": 0.63550001,
+    "close": 0.63609999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T04:30:00",
+    "open": 0.63599998,
+    "high": 0.63639998,
+    "low": 0.6358,
+    "close": 0.6358,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T05:00:00",
+    "open": 0.6358,
+    "high": 0.6365,
+    "low": 0.6358,
+    "close": 0.63639998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T05:30:00",
+    "open": 0.63639998,
+    "high": 0.6365,
+    "low": 0.63599998,
+    "close": 0.63620001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T06:00:00",
+    "open": 0.63620001,
+    "high": 0.63639998,
+    "low": 0.63559997,
+    "close": 0.6358,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T06:30:00",
+    "open": 0.6358,
+    "high": 0.63599998,
+    "low": 0.63559997,
+    "close": 0.63569999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T07:00:00",
+    "open": 0.6358,
+    "high": 0.63590002,
+    "low": 0.63520002,
+    "close": 0.63529998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T07:30:00",
+    "open": 0.63520002,
+    "high": 0.63550001,
+    "low": 0.63450003,
+    "close": 0.63459998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T08:00:00",
+    "open": 0.63459998,
+    "high": 0.63489997,
+    "low": 0.63450003,
+    "close": 0.63450003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T08:30:00",
+    "open": 0.63450003,
+    "high": 0.63499999,
+    "low": 0.63450003,
+    "close": 0.63499999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T09:00:00",
+    "open": 0.63529998,
+    "high": 0.63529998,
+    "low": 0.6347,
+    "close": 0.63489997,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T09:30:00",
+    "open": 0.63489997,
+    "high": 0.63499999,
+    "low": 0.63459998,
+    "close": 0.6347,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T10:00:00",
+    "open": 0.63459998,
+    "high": 0.6347,
+    "low": 0.63410002,
+    "close": 0.63429999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T10:30:00",
+    "open": 0.63429999,
+    "high": 0.63429999,
+    "low": 0.63370001,
+    "close": 0.63389999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T11:00:00",
+    "open": 0.63389999,
+    "high": 0.63450003,
+    "low": 0.63389999,
+    "close": 0.63410002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T11:30:00",
+    "open": 0.63410002,
+    "high": 0.63429999,
+    "low": 0.63380003,
+    "close": 0.63419998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T12:00:00",
+    "open": 0.63419998,
+    "high": 0.63450003,
+    "low": 0.63389999,
+    "close": 0.63419998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T12:30:00",
+    "open": 0.63429999,
+    "high": 0.63450003,
+    "low": 0.634,
+    "close": 0.63450003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T13:00:00",
+    "open": 0.63440001,
+    "high": 0.63499999,
+    "low": 0.63419998,
+    "close": 0.63480002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T13:30:00",
+    "open": 0.63480002,
+    "high": 0.63550001,
+    "low": 0.63480002,
+    "close": 0.6354,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T14:00:00",
+    "open": 0.6354,
+    "high": 0.63569999,
+    "low": 0.63520002,
+    "close": 0.6354,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T14:30:00",
+    "open": 0.63529998,
+    "high": 0.63550001,
+    "low": 0.63520002,
+    "close": 0.63520002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T15:00:00",
+    "open": 0.63529998,
+    "high": 0.63569999,
+    "low": 0.63520002,
+    "close": 0.63559997,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T15:30:00",
+    "open": 0.63550001,
+    "high": 0.63559997,
+    "low": 0.63489997,
+    "close": 0.63510001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T16:00:00",
+    "open": 0.63499999,
+    "high": 0.63550001,
+    "low": 0.63499999,
+    "close": 0.63550001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T16:30:00",
+    "open": 0.6354,
+    "high": 0.63569999,
+    "low": 0.6354,
+    "close": 0.63550001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T17:00:00",
+    "open": 0.63559997,
+    "high": 0.63569999,
+    "low": 0.6354,
+    "close": 0.63550001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T17:30:00",
+    "open": 0.6354,
+    "high": 0.63550001,
+    "low": 0.63480002,
+    "close": 0.63510001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T18:00:00",
+    "open": 0.63499999,
+    "high": 0.63510001,
+    "low": 0.63440001,
+    "close": 0.6347,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T18:30:00",
+    "open": 0.63459998,
+    "high": 0.63480002,
+    "low": 0.63370001,
+    "close": 0.63380003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T19:00:00",
+    "open": 0.63370001,
+    "high": 0.63450003,
+    "low": 0.63349998,
+    "close": 0.63389999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T19:30:00",
+    "open": 0.63380003,
+    "high": 0.63410002,
+    "low": 0.63340002,
+    "close": 0.63389999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T20:00:00",
+    "open": 0.63389999,
+    "high": 0.63419998,
+    "low": 0.6336,
+    "close": 0.63389999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T20:30:00",
+    "open": 0.63380003,
+    "high": 0.634,
+    "low": 0.63319999,
+    "close": 0.63319999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T21:00:00",
+    "open": 0.63330001,
+    "high": 0.63330001,
+    "low": 0.63270003,
+    "close": 0.6329,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T21:30:00",
+    "open": 0.6329,
+    "high": 0.63309997,
+    "low": 0.63260001,
+    "close": 0.63270003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T22:00:00",
+    "open": 0.63270003,
+    "high": 0.63349998,
+    "low": 0.63260001,
+    "close": 0.63340002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T22:30:00",
+    "open": 0.63340002,
+    "high": 0.63450003,
+    "low": 0.63330001,
+    "close": 0.63450003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T23:00:00",
+    "open": 0.63450003,
+    "high": 0.63480002,
+    "low": 0.63440001,
+    "close": 0.63459998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-25T23:30:00",
+    "open": 0.63450003,
+    "high": 0.63459998,
+    "low": 0.63389999,
+    "close": 0.63440001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 0.63440001,
+    "high": 0.63489997,
+    "low": 0.63410002,
+    "close": 0.63440001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T00:30:00",
+    "open": 0.63450003,
+    "high": 0.63520002,
+    "low": 0.63450003,
+    "close": 0.63459998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T01:00:00",
+    "open": 0.6347,
+    "high": 0.6347,
+    "low": 0.63410002,
+    "close": 0.63459998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T01:30:00",
+    "open": 0.63450003,
+    "high": 0.63459998,
+    "low": 0.63370001,
+    "close": 0.63380003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T02:00:00",
+    "open": 0.63380003,
+    "high": 0.63389999,
+    "low": 0.63260001,
+    "close": 0.63309997,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T02:30:00",
+    "open": 0.63319999,
+    "high": 0.63349998,
+    "low": 0.63270003,
+    "close": 0.63330001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 0.63330001,
+    "high": 0.6336,
+    "low": 0.63300002,
+    "close": 0.63319999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T03:30:00",
+    "open": 0.63319999,
+    "high": 0.63340002,
+    "low": 0.63270003,
+    "close": 0.63330001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T04:00:00",
+    "open": 0.63319999,
+    "high": 0.63330001,
+    "low": 0.6322,
+    "close": 0.63279998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T04:30:00",
+    "open": 0.63279998,
+    "high": 0.63349998,
+    "low": 0.63260001,
+    "close": 0.63349998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T05:00:00",
+    "open": 0.6336,
+    "high": 0.63410002,
+    "low": 0.63349998,
+    "close": 0.6336,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T05:30:00",
+    "open": 0.6336,
+    "high": 0.63459998,
+    "low": 0.63349998,
+    "close": 0.63410002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T06:00:00",
+    "open": 0.63410002,
+    "high": 0.63440001,
+    "low": 0.63389999,
+    "close": 0.63389999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T06:30:00",
+    "open": 0.63389999,
+    "high": 0.63440001,
+    "low": 0.63389999,
+    "close": 0.63429999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 0.63429999,
+    "high": 0.63489997,
+    "low": 0.63419998,
+    "close": 0.6347,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T07:30:00",
+    "open": 0.63459998,
+    "high": 0.6347,
+    "low": 0.63429999,
+    "close": 0.63429999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T08:00:00",
+    "open": 0.63429999,
+    "high": 0.6347,
+    "low": 0.63429999,
+    "close": 0.63450003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T08:30:00",
+    "open": 0.63459998,
+    "high": 0.6347,
+    "low": 0.63440001,
+    "close": 0.63440001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T09:00:00",
+    "open": 0.63429999,
+    "high": 0.63459998,
+    "low": 0.63410002,
+    "close": 0.63450003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T09:30:00",
+    "open": 0.63450003,
+    "high": 0.63499999,
+    "low": 0.63450003,
+    "close": 0.63480002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T10:00:00",
+    "open": 0.63489997,
+    "high": 0.63499999,
+    "low": 0.6347,
+    "close": 0.63499999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T10:30:00",
+    "open": 0.63499999,
+    "high": 0.6354,
+    "low": 0.63499999,
+    "close": 0.63520002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 0.63520002,
+    "high": 0.63529998,
+    "low": 0.63489997,
+    "close": 0.63529998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T11:30:00",
+    "open": 0.63529998,
+    "high": 0.63529998,
+    "low": 0.63429999,
+    "close": 0.63429999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T12:00:00",
+    "open": 0.63440001,
+    "high": 0.63440001,
+    "low": 0.6336,
+    "close": 0.63370001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T12:30:00",
+    "open": 0.63380003,
+    "high": 0.63389999,
+    "low": 0.63300002,
+    "close": 0.63389999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T13:00:00",
+    "open": 0.63389999,
+    "high": 0.63410002,
+    "low": 0.63340002,
+    "close": 0.63349998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T13:30:00",
+    "open": 0.63340002,
+    "high": 0.6336,
+    "low": 0.63239998,
+    "close": 0.63319999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T14:00:00",
+    "open": 0.63319999,
+    "high": 0.63349998,
+    "low": 0.63249999,
+    "close": 0.63270003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T14:30:00",
+    "open": 0.63279998,
+    "high": 0.63309997,
+    "low": 0.63260001,
+    "close": 0.63270003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 0.63260001,
+    "high": 0.63309997,
+    "low": 0.63249999,
+    "close": 0.63300002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T15:30:00",
+    "open": 0.63309997,
+    "high": 0.63319999,
+    "low": 0.63249999,
+    "close": 0.63270003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T16:00:00",
+    "open": 0.63270003,
+    "high": 0.6329,
+    "low": 0.63249999,
+    "close": 0.63279998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T16:30:00",
+    "open": 0.63270003,
+    "high": 0.6329,
+    "low": 0.63200003,
+    "close": 0.63230002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T17:00:00",
+    "open": 0.63239998,
+    "high": 0.63270003,
+    "low": 0.6322,
+    "close": 0.63249999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T17:30:00",
+    "open": 0.63260001,
+    "high": 0.63330001,
+    "low": 0.63249999,
+    "close": 0.63309997,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T18:00:00",
+    "open": 0.63300002,
+    "high": 0.634,
+    "low": 0.6329,
+    "close": 0.6336,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T18:30:00",
+    "open": 0.63349998,
+    "high": 0.63370001,
+    "low": 0.63260001,
+    "close": 0.63270003,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 0.63270003,
+    "high": 0.63349998,
+    "low": 0.63260001,
+    "close": 0.63330001,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T19:30:00",
+    "open": 0.63340002,
+    "high": 0.63349998,
+    "low": 0.63279998,
+    "close": 0.63309997,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T20:00:00",
+    "open": 0.63309997,
+    "high": 0.63309997,
+    "low": 0.63249999,
+    "close": 0.63249999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T20:30:00",
+    "open": 0.63249999,
+    "high": 0.6329,
+    "low": 0.63230002,
+    "close": 0.63239998,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T21:00:00",
+    "open": 0.63239998,
+    "high": 0.63260001,
+    "low": 0.63209999,
+    "close": 0.63230002,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T21:30:00",
+    "open": 0.63230002,
+    "high": 0.63230002,
+    "low": 0.6318,
+    "close": 0.6318,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T22:00:00",
+    "open": 0.63169998,
+    "high": 0.6318,
+    "low": 0.63120002,
+    "close": 0.63139999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T22:30:00",
+    "open": 0.63150001,
+    "high": 0.6318,
+    "low": 0.63120002,
+    "close": 0.63139999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 0.63129997,
+    "high": 0.63160002,
+    "low": 0.63099998,
+    "close": 0.63139999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-26T23:30:00",
+    "open": 0.63139999,
+    "high": 0.63169998,
+    "low": 0.63050002,
+    "close": 0.63069999,
+    "volume": 0.0,
+    "interval": "30m"
+  },
+  {
+    "symbol": "AUDUSD",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 0.63080001,
+    "high": 0.63150001,
+    "low": 0.63059998,
+    "close": 0.63129997,
+    "volume": 0.0,
+    "interval": "30m"
+  }
+]

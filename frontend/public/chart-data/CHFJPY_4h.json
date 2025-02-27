@@ -1,0 +1,1362 @@
+[
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-28T03:00:00",
+    "open": 171.37,
+    "high": 171.55,
+    "low": 171.14,
+    "close": 171.46001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-28T07:00:00",
+    "open": 171.46001,
+    "high": 171.57001,
+    "low": 171.17999,
+    "close": 171.28,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-28T11:00:00",
+    "open": 171.25999,
+    "high": 172.080002,
+    "low": 171.22,
+    "close": 172.0099945,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-28T15:00:00",
+    "open": 172.0099945,
+    "high": 172.17999,
+    "low": 171.85001,
+    "close": 171.96001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-28T19:00:00",
+    "open": 171.96001,
+    "high": 171.99001,
+    "low": 171.28999,
+    "close": 171.49001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-28T23:00:00",
+    "open": 171.48,
+    "high": 172.059998,
+    "low": 171.37,
+    "close": 171.91,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-29T03:00:00",
+    "open": 171.89999,
+    "high": 172.11,
+    "low": 171.88,
+    "close": 172.059998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-29T07:00:00",
+    "open": 172.059998,
+    "high": 172.10001,
+    "low": 171.95,
+    "close": 172.039993,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-29T11:00:00",
+    "open": 172.050003,
+    "high": 172.32001,
+    "low": 171.92999,
+    "close": 172.029999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-29T15:00:00",
+    "open": 172.029999,
+    "high": 172.050003,
+    "low": 171.44,
+    "close": 171.49001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-29T19:00:00",
+    "open": 171.50999,
+    "high": 171.56,
+    "low": 171.25999,
+    "close": 171.42999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-29T23:00:00",
+    "open": 171.42,
+    "high": 171.46001,
+    "low": 170.98,
+    "close": 171.0,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-30T03:00:00",
+    "open": 171.0,
+    "high": 171.17999,
+    "low": 170.94,
+    "close": 171.12,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-30T07:00:00",
+    "open": 171.12,
+    "high": 171.25,
+    "low": 171.039993,
+    "close": 171.2,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-30T11:00:00",
+    "open": 171.2,
+    "high": 171.22,
+    "low": 170.24001,
+    "close": 170.47,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-30T15:00:00",
+    "open": 170.47,
+    "high": 170.62,
+    "low": 170.25999,
+    "close": 170.46001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-30T19:00:00",
+    "open": 170.56,
+    "high": 170.57001,
+    "low": 169.98,
+    "close": 170.14,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-30T23:00:00",
+    "open": 170.14,
+    "high": 170.14999,
+    "low": 169.59,
+    "close": 169.89,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-31T03:00:00",
+    "open": 169.89999,
+    "high": 170.080002,
+    "low": 169.61,
+    "close": 169.61,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-31T07:00:00",
+    "open": 169.62,
+    "high": 169.77,
+    "low": 169.37,
+    "close": 169.39999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-31T11:00:00",
+    "open": 169.39999,
+    "high": 169.64,
+    "low": 169.17999,
+    "close": 169.58,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-31T15:00:00",
+    "open": 169.58,
+    "high": 170.19,
+    "low": 169.55,
+    "close": 170.039993,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-31T19:00:00",
+    "open": 170.039993,
+    "high": 170.089996,
+    "low": 169.50999,
+    "close": 170.0,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-01-31T23:00:00",
+    "open": 170.020004,
+    "high": 170.62,
+    "low": 169.85001,
+    "close": 170.5,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-01T03:00:00",
+    "open": 170.49001,
+    "high": 170.64,
+    "low": 170.19,
+    "close": 170.38,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-01T07:00:00",
+    "open": 170.38,
+    "high": 170.47,
+    "low": 170.12,
+    "close": 170.32001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-03T07:00:00",
+    "open": 169.11,
+    "high": 169.91,
+    "low": 169.080002,
+    "close": 169.75999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-03T11:00:00",
+    "open": 169.75999,
+    "high": 170.22,
+    "low": 169.64999,
+    "close": 169.74001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-03T15:00:00",
+    "open": 169.74001,
+    "high": 169.97,
+    "low": 169.37,
+    "close": 169.39999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-03T19:00:00",
+    "open": 169.39999,
+    "high": 169.67,
+    "low": 168.66,
+    "close": 168.75999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-03T23:00:00",
+    "open": 168.77,
+    "high": 169.88,
+    "low": 168.57001,
+    "close": 169.72,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-04T03:00:00",
+    "open": 169.73,
+    "high": 169.81,
+    "low": 169.080002,
+    "close": 169.67999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-04T07:00:00",
+    "open": 169.67999,
+    "high": 170.42,
+    "low": 169.50999,
+    "close": 170.33,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-04T11:00:00",
+    "open": 170.33,
+    "high": 170.39999,
+    "low": 170.059998,
+    "close": 170.25,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-04T15:00:00",
+    "open": 170.25,
+    "high": 170.39,
+    "low": 169.69,
+    "close": 170.34,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-04T19:00:00",
+    "open": 170.35001,
+    "high": 170.95,
+    "low": 170.32001,
+    "close": 170.72,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-04T23:00:00",
+    "open": 170.72,
+    "high": 171.050003,
+    "low": 170.5,
+    "close": 170.75999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-05T03:00:00",
+    "open": 170.75,
+    "high": 170.78,
+    "low": 170.28999,
+    "close": 170.5,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-05T07:00:00",
+    "open": 170.5,
+    "high": 170.64999,
+    "low": 170.19,
+    "close": 170.24001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-05T11:00:00",
+    "open": 170.23,
+    "high": 170.47,
+    "low": 169.24001,
+    "close": 169.33,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-05T15:00:00",
+    "open": 169.32001,
+    "high": 169.66,
+    "low": 169.22,
+    "close": 169.62,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-05T19:00:00",
+    "open": 169.63,
+    "high": 169.7,
+    "low": 169.16,
+    "close": 169.42999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-05T23:00:00",
+    "open": 169.42999,
+    "high": 169.78,
+    "low": 168.83,
+    "close": 168.95,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-06T03:00:00",
+    "open": 168.95,
+    "high": 169.3,
+    "low": 168.92,
+    "close": 169.28,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-06T07:00:00",
+    "open": 169.28,
+    "high": 169.49001,
+    "low": 169.11,
+    "close": 169.33,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-06T11:00:00",
+    "open": 169.33,
+    "high": 169.33,
+    "low": 168.5,
+    "close": 168.7,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-06T15:00:00",
+    "open": 168.7,
+    "high": 169.050003,
+    "low": 168.58,
+    "close": 168.88,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-06T19:00:00",
+    "open": 168.88,
+    "high": 169.0,
+    "low": 168.36,
+    "close": 168.44,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-06T23:00:00",
+    "open": 168.44,
+    "high": 168.44,
+    "low": 167.52,
+    "close": 167.59,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-07T03:00:00",
+    "open": 167.59,
+    "high": 167.92999,
+    "low": 167.17,
+    "close": 167.25,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-07T07:00:00",
+    "open": 167.25,
+    "high": 167.5,
+    "low": 167.0099945,
+    "close": 167.020004,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-07T11:00:00",
+    "open": 167.020004,
+    "high": 167.53999,
+    "low": 166.78,
+    "close": 167.28,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-07T15:00:00",
+    "open": 167.28,
+    "high": 167.58,
+    "low": 167.24001,
+    "close": 167.53999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-07T19:00:00",
+    "open": 167.55,
+    "high": 167.84,
+    "low": 167.41,
+    "close": 167.81,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-07T23:00:00",
+    "open": 167.8,
+    "high": 167.88,
+    "low": 166.36,
+    "close": 166.52,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-08T03:00:00",
+    "open": 166.52,
+    "high": 166.85001,
+    "low": 165.88,
+    "close": 166.52,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-08T07:00:00",
+    "open": 166.50999,
+    "high": 166.52,
+    "low": 166.33,
+    "close": 166.41,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-10T07:00:00",
+    "open": 166.11,
+    "high": 166.75999,
+    "low": 166.059998,
+    "close": 166.74001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-10T11:00:00",
+    "open": 166.73,
+    "high": 166.92,
+    "low": 166.58,
+    "close": 166.72,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-10T15:00:00",
+    "open": 166.72,
+    "high": 167.11,
+    "low": 166.61,
+    "close": 167.080002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-10T19:00:00",
+    "open": 167.080002,
+    "high": 167.58,
+    "low": 167.050003,
+    "close": 167.13,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-10T23:00:00",
+    "open": 167.13,
+    "high": 167.14999,
+    "low": 166.52,
+    "close": 166.56,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-11T03:00:00",
+    "open": 166.57001,
+    "high": 166.88,
+    "low": 166.52,
+    "close": 166.75999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-11T07:00:00",
+    "open": 166.75999,
+    "high": 166.99001,
+    "low": 166.50999,
+    "close": 166.55,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-11T11:00:00",
+    "open": 166.53999,
+    "high": 166.82001,
+    "low": 166.45,
+    "close": 166.72,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-11T15:00:00",
+    "open": 166.72,
+    "high": 166.78999,
+    "low": 166.58,
+    "close": 166.64999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-11T19:00:00",
+    "open": 166.64999,
+    "high": 166.96001,
+    "low": 166.42999,
+    "close": 166.86,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-11T23:00:00",
+    "open": 166.87,
+    "high": 167.059998,
+    "low": 166.64,
+    "close": 166.98,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-12T03:00:00",
+    "open": 166.98,
+    "high": 167.039993,
+    "low": 166.77,
+    "close": 166.99001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-12T07:00:00",
+    "open": 166.98,
+    "high": 167.31,
+    "low": 166.88,
+    "close": 167.31,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-12T11:00:00",
+    "open": 167.28999,
+    "high": 168.25999,
+    "low": 167.27,
+    "close": 168.21001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-12T15:00:00",
+    "open": 168.21001,
+    "high": 168.47,
+    "low": 168.12,
+    "close": 168.46001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-12T19:00:00",
+    "open": 168.46001,
+    "high": 168.67999,
+    "low": 168.34,
+    "close": 168.57001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-12T23:00:00",
+    "open": 168.56,
+    "high": 169.25,
+    "low": 168.23,
+    "close": 169.089996,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-13T03:00:00",
+    "open": 169.089996,
+    "high": 169.48,
+    "low": 168.99001,
+    "close": 169.080002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-13T07:00:00",
+    "open": 169.089996,
+    "high": 169.13,
+    "low": 168.81,
+    "close": 168.85001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-13T11:00:00",
+    "open": 168.84,
+    "high": 169.23,
+    "low": 168.75,
+    "close": 169.12,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-13T15:00:00",
+    "open": 169.12,
+    "high": 169.75,
+    "low": 168.92999,
+    "close": 169.67999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-13T19:00:00",
+    "open": 169.67999,
+    "high": 169.75999,
+    "low": 169.33,
+    "close": 169.5,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-13T23:00:00",
+    "open": 169.5,
+    "high": 169.63,
+    "low": 168.88,
+    "close": 169.17999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-14T03:00:00",
+    "open": 169.17999,
+    "high": 169.46001,
+    "low": 169.059998,
+    "close": 169.2,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-14T07:00:00",
+    "open": 169.2,
+    "high": 169.52,
+    "low": 169.070007,
+    "close": 169.37,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-14T11:00:00",
+    "open": 169.39,
+    "high": 169.45,
+    "low": 168.86,
+    "close": 169.070007,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-14T15:00:00",
+    "open": 169.059998,
+    "high": 169.12,
+    "low": 168.64999,
+    "close": 168.81,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-14T19:00:00",
+    "open": 168.82001,
+    "high": 169.49001,
+    "low": 168.74001,
+    "close": 169.39,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-14T23:00:00",
+    "open": 169.39,
+    "high": 169.66,
+    "low": 169.14999,
+    "close": 169.44,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-15T03:00:00",
+    "open": 169.44,
+    "high": 169.61,
+    "low": 169.28,
+    "close": 169.38,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-15T07:00:00",
+    "open": 169.37,
+    "high": 169.39999,
+    "low": 169.25,
+    "close": 169.32001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-17T07:00:00",
+    "open": 169.57001,
+    "high": 169.58,
+    "low": 168.88,
+    "close": 168.92,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-17T11:00:00",
+    "open": 168.91,
+    "high": 168.96001,
+    "low": 168.37,
+    "close": 168.39999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-17T15:00:00",
+    "open": 168.39999,
+    "high": 168.75999,
+    "low": 168.25999,
+    "close": 168.75,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-17T19:00:00",
+    "open": 168.75,
+    "high": 168.81,
+    "low": 168.14,
+    "close": 168.14999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-17T23:00:00",
+    "open": 168.14999,
+    "high": 168.21001,
+    "low": 167.94,
+    "close": 168.0,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-18T03:00:00",
+    "open": 167.99001,
+    "high": 168.17999,
+    "low": 167.98,
+    "close": 168.050003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-18T07:00:00",
+    "open": 168.059998,
+    "high": 168.27,
+    "low": 167.89999,
+    "close": 168.12,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-18T11:00:00",
+    "open": 168.12,
+    "high": 168.57001,
+    "low": 168.12,
+    "close": 168.55,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-18T15:00:00",
+    "open": 168.57001,
+    "high": 168.67,
+    "low": 168.24001,
+    "close": 168.67,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-18T19:00:00",
+    "open": 168.67,
+    "high": 168.86,
+    "low": 168.25,
+    "close": 168.34,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-18T23:00:00",
+    "open": 168.34,
+    "high": 168.44,
+    "low": 168.020004,
+    "close": 168.21001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-19T03:00:00",
+    "open": 168.21001,
+    "high": 168.32001,
+    "low": 168.10001,
+    "close": 168.14,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-19T07:00:00",
+    "open": 168.14,
+    "high": 168.47,
+    "low": 168.11,
+    "close": 168.12,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-19T11:00:00",
+    "open": 168.12,
+    "high": 168.5,
+    "low": 167.89999,
+    "close": 168.14999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-19T15:00:00",
+    "open": 168.14,
+    "high": 168.19,
+    "low": 167.77,
+    "close": 167.8,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-19T19:00:00",
+    "open": 167.81,
+    "high": 168.10001,
+    "low": 167.59,
+    "close": 167.96001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-19T23:00:00",
+    "open": 167.96001,
+    "high": 168.050003,
+    "low": 167.47,
+    "close": 167.55,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-20T03:00:00",
+    "open": 167.56,
+    "high": 167.81,
+    "low": 167.45,
+    "close": 167.64,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-20T07:00:00",
+    "open": 167.64,
+    "high": 167.69,
+    "low": 167.14,
+    "close": 167.19,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-20T11:00:00",
+    "open": 167.19,
+    "high": 167.23,
+    "low": 166.59,
+    "close": 166.61,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-20T15:00:00",
+    "open": 166.59,
+    "high": 166.66,
+    "low": 166.14999,
+    "close": 166.39,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-20T19:00:00",
+    "open": 166.38,
+    "high": 166.72,
+    "low": 166.32001,
+    "close": 166.5,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-20T23:00:00",
+    "open": 166.5,
+    "high": 166.52,
+    "low": 166.0099945,
+    "close": 166.2,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-21T03:00:00",
+    "open": 166.19,
+    "high": 166.88,
+    "low": 166.16,
+    "close": 166.87,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-21T07:00:00",
+    "open": 166.87,
+    "high": 166.89,
+    "low": 166.32001,
+    "close": 166.42999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-21T11:00:00",
+    "open": 166.42999,
+    "high": 167.71001,
+    "low": 166.42999,
+    "close": 167.38,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-21T15:00:00",
+    "open": 167.38,
+    "high": 167.75999,
+    "low": 167.21001,
+    "close": 167.64999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-21T19:00:00",
+    "open": 167.66,
+    "high": 167.67,
+    "low": 167.2,
+    "close": 167.23,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-21T23:00:00",
+    "open": 167.23,
+    "high": 167.31,
+    "low": 166.17999,
+    "close": 166.25999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-22T03:00:00",
+    "open": 166.25999,
+    "high": 166.41,
+    "low": 165.98,
+    "close": 166.16,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-22T07:00:00",
+    "open": 166.16,
+    "high": 166.36,
+    "low": 166.089996,
+    "close": 166.28999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-24T07:00:00",
+    "open": 166.33,
+    "high": 166.41,
+    "low": 166.0,
+    "close": 166.27,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-24T11:00:00",
+    "open": 166.28,
+    "high": 166.84,
+    "low": 166.0099945,
+    "close": 166.55,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-24T15:00:00",
+    "open": 166.55,
+    "high": 166.81,
+    "low": 166.5,
+    "close": 166.60001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-24T19:00:00",
+    "open": 166.60001,
+    "high": 166.78,
+    "low": 166.25,
+    "close": 166.44,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-24T23:00:00",
+    "open": 166.42999,
+    "high": 166.75,
+    "low": 166.23,
+    "close": 166.46001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-25T03:00:00",
+    "open": 166.46001,
+    "high": 167.13,
+    "low": 166.46001,
+    "close": 166.94,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-25T07:00:00",
+    "open": 166.92999,
+    "high": 167.050003,
+    "low": 166.78,
+    "close": 167.050003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-25T11:00:00",
+    "open": 167.059998,
+    "high": 167.46001,
+    "low": 166.77,
+    "close": 166.82001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-25T15:00:00",
+    "open": 166.82001,
+    "high": 167.050003,
+    "low": 166.37,
+    "close": 166.48,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-25T19:00:00",
+    "open": 166.47,
+    "high": 167.46001,
+    "low": 166.39999,
+    "close": 167.36,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-25T23:00:00",
+    "open": 167.36,
+    "high": 167.58,
+    "low": 166.67,
+    "close": 166.85001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 166.84,
+    "high": 167.24001,
+    "low": 166.72,
+    "close": 167.020004,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 167.020004,
+    "high": 167.070007,
+    "low": 166.84,
+    "close": 167.020004,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 167.020004,
+    "high": 167.38,
+    "low": 166.67,
+    "close": 167.19,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 167.19,
+    "high": 167.31,
+    "low": 166.96001,
+    "close": 167.19,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 167.19,
+    "high": 167.25,
+    "low": 166.75999,
+    "close": 166.94,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "CHFJPY",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 166.94,
+    "high": 167.42,
+    "low": 166.81,
+    "close": 167.28,
+    "volume": 0.0,
+    "interval": "4h"
+  }
+]

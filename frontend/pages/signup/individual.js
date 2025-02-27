@@ -744,11 +744,11 @@ export default function IndividualInvestorSignup() {
                 >
                   <Text fontSize="sm">
                     {t('investorTermsAgreement', 'I agree to the')} {' '}
-                    <ChakraLink color="blue.400" href="/terms/investor-agreement" target="_blank">
+                    <ChakraLink color="blue.400" href="/policies/investor-agreement" target="_blank">
                       {t('investorAgreementTerms')}
                     </ChakraLink>
                     {' '} {t('andThe')} {' '}
-                    <ChakraLink color="blue.400" href="/terms/privacy-policy" target="_blank">
+                    <ChakraLink color="blue.400" href="/policies/privacy" target="_blank">
                       {t('privacyPolicy')}
                     </ChakraLink>
                   </Text>

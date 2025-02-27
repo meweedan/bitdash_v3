@@ -257,8 +257,6 @@ const ChallengePage = () => {
       </Head>
       
       <Box 
-        bg={useColorModeValue('gray.50', 'gray.900')}
-        minH="100vh"
         py={12}
       >
         <Container maxW="6xl">
@@ -308,12 +306,11 @@ const ChallengePage = () => {
                 </Box>
                 
                 <Box 
-                  bg={cardBg}
                   p={6}
                   borderRadius="xl"
                   shadow="md"
                   textAlign="center"
-                  minW={{ base: 'full', sm: '280px' }}
+                  minW={{ base: 'full', sm: '450px' }}
                   maxW={{ base: 'full', md: '300px' }}
                   borderWidth="1px"
                   borderColor={borderColor}
@@ -353,9 +350,6 @@ const ChallengePage = () => {
                   >
                     Start Challenge
                   </Button>
-                  <Text fontSize="sm" opacity={0.7}>
-                    Islamic accounts available
-                  </Text>
                 </Box>
               </Flex>
             </motion.div>
@@ -364,7 +358,6 @@ const ChallengePage = () => {
             <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={8} mb={10}>
               <motion.div variants={itemVariants}>
                 <Box
-                  bg={cardBg}
                   p={6}
                   borderRadius="xl"
                   shadow="md"
@@ -510,10 +503,8 @@ const ChallengePage = () => {
                   align={{ base: 'center', md: 'flex-start' }}
                 >
                   <Box 
-                    bg="green.50" 
                     p={5} 
                     borderRadius="xl" 
-                    color="green.800" 
                     mr={{ base: 0, md: 8 }} 
                     mb={{ base: 6, md: 0 }}
                     minW="200px"
@@ -564,7 +555,7 @@ const ChallengePage = () => {
             {/* CTA Section */}
             <motion.div variants={itemVariants}>
               <Box
-                bg={challenge.color}
+                bg="brand.bitfund.700"
                 p={{ base: 6, md: 10 }}
                 borderRadius="xl"
                 color="white"
@@ -579,7 +570,6 @@ const ChallengePage = () => {
                   width="200px"
                   height="200px"
                   borderRadius="full"
-                  bg="whiteAlpha.100"
                 />
                 
                 <Box
@@ -589,7 +579,6 @@ const ChallengePage = () => {
                   width="150px"
                   height="150px"
                   borderRadius="full"
-                  bg="whiteAlpha.100"
                 />
                 
                 <VStack spacing={6} position="relative" zIndex={1}>
@@ -602,7 +591,8 @@ const ChallengePage = () => {
                   </Text>
                   <Button
                     size="lg"
-                    colorScheme="whiteAlpha"
+                    color="brand.bitfund.400"
+                    variant="bitfund-solid"
                     rightIcon={<FaArrowRight />}
                     onClick={handleCheckout}
                     _hover={{

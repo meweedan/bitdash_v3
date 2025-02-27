@@ -776,11 +776,11 @@ export default function IBSignup() {
                 >
                   <Text fontSize="sm">
                     {t('ibTermsAgreement', 'I agree to the')} {' '}
-                    <ChakraLink color="blue.400" href="/terms/ib-agreement" target="_blank">
+                    <ChakraLink color="blue.400" href="/policies/ib-agreement" target="_blank">
                       {t('ibAgreementTerms')}
                     </ChakraLink>
                     {' '} {t('andThe')} {' '}
-                    <ChakraLink color="blue.400" href="/terms/privacy-policy" target="_blank">
+                    <ChakraLink color="blue.400" href="/policies/privacy" target="_blank">
                       {t('privacyPolicy')}
                     </ChakraLink>
                   </Text>
