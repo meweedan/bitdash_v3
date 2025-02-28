@@ -260,7 +260,7 @@ function LearnPage() {
 
           {/* FAQ SECTION */}
           <SlideFade in offsetY="30px">
-            <Box mt={sectionPadding}  position="relative" zIndex={999999} mb={{ base: 8, md: 16 }}>
+            <Box mt={sectionPadding}  position="relative" zIndex={1} mb={{ base: 8, md: 16 }}>
               <Heading
                 fontSize={{ base: '2xl', md: '3xl' }}
                 mb={{ base: 6, md: 10 }}

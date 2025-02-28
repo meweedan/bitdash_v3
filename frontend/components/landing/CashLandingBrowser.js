@@ -27,6 +27,7 @@ import {
   FaChartLine
 } from 'react-icons/fa';
 import CryptoMatrix from '../CryptoMatrix';
+import AgentLocator from '../cash/customer/AgentLocator';
 
 const BitCashLanding = () => {
   const { t } = useTranslation('common');
@@ -128,27 +129,22 @@ const BitCashLanding = () => {
 
               <CryptoMatrix/>
 
-              <HStack spacing={6} pt={8}>
+              <HStack spacing={2} pt={2}>
                 <Button
-                  size="lg"
-                  colorScheme="green"
-                  px={8}
-                  h={14}
-                  fontSize="lg"
-                  onClick={() => router.push('/signup')}
-                >
-                  {t('cash.hero.get_started', 'Get Started')}
-                </Button>
-                <Button
-                  size="lg"
                   variant="outline"
                   colorScheme="green"
-                  px={8}
                   h={14}
-                  fontSize="lg"
                   onClick={() => router.push('/merchants')}
                 >
                   {t('hero.merchant_signup', 'For Merchants')}
+                </Button>
+                <Button
+                  variant="outline"
+                  colorScheme="green"
+                  h={14}
+                  onClick={() => router.push('/agents')}
+                >
+                  {t('hero.agent_signup', 'For Agents')}
                 </Button>
               </HStack>
             </VStack>
