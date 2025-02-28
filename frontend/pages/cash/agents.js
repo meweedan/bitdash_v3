@@ -226,7 +226,7 @@ function AgentsPage() {
                     <Button
                       size={buttonSize}
                       variant="bitcash-outline"
-                      onClick={() => router.push('/agents/calculator')}
+                      onClick={() => router.push('/agent/calculator')}
                     >
                       {t('agents.hero.calculatorButton', 'Earnings Calculator')}
                     </Button>
@@ -745,7 +745,7 @@ function AgentsPage() {
           </ListItem>
         </List>
         
-        <Button variant="bitcash-outline" onClick={() => router.push('/agents/calculator')}>
+        <Button variant="bitcash-outline" onClick={() => router.push('/agent/calculator')}>
           {t('agents.commissions.calculatorButton', 'Calculate Your Potential Earnings')}
         </Button>
       </Box>
@@ -849,7 +849,7 @@ function AgentsPage() {
             rightIcon={<ChevronRightIcon />} 
             variant="link" 
             color="brand.bitcash.400"
-            onClick={() => router.push('/agents/security')}
+            onClick={() => router.push('/agent/security')}
           >
             {t('agents.security.learnMore', 'Learn about our security protocols')}
           </Button>
