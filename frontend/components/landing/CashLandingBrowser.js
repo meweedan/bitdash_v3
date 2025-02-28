@@ -27,8 +27,6 @@ import {
   FaChartLine
 } from 'react-icons/fa';
 import CryptoMatrix from '../CryptoMatrix';
-import ForexTicker from '../cash/ForexTicker';
-import AdvancedForexChart from '../cash/AdvancedForexChart';
 
 const BitCashLanding = () => {
   const { t } = useTranslation('common');
@@ -129,10 +127,6 @@ const BitCashLanding = () => {
               </Heading>
 
               <CryptoMatrix/>
-
-              <ForexTicker/>
-
-              <AdvancedForexChart />
 
               <HStack spacing={6} pt={8}>
                 <Button

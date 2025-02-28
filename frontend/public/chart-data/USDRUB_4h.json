@@ -1,0 +1,1362 @@
+[
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-29T03:00:00",
+    "open": 98.65099,
+    "high": 98.66226,
+    "low": 97.98917,
+    "close": 97.99957,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-29T07:00:00",
+    "open": 97.99957,
+    "high": 98.034531,
+    "low": 97.96616,
+    "close": 98.00099945,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-29T11:00:00",
+    "open": 98.00099945,
+    "high": 98.012245,
+    "low": 97.98265,
+    "close": 98.001915,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-29T15:00:00",
+    "open": 98.001915,
+    "high": 98.60476,
+    "low": 97.89057,
+    "close": 97.90279,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-29T19:00:00",
+    "open": 97.90279,
+    "high": 98.75,
+    "low": 97.84723,
+    "close": 98.2571,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-29T23:00:00",
+    "open": 98.3548,
+    "high": 99.50474,
+    "low": 98.2064,
+    "close": 99.49426,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-30T03:00:00",
+    "open": 99.525,
+    "high": 99.7435,
+    "low": 98.62028,
+    "close": 99.2676,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-30T07:00:00",
+    "open": 99.25243,
+    "high": 99.2844,
+    "low": 99.21639,
+    "close": 99.24909,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-30T11:00:00",
+    "open": 99.24909,
+    "high": 99.25718,
+    "low": 99.23241,
+    "close": 99.24808,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-30T15:00:00",
+    "open": 99.24808,
+    "high": 99.25999,
+    "low": 98.69481,
+    "close": 98.70052,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-30T19:00:00",
+    "open": 98.70189,
+    "high": 98.71991,
+    "low": 97.47035,
+    "close": 98.001442,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-30T23:00:00",
+    "open": 98.001442,
+    "high": 98.43537,
+    "low": 97.7609,
+    "close": 98.34627,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-31T03:00:00",
+    "open": 98.34628,
+    "high": 98.50433,
+    "low": 97.74067,
+    "close": 98.4972,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-31T07:00:00",
+    "open": 98.4967,
+    "high": 98.55216,
+    "low": 98.47442,
+    "close": 98.50341,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-31T11:00:00",
+    "open": 98.50341,
+    "high": 98.53846,
+    "low": 98.42564,
+    "close": 98.51948,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-31T15:00:00",
+    "open": 98.51284,
+    "high": 98.52802,
+    "low": 97.62081,
+    "close": 97.92786,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-31T19:00:00",
+    "open": 97.92786,
+    "high": 98.925,
+    "low": 97.79997,
+    "close": 98.50809,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-01-31T23:00:00",
+    "open": 98.5,
+    "high": 98.905,
+    "low": 98.48199,
+    "close": 98.8764,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-01T03:00:00",
+    "open": 98.8764,
+    "high": 99.013901,
+    "low": 98.52478,
+    "close": 98.57735,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-01T07:00:00",
+    "open": 98.57735,
+    "high": 98.6002,
+    "low": 98.53976,
+    "close": 98.57556,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-03T07:00:00",
+    "open": 99.85637,
+    "high": 99.85637,
+    "low": 99.54998,
+    "close": 99.73553,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-03T11:00:00",
+    "open": 99.73553,
+    "high": 100.074913,
+    "low": 99.54125,
+    "close": 99.98337,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-03T15:00:00",
+    "open": 99.98337,
+    "high": 99.98337,
+    "low": 99.49424,
+    "close": 99.74513,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-03T19:00:00",
+    "open": 99.74513,
+    "high": 100.38484,
+    "low": 99.71625,
+    "close": 99.87788,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-03T23:00:00",
+    "open": 99.87398,
+    "high": 100.07325,
+    "low": 99.562,
+    "close": 99.74176,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-04T03:00:00",
+    "open": 99.73838,
+    "high": 99.82846,
+    "low": 99.57751,
+    "close": 99.75633,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-04T07:00:00",
+    "open": 99.7495,
+    "high": 99.77571,
+    "low": 99.70398,
+    "close": 99.75046,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-04T11:00:00",
+    "open": 99.75046,
+    "high": 99.76304,
+    "low": 99.73016,
+    "close": 99.75143,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-04T15:00:00",
+    "open": 99.75143,
+    "high": 99.80002,
+    "low": 98.8731,
+    "close": 98.99712,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-04T19:00:00",
+    "open": 98.99712,
+    "high": 100.125,
+    "low": 98.5707,
+    "close": 99.63225,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-04T23:00:00",
+    "open": 99.63225,
+    "high": 99.9751,
+    "low": 99.55003,
+    "close": 99.62985,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-05T03:00:00",
+    "open": 99.62985,
+    "high": 100.7097,
+    "low": 99.4833,
+    "close": 100.7063,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-05T07:00:00",
+    "open": 100.69958,
+    "high": 100.72511,
+    "low": 100.66384,
+    "close": 100.69814,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-05T11:00:00",
+    "open": 100.69814,
+    "high": 100.71214,
+    "low": 100.6797,
+    "close": 100.69954,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-05T15:00:00",
+    "open": 100.70003,
+    "high": 100.71024,
+    "low": 98.73341,
+    "close": 98.79617,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-05T19:00:00",
+    "open": 98.79617,
+    "high": 98.9995,
+    "low": 97.6751,
+    "close": 97.6751,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-05T23:00:00",
+    "open": 97.65,
+    "high": 98.10329,
+    "low": 97.15,
+    "close": 97.57645,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-06T03:00:00",
+    "open": 97.57645,
+    "high": 98.0098801,
+    "low": 97.36427,
+    "close": 97.99953,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-06T07:00:00",
+    "open": 97.99953,
+    "high": 98.0089493,
+    "low": 97.94474,
+    "close": 98.001442,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-06T11:00:00",
+    "open": 98.000030518,
+    "high": 98.010368,
+    "low": 97.97932,
+    "close": 97.99248,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-06T15:00:00",
+    "open": 98.00046539,
+    "high": 98.0094757,
+    "low": 96.49539,
+    "close": 96.50004,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-06T19:00:00",
+    "open": 96.75001,
+    "high": 97.6996,
+    "low": 96.46898,
+    "close": 97.076408,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-06T23:00:00",
+    "open": 97.076408,
+    "high": 97.090942,
+    "low": 96.5613,
+    "close": 96.61846,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-07T03:00:00",
+    "open": 96.62733,
+    "high": 97.010742,
+    "low": 96.60361,
+    "close": 96.74953,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-07T07:00:00",
+    "open": 96.74953,
+    "high": 96.757,
+    "low": 96.68049,
+    "close": 96.74959,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-07T11:00:00",
+    "open": 96.74959,
+    "high": 96.75839,
+    "low": 96.73141,
+    "close": 96.74585,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-07T15:00:00",
+    "open": 96.75146,
+    "high": 97.87553,
+    "low": 96.72443,
+    "close": 97.59671,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-07T19:00:00",
+    "open": 97.60093,
+    "high": 97.90383,
+    "low": 96.6438,
+    "close": 96.85281,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-07T23:00:00",
+    "open": 96.85142,
+    "high": 97.5734,
+    "low": 96.84462,
+    "close": 96.87971,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-08T03:00:00",
+    "open": 96.87971,
+    "high": 97.28542,
+    "low": 96.8526,
+    "close": 96.9897,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-08T07:00:00",
+    "open": 96.9897,
+    "high": 97.015045,
+    "low": 96.9775,
+    "close": 97.0012131,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-10T07:00:00",
+    "open": 97.86304,
+    "high": 97.95819,
+    "low": 97.68987,
+    "close": 97.71024,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-10T11:00:00",
+    "open": 97.71024,
+    "high": 97.82361,
+    "low": 97.64016,
+    "close": 97.70597,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-10T15:00:00",
+    "open": 97.70597,
+    "high": 97.70644,
+    "low": 97.35372,
+    "close": 97.37167,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-10T19:00:00",
+    "open": 97.37167,
+    "high": 98.1103,
+    "low": 96.7949,
+    "close": 97.0252,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-10T23:00:00",
+    "open": 97.12968,
+    "high": 97.8687,
+    "low": 96.4754,
+    "close": 96.7566,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-11T03:00:00",
+    "open": 96.7566,
+    "high": 97.01078,
+    "low": 96.4158,
+    "close": 96.62454,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-11T07:00:00",
+    "open": 96.63013,
+    "high": 96.65056,
+    "low": 96.59456,
+    "close": 96.61237,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-11T11:00:00",
+    "open": 96.61237,
+    "high": 96.63258,
+    "low": 96.60116,
+    "close": 96.62548,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-11T15:00:00",
+    "open": 96.62454,
+    "high": 96.63345,
+    "low": 96.12446,
+    "close": 96.32738,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-11T19:00:00",
+    "open": 96.32738,
+    "high": 96.33578,
+    "low": 95.6063,
+    "close": 95.8505,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-11T23:00:00",
+    "open": 95.8505,
+    "high": 96.15649,
+    "low": 95.4127,
+    "close": 95.62181,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-12T03:00:00",
+    "open": 95.63056,
+    "high": 96.63,
+    "low": 95.62411,
+    "close": 95.87687,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-12T07:00:00",
+    "open": 95.86989,
+    "high": 96.51991,
+    "low": 95.81078,
+    "close": 96.47567,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-12T11:00:00",
+    "open": 96.48499,
+    "high": 96.63,
+    "low": 96.43613,
+    "close": 96.49197,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-12T15:00:00",
+    "open": 96.49802,
+    "high": 96.55672,
+    "low": 94.64275,
+    "close": 94.64773,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-12T19:00:00",
+    "open": 94.64999,
+    "high": 94.65503,
+    "low": 93.526,
+    "close": 93.90685,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-12T23:00:00",
+    "open": 93.90632,
+    "high": 94.85,
+    "low": 93.84319,
+    "close": 93.94732,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-13T03:00:00",
+    "open": 93.94732,
+    "high": 94.7283,
+    "low": 93.095947,
+    "close": 93.99963,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-13T07:00:00",
+    "open": 93.99782,
+    "high": 94.02552,
+    "low": 93.90055,
+    "close": 94.00010681,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-13T11:00:00",
+    "open": 94.00010681,
+    "high": 94.0082321,
+    "low": 93.97655,
+    "close": 94.00096893,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-13T15:00:00",
+    "open": 94.00096893,
+    "high": 94.010834,
+    "low": 89.49446,
+    "close": 90.86931,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-13T19:00:00",
+    "open": 90.87453,
+    "high": 91.45,
+    "low": 90.083199,
+    "close": 91.25308,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-13T23:00:00",
+    "open": 91.2634,
+    "high": 91.33347,
+    "low": 90.20256,
+    "close": 90.20565,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-14T03:00:00",
+    "open": 90.20132,
+    "high": 90.3582,
+    "low": 89.00046539,
+    "close": 89.50695,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-14T07:00:00",
+    "open": 89.50695,
+    "high": 89.51342,
+    "low": 89.46429,
+    "close": 89.49923,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-14T11:00:00",
+    "open": 89.49923,
+    "high": 89.50864,
+    "low": 89.4843,
+    "close": 89.49883,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-14T15:00:00",
+    "open": 89.50133,
+    "high": 91.0026169,
+    "low": 89.47778,
+    "close": 90.74526,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-14T19:00:00",
+    "open": 90.74526,
+    "high": 91.9375,
+    "low": 89.49658,
+    "close": 91.2086,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-14T23:00:00",
+    "open": 91.20089,
+    "high": 92.4751,
+    "low": 91.1948,
+    "close": 91.87635,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-15T03:00:00",
+    "open": 91.88068,
+    "high": 92.0653,
+    "low": 91.099884,
+    "close": 91.12542,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-15T07:00:00",
+    "open": 91.1255,
+    "high": 91.13198,
+    "low": 90.9507,
+    "close": 91.11793,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-17T07:00:00",
+    "open": 91.057747,
+    "high": 91.082497,
+    "low": 91.0091553,
+    "close": 91.04863,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-17T11:00:00",
+    "open": 91.050804,
+    "high": 91.075119,
+    "low": 90.90173,
+    "close": 90.99355,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-17T15:00:00",
+    "open": 90.99701,
+    "high": 92.0062332,
+    "low": 90.74266,
+    "close": 91.25479,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-17T19:00:00",
+    "open": 91.30001,
+    "high": 92.035896,
+    "low": 91.19651,
+    "close": 91.74868,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-17T23:00:00",
+    "open": 91.74917,
+    "high": 92.32678,
+    "low": 91.021896,
+    "close": 91.5013,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-18T03:00:00",
+    "open": 91.5022,
+    "high": 91.51047,
+    "low": 91.4543,
+    "close": 91.49996,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-18T07:00:00",
+    "open": 91.49306,
+    "high": 91.51718,
+    "low": 91.46877,
+    "close": 91.50006,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-18T11:00:00",
+    "open": 91.49743,
+    "high": 91.51004,
+    "low": 91.47468,
+    "close": 91.49866,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-18T15:00:00",
+    "open": 91.50304,
+    "high": 91.5513,
+    "low": 90.97545,
+    "close": 91.38172,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-18T19:00:00",
+    "open": 91.40044,
+    "high": 92.050003,
+    "low": 90.7738,
+    "close": 91.69865,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-18T23:00:00",
+    "open": 91.7009,
+    "high": 92.38204,
+    "low": 91.19214,
+    "close": 91.65089,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-19T03:00:00",
+    "open": 91.64865,
+    "high": 91.66361,
+    "low": 91.125,
+    "close": 91.54786,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-19T07:00:00",
+    "open": 91.54826,
+    "high": 91.5664,
+    "low": 91.52126,
+    "close": 91.55051,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-19T11:00:00",
+    "open": 91.5491,
+    "high": 91.55749,
+    "low": 91.52721,
+    "close": 91.55006,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-19T15:00:00",
+    "open": 91.5505,
+    "high": 91.55567,
+    "low": 91.25043,
+    "close": 91.45049,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-19T19:00:00",
+    "open": 91.44521,
+    "high": 91.50135,
+    "low": 89.225,
+    "close": 89.86901,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-19T23:00:00",
+    "open": 89.8763,
+    "high": 90.86053,
+    "low": 89.37458,
+    "close": 89.37458,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-20T03:00:00",
+    "open": 89.37287,
+    "high": 89.98234,
+    "low": 88.781,
+    "close": 89.62544,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-20T07:00:00",
+    "open": 89.61945,
+    "high": 89.64596,
+    "low": 89.57586,
+    "close": 89.62508,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-20T11:00:00",
+    "open": 89.61948,
+    "high": 89.63449,
+    "low": 89.60524,
+    "close": 89.62675,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-20T15:00:00",
+    "open": 89.62286,
+    "high": 89.6332,
+    "low": 88.19619,
+    "close": 88.35386,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-20T19:00:00",
+    "open": 88.34833,
+    "high": 89.1573,
+    "low": 87.87037,
+    "close": 88.24788,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-20T23:00:00",
+    "open": 88.2508,
+    "high": 89.032799,
+    "low": 88.19363,
+    "close": 88.35844,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-21T03:00:00",
+    "open": 88.35677,
+    "high": 88.7903,
+    "low": 88.33017,
+    "close": 88.68006,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-21T07:00:00",
+    "open": 88.67333,
+    "high": 88.71186,
+    "low": 88.63004,
+    "close": 88.67498,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-21T11:00:00",
+    "open": 88.67455,
+    "high": 88.69147,
+    "low": 88.65307,
+    "close": 88.67545,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-21T15:00:00",
+    "open": 88.68009,
+    "high": 88.68053,
+    "low": 87.37125,
+    "close": 87.74954,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-21T19:00:00",
+    "open": 87.74745,
+    "high": 89.2592,
+    "low": 87.3,
+    "close": 89.012703,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-21T23:00:00",
+    "open": 88.72715,
+    "high": 90.4083,
+    "low": 88.62418,
+    "close": 88.75043,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-22T03:00:00",
+    "open": 88.74792,
+    "high": 88.75895,
+    "low": 87.49757,
+    "close": 88.50466,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-22T07:00:00",
+    "open": 88.50726,
+    "high": 88.51355,
+    "low": 88.48316,
+    "close": 88.48746,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-24T07:00:00",
+    "open": 88.87828,
+    "high": 88.98872,
+    "low": 88.79902,
+    "close": 88.88252,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-24T11:00:00",
+    "open": 88.88847,
+    "high": 88.89568,
+    "low": 88.41825,
+    "close": 88.50399,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-24T15:00:00",
+    "open": 88.49683,
+    "high": 88.65105,
+    "low": 87.94588,
+    "close": 88.19623,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-24T19:00:00",
+    "open": 88.2,
+    "high": 88.8342,
+    "low": 87.5,
+    "close": 87.9313,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-24T23:00:00",
+    "open": 87.93177,
+    "high": 88.4187,
+    "low": 87.7189,
+    "close": 87.74792,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-25T03:00:00",
+    "open": 87.75462,
+    "high": 87.76259,
+    "low": 87.73663,
+    "close": 87.75422,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-25T07:00:00",
+    "open": 87.74627,
+    "high": 87.78811,
+    "low": 87.71115,
+    "close": 87.75085,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-25T11:00:00",
+    "open": 87.75251,
+    "high": 87.75719,
+    "low": 87.71771,
+    "close": 87.75001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-25T15:00:00",
+    "open": 87.74712,
+    "high": 87.75963,
+    "low": 86.62459,
+    "close": 86.87547,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-25T19:00:00",
+    "open": 86.87711,
+    "high": 87.1405,
+    "low": 85.7563,
+    "close": 86.35333,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-25T23:00:00",
+    "open": 86.34792,
+    "high": 86.90294,
+    "low": 86.2613,
+    "close": 86.59634,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 86.60043,
+    "high": 86.61201,
+    "low": 86.2473,
+    "close": 86.60083,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 86.60332,
+    "high": 86.60744,
+    "low": 86.54826,
+    "close": 86.59136,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 86.60783,
+    "high": 86.60828,
+    "low": 86.57862,
+    "close": 86.59917,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 86.59794,
+    "high": 86.6091,
+    "low": 85.50283,
+    "close": 86.0016861,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 86.0053253,
+    "high": 86.7932,
+    "low": 85.1721,
+    "close": 86.12295,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 86.12378,
+    "high": 87.125,
+    "low": 86.0186,
+    "close": 87.125,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-27T03:00:00",
+    "open": 86.82458,
+    "high": 86.85599,
+    "low": 86.072929,
+    "close": 86.82049,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-27T07:00:00",
+    "open": 86.82995,
+    "high": 86.8391,
+    "low": 86.79358,
+    "close": 86.82507,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-27T11:00:00",
+    "open": 86.82416,
+    "high": 86.83164,
+    "low": 86.80888,
+    "close": 86.82713,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-27T15:00:00",
+    "open": 86.82506,
+    "high": 87.50464,
+    "low": 86.79927,
+    "close": 87.25003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-27T19:00:00",
+    "open": 87.24335,
+    "high": 87.318,
+    "low": 86.74292,
+    "close": 87.24956,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDRUB",
+    "timestamp": "2025-02-27T23:00:00",
+    "open": 87.24664,
+    "high": 87.7514,
+    "low": 86.94561,
+    "close": 87.15041,
+    "volume": 0.0,
+    "interval": "4h"
+  }
+]

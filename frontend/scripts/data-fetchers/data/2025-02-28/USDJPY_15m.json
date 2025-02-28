@@ -1,0 +1,3492 @@
+[
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T09:00:00",
+    "open": 149.24001,
+    "high": 149.25999,
+    "low": 149.22,
+    "close": 149.24001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T09:15:00",
+    "open": 149.24001,
+    "high": 149.27,
+    "low": 149.23,
+    "close": 149.25,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T09:30:00",
+    "open": 149.25,
+    "high": 149.25999,
+    "low": 149.24001,
+    "close": 149.25999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T09:45:00",
+    "open": 149.25999,
+    "high": 149.25999,
+    "low": 149.2,
+    "close": 149.21001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T10:00:00",
+    "open": 149.22,
+    "high": 149.27,
+    "low": 149.19,
+    "close": 149.25999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T10:15:00",
+    "open": 149.25999,
+    "high": 149.39,
+    "low": 149.25,
+    "close": 149.33,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T10:30:00",
+    "open": 149.34,
+    "high": 149.36,
+    "low": 149.10001,
+    "close": 149.10001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T10:45:00",
+    "open": 149.10001,
+    "high": 149.41,
+    "low": 149.089996,
+    "close": 149.39999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T11:00:00",
+    "open": 149.39999,
+    "high": 149.39999,
+    "low": 149.22,
+    "close": 149.22,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T11:15:00",
+    "open": 149.22,
+    "high": 149.23,
+    "low": 148.99001,
+    "close": 149.039993,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T11:30:00",
+    "open": 149.039993,
+    "high": 149.11,
+    "low": 148.95,
+    "close": 149.070007,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T11:45:00",
+    "open": 149.070007,
+    "high": 149.080002,
+    "low": 148.84,
+    "close": 148.92999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T12:00:00",
+    "open": 148.92999,
+    "high": 149.11,
+    "low": 148.92,
+    "close": 148.98,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T12:15:00",
+    "open": 148.99001,
+    "high": 149.10001,
+    "low": 148.95,
+    "close": 149.080002,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T12:30:00",
+    "open": 149.070007,
+    "high": 149.13,
+    "low": 148.99001,
+    "close": 149.070007,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T12:45:00",
+    "open": 149.070007,
+    "high": 149.25999,
+    "low": 149.050003,
+    "close": 149.24001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T13:00:00",
+    "open": 149.25,
+    "high": 149.45,
+    "low": 149.23,
+    "close": 149.42999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T13:15:00",
+    "open": 149.42,
+    "high": 149.5,
+    "low": 149.33,
+    "close": 149.35001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T13:30:00",
+    "open": 149.36,
+    "high": 149.39999,
+    "low": 149.27,
+    "close": 149.3,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T13:45:00",
+    "open": 149.3,
+    "high": 149.32001,
+    "low": 149.23,
+    "close": 149.23,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T14:00:00",
+    "open": 149.23,
+    "high": 149.34,
+    "low": 149.22,
+    "close": 149.31,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T14:15:00",
+    "open": 149.31,
+    "high": 149.35001,
+    "low": 149.27,
+    "close": 149.32001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T14:30:00",
+    "open": 149.32001,
+    "high": 149.33,
+    "low": 149.16,
+    "close": 149.16,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T14:45:00",
+    "open": 149.17,
+    "high": 149.19,
+    "low": 149.12,
+    "close": 149.16,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T15:00:00",
+    "open": 149.17,
+    "high": 149.25999,
+    "low": 149.13,
+    "close": 149.25,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T15:15:00",
+    "open": 149.25,
+    "high": 149.28999,
+    "low": 149.22,
+    "close": 149.28,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T15:30:00",
+    "open": 149.28,
+    "high": 149.31,
+    "low": 149.23,
+    "close": 149.25999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T15:45:00",
+    "open": 149.25999,
+    "high": 149.3,
+    "low": 149.2,
+    "close": 149.2,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T16:00:00",
+    "open": 149.21001,
+    "high": 149.31,
+    "low": 149.19,
+    "close": 149.24001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T16:15:00",
+    "open": 149.24001,
+    "high": 149.39,
+    "low": 149.22,
+    "close": 149.36,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T16:30:00",
+    "open": 149.36,
+    "high": 149.42999,
+    "low": 149.35001,
+    "close": 149.39999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T16:45:00",
+    "open": 149.39999,
+    "high": 149.47,
+    "low": 149.39,
+    "close": 149.41,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T17:00:00",
+    "open": 149.41,
+    "high": 149.47,
+    "low": 149.34,
+    "close": 149.45,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T17:15:00",
+    "open": 149.45,
+    "high": 149.48,
+    "low": 149.42,
+    "close": 149.42999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T17:30:00",
+    "open": 149.42999,
+    "high": 149.49001,
+    "low": 149.38,
+    "close": 149.44,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T17:45:00",
+    "open": 149.44,
+    "high": 149.55,
+    "low": 149.44,
+    "close": 149.47,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T18:00:00",
+    "open": 149.46001,
+    "high": 149.47,
+    "low": 149.39,
+    "close": 149.46001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T18:15:00",
+    "open": 149.46001,
+    "high": 149.53999,
+    "low": 149.45,
+    "close": 149.5,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T18:30:00",
+    "open": 149.5,
+    "high": 149.53,
+    "low": 149.35001,
+    "close": 149.35001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T18:45:00",
+    "open": 149.36,
+    "high": 149.46001,
+    "low": 149.32001,
+    "close": 149.46001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T19:00:00",
+    "open": 149.45,
+    "high": 149.57001,
+    "low": 149.36,
+    "close": 149.37,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T19:15:00",
+    "open": 149.37,
+    "high": 149.39,
+    "low": 149.3,
+    "close": 149.3,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T19:30:00",
+    "open": 149.3,
+    "high": 149.34,
+    "low": 149.23,
+    "close": 149.3,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T19:45:00",
+    "open": 149.28999,
+    "high": 149.45,
+    "low": 149.28999,
+    "close": 149.42,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T20:00:00",
+    "open": 149.42999,
+    "high": 149.5,
+    "low": 149.38,
+    "close": 149.48,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T20:15:00",
+    "open": 149.48,
+    "high": 149.59,
+    "low": 149.42999,
+    "close": 149.57001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T20:30:00",
+    "open": 149.57001,
+    "high": 149.60001,
+    "low": 149.52,
+    "close": 149.59,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T20:45:00",
+    "open": 149.59,
+    "high": 149.60001,
+    "low": 149.48,
+    "close": 149.57001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T21:00:00",
+    "open": 149.56,
+    "high": 149.63,
+    "low": 149.55,
+    "close": 149.61,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T21:15:00",
+    "open": 149.61,
+    "high": 149.66,
+    "low": 149.60001,
+    "close": 149.62,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T21:30:00",
+    "open": 149.62,
+    "high": 149.67,
+    "low": 149.61,
+    "close": 149.62,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T21:45:00",
+    "open": 149.62,
+    "high": 149.64,
+    "low": 149.58,
+    "close": 149.63,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T22:00:00",
+    "open": 149.63,
+    "high": 149.75,
+    "low": 149.61,
+    "close": 149.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T22:15:00",
+    "open": 149.73,
+    "high": 149.75,
+    "low": 149.67,
+    "close": 149.67999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T22:30:00",
+    "open": 149.67999,
+    "high": 149.74001,
+    "low": 149.66,
+    "close": 149.74001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T22:45:00",
+    "open": 149.75,
+    "high": 149.78999,
+    "low": 149.7,
+    "close": 149.73,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T23:00:00",
+    "open": 149.73,
+    "high": 149.75,
+    "low": 149.62,
+    "close": 149.67999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T23:15:00",
+    "open": 149.67999,
+    "high": 149.8,
+    "low": 149.66,
+    "close": 149.78,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T23:30:00",
+    "open": 149.78,
+    "high": 149.83,
+    "low": 149.75999,
+    "close": 149.78,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-24T23:45:00",
+    "open": 149.78,
+    "high": 149.83,
+    "low": 149.71001,
+    "close": 149.77,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 149.77,
+    "high": 149.84,
+    "low": 149.75999,
+    "close": 149.81,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T00:15:00",
+    "open": 149.81,
+    "high": 149.82001,
+    "low": 149.61,
+    "close": 149.73,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T00:30:00",
+    "open": 149.73,
+    "high": 149.8,
+    "low": 149.63,
+    "close": 149.78,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T00:45:00",
+    "open": 149.78,
+    "high": 149.88,
+    "low": 149.77,
+    "close": 149.77,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T01:00:00",
+    "open": 149.78,
+    "high": 149.82001,
+    "low": 149.64999,
+    "close": 149.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T01:15:00",
+    "open": 149.78999,
+    "high": 149.8,
+    "low": 149.64999,
+    "close": 149.66,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T01:30:00",
+    "open": 149.64999,
+    "high": 149.75999,
+    "low": 149.46001,
+    "close": 149.47,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T01:45:00",
+    "open": 149.48,
+    "high": 149.52,
+    "low": 149.3,
+    "close": 149.33,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T02:00:00",
+    "open": 149.32001,
+    "high": 149.39,
+    "low": 149.23,
+    "close": 149.38,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T02:15:00",
+    "open": 149.38,
+    "high": 149.42999,
+    "low": 149.32001,
+    "close": 149.34,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T02:30:00",
+    "open": 149.35001,
+    "high": 149.38,
+    "low": 149.24001,
+    "close": 149.24001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T02:45:00",
+    "open": 149.25,
+    "high": 149.34,
+    "low": 149.19,
+    "close": 149.3,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T03:00:00",
+    "open": 149.3,
+    "high": 149.49001,
+    "low": 149.3,
+    "close": 149.47,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T03:15:00",
+    "open": 149.47,
+    "high": 149.7,
+    "low": 149.44,
+    "close": 149.64,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T03:30:00",
+    "open": 149.64,
+    "high": 149.75999,
+    "low": 149.62,
+    "close": 149.75999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T03:45:00",
+    "open": 149.75999,
+    "high": 149.75999,
+    "low": 149.57001,
+    "close": 149.57001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T04:00:00",
+    "open": 149.57001,
+    "high": 149.71001,
+    "low": 149.55,
+    "close": 149.62,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T04:15:00",
+    "open": 149.62,
+    "high": 149.7,
+    "low": 149.60001,
+    "close": 149.63,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T04:30:00",
+    "open": 149.63,
+    "high": 149.67,
+    "low": 149.55,
+    "close": 149.67,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T04:45:00",
+    "open": 149.67,
+    "high": 149.71001,
+    "low": 149.52,
+    "close": 149.58,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T05:00:00",
+    "open": 149.58,
+    "high": 149.59,
+    "low": 149.42999,
+    "close": 149.44,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T05:15:00",
+    "open": 149.42999,
+    "high": 149.49001,
+    "low": 149.39,
+    "close": 149.39,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T05:30:00",
+    "open": 149.39,
+    "high": 149.50999,
+    "low": 149.39,
+    "close": 149.50999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T05:45:00",
+    "open": 149.50999,
+    "high": 149.62,
+    "low": 149.48,
+    "close": 149.59,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T06:00:00",
+    "open": 149.59,
+    "high": 149.64999,
+    "low": 149.59,
+    "close": 149.64,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T06:15:00",
+    "open": 149.64,
+    "high": 149.67999,
+    "low": 149.59,
+    "close": 149.67999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T06:30:00",
+    "open": 149.69,
+    "high": 149.8,
+    "low": 149.67,
+    "close": 149.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T06:45:00",
+    "open": 149.73,
+    "high": 149.78,
+    "low": 149.64999,
+    "close": 149.67999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T07:00:00",
+    "open": 149.67999,
+    "high": 149.67999,
+    "low": 149.61,
+    "close": 149.66,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T07:15:00",
+    "open": 149.66,
+    "high": 149.78999,
+    "low": 149.63,
+    "close": 149.74001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T07:30:00",
+    "open": 149.74001,
+    "high": 149.77,
+    "low": 149.69,
+    "close": 149.7,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T07:45:00",
+    "open": 149.7,
+    "high": 149.75,
+    "low": 149.64,
+    "close": 149.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T08:00:00",
+    "open": 149.73,
+    "high": 149.77,
+    "low": 149.71001,
+    "close": 149.75999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T08:15:00",
+    "open": 149.75999,
+    "high": 149.78999,
+    "low": 149.73,
+    "close": 149.75999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T08:30:00",
+    "open": 149.75999,
+    "high": 149.78,
+    "low": 149.74001,
+    "close": 149.75,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T08:45:00",
+    "open": 149.75,
+    "high": 149.75,
+    "low": 149.7,
+    "close": 149.74001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T09:00:00",
+    "open": 149.67999,
+    "high": 149.77,
+    "low": 149.66,
+    "close": 149.69,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T09:15:00",
+    "open": 149.69,
+    "high": 149.73,
+    "low": 149.67999,
+    "close": 149.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T09:30:00",
+    "open": 149.73,
+    "high": 149.73,
+    "low": 149.67999,
+    "close": 149.7,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T09:45:00",
+    "open": 149.7,
+    "high": 149.74001,
+    "low": 149.69,
+    "close": 149.73,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T10:00:00",
+    "open": 149.72,
+    "high": 149.92,
+    "low": 149.72,
+    "close": 149.91,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T10:15:00",
+    "open": 149.91,
+    "high": 149.91,
+    "low": 149.83,
+    "close": 149.89,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T10:30:00",
+    "open": 149.89,
+    "high": 149.89,
+    "low": 149.78,
+    "close": 149.83,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T10:45:00",
+    "open": 149.83,
+    "high": 149.91,
+    "low": 149.82001,
+    "close": 149.91,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T11:00:00",
+    "open": 149.91,
+    "high": 150.070007,
+    "low": 149.91,
+    "close": 150.050003,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T11:15:00",
+    "open": 150.050003,
+    "high": 150.10001,
+    "low": 150.029999,
+    "close": 150.080002,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T11:30:00",
+    "open": 150.089996,
+    "high": 150.13,
+    "low": 150.059998,
+    "close": 150.11,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T11:45:00",
+    "open": 150.11,
+    "high": 150.19,
+    "low": 150.059998,
+    "close": 150.14999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T12:00:00",
+    "open": 150.14999,
+    "high": 150.24001,
+    "low": 150.080002,
+    "close": 150.22,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T12:15:00",
+    "open": 150.21001,
+    "high": 150.3,
+    "low": 150.14999,
+    "close": 150.17,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T12:30:00",
+    "open": 150.17,
+    "high": 150.2,
+    "low": 150.070007,
+    "close": 150.089996,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T12:45:00",
+    "open": 150.089996,
+    "high": 150.16,
+    "low": 150.050003,
+    "close": 150.050003,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T13:00:00",
+    "open": 150.050003,
+    "high": 150.089996,
+    "low": 150.0,
+    "close": 150.020004,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T13:15:00",
+    "open": 150.029999,
+    "high": 150.029999,
+    "low": 149.97,
+    "close": 149.98,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T13:30:00",
+    "open": 149.98,
+    "high": 149.99001,
+    "low": 149.91,
+    "close": 149.95,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T13:45:00",
+    "open": 149.94,
+    "high": 149.94,
+    "low": 149.81,
+    "close": 149.83,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T14:00:00",
+    "open": 149.83,
+    "high": 149.88,
+    "low": 149.8,
+    "close": 149.88,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T14:15:00",
+    "open": 149.88,
+    "high": 149.91,
+    "low": 149.84,
+    "close": 149.87,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T14:30:00",
+    "open": 149.87,
+    "high": 149.87,
+    "low": 149.66,
+    "close": 149.67,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T14:45:00",
+    "open": 149.66,
+    "high": 149.71001,
+    "low": 149.61,
+    "close": 149.67,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T15:00:00",
+    "open": 149.67,
+    "high": 149.71001,
+    "low": 149.56,
+    "close": 149.56,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T15:15:00",
+    "open": 149.57001,
+    "high": 149.60001,
+    "low": 149.52,
+    "close": 149.52,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T15:30:00",
+    "open": 149.52,
+    "high": 149.55,
+    "low": 149.46001,
+    "close": 149.48,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T15:45:00",
+    "open": 149.48,
+    "high": 149.58,
+    "low": 149.46001,
+    "close": 149.57001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T16:00:00",
+    "open": 149.57001,
+    "high": 149.61,
+    "low": 149.53999,
+    "close": 149.57001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T16:15:00",
+    "open": 149.57001,
+    "high": 149.63,
+    "low": 149.50999,
+    "close": 149.62,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T16:30:00",
+    "open": 149.62,
+    "high": 149.67999,
+    "low": 149.60001,
+    "close": 149.64999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T16:45:00",
+    "open": 149.64999,
+    "high": 149.77,
+    "low": 149.60001,
+    "close": 149.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T17:00:00",
+    "open": 149.72,
+    "high": 149.74001,
+    "low": 149.63,
+    "close": 149.67,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T17:15:00",
+    "open": 149.67,
+    "high": 149.8,
+    "low": 149.64,
+    "close": 149.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T17:30:00",
+    "open": 149.78,
+    "high": 149.81,
+    "low": 149.71001,
+    "close": 149.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T17:45:00",
+    "open": 149.78999,
+    "high": 149.87,
+    "low": 149.74001,
+    "close": 149.75999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T18:00:00",
+    "open": 149.75999,
+    "high": 149.78999,
+    "low": 149.58,
+    "close": 149.59,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T18:15:00",
+    "open": 149.59,
+    "high": 149.63,
+    "low": 149.41,
+    "close": 149.42999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T18:30:00",
+    "open": 149.44,
+    "high": 149.46001,
+    "low": 149.31,
+    "close": 149.39,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T18:45:00",
+    "open": 149.38,
+    "high": 149.39999,
+    "low": 149.2,
+    "close": 149.28,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T19:00:00",
+    "open": 149.28,
+    "high": 149.47,
+    "low": 149.22,
+    "close": 149.45,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T19:15:00",
+    "open": 149.46001,
+    "high": 149.5,
+    "low": 149.39999,
+    "close": 149.44,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T19:30:00",
+    "open": 149.44,
+    "high": 149.53,
+    "low": 149.39999,
+    "close": 149.53,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T19:45:00",
+    "open": 149.53999,
+    "high": 149.60001,
+    "low": 149.42999,
+    "close": 149.46001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T20:00:00",
+    "open": 149.46001,
+    "high": 149.57001,
+    "low": 149.44,
+    "close": 149.55,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T20:15:00",
+    "open": 149.55,
+    "high": 149.69,
+    "low": 149.50999,
+    "close": 149.69,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T20:30:00",
+    "open": 149.69,
+    "high": 149.75999,
+    "low": 149.64,
+    "close": 149.67999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T20:45:00",
+    "open": 149.67999,
+    "high": 149.71001,
+    "low": 149.59,
+    "close": 149.60001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T21:00:00",
+    "open": 149.60001,
+    "high": 149.83,
+    "low": 149.60001,
+    "close": 149.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T21:15:00",
+    "open": 149.78999,
+    "high": 149.78999,
+    "low": 149.73,
+    "close": 149.75999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T21:30:00",
+    "open": 149.75999,
+    "high": 149.8,
+    "low": 149.7,
+    "close": 149.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T21:45:00",
+    "open": 149.78999,
+    "high": 149.8,
+    "low": 149.7,
+    "close": 149.77,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T22:00:00",
+    "open": 149.77,
+    "high": 149.8,
+    "low": 149.67,
+    "close": 149.67999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T22:15:00",
+    "open": 149.67999,
+    "high": 149.85001,
+    "low": 149.66,
+    "close": 149.82001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T22:30:00",
+    "open": 149.82001,
+    "high": 149.95,
+    "low": 149.78999,
+    "close": 149.82001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T22:45:00",
+    "open": 149.82001,
+    "high": 149.84,
+    "low": 149.78,
+    "close": 149.81,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T23:00:00",
+    "open": 149.81,
+    "high": 149.81,
+    "low": 149.61,
+    "close": 149.62,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T23:15:00",
+    "open": 149.62,
+    "high": 149.64999,
+    "low": 149.49001,
+    "close": 149.53999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T23:30:00",
+    "open": 149.53999,
+    "high": 149.64999,
+    "low": 149.5,
+    "close": 149.64,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-25T23:45:00",
+    "open": 149.64,
+    "high": 149.7,
+    "low": 149.59,
+    "close": 149.69,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 149.67999,
+    "high": 149.78999,
+    "low": 149.63,
+    "close": 149.77,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T00:15:00",
+    "open": 149.78,
+    "high": 149.82001,
+    "low": 149.72,
+    "close": 149.73,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T00:30:00",
+    "open": 149.73,
+    "high": 149.75,
+    "low": 149.48,
+    "close": 149.48,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T00:45:00",
+    "open": 149.46001,
+    "high": 149.5,
+    "low": 149.34,
+    "close": 149.44,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T01:00:00",
+    "open": 149.44,
+    "high": 149.53999,
+    "low": 149.35001,
+    "close": 149.38,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T01:15:00",
+    "open": 149.37,
+    "high": 149.38,
+    "low": 149.24001,
+    "close": 149.3,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T01:30:00",
+    "open": 149.3,
+    "high": 149.49001,
+    "low": 149.28999,
+    "close": 149.37,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T01:45:00",
+    "open": 149.37,
+    "high": 149.38,
+    "low": 149.11,
+    "close": 149.17999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T02:00:00",
+    "open": 149.17999,
+    "high": 149.17999,
+    "low": 148.83,
+    "close": 148.88,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T02:15:00",
+    "open": 148.88,
+    "high": 148.94,
+    "low": 148.64999,
+    "close": 148.66,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T02:30:00",
+    "open": 148.64999,
+    "high": 148.88,
+    "low": 148.57001,
+    "close": 148.85001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T02:45:00",
+    "open": 148.85001,
+    "high": 149.12,
+    "low": 148.75999,
+    "close": 149.070007,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 149.070007,
+    "high": 149.10001,
+    "low": 148.96001,
+    "close": 149.020004,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T03:15:00",
+    "open": 149.020004,
+    "high": 149.080002,
+    "low": 148.89,
+    "close": 148.89999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T03:30:00",
+    "open": 148.89999,
+    "high": 148.95,
+    "low": 148.78,
+    "close": 148.86,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T03:45:00",
+    "open": 148.86,
+    "high": 149.14,
+    "low": 148.84,
+    "close": 149.10001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T04:00:00",
+    "open": 149.10001,
+    "high": 149.25999,
+    "low": 149.089996,
+    "close": 149.17999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T04:15:00",
+    "open": 149.17999,
+    "high": 149.17999,
+    "low": 149.0099945,
+    "close": 149.14,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T04:30:00",
+    "open": 149.13,
+    "high": 149.14999,
+    "low": 149.039993,
+    "close": 149.039993,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T04:45:00",
+    "open": 149.039993,
+    "high": 149.089996,
+    "low": 149.020004,
+    "close": 149.080002,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T05:00:00",
+    "open": 149.080002,
+    "high": 149.25,
+    "low": 149.059998,
+    "close": 149.19,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T05:15:00",
+    "open": 149.17999,
+    "high": 149.23,
+    "low": 149.11,
+    "close": 149.13,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T05:30:00",
+    "open": 149.13,
+    "high": 149.23,
+    "low": 149.050003,
+    "close": 149.22,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T05:45:00",
+    "open": 149.22,
+    "high": 149.24001,
+    "low": 149.14,
+    "close": 149.17,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T06:00:00",
+    "open": 149.17,
+    "high": 149.17999,
+    "low": 149.0,
+    "close": 149.020004,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T06:15:00",
+    "open": 149.050003,
+    "high": 149.089996,
+    "low": 149.020004,
+    "close": 149.059998,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T06:30:00",
+    "open": 149.050003,
+    "high": 149.14999,
+    "low": 149.039993,
+    "close": 149.14,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T06:45:00",
+    "open": 149.14,
+    "high": 149.14999,
+    "low": 149.070007,
+    "close": 149.080002,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 149.080002,
+    "high": 149.10001,
+    "low": 149.029999,
+    "close": 149.050003,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T07:15:00",
+    "open": 149.050003,
+    "high": 149.089996,
+    "low": 149.029999,
+    "close": 149.039993,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T07:30:00",
+    "open": 149.050003,
+    "high": 149.070007,
+    "low": 148.98,
+    "close": 148.98,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T07:45:00",
+    "open": 148.98,
+    "high": 149.0,
+    "low": 148.91,
+    "close": 148.95,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T08:00:00",
+    "open": 148.95,
+    "high": 149.039993,
+    "low": 148.94,
+    "close": 149.0099945,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T08:15:00",
+    "open": 149.0099945,
+    "high": 149.029999,
+    "low": 148.99001,
+    "close": 149.0,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T08:30:00",
+    "open": 149.0,
+    "high": 149.020004,
+    "low": 148.98,
+    "close": 149.0,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T08:45:00",
+    "open": 149.0,
+    "high": 149.029999,
+    "low": 149.0,
+    "close": 149.029999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T09:00:00",
+    "open": 149.029999,
+    "high": 149.059998,
+    "low": 149.0099945,
+    "close": 149.039993,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T09:15:00",
+    "open": 149.029999,
+    "high": 149.11,
+    "low": 149.0099945,
+    "close": 149.070007,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T09:30:00",
+    "open": 149.070007,
+    "high": 149.080002,
+    "low": 149.059998,
+    "close": 149.059998,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T09:45:00",
+    "open": 149.070007,
+    "high": 149.14,
+    "low": 149.050003,
+    "close": 149.14,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T10:00:00",
+    "open": 149.14,
+    "high": 149.19,
+    "low": 149.039993,
+    "close": 149.050003,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T10:15:00",
+    "open": 149.050003,
+    "high": 149.070007,
+    "low": 148.95,
+    "close": 148.95,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T10:30:00",
+    "open": 148.95,
+    "high": 148.96001,
+    "low": 148.86,
+    "close": 148.91,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T10:45:00",
+    "open": 148.91,
+    "high": 149.11,
+    "low": 148.87,
+    "close": 149.059998,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 149.050003,
+    "high": 149.089996,
+    "low": 148.66,
+    "close": 148.69,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T11:15:00",
+    "open": 148.67999,
+    "high": 148.82001,
+    "low": 148.62,
+    "close": 148.78999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T11:30:00",
+    "open": 148.78999,
+    "high": 148.85001,
+    "low": 148.7,
+    "close": 148.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T11:45:00",
+    "open": 148.73,
+    "high": 148.91,
+    "low": 148.72,
+    "close": 148.89999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T12:00:00",
+    "open": 148.91,
+    "high": 149.039993,
+    "low": 148.74001,
+    "close": 148.75,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T12:15:00",
+    "open": 148.75,
+    "high": 149.089996,
+    "low": 148.72,
+    "close": 149.020004,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T12:30:00",
+    "open": 149.020004,
+    "high": 149.16,
+    "low": 149.0099945,
+    "close": 149.14,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T12:45:00",
+    "open": 149.13,
+    "high": 149.24001,
+    "low": 149.11,
+    "close": 149.23,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T13:00:00",
+    "open": 149.23,
+    "high": 149.34,
+    "low": 149.17999,
+    "close": 149.31,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T13:15:00",
+    "open": 149.3,
+    "high": 149.3,
+    "low": 149.17999,
+    "close": 149.28999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T13:30:00",
+    "open": 149.28999,
+    "high": 149.39999,
+    "low": 149.25,
+    "close": 149.35001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T13:45:00",
+    "open": 149.35001,
+    "high": 149.47,
+    "low": 149.31,
+    "close": 149.46001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T14:00:00",
+    "open": 149.45,
+    "high": 149.52,
+    "low": 149.44,
+    "close": 149.45,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T14:15:00",
+    "open": 149.45,
+    "high": 149.46001,
+    "low": 149.36,
+    "close": 149.44,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T14:30:00",
+    "open": 149.44,
+    "high": 149.46001,
+    "low": 149.35001,
+    "close": 149.38,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T14:45:00",
+    "open": 149.38,
+    "high": 149.44,
+    "low": 149.31,
+    "close": 149.39999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 149.39999,
+    "high": 149.5,
+    "low": 149.39,
+    "close": 149.5,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T15:15:00",
+    "open": 149.5,
+    "high": 149.55,
+    "low": 149.33,
+    "close": 149.36,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T15:30:00",
+    "open": 149.36,
+    "high": 149.39999,
+    "low": 149.28999,
+    "close": 149.39,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T15:45:00",
+    "open": 149.39,
+    "high": 149.47,
+    "low": 149.38,
+    "close": 149.44,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T16:00:00",
+    "open": 149.44,
+    "high": 149.60001,
+    "low": 149.44,
+    "close": 149.58,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T16:15:00",
+    "open": 149.59,
+    "high": 149.63,
+    "low": 149.52,
+    "close": 149.52,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T16:30:00",
+    "open": 149.52,
+    "high": 149.60001,
+    "low": 149.50999,
+    "close": 149.57001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T16:45:00",
+    "open": 149.57001,
+    "high": 149.58,
+    "low": 149.41,
+    "close": 149.44,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T17:00:00",
+    "open": 149.42999,
+    "high": 149.50999,
+    "low": 149.42999,
+    "close": 149.45,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T17:15:00",
+    "open": 149.45,
+    "high": 149.60001,
+    "low": 149.45,
+    "close": 149.57001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T17:30:00",
+    "open": 149.59,
+    "high": 149.60001,
+    "low": 149.48,
+    "close": 149.48,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T17:45:00",
+    "open": 149.48,
+    "high": 149.63,
+    "low": 149.48,
+    "close": 149.58,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T18:00:00",
+    "open": 149.57001,
+    "high": 149.61,
+    "low": 149.36,
+    "close": 149.44,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T18:15:00",
+    "open": 149.44,
+    "high": 149.45,
+    "low": 149.33,
+    "close": 149.38,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T18:30:00",
+    "open": 149.39,
+    "high": 149.49001,
+    "low": 149.34,
+    "close": 149.47,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T18:45:00",
+    "open": 149.47,
+    "high": 149.53999,
+    "low": 149.41,
+    "close": 149.53999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 149.53,
+    "high": 149.55,
+    "low": 149.34,
+    "close": 149.49001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T19:15:00",
+    "open": 149.49001,
+    "high": 149.5,
+    "low": 149.38,
+    "close": 149.42999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T19:30:00",
+    "open": 149.42,
+    "high": 149.42999,
+    "low": 149.25,
+    "close": 149.31,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T19:45:00",
+    "open": 149.3,
+    "high": 149.36,
+    "low": 149.25999,
+    "close": 149.28999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T20:00:00",
+    "open": 149.28999,
+    "high": 149.35001,
+    "low": 149.27,
+    "close": 149.28,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T20:15:00",
+    "open": 149.28,
+    "high": 149.38,
+    "low": 149.25999,
+    "close": 149.35001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T20:30:00",
+    "open": 149.36,
+    "high": 149.42999,
+    "low": 149.33,
+    "close": 149.39,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T20:45:00",
+    "open": 149.39,
+    "high": 149.44,
+    "low": 149.35001,
+    "close": 149.36,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T21:00:00",
+    "open": 149.36,
+    "high": 149.38,
+    "low": 149.23,
+    "close": 149.27,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T21:15:00",
+    "open": 149.27,
+    "high": 149.36,
+    "low": 149.23,
+    "close": 149.34,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T21:30:00",
+    "open": 149.34,
+    "high": 149.38,
+    "low": 149.33,
+    "close": 149.35001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T21:45:00",
+    "open": 149.35001,
+    "high": 149.53,
+    "low": 149.35001,
+    "close": 149.52,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T22:00:00",
+    "open": 149.52,
+    "high": 149.53999,
+    "low": 149.49001,
+    "close": 149.50999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T22:15:00",
+    "open": 149.50999,
+    "high": 149.57001,
+    "low": 149.5,
+    "close": 149.50999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T22:30:00",
+    "open": 149.50999,
+    "high": 149.58,
+    "low": 149.48,
+    "close": 149.58,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T22:45:00",
+    "open": 149.58,
+    "high": 149.59,
+    "low": 149.50999,
+    "close": 149.55,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 149.55,
+    "high": 149.59,
+    "low": 149.50999,
+    "close": 149.58,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T23:15:00",
+    "open": 149.58,
+    "high": 149.59,
+    "low": 149.52,
+    "close": 149.53999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T23:30:00",
+    "open": 149.55,
+    "high": 149.56,
+    "low": 149.48,
+    "close": 149.53,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-26T23:45:00",
+    "open": 149.53999,
+    "high": 149.64999,
+    "low": 149.45,
+    "close": 149.61,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 149.62,
+    "high": 149.67999,
+    "low": 149.42,
+    "close": 149.42999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T00:15:00",
+    "open": 149.42999,
+    "high": 149.48,
+    "low": 149.31,
+    "close": 149.37,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T00:30:00",
+    "open": 149.37,
+    "high": 149.58,
+    "low": 149.37,
+    "close": 149.53,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T00:45:00",
+    "open": 149.53999,
+    "high": 149.55,
+    "low": 149.47,
+    "close": 149.53999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T01:00:00",
+    "open": 149.53999,
+    "high": 149.72,
+    "low": 149.53,
+    "close": 149.64,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T01:15:00",
+    "open": 149.64999,
+    "high": 149.71001,
+    "low": 149.50999,
+    "close": 149.53,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T01:30:00",
+    "open": 149.52,
+    "high": 149.52,
+    "low": 149.3,
+    "close": 149.5,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T01:45:00",
+    "open": 149.50999,
+    "high": 149.73,
+    "low": 149.49001,
+    "close": 149.67,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T02:00:00",
+    "open": 149.67,
+    "high": 149.84,
+    "low": 149.62,
+    "close": 149.8,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T02:15:00",
+    "open": 149.8,
+    "high": 149.89,
+    "low": 149.60001,
+    "close": 149.62,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T02:30:00",
+    "open": 149.62,
+    "high": 149.67999,
+    "low": 149.45,
+    "close": 149.53999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T02:45:00",
+    "open": 149.53999,
+    "high": 149.53999,
+    "low": 149.39999,
+    "close": 149.49001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T03:00:00",
+    "open": 149.49001,
+    "high": 149.53,
+    "low": 149.34,
+    "close": 149.37,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T03:15:00",
+    "open": 149.37,
+    "high": 149.39,
+    "low": 149.28,
+    "close": 149.28999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T03:30:00",
+    "open": 149.3,
+    "high": 149.32001,
+    "low": 149.23,
+    "close": 149.32001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T03:45:00",
+    "open": 149.32001,
+    "high": 149.34,
+    "low": 149.12,
+    "close": 149.14,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T04:00:00",
+    "open": 149.13,
+    "high": 149.21001,
+    "low": 149.059998,
+    "close": 149.19,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T04:15:00",
+    "open": 149.19,
+    "high": 149.24001,
+    "low": 149.089996,
+    "close": 149.10001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T04:30:00",
+    "open": 149.10001,
+    "high": 149.16,
+    "low": 149.020004,
+    "close": 149.039993,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T04:45:00",
+    "open": 149.050003,
+    "high": 149.16,
+    "low": 149.029999,
+    "close": 149.14999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T05:00:00",
+    "open": 149.14999,
+    "high": 149.16,
+    "low": 149.0099945,
+    "close": 149.050003,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T05:15:00",
+    "open": 149.050003,
+    "high": 149.14,
+    "low": 148.92999,
+    "close": 148.92999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T05:30:00",
+    "open": 148.92999,
+    "high": 148.98,
+    "low": 148.89999,
+    "close": 148.96001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T05:45:00",
+    "open": 148.97,
+    "high": 149.039993,
+    "low": 148.83,
+    "close": 148.92999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T06:00:00",
+    "open": 148.92999,
+    "high": 148.96001,
+    "low": 148.82001,
+    "close": 148.85001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T06:15:00",
+    "open": 148.85001,
+    "high": 148.94,
+    "low": 148.83,
+    "close": 148.91,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T06:30:00",
+    "open": 148.91,
+    "high": 148.97,
+    "low": 148.89,
+    "close": 148.92999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T06:45:00",
+    "open": 148.92999,
+    "high": 148.94,
+    "low": 148.82001,
+    "close": 148.84,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T07:00:00",
+    "open": 148.85001,
+    "high": 148.89999,
+    "low": 148.83,
+    "close": 148.88,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T07:15:00",
+    "open": 148.88,
+    "high": 148.96001,
+    "low": 148.85001,
+    "close": 148.89,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T07:30:00",
+    "open": 148.88,
+    "high": 149.020004,
+    "low": 148.87,
+    "close": 149.0099945,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T07:45:00",
+    "open": 149.0099945,
+    "high": 149.050003,
+    "low": 148.94,
+    "close": 149.029999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T08:00:00",
+    "open": 149.029999,
+    "high": 149.050003,
+    "low": 148.99001,
+    "close": 149.039993,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T08:15:00",
+    "open": 149.039993,
+    "high": 149.23,
+    "low": 149.039993,
+    "close": 149.13,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T08:30:00",
+    "open": 149.14999,
+    "high": 149.16,
+    "low": 149.080002,
+    "close": 149.11,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T08:45:00",
+    "open": 149.11,
+    "high": 149.13,
+    "low": 149.080002,
+    "close": 149.089996,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T09:00:00",
+    "open": 149.0,
+    "high": 149.089996,
+    "low": 149.0,
+    "close": 149.059998,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T09:15:00",
+    "open": 149.050003,
+    "high": 149.059998,
+    "low": 149.050003,
+    "close": 149.059998,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T09:30:00",
+    "open": 149.070007,
+    "high": 149.070007,
+    "low": 149.039993,
+    "close": 149.039993,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T09:45:00",
+    "open": 149.039993,
+    "high": 149.039993,
+    "low": 148.98,
+    "close": 148.99001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T10:00:00",
+    "open": 148.99001,
+    "high": 149.020004,
+    "low": 148.89,
+    "close": 148.89999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T10:15:00",
+    "open": 148.89999,
+    "high": 148.91,
+    "low": 148.83,
+    "close": 148.85001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T10:30:00",
+    "open": 148.86,
+    "high": 148.94,
+    "low": 148.81,
+    "close": 148.87,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T10:45:00",
+    "open": 148.87,
+    "high": 148.89999,
+    "low": 148.75,
+    "close": 148.88,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T11:00:00",
+    "open": 148.88,
+    "high": 149.080002,
+    "low": 148.81,
+    "close": 148.99001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T11:15:00",
+    "open": 148.97,
+    "high": 149.0,
+    "low": 148.78999,
+    "close": 148.88,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T11:30:00",
+    "open": 148.88,
+    "high": 149.039993,
+    "low": 148.8,
+    "close": 149.0099945,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T11:45:00",
+    "open": 149.0099945,
+    "high": 149.17999,
+    "low": 149.0,
+    "close": 149.14,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T12:00:00",
+    "open": 149.14,
+    "high": 149.2,
+    "low": 149.070007,
+    "close": 149.080002,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T12:15:00",
+    "open": 149.080002,
+    "high": 149.22,
+    "low": 149.070007,
+    "close": 149.17999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T12:30:00",
+    "open": 149.17999,
+    "high": 149.24001,
+    "low": 149.14,
+    "close": 149.14999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T12:45:00",
+    "open": 149.14999,
+    "high": 149.39999,
+    "low": 149.14999,
+    "close": 149.36,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T13:00:00",
+    "open": 149.37,
+    "high": 149.38,
+    "low": 149.3,
+    "close": 149.34,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T13:15:00",
+    "open": 149.34,
+    "high": 149.35001,
+    "low": 149.25,
+    "close": 149.25,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T13:30:00",
+    "open": 149.25,
+    "high": 149.25,
+    "low": 149.17999,
+    "close": 149.2,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T13:45:00",
+    "open": 149.2,
+    "high": 149.3,
+    "low": 149.17,
+    "close": 149.25999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T14:00:00",
+    "open": 149.25999,
+    "high": 149.32001,
+    "low": 149.24001,
+    "close": 149.28999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T14:15:00",
+    "open": 149.28999,
+    "high": 149.36,
+    "low": 149.28,
+    "close": 149.31,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T14:30:00",
+    "open": 149.31,
+    "high": 149.31,
+    "low": 149.21001,
+    "close": 149.22,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T14:45:00",
+    "open": 149.21001,
+    "high": 149.28,
+    "low": 149.19,
+    "close": 149.22,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T15:00:00",
+    "open": 149.22,
+    "high": 149.27,
+    "low": 149.2,
+    "close": 149.21001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T15:15:00",
+    "open": 149.22,
+    "high": 149.25999,
+    "low": 149.17,
+    "close": 149.2,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T15:30:00",
+    "open": 149.2,
+    "high": 149.22,
+    "low": 149.14,
+    "close": 149.17,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T15:45:00",
+    "open": 149.17,
+    "high": 149.17999,
+    "low": 149.080002,
+    "close": 149.089996,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T16:00:00",
+    "open": 149.10001,
+    "high": 149.25999,
+    "low": 149.10001,
+    "close": 149.25999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T16:15:00",
+    "open": 149.25999,
+    "high": 149.31,
+    "low": 149.23,
+    "close": 149.27,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T16:30:00",
+    "open": 149.27,
+    "high": 149.31,
+    "low": 149.25,
+    "close": 149.28,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T16:45:00",
+    "open": 149.28,
+    "high": 149.37,
+    "low": 149.25999,
+    "close": 149.35001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T17:00:00",
+    "open": 149.34,
+    "high": 149.39999,
+    "low": 149.3,
+    "close": 149.3,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T17:15:00",
+    "open": 149.3,
+    "high": 149.42,
+    "low": 149.28,
+    "close": 149.41,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T17:30:00",
+    "open": 149.41,
+    "high": 149.42,
+    "low": 149.28999,
+    "close": 149.31,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T17:45:00",
+    "open": 149.32001,
+    "high": 149.34,
+    "low": 149.2,
+    "close": 149.25999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T18:00:00",
+    "open": 149.27,
+    "high": 149.31,
+    "low": 149.21001,
+    "close": 149.27,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T18:15:00",
+    "open": 149.28,
+    "high": 149.33,
+    "low": 149.23,
+    "close": 149.28,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T18:30:00",
+    "open": 149.28,
+    "high": 149.3,
+    "low": 149.21001,
+    "close": 149.25999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T18:45:00",
+    "open": 149.25999,
+    "high": 149.28,
+    "low": 149.19,
+    "close": 149.27,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T19:00:00",
+    "open": 149.27,
+    "high": 149.27,
+    "low": 149.16,
+    "close": 149.21001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T19:15:00",
+    "open": 149.21001,
+    "high": 149.53999,
+    "low": 149.2,
+    "close": 149.53999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T19:30:00",
+    "open": 149.53999,
+    "high": 149.7,
+    "low": 149.53,
+    "close": 149.64,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T19:45:00",
+    "open": 149.63,
+    "high": 149.73,
+    "low": 149.63,
+    "close": 149.72,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T20:00:00",
+    "open": 149.72,
+    "high": 149.78,
+    "low": 149.63,
+    "close": 149.67,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T20:15:00",
+    "open": 149.67,
+    "high": 149.74001,
+    "low": 149.64999,
+    "close": 149.74001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T20:30:00",
+    "open": 149.74001,
+    "high": 149.91,
+    "low": 149.71001,
+    "close": 149.89999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T20:45:00",
+    "open": 149.89999,
+    "high": 149.97,
+    "low": 149.84,
+    "close": 149.84,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T21:00:00",
+    "open": 149.85001,
+    "high": 149.92,
+    "low": 149.81,
+    "close": 149.91,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T21:15:00",
+    "open": 149.91,
+    "high": 149.97,
+    "low": 149.82001,
+    "close": 149.82001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T21:30:00",
+    "open": 149.82001,
+    "high": 149.94,
+    "low": 149.8,
+    "close": 149.89,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T21:45:00",
+    "open": 149.89999,
+    "high": 149.91,
+    "low": 149.85001,
+    "close": 149.85001,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T22:00:00",
+    "open": 149.85001,
+    "high": 149.86,
+    "low": 149.78999,
+    "close": 149.83,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T22:15:00",
+    "open": 149.83,
+    "high": 149.89999,
+    "low": 149.81,
+    "close": 149.86,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T22:30:00",
+    "open": 149.86,
+    "high": 149.86,
+    "low": 149.7,
+    "close": 149.78,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T22:45:00",
+    "open": 149.78,
+    "high": 149.8,
+    "low": 149.67999,
+    "close": 149.8,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T23:00:00",
+    "open": 149.8,
+    "high": 149.8,
+    "low": 149.64999,
+    "close": 149.67999,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T23:15:00",
+    "open": 149.67999,
+    "high": 149.72,
+    "low": 149.61,
+    "close": 149.64,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T23:30:00",
+    "open": 149.64,
+    "high": 149.7,
+    "low": 149.59,
+    "close": 149.69,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-27T23:45:00",
+    "open": 149.67999,
+    "high": 149.72,
+    "low": 149.56,
+    "close": 149.66,
+    "volume": 0.0,
+    "interval": "15m"
+  },
+  {
+    "symbol": "USDJPY",
+    "timestamp": "2025-02-28T00:00:00",
+    "open": 149.66,
+    "high": 149.66,
+    "low": 149.50999,
+    "close": 149.50999,
+    "volume": 0.0,
+    "interval": "15m"
+  }
+]

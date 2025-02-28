@@ -34,7 +34,6 @@ import {
   FaOilCan,
   FaGem
 } from 'react-icons/fa';
-import axios from 'axios';
 
 const MarketTicker = () => {
   const { t, i18n } = useTranslation('common');
@@ -80,148 +79,167 @@ const MarketTicker = () => {
     { id: 'commodities', label: t('ticker.category.commodities', 'Commodities'), icon: FaOilCan }
   ];
 
-  // Fetch data from API (or mock data for demo)
+  // Fetch data from the market data fetcher files
   const fetchMarketData = useCallback(async () => {
     setIsLoading(true);
     setDataError(false);
     
     try {
-      // In a real app, we would make API calls to get live market data
-      // For demo, we'll use a mock API call with a timeout to simulate network request
-      await new Promise(resolve => setTimeout(resolve, 800));
+      // Try to fetch market data from our generated files
+      let marketSummaryData = [];
       
-      // Sample data structure for different asset types
-      const mockData = [
-        // Indices
-        { 
-          name: 'S&P 500', 
-          symbol: 'SPX',
-          value: '4,873.12', 
-          change: '+0.45%',
-          positive: true,
-          category: 'indices'
-        },
-        { 
-          name: 'NASDAQ', 
-          symbol: 'COMP',
-          value: '17,245.36', 
-          change: '+0.67%',
-          positive: true,
-          category: 'indices'
-        },
-        { 
-          name: 'DOW JONES', 
-          symbol: 'DJIA',
-          value: '38,927.03', 
-          change: '+0.21%',
-          positive: true,
-          category: 'indices'
-        },
-        { 
-          name: 'FTSE 100', 
-          symbol: 'UKX',
-          value: '7,655.20', 
-          change: '-0.15%',
-          positive: false,
-          category: 'indices'
-        },
-        { 
-          name: 'DAX', 
-          symbol: 'DAX',
-          value: '18,354.76', 
-          change: '+0.32%',
-          positive: true,
-          category: 'indices'
-        },
-        { 
-          name: 'NIKKEI 225', 
-          symbol: 'NI225',
-          value: '38,687.22', 
-          change: '-0.23%',
-          positive: false,
-          category: 'indices'
-        },
+      // Try market_summary.json first
+      let response = await fetch('public/chart-data/market_summary.json');
+      
+      if (response.ok) {
+        const data = await response.json();
         
-        // Forex
-        { 
-          name: 'EUR/USD', 
-          symbol: 'EUR/USD',
-          value: '1.0864', 
-          change: '+0.12%',
-          positive: true,
-          category: 'forex'
-        },
-        { 
-          name: 'GBP/USD', 
-          symbol: 'GBP/USD',
-          value: '1.2654', 
-          change: '+0.25%',
-          positive: true,
-          category: 'forex'
-        },
-        { 
-          name: 'USD/JPY', 
-          symbol: 'USD/JPY',
-          value: '153.42', 
-          change: '-0.34%',
-          positive: false,
-          category: 'forex'
-        },
-        
-        // Commodities
-        { 
-          name: 'Gold', 
-          symbol: 'XAU',
-          value: '$2,345.60', 
-          change: '+0.83%',
-          positive: true,
-          category: 'commodities'
-        },
-        { 
-          name: 'Oil (WTI)', 
-          symbol: 'CL',
-          value: '$78.42', 
-          change: '-1.25%',
-          positive: false,
-          category: 'commodities'
-        },
-        { 
-          name: 'Silver', 
-          symbol: 'XAG',
-          value: '$27.35', 
-          change: '+0.65%',
-          positive: true,
-          category: 'commodities'
-        },
-        
-        // Crypto
-        { 
-          name: 'Bitcoin', 
-          symbol: 'BTC/USD',
-          value: '$61,247.80', 
-          change: '+2.14%',
-          positive: true,
-          category: 'crypto'
-        },
-        { 
-          name: 'Ethereum', 
-          symbol: 'ETH/USD',
-          value: '$3,456.75', 
-          change: '+1.87%',
-          positive: true,
-          category: 'crypto'
-        },
-        { 
-          name: 'Cardano', 
-          symbol: 'ADA/USD',
-          value: '$0.45', 
-          change: '-2.15%',
-          positive: false,
-          category: 'crypto'
+        // Extract data for each category
+        for (const category of ['indices', 'forex', 'crypto', 'commodities']) {
+          if (data[category] && Array.isArray(data[category])) {
+            for (const item of data[category]) {
+              marketSummaryData.push({
+                name: item.name,
+                symbol: item.symbol,
+                value: formatValue(item.price, category, item.symbol),
+                change: `${item.change >= 0 ? '+' : ''}${item.change.toFixed(2)}%`,
+                positive: item.change >= 0,
+                category: category
+              });
+            }
+          }
         }
-      ];
-
-      setMarketData(mockData);
+      } else {
+        // Try exchange_rate_matrix.json as backup
+        response = await fetch('public/chart-data/exchange_rate_data.json');
+        
+        if (response.ok) {
+          const matrixData = await response.json();
+          
+          // Process the exchange rate matrix
+          if (Array.isArray(matrixData)) {
+            // Find common base currencies to extract rates
+            const usdRow = matrixData.find(row => row.base_currency === 'USD');
+            
+            if (usdRow) {
+              // Add forex pairs
+              for (const currency of ['EUR', 'GBP', 'JPY', 'CAD', 'CHF']) {
+                if (usdRow[currency]) {
+                  const rate = parseFloat(usdRow[currency]);
+                  // Generate a random change for demo purposes
+                  const changePercent = (Math.random() * 0.4 - 0.2).toFixed(2);
+                  
+                  marketSummaryData.push({
+                    name: `USD/${currency}`,
+                    symbol: `USD/${currency}`,
+                    value: rate.toFixed(4),
+                    change: `${parseFloat(changePercent) >= 0 ? '+' : ''}${changePercent}%`,
+                    positive: parseFloat(changePercent) >= 0,
+                    category: 'forex'
+                  });
+                }
+              }
+              
+              // Add crypto rates
+              for (const crypto of ['BTC', 'ETH', 'XRP']) {
+                if (usdRow[crypto]) {
+                  const rate = parseFloat(usdRow[crypto]);
+                  // Cryptos tend to be more volatile
+                  const changePercent = (Math.random() * 2 - 1).toFixed(2);
+                  
+                  marketSummaryData.push({
+                    name: `${crypto}/USD`,
+                    symbol: `${crypto}/USD`,
+                    value: rate.toFixed(2),
+                    change: `${parseFloat(changePercent) >= 0 ? '+' : ''}${changePercent}%`,
+                    positive: parseFloat(changePercent) >= 0,
+                    category: 'crypto'
+                  });
+                }
+              }
+              
+              // Add commodities (metals)
+              for (const metal of ['XAU', 'XAG']) {
+                if (usdRow[metal]) {
+                  const rate = parseFloat(usdRow[metal]);
+                  const changePercent = (Math.random() * 0.6 - 0.3).toFixed(2);
+                  
+                  const metalName = metal === 'XAU' ? 'Gold' : 'Silver';
+                  
+                  marketSummaryData.push({
+                    name: metalName,
+                    symbol: metal,
+                    value: `$${rate.toFixed(2)}/oz`,
+                    change: `${parseFloat(changePercent) >= 0 ? '+' : ''}${changePercent}%`,
+                    positive: parseFloat(changePercent) >= 0,
+                    category: 'commodities'
+                  });
+                }
+              }
+            }
+          }
+        } else {
+          // If both files don't exist, look for individual asset files
+          const assetSymbols = [
+            // Indices
+            { symbol: '^GSPC', name: 'S&P 500', category: 'indices' },
+            { symbol: '^DJI', name: 'DOW JONES', category: 'indices' },
+            { symbol: '^IXIC', name: 'NASDAQ', category: 'indices' },
+            // Forex
+            { symbol: 'EURUSD', name: 'EUR/USD', category: 'forex' },
+            { symbol: 'GBPUSD', name: 'GBP/USD', category: 'forex' },
+            { symbol: 'USDJPY', name: 'USD/JPY', category: 'forex' },
+            // Crypto
+            { symbol: 'BTC', name: 'Bitcoin', category: 'crypto' },
+            { symbol: 'ETH', name: 'Ethereum', category: 'crypto' },
+            // Commodities
+            { symbol: 'XAU', name: 'Gold', category: 'commodities' },
+            { symbol: 'CL', name: 'Oil (WTI)', category: 'commodities' }
+          ];
+          
+          // Try to load individual asset data
+          for (const asset of assetSymbols) {
+            try {
+              // Try to load the data
+              const assetResponse = await fetch(`/chart-data/${asset.symbol}_1d.json`);
+              
+              if (assetResponse.ok) {
+                const assetData = await assetResponse.json();
+                
+                // Get the most recent data point
+                if (Array.isArray(assetData) && assetData.length > 0) {
+                  // Sort by timestamp to get the latest
+                  assetData.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                  
+                  const latestData = assetData[0];
+                  const previousData = assetData.length > 1 ? assetData[1] : { close: latestData.close };
+                  
+                  // Calculate change
+                  const changePercent = ((latestData.close - previousData.close) / previousData.close * 100).toFixed(2);
+                  
+                  marketSummaryData.push({
+                    name: asset.name,
+                    symbol: asset.symbol,
+                    value: formatValue(latestData.close, asset.category, asset.symbol),
+                    change: `${parseFloat(changePercent) >= 0 ? '+' : ''}${changePercent}%`,
+                    positive: parseFloat(changePercent) >= 0,
+                    category: asset.category
+                  });
+                }
+              }
+            } catch (err) {
+              console.warn(`Failed to load data for ${asset.symbol}`);
+            }
+          }
+        }
+      }
+      
+      // If we still don't have data, use fallback data
+      if (marketSummaryData.length === 0) {
+        marketSummaryData = getFallbackData();
+      }
+      
+      setMarketData(marketSummaryData);
       setLastUpdated(new Date());
       
     } catch (error) {
@@ -244,13 +262,41 @@ const MarketTicker = () => {
     }
   }, [t, toast]);
 
+  // Format value based on category and symbol
+  const formatValue = (price, category, symbol) => {
+    if (price === undefined || price === null) return 'N/A';
+    
+    // Convert to number if it's a string
+    const numPrice = typeof price === 'string' ? parseFloat(price) : price;
+    
+    // Format based on category
+    if (category === 'forex') {
+      return numPrice.toFixed(4);
+    } else if (category === 'crypto') {
+      return `$${numPrice.toFixed(2)}`;
+    } else if (category === 'commodities') {
+      if (symbol === 'XAU' || symbol === 'XAG') {
+        return `$${numPrice.toFixed(2)}/oz`;
+      } else if (symbol === 'CL' || symbol === 'BZ') {
+        return `$${numPrice.toFixed(2)}/bbl`;
+      } else {
+        return `$${numPrice.toFixed(2)}`;
+      }
+    } else if (category === 'indices') {
+      // Format with commas for thousands
+      return numPrice.toLocaleString(undefined, { maximumFractionDigits: 2 });
+    } else {
+      return `$${numPrice.toFixed(2)}`;
+    }
+  };
+
   // Get fallback data in case of API error
   const getFallbackData = () => {
     return [
       { name: 'S&P 500', symbol: 'SPX', value: '4,873.12', change: '+0.45%', positive: true, category: 'indices' },
       { name: 'BTC/USD', symbol: 'BTC/USD', value: '$61,247.80', change: '+2.14%', positive: true, category: 'crypto' },
       { name: 'EUR/USD', symbol: 'EUR/USD', value: '1.0864', change: '+0.12%', positive: true, category: 'forex' },
-      { name: 'Gold', symbol: 'XAU', value: '$2,345.60', change: '+0.83%', positive: true, category: 'commodities' }
+      { name: 'Gold', symbol: 'XAU', value: '$2,345.60/oz', change: '+0.83%', positive: true, category: 'commodities' }
     ];
   };
 

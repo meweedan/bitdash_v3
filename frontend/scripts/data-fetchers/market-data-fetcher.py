@@ -42,10 +42,10 @@ logger = logging.getLogger("market_data")
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 # Go up to the frontend directory and then to public/chart-data
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, '..', '..', '..'))
-PUBLIC_CHART_DATA = os.path.join(PROJECT_ROOT, 'public', 'chart-data')
+PUBLIC_CHART_DATA = os.path.join(PROJECT_ROOT, 'frontend', 'public', 'chart-data')
 
 # Define asset categories
-FIAT = ['USD', 'EUR', 'GBP', 'JPY', 'AUD', 'CAD', 'CHF', 'CNY', 'HKD', 'NZD', 'SAR', 'AED', 'EGP', 'TRY', 'ZAR', 'RUB', 'INR', 'BRL', 'MXN', 'SGD']
+FIAT = ['USD', 'EUR', 'LYD', 'GBP', 'JPY', 'AUD', 'CAD', 'CHF', 'CNY', 'HKD', 'NZD', 'SAR', 'AED', 'EGP', 'TRY', 'ZAR', 'RUB', 'INR', 'BRL', 'MXN', 'SGD']
 CRYPTO = ['BTC', 'ETH', 'USDT', 'XRP', 'BNB', 'ADA', 'SOL', 'DOT', 'DOGE', 'MATIC', 'LTC', 'SHIB', 'AVAX', 'UNI', 'LINK', 'XLM', 'BCH', 'ATOM', 'CRO', 'FIL']
 METALS = ['XAU', 'XAG', 'XPT', 'XPD', 'HG']  # Gold, Silver, Platinum, Palladium, Copper
 COMMODITIES = ['CL', 'NG', 'BZ', 'HO', 'RB', 'ZC', 'ZS', 'KE', 'ZW', 'CC', 'CT', 'KC', 'SB', 'JO', 'LBS']

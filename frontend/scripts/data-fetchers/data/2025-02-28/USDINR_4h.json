@@ -1,0 +1,1322 @@
+[
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-29T03:00:00",
+    "open": 86.508,
+    "high": 86.549,
+    "low": 86.506,
+    "close": 86.533,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-29T07:00:00",
+    "open": 86.53,
+    "high": 86.566,
+    "low": 86.521,
+    "close": 86.566,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-29T11:00:00",
+    "open": 86.59,
+    "high": 86.613,
+    "low": 86.511,
+    "close": 86.613,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-29T15:00:00",
+    "open": 86.613,
+    "high": 86.613,
+    "low": 86.485,
+    "close": 86.489,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-29T19:00:00",
+    "open": 86.488,
+    "high": 86.632,
+    "low": 86.448,
+    "close": 86.56,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-29T23:00:00",
+    "open": 86.618,
+    "high": 86.667,
+    "low": 86.554,
+    "close": 86.667,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-30T03:00:00",
+    "open": 86.669,
+    "high": 86.713,
+    "low": 86.628,
+    "close": 86.679,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-30T07:00:00",
+    "open": 86.677,
+    "high": 86.678,
+    "low": 86.655,
+    "close": 86.672,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-30T11:00:00",
+    "open": 86.547,
+    "high": 86.66,
+    "low": 86.547,
+    "close": 86.583,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-30T15:00:00",
+    "open": 86.583,
+    "high": 86.719,
+    "low": 86.556,
+    "close": 86.618,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-30T19:00:00",
+    "open": 86.619,
+    "high": 86.784,
+    "low": 86.563,
+    "close": 86.63,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-30T23:00:00",
+    "open": 86.625,
+    "high": 86.627,
+    "low": 86.563,
+    "close": 86.572,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-31T03:00:00",
+    "open": 86.573,
+    "high": 86.595,
+    "low": 86.558,
+    "close": 86.574,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-31T07:00:00",
+    "open": 86.576,
+    "high": 86.617,
+    "low": 86.568,
+    "close": 86.59,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-31T11:00:00",
+    "open": 86.64,
+    "high": 86.691,
+    "low": 86.613,
+    "close": 86.645,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-31T15:00:00",
+    "open": 86.646,
+    "high": 86.674,
+    "low": 86.596,
+    "close": 86.629,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-31T19:00:00",
+    "open": 86.629,
+    "high": 86.676,
+    "low": 86.585,
+    "close": 86.61,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-01-31T23:00:00",
+    "open": 86.59,
+    "high": 86.616,
+    "low": 86.556,
+    "close": 86.561,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-01T03:00:00",
+    "open": 86.563,
+    "high": 86.656,
+    "low": 86.481,
+    "close": 86.65,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-01T07:00:00",
+    "open": 86.649,
+    "high": 86.676,
+    "low": 86.602,
+    "close": 86.676,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-03T11:00:00",
+    "open": 86.915,
+    "high": 87.467,
+    "low": 86.895,
+    "close": 87.236,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-03T15:00:00",
+    "open": 87.128,
+    "high": 87.333,
+    "low": 87.054001,
+    "close": 87.124,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-03T19:00:00",
+    "open": 87.15,
+    "high": 87.369,
+    "low": 87.054001,
+    "close": 87.147,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-03T23:00:00",
+    "open": 87.145,
+    "high": 87.146,
+    "low": 86.979,
+    "close": 86.982,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-04T03:00:00",
+    "open": 86.983,
+    "high": 87.043999,
+    "low": 86.959,
+    "close": 87.010002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-04T07:00:00",
+    "open": 87.0080032,
+    "high": 87.012001,
+    "low": 86.988,
+    "close": 86.989,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-04T11:00:00",
+    "open": 86.977,
+    "high": 87.059998,
+    "low": 86.95,
+    "close": 87.014999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-04T15:00:00",
+    "open": 87.027,
+    "high": 87.278,
+    "low": 87.00099945,
+    "close": 87.105,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-04T19:00:00",
+    "open": 87.084,
+    "high": 87.264,
+    "low": 87.013,
+    "close": 87.095001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-04T23:00:00",
+    "open": 87.096001,
+    "high": 87.116,
+    "low": 87.032997,
+    "close": 87.070999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-05T03:00:00",
+    "open": 87.070999,
+    "high": 87.107,
+    "low": 87.044998,
+    "close": 87.093002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-05T07:00:00",
+    "open": 87.093002,
+    "high": 87.13,
+    "low": 87.080002,
+    "close": 87.13,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-05T11:00:00",
+    "open": 87.13,
+    "high": 87.305,
+    "low": 87.087997,
+    "close": 87.124,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-05T15:00:00",
+    "open": 87.123,
+    "high": 87.443,
+    "low": 87.102,
+    "close": 87.332,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-05T19:00:00",
+    "open": 87.33,
+    "high": 87.635,
+    "low": 87.235,
+    "close": 87.406,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-05T23:00:00",
+    "open": 87.411,
+    "high": 87.533,
+    "low": 87.34,
+    "close": 87.349,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-06T03:00:00",
+    "open": 87.348,
+    "high": 87.363,
+    "low": 87.326,
+    "close": 87.357,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-06T07:00:00",
+    "open": 87.359,
+    "high": 87.361,
+    "low": 87.334,
+    "close": 87.334,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-06T11:00:00",
+    "open": 87.38,
+    "high": 87.555,
+    "low": 87.38,
+    "close": 87.537,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-06T15:00:00",
+    "open": 87.518,
+    "high": 87.691,
+    "low": 87.489,
+    "close": 87.578,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-06T19:00:00",
+    "open": 87.559,
+    "high": 87.693,
+    "low": 87.525,
+    "close": 87.567,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-06T23:00:00",
+    "open": 87.57,
+    "high": 87.654,
+    "low": 87.57,
+    "close": 87.594,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-07T03:00:00",
+    "open": 87.594,
+    "high": 87.614,
+    "low": 87.546,
+    "close": 87.553,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-07T07:00:00",
+    "open": 87.553,
+    "high": 87.598,
+    "low": 87.552,
+    "close": 87.589,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-07T11:00:00",
+    "open": 87.584,
+    "high": 87.585,
+    "low": 87.403,
+    "close": 87.46,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-07T15:00:00",
+    "open": 87.411,
+    "high": 87.508,
+    "low": 87.32,
+    "close": 87.413,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-07T19:00:00",
+    "open": 87.44,
+    "high": 87.507,
+    "low": 87.283,
+    "close": 87.507,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-07T23:00:00",
+    "open": 87.48,
+    "high": 87.705,
+    "low": 87.465,
+    "close": 87.66,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-08T03:00:00",
+    "open": 87.661,
+    "high": 87.923,
+    "low": 87.659,
+    "close": 87.726,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-08T07:00:00",
+    "open": 87.724,
+    "high": 87.772,
+    "low": 87.711,
+    "close": 87.757,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-10T11:00:00",
+    "open": 87.897,
+    "high": 88.024002,
+    "low": 87.87,
+    "close": 87.933,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-10T15:00:00",
+    "open": 87.935,
+    "high": 87.935,
+    "low": 87.415,
+    "close": 87.588,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-10T19:00:00",
+    "open": 87.566,
+    "high": 87.726,
+    "low": 87.413,
+    "close": 87.474,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-10T23:00:00",
+    "open": 87.475,
+    "high": 87.526,
+    "low": 87.455,
+    "close": 87.462,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-11T03:00:00",
+    "open": 87.462,
+    "high": 87.485,
+    "low": 87.459,
+    "close": 87.463,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-11T07:00:00",
+    "open": 87.464,
+    "high": 87.494,
+    "low": 87.456,
+    "close": 87.491,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-11T11:00:00",
+    "open": 87.486,
+    "high": 87.576,
+    "low": 86.926,
+    "close": 86.926,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-11T15:00:00",
+    "open": 86.925,
+    "high": 87.305,
+    "low": 86.64,
+    "close": 86.76,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-11T19:00:00",
+    "open": 86.761,
+    "high": 86.947,
+    "low": 86.701,
+    "close": 86.757,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-11T23:00:00",
+    "open": 86.756,
+    "high": 86.789,
+    "low": 86.682,
+    "close": 86.788,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-12T03:00:00",
+    "open": 86.786,
+    "high": 86.831,
+    "low": 86.768,
+    "close": 86.798,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-12T07:00:00",
+    "open": 86.797,
+    "high": 86.813,
+    "low": 86.779,
+    "close": 86.812,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-12T11:00:00",
+    "open": 86.788,
+    "high": 86.788,
+    "low": 86.336,
+    "close": 86.525,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-12T15:00:00",
+    "open": 86.531,
+    "high": 86.942,
+    "low": 86.482,
+    "close": 86.89,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-12T19:00:00",
+    "open": 86.87,
+    "high": 86.961,
+    "low": 86.841,
+    "close": 86.92,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-12T23:00:00",
+    "open": 86.922,
+    "high": 87.098,
+    "low": 86.877,
+    "close": 86.935,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-13T03:00:00",
+    "open": 86.94,
+    "high": 87.042999,
+    "low": 86.804,
+    "close": 87.017998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-13T07:00:00",
+    "open": 87.017998,
+    "high": 87.028999,
+    "low": 87.014999,
+    "close": 87.026001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-13T11:00:00",
+    "open": 86.95,
+    "high": 86.953,
+    "low": 86.727,
+    "close": 86.83,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-13T15:00:00",
+    "open": 86.827,
+    "high": 86.958,
+    "low": 86.744,
+    "close": 86.895,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-13T19:00:00",
+    "open": 86.875,
+    "high": 86.992,
+    "low": 86.833,
+    "close": 86.955,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-13T23:00:00",
+    "open": 86.955,
+    "high": 87.024002,
+    "low": 86.714,
+    "close": 86.748,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-14T03:00:00",
+    "open": 86.745,
+    "high": 86.894,
+    "low": 86.687,
+    "close": 86.692,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-14T07:00:00",
+    "open": 86.695,
+    "high": 86.742,
+    "low": 86.635,
+    "close": 86.742,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-14T11:00:00",
+    "open": 86.787,
+    "high": 86.892,
+    "low": 86.701,
+    "close": 86.827,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-14T15:00:00",
+    "open": 86.865,
+    "high": 86.971,
+    "low": 86.812,
+    "close": 86.842,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-14T19:00:00",
+    "open": 86.843,
+    "high": 86.93,
+    "low": 86.705,
+    "close": 86.744,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-14T23:00:00",
+    "open": 86.735,
+    "high": 86.749,
+    "low": 86.538,
+    "close": 86.619,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-15T03:00:00",
+    "open": 86.617,
+    "high": 86.726,
+    "low": 86.607,
+    "close": 86.712,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-15T07:00:00",
+    "open": 86.713,
+    "high": 86.726,
+    "low": 86.7,
+    "close": 86.709,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-17T11:00:00",
+    "open": 86.683,
+    "high": 86.789,
+    "low": 86.612,
+    "close": 86.735,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-17T15:00:00",
+    "open": 86.727,
+    "high": 86.9,
+    "low": 86.693,
+    "close": 86.809,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-17T19:00:00",
+    "open": 86.808,
+    "high": 86.923,
+    "low": 86.8,
+    "close": 86.847,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-17T23:00:00",
+    "open": 86.847,
+    "high": 86.894,
+    "low": 86.804,
+    "close": 86.843,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-18T03:00:00",
+    "open": 86.831,
+    "high": 86.841,
+    "low": 86.824,
+    "close": 86.836,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-18T07:00:00",
+    "open": 86.833,
+    "high": 86.855,
+    "low": 86.828,
+    "close": 86.855,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-18T11:00:00",
+    "open": 86.852,
+    "high": 86.994,
+    "low": 86.846,
+    "close": 86.947,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-18T15:00:00",
+    "open": 86.945,
+    "high": 87.015999,
+    "low": 86.875,
+    "close": 86.932,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-18T19:00:00",
+    "open": 86.928,
+    "high": 87.014999,
+    "low": 86.902,
+    "close": 86.919,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-18T23:00:00",
+    "open": 86.92,
+    "high": 86.958,
+    "low": 86.871,
+    "close": 86.875,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-19T03:00:00",
+    "open": 86.877,
+    "high": 86.897,
+    "low": 86.856,
+    "close": 86.889,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-19T07:00:00",
+    "open": 86.889,
+    "high": 86.898,
+    "low": 86.887,
+    "close": 86.887,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-19T11:00:00",
+    "open": 86.902,
+    "high": 86.958,
+    "low": 86.893,
+    "close": 86.946,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-19T15:00:00",
+    "open": 86.907,
+    "high": 86.997,
+    "low": 86.818,
+    "close": 86.846,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-19T19:00:00",
+    "open": 86.847,
+    "high": 86.882,
+    "low": 86.783,
+    "close": 86.846,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-19T23:00:00",
+    "open": 86.846,
+    "high": 86.89,
+    "low": 86.81,
+    "close": 86.89,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-20T03:00:00",
+    "open": 86.854,
+    "high": 86.901,
+    "low": 86.852,
+    "close": 86.873,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-20T07:00:00",
+    "open": 86.874,
+    "high": 86.876,
+    "low": 86.858,
+    "close": 86.862,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-20T11:00:00",
+    "open": 86.901,
+    "high": 86.913,
+    "low": 86.784,
+    "close": 86.825,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-20T15:00:00",
+    "open": 86.82,
+    "high": 86.835,
+    "low": 86.535,
+    "close": 86.718,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-20T19:00:00",
+    "open": 86.689,
+    "high": 86.72,
+    "low": 86.536,
+    "close": 86.646,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-20T23:00:00",
+    "open": 86.604,
+    "high": 86.646,
+    "low": 86.499,
+    "close": 86.556,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-21T03:00:00",
+    "open": 86.512,
+    "high": 86.59,
+    "low": 86.468,
+    "close": 86.484,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-21T07:00:00",
+    "open": 86.484,
+    "high": 86.494,
+    "low": 86.436,
+    "close": 86.449,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-21T11:00:00",
+    "open": 86.508,
+    "high": 86.583,
+    "low": 86.413,
+    "close": 86.555,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-21T15:00:00",
+    "open": 86.521,
+    "high": 86.688,
+    "low": 86.505,
+    "close": 86.649,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-21T19:00:00",
+    "open": 86.632,
+    "high": 86.775,
+    "low": 86.599,
+    "close": 86.618,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-21T23:00:00",
+    "open": 86.618,
+    "high": 86.639,
+    "low": 86.536,
+    "close": 86.599,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-22T03:00:00",
+    "open": 86.551,
+    "high": 86.608,
+    "low": 86.514,
+    "close": 86.577,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-22T07:00:00",
+    "open": 86.576,
+    "high": 86.582,
+    "low": 86.56,
+    "close": 86.562,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-24T11:00:00",
+    "open": 86.65,
+    "high": 86.66,
+    "low": 86.449,
+    "close": 86.66,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-24T15:00:00",
+    "open": 86.578,
+    "high": 86.725,
+    "low": 86.569,
+    "close": 86.665,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-24T19:00:00",
+    "open": 86.666,
+    "high": 86.755,
+    "low": 86.627,
+    "close": 86.715,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-24T23:00:00",
+    "open": 86.671,
+    "high": 86.735,
+    "low": 86.633,
+    "close": 86.678,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-25T03:00:00",
+    "open": 86.643,
+    "high": 86.673,
+    "low": 86.622,
+    "close": 86.628,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-25T07:00:00",
+    "open": 86.628,
+    "high": 86.72,
+    "low": 86.626,
+    "close": 86.69,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-25T11:00:00",
+    "open": 86.688,
+    "high": 86.89,
+    "low": 86.688,
+    "close": 86.887,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-25T15:00:00",
+    "open": 86.88,
+    "high": 87.248,
+    "low": 86.796,
+    "close": 87.088997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-25T19:00:00",
+    "open": 87.122,
+    "high": 87.23,
+    "low": 87.036003,
+    "close": 87.195,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-25T23:00:00",
+    "open": 87.122,
+    "high": 87.187,
+    "low": 87.066002,
+    "close": 87.074997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 87.075996,
+    "high": 87.149,
+    "low": 87.035004,
+    "close": 87.081001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 87.082001,
+    "high": 87.089996,
+    "low": 87.055,
+    "close": 87.085999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 87.099998,
+    "high": 87.167,
+    "low": 87.093002,
+    "close": 87.129,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 87.128,
+    "high": 87.195,
+    "low": 87.017998,
+    "close": 87.081001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 87.032997,
+    "high": 87.102,
+    "low": 87.0090027,
+    "close": 87.083,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 87.085999,
+    "high": 87.174,
+    "low": 87.081001,
+    "close": 87.159,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-27T03:00:00",
+    "open": 87.167,
+    "high": 87.176,
+    "low": 87.127,
+    "close": 87.161,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-27T07:00:00",
+    "open": 87.161,
+    "high": 87.166,
+    "low": 87.16,
+    "close": 87.166,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-27T11:00:00",
+    "open": 87.106,
+    "high": 87.551,
+    "low": 87.106,
+    "close": 87.373,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-27T15:00:00",
+    "open": 87.398,
+    "high": 87.45,
+    "low": 87.099998,
+    "close": 87.274,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-27T19:00:00",
+    "open": 87.275,
+    "high": 87.414,
+    "low": 87.135,
+    "close": 87.179,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "USDINR",
+    "timestamp": "2025-02-27T23:00:00",
+    "open": 87.23,
+    "high": 87.443,
+    "low": 87.147,
+    "close": 87.322,
+    "volume": 0.0,
+    "interval": "4h"
+  }
+]

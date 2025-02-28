@@ -1,0 +1,2872 @@
+[
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-02-29T00:00:00",
+    "open": 0.64749998,
+    "high": 0.65149999,
+    "low": 0.6462,
+    "close": 0.65149999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-01T00:00:00",
+    "open": 0.65149999,
+    "high": 0.65399998,
+    "low": 0.6512,
+    "close": 0.65140003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-02T00:00:00",
+    "open": 0.65130001,
+    "high": 0.65179998,
+    "low": 0.65109998,
+    "close": 0.651375,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-04T00:00:00",
+    "open": 0.65240002,
+    "high": 0.653,
+    "low": 0.64929998,
+    "close": 0.65170002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-05T00:00:00",
+    "open": 0.65179998,
+    "high": 0.65270001,
+    "low": 0.64999998,
+    "close": 0.64999998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-06T00:00:00",
+    "open": 0.64995003,
+    "high": 0.65319997,
+    "low": 0.6494,
+    "close": 0.65270001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-07T00:00:00",
+    "open": 0.65280002,
+    "high": 0.653,
+    "low": 0.6512,
+    "close": 0.65210003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-08T00:00:00",
+    "open": 0.65200001,
+    "high": 0.65281999,
+    "low": 0.65009999,
+    "close": 0.65069997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-09T00:00:00",
+    "open": 0.65060002,
+    "high": 0.65090501,
+    "low": 0.65009999,
+    "close": 0.65090501,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-11T00:00:00",
+    "open": 0.65039998,
+    "high": 0.6516,
+    "low": 0.64960003,
+    "close": 0.65079999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-12T00:00:00",
+    "open": 0.65090001,
+    "high": 0.65140003,
+    "low": 0.64920002,
+    "close": 0.65030003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-13T00:00:00",
+    "open": 0.65035498,
+    "high": 0.65249997,
+    "low": 0.64990002,
+    "close": 0.65219998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-14T00:00:00",
+    "open": 0.6523,
+    "high": 0.65369999,
+    "low": 0.65197498,
+    "close": 0.653,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-15T00:00:00",
+    "open": 0.653045,
+    "high": 0.65390003,
+    "low": 0.65170002,
+    "close": 0.6523,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-16T00:00:00",
+    "open": 0.65240002,
+    "high": 0.65259999,
+    "low": 0.6523,
+    "close": 0.65230501,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-18T00:00:00",
+    "open": 0.65249997,
+    "high": 0.65640002,
+    "low": 0.65149999,
+    "close": 0.65619999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-19T00:00:00",
+    "open": 0.65630001,
+    "high": 0.65630001,
+    "low": 0.6516,
+    "close": 0.65460002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-20T00:00:00",
+    "open": 0.65469998,
+    "high": 0.65829998,
+    "low": 0.65420002,
+    "close": 0.65740001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-21T00:00:00",
+    "open": 0.65749502,
+    "high": 0.66549999,
+    "low": 0.65628499,
+    "close": 0.66350001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-22T00:00:00",
+    "open": 0.66360003,
+    "high": 0.66460001,
+    "low": 0.65969998,
+    "close": 0.65979999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-23T00:00:00",
+    "open": 0.65976,
+    "high": 0.6602,
+    "low": 0.65890002,
+    "close": 0.65960002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-25T00:00:00",
+    "open": 0.65969998,
+    "high": 0.66210002,
+    "low": 0.65920001,
+    "close": 0.66189998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-26T00:00:00",
+    "open": 0.662,
+    "high": 0.66720003,
+    "low": 0.66170001,
+    "close": 0.66549999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-27T00:00:00",
+    "open": 0.66540003,
+    "high": 0.66759998,
+    "low": 0.66460001,
+    "close": 0.66670001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-28T00:00:00",
+    "open": 0.66670001,
+    "high": 0.667,
+    "low": 0.66469997,
+    "close": 0.66600001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-29T00:00:00",
+    "open": 0.66579998,
+    "high": 0.66670001,
+    "low": 0.66460001,
+    "close": 0.66589999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-03-30T00:00:00",
+    "open": 0.66579998,
+    "high": 0.6663,
+    "low": 0.66530001,
+    "close": 0.66600001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-01T00:00:00",
+    "open": 0.66579998,
+    "high": 0.66729999,
+    "low": 0.665075,
+    "close": 0.6663,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-02T00:00:00",
+    "open": 0.6663,
+    "high": 0.67040002,
+    "low": 0.66589499,
+    "close": 0.66869998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-03T00:00:00",
+    "open": 0.66876,
+    "high": 0.67079997,
+    "low": 0.66729999,
+    "close": 0.6674,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-04T00:00:00",
+    "open": 0.6674,
+    "high": 0.67220002,
+    "low": 0.66479999,
+    "close": 0.66509998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-05T00:00:00",
+    "open": 0.66500002,
+    "high": 0.66769999,
+    "low": 0.66189998,
+    "close": 0.66399997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-06T00:00:00",
+    "open": 0.66390002,
+    "high": 0.66409999,
+    "low": 0.66350001,
+    "close": 0.66390002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-08T00:00:00",
+    "open": 0.66429502,
+    "high": 0.66729999,
+    "low": 0.66369998,
+    "close": 0.66707498,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-09T00:00:00",
+    "open": 0.66711003,
+    "high": 0.6674,
+    "low": 0.66439998,
+    "close": 0.66578501,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-10T00:00:00",
+    "open": 0.66576999,
+    "high": 0.66850001,
+    "low": 0.66509998,
+    "close": 0.66710001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-11T00:00:00",
+    "open": 0.66729999,
+    "high": 0.66839999,
+    "low": 0.66394001,
+    "close": 0.66479999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-12T00:00:00",
+    "open": 0.66469997,
+    "high": 0.66530001,
+    "low": 0.66149998,
+    "close": 0.66389,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-15T00:00:00",
+    "open": 0.66369998,
+    "high": 0.66570002,
+    "low": 0.66100001,
+    "close": 0.66109997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-16T00:00:00",
+    "open": 0.66115499,
+    "high": 0.66259998,
+    "low": 0.65920001,
+    "close": 0.66030002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-17T00:00:00",
+    "open": 0.66009998,
+    "high": 0.66170001,
+    "low": 0.65869999,
+    "close": 0.66119999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-18T00:00:00",
+    "open": 0.6613,
+    "high": 0.66329998,
+    "low": 0.6602,
+    "close": 0.66259998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-19T00:00:00",
+    "open": 0.66269499,
+    "high": 0.6631,
+    "low": 0.65310001,
+    "close": 0.66210002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-22T00:00:00",
+    "open": 0.66259998,
+    "high": 0.66579998,
+    "low": 0.66240001,
+    "close": 0.66579998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-23T00:00:00",
+    "open": 0.66572499,
+    "high": 0.66769999,
+    "low": 0.6645,
+    "close": 0.66750002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-24T00:00:00",
+    "open": 0.66747499,
+    "high": 0.66869998,
+    "low": 0.66479999,
+    "close": 0.66785502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-25T00:00:00",
+    "open": 0.66799998,
+    "high": 0.66829997,
+    "low": 0.6663,
+    "close": 0.66799998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-26T00:00:00",
+    "open": 0.66790003,
+    "high": 0.66939998,
+    "low": 0.66680002,
+    "close": 0.66900003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-29T00:00:00",
+    "open": 0.66890001,
+    "high": 0.67040002,
+    "low": 0.66579998,
+    "close": 0.66649997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-04-30T00:00:00",
+    "open": 0.66640002,
+    "high": 0.66820002,
+    "low": 0.66430002,
+    "close": 0.66729999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-01T00:00:00",
+    "open": 0.66733497,
+    "high": 0.66939998,
+    "low": 0.66579998,
+    "close": 0.66649997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-02T00:00:00",
+    "open": 0.66649002,
+    "high": 0.66839999,
+    "low": 0.66360003,
+    "close": 0.66610003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-03T00:00:00",
+    "open": 0.66610003,
+    "high": 0.66610003,
+    "low": 0.66079998,
+    "close": 0.66119999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-06T00:00:00",
+    "open": 0.66180003,
+    "high": 0.66350001,
+    "low": 0.66109502,
+    "close": 0.66314501,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-07T00:00:00",
+    "open": 0.66299999,
+    "high": 0.66390002,
+    "low": 0.6613,
+    "close": 0.66180497,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-08T00:00:00",
+    "open": 0.66180003,
+    "high": 0.66219997,
+    "low": 0.66000003,
+    "close": 0.66180003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-09T00:00:00",
+    "open": 0.66170001,
+    "high": 0.66293502,
+    "low": 0.66109997,
+    "close": 0.66240001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-10T00:00:00",
+    "open": 0.66241503,
+    "high": 0.66549999,
+    "low": 0.662,
+    "close": 0.66280502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-13T00:00:00",
+    "open": 0.662655,
+    "high": 0.66479999,
+    "low": 0.66170001,
+    "close": 0.66459501,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-14T00:00:00",
+    "open": 0.66460001,
+    "high": 0.66530001,
+    "low": 0.66339999,
+    "close": 0.66408497,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-15T00:00:00",
+    "open": 0.66409999,
+    "high": 0.6645,
+    "low": 0.6627,
+    "close": 0.66328502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-16T00:00:00",
+    "open": 0.6631,
+    "high": 0.6656,
+    "low": 0.66079998,
+    "close": 0.66540003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-17T00:00:00",
+    "open": 0.66549999,
+    "high": 0.6681,
+    "low": 0.66508001,
+    "close": 0.66799998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-20T00:00:00",
+    "open": 0.66790003,
+    "high": 0.66869998,
+    "low": 0.66680002,
+    "close": 0.66835499,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-21T00:00:00",
+    "open": 0.66829997,
+    "high": 0.66850001,
+    "low": 0.66589999,
+    "close": 0.66716498,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-22T00:00:00",
+    "open": 0.66720003,
+    "high": 0.67000002,
+    "low": 0.66710001,
+    "close": 0.66860002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-23T00:00:00",
+    "open": 0.66867501,
+    "high": 0.66900003,
+    "low": 0.6656,
+    "close": 0.66610003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-24T00:00:00",
+    "open": 0.66600001,
+    "high": 0.67000002,
+    "low": 0.66554999,
+    "close": 0.66939998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-27T00:00:00",
+    "open": 0.66900003,
+    "high": 0.6706,
+    "low": 0.6688,
+    "close": 0.67019999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-28T00:00:00",
+    "open": 0.67000002,
+    "high": 0.67040002,
+    "low": 0.667,
+    "close": 0.66860002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-29T00:00:00",
+    "open": 0.6688,
+    "high": 0.66890001,
+    "low": 0.66549999,
+    "close": 0.66570002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-30T00:00:00",
+    "open": 0.66569501,
+    "high": 0.6663,
+    "low": 0.66004503,
+    "close": 0.66039997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-05-31T00:00:00",
+    "open": 0.66032499,
+    "high": 0.6649,
+    "low": 0.6595,
+    "close": 0.66210002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-03T00:00:00",
+    "open": 0.662,
+    "high": 0.66229999,
+    "low": 0.65560001,
+    "close": 0.65731502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-04T00:00:00",
+    "open": 0.65740001,
+    "high": 0.65759999,
+    "low": 0.6494,
+    "close": 0.65090001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-05T00:00:00",
+    "open": 0.65100002,
+    "high": 0.65319997,
+    "low": 0.65039998,
+    "close": 0.65240002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-06T00:00:00",
+    "open": 0.65240002,
+    "high": 0.65289998,
+    "low": 0.65020001,
+    "close": 0.65060002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-07T00:00:00",
+    "open": 0.65079999,
+    "high": 0.65369999,
+    "low": 0.64963502,
+    "close": 0.65125,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-10T00:00:00",
+    "open": 0.65130001,
+    "high": 0.65270001,
+    "low": 0.6505,
+    "close": 0.65170002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-11T00:00:00",
+    "open": 0.65170002,
+    "high": 0.65310001,
+    "low": 0.6505,
+    "close": 0.65245497,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-12T00:00:00",
+    "open": 0.65244502,
+    "high": 0.65310001,
+    "low": 0.64910001,
+    "close": 0.65170002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-13T00:00:00",
+    "open": 0.65170002,
+    "high": 0.65240002,
+    "low": 0.64929998,
+    "close": 0.65039998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-14T00:00:00",
+    "open": 0.65060002,
+    "high": 0.65174001,
+    "low": 0.64670002,
+    "close": 0.64798498,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-17T00:00:00",
+    "open": 0.64829999,
+    "high": 0.64969999,
+    "low": 0.64740002,
+    "close": 0.64814502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-18T00:00:00",
+    "open": 0.64815998,
+    "high": 0.64899999,
+    "low": 0.64358002,
+    "close": 0.644575,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-19T00:00:00",
+    "open": 0.64480001,
+    "high": 0.64579999,
+    "low": 0.64393502,
+    "close": 0.64529997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-20T00:00:00",
+    "open": 0.64520001,
+    "high": 0.65189999,
+    "low": 0.64410001,
+    "close": 0.6512,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-21T00:00:00",
+    "open": 0.65130001,
+    "high": 0.65319997,
+    "low": 0.65020001,
+    "close": 0.653,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-24T00:00:00",
+    "open": 0.65289998,
+    "high": 0.65490001,
+    "low": 0.65200001,
+    "close": 0.65390003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-25T00:00:00",
+    "open": 0.65390003,
+    "high": 0.65579998,
+    "low": 0.65307498,
+    "close": 0.65509999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-26T00:00:00",
+    "open": 0.65512002,
+    "high": 0.65679997,
+    "low": 0.6541,
+    "close": 0.65499997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-27T00:00:00",
+    "open": 0.6548,
+    "high": 0.65658998,
+    "low": 0.65420002,
+    "close": 0.65605497,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-06-28T00:00:00",
+    "open": 0.65600002,
+    "high": 0.65780002,
+    "low": 0.65490001,
+    "close": 0.65700001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-01T00:00:00",
+    "open": 0.65808499,
+    "high": 0.6591,
+    "low": 0.65700001,
+    "close": 0.6573,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-02T00:00:00",
+    "open": 0.65710002,
+    "high": 0.6613,
+    "low": 0.65696502,
+    "close": 0.6609,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-03T00:00:00",
+    "open": 0.66084498,
+    "high": 0.66189998,
+    "low": 0.65979999,
+    "close": 0.66100001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-04T00:00:00",
+    "open": 0.66100001,
+    "high": 0.66329998,
+    "low": 0.66030002,
+    "close": 0.6613,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-05T00:00:00",
+    "open": 0.6613,
+    "high": 0.66140002,
+    "low": 0.65649998,
+    "close": 0.6566,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-08T00:00:00",
+    "open": 0.65600002,
+    "high": 0.6584,
+    "low": 0.65549999,
+    "close": 0.65834498,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-09T00:00:00",
+    "open": 0.65834498,
+    "high": 0.65930003,
+    "low": 0.65759999,
+    "close": 0.6584,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-10T00:00:00",
+    "open": 0.65829998,
+    "high": 0.6609,
+    "low": 0.65740001,
+    "close": 0.66060001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-11T00:00:00",
+    "open": 0.66049999,
+    "high": 0.66079998,
+    "low": 0.65530002,
+    "close": 0.6577,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-12T00:00:00",
+    "open": 0.65750003,
+    "high": 0.65850002,
+    "low": 0.65539998,
+    "close": 0.65600002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-15T00:00:00",
+    "open": 0.65670502,
+    "high": 0.65740001,
+    "low": 0.65420002,
+    "close": 0.65469998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-16T00:00:00",
+    "open": 0.65469998,
+    "high": 0.65560001,
+    "low": 0.65329999,
+    "close": 0.65359998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-17T00:00:00",
+    "open": 0.65359998,
+    "high": 0.65420002,
+    "low": 0.64507002,
+    "close": 0.64561498,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-18T00:00:00",
+    "open": 0.64564502,
+    "high": 0.64789999,
+    "low": 0.64469999,
+    "close": 0.64770001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-19T00:00:00",
+    "open": 0.64768499,
+    "high": 0.64910001,
+    "low": 0.64649999,
+    "close": 0.64749998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-22T00:00:00",
+    "open": 0.64740002,
+    "high": 0.648,
+    "low": 0.64539999,
+    "close": 0.64660001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-23T00:00:00",
+    "open": 0.64670002,
+    "high": 0.64819998,
+    "low": 0.64569998,
+    "close": 0.64670002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-24T00:00:00",
+    "open": 0.64660001,
+    "high": 0.647205,
+    "low": 0.63999999,
+    "close": 0.64109999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-25T00:00:00",
+    "open": 0.64109999,
+    "high": 0.6415,
+    "low": 0.63410002,
+    "close": 0.63789999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-26T00:00:00",
+    "open": 0.63773501,
+    "high": 0.6401,
+    "low": 0.63656002,
+    "close": 0.63880002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-29T00:00:00",
+    "open": 0.63919997,
+    "high": 0.64020002,
+    "low": 0.63810003,
+    "close": 0.63959998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-30T00:00:00",
+    "open": 0.63968498,
+    "high": 0.64109999,
+    "low": 0.6372,
+    "close": 0.63749999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-07-31T00:00:00",
+    "open": 0.63739997,
+    "high": 0.63910002,
+    "low": 0.63480002,
+    "close": 0.6358,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-01T00:00:00",
+    "open": 0.63590002,
+    "high": 0.63660002,
+    "low": 0.62830001,
+    "close": 0.62910002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-02T00:00:00",
+    "open": 0.62900001,
+    "high": 0.62980002,
+    "low": 0.61799997,
+    "close": 0.6182,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-05T00:00:00",
+    "open": 0.61919999,
+    "high": 0.61930001,
+    "low": 0.60600001,
+    "close": 0.61629999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-06T00:00:00",
+    "open": 0.6164,
+    "high": 0.62059999,
+    "low": 0.61510003,
+    "close": 0.61763,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-07T00:00:00",
+    "open": 0.61767,
+    "high": 0.63120002,
+    "low": 0.61758,
+    "close": 0.62629998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-08T00:00:00",
+    "open": 0.62625498,
+    "high": 0.63139999,
+    "low": 0.62260002,
+    "close": 0.6311,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-09T00:00:00",
+    "open": 0.63103002,
+    "high": 0.63169998,
+    "low": 0.62830001,
+    "close": 0.63015503,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-12T00:00:00",
+    "open": 0.62992001,
+    "high": 0.63450003,
+    "low": 0.62900001,
+    "close": 0.62980002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-13T00:00:00",
+    "open": 0.62951499,
+    "high": 0.63209999,
+    "low": 0.62910002,
+    "close": 0.63080001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-14T00:00:00",
+    "open": 0.63102001,
+    "high": 0.63160002,
+    "low": 0.62884003,
+    "close": 0.63069999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-15T00:00:00",
+    "open": 0.63079,
+    "high": 0.63709998,
+    "low": 0.63047498,
+    "close": 0.6358,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-16T00:00:00",
+    "open": 0.63550001,
+    "high": 0.63590002,
+    "low": 0.63099998,
+    "close": 0.63318002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-19T00:00:00",
+    "open": 0.63392001,
+    "high": 0.6347,
+    "low": 0.63020003,
+    "close": 0.63279998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-20T00:00:00",
+    "open": 0.632815,
+    "high": 0.63331997,
+    "low": 0.62699997,
+    "close": 0.62709999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-21T00:00:00",
+    "open": 0.62696999,
+    "high": 0.62930501,
+    "low": 0.62529999,
+    "close": 0.62660003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-22T00:00:00",
+    "open": 0.62660003,
+    "high": 0.62779999,
+    "low": 0.62542999,
+    "close": 0.6261,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-23T00:00:00",
+    "open": 0.62593001,
+    "high": 0.62910002,
+    "low": 0.625,
+    "close": 0.62739998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-26T00:00:00",
+    "open": 0.62699997,
+    "high": 0.6293,
+    "low": 0.6261,
+    "close": 0.62819999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-27T00:00:00",
+    "open": 0.62830001,
+    "high": 0.62940001,
+    "low": 0.62510002,
+    "close": 0.6261,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-28T00:00:00",
+    "open": 0.62602001,
+    "high": 0.62760001,
+    "low": 0.62419999,
+    "close": 0.62470001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-29T00:00:00",
+    "open": 0.624735,
+    "high": 0.63010001,
+    "low": 0.62410003,
+    "close": 0.62840003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-08-30T00:00:00",
+    "open": 0.62830001,
+    "high": 0.63120002,
+    "low": 0.62778503,
+    "close": 0.62993503,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-02T00:00:00",
+    "open": 0.63059998,
+    "high": 0.6322,
+    "low": 0.6286,
+    "close": 0.63099998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-03T00:00:00",
+    "open": 0.63100499,
+    "high": 0.63200003,
+    "low": 0.62589997,
+    "close": 0.62753999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-04T00:00:00",
+    "open": 0.62753499,
+    "high": 0.62940001,
+    "low": 0.62540001,
+    "close": 0.62690002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-05T00:00:00",
+    "open": 0.62678498,
+    "high": 0.62840003,
+    "low": 0.62410003,
+    "close": 0.62499499,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-06T00:00:00",
+    "open": 0.62501502,
+    "high": 0.62760001,
+    "low": 0.62050003,
+    "close": 0.62110001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-09T00:00:00",
+    "open": 0.62190002,
+    "high": 0.62650001,
+    "low": 0.62169999,
+    "close": 0.62639999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-10T00:00:00",
+    "open": 0.62639999,
+    "high": 0.62669998,
+    "low": 0.6214,
+    "close": 0.62232,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-11T00:00:00",
+    "open": 0.62228,
+    "high": 0.62870002,
+    "low": 0.61949998,
+    "close": 0.62779999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-12T00:00:00",
+    "open": 0.62781501,
+    "high": 0.63010001,
+    "low": 0.62647998,
+    "close": 0.6268,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-13T00:00:00",
+    "open": 0.62674499,
+    "high": 0.6279,
+    "low": 0.62198502,
+    "close": 0.62489998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-16T00:00:00",
+    "open": 0.62470001,
+    "high": 0.62489998,
+    "low": 0.62094498,
+    "close": 0.62190002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-17T00:00:00",
+    "open": 0.621445,
+    "high": 0.62330002,
+    "low": 0.62050003,
+    "close": 0.62300003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-18T00:00:00",
+    "open": 0.62299502,
+    "high": 0.62339997,
+    "low": 0.61930001,
+    "close": 0.62190002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-19T00:00:00",
+    "open": 0.62199998,
+    "high": 0.62699997,
+    "low": 0.62099999,
+    "close": 0.62540001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-20T00:00:00",
+    "open": 0.62527502,
+    "high": 0.62800002,
+    "low": 0.62349999,
+    "close": 0.62650502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-23T00:00:00",
+    "open": 0.62690002,
+    "high": 0.6293,
+    "low": 0.6257,
+    "close": 0.62599999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-24T00:00:00",
+    "open": 0.62589997,
+    "high": 0.62900001,
+    "low": 0.62550002,
+    "close": 0.627855,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-25T00:00:00",
+    "open": 0.6279,
+    "high": 0.63270003,
+    "low": 0.62639999,
+    "close": 0.63059998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-26T00:00:00",
+    "open": 0.63059998,
+    "high": 0.6322,
+    "low": 0.62739998,
+    "close": 0.62840003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-27T00:00:00",
+    "open": 0.62849998,
+    "high": 0.62949997,
+    "low": 0.6214,
+    "close": 0.62169999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-09-30T00:00:00",
+    "open": 0.62220502,
+    "high": 0.62639999,
+    "low": 0.62193501,
+    "close": 0.62518501,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-01T00:00:00",
+    "open": 0.62519002,
+    "high": 0.62853003,
+    "low": 0.62410003,
+    "close": 0.62760001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-02T00:00:00",
+    "open": 0.62752002,
+    "high": 0.63099998,
+    "low": 0.62629998,
+    "close": 0.62940001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-03T00:00:00",
+    "open": 0.62927997,
+    "high": 0.63200003,
+    "low": 0.62730002,
+    "close": 0.62940001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-04T00:00:00",
+    "open": 0.62910002,
+    "high": 0.63349998,
+    "low": 0.62690002,
+    "close": 0.63209999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-07T00:00:00",
+    "open": 0.63279998,
+    "high": 0.63336998,
+    "low": 0.6261,
+    "close": 0.62699997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-08T00:00:00",
+    "open": 0.62690002,
+    "high": 0.62870002,
+    "low": 0.62540001,
+    "close": 0.62849998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-09T00:00:00",
+    "open": 0.62852502,
+    "high": 0.62870002,
+    "low": 0.62660003,
+    "close": 0.62769997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-10T00:00:00",
+    "open": 0.62769997,
+    "high": 0.62849998,
+    "low": 0.62230003,
+    "close": 0.62330002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-11T00:00:00",
+    "open": 0.62330002,
+    "high": 0.62480003,
+    "low": 0.62186003,
+    "close": 0.62288499,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-12T00:00:00",
+    "open": 0.62300003,
+    "high": 0.623115,
+    "low": 0.62279999,
+    "close": 0.62283498,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-14T00:00:00",
+    "open": 0.62309998,
+    "high": 0.62641001,
+    "low": 0.6225,
+    "close": 0.62519997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-15T00:00:00",
+    "open": 0.62529999,
+    "high": 0.6261,
+    "low": 0.6225,
+    "close": 0.6257,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-16T00:00:00",
+    "open": 0.6257,
+    "high": 0.62949997,
+    "low": 0.62478501,
+    "close": 0.62940001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-17T00:00:00",
+    "open": 0.62949997,
+    "high": 0.62989998,
+    "low": 0.62620002,
+    "close": 0.6279,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-18T00:00:00",
+    "open": 0.62781,
+    "high": 0.6286,
+    "low": 0.62629998,
+    "close": 0.62660003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-19T00:00:00",
+    "open": 0.62669998,
+    "high": 0.62669998,
+    "low": 0.6261,
+    "close": 0.62639999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-21T00:00:00",
+    "open": 0.62650001,
+    "high": 0.62690002,
+    "low": 0.62449998,
+    "close": 0.62597001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-22T00:00:00",
+    "open": 0.62599999,
+    "high": 0.62669998,
+    "low": 0.625,
+    "close": 0.62639999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-23T00:00:00",
+    "open": 0.62639999,
+    "high": 0.62849998,
+    "low": 0.62550002,
+    "close": 0.62599999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-24T00:00:00",
+    "open": 0.62599999,
+    "high": 0.6275,
+    "low": 0.62458497,
+    "close": 0.62510002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-25T00:00:00",
+    "open": 0.625,
+    "high": 0.62629998,
+    "low": 0.62309998,
+    "close": 0.62360001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-26T00:00:00",
+    "open": 0.62349999,
+    "high": 0.62400001,
+    "low": 0.62339997,
+    "close": 0.62387502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-28T00:00:00",
+    "open": 0.62480003,
+    "high": 0.6261,
+    "low": 0.62220001,
+    "close": 0.62269998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-29T00:00:00",
+    "open": 0.62269998,
+    "high": 0.62559998,
+    "low": 0.6221,
+    "close": 0.62349999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-30T00:00:00",
+    "open": 0.62339997,
+    "high": 0.62410003,
+    "low": 0.62199998,
+    "close": 0.62309998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-10-31T00:00:00",
+    "open": 0.6232,
+    "high": 0.62360001,
+    "low": 0.61970001,
+    "close": 0.62010002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-01T00:00:00",
+    "open": 0.62019998,
+    "high": 0.62510002,
+    "low": 0.61940002,
+    "close": 0.62379998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-02T00:00:00",
+    "open": 0.62379998,
+    "high": 0.62419999,
+    "low": 0.62309998,
+    "close": 0.62330002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-04T00:00:00",
+    "open": 0.62360001,
+    "high": 0.62379998,
+    "low": 0.62,
+    "close": 0.62159997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-05T00:00:00",
+    "open": 0.62159997,
+    "high": 0.62419999,
+    "low": 0.62063003,
+    "close": 0.62360001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-06T00:00:00",
+    "open": 0.62360001,
+    "high": 0.63080001,
+    "low": 0.6221,
+    "close": 0.62900001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-07T00:00:00",
+    "open": 0.62889999,
+    "high": 0.6318,
+    "low": 0.62782001,
+    "close": 0.63020003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-08T00:00:00",
+    "open": 0.63020003,
+    "high": 0.63020003,
+    "low": 0.62629998,
+    "close": 0.62970001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-09T00:00:00",
+    "open": 0.62959999,
+    "high": 0.62980002,
+    "low": 0.62910002,
+    "close": 0.629605,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-11T00:00:00",
+    "open": 0.62979001,
+    "high": 0.63270003,
+    "low": 0.62889999,
+    "close": 0.63249999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-12T00:00:00",
+    "open": 0.63249999,
+    "high": 0.6336,
+    "low": 0.63079,
+    "close": 0.6329,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-13T00:00:00",
+    "open": 0.63279998,
+    "high": 0.63370001,
+    "low": 0.63090003,
+    "close": 0.6329,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-14T00:00:00",
+    "open": 0.63279998,
+    "high": 0.63569999,
+    "low": 0.63209999,
+    "close": 0.63319999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-15T00:00:00",
+    "open": 0.63314998,
+    "high": 0.63429999,
+    "low": 0.62900001,
+    "close": 0.62989998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-16T00:00:00",
+    "open": 0.62989998,
+    "high": 0.63059998,
+    "low": 0.62970001,
+    "close": 0.63036001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-18T00:00:00",
+    "open": 0.63007998,
+    "high": 0.63129997,
+    "low": 0.62849998,
+    "close": 0.63020003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-19T00:00:00",
+    "open": 0.63020003,
+    "high": 0.63270003,
+    "low": 0.6286,
+    "close": 0.6322,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-20T00:00:00",
+    "open": 0.63209999,
+    "high": 0.63389999,
+    "low": 0.63059998,
+    "close": 0.63246,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-21T00:00:00",
+    "open": 0.63239998,
+    "high": 0.6354,
+    "low": 0.63169998,
+    "close": 0.63480002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-22T00:00:00",
+    "open": 0.63472497,
+    "high": 0.64069998,
+    "low": 0.63389999,
+    "close": 0.63980001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-23T00:00:00",
+    "open": 0.63980001,
+    "high": 0.63999999,
+    "low": 0.63940001,
+    "close": 0.63959998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-25T00:00:00",
+    "open": 0.63863498,
+    "high": 0.63959998,
+    "low": 0.63340002,
+    "close": 0.63370001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-26T00:00:00",
+    "open": 0.63370001,
+    "high": 0.63489997,
+    "low": 0.62660003,
+    "close": 0.63099998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-27T00:00:00",
+    "open": 0.63099998,
+    "high": 0.63120002,
+    "low": 0.62699997,
+    "close": 0.628555,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-28T00:00:00",
+    "open": 0.62857503,
+    "high": 0.6318,
+    "low": 0.62822998,
+    "close": 0.63024497,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-29T00:00:00",
+    "open": 0.63022,
+    "high": 0.63090003,
+    "low": 0.62709999,
+    "close": 0.62897998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-11-30T00:00:00",
+    "open": 0.62895501,
+    "high": 0.62952,
+    "low": 0.6286,
+    "close": 0.62910002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-02T00:00:00",
+    "open": 0.62953001,
+    "high": 0.63209999,
+    "low": 0.62908,
+    "close": 0.63129997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-03T00:00:00",
+    "open": 0.63129997,
+    "high": 0.63279998,
+    "low": 0.62900001,
+    "close": 0.63,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-04T00:00:00",
+    "open": 0.63,
+    "high": 0.63099998,
+    "low": 0.62730002,
+    "close": 0.62870002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-05T00:00:00",
+    "open": 0.62870002,
+    "high": 0.62980002,
+    "low": 0.62559998,
+    "close": 0.62593001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-06T00:00:00",
+    "open": 0.62599999,
+    "high": 0.62779999,
+    "low": 0.61985499,
+    "close": 0.62080002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-07T00:00:00",
+    "open": 0.6207,
+    "high": 0.62110001,
+    "low": 0.62040001,
+    "close": 0.62064499,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-09T00:00:00",
+    "open": 0.62077999,
+    "high": 0.62360001,
+    "low": 0.62029999,
+    "close": 0.62067997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-10T00:00:00",
+    "open": 0.62068999,
+    "high": 0.62349999,
+    "low": 0.61870003,
+    "close": 0.62326002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-11T00:00:00",
+    "open": 0.6232,
+    "high": 0.6257,
+    "low": 0.6214,
+    "close": 0.62483001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-12T00:00:00",
+    "open": 0.62480003,
+    "high": 0.62900001,
+    "low": 0.62336498,
+    "close": 0.62739998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-13T00:00:00",
+    "open": 0.62738001,
+    "high": 0.62900001,
+    "low": 0.62599999,
+    "close": 0.62730002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-14T00:00:00",
+    "open": 0.62720001,
+    "high": 0.6275,
+    "low": 0.62682003,
+    "close": 0.62708497,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-16T00:00:00",
+    "open": 0.6275,
+    "high": 0.6286,
+    "low": 0.62550002,
+    "close": 0.62849998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-17T00:00:00",
+    "open": 0.62840003,
+    "high": 0.6286,
+    "low": 0.62304997,
+    "close": 0.62349999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-18T00:00:00",
+    "open": 0.62360001,
+    "high": 0.62489998,
+    "low": 0.62204999,
+    "close": 0.62445003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-19T00:00:00",
+    "open": 0.62449998,
+    "high": 0.62620002,
+    "low": 0.62225002,
+    "close": 0.62440002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-20T00:00:00",
+    "open": 0.62435001,
+    "high": 0.62489998,
+    "low": 0.62075001,
+    "close": 0.62134999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-21T00:00:00",
+    "open": 0.62129998,
+    "high": 0.62169999,
+    "low": 0.62089998,
+    "close": 0.62124997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-23T00:00:00",
+    "open": 0.62155002,
+    "high": 0.62580001,
+    "low": 0.6207,
+    "close": 0.62519997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-24T00:00:00",
+    "open": 0.62510002,
+    "high": 0.62599999,
+    "low": 0.62405002,
+    "close": 0.62449998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-25T00:00:00",
+    "open": 0.62585002,
+    "high": 0.62585002,
+    "low": 0.6257,
+    "close": 0.62580001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-26T00:00:00",
+    "open": 0.62585002,
+    "high": 0.62699997,
+    "low": 0.62349999,
+    "close": 0.62379998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-27T00:00:00",
+    "open": 0.62370002,
+    "high": 0.62650001,
+    "low": 0.62344998,
+    "close": 0.6257,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-28T00:00:00",
+    "open": 0.62585002,
+    "high": 0.6261,
+    "low": 0.62545002,
+    "close": 0.62589997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-30T00:00:00",
+    "open": 0.62510002,
+    "high": 0.63099998,
+    "low": 0.625,
+    "close": 0.62954998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2024-12-31T00:00:00",
+    "open": 0.62954998,
+    "high": 0.63015002,
+    "low": 0.62795001,
+    "close": 0.62954998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-01T00:00:00",
+    "open": 0.63080001,
+    "high": 0.63099998,
+    "low": 0.63069999,
+    "close": 0.63090003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-02T00:00:00",
+    "open": 0.63090003,
+    "high": 0.63410002,
+    "low": 0.62730002,
+    "close": 0.6336,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-03T00:00:00",
+    "open": 0.63370001,
+    "high": 0.63419998,
+    "low": 0.62849998,
+    "close": 0.62919998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-04T00:00:00",
+    "open": 0.62919998,
+    "high": 0.62940001,
+    "low": 0.62849998,
+    "close": 0.62879997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-06T00:00:00",
+    "open": 0.62919998,
+    "high": 0.63260001,
+    "low": 0.62879997,
+    "close": 0.63090003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-07T00:00:00",
+    "open": 0.63099998,
+    "high": 0.63410002,
+    "low": 0.6304,
+    "close": 0.63330001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-08T00:00:00",
+    "open": 0.63330001,
+    "high": 0.63520002,
+    "low": 0.6322,
+    "close": 0.63370001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-09T00:00:00",
+    "open": 0.6336,
+    "high": 0.63440001,
+    "low": 0.63270003,
+    "close": 0.63419998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-10T00:00:00",
+    "open": 0.63419998,
+    "high": 0.63730001,
+    "low": 0.63279998,
+    "close": 0.6358,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-11T00:00:00",
+    "open": 0.6358,
+    "high": 0.6358,
+    "low": 0.63510001,
+    "close": 0.63559997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-13T00:00:00",
+    "open": 0.6354,
+    "high": 0.63810003,
+    "low": 0.6347,
+    "close": 0.63770002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-14T00:00:00",
+    "open": 0.63770002,
+    "high": 0.63840002,
+    "low": 0.6354,
+    "close": 0.6354,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-15T00:00:00",
+    "open": 0.6354,
+    "high": 0.6372,
+    "low": 0.63410002,
+    "close": 0.63700002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-16T00:00:00",
+    "open": 0.63709998,
+    "high": 0.6372,
+    "low": 0.63260001,
+    "close": 0.6329,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-17T00:00:00",
+    "open": 0.6329,
+    "high": 0.63480002,
+    "low": 0.63150001,
+    "close": 0.63270003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-18T00:00:00",
+    "open": 0.63279998,
+    "high": 0.63279998,
+    "low": 0.63160002,
+    "close": 0.63160002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-20T00:00:00",
+    "open": 0.63160002,
+    "high": 0.63630003,
+    "low": 0.63099998,
+    "close": 0.63370001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-21T00:00:00",
+    "open": 0.63380003,
+    "high": 0.63419998,
+    "low": 0.62620002,
+    "close": 0.63249999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-22T00:00:00",
+    "open": 0.63249999,
+    "high": 0.63300002,
+    "low": 0.6304,
+    "close": 0.63050002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-23T00:00:00",
+    "open": 0.63059998,
+    "high": 0.63279998,
+    "low": 0.6293,
+    "close": 0.63150001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-24T00:00:00",
+    "open": 0.63150001,
+    "high": 0.63330001,
+    "low": 0.63010001,
+    "close": 0.63169998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-25T00:00:00",
+    "open": 0.63169998,
+    "high": 0.63209999,
+    "low": 0.63139999,
+    "close": 0.63160002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-27T00:00:00",
+    "open": 0.6304,
+    "high": 0.63120002,
+    "low": 0.62440002,
+    "close": 0.62699997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-28T00:00:00",
+    "open": 0.62699997,
+    "high": 0.62989998,
+    "low": 0.62690002,
+    "close": 0.62800002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-29T00:00:00",
+    "open": 0.62809998,
+    "high": 0.63,
+    "low": 0.62699997,
+    "close": 0.62919998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-30T00:00:00",
+    "open": 0.62919998,
+    "high": 0.63129997,
+    "low": 0.62819999,
+    "close": 0.63050002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-01-31T00:00:00",
+    "open": 0.6304,
+    "high": 0.63150001,
+    "low": 0.62360001,
+    "close": 0.6275,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-01T00:00:00",
+    "open": 0.6275,
+    "high": 0.62800002,
+    "low": 0.62580001,
+    "close": 0.62709999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-03T00:00:00",
+    "open": 0.62150002,
+    "high": 0.62819999,
+    "low": 0.61949998,
+    "close": 0.62639999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-04T00:00:00",
+    "open": 0.62639999,
+    "high": 0.6329,
+    "low": 0.62589997,
+    "close": 0.63270003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-05T00:00:00",
+    "open": 0.63260001,
+    "high": 0.63330001,
+    "low": 0.62910002,
+    "close": 0.62940001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-06T00:00:00",
+    "open": 0.62940001,
+    "high": 0.63279998,
+    "low": 0.62889999,
+    "close": 0.63230002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-07T00:00:00",
+    "open": 0.63230002,
+    "high": 0.63749999,
+    "low": 0.63209999,
+    "close": 0.63639998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-08T00:00:00",
+    "open": 0.6365,
+    "high": 0.6372,
+    "low": 0.63609999,
+    "close": 0.63679999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-10T00:00:00",
+    "open": 0.63450003,
+    "high": 0.63709998,
+    "low": 0.63340002,
+    "close": 0.63709998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-11T00:00:00",
+    "open": 0.63700002,
+    "high": 0.63940001,
+    "low": 0.63550001,
+    "close": 0.63889998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-12T00:00:00",
+    "open": 0.639,
+    "high": 0.63990003,
+    "low": 0.63609999,
+    "close": 0.63940001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-13T00:00:00",
+    "open": 0.63940001,
+    "high": 0.63950002,
+    "low": 0.63429999,
+    "close": 0.63520002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-14T00:00:00",
+    "open": 0.63529998,
+    "high": 0.63889998,
+    "low": 0.63349998,
+    "close": 0.63459998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-15T00:00:00",
+    "open": 0.63459998,
+    "high": 0.63510001,
+    "low": 0.63419998,
+    "close": 0.63419998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-17T00:00:00",
+    "open": 0.6336,
+    "high": 0.63569999,
+    "low": 0.63349998,
+    "close": 0.63520002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-18T00:00:00",
+    "open": 0.63520002,
+    "high": 0.6372,
+    "low": 0.63410002,
+    "close": 0.63690001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-19T00:00:00",
+    "open": 0.63690001,
+    "high": 0.63779998,
+    "low": 0.63459998,
+    "close": 0.63520002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-20T00:00:00",
+    "open": 0.63510001,
+    "high": 0.6358,
+    "low": 0.63319999,
+    "close": 0.63340002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-21T00:00:00",
+    "open": 0.63340002,
+    "high": 0.63480002,
+    "low": 0.63020003,
+    "close": 0.63059998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-22T00:00:00",
+    "open": 0.63050002,
+    "high": 0.63160002,
+    "low": 0.6304,
+    "close": 0.63099998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-24T00:00:00",
+    "open": 0.63080001,
+    "high": 0.63319999,
+    "low": 0.62970001,
+    "close": 0.63020003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 0.63020003,
+    "high": 0.63029999,
+    "low": 0.62349999,
+    "close": 0.62410003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 0.62419999,
+    "high": 0.625,
+    "low": 0.6221,
+    "close": 0.62360001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "CADCHF",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 0.62370002,
+    "high": 0.62699997,
+    "low": 0.62260002,
+    "close": 0.62300003,
+    "volume": 0.0,
+    "interval": "1d"
+  }
+]

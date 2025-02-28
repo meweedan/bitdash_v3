@@ -6,7 +6,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:22:22.074198"
+      "timestamp": "2025-02-28T01:44:16.516970"
     },
     {
       "name": "Dow Jones",
@@ -14,7 +14,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:22:33.834001"
+      "timestamp": "2025-02-28T01:44:26.967096"
     },
     {
       "name": "NASDAQ",
@@ -22,7 +22,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:22:46.395276"
+      "timestamp": "2025-02-28T01:44:41.220433"
     },
     {
       "name": "FTSE 100",
@@ -30,7 +30,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:22:58.709548"
+      "timestamp": "2025-02-28T01:44:52.976084"
     },
     {
       "name": "DAX",
@@ -38,7 +38,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:23:09.919743"
+      "timestamp": "2025-02-28T01:45:09.468156"
     },
     {
       "name": "Nikkei 225",
@@ -46,7 +46,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:23:20.472665"
+      "timestamp": "2025-02-28T01:45:20.688972"
     }
   ],
   "forex": [
@@ -56,7 +56,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:23:29.768767"
+      "timestamp": "2025-02-28T01:45:33.519264"
     },
     {
       "name": "GBP/USD",
@@ -64,7 +64,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:23:39.231295"
+      "timestamp": "2025-02-28T01:45:46.301267"
     },
     {
       "name": "USD/JPY",
@@ -72,7 +72,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:23:50.336008"
+      "timestamp": "2025-02-28T01:45:57.386956"
     },
     {
       "name": "USD/CAD",
@@ -80,7 +80,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:24:01.698879"
+      "timestamp": "2025-02-28T01:46:06.599667"
     },
     {
       "name": "AUD/USD",
@@ -88,7 +88,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:24:13.229881"
+      "timestamp": "2025-02-28T01:46:16.646548"
     }
   ],
   "commodities": [
@@ -98,7 +98,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:24:23.898722"
+      "timestamp": "2025-02-28T01:46:32.175051"
     },
     {
       "name": "Silver",
@@ -106,7 +106,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:24:33.727596"
+      "timestamp": "2025-02-28T01:46:43.393400"
     },
     {
       "name": "Oil (WTI)",
@@ -114,7 +114,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:24:43.490646"
+      "timestamp": "2025-02-28T01:46:54.328664"
     },
     {
       "name": "Natural Gas",
@@ -122,7 +122,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:24:54.547901"
+      "timestamp": "2025-02-28T01:47:03.940640"
     }
   ],
   "crypto": [
@@ -132,7 +132,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:25:18.150195"
+      "timestamp": "2025-02-28T01:47:27.136413"
     },
     {
       "name": "Ethereum",
@@ -140,7 +140,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:25:41.384767"
+      "timestamp": "2025-02-28T01:47:52.985275"
     },
     {
       "name": "Binance Coin",
@@ -148,7 +148,7 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:26:03.994965"
+      "timestamp": "2025-02-28T01:48:13.978303"
     },
     {
       "name": "XRP",
@@ -156,8 +156,8 @@
       "price": 0,
       "change": 0,
       "direction": "neutral",
-      "timestamp": "2025-02-27T22:26:24.257988"
+      "timestamp": "2025-02-28T01:48:35.282674"
     }
   ],
-  "lastUpdated": "2025-02-27T22:26:24.257991"
+  "lastUpdated": "2025-02-28T01:48:35.282677"
 }

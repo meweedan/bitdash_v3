@@ -1,0 +1,1682 @@
+[
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T00:00:00",
+    "open": 0.25483,
+    "high": 0.25527,
+    "low": 0.25291,
+    "close": 0.25367,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T01:00:00",
+    "open": 0.25367,
+    "high": 0.25403,
+    "low": 0.25216,
+    "close": 0.25345,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T02:00:00",
+    "open": 0.25345,
+    "high": 0.25432,
+    "low": 0.25217,
+    "close": 0.25237,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T03:00:00",
+    "open": 0.25237,
+    "high": 0.25342,
+    "low": 0.25179,
+    "close": 0.25215,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T04:00:00",
+    "open": 0.25214,
+    "high": 0.25385,
+    "low": 0.2521,
+    "close": 0.25352,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T05:00:00",
+    "open": 0.25353,
+    "high": 0.25446,
+    "low": 0.25282,
+    "close": 0.25372,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T06:00:00",
+    "open": 0.2537,
+    "high": 0.25377,
+    "low": 0.25215,
+    "close": 0.25368,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T07:00:00",
+    "open": 0.2537,
+    "high": 0.25475,
+    "low": 0.25308,
+    "close": 0.25319,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T08:00:00",
+    "open": 0.25324,
+    "high": 0.25493,
+    "low": 0.25295,
+    "close": 0.25443,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T09:00:00",
+    "open": 0.25444,
+    "high": 0.25844,
+    "low": 0.25402,
+    "close": 0.25569,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T10:00:00",
+    "open": 0.25569,
+    "high": 0.25714,
+    "low": 0.25494,
+    "close": 0.25655,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T11:00:00",
+    "open": 0.25656,
+    "high": 0.25656,
+    "low": 0.25495,
+    "close": 0.25522,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T12:00:00",
+    "open": 0.25519,
+    "high": 0.25768,
+    "low": 0.25472,
+    "close": 0.25748,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T13:00:00",
+    "open": 0.25753,
+    "high": 0.26123,
+    "low": 0.25705,
+    "close": 0.26089,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T14:00:00",
+    "open": 0.26088,
+    "high": 0.26119,
+    "low": 0.25589,
+    "close": 0.25816,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T15:00:00",
+    "open": 0.25816,
+    "high": 0.26,
+    "low": 0.24952,
+    "close": 0.25247,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T16:00:00",
+    "open": 0.25246,
+    "high": 0.25545,
+    "low": 0.25081,
+    "close": 0.25225,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T17:00:00",
+    "open": 0.25224,
+    "high": 0.25323,
+    "low": 0.2451,
+    "close": 0.24614,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T18:00:00",
+    "open": 0.24619,
+    "high": 0.24735,
+    "low": 0.24508,
+    "close": 0.24642,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T19:00:00",
+    "open": 0.24639,
+    "high": 0.24668,
+    "low": 0.23805,
+    "close": 0.23996,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T20:00:00",
+    "open": 0.23996,
+    "high": 0.24154,
+    "low": 0.23712,
+    "close": 0.23836,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T21:00:00",
+    "open": 0.23831,
+    "high": 0.23921,
+    "low": 0.23412,
+    "close": 0.23663,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T22:00:00",
+    "open": 0.23663,
+    "high": 0.23956,
+    "low": 0.23632,
+    "close": 0.23938,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-21T23:00:00",
+    "open": 0.23937,
+    "high": 0.23991,
+    "low": 0.23743,
+    "close": 0.23958,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T00:00:00",
+    "open": 0.23959,
+    "high": 0.24136,
+    "low": 0.23796,
+    "close": 0.24108,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T01:00:00",
+    "open": 0.24105,
+    "high": 0.24428,
+    "low": 0.24074,
+    "close": 0.24318,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T02:00:00",
+    "open": 0.24319,
+    "high": 0.2432,
+    "low": 0.24068,
+    "close": 0.24186,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T03:00:00",
+    "open": 0.24191,
+    "high": 0.24251,
+    "low": 0.24089,
+    "close": 0.24187,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T04:00:00",
+    "open": 0.24183,
+    "high": 0.24309,
+    "low": 0.24136,
+    "close": 0.24281,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T05:00:00",
+    "open": 0.24279,
+    "high": 0.24497,
+    "low": 0.24244,
+    "close": 0.24415,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T06:00:00",
+    "open": 0.24416,
+    "high": 0.24526,
+    "low": 0.24358,
+    "close": 0.24387,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T07:00:00",
+    "open": 0.24392,
+    "high": 0.24499,
+    "low": 0.24357,
+    "close": 0.24393,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T08:00:00",
+    "open": 0.24393,
+    "high": 0.24452,
+    "low": 0.24299,
+    "close": 0.24329,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T09:00:00",
+    "open": 0.24338,
+    "high": 0.2446,
+    "low": 0.24338,
+    "close": 0.24407,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T10:00:00",
+    "open": 0.24411,
+    "high": 0.24519,
+    "low": 0.24349,
+    "close": 0.24351,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T11:00:00",
+    "open": 0.24351,
+    "high": 0.24439,
+    "low": 0.24321,
+    "close": 0.24419,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T12:00:00",
+    "open": 0.24419,
+    "high": 0.24458,
+    "low": 0.24345,
+    "close": 0.24444,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T13:00:00",
+    "open": 0.24441,
+    "high": 0.24506,
+    "low": 0.24302,
+    "close": 0.24345,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T14:00:00",
+    "open": 0.24345,
+    "high": 0.24445,
+    "low": 0.2434,
+    "close": 0.24381,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T15:00:00",
+    "open": 0.24384,
+    "high": 0.24637,
+    "low": 0.24384,
+    "close": 0.24565,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T16:00:00",
+    "open": 0.24565,
+    "high": 0.24724,
+    "low": 0.24522,
+    "close": 0.24531,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T17:00:00",
+    "open": 0.24536,
+    "high": 0.24785,
+    "low": 0.24494,
+    "close": 0.24743,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T18:00:00",
+    "open": 0.2474,
+    "high": 0.24783,
+    "low": 0.24567,
+    "close": 0.24629,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T19:00:00",
+    "open": 0.24631,
+    "high": 0.24716,
+    "low": 0.24595,
+    "close": 0.24711,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T20:00:00",
+    "open": 0.24711,
+    "high": 0.24727,
+    "low": 0.24563,
+    "close": 0.2464,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T21:00:00",
+    "open": 0.24639,
+    "high": 0.24707,
+    "low": 0.24616,
+    "close": 0.24679,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T22:00:00",
+    "open": 0.24681,
+    "high": 0.24738,
+    "low": 0.2466,
+    "close": 0.24682,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-22T23:00:00",
+    "open": 0.24679,
+    "high": 0.24744,
+    "low": 0.2461,
+    "close": 0.2467,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T00:00:00",
+    "open": 0.2467,
+    "high": 0.2468,
+    "low": 0.24548,
+    "close": 0.246,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T01:00:00",
+    "open": 0.24598,
+    "high": 0.24627,
+    "low": 0.24457,
+    "close": 0.24509,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T02:00:00",
+    "open": 0.24506,
+    "high": 0.24536,
+    "low": 0.24394,
+    "close": 0.24403,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T03:00:00",
+    "open": 0.24403,
+    "high": 0.2446,
+    "low": 0.24352,
+    "close": 0.24408,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T04:00:00",
+    "open": 0.24404,
+    "high": 0.2444,
+    "low": 0.24319,
+    "close": 0.24423,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T05:00:00",
+    "open": 0.24421,
+    "high": 0.24501,
+    "low": 0.24375,
+    "close": 0.24427,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T06:00:00",
+    "open": 0.24428,
+    "high": 0.24529,
+    "low": 0.24401,
+    "close": 0.24486,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T07:00:00",
+    "open": 0.24482,
+    "high": 0.24762,
+    "low": 0.24468,
+    "close": 0.24701,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T08:00:00",
+    "open": 0.24702,
+    "high": 0.2471,
+    "low": 0.24622,
+    "close": 0.24664,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T09:00:00",
+    "open": 0.24667,
+    "high": 0.2469,
+    "low": 0.24475,
+    "close": 0.24594,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T10:00:00",
+    "open": 0.2459,
+    "high": 0.24611,
+    "low": 0.24484,
+    "close": 0.2455,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T11:00:00",
+    "open": 0.24548,
+    "high": 0.24592,
+    "low": 0.24438,
+    "close": 0.24462,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T12:00:00",
+    "open": 0.24459,
+    "high": 0.24506,
+    "low": 0.24325,
+    "close": 0.24376,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T13:00:00",
+    "open": 0.24375,
+    "high": 0.24555,
+    "low": 0.24375,
+    "close": 0.2449,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T14:00:00",
+    "open": 0.24489,
+    "high": 0.24519,
+    "low": 0.24306,
+    "close": 0.24348,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T15:00:00",
+    "open": 0.24347,
+    "high": 0.24415,
+    "low": 0.24045,
+    "close": 0.24076,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T16:00:00",
+    "open": 0.24072,
+    "high": 0.24242,
+    "low": 0.24067,
+    "close": 0.24141,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T17:00:00",
+    "open": 0.24144,
+    "high": 0.24291,
+    "low": 0.24136,
+    "close": 0.24246,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T18:00:00",
+    "open": 0.2425,
+    "high": 0.24323,
+    "low": 0.24188,
+    "close": 0.24198,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T19:00:00",
+    "open": 0.24195,
+    "high": 0.24233,
+    "low": 0.24102,
+    "close": 0.24123,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T20:00:00",
+    "open": 0.24123,
+    "high": 0.24159,
+    "low": 0.2404,
+    "close": 0.24154,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T21:00:00",
+    "open": 0.24154,
+    "high": 0.24241,
+    "low": 0.24131,
+    "close": 0.24219,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T22:00:00",
+    "open": 0.2422,
+    "high": 0.24265,
+    "low": 0.24067,
+    "close": 0.24185,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-23T23:00:00",
+    "open": 0.24188,
+    "high": 0.24389,
+    "low": 0.24177,
+    "close": 0.24285,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T00:00:00",
+    "open": 0.24284,
+    "high": 0.24394,
+    "low": 0.24221,
+    "close": 0.2424,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T01:00:00",
+    "open": 0.2424,
+    "high": 0.24265,
+    "low": 0.23843,
+    "close": 0.23937,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T02:00:00",
+    "open": 0.23936,
+    "high": 0.23962,
+    "low": 0.23497,
+    "close": 0.23531,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T03:00:00",
+    "open": 0.2353,
+    "high": 0.2353,
+    "low": 0.2281,
+    "close": 0.23024,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T04:00:00",
+    "open": 0.23026,
+    "high": 0.23085,
+    "low": 0.22644,
+    "close": 0.22996,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T05:00:00",
+    "open": 0.22995,
+    "high": 0.23349,
+    "low": 0.22908,
+    "close": 0.23288,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T06:00:00",
+    "open": 0.23288,
+    "high": 0.23359,
+    "low": 0.23173,
+    "close": 0.23294,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T07:00:00",
+    "open": 0.23295,
+    "high": 0.23393,
+    "low": 0.23281,
+    "close": 0.23327,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T08:00:00",
+    "open": 0.23325,
+    "high": 0.2333,
+    "low": 0.22832,
+    "close": 0.22941,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T09:00:00",
+    "open": 0.22934,
+    "high": 0.23226,
+    "low": 0.22918,
+    "close": 0.23039,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T10:00:00",
+    "open": 0.23037,
+    "high": 0.23095,
+    "low": 0.22739,
+    "close": 0.22993,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T11:00:00",
+    "open": 0.22996,
+    "high": 0.23162,
+    "low": 0.22879,
+    "close": 0.23131,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T12:00:00",
+    "open": 0.23128,
+    "high": 0.23134,
+    "low": 0.22999,
+    "close": 0.23056,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T13:00:00",
+    "open": 0.23055,
+    "high": 0.23255,
+    "low": 0.22936,
+    "close": 0.2301,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T14:00:00",
+    "open": 0.2301,
+    "high": 0.23082,
+    "low": 0.22432,
+    "close": 0.22519,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T15:00:00",
+    "open": 0.22518,
+    "high": 0.22749,
+    "low": 0.22231,
+    "close": 0.22533,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T16:00:00",
+    "open": 0.22548,
+    "high": 0.22745,
+    "low": 0.22433,
+    "close": 0.22526,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T17:00:00",
+    "open": 0.22526,
+    "high": 0.22824,
+    "low": 0.22501,
+    "close": 0.22685,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T18:00:00",
+    "open": 0.22685,
+    "high": 0.2275,
+    "low": 0.22505,
+    "close": 0.2252,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T19:00:00",
+    "open": 0.22514,
+    "high": 0.22594,
+    "low": 0.2186,
+    "close": 0.22197,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T20:00:00",
+    "open": 0.22203,
+    "high": 0.22515,
+    "low": 0.22122,
+    "close": 0.22265,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T21:00:00",
+    "open": 0.22265,
+    "high": 0.22382,
+    "low": 0.21923,
+    "close": 0.21923,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T22:00:00",
+    "open": 0.21923,
+    "high": 0.2193,
+    "low": 0.20601,
+    "close": 0.20794,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-24T23:00:00",
+    "open": 0.20792,
+    "high": 0.21431,
+    "low": 0.20786,
+    "close": 0.2104,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 0.21043,
+    "high": 0.21392,
+    "low": 0.20377,
+    "close": 0.20978,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T01:00:00",
+    "open": 0.20974,
+    "high": 0.21213,
+    "low": 0.20498,
+    "close": 0.20952,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T02:00:00",
+    "open": 0.20952,
+    "high": 0.21375,
+    "low": 0.20745,
+    "close": 0.21285,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T03:00:00",
+    "open": 0.21286,
+    "high": 0.21341,
+    "low": 0.20922,
+    "close": 0.21035,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T04:00:00",
+    "open": 0.2104,
+    "high": 0.21138,
+    "low": 0.2067,
+    "close": 0.20786,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T05:00:00",
+    "open": 0.20784,
+    "high": 0.21276,
+    "low": 0.20684,
+    "close": 0.21251,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T06:00:00",
+    "open": 0.21252,
+    "high": 0.21291,
+    "low": 0.20865,
+    "close": 0.20894,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T07:00:00",
+    "open": 0.20902,
+    "high": 0.20947,
+    "low": 0.19728,
+    "close": 0.20387,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T08:00:00",
+    "open": 0.20385,
+    "high": 0.20705,
+    "low": 0.20291,
+    "close": 0.20464,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T09:00:00",
+    "open": 0.20466,
+    "high": 0.20584,
+    "low": 0.20092,
+    "close": 0.20115,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T10:00:00",
+    "open": 0.20119,
+    "high": 0.20451,
+    "low": 0.19534,
+    "close": 0.20288,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T11:00:00",
+    "open": 0.20286,
+    "high": 0.20727,
+    "low": 0.19859,
+    "close": 0.20646,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T12:00:00",
+    "open": 0.20648,
+    "high": 0.20968,
+    "low": 0.20553,
+    "close": 0.20838,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T13:00:00",
+    "open": 0.2085,
+    "high": 0.20924,
+    "low": 0.20512,
+    "close": 0.20601,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T14:00:00",
+    "open": 0.206,
+    "high": 0.20785,
+    "low": 0.20087,
+    "close": 0.20142,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T15:00:00",
+    "open": 0.20147,
+    "high": 0.20547,
+    "low": 0.19783,
+    "close": 0.20319,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T16:00:00",
+    "open": 0.20325,
+    "high": 0.20757,
+    "low": 0.19976,
+    "close": 0.20499,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T17:00:00",
+    "open": 0.205,
+    "high": 0.2076,
+    "low": 0.20365,
+    "close": 0.20539,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T18:00:00",
+    "open": 0.20543,
+    "high": 0.20762,
+    "low": 0.20279,
+    "close": 0.20411,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T19:00:00",
+    "open": 0.20408,
+    "high": 0.20862,
+    "low": 0.20188,
+    "close": 0.20837,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T20:00:00",
+    "open": 0.20834,
+    "high": 0.21202,
+    "low": 0.20684,
+    "close": 0.21033,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T21:00:00",
+    "open": 0.21031,
+    "high": 0.21247,
+    "low": 0.20885,
+    "close": 0.21215,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T22:00:00",
+    "open": 0.21217,
+    "high": 0.21455,
+    "low": 0.21068,
+    "close": 0.21249,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-25T23:00:00",
+    "open": 0.21249,
+    "high": 0.2137,
+    "low": 0.21081,
+    "close": 0.21147,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 0.21145,
+    "high": 0.2118,
+    "low": 0.20815,
+    "close": 0.20821,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T01:00:00",
+    "open": 0.20826,
+    "high": 0.21052,
+    "low": 0.20808,
+    "close": 0.20993,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T02:00:00",
+    "open": 0.20991,
+    "high": 0.21307,
+    "low": 0.20867,
+    "close": 0.2124,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 0.21235,
+    "high": 0.21383,
+    "low": 0.2112,
+    "close": 0.21181,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T04:00:00",
+    "open": 0.21181,
+    "high": 0.21359,
+    "low": 0.21129,
+    "close": 0.21174,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T05:00:00",
+    "open": 0.21178,
+    "high": 0.21236,
+    "low": 0.20922,
+    "close": 0.20933,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T06:00:00",
+    "open": 0.20931,
+    "high": 0.21169,
+    "low": 0.20909,
+    "close": 0.21166,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 0.21165,
+    "high": 0.21192,
+    "low": 0.20818,
+    "close": 0.21003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T08:00:00",
+    "open": 0.20999,
+    "high": 0.21032,
+    "low": 0.20806,
+    "close": 0.21012,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T09:00:00",
+    "open": 0.21017,
+    "high": 0.21382,
+    "low": 0.20992,
+    "close": 0.21331,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T10:00:00",
+    "open": 0.21329,
+    "high": 0.21331,
+    "low": 0.21161,
+    "close": 0.21291,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 0.2129,
+    "high": 0.21331,
+    "low": 0.2096,
+    "close": 0.2098,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T12:00:00",
+    "open": 0.20981,
+    "high": 0.21001,
+    "low": 0.20494,
+    "close": 0.20648,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T13:00:00",
+    "open": 0.20646,
+    "high": 0.207,
+    "low": 0.20485,
+    "close": 0.20519,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T14:00:00",
+    "open": 0.20524,
+    "high": 0.2081,
+    "low": 0.20178,
+    "close": 0.20803,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 0.20813,
+    "high": 0.21297,
+    "low": 0.20796,
+    "close": 0.20965,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T16:00:00",
+    "open": 0.20969,
+    "high": 0.21077,
+    "low": 0.20523,
+    "close": 0.20597,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T17:00:00",
+    "open": 0.20601,
+    "high": 0.20666,
+    "low": 0.20074,
+    "close": 0.20144,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T18:00:00",
+    "open": 0.20148,
+    "high": 0.20296,
+    "low": 0.19579,
+    "close": 0.19728,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 0.19724,
+    "high": 0.20028,
+    "low": 0.19595,
+    "close": 0.19844,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T20:00:00",
+    "open": 0.19844,
+    "high": 0.20368,
+    "low": 0.19599,
+    "close": 0.20333,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T21:00:00",
+    "open": 0.20337,
+    "high": 0.2054,
+    "low": 0.20145,
+    "close": 0.20463,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T22:00:00",
+    "open": 0.20465,
+    "high": 0.2074,
+    "low": 0.20415,
+    "close": 0.20469,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 0.20472,
+    "high": 0.20585,
+    "low": 0.20211,
+    "close": 0.20321,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 0.20329,
+    "high": 0.20426,
+    "low": 0.20104,
+    "close": 0.20256,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T01:00:00",
+    "open": 0.20257,
+    "high": 0.20558,
+    "low": 0.20068,
+    "close": 0.20398,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T02:00:00",
+    "open": 0.20397,
+    "high": 0.20652,
+    "low": 0.20321,
+    "close": 0.20387,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T03:00:00",
+    "open": 0.20388,
+    "high": 0.2066,
+    "low": 0.20336,
+    "close": 0.20608,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T04:00:00",
+    "open": 0.20599,
+    "high": 0.20688,
+    "low": 0.20407,
+    "close": 0.20491,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T05:00:00",
+    "open": 0.20489,
+    "high": 0.20772,
+    "low": 0.20465,
+    "close": 0.20739,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T06:00:00",
+    "open": 0.20743,
+    "high": 0.21032,
+    "low": 0.20681,
+    "close": 0.20869,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T07:00:00",
+    "open": 0.20873,
+    "high": 0.20997,
+    "low": 0.20816,
+    "close": 0.20848,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T08:00:00",
+    "open": 0.20854,
+    "high": 0.2088,
+    "low": 0.20725,
+    "close": 0.20757,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T09:00:00",
+    "open": 0.20758,
+    "high": 0.20991,
+    "low": 0.20758,
+    "close": 0.20892,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T10:00:00",
+    "open": 0.20895,
+    "high": 0.21134,
+    "low": 0.20862,
+    "close": 0.21125,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T11:00:00",
+    "open": 0.21125,
+    "high": 0.21134,
+    "low": 0.20852,
+    "close": 0.20914,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T12:00:00",
+    "open": 0.20912,
+    "high": 0.2104,
+    "low": 0.208,
+    "close": 0.20925,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T13:00:00",
+    "open": 0.20923,
+    "high": 0.21006,
+    "low": 0.2074,
+    "close": 0.20806,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T14:00:00",
+    "open": 0.208,
+    "high": 0.2101,
+    "low": 0.20614,
+    "close": 0.20629,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T15:00:00",
+    "open": 0.2063,
+    "high": 0.20992,
+    "low": 0.20474,
+    "close": 0.20902,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T16:00:00",
+    "open": 0.20899,
+    "high": 0.21089,
+    "low": 0.20713,
+    "close": 0.20749,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T17:00:00",
+    "open": 0.20749,
+    "high": 0.20936,
+    "low": 0.20686,
+    "close": 0.20885,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T18:00:00",
+    "open": 0.20888,
+    "high": 0.20996,
+    "low": 0.20844,
+    "close": 0.20877,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T19:00:00",
+    "open": 0.20878,
+    "high": 0.20885,
+    "low": 0.20398,
+    "close": 0.20478,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T20:00:00",
+    "open": 0.20472,
+    "high": 0.20495,
+    "low": 0.20108,
+    "close": 0.20251,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T21:00:00",
+    "open": 0.20253,
+    "high": 0.20586,
+    "low": 0.20071,
+    "close": 0.20584,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T22:00:00",
+    "open": 0.20584,
+    "high": 0.20656,
+    "low": 0.20389,
+    "close": 0.20638,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "DOGE",
+    "timestamp": "2025-02-27T23:00:00",
+    "open": 0.20637,
+    "high": 0.2067,
+    "low": 0.20534,
+    "close": 0.20646,
+    "volume": 0.0,
+    "interval": "1h"
+  }
+]

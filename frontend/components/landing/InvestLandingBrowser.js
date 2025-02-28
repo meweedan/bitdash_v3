@@ -224,25 +224,20 @@ const BitInvestLanding = () => {
             <VStack spacing={8} maxW="4xl">
               <Heading
                 fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
-                bgGradient="linear(to-r, brand.bitinvest.500, brand.bitinvest.700)"
+                bgGradient="linear(to-r, brand.bitinvest.400, brand.bitinvest.700)"
                 bgClip="text"
               >
-                {t('invest.hero.title', 'Global Investments, Local Expertise')}
+                {t('invest.hero.title', 'Smart investments, at your fingertips')}
               </Heading>
-              <Text fontSize={{ base: 'xl', md: '2xl' }} opacity={0.8} maxW="3xl">
-                {t('invest.hero.subtitle', 'The first investment platform built exclusively for MENA and GCC investors to access global markets')}
-              </Text>
 
               <MarketOverview />
-
-              <StockTicker />
 
               <AssetPerformanceChart />
 
               <HStack spacing={6} pt={8}>
                 <Button
                   size="lg"
-                  colorScheme="brand.bitinvest.400"
+                  color="brand.bitinvest.400"
                   px={8}
                   h={14}
                   fontSize="lg"
@@ -252,12 +247,12 @@ const BitInvestLanding = () => {
                 </Button>
                 <Button
                   size="lg"
-                  variant="outline"
-                  colorScheme="brand.bitinvest.400"
+                  variant="bitinvest-outline"
+                  color="brand.bitinvest.400"
                   px={8}
                   h={14}
                   fontSize="lg"
-                  onClick={() => router.push('/about')}
+                  onClick={() => router.push('/learn')}
                 >
                   {t('hero.learn_more', 'Learn More')}
                 </Button>

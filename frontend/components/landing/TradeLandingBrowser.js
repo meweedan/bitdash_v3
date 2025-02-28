@@ -58,6 +58,7 @@ import {
 import ForexPairDisplay from '@/components/trading/ForexPairDisplay';
 import CryptoMarketplace from '@/components/trading/CryptoMarketplace';
 import TradingPlatformPreview from '@/components/trading/TradingPlatformPreview';
+import AdvancedForexChart from '@/components/cash/AdvancedForexChart';
 
 const TradeLandingBrowser = () => {
   const { t } = useTranslation('common');
@@ -237,6 +238,10 @@ const TradeLandingBrowser = () => {
               <Text fontSize={{ base: 'xl', md: '2xl' }} opacity={0.8} maxW="3xl">
                 {t('trade.hero.subtitle', 'Global markets, institutional-grade technology, regulated for your protection')}
               </Text>
+
+                <Box w="full" overflowX="auto" px={{ base: 0, md: 4 }}>
+                  <AdvancedForexChart />
+                </Box>
 
               <HStack spacing={6} pt={8}>
                 <Button

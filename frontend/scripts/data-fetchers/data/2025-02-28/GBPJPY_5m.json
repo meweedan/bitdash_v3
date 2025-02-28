@@ -1,0 +1,8652 @@
+[
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 189.27,
+    "high": 189.37,
+    "low": 189.25,
+    "close": 189.34,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T00:05:00",
+    "open": 189.34,
+    "high": 189.37,
+    "low": 189.28999,
+    "close": 189.32001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T00:10:00",
+    "open": 189.31,
+    "high": 189.37,
+    "low": 189.3,
+    "close": 189.32001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T00:15:00",
+    "open": 189.32001,
+    "high": 189.33,
+    "low": 189.14999,
+    "close": 189.16,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T00:20:00",
+    "open": 189.16,
+    "high": 189.25999,
+    "low": 189.12,
+    "close": 189.23,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T00:25:00",
+    "open": 189.23,
+    "high": 189.32001,
+    "low": 189.22,
+    "close": 189.28999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T00:30:00",
+    "open": 189.3,
+    "high": 189.33,
+    "low": 189.27,
+    "close": 189.28,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T00:35:00",
+    "open": 189.28,
+    "high": 189.34,
+    "low": 189.25,
+    "close": 189.33,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T00:40:00",
+    "open": 189.34,
+    "high": 189.41,
+    "low": 189.33,
+    "close": 189.38,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T00:45:00",
+    "open": 189.38,
+    "high": 189.50999,
+    "low": 189.38,
+    "close": 189.48,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T00:50:00",
+    "open": 189.48,
+    "high": 189.52,
+    "low": 189.39,
+    "close": 189.39,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T00:55:00",
+    "open": 189.38,
+    "high": 189.44,
+    "low": 189.35001,
+    "close": 189.38,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T01:00:00",
+    "open": 189.39,
+    "high": 189.47,
+    "low": 189.37,
+    "close": 189.46001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T01:05:00",
+    "open": 189.46001,
+    "high": 189.46001,
+    "low": 189.27,
+    "close": 189.28,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T01:10:00",
+    "open": 189.28,
+    "high": 189.37,
+    "low": 189.25,
+    "close": 189.34,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T01:15:00",
+    "open": 189.33,
+    "high": 189.33,
+    "low": 189.23,
+    "close": 189.25,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T01:20:00",
+    "open": 189.25,
+    "high": 189.28999,
+    "low": 189.19,
+    "close": 189.21001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T01:25:00",
+    "open": 189.21001,
+    "high": 189.21001,
+    "low": 189.10001,
+    "close": 189.12,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T01:30:00",
+    "open": 189.11,
+    "high": 189.23,
+    "low": 188.98,
+    "close": 188.98,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T01:35:00",
+    "open": 188.99001,
+    "high": 189.0,
+    "low": 188.75,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T01:40:00",
+    "open": 188.74001,
+    "high": 188.78999,
+    "low": 188.58,
+    "close": 188.62,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T01:45:00",
+    "open": 188.64,
+    "high": 188.72,
+    "low": 188.48,
+    "close": 188.50999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T01:50:00",
+    "open": 188.52,
+    "high": 188.53,
+    "low": 188.39,
+    "close": 188.47,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T01:55:00",
+    "open": 188.46001,
+    "high": 188.48,
+    "low": 188.36,
+    "close": 188.42999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T02:00:00",
+    "open": 188.42,
+    "high": 188.53999,
+    "low": 188.32001,
+    "close": 188.39999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T02:05:00",
+    "open": 188.39999,
+    "high": 188.61,
+    "low": 188.28,
+    "close": 188.57001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T02:10:00",
+    "open": 188.58,
+    "high": 188.69,
+    "low": 188.57001,
+    "close": 188.67999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T02:15:00",
+    "open": 188.66,
+    "high": 188.73,
+    "low": 188.55,
+    "close": 188.57001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T02:20:00",
+    "open": 188.59,
+    "high": 188.71001,
+    "low": 188.59,
+    "close": 188.64999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T02:25:00",
+    "open": 188.64999,
+    "high": 188.64999,
+    "low": 188.50999,
+    "close": 188.55,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T02:30:00",
+    "open": 188.55,
+    "high": 188.56,
+    "low": 188.42999,
+    "close": 188.50999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T02:35:00",
+    "open": 188.50999,
+    "high": 188.60001,
+    "low": 188.46001,
+    "close": 188.50999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T02:40:00",
+    "open": 188.50999,
+    "high": 188.53999,
+    "low": 188.33,
+    "close": 188.37,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T02:45:00",
+    "open": 188.37,
+    "high": 188.46001,
+    "low": 188.34,
+    "close": 188.42999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T02:50:00",
+    "open": 188.42,
+    "high": 188.50999,
+    "low": 188.27,
+    "close": 188.27,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T02:55:00",
+    "open": 188.28,
+    "high": 188.42,
+    "low": 188.23,
+    "close": 188.42,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T03:00:00",
+    "open": 188.42,
+    "high": 188.58,
+    "low": 188.42,
+    "close": 188.58,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T03:05:00",
+    "open": 188.59,
+    "high": 188.78999,
+    "low": 188.58,
+    "close": 188.77,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T03:10:00",
+    "open": 188.77,
+    "high": 188.87,
+    "low": 188.73,
+    "close": 188.75999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T03:15:00",
+    "open": 188.75999,
+    "high": 188.95,
+    "low": 188.73,
+    "close": 188.92999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T03:20:00",
+    "open": 188.94,
+    "high": 189.039993,
+    "low": 188.94,
+    "close": 189.0099945,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T03:25:00",
+    "open": 189.020004,
+    "high": 189.17999,
+    "low": 189.0099945,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T03:30:00",
+    "open": 189.070007,
+    "high": 189.13,
+    "low": 189.039993,
+    "close": 189.10001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T03:35:00",
+    "open": 189.10001,
+    "high": 189.16,
+    "low": 189.0099945,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T03:40:00",
+    "open": 189.039993,
+    "high": 189.21001,
+    "low": 189.039993,
+    "close": 189.19,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T03:45:00",
+    "open": 189.2,
+    "high": 189.2,
+    "low": 189.080002,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T03:50:00",
+    "open": 189.080002,
+    "high": 189.14999,
+    "low": 189.059998,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T03:55:00",
+    "open": 189.080002,
+    "high": 189.11,
+    "low": 189.029999,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T04:00:00",
+    "open": 189.050003,
+    "high": 189.14,
+    "low": 189.029999,
+    "close": 189.12,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T04:05:00",
+    "open": 189.12,
+    "high": 189.14999,
+    "low": 189.029999,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T04:10:00",
+    "open": 189.050003,
+    "high": 189.14,
+    "low": 189.039993,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T04:15:00",
+    "open": 189.070007,
+    "high": 189.17,
+    "low": 189.070007,
+    "close": 189.14999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T04:20:00",
+    "open": 189.14999,
+    "high": 189.21001,
+    "low": 189.13,
+    "close": 189.2,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T04:25:00",
+    "open": 189.19,
+    "high": 189.23,
+    "low": 189.14,
+    "close": 189.14999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T04:30:00",
+    "open": 189.14999,
+    "high": 189.17999,
+    "low": 189.11,
+    "close": 189.14,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T04:35:00",
+    "open": 189.14,
+    "high": 189.2,
+    "low": 189.13,
+    "close": 189.17,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T04:40:00",
+    "open": 189.17,
+    "high": 189.25,
+    "low": 189.13,
+    "close": 189.25,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T04:45:00",
+    "open": 189.25,
+    "high": 189.3,
+    "low": 189.21001,
+    "close": 189.22,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T04:50:00",
+    "open": 189.22,
+    "high": 189.24001,
+    "low": 189.059998,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T04:55:00",
+    "open": 189.070007,
+    "high": 189.16,
+    "low": 189.059998,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T05:00:00",
+    "open": 189.070007,
+    "high": 189.10001,
+    "low": 189.0,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T05:05:00",
+    "open": 189.039993,
+    "high": 189.080002,
+    "low": 189.0099945,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T05:10:00",
+    "open": 189.029999,
+    "high": 189.059998,
+    "low": 188.99001,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T05:15:00",
+    "open": 189.0,
+    "high": 189.089996,
+    "low": 188.99001,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T05:20:00",
+    "open": 189.080002,
+    "high": 189.089996,
+    "low": 188.97,
+    "close": 189.0099945,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T05:25:00",
+    "open": 189.020004,
+    "high": 189.029999,
+    "low": 188.96001,
+    "close": 188.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T05:30:00",
+    "open": 188.97,
+    "high": 189.020004,
+    "low": 188.96001,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T05:35:00",
+    "open": 188.99001,
+    "high": 189.020004,
+    "low": 188.98,
+    "close": 189.0099945,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T05:40:00",
+    "open": 189.0099945,
+    "high": 189.070007,
+    "low": 189.0,
+    "close": 189.059998,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T05:45:00",
+    "open": 189.070007,
+    "high": 189.13,
+    "low": 189.050003,
+    "close": 189.11,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T05:50:00",
+    "open": 189.10001,
+    "high": 189.14,
+    "low": 189.080002,
+    "close": 189.12,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T05:55:00",
+    "open": 189.12,
+    "high": 189.16,
+    "low": 189.089996,
+    "close": 189.13,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T06:00:00",
+    "open": 189.14,
+    "high": 189.21001,
+    "low": 189.14,
+    "close": 189.21001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T06:05:00",
+    "open": 189.21001,
+    "high": 189.25999,
+    "low": 189.14999,
+    "close": 189.17,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T06:10:00",
+    "open": 189.17999,
+    "high": 189.21001,
+    "low": 189.17,
+    "close": 189.2,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T06:15:00",
+    "open": 189.2,
+    "high": 189.2,
+    "low": 189.11,
+    "close": 189.12,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T06:20:00",
+    "open": 189.12,
+    "high": 189.14999,
+    "low": 189.050003,
+    "close": 189.14999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T06:25:00",
+    "open": 189.13,
+    "high": 189.14999,
+    "low": 189.080002,
+    "close": 189.14,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T06:30:00",
+    "open": 189.14999,
+    "high": 189.32001,
+    "low": 189.14999,
+    "close": 189.25,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T06:35:00",
+    "open": 189.25,
+    "high": 189.28999,
+    "low": 189.21001,
+    "close": 189.22,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T06:40:00",
+    "open": 189.22,
+    "high": 189.23,
+    "low": 189.12,
+    "close": 189.13,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T06:45:00",
+    "open": 189.14,
+    "high": 189.21001,
+    "low": 189.13,
+    "close": 189.17999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T06:50:00",
+    "open": 189.17999,
+    "high": 189.17999,
+    "low": 189.089996,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T06:55:00",
+    "open": 189.080002,
+    "high": 189.11,
+    "low": 189.039993,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T07:00:00",
+    "open": 189.080002,
+    "high": 189.080002,
+    "low": 189.0,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T07:05:00",
+    "open": 189.020004,
+    "high": 189.059998,
+    "low": 188.97,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T07:10:00",
+    "open": 189.039993,
+    "high": 189.089996,
+    "low": 189.020004,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T07:15:00",
+    "open": 189.089996,
+    "high": 189.13,
+    "low": 189.029999,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T07:20:00",
+    "open": 189.10001,
+    "high": 189.16,
+    "low": 189.020004,
+    "close": 189.12,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T07:25:00",
+    "open": 189.11,
+    "high": 189.19,
+    "low": 189.089996,
+    "close": 189.14,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T07:30:00",
+    "open": 189.14999,
+    "high": 189.21001,
+    "low": 189.089996,
+    "close": 189.14,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T07:35:00",
+    "open": 189.14,
+    "high": 189.19,
+    "low": 189.10001,
+    "close": 189.10001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T07:40:00",
+    "open": 189.10001,
+    "high": 189.10001,
+    "low": 189.0,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T07:45:00",
+    "open": 189.0099945,
+    "high": 189.11,
+    "low": 189.0,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T07:50:00",
+    "open": 189.089996,
+    "high": 189.11,
+    "low": 188.94,
+    "close": 188.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T07:55:00",
+    "open": 188.95,
+    "high": 188.99001,
+    "low": 188.89,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T08:00:00",
+    "open": 188.99001,
+    "high": 189.0,
+    "low": 188.95,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T08:05:00",
+    "open": 189.0,
+    "high": 189.059998,
+    "low": 189.0,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T08:10:00",
+    "open": 189.039993,
+    "high": 189.080002,
+    "low": 189.029999,
+    "close": 189.059998,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T08:15:00",
+    "open": 189.059998,
+    "high": 189.10001,
+    "low": 189.050003,
+    "close": 189.059998,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T08:20:00",
+    "open": 189.059998,
+    "high": 189.070007,
+    "low": 189.020004,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T08:25:00",
+    "open": 189.029999,
+    "high": 189.039993,
+    "low": 189.0,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T08:30:00",
+    "open": 189.020004,
+    "high": 189.050003,
+    "low": 189.020004,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T08:35:00",
+    "open": 189.050003,
+    "high": 189.050003,
+    "low": 189.020004,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T08:40:00",
+    "open": 189.020004,
+    "high": 189.039993,
+    "low": 189.0099945,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T08:45:00",
+    "open": 189.050003,
+    "high": 189.059998,
+    "low": 189.029999,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T08:50:00",
+    "open": 189.050003,
+    "high": 189.070007,
+    "low": 189.050003,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T08:55:00",
+    "open": 189.050003,
+    "high": 189.050003,
+    "low": 189.0099945,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T09:00:00",
+    "open": 189.059998,
+    "high": 189.059998,
+    "low": 189.059998,
+    "close": 189.059998,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T09:05:00",
+    "open": 189.0,
+    "high": 189.029999,
+    "low": 188.97,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T09:10:00",
+    "open": 189.029999,
+    "high": 189.10001,
+    "low": 189.0099945,
+    "close": 189.0099945,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T09:15:00",
+    "open": 189.0099945,
+    "high": 189.039993,
+    "low": 189.0099945,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T09:20:00",
+    "open": 189.020004,
+    "high": 189.039993,
+    "low": 189.0,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T09:25:00",
+    "open": 189.020004,
+    "high": 189.059998,
+    "low": 189.020004,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T09:30:00",
+    "open": 189.050003,
+    "high": 189.089996,
+    "low": 189.050003,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T09:35:00",
+    "open": 189.089996,
+    "high": 189.10001,
+    "low": 189.050003,
+    "close": 189.059998,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T09:40:00",
+    "open": 189.059998,
+    "high": 189.070007,
+    "low": 189.029999,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T09:45:00",
+    "open": 189.050003,
+    "high": 189.059998,
+    "low": 189.0099945,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T09:50:00",
+    "open": 189.020004,
+    "high": 189.039993,
+    "low": 188.99001,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T09:55:00",
+    "open": 189.039993,
+    "high": 189.12,
+    "low": 189.029999,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T10:00:00",
+    "open": 189.089996,
+    "high": 189.089996,
+    "low": 189.0099945,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T10:05:00",
+    "open": 189.050003,
+    "high": 189.10001,
+    "low": 189.039993,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T10:10:00",
+    "open": 189.089996,
+    "high": 189.17,
+    "low": 189.089996,
+    "close": 189.14,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T10:15:00",
+    "open": 189.14,
+    "high": 189.14999,
+    "low": 189.059998,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T10:20:00",
+    "open": 189.070007,
+    "high": 189.10001,
+    "low": 189.070007,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T10:25:00",
+    "open": 189.080002,
+    "high": 189.14,
+    "low": 189.070007,
+    "close": 189.14,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T10:30:00",
+    "open": 189.14999,
+    "high": 189.14999,
+    "low": 189.039993,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T10:35:00",
+    "open": 189.050003,
+    "high": 189.080002,
+    "low": 189.0099945,
+    "close": 189.059998,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T10:40:00",
+    "open": 189.059998,
+    "high": 189.12,
+    "low": 189.059998,
+    "close": 189.11,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T10:45:00",
+    "open": 189.11,
+    "high": 189.13,
+    "low": 189.070007,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T10:50:00",
+    "open": 189.070007,
+    "high": 189.12,
+    "low": 189.070007,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T10:55:00",
+    "open": 189.089996,
+    "high": 189.14999,
+    "low": 189.050003,
+    "close": 189.14999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T11:00:00",
+    "open": 189.14999,
+    "high": 189.24001,
+    "low": 189.14999,
+    "close": 189.23,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T11:05:00",
+    "open": 189.23,
+    "high": 189.37,
+    "low": 189.23,
+    "close": 189.31,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T11:10:00",
+    "open": 189.31,
+    "high": 189.38,
+    "low": 189.28999,
+    "close": 189.35001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T11:15:00",
+    "open": 189.36,
+    "high": 189.41,
+    "low": 189.32001,
+    "close": 189.34,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T11:20:00",
+    "open": 189.34,
+    "high": 189.39,
+    "low": 189.33,
+    "close": 189.38,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T11:25:00",
+    "open": 189.37,
+    "high": 189.39,
+    "low": 189.33,
+    "close": 189.37,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T11:30:00",
+    "open": 189.38,
+    "high": 189.44,
+    "low": 189.37,
+    "close": 189.42999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T11:35:00",
+    "open": 189.42999,
+    "high": 189.44,
+    "low": 189.35001,
+    "close": 189.42,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T11:40:00",
+    "open": 189.42,
+    "high": 189.45,
+    "low": 189.41,
+    "close": 189.42,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T11:45:00",
+    "open": 189.42,
+    "high": 189.45,
+    "low": 189.38,
+    "close": 189.44,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T11:50:00",
+    "open": 189.44,
+    "high": 189.50999,
+    "low": 189.39999,
+    "close": 189.48,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T11:55:00",
+    "open": 189.46001,
+    "high": 189.50999,
+    "low": 189.45,
+    "close": 189.47,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T12:00:00",
+    "open": 189.48,
+    "high": 189.59,
+    "low": 189.41,
+    "close": 189.59,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T12:05:00",
+    "open": 189.59,
+    "high": 189.61,
+    "low": 189.55,
+    "close": 189.58,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T12:10:00",
+    "open": 189.58,
+    "high": 189.60001,
+    "low": 189.55,
+    "close": 189.57001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T12:15:00",
+    "open": 189.57001,
+    "high": 189.64,
+    "low": 189.57001,
+    "close": 189.60001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T12:20:00",
+    "open": 189.60001,
+    "high": 189.67,
+    "low": 189.55,
+    "close": 189.56,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T12:25:00",
+    "open": 189.56,
+    "high": 189.56,
+    "low": 189.45,
+    "close": 189.50999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T12:30:00",
+    "open": 189.50999,
+    "high": 189.57001,
+    "low": 189.45,
+    "close": 189.46001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T12:35:00",
+    "open": 189.46001,
+    "high": 189.46001,
+    "low": 189.39,
+    "close": 189.39,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T12:40:00",
+    "open": 189.39,
+    "high": 189.45,
+    "low": 189.39,
+    "close": 189.42,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T12:45:00",
+    "open": 189.42999,
+    "high": 189.52,
+    "low": 189.39,
+    "close": 189.50999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T12:50:00",
+    "open": 189.5,
+    "high": 189.53,
+    "low": 189.47,
+    "close": 189.49001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T12:55:00",
+    "open": 189.48,
+    "high": 189.49001,
+    "low": 189.41,
+    "close": 189.41,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T13:00:00",
+    "open": 189.41,
+    "high": 189.47,
+    "low": 189.38,
+    "close": 189.46001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T13:05:00",
+    "open": 189.46001,
+    "high": 189.46001,
+    "low": 189.39,
+    "close": 189.39999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T13:10:00",
+    "open": 189.39,
+    "high": 189.42999,
+    "low": 189.37,
+    "close": 189.41,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T13:15:00",
+    "open": 189.41,
+    "high": 189.42,
+    "low": 189.38,
+    "close": 189.39999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T13:20:00",
+    "open": 189.39,
+    "high": 189.42,
+    "low": 189.32001,
+    "close": 189.39999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T13:25:00",
+    "open": 189.39,
+    "high": 189.41,
+    "low": 189.37,
+    "close": 189.39999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T13:30:00",
+    "open": 189.39999,
+    "high": 189.42999,
+    "low": 189.36,
+    "close": 189.39,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T13:35:00",
+    "open": 189.38,
+    "high": 189.39999,
+    "low": 189.37,
+    "close": 189.38,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T13:40:00",
+    "open": 189.38,
+    "high": 189.45,
+    "low": 189.38,
+    "close": 189.41,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T13:45:00",
+    "open": 189.39999,
+    "high": 189.39999,
+    "low": 189.36,
+    "close": 189.39,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T13:50:00",
+    "open": 189.39,
+    "high": 189.39,
+    "low": 189.28999,
+    "close": 189.3,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T13:55:00",
+    "open": 189.3,
+    "high": 189.35001,
+    "low": 189.28999,
+    "close": 189.3,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T14:00:00",
+    "open": 189.31,
+    "high": 189.31,
+    "low": 189.27,
+    "close": 189.28,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T14:05:00",
+    "open": 189.28,
+    "high": 189.31,
+    "low": 189.27,
+    "close": 189.31,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T14:10:00",
+    "open": 189.31,
+    "high": 189.35001,
+    "low": 189.31,
+    "close": 189.35001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T14:15:00",
+    "open": 189.34,
+    "high": 189.35001,
+    "low": 189.32001,
+    "close": 189.33,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T14:20:00",
+    "open": 189.33,
+    "high": 189.36,
+    "low": 189.3,
+    "close": 189.3,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T14:25:00",
+    "open": 189.31,
+    "high": 189.33,
+    "low": 189.28999,
+    "close": 189.32001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T14:30:00",
+    "open": 189.31,
+    "high": 189.31,
+    "low": 189.22,
+    "close": 189.24001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T14:35:00",
+    "open": 189.24001,
+    "high": 189.25,
+    "low": 189.14999,
+    "close": 189.17,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T14:40:00",
+    "open": 189.17,
+    "high": 189.17,
+    "low": 189.059998,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T14:45:00",
+    "open": 189.070007,
+    "high": 189.13,
+    "low": 189.059998,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T14:50:00",
+    "open": 189.080002,
+    "high": 189.080002,
+    "low": 189.0099945,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T14:55:00",
+    "open": 189.059998,
+    "high": 189.089996,
+    "low": 189.039993,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T15:00:00",
+    "open": 189.070007,
+    "high": 189.11,
+    "low": 189.029999,
+    "close": 189.10001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T15:05:00",
+    "open": 189.10001,
+    "high": 189.13,
+    "low": 189.080002,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T15:10:00",
+    "open": 189.080002,
+    "high": 189.080002,
+    "low": 188.94,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T15:15:00",
+    "open": 188.96001,
+    "high": 189.0,
+    "low": 188.95,
+    "close": 188.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T15:20:00",
+    "open": 188.96001,
+    "high": 189.039993,
+    "low": 188.92,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T15:25:00",
+    "open": 189.029999,
+    "high": 189.039993,
+    "low": 188.95,
+    "close": 188.95,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T15:30:00",
+    "open": 188.95,
+    "high": 188.98,
+    "low": 188.92999,
+    "close": 188.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T15:35:00",
+    "open": 188.94,
+    "high": 188.97,
+    "low": 188.88,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T15:40:00",
+    "open": 188.89999,
+    "high": 188.92999,
+    "low": 188.88,
+    "close": 188.91,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T15:45:00",
+    "open": 188.89999,
+    "high": 188.92,
+    "low": 188.89,
+    "close": 188.92,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T15:50:00",
+    "open": 188.91,
+    "high": 188.92999,
+    "low": 188.85001,
+    "close": 188.92,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T15:55:00",
+    "open": 188.92999,
+    "high": 188.98,
+    "low": 188.92,
+    "close": 188.95,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T16:00:00",
+    "open": 188.95,
+    "high": 189.020004,
+    "low": 188.95,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T16:05:00",
+    "open": 189.0099945,
+    "high": 189.020004,
+    "low": 188.95,
+    "close": 188.98,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T16:10:00",
+    "open": 188.98,
+    "high": 189.0099945,
+    "low": 188.97,
+    "close": 188.98,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T16:15:00",
+    "open": 188.98,
+    "high": 189.0,
+    "low": 188.96001,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T16:20:00",
+    "open": 188.99001,
+    "high": 189.0,
+    "low": 188.92,
+    "close": 188.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T16:25:00",
+    "open": 188.94,
+    "high": 189.089996,
+    "low": 188.92,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T16:30:00",
+    "open": 189.070007,
+    "high": 189.080002,
+    "low": 189.039993,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T16:35:00",
+    "open": 189.039993,
+    "high": 189.11,
+    "low": 189.039993,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T16:40:00",
+    "open": 189.089996,
+    "high": 189.14999,
+    "low": 189.089996,
+    "close": 189.11,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T16:45:00",
+    "open": 189.10001,
+    "high": 189.12,
+    "low": 189.039993,
+    "close": 189.11,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T16:50:00",
+    "open": 189.12,
+    "high": 189.19,
+    "low": 189.089996,
+    "close": 189.19,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T16:55:00",
+    "open": 189.19,
+    "high": 189.25,
+    "low": 189.17999,
+    "close": 189.2,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T17:00:00",
+    "open": 189.2,
+    "high": 189.24001,
+    "low": 189.080002,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T17:05:00",
+    "open": 189.089996,
+    "high": 189.17999,
+    "low": 189.089996,
+    "close": 189.16,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T17:10:00",
+    "open": 189.17,
+    "high": 189.2,
+    "low": 189.14,
+    "close": 189.14,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T17:15:00",
+    "open": 189.14,
+    "high": 189.23,
+    "low": 189.12,
+    "close": 189.21001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T17:20:00",
+    "open": 189.2,
+    "high": 189.27,
+    "low": 189.17999,
+    "close": 189.25,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T17:25:00",
+    "open": 189.25,
+    "high": 189.3,
+    "low": 189.25,
+    "close": 189.28,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T17:30:00",
+    "open": 189.27,
+    "high": 189.28,
+    "low": 189.17999,
+    "close": 189.17999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T17:35:00",
+    "open": 189.17,
+    "high": 189.2,
+    "low": 189.13,
+    "close": 189.2,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T17:40:00",
+    "open": 189.21001,
+    "high": 189.23,
+    "low": 189.17,
+    "close": 189.2,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T17:45:00",
+    "open": 189.21001,
+    "high": 189.25,
+    "low": 189.13,
+    "close": 189.2,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T17:50:00",
+    "open": 189.19,
+    "high": 189.25999,
+    "low": 189.14,
+    "close": 189.14,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T17:55:00",
+    "open": 189.14,
+    "high": 189.2,
+    "low": 189.13,
+    "close": 189.17,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T18:00:00",
+    "open": 189.17,
+    "high": 189.2,
+    "low": 188.98,
+    "close": 189.0099945,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T18:05:00",
+    "open": 189.0,
+    "high": 189.020004,
+    "low": 188.87,
+    "close": 188.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T18:10:00",
+    "open": 188.89,
+    "high": 188.98,
+    "low": 188.88,
+    "close": 188.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T18:15:00",
+    "open": 188.89,
+    "high": 188.99001,
+    "low": 188.89,
+    "close": 188.92,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T18:20:00",
+    "open": 188.92,
+    "high": 188.96001,
+    "low": 188.86,
+    "close": 188.87,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T18:25:00",
+    "open": 188.87,
+    "high": 188.91,
+    "low": 188.7,
+    "close": 188.72,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T18:30:00",
+    "open": 188.72,
+    "high": 188.75999,
+    "low": 188.5,
+    "close": 188.53,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T18:35:00",
+    "open": 188.53999,
+    "high": 188.56,
+    "low": 188.47,
+    "close": 188.56,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T18:40:00",
+    "open": 188.56,
+    "high": 188.64,
+    "low": 188.50999,
+    "close": 188.60001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T18:45:00",
+    "open": 188.61,
+    "high": 188.62,
+    "low": 188.37,
+    "close": 188.37,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T18:50:00",
+    "open": 188.36,
+    "high": 188.38,
+    "low": 188.27,
+    "close": 188.33,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T18:55:00",
+    "open": 188.34,
+    "high": 188.38,
+    "low": 188.25,
+    "close": 188.28999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T19:00:00",
+    "open": 188.28,
+    "high": 188.48,
+    "low": 188.17999,
+    "close": 188.48,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T19:05:00",
+    "open": 188.47,
+    "high": 188.59,
+    "low": 188.45,
+    "close": 188.56,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T19:10:00",
+    "open": 188.58,
+    "high": 188.77,
+    "low": 188.56,
+    "close": 188.73,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T19:15:00",
+    "open": 188.72,
+    "high": 188.72,
+    "low": 188.66,
+    "close": 188.7,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T19:20:00",
+    "open": 188.67999,
+    "high": 188.71001,
+    "low": 188.60001,
+    "close": 188.63,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T19:25:00",
+    "open": 188.64,
+    "high": 188.71001,
+    "low": 188.56,
+    "close": 188.58,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T19:30:00",
+    "open": 188.58,
+    "high": 188.63,
+    "low": 188.47,
+    "close": 188.47,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T19:35:00",
+    "open": 188.47,
+    "high": 188.62,
+    "low": 188.42,
+    "close": 188.59,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T19:40:00",
+    "open": 188.59,
+    "high": 188.7,
+    "low": 188.53999,
+    "close": 188.7,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T19:45:00",
+    "open": 188.71001,
+    "high": 188.85001,
+    "low": 188.7,
+    "close": 188.78,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T19:50:00",
+    "open": 188.78,
+    "high": 188.8,
+    "low": 188.71001,
+    "close": 188.73,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T19:55:00",
+    "open": 188.73,
+    "high": 188.74001,
+    "low": 188.58,
+    "close": 188.61,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T20:00:00",
+    "open": 188.62,
+    "high": 188.72,
+    "low": 188.58,
+    "close": 188.67999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T20:05:00",
+    "open": 188.67,
+    "high": 188.82001,
+    "low": 188.64,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T20:10:00",
+    "open": 188.75,
+    "high": 188.8,
+    "low": 188.72,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T20:15:00",
+    "open": 188.75,
+    "high": 188.89,
+    "low": 188.73,
+    "close": 188.84,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T20:20:00",
+    "open": 188.84,
+    "high": 188.89,
+    "low": 188.8,
+    "close": 188.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T20:25:00",
+    "open": 188.91,
+    "high": 189.039993,
+    "low": 188.91,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T20:30:00",
+    "open": 188.99001,
+    "high": 189.0,
+    "low": 188.89,
+    "close": 188.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T20:35:00",
+    "open": 188.89,
+    "high": 189.070007,
+    "low": 188.86,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T20:40:00",
+    "open": 189.020004,
+    "high": 189.059998,
+    "low": 188.98,
+    "close": 188.98,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T20:45:00",
+    "open": 188.98,
+    "high": 188.99001,
+    "low": 188.92,
+    "close": 188.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T20:50:00",
+    "open": 188.94,
+    "high": 188.95,
+    "low": 188.89,
+    "close": 188.92,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T20:55:00",
+    "open": 188.92999,
+    "high": 189.0,
+    "low": 188.85001,
+    "close": 188.85001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T21:00:00",
+    "open": 188.85001,
+    "high": 188.89999,
+    "low": 188.82001,
+    "close": 188.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T21:05:00",
+    "open": 188.89,
+    "high": 189.029999,
+    "low": 188.88,
+    "close": 188.98,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T21:10:00",
+    "open": 188.96001,
+    "high": 189.059998,
+    "low": 188.92,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T21:15:00",
+    "open": 188.99001,
+    "high": 189.050003,
+    "low": 188.96001,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T21:20:00",
+    "open": 189.039993,
+    "high": 189.050003,
+    "low": 188.99001,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T21:25:00",
+    "open": 189.0099945,
+    "high": 189.029999,
+    "low": 188.95,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T21:30:00",
+    "open": 189.0,
+    "high": 189.0,
+    "low": 188.89,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T21:35:00",
+    "open": 188.96001,
+    "high": 189.020004,
+    "low": 188.95,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T21:40:00",
+    "open": 189.029999,
+    "high": 189.14999,
+    "low": 189.020004,
+    "close": 189.14999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T21:45:00",
+    "open": 189.14999,
+    "high": 189.16,
+    "low": 189.089996,
+    "close": 189.10001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T21:50:00",
+    "open": 189.089996,
+    "high": 189.11,
+    "low": 189.0,
+    "close": 189.10001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T21:55:00",
+    "open": 189.10001,
+    "high": 189.14,
+    "low": 189.039993,
+    "close": 189.10001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T22:00:00",
+    "open": 189.10001,
+    "high": 189.14999,
+    "low": 189.070007,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T22:05:00",
+    "open": 189.080002,
+    "high": 189.11,
+    "low": 189.029999,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T22:10:00",
+    "open": 189.080002,
+    "high": 189.12,
+    "low": 189.029999,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T22:15:00",
+    "open": 189.050003,
+    "high": 189.13,
+    "low": 189.050003,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T22:20:00",
+    "open": 189.080002,
+    "high": 189.16,
+    "low": 189.039993,
+    "close": 189.16,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T22:25:00",
+    "open": 189.17,
+    "high": 189.28999,
+    "low": 189.16,
+    "close": 189.23,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T22:30:00",
+    "open": 189.23,
+    "high": 189.46001,
+    "low": 189.22,
+    "close": 189.44,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T22:35:00",
+    "open": 189.45,
+    "high": 189.48,
+    "low": 189.39999,
+    "close": 189.45,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T22:40:00",
+    "open": 189.45,
+    "high": 189.46001,
+    "low": 189.32001,
+    "close": 189.37,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T22:45:00",
+    "open": 189.37,
+    "high": 189.42,
+    "low": 189.33,
+    "close": 189.39999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T22:50:00",
+    "open": 189.39999,
+    "high": 189.47,
+    "low": 189.39,
+    "close": 189.45,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T22:55:00",
+    "open": 189.45,
+    "high": 189.58,
+    "low": 189.45,
+    "close": 189.56,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T23:00:00",
+    "open": 189.56,
+    "high": 189.56,
+    "low": 189.45,
+    "close": 189.48,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T23:05:00",
+    "open": 189.48,
+    "high": 189.49001,
+    "low": 189.37,
+    "close": 189.38,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T23:10:00",
+    "open": 189.38,
+    "high": 189.42999,
+    "low": 189.31,
+    "close": 189.31,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T23:15:00",
+    "open": 189.28999,
+    "high": 189.34,
+    "low": 189.25999,
+    "close": 189.3,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T23:20:00",
+    "open": 189.31,
+    "high": 189.39,
+    "low": 189.28,
+    "close": 189.32001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T23:25:00",
+    "open": 189.32001,
+    "high": 189.34,
+    "low": 189.27,
+    "close": 189.28,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T23:30:00",
+    "open": 189.28,
+    "high": 189.28999,
+    "low": 189.2,
+    "close": 189.23,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T23:35:00",
+    "open": 189.24001,
+    "high": 189.27,
+    "low": 189.19,
+    "close": 189.25999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T23:40:00",
+    "open": 189.25999,
+    "high": 189.33,
+    "low": 189.24001,
+    "close": 189.3,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T23:45:00",
+    "open": 189.31,
+    "high": 189.31,
+    "low": 189.23,
+    "close": 189.3,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T23:50:00",
+    "open": 189.3,
+    "high": 189.34,
+    "low": 189.28,
+    "close": 189.32001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-25T23:55:00",
+    "open": 189.33,
+    "high": 189.47,
+    "low": 189.3,
+    "close": 189.47,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 189.46001,
+    "high": 189.53999,
+    "low": 189.45,
+    "close": 189.53,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T00:05:00",
+    "open": 189.53,
+    "high": 189.63,
+    "low": 189.45,
+    "close": 189.59,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T00:10:00",
+    "open": 189.58,
+    "high": 189.64999,
+    "low": 189.55,
+    "close": 189.62,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T00:15:00",
+    "open": 189.62,
+    "high": 189.64999,
+    "low": 189.56,
+    "close": 189.63,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T00:20:00",
+    "open": 189.61,
+    "high": 189.61,
+    "low": 189.53,
+    "close": 189.60001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T00:25:00",
+    "open": 189.60001,
+    "high": 189.64,
+    "low": 189.56,
+    "close": 189.60001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T00:30:00",
+    "open": 189.60001,
+    "high": 189.75,
+    "low": 189.57001,
+    "close": 189.73,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T00:35:00",
+    "open": 189.72,
+    "high": 189.72,
+    "low": 189.53999,
+    "close": 189.53999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T00:40:00",
+    "open": 189.53999,
+    "high": 189.60001,
+    "low": 189.47,
+    "close": 189.47,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T00:45:00",
+    "open": 189.46001,
+    "high": 189.48,
+    "low": 189.34,
+    "close": 189.35001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T00:50:00",
+    "open": 189.36,
+    "high": 189.36,
+    "low": 189.27,
+    "close": 189.33,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T00:55:00",
+    "open": 189.33,
+    "high": 189.38,
+    "low": 189.28999,
+    "close": 189.35001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T01:00:00",
+    "open": 189.35001,
+    "high": 189.41,
+    "low": 189.28999,
+    "close": 189.36,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T01:05:00",
+    "open": 189.36,
+    "high": 189.36,
+    "low": 189.21001,
+    "close": 189.23,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T01:10:00",
+    "open": 189.25,
+    "high": 189.28999,
+    "low": 189.12,
+    "close": 189.14,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T01:15:00",
+    "open": 189.16,
+    "high": 189.21001,
+    "low": 189.070007,
+    "close": 189.10001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T01:20:00",
+    "open": 189.10001,
+    "high": 189.19,
+    "low": 189.089996,
+    "close": 189.17,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T01:25:00",
+    "open": 189.16,
+    "high": 189.21001,
+    "low": 189.11,
+    "close": 189.17999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T01:30:00",
+    "open": 189.19,
+    "high": 189.36,
+    "low": 189.17,
+    "close": 189.28999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T01:35:00",
+    "open": 189.3,
+    "high": 189.36,
+    "low": 189.25999,
+    "close": 189.35001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T01:40:00",
+    "open": 189.34,
+    "high": 189.34,
+    "low": 189.14,
+    "close": 189.14,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T01:45:00",
+    "open": 189.14,
+    "high": 189.17999,
+    "low": 189.0099945,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T01:50:00",
+    "open": 189.039993,
+    "high": 189.039993,
+    "low": 188.82001,
+    "close": 188.87,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T01:55:00",
+    "open": 188.86,
+    "high": 188.96001,
+    "low": 188.86,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T02:00:00",
+    "open": 188.89,
+    "high": 188.89,
+    "low": 188.58,
+    "close": 188.66,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T02:05:00",
+    "open": 188.66,
+    "high": 188.74001,
+    "low": 188.59,
+    "close": 188.64999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T02:10:00",
+    "open": 188.64,
+    "high": 188.74001,
+    "low": 188.52,
+    "close": 188.58,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T02:15:00",
+    "open": 188.58,
+    "high": 188.67999,
+    "low": 188.42,
+    "close": 188.44,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T02:20:00",
+    "open": 188.42999,
+    "high": 188.53,
+    "low": 188.36,
+    "close": 188.52,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T02:25:00",
+    "open": 188.50999,
+    "high": 188.58,
+    "low": 188.42,
+    "close": 188.44,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T02:30:00",
+    "open": 188.42999,
+    "high": 188.50999,
+    "low": 188.28,
+    "close": 188.5,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T02:35:00",
+    "open": 188.5,
+    "high": 188.69,
+    "low": 188.49001,
+    "close": 188.64,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T02:40:00",
+    "open": 188.63,
+    "high": 188.66,
+    "low": 188.45,
+    "close": 188.53999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T02:45:00",
+    "open": 188.53999,
+    "high": 188.58,
+    "low": 188.39999,
+    "close": 188.49001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T02:50:00",
+    "open": 188.5,
+    "high": 188.64999,
+    "low": 188.47,
+    "close": 188.61,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T02:55:00",
+    "open": 188.60001,
+    "high": 188.67999,
+    "low": 188.58,
+    "close": 188.64999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 188.63,
+    "high": 188.67,
+    "low": 188.49001,
+    "close": 188.59,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T03:05:00",
+    "open": 188.60001,
+    "high": 188.66,
+    "low": 188.50999,
+    "close": 188.58,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T03:10:00",
+    "open": 188.58,
+    "high": 188.72,
+    "low": 188.56,
+    "close": 188.61,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T03:15:00",
+    "open": 188.61,
+    "high": 188.66,
+    "low": 188.50999,
+    "close": 188.56,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T03:20:00",
+    "open": 188.57001,
+    "high": 188.64,
+    "low": 188.5,
+    "close": 188.50999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T03:25:00",
+    "open": 188.52,
+    "high": 188.52,
+    "low": 188.42,
+    "close": 188.42999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T03:30:00",
+    "open": 188.42999,
+    "high": 188.46001,
+    "low": 188.16,
+    "close": 188.33,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T03:35:00",
+    "open": 188.33,
+    "high": 188.46001,
+    "low": 188.25999,
+    "close": 188.45,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T03:40:00",
+    "open": 188.44,
+    "high": 188.46001,
+    "low": 188.31,
+    "close": 188.36,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T03:45:00",
+    "open": 188.35001,
+    "high": 188.52,
+    "low": 188.32001,
+    "close": 188.5,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T03:50:00",
+    "open": 188.5,
+    "high": 188.58,
+    "low": 188.5,
+    "close": 188.53999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T03:55:00",
+    "open": 188.53,
+    "high": 188.67,
+    "low": 188.5,
+    "close": 188.61,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T04:00:00",
+    "open": 188.61,
+    "high": 188.64,
+    "low": 188.56,
+    "close": 188.58,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T04:05:00",
+    "open": 188.58,
+    "high": 188.63,
+    "low": 188.57001,
+    "close": 188.59,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T04:10:00",
+    "open": 188.62,
+    "high": 188.69,
+    "low": 188.60001,
+    "close": 188.64,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T04:15:00",
+    "open": 188.64,
+    "high": 188.64,
+    "low": 188.50999,
+    "close": 188.52,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T04:20:00",
+    "open": 188.52,
+    "high": 188.55,
+    "low": 188.38,
+    "close": 188.53999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T04:25:00",
+    "open": 188.55,
+    "high": 188.66,
+    "low": 188.53999,
+    "close": 188.66,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T04:30:00",
+    "open": 188.66,
+    "high": 188.71001,
+    "low": 188.59,
+    "close": 188.64999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T04:35:00",
+    "open": 188.64999,
+    "high": 188.72,
+    "low": 188.64,
+    "close": 188.67999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T04:40:00",
+    "open": 188.67999,
+    "high": 188.71001,
+    "low": 188.63,
+    "close": 188.63,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T04:45:00",
+    "open": 188.63,
+    "high": 188.67999,
+    "low": 188.63,
+    "close": 188.64999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T04:50:00",
+    "open": 188.64,
+    "high": 188.72,
+    "low": 188.63,
+    "close": 188.7,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T04:55:00",
+    "open": 188.7,
+    "high": 188.78,
+    "low": 188.67999,
+    "close": 188.78,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T05:00:00",
+    "open": 188.78,
+    "high": 188.85001,
+    "low": 188.78,
+    "close": 188.84,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T05:05:00",
+    "open": 188.84,
+    "high": 189.050003,
+    "low": 188.83,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T05:10:00",
+    "open": 188.95,
+    "high": 188.99001,
+    "low": 188.89999,
+    "close": 188.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T05:15:00",
+    "open": 188.94,
+    "high": 189.020004,
+    "low": 188.92999,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T05:20:00",
+    "open": 188.96001,
+    "high": 189.0,
+    "low": 188.89999,
+    "close": 188.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T05:25:00",
+    "open": 188.94,
+    "high": 188.95,
+    "low": 188.81,
+    "close": 188.83,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T05:30:00",
+    "open": 188.83,
+    "high": 188.83,
+    "low": 188.75,
+    "close": 188.75999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T05:35:00",
+    "open": 188.75999,
+    "high": 189.0099945,
+    "low": 188.73,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T05:40:00",
+    "open": 189.0,
+    "high": 189.12,
+    "low": 188.97,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T05:45:00",
+    "open": 189.080002,
+    "high": 189.13,
+    "low": 189.0099945,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T05:50:00",
+    "open": 189.039993,
+    "high": 189.050003,
+    "low": 188.94,
+    "close": 188.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T05:55:00",
+    "open": 188.92999,
+    "high": 188.99001,
+    "low": 188.92,
+    "close": 188.92999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T06:00:00",
+    "open": 188.92999,
+    "high": 188.94,
+    "low": 188.75999,
+    "close": 188.78,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T06:05:00",
+    "open": 188.77,
+    "high": 188.78999,
+    "low": 188.71001,
+    "close": 188.78,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T06:10:00",
+    "open": 188.77,
+    "high": 188.81,
+    "low": 188.73,
+    "close": 188.75999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T06:15:00",
+    "open": 188.75999,
+    "high": 188.81,
+    "low": 188.71001,
+    "close": 188.8,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T06:20:00",
+    "open": 188.8,
+    "high": 188.81,
+    "low": 188.74001,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T06:25:00",
+    "open": 188.75999,
+    "high": 188.8,
+    "low": 188.72,
+    "close": 188.75999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T06:30:00",
+    "open": 188.75,
+    "high": 188.82001,
+    "low": 188.72,
+    "close": 188.82001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T06:35:00",
+    "open": 188.82001,
+    "high": 188.88,
+    "low": 188.75,
+    "close": 188.87,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T06:40:00",
+    "open": 188.87,
+    "high": 188.92999,
+    "low": 188.86,
+    "close": 188.92,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T06:45:00",
+    "open": 188.92,
+    "high": 188.94,
+    "low": 188.85001,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T06:50:00",
+    "open": 188.89,
+    "high": 188.91,
+    "low": 188.84,
+    "close": 188.88,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T06:55:00",
+    "open": 188.88,
+    "high": 188.92999,
+    "low": 188.85001,
+    "close": 188.87,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 188.87,
+    "high": 188.92,
+    "low": 188.8,
+    "close": 188.84,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T07:05:00",
+    "open": 188.84,
+    "high": 188.89,
+    "low": 188.83,
+    "close": 188.84,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T07:10:00",
+    "open": 188.85001,
+    "high": 188.85001,
+    "low": 188.78999,
+    "close": 188.82001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T07:15:00",
+    "open": 188.82001,
+    "high": 188.92,
+    "low": 188.81,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T07:20:00",
+    "open": 188.89999,
+    "high": 188.97,
+    "low": 188.88,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T07:25:00",
+    "open": 188.95,
+    "high": 188.98,
+    "low": 188.89,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T07:30:00",
+    "open": 188.92,
+    "high": 188.92,
+    "low": 188.83,
+    "close": 188.86,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T07:35:00",
+    "open": 188.87,
+    "high": 188.89,
+    "low": 188.75999,
+    "close": 188.77,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T07:40:00",
+    "open": 188.75999,
+    "high": 188.81,
+    "low": 188.75,
+    "close": 188.78,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T07:45:00",
+    "open": 188.75999,
+    "high": 188.81,
+    "low": 188.75999,
+    "close": 188.81,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T07:50:00",
+    "open": 188.78999,
+    "high": 188.82001,
+    "low": 188.67,
+    "close": 188.69,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T07:55:00",
+    "open": 188.7,
+    "high": 188.75999,
+    "low": 188.69,
+    "close": 188.73,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T08:00:00",
+    "open": 188.73,
+    "high": 188.8,
+    "low": 188.71001,
+    "close": 188.8,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T08:05:00",
+    "open": 188.8,
+    "high": 188.82001,
+    "low": 188.77,
+    "close": 188.82001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T08:10:00",
+    "open": 188.82001,
+    "high": 188.87,
+    "low": 188.82001,
+    "close": 188.82001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T08:15:00",
+    "open": 188.83,
+    "high": 188.83,
+    "low": 188.78,
+    "close": 188.8,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T08:20:00",
+    "open": 188.8,
+    "high": 188.8,
+    "low": 188.78,
+    "close": 188.8,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T08:25:00",
+    "open": 188.8,
+    "high": 188.84,
+    "low": 188.8,
+    "close": 188.81,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T08:30:00",
+    "open": 188.81,
+    "high": 188.82001,
+    "low": 188.78999,
+    "close": 188.8,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T08:35:00",
+    "open": 188.78999,
+    "high": 188.8,
+    "low": 188.73,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T08:40:00",
+    "open": 188.75,
+    "high": 188.77,
+    "low": 188.74001,
+    "close": 188.74001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T08:45:00",
+    "open": 188.74001,
+    "high": 188.77,
+    "low": 188.72,
+    "close": 188.72,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T08:50:00",
+    "open": 188.72,
+    "high": 188.75999,
+    "low": 188.72,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T08:55:00",
+    "open": 188.75,
+    "high": 188.77,
+    "low": 188.75,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T09:00:00",
+    "open": 188.75999,
+    "high": 188.75999,
+    "low": 188.75,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T09:05:00",
+    "open": 188.72,
+    "high": 188.84,
+    "low": 188.66,
+    "close": 188.83,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T09:10:00",
+    "open": 188.83,
+    "high": 188.84,
+    "low": 188.75999,
+    "close": 188.81,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T09:15:00",
+    "open": 188.8,
+    "high": 188.92,
+    "low": 188.78999,
+    "close": 188.86,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T09:20:00",
+    "open": 188.85001,
+    "high": 188.89,
+    "low": 188.78999,
+    "close": 188.81,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T09:25:00",
+    "open": 188.78999,
+    "high": 188.85001,
+    "low": 188.74001,
+    "close": 188.83,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T09:30:00",
+    "open": 188.77,
+    "high": 188.77,
+    "low": 188.75999,
+    "close": 188.75999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T09:35:00",
+    "open": 188.75999,
+    "high": 188.78999,
+    "low": 188.75999,
+    "close": 188.77,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T09:40:00",
+    "open": 188.77,
+    "high": 188.78999,
+    "low": 188.77,
+    "close": 188.78,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T09:45:00",
+    "open": 188.78,
+    "high": 188.84,
+    "low": 188.75999,
+    "close": 188.84,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T09:50:00",
+    "open": 188.84,
+    "high": 188.92,
+    "low": 188.84,
+    "close": 188.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T09:55:00",
+    "open": 188.89,
+    "high": 188.92999,
+    "low": 188.89,
+    "close": 188.92,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T10:00:00",
+    "open": 188.92999,
+    "high": 189.0,
+    "low": 188.92,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T10:05:00",
+    "open": 188.99001,
+    "high": 189.020004,
+    "low": 188.89,
+    "close": 188.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T10:10:00",
+    "open": 188.88,
+    "high": 188.92,
+    "low": 188.84,
+    "close": 188.85001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T10:15:00",
+    "open": 188.86,
+    "high": 188.87,
+    "low": 188.78999,
+    "close": 188.82001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T10:20:00",
+    "open": 188.82001,
+    "high": 188.86,
+    "low": 188.82001,
+    "close": 188.83,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T10:25:00",
+    "open": 188.83,
+    "high": 188.84,
+    "low": 188.74001,
+    "close": 188.74001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T10:30:00",
+    "open": 188.74001,
+    "high": 188.8,
+    "low": 188.73,
+    "close": 188.77,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T10:35:00",
+    "open": 188.77,
+    "high": 188.78,
+    "low": 188.71001,
+    "close": 188.71001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T10:40:00",
+    "open": 188.71001,
+    "high": 188.75,
+    "low": 188.67999,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T10:45:00",
+    "open": 188.75,
+    "high": 188.8,
+    "low": 188.69,
+    "close": 188.78999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T10:50:00",
+    "open": 188.78999,
+    "high": 188.92999,
+    "low": 188.78999,
+    "close": 188.91,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T10:55:00",
+    "open": 188.92,
+    "high": 188.96001,
+    "low": 188.88,
+    "close": 188.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 188.89,
+    "high": 188.91,
+    "low": 188.72,
+    "close": 188.81,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T11:05:00",
+    "open": 188.81,
+    "high": 188.85001,
+    "low": 188.57001,
+    "close": 188.57001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T11:10:00",
+    "open": 188.57001,
+    "high": 188.57001,
+    "low": 188.44,
+    "close": 188.46001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T11:15:00",
+    "open": 188.46001,
+    "high": 188.56,
+    "low": 188.39999,
+    "close": 188.50999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T11:20:00",
+    "open": 188.50999,
+    "high": 188.64,
+    "low": 188.50999,
+    "close": 188.56,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T11:25:00",
+    "open": 188.56,
+    "high": 188.64999,
+    "low": 188.53,
+    "close": 188.63,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T11:30:00",
+    "open": 188.63,
+    "high": 188.67999,
+    "low": 188.5,
+    "close": 188.64999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T11:35:00",
+    "open": 188.64999,
+    "high": 188.69,
+    "low": 188.53999,
+    "close": 188.56,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T11:40:00",
+    "open": 188.56,
+    "high": 188.58,
+    "low": 188.5,
+    "close": 188.50999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T11:45:00",
+    "open": 188.52,
+    "high": 188.64,
+    "low": 188.5,
+    "close": 188.63,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T11:50:00",
+    "open": 188.63,
+    "high": 188.72,
+    "low": 188.53999,
+    "close": 188.72,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T11:55:00",
+    "open": 188.7,
+    "high": 188.77,
+    "low": 188.64999,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T12:00:00",
+    "open": 188.75999,
+    "high": 188.89999,
+    "low": 188.66,
+    "close": 188.66,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T12:05:00",
+    "open": 188.66,
+    "high": 188.66,
+    "low": 188.52,
+    "close": 188.57001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T12:10:00",
+    "open": 188.58,
+    "high": 188.63,
+    "low": 188.50999,
+    "close": 188.52,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T12:15:00",
+    "open": 188.50999,
+    "high": 188.66,
+    "low": 188.48,
+    "close": 188.66,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T12:20:00",
+    "open": 188.67,
+    "high": 188.83,
+    "low": 188.66,
+    "close": 188.81,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T12:25:00",
+    "open": 188.81,
+    "high": 188.95,
+    "low": 188.81,
+    "close": 188.86,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T12:30:00",
+    "open": 188.86,
+    "high": 188.95,
+    "low": 188.83,
+    "close": 188.85001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T12:35:00",
+    "open": 188.85001,
+    "high": 188.87,
+    "low": 188.75999,
+    "close": 188.77,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T12:40:00",
+    "open": 188.78,
+    "high": 188.91,
+    "low": 188.77,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T12:45:00",
+    "open": 188.89999,
+    "high": 188.98,
+    "low": 188.87,
+    "close": 188.88,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T12:50:00",
+    "open": 188.87,
+    "high": 188.98,
+    "low": 188.87,
+    "close": 188.92,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T12:55:00",
+    "open": 188.92,
+    "high": 189.0099945,
+    "low": 188.89999,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T13:00:00",
+    "open": 189.0,
+    "high": 189.0099945,
+    "low": 188.92999,
+    "close": 189.0099945,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T13:05:00",
+    "open": 189.0099945,
+    "high": 189.080002,
+    "low": 188.99001,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T13:10:00",
+    "open": 189.039993,
+    "high": 189.10001,
+    "low": 189.0099945,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T13:15:00",
+    "open": 189.050003,
+    "high": 189.050003,
+    "low": 188.96001,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T13:20:00",
+    "open": 189.0,
+    "high": 189.050003,
+    "low": 188.91,
+    "close": 188.92,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T13:25:00",
+    "open": 188.92,
+    "high": 188.99001,
+    "low": 188.92,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T13:30:00",
+    "open": 188.99001,
+    "high": 189.059998,
+    "low": 188.96001,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T13:35:00",
+    "open": 189.020004,
+    "high": 189.029999,
+    "low": 188.91,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T13:40:00",
+    "open": 189.0,
+    "high": 189.059998,
+    "low": 188.99001,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T13:45:00",
+    "open": 189.0,
+    "high": 189.059998,
+    "low": 188.99001,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T13:50:00",
+    "open": 189.020004,
+    "high": 189.14,
+    "low": 188.95,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T13:55:00",
+    "open": 189.10001,
+    "high": 189.17999,
+    "low": 189.10001,
+    "close": 189.14999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T14:00:00",
+    "open": 189.14,
+    "high": 189.2,
+    "low": 189.12,
+    "close": 189.19,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T14:05:00",
+    "open": 189.2,
+    "high": 189.21001,
+    "low": 189.14999,
+    "close": 189.19,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T14:10:00",
+    "open": 189.19,
+    "high": 189.23,
+    "low": 189.13,
+    "close": 189.13,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T14:15:00",
+    "open": 189.13,
+    "high": 189.14,
+    "low": 189.020004,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T14:20:00",
+    "open": 189.039993,
+    "high": 189.039993,
+    "low": 188.97,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T14:25:00",
+    "open": 189.0,
+    "high": 189.059998,
+    "low": 189.0,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T14:30:00",
+    "open": 189.050003,
+    "high": 189.10001,
+    "low": 188.98,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T14:35:00",
+    "open": 189.020004,
+    "high": 189.080002,
+    "low": 189.0,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T14:40:00",
+    "open": 189.039993,
+    "high": 189.050003,
+    "low": 188.96001,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T14:45:00",
+    "open": 189.0,
+    "high": 189.039993,
+    "low": 188.95,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T14:50:00",
+    "open": 188.96001,
+    "high": 189.0099945,
+    "low": 188.89,
+    "close": 188.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T14:55:00",
+    "open": 188.97,
+    "high": 189.0,
+    "low": 188.96001,
+    "close": 188.98,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 188.98,
+    "high": 189.029999,
+    "low": 188.97,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T15:05:00",
+    "open": 189.0,
+    "high": 189.039993,
+    "low": 188.99001,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T15:10:00",
+    "open": 189.020004,
+    "high": 189.059998,
+    "low": 188.96001,
+    "close": 189.059998,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T15:15:00",
+    "open": 189.059998,
+    "high": 189.12,
+    "low": 189.039993,
+    "close": 189.059998,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T15:20:00",
+    "open": 189.050003,
+    "high": 189.080002,
+    "low": 189.0,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T15:25:00",
+    "open": 189.0099945,
+    "high": 189.029999,
+    "low": 188.88,
+    "close": 188.91,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T15:30:00",
+    "open": 188.92,
+    "high": 188.94,
+    "low": 188.84,
+    "close": 188.87,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T15:35:00",
+    "open": 188.87,
+    "high": 188.92999,
+    "low": 188.84,
+    "close": 188.85001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T15:40:00",
+    "open": 188.85001,
+    "high": 188.92999,
+    "low": 188.84,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T15:45:00",
+    "open": 188.91,
+    "high": 188.92999,
+    "low": 188.89,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T15:50:00",
+    "open": 188.89999,
+    "high": 188.96001,
+    "low": 188.89999,
+    "close": 188.92999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T15:55:00",
+    "open": 188.92999,
+    "high": 188.95,
+    "low": 188.89,
+    "close": 188.91,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T16:00:00",
+    "open": 188.91,
+    "high": 189.050003,
+    "low": 188.91,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T16:05:00",
+    "open": 188.96001,
+    "high": 189.089996,
+    "low": 188.96001,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T16:10:00",
+    "open": 189.029999,
+    "high": 189.070007,
+    "low": 188.99001,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T16:15:00",
+    "open": 189.059998,
+    "high": 189.089996,
+    "low": 189.039993,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T16:20:00",
+    "open": 189.050003,
+    "high": 189.12,
+    "low": 189.029999,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T16:25:00",
+    "open": 189.050003,
+    "high": 189.080002,
+    "low": 188.99001,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T16:30:00",
+    "open": 188.99001,
+    "high": 189.050003,
+    "low": 188.99001,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T16:35:00",
+    "open": 189.039993,
+    "high": 189.059998,
+    "low": 188.99001,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T16:40:00",
+    "open": 189.0,
+    "high": 189.050003,
+    "low": 188.98,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T16:45:00",
+    "open": 189.050003,
+    "high": 189.059998,
+    "low": 188.97,
+    "close": 188.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T16:50:00",
+    "open": 188.96001,
+    "high": 189.0,
+    "low": 188.91,
+    "close": 188.95,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T16:55:00",
+    "open": 188.94,
+    "high": 188.94,
+    "low": 188.83,
+    "close": 188.87,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T17:00:00",
+    "open": 188.86,
+    "high": 188.97,
+    "low": 188.86,
+    "close": 188.92999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T17:05:00",
+    "open": 188.94,
+    "high": 188.98,
+    "low": 188.89999,
+    "close": 188.92,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T17:10:00",
+    "open": 188.91,
+    "high": 188.94,
+    "low": 188.85001,
+    "close": 188.85001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T17:15:00",
+    "open": 188.85001,
+    "high": 188.92999,
+    "low": 188.85001,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T17:20:00",
+    "open": 188.89999,
+    "high": 188.95,
+    "low": 188.88,
+    "close": 188.92,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T17:25:00",
+    "open": 188.92,
+    "high": 189.039993,
+    "low": 188.89999,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T17:30:00",
+    "open": 189.039993,
+    "high": 189.11,
+    "low": 189.0,
+    "close": 189.11,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T17:35:00",
+    "open": 189.10001,
+    "high": 189.11,
+    "low": 189.0099945,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T17:40:00",
+    "open": 189.020004,
+    "high": 189.059998,
+    "low": 189.0099945,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T17:45:00",
+    "open": 189.029999,
+    "high": 189.13,
+    "low": 189.029999,
+    "close": 189.13,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T17:50:00",
+    "open": 189.13,
+    "high": 189.22,
+    "low": 189.12,
+    "close": 189.14999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T17:55:00",
+    "open": 189.16,
+    "high": 189.21001,
+    "low": 189.13,
+    "close": 189.2,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T18:00:00",
+    "open": 189.19,
+    "high": 189.25,
+    "low": 189.12,
+    "close": 189.16,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T18:05:00",
+    "open": 189.16,
+    "high": 189.21001,
+    "low": 189.029999,
+    "close": 189.10001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T18:10:00",
+    "open": 189.10001,
+    "high": 189.12,
+    "low": 189.029999,
+    "close": 189.11,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T18:15:00",
+    "open": 189.11,
+    "high": 189.11,
+    "low": 189.020004,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T18:20:00",
+    "open": 189.0099945,
+    "high": 189.059998,
+    "low": 188.99001,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T18:25:00",
+    "open": 189.0,
+    "high": 189.029999,
+    "low": 188.96001,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T18:30:00",
+    "open": 189.0,
+    "high": 189.029999,
+    "low": 188.96001,
+    "close": 188.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T18:35:00",
+    "open": 188.98,
+    "high": 189.11,
+    "low": 188.95,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T18:40:00",
+    "open": 189.020004,
+    "high": 189.12,
+    "low": 189.020004,
+    "close": 189.12,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T18:45:00",
+    "open": 189.11,
+    "high": 189.16,
+    "low": 189.050003,
+    "close": 189.13,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T18:50:00",
+    "open": 189.13,
+    "high": 189.17,
+    "low": 189.070007,
+    "close": 189.12,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T18:55:00",
+    "open": 189.12,
+    "high": 189.14999,
+    "low": 189.059998,
+    "close": 189.14,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 189.13,
+    "high": 189.17,
+    "low": 188.99001,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T19:05:00",
+    "open": 189.039993,
+    "high": 189.12,
+    "low": 189.020004,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T19:10:00",
+    "open": 189.080002,
+    "high": 189.23,
+    "low": 189.050003,
+    "close": 189.2,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T19:15:00",
+    "open": 189.19,
+    "high": 189.19,
+    "low": 189.11,
+    "close": 189.14999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T19:20:00",
+    "open": 189.14999,
+    "high": 189.25,
+    "low": 189.11,
+    "close": 189.17999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T19:25:00",
+    "open": 189.17999,
+    "high": 189.23,
+    "low": 189.14,
+    "close": 189.21001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T19:30:00",
+    "open": 189.21001,
+    "high": 189.22,
+    "low": 188.97,
+    "close": 189.0099945,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T19:35:00",
+    "open": 189.020004,
+    "high": 189.029999,
+    "low": 188.91,
+    "close": 188.91,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T19:40:00",
+    "open": 188.92,
+    "high": 188.92,
+    "low": 188.81,
+    "close": 188.83,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T19:45:00",
+    "open": 188.82001,
+    "high": 188.84,
+    "low": 188.73,
+    "close": 188.82001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T19:50:00",
+    "open": 188.82001,
+    "high": 188.89,
+    "low": 188.81,
+    "close": 188.84,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T19:55:00",
+    "open": 188.85001,
+    "high": 188.89,
+    "low": 188.75,
+    "close": 188.88,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T20:00:00",
+    "open": 188.88,
+    "high": 188.92999,
+    "low": 188.86,
+    "close": 188.92999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T20:05:00",
+    "open": 188.92,
+    "high": 189.050003,
+    "low": 188.92,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T20:10:00",
+    "open": 188.99001,
+    "high": 189.0,
+    "low": 188.87,
+    "close": 188.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T20:15:00",
+    "open": 188.89,
+    "high": 188.98,
+    "low": 188.88,
+    "close": 188.95,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T20:20:00",
+    "open": 188.95,
+    "high": 189.0,
+    "low": 188.92,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T20:25:00",
+    "open": 189.0,
+    "high": 189.080002,
+    "low": 188.98,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T20:30:00",
+    "open": 189.0,
+    "high": 189.0099945,
+    "low": 188.95,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T20:35:00",
+    "open": 188.96001,
+    "high": 189.029999,
+    "low": 188.96001,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T20:40:00",
+    "open": 189.0,
+    "high": 189.050003,
+    "low": 188.97,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T20:45:00",
+    "open": 189.0099945,
+    "high": 189.020004,
+    "low": 188.92,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T20:50:00",
+    "open": 188.98,
+    "high": 189.059998,
+    "low": 188.98,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T20:55:00",
+    "open": 189.039993,
+    "high": 189.070007,
+    "low": 188.98,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T21:00:00",
+    "open": 189.0,
+    "high": 189.029999,
+    "low": 188.96001,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T21:05:00",
+    "open": 188.99001,
+    "high": 189.020004,
+    "low": 188.96001,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T21:10:00",
+    "open": 188.96001,
+    "high": 188.96001,
+    "low": 188.83,
+    "close": 188.86,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T21:15:00",
+    "open": 188.85001,
+    "high": 188.87,
+    "low": 188.78999,
+    "close": 188.8,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T21:20:00",
+    "open": 188.8,
+    "high": 188.86,
+    "low": 188.78,
+    "close": 188.8,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T21:25:00",
+    "open": 188.8,
+    "high": 188.87,
+    "low": 188.8,
+    "close": 188.81,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T21:30:00",
+    "open": 188.81,
+    "high": 188.89,
+    "low": 188.78999,
+    "close": 188.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T21:35:00",
+    "open": 188.89,
+    "high": 188.91,
+    "low": 188.86,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T21:40:00",
+    "open": 188.89999,
+    "high": 188.92999,
+    "low": 188.84,
+    "close": 188.88,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T21:45:00",
+    "open": 188.88,
+    "high": 189.0,
+    "low": 188.88,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T21:50:00",
+    "open": 189.0,
+    "high": 189.029999,
+    "low": 188.96001,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T21:55:00",
+    "open": 189.020004,
+    "high": 189.080002,
+    "low": 189.0099945,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T22:00:00",
+    "open": 189.080002,
+    "high": 189.11,
+    "low": 189.029999,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T22:05:00",
+    "open": 189.080002,
+    "high": 189.11,
+    "low": 189.070007,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T22:10:00",
+    "open": 189.089996,
+    "high": 189.11,
+    "low": 189.059998,
+    "close": 189.089996,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T22:15:00",
+    "open": 189.089996,
+    "high": 189.11,
+    "low": 189.050003,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T22:20:00",
+    "open": 189.059998,
+    "high": 189.070007,
+    "low": 189.029999,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T22:25:00",
+    "open": 189.070007,
+    "high": 189.080002,
+    "low": 189.020004,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T22:30:00",
+    "open": 189.020004,
+    "high": 189.059998,
+    "low": 189.0,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T22:35:00",
+    "open": 189.039993,
+    "high": 189.17,
+    "low": 189.020004,
+    "close": 189.17,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T22:40:00",
+    "open": 189.17,
+    "high": 189.2,
+    "low": 189.13,
+    "close": 189.19,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T22:45:00",
+    "open": 189.19,
+    "high": 189.2,
+    "low": 189.14,
+    "close": 189.16,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T22:50:00",
+    "open": 189.14999,
+    "high": 189.14999,
+    "low": 189.050003,
+    "close": 189.059998,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T22:55:00",
+    "open": 189.059998,
+    "high": 189.14999,
+    "low": 189.039993,
+    "close": 189.14999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 189.16,
+    "high": 189.27,
+    "low": 189.14999,
+    "close": 189.22,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T23:05:00",
+    "open": 189.22,
+    "high": 189.24001,
+    "low": 189.19,
+    "close": 189.2,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T23:10:00",
+    "open": 189.19,
+    "high": 189.21001,
+    "low": 189.12,
+    "close": 189.2,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T23:15:00",
+    "open": 189.19,
+    "high": 189.24001,
+    "low": 189.17,
+    "close": 189.17999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T23:20:00",
+    "open": 189.17999,
+    "high": 189.25,
+    "low": 189.17999,
+    "close": 189.2,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T23:25:00",
+    "open": 189.21001,
+    "high": 189.21001,
+    "low": 189.13,
+    "close": 189.19,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T23:30:00",
+    "open": 189.21001,
+    "high": 189.24001,
+    "low": 189.17999,
+    "close": 189.23,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T23:35:00",
+    "open": 189.23,
+    "high": 189.24001,
+    "low": 189.16,
+    "close": 189.17999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T23:40:00",
+    "open": 189.17,
+    "high": 189.22,
+    "low": 189.17,
+    "close": 189.22,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T23:45:00",
+    "open": 189.22,
+    "high": 189.22,
+    "low": 189.080002,
+    "close": 189.10001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T23:50:00",
+    "open": 189.089996,
+    "high": 189.10001,
+    "low": 188.99001,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-26T23:55:00",
+    "open": 189.080002,
+    "high": 189.2,
+    "low": 189.050003,
+    "close": 189.16,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 189.16,
+    "high": 189.25,
+    "low": 189.11,
+    "close": 189.13,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T00:05:00",
+    "open": 189.11,
+    "high": 189.14,
+    "low": 189.080002,
+    "close": 189.11,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T00:10:00",
+    "open": 189.11,
+    "high": 189.16,
+    "low": 189.070007,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T00:15:00",
+    "open": 189.080002,
+    "high": 189.14999,
+    "low": 189.059998,
+    "close": 189.12,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T00:20:00",
+    "open": 189.11,
+    "high": 189.11,
+    "low": 189.020004,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T00:25:00",
+    "open": 189.080002,
+    "high": 189.13,
+    "low": 189.059998,
+    "close": 189.11,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T00:30:00",
+    "open": 189.12,
+    "high": 189.27,
+    "low": 189.11,
+    "close": 189.24001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T00:35:00",
+    "open": 189.24001,
+    "high": 189.37,
+    "low": 189.24001,
+    "close": 189.31,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T00:40:00",
+    "open": 189.31,
+    "high": 189.32001,
+    "low": 189.23,
+    "close": 189.24001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T00:45:00",
+    "open": 189.24001,
+    "high": 189.28,
+    "low": 189.17,
+    "close": 189.28,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T00:50:00",
+    "open": 189.27,
+    "high": 189.28,
+    "low": 189.23,
+    "close": 189.25,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T00:55:00",
+    "open": 189.25,
+    "high": 189.25,
+    "low": 189.19,
+    "close": 189.22,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T01:00:00",
+    "open": 189.22,
+    "high": 189.41,
+    "low": 189.21001,
+    "close": 189.39,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T01:05:00",
+    "open": 189.39999,
+    "high": 189.47,
+    "low": 189.28999,
+    "close": 189.47,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T01:10:00",
+    "open": 189.46001,
+    "high": 189.5,
+    "low": 189.39999,
+    "close": 189.42999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T01:15:00",
+    "open": 189.42999,
+    "high": 189.5,
+    "low": 189.39999,
+    "close": 189.46001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T01:20:00",
+    "open": 189.46001,
+    "high": 189.5,
+    "low": 189.38,
+    "close": 189.39,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T01:25:00",
+    "open": 189.38,
+    "high": 189.39,
+    "low": 189.24001,
+    "close": 189.28999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T01:30:00",
+    "open": 189.28999,
+    "high": 189.28999,
+    "low": 189.059998,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T01:35:00",
+    "open": 189.070007,
+    "high": 189.27,
+    "low": 189.020004,
+    "close": 189.22,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T01:40:00",
+    "open": 189.22,
+    "high": 189.32001,
+    "low": 189.12,
+    "close": 189.32001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T01:45:00",
+    "open": 189.33,
+    "high": 189.53,
+    "low": 189.3,
+    "close": 189.53,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T01:50:00",
+    "open": 189.53999,
+    "high": 189.67,
+    "low": 189.50999,
+    "close": 189.62,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T01:55:00",
+    "open": 189.61,
+    "high": 189.63,
+    "low": 189.48,
+    "close": 189.56,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T02:00:00",
+    "open": 189.55,
+    "high": 189.69,
+    "low": 189.50999,
+    "close": 189.67999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T02:05:00",
+    "open": 189.67999,
+    "high": 189.7,
+    "low": 189.58,
+    "close": 189.62,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T02:10:00",
+    "open": 189.62,
+    "high": 189.77,
+    "low": 189.59,
+    "close": 189.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T02:15:00",
+    "open": 189.74001,
+    "high": 189.83,
+    "low": 189.69,
+    "close": 189.81,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T02:20:00",
+    "open": 189.81,
+    "high": 189.83,
+    "low": 189.66,
+    "close": 189.67999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T02:25:00",
+    "open": 189.67999,
+    "high": 189.74001,
+    "low": 189.63,
+    "close": 189.67999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T02:30:00",
+    "open": 189.67999,
+    "high": 189.86,
+    "low": 189.67999,
+    "close": 189.78999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T02:35:00",
+    "open": 189.78,
+    "high": 189.84,
+    "low": 189.58,
+    "close": 189.62,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T02:40:00",
+    "open": 189.63,
+    "high": 189.74001,
+    "low": 189.62,
+    "close": 189.71001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T02:45:00",
+    "open": 189.71001,
+    "high": 189.71001,
+    "low": 189.60001,
+    "close": 189.63,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T02:50:00",
+    "open": 189.61,
+    "high": 189.83,
+    "low": 189.59,
+    "close": 189.8,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T02:55:00",
+    "open": 189.78999,
+    "high": 189.85001,
+    "low": 189.75,
+    "close": 189.77,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T03:00:00",
+    "open": 189.77,
+    "high": 189.83,
+    "low": 189.58,
+    "close": 189.58,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T03:05:00",
+    "open": 189.58,
+    "high": 189.7,
+    "low": 189.58,
+    "close": 189.64999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T03:10:00",
+    "open": 189.66,
+    "high": 189.8,
+    "low": 189.66,
+    "close": 189.71001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T03:15:00",
+    "open": 189.7,
+    "high": 189.71001,
+    "low": 189.52,
+    "close": 189.52,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T03:20:00",
+    "open": 189.53999,
+    "high": 189.60001,
+    "low": 189.49001,
+    "close": 189.56,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T03:25:00",
+    "open": 189.56,
+    "high": 189.58,
+    "low": 189.49001,
+    "close": 189.5,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T03:30:00",
+    "open": 189.52,
+    "high": 189.53,
+    "low": 189.42,
+    "close": 189.42,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T03:35:00",
+    "open": 189.42999,
+    "high": 189.56,
+    "low": 189.42999,
+    "close": 189.53,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T03:40:00",
+    "open": 189.53999,
+    "high": 189.60001,
+    "low": 189.47,
+    "close": 189.58,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T03:45:00",
+    "open": 189.58,
+    "high": 189.63,
+    "low": 189.52,
+    "close": 189.55,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T03:50:00",
+    "open": 189.55,
+    "high": 189.56,
+    "low": 189.47,
+    "close": 189.47,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T03:55:00",
+    "open": 189.48,
+    "high": 189.49001,
+    "low": 189.28999,
+    "close": 189.31,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T04:00:00",
+    "open": 189.31,
+    "high": 189.37,
+    "low": 189.27,
+    "close": 189.33,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T04:05:00",
+    "open": 189.34,
+    "high": 189.44,
+    "low": 189.33,
+    "close": 189.38,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T04:10:00",
+    "open": 189.38,
+    "high": 189.46001,
+    "low": 189.36,
+    "close": 189.45,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T04:15:00",
+    "open": 189.45,
+    "high": 189.5,
+    "low": 189.3,
+    "close": 189.39999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T04:20:00",
+    "open": 189.41,
+    "high": 189.48,
+    "low": 189.35001,
+    "close": 189.42,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T04:25:00",
+    "open": 189.42,
+    "high": 189.53,
+    "low": 189.33,
+    "close": 189.5,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T04:30:00",
+    "open": 189.5,
+    "high": 189.57001,
+    "low": 189.17,
+    "close": 189.25,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T04:35:00",
+    "open": 189.24001,
+    "high": 189.28999,
+    "low": 189.14999,
+    "close": 189.24001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T04:40:00",
+    "open": 189.24001,
+    "high": 189.34,
+    "low": 189.22,
+    "close": 189.27,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T04:45:00",
+    "open": 189.27,
+    "high": 189.27,
+    "low": 189.12,
+    "close": 189.14999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T04:50:00",
+    "open": 189.14999,
+    "high": 189.19,
+    "low": 189.059998,
+    "close": 189.14,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T04:55:00",
+    "open": 189.14,
+    "high": 189.21001,
+    "low": 189.12,
+    "close": 189.19,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T05:00:00",
+    "open": 189.19,
+    "high": 189.22,
+    "low": 189.12,
+    "close": 189.17999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T05:05:00",
+    "open": 189.17999,
+    "high": 189.17999,
+    "low": 189.12,
+    "close": 189.17999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T05:10:00",
+    "open": 189.17999,
+    "high": 189.2,
+    "low": 189.12,
+    "close": 189.16,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T05:15:00",
+    "open": 189.14999,
+    "high": 189.19,
+    "low": 189.059998,
+    "close": 189.19,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T05:20:00",
+    "open": 189.2,
+    "high": 189.28999,
+    "low": 189.2,
+    "close": 189.25,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T05:25:00",
+    "open": 189.25,
+    "high": 189.25999,
+    "low": 189.020004,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T05:30:00",
+    "open": 189.020004,
+    "high": 189.070007,
+    "low": 188.99001,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T05:35:00",
+    "open": 189.039993,
+    "high": 189.10001,
+    "low": 189.020004,
+    "close": 189.059998,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T05:40:00",
+    "open": 189.050003,
+    "high": 189.080002,
+    "low": 189.0099945,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T05:45:00",
+    "open": 189.070007,
+    "high": 189.089996,
+    "low": 189.020004,
+    "close": 189.059998,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T05:50:00",
+    "open": 189.050003,
+    "high": 189.050003,
+    "low": 188.84,
+    "close": 188.86,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T05:55:00",
+    "open": 188.86,
+    "high": 188.87,
+    "low": 188.71001,
+    "close": 188.86,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T06:00:00",
+    "open": 188.86,
+    "high": 188.87,
+    "low": 188.71001,
+    "close": 188.72,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T06:05:00",
+    "open": 188.72,
+    "high": 188.75999,
+    "low": 188.64,
+    "close": 188.67,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T06:10:00",
+    "open": 188.67,
+    "high": 188.7,
+    "low": 188.64,
+    "close": 188.67,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T06:15:00",
+    "open": 188.67999,
+    "high": 188.78999,
+    "low": 188.62,
+    "close": 188.78,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T06:20:00",
+    "open": 188.78,
+    "high": 188.86,
+    "low": 188.75999,
+    "close": 188.78,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T06:25:00",
+    "open": 188.75999,
+    "high": 188.83,
+    "low": 188.74001,
+    "close": 188.8,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T06:30:00",
+    "open": 188.78999,
+    "high": 188.89999,
+    "low": 188.75999,
+    "close": 188.88,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T06:35:00",
+    "open": 188.87,
+    "high": 188.88,
+    "low": 188.81,
+    "close": 188.85001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T06:40:00",
+    "open": 188.83,
+    "high": 188.92,
+    "low": 188.83,
+    "close": 188.91,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T06:45:00",
+    "open": 188.91,
+    "high": 188.92999,
+    "low": 188.87,
+    "close": 188.88,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T06:50:00",
+    "open": 188.87,
+    "high": 188.89999,
+    "low": 188.83,
+    "close": 188.83,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T06:55:00",
+    "open": 188.83,
+    "high": 188.86,
+    "low": 188.75999,
+    "close": 188.78999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T07:00:00",
+    "open": 188.8,
+    "high": 188.84,
+    "low": 188.73,
+    "close": 188.74001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T07:05:00",
+    "open": 188.75,
+    "high": 188.81,
+    "low": 188.71001,
+    "close": 188.73,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T07:10:00",
+    "open": 188.74001,
+    "high": 188.8,
+    "low": 188.73,
+    "close": 188.73,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T07:15:00",
+    "open": 188.73,
+    "high": 188.75,
+    "low": 188.69,
+    "close": 188.73,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T07:20:00",
+    "open": 188.73,
+    "high": 188.8,
+    "low": 188.71001,
+    "close": 188.8,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T07:25:00",
+    "open": 188.8,
+    "high": 188.82001,
+    "low": 188.73,
+    "close": 188.73,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T07:30:00",
+    "open": 188.72,
+    "high": 188.75999,
+    "low": 188.7,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T07:35:00",
+    "open": 188.75999,
+    "high": 188.85001,
+    "low": 188.75,
+    "close": 188.85001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T07:40:00",
+    "open": 188.85001,
+    "high": 188.91,
+    "low": 188.78999,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T07:45:00",
+    "open": 188.89999,
+    "high": 188.96001,
+    "low": 188.86,
+    "close": 188.88,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T07:50:00",
+    "open": 188.88,
+    "high": 188.91,
+    "low": 188.83,
+    "close": 188.84,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T07:55:00",
+    "open": 188.84,
+    "high": 188.89,
+    "low": 188.83,
+    "close": 188.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T08:00:00",
+    "open": 188.89999,
+    "high": 188.92,
+    "low": 188.87,
+    "close": 188.88,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T08:05:00",
+    "open": 188.89,
+    "high": 188.94,
+    "low": 188.88,
+    "close": 188.88,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T08:10:00",
+    "open": 188.89,
+    "high": 188.92999,
+    "low": 188.89,
+    "close": 188.91,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T08:15:00",
+    "open": 188.91,
+    "high": 188.94,
+    "low": 188.91,
+    "close": 188.92999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T08:20:00",
+    "open": 188.92999,
+    "high": 189.13,
+    "low": 188.86,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T08:25:00",
+    "open": 188.97,
+    "high": 189.0,
+    "low": 188.92,
+    "close": 188.98,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T08:30:00",
+    "open": 189.0,
+    "high": 189.0,
+    "low": 188.92999,
+    "close": 188.92999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T08:35:00",
+    "open": 188.92999,
+    "high": 188.98,
+    "low": 188.92999,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T08:40:00",
+    "open": 188.97,
+    "high": 188.98,
+    "low": 188.94,
+    "close": 188.98,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T08:45:00",
+    "open": 188.98,
+    "high": 189.020004,
+    "low": 188.98,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T08:50:00",
+    "open": 189.0099945,
+    "high": 189.020004,
+    "low": 188.96001,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T08:55:00",
+    "open": 189.0099945,
+    "high": 189.020004,
+    "low": 188.97,
+    "close": 188.98,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T09:00:00",
+    "open": 189.0,
+    "high": 189.050003,
+    "low": 189.0,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T09:05:00",
+    "open": 189.039993,
+    "high": 189.039993,
+    "low": 188.96001,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T09:10:00",
+    "open": 188.96001,
+    "high": 189.0,
+    "low": 188.89,
+    "close": 188.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T09:15:00",
+    "open": 188.89,
+    "high": 188.99001,
+    "low": 188.87,
+    "close": 188.99001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T09:20:00",
+    "open": 188.94,
+    "high": 188.97,
+    "low": 188.87,
+    "close": 188.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T09:25:00",
+    "open": 188.89999,
+    "high": 188.97,
+    "low": 188.89999,
+    "close": 188.95,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T09:30:00",
+    "open": 188.97,
+    "high": 188.97,
+    "low": 188.95,
+    "close": 188.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T09:35:00",
+    "open": 188.97,
+    "high": 189.0099945,
+    "low": 188.94,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T09:40:00",
+    "open": 189.0,
+    "high": 189.0,
+    "low": 188.95,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T09:45:00",
+    "open": 188.96001,
+    "high": 188.97,
+    "low": 188.94,
+    "close": 188.95,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T09:50:00",
+    "open": 188.95,
+    "high": 188.95,
+    "low": 188.94,
+    "close": 188.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T09:55:00",
+    "open": 188.94,
+    "high": 188.95,
+    "low": 188.87,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T10:00:00",
+    "open": 188.89999,
+    "high": 188.92,
+    "low": 188.83,
+    "close": 188.86,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T10:05:00",
+    "open": 188.85001,
+    "high": 188.86,
+    "low": 188.8,
+    "close": 188.81,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T10:10:00",
+    "open": 188.8,
+    "high": 188.86,
+    "low": 188.78999,
+    "close": 188.8,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T10:15:00",
+    "open": 188.8,
+    "high": 188.81,
+    "low": 188.78,
+    "close": 188.78,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T10:20:00",
+    "open": 188.78999,
+    "high": 188.8,
+    "low": 188.72,
+    "close": 188.74001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T10:25:00",
+    "open": 188.74001,
+    "high": 188.77,
+    "low": 188.74001,
+    "close": 188.77,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T10:30:00",
+    "open": 188.78,
+    "high": 188.86,
+    "low": 188.78,
+    "close": 188.85001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T10:35:00",
+    "open": 188.85001,
+    "high": 188.85001,
+    "low": 188.78999,
+    "close": 188.82001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T10:40:00",
+    "open": 188.82001,
+    "high": 188.82001,
+    "low": 188.71001,
+    "close": 188.78999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T10:45:00",
+    "open": 188.78999,
+    "high": 188.85001,
+    "low": 188.7,
+    "close": 188.71001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T10:50:00",
+    "open": 188.7,
+    "high": 188.75999,
+    "low": 188.64999,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T10:55:00",
+    "open": 188.75,
+    "high": 188.8,
+    "low": 188.73,
+    "close": 188.78999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T11:00:00",
+    "open": 188.8,
+    "high": 188.91,
+    "low": 188.64999,
+    "close": 188.83,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T11:05:00",
+    "open": 188.85001,
+    "high": 188.95,
+    "low": 188.81,
+    "close": 188.82001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T11:10:00",
+    "open": 188.83,
+    "high": 188.86,
+    "low": 188.8,
+    "close": 188.82001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T11:15:00",
+    "open": 188.78999,
+    "high": 188.84,
+    "low": 188.71001,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T11:20:00",
+    "open": 188.74001,
+    "high": 188.74001,
+    "low": 188.62,
+    "close": 188.64999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T11:25:00",
+    "open": 188.64,
+    "high": 188.72,
+    "low": 188.59,
+    "close": 188.71001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T11:30:00",
+    "open": 188.71001,
+    "high": 188.73,
+    "low": 188.58,
+    "close": 188.58,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T11:35:00",
+    "open": 188.58,
+    "high": 188.78,
+    "low": 188.58,
+    "close": 188.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T11:40:00",
+    "open": 188.75999,
+    "high": 188.82001,
+    "low": 188.72,
+    "close": 188.78,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T11:45:00",
+    "open": 188.78999,
+    "high": 188.89999,
+    "low": 188.78,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T11:50:00",
+    "open": 188.91,
+    "high": 188.96001,
+    "low": 188.88,
+    "close": 188.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T11:55:00",
+    "open": 188.94,
+    "high": 188.95,
+    "low": 188.86,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T12:00:00",
+    "open": 188.89999,
+    "high": 188.89999,
+    "low": 188.78,
+    "close": 188.86,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T12:05:00",
+    "open": 188.87,
+    "high": 188.92,
+    "low": 188.81,
+    "close": 188.87,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T12:10:00",
+    "open": 188.86,
+    "high": 188.86,
+    "low": 188.81,
+    "close": 188.83,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T12:15:00",
+    "open": 188.83,
+    "high": 188.96001,
+    "low": 188.83,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T12:20:00",
+    "open": 188.96001,
+    "high": 188.98,
+    "low": 188.91,
+    "close": 188.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T12:25:00",
+    "open": 188.96001,
+    "high": 189.029999,
+    "low": 188.94,
+    "close": 188.95,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T12:30:00",
+    "open": 188.95,
+    "high": 189.020004,
+    "low": 188.91,
+    "close": 189.0099945,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T12:35:00",
+    "open": 189.0099945,
+    "high": 189.029999,
+    "low": 188.96001,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T12:40:00",
+    "open": 189.0,
+    "high": 189.059998,
+    "low": 188.94,
+    "close": 188.95,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T12:45:00",
+    "open": 188.94,
+    "high": 189.17,
+    "low": 188.94,
+    "close": 189.14999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T12:50:00",
+    "open": 189.14999,
+    "high": 189.2,
+    "low": 189.11,
+    "close": 189.14999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T12:55:00",
+    "open": 189.14999,
+    "high": 189.21001,
+    "low": 189.14,
+    "close": 189.16,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T13:00:00",
+    "open": 189.17,
+    "high": 189.19,
+    "low": 189.10001,
+    "close": 189.12,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T13:05:00",
+    "open": 189.12,
+    "high": 189.13,
+    "low": 189.070007,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T13:10:00",
+    "open": 189.089996,
+    "high": 189.13,
+    "low": 189.070007,
+    "close": 189.11,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T13:15:00",
+    "open": 189.11,
+    "high": 189.11,
+    "low": 189.020004,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T13:20:00",
+    "open": 189.039993,
+    "high": 189.080002,
+    "low": 189.020004,
+    "close": 189.020004,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T13:25:00",
+    "open": 189.029999,
+    "high": 189.050003,
+    "low": 188.99001,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T13:30:00",
+    "open": 189.0,
+    "high": 189.0,
+    "low": 188.94,
+    "close": 188.95,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T13:35:00",
+    "open": 188.95,
+    "high": 188.98,
+    "low": 188.92999,
+    "close": 188.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T13:40:00",
+    "open": 188.97,
+    "high": 189.020004,
+    "low": 188.94,
+    "close": 188.95,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T13:45:00",
+    "open": 188.96001,
+    "high": 188.96001,
+    "low": 188.91,
+    "close": 188.95,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T13:50:00",
+    "open": 188.95,
+    "high": 188.97,
+    "low": 188.92,
+    "close": 188.92999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T13:55:00",
+    "open": 188.92,
+    "high": 189.020004,
+    "low": 188.91,
+    "close": 188.98,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T14:00:00",
+    "open": 188.99001,
+    "high": 189.029999,
+    "low": 188.98,
+    "close": 189.0099945,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T14:05:00",
+    "open": 189.0099945,
+    "high": 189.020004,
+    "low": 188.99001,
+    "close": 189.0099945,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T14:10:00",
+    "open": 189.020004,
+    "high": 189.089996,
+    "low": 189.020004,
+    "close": 189.059998,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T14:15:00",
+    "open": 189.059998,
+    "high": 189.11,
+    "low": 189.050003,
+    "close": 189.10001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T14:20:00",
+    "open": 189.10001,
+    "high": 189.14999,
+    "low": 189.080002,
+    "close": 189.11,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T14:25:00",
+    "open": 189.12,
+    "high": 189.14,
+    "low": 189.10001,
+    "close": 189.11,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T14:30:00",
+    "open": 189.11,
+    "high": 189.11,
+    "low": 189.029999,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T14:35:00",
+    "open": 189.039993,
+    "high": 189.10001,
+    "low": 189.0,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T14:40:00",
+    "open": 189.0,
+    "high": 189.0099945,
+    "low": 188.96001,
+    "close": 188.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T14:45:00",
+    "open": 188.96001,
+    "high": 188.99001,
+    "low": 188.94,
+    "close": 188.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T14:50:00",
+    "open": 188.94,
+    "high": 188.96001,
+    "low": 188.92,
+    "close": 188.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T14:55:00",
+    "open": 188.94,
+    "high": 188.94,
+    "low": 188.87,
+    "close": 188.87,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T15:00:00",
+    "open": 188.87,
+    "high": 188.88,
+    "low": 188.81,
+    "close": 188.87,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T15:05:00",
+    "open": 188.88,
+    "high": 188.92,
+    "low": 188.85001,
+    "close": 188.88,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T15:10:00",
+    "open": 188.88,
+    "high": 188.92,
+    "low": 188.86,
+    "close": 188.87,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T15:15:00",
+    "open": 188.86,
+    "high": 188.89999,
+    "low": 188.85001,
+    "close": 188.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T15:20:00",
+    "open": 188.89,
+    "high": 188.91,
+    "low": 188.8,
+    "close": 188.8,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T15:25:00",
+    "open": 188.78999,
+    "high": 188.84,
+    "low": 188.78,
+    "close": 188.81,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T15:30:00",
+    "open": 188.81,
+    "high": 188.83,
+    "low": 188.74001,
+    "close": 188.74001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T15:35:00",
+    "open": 188.73,
+    "high": 188.78,
+    "low": 188.71001,
+    "close": 188.75999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T15:40:00",
+    "open": 188.75999,
+    "high": 188.83,
+    "low": 188.75999,
+    "close": 188.75999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T15:45:00",
+    "open": 188.75999,
+    "high": 188.75999,
+    "low": 188.71001,
+    "close": 188.73,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T15:50:00",
+    "open": 188.73,
+    "high": 188.75,
+    "low": 188.64,
+    "close": 188.64,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T15:55:00",
+    "open": 188.64,
+    "high": 188.69,
+    "low": 188.63,
+    "close": 188.67999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T16:00:00",
+    "open": 188.67999,
+    "high": 188.78,
+    "low": 188.67999,
+    "close": 188.75999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T16:05:00",
+    "open": 188.77,
+    "high": 188.84,
+    "low": 188.77,
+    "close": 188.83,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T16:10:00",
+    "open": 188.83,
+    "high": 188.88,
+    "low": 188.83,
+    "close": 188.88,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T16:15:00",
+    "open": 188.87,
+    "high": 188.88,
+    "low": 188.84,
+    "close": 188.86,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T16:20:00",
+    "open": 188.86,
+    "high": 188.94,
+    "low": 188.85001,
+    "close": 188.91,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T16:25:00",
+    "open": 188.92,
+    "high": 188.92999,
+    "low": 188.85001,
+    "close": 188.87,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T16:30:00",
+    "open": 188.87,
+    "high": 188.92999,
+    "low": 188.87,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T16:35:00",
+    "open": 188.89999,
+    "high": 188.92999,
+    "low": 188.86,
+    "close": 188.91,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T16:40:00",
+    "open": 188.91,
+    "high": 188.92999,
+    "low": 188.85001,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T16:45:00",
+    "open": 188.89999,
+    "high": 188.96001,
+    "low": 188.88,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T16:50:00",
+    "open": 188.95,
+    "high": 189.0099945,
+    "low": 188.95,
+    "close": 188.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T16:55:00",
+    "open": 188.96001,
+    "high": 189.0,
+    "low": 188.89,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T17:00:00",
+    "open": 189.0,
+    "high": 189.080002,
+    "low": 188.99001,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T17:05:00",
+    "open": 189.080002,
+    "high": 189.089996,
+    "low": 189.0,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T17:10:00",
+    "open": 189.050003,
+    "high": 189.070007,
+    "low": 188.95,
+    "close": 188.95,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T17:15:00",
+    "open": 188.96001,
+    "high": 189.0099945,
+    "low": 188.95,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T17:20:00",
+    "open": 188.96001,
+    "high": 189.10001,
+    "low": 188.95,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T17:25:00",
+    "open": 189.080002,
+    "high": 189.13,
+    "low": 189.050003,
+    "close": 189.13,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T17:30:00",
+    "open": 189.12,
+    "high": 189.14,
+    "low": 189.039993,
+    "close": 189.059998,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T17:35:00",
+    "open": 189.070007,
+    "high": 189.11,
+    "low": 189.059998,
+    "close": 189.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T17:40:00",
+    "open": 189.080002,
+    "high": 189.089996,
+    "low": 189.039993,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T17:45:00",
+    "open": 189.070007,
+    "high": 189.089996,
+    "low": 188.99001,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T17:50:00",
+    "open": 189.0,
+    "high": 189.0,
+    "low": 188.94,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T17:55:00",
+    "open": 188.96001,
+    "high": 189.020004,
+    "low": 188.92999,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T18:00:00",
+    "open": 189.0099945,
+    "high": 189.059998,
+    "low": 188.96001,
+    "close": 188.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T18:05:00",
+    "open": 188.96001,
+    "high": 189.0099945,
+    "low": 188.89999,
+    "close": 188.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T18:10:00",
+    "open": 188.89,
+    "high": 188.98,
+    "low": 188.89,
+    "close": 188.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T18:15:00",
+    "open": 188.98,
+    "high": 189.0099945,
+    "low": 188.95,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T18:20:00",
+    "open": 189.0099945,
+    "high": 189.059998,
+    "low": 189.0,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T18:25:00",
+    "open": 189.039993,
+    "high": 189.089996,
+    "low": 189.029999,
+    "close": 189.029999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T18:30:00",
+    "open": 189.029999,
+    "high": 189.059998,
+    "low": 188.98,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T18:35:00",
+    "open": 189.0099945,
+    "high": 189.020004,
+    "low": 188.98,
+    "close": 189.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T18:40:00",
+    "open": 189.0,
+    "high": 189.089996,
+    "low": 188.98,
+    "close": 189.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T18:45:00",
+    "open": 189.039993,
+    "high": 189.070007,
+    "low": 189.020004,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T18:50:00",
+    "open": 189.070007,
+    "high": 189.11,
+    "low": 189.020004,
+    "close": 189.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T18:55:00",
+    "open": 189.050003,
+    "high": 189.11,
+    "low": 189.029999,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T19:00:00",
+    "open": 189.070007,
+    "high": 189.080002,
+    "low": 188.95,
+    "close": 189.070007,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T19:05:00",
+    "open": 189.070007,
+    "high": 189.070007,
+    "low": 189.0099945,
+    "close": 189.0099945,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T19:10:00",
+    "open": 189.0099945,
+    "high": 189.10001,
+    "low": 188.92999,
+    "close": 189.10001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T19:15:00",
+    "open": 189.089996,
+    "high": 189.24001,
+    "low": 189.059998,
+    "close": 189.21001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T19:20:00",
+    "open": 189.21001,
+    "high": 189.5,
+    "low": 189.21001,
+    "close": 189.45,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T19:25:00",
+    "open": 189.45,
+    "high": 189.47,
+    "low": 189.36,
+    "close": 189.39999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T19:30:00",
+    "open": 189.39999,
+    "high": 189.53,
+    "low": 189.39999,
+    "close": 189.49001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T19:35:00",
+    "open": 189.49001,
+    "high": 189.64,
+    "low": 189.48,
+    "close": 189.61,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T19:40:00",
+    "open": 189.60001,
+    "high": 189.67,
+    "low": 189.57001,
+    "close": 189.61,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T19:45:00",
+    "open": 189.61,
+    "high": 189.75,
+    "low": 189.61,
+    "close": 189.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T19:50:00",
+    "open": 189.75,
+    "high": 189.77,
+    "low": 189.63,
+    "close": 189.67999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T19:55:00",
+    "open": 189.69,
+    "high": 189.75,
+    "low": 189.67999,
+    "close": 189.73,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T20:00:00",
+    "open": 189.72,
+    "high": 189.75999,
+    "low": 189.67,
+    "close": 189.73,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T20:05:00",
+    "open": 189.73,
+    "high": 189.83,
+    "low": 189.71001,
+    "close": 189.75999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T20:10:00",
+    "open": 189.78,
+    "high": 189.78,
+    "low": 189.66,
+    "close": 189.72,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T20:15:00",
+    "open": 189.72,
+    "high": 189.78,
+    "low": 189.67999,
+    "close": 189.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T20:20:00",
+    "open": 189.75,
+    "high": 189.75999,
+    "low": 189.63,
+    "close": 189.67,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T20:25:00",
+    "open": 189.67,
+    "high": 189.73,
+    "low": 189.64999,
+    "close": 189.73,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T20:30:00",
+    "open": 189.73,
+    "high": 189.81,
+    "low": 189.67999,
+    "close": 189.69,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T20:35:00",
+    "open": 189.67999,
+    "high": 189.89,
+    "low": 189.67,
+    "close": 189.89,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T20:40:00",
+    "open": 189.89999,
+    "high": 190.020004,
+    "low": 189.85001,
+    "close": 189.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T20:45:00",
+    "open": 189.97,
+    "high": 189.98,
+    "low": 189.89999,
+    "close": 189.95,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T20:50:00",
+    "open": 189.96001,
+    "high": 190.089996,
+    "low": 189.92999,
+    "close": 190.080002,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T20:55:00",
+    "open": 190.080002,
+    "high": 190.11,
+    "low": 189.98,
+    "close": 189.98,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T21:00:00",
+    "open": 189.99001,
+    "high": 190.080002,
+    "low": 189.92,
+    "close": 189.92999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T21:05:00",
+    "open": 189.92999,
+    "high": 189.95,
+    "low": 189.86,
+    "close": 189.92999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T21:10:00",
+    "open": 189.92,
+    "high": 190.0,
+    "low": 189.91,
+    "close": 189.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T21:15:00",
+    "open": 189.98,
+    "high": 190.020004,
+    "low": 189.94,
+    "close": 190.0099945,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T21:20:00",
+    "open": 190.020004,
+    "high": 190.020004,
+    "low": 189.92999,
+    "close": 189.98,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T21:25:00",
+    "open": 189.98,
+    "high": 189.99001,
+    "low": 189.85001,
+    "close": 189.87,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T21:30:00",
+    "open": 189.87,
+    "high": 189.92999,
+    "low": 189.83,
+    "close": 189.92999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T21:35:00",
+    "open": 189.92999,
+    "high": 189.97,
+    "low": 189.89999,
+    "close": 189.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T21:40:00",
+    "open": 189.94,
+    "high": 189.96001,
+    "low": 189.87,
+    "close": 189.91,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T21:45:00",
+    "open": 189.91,
+    "high": 189.91,
+    "low": 189.84,
+    "close": 189.89999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T21:50:00",
+    "open": 189.89999,
+    "high": 190.0,
+    "low": 189.89999,
+    "close": 189.96001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T21:55:00",
+    "open": 189.96001,
+    "high": 190.020004,
+    "low": 189.94,
+    "close": 190.0,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T22:00:00",
+    "open": 190.0099945,
+    "high": 190.11,
+    "low": 189.96001,
+    "close": 190.10001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T22:05:00",
+    "open": 190.10001,
+    "high": 190.11,
+    "low": 190.039993,
+    "close": 190.039993,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T22:10:00",
+    "open": 190.039993,
+    "high": 190.10001,
+    "low": 190.039993,
+    "close": 190.050003,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T22:15:00",
+    "open": 190.050003,
+    "high": 190.050003,
+    "low": 189.94,
+    "close": 189.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T22:20:00",
+    "open": 189.97,
+    "high": 189.99001,
+    "low": 189.94,
+    "close": 189.97,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T22:25:00",
+    "open": 189.98,
+    "high": 190.0,
+    "low": 189.94,
+    "close": 189.94,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T22:30:00",
+    "open": 189.94,
+    "high": 189.95,
+    "low": 189.78,
+    "close": 189.78,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T22:35:00",
+    "open": 189.78,
+    "high": 189.78,
+    "low": 189.71001,
+    "close": 189.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T22:40:00",
+    "open": 189.74001,
+    "high": 189.83,
+    "low": 189.71001,
+    "close": 189.82001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T22:45:00",
+    "open": 189.82001,
+    "high": 189.86,
+    "low": 189.77,
+    "close": 189.84,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T22:50:00",
+    "open": 189.84,
+    "high": 189.88,
+    "low": 189.75999,
+    "close": 189.77,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T22:55:00",
+    "open": 189.75999,
+    "high": 189.86,
+    "low": 189.75999,
+    "close": 189.83,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T23:00:00",
+    "open": 189.81,
+    "high": 189.86,
+    "low": 189.74001,
+    "close": 189.78999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T23:05:00",
+    "open": 189.78999,
+    "high": 189.82001,
+    "low": 189.75999,
+    "close": 189.78999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T23:10:00",
+    "open": 189.8,
+    "high": 189.8,
+    "low": 189.66,
+    "close": 189.7,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T23:15:00",
+    "open": 189.7,
+    "high": 189.77,
+    "low": 189.7,
+    "close": 189.75,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T23:20:00",
+    "open": 189.75,
+    "high": 189.81,
+    "low": 189.73,
+    "close": 189.75999,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T23:25:00",
+    "open": 189.77,
+    "high": 189.77,
+    "low": 189.63,
+    "close": 189.7,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T23:30:00",
+    "open": 189.7,
+    "high": 189.75,
+    "low": 189.66,
+    "close": 189.74001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T23:35:00",
+    "open": 189.74001,
+    "high": 189.83,
+    "low": 189.67999,
+    "close": 189.8,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T23:40:00",
+    "open": 189.78999,
+    "high": 189.92999,
+    "low": 189.75999,
+    "close": 189.87,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T23:45:00",
+    "open": 189.86,
+    "high": 189.87,
+    "low": 189.69,
+    "close": 189.7,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T23:50:00",
+    "open": 189.69,
+    "high": 189.69,
+    "low": 189.49001,
+    "close": 189.5,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-27T23:55:00",
+    "open": 189.50999,
+    "high": 189.58,
+    "low": 189.47,
+    "close": 189.57001,
+    "volume": 0.0,
+    "interval": "5m"
+  },
+  {
+    "symbol": "GBPJPY",
+    "timestamp": "2025-02-28T00:00:00",
+    "open": 189.57001,
+    "high": 189.64999,
+    "low": 189.53999,
+    "close": 189.56,
+    "volume": 0.0,
+    "interval": "5m"
+  }
+]

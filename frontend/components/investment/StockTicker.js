@@ -26,7 +26,7 @@ const StockTicker = () => {
         setIsLoading(true);
         
         // Try to fetch the stock ticker data
-        const response = await fetch('/chart-data/stock_ticker.json');
+        const response = await fetch('/public/chart-data/stock_ticker.json');
         
         if (!response.ok) {
           // Fallback to fetching individual symbols
@@ -40,7 +40,7 @@ const StockTicker = () => {
           // Fetch data for each symbol
           for (const symbol of symbols) {
             try {
-              const symbolResponse = await fetch(`/chart-data/${symbol}_1d.json`);
+              const symbolResponse = await fetch(`/public/chart-data/${symbol}_1d.json`);
               
               if (symbolResponse.ok) {
                 const data = await symbolResponse.json();

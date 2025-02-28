@@ -2,6 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import ForexTicker from '@/components/cash/ForexTicker';
+import AdvancedForexChart from '@/components/cash/AdvancedForexChart';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import {
   Box,
@@ -298,15 +300,11 @@ const BitFundLanding = () => {
               </Text>
 
               <Box w="full" overflowX="auto" px={{ base: 0, md: 4 }}>
-                <TradingMatrix />
-              </Box>
-
-              <Box w="full" overflowX="auto" px={{ base: 0, md: 4 }}>
                 <MarketTicker />
               </Box>
 
-              <Box w="full" h={{ base: "300px", md: "auto" }} px={{ base: 0, md: 4 }}>
-                <TradingPerformanceChart />
+              <Box w="full" overflowX="auto" px={{ base: 0, md: 4 }}>
+                <AdvancedForexChart />              
               </Box>
 
               <Stack 

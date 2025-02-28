@@ -54,7 +54,7 @@ const MarketOverview = () => {
         setIsLoading(true);
         
         // Try to load the pre-generated market_overview.json
-        const response = await fetch('/chart-data/market_overview.json');
+        const response = await fetch('/public/chart-data/market_overview.json');
         
         if (!response.ok) {
           // Fallback to individual data files if the overview file doesn't exist
@@ -113,7 +113,7 @@ const MarketOverview = () => {
     
     // First try to get market summary
     try {
-      const response = await fetch('/chart-data/market_summary.json');
+      const response = await fetch('/public/chart-data/market_summary.json');
       if (response.ok) {
         const data = await response.json();
         
