@@ -138,14 +138,14 @@ function MerchantsPage() {
                     size={buttonSize}
                     colorScheme="green"
                     rightIcon={<ArrowForwardIcon />}
-                    onClick={() => router.push('/merchants/signup')}
+                    onClick={() => router.push('/signup/merchant')}
                   >
                     {t('merchants.hero.signupButton', 'Become a Merchant')}
                   </Button>
                   <Button
                     size={buttonSize}
                     variant="bitcash-outline"
-                    onClick={() => router.push('/merchants/demo')}
+                    onClick={() => router.push('/merchant/demo')}
                   >
                     {t('merchants.hero.demoButton', 'See Demo')}
                   </Button>
@@ -473,7 +473,7 @@ function MerchantsPage() {
                     rightIcon={<ArrowForwardIcon />}
                     size={buttonSize}
                     colorScheme="green"
-                    onClick={() => router.push('/merchants/signup')}
+                    onClick={() => router.push('/signup/merchant')}
                   >
                     {t('merchants.cta.signupButton', 'Become a Merchant')}
                   </Button>
@@ -483,7 +483,7 @@ function MerchantsPage() {
                     color="white"
                     borderColor="white"
                     _hover={{ bg: 'whiteAlpha.200' }}
-                    onClick={() => router.push('/merchants/contact')}
+                    onClick={() => router.push('/contact')}
                   >
                     {t('merchants.cta.contactButton', 'Contact Sales')}
                   </Button>
