@@ -721,7 +721,6 @@ function MerchantDemo() {
                           <Box
                             width="100%"
                             maxW="300px"
-                            bg="white"
                             borderRadius="lg"
                             overflow="hidden"
                             boxShadow="md"
@@ -759,14 +758,14 @@ function MerchantDemo() {
                         <Flex justify="space-between" mt={4}>
                           <Button
                             leftIcon={<ArrowForwardIcon transform="rotate(180deg)" />}
-                            variant="outline"
+                            variant="bitcash-outline"
                             onClick={() => setActiveStep(2)}
                           >
                             {t('merchantDemo.common.backButton', 'Back')}
                           </Button>
                           <Button
                             leftIcon={<RepeatIcon />}
-                            colorScheme="blue"
+                            color="brand.bitcash.400"
                             onClick={resetDemo}
                           >
                             {t('merchantDemo.step4.restartButton', 'Restart Demo')}
