@@ -2,8 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import ForexTicker from '@/components/cash/ForexTicker';
-import AdvancedForexChart from '@/components/cash/AdvancedForexChart';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import {
   Box,
@@ -60,9 +58,8 @@ import {
   FaBars,
   FaLanguage
 } from 'react-icons/fa';
-import TradingMatrix from '@/components/TradingMatrix';
-import TradingPerformanceChart from '@/components/TradingPerformanceChart';
 import MarketTicker from '@/components/MarketTicker';
+import AdvancedForexChart from '@/components/cash/AdvancedForexChart';
 
 const BitFundLanding = () => {
   const { t, i18n } = useTranslation('common');
@@ -84,6 +81,7 @@ const BitFundLanding = () => {
   );
   
   const glassCardBg = useColorModeValue('whiteAlpha.900', 'whiteAlpha.100');
+
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -538,7 +536,7 @@ const BitFundLanding = () => {
             boxShadow="xl"
             overflow="hidden"
           >
-            <Accordion allowToggle>
+            <Accordion allowToggle zIndex={1}>
               {tradingRules.map((rule, index) => (
                 <AccordionItem key={index} border="none">
                   <AccordionButton py={{ base: 3, md: 4 }} px={{ base: 3, md: 6 }} _hover={{ bg: 'whiteAlpha.200' }}>

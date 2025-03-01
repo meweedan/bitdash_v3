@@ -218,15 +218,13 @@ function MerchantDemo() {
   return (
     <Layout>
       <Box 
-        minH="100vh" 
-        py={16}
+        minH="80vh" 
+        display="flex"
+        py={6}
       >
         <Container maxW="7xl">
           <SlideFade in offsetY="20px">
             <VStack spacing={4} textAlign="center" mb={10}>
-              <Badge colorScheme="green" fontSize="md" p={2} borderRadius="md">
-                {t('merchantDemo.badge', 'Interactive Demo')}
-              </Badge>
               <Heading 
                 fontSize={{ base: '2xl', md: '3xl', lg: '4xl' }}
                 color={accentColor}

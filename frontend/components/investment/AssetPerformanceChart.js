@@ -30,13 +30,13 @@ const ASSET_SYMBOLS = {
 
 // Give each category a nice label & optional icon
 const ASSET_LABELS = {
-  stocks: { name: 'US & EU Stocks', icon: FaChartLine },
   gold:   { name: 'Gold & Precious Metals', icon: FaCoins },
+  stocks: { name: 'US & EU Stocks', icon: FaChartLine },
   etfs:   { name: 'ETFs & Indices', icon: FaChartLine },
 };
 
 const AssetPerformanceFOMO = () => {
-  const [assetType, setAssetType] = useState('stocks'); // default category
+  const [assetType, setAssetType] = useState('gold'); // default category
   const [timeframe, setTimeframe] = useState('1M');     // 1M, 3M, 6M, 1Y
   const [data, setData] = useState([]);                // normalized data
   const [isLoading, setIsLoading] = useState(true);
@@ -212,8 +212,8 @@ const AssetPerformanceFOMO = () => {
             value={assetType}
             onChange={(e) => setAssetType(e.target.value)}
           >
-            <option value="stocks">Stocks (US/EU)</option>
             <option value="gold">Gold</option>
+            <option value="stocks">Stocks (US/EU)</option>
             <option value="etfs">ETFs & Indices</option>
           </Select>
 

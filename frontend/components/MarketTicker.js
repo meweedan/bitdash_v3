@@ -17,7 +17,21 @@ import {
   Tag,
   Divider,
   Fade,
-  VStack
+  VStack,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  StatArrow,
+  StatGroup,
+  useDisclosure
 } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
@@ -32,7 +46,9 @@ import {
   FaCoins,
   FaDollarSign,
   FaOilCan,
-  FaGem
+  FaGem,
+  FaInfoCircle,
+  FaHistory
 } from 'react-icons/fa';
 
 const MarketTicker = () => {
@@ -41,6 +57,7 @@ const MarketTicker = () => {
   const { locale } = router;
   const scrollRef = useRef(null);
   const toast = useToast();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   
   // States
   const [marketData, setMarketData] = useState([]);
@@ -50,15 +67,23 @@ const MarketTicker = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [lastUpdated, setLastUpdated] = useState(null);
   const [dataError, setDataError] = useState(false);
+  const [selectedTicker, setSelectedTicker] = useState(null);
+  const [holdTimer, setHoldTimer] = useState(null);
+  const [longPressDetected, setLongPressDetected] = useState(false);
   
   // Responsive values
   const tickerHeight = useBreakpointValue({ base: '60px', md: '70px' });
   const tickerItemSpacing = useBreakpointValue({ base: 3, md: 5 });
+  const tickerItemWidth = useBreakpointValue({ base: 140, md: 180 });
+  const tickerContainerPadding = useBreakpointValue({ base: 1, md: 3 });
+  const modalSize = useBreakpointValue({ base: "full", md: "md" });
   const showCategories = useBreakpointValue({ base: false, md: true });
   const categoryIconSize = useBreakpointValue({ base: 3, md: 4 });
   const tickerPadding = useBreakpointValue({ base: 2, md: 3 });
   const headerPadding = useBreakpointValue({ base: 2, md: 4 });
   const showControls = useBreakpointValue({ base: false, md: true });
+  const tickerContainerRef = useRef(null);
+  const [tickerWidth, setTickerWidth] = useState(0);
   const fadeSize = useBreakpointValue({ base: '20px', md: '40px' });
   const isMobile = useBreakpointValue({ base: true, md: false });
   
@@ -69,6 +94,7 @@ const MarketTicker = () => {
   const tickerHeaderBg = useColorModeValue('blue.100', 'gray.700');
   const accentColor = useColorModeValue('brand.bitfund.500', 'brand.bitfund.400');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
+  const highlightColor = useColorModeValue('blue.100', 'blue.800');
   
   // Asset categories with icons
   const categories = [
@@ -78,6 +104,17 @@ const MarketTicker = () => {
     { id: 'indices', label: t('ticker.category.indices', 'Indices'), icon: FaChartLine },
     { id: 'commodities', label: t('ticker.category.commodities', 'Commodities'), icon: FaOilCan }
   ];
+
+  const tickerStyle = {
+    display: 'flex',
+    whiteSpace: 'nowrap',
+    willChange: 'transform',
+    animation: isPaused ? 'none' : `ticker ${tickerSpeed}s linear infinite`,
+    '@keyframes ticker': {
+      '0%': { transform: 'translateX(0)' },
+      '100%': { transform: `translateX(-50%)` } // Use percentage instead of fixed pixels
+    }
+  };
 
   // Fetch data from the market data fetcher files
   const fetchMarketData = useCallback(async () => {
@@ -104,7 +141,14 @@ const MarketTicker = () => {
                 value: formatValue(item.price, category, item.symbol),
                 change: `${item.change >= 0 ? '+' : ''}${item.change.toFixed(2)}%`,
                 positive: item.change >= 0,
-                category: category
+                category: category,
+                details: {
+                  open: item.open || item.price * (1 - Math.random() * 0.02),
+                  high: item.high || item.price * (1 + Math.random() * 0.03),
+                  low: item.low || item.price * (1 - Math.random() * 0.03),
+                  volume: item.volume || Math.floor(Math.random() * 1000000),
+                  marketCap: item.marketCap || Math.floor(Math.random() * 100000000000)
+                }
               });
             }
           }
@@ -135,7 +179,14 @@ const MarketTicker = () => {
                     value: rate.toFixed(4),
                     change: `${parseFloat(changePercent) >= 0 ? '+' : ''}${changePercent}%`,
                     positive: parseFloat(changePercent) >= 0,
-                    category: 'forex'
+                    category: 'forex',
+                    details: {
+                      open: rate * (1 - Math.random() * 0.01),
+                      high: rate * (1 + Math.random() * 0.01),
+                      low: rate * (1 - Math.random() * 0.01),
+                      volume: Math.floor(Math.random() * 1000000),
+                      spread: (Math.random() * 0.0005).toFixed(5)
+                    }
                   });
                 }
               }
@@ -153,7 +204,14 @@ const MarketTicker = () => {
                     value: rate.toFixed(2),
                     change: `${parseFloat(changePercent) >= 0 ? '+' : ''}${changePercent}%`,
                     positive: parseFloat(changePercent) >= 0,
-                    category: 'crypto'
+                    category: 'crypto',
+                    details: {
+                      open: rate * (1 - Math.random() * 0.03),
+                      high: rate * (1 + Math.random() * 0.05),
+                      low: rate * (1 - Math.random() * 0.05),
+                      volume: Math.floor(Math.random() * 5000000),
+                      marketCap: rate * Math.floor(Math.random() * 20000000)
+                    }
                   });
                 }
               }
@@ -172,7 +230,14 @@ const MarketTicker = () => {
                     value: `$${rate.toFixed(2)}/oz`,
                     change: `${parseFloat(changePercent) >= 0 ? '+' : ''}${changePercent}%`,
                     positive: parseFloat(changePercent) >= 0,
-                    category: 'commodities'
+                    category: 'commodities',
+                    details: {
+                      open: rate * (1 - Math.random() * 0.01),
+                      high: rate * (1 + Math.random() * 0.015),
+                      low: rate * (1 - Math.random() * 0.015),
+                      volume: Math.floor(Math.random() * 100000),
+                      contract: 'Spot'
+                    }
                   });
                 }
               }
@@ -223,7 +288,13 @@ const MarketTicker = () => {
                     value: formatValue(latestData.close, asset.category, asset.symbol),
                     change: `${parseFloat(changePercent) >= 0 ? '+' : ''}${changePercent}%`,
                     positive: parseFloat(changePercent) >= 0,
-                    category: asset.category
+                    category: asset.category,
+                    details: {
+                      open: latestData.open || latestData.close * 0.99,
+                      high: latestData.high || latestData.close * 1.01,
+                      low: latestData.low || latestData.close * 0.99,
+                      volume: latestData.volume || Math.floor(Math.random() * 1000000),
+                    }
                   });
                 }
               }
@@ -262,6 +333,19 @@ const MarketTicker = () => {
     }
   }, [t, toast]);
 
+  useEffect(() => {
+      if (tickerContainerRef.current) {
+        const resizeObserver = new ResizeObserver(() => {
+          if (tickerContainerRef.current) {
+            setTickerWidth(tickerContainerRef.current.scrollWidth);
+          }
+        });
+        
+        resizeObserver.observe(tickerContainerRef.current);
+        return () => resizeObserver.disconnect();
+      }
+    }, []);
+
   // Format value based on category and symbol
   const formatValue = (price, category, symbol) => {
     if (price === undefined || price === null) return 'N/A';
@@ -290,14 +374,168 @@ const MarketTicker = () => {
     }
   };
 
+  // Ticker item component
+const TickerItem = ({ market }) => (
+  <Flex 
+    mr={tickerItemSpacing} 
+    align="center"
+    px={2}
+    py={1}
+    borderRadius="md"
+    bg={tickerBg}
+    borderWidth="1px"
+    borderColor={borderColor}
+    boxShadow="sm"
+    minW={tickerItemWidth}
+    maxW={tickerItemWidth}
+    cursor="pointer"
+    transition="all 0.2s"
+    _hover={{ boxShadow: "md", bg: highlightColor }}
+    onClick={() => handleClick(market)}
+    onTouchStart={() => handleTouchStart(market)}
+    onTouchEnd={handleTouchEnd}
+    onTouchCancel={handleTouchEnd}
+    role="button"
+    aria-label={`View details for ${market.name}`}
+  >
+    <VStack spacing={0} align="start" w="full">
+      <Flex w="full" justify="space-between" align="center">
+        <Text fontWeight="bold" fontSize="xs" isTruncated>
+          {market.symbol}
+        </Text>
+        <Badge 
+          colorScheme={market.positive ? "green" : "red"}
+          variant="subtle"
+          fontSize="2xs"
+          borderRadius="sm"
+        >
+          <Flex align="center">
+            <Icon 
+              as={market.positive ? FaArrowUp : FaArrowDown} 
+              mr={1} 
+              fontSize="2xs"
+            />
+            {market.change}
+          </Flex>
+        </Badge>
+      </Flex>
+      <Flex w="full" justify="space-between" align="center">
+        <Text fontSize="2xs" color="gray.500" noOfLines={1}>
+          {market.name}
+        </Text>
+        <Text fontSize="xs" fontWeight="medium">
+          {market.value}
+        </Text>
+      </Flex>
+    </VStack>
+  </Flex>
+);
+
   // Get fallback data in case of API error
   const getFallbackData = () => {
     return [
-      { name: 'S&P 500', symbol: 'SPX', value: '4,873.12', change: '+0.45%', positive: true, category: 'indices' },
-      { name: 'BTC/USD', symbol: 'BTC/USD', value: '$61,247.80', change: '+2.14%', positive: true, category: 'crypto' },
-      { name: 'EUR/USD', symbol: 'EUR/USD', value: '1.0864', change: '+0.12%', positive: true, category: 'forex' },
-      { name: 'Gold', symbol: 'XAU', value: '$2,345.60/oz', change: '+0.83%', positive: true, category: 'commodities' }
+      { 
+        name: 'S&P 500', 
+        symbol: 'SPX', 
+        value: '4,873.12', 
+        change: '+0.45%', 
+        positive: true, 
+        category: 'indices',
+        details: {
+          open: 4850.23,
+          high: 4880.45,
+          low: 4845.67,
+          volume: 2456789,
+          prevClose: 4851.32
+        }
+      },
+      { 
+        name: 'BTC/USD', 
+        symbol: 'BTC/USD', 
+        value: '$61,247.80', 
+        change: '+2.14%', 
+        positive: true, 
+        category: 'crypto',
+        details: {
+          open: 59872.45,
+          high: 61500.00,
+          low: 59650.30,
+          volume: 32567890000,
+          marketCap: 1175000000000
+        }
+      },
+      { 
+        name: 'EUR/USD', 
+        symbol: 'EUR/USD', 
+        value: '1.0864', 
+        change: '+0.12%', 
+        positive: true, 
+        category: 'forex',
+        details: {
+          open: 1.0850,
+          high: 1.0870,
+          low: 1.0845,
+          volume: 98765432,
+          spread: 0.00015
+        }
+      },
+      { 
+        name: 'Gold', 
+        symbol: 'XAU', 
+        value: '$2,345.60/oz', 
+        change: '+0.83%', 
+        positive: true, 
+        category: 'commodities',
+        details: {
+          open: 2325.75,
+          high: 2350.30,
+          low: 2320.45,
+          volume: 145678,
+          contract: 'Spot'
+        }
+      }
     ];
+  };
+
+  // Handle ticker item long press
+  const handleTouchStart = (ticker) => {
+    const timer = setTimeout(() => {
+      // Long press detected, show ticker details
+      setSelectedTicker(ticker);
+      setIsPaused(true);
+      setLongPressDetected(true);
+      onOpen();
+    }, 500); // Long press threshold (500ms)
+    
+    setHoldTimer(timer);
+  };
+
+  // Handle touch end
+  const handleTouchEnd = () => {
+    if (holdTimer) {
+      clearTimeout(holdTimer);
+      setHoldTimer(null);
+    }
+    
+    // If it wasn't a long press, don't resume automatically
+    if (!longPressDetected) {
+      // This was a simple tap, not a long press
+    } else {
+      setLongPressDetected(false);
+    }
+  };
+
+  // Handle click (for desktop)
+  const handleClick = (ticker) => {
+    setSelectedTicker(ticker);
+    setIsPaused(true);
+    onOpen();
+  };
+
+  // Handle modal close
+  const handleModalClose = () => {
+    onClose();
+    // Don't resume automatically, let the user decide
   };
 
   // Initial fetch and set periodic updates
@@ -334,7 +572,7 @@ const MarketTicker = () => {
   // Animation settings for the ticker
   const tickerVariants = {
     animate: {
-      x: isPaused ? [0, 0] : [0, -5000],
+      x: isPaused ? [0, 0] : [0, -10000], // Made longer to ensure continuous loop
       transition: {
         x: {
           repeat: Infinity,
@@ -376,6 +614,170 @@ const MarketTicker = () => {
       </ButtonGroup>
     </Flex>
   );
+
+  // Details modal for ticker
+  const TickerDetailsModal = () => {
+    if (!selectedTicker) return null;
+    
+    // Get category icon
+    const getCategoryIcon = (category) => {
+      const categoryObj = categories.find(cat => cat.id === category);
+      return categoryObj ? categoryObj.icon : FaChartLine;
+    };
+    
+    // Format detailed stats based on category
+    const getDetailedStats = () => {
+      const details = selectedTicker.details || {};
+      
+      // Common stats for all categories
+      const commonStats = [
+        {
+          label: 'Open',
+          value: formatValue(details.open, selectedTicker.category, selectedTicker.symbol),
+        },
+        {
+          label: 'High',
+          value: formatValue(details.high, selectedTicker.category, selectedTicker.symbol),
+        },
+        {
+          label: 'Low',
+          value: formatValue(details.low, selectedTicker.category, selectedTicker.symbol),
+        }
+      ];
+      
+      // Category specific stats
+      switch(selectedTicker.category) {
+        case 'forex':
+          return [
+            ...commonStats,
+            {
+              label: 'Spread',
+              value: details.spread || '0.00010',
+            },
+            {
+              label: 'Volume',
+              value: details.volume ? (details.volume / 1000000).toFixed(2) + 'M' : 'N/A',
+            }
+          ];
+        case 'crypto':
+          return [
+            ...commonStats,
+            {
+              label: 'Volume',
+              value: details.volume ? (details.volume / 1000000).toFixed(2) + 'M' : 'N/A',
+            },
+            {
+              label: 'Market Cap',
+              value: details.marketCap ? '$' + (details.marketCap / 1000000000).toFixed(2) + 'B' : 'N/A',
+            }
+          ];
+        case 'commodities':
+          return [
+            ...commonStats,
+            {
+              label: 'Volume',
+              value: details.volume ? details.volume.toLocaleString() : 'N/A',
+            },
+            {
+              label: 'Contract',
+              value: details.contract || 'Spot',
+            }
+          ];
+        case 'indices':
+        default:
+          return [
+            ...commonStats,
+            {
+              label: 'Volume',
+              value: details.volume ? details.volume.toLocaleString() : 'N/A',
+            },
+            {
+              label: 'Prev Close',
+              value: formatValue(details.prevClose, selectedTicker.category, selectedTicker.symbol),
+            }
+          ];
+      }
+    };
+
+    useEffect(() => {
+      if (tickerContainerRef.current && filteredData.length > 0) {
+        // Calculate total width needed
+        setTickerWidth(tickerContainerRef.current.scrollWidth);
+      }
+    }, [filteredData]);
+    
+    const detailedStats = getDetailedStats();
+    
+    return (
+      <Modal isOpen={isOpen} onClose={handleModalClose} size="sm" isCentered>
+        <ModalOverlay backdropFilter="blur(4px)" />
+        <ModalContent>
+          <ModalHeader>
+            <Flex align="center">
+              <Icon 
+                as={getCategoryIcon(selectedTicker.category)} 
+                mr={2} 
+                color={accentColor}
+              />
+              {selectedTicker.name} ({selectedTicker.symbol})
+            </Flex>
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Stat mb={4}>
+              <StatLabel>{t('ticker.current_value', 'Current Value')}</StatLabel>
+              <StatNumber>{selectedTicker.value}</StatNumber>
+              <StatHelpText>
+                <StatArrow type={selectedTicker.positive ? 'increase' : 'decrease'} />
+                {selectedTicker.change}
+              </StatHelpText>
+            </Stat>
+            
+            <Divider mb={4} />
+            
+            <Text fontWeight="bold" mb={2}>{t('ticker.statistics', 'Statistics')}</Text>
+            <VStack align="stretch" spacing={2}>
+              {detailedStats.map((stat, index) => (
+                <Flex key={index} justify="space-between">
+                  <Text fontSize="sm" color={labelColor}>{stat.label}:</Text>
+                  <Text fontSize="sm" fontWeight="medium">{stat.value}</Text>
+                </Flex>
+              ))}
+            </VStack>
+            
+            <Divider my={4} />
+            
+            <Text fontSize="xs" color={labelColor}>
+              <Icon as={FaHistory} mr={1} />
+              {t('ticker.last_updated', 'Updated')}: {formatLastUpdated(lastUpdated)}
+            </Text>
+          </ModalBody>
+          
+          <ModalFooter>
+            <Button 
+              colorScheme="blue" 
+              mr={3} 
+              onClick={handleModalClose} 
+              size="sm"
+            >
+              {t('ticker.close', 'Close')}
+            </Button>
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={() => {
+                setIsPaused(false);
+                handleModalClose();
+              }}
+              leftIcon={<FaPlay />}
+            >
+              {t('ticker.resume', 'Resume Ticker')}
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    );
+  };
 
   return (
     <Box 
@@ -488,19 +890,24 @@ const MarketTicker = () => {
           }
         />
         
-        {/* Mobile refresh button */}
+        {/* Mobile controls */}
         {isMobile && (
           <Box position="absolute" right={2} bottom={2} zIndex={3}>
-            <IconButton
-              icon={<FaSyncAlt />}
-              isLoading={isLoading}
-              size="xs"
-              onClick={fetchMarketData}
-              aria-label={t('ticker.refresh', 'Refresh')}
-              colorScheme="blue"
-              opacity={0.8}
-              borderRadius="full"
-            />
+            <ButtonGroup size="xs" isAttached colorScheme="blue" opacity={0.8} borderRadius="full">
+              <IconButton
+                icon={isPaused ? <FaPlay /> : <FaPause />}
+                onClick={() => setIsPaused(!isPaused)}
+                aria-label={isPaused ? t('ticker.play', 'Play') : t('ticker.pause', 'Pause')}
+                borderRadius="full"
+                />
+              <IconButton
+                icon={<FaSyncAlt />}
+                isLoading={isLoading}
+                onClick={fetchMarketData}
+                aria-label={t('ticker.refresh', 'Refresh')}
+                borderRadius="full"
+              />
+            </ButtonGroup>
           </Box>
         )}
         
@@ -526,63 +933,23 @@ const MarketTicker = () => {
               </HStack>
             </Flex>
           ) : (
-            <motion.div
-              ref={scrollRef}
-              variants={tickerVariants}
-              animate="animate"
-              style={{ 
-                display: 'flex', 
-                height: '100%', 
-                alignItems: 'center'
-              }}
+            <Box
+              ref={tickerContainerRef}
+              sx={tickerStyle}
+              h="100%"
+              display="flex"
+              alignItems="center"
             >
-              {[...filteredData, ...filteredData].map((market, index) => (
-                <Flex 
-                  key={index} 
-                  mr={tickerItemSpacing} 
-                  align="center"
-                  px={2}
-                  py={1}
-                  borderRadius="md"
-                  bg={tickerBg}
-                  borderWidth="1px"
-                  borderColor={borderColor}
-                  boxShadow="sm"
-                  minW={isMobile ? "110px" : "150px"}
-                >
-                  <VStack spacing={0} align="start" w="full">
-                    <Flex w="full" justify="space-between" align="center">
-                      <Text fontWeight="bold" fontSize="xs">
-                        {market.symbol}
-                      </Text>
-                      <Badge 
-                        colorScheme={market.positive ? "green" : "red"}
-                        variant="subtle"
-                        fontSize="2xs"
-                        borderRadius="sm"
-                      >
-                        <Flex align="center">
-                          <Icon 
-                            as={market.positive ? FaArrowUp : FaArrowDown} 
-                            mr={1} 
-                            fontSize="2xs"
-                          />
-                          {market.change}
-                        </Flex>
-                      </Badge>
-                    </Flex>
-                    <Flex w="full" justify="space-between" align="center">
-                      <Text fontSize="2xs" color="gray.500" noOfLines={1}>
-                        {market.name}
-                      </Text>
-                      <Text fontSize="xs" fontWeight="medium">
-                        {market.value}
-                      </Text>
-                    </Flex>
-                  </VStack>
-                </Flex>
-              ))}
-            </motion.div>
+            {/* First set of items */}
+      {filteredData.map((market, index) => (
+        <TickerItem key={`first-${index}`} market={market} />
+      ))}
+      
+      {/* Second identical set of items */}
+      {filteredData.map((market, index) => (
+        <TickerItem key={`second-${index}`} market={market} />
+      ))}
+    </Box>
           )}
         </Box>
       </Box>
@@ -598,6 +965,9 @@ const MarketTicker = () => {
           {t('ticker.last_updated', 'Updated')}: {formatLastUpdated(lastUpdated)}
         </Text>
       )}
+      
+      {/* Details modal */}
+      <TickerDetailsModal />
     </Box>
   );
 };
