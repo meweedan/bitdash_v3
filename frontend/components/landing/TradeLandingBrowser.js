@@ -229,9 +229,6 @@ const TradeLandingBrowser = () => {
               >
                 {t('trade.hero.title', 'Trade with Confidence')}
               </Heading>
-              <Text fontSize={{ base: 'xl', md: '2xl' }} opacity={0.8} maxW="3xl">
-                {t('trade.hero.subtitle', 'Global markets, institutional-grade technology, regulated for your protection')}
-              </Text>
 
                 <Box w="full" overflowX="auto" px={{ base: 0, md: 4 }}>
                   <AdvancedForexChart />

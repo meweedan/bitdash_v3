@@ -93,12 +93,6 @@ const TradingPlatformPreview = () => {
               >
                 Web Platform
               </Button>
-              <Button
-                variant="bittrade-outline"
-                color="brand.bittrade.400"
-              >
-                View Demo
-              </Button>
             </HStack>
           </Box>
         )}

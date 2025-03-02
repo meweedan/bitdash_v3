@@ -9,27 +9,46 @@ import {
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
+import { useColorMode } from '@chakra-ui/react';
 
 // Dynamically import ApexCharts with SSR disabled
 const ReactApexChart = dynamic(() => import('react-apexcharts'), {
   ssr: false,
 });
-
+  const TradingViewChart = () => {
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 768,
+    height: typeof window !== 'undefined' ? window.innerHeight : 600
+  });
+  
+  // Chart state
+  const [selectedPair, setSelectedPair] = useState('BTC');
+  const [selectedInterval, setSelectedInterval] = useState('1d');
+  const [chartData, setChartData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isLineChart, setIsLineChart] = useState(false);
+  const [showVolume, setShowVolume] = useState(true);
+  const [timeframe, setTimeframe] = useState('3M');
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const [visibleStartIndex, setVisibleStartIndex] = useState(0);
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
 
 // TradingView-style color constants
-const TV_COLORS = {
-  UP_COLOR: '#26a69a', // Green for bullish candles
-  DOWN_COLOR: '#ef5350', // Red for bearish candles
-  VOLUME_UP_COLOR: 'rgba(38, 166, 154, 0.5)', // Semi-transparent green
-  VOLUME_DOWN_COLOR: 'rgba(239, 83, 80, 0.5)', // Semi-transparent red
-  GRID_COLOR: 'rgba(120, 123, 134, 0.1)', // Subtle grid lines
-  CROSSHAIR_COLOR: 'rgba(120, 123, 134, 0.6)', // More visible crosshair
-  LINE_COLOR: '#2962FF', // Strong blue for line charts
-  BACKGROUND: '#131722', // TradingView dark theme background
-  TEXT_COLOR: '#b4b9be', // Light gray text
-  BUTTON_BG: '#2a2e39', // Button background
-  BUTTON_HOVER: '#363a45', // Button hover state
-};
+  const TV_COLORS = useMemo(() => ({
+    UP_COLOR: '#26a69a',
+    DOWN_COLOR: '#ef5350',
+    VOLUME_UP_COLOR: 'rgba(38, 166, 154, 0.5)',
+    VOLUME_DOWN_COLOR: 'rgba(239, 83, 80, 0.5)',
+    GRID_COLOR: isDark ? 'rgba(120, 123, 134, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+    CROSSHAIR_COLOR: isDark ? 'rgba(120, 123, 134, 0.6)' : 'rgba(0, 0, 0, 0.4)',
+    LINE_COLOR: '#2962FF',
+    BACKGROUND: isDark ? '#131722' : '#ffffff', // ✅ **Fix: White in Light Mode**
+    TEXT_COLOR: isDark ? '#38a4a4' : '#131722', // ✅ **Fix: Dark text for light mode**
+    BUTTON_BG: isDark ? '#2a2e39' : '#e0e0e0',
+    BUTTON_HOVER: '#38a4a4',
+  }), [isDark]);
 
 // Time frame constants - shortened for mobile
 const timeframeDaysMap = {
@@ -53,63 +72,6 @@ const AVAILABLE_PAIRS = [
 // Available intervals - fewer options for mobile
 const AVAILABLE_INTERVALS = ['5m', '15m', '1h', '4h', '1d'];
 
-/** Proper TradingView-style Candle Component */
-/** FIXED Proper TradingView-style Candle Component */
-const RefinedCandle = ({ x, y, width, height, payload }) => {
-  if (!payload || !height) return null;
-  const { open, high, low, close } = payload;
-  if (open === undefined || high === undefined || low === undefined || close === undefined) return null;
-  
-  // Determine if bullish or bearish
-  const isUp = close >= open;
-  const color = isUp ? TV_COLORS.UP_COLOR : TV_COLORS.DOWN_COLOR;
-  
-  // Ensure visible candle body - especially important on mobile
-  const candleWidth = Math.max(Math.min(width * 0.8, 8), 2);
-  
-  // FIXED: Properly calculate y-coordinates
-  // The issue is that Recharts already transforms the y values based on the chart domain
-  // So we need to reverse-engineer to get the original values
-  const priceRange = high - low;
-  if (priceRange === 0) return null; // Avoid division by zero
-  
-  // Calculate positions for each price point
-  // Here we normalize the relative position within the candle's price range
-  const highPoint = 0; // Relative position of high (top = 0)
-  const lowPoint = 1; // Relative position of low (bottom = 1)
-  const openPoint = (high - open) / priceRange;
-  const closePoint = (high - close) / priceRange;
-  
-  // Map normalized positions to actual y-coordinates
-  const highY = y;
-  const lowY = y + height;
-  const openY = y + openPoint * height;
-  const closeY = y + closePoint * height;
-  
-  return (
-    <g>
-      {/* Vertical wick - full height from high to low */}
-      <line
-        x1={x + width / 2}
-        y1={highY}
-        x2={x + width / 2}
-        y2={lowY}
-        stroke={color}
-        strokeWidth={1.5}
-      />
-      
-      {/* Candle body - shows open to close range */}
-      <rect
-        x={x + (width - candleWidth) / 2}
-        y={Math.min(openY, closeY)}
-        width={candleWidth}
-        height={Math.max(1, Math.abs(closeY - openY))}
-        fill={color}
-      />
-    </g>
-  );
-};
-
 /** Volume bar with color coding */
 const VolumeBar = (props) => {
   const { x, y, width, height, payload } = props;
@@ -129,24 +91,6 @@ const VolumeBar = (props) => {
     />
   );
 };
-
-const TradingViewChart = () => {
-  const [windowSize, setWindowSize] = useState({
-    width: typeof window !== 'undefined' ? window.innerWidth : 768,
-    height: typeof window !== 'undefined' ? window.innerHeight : 600
-  });
-  
-  // Chart state
-  const [selectedPair, setSelectedPair] = useState('BTC');
-  const [selectedInterval, setSelectedInterval] = useState('1d');
-  const [chartData, setChartData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [isLineChart, setIsLineChart] = useState(false);
-  const [showVolume, setShowVolume] = useState(true);
-  const [timeframe, setTimeframe] = useState('3M');
-  const [zoomLevel, setZoomLevel] = useState(1);
-  const [visibleStartIndex, setVisibleStartIndex] = useState(0);
 
   // Responsive values based on screen size
   const isMobile = windowSize.width < 768;
@@ -247,8 +191,7 @@ const TradingViewChart = () => {
         setIsLoading(false);
       } catch (error) {
         console.error('Error loading chart data:', error);
-        setErrorMessage('Using fallback data');
-        setChartData(generateFallbackData());
+        setErrorMessage('Unable to load data, please choose different pair or timeframe');
         setIsLoading(false);
       }
     };
@@ -258,121 +201,103 @@ const TradingViewChart = () => {
 
   // ApexCharts configuration
   const chartOptions = useMemo(() => ({
-    chart: {
-      type: 'candlestick',
-      height: chartHeight,
-      background: TV_COLORS.BACKGROUND,
-      toolbar: {
-        show: false,
+  chart: {
+    type: 'candlestick',
+    height: chartHeight,
+    background: TV_COLORS.BACKGROUND, // ✅ Dynamically updates background color
+    toolbar: { show: false },
+    zoom: { enabled: false },
+    animations: { enabled: false },
+  },
+  plotOptions: {
+    candlestick: {
+      colors: {
+        upward: TV_COLORS.UP_COLOR,
+        downward: TV_COLORS.DOWN_COLOR,
       },
-      zoom: {
-        enabled: false,
-      },
-      animations: {
-        enabled: false,
-      },
+      wick: { useFillColor: true },
     },
-    plotOptions: {
-      candlestick: {
-        colors: {
-          upward: TV_COLORS.UP_COLOR,
-          downward: TV_COLORS.DOWN_COLOR,
-        },
-        wick: {
-          useFillColor: true,
-        },
-      },
-      bar: {
-        columnWidth: '80%',
-      },
+    bar: {
+      columnWidth: '80%',
     },
-    xaxis: {
-      type: 'datetime',
+  },
+  xaxis: {
+    type: 'datetime',
+    labels: {
+      style: {
+        colors: TV_COLORS.TEXT_COLOR, // ✅ Dynamically updates text color
+        fontSize: '10px',
+      },
+      formatter: (value) => formatXAxisTick(value),
+    },
+    axisBorder: { show: false },
+    axisTicks: {
+      color: TV_COLORS.GRID_COLOR, // ✅ Updates grid colors based on theme
+    },
+    tooltip: { enabled: false },
+  },
+  yaxis: [
+    {
+      labels: {
+        style: {
+          colors: TV_COLORS.TEXT_COLOR, // ✅ Updates Y-axis labels
+          fontSize: '10px',
+        },
+        formatter: (value) => formatPrice(value),
+      },
+      axisBorder: { show: false },
+      tooltip: { enabled: true },
+    },
+    {
+      opposite: true,
       labels: {
         style: {
           colors: TV_COLORS.TEXT_COLOR,
           fontSize: '10px',
         },
-        formatter: (value) => formatXAxisTick(value),
-      },
-      axisBorder: {
-        show: false,
-      },
-      axisTicks: {
-        color: 'rgba(120, 123, 134, 0.3)',
-      },
-      tooltip: {
-        enabled: false,
+        formatter: (value) =>
+          value >= 1000000
+            ? `${(value / 1000000).toFixed(1)}M`
+            : `${(value / 1000).toFixed(0)}K`,
       },
     },
-    yaxis: [
-      {
-        labels: {
-          style: {
-            colors: TV_COLORS.TEXT_COLOR,
-            fontSize: '10px',
-          },
-          formatter: (value) => formatPrice(value),
-        },
-        axisBorder: {
-          show: false,
-        },
-        tooltip: {
-          enabled: true,
-        },
-      },
-      {
-        opposite: true,
-        labels: {
-          style: {
-            colors: TV_COLORS.TEXT_COLOR,
-            fontSize: '10px',
-          },
-          formatter: (value) => value >= 1000000 
-            ? `${(value/1000000).toFixed(1)}M` 
-            : `${(value/1000).toFixed(0)}K`,
-        },
-      },
-    ],
-    grid: {
-      borderColor: TV_COLORS.GRID_COLOR,
-      strokeDashArray: 4,
-      xaxis: {
-        lines: {
-          show: false,
-        },
-      },
-    },
-    tooltip: {
-      enabled: true,
-      custom: ({ series, seriesIndex, dataPointIndex }) => {
-        const data = displayData[dataPointIndex];
-        if (!data) return '';
-        
-        return `
-          <div class="apexcharts-tooltip" style="
-            background: rgba(32, 34, 42, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 8px;
-            border-radius: 4px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            font-family: monospace;
-            font-size: 12px;
-          ">
-            <div style="font-weight: bold; margin-bottom: 4px;">
-              ${new Date(data.timestamp).toLocaleString()}
-            </div>
-            <div>O: ${formatPrice(data.open)}</div>
-            <div>H: ${formatPrice(data.high)}</div>
-            <div>L: ${formatPrice(data.low)}</div>
-            <div>C: ${formatPrice(data.close)}</div>
-            ${data.volume > 0 ? `<div>V: ${Math.round(data.volume/1000)}K</div>` : ''}
+  ],
+  grid: {
+    borderColor: TV_COLORS.GRID_COLOR, // ✅ Updates grid dynamically
+    strokeDashArray: 4,
+    xaxis: { lines: { show: false } },
+  },
+  tooltip: {
+    enabled: true,
+    theme: isDark ? 'dark' : 'light', // ✅ Tooltip theme updates dynamically
+    custom: ({ series, seriesIndex, dataPointIndex }) => {
+      const data = displayData[dataPointIndex];
+      if (!data) return '';
+
+      return `
+        <div style="
+          background: ${isDark ? 'rgba(32, 34, 42, 0.95)' : 'rgba(255, 255, 255, 0.95)'};
+          border: 1px solid ${isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
+          color: ${isDark ? 'white' : 'black'};
+          padding: 8px;
+          border-radius: 4px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+          font-family: monospace;
+          font-size: 12px;
+        ">
+          <div style="font-weight: bold; margin-bottom: 4px;">
+            ${new Date(data.timestamp).toLocaleString()}
           </div>
-        `;
-      },
+          <div>O: ${formatPrice(data.open)}</div>
+          <div>H: ${formatPrice(data.high)}</div>
+          <div>L: ${formatPrice(data.low)}</div>
+          <div>C: ${formatPrice(data.close)}</div>
+          ${data.volume > 0 ? `<div>V: ${Math.round(data.volume / 1000)}K</div>` : ''}
+        </div>
+      `;
     },
-  }), [displayData, windowSize.width]);
+  },
+}), [displayData, windowSize.width, isDark, TV_COLORS]);
 
   // Prepare series data for ApexCharts
   const chartSeries = useMemo(() => {
@@ -400,49 +325,6 @@ const TradingViewChart = () => {
 
     return [priceSeries, ...(showVolume ? [volumeSeries] : [])];
   }, [displayData, isLineChart, showVolume]);
-
-  // Generate fallback data
-  const generateFallbackData = () => {
-    const fallbackData = [];
-    const now = new Date();
-    const isCrypto = ['BTC', 'ETH', 'XRP', 'ADA', 'SOL', 'DOGE'].includes(selectedPair);
-    
-    // Base price logic
-    let basePrice = 100;
-    if (isCrypto) {
-      basePrice = selectedPair === 'BTC' ? 70000 : selectedPair === 'ETH' ? 3000 : 1;
-    }
-    
-    // Generate proper candles
-    const dataPoints = 100;
-    for (let i = dataPoints; i >= 0; i--) {
-      const date = new Date(now);
-      date.setHours(date.getHours() - i);
-      
-      const rangeFactor = isCrypto ? 0.02 : 0.005;
-      const trendFactor = 1 + Math.sin(i / 20) * 0.1;
-      const dayRate = basePrice * trendFactor;
-      
-      const open = dayRate * (1 + (Math.random() - 0.5) * rangeFactor);
-      const close = dayRate * (1 + (Math.random() - 0.5) * rangeFactor);
-      const high = Math.max(open, close) * (1 + Math.random() * rangeFactor);
-      const low = Math.min(open, close) * (1 - Math.random() * rangeFactor);
-      const volume = (1000000 + Math.random() * 9000000) * (isCrypto ? 5 : 1);
-      
-      fallbackData.push({
-        timestamp: date.getTime(),
-        date: date.toLocaleDateString(),
-        time: date.toLocaleTimeString(),
-        open,
-        high,
-        low,
-        close,
-        volume,
-      });
-    }
-    
-    return fallbackData;
-  };
 
 
   // Calculate price stats
@@ -544,8 +426,8 @@ const TradingViewChart = () => {
     alignItems: 'center',
     justifyContent: 'center',
     flexGrow: isMobile ? 1 : 0,
-    minWidth: isMobile ? '32px' : 'auto',
-    minHeight: isMobile ? '40px' : 'auto',
+    minWidth: isMobile ? '12px' : 'auto',
+    minHeight: isMobile ? '20px' : 'auto',
     touchAction: 'manipulation',
   });
 

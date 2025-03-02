@@ -63,8 +63,6 @@ import {
 
 // Components
 import Layout from '@/components/Layout';
-import ForexPairDisplay from '@/components/trading/ForexPairDisplay';
-import MarketTicker from '@/components/MarketTicker';
 
 const popularPairs = [
   { base: 'EUR', quote: 'USD', name: 'Euro / US Dollar' },
@@ -236,51 +234,9 @@ const ForexPage = () => {
         </Box>
 
         <Container maxW="7xl" py={16}>
-          {/* Live Market Ticker */}
-          <SlideFade in offsetY="30px">
-            <Box mb={16} display="flex" justifyContent="center">
-              <MarketTicker />
-            </Box>
-          </SlideFade>
-
-          {/* Forex Pairs Section */}
-          <SlideFade in offsetY="30px">
-            <Box
-              
-              p={{ base: 4, md: 8 }}
-              borderRadius="xl"
-              boxShadow={softShadow}
-              mb={16}
-            >
-              <Heading
-                fontSize={{ base: "xl", md: "2xl" }}
-                mb={6}
-                color={accentColor}
-                textAlign="center"
-              >
-                {t('forex.pairs.heading', 'Explore Forex Markets')}
-              </Heading>
-
-              
-                <ForexPairDisplay/>
-
-              <Flex justify="center" mt={6}>
-                <Button
-                  variant="outline"
-                  colorScheme="blue"
-                  rightIcon={<ChevronRightIcon />}
-                  onClick={() => router.push('/markets/currency-pairs')}
-                >
-                  {t('forex.pairs.viewAllButton', 'View All Currency Pairs')}
-                </Button>
-              </Flex>
-            </Box>
-          </SlideFade>
-
           {/* Trading Advantages */}
           <SlideFade in offsetY="30px">
             <Box
-              
               p={{ base: 4, md: 8 }}
               borderRadius="xl"
               boxShadow={softShadow}
@@ -300,7 +256,7 @@ const ForexPage = () => {
                   align="start"
                   spacing={4}
                   p={6}
-                  
+                  bg="gray.900"
                   borderRadius="lg"
                   borderLeft="4px solid"
                   borderColor={accentColor}
@@ -328,7 +284,7 @@ const ForexPage = () => {
                   align="start"
                   spacing={4}
                   p={6}
-                  
+                  bg="gray.900"
                   borderRadius="lg"
                   borderLeft="4px solid"
                   borderColor={accentColor}
@@ -356,7 +312,7 @@ const ForexPage = () => {
                   align="start"
                   spacing={4}
                   p={6}
-                  
+                  bg="gray.900"
                   borderRadius="lg"
                   borderLeft="4px solid"
                   borderColor={accentColor}
@@ -384,7 +340,7 @@ const ForexPage = () => {
                   align="start"
                   spacing={4}
                   p={6}
-                  
+                  bg="gray.900"
                   borderRadius="lg"
                   borderLeft="4px solid"
                   borderColor={accentColor}
@@ -412,7 +368,7 @@ const ForexPage = () => {
                   align="start"
                   spacing={4}
                   p={6}
-                  
+                  bg="gray.900"
                   borderRadius="lg"
                   borderLeft="4px solid"
                   borderColor={accentColor}
@@ -440,7 +396,7 @@ const ForexPage = () => {
                   align="start"
                   spacing={4}
                   p={6}
-                  
+                  bg="gray.900"
                   borderRadius="lg"
                   borderLeft="4px solid"
                   borderColor={accentColor}
@@ -581,6 +537,7 @@ const ForexPage = () => {
                       <Flex
                         minW={8}
                         h={8}
+                        bg="brand.bittrade.500"
                         color="white"
                         borderRadius="full"
                         justify="center"
@@ -599,6 +556,7 @@ const ForexPage = () => {
                       <Flex
                         minW={8}
                         h={8}
+                        bg="brand.bittrade.500"
                         color="white"
                         borderRadius="full"
                         justify="center"
@@ -636,6 +594,7 @@ const ForexPage = () => {
                       <Flex
                         minW={8}
                         h={8}
+                        bg="brand.bittrade.500"
                         color="white"
                         borderRadius="full"
                         justify="center"
@@ -859,62 +818,8 @@ const ForexPage = () => {
               </Flex>
             </Box>
           </SlideFade>
-
-          {/* CTA Section */}
-          <SlideFade in offsetY="30px">
-            <Box
-              p={{ base: 6, md: 12 }}
-              borderRadius="xl"
-              boxShadow="2xl"
-              mb={8}
-              textAlign="center"
-              position="relative"
-              overflow="hidden"
-            >
-              {/* Background pattern */}
-              <Box
-                position="absolute"
-                bottom="-50%"
-                right="-10%"
-                transform="rotate(45deg)"
-                w="60%"
-                h="200%"
-                opacity="0.2"
-                borderRadius="full"
-              />
-
-              <VStack spacing={6} position="relative" zIndex={2} >
-                <Heading size="xl">
-                  {t('forex.cta.heading', 'Ready to Trade the Global Currency Markets?')}
-                </Heading>
-                <Text fontSize={{ base: 'md', md: 'lg' }} maxW="800px">
-                  {t('forex.cta.description', 'Join thousands of traders worldwide who trust bittrade for their forex trading. Get started with as little as $100.')}
-                </Text>
-
-                <HStack spacing={4} pt={4}>
-                  <Button
-                    variant="bittrade-outline"
-                    rightIcon={<ArrowForwardIcon />}
-                    onClick={() => router.push('/signup/trader')}
-                  >
-                    {t('forex.cta.accountButton', 'Open Live Account')}
-                  </Button>
-                  <Button
-                    variant="bittrade-outline"
-                    onClick={() => router.push('/demo')}
-                  >
-                    {t('forex.cta.demoButton', 'Try Demo Account')}
-                  </Button>
-                </HStack>
-
-                <Text fontSize="sm" opacity={0.8} mt={4}>
-                  {t('forex.cta.disclaimer', 'Forex trading involves significant risk. Only trade with capital you can afford to lose.')}
-                </Text>
-              </VStack>
-            </Box>
-          </SlideFade>
-
-          {/* Education and Resources */}
+          
+           {/* Education and Resources */}
           <SlideFade in offsetY="30px">
             <Box
               p={{ base: 4, md: 8 }}
@@ -979,6 +884,83 @@ const ForexPage = () => {
               </SimpleGrid>
             </Box>
           </SlideFade>
+
+          {/* CTA Section */}
+          <SlideFade in offsetY="30px">
+            <Box
+              p={{ base: 6, md: 12 }}
+              borderRadius="xl"
+              boxShadow="2xl"
+              mb={8}
+              bg="brand.bittrade.400"
+              textAlign="center"
+              position="relative"
+              overflow="hidden"
+            >
+                 <Box
+                position="absolute"
+                top="-10%"
+                right="-5%"
+                w="30%"
+                h="120%"
+                bg="purple.900"
+                opacity="0.3"
+                transform="rotate(15deg)"
+                zIndex={0}
+              />
+              <Box
+                position="absolute"
+                bottom="-20%"
+                left="-10%"
+                w="40%"
+                h="140%"
+                bg="purple.300"
+                opacity="0.4"
+                transform="rotate(-20deg)"
+                zIndex={0}
+              />
+              {/* Background pattern */}
+              <Box
+                position="absolute"
+                bottom="-50%"
+                right="-10%"
+                transform="rotate(45deg)"
+                w="60%"
+                h="200%"
+                opacity="0.2"
+                borderRadius="full"
+              />
+
+              <VStack spacing={6} position="relative" zIndex={2} >
+                <Heading size="xl">
+                  {t('forex.cta.heading', 'Ready to Trade the Global Currency Markets?')}
+                </Heading>
+                <Text fontSize={{ base: 'md', md: 'lg' }} maxW="800px">
+                  {t('forex.cta.description', 'Join thousands of traders worldwide who trust bittrade for their forex trading. Get started with as little as $100.')}
+                </Text>
+
+                <HStack spacing={4} pt={4}>
+                  <Button
+                    variant="bittrade-solid"
+                    rightIcon={<ArrowForwardIcon />}
+                    onClick={() => router.push('/signup/trader')}
+                  >
+                    {t('forex.cta.accountButton', 'Open Live Account')}
+                  </Button>
+                  <Button
+                    variant="bittrade-solid"
+                    onClick={() => router.push('/demo')}
+                  >
+                    {t('forex.cta.demoButton', 'Try Demo Account')}
+                  </Button>
+                </HStack>
+
+                <Text fontSize="sm" opacity={0.8} mt={4}>
+                  {t('forex.cta.disclaimer', 'Forex trading involves significant risk. Only trade with capital you can afford to lose.')}
+                </Text>
+              </VStack>
+            </Box>
+          </SlideFade>         
         </Container>
       </Box>
     </Layout>
