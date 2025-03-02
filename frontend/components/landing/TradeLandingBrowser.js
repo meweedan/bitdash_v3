@@ -105,7 +105,7 @@ const TradeLandingBrowser = () => {
     },
     {
       icon: FaChartLine,
-      title: 'Indices & Stocks',
+      title: 'Stocks',
       description: 'Diversify with global indices and stocks from US, EU, and Asian markets',
       highlights: ['0% commission on stocks', 'Fractional shares available', 'Extended market hours'],
       color: 'brand.bittrade.400'
@@ -166,12 +166,6 @@ const TradeLandingBrowser = () => {
       license: 'AFSL No. 417727',
       country: 'Australia',
       logo: '/images/regulatory/asic-logo.png'
-    },
-    {
-      authority: 'Dubai Financial Services Authority (DFSA)',
-      license: 'License No. F003456',
-      country: 'UAE',
-      logo: '/images/regulatory/dfsa-logo.png'
     }
   ];
 
@@ -179,7 +173,7 @@ const TradeLandingBrowser = () => {
   const accountTypes = [
     {
       name: 'Standard',
-      minDeposit: '$100',
+      minDeposit: '$150',
       spread: 'From 1.0 pips',
       leverage: 'Up to 1:200',
       features: ['100+ trading instruments', '24/5 support', 'Standard execution'],
@@ -188,7 +182,7 @@ const TradeLandingBrowser = () => {
     },
     {
       name: 'Premium',
-      minDeposit: '$1,000',
+      minDeposit: '$5,000',
       spread: 'From 0.5 pips',
       leverage: 'Up to 1:300',
       features: ['100+ trading instruments', '24/5 dedicated support', 'Priority execution'],
@@ -198,7 +192,7 @@ const TradeLandingBrowser = () => {
     },
     {
       name: 'Professional',
-      minDeposit: '$10,000',
+      minDeposit: '$25,000',
       spread: 'From 0.1 pips',
       leverage: 'Up to 1:500',
       features: ['All available instruments', '24/7 personal account manager', 'Ultra-fast execution'],
@@ -207,7 +201,7 @@ const TradeLandingBrowser = () => {
     },
     {
       name: 'Institutional',
-      minDeposit: '$50,000',
+      minDeposit: '$100,000',
       spread: 'Raw spreads',
       leverage: 'Customized',
       features: ['All available instruments', 'API trading', 'Custom solutions'],
@@ -315,7 +309,6 @@ const TradeLandingBrowser = () => {
                 <TabList mb={6} justifyContent="center">
                   <Tab>Forex</Tab>
                   <Tab>Crypto</Tab>
-                  <Tab>Platform</Tab>
                 </TabList>
                 <TabPanels>
                   <TabPanel>
@@ -324,17 +317,15 @@ const TradeLandingBrowser = () => {
                   <TabPanel>
                     <CryptoMarketplace />
                   </TabPanel>
-                  <TabPanel>
-                    <TradingPlatformPreview />
-                  </TabPanel>
                 </TabPanels>
               </Tabs>
+              <TradingPlatformPreview />
             </Box>
           </Flex>
         </motion.div>
 
         {/* Trading Products */}
-        <Box mt={24}>
+        <Box >
           <Heading
             textAlign="center"
             mb={12}

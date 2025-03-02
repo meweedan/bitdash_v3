@@ -513,7 +513,7 @@ const ChallengePage = () => {
                     <Heading size="md" mb={2}>
                       Islamic Accounts Available
                     </Heading>
-                    <Text>Sharia-Compliant</Text>
+                    <Text>Shariah-Compliant</Text>
                     <Badge colorScheme="green" mt={2} py={1} px={2}>No Swap Fees</Badge>
                   </Box>
                   
@@ -522,7 +522,7 @@ const ChallengePage = () => {
                       Trading in Compliance with Islamic Finance Principles
                     </Heading>
                     <Text mb={4}>
-                      BitFund offers fully Sharia-compliant trading accounts that adhere to Islamic finance principles.
+                      BitFund offers fully Shariah-compliant trading accounts that adhere to Islamic finance principles.
                       Our Islamic accounts feature:
                     </Text>
                     <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={3}>

@@ -113,8 +113,8 @@ function LearnPage() {
 
   return (
     <Layout>
-      <Box bg={bgGradient} overflow="hidden" minH="100vh" textAlign={locale === 'ar' ? 'right' : 'left'}>
-        <Container maxW="7xl" pt={{ base: 4, md: 8 }} px={{ base: 4, md: 8 }}>
+      <Box bg={bgGradient} overflow="hidden" textAlign={locale === 'ar' ? 'right' : 'left'}>
+        <Container maxW="7xl" pt={{ base: 4, md: 4 }} px={{ base: 4, md: 2 }}>
           {/* HERO SECTION */}
           <SlideFade in offsetY="20px">
             <Flex

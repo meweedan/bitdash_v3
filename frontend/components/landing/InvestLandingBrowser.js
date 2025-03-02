@@ -641,10 +641,7 @@ const BitInvestLanding = () => {
             </Text>
             <HStack spacing={4}>
               <Button
-                size="lg"
-                px={8}
                 h={14}
-                fontSize="lg"
                 variant="bitinvest-solid"
                 leftIcon={<FaUserTie />}
                 onClick={() => router.push('/signup')}
@@ -652,11 +649,8 @@ const BitInvestLanding = () => {
                 {t('invest.cta.button', 'Create Account')}
               </Button>
               <Button
-                size="lg"
                 variant="bitinvest-solid"
-                px={8}
                 h={14}
-                fontSize="lg"
                 leftIcon={<FaHandshake />}
                 onClick={() => router.push('/demo')}
               >

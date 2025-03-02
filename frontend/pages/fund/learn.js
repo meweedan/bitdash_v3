@@ -97,15 +97,15 @@ const LearnPage = () => {
     },
     {
       question: "What makes BitFund's Islamic accounts different?",
-      answer: "BitFund's Islamic accounts are fully Sharia-compliant, meaning they operate without interest (riba), excessive uncertainty (gharar), or gambling elements (maysir). Our accounts have no overnight swap fees or interest charges, ensure immediate settlement of trades, and avoid prohibited assets according to Islamic finance principles."
+      answer: "BitFund's Islamic accounts are fully Shariah-compliant, meaning they operate without interest (riba), excessive uncertainty (gharar), or gambling elements (maysir). Our accounts have no overnight swap fees or interest charges, ensure immediate settlement of trades, and avoid prohibited assets according to Islamic finance principles."
     },
     {
       question: "What trading instruments can I trade with BitFund?",
-      answer: "BitFund offers trading in Sharia-compliant instruments including select forex pairs, commodities like gold and silver, ethical stocks (avoiding industries like alcohol, gambling, and conventional banking), and Sukuk (Islamic bonds). All instruments are carefully vetted for compliance with Islamic finance principles."
+      answer: "BitFund offers trading in Shariah-compliant instruments including select forex pairs, commodities like gold and silver, ethical stocks (avoiding industries like alcohol, gambling, and conventional banking), and Sukuk (Islamic bonds). All instruments are carefully vetted for compliance with Islamic finance principles."
     },
     {
-      question: "How does BitFund ensure Sharia compliance?",
-      answer: "BitFund maintains a Sharia Supervisory Board of qualified scholars who review all trading conditions, accounts, and practices. We undergo regular audits, maintain transparent fee structures without hidden costs, and ensure all operations follow Islamic financial principles including fair risk-sharing and ethical investment."
+      question: "How does BitFund ensure Shariah compliance?",
+      answer: "BitFund maintains a Shariah Supervisory Board of qualified scholars who review all trading conditions, accounts, and practices. We undergo regular audits, maintain transparent fee structures without hidden costs, and ensure all operations follow Islamic financial principles including fair risk-sharing and ethical investment."
     },
     {
       question: "What are the profit-sharing arrangements?",
@@ -116,7 +116,7 @@ const LearnPage = () => {
   const isalmicFeatures = [
     {
       icon: FaMosque,
-      title: "Sharia-Compliant Trading",
+      title: "Shariah-Compliant Trading",
       description: "All BitFund accounts are structured to be fully compliant with Islamic finance principles, avoiding riba (interest), gharar (excessive uncertainty), and maysir (gambling elements)."
     },
     {
@@ -132,7 +132,7 @@ const LearnPage = () => {
     {
       icon: FaShieldAlt,
       title: "Ethical Instrument Selection",
-      description: "Trade with confidence knowing all available instruments have been vetted for Sharia compliance by qualified scholars on our Sharia Supervisory Board."
+      description: "Trade with confidence knowing all available instruments have been vetted for Shariah compliance by qualified scholars on our Shariah Supervisory Board."
     },
     {
       icon: FaBalanceScale,
@@ -215,7 +215,7 @@ const LearnPage = () => {
                 Understanding Proprietary Trading & BitFund's Islamic Advantage
               </Heading>
               <Text fontSize={{ base: "lg", md: "xl" }} opacity={0.8} maxW="3xl" px={{ base: 2, md: 0 }}>
-                Discover how proprietary trading firms work, how you can access significant capital by proving your skills, and why BitFund's Sharia-compliant approach offers unique advantages for Muslim traders.
+                Discover how proprietary trading firms work, how you can access significant capital by proving your skills, and why BitFund's Shariah-compliant approach offers unique advantages for Muslim traders.
               </Text>
             </VStack>
           </Flex>
@@ -451,7 +451,7 @@ const LearnPage = () => {
           </Heading>
           
           <Text fontSize={{ base: "md", md: "lg" }} mb={8}>
-            BitFund stands apart from other proprietary trading firms by offering fully Sharia-compliant trading accounts and conditions. Our commitment to Islamic finance principles ensures that Muslim traders can pursue their trading careers without compromising their religious values.
+            BitFund stands apart from other proprietary trading firms by offering fully Shariah-compliant trading accounts and conditions. Our commitment to Islamic finance principles ensures that Muslim traders can pursue their trading careers without compromising their religious values.
           </Text>
           
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mb={10}>
@@ -511,7 +511,7 @@ const LearnPage = () => {
           </Box>
           
           <Text fontSize={{ base: "md", md: "lg" }} fontWeight="medium" textAlign="center" mb={8}>
-            BitFund's services are overseen by a qualified Sharia Supervisory Board that ensures all aspects of our operations remain compliant with Islamic financial principles.
+            BitFund's services are overseen by a qualified Shariah Supervisory Board that ensures all aspects of our operations remain compliant with Islamic financial principles.
           </Text>
         </Box>
 
@@ -570,7 +570,7 @@ const LearnPage = () => {
         >
           <VStack spacing={{ base: 4, md: 6 }}>
             <Heading size={{ base: "lg", md: "xl" }}>
-              Ready to Start Your Sharia-Compliant Trading Journey?
+              Ready to Start Your Shariah-Compliant Trading Journey?
             </Heading>
             <Text fontSize={{ base: "md", md: "lg" }} maxW="2xl">
               Join BitFund today and experience the perfect balance of Islamic finance principles and professional trading opportunities. Our challenges provide a clear path to becoming a funded trader while respecting your religious values.

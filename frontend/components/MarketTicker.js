@@ -101,7 +101,6 @@ const MarketTicker = () => {
     { id: 'all', label: t('ticker.category.all', 'All'), icon: FaChartLine },
     { id: 'forex', label: t('ticker.category.forex', 'Forex'), icon: FaDollarSign },
     { id: 'crypto', label: t('ticker.category.crypto', 'Crypto'), icon: FaCoins },
-    { id: 'indices', label: t('ticker.category.indices', 'Indices'), icon: FaChartLine },
     { id: 'commodities', label: t('ticker.category.commodities', 'Commodities'), icon: FaOilCan }
   ];
 
@@ -132,7 +131,7 @@ const MarketTicker = () => {
         const data = await response.json();
         
         // Extract data for each category
-        for (const category of ['indices', 'forex', 'crypto', 'commodities']) {
+        for (const category of ['forex', 'crypto', 'commodities']) {
           if (data[category] && Array.isArray(data[category])) {
             for (const item of data[category]) {
               marketSummaryData.push({
@@ -246,10 +245,6 @@ const MarketTicker = () => {
         } else {
           // If both files don't exist, look for individual asset files
           const assetSymbols = [
-            // Indices
-            { symbol: '^GSPC', name: 'S&P 500', category: 'indices' },
-            { symbol: '^DJI', name: 'DOW JONES', category: 'indices' },
-            { symbol: '^IXIC', name: 'NASDAQ', category: 'indices' },
             // Forex
             { symbol: 'EURUSD', name: 'EUR/USD', category: 'forex' },
             { symbol: 'GBPUSD', name: 'GBP/USD', category: 'forex' },
@@ -305,11 +300,6 @@ const MarketTicker = () => {
         }
       }
       
-      // If we still don't have data, use fallback data
-      if (marketSummaryData.length === 0) {
-        marketSummaryData = getFallbackData();
-      }
-      
       setMarketData(marketSummaryData);
       setLastUpdated(new Date());
       
@@ -324,9 +314,6 @@ const MarketTicker = () => {
         duration: 5000,
         isClosable: true,
       });
-      
-      // Set some fallback data
-      setMarketData(getFallbackData());
       
     } finally {
       setIsLoading(false);
@@ -430,72 +417,6 @@ const TickerItem = ({ market }) => (
     </VStack>
   </Flex>
 );
-
-  // Get fallback data in case of API error
-  const getFallbackData = () => {
-    return [
-      { 
-        name: 'S&P 500', 
-        symbol: 'SPX', 
-        value: '4,873.12', 
-        change: '+0.45%', 
-        positive: true, 
-        category: 'indices',
-        details: {
-          open: 4850.23,
-          high: 4880.45,
-          low: 4845.67,
-          volume: 2456789,
-          prevClose: 4851.32
-        }
-      },
-      { 
-        name: 'BTC/USD', 
-        symbol: 'BTC/USD', 
-        value: '$61,247.80', 
-        change: '+2.14%', 
-        positive: true, 
-        category: 'crypto',
-        details: {
-          open: 59872.45,
-          high: 61500.00,
-          low: 59650.30,
-          volume: 32567890000,
-          marketCap: 1175000000000
-        }
-      },
-      { 
-        name: 'EUR/USD', 
-        symbol: 'EUR/USD', 
-        value: '1.0864', 
-        change: '+0.12%', 
-        positive: true, 
-        category: 'forex',
-        details: {
-          open: 1.0850,
-          high: 1.0870,
-          low: 1.0845,
-          volume: 98765432,
-          spread: 0.00015
-        }
-      },
-      { 
-        name: 'Gold', 
-        symbol: 'XAU', 
-        value: '$2,345.60/oz', 
-        change: '+0.83%', 
-        positive: true, 
-        category: 'commodities',
-        details: {
-          open: 2325.75,
-          high: 2350.30,
-          low: 2320.45,
-          volume: 145678,
-          contract: 'Spot'
-        }
-      }
-    ];
-  };
 
   // Handle ticker item long press
   const handleTouchStart = (ticker) => {

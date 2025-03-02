@@ -20,7 +20,6 @@ import {
   TabList,
   Tab,
 } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
 import { FaArrowUp, FaArrowDown, FaStar } from 'react-icons/fa';
 
 const ForexPairDisplay = () => {
@@ -34,79 +33,82 @@ const ForexPairDisplay = () => {
   const borderColor = useColorModeValue('gray.200', 'gray.600');
   const hoverBg = useColorModeValue('blue.50', 'blue.900');
 
-  // Generate demo forex data
-  useEffect(() => {
-    const majorPairs = [
-      { pair: 'EUR/USD', bid: 1.0864, ask: 1.0867, spread: 0.3, change: 0.12, isUp: true, popular: true },
-      { pair: 'GBP/USD', bid: 1.2683, ask: 1.2687, spread: 0.4, change: -0.34, isUp: false, popular: true },
-      { pair: 'USD/JPY', bid: 153.42, ask: 153.45, spread: 0.3, change: -0.21, isUp: false, popular: true },
-      { pair: 'USD/CHF', bid: 0.9045, ask: 0.9048, spread: 0.3, change: 0.15, isUp: true, popular: false },
-      { pair: 'USD/CAD', bid: 1.3652, ask: 1.3655, spread: 0.3, change: -0.18, isUp: false, popular: false },
-      { pair: 'AUD/USD', bid: 0.6527, ask: 0.6530, spread: 0.3, change: 0.24, isUp: true, popular: true },
-      { pair: 'NZD/USD', bid: 0.6075, ask: 0.6079, spread: 0.4, change: 0.35, isUp: true, popular: false }
-    ];
-    
-    const minorPairs = [
-      { pair: 'EUR/GBP', bid: 0.8565, ask: 0.8569, spread: 0.4, change: 0.28, isUp: true, popular: false },
-      { pair: 'EUR/JPY', bid: 166.67, ask: 166.72, spread: 0.5, change: -0.11, isUp: false, popular: true },
-      { pair: 'GBP/JPY', bid: 194.58, ask: 194.64, spread: 0.6, change: -0.54, isUp: false, popular: true },
-      { pair: 'CHF/JPY', bid: 169.61, ask: 169.67, spread: 0.6, change: -0.32, isUp: false, popular: false },
-      { pair: 'GBP/AUD', bid: 1.9428, ask: 1.9434, spread: 0.6, change: -0.47, isUp: false, popular: false },
-      { pair: 'EUR/AUD', bid: 1.6643, ask: 1.6648, spread: 0.5, change: -0.19, isUp: false, popular: false },
-      { pair: 'EUR/CAD', bid: 1.4825, ask: 1.4830, spread: 0.5, change: 0.08, isUp: true, popular: false }
-    ];
-    
-    const exoticPairs = [
-      { pair: 'USD/TRY', bid: 32.458, ask: 32.478, spread: 2.0, change: 0.65, isUp: true, popular: true },
-      { pair: 'USD/ZAR', bid: 18.742, ask: 18.762, spread: 2.0, change: -0.42, isUp: false, popular: false },
-      { pair: 'USD/MXN', bid: 16.938, ask: 16.958, spread: 2.0, change: 0.18, isUp: true, popular: true },
-      { pair: 'USD/SGD', bid: 1.3427, ask: 1.3432, spread: 0.5, change: -0.11, isUp: false, popular: false },
-      { pair: 'USD/HKD', bid: 7.8164, ask: 7.8169, spread: 0.5, change: 0.01, isUp: true, popular: false },
-      { pair: 'EUR/PLN', bid: 4.3065, ask: 4.3085, spread: 2.0, change: 0.24, isUp: true, popular: false },
-      { pair: 'GBP/ZAR', bid: 23.772, ask: 23.792, spread: 2.0, change: -0.75, isUp: false, popular: false }
-    ];
-    
-    const categories = {
-      major: majorPairs,
-      minor: minorPairs,
-      exotic: exoticPairs
-    };
-    
-    setForexData(categories);
-    
-    // Simulate data updates
-    const interval = setInterval(() => {
-      setForexData(prevData => {
-        const updatePairs = (pairs) => {
-          return pairs.map(pair => {
-            // Small random change
-            const bidChange = (Math.random() - 0.5) * 0.0008;
-            const newBid = parseFloat((pair.bid + bidChange).toFixed(4));
-            const newAsk = parseFloat((newBid + pair.spread / 10000).toFixed(4));
-            
-            // Calculate change percentage for 24h
-            const changePercentage = (Math.random() - 0.5) * 0.2;
-            const newChange = parseFloat((pair.change + changePercentage).toFixed(2));
-            const isUp = newChange >= 0;
-            
-            return {
-              ...pair,
-              bid: newBid,
-              ask: newAsk,
-              change: newChange,
-              isUp
-            };
+  // Mappings for each forex category.
+  // Adjust file names if necessary to match your public/chart-data folder.
+  const majorMapping = {
+    'EUR/USD': 'EURUSD_1d.json',
+    'GBP/USD': 'GBPUSD_1d.json',
+    'USD/JPY': 'USDJPY_1d.json',
+    'USD/CHF': 'USDCHF_1h.json',
+    'USD/CAD': 'USDCAD_1d.json',
+    'AUD/USD': 'AUDUSD_1d.json',
+    'NZD/USD': 'NZDUSD_1d.json',
+  };
+
+  const minorMapping = {
+    'EUR/GBP': 'EURGBP_1h.json',
+    'EUR/JPY': 'EURJPY_1h.json',
+    'GBP/JPY': 'GBPJPY_1d.json',
+    'CHF/JPY': 'CHFJPY_1d.json',
+    'GBP/AUD': 'GBPAUD_1d.json',
+    'EUR/AUD': 'EURAUD_1d.json',
+    'EUR/CAD': 'EURUSD_1d.json', // fallback if no dedicated file exists
+  };
+
+  const exoticMapping = {
+    'USD/TRY': 'USDTRY_1d.json',
+    'USD/ZAR': 'USDZAR_1d.json',
+    'USD/MXN': 'MXN_1d.json',
+    'USD/SGD': 'USDSGD_1d.json',
+    'USD/HKD': 'HKD_1d.json',
+    'EUR/PLN': 'EURPLN_1d.json',
+    'GBP/ZAR': 'GBPZAR_1d.json',
+  };
+
+  // Helper function to fetch data for a given mapping.
+  // Assumes each JSON file contains an array of candles.
+  const fetchDataForMapping = async (mapping) => {
+    const entries = Object.entries(mapping);
+    const dataArray = [];
+    for (const [pair, file] of entries) {
+      try {
+        const res = await fetch(`/chart-data/${file}`);
+        const json = await res.json();
+        if (Array.isArray(json) && json.length > 0) {
+          const latest = json[json.length - 1]; // Get the most recent data point
+          dataArray.push({
+            pair,
+            // Use open and close values from the candle; you can adjust as needed.
+            bid: latest.open,
+            ask: latest.close,
+            // Calculate spread in pips (assumes a 4-decimal format for most pairs)
+            spread: parseFloat(((latest.close - latest.open) * 10000).toFixed(1)),
+            change: parseFloat((((latest.close - latest.open) / latest.open) * 100).toFixed(2)),
+            isUp: latest.close >= latest.open,
+            popular: false, // Set manually if needed.
           });
-        };
-        
-        return {
-          major: updatePairs(prevData.major),
-          minor: updatePairs(prevData.minor),
-          exotic: updatePairs(prevData.exotic)
-        };
+        }
+      } catch (error) {
+        console.error(`Error fetching data for ${pair} from ${file}:`, error);
+      }
+    }
+    return dataArray;
+  };
+
+  useEffect(() => {
+    const fetchAllData = async () => {
+      const majorData = await fetchDataForMapping(majorMapping);
+      const minorData = await fetchDataForMapping(minorMapping);
+      const exoticData = await fetchDataForMapping(exoticMapping);
+      setForexData({
+        major: majorData,
+        minor: minorData,
+        exotic: exoticData,
       });
-    }, 2000);
-    
+    };
+
+    fetchAllData();
+    const interval = setInterval(fetchAllData, 5000); // Refresh data every 5 seconds
     return () => clearInterval(interval);
   }, []);
 
@@ -119,19 +121,14 @@ const ForexPairDisplay = () => {
     }
   };
 
-  // Current pairs to display based on category
+  // Determine which pairs to display based on the selected category or favorites.
   const displayPairs = favoriteMode 
-    ? [...forexData.major, ...forexData.minor, ...forexData.exotic].filter(pair => favorites.includes(pair.pair))
+    ? [...(forexData.major || []), ...(forexData.minor || []), ...(forexData.exotic || [])].filter(pair => favorites.includes(pair.pair))
     : forexData[category] || [];
 
   return (
     <Box>
-      <Flex
-        justify="space-between"
-        align="center"
-        mb={4}
-        wrap={{ base: 'wrap', md: 'nowrap' }}
-      >
+      <Flex justify="space-between" align="center" mb={4} wrap={{ base: 'wrap', md: 'nowrap' }}>
         <Tabs 
           variant="soft-rounded" 
           colorScheme="blue" 
@@ -160,12 +157,7 @@ const ForexPairDisplay = () => {
         </Button>
       </Flex>
       
-      <Box
-        borderRadius="md"
-        borderWidth="1px"
-        borderColor={borderColor}
-        overflow="hidden"
-      >
+      <Box borderRadius="md" borderWidth="1px" borderColor={borderColor} overflow="hidden">
         <Table variant="simple" size="sm">
           <Thead bg={headerBg}>
             <Tr>
@@ -179,20 +171,10 @@ const ForexPairDisplay = () => {
           </Thead>
           <Tbody>
             {displayPairs.map((pair, index) => (
-              <Tr 
-                key={index}
-                bg={tableBg}
-                _hover={{ bg: hoverBg }}
-                transition="background 0.2s"
-              >
+              <Tr key={index} bg={tableBg} _hover={{ bg: hoverBg }} transition="background 0.2s">
                 <Td fontWeight="medium">
                   <HStack>
                     <Text>{pair.pair}</Text>
-                    {pair.popular && (
-                      <Badge size="sm" colorScheme="green" variant="subtle">
-                        Popular
-                      </Badge>
-                    )}
                   </HStack>
                 </Td>
                 <Td isNumeric fontFamily="mono">{pair.bid.toFixed(4)}</Td>
@@ -200,17 +182,8 @@ const ForexPairDisplay = () => {
                 <Td isNumeric>{pair.spread.toFixed(1)}</Td>
                 <Td isNumeric>
                   <Flex align="center" justify="flex-end">
-                    <Badge
-                      colorScheme={pair.isUp ? "green" : "red"}
-                      variant="subtle"
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Icon 
-                        as={pair.isUp ? FaArrowUp : FaArrowDown} 
-                        boxSize={2} 
-                        mr={1} 
-                      />
+                    <Badge colorScheme={pair.isUp ? "green" : "red"} variant="subtle" display="flex" alignItems="center">
+                      <Icon as={pair.isUp ? FaArrowUp : FaArrowDown} boxSize={2} mr={1} />
                       {pair.change}%
                     </Badge>
                   </Flex>
@@ -242,49 +215,25 @@ const ForexPairDisplay = () => {
       </Box>
       
       <SimpleGrid columns={{ base: 2, md: 4 }} spacing={4} mt={6}>
-        <Box
-          p={3}
-          bg={tableBg}
-          borderRadius="md"
-          borderWidth="1px"
-          borderColor={borderColor}
-        >
+        <Box p={3} bg={tableBg} borderRadius="md" borderWidth="1px" borderColor={borderColor}>
           <VStack spacing={1} align="start">
             <Text fontSize="xs" color="gray.500">Trading Hours</Text>
             <Text fontWeight="bold">24/5</Text>
           </VStack>
         </Box>
-        <Box
-          p={3}
-          bg={tableBg}
-          borderRadius="md"
-          borderWidth="1px"
-          borderColor={borderColor}
-        >
+        <Box p={3} bg={tableBg} borderRadius="md" borderWidth="1px" borderColor={borderColor}>
           <VStack spacing={1} align="start">
             <Text fontSize="xs" color="gray.500">Min. Spread</Text>
             <Text fontWeight="bold">0.1 pips</Text>
           </VStack>
         </Box>
-        <Box
-          p={3}
-          bg={tableBg}
-          borderRadius="md"
-          borderWidth="1px"
-          borderColor={borderColor}
-        >
+        <Box p={3} bg={tableBg} borderRadius="md" borderWidth="1px" borderColor={borderColor}>
           <VStack spacing={1} align="start">
             <Text fontSize="xs" color="gray.500">Max. Leverage</Text>
             <Text fontWeight="bold">1:500</Text>
           </VStack>
         </Box>
-        <Box
-          p={3}
-          bg={tableBg}
-          borderRadius="md"
-          borderWidth="1px"
-          borderColor={borderColor}
-        >
+        <Box p={3} bg={tableBg} borderRadius="md" borderWidth="1px" borderColor={borderColor}>
           <VStack spacing={1} align="start">
             <Text fontSize="xs" color="gray.500">Commission</Text>
             <Text fontWeight="bold">Zero</Text>

@@ -465,7 +465,6 @@ const Contact = () => {
                           type="submit"
                           size="lg"
                           variant={`${themeKey}-outline`}
-                          color={themeKey}
                           isLoading={isSending}
                           loadingText={t('sending', 'Sending...')}
                           rightIcon={<FaArrowRight />}

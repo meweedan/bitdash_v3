@@ -34,7 +34,7 @@ export default function Header() {
   const [showPlatforms, setShowPlatforms] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [platform, setPlatform] = useState('bitdash');
-  const accentColor = `brand.${platform}.700`;
+  const accentColor = `brand.${platform}.400`;
   
   // Always show announcements for these platforms
   const showAnnouncements = platform === 'bittrade' || platform === 'bitinvest' || platform === 'bitfund' || platform === 'bitcash';
@@ -279,7 +279,7 @@ export default function Header() {
           gap={4}
         >
           <LanguageSwitcher 
-            color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
+            color={isDark ? `brand.${platform}.400` : `brand.${platform}.400`}
             sx={{
               '.chakra-select__wrapper::after': { display: 'none' },
               select: {
