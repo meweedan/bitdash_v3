@@ -89,7 +89,7 @@ import {
   SiAmazon, 
   SiTesla, 
   SiGoogle, 
-  SiCoca
+  SiCocacola
 } from 'react-icons/si';
 
 // Components
@@ -133,7 +133,7 @@ const popularStocks = [
   { 
     symbol: 'KO', 
     name: 'Coca-Cola', 
-    icon: SiCoca,
+    icon: SiCocacola,
     description: 'Beverage company with halal products and Shariah-compliant financial ratios' 
   },
 ];
