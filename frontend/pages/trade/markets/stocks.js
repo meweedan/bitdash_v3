@@ -15,6 +15,12 @@ import {
   useColorModeValue,
   Flex,
   Icon,
+  Table,
+  Thead,
+  Tr,
+  Th,
+  Tbody,
+  Td,
   Button,
   Badge,
   Stat,
@@ -88,9 +94,9 @@ import {
 
 // Components
 import Layout from '@/components/Layout';
-import StockMarketplace from '@/components/trading/StockMarketplace';
+import AdvancedForexChart from '@/components/cash/AdvancedForexChart';
 import MarketTicker from '@/components/MarketTicker';
-import StockMatrix from '@/components/StockMatrix';
+import CryptoMatrix from '@/components/CryptoMatrix';
 
 // List of popular stocks to feature (Shariah-compliant)
 const popularStocks = [
@@ -254,7 +260,7 @@ const StocksPage = () => {
                           alignItems="center"
                           justifyContent="center"
                         >
-                          <StockMatrix/>
+                          <CryptoMatrix/>
                         </Box>
                       }
                       borderRadius="xl"
@@ -287,7 +293,7 @@ const StocksPage = () => {
                 {t('stocks.marketplace.heading', 'Explore Shariah-Compliant Stocks')}
               </Heading>
 
-              <StockMarketplace />
+              <AdvancedForexChart />
 
             </Box>
           </SlideFade>
