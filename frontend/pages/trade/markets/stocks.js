@@ -203,16 +203,6 @@ const StocksPage = () => {
               <GridItem>
                 <SlideFade in offsetY="20px">
                   <VStack spacing={6} align={locale === 'ar' ? 'end' : 'start'} textAlign={locale === 'ar' ? 'right' : 'left'}>
-                    <Badge
-                      colorScheme="green"
-                      px={3}
-                      py={1}
-                      borderRadius="full"
-                      textTransform="none"
-                      fontSize="md"
-                    >
-                      {t('stocks.hero.badge', 'Shariah-Compliant Investing')}
-                    </Badge>
                     <Heading
                       fontSize={headingSize}
                       lineHeight="1.1"
