@@ -120,6 +120,12 @@
     },
     "notes": {
       "type": "text"
+    },
+    "challenge": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::challenge.challenge",
+      "mappedBy": "prop-trader"
     }
   }
 }
