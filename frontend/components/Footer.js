@@ -109,8 +109,8 @@ const Footer = () => {
   const mobileMenuItems = {
     main: [
       { label: 'About Us', href: '/about', icon: Info },
-      { label: 'Privacy', href: '/privacy', icon: Shield },
-      { label: 'Terms', href: '/terms', icon: FileText },
+      { label: 'Privacy', href: '/policies/privacy', icon: Shield },
+      { label: 'Terms', href: '/policies/terms', icon: FileText },
     ],
     fund: [
       { label: 'Funding Plans', href: '/fund/plans', icon: DollarSign },

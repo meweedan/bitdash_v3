@@ -463,24 +463,18 @@ export default function TraderSignup() {
         throw new Error(t('customerProfileCreationFailed'));
       }
 
-       // 4. Update user with profile relation
-      const updateUserResponse = await fetch(`${BASE_URL}/api/users/${userData.user.id}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${userData.jwt}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          customer_profile: profileData.data.id,
-          role: ROLES.RETAIL_TRADER
-        })
-      });
+       // 4. Update user with retail trader role
+        await fetch(`${API_URL}/api/users/${user.id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwt}`
+          },
+          body: JSON.stringify({ role: 17 })
+        });
 
-      if (!updateUserResponse.ok) {
-        throw new Error(t('userUpdateFailed'));
-      }
 
-      // 4. Create wallet for the trader
+      // 5. Create wallet for the trader
       const walletPayload = {
         data: {
           balance: 0,
@@ -508,7 +502,7 @@ export default function TraderSignup() {
         throw new Error(t('walletCreationFailed'));
       }
 
-      // 5. Upload avatar if selected
+      // 6. Upload avatar if selected
       if (formData.avatar) {
         const avatarFormData = new FormData();
         avatarFormData.append('files', formData.avatar);
@@ -530,7 +524,7 @@ export default function TraderSignup() {
         }
       }
 
-      // 6. Update retail trader with wallet relation
+      // 7. Update retail trader with wallet relation
       await fetch(`${BASE_URL}/api/retail-traders/${retailTraderData.data.id}`, {
         method: 'PUT',
         headers: {
@@ -544,7 +538,7 @@ export default function TraderSignup() {
         })
       });
 
-      // 7. Update user with customer profile relation
+      // 8. Update user with customer profile relation
       await fetch(`${BASE_URL}/api/users/${userData.user.id}`, {
         method: 'PUT',
         headers: {
@@ -1122,7 +1116,7 @@ export default function TraderSignup() {
               {/* Link to Terms & Conditions */}
               <Button
                 variant="link"
-                onClick={() => window.open('/terms', '_blank')}
+                onClick={() => window.open('/policies/terms', '_blank')}
                 size="sm"
                 color={accentColor}
               >

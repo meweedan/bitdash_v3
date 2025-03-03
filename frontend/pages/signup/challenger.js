@@ -472,7 +472,7 @@ export default function ChallengerSignup() {
         }
       };
 
-      const updatePropTraderResp = await fetch(`${BASE_URL}/api/prop-traders/${propTraderId}`, {
+      const updatePropTraderResp = await fetch(`${BASE_URL}/api/prop-traders?/${propTraderId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -553,7 +553,7 @@ export default function ChallengerSignup() {
 
       // 2) Payment verified => update the prop trader record (set "start_date", "status=active", etc.)
       const challengeDetails = CHALLENGE_TYPES[formData.challengeType];
-      const propTraderUpdateResp = await fetch(`${BASE_URL}/api/prop-traders/${propTraderId}`, {
+      const propTraderUpdateResp = await fetch(`${BASE_URL}/api/prop-traders?/${propTraderId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

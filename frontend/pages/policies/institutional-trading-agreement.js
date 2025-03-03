@@ -770,7 +770,7 @@ const InstitutionalTradingAgreement = () => {
                 </Button>
               </ChakraLink>
               
-              <ChakraLink as={Link} href="/privacy" passHref>
+              <ChakraLink as={Link} href="/policies/privacy" passHref>
                 <Button variant="outline" leftIcon={<Icon as={Shield} />} size="sm">
                   {t('privacyPolicy', 'Privacy Policy')}
                 </Button>

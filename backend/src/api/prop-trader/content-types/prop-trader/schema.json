@@ -20,12 +20,12 @@
     },
     "status": {
       "type": "enumeration",
-      "enum": ["pending", "challenge", "funded", "suspended", "terminated"],
+      "enum": ["pending", "challenge", "funded", "suspended", "terminated", "pending_payment"], 
       "default": "pending"
     },
     "challenge_type": {
       "type": "enumeration",
-      "enum": ["standard", "professional", "elite", "institutional"],
+      "enum": ["standard", "professional", "elite", "super"],
       "default": "standard"
     },
     "account_size": {
