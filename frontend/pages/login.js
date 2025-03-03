@@ -9,128 +9,129 @@ import {
   Text, 
   VStack, 
   useToast, 
-  useColorMode,
-  Select,
-  HStack,
-  Icon
+  useColorMode 
 } from '@chakra-ui/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/components/Layout';
-import { FaMoneyBillWave, FaChartLine, FaUniversity, FaExchangeAlt } from 'react-icons/fa';
 
-// Platform routes mapping for all financial platforms
 const PLATFORM_ROUTES = {
+  fund: {
+    prop_trader: '/fund/dashboard',
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://fund.bitdash.app'
+  },
   cash: {
     merchant: '/merchant/dashboard',
     agent: '/agent/dashboard',
     customer: '/client/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://cash.bitdash.app'
   },
-  fund: {
-    prop_trader: '/fund/challenger/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://fund.bitdash.app'
-  },
   invest: {
-    investor: '/investor/dashboard',
-    institutional_client: '/institutional/dashboard',
+    institutional: '/institutional/dashboard',
+    individual: '/individual/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://invest.bitdash.app'
   },
   trade: {
     retail_trader: '/trader/dashboard',
-    ib: '/broker/dashboard',
-    institutional_client: '/institutional/dashboard',
+    ib: '/ib/dashboard',
+    institute: '/institute/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://trade.bitdash.app'
   }
 };
 
-// Platform profile endpoints
 const PROFILE_ENDPOINTS = {
+  fund: {
+    prop_trader: '/api/prop-traders',
+  },
   cash: {
     merchant: '/api/merchants',
     agent: '/api/agents',
     customer: '/api/customer-profiles'
   },
-  fund: {
-    prop_trader: '/api/prop-traders'
-  },
   invest: {
-    investor: '/api/investors',
-    institutional_client: '/api/institutional-clients'
+    owner: '/api/institutional-clients',
+    individual: '/api/investors'
   },
   trade: {
     retail_trader: '/api/retail-traders',
     ib: '/api/introducing-brokers',
-    institutional_client: '/api/institutional-clients'
+    institute: '/api/institutional-clients'
   }
 };
 
-// Platform icons
-const PLATFORM_ICONS = {
-  cash: FaMoneyBillWave,
-  fund: FaChartLine,
-  invest: FaUniversity,
-  trade: FaExchangeAlt
+const BUSINESS_TYPE_ROUTES = {
+  fund: { platform: 'fund', userType: 'prop_trader' },
+  merchant: { platform: 'cash', userType: 'merchant' },
+  agent: { platform: 'cash', userType: 'agent' },
+  customer: { platform: 'cash', userType: 'customer' },
+  institutional: { platform: 'invest', userType: 'institutional' },
+  individual: { platform: 'invest', userType: 'individual' },
+  retail_trader: { platform: 'trade', userType: 'retail_trader' },
+  ib: { platform: 'trade', userType: 'ib' },
+  institute: { platform: 'trade', userType: 'institute' }
 };
 
 const getPlatformFromURL = () => {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
-    if (hostname.includes('cash')) return 'cash';
-    if (hostname.includes('fund')) return 'fund';
-    if (hostname.includes('invest')) return 'invest';
-    if (hostname.includes('trade')) return 'trade';
+    if (hostname.includes('cash')) return 'bitcash';
+    if (hostname.includes('fund')) return 'bitfund';
+    if (hostname.includes('trade')) return 'bittrade';
+    if (hostname.includes('invest')) return 'bitinvest';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
-      if (path.includes('/cash')) return 'cash';
-      if (path.includes('/fund')) return 'fund';
-      if (path.includes('/invest')) return 'invest';
-      if (path.includes('/trade')) return 'trade';
+      if (path.includes('/cash')) return 'bitcash';
+      if (path.includes('/fund')) return 'bitfund';
+      if (path.includes('/trade')) return 'bittrade';
+      if (path.includes('/invest')) return 'bitinvest';
     }
   }
-  return 'cash'; // Default to cash for fallback
+  return 'bitdash';
 };
 
 const getColorScheme = (platform, isDark) => {
   const colorSchemes = {
-    cash: {
+    bitcash: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
       text: isDark ? 'brand.bitcash.400' : 'brand.bitcash.600',
       button: 'brand.bitcash.500',
       hover: 'brand.bitcash.600',
-      border: 'brand.bitcash.500',
-      themeKey: 'bitcash'
+      border: 'brand.bitcash.500'
     },
-    fund: {
+    bitfund: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
       text: isDark ? 'brand.bitfund.400' : 'brand.bitfund.600',
       button: 'brand.bitfund.500',
       hover: 'brand.bitfund.600',
-      border: 'brand.bitfund.500',
-      themeKey: 'bitfund'
+      border: 'brand.bitfund.500'
     },
-    invest: {
+    bitinvest: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
       text: isDark ? 'brand.bitinvest.400' : 'brand.bitinvest.600',
       button: 'brand.bitinvest.500',
       hover: 'brand.bitinvest.600',
-      border: 'brand.bitinvest.500',
-      themeKey: 'bitinvest'
+      border: 'brand.bitinvest.500'
     },
-    trade: {
+    bittrade: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
       text: isDark ? 'brand.bittrade.400' : 'brand.bittrade.600',
       button: 'brand.bittrade.500',
       hover: 'brand.bittrade.600',
-      border: 'brand.bittrade.500',
-      themeKey: 'bittrade'
+      border: 'brand.bittrade.500'
+    },
+    bitdash: {
+      bg: isDark ? 'whiteAlpha.50' : 'gray.50',
+      text: isDark ? 'gray.200' : 'gray.800',
+      button: 'brand.bitdash.500',
+      hover: 'brand.bitdash.600',
+      border: 'brand.bitdash.500'
     }
   };
 
-  return colorSchemes[platform] || colorSchemes.cash;
+  return colorSchemes[platform] || colorSchemes.bitdash;
 };
 
 const LoginPage = () => {
@@ -142,16 +143,16 @@ const LoginPage = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-  const [platform, setPlatform] = useState('cash');
+  const [currentPlatform, setCurrentPlatform] = useState('bitdash');
   const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   useEffect(() => {
-    const detectedPlatform = getPlatformFromURL();
-    setPlatform(detectedPlatform);
+    const platform = getPlatformFromURL();
+    setCurrentPlatform(platform);
     checkAuth();
   }, []);
 
-  const colors = getColorScheme(platform, isDark);
+  const colors = getColorScheme(currentPlatform, isDark);
 
   const formStyles = {
     maxWidth: "600px",
@@ -159,10 +160,6 @@ const LoginPage = () => {
     mt: 8,
     p: 6,
     borderColor: colors.border,
-    backgroundColor: isDark ? 'whiteAlpha.50' : 'white',
-    borderRadius: "xl",
-    boxShadow: "xl",
-    borderWidth: "1px"
   };
 
   const inputStyles = {
@@ -179,7 +176,7 @@ const LoginPage = () => {
   };
 
   const buttonStyles = {
-    variant: `${colors.themeKey}-solid`,
+    variant: currentPlatform.includes('bit') ? `${currentPlatform}-solid` : 'bitdash-solid',
     bg: colors.button,
     color: 'white',
     _hover: {
@@ -196,16 +193,34 @@ const LoginPage = () => {
     }
   };
 
-  const checkProfileType = async (token, userId, roleType) => {
-    // Handle specific profile endpoints based on platform and role type
-    const platformConfig = PROFILE_ENDPOINTS[platform];
-    if (!platformConfig || !platformConfig[roleType]) {
-      console.log(`No endpoint configured for ${platform}:${roleType}`);
+  const checkWalletExists = async (token, userId) => {
+    try {
+      const walletResponse = await fetch(
+        `${BASE_URL}/api/wallets?filters[users_permissions_user][id][$eq]=${userId}&populate=*`, 
+        { 
+          method: 'GET',
+          headers: { 
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          } 
+        }
+      );
+
+      if (!walletResponse.ok) {
+        console.error('Wallet check failed:', await walletResponse.text());
+        return false;
+      }
+
+      const { data } = await walletResponse.json();
+      return data && data.length > 0;
+    } catch (error) {
+      console.error('Wallet existence check error:', error);
       return false;
     }
+  };
 
+  const checkProfileType = async (token, userId, endpoint) => {
     try {
-      const endpoint = platformConfig[roleType];
       const response = await fetch(
         `${BASE_URL}${endpoint}?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
         { 
@@ -230,36 +245,141 @@ const LoginPage = () => {
     }
   };
 
-  const determineUserRole = async (token, user) => {
-    // Check user roles from the provided token
-    if (!user || !user.roles || user.roles.length === 0) {
-      console.log('No roles found for user');
+  const checkBusinessType = async (token, userId) => {
+    try {
+      if (currentPlatform === 'bittrade') {
+        console.log('Checking trader status...');
+        const traderResponse = await fetch(
+          `${BASE_URL}/api/retail-traders?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
+          { 
+            headers: { 
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            } 
+          }
+        );
+
+        if (traderResponse.ok) {
+          const { data } = await traderResponse.json();
+          console.log('Trader data:', data);
+          // The fix is here - check the results array in attributes
+          if (data?.attributes?.results?.length > 0) {
+            // Found a trader record
+            return 'trader';
+          }
+        }
+
+        // Check for customer profile only if not an owner
+        const customerResponse = await fetch(
+          `${BASE_URL}/api/customer-profiles?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
+          { 
+            headers: { 
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            } 
+          }
+        );
+
+        if (customerResponse.ok) {
+          const { data } = await customerResponse.json();
+          if (data?.attributes?.results?.length > 0) {
+            return 'customer';
+          }
+        }
+      }
+
+      return null;
+    } catch (error) {
+      console.error('Business type check error:', error);
       return null;
     }
+  };
 
-    // Map relevant role types for the current platform
-    const relevantRoleTypes = {
-      cash: ['merchant', 'agent', 'customer'],
-      fund: ['prop_trader'],
-      invest: ['investor', 'institutional_client'],
-      trade: ['retail_trader', 'ib', 'institutional_client']
-    };
-
-    // Get platform-specific role types
-    const platformRoleTypes = relevantRoleTypes[platform] || [];
+  const determineUserType = async (token, userId) => {
+    const platform = currentPlatform.replace('bit', '');
+    console.log('Current platform:', platform);
     
-    // Find matching roles for the current platform
-    for (const role of user.roles) {
-      if (platformRoleTypes.includes(role.type)) {
-        // Verify profile exists for this role type
-        const profileExists = await checkProfileType(token, user.id, role.type);
-        if (profileExists) {
-          return role.type;
+    if (platform === 'trade') {
+      const businessType = await checkBusinessType(token, userId);
+      console.log('Business type check result:', businessType);
+      
+      if (businessType === 'trader') {
+        console.log('Returning trader type');
+        return 'trader';
+      }
+
+      // Only then check if they're a customer
+      const customerProfileExists = await checkProfileType(token, userId, PROFILE_ENDPOINTS.shop.customer);
+      if (customerProfileExists) {
+        return 'customer';
+      }
+    }
+    
+    // Handle cash platform customer check
+    if (platform === 'cash') {
+      const customerProfileResponse = await fetch(
+        `${BASE_URL}/api/customer-profiles?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
+        { 
+          headers: { 
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          } 
+        }
+      );
+
+      if (customerProfileResponse.ok) {
+        const { data: customerData } = await customerProfileResponse.json();
+        if (customerData && customerData.length > 0) {
+          const hasWallet = await checkWalletExists(token, userId);
+          if (hasWallet) {
+            return 'customer';
+          }
         }
       }
     }
 
+    // Check business type for other platforms
+    if (platform !== 'fund') {
+      const businessType = await checkBusinessType(token, userId);
+      if (businessType && BUSINESS_TYPE_ROUTES[businessType]) {
+        const route = BUSINESS_TYPE_ROUTES[businessType];
+        if (route.platform === platform) {
+          return route.userType;
+        }
+      }
+    }
+
+    const platformEndpoints = PROFILE_ENDPOINTS[platform];
+    if (!platformEndpoints) {
+      return null;
+    }
+
+    for (const [userType, endpoint] of Object.entries(platformEndpoints)) {
+      const profileExists = await checkProfileType(token, userId, endpoint);
+      if (profileExists) {
+        return userType;
+      }
+    }
+
     return null;
+  };
+
+  const handleRedirect = (userType) => {
+    const platform = currentPlatform.replace('bit', '');
+    const platformConfig = PLATFORM_ROUTES[platform];
+    
+    if (!platformConfig || !platformConfig[userType]) {
+      console.error('Invalid platform config or user type:', platform, userType);
+      return;
+    }
+
+    const route = platformConfig[userType];
+    
+    if (process.env.NODE_ENV === 'development') {
+      router.push(route);
+    } else {
+      window.location.href = `${platformConfig.baseUrl}${route}`;
+    }
   };
 
   const checkAuth = async () => {
@@ -272,10 +392,9 @@ const LoginPage = () => {
     }
 
     try {
-      // Determine user role for the platform
-      const roleType = await determineUserRole(token, user);
-      if (roleType) {
-        handleRedirect(roleType);
+      const userType = await determineUserType(token, user.id);
+      if (userType) {
+        handleRedirect(userType);
       } else {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
@@ -289,91 +408,62 @@ const LoginPage = () => {
     }
   };
 
-  const handleRedirect = (roleType) => {
-    // Get platform-specific route configuration
-    const platformConfig = PLATFORM_ROUTES[platform];
-    
-    if (!platformConfig || !platformConfig[roleType]) {
-      console.error('Invalid platform config or role type:', platform, roleType);
-      return;
-    }
-
-    const route = platformConfig[roleType];
-    
-    if (process.env.NODE_ENV === 'development') {
-      router.push(route);
-    } else {
-      window.location.href = `${platformConfig.baseUrl}${route}`;
-    }
-  };
-
   const handleLogin = async () => {
-    if (!email || !password) {
+  if (!email || !password) {
+    toast({
+      title: t('error'),
+      description: t('invalidInput.credentials'),
+      status: 'error',
+      duration: 2000
+    });
+    return;
+  }
+
+  setIsLoading(true);
+
+  try {
+    const loginRes = await fetch(`${BASE_URL}/api/auth/local`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ identifier: email, password }),
+    });
+
+    if (!loginRes.ok) {
+      const error = await loginRes.json();
+      throw new Error(error.error?.message || 'Login failed');
+    }
+
+    const loginData = await loginRes.json();
+    localStorage.setItem('token', loginData.jwt);
+    localStorage.setItem('user', JSON.stringify(loginData.user));
+
+    const userType = await determineUserType(loginData.jwt, loginData.user.id);
+    
+    if (userType) {
+      handleRedirect(userType);
       toast({
-        title: t('error'),
-        description: t('invalidInput.credentials'),
-        status: 'error',
+        title: t('success'),
+        description: t('loginSuccess'),
+        status: 'success',
         duration: 2000
       });
-      return;
+    } else {
+      throw new Error('Invalid account type for this platform');
     }
-
-    setIsLoading(true);
-
-    try {
-      const loginRes = await fetch(`${BASE_URL}/api/auth/local`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ identifier: email, password }),
-      });
-
-      if (!loginRes.ok) {
-        const error = await loginRes.json();
-        throw new Error(error.error?.message || 'Login failed');
-      }
-
-      const loginData = await loginRes.json();
-      localStorage.setItem('token', loginData.jwt);
-      localStorage.setItem('user', JSON.stringify(loginData.user));
-
-      // Determine role type for redirection
-      const roleType = await determineUserRole(loginData.jwt, loginData.user);
-      
-      if (roleType) {
-        handleRedirect(roleType);
-        toast({
-          title: t('success'),
-          description: t('loginSuccess'),
-          status: 'success',
-          duration: 2000
-        });
-      } else {
-        throw new Error(`No ${getPlatformName(platform)} account found for this user`);
-      }
-    } catch (error) {
-      console.error('Login error:', error);
-      toast({
-        title: t('error'),
-        description: error.message || t('unknownError'),
-        status: 'error',
-        duration: 3000
-      });
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const getPlatformName = (platform) => {
-    const platformNames = {
-      cash: 'BitCash',
-      fund: 'BitFund',
-      invest: 'BitInvest',
-      trade: 'BitTrade'
-    };
-    return platformNames[platform] || 'BitDash';
-  };
+  } catch (error) {
+    console.error('Login error:', error);
+    toast({
+      title: t('error'),
+      description: error.message || t('unknownError'),
+      status: 'error',
+      duration: 3000
+    });
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') handleLogin();
@@ -382,21 +472,18 @@ const LoginPage = () => {
   return (
     <Layout>
       <Head>
-        <title>{`${getPlatformName(platform)} - ${t('login')}`}</title>
+        <title>{t('login')}</title>
       </Head>
       
       <Box {...formStyles} mt="20" p="8">
         <VStack spacing={6}>
-          <HStack>
-            <Icon as={PLATFORM_ICONS[platform]} boxSize={8} color={colors.text} />
-            <Heading 
-              as="h1" 
-              size="lg" 
-              color={colors.text}
-            >
-              {getPlatformName(platform)} {t('login')}
-            </Heading>
-          </HStack>
+          <Heading 
+            as="h1" 
+            size="lg" 
+            color={colors.text}
+          >
+            {t('login')}
+          </Heading>
 
           <FormControl isRequired>
             <FormLabel color={colors.text}>{t('email')}</FormLabel>
@@ -431,6 +518,8 @@ const LoginPage = () => {
             {...buttonStyles} 
             onClick={handleLogin}
             isLoading={isLoading}
+            variant={`${currentPlatform}-solid`}
+            bg={colors.button} 
             loadingText={t('loggingIn')}
           >
             {t('login')}
@@ -442,7 +531,7 @@ const LoginPage = () => {
               <Button 
                 variant="link" 
                 color={colors.button}
-                onClick={() => router.push('/signup/choice')}
+                onClick={() => router.push('/signup')}
                 _hover={{ color: colors.hover }}
               >
                 {t('signup')}
@@ -450,7 +539,7 @@ const LoginPage = () => {
             </Text>
             
             <Button
-              variant={`${colors.themeKey}-outline`}
+              variant={`${currentPlatform}-outline`}
               onClick={() => router.push('/forgot-password')}
               borderColor={colors.border}
               color={colors.text}
