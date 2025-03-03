@@ -4,7 +4,7 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::challenge.challenge', ({ strapi }) => ({
   /**
-   * Custom "cancel" method that cancels a challenge if it has a Stripe subscription.
+   * Custom "cancel" method that cancels a challenge if it has a Stripe product.
    */
   async cancel(ctx) {
     const { id } = ctx.params;
@@ -19,11 +19,11 @@ module.exports = createCoreController('api::challenge.challenge', ({ strapi }) =
         return ctx.notFound('Challenge not found');
       }
 
-      // If this challenge has a Stripe subscription ID, cancel it in Stripe
-      if (challenge.stripeSubscriptionId && process.env.STRIPE_SECRET_KEY) {
+      // If this challenge has a Stripe product ID, cancel it in Stripe
+      if (challenge.stripeProductId && process.env.STRIPE_SECRET_KEY) {
         const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
         try {
-          await stripe.subscriptions.cancel(challenge.stripeSubscriptionId);
+          await stripe.subscriptions.cancel(challenge.stripeProductId);
         } catch (stripeError) {
           console.error('Stripe cancellation error:', stripeError);
         }

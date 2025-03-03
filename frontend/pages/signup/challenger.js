@@ -1,3 +1,6 @@
+/**
+ * pages/signup/challenger.js (Example)
+ */
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
@@ -45,17 +48,20 @@ import {
   Icon
 } from '@chakra-ui/react';
 import { InfoIcon, CheckIcon } from '@chakra-ui/icons';
-import { FaChartLine, FaMoneyBillWave, FaTrophy, FaCheck } from 'react-icons/fa';
+import { FaChartLine, FaCheck } from 'react-icons/fa';
 import Link from 'next/link';
 import Head from 'next/head';
 import { loadStripe } from '@stripe/stripe-js';
 
+// Make sure these roles match your Strapi settings
 const ROLES = {
   CUSTOMER: 4,
-  PROP_TRADER: 13, // Adjust to match your actual prop trader role ID
+  PROP_TRADER: 13, 
 };
 
-// Challenge types with their details
+// Only include the challenge types your Strapi schema allows.
+// If your "prop-trader" enum is ["standard", "professional", "elite", "super"]
+// and you want "super", you must add "super" to Strapi or remove it here.
 const CHALLENGE_TYPES = {
   standard: {
     name: 'Standard Challenge',
@@ -66,9 +72,10 @@ const CHALLENGE_TYPES = {
     daily_drawdown: 2,
     duration: '30 days',
     badge: 'blue',
-    description: 'Perfect for beginners starting their prop trading journey'
+    description: 'Perfect for beginners starting their prop trading journey',
+    validEnum: 'standard'
   },
-  pro: {
+  professional: {
     name: 'Professional Challenge',
     price: 199,
     account_size: 50000,
@@ -77,7 +84,8 @@ const CHALLENGE_TYPES = {
     daily_drawdown: 2,
     duration: '60 days',
     badge: 'purple',
-    description: 'For experienced traders looking for a larger capital allocation'
+    description: 'For experienced traders looking for a larger capital allocation',
+    validEnum: 'professional'
   },
   elite: {
     name: 'Elite Challenge',
@@ -88,7 +96,8 @@ const CHALLENGE_TYPES = {
     daily_drawdown: 2,
     duration: '60 days',
     badge: 'orange',
-    description: 'For professional traders with proven track records'
+    description: 'For professional traders with proven track records',
+    validEnum: 'elite'
   },
   super: {
     name: 'Super Challenge',
@@ -99,11 +108,11 @@ const CHALLENGE_TYPES = {
     daily_drawdown: 3,
     duration: '90 days',
     badge: 'red',
-    description: 'Our highest tier for elite traders seeking maximum capital'
+    description: 'Our highest tier for elite traders seeking maximum capital',
+    validEnum: 'super'
   }
 };
 
-// Define steps for the signup process
 const steps = [
   { title: 'Account Info', description: 'Create your user account' },
   { title: 'Challenge Selection', description: 'Choose your challenge' },
@@ -112,49 +121,40 @@ const steps = [
 ];
 
 const formStyles = {
-  position: "relative",
-  maxW: "1200px",
-  mx: "auto",
+  position: 'relative',
+  maxW: '1200px',
+  mx: 'auto',
   p: 8,
-  borderRadius: "xl",
-  boxShadow: "xl",
-  backdropFilter: "blur(10px)",
-  bg: "rgba(255, 255, 255, 0.05)",
-  border: "1px solid",
-  borderColor: "whiteAlpha.200"
+  borderRadius: 'xl',
+  boxShadow: 'xl',
+  backdropFilter: 'blur(10px)',
+  bg: 'rgba(255, 255, 255, 0.05)',
+  border: '1px solid',
+  borderColor: 'whiteAlpha.200'
 };
 
 const inputStyles = {
-  bg: "rgba(255, 255, 255, 0.05)",
-  borderColor: "whiteAlpha.300",
-  _hover: {
-    borderColor: "whiteAlpha.400",
-  },
-  _focus: {
-    borderColor: "blue.400",
-    bg: "rgba(255, 255, 255, 0.08)",
-  }
+  bg: 'rgba(255, 255, 255, 0.05)',
+  borderColor: 'whiteAlpha.300',
+  _hover: { borderColor: 'whiteAlpha.400' },
+  _focus: { borderColor: 'blue.400', bg: 'rgba(255, 255, 255, 0.08)' }
 };
 
-// Initialize Stripe
+// Make sure you set your NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY properly
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 export default function ChallengerSignup() {
   const { t } = useTranslation('common');
   const router = useRouter();
   const toast = useToast();
-  const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+  const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL; // e.g., "https://bitdash-backend.onrender.com"
   const { colorMode } = useColorMode();
-  const { activeStep, setActiveStep } = useSteps({
-    index: 0,
-    count: steps.length,
-  });
-  
-  const [loading, setLoading] = useState(false);
-  const [agreedToRiskDisclosure, setAgreedToRiskDisclosure] = useState(false);
   const isDark = colorMode === 'dark';
 
-  // FORM DATA
+  const { activeStep, setActiveStep } = useSteps({ index: 0, count: steps.length });
+  const [loading, setLoading] = useState(false);
+  const [agreedToRiskDisclosure, setAgreedToRiskDisclosure] = useState(false);
+
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -164,34 +164,28 @@ export default function ChallengerSignup() {
     phone: '',
     wallet_pin: '',
     avatar: null,
-    challengeType: 'standard',  // default
+    challengeType: 'standard',
     userId: null,
     jwt: null,
     customerId: null,
     propTraderId: null,
-    // For storing final MT5 details
     mt5Login: null,
     mt5Password: null,
-    mt5Server: null,
+    mt5Server: null
   });
 
   const [previewAvatar, setPreviewAvatar] = useState(null);
 
-  // --------------
-  // EVENT HANDLERS
-  // --------------
+  // ----------
+  // Handlers
+  // ----------
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleRiskAcceptance = (accepted) => {
-    if (accepted) {
-      setAgreedToRiskDisclosure(true);
-    }
+    if (accepted) setAgreedToRiskDisclosure(true);
   };
 
   const handleFileChange = (e) => {
@@ -209,112 +203,73 @@ export default function ChallengerSignup() {
       });
       return;
     }
-
     if (file.size > maxSize) {
       toast({
         title: t('error'),
-        description: 'File is too large. Maximum size is 5MB.',
+        description: 'File is too large. Max size is 5MB.',
         status: 'error'
       });
       return;
     }
 
-    setFormData(prev => ({ ...prev, avatar: file }));
+    setFormData((prev) => ({ ...prev, avatar: file }));
 
-    // Create preview
     const reader = new FileReader();
     reader.onloadend = () => setPreviewAvatar(reader.result);
     reader.readAsDataURL(file);
   };
 
-  // --------------
-  // VALIDATIONS
-  // --------------
   const validateBasicInfo = () => {
     if (!formData.username || formData.username.length < 3) {
-      toast({
-        title: t('error'),
-        description: t('usernameTooShort'),
-        status: 'error'
-      });
+      toast({ title: t('error'), description: t('usernameTooShort'), status: 'error' });
       return false;
     }
     if (!formData.email || !formData.email.includes('@')) {
-      toast({
-        title: t('error'),
-        description: t('invalidEmail'),
-        status: 'error'
-      });
+      toast({ title: t('error'), description: t('invalidEmail'), status: 'error' });
       return false;
     }
     if (!formData.password || formData.password.length < 6) {
-      toast({
-        title: t('error'),
-        description: t('passwordTooShort'),
-        status: 'error'
-      });
+      toast({ title: t('error'), description: t('passwordTooShort'), status: 'error' });
       return false;
     }
     if (formData.password !== formData.confirmPassword) {
-      toast({
-        title: t('error'),
-        description: t('passwordsDoNotMatch'),
-        status: 'error'
-      });
+      toast({ title: t('error'), description: t('passwordsDoNotMatch'), status: 'error' });
       return false;
     }
     if (!formData.fullName || !formData.phone) {
-      toast({
-        title: t('error'),
-        description: t('fillAllRequired'),
-        status: 'error'
-      });
+      toast({ title: t('error'), description: t('fillAllRequired'), status: 'error' });
       return false;
     }
     if (!formData.wallet_pin || formData.wallet_pin.length !== 6) {
-      toast({
-        title: t('error'),
-        description: t('invalidPIN'),
-        status: 'error'
-      });
+      toast({ title: t('error'), description: t('invalidPIN'), status: 'error' });
       return false;
     }
     if (!agreedToRiskDisclosure) {
       toast({
         title: 'Risk Disclosure Required',
         description: 'You must agree to the risk disclosure before proceeding.',
-        status: 'error',
-        duration: 3000
+        status: 'error'
       });
       return false;
     }
     return true;
   };
 
-  // --------------
-  // STEP CONTROLS
-  // --------------
-  const goToNextStep = () => {
-    setActiveStep((prev) => prev + 1);
-  };
+  const goToNextStep = () => setActiveStep((prev) => prev + 1);
+  const goToPreviousStep = () => setActiveStep((prev) => prev - 1);
 
-  const goToPreviousStep = () => {
-    setActiveStep((prev) => prev - 1);
-  };
-
-  // -------------------------------------------------------------------
-  // STEP 0: REGISTER USER + CREATE CUSTOMER PROFILE + CREATE PROP TRADER
-  // -------------------------------------------------------------------
+  // ---------------------------------------------------
+  // STEP 0: Register user & create prop trader (pending)
+  // ---------------------------------------------------
   const registerUser = async () => {
     setLoading(true);
-
     if (!validateBasicInfo()) {
       setLoading(false);
       return;
     }
 
     try {
-      // 1) Create user with role = PROP_TRADER (instead of 'Customer')
+      // 1) Create user with role = PROP_TRADER
       const userResponse = await fetch(`${BASE_URL}/api/auth/local/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -324,7 +279,7 @@ export default function ChallengerSignup() {
           password: formData.password,
           confirmed: true,
           blocked: false,
-          role: ROLES.PROP_TRADER // <--- Set to 'Prop Trader' now!
+          role: ROLES.PROP_TRADER // must exist in Strapi
         })
       });
       const userData = await userResponse.json();
@@ -337,7 +292,7 @@ export default function ChallengerSignup() {
         data: {
           fullName: formData.fullName,
           phone: formData.phone,
-          wallet_pin: parseInt(formData.wallet_pin),
+          wallet_pin: parseInt(formData.wallet_pin, 10),
           users_permissions_user: userData.user.id,
           wallet_status: 'pending_verification',
           publishedAt: new Date().toISOString()
@@ -347,16 +302,16 @@ export default function ChallengerSignup() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${userData.jwt}`
+          Authorization: `Bearer ${userData.jwt}`
         },
         body: JSON.stringify(profilePayload)
       });
-      const profileData = await profileResponse.json();
       if (!profileResponse.ok) {
         throw new Error(t('profileCreationFailed'));
       }
+      const profileData = await profileResponse.json();
 
-      // 3) Upload avatar (optional)
+      // 3) (Optional) Upload avatar
       if (formData.avatar) {
         const avatarFormData = new FormData();
         avatarFormData.append('files', formData.avatar);
@@ -364,35 +319,35 @@ export default function ChallengerSignup() {
         avatarFormData.append('refId', profileData.data.id);
         avatarFormData.append('field', 'avatar');
 
-        const avatarUploadResponse = await fetch(`${BASE_URL}/api/upload`, {
+        const avatarResp = await fetch(`${BASE_URL}/api/upload`, {
           method: 'POST',
-          headers: {
-            Authorization: `Bearer ${userData.jwt}`
-          },
+          headers: { Authorization: `Bearer ${userData.jwt}` },
           body: avatarFormData
         });
-        if (!avatarUploadResponse.ok) {
-          console.warn('Avatar upload failed, continuing with registration');
+        if (!avatarResp.ok) {
+          console.warn('Avatar upload failed, continuing anyway');
         }
       }
 
-      // 4) Link customer profile to user (not strictly necessary if done in #2)
+      // 4) Link the newly created profile to the user
       await fetch(`${BASE_URL}/api/users/${userData.user.id}`, {
         method: 'PUT',
         headers: {
-          'Authorization': `Bearer ${userData.jwt}`,
+          Authorization: `Bearer ${userData.jwt}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ customer_profile: profileData.data.id })
       });
 
-      // 5) Create a "prop-trader" record *immediately* with a placeholder
-      //    status "unpaid" or "pending_payment" to indicate we haven't paid yet.
+      // 5) Create a prop-trader record with valid status from your enumeration
+      // In your schema, valid statuses might be: ["pending", "challenge", "funded", ...]
+      // So let's set it to "pending" or "challenge".
+      // Also, challenge_type must be one of ["standard", "professional", "elite", "super"] if you haven't chosen yet
       const propTraderPayload = {
         data: {
           users_permissions_user: userData.user.id,
-          status: 'pending_payment', // or "challenge", whichever fits your business logic
-          challenge_type: null,      // We haven't chosen yet
+          status: 'pending', // or 'challenge', but NOT 'pending_payment' if that's not in the enum
+          challenge_type: 'standard', // or null. But if "super" isn't in your schema, do NOT use "super".
           account_size: 0,
           profit_target: 0,
           max_drawdown: 0,
@@ -403,22 +358,24 @@ export default function ChallengerSignup() {
           agreedToTerms: true
         }
       };
-      const propTraderResponse = await fetch(`${BASE_URL}/api/prop-traders`, {
+      const propTraderResp = await fetch(`${BASE_URL}/api/prop-traders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${userData.jwt}`
+          Authorization: `Bearer ${userData.jwt}`
         },
         body: JSON.stringify(propTraderPayload)
       });
-      const propTraderData = await propTraderResponse.json();
-      if (!propTraderResponse.ok) {
+      if (!propTraderResp.ok) {
+        const errorBody = await propTraderResp.json();
+        console.error('Prop Trader creation error body:', errorBody);
         throw new Error('Failed to create Prop Trader record');
       }
+      const propTraderData = await propTraderResp.json();
 
-      // 6) Store token + user + propTrader IDs in local state or localStorage
+      // 6) Store token + user + propTrader IDs
       localStorage.setItem('token', userData.jwt);
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         userId: userData.user.id,
         jwt: userData.jwt,
@@ -426,7 +383,7 @@ export default function ChallengerSignup() {
         propTraderId: propTraderData.data.id
       }));
 
-      // 7) Move to next step (challenge selection)
+      // Next step
       goToNextStep();
     } catch (error) {
       console.error('Registration error:', error);
@@ -440,161 +397,160 @@ export default function ChallengerSignup() {
     }
   };
 
-  // -------------------------------------------------------
-  // STEP 1: CHALLENGE SELECTION -> UPDATE PROP TRADER -> STRIPE
-  // -------------------------------------------------------
+  // --------------------------------------------
+  // STEP 1: Select Challenge -> update trader -> Stripe
+  // --------------------------------------------
   const createCheckoutSession = async () => {
     setLoading(true);
     try {
       const token = formData.jwt || localStorage.getItem('token');
       if (!token) {
-        throw new Error('Authentication token not found. Please log in again.');
+        throw new Error('No auth token found. Please log in again.');
       }
-      const propTraderId = formData.propTraderId;
-      if (!propTraderId) {
+      if (!formData.propTraderId) {
         throw new Error('Prop Trader record not found. Please retry registration.');
       }
 
-      // 1) Update the existing prop-trader record with the chosen challenge details
-      //    so that we know what user is about to pay for
       const challengeDetails = CHALLENGE_TYPES[formData.challengeType];
+      // We'll store the valid enumerated value in "challenge_type" if your Strapi requires it
       const updatePayload = {
         data: {
-          status: 'challenge',  // or "pending_payment", "evaluation", etc.
-          challenge_type: formData.challengeType,
+          status: 'challenge', // from your enum
+          challenge_type: challengeDetails.validEnum, 
           account_size: challengeDetails.account_size,
           profit_target: challengeDetails.profit_target,
           max_drawdown: challengeDetails.max_drawdown,
           dailyDrawdownLimit: challengeDetails.daily_drawdown,
           current_balance: challengeDetails.account_size,
-          // We only set a start_date if they've paid
           challenge_start_date: null
         }
       };
 
-      const updatePropTraderResp = await fetch(`${BASE_URL}/api/prop-traders?/${propTraderId}`, {
+      // Update the prop trader in Strapi
+      const updateResp = await fetch(`${BASE_URL}/api/prop-traders/${formData.propTraderId}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(updatePayload)
       });
-      if (!updatePropTraderResp.ok) {
+      if (!updateResp.ok) {
+        const errorBody = await updateResp.json();
+        console.error('Update prop-trader details error body:', errorBody);
         throw new Error('Failed to update Prop Trader challenge details');
       }
 
-      // 2) Create a Stripe checkout session (one-time payment)
-      //    Adjust your backend route as needed
-      const response = await fetch(`${BASE_URL}/api/stripe/create-checkout-session`, {
+      // Create the Stripe checkout session
+      // Make sure your route returns { sessionId: session.id }
+      const res = await fetch(`${BASE_URL}/api/create-challenge-checkout-session`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           planId: formData.challengeType,
           price: challengeDetails.price,
           userId: formData.userId,
-          propTraderId: propTraderId
+          propTraderId: formData.propTraderId,
+          // ...
         })
       });
-      if (!response.ok) {
-        const errorData = await response.json();
+
+      if (!res.ok) {
+        const errorData = await res.json();
         throw new Error(errorData.error || 'Failed to create checkout session');
       }
-      const { sessionId } = await response.json();
-      if (!sessionId) throw new Error('No session ID returned from Stripe');
 
-      // 3) Redirect to Stripe
+      // IMPORTANT: We must destructure "sessionId"
+      // Confirm your endpoint does: return res.json({ sessionId: session.id })
+      const { sessionId } = await res.json();
+      if (!sessionId) {
+        throw new Error('No sessionId returned from Stripe');
+      }
+
+      // Redirect
       const stripe = await stripePromise;
       const { error } = await stripe.redirectToCheckout({ sessionId });
       if (error) throw error;
 
     } catch (error) {
       console.error('Payment error:', error);
-      toast({
-        title: 'Payment Error',
-        description: error.message,
-        status: 'error'
-      });
+      toast({ title: 'Payment Error', description: error.message, status: 'error' });
     } finally {
       setLoading(false);
     }
   };
 
-  // -------------------------------------------------------
-  // STEP 2: PAYMENT PROCESSING -> VERIFY => CREATE MT5
-  // -------------------------------------------------------
-  // This runs after user returns from Stripe with success=true
+  // ------------------------------------
+  // STEP 2: Payment Processing -> verify
+  // ------------------------------------
   const completeChallenge = async () => {
     setLoading(true);
     try {
       const token = formData.jwt || localStorage.getItem('token');
-      if (!token) {
-        throw new Error('Authentication token not found. Please log in again.');
-      }
-      const propTraderId = formData.propTraderId;
-      if (!propTraderId) {
-        throw new Error('Prop Trader record not found. Please retry registration.');
-      }
+      if (!token) throw new Error('No auth token. Please log in again.');
 
-      // 1) Verify the payment
-      const verifyResponse = await fetch(
+      const propTraderId = formData.propTraderId;
+      if (!propTraderId) throw new Error('Prop Trader record not found.');
+
+      // 1) Verify payment
+      const verifyResp = await fetch(
         `${BASE_URL}/api/verify-challenge-payment?session_id=${router.query.session_id}`,
         {
-          headers: { 'Authorization': `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` }
         }
       );
-      const verifyData = await verifyResponse.json();
-      if (!verifyResponse.ok || !verifyData.success) {
+      const verifyData = await verifyResp.json();
+      if (!verifyResp.ok || !verifyData.success) {
         throw new Error(verifyData.error || 'Payment verification failed');
       }
 
-      // 2) Payment verified => update the prop trader record (set "start_date", "status=active", etc.)
+      // 2) Payment verified => set "status" to "active", etc.
       const challengeDetails = CHALLENGE_TYPES[formData.challengeType];
-      const propTraderUpdateResp = await fetch(`${BASE_URL}/api/prop-traders?/${propTraderId}`, {
+      const finalUpdate = await fetch(`${BASE_URL}/api/prop-traders/${propTraderId}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           data: {
-            status: 'active', // or "evaluation", "fundedChallenge", etc.
+            status: 'active', 
             challenge_start_date: new Date().toISOString()
           }
         })
       });
-      if (!propTraderUpdateResp.ok) {
+      if (!finalUpdate.ok) {
         throw new Error('Failed to update Prop Trader to active');
       }
 
-      // 3) Create the MT5 demo account
-      const mt5Response = await fetch(`${BASE_URL}/api/create-mt5-demo-account`, {
+      // 3) Create the MT5 credentials
+      const mt5Resp = await fetch(`${BASE_URL}/api/create-mt5-demo-account`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          propTraderId: propTraderId,
+          propTraderId,
           fullName: formData.fullName,
           email: formData.email,
           balance: challengeDetails.account_size
         })
       });
-      const mt5Data = await mt5Response.json();
-      if (!mt5Response.ok) {
+      if (!mt5Resp.ok) {
         throw new Error('Failed to create MT5 demo account');
       }
+      const mt5Data = await mt5Resp.json();
 
-      // 4) Store MT5 credentials and also update the prop-trader record
+      // 4) Store those MT5 credentials in prop trader
       await fetch(`${BASE_URL}/api/prop-traders/${propTraderId}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           data: {
@@ -607,59 +563,43 @@ export default function ChallengerSignup() {
         })
       });
 
-      // 5) Save to local state for display
-      setFormData(prev => ({
+      // 5) Show them to user
+      setFormData((prev) => ({
         ...prev,
         mt5Login: mt5Data.login,
         mt5Password: mt5Data.password,
         mt5Server: mt5Data.server
       }));
 
-      // Go to final step
+      // Next step
       setActiveStep(3);
-
     } catch (error) {
       console.error('Challenge completion error:', error);
-      toast({
-        title: t('error'),
-        description: error.message,
-        status: 'error'
-      });
+      toast({ title: t('error'), description: error.message, status: 'error' });
     } finally {
       setLoading(false);
     }
   };
 
-  // -------------
-  // FORM SUBMIT
-  // -------------
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (activeStep === 0) {
-      // Register user
       registerUser();
     } else if (activeStep === 1) {
-      // Challenge selection => redirect to Stripe
       createCheckoutSession();
     }
   };
 
-  // -------------------------------------
-  // LISTEN FOR SUCCESSFUL PAYMENT RETURN
-  // -------------------------------------
+  // Listen for Stripe success
   useEffect(() => {
-    // If user returns from Stripe with ?session_id=...&success=true
-    // and we are on Step 2, then finalize
     if (router.query.session_id && router.query.success === 'true' && activeStep === 2) {
       completeChallenge();
     }
   }, [router.query, activeStep]);
 
-  // -------------
-  // RENDER STEPS
-  // -------------
-  // Step 0: Basic Info + Registration
+  // ----------------------------
+  // Step Renders
+  // ----------------------------
   const renderBasicInfoForm = () => (
     <VStack spacing={6} width="100%">
       <FormControl isRequired>
@@ -668,7 +608,7 @@ export default function ChallengerSignup() {
           name="username"
           value={formData.username}
           onChange={handleInputChange}
-          placeholder={t('enterUsername')}
+          placeholder="Username"
           size="lg"
           {...inputStyles}
         />
@@ -680,7 +620,7 @@ export default function ChallengerSignup() {
           name="fullName"
           value={formData.fullName}
           onChange={handleInputChange}
-          placeholder={t('enterFullName')}
+          placeholder="Full Name"
           size="lg"
           {...inputStyles}
         />
@@ -694,7 +634,7 @@ export default function ChallengerSignup() {
             type="email"
             value={formData.email}
             onChange={handleInputChange}
-            placeholder={t('enterEmail')}
+            placeholder="Email"
             size="lg"
             {...inputStyles}
           />
@@ -706,7 +646,7 @@ export default function ChallengerSignup() {
             name="phone"
             value={formData.phone}
             onChange={handleInputChange}
-            placeholder={t('enterPhone')}
+            placeholder="Phone"
             size="lg"
             {...inputStyles}
           />
@@ -721,7 +661,7 @@ export default function ChallengerSignup() {
             type="password"
             value={formData.password}
             onChange={handleInputChange}
-            placeholder={t('enterPassword')}
+            placeholder="Password"
             size="lg"
             {...inputStyles}
           />
@@ -734,7 +674,7 @@ export default function ChallengerSignup() {
             type="password"
             value={formData.confirmPassword}
             onChange={handleInputChange}
-            placeholder={t('confirmPassword')}
+            placeholder="Confirm Password"
             size="lg"
             {...inputStyles}
           />
@@ -745,58 +685,40 @@ export default function ChallengerSignup() {
         <FormControl isRequired>
           <FormLabel>
             {t('walletPIN')}
-            <Tooltip label={t('walletPINHelper')}>
+            <Tooltip label="6-digit PIN for wallet security.">
               <InfoIcon ml={2} />
             </Tooltip>
           </FormLabel>
           <PinInput
             value={formData.wallet_pin}
-            onChange={(value) => setFormData(prev => ({ ...prev, wallet_pin: value }))}
+            onChange={(value) => setFormData((prev) => ({ ...prev, wallet_pin: value }))}
             type="number"
             mask
             size="lg"
             p={2}
           >
-            {[...Array(6)].map((_, i) => (
-              <PinInputField
-                key={i}
-                fontSize="xl"
-                borderColor={useColorModeValue('gray.200', 'gray.600')}
-                _focus={{
-                  borderColor: 'blue.400',
-                  boxShadow: `0 0 0 1px ${useColorModeValue('blue.400', 'blue.300')}`
-                }}
-                _hover={{
-                  borderColor: useColorModeValue('gray.300', 'gray.500')
-                }}
-              />
-            ))}
+            {Array(6)
+              .fill(0)
+              .map((_, i) => (
+                <PinInputField
+                  key={i}
+                  fontSize="xl"
+                  borderColor={useColorModeValue('gray.200', 'gray.600')}
+                  _focus={{ borderColor: 'blue.400' }}
+                  _hover={{ borderColor: useColorModeValue('gray.300', 'gray.500') }}
+                />
+              ))}
           </PinInput>
-
-          <FormHelperText>
-            {t('Enter 6-digit PIN for your wallet security')}
-          </FormHelperText>
+          <FormHelperText>Enter a 6-digit PIN for extra wallet security.</FormHelperText>
         </FormControl>
 
         <FormControl>
-          <FormLabel>{t('profilePicture')}</FormLabel>
+          <FormLabel>Profile Picture</FormLabel>
           <HStack spacing={4}>
-            {previewAvatar && (
-              <Avatar
-                src={previewAvatar}
-                name={formData.fullName}
-              />
-            )}
-            <Input
-              type="file"
-              accept="image/jpeg,image/png,image/gif"
-              onChange={handleFileChange}
-              {...inputStyles}
-            />
+            {previewAvatar && <Avatar src={previewAvatar} name={formData.fullName} />}
+            <Input type="file" accept="image/*" onChange={handleFileChange} {...inputStyles} />
           </HStack>
-          <FormHelperText>
-            Optional: Upload a profile picture (max 5MB)
-          </FormHelperText>
+          <FormHelperText>Optional: Max 5MB</FormHelperText>
         </FormControl>
       </SimpleGrid>
 
@@ -808,15 +730,10 @@ export default function ChallengerSignup() {
             colorScheme="blue"
           >
             <Text>
-              {t('agreeToRiskDisclosure', 'I have read and agree to the Risk Disclosure Statement')}
+              I have read and agree to the Risk Disclosure Statement
             </Text>
           </Checkbox>
-          
-          <RiskDisclosure 
-            platform="BitFund" 
-            accountType="challenger" 
-            onAccept={handleRiskAcceptance}
-          />
+          <RiskDisclosure platform="BitFund" accountType="challenger" onAccept={handleRiskAcceptance} />
         </HStack>
       </FormControl>
 
@@ -825,21 +742,20 @@ export default function ChallengerSignup() {
         size="lg"
         w="full"
         isLoading={loading}
-        loadingText={t('creatingAccount')}
-        mt={4}
         onClick={registerUser}
       >
-        {t('continueToChallenge')}
+        Continue to Challenge
       </Button>
     </VStack>
   );
 
-  // Step 1: Challenge Selection
   const renderChallengeSelection = () => (
     <VStack spacing={6} width="100%">
       <Text>Select your preferred challenge type:</Text>
-      
-      <RadioGroup onChange={value => setFormData(prev => ({ ...prev, challengeType: value }))} value={formData.challengeType}>
+      <RadioGroup
+        onChange={(value) => setFormData((prev) => ({ ...prev, challengeType: value }))}
+        value={formData.challengeType}
+      >
         <Stack direction="column" spacing={4} width="100%">
           {Object.entries(CHALLENGE_TYPES).map(([key, challenge]) => (
             <Box
@@ -849,9 +765,9 @@ export default function ChallengerSignup() {
               p={4}
               borderColor={formData.challengeType === key ? 'blue.400' : 'gray.200'}
               _hover={{ borderColor: 'blue.400' }}
-              bg={formData.challengeType === key ? (isDark ? 'rgba(49, 130, 206, 0.1)' : 'blue.50') : ''}
+              bg={formData.challengeType === key ? (isDark ? 'rgba(49,130,206,0.1)' : 'blue.50') : ''}
               cursor="pointer"
-              onClick={() => setFormData(prev => ({ ...prev, challengeType: key }))}
+              onClick={() => setFormData((prev) => ({ ...prev, challengeType: key }))}
             >
               <Radio value={key} width="100%" mb={2}>
                 <Flex justify="space-between" align="center" width="100%">
@@ -861,9 +777,9 @@ export default function ChallengerSignup() {
                   </Badge>
                 </Flex>
               </Radio>
-              
-              <Text color="gray.600" mt={2} mb={3}>{challenge.description}</Text>
-              
+              <Text color="gray.600" mt={2} mb={3}>
+                {challenge.description}
+              </Text>
               <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
                 <VStack align="start" spacing={1}>
                   <Text fontWeight="bold">Fee: ${challenge.price}</Text>
@@ -880,19 +796,23 @@ export default function ChallengerSignup() {
       </RadioGroup>
 
       <Divider my={4} />
-      
+
       <Box bg={isDark ? 'gray.700' : 'gray.50'} p={4} borderRadius="md" width="100%">
         <Heading size="sm" mb={3}>Summary</Heading>
         <Flex justify="space-between" mb={2}>
           <Text>Challenge Type:</Text>
-          <Text fontWeight="bold">{CHALLENGE_TYPES[formData.challengeType].name}</Text>
+          <Text fontWeight="bold">
+            {CHALLENGE_TYPES[formData.challengeType].name}
+          </Text>
         </Flex>
         <Flex justify="space-between">
           <Text>Price:</Text>
-          <Text fontWeight="bold">${CHALLENGE_TYPES[formData.challengeType].price}</Text>
+          <Text fontWeight="bold">
+            ${CHALLENGE_TYPES[formData.challengeType].price}
+          </Text>
         </Flex>
       </Box>
-      
+
       <HStack width="100%" justify="space-between" pt={4}>
         <Button variant="outline" onClick={goToPreviousStep}>
           Back
@@ -900,7 +820,6 @@ export default function ChallengerSignup() {
         <Button
           colorScheme="blue"
           isLoading={loading}
-          loadingText="Processing"
           onClick={createCheckoutSession}
         >
           Proceed to Payment
@@ -909,53 +828,59 @@ export default function ChallengerSignup() {
     </VStack>
   );
 
-  // Step 2: Payment Processing
   const renderPaymentProcessing = () => (
     <VStack spacing={8} width="100%" align="center" py={8}>
       <Heading size="md">Payment Processing</Heading>
       <Text>
-        You will be redirected to our secure payment processor to complete your challenge purchase.
+        You will be redirected to our secure payment processor (Stripe) to complete your purchase.
       </Text>
       <Text>
-        If you have already completed payment and are seeing this screen, please wait a moment while we verify your payment.
+        If you have already completed payment and are seeing this screen, please wait while we verify your payment.
       </Text>
-      
       <Button
         colorScheme="blue"
         isLoading={loading}
-        loadingText="Checking Payment"
-        onClick={() => createCheckoutSession()}
+        onClick={createCheckoutSession}
       >
         Retry Payment
       </Button>
     </VStack>
   );
 
-  // Step 3: MT5 Account Info
   const renderMT5Info = () => (
     <VStack spacing={8} width="100%" align="center" py={8}>
-      <Heading size="md" color="green.500">Challenge Account Created Successfully!</Heading>
+      <Heading size="md" color="green.500">
+        Challenge Account Created Successfully!
+      </Heading>
       <Icon as={FaChartLine} boxSize={16} color="blue.500" />
-      
-      <Box borderWidth="1px" borderRadius="md" p={6} width="100%" bg={isDark ? 'gray.700' : 'gray.50'}>
+
+      <Box
+        borderWidth="1px"
+        borderRadius="md"
+        p={6}
+        width="100%"
+        bg={isDark ? 'gray.700' : 'gray.50'}
+      >
         <Heading size="sm" mb={4}>Your MT5 Demo Account Credentials</Heading>
-        
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
           <VStack align="start">
             <Text color="gray.500">Login ID</Text>
-            <Text fontWeight="bold" fontSize="lg">{formData.mt5Login}</Text>
+            <Text fontWeight="bold" fontSize="lg">
+              {formData.mt5Login}
+            </Text>
           </VStack>
-          
           <VStack align="start">
             <Text color="gray.500">Password</Text>
-            <Text fontWeight="bold" fontSize="lg">{formData.mt5Password}</Text>
+            <Text fontWeight="bold" fontSize="lg">
+              {formData.mt5Password}
+            </Text>
           </VStack>
-          
           <VStack align="start">
             <Text color="gray.500">Server</Text>
-            <Text fontWeight="bold" fontSize="lg">{formData.mt5Server}</Text>
+            <Text fontWeight="bold" fontSize="lg">
+              {formData.mt5Server}
+            </Text>
           </VStack>
-          
           <VStack align="start">
             <Text color="gray.500">Account Type</Text>
             <Text fontWeight="bold" fontSize="lg">
@@ -964,7 +889,7 @@ export default function ChallengerSignup() {
           </VStack>
         </SimpleGrid>
       </Box>
-      
+
       <List spacing={3} width="100%">
         <ListItem>
           <ListIcon as={FaCheck} color="green.500" />
@@ -976,15 +901,11 @@ export default function ChallengerSignup() {
         </ListItem>
         <ListItem>
           <ListIcon as={FaCheck} color="green.500" />
-          Review the trading rules in your dashboard to ensure you meet all requirements.
+          Check your dashboard for rules and progress tracking.
         </ListItem>
       </List>
-      
-      <Button
-        colorScheme="blue"
-        size="lg"
-        onClick={() => router.push('/dashboard')}
-      >
+
+      <Button colorScheme="blue" size="lg" onClick={() => router.push('/dashboard')}>
         Go to Dashboard
       </Button>
     </VStack>
@@ -993,20 +914,19 @@ export default function ChallengerSignup() {
   return (
     <Layout>
       <Head>
-        <title>{t('bitfund.challenge.signup')} | BitFund</title>
+        <title>BitFund Challenge Registration</title>
       </Head>
-      
       <Box {...formStyles}>
         <VStack spacing={8}>
-          <Heading 
-            as="h1" 
-            size="lg" 
+          <Heading
+            as="h1"
+            size="lg"
             color={isDark ? 'white' : 'gray.800'}
             textAlign="center"
             bgGradient="linear(to-r, blue.400, blue.600)"
             bgClip="text"
           >
-            {t('bitfund.challenge.title', 'Challenge Account Registration')}
+            Challenge Account Registration
           </Heading>
 
           <Stepper index={activeStep} width="100%" colorScheme="blue" mb={8}>
@@ -1036,11 +956,9 @@ export default function ChallengerSignup() {
 
             {activeStep !== 3 && (
               <Text textAlign="center" mt={6}>
-                {t('haveAccount')}{' '}
+                Already have an account?{' '}
                 <Link href="/login" passHref>
-                  <ChakraLink color="blue.400">
-                    {t('login')}
-                  </ChakraLink>
+                  <ChakraLink color="blue.400">Log In</ChakraLink>
                 </Link>
               </Text>
             )}
@@ -1054,7 +972,7 @@ export default function ChallengerSignup() {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
-    },
+      ...(await serverSideTranslations(locale, ['common']))
+    }
   };
 }

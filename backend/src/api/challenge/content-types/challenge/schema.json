@@ -83,7 +83,7 @@
       "required": true,
       "default": "active"
     },
-    "stripeSubscriptionId": {
+    "stripeProductId": {
       "type": "string",
       "unique": true,
       "private": false
