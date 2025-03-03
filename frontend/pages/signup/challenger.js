@@ -412,59 +412,75 @@ export default function ChallengerSignup() {
   };
 
   const createCheckoutSession = async () => {
-    setLoading(true);
-    
-    try {
-      const token = formData.jwt || localStorage.getItem('token');
-      if (!token) {
-        throw new Error('Authentication token not found. Please log in again.');
-      }
-
-      const challengeDetails = CHALLENGE_TYPES[formData.challengeType];
-      
-      // Create a checkout session
-      const response = await fetch(`${BASE_URL}/api/create-challenge-checkout-session`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          challengeType: formData.challengeType,
-          price: challengeDetails.price,
-          userId: formData.userId,
-          customerId: formData.customerId
-        })
-      });
-
-      const session = await response.json();
-      
-      if (!response.ok) {
-        throw new Error(session.error || 'Failed to create checkout session');
-      }
-
-      // Store session ID to verify payment later
-      setFormData(prev => ({
-        ...prev,
-        checkoutSessionId: session.id
-      }));
-
-      // Redirect to Stripe checkout
-      const stripe = await stripePromise;
-      await stripe.redirectToCheckout({
-        sessionId: session.id
-      });
-      
-    } catch (error) {
-      console.error('Payment error:', error);
-      toast({
-        title: t('error'),
-        description: error.message,
-        status: 'error'
-      });
-      setLoading(false);
+  if (!agreedToRiskDisclosure) {
+    toast({
+      title: 'Risk Disclosure Required',
+      description: 'You must agree to the risk disclosure before proceeding.',
+      status: 'error',
+      duration: 3000
+    });
+    return;
+  }
+  
+  setLoading(true);
+  
+  try {
+    const token = formData.jwt || localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Authentication token not found. Please log in again.');
     }
-  };
+
+    const challengeDetails = CHALLENGE_TYPES[formData.challengeType];
+    
+    // Create a checkout session
+    const response = await fetch('/api/create-challenge-checkout-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        challengeType: formData.challengeType,
+        price: challengeDetails.price,
+        userId: formData.userId,
+        customerId: formData.customerId
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to create checkout session');
+    }
+    
+    const session = await response.json();
+
+    // Store session ID to verify payment later
+    setFormData(prev => ({
+      ...prev,
+      checkoutSessionId: session.id
+    }));
+
+    // Redirect to Stripe checkout
+    const stripe = await stripePromise;
+    const { error } = await stripe.redirectToCheckout({
+      sessionId: session.id
+    });
+
+    if (error) {
+      throw new Error(error.message);
+    }
+    
+  } catch (error) {
+    console.error('Payment error:', error);
+    toast({
+      title: 'Payment Error',
+      description: error.message,
+      status: 'error',
+      duration: 5000
+    });
+    setLoading(false);
+  }
+};
 
   // Check payment status and complete the process
   const completeChallenge = async () => {
@@ -859,6 +875,7 @@ export default function ChallengerSignup() {
           isLoading={loading}
           loadingText="Processing"
           onClick={createCheckoutSession}
+          isDisabled={!agreedToRiskDisclosure}
         >
           Proceed to Payment
         </Button>

@@ -28,6 +28,6 @@
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx"
-  ],
+, "pages/api/create-challenge-checkout-session"  ],
   "exclude": ["node_modules"]
 }

@@ -463,6 +463,23 @@ export default function TraderSignup() {
         throw new Error(t('customerProfileCreationFailed'));
       }
 
+       // 4. Update user with profile relation
+      const updateUserResponse = await fetch(`${BASE_URL}/api/users/${userData.user.id}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${userData.jwt}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          customer_profile: profileData.data.id,
+          role: ROLES.RETAIL_TRADER
+        })
+      });
+
+      if (!updateUserResponse.ok) {
+        throw new Error(t('userUpdateFailed'));
+      }
+
       // 4. Create wallet for the trader
       const walletPayload = {
         data: {
