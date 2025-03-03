@@ -433,14 +433,14 @@ export default function ChallengerSignup() {
     const challengeDetails = CHALLENGE_TYPES[formData.challengeType];
     
     // Create a checkout session
-    const response = await fetch('/api/create-challenge-checkout-session', {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/stripe/create-checkout-session`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        challengeType: formData.challengeType,
+      body: JSON.stringify({ 
+        planId: formData.challengeType,
         price: challengeDetails.price,
         userId: formData.userId,
         customerId: formData.customerId
@@ -452,22 +452,23 @@ export default function ChallengerSignup() {
       throw new Error(errorData.error || 'Failed to create checkout session');
     }
     
-    const session = await response.json();
+    const { sessionId } = await response.json();
+    if (!sessionId) throw new Error('No session ID returned');
 
     // Store session ID to verify payment later
     setFormData(prev => ({
       ...prev,
-      checkoutSessionId: session.id
+      checkoutSessionId: sessionId
     }));
 
     // Redirect to Stripe checkout
     const stripe = await stripePromise;
     const { error } = await stripe.redirectToCheckout({
-      sessionId: session.id
+      sessionId
     });
 
     if (error) {
-      throw new Error(error.message);
+      throw error;
     }
     
   } catch (error) {

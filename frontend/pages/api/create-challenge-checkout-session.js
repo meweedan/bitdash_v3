@@ -1,23 +1,27 @@
-// pages/api/create-challenge-checkout-session.js
+// frontend/pages/api/create-challenge-checkout-session.js
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
+  console.log('Creating checkout session...');
+  
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
     const { challengeType, price, userId, customerId } = req.body;
+    
+    console.log('Request data:', { challengeType, price, userId, customerId });
+    
+    // Validate required parameters
+    if (!challengeType || !price || !userId || !customerId) {
+      console.error('Missing required parameters');
+      return res.status(400).json({ error: 'Missing required parameters' });
+    }
 
-    // Get challenge details from your config
-    const challengeDetails = {
-      name: `${challengeType.charAt(0).toUpperCase() + challengeType.slice(1)} Challenge`,
-      price: price
-    };
-
-    // Create a checkout session
+    // Create checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [
@@ -25,10 +29,10 @@ export default async function handler(req, res) {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: challengeDetails.name,
-              description: `Trading Challenge - ${challengeDetails.name}`,
+              name: `${challengeType.charAt(0).toUpperCase() + challengeType.slice(1)} Challenge`,
+              description: 'Prop Trading Challenge',
             },
-            unit_amount: price * 100, // convert to cents
+            unit_amount: price * 100, // Convert to cents
           },
           quantity: 1,
         },
@@ -43,9 +47,10 @@ export default async function handler(req, res) {
       }
     });
 
+    console.log('Session created:', session.id);
     res.status(200).json({ id: session.id });
   } catch (error) {
-    console.error('Error creating checkout session:', error);
+    console.error('Stripe session creation error:', error);
     res.status(500).json({ error: error.message });
   }
 }
