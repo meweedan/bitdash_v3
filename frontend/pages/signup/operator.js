@@ -8,7 +8,7 @@ import Layout from '@/components/Layout';
 import Image from 'next/image';
 import useSubdomain from '@/hooks/useSubdomain';
 import { validateEmail, validatePhone } from '@/utils/validation';
-import { SUBSCRIPTION_PLANS, getPlanById } from '@/config/subscriptionConfig';
+import { CHALLENGE_PLANS, getChallengeById } from '@/config/challengeConfig';
 import {
   Box,
   FormControl,
@@ -257,7 +257,7 @@ export default function Signup() {
   };
 
   const createSubscription = async (jwt, operatorId) => {
-    const plan = getPlanById(selectedPlan);
+    const challenge = getChallengeById(selectedChallenge);
     const trialEndDate = new Date();
     trialEndDate.setDate(trialEndDate.getDate() + 30);
 
@@ -270,7 +270,7 @@ export default function Signup() {
       body: JSON.stringify({
         data: {
           operator: operatorId,
-          tier: selectedPlan,
+          tier: selectedChallenge,
           status: 'trial',
           commission_rate: platform === 'auto' ? 5.0 : 
                          platform === 'stock' ? 3.0 : 
@@ -435,7 +435,7 @@ const handleSubmit = async () => {
               restaurant: restaurant.data.id,
               users_permissions_user: user.id,
               tier: selectedPlan || 'standard',
-              monthly_fee: getPlanById(selectedPlan)?.monthlyPrice || 80,
+              monthly_fee: getChallengeById(selectedPlan)?.monthlyPrice || 80,
               commission_rate: 2.5,
               status: 'active',
               start_date: startDate.toISOString(),
@@ -856,7 +856,7 @@ else if (platform === 'stock') {
                 <Text mb={6} align="center">Start with a 30-day free trial</Text>
                 
                 <VStack spacing={5}>
-                  {SUBSCRIPTION_PLANS.map(plan => (
+                  {CHALLENGE_PLANS.map(plan => (
                     <SubscriptionPlanCard
                       key={plan.id}
                       plan={plan}
