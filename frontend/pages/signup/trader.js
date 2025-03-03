@@ -1087,6 +1087,32 @@ export default function TraderSignup() {
               />
             </HStack>
           </FormControl>
+          <FormControl isRequired>
+            <HStack spacing={2} align="center">
+              <Checkbox
+                isChecked={formData.agreedToTerms}
+                onChange={(e) => setFormData(prev => ({ 
+                  ...prev, 
+                  agreedToTerms: e.target.checked 
+                }))}
+                colorScheme="blue"
+              >
+                <Text fontSize="sm">
+                  {t('agreeToTerms')}
+                </Text>
+              </Checkbox>
+              
+              {/* Link to Terms & Conditions */}
+              <Button
+                variant="link"
+                onClick={() => window.open('/terms', '_blank')}
+                size="sm"
+                color={accentColor}
+              >
+                {t('viewTerms')}
+              </Button>
+            </HStack>
+          </FormControl>
         </VStack>
       </Box>
       
