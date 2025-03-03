@@ -469,7 +469,7 @@ const LoginPage = () => {
         <title>{t('login')}</title>
       </Head>
       
-      <Box {...formStyles} mt="20" p="8">
+      <Box {...formStyles} mt="10" p="8">
         <VStack spacing={6}>
           <Heading 
             as="h1" 

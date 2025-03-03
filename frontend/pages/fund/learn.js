@@ -516,7 +516,7 @@ const LearnPage = () => {
         </Box>
 
         {/* FAQ Section */}
-        <Box mt={sectionPadding} mb={{ base: 8, md: 16 }}>
+        <Box mt={sectionPadding} mb={{ base: 8, md: 16 }} zIndex={1}>
           <Heading
             fontSize={{ base: "2xl", md: "3xl" }}
             mb={{ base: 6, md: 10 }}

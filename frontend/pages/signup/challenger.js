@@ -52,7 +52,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 const ROLES = {
   CUSTOMER: 4,
-  PROP_TRADER: 13, // Adjust this to match your actual prop trader role ID
+  PROP_TRADER: 13, // Adjust to match your actual prop trader role ID
 };
 
 // Challenge types with their details
@@ -145,14 +145,16 @@ export default function ChallengerSignup() {
   const toast = useToast();
   const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
   const { colorMode } = useColorMode();
-  const [agreedToRiskDisclosure, setAgreedToRiskDisclosure] = useState(false);
-  const isDark = colorMode === 'dark';
-  const [loading, setLoading] = useState(false);
   const { activeStep, setActiveStep } = useSteps({
     index: 0,
     count: steps.length,
   });
   
+  const [loading, setLoading] = useState(false);
+  const [agreedToRiskDisclosure, setAgreedToRiskDisclosure] = useState(false);
+  const isDark = colorMode === 'dark';
+
+  // FORM DATA
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -162,15 +164,22 @@ export default function ChallengerSignup() {
     phone: '',
     wallet_pin: '',
     avatar: null,
-    challengeType: 'standard',
-    paymentId: null,
+    challengeType: 'standard',  // default
+    userId: null,
+    jwt: null,
+    customerId: null,
+    propTraderId: null,
+    // For storing final MT5 details
     mt5Login: null,
     mt5Password: null,
-    mt5Server: null
+    mt5Server: null,
   });
 
   const [previewAvatar, setPreviewAvatar] = useState(null);
 
+  // --------------
+  // EVENT HANDLERS
+  // --------------
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -187,44 +196,40 @@ export default function ChallengerSignup() {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      // Validate file type and size
-      const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
-      const maxSize = 5 * 1024 * 1024; // 5MB
+    if (!file) return;
 
-      if (!validTypes.includes(file.type)) {
-        toast({
-          title: t('error'),
-          description: 'Invalid file type. Please upload JPEG, PNG, or GIF.',
-          status: 'error'
-        });
-        return;
-      }
+    const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    const maxSize = 5 * 1024 * 1024; // 5MB
 
-      if (file.size > maxSize) {
-        toast({
-          title: t('error'),
-          description: 'File is too large. Maximum size is 5MB.',
-          status: 'error'
-        });
-        return;
-      }
-
-      // Set form data and create preview
-      setFormData(prev => ({
-        ...prev,
-        avatar: file
-      }));
-
-      // Create preview
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewAvatar(reader.result);
-      };
-      reader.readAsDataURL(file);
+    if (!validTypes.includes(file.type)) {
+      toast({
+        title: t('error'),
+        description: 'Invalid file type. Please upload JPEG, PNG, or GIF.',
+        status: 'error'
+      });
+      return;
     }
+
+    if (file.size > maxSize) {
+      toast({
+        title: t('error'),
+        description: 'File is too large. Maximum size is 5MB.',
+        status: 'error'
+      });
+      return;
+    }
+
+    setFormData(prev => ({ ...prev, avatar: file }));
+
+    // Create preview
+    const reader = new FileReader();
+    reader.onloadend = () => setPreviewAvatar(reader.result);
+    reader.readAsDataURL(file);
   };
 
+  // --------------
+  // VALIDATIONS
+  // --------------
   const validateBasicInfo = () => {
     if (!formData.username || formData.username.length < 3) {
       toast({
@@ -234,7 +239,6 @@ export default function ChallengerSignup() {
       });
       return false;
     }
-    
     if (!formData.email || !formData.email.includes('@')) {
       toast({
         title: t('error'),
@@ -243,7 +247,6 @@ export default function ChallengerSignup() {
       });
       return false;
     }
-    
     if (!formData.password || formData.password.length < 6) {
       toast({
         title: t('error'),
@@ -252,7 +255,6 @@ export default function ChallengerSignup() {
       });
       return false;
     }
-    
     if (formData.password !== formData.confirmPassword) {
       toast({
         title: t('error'),
@@ -261,7 +263,6 @@ export default function ChallengerSignup() {
       });
       return false;
     }
-
     if (!formData.fullName || !formData.phone) {
       toast({
         title: t('error'),
@@ -270,7 +271,6 @@ export default function ChallengerSignup() {
       });
       return false;
     }
-    
     if (!formData.wallet_pin || formData.wallet_pin.length !== 6) {
       toast({
         title: t('error'),
@@ -279,28 +279,42 @@ export default function ChallengerSignup() {
       });
       return false;
     }
-    
+    if (!agreedToRiskDisclosure) {
+      toast({
+        title: 'Risk Disclosure Required',
+        description: 'You must agree to the risk disclosure before proceeding.',
+        status: 'error',
+        duration: 3000
+      });
+      return false;
+    }
     return true;
   };
 
+  // --------------
+  // STEP CONTROLS
+  // --------------
   const goToNextStep = () => {
-    // Validation for each step
-    if (activeStep === 0 && !validateBasicInfo()) {
-      return;
-    }
-    
-    setActiveStep(activeStep + 1);
+    setActiveStep((prev) => prev + 1);
   };
 
   const goToPreviousStep = () => {
-    setActiveStep(activeStep - 1);
+    setActiveStep((prev) => prev - 1);
   };
 
+  // -------------------------------------------------------------------
+  // STEP 0: REGISTER USER + CREATE CUSTOMER PROFILE + CREATE PROP TRADER
+  // -------------------------------------------------------------------
   const registerUser = async () => {
     setLoading(true);
-    
+
+    if (!validateBasicInfo()) {
+      setLoading(false);
+      return;
+    }
+
     try {
-      // 1. Register user
+      // 1) Create user with role = PROP_TRADER (instead of 'Customer')
       const userResponse = await fetch(`${BASE_URL}/api/auth/local/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -310,16 +324,15 @@ export default function ChallengerSignup() {
           password: formData.password,
           confirmed: true,
           blocked: false,
-          role: ROLES.CUSTOMER // First create as customer, will be linked to prop_trader later
+          role: ROLES.PROP_TRADER // <--- Set to 'Prop Trader' now!
         })
       });
-
       const userData = await userResponse.json();
       if (!userResponse.ok) {
         throw new Error(userData.error?.message || t('registrationFailed'));
       }
 
-      // 2. Create customer profile
+      // 2) Create customer profile
       const profilePayload = {
         data: {
           fullName: formData.fullName,
@@ -330,7 +343,6 @@ export default function ChallengerSignup() {
           publishedAt: new Date().toISOString()
         }
       };
-
       const profileResponse = await fetch(`${BASE_URL}/api/customer-profiles`, {
         method: 'POST',
         headers: {
@@ -339,13 +351,12 @@ export default function ChallengerSignup() {
         },
         body: JSON.stringify(profilePayload)
       });
-
       const profileData = await profileResponse.json();
       if (!profileResponse.ok) {
         throw new Error(t('profileCreationFailed'));
       }
 
-      // 3. Upload avatar if selected
+      // 3) Upload avatar (optional)
       if (formData.avatar) {
         const avatarFormData = new FormData();
         avatarFormData.append('files', formData.avatar);
@@ -360,46 +371,63 @@ export default function ChallengerSignup() {
           },
           body: avatarFormData
         });
-
         if (!avatarUploadResponse.ok) {
           console.warn('Avatar upload failed, continuing with registration');
         }
       }
 
-      // 4. Update user with profile relation
-      const updateUserResponse = await fetch(`${BASE_URL}/api/users/${userData.user.id}`, {
+      // 4) Link customer profile to user (not strictly necessary if done in #2)
+      await fetch(`${BASE_URL}/api/users/${userData.user.id}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${userData.jwt}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          customer_profile: profileData.data.id
-        })
+        body: JSON.stringify({ customer_profile: profileData.data.id })
       });
 
-      if (!updateUserResponse.ok) {
-        throw new Error(t('userUpdateFailed'));
+      // 5) Create a "prop-trader" record *immediately* with a placeholder
+      //    status "unpaid" or "pending_payment" to indicate we haven't paid yet.
+      const propTraderPayload = {
+        data: {
+          users_permissions_user: userData.user.id,
+          status: 'pending_payment', // or "challenge", whichever fits your business logic
+          challenge_type: null,      // We haven't chosen yet
+          account_size: 0,
+          profit_target: 0,
+          max_drawdown: 0,
+          dailyDrawdownLimit: 0,
+          current_balance: 0,
+          profit_loss: 0,
+          challenge_start_date: null,
+          agreedToTerms: true
+        }
+      };
+      const propTraderResponse = await fetch(`${BASE_URL}/api/prop-traders`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userData.jwt}`
+        },
+        body: JSON.stringify(propTraderPayload)
+      });
+      const propTraderData = await propTraderResponse.json();
+      if (!propTraderResponse.ok) {
+        throw new Error('Failed to create Prop Trader record');
       }
 
-      // Store token for next steps
+      // 6) Store token + user + propTrader IDs in local state or localStorage
       localStorage.setItem('token', userData.jwt);
-      localStorage.setItem('user', JSON.stringify({
-        ...userData.user,
-        customer_profile: profileData.data
-      }));
-      
-      // Save user data to form state to use in next steps
       setFormData(prev => ({
         ...prev,
         userId: userData.user.id,
         jwt: userData.jwt,
-        customerId: profileData.data.id
+        customerId: profileData.data.id,
+        propTraderId: propTraderData.data.id
       }));
 
-      // Go to challenge selection
+      // 7) Move to next step (challenge selection)
       goToNextStep();
-      
     } catch (error) {
       console.error('Registration error:', error);
       toast({
@@ -407,140 +435,142 @@ export default function ChallengerSignup() {
         description: error.message,
         status: 'error'
       });
+    } finally {
       setLoading(false);
     }
   };
 
+  // -------------------------------------------------------
+  // STEP 1: CHALLENGE SELECTION -> UPDATE PROP TRADER -> STRIPE
+  // -------------------------------------------------------
   const createCheckoutSession = async () => {
-  if (!agreedToRiskDisclosure) {
-    toast({
-      title: 'Risk Disclosure Required',
-      description: 'You must agree to the risk disclosure before proceeding.',
-      status: 'error',
-      duration: 3000
-    });
-    return;
-  }
-  
-  setLoading(true);
-  
-  try {
-    const token = formData.jwt || localStorage.getItem('token');
-    if (!token) {
-      throw new Error('Authentication token not found. Please log in again.');
-    }
-
-    const challengeDetails = CHALLENGE_TYPES[formData.challengeType];
-    
-    // Create a checkout session
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/stripe/create-checkout-session`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ 
-        planId: formData.challengeType,
-        price: challengeDetails.price,
-        userId: formData.userId,
-        customerId: formData.customerId
-      })
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || 'Failed to create checkout session');
-    }
-    
-    const { sessionId } = await response.json();
-    if (!sessionId) throw new Error('No session ID returned');
-
-    // Store session ID to verify payment later
-    setFormData(prev => ({
-      ...prev,
-      checkoutSessionId: sessionId
-    }));
-
-    // Redirect to Stripe checkout
-    const stripe = await stripePromise;
-    const { error } = await stripe.redirectToCheckout({
-      sessionId
-    });
-
-    if (error) {
-      throw error;
-    }
-    
-  } catch (error) {
-    console.error('Payment error:', error);
-    toast({
-      title: 'Payment Error',
-      description: error.message,
-      status: 'error',
-      duration: 5000
-    });
-    setLoading(false);
-  }
-};
-
-  // Check payment status and complete the process
-  const completeChallenge = async () => {
     setLoading(true);
-
     try {
       const token = formData.jwt || localStorage.getItem('token');
       if (!token) {
         throw new Error('Authentication token not found. Please log in again.');
       }
-
-      // Verify the payment was successful
-      const verifyResponse = await fetch(`${BASE_URL}/api/verify-challenge-payment?session_id=${router.query.session_id}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-
-      const verifyData = await verifyResponse.json();
-      
-      if (!verifyResponse.ok || !verifyData.success) {
-        throw new Error(verifyData.error || 'Payment verification failed');
+      const propTraderId = formData.propTraderId;
+      if (!propTraderId) {
+        throw new Error('Prop Trader record not found. Please retry registration.');
       }
 
-      // Create prop-trader record
+      // 1) Update the existing prop-trader record with the chosen challenge details
+      //    so that we know what user is about to pay for
       const challengeDetails = CHALLENGE_TYPES[formData.challengeType];
-      
-      const propTraderPayload = {
+      const updatePayload = {
         data: {
-          users_permissions_user: formData.userId,
-          status: 'challenge',
+          status: 'challenge',  // or "pending_payment", "evaluation", etc.
           challenge_type: formData.challengeType,
           account_size: challengeDetails.account_size,
           profit_target: challengeDetails.profit_target,
           max_drawdown: challengeDetails.max_drawdown,
           dailyDrawdownLimit: challengeDetails.daily_drawdown,
           current_balance: challengeDetails.account_size,
-          profit_loss: 0,
-          challenge_start_date: new Date().toISOString(),
-          agreedToTerms: true
+          // We only set a start_date if they've paid
+          challenge_start_date: null
         }
       };
 
-      const propTraderResponse = await fetch(`${BASE_URL}/api/prop-traders`, {
-        method: 'POST',
+      const updatePropTraderResp = await fetch(`${BASE_URL}/api/prop-traders/${propTraderId}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(propTraderPayload)
+        body: JSON.stringify(updatePayload)
       });
-
-      const propTraderData = await propTraderResponse.json();
-      
-      if (!propTraderResponse.ok) {
-        throw new Error('Failed to create prop trader profile');
+      if (!updatePropTraderResp.ok) {
+        throw new Error('Failed to update Prop Trader challenge details');
       }
 
-      // Create MT5 demo account
+      // 2) Create a Stripe checkout session (one-time payment)
+      //    Adjust your backend route as needed
+      const response = await fetch(`${BASE_URL}/api/stripe/create-checkout-session`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          planId: formData.challengeType,
+          price: challengeDetails.price,
+          userId: formData.userId,
+          propTraderId: propTraderId
+        })
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to create checkout session');
+      }
+      const { sessionId } = await response.json();
+      if (!sessionId) throw new Error('No session ID returned from Stripe');
+
+      // 3) Redirect to Stripe
+      const stripe = await stripePromise;
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+      if (error) throw error;
+
+    } catch (error) {
+      console.error('Payment error:', error);
+      toast({
+        title: 'Payment Error',
+        description: error.message,
+        status: 'error'
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // -------------------------------------------------------
+  // STEP 2: PAYMENT PROCESSING -> VERIFY => CREATE MT5
+  // -------------------------------------------------------
+  // This runs after user returns from Stripe with success=true
+  const completeChallenge = async () => {
+    setLoading(true);
+    try {
+      const token = formData.jwt || localStorage.getItem('token');
+      if (!token) {
+        throw new Error('Authentication token not found. Please log in again.');
+      }
+      const propTraderId = formData.propTraderId;
+      if (!propTraderId) {
+        throw new Error('Prop Trader record not found. Please retry registration.');
+      }
+
+      // 1) Verify the payment
+      const verifyResponse = await fetch(
+        `${BASE_URL}/api/verify-challenge-payment?session_id=${router.query.session_id}`,
+        {
+          headers: { 'Authorization': `Bearer ${token}` }
+        }
+      );
+      const verifyData = await verifyResponse.json();
+      if (!verifyResponse.ok || !verifyData.success) {
+        throw new Error(verifyData.error || 'Payment verification failed');
+      }
+
+      // 2) Payment verified => update the prop trader record (set "start_date", "status=active", etc.)
+      const challengeDetails = CHALLENGE_TYPES[formData.challengeType];
+      const propTraderUpdateResp = await fetch(`${BASE_URL}/api/prop-traders/${propTraderId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          data: {
+            status: 'active', // or "evaluation", "fundedChallenge", etc.
+            challenge_start_date: new Date().toISOString()
+          }
+        })
+      });
+      if (!propTraderUpdateResp.ok) {
+        throw new Error('Failed to update Prop Trader to active');
+      }
+
+      // 3) Create the MT5 demo account
       const mt5Response = await fetch(`${BASE_URL}/api/create-mt5-demo-account`, {
         method: 'POST',
         headers: {
@@ -548,22 +578,19 @@ export default function ChallengerSignup() {
           'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-          propTraderId: propTraderData.data.id,
+          propTraderId: propTraderId,
           fullName: formData.fullName,
           email: formData.email,
-          challengeType: formData.challengeType,
           balance: challengeDetails.account_size
         })
       });
-
       const mt5Data = await mt5Response.json();
-      
       if (!mt5Response.ok) {
         throw new Error('Failed to create MT5 demo account');
       }
 
-      // Update prop trader with MT5 details
-      await fetch(`${BASE_URL}/api/prop-traders/${propTraderData.data.id}`, {
+      // 4) Store MT5 credentials and also update the prop-trader record
+      await fetch(`${BASE_URL}/api/prop-traders/${propTraderId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -580,19 +607,7 @@ export default function ChallengerSignup() {
         })
       });
 
-      // Update user role to prop trader
-      await fetch(`${BASE_URL}/api/users/${formData.userId}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          role: ROLES.PROP_TRADER
-        })
-      });
-
-      // Store MT5 credentials for display
+      // 5) Save to local state for display
       setFormData(prev => ({
         ...prev,
         mt5Login: mt5Data.login,
@@ -615,25 +630,36 @@ export default function ChallengerSignup() {
     }
   };
 
-  // Handle form submission based on current step
+  // -------------
+  // FORM SUBMIT
+  // -------------
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (activeStep === 0) {
+      // Register user
       registerUser();
     } else if (activeStep === 1) {
+      // Challenge selection => redirect to Stripe
       createCheckoutSession();
     }
   };
 
-  // Check for successful payment return from Stripe
+  // -------------------------------------
+  // LISTEN FOR SUCCESSFUL PAYMENT RETURN
+  // -------------------------------------
   useEffect(() => {
+    // If user returns from Stripe with ?session_id=...&success=true
+    // and we are on Step 2, then finalize
     if (router.query.session_id && router.query.success === 'true' && activeStep === 2) {
       completeChallenge();
     }
-  }, [router.query]);
+  }, [router.query, activeStep]);
 
-  // Render Basic Info Form
+  // -------------
+  // RENDER STEPS
+  // -------------
+  // Step 0: Basic Info + Registration
   const renderBasicInfoForm = () => (
     <VStack spacing={6} width="100%">
       <FormControl isRequired>
@@ -723,7 +749,7 @@ export default function ChallengerSignup() {
               <InfoIcon ml={2} />
             </Tooltip>
           </FormLabel>
-          <PinInput 
+          <PinInput
             value={formData.wallet_pin}
             onChange={(value) => setFormData(prev => ({ ...prev, wallet_pin: value }))}
             type="number"
@@ -756,8 +782,8 @@ export default function ChallengerSignup() {
           <FormLabel>{t('profilePicture')}</FormLabel>
           <HStack spacing={4}>
             {previewAvatar && (
-              <Avatar 
-                src={previewAvatar} 
+              <Avatar
+                src={previewAvatar}
                 name={formData.fullName}
               />
             )}
@@ -808,7 +834,7 @@ export default function ChallengerSignup() {
     </VStack>
   );
 
-  // Render Challenge Selection
+  // Step 1: Challenge Selection
   const renderChallengeSelection = () => (
     <VStack spacing={6} width="100%">
       <Text>Select your preferred challenge type:</Text>
@@ -821,8 +847,8 @@ export default function ChallengerSignup() {
               borderWidth="2px"
               borderRadius="md"
               p={4}
-              borderColor={formData.challengeType === key ? 'brand.bitfund.500' : 'gray.200'}
-              _hover={{ borderColor: 'brand.bitfund.400' }}
+              borderColor={formData.challengeType === key ? 'blue.400' : 'gray.200'}
+              _hover={{ borderColor: 'blue.400' }}
               bg={formData.challengeType === key ? (isDark ? 'rgba(49, 130, 206, 0.1)' : 'blue.50') : ''}
               cursor="pointer"
               onClick={() => setFormData(prev => ({ ...prev, challengeType: key }))}
@@ -876,7 +902,6 @@ export default function ChallengerSignup() {
           isLoading={loading}
           loadingText="Processing"
           onClick={createCheckoutSession}
-          isDisabled={!agreedToRiskDisclosure}
         >
           Proceed to Payment
         </Button>
@@ -884,15 +909,13 @@ export default function ChallengerSignup() {
     </VStack>
   );
 
-  // Render Payment Processing
+  // Step 2: Payment Processing
   const renderPaymentProcessing = () => (
     <VStack spacing={8} width="100%" align="center" py={8}>
       <Heading size="md">Payment Processing</Heading>
-      
       <Text>
         You will be redirected to our secure payment processor to complete your challenge purchase.
       </Text>
-      
       <Text>
         If you have already completed payment and are seeing this screen, please wait a moment while we verify your payment.
       </Text>
@@ -908,12 +931,11 @@ export default function ChallengerSignup() {
     </VStack>
   );
 
-  // Render MT5 Account Info
+  // Step 3: MT5 Account Info
   const renderMT5Info = () => (
     <VStack spacing={8} width="100%" align="center" py={8}>
       <Heading size="md" color="green.500">Challenge Account Created Successfully!</Heading>
-      
-      <Icon as={FaChartLine} boxSize={16} color="brand.bitfund.500" />
+      <Icon as={FaChartLine} boxSize={16} color="blue.500" />
       
       <Box borderWidth="1px" borderRadius="md" p={6} width="100%" bg={isDark ? 'gray.700' : 'gray.50'}>
         <Heading size="sm" mb={4}>Your MT5 Demo Account Credentials</Heading>
@@ -981,7 +1003,7 @@ export default function ChallengerSignup() {
             size="lg" 
             color={isDark ? 'white' : 'gray.800'}
             textAlign="center"
-            bgGradient="linear(to-r, brand.bitfund.400, brand.bitfund.600)"
+            bgGradient="linear(to-r, blue.400, blue.600)"
             bgClip="text"
           >
             {t('bitfund.challenge.title', 'Challenge Account Registration')}
@@ -1006,13 +1028,12 @@ export default function ChallengerSignup() {
             ))}
           </Stepper>
 
-            <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+          <form onSubmit={handleSubmit} style={{ width: '100%' }}>
             {activeStep === 0 && renderBasicInfoForm()}
             {activeStep === 1 && renderChallengeSelection()}
             {activeStep === 2 && renderPaymentProcessing()}
             {activeStep === 3 && renderMT5Info()}
 
-            {/* Login Link at the bottom of the form */}
             {activeStep !== 3 && (
               <Text textAlign="center" mt={6}>
                 {t('haveAccount')}{' '}
