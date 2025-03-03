@@ -117,41 +117,53 @@ const BitFundLanding = () => {
   const spacing = useBreakpointValue({ base: 4, md: 8 });
 
   const challengeTypes = [
-    {
+   {
       title: 'Standard Challenge',
       amount: '$10,000',
       fee: '$99',
       duration: '30 days',
       profitTarget: '8%',
       maxLoss: '5%',
-      color: 'brand.bitfund.400'
+      dailyDrawdown: '2%',
+      color: 'brand.bitfund.400',
+      badge: 'blue',
+      description: 'Perfect for beginners starting their prop trading journey'
     },
     {
       title: 'Professional Challenge',
       amount: '$50,000',
-      fee: '$249',
+      fee: '$199',
       duration: '60 days',
       profitTarget: '10%',
       maxLoss: '8%',
-      color: 'brand.bitfund.500'
+      dailyDrawdown: '2%',
+      color: 'brand.bitfund.500',
+      badge: 'purple',
+      description: 'For experienced traders looking for a larger capital allocation'
     },
     {
       title: 'Elite Challenge',
       amount: '$100,000',
-      fee: '$499',
+      fee: '$299',
       duration: '60 days',
       profitTarget: '12%',
       maxLoss: '10%',
-      color: 'brand.bitfund.600'
+      dailyDrawdown: '2%',
+      color: 'brand.bitfund.600',
+      badge: 'orange',
+      description: 'For professional traders with proven track records'
     },
     {
-      title: 'Institutional Challenge',
+      title: 'Super Challenge',
       amount: '$200,000',
-      fee: '$999',
+      fee: '$599',
       duration: '90 days',
       profitTarget: '15%',
       maxLoss: '12%',
-      color: 'brand.bitfund.700'
+      dailyDrawdown: '3%',
+      color: 'brand.bitfund.700',
+      badge: 'red',
+      description: 'Our highest tier for elite traders seeking maximum capital'
     }
   ];
 

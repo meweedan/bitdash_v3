@@ -63,7 +63,7 @@ import Head from 'next/head';
 import RiskDisclosure from '@/components/RiskDisclosure';
 
 const ROLES = {
-  RETAIL_TRADER: 6, // Adjust this to match your actual retail trader role ID
+  RETAIL_TRADER: 17, // Adjust this to match your actual retail trader role ID
 };
 
 const ACCOUNT_TYPES = [

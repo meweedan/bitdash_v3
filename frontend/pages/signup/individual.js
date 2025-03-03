@@ -45,7 +45,7 @@ import Head from 'next/head';
 import RiskDisclosure from '@/components/RiskDisclosure';
 
 const ROLES = {
-  INVESTOR: 9, // Adjust this to match your actual investor role ID
+  INVESTOR: 15, // Adjust this to match your actual investor role ID
 };
 
 const RISK_PREFERENCES = [

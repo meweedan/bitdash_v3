@@ -64,7 +64,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 const ROLES = {
-  INSTITUTIONAL_CLIENT: 10, // Adjust this to match your actual institutional client role ID
+  INSTITUTIONAL_CLIENT: 16, // Adjust this to match your actual institutional client role ID
 };
 
 const ENTITY_TYPES = [

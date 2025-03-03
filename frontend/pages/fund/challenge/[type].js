@@ -63,7 +63,8 @@ const challengeData = {
     profitTarget: '8%',
     maxLoss: '5%',
     color: 'brand.bitfund.400',
-    description: 'Perfect for beginners and those looking to start their funded trading journey. The Standard Challenge provides an accessible entry point with reasonable profit targets.',
+    badge: 'blue',
+    description: 'Perfect for beginners starting their prop trading journey',
     benefits: [
       'Low barrier to entry',
       'Generous 30-day evaluation period',
@@ -83,12 +84,13 @@ const challengeData = {
   'professional-challenge': {
     title: 'Professional Challenge',
     amount: '$50,000',
-    fee: '$249',
+    fee: '$199',
     duration: '60 days',
     profitTarget: '10%',
     maxLoss: '8%',
     color: 'brand.bitfund.500',
-    description: 'Designed for intermediate traders who have demonstrated consistent profitability. The Professional Challenge provides a significant capital boost with reasonable targets.',
+    badge: 'purple',
+    description: 'For experienced traders looking for a larger capital allocation',
     benefits: [
       'Substantial $50,000 capital allocation',
       'Extended 60-day evaluation window',
@@ -97,7 +99,7 @@ const challengeData = {
       'Access to premium trader support'
     ],
     statsList: [
-      { label: 'Daily Drawdown', value: '3%' },
+      { label: 'Daily Drawdown', value: '2%' },
       { label: 'Maximum Drawdown', value: '8%' },
       { label: 'Minimum Trading Days', value: '15 days' },
       { label: 'Positions Over Weekend', value: 'Not Allowed' },
@@ -108,12 +110,13 @@ const challengeData = {
   'elite-challenge': {
     title: 'Elite Challenge',
     amount: '$100,000',
-    fee: '$499',
+    fee: '$299',
     duration: '60 days',
     profitTarget: '12%',
     maxLoss: '10%',
     color: 'brand.bitfund.600',
-    description: 'Created for experienced traders seeking significant capital. The Elite Challenge offers a substantial account size with balanced profit targets and risk parameters.',
+    badge: 'orange',
+    description: 'For professional traders with proven track records',
     benefits: [
       'Major $100,000 capital allocation',
       'Comprehensive 60-day evaluation period',
@@ -122,7 +125,7 @@ const challengeData = {
       'Priority support and advanced analytics'
     ],
     statsList: [
-      { label: 'Daily Drawdown', value: '4%' },
+      { label: 'Daily Drawdown', value: '2%' },
       { label: 'Maximum Drawdown', value: '10%' },
       { label: 'Minimum Trading Days', value: '15 days' },
       { label: 'Positions Over Weekend', value: 'Not Allowed' },
@@ -130,15 +133,16 @@ const challengeData = {
       { label: 'Maximum Leverage', value: '1:30' }
     ]
   },
-  'institutional-challenge': {
-    title: 'Institutional Challenge',
+  'super-challenge': {
+    title: 'Super Challenge',
     amount: '$200,000',
-    fee: '$999',
+    fee: '$599',
     duration: '90 days',
     profitTarget: '15%',
     maxLoss: '12%',
     color: 'brand.bitfund.700',
-    description: 'The pinnacle offering for elite traders. The Institutional Challenge provides institutional-grade capital with extended evaluation periods for maximum flexibility.',
+    badge: 'red',
+    description: 'Our highest tier for elite traders seeking maximum capital',
     benefits: [
       'Institutional-level $200,000 capital allocation',
       'Extended 90-day evaluation period',
@@ -147,7 +151,7 @@ const challengeData = {
       'VIP support, custom analytics, and one-on-one mentoring'
     ],
     statsList: [
-      { label: 'Daily Drawdown', value: '5%' },
+      { label: 'Daily Drawdown', value: '3%' },
       { label: 'Maximum Drawdown', value: '12%' },
       { label: 'Minimum Trading Days', value: '20 days' },
       { label: 'Positions Over Weekend', value: 'Not Allowed' },

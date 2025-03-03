@@ -52,7 +52,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 const ROLES = {
   CUSTOMER: 4,
-  PROP_TRADER: 7, // Adjust this to match your actual prop trader role ID
+  PROP_TRADER: 13, // Adjust this to match your actual prop trader role ID
 };
 
 // Challenge types with their details
