@@ -307,12 +307,6 @@ const LoginPage = () => {
         console.log('Returning trader type');
         return 'trader';
       }
-
-      // Only then check if they're a customer
-      const customerProfileExists = await checkProfileType(token, userId, PROFILE_ENDPOINTS.shop.customer);
-      if (customerProfileExists) {
-        return 'customer';
-      }
     }
     
     // Handle cash platform customer check
