@@ -1,23 +1,23 @@
 // frontend/pages/fund/index.js
 import { useEffect } from 'react';
 import { usePWA } from '@/hooks/usePWA';
-import { FundPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component
-import FundLandingBrowser from '@/components/landing/FundLandingBrowser';
+import { CryptoPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component
+import CryptoLandingBrowser from '@/components/landing/CryptoLandingBrowser';
 
-const CashPage = () => {
+const CryptoPage = () => {
   const { isPWA } = usePWA();
   const isBrowser = typeof window !== 'undefined';
   const hostname = isBrowser ? window.location.hostname : '';
 
   useEffect(() => {
     if (isBrowser && hostname === 'bitdash.app') {
-      window.location.href = 'https://fund.bitdash.app';
+      window.location.href = 'https://crypto.bitdash.app';
     }
   }, [hostname, isBrowser]);
 
   if (hostname === 'bitdash.app') return null;
 
-  return isPWA ? <FundPWALanding /> : <FundLandingBrowser />;
+  return isPWA ? <CryptoPWALanding /> : <CryptoLandingBrowser />;
 };
 
-export default CashPage;
+export default CryptoPage;
