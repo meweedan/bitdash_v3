@@ -515,7 +515,7 @@ export default function Landing() {
                       gap={6}
                       p={8}
                       borderRadius="2xl"
-                      bg={isDark ? "gray.800" : "white"}
+                      bg={isDark ? "#ab7c39" : "#ab7c39"}
                       boxShadow="lg"
                       overflow="hidden"
                       position="relative"
@@ -715,7 +715,7 @@ export default function Landing() {
                     direction="column"
                     p={8}
                     borderRadius="2xl"
-                    bg={isDark ? "gray.700" : "white"}
+                    bg={isDark ? "#ab7c39" : "#ab7c39"}
                     boxShadow="lg"
                     height="full"
                     transition="all 0.3s"
@@ -804,7 +804,7 @@ export default function Landing() {
                   transition={{ duration: 0.8 }}
                 >
                   <Image 
-                    src="/images/bitdash-mobile-app.png" 
+                    src="dashboard-screenshot.png" 
                     alt="BitDash Mobile App"
                     borderRadius="2xl"
                     boxShadow="2xl"
@@ -974,10 +974,6 @@ export default function Landing() {
               py={{ base: 10, md: 16 }}
               px={{ base: 6, md: 10 }}
               borderRadius="3xl"
-              bgGradient={isDark 
-                ? "linear(to-br, gray.800, gray.700)" 
-                : "linear(to-br, white, gray.50)"
-              }
               boxShadow="xl"
               borderWidth="1px"
               borderColor={isDark ? "gray.700" : "gray.100"}
@@ -1022,11 +1018,8 @@ export default function Landing() {
                 <HStack spacing={6} pt={4} wrap="wrap" justify="center">
                   <Button
                     size="lg"
-                    color="white"
-                    height="58px"
+                    variant="bitdash-outline"
                     px={8}
-                    fontSize="md"
-                    fontWeight="bold"
                     borderRadius="full"
                     boxShadow="lg"
                     rightIcon={<ArrowRightCircle size={18} />}
@@ -1038,8 +1031,6 @@ export default function Landing() {
                   <Button
                     size="lg"
                     variant="bitdash-outline"
-                    height="58px"
-                    px={8}
                     fontSize="md"
                     borderRadius="full"
                     borderWidth="2px"
