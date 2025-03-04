@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
-import { Box } from '@chakra-ui/react';
+import { Box, useBreakpointValue } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 
 const Logo = () => {
@@ -25,27 +25,27 @@ const Logo = () => {
   }, []);
 
   const getLogoConfig = () => {
-    // Dimensions from the screenshots
+    // Updated dimensions as requested
     const configs = {
       cash: {
-        en: { path: '/cash.png', width: 816, height: 289 },
-        ar: { path: '/cash-ar.png', width: 701, height: 233}
+        en: { path: '/cash.png', width: 862, height: 304 },
+        ar: { path: '/cash-ar.png', width: 862, height: 304 }
       },
       stock: {
-        en: { path: '/stock.png', width: 878, height: 275 },
-        ar: { path: '/stock-ar.png', width: 684, height: 233 }
+        en: { path: '/stock.png', width: 862, height: 304 },
+        ar: { path: '/stock-ar.png', width: 862, height: 304 }
       },
       trade: {
-        en: { path: '/trade.png', width: 878, height: 275 },
-        ar: { path: '/trade-ar.png', width: 784, height: 233 }
+        en: { path: '/trade.png', width: 862, height: 304 },
+        ar: { path: '/trade-ar.png', width: 862, height: 304 }
       },
       fund: {
-        en: { path: '/fund.png', width: 878, height: 275 },
-        ar: { path: '/fund-ar.png', width: 684, height: 233 }
+        en: { path: '/fund.png', width: 862, height: 304 },
+        ar: { path: '/fund-ar.png', width: 862, height: 304 }
       },
       main: {
-        en: { path: '/bitdash-logo.png', width: 775, height: 285 },
-        ar: { path: '/bitdash-ar-logo.png', width: 675, height: 285 }
+        en: { path: '/bitdash-logo.png', width: 1080, height: 249 },
+        ar: { path: '/bitdash-ar-logo.png', width: 1080, height: 249 }
       }
     };
 
@@ -53,19 +53,31 @@ const Logo = () => {
     return configs[platformKey]?.[isArabic ? 'ar' : 'en'] || configs.main[isArabic ? 'ar' : 'en'];
   };
 
-  // Using the largest width (875px) and height (285px) as reference
-  // to create consistent scaling while maintaining proportions
-  const CONTAINER_WIDTH = { base: '115px', md: '170px' };
-  const CONTAINER_HEIGHT = { base: '50px', md: '50px' };
-
+  // Responsive sizing for perfect fit on mobile and 25% bigger on desktop
   const logoConfig = getLogoConfig();
+  
+  // Calculate aspect ratio to maintain proportions
+  const aspectRatio = logoConfig.width / logoConfig.height;
+  
+  // Base size (mobile)
+  const mobileWidth = "170px";
+  const mobileHeight = `${parseInt(mobileWidth) / aspectRatio}px`;
+  
+  // Desktop size (25% bigger)
+  const desktopWidth = `${parseInt(mobileWidth) * 1.5}px`;
+  const desktopHeight = `${parseInt(mobileHeight) * 1.5}px`;
+  
+  // Use breakpoint to switch between mobile and desktop sizes
+  const width = useBreakpointValue({ base: mobileWidth, md: desktopWidth });
+  const height = useBreakpointValue({ base: mobileHeight, md: desktopHeight });
 
   return (
     <Box 
       display="block" 
-      width={CONTAINER_WIDTH}
-      height={CONTAINER_HEIGHT}
+      width={width}
+      height={height}
       position="relative"
+      overflow="hidden"
     >
       <Image
         src={logoConfig.path}

@@ -4,34 +4,34 @@ const theme = extendTheme({
   colors: {
     brand: {
       bitdash: {
-       400: '#efba72',
-        500: '#cfa872',    // Base
-        600: '#ab7c39',    // Hover
-        700: '#ab7c39',    // Emphasis
+       400: '#8b7966',
+        500: '#b8a28b',    // Base
+        600: '#9c7c63',    // Hover
+        700: '#c4b2a0',    // Emphasis
       },
       bitcash: {
-        400: '#7bcfbd',
-        500: '#56bba5',    // Base
-        600: '#1eb495',    // Hover
-        700: '#2d7b6a',    // Emphasis
+        400: '#8b7966',
+        500: '#b8a28b',    // Base
+        600: '#9c7c63',    // Hover
+        700: '#c4b2a0',    // Emphasis
       },
       bitfund: {
-        400: '#305896',
-        500: '#5c87cb',    // Base
-        600: '#6e8fc4',    // Hover
-        700: '#859ec6',    // Emphasis
+        400: '#8b7966',
+        500: '#b8a28b',    // Base
+        600: '#9c7c63',    // Hover
+        700: '#c4b2a0',    // Emphasis
       },
       bittrade: {
-        400: '#38a4a4',
-        500: '#59c6c6',    // Base
-        600: '#5fd8d8',    // Hover
-        700: '#84dfdf',    // Emphasis
+        400: '#8b7966',
+        500: '#b8a28b',    // Base
+        600: '#9c7c63',    // Hover
+        700: '#c4b2a0',    // Emphasis
       },
       bitstock: {
-        400: '#4384b4',
-        500: '#4893cb',    // Base
-        600: '#5ca5db',    // Hover
-        700: '#8ccdfc',    // Emphasis
+        400: '#8b7966',
+        500: '#b8a28b',    // Base
+        600: '#9c7c63',    // Hover
+        700: '#c4b2a0',    // Emphasis
       }
     },
   },

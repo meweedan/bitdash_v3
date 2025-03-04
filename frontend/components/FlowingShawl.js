@@ -20,34 +20,34 @@ const FlowingShawl = () => {
 
   const themeColors = {
     bitstock: [
-      new THREE.Color('#67bdfd'),
-      new THREE.Color('#67bdfd'),
-      new THREE.Color('#67bdfd'),
-      new THREE.Color('#67bdfd')
+      new THREE.Color('#8b7966'),
+      new THREE.Color('#b8a28b'),
+      new THREE.Color('#9c7c63'),
+      new THREE.Color('#c4b2a0')
     ],
     bitcash: [
-      new THREE.Color('#7bcfbd'),
-      new THREE.Color('#56bba5'),
-      new THREE.Color('#1eb495'),
-      new THREE.Color('#2d7b6a')
+      new THREE.Color('#8b7966'),
+      new THREE.Color('#b8a28b'),
+      new THREE.Color('#9c7c63'),
+      new THREE.Color('#c4b2a0')
     ],
     bitfund: [
-      new THREE.Color('#305896'),
-      new THREE.Color('#5c87cb'),
-      new THREE.Color('#6e8fc4'),
-      new THREE.Color('#859ec6')
+      new THREE.Color('#8b7966'),
+      new THREE.Color('#b8a28b'),
+      new THREE.Color('#9c7c63'),
+      new THREE.Color('#c4b2a0')
     ],
     bittrade: [
-      new THREE.Color('#38a4a4'),
-      new THREE.Color('#59c6c6'),
-      new THREE.Color('#5fd8d8'),
-      new THREE.Color('#84dfdf')
+      new THREE.Color('#8b7966'),
+      new THREE.Color('#b8a28b'),
+      new THREE.Color('#9c7c63'),
+      new THREE.Color('#c4b2a0')
     ],
     bitdash: [
-      new THREE.Color('#efba72'),
-      new THREE.Color('#cfa872'),
-      new THREE.Color('#ab7c39'),
-      new THREE.Color('#ab7c39')
+      new THREE.Color('#8b7966'),
+      new THREE.Color('#b8a28b'),
+      new THREE.Color('#9c7c63'),
+      new THREE.Color('#c4b2a0')
     ]
   };
 

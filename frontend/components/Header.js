@@ -17,11 +17,18 @@ import {
   useColorModeValue,
   HStack,
   Icon,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
+  PopoverArrow,
+  Container,
+  Divider
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, ChatIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon, ChatIcon, PhoneIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Logo from '@/components/Logo';
-import { FaSignInAlt, FaUserPlus, FaUser, FaSignOutAlt, FaWhatsapp, FaTelegram } from 'react-icons/fa';
+import { FaSignInAlt, FaUserPlus, FaUser, FaSignOutAlt, FaWhatsapp, FaTelegram, FaChevronDown } from 'react-icons/fa';
 import AnnouncementBanner from './AnnouncementBanner';
 
 export default function Header() {
@@ -71,13 +78,7 @@ export default function Header() {
   };
 
   const platforms = [
-    {
-      name: 'BitTrade',
-      image: '/trade.png',
-      mobileImage: '/trade.png',
-      href: 'https://trade.bitdash.app/',
-    },
-    {
+     {
       name: 'BitCash',
       image: '/cash.png',
       mobileImage: '/cash.png',
@@ -95,6 +96,12 @@ export default function Header() {
       mobileImage: '/stock.png',
       href: 'https://stock.bitdash.app/',
     },
+    {
+      name: 'BitTrade',
+      image: '/trade.png',
+      mobileImage: '/trade.png',
+      href: 'https://trade.bitdash.app/',
+    }
   ];
 
   const bgColor = useColorModeValue(
@@ -152,16 +159,48 @@ export default function Header() {
     </Link>
   );
   
+  // Main menu items (LDN style)
+  const mainMenuItems = [
+    { 
+      name: 'Platforms', 
+      path: '/platforms',
+      submenu: [
+        { name: 'MT5 Platform', path: '/platforms/mt5' },
+        { name: 'Web Trader', path: '/platforms/web-trader' },
+        { name: 'Mobile Apps', path: '/platforms/mobile' },
+      ]
+    },
+    { 
+      name: 'Funding', 
+      path: '/funding',
+      submenu: [
+        { name: 'Deposit Methods', path: '/funding/deposit' },
+        { name: 'Withdrawals', path: '/funding/withdrawal' },
+        { name: 'Payment FAQ', path: '/funding/faq' },
+      ]
+    },
+    { 
+      name: 'About', 
+      path: '/about',
+      submenu: [
+        { name: 'Company Profile', path: '/about/profile' },
+        { name: 'Regulation', path: '/about/regulation' },
+        { name: 'Contact Us', path: '/about/contact' },
+      ]
+    },
+  ];
+  
   return (
     <Flex
       as="nav"
       direction="column"
       position="sticky"
       top="0"
+      backdropFilter="blur(90px)"
       width="100%"
-      backdropFilter="blur(40px)"
       zIndex={999}
     >
+
       {/* Solutions Menu - Desktop */}
       <Box 
         display={{ base: 'none', lg: 'block' }}
@@ -188,7 +227,7 @@ export default function Header() {
                 spacing={5}
                 align="center"
                 transition="transform 0.2s"
-                _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
+                _hover={{ transform: 'translateY(-5px)' }}
               >
                 <Image 
                   src={platform.image}
@@ -203,6 +242,7 @@ export default function Header() {
         </HStack>
       </Box>
 
+      {/* Main Navigation Bar */}
       <Flex
         direction="row"
         justify="space-between"
@@ -212,7 +252,7 @@ export default function Header() {
         dir={isRTL ? 'rtl' : 'ltr'}
       >
         {/* Logo */}
-        <Box width={{ base: '110px', md: '120px' }}>
+        <Box width={{ base: '110px', md: '150px' }}>
           <Link href="/" passHref>
             <Box display="block">
               <Logo />
@@ -220,64 +260,88 @@ export default function Header() {
           </Link>
         </Box>
 
-        {/* Desktop Center Menu */}
+        {/* Desktop Main Menu - LDN Style */}
         <HStack 
-          spacing={{ base: 'none', lg: '110' }}
+          spacing={6}
           display={{ base: 'none', lg: 'flex' }}
           position="relative"
         >
-          <Link href="/services" passHref>
-            <Text
-              fontSize="lg"
-              fontWeight="bold"
-              cursor="pointer"
-              color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
-            >
-              {t('servicesMenu')}
-            </Text>
-          </Link>
+          {mainMenuItems.map((item) => (
+            <Popover key={item.name} trigger="hover" placement="bottom-start">
+              <PopoverTrigger>
+                <Box>
+                  <HStack 
+                    spacing={1} 
+                    cursor="pointer" 
+                    _hover={{ color: `brand.${platform}.500` }}
+                  >
+                    <Link href={item.path} passHref>
+                      <Text 
+                        fontWeight="bold" 
+                        fontSize="xl"
+                        color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
+                      >
+                        {item.name}
+                      </Text>
+                    </Link>
+                    <Icon as={FaChevronDown} boxSize={3} color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`} />
+                  </HStack>
+                </Box>
+              </PopoverTrigger>
+              <PopoverContent 
+                bg={isDark ? "gray.800" : "white"}
+                borderColor={isDark ? "gray.700" : "gray.200"}
+                boxShadow="xl"
+                p={2}
+                minW="200px"
+                _focus={{ boxShadow: "xl" }}
+              >
+                <PopoverArrow bg={isDark ? "gray.800" : "white"} />
+                <PopoverBody p={0}>
+                  <VStack align="stretch" spacing={0}>
+                    {item.submenu && item.submenu.map((subItem) => (
+                      <Link key={subItem.name} href={subItem.path} passHref>
+                        <Text
+                          p={3}
+                          fontWeight="bold" 
+                        fontSize="xl"
+                          _hover={{ 
+                            bg: isDark ? "gray.700" : "gray.50",
+                            color: `brand.${platform}.500`
+                          }}
+                        >
+                          {subItem.name}
+                        </Text>
+                      </Link>
+                    ))}
+                  </VStack>
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
+          ))}
           
-          <Link href="/about" passHref>
-            <Text
-              fontSize="lg"
-              fontWeight="bold"
-              cursor="pointer"
-              color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
-            >
-              {t('aboutUs')}
-            </Text>
-          </Link>
-
-          <Link href="/contact" passHref>
-            <Text
-              fontSize="lg"
-              fontWeight="bold"
-              cursor="pointer"
-              color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
-            >
-              {t('contactUs')}
-            </Text>
-          </Link>
-          
+          {/* Our Solutions Button */}
           <Box position="relative">
-            <Text
-              fontSize="lg"
-              fontWeight="bold"
-              cursor="pointer"
-              color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
+            <HStack 
+              spacing={1} 
+              cursor="pointer" 
+              _hover={{ color: `brand.${platform}.500` }}
               onClick={() => setShowPlatforms(!showPlatforms)}
             >
-              {t('ourSolutions')}
-            </Text>
+              <Text 
+                fontWeight="bold" 
+                fontSize="xl"
+                color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
+              >
+                {t('ourSolutions')}
+              </Text>
+              <Icon as={FaChevronDown} boxSize={3} color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`} />
+            </HStack>
           </Box>
         </HStack>
 
         {/* Desktop Controls */}
-        <Flex 
-          display={{ base: 'none', lg: 'flex' }} 
-          align="center" 
-          gap={4}
-        >
+        <HStack spacing={3} display={{ base: 'none', lg: 'flex' }}>
           <LanguageSwitcher 
             color={isDark ? `brand.${platform}.400` : `brand.${platform}.400`}
             sx={{
@@ -286,7 +350,8 @@ export default function Header() {
                 width: '80px',
                 fontSize: '16px',
                 height: '40px',
-                border: 'none',
+                border: '1px solid',
+                borderColor: isDark ? 'gray.700' : 'gray.200',
                 borderRadius: 'md',
               }
             }}
@@ -300,25 +365,22 @@ export default function Header() {
               <svg viewBox="0 0 24 24" width="24px" height="24px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
               : <svg viewBox="0 0 24 24" width="24px" height="24px"><path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
             }
-            size="lg"
             _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
           />
 
           <IconButton
-            icon={<FaWhatsapp size={24} />}
+            icon={<FaWhatsapp size={20} />}
             variant={`${platform}-outline`}
             onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
             aria-label="WhatsApp"
-            size="lg"
             _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
           />
 
           <IconButton
-            icon={<FaTelegram size={24} />}
+            icon={<FaTelegram size={20} />}
             variant={`${platform}-outline`}
             onClick={() => window.open("https://t.me/BitDashSupport", "_blank")}
-            aria-label="WhatsApp"
-            size="lg"
+            aria-label="Telegram"
             _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
           />
 
@@ -328,18 +390,18 @@ export default function Header() {
               {isLoggedIn ? (
                 <>
                   <Button 
-                    leftIcon={<FaUser size={20} />} 
-                    size="lg"
+                    leftIcon={<FaUser size={16} />} 
+                    size="md"
                     variant={`${platform}-outline`}
-                    onClick={() => router.push('/login')}
+                    onClick={() => router.push('/dashboard')}
                     _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
                   >
                     {t('myAccount')}
                   </Button>
                   <Button
-                    leftIcon={<FaSignOutAlt size={20} />}
+                    leftIcon={<FaSignOutAlt size={16} />}
                     onClick={handleLogout}
-                    size="lg"
+                    size="md"
                     variant={`${platform}-outline`}
                     colorScheme="red"
                   >
@@ -349,22 +411,23 @@ export default function Header() {
               ) : (
                 <>
                   <Button 
-                    leftIcon={<FaSignInAlt size={20} />}
-                    size="lg"
-                    _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
+                    leftIcon={<FaSignInAlt size={16} />}
+                    size="md"
                     variant={`${platform}-outline`}
                     color={isDark ? `brand.${platform}.400` : `brand.${platform}.400`}
                     onClick={() => router.push('/login')}
+                    _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
                   >
                     {t('login')}
                   </Button>
                   <Button 
-                    leftIcon={<FaUserPlus size={20} />}
-                    size="lg"
+                    leftIcon={<FaUserPlus size={16} />}
+                    size="md"
                     variant={`${platform}-solid`}
-                    color={{bg : isDark ? 'white' : 'black'}}
+                    color={isDark ? 'white' : 'white'}
+                    bg={`brand.${platform}.600`}
                     onClick={() => router.push('/signup')}
-                    _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
+                    _hover={{bg : `brand.${platform}.700`}}
                   >
                     {t('signup')}
                   </Button>
@@ -372,7 +435,7 @@ export default function Header() {
               )}
             </>
           )}
-        </Flex>
+        </HStack>
 
         {/* Mobile Controls */}
         <HStack display={{ base: 'flex', lg: 'none'}} spacing={2}>
@@ -405,13 +468,13 @@ export default function Header() {
             size="sm"
           />
 
-          {!isMainDomain() && (
+          {!isMainDomain() && !isOpen && (
             <>
               {isLoggedIn ? (
                 <>
                   <IconButton
                     as={Link}
-                    href="/login"
+                    href="/dashboard"
                     icon={<FaUser />}
                     aria-label={t('myAccount')}
                     variant={`${platform}-outline`}
@@ -443,8 +506,10 @@ export default function Header() {
                     href="/signup"
                     icon={<FaUserPlus />}
                     aria-label={t('signup')}
-                    variant={`${platform}-outline`}
-                    color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
+                    variant={`${platform}-solid`}
+                    color="white"
+                    bg={`brand.${platform}.600`}
+                    _hover={{ bg: `brand.${platform}.700` }}
                     size="sm"
                   />
                 </>
@@ -462,68 +527,178 @@ export default function Header() {
         </HStack>
       </Flex>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - LDN Style */}
       <Collapse in={isOpen} animateOpacity>
         <Box
-          position="fixed"
+          position="absolute"
           width="100%"
-          bg={isDark ? 'rgba(0, 0, 0, 0.9)' : 'rgba(255, 255, 255, 0.95)'}
-          p={2}
-          textAlign="center"
-          boxShadow="3xl"
+          bg={isDark ? "black" : "white"}
+          py={4}
+          px={6}
+          textAlign="left"
+          boxShadow="lg"
           zIndex="1000"
+          borderTop="1px solid"
+          borderColor={isDark ? "gray.700" : "gray.200"}
+          maxH="80vh"
+          overflowY="auto"
         >
-          {/* Navigation Links */}
-          <SimpleGrid columns={3} w="full" mb={2}>           
-            <MenuItems href="/services" color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`} onClick={onClose}>{t('servicesMenu')}</MenuItems>
-            <MenuItems href="/about" color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`} onClick={onClose}>{t('aboutUs')}</MenuItems>
-            <MenuItems href="/contact" color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`} onClick={onClose}>{t('contactUs')}</MenuItems>
-          </SimpleGrid>
-
-          {/* Platforms Row */}
-          <Flex 
-            justify="space-between" 
-            align="center" 
-            px={4} 
-            w="full" 
-            overflowX="auto"
-            css={{
-              '&::-webkit-scrollbar': {
-                display: 'none'
-              },
-              scrollbarWidth: 'none'
-            }}
-          >
-            {platforms.map((platform) => (
-              <a 
-                key={platform.href}
-                href={platform.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: 'none' }}
-              >
-                <Box
-                  onClick={onClose}
-                  textAlign="center"
-                  p={2}
-                  borderRadius="md"
-                  minW="60px"
-                >
-                  <Image
-                    src={platform.mobileImage}
-                    alt={platform.name}
-                    width={80}
-                    height={50}
-                    priority={true}
-                    style={{ 
-                      margin: '0 auto',
-                      objectFit: 'contain'
-                    }}
-                  />
-                </Box>
-              </a>
+          <VStack align="stretch" spacing={4}>
+            {mainMenuItems.map((item) => (
+              <Box key={item.name}>
+                <Link href={item.path} passHref>
+                  <Text
+                    fontWeight="bold"
+                    py={2}
+                    borderBottom="1px solid"
+                    borderColor={isDark ? "gray.700" : "gray.200"}
+                    color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
+                  >
+                    {item.name}
+                  </Text>
+                </Link>
+                {item.submenu && (
+                  <VStack align="stretch" mt={2} pl={4} spacing={1}>
+                    {item.submenu.map((subItem) => (
+                      <Link key={subItem.name} href={subItem.path} passHref>
+                        <Text
+                          py={1}
+                          fontSize="sm"
+                          _hover={{
+                            color: `brand.${platform}.500`
+                          }}
+                          onClick={onClose}
+                        >
+                          {subItem.name}
+                        </Text>
+                      </Link>
+                    ))}
+                  </VStack>
+                )}
+              </Box>
             ))}
-          </Flex>
+            
+            {/* Our Solutions Section */}
+            <Box>
+              <Text
+                fontWeight="bold"
+                py={2}
+                borderBottom="1px solid"
+                borderColor={isDark ? "gray.700" : "gray.200"}
+                color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
+                onClick={() => setShowPlatforms(!showPlatforms)}
+                cursor="pointer"
+              >
+                {t('ourSolutions')}
+              </Text>
+              <Flex 
+                mt={2}
+                justify="space-between" 
+                align="center" 
+                px={4} 
+                w="full" 
+                overflowX="auto"
+                css={{
+                  '&::-webkit-scrollbar': {
+                    display: 'none'
+                  },
+                  scrollbarWidth: 'none'
+                }}
+              >
+                {platforms.map((platform) => (
+                  <a 
+                    key={platform.href}
+                    href={platform.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <Box
+                      onClick={onClose}
+                      textAlign="center"
+                      p={2}
+                      borderRadius="md"
+                      minW="60px"
+                    >
+                      <Image
+                        src={platform.mobileImage}
+                        alt={platform.name}
+                        width={80}
+                        height={50}
+                        priority={true}
+                        style={{ 
+                          margin: '0 auto',
+                          objectFit: 'contain'
+                        }}
+                      />
+                    </Box>
+                  </a>
+                ))}
+              </Flex>
+            </Box>
+            
+            {/* Mobile Sign-up/Login Buttons */}
+            {!isMainDomain() && (
+              <VStack align="stretch" pt={4} spacing={3}>
+                {isLoggedIn ? (
+                  <>
+                    <Button 
+                      leftIcon={<FaUser />}
+                      variant={`${platform}-outline`}
+                      borderColor={isDark ? "gray.600" : "gray.300"}
+                      w="full"
+                      onClick={() => {
+                        router.push('/dashboard');
+                        onClose();
+                      }}
+                    >
+                      {t('myAccount')}
+                    </Button>
+                    <Button 
+                      leftIcon={<FaSignOutAlt />}
+                      colorScheme="red"
+                      variant="outline"
+                      w="full"
+                      onClick={() => {
+                        handleLogout();
+                        onClose();
+                      }}
+                    >
+                      {t('logout')}
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button 
+                      leftIcon={<FaSignInAlt />}
+                      variant={`${platform}-outline`}
+                      borderColor={isDark ? "gray.600" : "gray.300"}
+                      w="full"
+                      onClick={() => {
+                        router.push('/login');
+                        onClose();
+                      }}
+                    >
+                      {t('login')}
+                    </Button>
+                    <Button 
+                      leftIcon={<FaUserPlus />}
+                      bg={`brand.${platform}.600`}
+                      color="white"
+                      _hover={{ bg: `brand.${platform}.700` }}
+                      w="full"
+                      onClick={() => {
+                        router.push('/signup');
+                        onClose();
+                      }}
+                    >
+                      {t('signup')}
+                    </Button>
+                  </>
+                )}
+              </VStack>
+            )}
+          </VStack>
         </Box>
       </Collapse>
 
