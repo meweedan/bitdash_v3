@@ -136,32 +136,28 @@ export default function Landing() {
       <Box 
         as="section" 
         position="relative"
-        pt={{ base: 24, md: 40 }}
+        pt={{ base: 18, md: 20 }}
         pb={{ base: 32, md: 48 }}
         overflow="hidden"
       >
-        {/* Background gradient */}
+        {/* Background image */}
         <Box
           position="absolute"
-          top="0"
+          zIndex={1}
+          top="-10"
           left="0"
           right="0"
           bottom="0"
-          zIndex="0"
+        >
+        <Image
+        src="background-image.png"
+        alt="Background"
+        width="100%"
+        height="100%"
+        objectFit="cover"
+        objectPosition="center"
         />
-        
-        {/* Subtle grid pattern */}
-        <Box
-          position="absolute"
-          width="100%"
-          height="100%"
-          top="0"
-          left="0"
-          opacity={isDark ? "0.05" : "0.03"}
-          backgroundImage="url('/images/grid-pattern.svg')"
-          backgroundSize="50px 50px"
-          zIndex="0"
-        />
+        </Box>
         
         {/* Hero content */}
         <Container maxW="container.xl" position="relative" zIndex="1">
@@ -173,17 +169,6 @@ export default function Landing() {
                 variants={fadeIn}
               >
                 <VStack spacing={8} align="flex-start">
-                  <Badge 
-                    colorScheme="brand.bitdash" 
-                    bg="brand.bitdash.500" 
-                    color="white" 
-                    px={3} 
-                    py={1} 
-                    borderRadius="full"
-                    fontSize="sm"
-                  >
-                    {t('shariahCompliant', 'SHARIAH-COMPLIANT FINTECH')}
-                  </Badge>
                   
                   <Heading
                     as="h1"
@@ -191,14 +176,14 @@ export default function Landing() {
                     fontWeight="bold"
                     lineHeight={1.1}
                     letterSpacing="tight"
-                    color={isDark ? "white" : "gray.800"}
+                    color={isDark ? "#efba72" : "#ab7c39"}
                   >
                     {t('heroTitle', 'Islamic Financial Technology for the Modern Economy')}
                   </Heading>
                   
                   <Text
                     fontSize={{ base: "lg", md: "xl" }}
-                    color={isDark ? "gray.300" : "gray.600"}
+                    color={isDark ? "gray.300" : "gray.100"}
                     maxW="xl"
                     lineHeight="tall"
                   >
@@ -207,74 +192,24 @@ export default function Landing() {
                   
                   <HStack spacing={5} pt={4}>
                     <Button
-                      size="lg"
-                      bg="brand.bitdash.600"
+                      bg="brand.bitdash.700"
                       color="white"
                       _hover={{ bg: "brand.bitdash.700" }}
                       _active={{ bg: "brand.bitdash.700" }}
-                      height="58px"
-                      px={8}
-                      fontSize="md"
                       fontWeight="bold"
                       rightIcon={<ArrowRightCircle size={18} />}
                       boxShadow="lg"
                       rounded="full"
                       onClick={() => router.push('/signup')}
                     >
-                      {t('startTrial', 'Start Free Trial')}
+                      {t('startTrial', 'Start Trading')}
                     </Button>
-                    
-                    <Button
-                      leftIcon={<FaWhatsapp size={18} />}
-                      size="lg"
-                      variant="outline"
-                      color="brand.bitdash.500"
-                      borderColor="brand.bitdash.500"
-                      _hover={{ bg: "brand.bitdash.50" }}
-                      height="58px"
-                      px={8}
-                      fontSize="md"
-                      borderWidth="2px"
-                      rounded="full"
-                      onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
-                    >
-                      {t('scheduleDemo', 'Schedule Demo')}
-                    </Button>
-                  </HStack>
-                  
-                  <HStack spacing={8} pt={6} flexWrap="wrap">
-                    <VStack align="flex-start" spacing={1}>
-                      <Text fontSize="sm" color={isDark ? "gray.400" : "gray.500"}>
-                        {t('statHeadingTransactions', 'MONTHLY TRANSACTIONS')}
-                      </Text>
-                      <Text fontSize="3xl" fontWeight="bold" color={isDark ? "white" : "gray.800"}>
-                        $2.5B+
-                      </Text>
-                    </VStack>
-                    
-                    <VStack align="flex-start" spacing={1}>
-                      <Text fontSize="sm" color={isDark ? "gray.400" : "gray.500"}>
-                        {t('statHeadingClients', 'GLOBAL CLIENTS')}
-                      </Text>
-                      <Text fontSize="3xl" fontWeight="bold" color={isDark ? "white" : "gray.800"}>
-                        180+
-                      </Text>
-                    </VStack>
-                    
-                    <VStack align="flex-start" spacing={1}>
-                      <Text fontSize="sm" color={isDark ? "gray.400" : "gray.500"}>
-                        {t('statHeadingUptime', 'SYSTEM UPTIME')}
-                      </Text>
-                      <Text fontSize="3xl" fontWeight="bold" color={isDark ? "white" : "gray.800"}>
-                        99.99%
-                      </Text>
-                    </VStack>
                   </HStack>
                 </VStack>
               </MotionBox>
             </GridItem>
             
-            <GridItem display={{ base: "none", lg: "block" }}>
+            <GridItem display={{ base: "block", lg: "block" }}>
               <ParallaxBox offset={parallaxOffset}>
                 <MotionBox
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -283,84 +218,30 @@ export default function Landing() {
                   position="relative"
                 >
                   <Image 
-                    src="/images/dashboard-mockup.png" 
-                    alt="BitDash Financial Dashboard"
+                    src="MT5-IOS.png" 
+                    alt="BitDash MT5"
                     borderRadius="xl"
                     boxShadow="2xl"
                     width="full"
                   />
-                  
-                  {/* Floating elements */}
-                  <MotionBox
-                    position="absolute"
-                    top="-40px"
-                    right="40px"
-                    animate={{ y: [0, -15, 0] }}
-                    transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                  >
-                    <Flex
-                      bg={isDark ? "gray.800" : "white"}
-                      boxShadow="lg"
-                      borderRadius="xl"
-                      p={4}
-                      align="center"
-                    >
-                      <Circle size="40px" bg="green.100" color="green.500" mr={3}>
-                        <Icon as={CheckCircle} boxSize={5} />
-                      </Circle>
-                      <VStack spacing={0} align="flex-start">
-                        <Text fontWeight="bold">Shariah Certified</Text>
-                        <Text fontSize="sm" color="gray.500">All transactions verified</Text>
-                      </VStack>
-                    </Flex>
-                  </MotionBox>
-                  
-                  <MotionBox
-                    position="absolute"
-                    bottom="-30px"
-                    left="30px"
-                    animate={{ y: [0, 15, 0] }}
-                    transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
-                  >
-                    <Flex
-                      bg={isDark ? "gray.800" : "white"}
-                      boxShadow="lg"
-                      borderRadius="xl"
-                      p={4}
-                      align="center"
-                    >
-                      <Circle size="40px" bg="blue.100" color="brand.bitdash.500" mr={3}>
-                        <Icon as={TrendingUp} boxSize={5} />
-                      </Circle>
-                      <VStack spacing={0} align="flex-start">
-                        <Text fontWeight="bold">Forex Trading</Text>
-                        <Text fontSize="sm" color="gray.500">0% commission</Text>
-                      </VStack>
-                    </Flex>
-                  </MotionBox>
                 </MotionBox>
               </ParallaxBox>
             </GridItem>
+            <Box
+              position="absolute"
+              bottom="-54px"
+              left="0"
+              right="0"
+              height="15px"
+              zIndex="1"
+              >
+            <Image
+              src="trading-features.png"
+              alt="Trading Features"
+              />
+            </Box>
           </Grid>
         </Container>
-        
-        {/* SVG wave divider */}
-        <Box
-          position="absolute"
-          bottom="-2px"
-          left="0"
-          right="0"
-          height="150px"
-          zIndex="1"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
-            <path 
-              fill={isDark ? "#1A202C" : "#F7FAFC"} 
-              fillOpacity="1" 
-              d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,218.7C672,203,768,149,864,117.3C960,85,1056,75,1152,80C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-            </path>
-          </svg>
-        </Box>
       </Box>
     );
   };
@@ -417,14 +298,14 @@ export default function Landing() {
               <Heading
                 fontSize={{ base: "3xl", md: "4xl" }}
                 fontWeight="bold"
-                color={isDark ? "white" : "gray.800"}
+                color={isDark ? "#ab7c39" : "#efba72"}
                 mb={5}
               >
                 {t('islamicFinanceTitle', 'Built On Strong Ethical Foundations')}
               </Heading>
               <Text
                 fontSize={{ base: "md", md: "lg" }}
-                color={isDark ? "gray.300" : "gray.600"}
+                color={isDark ? "#ab7c39" : "#efba72"}
                 maxW="3xl"
                 mx="auto"
               >
@@ -456,7 +337,7 @@ export default function Landing() {
                     direction="column"
                     p={8}
                     borderRadius="2xl"
-                    bg={isDark ? "gray.800" : "white"}
+                    bg={isDark ? "#ab7c39" : "#ab7c39"}
                     boxShadow="lg"
                     height="full"
                     transition="all 0.3s"
@@ -467,7 +348,7 @@ export default function Landing() {
                   >
                     <Circle
                       size="56px"
-                      bg={isDark ? "gray.700" : "brand.bitdash.50"}
+                      bg={isDark ? "#ab7c39" : "#ab7c39"}
                       color="brand.bitdash.500"
                       mb={6}
                     >
@@ -764,7 +645,7 @@ export default function Landing() {
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
           <path 
-            fill={isDark ? "#171923" : "#FFFFFF"} 
+            fill={isDark ? "#efba72" : "#ab7c39"}
             fillOpacity="1" 
             d="M0,128L48,133.3C96,139,192,149,288,144C384,139,480,117,576,122.7C672,128,768,160,864,170.7C960,181,1056,171,1152,154.7C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
           </path>
@@ -1048,168 +929,6 @@ export default function Landing() {
     );
   };
   
-  const TestimonialSection = () => {
-    const testimonials = [
-      {
-        quote: "BitDash's shariah-compliant fintech suite has transformed how we handle cross-border payments, reducing settlement time while ensuring ethical compliance.",
-        author: "Sarah Al-Mansouri",
-        company: "CFO at GulfTech Solutions",
-        image: "/images/testimonial-1.jpg"
-      },
-      {
-        quote: "Implementing BitFund has allowed us to scale our trading operations globally while maintaining full adherence to Islamic financial principles.",
-        author: "James Chen",
-        company: "Director at Apex Trading Group",
-        image: "/images/testimonial-2.jpg"
-      },
-      {
-        quote: "The integration between all BitDash platforms gives us a competitive edge in serving our MENA clients with global halal investment opportunities.",
-        author: "Mohammed Al-Harbi",
-        company: "CEO at Riyadh Financial Advisors",
-        image: "/images/testimonial-3.jpg"
-      }
-    ];
-    
-    return (
-      <Box 
-        as="section" 
-        py={24} 
-        position="relative"
-      >
-        <Container maxW="container.xl">
-          <VStack spacing={16}>
-            <MotionBox
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeIn}
-              textAlign="center"
-            >
-              <Text 
-                color="brand.bitdash.500" 
-                fontWeight="bold" 
-                mb={3}
-                textTransform="uppercase"
-                letterSpacing="wide"
-              >
-                {t('testimonialsSubtitle', 'CLIENT TESTIMONIALS')}
-              </Text>
-              <Heading
-                fontSize={{ base: "3xl", md: "4xl" }}
-                fontWeight="bold"
-                color={isDark ? "white" : "gray.800"}
-                mb={5}
-              >
-                {t('testimonialsTitle', 'Trusted by Islamic Financial Institutions')}
-              </Heading>
-              <Text
-                fontSize={{ base: "md", md: "lg" }}
-                color={isDark ? "gray.300" : "gray.600"}
-                maxW="3xl"
-                mx="auto"
-              >
-                {t('testimonialsDescription', 'See what our clients say about our shariah-compliant financial technology solutions and services.')}
-              </Text>
-            </MotionBox>
-            
-            <Grid 
-              templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
-              gap={8}
-              w="full"
-            >
-              {testimonials.map((testimonial, idx) => (
-                <ParallaxBox
-                  key={idx}
-                  offset={20}
-                >
-                  <MotionBox
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
-                    variants={{
-                      hidden: { opacity: 0, y: 30 },
-                      visible: { 
-                        opacity: 1, 
-                        y: 0,
-                        transition: { 
-                          duration: 0.6, 
-                          delay: idx * 0.15,
-                          ease: [0.22, 1, 0.36, 1]
-                        }
-                      }
-                    }}
-                  >
-                    <Flex
-                      direction="column"
-                      p={8}
-                      borderRadius="2xl"
-                      bg={isDark ? "gray.700" : "white"}
-                      boxShadow="lg"
-                      height="full"
-                      position="relative"
-                      zIndex="1"
-                    >
-                      <Icon 
-                        as={Info} 
-                        boxSize={10} 
-                        color="brand.bitdash.500" 
-                        opacity={0.15} 
-                        mb={4} 
-                      />
-                      
-                      <Text
-                        fontSize="lg"
-                        fontStyle="italic"
-                        color={isDark ? "gray.300" : "gray.600"}
-                        mb={8}
-                        zIndex="2"
-                      >
-                        "{testimonial.quote}"
-                      </Text>
-                      
-                      <HStack spacing={4} mt="auto">
-                        <Image 
-                          src={testimonial.image}
-                          fallbackSrc="https://via.placeholder.com/60"
-                          alt={testimonial.author}
-                          boxSize="60px"
-                          borderRadius="full"
-                          objectFit="cover"
-                        />
-                        
-                        <VStack spacing={0} align="flex-start">
-                          <Text fontWeight="bold" color={isDark ? "white" : "gray.800"}>
-                            {testimonial.author}
-                          </Text>
-                          <Text fontSize="sm" color={isDark ? "gray.400" : "gray.500"}>
-                            {testimonial.company}
-                          </Text>
-                        </VStack>
-                      </HStack>
-                      
-                      {/* Decorative element */}
-                      <Box
-                        position="absolute"
-                        right="0"
-                        bottom="0"
-                        width="150px"
-                        height="150px"
-                        bgGradient="linear(to-tr, brand.bitdash.500, brand.bitdash.400)"
-                        opacity="0.05"
-                        borderTopLeftRadius="full"
-                        zIndex="0"
-                      />
-                    </Flex>
-                  </MotionBox>
-                </ParallaxBox>
-              ))}
-            </Grid>
-          </VStack>
-        </Container>
-      </Box>
-    );
-  };
-  
   const CTASection = () => {
     return (
       <Box 
@@ -1368,7 +1087,6 @@ export default function Landing() {
       <PlatformSection />
       <FeaturesSection />
       <AppShowcaseSection />
-      <TestimonialSection />
       <CTASection />
     </Box>
   );
