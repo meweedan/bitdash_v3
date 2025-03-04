@@ -8,8 +8,8 @@ module.exports = [
       origin: [
         'https://bitdash.app',
         'https://cash.bitdash.app',
-        'https://trade.bitdash.app',
-        'https://fund.bitdash.app',
+        'https://forex.bitdash.app',
+        'https://crypto.bitdash.app',
         'https://stock.bitdash.app',
         'http://localhost:3000', 
         'https://bitdash-backend.onrender.com'],

@@ -12,9 +12,9 @@ const FlowingShawl = () => {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
       if (hostname.includes('cash')) setPlatform('bitcash');
-      else if (hostname.includes('fund')) setPlatform('bitfund');
+      else if (hostname.includes('crypto')) setPlatform('bitfund');
       else if (hostname.includes('stock')) setPlatform('bitstock');
-      else if (hostname.includes('trade')) setPlatform('bittrade');
+      else if (hostname.includes('forex')) setPlatform('bittrade');
     }
   }, []);
 

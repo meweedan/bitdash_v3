@@ -121,7 +121,7 @@
     },
     "primaryPlatform": {
       "type": "enumeration",
-      "enum": ["bitfund", "bitstock", "bittrade", "bitcash", "multiple"],
+      "enum": ["crypto", "stock", "forex", "cash", "multiple"],
       "default": "bitcash"
     },
     "registrationDate": {

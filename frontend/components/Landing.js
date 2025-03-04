@@ -625,7 +625,7 @@ export default function Landing() {
   const PlatformSection = () => {
     const platforms = [
       {
-        name: t('bitcash.name', 'BitCash'),
+        name: t('bitcash.name', 'Cash by BitDash'),
         icon: CreditCard,
         description: t('bitcash.description', 'Shariah-compliant payment solutions with seamless cross-border transactions and 0% hidden fees.'),
         subdomain: "cash.bitdash.app",
@@ -633,26 +633,26 @@ export default function Landing() {
         bgGradient: "linear(to-br, #8b7966, #b8a28b)"
       },
       {
-        name: t('bitfund.name', 'BitFund'),
+        name: t('crypto.name', 'Crypto by BitDash'),
         icon: LineChart,
         description: t('bitfund.description', 'Ethical trading platform with verified performance-based funding for traders following Islamic principles.'),
-        subdomain: "fund.bitdash.app",
+        subdomain: "crypto.bitdash.app",
         color: "#8b7966",
         bgGradient: "linear(to-br, #8b7966, #b8a28b)"
       },
       {
-        name: t('bitstock.name', 'BitStock'),
+        name: t('stock.name', 'Stock by BitDash'),
         icon: BarChart2,
-        description: t('bitstock.description', 'Shariah-compliant investment platform tailored for MENA & GCC investors to access global halal markets.'),
+        description: t('stock.description', 'Shariah-compliant investment platform tailored for MENA & GCC investors to access global halal markets.'),
         subdomain: "stock.bitdash.app",
         color: "#8b7966",
         bgGradient: "linear(to-br, #8b7966, #b8a28b)"
       },
       {
-        name: t('bittrade.name', 'BitTrade'),
+        name: t('forex.name', 'Forex by BitDash'),
         icon: TrendingUp,
-        description: t('bittrade.description', 'Regulated Islamic forex trading with zero interest (riba) and institutional-grade security protocols.'),
-        subdomain: "trade.bitdash.app",
+        description: t('forex.description', 'Regulated Islamic forex trading with zero interest (riba) and institutional-grade security protocols.'),
+        subdomain: "forex.bitdash.app",
         color: "#8b7966",
         bgGradient: "linear(to-br, #8b7966, #b8a28b)"
       }

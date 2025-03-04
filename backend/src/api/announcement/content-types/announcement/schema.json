@@ -35,10 +35,10 @@
     "platform": {
       "type": "enumeration",
       "enum": [
-        "bittrade",
-        "bitcash",
-        "bitfund",
-        "bitstock"
+        "forex",
+        "cash",
+        "crypto",
+        "stock"
       ],
       "required": true
     },

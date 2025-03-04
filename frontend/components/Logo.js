@@ -16,8 +16,8 @@ const Logo = () => {
       setPlatform('stock');
     } else if (hostname.includes('fund')) {
       setPlatform('fund');  
-    } else if (hostname.includes('trade')) {
-      setPlatform('trade');
+    } else if (hostname.includes('forex')) {
+      setPlatform('forex');
     } else if (process.env.NODE_ENV === 'development') {
       const urlPlatform = new URLSearchParams(window.location.search).get('platform');
       setPlatform(urlPlatform);
@@ -35,13 +35,13 @@ const Logo = () => {
         en: { path: '/stock.png', width: 862, height: 304 },
         ar: { path: '/stock-ar.png', width: 862, height: 304 }
       },
-      trade: {
-        en: { path: '/trade.png', width: 862, height: 304 },
-        ar: { path: '/trade-ar.png', width: 862, height: 304 }
+      forex: {
+        en: { path: '/forex.png', width: 862, height: 304 },
+        ar: { path: '/forex-ar.png', width: 862, height: 304 }
       },
-      fund: {
-        en: { path: '/fund.png', width: 862, height: 304 },
-        ar: { path: '/fund-ar.png', width: 862, height: 304 }
+      crypto: {
+        en: { path: '/crypto.png', width: 862, height: 304 },
+        ar: { path: '/crypto-ar.png', width: 862, height: 304 }
       },
       main: {
         en: { path: '/bitdash-logo.png', width: 1080, height: 249 },
@@ -60,7 +60,7 @@ const Logo = () => {
   const aspectRatio = logoConfig.width / logoConfig.height;
   
   // Base size (mobile)
-  const mobileWidth = "170px";
+  const mobileWidth = "100px";
   const mobileHeight = `${parseInt(mobileWidth) / aspectRatio}px`;
   
   // Desktop size (25% bigger)

@@ -46,7 +46,8 @@ import {
   Clock,
   TrendingUp,
   Building,
-  CreditCard
+  CreditCard,
+  WalletIcon
 } from 'lucide-react';
 import { FiArrowRightCircle, FiUser, FiUsers, FiLock } from 'react-icons/fi';
 import { FaWhatsapp, FaTelegram } from 'react-icons/fa';
@@ -73,8 +74,8 @@ const Footer = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
-      if (hostname.includes('fund')) setPlatform('fund');
-      else if (hostname.includes('trade')) setPlatform('trade');
+      if (hostname.includes('crypto')) setPlatform('crypto');
+      else if (hostname.includes('forex')) setPlatform('forex');
       else if (hostname.includes('cash')) setPlatform('cash');
       else if (hostname.includes('stock')) setPlatform('stock');
       else setPlatform('main');
@@ -95,9 +96,9 @@ const Footer = () => {
     switch(platform) {
       case 'cash':
         return `brand.bitcash.${intensity}`;
-      case 'fund':
+      case 'crypto':
         return `brand.bitfund.${intensity}`;
-      case 'trade':
+      case 'forex':
         return `brand.bittrade.${intensity}`;
       case 'stock':
         return `brand.bitstock.${intensity}`;
@@ -112,11 +113,11 @@ const Footer = () => {
       { label: 'Privacy', href: '/policies/privacy', icon: Shield },
       { label: 'Terms', href: '/policies/terms', icon: FileText },
     ],
-    fund: [
-      { label: 'Funding Plans', href: '/fund/plans', icon: DollarSign },
-      { label: 'Trading Rules', href: '/fund/rules', icon: FileText },
-      { label: 'Challenge', href: '/fund/challenge', icon: TrendingUp },
-      { label: 'FAQ', href: '/fund/faq', icon: HelpCircle },
+    crypto: [
+      { label: 'Wallet', href: '/crypto/wallet', icon: WalletIcon },
+      { label: 'Crypto Rules', href: '/crypto/rules', icon: FileText },
+      { label: 'Tokens', href: '/crypto/tokens', icon: TrendingUp },
+      { label: 'FAQ', href: '/crypto/faq', icon: HelpCircle },
     ],
     stock: [
       { label: 'US Markets', href: '/stock/us-markets', icon: Globe },
@@ -124,11 +125,11 @@ const Footer = () => {
       { label: 'Commodities', href: '/stock/commodities', icon: TrendingUp },
       { label: 'Portfolio', href: '/stock/portfolio', icon: BarChart2 },
     ],
-    trade: [
-      { label: 'Forex Pairs', href: '/trade/forex', icon: Globe },
-      { label: 'Crypto', href: '/trade/crypto', icon: LineChart },
-      { label: 'Trading Tools', href: '/trade/tools', icon: Settings },
-      { label: 'Analysis', href: '/trade/analysis', icon: BarChart2 },
+    forex: [
+      { label: 'Forex Pairs', href: '/forex/pairs', icon: Globe },
+      { label: 'Analysis', href: '/trade/analysis', icon: LineChart },
+      { label: 'Tools', href: '/trade/tools', icon: Settings },
+      { label: 'Charts', href: '/trade/charts', icon: BarChart2 },
     ],
     cash: [
       { label: 'Transfer Money', href: '/cash/client/transfer', icon: FiArrowRightCircle },
@@ -141,9 +142,9 @@ const Footer = () => {
   const getPWANavItems = (isLoggedIn) => {
     // Define navigation items specific to each platform
     const navItems = {
-      fund: [
+      crypto: [
         { label: 'Dashboard', action: 'dashboard', icon: BarChart2 },
-        { label: 'Challenges', action: 'challenges', icon: TrendingUp },
+        { label: 'Wallets', action: 'wallets', icon: WalletIcon },
         { label: 'History', action: 'history', icon: Clock },
         { label: 'Account', action: 'account', icon: User },
       ],
@@ -153,7 +154,7 @@ const Footer = () => {
         { label: 'Trade', action: 'stock-trade', icon: ArrowUpRight },
         { label: 'Account', action: 'account', icon: User },
       ],
-      trade: [
+      forex: [
         { label: 'Trading', action: 'trading', icon: LineChart },
         { label: 'Markets', action: 'markets', icon: Globe },
         { label: 'Analysis', action: 'analysis', icon: BarChart2 },
@@ -192,11 +193,11 @@ const Footer = () => {
   const handlePWAAction = async (action) => {
     // Define platform-specific paths
     const platformPaths = {
-      fund: {
-        dashboard: '/fund/dashboard',
-        challenges: '/fund/challenges',
-        history: '/fund/history',
-        account: '/fund/account',
+      crypto: {
+        dashboard: '/crypto/dashboard',
+        challenges: '/crypto/challenges',
+        history: '/crypto/history',
+        account: '/crypto/account',
       },
       stock: {
         portfolio: '/stock/portfolio',
@@ -204,11 +205,11 @@ const Footer = () => {
         'stock-trade': '/stock/trade',
         account: '/stock/account',
       },
-      trade: {
-        trading: '/trade/platform',
-        markets: '/trade/markets',
-        analysis: '/trade/analysis',
-        account: '/trade/account',
+      forex: {
+        trading: '/forex/platform',
+        markets: '/forex/markets',
+        analysis: '/forex/analysis',
+        account: '/forex/account',
       },
       cash: {
         transfer: 'cash/client/transfer',
@@ -262,14 +263,14 @@ const Footer = () => {
     // Determine where to redirect based on platform
     let path = '';
     switch(platform) {
-      case 'fund':
-        path = `/fund/challenge/${trackingNumber}`;
+      case 'crypto':
+        path = `/crypto/challenge/${trackingNumber}`;
         break;
       case 'stock':
         path = `/stock/order/${trackingNumber}`;
         break;
-      case 'trade':
-        path = `/trade/transaction/${trackingNumber}`;
+      case 'forex':
+        path = `/forex/transaction/${trackingNumber}`;
         break;
       case 'cash':
         path = `/cash/transaction/${trackingNumber}`;
@@ -289,12 +290,12 @@ const Footer = () => {
   // Get the drawer title based on platform
   const getDrawerTitle = () => {
     switch(platform) {
-      case 'fund':
+      case 'crypto':
         return 'Track Challenge';
       case 'stock':
         return 'Track Investment Order';
-      case 'trade':
-        return 'Track Transaction';
+      case 'forex':
+        return 'Track Withdrawals and Deposits';
       case 'cash':
         return 'Track Payment';
       default:
@@ -449,10 +450,10 @@ const Footer = () => {
         <DrawerOverlay />
         <DrawerContent borderTopRadius="20px">
           <DrawerHeader borderBottomWidth="1px">
-            {platform === 'fund' ? 'BitFund Menu' : 
-             platform === 'stock' ? 'BitStock Menu' : 
-             platform === 'trade' ? 'BitTrade Menu' :
-             platform === 'cash' ? 'BitCash Menu' :
+            {platform === 'crypt' ? 'Crypto Menu' : 
+             platform === 'stock' ? 'Stock Menu' : 
+             platform === 'forex' ? 'Forex Menu' :
+             platform === 'cash' ? 'Cash Menu' :
              'Menu'}
           </DrawerHeader>
           <DrawerCloseButton />
@@ -514,9 +515,9 @@ const Footer = () => {
           <DrawerBody py={4}>
             <FormControl isRequired isInvalid={!!error}>
               <FormLabel>
-                {platform === 'fund' ? 'Challenge ID' : 
+                {platform === 'crypto' ? 'Challenge ID' : 
                  platform === 'stock' ? 'Order ID' : 
-                 platform === 'trade' ? 'Transaction ID' :
+                 platform === 'forex' ? 'Transaction ID' :
                  platform === 'cash' ? 'Payment ID' :
                  'Tracking Number'}
               </FormLabel>
@@ -527,9 +528,9 @@ const Footer = () => {
                   setError('');
                 }}
                 placeholder={
-                  platform === 'fund' ? 'Enter challenge ID' : 
+                  platform === 'crypto' ? 'Enter Wallet ID' : 
                   platform === 'stock' ? 'Enter order ID' : 
-                  platform === 'trade' ? 'Enter transaction ID' :
+                  platform === 'forex' ? 'Enter transaction ID' :
                   platform === 'cash' ? 'Enter payment ID' :
                   'Enter tracking number'
                 }

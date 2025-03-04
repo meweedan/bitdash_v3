@@ -17,6 +17,7 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
+  Image,
   ModalHeader,
   ModalBody,
   ModalCloseButton,
@@ -257,10 +258,10 @@ useEffect(() => {
                     bgGradient={`linear(to-r, ${primary}, ${secondary})`}
                     bgClip="text"
                   >
-                    {t('errors:pageNotFound', 'Page Not Found')}
+                    {t('404', 'Page Not Found')}
                   </Heading>
                   <Text fontSize="lg" color={subtextColor} mb={6}>
-                    {t('errors:pageNotFoundMessage', "The page you're looking for doesn't exist or has been moved.")}
+                    {t('404Message', "The page you're looking for doesn't exist or has been moved.")}
                   </Text>
                   
                   <HStack spacing={4}>

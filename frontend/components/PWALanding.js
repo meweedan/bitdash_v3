@@ -33,12 +33,12 @@ export const CashPWALanding = () => {
   );
 };
 
-export const FundPWALanding = () => {
+export const CryptoPWALanding = () => {
   const router = useRouter();
   const config = {
-    title: 'BitFund',
-    description: 'Reimagining Libyan Finances',
-    image: '/fund.png',
+    title: 'Crypto by BitDash',
+    description: 'Unlock financial freedom via Crypto and DeFi',
+    image: '/crypto.png',
     color: '#4CAF50'
   };
 
@@ -53,12 +53,12 @@ export const FundPWALanding = () => {
   );
 };
 
-export const TradePWALanding = () => {
+export const ForexPWALanding = () => {
   const router = useRouter();
   const config = {
-    title: 'BitTrade',
-    description: 'Reimagining Libyan Finances',
-    image: '/trade.png',
+    title: 'Forex by BitDash',
+    description: 'Your trusted forex broker',
+    image: '/forex.png',
     color: '#4CAF50'
   };
 
@@ -99,8 +99,8 @@ const PWALanding = () => {
   const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
 
   if (hostname.includes('cash')) return <CashPWALanding />;
-  if (hostname.includes('fund')) return <FundPWALanding />;
-  if (hostname.includes('trade')) return <TradePWALanding />;
+  if (hostname.includes('crypto')) return <CryptoPWALanding />;
+  if (hostname.includes('forex')) return <ForexPWALanding />;
   if (hostname.includes('stock')) return <StockPWALanding />;
 
   const config = {

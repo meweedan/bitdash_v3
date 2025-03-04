@@ -64,9 +64,9 @@ const getBrandKeyFromSubdomain = (hostname) => {
     if (hostname.includes('.') && hostname.split('.').length >= 3) {
       const subdomain = hostname.split('.')[0];
       
-      if (subdomain === 'fund') return 'bitfund';
+      if (subdomain === 'crypto') return 'bitfund';
       if (subdomain === 'cash') return 'bitcash';
-      if (subdomain === 'trade') return 'bittrade';
+      if (subdomain === 'forex') return 'bittrade';
       if (subdomain === 'stock') return 'bitstock';
     }
   } catch (e) {

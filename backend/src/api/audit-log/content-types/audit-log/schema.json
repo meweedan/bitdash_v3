@@ -129,7 +129,7 @@
     },
     "platform": {
       "type": "enumeration",
-      "enum": ["bitcash", "bitfund", "bittrade", "bitstock", "admin", "api"],
+      "enum": ["cash", "crypto", "forex", "stock", "admin", "api"],
       "default": "bitcash",
       "required": true
     },

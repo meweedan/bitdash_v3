@@ -48,17 +48,17 @@ const nextConfig = {
   // Subdomain redirects
   async rewrites() {
     return [
-      // Shop platform routes
+      // Forex platform routes
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'trade.bitdash.app' }],
-        destination: '/trade/:path*',
+        has: [{ type: 'host', value: 'forex.bitdash.app' }],
+        destination: '/forex/:path*',
       },
-      // Fund platform routes
+      // Crypto platform routes
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'fund.bitdash.app' }],
-        destination: '/fund/:path*',
+        has: [{ type: 'host', value: 'crypto.bitdash.app' }],
+        destination: '/crypto/:path*',
       },
       // Cash platform routes
       {

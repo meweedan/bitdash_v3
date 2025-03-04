@@ -1,5 +1,6 @@
 {
-  "404": "",
+  "404": "Error 404",
+  "404Message": "The page you're looking for doesn't exist or has been moved.",
   "welcome": "Growing together, bit by bit.",
   "scrolldown": "Scroll down for more",
   "title": "BitDash - BI Platform for Startups",

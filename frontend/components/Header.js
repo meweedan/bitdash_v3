@@ -44,7 +44,7 @@ export default function Header() {
   const accentColor = `brand.${platform}.400`;
   
   // Always show announcements for these platforms
-  const showAnnouncements = platform === 'bittrade' || platform === 'bitstock' || platform === 'bitfund' || platform === 'bitcash';
+  const showAnnouncements = platform === 'forex' || platform === 'stock' || platform === 'crypto' || platform === 'cash';
 
   useEffect(() => {
     const checkAuth = () => {
@@ -79,28 +79,28 @@ export default function Header() {
 
   const platforms = [
      {
-      name: 'BitCash',
+      name: 'Cash by BitDash',
       image: '/cash.png',
       mobileImage: '/cash.png',
       href: 'https://cash.bitdash.app/',
     },
     {
-      name: 'BitFund',
-      image: '/fund.png',
-      mobileImage: '/fund.png',
-      href: 'https://fund.bitdash.app/',
-    },
+      name: 'Forex by BitDash',
+      image: '/forex.png',
+      mobileImage: '/forex.png',
+      href: 'https://forex.bitdash.app/',
+    }, 
     {
-      name: 'BitStock',
+      name: 'Stock by BitDash',
       image: '/stock.png',
       mobileImage: '/stock.png',
       href: 'https://stock.bitdash.app/',
     },
-    {
-      name: 'BitTrade',
-      image: '/trade.png',
-      mobileImage: '/trade.png',
-      href: 'https://trade.bitdash.app/',
+     {
+      name: 'Crypto by BitDash',
+      image: '/crypto.png',
+      mobileImage: '/crypto.png',
+      href: 'https://crypto.bitdash.app/',
     }
   ];
 
@@ -120,15 +120,15 @@ export default function Header() {
       
       // More specific checks to avoid partial matches
       if (hostname.includes('cash.bitdash') || hostname === 'cash.localhost') return 'bitcash';
-      if (hostname.includes('fund.bitdash') || hostname === 'fund.localhost') return 'bitfund';
-      if (hostname.includes('trade.bitdash') || hostname === 'trade.localhost') return 'bittrade';
+      if (hostname.includes('crypto.bitdash') || hostname === 'crypto.localhost') return 'bitfund';
+      if (hostname.includes('forex.bitdash') || hostname === 'forex.localhost') return 'bittrade';
       if (hostname.includes('stock.bitdash') || hostname === 'stock.localhost') return 'bitstock';
       
       // Also check URL path for local development
       const pathname = window.location.pathname;
       if (pathname.startsWith('/cash')) return 'bitcash';
-      if (pathname.startsWith('/fund')) return 'bitfund';
-      if (pathname.startsWith('/trade')) return 'bittrade';
+      if (pathname.startsWith('/crypto')) return 'bitfund';
+      if (pathname.startsWith('/forex')) return 'bittrade';
       if (pathname.startsWith('/stock')) return 'bitstock';
     }
     return 'bitdash'; // Default platform
@@ -189,6 +189,133 @@ export default function Header() {
       ]
     },
   ];
+
+  // Platform-specific menu items for mobile
+  const getPlatformMenuItems = () => {
+    if (platform === 'bitfund') { // Crypto
+      return [
+        { 
+          name: 'Exchange', 
+          path: '/crypto/exchange',
+          submenu: [
+            { name: 'Spot Trading', path: '/crypto/exchange/spot' },
+            { name: 'Futures', path: '/crypto/exchange/futures' },
+            { name: 'Options', path: '/crypto/exchange/options' },
+          ]
+        },
+        { 
+          name: 'Markets', 
+          path: '/crypto/markets',
+          submenu: [
+            { name: 'Top Coins', path: '/crypto/markets/top-coins' },
+            { name: 'Market Cap', path: '/crypto/markets/market-cap' },
+            { name: 'New Listings', path: '/crypto/markets/new-listings' },
+          ]
+        },
+        { 
+          name: 'Earn', 
+          path: '/crypto/earn',
+          submenu: [
+            { name: 'Staking', path: '/crypto/earn/staking' },
+            { name: 'Yield Farming', path: '/crypto/earn/yield' },
+            { name: 'Savings', path: '/crypto/earn/savings' },
+          ]
+        },
+      ];
+    } else if (platform === 'bitstock') { // Stock
+      return [
+        { 
+          name: 'Invest', 
+          path: '/stock/invest',
+          submenu: [
+            { name: 'Stocks', path: '/stock/invest/stocks' },
+            { name: 'ETFs', path: '/stock/invest/etfs' },
+            { name: 'IPOs', path: '/stock/invest/ipos' },
+          ]
+        },
+        { 
+          name: 'Research', 
+          path: '/stock/research',
+          submenu: [
+            { name: 'Market News', path: '/stock/research/news' },
+            { name: 'Analyst Ratings', path: '/stock/research/ratings' },
+            { name: 'Screener', path: '/stock/research/screener' },
+          ]
+        },
+        { 
+          name: 'Portfolio', 
+          path: '/stock/portfolio',
+          submenu: [
+            { name: 'My Holdings', path: '/stock/portfolio/holdings' },
+            { name: 'Performance', path: '/stock/portfolio/performance' },
+            { name: 'Dividends', path: '/stock/portfolio/dividends' },
+          ]
+        },
+      ];
+    } else if (platform === 'bittrade') { // Forex
+      return [
+        { 
+          name: 'Trading', 
+          path: '/forex/trading',
+          submenu: [
+            { name: 'Currency Pairs', path: '/forex/trading/currency-pairs' },
+            { name: 'Commodities', path: '/forex/trading/commodities' },
+            { name: 'Indices', path: '/forex/trading/indices' },
+          ]
+        },
+        { 
+          name: 'Analysis', 
+          path: '/forex/analysis',
+          submenu: [
+            { name: 'Economic Calendar', path: '/forex/analysis/economic-calendar' },
+            { name: 'Market Sentiment', path: '/forex/analysis/sentiment' },
+            { name: 'Technical Tools', path: '/forex/analysis/technical' },
+          ]
+        },
+        { 
+          name: 'Education', 
+          path: '/forex/education',
+          submenu: [
+            { name: 'Trading Guides', path: '/forex/education/guides' },
+            { name: 'Webinars', path: '/forex/education/webinars' },
+            { name: 'Strategy Resources', path: '/forex/education/strategies' },
+          ]
+        },
+      ];
+    } else if (platform === 'bitcash') { // Cash
+      return [
+        { 
+          name: 'Payments', 
+          path: '/cash/payments',
+          submenu: [
+            { name: 'Send Money', path: '/cash/payments/send' },
+            { name: 'Request Money', path: '/cash/payments/request' },
+            { name: 'Pay Bills', path: '/cash/payments/bills' },
+          ]
+        },
+        { 
+          name: 'Cards', 
+          path: '/cash/cards',
+          submenu: [
+            { name: 'Virtual Cards', path: '/cash/cards/virtual' },
+            { name: 'Physical Cards', path: '/cash/cards/physical' },
+            { name: 'Card Settings', path: '/cash/cards/settings' },
+          ]
+        },
+        { 
+          name: 'Banking', 
+          path: '/cash/banking',
+          submenu: [
+            { name: 'Accounts', path: '/cash/banking/accounts' },
+            { name: 'Statements', path: '/cash/banking/statements' },
+            { name: 'Savings', path: '/cash/banking/savings' },
+          ]
+        },
+      ];
+    } else {
+      return mainMenuItems; // Default menu items
+    }
+  };
   
   return (
     <Flex
@@ -208,6 +335,8 @@ export default function Header() {
         transition="all 0.3s ease"
         h={showPlatforms ? 'auto' : '0'}
         overflow="hidden"
+        bg={isDark ? "rgba(0,0,0,0.7)" : "rgba(255,255,255,0.8)"}
+        backdropFilter="blur(10px)"
       >
         <HStack 
           spacing={10} 
@@ -229,13 +358,19 @@ export default function Header() {
                 transition="transform 0.2s"
                 _hover={{ transform: 'translateY(-5px)' }}
               >
-                <Image 
-                  src={platform.image}
-                  width={120}
-                  height={180}
-                  priority={true}
-                  style={{ objectFit: 'contain' }}
-                />
+                {/* Fixed size container with consistent dimensions */}
+                <Box position="relative" width="180px" height="60px">
+                  <Image 
+                    src={platform.image}
+                    alt={platform.name}
+                    fill
+                    priority={true}
+                    style={{ 
+                      objectFit: 'contain',
+                      objectPosition: 'center'
+                    }}
+                  />
+                </Box>
               </VStack>
             </a>
           ))}
@@ -250,8 +385,10 @@ export default function Header() {
         p={4}
         w="full"
         dir={isRTL ? 'rtl' : 'ltr'}
+        bg={isDark ? "rgba(0,0,0,0.7)" : "rgba(255,255,255,0.8)"}
+        backdropFilter="blur(10px)"
       >
-        {/* Logo */}
+        {/* Logo - Using the display from first version */}
         <Box width={{ base: '110px', md: '150px' }}>
           <Link href="/" passHref>
             <Box display="block">
@@ -266,7 +403,7 @@ export default function Header() {
           display={{ base: 'none', lg: 'flex' }}
           position="relative"
         >
-          {mainMenuItems.map((item) => (
+          {getPlatformMenuItems().map ((item) => (
             <Popover key={item.name} trigger="hover" placement="bottom-start">
               <PopoverTrigger>
                 <Box>
@@ -304,7 +441,7 @@ export default function Header() {
                         <Text
                           p={3}
                           fontWeight="bold" 
-                        fontSize="xl"
+                          fontSize="xl"
                           _hover={{ 
                             bg: isDark ? "gray.700" : "gray.50",
                             color: `brand.${platform}.500`
@@ -437,7 +574,7 @@ export default function Header() {
           )}
         </HStack>
 
-        {/* Mobile Controls */}
+        {/* Mobile Controls - From pasted item 2 */}
         <HStack display={{ base: 'flex', lg: 'none'}} spacing={2}>
           <Box>
             <LanguageSwitcher 
@@ -468,55 +605,6 @@ export default function Header() {
             size="sm"
           />
 
-          {!isMainDomain() && !isOpen && (
-            <>
-              {isLoggedIn ? (
-                <>
-                  <IconButton
-                    as={Link}
-                    href="/dashboard"
-                    icon={<FaUser />}
-                    aria-label={t('myAccount')}
-                    variant={`${platform}-outline`}
-                    color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
-                    size="sm"
-                  />
-                  <IconButton
-                    onClick={handleLogout}
-                    icon={<FaSignOutAlt />}
-                    aria-label={t('logout')}
-                    variant={`${platform}-outline`}
-                    colorScheme="red"
-                    size="sm"
-                  />
-                </>
-              ) : (
-                <>
-                  <IconButton
-                    as={Link}
-                    href="/login"
-                    icon={<FaSignInAlt />}
-                    aria-label={t('login')}
-                    variant={`${platform}-outline`}
-                    color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
-                    size="sm"
-                  />
-                  <IconButton
-                    as={Link}
-                    href="/signup"
-                    icon={<FaUserPlus />}
-                    aria-label={t('signup')}
-                    variant={`${platform}-solid`}
-                    color="white"
-                    bg={`brand.${platform}.600`}
-                    _hover={{ bg: `brand.${platform}.700` }}
-                    size="sm"
-                  />
-                </>
-              )}
-            </>
-          )}
-
           <IconButton
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
             variant={`${platform}-outline`}
@@ -527,7 +615,7 @@ export default function Header() {
         </HStack>
       </Flex>
 
-      {/* Mobile Menu - LDN Style */}
+      {/* Mobile Menu with Platform-Specific Items */}
       <Collapse in={isOpen} animateOpacity>
         <Box
           position="absolute"
@@ -543,8 +631,66 @@ export default function Header() {
           maxH="80vh"
           overflowY="auto"
         >
+          {!isMainDomain() && (
+            <HStack align="stretch" spacing={3}>
+              {isLoggedIn ? (
+                <>
+                  <Button 
+                    leftIcon={<FaUser />}
+                    variant={`${platform}-outline`}
+                    w="full"
+                    onClick={() => {
+                      router.push('/dashboard');
+                      onClose();
+                    }}
+                  >
+                    {t('myAccount')}
+                  </Button>
+                  <Button 
+                    leftIcon={<FaSignOutAlt />}
+                    colorScheme="red"
+                    variant="outline"
+                    w="full"
+                    onClick={() => {
+                      handleLogout();
+                      onClose();
+                    }}
+                  >
+                    {t('logout')}
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button 
+                    leftIcon={<FaSignInAlt />}
+                    variant={`${platform}-outline`}
+                    w="full"
+                    onClick={() => {
+                      router.push('/login');
+                      onClose();
+                    }}
+                  >
+                      {t('login')}
+                    </Button>
+                    <Button 
+                      leftIcon={<FaUserPlus />}
+                      bg={`brand.${platform}.600`}
+                      color="white"
+                      _hover={{ bg: `brand.${platform}.700` }}
+                      w="full"
+                      onClick={() => {
+                        router.push('/signup');
+                        onClose();
+                      }}
+                    >
+                      {t('signup')}
+                    </Button>
+                  </>
+                )}
+              </HStack>
+            )}
           <VStack align="stretch" spacing={4}>
-            {mainMenuItems.map((item) => (
+            {getPlatformMenuItems().map ((item) => (
               <Box key={item.name}>
                 <Link href={item.path} passHref>
                   <Text
@@ -592,12 +738,14 @@ export default function Header() {
                 {t('ourSolutions')}
               </Text>
               <Flex 
-                mt={2}
-                justify="space-between" 
+                mt={4}  // Increased from 2
+                justify="center"  // Changed from space-between
                 align="center" 
-                px={4} 
+                px={2}  // Reduced from 4
                 w="full" 
+                gap={4}  // Added gap between items
                 overflowX="auto"
+                flexWrap="wrap"  // Allow wrapping on smaller screens
                 css={{
                   '&::-webkit-scrollbar': {
                     display: 'none'
@@ -613,91 +761,15 @@ export default function Header() {
                     rel="noopener noreferrer"
                     style={{ textDecoration: 'none' }}
                   >
-                    <Box
-                      onClick={onClose}
-                      textAlign="center"
-                      p={2}
-                      borderRadius="md"
-                      minW="60px"
-                    >
-                      <Image
-                        src={platform.mobileImage}
-                        alt={platform.name}
-                        width={80}
-                        height={50}
-                        priority={true}
-                        style={{ 
-                          margin: '0 auto',
-                          objectFit: 'contain'
-                        }}
-                      />
-                    </Box>
+                    <VStack spacing={2}>  // Added spacing
+                      <Text fontSize="xl" fontWeight="bold" color={isDark ? "brand.bitdash.400" : "brand.bitdash.700"}>
+                        {platform.name.split(' ')[0]}
+                      </Text>
+                    </VStack>
                   </a>
                 ))}
               </Flex>
             </Box>
-            
-            {/* Mobile Sign-up/Login Buttons */}
-            {!isMainDomain() && (
-              <VStack align="stretch" pt={4} spacing={3}>
-                {isLoggedIn ? (
-                  <>
-                    <Button 
-                      leftIcon={<FaUser />}
-                      variant={`${platform}-outline`}
-                      borderColor={isDark ? "gray.600" : "gray.300"}
-                      w="full"
-                      onClick={() => {
-                        router.push('/dashboard');
-                        onClose();
-                      }}
-                    >
-                      {t('myAccount')}
-                    </Button>
-                    <Button 
-                      leftIcon={<FaSignOutAlt />}
-                      colorScheme="red"
-                      variant="outline"
-                      w="full"
-                      onClick={() => {
-                        handleLogout();
-                        onClose();
-                      }}
-                    >
-                      {t('logout')}
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Button 
-                      leftIcon={<FaSignInAlt />}
-                      variant={`${platform}-outline`}
-                      borderColor={isDark ? "gray.600" : "gray.300"}
-                      w="full"
-                      onClick={() => {
-                        router.push('/login');
-                        onClose();
-                      }}
-                    >
-                      {t('login')}
-                    </Button>
-                    <Button 
-                      leftIcon={<FaUserPlus />}
-                      bg={`brand.${platform}.600`}
-                      color="white"
-                      _hover={{ bg: `brand.${platform}.700` }}
-                      w="full"
-                      onClick={() => {
-                        router.push('/signup');
-                        onClose();
-                      }}
-                    >
-                      {t('signup')}
-                    </Button>
-                  </>
-                )}
-              </VStack>
-            )}
           </VStack>
         </Box>
       </Collapse>

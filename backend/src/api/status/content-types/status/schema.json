@@ -46,10 +46,10 @@
       "enum": [
         "all",
         "bitdash",
-        "bitfund",
-        "bitcash",
-        "bittrade",
-        "bitstock"
+        "crypto",
+        "cash",
+        "forex",
+        "stock"
       ],
       "default": "all",
       "required": true

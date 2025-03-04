@@ -21,9 +21,9 @@ import { X } from 'lucide-react';
 function getAppIconByDomain() {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname.toLowerCase();
-    if (hostname.includes('fund')) return '/fund.png';
+    if (hostname.includes('crypto')) return '/crypto.png';
     if (hostname.includes('cash')) return '/cash.png';
-    if (hostname.includes('trade')) return '/trade.png';
+    if (hostname.includes('forex')) return '/forex.png';
     if (hostname.includes('stock')) return '/stock.png';
   }
   // fallback
