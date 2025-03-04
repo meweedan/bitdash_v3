@@ -10,7 +10,7 @@ module.exports = [
         'https://cash.bitdash.app',
         'https://trade.bitdash.app',
         'https://fund.bitdash.app',
-        'https://invest.bitdash.app',
+        'https://stock.bitdash.app',
         'http://localhost:3000', 
         'https://bitdash-backend.onrender.com'],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],

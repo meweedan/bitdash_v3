@@ -47,17 +47,17 @@ import {
   FaRegCreditCard,
   FaHandshake
 } from 'react-icons/fa';
-import MarketOverview from '@/components/investment/MarketOverview';
-import StockTicker from '@/components/investment/StockTicker';
-import AssetPerformanceChart from '@/components/investment/AssetPerformanceChart';
+import MarketOverview from '@/components/stock/MarketOverview';
+import StockTicker from '@/components/stock/StockTicker';
+import AssetPerformanceChart from '@/components/stock/AssetPerformanceChart';
 
-const BitInvestLanding = () => {
+const BitStockLanding = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
   const containerRef = useRef(null);
   
   const bgGradient = useColorModeValue(
-    'linear(to-b, brand.bitinvest.400, white)',
+    'linear(to-b, brand.bitstock.400, white)',
     'linear(to-b, gray.900, black)'
   );
   
@@ -83,25 +83,25 @@ const BitInvestLanding = () => {
       icon: FaGlobeAmericas,
       title: 'global.markets.access.title',
       description: 'Seamless access to US and EU stock markets with localized support and trading hours',
-      color: 'brand.bitinvest.400'
+      color: 'brand.bitstock.400'
     },
     {
       icon: FaMobileAlt,
       title: 'mobile.trading.title',
       description: 'Trade anytime, anywhere with our award-winning mobile app designed for MENA users',
-      color: 'brand.bitinvest.500'
+      color: 'brand.bitstock.500'
     },
     {
       icon: FaShieldAlt,
       title: 'compliant.investing.title',
       description: 'Fully compliant with regional regulations while providing access to global markets',
-      color: 'brand.bitinvest.600'
+      color: 'brand.bitstock.600'
     },
     {
       icon: FaRegCreditCard,
       title: 'local.payment.methods.title',
       description: 'Deposit and withdraw using popular payment methods in the MENA and GCC regions',
-      color: 'brand.bitinvest.700'
+      color: 'brand.bitstock.700'
     }
   ];
 
@@ -111,28 +111,28 @@ const BitInvestLanding = () => {
       title: 'US & EU Stocks',
       description: 'Access over 5,000 stocks from the world\'s largest exchanges with zero commission',
       badge: 'Most Popular',
-      color: 'brand.bitinvest.400'
+      color: 'brand.bitstock.400'
     },
     {
       icon: FaBuilding,
       title: 'Private Assets',
       description: 'Exclusive access to pre-IPO companies and private equity opportunities with minimum investments of $1,000',
       badge: 'Exclusive',
-      color: 'brand.bitinvest.500'
+      color: 'brand.bitstock.500'
     },
     {
       icon: FaCoins,
       title: 'Gold & Precious Metals',
       description: 'Invest in gold and other precious metals with full ownership or through ETFs and funds',
       badge: 'Traditional',
-      color: 'brand.bitinvest.600'
+      color: 'brand.bitstock.600'
     },
     {
       icon: FaOilCan,
       title: 'Oil & Commodities',
       description: 'Trade oil futures or invest in energy companies with specialized regional insights',
       badge: 'Strategic',
-      color: 'brand.bitinvest.700'
+      color: 'brand.bitstock.700'
     }
   ];
 
@@ -191,7 +191,7 @@ const BitInvestLanding = () => {
       name: 'Ahmed K.',
       location: 'Dubai, UAE',
       image: '/images/testimonials/ahmed.jpg',
-      quote: 'BitInvest made investing in US tech stocks incredibly easy. As a Dubai resident, I had always found it challenging to access global markets until now.',
+      quote: 'BitStock made investing in US tech stocks incredibly easy. As a Dubai resident, I had always found it challenging to access global markets until now.',
       rating: 5
     },
     {
@@ -224,7 +224,7 @@ const BitInvestLanding = () => {
             <VStack spacing={8} maxW="4xl">
               <Heading
                 fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
-                bgGradient="linear(to-r, brand.bitinvest.400, brand.bitinvest.700)"
+                bgGradient="linear(to-r, brand.bitstock.400, brand.bitstock.700)"
                 bgClip="text"
               >
                 {t('invest.hero.title', 'Smart investments, at your fingertips')}
@@ -237,7 +237,7 @@ const BitInvestLanding = () => {
               <HStack spacing={6} pt={8}>
                 <Button
                   size="lg"
-                  color="brand.bitinvest.400"
+                  color="brand.bitstock.400"
                   px={8}
                   h={14}
                   fontSize="lg"
@@ -247,8 +247,8 @@ const BitInvestLanding = () => {
                 </Button>
                 <Button
                   size="lg"
-                  variant="bitinvest-outline"
-                  color="brand.bitinvest.400"
+                  variant="bitstock-outline"
+                  color="brand.bitstock.400"
                   px={8}
                   h={14}
                   fontSize="lg"
@@ -267,7 +267,7 @@ const BitInvestLanding = () => {
               p={8}
               borderRadius="3xl"
               bg={glassCardBg}
-              borderColor="brand.bitinvest.500"
+              borderColor="brand.bitstock.500"
               borderWidth={2}
               boxShadow="xl"
             >
@@ -278,9 +278,9 @@ const BitInvestLanding = () => {
                   bg={useColorModeValue('white', 'gray.800')}
                   spacing={4}
                 >
-                  <Icon as={FaUsers} boxSize={8} color="brand.bitinvest.500" />
+                  <Icon as={FaUsers} boxSize={8} color="brand.bitstock.500" />
                   <Text fontWeight="bold">{t('demo.active_investors', 'Active Investors')}</Text>
-                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitinvest.500">
+                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitstock.500">
                     350k+
                   </Text>
                 </VStack>
@@ -290,9 +290,9 @@ const BitInvestLanding = () => {
                   bg={useColorModeValue('white', 'gray.800')}
                   spacing={4}
                 >
-                  <Icon as={FaGlobeAmericas} boxSize={8} color="brand.bitinvest.500" />
+                  <Icon as={FaGlobeAmericas} boxSize={8} color="brand.bitstock.500" />
                   <Text fontWeight="bold">{t('demo.countries_served', 'Countries Served')}</Text>
-                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitinvest.500">
+                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitstock.500">
                     18
                   </Text>
                 </VStack>
@@ -302,9 +302,9 @@ const BitInvestLanding = () => {
                   bg={useColorModeValue('white', 'gray.800')}
                   spacing={4}
                 >
-                  <Icon as={FaExchangeAlt} boxSize={8} color="brand.bitinvest.500" />
+                  <Icon as={FaExchangeAlt} boxSize={8} color="brand.bitstock.500" />
                   <Text fontWeight="bold">{t('demo.daily_trades', 'Daily Trades')}</Text>
-                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitinvest.500">
+                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitstock.500">
                     2.5M+
                   </Text>
                 </VStack>
@@ -319,10 +319,10 @@ const BitInvestLanding = () => {
             textAlign="center"
             mb={12}
             fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.bitinvest.500, brand.bitinvest.700)"
+            bgGradient="linear(to-r, brand.bitstock.500, brand.bitstock.700)"
             bgClip="text"
           >
-            {t('invest.why.choose.us', 'Why Choose BitInvest')}
+            {t('invest.why.choose.us', 'Why Choose BitStock')}
           </Heading>
           
           <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} mb={16}>
@@ -367,7 +367,7 @@ const BitInvestLanding = () => {
             textAlign="center"
             mb={12}
             fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.bitinvest.500, brand.bitinvest.700)"
+            bgGradient="linear(to-r, brand.bitstock.500, brand.bitstock.700)"
             bgClip="text"
           >
             {t('invest.options', 'Investment Options')}
@@ -400,7 +400,7 @@ const BitInvestLanding = () => {
                       position="absolute"
                       top={3}
                       right={3}
-                      colorScheme="brand.bitinvest.400"
+                      colorScheme="brand.bitstock.400"
                       variant="solid"
                       px={2}
                       py={1}
@@ -419,9 +419,9 @@ const BitInvestLanding = () => {
                     </Text>
                     <Button
                       variant="outline"
-                      color="brand.bitinvest.400"
+                      color="brand.bitstock.400"
                       size="sm"
-                      onClick={() => router.push(`/invest/${option.title.toLowerCase().replace(/[&\s]+/g, '-')}`)}
+                      onClick={() => router.push(`/stock/${option.title.toLowerCase().replace(/[&\s]+/g, '-')}`)}
                     >
                       Learn More
                     </Button>
@@ -438,7 +438,7 @@ const BitInvestLanding = () => {
             textAlign="center"
             mb={12}
             fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.bitinvest.500, brand.bitinvest.700)"
+            bgGradient="linear(to-r, brand.bitstock.500, brand.bitstock.700)"
             bgClip="text"
           >
             {t('invest.regional.benefits', 'Designed for MENA & GCC Investors')}
@@ -448,7 +448,7 @@ const BitInvestLanding = () => {
             p={8}
             bg={glassCardBg}
             borderRadius="xl"
-            borderColor="brand.bitinvest.500"
+            borderColor="brand.bitstock.500"
             borderWidth={2}
             boxShadow="xl"
           >
@@ -459,18 +459,18 @@ const BitInvestLanding = () => {
               mb={8}
             >
               <VStack align={{ base: "center", md: "start" }} mb={{ base: 6, md: 0 }}>
-                <Heading size="lg" color="brand.bitinvest.500">
+                <Heading size="lg" color="brand.bitstock.500">
                   {t('invest.regional.title', 'Local Expertise, Global Opportunities')}
                 </Heading>
                 <Text maxW="xl">
-                  {t('invest.regional.description', 'BitInvest brings global investment opportunities to MENA and GCC investors with localized features and support designed specifically for the region.')}
+                  {t('invest.regional.description', 'BitStock brings global investment opportunities to MENA and GCC investors with localized features and support designed specifically for the region.')}
                 </Text>
               </VStack>
               
               <Icon 
                 as={FaMapMarkedAlt} 
                 boxSize={{ base: 16, md: 24 }} 
-                color="brand.bitinvest.400" 
+                color="brand.bitstock.400" 
                 opacity={0.8}
               />
             </Flex>
@@ -478,7 +478,7 @@ const BitInvestLanding = () => {
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
               {regionalBenefits.map((benefit, index) => (
                 <HStack key={index} align="start" spacing={3}>
-                  <Icon as={FaCheckCircle} color="brand.bitinvest.500" mt={1} />
+                  <Icon as={FaCheckCircle} color="brand.bitstock.500" mt={1} />
                   <VStack align="start" spacing={1}>
                     <Text fontWeight="bold">{benefit.title}</Text>
                     <Text fontSize="sm" color="gray.600">{benefit.description}</Text>
@@ -495,7 +495,7 @@ const BitInvestLanding = () => {
             textAlign="center"
             mb={12}
             fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.bitinvest.400, brand.bitinvest.700)"
+            bgGradient="linear(to-r, brand.bitstock.400, brand.bitstock.700)"
             bgClip="text"
           >
             {t('invest.testimonials', 'What Our Investors Say')}
@@ -513,7 +513,7 @@ const BitInvestLanding = () => {
                   p={8}
                   bg={glassCardBg}
                   borderRadius="xl"
-                  borderColor="brand.bitinvest.400"
+                  borderColor="brand.bitstock.400"
                   borderWidth={1}
                   boxShadow="md"
                   height="full"
@@ -554,7 +554,7 @@ const BitInvestLanding = () => {
             textAlign="center"
             mb={12}
             fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.bitinvest.400, brand.bitinvest.700)"
+            bgGradient="linear(to-r, brand.bitstock.400, brand.bitstock.700)"
             bgClip="text"
           >
             {t('invest.regulatory', 'Regulatory Information')}
@@ -564,14 +564,14 @@ const BitInvestLanding = () => {
             direction={{ base: "column", md: "row" }}
             bg={glassCardBg}
             borderRadius="xl"
-            borderColor="brand.bitinvest.400"
+            borderColor="brand.bitstock.400"
             borderWidth={2}
             boxShadow="xl"
             overflow="hidden"
           >
             <Box 
               p={8} 
-              bg="brand.bitinvest.400" 
+              bg="brand.bitstock.400" 
               color="white"
               width={{ base: "full", md: "40%" }}
               display="flex"
@@ -583,11 +583,11 @@ const BitInvestLanding = () => {
                 {t('invest.regulatory.title', 'Fully Licensed & Regulated')}
               </Heading>
               <Text>
-                {t('invest.regulatory.description', 'BitInvest operates with full regulatory compliance across the MENA and GCC regions, ensuring your investments are secure and protected under local laws.')}
+                {t('invest.regulatory.description', 'BitStock operates with full regulatory compliance across the MENA and GCC regions, ensuring your investments are secure and protected under local laws.')}
               </Text>
               <Button
                 mt={8}
-                variant="bitinvest-solid"
+                variant="bitstock-solid"
                 leftIcon={<FaShieldAlt />}
                 onClick={() => router.push('/compliance')}
               >
@@ -608,7 +608,7 @@ const BitInvestLanding = () => {
                         <Text fontWeight="bold">{regulation.authority}</Text>
                         <Text fontSize="sm" color="gray.500">{regulation.country}</Text>
                       </VStack>
-                      <Badge colorScheme="brand.bitinvest.400" p={2}>
+                      <Badge colorScheme="brand.bitstock.400" p={2}>
                         {regulation.license}
                       </Badge>
                     </Flex>
@@ -625,11 +625,11 @@ const BitInvestLanding = () => {
           mb={16}
           p={12}
           borderRadius="xl"
-            borderColor="brand.bitinvest.400"
+            borderColor="brand.bitstock.400"
             borderWidth={2}
             boxShadow="xl"
             overflow="hidden"
-          color="brand.bitinvest.400"
+          color="brand.bitstock.400"
           textAlign="center"
         >
           <VStack spacing={6}>
@@ -637,19 +637,19 @@ const BitInvestLanding = () => {
               {t('invest.cta.title', 'Start Your Global Investment Journey Today')}
             </Heading>
             <Text fontSize="lg" maxW="2xl">
-              {t('invest.cta.description', 'Join thousands of MENA and GCC investors who are growing their wealth through global markets with BitInvest\'s localized approach.')}
+              {t('invest.cta.description', 'Join thousands of MENA and GCC investors who are growing their wealth through global markets with BitStock\'s localized approach.')}
             </Text>
             <HStack spacing={4}>
               <Button
                 h={14}
-                variant="bitinvest-solid"
+                variant="bitstock-solid"
                 leftIcon={<FaUserTie />}
                 onClick={() => router.push('/signup')}
               >
                 {t('invest.cta.button', 'Create Account')}
               </Button>
               <Button
-                variant="bitinvest-solid"
+                variant="bitstock-solid"
                 h={14}
                 leftIcon={<FaHandshake />}
                 onClick={() => router.push('/demo')}
@@ -664,4 +664,4 @@ const BitInvestLanding = () => {
   );
 };
 
-export default BitInvestLanding;
+export default BitStockLanding;

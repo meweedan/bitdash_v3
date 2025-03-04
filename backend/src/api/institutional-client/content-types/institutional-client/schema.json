@@ -46,7 +46,7 @@
     },
     "platformType": {
       "type": "enumeration",
-      "enum": ["bitfund", "bitinvest", "bittrade", "bitcash", "multi_platform"],
+      "enum": ["bitfund", "bitstock", "bittrade", "bitcash", "multi_platform"],
       "default": "multi_platform"
     },
     "primaryContactPerson": {

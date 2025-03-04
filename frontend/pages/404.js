@@ -56,7 +56,7 @@ const getBrandKeyFromSubdomain = (hostname) => {
       if (subdomain === 'fund') return 'bitfund';
       if (subdomain === 'cash') return 'bitcash';
       if (subdomain === 'trade') return 'bittrade';
-      if (subdomain === 'invest') return 'bitinvest';
+      if (subdomain === 'stock') return 'bitstock';
     }
   } catch (e) {
     console.error("Error parsing subdomain:", e);

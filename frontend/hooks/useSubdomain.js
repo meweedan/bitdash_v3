@@ -9,14 +9,14 @@ export default function useSubdomain() {
       // For development
       if (window.location.hostname === 'localhost' || window.location.hostname.includes('vercel.app')) {
         const pathParts = window.location.pathname.split('/');
-        const platformFromPath = pathParts.find(part => ['fund', 'trade', 'invest', 'cash'].includes(part));
+        const platformFromPath = pathParts.find(part => ['fund', 'trade', 'stock', 'cash'].includes(part));
         setPlatform(platformFromPath || 'trade');
         return;
       }
 
       // For production
       const subdomain = window.location.hostname.split('.')[0];
-      if (['fund', 'trade', 'invest', 'cash'].includes(subdomain)) {
+      if (['fund', 'trade', 'stock', 'cash'].includes(subdomain)) {
         setPlatform(subdomain);
       } else {
         setPlatform('trade');

@@ -117,7 +117,7 @@ const getPlatformColors = (platformKey) => {
       return { primary: '#56bba5', secondary: '#7bcfbd' };
     case 'bittrade':
       return { primary: '#59c6c6', secondary: '#38a4a4' };
-    case 'bitinvest':
+    case 'bitstock':
       return { primary: '#cfa872', secondary: '#efba72' };
     default:
       return { primary: '#67bdfd', secondary: '#67bdfd' }; // bitdash
@@ -131,7 +131,7 @@ const platformOptions = [
   { value: 'bitfund', label: 'BitFund' },
   { value: 'bitcash', label: 'BitCash' },
   { value: 'bittrade', label: 'BitTrade' },
-  { value: 'bitinvest', label: 'BitInvest' }
+  { value: 'bitstock', label: 'BitStock' }
 ];
 
 // Loading skeleton component

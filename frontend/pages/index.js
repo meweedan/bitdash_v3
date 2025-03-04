@@ -8,7 +8,7 @@ import Layout from '@/components/Layout';
 // Subdomain landings
 import MainLanding from '@/components/Landing';
 import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
-import InvestLandingBrowser from '@/components/landing/InvestLandingBrowser';
+import StockLandingBrowser from '@/components/landing/StockLandingBrowser';
 import FundLandingBrowser from '@/components/landing/FundLandingBrowser';
 import TradeLandingBrowser from '@/components/landing/TradeLandingBrowser';
 
@@ -26,8 +26,8 @@ export default function HomePage() {
       setPlatform('fund');
     } else if (hostname.includes('trade.')) {
       setPlatform('trade');
-    } else if (hostname.includes('invest.')) {
-      setPlatform('invest');
+    } else if (hostname.includes('stock.')) {
+      setPlatform('stock');
     } else if (process.env.NODE_ENV === 'development') {
       // For dev, e.g. http://localhost:3000?platform=cash
       const param = new URLSearchParams(window.location.search).get('platform');
@@ -62,11 +62,11 @@ export default function HomePage() {
           favicon: '/trade-icons/favicon.ico',
           manifest: '/manifests/trade-manifest.json',
         };
-      case 'invest':
+      case 'stock':
       return {
-        title: t('invest.title', 'BitInvest'),
-        favicon: '/invest-icons/favicon.ico',
-        manifest: '/manifests/invest-manifest.json',
+        title: t('stock.title', 'bitstock'),
+        favicon: '/stock-icons/favicon.ico',
+        manifest: '/manifests/stock-manifest.json',
       };
       default:
         return {
@@ -86,8 +86,8 @@ export default function HomePage() {
         return <CashLandingBrowser />;
       case 'fund':
         return <FundLandingBrowser />;
-      case 'invest':
-        return <InvestLandingBrowser />;
+      case 'stock':
+        return <StockLandingBrowser />;
       case 'trade':
         return <TradeLandingBrowser />;
       default:

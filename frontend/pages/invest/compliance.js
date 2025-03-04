@@ -68,19 +68,19 @@ const CompliancePage = () => {
   const router = useRouter();
   
   const bgGradient = useColorModeValue(
-    'linear(to-b, brand.bitinvest.50, white)',
+    'linear(to-b, brand.bitstock.50, white)',
     'linear(to-b, gray.900, black)'
   );
   
   const cardBg = useColorModeValue('white', 'gray.800');
   const subtleCardBg = useColorModeValue('gray.50', 'gray.700');
-  const borderColor = useColorModeValue('brand.bitinvest.100', 'gray.700');
+  const borderColor = useColorModeValue('brand.bitstock.100', 'gray.700');
   
   // Regulatory Bodies & Licenses
   const regulatoryInfo = [
     {
       authority: 'Dubai Financial Services Authority (DFSA)',
-      description: 'BitInvest is authorized and regulated by the DFSA to provide investment services in the Dubai International Financial Centre (DIFC).',
+      description: 'BitStock is authorized and regulated by the DFSA to provide investment services in the Dubai International Financial Centre (DIFC).',
       license: 'License No. F0099',
       country: 'UAE',
       website: 'https://www.dfsa.ae',
@@ -88,7 +88,7 @@ const CompliancePage = () => {
     },
     {
       authority: 'Capital Market Authority (CMA)',
-      description: 'BitInvest holds an investment license from the CMA to operate investment services in the Kingdom of Saudi Arabia.',
+      description: 'BitStock holds an investment license from the CMA to operate investment services in the Kingdom of Saudi Arabia.',
       license: 'Authorization No. 23-455',
       country: 'Saudi Arabia',
       website: 'https://cma.org.sa',
@@ -104,7 +104,7 @@ const CompliancePage = () => {
     },
     {
       authority: 'Central Bank of Bahrain (CBB)',
-      description: 'BitInvest holds an Investment Business Firm License from the CBB to operate in Bahrain.',
+      description: 'BitStock holds an Investment Business Firm License from the CBB to operate in Bahrain.',
       license: 'Investment Business Firm License IBF-235',
       country: 'Bahrain',
       website: 'https://www.cbb.gov.bh',
@@ -224,35 +224,35 @@ const CompliancePage = () => {
   return (
     <Layout>
       <Head>
-        <title>Compliance & Security | BitInvest</title>
-        <meta name="description" content="Learn about BitInvest's comprehensive compliance, regulatory frameworks, and security measures designed to protect MENA and GCC investors." />
+        <title>Compliance & Security | BitStock</title>
+        <meta name="description" content="Learn about BitStock's comprehensive compliance, regulatory frameworks, and security measures designed to protect MENA and GCC investors." />
       </Head>
       
       <Box bg={bgGradient} minH="100vh">
         <Container maxW="8xl" py={12}>
           {/* Hero Section */}
           <Box textAlign="center" mb={16}>
-            <Badge colorScheme="bitinvest" fontSize="md" p={2} mb={4}>
+            <Badge colorScheme="bitstock" fontSize="md" p={2} mb={4}>
               Your Security is Our Priority
             </Badge>
             <Heading
               as="h1"
               fontSize={{ base: '4xl', md: '5xl' }}
-              bgGradient="linear(to-r, brand.bitinvest.500, brand.bitinvest.700)"
+              bgGradient="linear(to-r, brand.bitstock.500, brand.bitstock.700)"
               bgClip="text"
               mb={6}
             >
               Compliance & Security
             </Heading>
             <Text fontSize={{ base: 'lg', md: 'xl' }} maxW="3xl" mx="auto" opacity={0.8}>
-              BitInvest operates with the highest standards of regulation, security, and compliance across the MENA and GCC regions, ensuring your investments are protected at every step.
+              BitStock operates with the highest standards of regulation, security, and compliance across the MENA and GCC regions, ensuring your investments are protected at every step.
             </Text>
             
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8} mt={12}>
               <Card bg={cardBg} shadow="md" borderRadius="lg" borderColor={borderColor} borderWidth="1px">
                 <CardBody>
                   <VStack spacing={4}>
-                    <Icon as={FaUserShield} boxSize={10} color="brand.bitinvest.500" />
+                    <Icon as={FaUserShield} boxSize={10} color="brand.bitstock.500" />
                     <Heading size="md">Investor Protection</Heading>
                     <Text>Client funds are segregated and protected with up to $500,000 in additional insurance coverage.</Text>
                   </VStack>
@@ -262,7 +262,7 @@ const CompliancePage = () => {
               <Card bg={cardBg} shadow="md" borderRadius="lg" borderColor={borderColor} borderWidth="1px">
                 <CardBody>
                   <VStack spacing={4}>
-                    <Icon as={FaBalanceScale} boxSize={10} color="brand.bitinvest.500" />
+                    <Icon as={FaBalanceScale} boxSize={10} color="brand.bitstock.500" />
                     <Heading size="md">Full Regulatory Compliance</Heading>
                     <Text>Licensed and regulated by major financial authorities across the MENA and GCC regions.</Text>
                   </VStack>
@@ -272,7 +272,7 @@ const CompliancePage = () => {
               <Card bg={cardBg} shadow="md" borderRadius="lg" borderColor={borderColor} borderWidth="1px">
                 <CardBody>
                   <VStack spacing={4}>
-                    <Icon as={FaLock} boxSize={10} color="brand.bitinvest.500" />
+                    <Icon as={FaLock} boxSize={10} color="brand.bitstock.500" />
                     <Heading size="md">Advanced Security</Heading>
                     <Text>Multi-layered security infrastructure with encryption, biometrics, and continuous monitoring.</Text>
                   </VStack>
@@ -282,7 +282,7 @@ const CompliancePage = () => {
           </Box>
           
           {/* Main Content Tabs */}
-          <Tabs variant="soft-rounded" colorScheme="brand.bitinvest" size="lg" my={8}>
+          <Tabs variant="soft-rounded" colorScheme="brand.bitstock" size="lg" my={8}>
             <TabList justifyContent="center" mb={8} overflowX="auto" py={2} flexWrap={{ base: "wrap", md: "nowrap" }}>
               <Tab mx={1}><Icon as={FaUniversity} mr={2} /> Regulatory</Tab>
               <Tab mx={1}><Icon as={FaShieldAlt} mr={2} /> Security</Tab>
@@ -299,7 +299,7 @@ const CompliancePage = () => {
                     <Heading size="lg" mb={8} textAlign="center">Our Regulatory Framework</Heading>
                     
                     <Text fontSize="lg" mb={8}>
-                      BitInvest operates under the oversight of multiple financial regulatory authorities across the MENA and GCC regions. This multi-jurisdictional approach ensures we maintain the highest standards of compliance while offering seamless investment services across borders.
+                      BitStock operates under the oversight of multiple financial regulatory authorities across the MENA and GCC regions. This multi-jurisdictional approach ensures we maintain the highest standards of compliance while offering seamless investment services across borders.
                     </Text>
                     
                     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
@@ -307,20 +307,20 @@ const CompliancePage = () => {
                         <Card key={index} bg={subtleCardBg} overflow="hidden">
                           <CardBody>
                             <HStack mb={4}>
-                              <Icon as={regulator.icon} boxSize={6} color="brand.bitinvest.500" />
+                              <Icon as={regulator.icon} boxSize={6} color="brand.bitstock.500" />
                               <Heading size="md">{regulator.authority}</Heading>
                             </HStack>
                             
                             <Text mb={3}>{regulator.description}</Text>
                             
                             <Flex justify="space-between" align="center" mt={4} flexWrap="wrap" gap={2}>
-                              <Badge colorScheme="bitinvest" p={2}>{regulator.license}</Badge>
+                              <Badge colorScheme="bitstock" p={2}>{regulator.license}</Badge>
                               <HStack>
                                 <Badge variant="outline">{regulator.country}</Badge>
                                 <Button 
                                   size="sm" 
                                   variant="link" 
-                                  colorScheme="bitinvest"
+                                  colorScheme="bitstock"
                                   onClick={() => window.open(regulator.website, '_blank')}
                                 >
                                   Visit Website
@@ -335,7 +335,7 @@ const CompliancePage = () => {
                     <Box mt={10} p={6} bg={subtleCardBg} borderRadius="lg">
                       <Heading size="md" mb={4}>Investor Compensation Schemes</Heading>
                       <Text mb={4}>
-                        In addition to regulatory protections, BitInvest participates in the following investor compensation schemes:
+                        In addition to regulatory protections, BitStock participates in the following investor compensation schemes:
                       </Text>
                       <List spacing={3}>
                         <ListItem>
@@ -348,7 +348,7 @@ const CompliancePage = () => {
                         </ListItem>
                         <ListItem>
                           <ListIcon as={FaCheckCircle} color="green.500" />
-                          BitInvest Additional Insurance Policy - Up to $500,000 coverage against fraud
+                          BitStock Additional Insurance Policy - Up to $500,000 coverage against fraud
                         </ListItem>
                       </List>
                     </Box>
@@ -363,7 +363,7 @@ const CompliancePage = () => {
                     <Heading size="lg" mb={8} textAlign="center">Our Security Infrastructure</Heading>
                     
                     <Text fontSize="lg" mb={8}>
-                      BitInvest employs industry-leading security technologies and practices to protect your personal information and investments. Our multi-layered security approach ensures that your assets remain safe at all times.
+                      BitStock employs industry-leading security technologies and practices to protect your personal information and investments. Our multi-layered security approach ensures that your assets remain safe at all times.
                     </Text>
                     
                     <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8} mb={10}>
@@ -371,7 +371,7 @@ const CompliancePage = () => {
                         <Card key={index} bg={subtleCardBg} height="100%">
                           <CardBody>
                             <VStack align="start" spacing={4}>
-                              <Icon as={measure.icon} boxSize={8} color="brand.bitinvest.500" />
+                              <Icon as={measure.icon} boxSize={8} color="brand.bitstock.500" />
                               <Heading size="md">{measure.title}</Heading>
                               <Text>{measure.description}</Text>
                             </VStack>
@@ -424,7 +424,7 @@ const CompliancePage = () => {
                     <Heading size="lg" mb={8} textAlign="center">KYC & AML Framework</Heading>
                     
                     <Text fontSize="lg" mb={8}>
-                      BitInvest implements comprehensive Know Your Customer (KYC) and Anti-Money Laundering (AML) procedures to ensure the integrity of our platform and comply with international financial regulations.
+                      BitStock implements comprehensive Know Your Customer (KYC) and Anti-Money Laundering (AML) procedures to ensure the integrity of our platform and comply with international financial regulations.
                     </Text>
                     
                     <Accordion allowMultiple mb={10}>
@@ -441,7 +441,7 @@ const CompliancePage = () => {
                                       framework.name.includes('CTF') ? FaShieldAlt : 
                                       FaHandshake
                                     } 
-                                    color="brand.bitinvest.500" 
+                                    color="brand.bitstock.500" 
                                   />
                                   <Text fontWeight="bold">{framework.name}</Text>
                                 </HStack>
@@ -471,8 +471,8 @@ const CompliancePage = () => {
                         <VStack>
                           <Box 
                             borderRadius="full" 
-                            bg="brand.bitinvest.100" 
-                            color="brand.bitinvest.700"
+                            bg="brand.bitstock.100" 
+                            color="brand.bitstock.700"
                             p={4}
                             mb={2}
                           >
@@ -485,8 +485,8 @@ const CompliancePage = () => {
                         <VStack>
                           <Box 
                             borderRadius="full" 
-                            bg="brand.bitinvest.100" 
-                            color="brand.bitinvest.700"
+                            bg="brand.bitstock.100" 
+                            color="brand.bitstock.700"
                             p={4}
                             mb={2}
                           >
@@ -499,8 +499,8 @@ const CompliancePage = () => {
                         <VStack>
                           <Box 
                             borderRadius="full" 
-                            bg="brand.bitinvest.100" 
-                            color="brand.bitinvest.700"
+                            bg="brand.bitstock.100" 
+                            color="brand.bitstock.700"
                             p={4}
                             mb={2}
                           >
@@ -513,8 +513,8 @@ const CompliancePage = () => {
                         <VStack>
                           <Box 
                             borderRadius="full" 
-                            bg="brand.bitinvest.100" 
-                            color="brand.bitinvest.700"
+                            bg="brand.bitstock.100" 
+                            color="brand.bitstock.700"
                             p={4}
                             mb={2}
                           >
@@ -536,7 +536,7 @@ const CompliancePage = () => {
                     <Heading size="lg" mb={8} textAlign="center">Regional Compliance</Heading>
                     
                     <Text fontSize="lg" mb={8}>
-                      BitInvest's compliance framework is specifically tailored to meet the unique regulatory requirements of the MENA and GCC regions, ensuring seamless and compliant investing across borders.
+                      BitStock's compliance framework is specifically tailored to meet the unique regulatory requirements of the MENA and GCC regions, ensuring seamless and compliant investing across borders.
                     </Text>
                     
                     {regionalCompliance.map((region, index) => (
@@ -547,7 +547,7 @@ const CompliancePage = () => {
                         bg={subtleCardBg}
                         borderRadius="lg"
                         borderLeft="4px solid"
-                        borderColor="brand.bitinvest.500"
+                        borderColor="brand.bitstock.500"
                       >
                         <Heading size="md" mb={4}>{region.region}</Heading>
                         <List spacing={3}>
@@ -565,7 +565,7 @@ const CompliancePage = () => {
                       <Card bg={useColorModeValue('white', 'gray.700')} shadow="md" borderRadius="lg">
                         <CardBody>
                           <VStack align="start" spacing={4}>
-                            <Icon as={FaGlobe} boxSize={8} color="brand.bitinvest.500" />
+                            <Icon as={FaGlobe} boxSize={8} color="brand.bitstock.500" />
                             <Heading size="md">Cross-Border Compliance</Heading>
                             <Text>
                               Our multi-jurisdictional approach allows you to invest across borders while maintaining full compliance with both your home country regulations and the regulations of the market you're investing in.
@@ -577,10 +577,10 @@ const CompliancePage = () => {
                       <Card bg={useColorModeValue('white', 'gray.700')} shadow="md" borderRadius="lg">
                         <CardBody>
                           <VStack align="start" spacing={4}>
-                            <Icon as={FaBalanceScale} boxSize={8} color="brand.bitinvest.500" />
+                            <Icon as={FaBalanceScale} boxSize={8} color="brand.bitstock.500" />
                             <Heading size="md">Tax Compliance</Heading>
                             <Text>
-                              BitInvest provides the necessary tax documentation for all jurisdictions we operate in, helping you maintain tax compliance when investing in global markets from MENA and GCC countries.
+                              BitStock provides the necessary tax documentation for all jurisdictions we operate in, helping you maintain tax compliance when investing in global markets from MENA and GCC countries.
                             </Text>
                           </VStack>
                         </CardBody>
@@ -597,7 +597,7 @@ const CompliancePage = () => {
                     <Heading size="lg" mb={8} textAlign="center">Policies & Documentation</Heading>
                     
                     <Text fontSize="lg" mb={8}>
-                      BitInvest maintains comprehensive documentation of all our compliance and security policies. These documents are regularly reviewed and updated to ensure they meet the evolving regulatory landscape.
+                      BitStock maintains comprehensive documentation of all our compliance and security policies. These documents are regularly reviewed and updated to ensure they meet the evolving regulatory landscape.
                     </Text>
                     
                     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mb={10}>
@@ -607,7 +607,7 @@ const CompliancePage = () => {
                         borderWidth="1px" 
                         borderColor={borderColor} 
                         _hover={{ 
-                          borderColor: "brand.bitinvest.500",
+                          borderColor: "brand.bitstock.500",
                           transform: "translateY(-5px)",
                           transition: "all 0.3s ease"
                         }}
@@ -615,10 +615,10 @@ const CompliancePage = () => {
                         onClick={() => router.push('/policies/privacy')}
                       >
                         <VStack align="start" spacing={4}>
-                          <Icon as={FaUserShield} boxSize={6} color="brand.bitinvest.500" />
+                          <Icon as={FaUserShield} boxSize={6} color="brand.bitstock.500" />
                           <Heading size="md">Privacy Policy</Heading>
                           <Text>Our commitment to protecting your personal information and how we process your data.</Text>
-                          <Button variant="link" colorScheme="bitinvest" size="sm">Read Policy</Button>
+                          <Button variant="link" colorScheme="bitstock" size="sm">Read Policy</Button>
                         </VStack>
                       </Box>
                       
@@ -628,7 +628,7 @@ const CompliancePage = () => {
                         borderWidth="1px" 
                         borderColor={borderColor} 
                         _hover={{ 
-                          borderColor: "brand.bitinvest.500",
+                          borderColor: "brand.bitstock.500",
                           transform: "translateY(-5px)",
                           transition: "all 0.3s ease"
                         }}
@@ -636,10 +636,10 @@ const CompliancePage = () => {
                         onClick={() => router.push('/policies/terms')}
                       >
                         <VStack align="start" spacing={4}>
-                          <Icon as={FaFileContract} boxSize={6} color="brand.bitinvest.500" />
+                          <Icon as={FaFileContract} boxSize={6} color="brand.bitstock.500" />
                           <Heading size="md">Terms of Service</Heading>
-                          <Text>The terms and conditions governing your use of BitInvest's services and platform.</Text>
-                          <Button variant="link" colorScheme="bitinvest" size="sm">Read Terms</Button>
+                          <Text>The terms and conditions governing your use of BitStock's services and platform.</Text>
+                          <Button variant="link" colorScheme="bitstock" size="sm">Read Terms</Button>
                         </VStack>
                       </Box>
                       
@@ -649,7 +649,7 @@ const CompliancePage = () => {
                         borderWidth="1px" 
                         borderColor={borderColor} 
                         _hover={{ 
-                          borderColor: "brand.bitinvest.500",
+                          borderColor: "brand.bitstock.500",
                           transform: "translateY(-5px)",
                           transition: "all 0.3s ease"
                         }}
@@ -657,10 +657,10 @@ const CompliancePage = () => {
                         onClick={() => router.push('/policies/kyc-aml')}
                       >
                         <VStack align="start" spacing={4}>
-                          <Icon as={FaIdCard} boxSize={6} color="brand.bitinvest.500" />
+                          <Icon as={FaIdCard} boxSize={6} color="brand.bitstock.500" />
                           <Heading size="md">KYC & AML Policy</Heading>
                           <Text>Our procedures for customer identity verification and prevention of money laundering.</Text>
-                          <Button variant="link" colorScheme="bitinvest" size="sm">Read Policy</Button>
+                          <Button variant="link" colorScheme="bitstock" size="sm">Read Policy</Button>
                         </VStack>
                       </Box>
                       
@@ -670,7 +670,7 @@ const CompliancePage = () => {
                         borderWidth="1px" 
                         borderColor={borderColor} 
                         _hover={{ 
-                          borderColor: "brand.bitinvest.500",
+                          borderColor: "brand.bitstock.500",
                           transform: "translateY(-5px)",
                           transition: "all 0.3s ease"
                         }}
@@ -678,10 +678,10 @@ const CompliancePage = () => {
                         onClick={() => router.push('/policies/risk')}
                       >
                         <VStack align="start" spacing={4}>
-                          <Icon as={FaExclamationTriangle} boxSize={6} color="brand.bitinvest.500" />
+                          <Icon as={FaExclamationTriangle} boxSize={6} color="brand.bitstock.500" />
                           <Heading size="md">Risk Disclosure</Heading>
                           <Text>Important information about the risks associated with investing in financial markets.</Text>
-                          <Button variant="link" colorScheme="bitinvest" size="sm">Read Disclosure</Button>
+                          <Button variant="link" colorScheme="bitstock" size="sm">Read Disclosure</Button>
                         </VStack>
                       </Box>
                     </SimpleGrid>
@@ -714,7 +714,7 @@ const CompliancePage = () => {
                         <Flex justify="center" mt={8}>
                         <Button
                             leftIcon={<FaFileContract />}
-                            colorScheme="bitinvest"
+                            colorScheme="bitstock"
                             size="lg"
                             onClick={() => router.push('/contact')}
                         >
@@ -734,7 +734,7 @@ const CompliancePage = () => {
                             textAlign="center"
                             mb={12}
                             fontSize={{ base: '3xl', md: '4xl' }}
-                            bgGradient="linear(to-r, brand.bitinvest.500, brand.bitinvest.700)"
+                            bgGradient="linear(to-r, brand.bitstock.500, brand.bitstock.700)"
                             bgClip="text"
                         >
                             Frequently Asked Questions
@@ -748,13 +748,13 @@ const CompliancePage = () => {
                                     <h2>
                                     <AccordionButton _hover={{ bg: 'transparent' }}>
                                         <Box as="span" flex='1' textAlign='left' fontWeight="bold">
-                                        How are my funds protected at BitInvest?
+                                        How are my funds protected at BitStock?
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     </h2>
                                     <AccordionPanel pb={4}>
-                                    Your funds at BitInvest are protected through multiple layers of security. We maintain segregated accounts at tier-1 banks, which means your investment funds are held separately from our operational assets. Additionally, we provide up to $500,000 in insurance coverage per client against fraud and cybersecurity incidents. As a regulated financial institution, we are also members of regional investor compensation schemes.
+                                    Your funds at BitStock are protected through multiple layers of security. We maintain segregated accounts at tier-1 banks, which means your investment funds are held separately from our operational assets. Additionally, we provide up to $500,000 in insurance coverage per client against fraud and cybersecurity incidents. As a regulated financial institution, we are also members of regional investor compensation schemes.
                                     </AccordionPanel>
                                 </AccordionItem>
 
@@ -776,13 +776,13 @@ const CompliancePage = () => {
                                     <h2>
                                     <AccordionButton _hover={{ bg: 'transparent' }}>
                                         <Box as="span" flex='1' textAlign='left' fontWeight="bold">
-                                        Is BitInvest compliant with Shariah principles?
+                                        Is BitStock compliant with Shariah principles?
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     </h2>
                                     <AccordionPanel pb={4}>
-                                    Yes, BitInvest offers Shariah-compliant investment options that are overseen by a board of qualified Shariah scholars. Our platform allows you to filter investments that meet Shariah principles, and we conduct regular Shariah audits of all investment products. We maintain transparency in profit distribution and fee structures in accordance with Islamic finance principles.
+                                    Yes, BitStock offers Shariah-compliant investment options that are overseen by a board of qualified Shariah scholars. Our platform allows you to filter investments that meet Shariah principles, and we conduct regular Shariah audits of all investment products. We maintain transparency in profit distribution and fee structures in accordance with Islamic finance principles.
                                     </AccordionPanel>
                                 </AccordionItem>
 
@@ -790,13 +790,13 @@ const CompliancePage = () => {
                                     <h2>
                                     <AccordionButton _hover={{ bg: 'transparent' }}>
                                         <Box as="span" flex='1' textAlign='left' fontWeight="bold">
-                                        How does BitInvest ensure cross-border compliance?
+                                        How does BitStock ensure cross-border compliance?
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     </h2>
                                     <AccordionPanel pb={4}>
-                                    BitInvest maintains licenses and authorizations in multiple jurisdictions across the MENA and GCC regions. Our multi-jurisdictional approach ensures that when you invest across borders, you remain compliant with both your home country regulations and the regulations of the market you're investing in. We provide necessary tax documentation for all jurisdictions we operate in and stay updated with the latest regional and international regulatory developments.
+                                    BitStock maintains licenses and authorizations in multiple jurisdictions across the MENA and GCC regions. Our multi-jurisdictional approach ensures that when you invest across borders, you remain compliant with both your home country regulations and the regulations of the market you're investing in. We provide necessary tax documentation for all jurisdictions we operate in and stay updated with the latest regional and international regulatory developments.
                                     </AccordionPanel>
                                 </AccordionItem>
                                 </Accordion>
@@ -810,13 +810,13 @@ const CompliancePage = () => {
                                     <h2>
                                     <AccordionButton _hover={{ bg: 'transparent' }}>
                                         <Box as="span" flex='1' textAlign='left' fontWeight="bold">
-                                        What security measures does BitInvest use to protect my account?
+                                        What security measures does BitStock use to protect my account?
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     </h2>
                                     <AccordionPanel pb={4}>
-                                    BitInvest employs multiple security measures including mandatory multi-factor authentication (MFA), biometric verification for mobile users, 256-bit encryption for all data transmission, and AI-powered fraud detection systems. We conduct quarterly security audits and penetration testing by independent cybersecurity firms to ensure our platform remains secure against emerging threats.
+                                    BitStock employs multiple security measures including mandatory multi-factor authentication (MFA), biometric verification for mobile users, 256-bit encryption for all data transmission, and AI-powered fraud detection systems. We conduct quarterly security audits and penetration testing by independent cybersecurity firms to ensure our platform remains secure against emerging threats.
                                     </AccordionPanel>
                                 </AccordionItem>
 
@@ -824,13 +824,13 @@ const CompliancePage = () => {
                                     <h2>
                                     <AccordionButton _hover={{ bg: 'transparent' }}>
                                         <Box as="span" flex='1' textAlign='left' fontWeight="bold">
-                                        Which regulatory bodies oversee BitInvest's operations?
+                                        Which regulatory bodies oversee BitStock's operations?
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     </h2>
                                     <AccordionPanel pb={4}>
-                                    BitInvest is regulated by multiple financial authorities including the Dubai Financial Services Authority (DFSA) in the UAE, the Capital Market Authority (CMA) in Saudi Arabia, the Financial Regulatory Authority (FRA) in Egypt, and the Central Bank of Bahrain (CBB). These regulatory bodies oversee our operations to ensure we maintain the highest standards of financial conduct and client protection.
+                                    BitStock is regulated by multiple financial authorities including the Dubai Financial Services Authority (DFSA) in the UAE, the Capital Market Authority (CMA) in Saudi Arabia, the Financial Regulatory Authority (FRA) in Egypt, and the Central Bank of Bahrain (CBB). These regulatory bodies oversee our operations to ensure we maintain the highest standards of financial conduct and client protection.
                                     </AccordionPanel>
                                 </AccordionItem>
 
@@ -838,13 +838,13 @@ const CompliancePage = () => {
                                     <h2>
                                     <AccordionButton _hover={{ bg: 'transparent' }}>
                                         <Box as="span" flex='1' textAlign='left' fontWeight="bold">
-                                        How does BitInvest handle my personal data?
+                                        How does BitStock handle my personal data?
                                         </Box>
                                         <AccordionIcon />
                                     </AccordionButton>
                                     </h2>
                                     <AccordionPanel pb={4}>
-                                    BitInvest handles your personal data in accordance with our Privacy Policy and applicable data protection regulations. We employ strict data access controls, encryption, and secure storage practices. We only collect information necessary for our services, and we do not sell your personal data to third parties. You can access your data, request corrections, or opt out of certain data processing activities through your account settings.
+                                    BitStock handles your personal data in accordance with our Privacy Policy and applicable data protection regulations. We employ strict data access controls, encryption, and secure storage practices. We only collect information necessary for our services, and we do not sell your personal data to third parties. You can access your data, request corrections, or opt out of certain data processing activities through your account settings.
                                     </AccordionPanel>
                                 </AccordionItem>
 
@@ -858,7 +858,7 @@ const CompliancePage = () => {
                                     </AccordionButton>
                                     </h2>
                                     <AccordionPanel pb={4}>
-                                    BitInvest actively monitors regulatory developments across all regions where we operate. If there are regulatory changes in your country that affect our services, we will promptly notify you through email and in-app notifications. Our compliance team works to ensure continuous service while adapting to new requirements. In some cases, we may need to request additional information or documentation from you to comply with new regulations.
+                                    BitStock actively monitors regulatory developments across all regions where we operate. If there are regulatory changes in your country that affect our services, we will promptly notify you through email and in-app notifications. Our compliance team works to ensure continuous service while adapting to new requirements. In some cases, we may need to request additional information or documentation from you to comply with new regulations.
                                     </AccordionPanel>
                                 </AccordionItem>
                                 </Accordion>
@@ -869,7 +869,7 @@ const CompliancePage = () => {
 
                         {/* Call to Action Section */}
                         <Box
-                        bg={useColorModeValue('brand.bitinvest.50', 'gray.800')}
+                        bg={useColorModeValue('brand.bitstock.50', 'gray.800')}
                         borderRadius="xl"
                         p={{ base: 6, md: 10 }}
                         mt={16}
@@ -879,18 +879,18 @@ const CompliancePage = () => {
                         >
                         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} alignItems="center">
                             <Box>
-                            <Badge colorScheme="bitinvest" fontSize="md" p={2} mb={4}>
+                            <Badge colorScheme="bitstock" fontSize="md" p={2} mb={4}>
                                 Compliant Investment Solutions
                             </Badge>
                             <Heading mb={4} size="lg">
                                 Ready to start investing with confidence?
                             </Heading>
                             <Text fontSize="lg" mb={6}>
-                                Open an account today and experience the security and compliance that comes with BitInvest's regulated platform. Our team is ready to guide you through every step of the process.
+                                Open an account today and experience the security and compliance that comes with BitStock's regulated platform. Our team is ready to guide you through every step of the process.
                             </Text>
                             <HStack spacing={4}>
                                 <Button 
-                                colorScheme="bitinvest" 
+                                colorScheme="bitstock" 
                                 size="lg" 
                                 leftIcon={<FaUserTie />}
                                 onClick={() => router.push('/signup')}
@@ -899,7 +899,7 @@ const CompliancePage = () => {
                                 </Button>
                                 <Button 
                                 variant="outline" 
-                                colorScheme="bitinvest" 
+                                colorScheme="bitstock" 
                                 size="lg"
                                 leftIcon={<FaHandshake />}
                                 onClick={() => router.push('/contact')}
@@ -912,7 +912,7 @@ const CompliancePage = () => {
                             <Icon
                                 as={FaShieldAlt}
                                 boxSize={{ base: 24, md: 40 }}
-                                color="brand.bitinvest.300"
+                                color="brand.bitstock.300"
                                 opacity={0.8}
                             />
                             </Flex>

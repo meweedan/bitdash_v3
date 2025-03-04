@@ -37,7 +37,7 @@ export default function Header() {
   const accentColor = `brand.${platform}.400`;
   
   // Always show announcements for these platforms
-  const showAnnouncements = platform === 'bittrade' || platform === 'bitinvest' || platform === 'bitfund' || platform === 'bitcash';
+  const showAnnouncements = platform === 'bittrade' || platform === 'bitstock' || platform === 'bitfund' || platform === 'bitcash';
 
   useEffect(() => {
     const checkAuth = () => {
@@ -90,16 +90,16 @@ export default function Header() {
       href: 'https://fund.bitdash.app/',
     },
     {
-      name: 'BitInvest',
-      image: '/invest.png',
-      mobileImage: '/invest.png',
-      href: 'https://invest.bitdash.app/',
+      name: 'BitStock',
+      image: '/stock.png',
+      mobileImage: '/stock.png',
+      href: 'https://stock.bitdash.app/',
     },
   ];
 
   const bgColor = useColorModeValue(
     platform === 'bitcash' ? 'brand.bitcash.500' : 
-    platform === 'bitinvest' ? 'brand.bitinvest.500' :
+    platform === 'bitstock' ? 'brand.bitstock.500' :
     platform === 'bittrade' ? 'brand.bittrade.500' :
     platform === 'bitfund' ? 'brand.bitfund.500' :
     'gray.50',
@@ -115,14 +115,14 @@ export default function Header() {
       if (hostname.includes('cash.bitdash') || hostname === 'cash.localhost') return 'bitcash';
       if (hostname.includes('fund.bitdash') || hostname === 'fund.localhost') return 'bitfund';
       if (hostname.includes('trade.bitdash') || hostname === 'trade.localhost') return 'bittrade';
-      if (hostname.includes('invest.bitdash') || hostname === 'invest.localhost') return 'bitinvest';
+      if (hostname.includes('stock.bitdash') || hostname === 'stock.localhost') return 'bitstock';
       
       // Also check URL path for local development
       const pathname = window.location.pathname;
       if (pathname.startsWith('/cash')) return 'bitcash';
       if (pathname.startsWith('/fund')) return 'bitfund';
       if (pathname.startsWith('/trade')) return 'bittrade';
-      if (pathname.startsWith('/invest')) return 'bitinvest';
+      if (pathname.startsWith('/stock')) return 'bitstock';
     }
     return 'bitdash'; // Default platform
   };

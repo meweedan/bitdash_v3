@@ -1,8 +1,8 @@
-// frontend/pages/invest/index.js
+// frontend/pages/stock/index.js
 import { useEffect } from 'react';
 import { usePWA } from '@/hooks/usePWA';
-import { InvestPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component
-import InvestLandingBrowser from '@/components/landing/InvestLandingBrowser';
+import { StockPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component
+import StockLandingBrowser from '@/components/landing/StockLandingBrowser';
 
 const CashPage = () => {
   const { isPWA } = usePWA();
@@ -11,13 +11,13 @@ const CashPage = () => {
 
   useEffect(() => {
     if (isBrowser && hostname === 'bitdash.app') {
-      window.location.href = 'https://invest.bitdash.app';
+      window.location.href = 'https://stock.bitdash.app';
     }
   }, [hostname, isBrowser]);
 
   if (hostname === 'bitdash.app') return null;
 
-  return isPWA ? <InvestPWALanding /> : <InvestLandingBrowser />;
+  return isPWA ? <StockPWALanding /> : <StockLandingBrowser />;
 };
 
 export default CashPage;

@@ -214,17 +214,6 @@ const CryptoMarketplace = () => {
                   ${crypto.current_price < 0.01 ? crypto.current_price.toFixed(8) : crypto.current_price.toFixed(2)}
                 </Text>
                 
-                <SimpleGrid columns={2} spacing={4}>
-                  <VStack spacing={0} align="start">
-                    <Text fontSize="xs" color="gray.500">Market Cap</Text>
-                    <Text fontWeight="medium">${crypto.market_cap.toLocaleString()}</Text>
-                  </VStack>
-                  <VStack spacing={0} align="start">
-                    <Text fontSize="xs" color="gray.500">24h Volume</Text>
-                    <Text fontWeight="medium">${crypto.total_volume.toLocaleString()}</Text>
-                  </VStack>
-                </SimpleGrid>
-                
                 <Button 
                   colorScheme="blue" 
                   size="sm" 

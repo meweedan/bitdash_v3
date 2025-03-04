@@ -318,7 +318,7 @@ const PlatformsAnimation = () => {
   const platforms = [
     { name: 'BitCash', icon: FaMoneyBillWave, color: 'brand.bitcash.500' },
     { name: 'BitFund', icon: FaChartLine, color: 'brand.bitfund.500' },
-    { name: 'BitInvest', icon: FaUniversity, color: 'brand.bitinvest.500' },
+    { name: 'BitStock', icon: FaUniversity, color: 'brand.bitstock.500' },
     { name: 'BitTrade', icon: FaExchangeAlt, color: 'brand.bittrade.500' }
   ];
   
@@ -940,7 +940,7 @@ const AboutPage = () => {
       features: [
         "BitCash - Payment Solutions",
         "BitFund - Proprietary Trading",
-        "BitInvest - Investment Platform",
+        "BitStock - Investment Platform",
         "BitTrade - Forex & Crypto Exchange"
       ],
       ctaText: "Explore Platforms",

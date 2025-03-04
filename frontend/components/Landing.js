@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { 
   Box, 
@@ -7,63 +7,52 @@ import {
   VStack, 
   Button, 
   useColorMode, 
-  Link, 
-  Grid,
   Container,
   Flex,
-  Spinner,
-  chakra,
-  Select,
-  Badge,
-  Center,
-  SimpleGrid,
   Circle,
-  shouldForwardProp,
   Icon,
   HStack,
-  Divider,
-  IconButton,
+  Grid,
+  GridItem,
+  SimpleGrid,
   Image,
-  Stack,
+  Divider,
+  Center,
+  Badge,
   useBreakpointValue
 } from '@chakra-ui/react';
-import { keyframes } from '@emotion/react';
-import { motion, isValidMotionProp, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import PWALanding from './PWALanding';
 import { 
   ArrowRight, 
   Users, 
-  Clock, 
   CheckCircle,
-  TrendingUp, 
   Shield,
-  Smartphone,
-  Menu as MenuIcon,
-  BarChart3,
-  Bell,
-  QrCode,
-  ArrowDown,
-  Scan,
-  Lock,
   Globe,
-  DollarSign,
-  PieChart,
-  LineChart,
-  BarChart,
-  Award,
-  Briefcase,
-  Key,
-  Settings,
   CreditCard,
+  Key,
+  LineChart,
+  BarChart2,
+  TrendingUp,
   Layers,
-  Target,
+  Clock,
+  Award,
+  Lock,
+  Database,
+  Server,
+  Terminal,
+  ChevronRight,
+  Circle as CircleIcon,
+  ArrowRightCircle,
   Zap,
-  Database
+  BookOpen,
+  Info,
+  DollarSign,
+  PlayCircle,
+  BookOpen as BookOpenIcon
 } from 'lucide-react';
-import { FaWhatsapp, FaMoneyBillWave, FaChartLine, FaExchangeAlt, FaUniversity, FaShieldAlt } from 'react-icons/fa';
-import Hero from './Hero';
-import theme from '@/styles/theme';
+import { FaWhatsapp, FaChartLine, FaExchangeAlt, FaUniversity, FaShieldAlt, FaChevronRight, FaMosque, FaHandHoldingUsd, FaBalanceScale, FaFileContract } from 'react-icons/fa';
 
 const checkIsPWA = () => {
   if (typeof window === 'undefined') return false;
@@ -76,154 +65,37 @@ const checkIsPWA = () => {
 };
 
 const MotionBox = motion(Box);
-const ChakraBox = chakra(motion.div, {
-  shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
-});
+const ChakraBox = motion(Box);
 
-const FeatureCard = ({ icon: IconComponent, title, description, delay, color }) => {
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
-
+// Custom parallax component
+const ParallaxBox = ({ children, offset = 100, ...rest }) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], [offset, -offset]);
+  
   return (
-    <ChakraBox
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      p={6}
-      borderRadius="xl"
-      boxShadow="lg"
-      borderWidth="1px"
-      borderColor={isDark ? 'whiteAlpha.200' : 'gray.100'}
-      _hover={{
-        transform: 'translateY(-5px)',
-        boxShadow: '2xl',
-        borderColor: `${color}.400`,
-      }}
+    <MotionBox
+      ref={ref}
+      style={{ y }}
+      {...rest}
     >
-      <VStack spacing={4} align="flex-start">
-        <Circle
-          size="50px"
-          color="white"
-          opacity={0.9}
-        >
-          <Icon as={IconComponent} boxSize={5} />
-        </Circle>
-        <Text
-          fontWeight="bold"
-          fontSize="xl"
-          color={isDark ? 'white' : 'gray.800'}
-        >
-          {title}
-        </Text>
-        <Text
-          color={isDark ? 'gray.400' : 'gray.600'}
-          lineHeight="tall"
-        >
-          {description}
-        </Text>
-      </VStack>
-    </ChakraBox>
+      {children}
+    </MotionBox>
   );
 };
 
-const StepCard = ({ icon: IconComponent, title, content, delay }) => {
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
-
-  return (
-    <ChakraBox
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      p={6}
-      borderRadius="xl"
-      boxShadow="lg"
-      borderWidth="1px"
-      borderColor={isDark ? 'whiteAlpha.200' : 'gray.100'}
-      _hover={{
-        transform: 'translateY(-2px)',
-        boxShadow: '2xl',
-      }}
-    >
-      <VStack spacing={4} align="flex-start">
-        <Circle
-          size="50px"
-          color={isDark ? 'white' : 'blue.500'}
-        >
-          <Icon as={IconComponent} boxSize={5} />
-        </Circle>
-        <Text
-          fontWeight="bold"
-          fontSize="xl"
-          color={isDark ? 'white' : 'gray.800'}
-        >
-          {title}
-        </Text>
-        <Text
-          color={isDark ? 'gray.400' : 'gray.600'}
-          lineHeight="tall"
-        >
-          {content}
-        </Text>
-      </VStack>
-    </ChakraBox>
-  );
-};
-
-const TestimonialCard = ({ quote, author, company, image, delay }) => {
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
-
-  return (
-    <ChakraBox
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      p={6}
-      borderRadius="xl"
-      boxShadow="lg"
-      borderWidth="1px"
-      borderColor={isDark ? 'whiteAlpha.200' : 'gray.100'}
-      _hover={{
-        transform: 'translateY(-5px)',
-        boxShadow: '2xl',
-      }}
-    >
-      <VStack spacing={4} align="flex-start">
-        <Text
-          fontSize="lg"
-          fontStyle="italic"
-          color={isDark ? 'gray.300' : 'gray.700'}
-          lineHeight="tall"
-        >
-          "{quote}"
-        </Text>
-        <HStack spacing={4}>
-          <Circle
-            size="40px"
-            overflow="hidden"
-          >
-            {image ? (
-              <Image src={image} alt={author} w="full" h="full" objectFit="cover" />
-            ) : (
-              <Icon as={Users} boxSize={5} color="gray.500" />
-            )}
-          </Circle>
-          <VStack spacing={0} align="flex-start">
-            <Text fontWeight="bold" color={isDark ? 'white' : 'gray.800'}>
-              {author}
-            </Text>
-            <Text fontSize="sm" color={isDark ? 'gray.400' : 'gray.600'}>
-              {company}
-            </Text>
-          </VStack>
-        </HStack>
-      </VStack>
-    </ChakraBox>
-  );
+// Fade in animation variant
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  }
 };
 
 export default function Landing() {
@@ -255,666 +127,1249 @@ export default function Landing() {
     return <PWALanding />;
   }
 
-  // Animation for numbers
-  const numberVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.5
-      }
-    }
+  // Section Components
+  const HeroSection = () => {
+    const isMobile = useBreakpointValue({ base: true, md: false });
+    const parallaxOffset = useBreakpointValue({ base: 30, md: 100 });
+    
+    return (
+      <Box 
+        as="section" 
+        position="relative"
+        pt={{ base: 24, md: 40 }}
+        pb={{ base: 32, md: 48 }}
+        overflow="hidden"
+      >
+        {/* Background gradient */}
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          right="0"
+          bottom="0"
+          zIndex="0"
+        />
+        
+        {/* Subtle grid pattern */}
+        <Box
+          position="absolute"
+          width="100%"
+          height="100%"
+          top="0"
+          left="0"
+          opacity={isDark ? "0.05" : "0.03"}
+          backgroundImage="url('/images/grid-pattern.svg')"
+          backgroundSize="50px 50px"
+          zIndex="0"
+        />
+        
+        {/* Hero content */}
+        <Container maxW="container.xl" position="relative" zIndex="1">
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 16, lg: 20 }} alignItems="center">
+            <GridItem>
+              <MotionBox
+                initial="hidden"
+                animate="visible"
+                variants={fadeIn}
+              >
+                <VStack spacing={8} align="flex-start">
+                  <Badge 
+                    colorScheme="brand.bitdash" 
+                    bg="brand.bitdash.500" 
+                    color="white" 
+                    px={3} 
+                    py={1} 
+                    borderRadius="full"
+                    fontSize="sm"
+                  >
+                    {t('shariahCompliant', 'SHARIAH-COMPLIANT FINTECH')}
+                  </Badge>
+                  
+                  <Heading
+                    as="h1"
+                    fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
+                    fontWeight="bold"
+                    lineHeight={1.1}
+                    letterSpacing="tight"
+                    color={isDark ? "white" : "gray.800"}
+                  >
+                    {t('heroTitle', 'Islamic Financial Technology for the Modern Economy')}
+                  </Heading>
+                  
+                  <Text
+                    fontSize={{ base: "lg", md: "xl" }}
+                    color={isDark ? "gray.300" : "gray.600"}
+                    maxW="xl"
+                    lineHeight="tall"
+                  >
+                    {t('heroDescription', 'BitDash delivers shariah-compliant fintech solutions that empower businesses with ethical financial operations across forex, payments, and investments.')}
+                  </Text>
+                  
+                  <HStack spacing={5} pt={4}>
+                    <Button
+                      size="lg"
+                      bg="brand.bitdash.600"
+                      color="white"
+                      _hover={{ bg: "brand.bitdash.700" }}
+                      _active={{ bg: "brand.bitdash.700" }}
+                      height="58px"
+                      px={8}
+                      fontSize="md"
+                      fontWeight="bold"
+                      rightIcon={<ArrowRightCircle size={18} />}
+                      boxShadow="lg"
+                      rounded="full"
+                      onClick={() => router.push('/signup')}
+                    >
+                      {t('startTrial', 'Start Free Trial')}
+                    </Button>
+                    
+                    <Button
+                      leftIcon={<FaWhatsapp size={18} />}
+                      size="lg"
+                      variant="outline"
+                      color="brand.bitdash.500"
+                      borderColor="brand.bitdash.500"
+                      _hover={{ bg: "brand.bitdash.50" }}
+                      height="58px"
+                      px={8}
+                      fontSize="md"
+                      borderWidth="2px"
+                      rounded="full"
+                      onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
+                    >
+                      {t('scheduleDemo', 'Schedule Demo')}
+                    </Button>
+                  </HStack>
+                  
+                  <HStack spacing={8} pt={6} flexWrap="wrap">
+                    <VStack align="flex-start" spacing={1}>
+                      <Text fontSize="sm" color={isDark ? "gray.400" : "gray.500"}>
+                        {t('statHeadingTransactions', 'MONTHLY TRANSACTIONS')}
+                      </Text>
+                      <Text fontSize="3xl" fontWeight="bold" color={isDark ? "white" : "gray.800"}>
+                        $2.5B+
+                      </Text>
+                    </VStack>
+                    
+                    <VStack align="flex-start" spacing={1}>
+                      <Text fontSize="sm" color={isDark ? "gray.400" : "gray.500"}>
+                        {t('statHeadingClients', 'GLOBAL CLIENTS')}
+                      </Text>
+                      <Text fontSize="3xl" fontWeight="bold" color={isDark ? "white" : "gray.800"}>
+                        180+
+                      </Text>
+                    </VStack>
+                    
+                    <VStack align="flex-start" spacing={1}>
+                      <Text fontSize="sm" color={isDark ? "gray.400" : "gray.500"}>
+                        {t('statHeadingUptime', 'SYSTEM UPTIME')}
+                      </Text>
+                      <Text fontSize="3xl" fontWeight="bold" color={isDark ? "white" : "gray.800"}>
+                        99.99%
+                      </Text>
+                    </VStack>
+                  </HStack>
+                </VStack>
+              </MotionBox>
+            </GridItem>
+            
+            <GridItem display={{ base: "none", lg: "block" }}>
+              <ParallaxBox offset={parallaxOffset}>
+                <MotionBox
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  position="relative"
+                >
+                  <Image 
+                    src="/images/dashboard-mockup.png" 
+                    alt="BitDash Financial Dashboard"
+                    borderRadius="xl"
+                    boxShadow="2xl"
+                    width="full"
+                  />
+                  
+                  {/* Floating elements */}
+                  <MotionBox
+                    position="absolute"
+                    top="-40px"
+                    right="40px"
+                    animate={{ y: [0, -15, 0] }}
+                    transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                  >
+                    <Flex
+                      bg={isDark ? "gray.800" : "white"}
+                      boxShadow="lg"
+                      borderRadius="xl"
+                      p={4}
+                      align="center"
+                    >
+                      <Circle size="40px" bg="green.100" color="green.500" mr={3}>
+                        <Icon as={CheckCircle} boxSize={5} />
+                      </Circle>
+                      <VStack spacing={0} align="flex-start">
+                        <Text fontWeight="bold">Shariah Certified</Text>
+                        <Text fontSize="sm" color="gray.500">All transactions verified</Text>
+                      </VStack>
+                    </Flex>
+                  </MotionBox>
+                  
+                  <MotionBox
+                    position="absolute"
+                    bottom="-30px"
+                    left="30px"
+                    animate={{ y: [0, 15, 0] }}
+                    transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
+                  >
+                    <Flex
+                      bg={isDark ? "gray.800" : "white"}
+                      boxShadow="lg"
+                      borderRadius="xl"
+                      p={4}
+                      align="center"
+                    >
+                      <Circle size="40px" bg="blue.100" color="brand.bitdash.500" mr={3}>
+                        <Icon as={TrendingUp} boxSize={5} />
+                      </Circle>
+                      <VStack spacing={0} align="flex-start">
+                        <Text fontWeight="bold">Forex Trading</Text>
+                        <Text fontSize="sm" color="gray.500">0% commission</Text>
+                      </VStack>
+                    </Flex>
+                  </MotionBox>
+                </MotionBox>
+              </ParallaxBox>
+            </GridItem>
+          </Grid>
+        </Container>
+        
+        {/* SVG wave divider */}
+        <Box
+          position="absolute"
+          bottom="-2px"
+          left="0"
+          right="0"
+          height="150px"
+          zIndex="1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
+            <path 
+              fill={isDark ? "#1A202C" : "#F7FAFC"} 
+              fillOpacity="1" 
+              d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,218.7C672,203,768,149,864,117.3C960,85,1056,75,1152,80C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+          </svg>
+        </Box>
+      </Box>
+    );
   };
-
-  const PlatformSection = () => {
-    const { colorMode } = useColorMode();
-    const isDark = colorMode === 'dark';
-    const { t } = useTranslation();
-    const router = useRouter();
-
-    const platforms = [
+  
+  const IslamicPrinciplesSection = () => {
+    const principles = [
       {
-        name: t('bitcash.name', 'BitCash'),
-        icon: FaMoneyBillWave,
-        description: t('bitcash.description', 'Instant payment solutions for the digital age with seamless transactions across borders.'),
-        subdomain: "cash.bitdash.app",
-        color: "brand.bitcash"
+        icon: FaMosque,
+        title: 'Shariah Compliant',
+        description: 'All our products and services adhere strictly to Islamic finance principles, certified by leading Shariah scholars.'
       },
       {
-        name: t('bitfund.name', 'BitFund'),
-        icon: FaChartLine,
-        description: t('bitfund.description', 'Proprietary trading platform with verified performance-based funding for traders.'),
-        subdomain: "fund.bitdash.app",
-        color: "brand.bitfund"
+        icon: FaHandHoldingUsd,
+        title: 'No Riba (Interest)',
+        description: 'Our financial solutions operate without interest, utilizing ethical profit-sharing and fee-based structures.'
       },
       {
-        name: t('bitinvest.name', 'BitInvest'),
-        icon: FaUniversity,
-        description: t('bitinvest.description', 'Global investment platform tailored for MENA & GCC investors to access international markets.'),
-        subdomain: "invest.bitdash.app",
-        color: "brand.bitinvest"
+        icon: FaBalanceScale,
+        title: 'Ethical Investments',
+        description: 'We screen all investments to ensure they comply with Islamic values, avoiding prohibited industries.'
       },
       {
-        name: t('bittrade.name', 'BitTrade'),
-        icon: FaExchangeAlt,
-        description: t('bittrade.description', 'Regulated forex and crypto trading with institutional-grade security and advanced tools.'),
-        subdomain: "trade.bitdash.app",
-        color: "brand.bittrade"
+        icon: FaFileContract,
+        title: 'Transparent Contracts',
+        description: 'All agreements are clearly defined with fair terms that avoid uncertainty (gharar) and speculation (maysir).'
       }
     ];
-
+    
     return (
-      <Box py={16} overflow="hidden">
+      <Box 
+        as="section" 
+        py={20} 
+        position="relative"
+        zIndex="2"
+      >
         <Container maxW="container.xl">
-          <VStack spacing={12}>
-            <Heading
+          <VStack spacing={16}>
+            <MotionBox
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeIn}
               textAlign="center"
-              bgGradient="linear(to-r, blue.600, blue.400)"
-              bgClip="text"
-              fontSize={{ base: "3xl", md: "4xl" }}
-              mb={8}
             >
-              {t('platformTitle', 'Our Fintech Ecosystem')}
-            </Heading>
+              <Text 
+                color="brand.bitdash.500" 
+                fontWeight="bold" 
+                mb={3}
+                textTransform="uppercase"
+                letterSpacing="wide"
+              >
+                {t('islamicFinanceSubtitle', 'ISLAMIC FINANCE PRINCIPLES')}
+              </Text>
+              <Heading
+                fontSize={{ base: "3xl", md: "4xl" }}
+                fontWeight="bold"
+                color={isDark ? "white" : "gray.800"}
+                mb={5}
+              >
+                {t('islamicFinanceTitle', 'Built On Strong Ethical Foundations')}
+              </Heading>
+              <Text
+                fontSize={{ base: "md", md: "lg" }}
+                color={isDark ? "gray.300" : "gray.600"}
+                maxW="3xl"
+                mx="auto"
+              >
+                {t('islamicFinanceDescription', 'BitDash integrates Islamic financial principles into modern financial technology, ensuring all transactions are ethical, transparent, and shariah-compliant.')}
+              </Text>
+            </MotionBox>
             
-            <VStack spacing={8} width="full">
-              {platforms.map((platform, idx) => (
-                <ChakraBox
-                  key={platform.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  w="full"
-                  cursor="pointer"
-                  onClick={() => window.location.href = `https://${platform.subdomain}`}
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} w="full">
+              {principles.map((principle, idx) => (
+                <MotionBox
+                  key={idx}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={{
+                    hidden: { opacity: 0, y: 30 },
+                    visible: { 
+                      opacity: 1, 
+                      y: 0,
+                      transition: { 
+                        duration: 0.6, 
+                        delay: idx * 0.1,
+                        ease: [0.22, 1, 0.36, 1]
+                      }
+                    }
+                  }}
                 >
                   <Flex
-                    direction="row"
-                    align="center"
-                    p={6}
+                    direction="column"
+                    p={8}
                     borderRadius="2xl"
-                    borderWidth="1px"
-                    borderColor={isDark ? 'whiteAlpha.100' : 'gray.100'}
-                    boxShadow="md"
-                    transition="all 0.3s ease"
+                    bg={isDark ? "gray.800" : "white"}
+                    boxShadow="lg"
+                    height="full"
+                    transition="all 0.3s"
                     _hover={{
-                      transform: 'translateX(8px)',
-                      bg: isDark ? 'whiteAlpha.100' : 'gray.50',
-                      borderColor: `${platform.color}.500`,
+                      transform: 'translateY(-8px)',
                       boxShadow: 'xl'
                     }}
                   >
                     <Circle
-                      size="54px"
-                      color={isDark ? 'white' : 'white'}
-                      opacity={0.9}
-                      mr={6}
+                      size="56px"
+                      bg={isDark ? "gray.700" : "brand.bitdash.50"}
+                      color="brand.bitdash.500"
+                      mb={6}
                     >
-                      <Icon as={platform.icon} boxSize={6} />
+                      <Icon as={principle.icon} boxSize={6} />
                     </Circle>
-
-                    <VStack align="start" spacing={1} flex={1}>
-                      <Heading
-                        size="md"
-                        fontWeight="semibold"
-                        letterSpacing="tight"
-                      >
-                        {platform.name}
-                      </Heading>
-                      <Text
-                        fontSize="sm"
-                        color={isDark ? 'gray.400' : 'gray.600'}
-                        letterSpacing="tight"
-                      >
-                        {platform.description}
-                      </Text>
-                    </VStack>
-
-                    <Icon
-                      as={ArrowRight}
-                      boxSize={5}
-                      color={isDark ? 'gray.400' : 'gray.600'}
-                      opacity={0.5}
-                      transition="all 0.3s ease"
-                      transform="translateX(-10px)"
-                      _groupHover={{
-                        transform: "translateX(0)",
-                        opacity: 1,
-                        color: `${platform.color}.500`
-                      }}
-                    />
+                    
+                    <Heading
+                      as="h3"
+                      size="md"
+                      fontWeight="bold"
+                      mb={4}
+                      color={isDark ? "white" : "gray.800"}
+                    >
+                      {principle.title}
+                    </Heading>
+                    
+                    <Text
+                      color={isDark ? "gray.300" : "gray.600"}
+                      fontSize="md"
+                    >
+                      {principle.description}
+                    </Text>
                   </Flex>
-                </ChakraBox>
+                </MotionBox>
               ))}
-            </VStack>
+            </SimpleGrid>
+          </VStack>
+        </Container>
+      </Box>
+    );
+  };
+  
+  const PlatformSection = () => {
+    const platforms = [
+      {
+        name: t('bitcash.name', 'BitCash'),
+        icon: CreditCard,
+        description: t('bitcash.description', 'Shariah-compliant payment solutions with seamless cross-border transactions and 0% hidden fees.'),
+        subdomain: "cash.bitdash.app",
+        color: "brand.bitdash.500",
+        bgGradient: "linear(to-br, brand.bitdash.400, brand.bitdash.700)"
+      },
+      {
+        name: t('bitfund.name', 'BitFund'),
+        icon: LineChart,
+        description: t('bitfund.description', 'Ethical trading platform with verified performance-based funding for traders following Islamic principles.'),
+        subdomain: "fund.bitdash.app",
+        color: "brand.bitdash.500",
+        bgGradient: "linear(to-br, brand.bitdash.400, brand.bitdash.700)"
+      },
+      {
+        name: t('bitstock.name', 'BitStock'),
+        icon: BarChart2,
+        description: t('bitstock.description', 'Shariah-compliant investment platform tailored for MENA & GCC investors to access global halal markets.'),
+        subdomain: "stock.bitdash.app",
+        color: "brand.bitdash.500",
+        bgGradient: "linear(to-br, brand.bitdash.400, brand.bitdash.700)"
+      },
+      {
+        name: t('bittrade.name', 'BitTrade'),
+        icon: TrendingUp,
+        description: t('bittrade.description', 'Regulated Islamic forex trading with zero interest (riba) and institutional-grade security protocols.'),
+        subdomain: "trade.bitdash.app",
+        color: "brand.bitdash.500",
+        bgGradient: "linear(to-br, brand.bitdash.400, brand.bitdash.700)"
+      }
+    ];
+
+    return (
+      <Box 
+        as="section" 
+        py={24} 
+        position="relative"
+        overflow="hidden"
+      >
+        {/* Decorative elements */}
+        <Box
+          position="absolute"
+          width="600px"
+          height="600px"
+          borderRadius="full"
+          bg="brand.bitdash.500"
+          opacity="0.05"
+          top="-300px"
+          left="-100px"
+        />
+        
+        <Box
+          position="absolute"
+          width="400px"
+          height="400px"
+          borderRadius="full"
+          bg="brand.bitdash.400"
+          opacity="0.05"
+          bottom="-200px"
+          right="-100px"
+        />
+        
+        <Container maxW="container.xl" position="relative">
+          <VStack spacing={16}>
+            <MotionBox
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeIn}
+              textAlign="center"
+            >
+              <Text 
+                color="brand.bitdash.500" 
+                fontWeight="bold" 
+                mb={3}
+                textTransform="uppercase"
+                letterSpacing="wide"
+              >
+                {t('platformSubtitle', 'COMPREHENSIVE ECOSYSTEM')}
+              </Text>
+              <Heading
+                fontSize={{ base: "3xl", md: "4xl" }}
+                fontWeight="bold"
+                color={isDark ? "white" : "gray.800"}
+                mb={5}
+              >
+                {t('platformTitle', 'Our Shariah-Compliant Solutions')}
+              </Heading>
+              <Text
+                fontSize={{ base: "md", md: "lg" }}
+                color={isDark ? "gray.300" : "gray.600"}
+                maxW="3xl"
+                mx="auto"
+              >
+                {t('platformDescription', 'Integrated Islamic financial technology solutions designed for modern businesses, from halal payment processing to ethical trading systems.')}
+              </Text>
+            </MotionBox>
+            
+            <SimpleGrid 
+              templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+              gap={10}
+              w="full"
+            >
+              {platforms.map((platform, idx) => (
+                <ParallaxBox 
+                  key={platform.name} 
+                  offset={20}
+                >
+                  <MotionBox
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    variants={{
+                      hidden: { opacity: 0, y: 30 },
+                      visible: { 
+                        opacity: 1, 
+                        y: 0,
+                        transition: { 
+                          duration: 0.7, 
+                          delay: idx * 0.15,
+                          ease: [0.22, 1, 0.36, 1]
+                        }
+                      }
+                    }}
+                  >
+                    <Grid
+                      templateColumns={{ base: "1fr", md: "100px 1fr" }}
+                      gap={6}
+                      p={8}
+                      borderRadius="2xl"
+                      bg={isDark ? "gray.800" : "white"}
+                      boxShadow="lg"
+                      overflow="hidden"
+                      position="relative"
+                      onClick={() => window.location.href = `https://${platform.subdomain}`}
+                      cursor="pointer"
+                      transition="all 0.3s"
+                      _hover={{
+                        transform: 'translateY(-8px)',
+                        boxShadow: 'xl'
+                      }}
+                    >
+                      {/* Icon in circle with gradient background */}
+                      <GridItem>
+                        <Center 
+                          h="100px" 
+                          w="100px" 
+                          borderRadius="full"
+                          bgGradient={platform.bgGradient}
+                          color="white"
+                        >
+                          <Icon as={platform.icon} boxSize={8} />
+                        </Center>
+                      </GridItem>
+                      
+                      {/* Content */}
+                      <GridItem>
+                        <VStack align="flex-start" spacing={4}>
+                          <Heading
+                            as="h3"
+                            size="lg"
+                            fontWeight="bold"
+                            color={isDark ? "white" : "gray.800"}
+                          >
+                            {platform.name}
+                          </Heading>
+                          
+                          <Text
+                            color={isDark ? "gray.300" : "gray.600"}
+                            fontSize="md"
+                          >
+                            {platform.description}
+                          </Text>
+                          
+                          <Flex 
+                            align="center"
+                            color="brand.bitdash.500" 
+                            fontWeight="medium"
+                            mt={2}
+                          >
+                            <Text>{t('exploreService', 'Explore Service')}</Text>
+                            <Icon as={ArrowRight} boxSize={4} ml={2} />
+                          </Flex>
+                        </VStack>
+                      </GridItem>
+                      
+                      {/* Subtle decorative element */}
+                      <Box
+                        position="absolute"
+                        width="200px"
+                        height="200px"
+                        borderRadius="full"
+                        bg={platform.color}
+                        opacity="0.05"
+                        bottom="-100px"
+                        right="-100px"
+                      />
+                    </Grid>
+                  </MotionBox>
+                </ParallaxBox>
+              ))}
+            </SimpleGrid>
           </VStack>
         </Container>
       </Box>
     );
   };
 
-  // Updated steps with fintech focus
-  const steps = [
-    { 
-      icon: Lock, 
-      title: 'Enterprise Security',
-      content: 'Bank-grade encryption and compliance with international financial regulations to protect your data and transactions.'
-    },
-    { 
-      icon: Zap, 
-      title: 'Rapid Implementation',
-      content: 'Deploy our fintech solutions in under 48 hours with seamless integration into your existing systems.'
-    },
-    { 
-      icon: Database, 
-      title: 'Scalable Architecture',
-      content: 'Built on cloud infrastructure that scales with your business, from startups to enterprise-level operations.'
-    },
-    { 
-      icon: Users, 
-      title: 'Dedicated Support',
-      content: '24/7 technical support with a dedicated financial technology expert assigned to your account.'
-    }
-  ];
-
-  // Fintech features
+  const FeaturesSection = () => {
   const features = [
     {
-      icon: CreditCard,
-      title: 'Seamless Payments',
-      description: 'Process transactions globally with minimal fees and instant settlement across multiple currencies.',
-      color: 'brand.bitcash'
-    },
-    {
-      icon: LineChart,
-      title: 'Advanced Analytics',
-      description: 'Real-time financial data visualization and predictive analytics to drive informed decision-making.',
-      color: 'brand.bitfund'
-    },
-    {
       icon: Globe,
-      title: 'Global Compliance',
-      description: 'Stay compliant with regional and international financial regulations across all your operations.',
-      color: 'brand.bitinvest'
+      title: 'Global Reach',
+      description: 'Process Shariah-compliant payments internationally with transparent fees and instant settlement.'
     },
     {
-      icon: Key,
-      title: 'Secure Authentication',
-      description: 'Multi-factor authentication and biometric verification for enhanced security protocols.',
-      color: 'brand.bittrade'
+      icon: Shield,
+      title: 'Ethical Security',
+      description: 'Bank-grade encryption and compliance with both international and Islamic financial regulations.'
+    },
+    {
+      icon: Database,
+      title: 'Halal Analytics',
+      description: 'Advanced financial data visualization and predictive analytics for informed decision-making.'
+    },
+    {
+      icon: Server,
+      title: 'Scalable Infrastructure',
+      description: 'Cloud architecture that grows with your business while maintaining Shariah compliance.'
+    },
+    {
+      icon: Lock,
+      title: 'Regulatory Compliance',
+      description: 'Stay compliant with regional, international, and Islamic financial regulations.'
     },
     {
       icon: Layers,
-      title: 'Multi-Asset Support',
-      description: 'Trade and manage diverse asset classes from a single unified platform with comprehensive portfolio views.',
-      color: 'brand.bitcash'
-    },
-    {
-      icon: Target,
-      title: 'Precision Targeting',
-      description: 'Use AI-driven insights to target the right financial products to the right customers at the right time.',
-      color: 'brand.bitfund'
+      title: 'Multi-Asset Platform',
+      description: 'Trade and manage diverse Shariah-compliant asset classes from a single unified dashboard.'
     }
   ];
-
-  // Testimonials
-  const testimonials = [
-    {
-      quote: "BitDash's fintech suite has transformed how we handle cross-border payments, reducing settlement time by 87% and cutting costs significantly.",
-      author: "Sarah Al-Mansouri",
-      company: "CFO at GulfTech Solutions",
-      delay: 0
-    },
-    {
-      quote: "Implementing BitFund has allowed us to scale our trading operations globally while maintaining regulatory compliance in every jurisdiction.",
-      author: "James Chen",
-      company: "Director at Apex Trading Group",
-      delay: 0.1
-    },
-    {
-      quote: "The integration between all BitDash platforms gives us a competitive edge in serving our MENA clients with global investment opportunities.",
-      author: "Mohammed Al-Harbi",
-      company: "CEO at Riyadh Financial Advisors",
-      delay: 0.2
-    }
-  ];
-
+  
   return (
-    <Box
-      minH="100vh"
-      overflowX="hidden"
+    <Box 
+      as="section" 
+      py={24} 
+      position="relative"
     >
-      {/* Hero Section */}
-      <Box 
-        pt={20} 
-        pb={32}
-      >
-        <Container maxW="container.xl" px={{ base: 4, md: 8 }}>
-          <VStack spacing={10} textAlign="center" maxW="3xl" mx="auto">
-            <Heading
-              fontSize={{ base: "4xl", md: "6xl" }}
-              fontWeight="bold"
-              letterSpacing="tight"
-              bgGradient="linear(to-r, blue.600, blue.400)"
-              bgClip="text"
-              lineHeight={1.2}
-            >
-              {t('heroTitle', 'Powerful Financial Technology for the Modern Economy')}
-            </Heading>
-
-            <Text
-              fontSize={{ base: "lg", md: "xl" }}
-              color={isDark ? 'gray.300' : 'gray.600'}
-              maxW="2xl"
-              lineHeight="tall"
-            >
-              {t('ctaDescription', 'BitDash delivers institutional-grade financial technology solutions that drive efficiency, security, and growth for businesses across markets worldwide.')}
-            </Text>
-
-            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8} pt={4} width="full">
-              <ChakraBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={numberVariants}
-                p={6}
-                borderRadius="lg"
-                boxShadow="md"
-              >
-                <Text
-                  fontSize={{ base: "4xl", md: "5xl" }}
-                  fontWeight="bold"
-                  letterSpacing="tight"
-                  bgGradient="linear(to-r, blue.400, cyan.400)"
-                  bgClip="text"
-                  mb={2}
-                >
-                  $2.5B+
-                </Text>
-                <Text
-                  color={isDark ? 'gray.400' : 'gray.600'}
-                >
-                  {t('stats.transactionVolume', 'Monthly Transaction Volume')}
-                </Text>
-              </ChakraBox>
-              
-              <ChakraBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={numberVariants}
-                p={6}
-                borderRadius="lg"
-                boxShadow="md"
-              >
-                <Text
-                  fontSize={{ base: "4xl", md: "5xl" }}
-                  fontWeight="bold"
-                  letterSpacing="tight"
-                  bgGradient="linear(to-r, blue.400, cyan.400)"
-                  bgClip="text"
-                  mb={2}
-                >
-                  180+
-                </Text>
-                <Text
-                  color={isDark ? 'gray.400' : 'gray.600'}
-                >
-                  {t('stats.globalClients', 'Enterprise Clients Worldwide')}
-                </Text>
-              </ChakraBox>
-              
-              <ChakraBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={numberVariants}
-                p={6}
-                borderRadius="lg"
-                boxShadow="md"
-              >
-                <Text
-                  fontSize={{ base: "4xl", md: "5xl" }}
-                  fontWeight="bold"
-                  letterSpacing="tight"
-                  bgGradient="linear(to-r, blue.400, cyan.400)"
-                  bgClip="text"
-                  mb={2}
-                >
-                  99.99%
-                </Text>
-                <Text
-                  color={isDark ? 'gray.400' : 'gray.600'}
-                >
-                  {t('stats.uptime', 'Platform Uptime & Reliability')}
-                </Text>
-              </ChakraBox>
-            </SimpleGrid>
-
-            <HStack spacing={4} pt={6}>
-              <Button
-                size="lg"
-                colorScheme="blue"
-                px={8}
-                height="60px"
-                fontSize="lg"
-                fontWeight="bold"
-                _hover={{
-                  transform: 'translateY(-2px)',
-                  boxShadow: 'lg'
-                }}
-                onClick={() => router.push('/signup')}
-              >
-                {t('startFree', 'Start Free Trial')}
-              </Button>
-              
-              <Button
-                leftIcon={<FaWhatsapp size={20} />}
-                size="lg"
-                variant="outline"
-                colorScheme="blue"
-                px={8}
-                height="60px"
-                fontSize="lg"
-                _hover={{
-                  transform: 'translateY(-2px)',
-                  boxShadow: 'lg'
-                }}
-                onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
-              >
-                {t('scheduleDemo', 'Schedule Demo')}
-              </Button>
-            </HStack>
-          </VStack>
-        </Container>
-      </Box>
-
-      {/* Platforms Section */}
+      {/* SVG wave divider at top */}
       <Box
-        mt={-20}
+        position="absolute"
+        top="-2px"
+        left="0"
+        right="0"
+        height="150px"
+        transform="rotate(180deg)"
+        zIndex="1"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
+          <path 
+            fill={isDark ? "#171923" : "#FFFFFF"} 
+            fillOpacity="1" 
+            d="M0,128L48,133.3C96,139,192,149,288,144C384,139,480,117,576,122.7C672,128,768,160,864,170.7C960,181,1056,171,1152,154.7C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+          </path>
+        </svg>
+      </Box>
+      
+      <Container maxW="container.xl" position="relative" zIndex="2">
+        <VStack spacing={16}>
+          <MotionBox
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            textAlign="center"
+          >
+            <Text 
+              color="brand.bitdash.500" 
+              fontWeight="bold" 
+              mb={3}
+              textTransform="uppercase"
+              letterSpacing="wide"
+            >
+              {t('featuresSubtitle', 'POWERFUL CAPABILITIES')}
+            </Text>
+            <Heading
+              fontSize={{ base: "3xl", md: "4xl" }}
+              fontWeight="bold"
+              color={isDark ? "white" : "gray.800"}
+              mb={5}
+            >
+              {t('featuresTitle', 'Enterprise-Grade Islamic Fintech')}
+            </Heading>
+            <Text
+              fontSize={{ base: "md", md: "lg" }}
+              color={isDark ? "gray.300" : "gray.600"}
+              maxW="3xl"
+              mx="auto"
+            >
+              {t('featuresDescription', 'Comprehensive tools and technologies designed for Islamic financial institutions and businesses seeking ethical financial solutions.')}
+            </Text>
+          </MotionBox>
+          
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10} w="full">
+            {features.map((feature, idx) => (
+              <ParallaxBox 
+                key={idx}
+                offset={10}
+              >
+                <MotionBox
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={{
+                    hidden: { opacity: 0, y: 30 },
+                    visible: { 
+                      opacity: 1, 
+                      y: 0,
+                      transition: { 
+                        duration: 0.6, 
+                        delay: idx * 0.1,
+                        ease: [0.22, 1, 0.36, 1]
+                      }
+                    }
+                  }}
+                >
+                  <Flex
+                    direction="column"
+                    p={8}
+                    borderRadius="2xl"
+                    bg={isDark ? "gray.700" : "white"}
+                    boxShadow="lg"
+                    height="full"
+                    transition="all 0.3s"
+                    _hover={{
+                      transform: 'translateY(-8px)',
+                      boxShadow: 'xl',
+                      borderColor: "brand.bitdash.500",
+                      borderWidth: "1px"
+                    }}
+                  >
+                    <Circle
+                      size="56px"
+                      bgGradient="linear(to-br, brand.bitdash.400, brand.bitdash.600)"
+                      color="white"
+                      mb={6}
+                    >
+                      <Icon as={feature.icon} boxSize={5} />
+                    </Circle>
+                    
+                    <Heading
+                      as="h3"
+                      size="md"
+                      fontWeight="bold"
+                      mb={4}
+                      color={isDark ? "white" : "gray.800"}
+                    >
+                      {feature.title}
+                    </Heading>
+                    
+                    <Text
+                      color={isDark ? "gray.300" : "gray.600"}
+                      fontSize="md"
+                    >
+                      {feature.description}
+                    </Text>
+                  </Flex>
+                </MotionBox>
+              </ParallaxBox>
+            ))}
+          </SimpleGrid>
+        </VStack>
+      </Container>
+    </Box>
+  );
+};
+  
+  const AppShowcaseSection = () => {
+    return (
+      <Box 
+        as="section" 
+        py={32} 
         position="relative"
-        zIndex={1}
+        overflow="hidden"
+      >
+        {/* Background gradient elements */}
+        <Box
+          position="absolute"
+          width="900px"
+          height="900px"
+          borderRadius="full"
+          bg="brand.bitdash.500"
+          opacity="0.03"
+          top="-400px"
+          right="-400px"
+        />
+        
+        <Box
+          position="absolute"
+          width="600px"
+          height="600px"
+          borderRadius="full"
+          bg="brand.bitdash.400"
+          opacity="0.03"
+          bottom="-300px"
+          left="-300px"
+        />
+        
+        <Container maxW="container.xl" position="relative">
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={16} alignItems="center">
+            <GridItem order={{ base: 2, lg: 1 }}>
+              <ParallaxBox offset={40}>
+                <MotionBox
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <Image 
+                    src="/images/bitdash-mobile-app.png" 
+                    alt="BitDash Mobile App"
+                    borderRadius="2xl"
+                    boxShadow="2xl"
+                  />
+                </MotionBox>
+              </ParallaxBox>
+            </GridItem>
+            
+            <GridItem order={{ base: 1, lg: 2 }}>
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeIn}
+              >
+                <VStack spacing={8} align="flex-start">
+                  <Text 
+                    color="brand.bitdash.500" 
+                    fontWeight="bold"
+                    textTransform="uppercase"
+                    letterSpacing="wide"
+                  >
+                    {t('mobileAppSubtitle', 'SEAMLESS MOBILE EXPERIENCE')}
+                  </Text>
+                  
+                  <Heading
+                    fontSize={{ base: "3xl", md: "4xl" }}
+                    fontWeight="bold"
+                    color={isDark ? "white" : "gray.800"}
+                    lineHeight={1.2}
+                  >
+                    {t('mobileAppTitle', 'Manage Your Islamic Finances On The Go')}
+                  </Heading>
+                  
+                  <Text
+                    fontSize={{ base: "md", md: "lg" }}
+                    color={isDark ? "gray.300" : "gray.600"}
+                  >
+                    {t('mobileAppDescription', 'Access all BitDash services from our powerful mobile application. Execute trades, process payments, and monitor investments while maintaining Shariah compliance, all from the palm of your hand.')}
+                  </Text>
+                  
+                  <VStack spacing={5} align="flex-start" width="full">
+                    {[
+                      {
+                        icon: Zap,
+                        title: 'Instant Notifications',
+                        description: 'Real-time alerts for trades, payments, and important financial events.'
+                      },
+                      {
+                        icon: Shield,
+                        title: 'Biometric Security',
+                        description: 'Enterprise-grade protection with facial recognition and fingerprint authentication.'
+                      },
+                      {
+                        icon: BookOpenIcon,
+                        title: 'Islamic Finance Learning',
+                        description: 'Educational resources on Shariah-compliant investing and financial principles.'
+                      }
+                    ].map((feature, idx) => (
+                      <HStack key={idx} spacing={4} width="full">
+                        <Circle 
+                          size="40px" 
+                          bgGradient="linear(to-br, brand.bitdash.400, brand.bitdash.600)"
+                          color="white"
+                        >
+                          <Icon as={feature.icon} boxSize={4} />
+                        </Circle>
+                        
+                        <VStack spacing={0} align="flex-start">
+                          <Text fontWeight="bold" color={isDark ? "white" : "gray.800"}>
+                            {feature.title}
+                          </Text>
+                          <Text fontSize="sm" color={isDark ? "gray.400" : "gray.600"}>
+                            {feature.description}
+                          </Text>
+                        </VStack>
+                      </HStack>
+                    ))}
+                  </VStack>
+                  
+                  <HStack spacing={6} pt={3}>
+                    <Button
+                      leftIcon={<FaWhatsapp size={18} />}
+                      size="lg"
+                      bg="brand.bitdash.600"
+                      color="white"
+                      _hover={{ bg: "brand.bitdash.700" }}
+                      height="56px"
+                      px={8}
+                      fontSize="md"
+                      fontWeight="bold"
+                      borderRadius="full"
+                      boxShadow="md"
+                      onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
+                    >
+                      {t('demoApp', 'Request Demo')}
+                    </Button>
+                    
+                    <Button
+                      rightIcon={<PlayCircle size={18} />}
+                      size="lg"
+                      variant="outline"
+                      borderColor="brand.bitdash.500"
+                      color="brand.bitdash.500"
+                      _hover={{ bg: "brand.bitdash.50" }}
+                      height="56px"
+                      px={8}
+                      fontSize="md"
+                      borderRadius="full"
+                      borderWidth="2px"
+                      onClick={() => window.open("#", "_blank")}
+                    >
+                      {t('watchVideo', 'Watch Video')}
+                    </Button>
+                  </HStack>
+                </VStack>
+              </MotionBox>
+            </GridItem>
+          </Grid>
+        </Container>
+      </Box>
+    );
+  };
+  
+  const TestimonialSection = () => {
+    const testimonials = [
+      {
+        quote: "BitDash's shariah-compliant fintech suite has transformed how we handle cross-border payments, reducing settlement time while ensuring ethical compliance.",
+        author: "Sarah Al-Mansouri",
+        company: "CFO at GulfTech Solutions",
+        image: "/images/testimonial-1.jpg"
+      },
+      {
+        quote: "Implementing BitFund has allowed us to scale our trading operations globally while maintaining full adherence to Islamic financial principles.",
+        author: "James Chen",
+        company: "Director at Apex Trading Group",
+        image: "/images/testimonial-2.jpg"
+      },
+      {
+        quote: "The integration between all BitDash platforms gives us a competitive edge in serving our MENA clients with global halal investment opportunities.",
+        author: "Mohammed Al-Harbi",
+        company: "CEO at Riyadh Financial Advisors",
+        image: "/images/testimonial-3.jpg"
+      }
+    ];
+    
+    return (
+      <Box 
+        as="section" 
+        py={24} 
+        position="relative"
       >
         <Container maxW="container.xl">
-          <PlatformSection />
-        </Container>
-      </Box>
-
-      {/* Features Section */}
-      <Box py={20}>
-        <Container maxW="container.xl">
           <VStack spacing={16}>
-            <Heading
+            <MotionBox
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeIn}
               textAlign="center"
-              bgGradient="linear(to-r, blue.600, blue.400)"
-              bgClip="text"
-              fontSize={{ base: "3xl", md: "4xl" }}
             >
-              {t('featuresTitle', 'Enterprise-Grade Fintech Features')}
-            </Heading>
-            
-            <SimpleGrid 
-              columns={{ base: 1, md: 2, lg: 3 }}
-              spacing={8}
-              w="full"
-            >
-              {features.map((feature, idx) => (
-                <FeatureCard
-                  key={idx}
-                  icon={feature.icon}
-                  title={feature.title}
-                  description={feature.description}
-                  delay={idx * 0.1}
-                  color={feature.color}
-                />
-              ))}
-            </SimpleGrid>
-          </VStack>
-        </Container>
-      </Box>
-
-      {/* Implementation Steps */}
-      <Box py={20}>
-        <Container maxW="container.xl">
-          <VStack spacing={16}>
-            <VStack spacing={4} textAlign="center">
-              <Heading
-                bgGradient="linear(to-r, blue.600, blue.400)"
-                bgClip="text"
-                fontSize={{ base: "3xl", md: "4xl" }}
+              <Text 
+                color="brand.bitdash.500" 
+                fontWeight="bold" 
+                mb={3}
+                textTransform="uppercase"
+                letterSpacing="wide"
               >
-                {t('implementationTitle', 'Enterprise Implementation')}
+                {t('testimonialsSubtitle', 'CLIENT TESTIMONIALS')}
+              </Text>
+              <Heading
+                fontSize={{ base: "3xl", md: "4xl" }}
+                fontWeight="bold"
+                color={isDark ? "white" : "gray.800"}
+                mb={5}
+              >
+                {t('testimonialsTitle', 'Trusted by Islamic Financial Institutions')}
               </Heading>
               <Text
-                fontSize="lg"
-                color={isDark ? 'gray.400' : 'gray.600'}
-                maxW="2xl"
+                fontSize={{ base: "md", md: "lg" }}
+                color={isDark ? "gray.300" : "gray.600"}
+                maxW="3xl"
+                mx="auto"
               >
-                {t('implementationDescription', 'Our proven implementation methodology ensures a smooth transition to our fintech ecosystem with minimal disruption.')}
+                {t('testimonialsDescription', 'See what our clients say about our shariah-compliant financial technology solutions and services.')}
               </Text>
-            </VStack>
+            </MotionBox>
             
             <Grid 
-              templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+              templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
               gap={8}
               w="full"
             >
-              {steps.map((step, idx) => (
-                <StepCard
+              {testimonials.map((testimonial, idx) => (
+                <ParallaxBox
                   key={idx}
-                  icon={step.icon}
-                  title={step.title}
-                  content={step.content}
-                  delay={idx * 0.1}
-                />
+                  offset={20}
+                >
+                  <MotionBox
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    variants={{
+                      hidden: { opacity: 0, y: 30 },
+                      visible: { 
+                        opacity: 1, 
+                        y: 0,
+                        transition: { 
+                          duration: 0.6, 
+                          delay: idx * 0.15,
+                          ease: [0.22, 1, 0.36, 1]
+                        }
+                      }
+                    }}
+                  >
+                    <Flex
+                      direction="column"
+                      p={8}
+                      borderRadius="2xl"
+                      bg={isDark ? "gray.700" : "white"}
+                      boxShadow="lg"
+                      height="full"
+                      position="relative"
+                      zIndex="1"
+                    >
+                      <Icon 
+                        as={Info} 
+                        boxSize={10} 
+                        color="brand.bitdash.500" 
+                        opacity={0.15} 
+                        mb={4} 
+                      />
+                      
+                      <Text
+                        fontSize="lg"
+                        fontStyle="italic"
+                        color={isDark ? "gray.300" : "gray.600"}
+                        mb={8}
+                        zIndex="2"
+                      >
+                        "{testimonial.quote}"
+                      </Text>
+                      
+                      <HStack spacing={4} mt="auto">
+                        <Image 
+                          src={testimonial.image}
+                          fallbackSrc="https://via.placeholder.com/60"
+                          alt={testimonial.author}
+                          boxSize="60px"
+                          borderRadius="full"
+                          objectFit="cover"
+                        />
+                        
+                        <VStack spacing={0} align="flex-start">
+                          <Text fontWeight="bold" color={isDark ? "white" : "gray.800"}>
+                            {testimonial.author}
+                          </Text>
+                          <Text fontSize="sm" color={isDark ? "gray.400" : "gray.500"}>
+                            {testimonial.company}
+                          </Text>
+                        </VStack>
+                      </HStack>
+                      
+                      {/* Decorative element */}
+                      <Box
+                        position="absolute"
+                        right="0"
+                        bottom="0"
+                        width="150px"
+                        height="150px"
+                        bgGradient="linear(to-tr, brand.bitdash.500, brand.bitdash.400)"
+                        opacity="0.05"
+                        borderTopLeftRadius="full"
+                        zIndex="0"
+                      />
+                    </Flex>
+                  </MotionBox>
+                </ParallaxBox>
               ))}
             </Grid>
           </VStack>
         </Container>
       </Box>
-
-      {/* Testimonials Section */}
-      <Box py={20}>
-        <Container maxW="container.xl">
-          <VStack spacing={16}>
-            <Heading
+    );
+  };
+  
+  const CTASection = () => {
+    return (
+      <Box 
+        as="section" 
+        py={24} 
+        position="relative"
+        overflow="hidden"
+      >
+        {/* Background elements */}
+        <Box
+          position="absolute"
+          width="500px"
+          height="500px"
+          borderRadius="full"
+          bg="brand.bitdash.500"
+          opacity="0.05"
+          top="-250px"
+          left="-200px"
+        />
+        
+        <Box
+          position="absolute"
+          width="600px"
+          height="600px"
+          borderRadius="full"
+          bg="brand.bitdash.400"
+          opacity="0.05"
+          bottom="-300px"
+          right="-200px"
+        />
+        
+        <Container maxW="container.xl" position="relative">
+          <MotionBox
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <Flex
+              direction="column"
+              align="center"
               textAlign="center"
-              bgGradient="linear(to-r, blue.600, blue.400)"
-              bgClip="text"
-              fontSize={{ base: "3xl", md: "4xl" }}
+              py={{ base: 10, md: 16 }}
+              px={{ base: 6, md: 10 }}
+              borderRadius="3xl"
+              bgGradient={isDark 
+                ? "linear(to-br, gray.800, gray.700)" 
+                : "linear(to-br, white, gray.50)"
+              }
+              boxShadow="xl"
+              borderWidth="1px"
+              borderColor={isDark ? "gray.700" : "gray.100"}
+              position="relative"
+              overflow="hidden"
             >
-              {t('testimonialsTitle', 'Trusted by Financial Institutions Worldwide')}
-            </Heading>
-            
-            <SimpleGrid 
-              columns={{ base: 1, md: 3 }}
-              spacing={8}
-              w="full"
-            >
-              {testimonials.map((testimonial, idx) => (
-                <TestimonialCard
-                  key={idx}
-                  quote={testimonial.quote}
-                  author={testimonial.author}
-                  company={testimonial.company}
-                  delay={testimonial.delay}
-                />
-              ))}
-            </SimpleGrid>
-          </VStack>
-        </Container>
-      </Box>
-
-      {/* Security and Compliance Section */}
-      <Box py={20}>
-        <Container maxW="container.xl">
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={12} alignItems="center">
-            <VStack spacing={8} align="flex-start">
-              <Heading
-                bgGradient="linear(to-r, blue.600, blue.400)"
-                bgClip="text"
-                fontSize={{ base: "3xl", md: "4xl" }}
-              >
-                {t('securityTitle', 'Financial-Grade Security & Compliance')}
-              </Heading>
+              {/* Decorative gradient overlay */}
+              <Box
+                position="absolute"
+                top="0"
+                left="0"
+                right="0"
+                height="6px"
+                bgGradient="linear(to-r, brand.bitdash.400, brand.bitdash.600)"
+              />
               
-              <Text fontSize="lg" color={isDark ? 'gray.300' : 'gray.700'}>
-                {t('securityDescription', 'BitDash adheres to the strictest security standards and regulatory requirements across global financial markets.')}
-              </Text>
-              
-              <VStack spacing={4} align="flex-start" w="full">
-                {[
-                  'SOC 2 Type II Certified',
-                  'PCI DSS Level 1 Compliant',
-                  'GDPR & CCPA Compliant',
-                  'ISO 27001 Certified',
-                  'Bank-Grade Encryption (AES-256)',
-                  'Multi-Region Data Redundancy'
-                ].map((item, idx) => (
-                  <HStack key={idx} spacing={3}>
-                    <Icon as={CheckCircle} color="green.500" boxSize={5} />
-                    <Text fontWeight="medium">{item}</Text>
-                  </HStack>
-                ))}
+              <VStack spacing={8} maxW="3xl" position="relative" zIndex="1">
+                <Text 
+                  color="brand.bitdash.500" 
+                  fontWeight="bold" 
+                  textTransform="uppercase"
+                  letterSpacing="wide"
+                >
+                  {t('ctaSubtitle', 'START YOUR JOURNEY')}
+                </Text>
+                <Heading
+                  fontSize={{ base: "3xl", md: "4xl" }}
+                  fontWeight="bold"
+                  color={isDark ? "white" : "gray.800"}
+                >
+                  {t('ctaTitle', 'Ready to Transform Your Financial Operations?')}
+                </Heading>
+                
+                <Text 
+                  fontSize="lg" 
+                  color={isDark ? "gray.300" : "gray.600"}
+                  maxW="2xl"
+                >
+                  {t('ctaText', 'Join leading Islamic financial institutions already leveraging our shariah-compliant fintech ecosystem to streamline operations, reduce costs, and ensure ethical financial practices.')}
+                </Text>
+                
+                <HStack spacing={6} pt={4} wrap="wrap" justify="center">
+                  <Button
+                    size="lg"
+                    color="white"
+                    height="58px"
+                    px={8}
+                    fontSize="md"
+                    fontWeight="bold"
+                    borderRadius="full"
+                    boxShadow="lg"
+                    rightIcon={<ArrowRightCircle size={18} />}
+                    onClick={() => router.push('/signup')}
+                  >
+                    {t('ctaButton', 'Start Your Free Trial')}
+                  </Button>
+                  
+                  <Button
+                    size="lg"
+                    variant="bitdash-outline"
+                    height="58px"
+                    px={8}
+                    fontSize="md"
+                    borderRadius="full"
+                    borderWidth="2px"
+                    leftIcon={<FaWhatsapp size={18} />}
+                    onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
+                  >
+                    {t('scheduleDemo', 'Schedule Demo')}
+                  </Button>
+                </HStack>
               </VStack>
               
-              <Button
-                rightIcon={<ArrowRight />}
-                colorScheme="blue"
-                size="lg"
-                onClick={() => router.push('/security')}
-              >
-                {t('securityCTA', 'Learn More About Our Security')}
-              </Button>
-            </VStack>
-            
-            <Center>
-              <Circle
-                size={{ base: "250px", md: "350px" }}
-                boxShadow="xl"
-                position="relative"
-              >
-                <Icon 
-                  as={FaShieldAlt} 
-                  boxSize={{ base: 24, md: 32 }}
-                  color={isDark ? 'blue.400' : 'blue.500'}
-                  opacity={0.8}
-                />
-                
-                {/* Animated security elements */}
-                <ChakraBox
-                  position="absolute"
-                  animation={`${keyframes`
-                    0% { transform: translateY(0) rotate(0); opacity: 0.7; }
-                    50% { transform: translateY(-20px) rotate(5deg); opacity: 1; }
-                    100% { transform: translateY(0) rotate(0); opacity: 0.7; }
-                  `} 4s ease-in-out infinite`}
-                >
-                  <Icon 
-                    as={Lock} 
-                    boxSize={10}
-                    color={isDark ? 'cyan.400' : 'cyan.500'}
-                    position="absolute"
-                    top="-50px"
-                    left="50px"
-                  />
-                </ChakraBox>
-                
-                <ChakraBox
-                  position="absolute"
-                  animation={`${keyframes`
-                    0% { transform: translateY(0) rotate(0); opacity: 0.7; }
-                    50% { transform: translateY(20px) rotate(-5deg); opacity: 1; }
-                    100% { transform: translateY(0) rotate(0); opacity: 0.7; }
-                  `} 5s ease-in-out infinite`}
-                >
-                  <Icon 
-                    as={Key} 
-                    boxSize={10}
-                    color={isDark ? 'purple.400' : 'purple.500'}
-                    position="absolute"
-                    bottom="-40px"
-                    right="60px"
-                  />
-                </ChakraBox>
-              </Circle>
-            </Center>
-          </SimpleGrid>
+              {/* Decorative elements */}
+              <Box
+                position="absolute"
+                bottom="30px"
+                left="30px"
+                width="120px"
+                height="120px"
+                opacity="0.1"
+                borderRadius="full"
+                bgGradient="linear(to-r, brand.bitdash.400, brand.bitdash.600)"
+              />
+              
+              <Box
+                position="absolute"
+                top="60px"
+                right="40px"
+                width="80px"
+                height="80px"
+                opacity="0.1"
+                borderRadius="full"
+                bgGradient="linear(to-r, brand.bitdash.600, brand.bitdash.400)"
+              />
+            </Flex>
+          </MotionBox>
         </Container>
       </Box>
+    );
+  };
 
-      {/* CTA Section */}
-      <Box py={20}>
-        <Container maxW="container.xl">
-          <ChakraBox
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            p={10}
-            borderRadius="2xl"
-            boxShadow="xl"
-            textAlign="center"
-          >
-            <VStack spacing={8}>
-              <Heading
-                fontSize={{ base: "3xl", md: "4xl" }}
-                bgClip="text"
-              >
-                {t('giveEdgeCompetitors', 'Ready to Transform Your Financial Operations?')}
-              </Heading>
-              
-              <Text 
-                fontSize="lg" 
-                color={isDark ? 'gray.300' : 'gray.700'} 
-                maxW="3xl"
-              >
-                {t('ctaText', 'Join leading financial institutions already leveraging our fintech ecosystem to streamline operations, reduce costs, and accelerate growth.')}
-              </Text>
-              
-              <HStack spacing={4}>
-                <Button
-                  size="lg"
-                  colorScheme="blue"
-                  rightIcon={<ArrowRight />}
-                  _hover={{
-                    transform: 'translateY(-2px)',
-                    boxShadow: 'xl',
-                  }}
-                  px={8}
-                  height="60px"
-                  fontSize="lg"
-                  onClick={() => router.push('/signup')}
-                >
-                  {t('heroCTA', 'Start Your Free Trial')}
-                </Button>
-                
-                <Button
-                  size="lg"
-                  variant="outline"
-                  colorScheme="blue"
-                  leftIcon={<FaWhatsapp size={20} />}
-                  px={8}
-                  height="60px"
-                  fontSize="lg"
-                  _hover={{
-                    transform: 'translateY(-2px)',
-                    boxShadow: 'md',
-                  }}
-                  onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
-                >
-                  {t('scheduleDemo', 'Schedule Demo')}
-                </Button>
-              </HStack>
-              
-              <Text fontSize="sm" color={isDark ? 'gray.400' : 'gray.600'}>
-                {t('commitmentText', 'No credit card required. 30-day free trial with full features and dedicated support.')}
-              </Text>
-            </VStack>
-          </ChakraBox>
-        </Container>
-      </Box>
+  return (
+    <Box>
+      <HeroSection />
+      <IslamicPrinciplesSection />
+      <PlatformSection />
+      <FeaturesSection />
+      <AppShowcaseSection />
+      <TestimonialSection />
+      <CTASection />
     </Box>
   );
 }

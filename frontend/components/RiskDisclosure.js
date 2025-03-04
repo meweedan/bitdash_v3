@@ -156,7 +156,7 @@ const RiskDisclosure = ({ platform, accountType, onAccept, isRequired = true }) 
           content: t('tradingRulesRisk.content', 'Our funding programs have specific trading rules including maximum daily drawdown, overall drawdown limits, and risk management requirements. Violation of these rules may result in immediate disqualification without compensation.')
         }
       ],
-      invest: [
+      stock: [
         {
           title: t('investmentRisk.title', 'Investment Loss Risk'),
           content: t('investmentRisk.content', 'All investments carry risk. The value of your investments may decrease, and you may receive back less than your original investment. Past performance is not a reliable indicator of future performance.')
@@ -223,7 +223,7 @@ const RiskDisclosure = ({ platform, accountType, onAccept, isRequired = true }) 
           t('profitTargetWarning', 'Attempting to reach profit targets through excessive risk may violate our risk management rules. Focus on consistent performance rather than reaching targets quickly.')
         ]
       },
-      invest: {
+      stock: {
         individual: [
           t('investmentLossWarning', 'You may lose part or all of your invested capital. Never invest money that you cannot afford to lose.'),
           t('taxWarning', 'Tax laws are complex and change frequently. We do not provide tax advice, and you should consult a qualified tax professional regarding your specific situation.')
@@ -328,7 +328,7 @@ const RiskDisclosure = ({ platform, accountType, onAccept, isRequired = true }) 
                     {t(`${platformKey}SpecificRisk.content`, {
                       trade: 'Trading in forex, cryptocurrencies, and other leveraged products carries a high level of risk and may not be suitable for all investors. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite.',
                       fund: 'Proprietary trading involves significant risk of loss. Past performance in the evaluation process or in live trading is not indicative of future results. The funding process involves stringent rules that, if violated, may result in immediate termination without prior notice.',
-                      invest: 'The value of investments and the income from them may go down as well as up, and you may not get back the original amount invested. Past performance is not a reliable indicator of future performance.',
+                      stock: 'The value of investments and the income from them may go down as well as up, and you may not get back the original amount invested. Past performance is not a reliable indicator of future performance.',
                       cash: 'Payment processing services involve risks related to compliance, fraud, and operational issues. Merchants and agents face additional risks related to chargebacks, regulatory requirements, and handling of client funds.'
                     }[platformKey] || 'This platform involves financial risks that you should fully understand before proceeding.')}
                   </Text>

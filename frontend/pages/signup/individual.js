@@ -420,7 +420,7 @@ export default function IndividualInvestorSignup() {
   return (
     <Layout>
       <Head>
-        <title>{t('investorSignup')} | BitInvest</title>
+        <title>{t('investorSignup')} | BitStock</title>
       </Head>
       <Box {...formStyles}>
         <VStack spacing={8}>
@@ -429,7 +429,7 @@ export default function IndividualInvestorSignup() {
             size="lg" 
             color={isDark ? 'white' : 'gray.800'}
             textAlign="center"
-            bgGradient="linear(to-r, brand.bitinvest.400, brand.bitinvest.600)"
+            bgGradient="linear(to-r, brand.bitstock.400, brand.bitstock.600)"
             bgClip="text"
           >
             {t('becomeAnInvestor')}
@@ -768,7 +768,7 @@ export default function IndividualInvestorSignup() {
                   </Checkbox>
                   
                   <RiskDisclosure 
-                    platform="BitInvest" 
+                    platform="BitStock" 
                     accountType="individual" 
                     onAccept={handleRiskAcceptance}
                   />

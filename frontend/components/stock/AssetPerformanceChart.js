@@ -120,7 +120,7 @@ const AssetPerformanceFOMO = () => {
         borderColor={borderColor}
         textAlign="center"
       >
-        <Spinner size="xl" color="brand.bitinvest.400" />
+        <Spinner size="xl" color="brand.bitstock.400" />
         <Text mt={4}>Loading data for {symbol}...</Text>
       </Box>
     );
@@ -198,7 +198,7 @@ const AssetPerformanceFOMO = () => {
       {/* Header */}
       <Flex justify="space-between" align="center" mb={4} wrap="wrap">
         <HStack spacing={3} mb={{ base: 2, md: 0 }}>
-          {AssetIcon && <Icon as={AssetIcon} color="brand.bitinvest.400" boxSize={5} />}
+          {AssetIcon && <Icon as={AssetIcon} color="brand.bitstock.400" boxSize={5} />}
           <Heading size="md" color={textColor}>
             {assetLabel} ({symbol})
           </Heading>
@@ -222,8 +222,8 @@ const AssetPerformanceFOMO = () => {
               <Button
                 key={tf}
                 size="sm"
-                variant={timeframe === tf ? 'bitinvest-solid' : 'bitinvest-outline'}
-                colorScheme="brand.bitinvest"
+                variant={timeframe === tf ? 'bitstock-solid' : 'bitstock-outline'}
+                colorScheme="brand.bitstock"
                 onClick={() => setTimeframe(tf)}
               >
                 {tf}
@@ -242,7 +242,7 @@ const AssetPerformanceFOMO = () => {
         <VStack align="flex-start" spacing={3}>
           <Text fontSize="lg" color={textColor}>
             If you had invested{' '}
-            <Text as="span" fontWeight="bold" color="brand.bitinvest.500">
+            <Text as="span" fontWeight="bold" color="brand.bitstock.500">
               ${HYPOTHETICAL_INVESTMENT.toLocaleString()}
             </Text>{' '}
             in <Text as="span" fontWeight="semibold">{symbol}</Text> at the start of this {timeframe} period...
@@ -251,7 +251,7 @@ const AssetPerformanceFOMO = () => {
           <Text
             fontSize="xl"
             fontWeight="bold"
-            color={isPositive ? 'brand.bitinvest.500' : 'brand.bitinvest.600'}
+            color={isPositive ? 'brand.bitstock.500' : 'brand.bitstock.600'}
           >
             You&apos;d have 
             {' $'}
@@ -314,7 +314,7 @@ const AssetPerformanceFOMO = () => {
       {/* Final CTA */}
       <Box mt={6} textAlign="center">
         <Text fontSize="md" color={textColor} fontWeight="semibold">
-          Don&apos;t miss out again. Start investing smarter with BitInvest!
+          Don&apos;t miss out again. Start investing smarter with BitStock!
         </Text>
       </Box>
     </Box>

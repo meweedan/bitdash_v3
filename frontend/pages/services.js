@@ -74,13 +74,13 @@ const platforms = [
     ]
   },
   {
-    id: 'invest',
-    title: 'BitInvest',
+    id: 'stock',
+    title: 'BitStock',
     tagline: 'Global Investment Platform',
     description: 'Your gateway to US and EU markets tailored specifically for MENA and GCC investors with access to stocks, privately held assets, commodities and more.',
-    image: '/invest.png',
-    imageAr: '/invest-ar.png',
-    color: 'brand.bitinvest.500',
+    image: '/stock.png',
+    imageAr: '/stock-ar.png',
+    color: 'brand.bitstock.500',
     stats: [
       { value: '350K+', label: 'Active Investors' },
       { value: '18', label: 'Countries Served' },
@@ -278,7 +278,7 @@ const PlatformShowcase = ({ platform, index, isRTL }) => {
   const platformIcons = {
     cash: FaMoneyBillWave,
     fund: FaChartLine,
-    invest: FaUniversity,
+    stock: FaUniversity,
     trade: FaExchangeAlt
   };
 
@@ -495,7 +495,7 @@ const Services = () => {
             >
               <Heading
                 fontSize={{ base: '4xl', md: '7xl' }}
-                bgGradient="linear(to-r, brand.bitcash.500, brand.bitfund.500, brand.bitinvest.500, brand.bittrade.500)"
+                bgGradient="linear(to-r, brand.bitcash.500, brand.bitfund.500, brand.bitstock.500, brand.bittrade.500)"
                 bgClip="text"
                 letterSpacing="tight"
                 lineHeight="shorter"

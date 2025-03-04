@@ -13,13 +13,13 @@ const FlowingShawl = () => {
       const hostname = window.location.hostname;
       if (hostname.includes('cash')) setPlatform('bitcash');
       else if (hostname.includes('fund')) setPlatform('bitfund');
-      else if (hostname.includes('invest')) setPlatform('bitinvest');
+      else if (hostname.includes('stock')) setPlatform('bitstock');
       else if (hostname.includes('trade')) setPlatform('bittrade');
     }
   }, []);
 
   const themeColors = {
-    bitdash: [
+    bitstock: [
       new THREE.Color('#67bdfd'),
       new THREE.Color('#67bdfd'),
       new THREE.Color('#67bdfd'),
@@ -43,7 +43,7 @@ const FlowingShawl = () => {
       new THREE.Color('#5fd8d8'),
       new THREE.Color('#84dfdf')
     ],
-    bitinvest: [
+    bitdash: [
       new THREE.Color('#efba72'),
       new THREE.Color('#cfa872'),
       new THREE.Color('#ab7c39'),

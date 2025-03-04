@@ -54,7 +54,7 @@ const MotionContainer = motion(Container);
 // Platform definitions
 const PLATFORMS = {
   BITFUND: { themeKey: 'bitfund', subdomain: 'fund' },
-  BITINVEST: { themeKey: 'bitinvest', subdomain: 'invest' },
+  BITSTOCK: { themeKey: 'bitstock', subdomain: 'stock' },
   BITTRADE: { themeKey: 'bittrade', subdomain: 'trade' },
   BITCASH: { themeKey: 'bitcash', subdomain: 'cash' },
   DEFAULT: { themeKey: 'bitfund', subdomain: 'fund' }, // Default platform
@@ -66,7 +66,7 @@ const getPlatformFromHostname = (hostname) => {
   
   // Check for each possible subdomain
   if (hostname.includes('fund.')) return PLATFORMS.BITFUND;
-  if (hostname.includes('invest.')) return PLATFORMS.BITINVEST;
+  if (hostname.includes('stock.')) return PLATFORMS.BITSTOCK;
   if (hostname.includes('trade.')) return PLATFORMS.BITTRADE;
   if (hostname.includes('cash.')) return PLATFORMS.BITCASH;
   
@@ -121,7 +121,7 @@ const Contact = () => {
   const platforms = [
     { value: 'all', label: t('allPlatforms', 'All Platforms') },
     { value: 'BitFund', label: t('BitFund', 'BitFund') },
-    { value: 'BitInvest', label: t('BitInvest', 'BitInvest') },
+    { value: 'BitStock', label: t('BitStock', 'BitStock') },
     { value: 'BitTrade', label: t('BitTrade', 'BitTrade') },
     { value: 'BitCash', label: t('BitCash', 'BitCash') }
   ];

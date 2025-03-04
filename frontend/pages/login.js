@@ -28,10 +28,10 @@ const PLATFORM_ROUTES = {
     customer: '/client/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://cash.bitdash.app'
   },
-  invest: {
+  stock: {
     institutional: '/institutional/dashboard',
     individual: '/individual/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://invest.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://stock.bitdash.app'
   },
   trade: {
     retail_trader: '/trader/dashboard',
@@ -50,7 +50,7 @@ const PROFILE_ENDPOINTS = {
     agent: '/api/agents',
     customer: '/api/customer-profiles'
   },
-  invest: {
+  stock: {
     owner: '/api/institutional-clients',
     individual: '/api/investors'
   },
@@ -66,8 +66,8 @@ const BUSINESS_TYPE_ROUTES = {
   merchant: { platform: 'cash', userType: 'merchant' },
   agent: { platform: 'cash', userType: 'agent' },
   customer: { platform: 'cash', userType: 'customer' },
-  institutional: { platform: 'invest', userType: 'institutional' },
-  individual: { platform: 'invest', userType: 'individual' },
+  institutional: { platform: 'stock', userType: 'institutional' },
+  individual: { platform: 'stock', userType: 'individual' },
   retail_trader: { platform: 'trade', userType: 'retail_trader' },
   ib: { platform: 'trade', userType: 'ib' },
   institute: { platform: 'trade', userType: 'institute' }
@@ -79,14 +79,14 @@ const getPlatformFromURL = () => {
     if (hostname.includes('cash')) return 'bitcash';
     if (hostname.includes('fund')) return 'bitfund';
     if (hostname.includes('trade')) return 'bittrade';
-    if (hostname.includes('invest')) return 'bitinvest';
+    if (hostname.includes('stock')) return 'bitstock';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
       if (path.includes('/cash')) return 'bitcash';
       if (path.includes('/fund')) return 'bitfund';
       if (path.includes('/trade')) return 'bittrade';
-      if (path.includes('/invest')) return 'bitinvest';
+      if (path.includes('/stock')) return 'bitstock';
     }
   }
   return 'bitdash';
@@ -108,12 +108,12 @@ const getColorScheme = (platform, isDark) => {
       hover: 'brand.bitfund.600',
       border: 'brand.bitfund.500'
     },
-    bitinvest: {
+    bitstock: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.bitinvest.400' : 'brand.bitinvest.600',
-      button: 'brand.bitinvest.500',
-      hover: 'brand.bitinvest.600',
-      border: 'brand.bitinvest.500'
+      text: isDark ? 'brand.bitstock.400' : 'brand.bitstock.600',
+      button: 'brand.bitstock.500',
+      hover: 'brand.bitstock.600',
+      border: 'brand.bitstock.500'
     },
     bittrade: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',

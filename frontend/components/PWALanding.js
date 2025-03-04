@@ -73,12 +73,12 @@ export const TradePWALanding = () => {
   );
 };
 
-export const InvestPWALanding = () => {
+export const StockPWALanding = () => {
   const router = useRouter();
   const config = {
-    title: 'BitInvest',
+    title: 'BitStock',
     description: 'Reimagining Libyan Finances',
-    image: '/invest.png',
+    image: '/stock.png',
     color: '#4CAF50'
   };
 
@@ -101,7 +101,7 @@ const PWALanding = () => {
   if (hostname.includes('cash')) return <CashPWALanding />;
   if (hostname.includes('fund')) return <FundPWALanding />;
   if (hostname.includes('trade')) return <TradePWALanding />;
-  if (hostname.includes('invest')) return <InvestPWALanding />;
+  if (hostname.includes('stock')) return <StockPWALanding />;
 
   const config = {
     title: 'BitDash',

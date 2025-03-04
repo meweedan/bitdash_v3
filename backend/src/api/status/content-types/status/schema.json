@@ -49,7 +49,7 @@
         "bitfund",
         "bitcash",
         "bittrade",
-        "bitinvest"
+        "bitstock"
       ],
       "default": "all",
       "required": true

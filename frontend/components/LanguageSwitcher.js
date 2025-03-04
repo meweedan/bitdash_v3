@@ -17,7 +17,7 @@ const LanguageSwitcher = () => {
   // Get current platform based on URL/hostname
   useEffect(() => {
     const hostname = window.location.hostname;
-    if (hostname.includes('invest')) setPlatform('bitinvest');
+    if (hostname.includes('stock')) setPlatform('bitstock');
     else if (hostname.includes('cash')) setPlatform('bitcash');
     else if (hostname.includes('trade')) setPlatform('bittrade');
     else if (hostname.includes('fund')) setPlatform('bitfund');
@@ -25,7 +25,7 @@ const LanguageSwitcher = () => {
     // For local development
     if (hostname === 'localhost') {
       const path = window.location.pathname;
-      if (path.includes('/invest')) setPlatform('bitinvest');
+      if (path.includes('/stock')) setPlatform('bitstock');
       if (path.includes('/cash')) setPlatform('bitcash');
       if (path.includes('/fund')) setPlatform('bitfund');
       if (path.includes('/trade')) setPlatform('bittrade');

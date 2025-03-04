@@ -150,32 +150,32 @@ const PLATFORMS = {
       }
     ]
   },
-  INVEST: {
-    subdomain: 'invest',
-    name: 'BitInvest',
-    nameKey: 'bitinvest.name',
-    themeKey: 'bitinvest',
+  STOCK: {
+    subdomain: 'stock',
+    name: 'BitStock',
+    nameKey: 'bitstock.name',
+    themeKey: 'bitstock',
     title: 'Global Investment Platform',
-    titleKey: 'bitinvest.title',
+    titleKey: 'bitstock.title',
     description: 'Access US and EU markets, private assets, commodities, and more from MENA and GCC regions.',
-    descriptionKey: 'bitinvest.description',
+    descriptionKey: 'bitstock.description',
     icon: FaUniversity,
     options: [
       {
         type: 'individual',
         title: 'Individual Investor',
-        titleKey: 'bitinvest.individual.title',
+        titleKey: 'bitstock.individual.title',
         description: 'Invest in global markets with access to stocks, ETFs, and alternative assets.',
-        descriptionKey: 'bitinvest.individual.description',
+        descriptionKey: 'bitstock.individual.description',
         icon: FaUserTie,
         signupPath: '/signup/individual',
       },
       {
         type: 'institutional',
         title: 'Institutional Account',
-        titleKey: 'bitinvest.institutional.title',
+        titleKey: 'bitstock.institutional.title',
         description: 'Customized investment solutions for funds, family offices, and corporations.',
-        descriptionKey: 'bitinvest.institutional.description',
+        descriptionKey: 'bitstock.institutional.description',
         icon: FaBuilding,
         signupPath: '/signup/institutional',
       }

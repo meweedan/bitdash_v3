@@ -24,7 +24,7 @@ function getAppIconByDomain() {
     if (hostname.includes('fund')) return '/fund.png';
     if (hostname.includes('cash')) return '/cash.png';
     if (hostname.includes('trade')) return '/trade.png';
-    if (hostname.includes('invest')) return '/invest.png';
+    if (hostname.includes('stock')) return '/stock.png';
   }
   // fallback
   return '/app-logo.png';

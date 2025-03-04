@@ -47,7 +47,7 @@ const Privacy = () => {
       if (hostname.includes('fund')) setPlatform('bitfund');
       else if (hostname.includes('trade')) setPlatform('bittrade');
       else if (hostname.includes('cash')) setPlatform('bitcash');
-      else if (hostname.includes('invest')) setPlatform('bitinvest');
+      else if (hostname.includes('stock')) setPlatform('bitstock');
       else setPlatform('bitdash');
     }
   }, []);
@@ -65,7 +65,7 @@ const Privacy = () => {
     switch(platform) {
       case 'bitfund': return 'BitFund';
       case 'bittrade': return 'BitTrade';
-      case 'bitinvest': return 'BitInvest';
+      case 'bitstock': return 'BitStock';
       case 'bitcash': return 'BitCash';
       default: return 'BitDash';
     }

@@ -4,11 +4,10 @@ const theme = extendTheme({
   colors: {
     brand: {
       bitdash: {
-        400: '#67bdfd', 
-        500: '#67bdfd',
-        600: '#67bdfd',
-        700: '#67bdfd',
-        800: '#67bdfd'
+       400: '#efba72',
+        500: '#cfa872',    // Base
+        600: '#ab7c39',    // Hover
+        700: '#ab7c39',    // Emphasis
       },
       bitcash: {
         400: '#7bcfbd',
@@ -28,11 +27,11 @@ const theme = extendTheme({
         600: '#5fd8d8',    // Hover
         700: '#84dfdf',    // Emphasis
       },
-      bitinvest: {
-        400: '#efba72',
-        500: '#cfa872',    // Base
-        600: '#ab7c39',    // Hover
-        700: '#ab7c39',    // Emphasis
+      bitstock: {
+        400: '#4384b4',
+        500: '#4893cb',    // Base
+        600: '#5ca5db',    // Hover
+        700: '#8ccdfc',    // Emphasis
       }
     },
   },
@@ -92,17 +91,17 @@ const theme = extendTheme({
           color: 'brand.bittrade.500',
           _hover: { bg: 'brand.bittrade.500', color: 'white' }
         },
-        // BitInvest variants
-        'bitinvest-solid': {
-          bg: 'brand.bitinvest.500',
+        // BitStock variants
+        'bitstock-solid': {
+          bg: 'brand.bitstock.500',
           color: 'white',
-          _hover: { bg: 'brand.bitinvest.600' }
+          _hover: { bg: 'brand.bitstock.600' }
         },
-        'bitinvest-outline': {
+        'bitstock-outline': {
           border: '2px solid',
-          borderColor: 'brand.bitinvest.500',
-          color: 'brand.bitinvest.500',
-          _hover: { bg: 'brand.bitinvest.500', color: 'white' }
+          borderColor: 'brand.bitstock.500',
+          color: 'brand.bitstock.500',
+          _hover: { bg: 'brand.bitstock.500', color: 'white' }
         }
       },
     },
@@ -127,8 +126,8 @@ const theme = extendTheme({
         bittrade: {
           borderColor: 'brand.bittrade.500',
         },
-        bitinvest: {
-          borderColor: 'brand.bitinvest.500',
+        bitstock: {
+          borderColor: 'brand.bitstock.500',
         }
       }
     },

@@ -68,9 +68,9 @@ const FAQ_DATA = [
       'Yes, all investments carry some risk, including the possibility of losing your principal. However, diversifying across multiple asset classes (gold, ETFs, stocks) and maintaining a long-term outlook can mitigate some of that risk.',
   },
   {
-    question: 'What does BitInvest offer?',
+    question: 'What does BitStock offer?',
     answer:
-      'BitInvest is a user-friendly platform that helps you buy gold, invest in top ETFs, and trade stocks from major global exchanges. We provide transparent fees, real-time market data, and educational resources to guide your journey.',
+      'BitStock is a user-friendly platform that helps you buy gold, invest in top ETFs, and trade stocks from major global exchanges. We provide transparent fees, real-time market data, and educational resources to guide your journey.',
   },
   {
     question: 'Are there any hidden fees?',
@@ -85,7 +85,7 @@ const FAQ_DATA = [
   {
     question: 'What if I have more questions?',
     answer:
-      'Feel free to contact our support team any time or explore our community forum where you can discuss strategies with other BitInvest users.',
+      'Feel free to contact our support team any time or explore our community forum where you can discuss strategies with other BitStock users.',
   },
 ];
 
@@ -106,7 +106,7 @@ function LearnPage() {
     'linear(to-b, gray.900, black)'
   );
   const cardBg = useColorModeValue('white', 'gray.800');
-  const accentColor = useColorModeValue('brand.bitinvest.600', 'brand.bitinvest.400');
+  const accentColor = useColorModeValue('brand.bitstock.400', 'brand.bitstock.700');
   const headingSize = useBreakpointValue({ base: '2xl', md: '3xl', lg: '4xl' });
   const sectionPadding = useBreakpointValue({ base: 8, md: 16 });
   const buttonSize = useBreakpointValue({ base: 'md', md: 'lg' });
@@ -127,7 +127,7 @@ function LearnPage() {
               <VStack spacing={{ base: 4, md: 8 }} maxW="4xl">
                 <Heading
                   fontSize={headingSize}
-                  bgGradient="linear(to-r, brand.bitinvest.500, brand.bitinvest.700)"
+                  bgGradient="linear(to-r, brand.bitstock.500, brand.bitstock.700)"
                   bgClip="text"
                   lineHeight="1.2"
                 >
@@ -153,7 +153,7 @@ function LearnPage() {
               <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mb={6}>
                 <VStack align="start" spacing={4}>
                   <HStack>
-                    <ArrowForwardIcon color="brand.bitinvest.500" boxSize={6} />
+                    <ArrowForwardIcon color="brand.bitstock.500" boxSize={6} />
                     <Heading size="md">Gold & Precious Metals</Heading>
                   </HStack>
                   <Text fontSize="sm">
@@ -161,7 +161,7 @@ function LearnPage() {
                   </Text>
                   <Divider />
                   <HStack>
-                    <ArrowForwardIcon color="brand.bitinvest.500" boxSize={6} />
+                    <ArrowForwardIcon color="brand.bitstock.500" boxSize={6} />
                     <Heading size="md">ETFs & Indices</Heading>
                   </HStack>
                   <Text fontSize="sm">
@@ -171,7 +171,7 @@ function LearnPage() {
 
                 <VStack align="start" spacing={4}>
                   <HStack>
-                    <ArrowForwardIcon color="brand.bitinvest.500" boxSize={6} />
+                    <ArrowForwardIcon color="brand.bitstock.500" boxSize={6} />
                     <Heading size="md">NYSE & LSE Stocks</Heading>
                   </HStack>
                   <Text fontSize="sm">
@@ -179,7 +179,7 @@ function LearnPage() {
                   </Text>
                   <Divider />
                   <HStack>
-                    <ArrowForwardIcon color="brand.bitinvest.500" boxSize={6} />
+                    <ArrowForwardIcon color="brand.bitstock.500" boxSize={6} />
                     <Heading size="md">Long-Term Growth</Heading>
                   </HStack>
                   <Text fontSize="sm">
@@ -193,22 +193,22 @@ function LearnPage() {
                 bg={useColorModeValue('blue.50', 'blue.900')}
                 borderRadius="md"
                 borderLeft="4px solid"
-                borderColor="brand.bitinvest.500"
+                borderColor="brand.bitstock.500"
               >
-                <Heading size="md" mb={3} color="brand.bitinvest.500">
+                <Heading size="md" mb={3} color="brand.bitstock.500">
                   Key Advantages of a Diversified Portfolio
                 </Heading>
                 <List spacing={3}>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitinvest.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
                     Lower overall volatility and risk
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitinvest.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
                     Potential for steady, compounding returns
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitinvest.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
                     Protection against single-market downturns
                   </ListItem>
                 </List>
@@ -231,26 +231,26 @@ function LearnPage() {
                 bg={useColorModeValue('blue.50', 'blue.900')}
                 borderRadius="md"
                 borderLeft="4px solid"
-                borderColor="brand.bitinvest.500"
+                borderColor="brand.bitstock.500"
               >
-                <Heading size="md" mb={3} color="brand.bitinvest.500">
+                <Heading size="md" mb={3} color="brand.bitstock.500">
                   Simple Strategy Tips
                 </Heading>
                 <List spacing={3}>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitinvest.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
                     Define clear goals (e.g., retirement, generational wealth)
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitinvest.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
                     Rebalance periodically—don’t let one asset overshadow the rest
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitinvest.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
                     Keep an eye on major economic trends but avoid panic-selling
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitinvest.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
                     Utilize professional research or consult advisors when needed
                   </ListItem>
                 </List>
@@ -323,7 +323,7 @@ function LearnPage() {
               mb={{ base: 8, md: 16 }}
               p={{ base: 6, md: 12 }}
               borderRadius={{ base: 'xl', md: '2xl' }}
-              bg="brand.bitinvest.600"
+              bg="brand.bitstock.600"
               color="white"
               textAlign="center"
             >
@@ -338,15 +338,15 @@ function LearnPage() {
                   <Button
                     rightIcon={<ArrowForwardIcon />}
                     size={buttonSize}
-                    variant="bitinvest-solid"
+                    variant="bitstock-solid"
                     onClick={() => router.push('/signup')}
                   >
                     Open an Account
                   </Button>
                   <Button
                     size={buttonSize}
-                    variant="bitinvest-outline"
-                    colorScheme="brand.bitinvest"
+                    variant="bitstock-outline"
+                    colorScheme="brand.bitstock"
                     onClick={() => router.push('/contact')}
                   >
                     Contact Us

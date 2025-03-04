@@ -5,7 +5,7 @@
     "singularName": "investor",
     "pluralName": "investors",
     "displayName": "Investor",
-    "description": "BitInvest platform investors"
+    "description": "BitStock platform investors"
   },
   "options": {
     "draftAndPublish": false,

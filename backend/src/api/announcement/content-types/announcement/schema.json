@@ -38,7 +38,7 @@
         "bittrade",
         "bitcash",
         "bitfund",
-        "bitinvest"
+        "bitstock"
       ],
       "required": true
     },

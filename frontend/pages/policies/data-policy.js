@@ -38,7 +38,7 @@ const DataPolicy = () => {
       if (hostname.includes('fund')) setPlatform('bitfund');
       else if (hostname.includes('trade')) setPlatform('bittrade');
       else if (hostname.includes('cash')) setPlatform('bitcash');
-      else if (hostname.includes('invest')) setPlatform('bitinvest');
+      else if (hostname.includes('stock')) setPlatform('bitstock');
       else setPlatform('bitdash');
     }
   }, []);
@@ -85,7 +85,7 @@ const DataPolicy = () => {
                 <UnorderedList ml={6} mt={2}>
                   <ListItem>{t('bitfundService', 'BitFund - Proprietary Trading Platform')}</ListItem>
                   <ListItem>{t('bittradeService', 'BitTrade - Forex & Crypto Trading')}</ListItem>
-                  <ListItem>{t('bitinvestService', 'BitInvest - Investment Services')}</ListItem>
+                  <ListItem>{t('bitstocktService', 'BitStock - Investment Services')}</ListItem>
                   <ListItem>{t('bitcashService', 'BitCash - Payment Processing')}</ListItem>
                 </UnorderedList>
               </Box>
@@ -250,8 +250,8 @@ const DataPolicy = () => {
                       </Box>
                       
                       <Box>
-                        <Text fontWeight="bold">{t('bitinvestSpecific', 'BitInvest')}</Text>
-                        <Text>{t('bitinvestUses', 'We analyze your investment preferences and transaction history to provide personalized investment recommendations, portfolio management services, and performance reporting.')}</Text>
+                        <Text fontWeight="bold">{t('bitstockSpecific', 'BitStock')}</Text>
+                        <Text>{t('bitstockUses', 'We analyze your investment preferences and transaction history to provide personalized investment recommendations, portfolio management services, and performance reporting.')}</Text>
                       </Box>
                       
                       <Box>

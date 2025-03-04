@@ -136,7 +136,7 @@ export default function InstitutionalSignup() {
     creditRating: '',
     
     // Platform preferences
-    platformType: 'bitinvest',
+    platformType: 'bitstock',
     
     // Contact information
     primaryContactPerson: {
@@ -1269,7 +1269,7 @@ export default function InstitutionalSignup() {
             </Checkbox>
 
             <RiskDisclosure 
-            platform="BitInvest" 
+            platform="BitStock" 
             accountType="institutional" 
             onAccept={handleRiskAcceptance}
             />
@@ -1307,12 +1307,12 @@ export default function InstitutionalSignup() {
   );
 
   // Main component return
-  const accentColor = useColorModeValue('brand.bitinvest.500', 'brand.bitinvest.400');
+  const accentColor = useColorModeValue('brand.bitstock.500', 'brand.bitstock.400');
   
   return (
     <Layout>
       <Head>
-        <title>{t('institutionalSignup')} | BitInvest</title>
+        <title>{t('institutionalSignup')} | BitStock</title>
       </Head>
       <Box {...formStyles}>
         <VStack spacing={8}>
@@ -1321,7 +1321,7 @@ export default function InstitutionalSignup() {
             size="lg" 
             color={isDark ? 'white' : 'gray.800'}
             textAlign="center"
-            bgGradient="linear(to-r, brand.bitinvest.400, brand.bitinvest.600)"
+            bgGradient="linear(to-r, brand.bitstock.400, brand.bitstock.600)"
             bgClip="text"
           >
             {t('institutionalAccount')}

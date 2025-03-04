@@ -6,7 +6,7 @@ BitDash v3 is a comprehensive digital services ecosystem that now revolves aroun
 
 ## BitTrade: Multi-Asset Trading (Brokerage)
 ## BitFund: Funded Trader Program (Prop Trading)
-## BitInvest: Hedge Fund & Retail Investing
+## BitStock: Hedge Fund & Retail Investing
 ## BitCash: Payments & Merchant Solutions
 This new approach enables users to trade, invest, and manage payments all in one unified platform.
 
@@ -27,7 +27,7 @@ Custom risk management AI specifically for funded traders.
 Prop accounts across crypto, forex, and stocks.
 Target Market: Professional and aspiring traders looking for capital.
 
-## 3️⃣ BitInvest (Hedge Fund + Retail Investing)
+## 3️⃣ BitStock (Hedge Fund + Retail Investing Platform)
 Offerings:
 Retail stock & gold investing, tailored for Arabs and Egyptians.
 A hedge fund with $1B AUM that supports copy-trading for A-Book traders.
@@ -40,7 +40,7 @@ Offerings:
 USDT & QR code payment options.
 Instant cross-border transfers serving Africa, MENA, and LatAm.
 A merchant payment gateway designed for seamless business transactions.
-Tight integration with BitTrade & BitInvest for easy deposits and fund transfers.
+Tight integration with BitTrade & BitStock for easy deposits and fund transfers.
 Target Market: Traders, investors, and businesses needing fast, low-cost payment solutions.
 
 ## Why BitDash v3?
@@ -105,7 +105,7 @@ ADMIN_JWT_SECRET=your-admin-jwt-secret
 # Fintech Service API Keys
 BITTRADE_API_KEY=your-bittrade-api-key
 BITFUND_API_KEY=your-bitfund-api-key
-BITINVEST_API_KEY=your-bitinvest-api-key
+BITSTOCK=your-bitstock-api-key
 BITCASH_API_KEY=your-bitcash-api-key
 BITAI_API_KEY=your-bitai-api-key
 

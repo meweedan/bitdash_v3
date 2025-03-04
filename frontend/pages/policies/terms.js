@@ -41,7 +41,7 @@ const Terms = () => {
       if (hostname.includes('fund')) setPlatform('bitfund');
       else if (hostname.includes('trade')) setPlatform('bittrade');
       else if (hostname.includes('cash')) setPlatform('bitcash');
-      else if (hostname.includes('invest')) setPlatform('bitinvest');
+      else if (hostname.includes('stock')) setPlatform('bitstock');
       else setPlatform('bitdash');
     }
   }, []);
@@ -58,7 +58,7 @@ const Terms = () => {
   const serviceDescriptions = {
     bitfund: t('bitfundDesc', 'a proprietary trading platform that provides funding for skilled traders after an evaluation process'),
     bittrade: t('bittradeDesc', 'a forex and cryptocurrency trading platform that allows users to trade various financial instruments'),
-    bitinvest: t('bitinvestDesc', 'an investment platform that offers access to global financial markets and investment opportunities'),
+    bitstock: t('bitstockDesc', 'an investment platform that offers access to global financial markets and investment opportunities'),
     bitcash: t('bitcashDesc', 'a payment processing service that facilitates financial transactions for individuals and businesses'),
     bitdash: t('bitdashDesc', 'a suite of financial technology services including trading, investing, and payment processing')
   };
@@ -67,7 +67,7 @@ const Terms = () => {
     switch(platform) {
       case 'bitfund': return 'BitFund';
       case 'bittrade': return 'BitTrade';
-      case 'bitinvest': return 'BitInvest';
+      case 'bitstock': return 'BitStock';
       case 'bitcash': return 'BitCash';
       default: return 'BitDash';
     }
@@ -316,14 +316,14 @@ const Terms = () => {
                     </Box>
                   ) : null}
                   
-                  {/* BitInvest Terms */}
-                  {platform === 'bitinvest' || platform === 'bitdash' ? (
+                  {/* BitStock Terms */}
+                  {platform === 'bitstock' || platform === 'bitdash' ? (
                     <Box>
                       <Heading size="sm" mb={2}>
-                        {t('bitinvestTerms', 'BitInvest Investment Platform Terms')}
+                        {t('bitstockTerms', 'BitStock Investment Platform Terms')}
                       </Heading>
                       <Text mb={3}>
-                        {t('bitinvestTermsDesc', 'The following terms apply specifically to users of BitInvest services:')}
+                        {t('bitstockTermsDesc', 'The following terms apply specifically to users of BitStock services:')}
                       </Text>
                       
                       <UnorderedList spacing={2} pl={6} mb={4}>
@@ -509,7 +509,7 @@ const Terms = () => {
                     {t('trademarks', 'Trademarks')}
                   </Heading>
                   <Text>
-                    {t('trademarksDesc', 'BitDash, BitFund, BitTrade, BitInvest, BitCash, and all related names, logos, product and service names, designs, and slogans are trademarks of BitDash Ltd. or its affiliates. You may not use such marks without our prior written permission.')}
+                    {t('trademarksDesc', 'BitDash, BitFund, BitTrade, BitStock, BitCash, and all related names, logos, product and service names, designs, and slogans are trademarks of BitDash Ltd. or its affiliates. You may not use such marks without our prior written permission.')}
                   </Text>
                 </VStack>
               </AccordionPanel>

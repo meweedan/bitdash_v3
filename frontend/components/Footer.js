@@ -76,7 +76,7 @@ const Footer = () => {
       if (hostname.includes('fund')) setPlatform('fund');
       else if (hostname.includes('trade')) setPlatform('trade');
       else if (hostname.includes('cash')) setPlatform('cash');
-      else if (hostname.includes('invest')) setPlatform('invest');
+      else if (hostname.includes('stock')) setPlatform('stock');
       else setPlatform('main');
 
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
@@ -99,8 +99,8 @@ const Footer = () => {
         return `brand.bitfund.${intensity}`;
       case 'trade':
         return `brand.bittrade.${intensity}`;
-      case 'invest':
-        return `brand.bitinvest.${intensity}`;
+      case 'stock':
+        return `brand.bitstock.${intensity}`;
       default:
         return `blue.${intensity}`;
     }
@@ -118,11 +118,11 @@ const Footer = () => {
       { label: 'Challenge', href: '/fund/challenge', icon: TrendingUp },
       { label: 'FAQ', href: '/fund/faq', icon: HelpCircle },
     ],
-    invest: [
-      { label: 'US Markets', href: '/invest/us-markets', icon: Globe },
-      { label: 'EU Markets', href: '/invest/eu-markets', icon: Building },
-      { label: 'Commodities', href: '/invest/commodities', icon: TrendingUp },
-      { label: 'Portfolio', href: '/invest/portfolio', icon: BarChart2 },
+    stock: [
+      { label: 'US Markets', href: '/stock/us-markets', icon: Globe },
+      { label: 'EU Markets', href: '/stock/eu-markets', icon: Building },
+      { label: 'Commodities', href: '/stock/commodities', icon: TrendingUp },
+      { label: 'Portfolio', href: '/stock/portfolio', icon: BarChart2 },
     ],
     trade: [
       { label: 'Forex Pairs', href: '/trade/forex', icon: Globe },
@@ -147,10 +147,10 @@ const Footer = () => {
         { label: 'History', action: 'history', icon: Clock },
         { label: 'Account', action: 'account', icon: User },
       ],
-      invest: [
+      stock: [
         { label: 'Portfolio', action: 'portfolio', icon: BarChart2 },
         { label: 'Markets', action: 'markets', icon: Globe },
-        { label: 'Trade', action: 'invest-trade', icon: ArrowUpRight },
+        { label: 'Trade', action: 'stock-trade', icon: ArrowUpRight },
         { label: 'Account', action: 'account', icon: User },
       ],
       trade: [
@@ -198,11 +198,11 @@ const Footer = () => {
         history: '/fund/history',
         account: '/fund/account',
       },
-      invest: {
-        portfolio: '/invest/portfolio',
-        markets: '/invest/markets',
-        'invest-trade': '/invest/trade',
-        account: '/invest/account',
+      stock: {
+        portfolio: '/stock/portfolio',
+        markets: '/stock/markets',
+        'stock-trade': '/stock/trade',
+        account: '/stock/account',
       },
       trade: {
         trading: '/trade/platform',
@@ -265,8 +265,8 @@ const Footer = () => {
       case 'fund':
         path = `/fund/challenge/${trackingNumber}`;
         break;
-      case 'invest':
-        path = `/invest/order/${trackingNumber}`;
+      case 'stock':
+        path = `/stock/order/${trackingNumber}`;
         break;
       case 'trade':
         path = `/trade/transaction/${trackingNumber}`;
@@ -291,7 +291,7 @@ const Footer = () => {
     switch(platform) {
       case 'fund':
         return 'Track Challenge';
-      case 'invest':
+      case 'stock':
         return 'Track Investment Order';
       case 'trade':
         return 'Track Transaction';
@@ -450,7 +450,7 @@ const Footer = () => {
         <DrawerContent borderTopRadius="20px">
           <DrawerHeader borderBottomWidth="1px">
             {platform === 'fund' ? 'BitFund Menu' : 
-             platform === 'invest' ? 'BitInvest Menu' : 
+             platform === 'stock' ? 'BitStock Menu' : 
              platform === 'trade' ? 'BitTrade Menu' :
              platform === 'cash' ? 'BitCash Menu' :
              'Menu'}
@@ -515,7 +515,7 @@ const Footer = () => {
             <FormControl isRequired isInvalid={!!error}>
               <FormLabel>
                 {platform === 'fund' ? 'Challenge ID' : 
-                 platform === 'invest' ? 'Order ID' : 
+                 platform === 'stock' ? 'Order ID' : 
                  platform === 'trade' ? 'Transaction ID' :
                  platform === 'cash' ? 'Payment ID' :
                  'Tracking Number'}
@@ -528,7 +528,7 @@ const Footer = () => {
                 }}
                 placeholder={
                   platform === 'fund' ? 'Enter challenge ID' : 
-                  platform === 'invest' ? 'Enter order ID' : 
+                  platform === 'stock' ? 'Enter order ID' : 
                   platform === 'trade' ? 'Enter transaction ID' :
                   platform === 'cash' ? 'Enter payment ID' :
                   'Enter tracking number'
