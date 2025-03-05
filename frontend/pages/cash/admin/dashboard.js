@@ -234,7 +234,7 @@ const MarketDataAdmin = () => {
             <ModalHeader>Market Chart</ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={6}>
-              <AdvancedForexChart />
+              <AdvancedChart />
             </ModalBody>
           </ModalContent>
         </Modal>

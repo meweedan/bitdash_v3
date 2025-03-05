@@ -576,6 +576,72 @@ export default function TradingViewChart({ selectedCoin, coins, onPairSelect }) 
         </div>
       )}
 
+      {/* Search Markets Modal for Mobile */}
+      {showSearch && (
+        <div style={{
+          position:'fixed',
+          top:0,
+          left:0,
+          right:0,
+          bottom:0,
+          backgroundColor:'rgba(0,0,0,0.5)',
+          display:'flex',
+          justifyContent:'center',
+          alignItems:'center',
+          zIndex:1000
+        }} onClick={() => setShowSearch(false)}>
+          <div style={{
+            backgroundColor: dark ? '#000' : '#fff',
+            padding:'16px',
+            borderRadius:'8px',
+            width:'80%',
+            maxHeight:'80%',
+            overflowY:'auto'
+          }} onClick={e => e.stopPropagation()}>
+            <div style={{ marginBottom:'8px' }}>
+              <input
+                type="text"
+                placeholder="Search markets"
+                value={searchTerm}
+                onChange={e => setSearchTerm(e.target.value)}
+                style={{
+                  width:'100%',
+                  padding:'8px',
+                  fontSize:'14px',
+                  borderRadius:'4px',
+                  border:'1px solid #ccc'
+                }}
+              />
+            </div>
+            <div>
+              {coins ? coins
+                .filter(coin => 
+                  coin.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                  coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+                .map(coin => (
+                  <div
+                    key={coin.id}
+                    style={{ padding:'8px', borderBottom:'1px solid #eee', cursor:'pointer' }}
+                    onClick={() => {
+                      setShowSearch(false);
+                      setSearchTerm('');
+                      setSelectedPair(coin.symbol.toUpperCase());
+                      if(onPairSelect) onPairSelect(coin);
+                    }}
+                  >
+                    <div style={{ display:'flex', alignItems:'center', gap:'8px' }}>
+                      <img src={coin.image} alt={coin.name} style={{ width:'24px', height:'24px' }} />
+                      <span style={{ fontWeight:'bold' }}>{coin.symbol.toUpperCase()}</span>
+                      <span>{coin.name}</span>
+                    </div>
+                  </div>
+              )) : <div>No markets available</div>}
+            </div>
+          </div>
+        </div>
+      )}
+
       <div style={{ marginBottom:'12px', display:'flex', flexDirection:'column', gap:'8px' }}>
         <div style={{
           display:'grid',

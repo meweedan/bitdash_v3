@@ -175,6 +175,11 @@ function CryptoExchange() {
   // For modals
   const { isOpen: depositOpen, onOpen: onDepositOpen, onClose: onDepositClose } = useDisclosure();
   const { isOpen: withdrawOpen, onOpen: onWithdrawOpen, onClose: onWithdrawClose } = useDisclosure();
+   const {
+    isOpen: isSearchOpen,
+    onOpen: onSearchOpen,
+    onClose: onSearchClose
+  } = useDisclosure();
 
   // Fetch the top ~20 coins from CoinGecko for the “market pairs” list
   useEffect(() => {
@@ -452,173 +457,62 @@ function CryptoExchange() {
                       <Text fontSize="xs" color={textColorSecondary}>
                         {formatPercent(selectedCoin.price_change_percentage_24h)} (24h)
                       </Text>
-                      {/* Search Markets Modal for Mobile */}
-                        {showSearch && (
-                          <div style={{
-                            position:'fixed',
-                            top:0,
-                            left:0,
-                            right:0,
-                            bottom:0,
-                            backgroundColor:'rgba(0,0,0,0.5)',
-                            display:'flex',
-                            justifyContent:'center',
-                            alignItems:'center',
-                            zIndex:1000
-                          }} onClick={() => setShowSearch(false)}>
-                            <div style={{
-                              backgroundColor: dark ? '#000' : '#fff',
-                              padding:'16px',
-                              borderRadius:'8px',
-                              width:'80%',
-                              maxHeight:'80%',
-                              overflowY:'auto'
-                            }} onClick={e => e.stopPropagation()}>
-                              <div style={{ marginBottom:'8px' }}>
-                                <input
-                                  type="text"
-                                  placeholder="Search markets"
-                                  value={searchTerm}
-                                  onChange={e => setSearchTerm(e.target.value)}
-                                  style={{
-                                    width:'100%',
-                                    padding:'8px',
-                                    fontSize:'14px',
-                                    borderRadius:'4px',
-                                    border:'1px solid #ccc'
-                                  }}
-                                />
-                              </div>
-                              <div>
-                                {coins ? coins
-                                  .filter(coin => 
-                                    coin.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                                    coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
-                                  )
-                                  .map(coin => (
-                                    <div
-                                      key={coin.id}
-                                      style={{ padding:'8px', borderBottom:'1px solid #eee', cursor:'pointer' }}
-                                      onClick={() => {
-                                        setShowSearch(false);
-                                        setSearchTerm('');
-                                        setSelectedPair(coin.symbol.toUpperCase());
-                                        if(onPairSelect) onPairSelect(coin);
-                                      }}
-                                    >
-                                      <div style={{ display:'flex', alignItems:'center', gap:'8px' }}>
-                                        <img src={coin.image} alt={coin.name} style={{ width:'24px', height:'24px' }} />
-                                        <span style={{ fontWeight:'bold' }}>{coin.symbol.toUpperCase()}</span>
-                                        <span>{coin.name}</span>
-                                      </div>
-                                    </div>
-                                )) : <div>No markets available</div>}
-                              </div>
-                            </div>
-                          </div>
-                        )}
                     </Box>
                   </HStack>
                 </Box>
               )}
 
-              {/* Mobile Header: Unified Pricing and Search Markets */}
-      {mb ? (
-        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'12px' }}>
-          <div style={{ display:'flex', alignItems:'center', gap:'8px' }}>
-            {selectedCoin && selectedCoin.image && (
-              <img src={selectedCoin.image} alt={selectedCoin.name} style={{ width:'24px', height:'24px' }} />
-            )}
-            <span style={{ fontWeight:'bold', fontSize:'16px' }}>
-              {selectedCoin ? selectedCoin.symbol.toUpperCase() : selectedPair}
-            </span>
-            {!loading && filteredData.length > 0 && !noData && (
-              <>
-                <span style={{ fontSize:'16px' }}>{fp(stats.currentPrice)}</span>
-                <span style={{
-                  backgroundColor: stats.isPriceUp ? 'rgba(38,166,154,0.15)' : 'rgba(239,83,80,0.15)',
-                  color: stats.isPriceUp ? '#26a69a' : '#ef5350',
-                  padding:'2px 8px',
-                  borderRadius:'4px',
-                  fontWeight:'bold'
-                }}>
-                  {stats.isPriceUp ? '+' : ''}{stats.priceChangePercent.toFixed(2)}%
-                </span>
-              </>
-            )}
-          </div>
-          <button onClick={() => setShowSearch(true)} style={{ padding:'8px 12px', borderRadius:'4px', backgroundColor:'#2962FF', color:'white', fontSize:'14px' }}>
-            Search Markets
-          </button>
-        </div>
-      ) : (
-        // Desktop Header: Pair and Interval selectors with pricing info
-        <div style={{ display:'flex', flexDirection:'row', gap:'8px', marginBottom:'12px' }}>
-          <div style={{ display:'flex', width:'100%', gap:'8px' }}>
-            <select
-              value={selectedPair}
-              onChange={e => { 
-                setSelectedPair(e.target.value); 
-                if(onPairSelect && coins) { 
-                  const coin = coins.find(c => c.symbol.toUpperCase() === e.target.value);
-                  if(coin) onPairSelect(coin);
-                }
-              }}
-              style={{
-                backgroundColor:'#8b7966',
-                color: dark ? 'white' : 'black',
-                border:'none',
-                borderRadius:'4px',
-                padding:'10px',
-                fontSize:'14px',
-                flexGrow:1,
-                maxWidth:'130px',
-                appearance:'none'
-              }}
-            >
-              {getPairs().map(x=>(
-                <option key={x} value={x}>{x}</option>
-              ))}
-            </select>
-            <select
-              value={selectedInterval}
-              onChange={e => setSelectedInterval(e.target.value)}
-              style={{
-                backgroundColor:'#8b7966',
-                color: dark ? 'white' : 'black',
-                border:'none',
-                borderRadius:'4px',
-                padding:'10px',
-                fontSize:'14px',
-                flexGrow:1,
-                maxWidth:'100px',
-                appearance:'none'
-              }}
-            >
-              {intervals.map(x=>(
-                <option key={x} value={x}>{x}</option>
-              ))}
-            </select>
-          </div>
-          {!loading && filteredData.length>0 && !noData && (
-            <div style={{ display:'flex', alignItems:'center', width:'auto' }}>
-              <div style={{ fontSize:'16px', fontWeight:'bold', marginRight:'8px' }}>
-                {fp(stats.currentPrice)}
-              </div>
-              <div style={{
-                backgroundColor: stats.isPriceUp ? 'rgba(38,166,154,0.15)' : 'rgba(239,83,80,0.15)',
-                color: stats.isPriceUp ? '#26a69a' : '#ef5350',
-                padding:'2px 8px',
-                borderRadius:'4px',
-                fontSize:'12px',
-                fontWeight:'bold'
-              }}>
-                {stats.isPriceUp ? '+' : ''}{stats.priceChangePercent.toFixed(2)}%
-              </div>
-            </div>
-          )}
-        </div>
-      )}
+              {/* Search Markets Modal for Mobile */}
+              <Modal isOpen={isSearchOpen} onClose={onSearchClose} isCentered>
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>Search Markets</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    <VStack spacing={4}>
+                      <Input
+                        placeholder="Search markets"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                      />
+                      {coins && coins.length > 0 ? (
+                        coins
+                          .filter(
+                            (coin) =>
+                              coin.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                              coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
+                          )
+                          .map((coin) => (
+                            <Box
+                              key={coin.id}
+                              w="100%"
+                              p={2}
+                              borderBottom="1px solid"
+                              borderColor="gray.200"
+                              cursor="pointer"
+                              onClick={() => {
+                                onSearchClose();
+                                setSearchTerm('');
+                                setSelectedPair(coin.symbol.toUpperCase());
+                                setSelectedCoin(coin);
+                              }}
+                            >
+                              <HStack spacing={4}>
+                                <Box boxSize={6}>
+                                  <img src={coin.image} alt={coin.name} />
+                                </Box>
+                                <Text fontWeight="bold">{coin.symbol.toUpperCase()}</Text>
+                                <Text>{coin.name}</Text>
+                              </HStack>
+                            </Box>
+                          ))
+                      ) : (
+                        <Text>No markets available</Text>
+                      )}
+                    </VStack>
+                  </ModalBody>
+                </ModalContent>
+              </Modal>
 
               {/* CANDLESTICK CHART with updated AdvancedChart */}
               <Box

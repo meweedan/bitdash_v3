@@ -283,7 +283,7 @@ const StocksPage = () => {
                 {t('stocks.marketplace.heading', 'Explore Shariah-Compliant Stocks')}
               </Heading>
 
-              <AdvancedForexChart />
+              <AdvancedChart />
 
             </Box>
           </SlideFade>
