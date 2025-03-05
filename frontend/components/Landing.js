@@ -149,30 +149,30 @@ export default function LandingPage() {
                     bgGradient="linear(to-r, #8b7966, #b8a28b)"
                     bgClip="text"
                   >
-                    {t('heroTitle')}
+                    {t('LandingheroTitle')}
                   </Heading>
                   
                   <Text
                     fontSize={{ base: "lg", md: "xl" }}
                     maxW="550px"
                   >
-                    {t('heroSubtitle')}
+                    {t('LandingheroSubtitle')}
                   </Text>
                   
                   <HStack spacing={6} mt={6} color={isDark ? "gray.400" : "gray.600"} flexWrap="wrap">
                     <HStack>
                       <Icon as={CheckCircle} />
-                      <Text>{t('hero.feature1')}</Text>
+                      <Text>{t('Landinghero.feature1')}</Text>
                     </HStack>
                     
                     <HStack>
                       <Icon as={CheckCircle} />
-                      <Text>{t('hero.feature2')}</Text>
+                      <Text>{t('Landinghero.feature2')}</Text>
                     </HStack>
                     
                     <HStack>
                       <Icon as={CheckCircle} />
-                      <Text>{t('hero.feature3')}</Text>
+                      <Text>{t('Landinghero.feature3')}</Text>
                     </HStack>
                   </HStack>
                 </VStack>

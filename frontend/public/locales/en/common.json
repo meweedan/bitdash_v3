@@ -568,38 +568,6 @@
       }
     }
   },
-  "features": {
-    "title": "Powerful Features for Your Business",
-    "subtitle": "Tools designed to help you succeed.",
-    "qr": {
-      "title": "QR Code Ordering",
-      "description": "Revolutionize customer ordering with our QR code solution.",
-      "benefit1": "Easy to use for customers.",
-      "benefit2": "Contactless and convenient.",
-      "benefit3": "Supports multiple languages."
-    },
-    "ai": {
-      "title": "AI-Powered Insights",
-      "description": "Leverage artificial intelligence to optimize your business.",
-      "benefit1": "Understand customer preferences.",
-      "benefit2": "Predict demand trends.",
-      "benefit3": "Optimize inventory levels."
-    },
-    "analytics": {
-      "title": "Advanced Analytics",
-      "description": "Gain actionable insights with real-time analytics.",
-      "benefit1": "Track sales and performance.",
-      "benefit2": "Monitor customer behavior.",
-      "benefit3": "Make data-driven decisions."
-    },
-    "security": {
-      "title": "Enhanced Security",
-      "description": "Protect your data with enterprise-grade security.",
-      "benefit1": "Encrypted transactions.",
-      "benefit2": "Regular backups.",
-      "benefit3": "Compliance with global standards."
-    }
-  },
   "pageNotFound": "Page Not Found",
   "pageNotFoundMessage": "The page you are looking for does not exist.",
   "backToHome": "Back to Home",
@@ -1015,24 +983,6 @@
   "enterprise": {
     "title": "Enterprise-Grade Solutions",
     "subtitle": "Powerful infrastructure designed for scalability, security, and seamless integration"
-  },
-  "mt5": {
-    "title": "MetaTrader 5 Integration",
-    "subtitle": "Professional trading capabilities built into our financial ecosystem",
-    "trading": {
-      "title": "Direct MT5 Connection",
-      "description": "Unified trading experience across multiple asset classes"
-    },
-    "charts": {
-      "title": "Advanced Charting",
-      "description": "Real-time market data with professional-grade technical analysis"
-    },
-    "tech": {
-      "title": "Technical Architecture",
-      "websocket": "WebSocket-based real-time market data streaming",
-      "latency": "Low-latency order execution (<50ms)",
-      "multiAsset": "Multi-asset trading support (Forex, Crypto, Commodities)"
-    }
   },
   "agent": {
     "title": "Become a BitCash Agent",
@@ -1454,7 +1404,6 @@
   "total_orders": "Total Orders",
   "inventory_alert": "Inventory Alert",
   "low_stock_items": "Low stock items",
-  "products": "Products",
   "sales_overview": "Sales Overview",
   "top_products": "Top Products",
   "customize_theme": "Customize Theme",
@@ -1715,5 +1664,131 @@
   "next": "Next",
   "page_x_of_y": "Page {{x}} of {{y}}",
   "added_to_favorites": "Added to favorites",
-  "removed_from_favorites": "Removed from favorites"
+  "removed_from_favorites": "Removed from favorites",
+  "alt": {
+    "backgroundImage": "Background Image",
+    "londonSkyline": "London Skyline",
+    "clouds": "Clouds",
+    "tradingPlatform": "Trading Platform",
+    "zeroFees": "Zero Fees",
+    "tightSpreads": "Tight Spreads"
+  },
+  "Landinghero": {
+    "badge": "Trade Smarter",
+    "title": "Unified Finance. Multiple Markets. One Platform.",
+    "subtitle": "Access forex, crypto, stocks and payment solutions through a single integrated ecosystem designed for global traders.",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More",
+    "feature1": "Zero Commission",
+    "feature2": "Fast Execution",
+    "feature3": "Secure & Regulated"
+  },
+  "platformSection": {
+    "subtitle": "Revolutionary Financial Ecosystem",
+    "title": "Our Cutting-Edge Financial Solutions",
+    "description": "Discover our suite of next-generation financial platforms designed to revolutionize how you trade, invest, and transfer money globally."
+  },
+  "platforms": {
+    "forex": {
+      "title": "Forex by BitDash",
+      "description": "Global currency trading with zero commission, ultra-tight spreads from 0.0 pips, and lightning-fast execution speeds.",
+      "cta": "Trade Forex",
+      "imageAlt": "Forex Trading"
+    },
+    "crypto": {
+      "title": "Crypto by BitDash",
+      "description": "Trade 100+ cryptocurrencies with industry-lowest fees, advanced DeFi staking options, and cold storage security.",
+      "cta": "Explore Crypto",
+      "imageAlt": "Cryptocurrency Trading"
+    },
+    "stock": {
+      "title": "Stock by BitDash",
+      "description": "Commission-free trading on US and EU stocks with fractional shares and access to exclusive pre-IPO opportunities.",
+      "cta": "Invest in Stocks",
+      "imageAlt": "Stock Trading"
+    },
+    "cash": {
+      "title": "Cash by BitDash",
+      "description": "Instant global payments with zero fees, blockchain-powered security, and multi-currency accounts with best-in-market rates.",
+      "cta": "Send Money",
+      "imageAlt": "Cash Transfer"
+    }
+  },
+  "features": {
+    "title": "Advanced Trading Features",
+    "subtitle": "BitDash offers a comprehensive suite of powerful trading tools and features designed to enhance your trading experience.",
+    "exploreMore": "Explore All Features",
+    "imageAlt": "Trading Features",
+    "global": {
+      "title": "Global Markets",
+      "description": "Access multiple markets and asset classes through a single integrated platform."
+    },
+    "secure": {
+      "title": "Bank-Grade Security",
+      "description": "Industry-leading security measures to protect your assets and personal information."
+    },
+    "analysis": {
+      "title": "Advanced Analysis",
+      "description": "Powerful tools for technical and fundamental analysis to inform your trading decisions."
+    },
+    "execution": {
+      "title": "Ultra-Fast Execution",
+      "description": "Lightning-fast order execution with minimal slippage for optimal trading."
+    }
+  },
+  "mt5": {
+    "title": "MT5: Trade Wide Range of Markets With One Platform",
+    "subtitle": "Your Go-To Solution for Forex and CFD Trading",
+    "description": "MetaTrader 5 is a powerful trading platform that offers a wide range of features and tools for traders of all levels. It allows you to trade forex, stocks, and futures from a single platform with advanced charting and algorithmic trading capabilities.",
+    "download": "Download MT5",
+    "imageAlt": "MT5 Platform"
+  },
+  "islamic": {
+    "subtitle": "Islamic Finance Principles",
+    "title": "Built On Strong Ethical Foundations",
+    "description": "BitDash integrates Islamic financial principles into modern financial technology, ensuring all transactions are ethical, transparent, and shariah-compliant.",
+    "principles": {
+      "compliant": {
+        "title": "Shariah Compliant",
+        "description": "All our products and services adhere strictly to Islamic finance principles, certified by leading Shariah scholars."
+      },
+      "noRiba": {
+        "title": "No Riba (Interest)",
+        "description": "Our financial solutions operate without interest, utilizing ethical profit-sharing and fee-based structures."
+      },
+      "ethical": {
+        "title": "Ethical Investments",
+        "description": "We screen all investments to ensure they comply with Islamic values, avoiding prohibited industries."
+      },
+      "transparent": {
+        "title": "Transparent Contracts",
+        "description": "All agreements are clearly defined with fair terms that avoid uncertainty (gharar) and speculation (maysir)."
+      }
+    }
+  },
+  "products": {
+    "subtitle": "Trade Over 100 Instruments",
+    "title": "Diverse Range of Trading Products",
+    "viewAll": "View All Products",
+    "hundredsAlt": "Hundreds of Products Available",
+    "categories": {
+      "forex": "Forex",
+      "crypto": "Crypto",
+      "stocks": "Stocks",
+      "commodities": "Commodities"
+    }
+  },
+  "accounts": {
+    "subtitle": "Find Your Perfect Fit",
+    "title": "Account Types",
+    "standard": {
+      "title": "Standard",
+      "minDeposit": "$150",
+      "spread": "From 1.0 pips",
+      "leverage": "Up to 1:200",
+      "feature1": "100+ trading instruments",
+      "feature2": "24/5 support",
+      "feature3": "Standard execution"
+    }
+  }
 }
