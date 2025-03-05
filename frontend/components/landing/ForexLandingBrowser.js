@@ -15,6 +15,8 @@ import {
   Flex,
   Icon,
   Badge,
+  useColorMode,
+  CheckCircle,
   Grid,
   GridItem,
   Divider,
@@ -69,6 +71,7 @@ import {
   FaChartBar,
   FaCoins
 } from 'react-icons/fa';
+import { Download } from 'lucide-react';
 import ForexPairDisplay from '@/components/trading/ForexPairDisplay';
 import CryptoMarketplace from '@/components/trading/CryptoMarketplace';
 import TradingPlatformPreview from '@/components/trading/TradingPlatformPreview';
@@ -78,6 +81,25 @@ const ForexLandingBrowser = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
   const containerRef = useRef(null);
+  const MotionBox = motion(Box);
+
+  const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
+const scaleUp = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  }
+};
   
   const isDark = useColorModeValue(false, true);
   const bgGradient = useColorModeValue(
@@ -278,6 +300,104 @@ const ForexLandingBrowser = () => {
       description: 'All agreements are clearly defined with fair terms that avoid uncertainty (gharar) and speculation (maysir).'
     }
   ];
+
+  const AccountTypeCard = ({ title, minDeposit, spread, leverage, features, color, popular, delay }) => {
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+  
+  return (
+    <MotionBox
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        visible: { 
+          opacity: 1, 
+          y: 0,
+          transition: { 
+            duration: 0.6, 
+            delay: delay,
+            ease: [0.22, 1, 0.36, 1]
+          }
+        }
+      }}
+    >
+      <Flex
+        direction="column"
+        borderRadius="lg"
+        overflow="hidden"
+        height="full"
+        boxShadow={popular ? "xl" : "md"}
+        position="relative"
+        transition="all 0.3s"
+        transform={popular ? "scale(1.05)" : "scale(1)"}
+        _hover={{
+          boxShadow: "xl"
+        }}
+      >
+        {popular && (
+          <Badge
+            position="absolute"
+            top={4}
+            right={4}
+            colorScheme="green"
+            px={2}
+            py={1}
+            borderRadius="full"
+            fontWeight="bold"
+            zIndex="1"
+          >
+            Popular
+          </Badge>
+        )}
+        
+        <Box bg={color} p={5} color="white">
+          <Heading size="lg">{title}</Heading>
+        </Box>
+        
+        <VStack p={6} spacing={4} align="flex-start" flex="1" bg={isDark ? "gray.800" : "white"}>
+          <VStack spacing={3} align="flex-start" width="full">
+            <HStack justify="space-between" width="full">
+              <Text fontWeight="medium">Min Deposit:</Text>
+              <Text fontWeight="bold">{minDeposit}</Text>
+            </HStack>
+            
+            <HStack justify="space-between" width="full">
+              <Text fontWeight="medium">Spread:</Text>
+              <Text fontWeight="bold">{spread}</Text>
+            </HStack>
+            
+            <HStack justify="space-between" width="full">
+              <Text fontWeight="medium">Leverage:</Text>
+              <Text fontWeight="bold">{leverage}</Text>
+            </HStack>
+            
+            <Divider my={2} />
+            
+            {features.map((feature, idx) => (
+              <HStack key={idx}>
+                <Icon as={CheckCircle} color="green.500" />
+                <Text>{feature}</Text>
+              </HStack>
+            ))}
+          </VStack>
+          
+          <Button 
+            mt="auto" 
+            bg={color}
+            color="white"
+            _hover={{ bg: "#9c7c63" }} 
+            size="lg" 
+            width="full"
+          >
+            Open Account
+          </Button>
+        </VStack>
+      </Flex>
+    </MotionBox>
+  );
+};
 
   return (
     <Box ref={containerRef} bg={bgGradient} overflow="hidden">
@@ -611,72 +731,81 @@ const ForexLandingBrowser = () => {
           </Box>
         </Box>
         
-        {/* MT5 Platform Section */}
-        <Box mb={24}>
-          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={16} alignItems="center">
+       {/* MT5 Platform Section */}
+      <Box 
+        as="section" 
+        py={{ base: 16, md: 24 }}
+        position="relative"
+      >
+        <Container maxW="container.xl">
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
             <GridItem>
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
+                variants={fadeIn}
               >
-                <VStack spacing={8} align="flex-start">
-                  <Heading 
+                <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
+                  <Heading
                     fontSize={{ base: "2xl", md: "3xl" }}
                     fontWeight="bold"
-                    color={accentColor}
+                    color={isDark ? "white" : "#333"}
                   >
-                    MT5: TRADE WIDE RANGE OF MARKETS WITH ONE PLATFORM
+                    {t('mt5.title')}
                   </Heading>
                   
                   <Text
                     fontSize={{ base: "md", md: "lg" }}
-                    color={textColor}
-                    fontWeight="bold"
+                    color={isDark ? "gray.300" : "gray.600"}
+                    maxW="600px"
                   >
-                    YOUR GO-TO SOLUTION FOR FOREX AND CFD TRADING
+                    {t('mt5.subtitle')}
                   </Text>
                   
-                  <Text fontSize={{ base: "md", md: "lg" }} color={textColor}>
-                    MetaTrader 5 is a powerful trading platform that offers a wide range of features and tools for traders of all levels. It is a multi-asset platform that allows traders to trade forex, stocks, and futures from a single platform.
-                  </Text>
-                  
-                  <Text fontSize={{ base: "md", md: "lg" }} color={textColor}>
-                    With MetaTrader 5, you can access advanced charting and analysis tools and use algorithmic trading applications such as trading robots and Expert advisors.
+                  <Text
+                    fontSize={{ base: "md", md: "lg" }}
+                    color={isDark ? "gray.300" : "gray.600"}
+                    maxW="600px"
+                  >
+                    {t('mt5.description')}
                   </Text>
                   
                   <Button
-                    bg={accentColor}
+                    bg="#8b7966"
                     color="white"
-                    _hover={{ bg: "#9c8877" }}
-                    fontWeight="bold"
+                    _hover={{ bg: "#9c7c63" }}
+                    size="lg"
                     px={8}
-                    onClick={() => router.push('/platform-features')}
+                    onClick={() => router.push('/mt5')}
+                    rightIcon={<Download />}
+                    mt={4}
                   >
-                    Explore Features
+                    {t('mt5.download')}
                   </Button>
                 </VStack>
-              </motion.div>
+              </MotionBox>
             </GridItem>
             
             <GridItem>
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
+                variants={scaleUp}
               >
                 <Image 
                   src="/images/mt5-multi.png" 
-                  alt="MT5 Multi Platform" 
-                  borderRadius="md"
+                  alt={t('mt5.imageAlt')}
+                  width="100%"
+                  borderRadius="lg"
                   boxShadow="xl"
                 />
-              </motion.div>
+              </MotionBox>
             </GridItem>
           </Grid>
-        </Box>
+        </Container>
+      </Box>
         
         {/* Platform Features */}
         <Box mb={24}>
@@ -808,104 +937,107 @@ const ForexLandingBrowser = () => {
           </Grid>
         </Box>
         
-        {/* Account Types */}
-        <Box mb={24}>
-          <Heading
-            textAlign="center"
-            mb={12}
-            fontSize={{ base: '3xl', md: '4xl' }}
-            color={accentColor}
-          >
-            {t('trade.accounts.title', 'Account Types')}
-          </Heading>
-          
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} mb={16}>
-            {accountTypes.map((account, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+        {/* Account Types Section */}
+        <Box as="section" py={{ base: 16, md: 24 }}>
+          <Container maxW="container.xl">
+            <VStack spacing={12}>
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
+                variants={fadeIn}
+                textAlign="center"
+                maxW="3xl"
+                mx="auto"
               >
-                <Box
-                  p={8}
-                  h="full"
-                  bg={glassCardBg}
-                  borderRadius="xl"
-                  borderColor={account.color}
-                  borderWidth={2}
-                  position="relative"
-                  _hover={{
-                    transform: 'translateY(-5px)',
-                    boxShadow: 'xl'
-                  }}
-                  transition="all 0.3s ease"
+                <Text 
+                  color="#8b7966" 
+                  fontWeight="bold" 
+                  mb={3}
+                  textTransform="uppercase"
+                  letterSpacing="wide"
                 >
-                  {account.popular && (
-                    <Badge
-                      position="absolute"
-                      top="-10px"
-                      right="20px"
-                      colorScheme="brand"
-                      bg={accentColor}
-                      color="white"
-                      fontSize="sm"
-                      py={1}
-                      px={3}
-                      borderRadius="full"
-                    >
-                      Most Popular
-                    </Badge>
-                  )}
-                  <VStack align="center" spacing={6}>
-                    <Heading size="md" color={account.color}>
-                      {account.name}
-                    </Heading>
-                    <VStack spacing={3} align="start" w="full">
-                      <Flex justify="space-between" w="full">
-                        <Text fontWeight="medium">Min Deposit:</Text>
-                        <Text>{account.minDeposit}</Text>
-                      </Flex>
-                      <Flex justify="space-between" w="full">
-                        <Text fontWeight="medium">Spread:</Text>
-                        <Text>{account.spread}</Text>
-                      </Flex>
-                      <Flex justify="space-between" w="full">
-                        <Text fontWeight="medium">Leverage:</Text>
-                        <Text>{account.leverage}</Text>
-                      </Flex>
-                      <Divider my={2} />
-                      <Text fontWeight="medium">Features:</Text>
-                      <List spacing={1} w="full">
-                        {account.features.map((feature, idx) => (
-                          <ListItem key={idx} display="flex" alignItems="center">
-                            <ListIcon as={FaCheckCircle} color={account.color} />
-                            <Text fontSize="sm">{feature}</Text>
-                          </ListItem>
-                        ))}
-                      </List>
-                      <Divider my={2} />
-                      <Flex justify="space-between" w="full">
-                        <Text fontWeight="medium">Ideal for:</Text>
-                        <Text>{account.ideal}</Text>
-                      </Flex>
-                    </VStack>
-                    <Button 
-                      bg={accentColor}
-                      color="white"
-                      _hover={{ bg: "#9c8877" }}
-                      w="full"
-                      onClick={() => router.push(`/account/${account.name.toLowerCase()}`)}
-                    >
-                      Open Account
-                    </Button>
-                  </VStack>
-                </Box>
-              </motion.div>
-            ))}
-          </SimpleGrid>
+                  {t('accounts.subtitle')}
+                </Text>
+                
+                <Heading
+                  fontSize={{ base: "3xl", md: "4xl" }}
+                  fontWeight="bold"
+                  color={isDark ? "white" : "#333"}
+                  mb={5}
+                >
+                  {t('accounts.title')}
+                </Heading>
+              </MotionBox>
+              
+              <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} width="full">
+                <AccountTypeCard
+                  title={t('accounts.standard.title')}
+                  minDeposit={t('accounts.standard.minDeposit')}
+                  spread={t('accounts.standard.spread')}
+                  leverage={t('accounts.standard.leverage')}
+                  features={[
+                    t('accounts.standard.feature1'),
+                    t('accounts.standard.feature2'),
+                    t('accounts.standard.feature3')
+                  ]}
+                  color="#8b7966"
+                  popular={false}
+                  delay={0}
+                />
+                
+                <AccountTypeCard
+                  title={t('accounts.premium.title')}
+                  minDeposit={t('accounts.premium.minDeposit')}
+                  spread={t('accounts.premium.spread')}
+                  leverage={t('accounts.premium.leverage')}
+                  features={[
+                    t('accounts.premium.feature1'),
+                    t('accounts.premium.feature2'),
+                    t('accounts.premium.feature3'),
+                    t('accounts.premium.feature4')
+                  ]}
+                  color="#8b7966"
+                  popular={true}
+                  delay={0.1}
+                />
+                
+                <AccountTypeCard
+                  title={t('accounts.professional.title')}
+                  minDeposit={t('accounts.professional.minDeposit')}
+                  spread={t('accounts.professional.spread')}
+                  leverage={t('accounts.professional.leverage')}
+                  features={[
+                    t('accounts.professional.feature1'),
+                    t('accounts.professional.feature2'),
+                    t('accounts.professional.feature3'),
+                    t('accounts.professional.feature4')
+                  ]}
+                  color="#8b7966"
+                  popular={false}
+                  delay={0.2}
+                />
+                
+                <AccountTypeCard
+                  title={t('accounts.institutional.title')}
+                  minDeposit={t('accounts.institutional.minDeposit')}
+                  spread={t('accounts.institutional.spread')}
+                  leverage={t('accounts.institutional.leverage')}
+                  features={[
+                    t('accounts.institutional.feature1'),
+                    t('accounts.institutional.feature2'),
+                    t('accounts.institutional.feature3'),
+                    t('accounts.institutional.feature4')
+                  ]}
+                  color="#8b7966"
+                  popular={false}
+                  delay={0.3}
+                />
+              </SimpleGrid>
+            </VStack>
+          </Container>
         </Box>
+        
         
         {/* Mobile App Section */}
         <Box mb={24}>
