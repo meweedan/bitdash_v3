@@ -605,21 +605,8 @@ const ForexLandingBrowser = () => {
               <AdvancedChart />
             </Box>
             
-            <Box p={4} color="brand.bittrade.400">
-              <Tabs variant="soft-rounded">
-                <TabList mb={6} justifyContent="center">
-                  <Tab>Forex</Tab>
-                  <Tab>Crypto</Tab>
-                </TabList>
-                <TabPanels>
-                  <TabPanel>
-                    <ForexPairDisplay />
-                  </TabPanel>
-                  <TabPanel>
-                    <CryptoMarketplace />
-                  </TabPanel>
-                </TabPanels>
-              </Tabs>
+            <Box px={{ base: 0, md: 4 }} py={4} position="relative">
+              <ForexPairDisplay />
             </Box>
           </Box>
         </Box>

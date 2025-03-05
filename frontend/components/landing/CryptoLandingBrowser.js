@@ -312,14 +312,8 @@ function CryptoExchange() {
               fontSize={{ base: '2xl', md: '4xl', lg: '5xl' }}
               fontWeight="extrabold"
             >
-              {t('crypto_exchange.hero.title', 'Trade Crypto Live')}
+              {t('crypto_exchange.hero.title', 'Unlock financial freedom')}
             </Heading>
-            <Text fontSize={{ base: 'sm', md: 'lg' }} opacity={0.7} maxW="3xl">
-              {t(
-                'crypto_exchange.hero.subtitle',
-                'Real data from CoinGecko, buy or sell with ease.'
-              )}
-            </Text>
           </VStack>
         </motion.div>
 

@@ -1,0 +1,1692 @@
+[
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 88583.17,
+    "high": 88600.44,
+    "low": 88020.01,
+    "close": 88037.3,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T01:00:00",
+    "open": 88041.2,
+    "high": 88728.61,
+    "low": 88029.23,
+    "close": 88580.01,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T02:00:00",
+    "open": 88580.01,
+    "high": 89110.01,
+    "low": 88303.91,
+    "close": 88899.05,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 88901.06,
+    "high": 89305.68,
+    "low": 88777.54,
+    "close": 88787.0,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T04:00:00",
+    "open": 88787.9,
+    "high": 89138.71,
+    "low": 88570.84,
+    "close": 88587.25,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T05:00:00",
+    "open": 88587.24,
+    "high": 88783.68,
+    "low": 88300.0,
+    "close": 88319.91,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T06:00:00",
+    "open": 88319.9,
+    "high": 88837.51,
+    "low": 88318.05,
+    "close": 88826.02,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 88825.95,
+    "high": 89102.24,
+    "low": 88333.36,
+    "close": 88637.09,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T08:00:00",
+    "open": 88637.07,
+    "high": 88714.15,
+    "low": 88030.0,
+    "close": 88414.69,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T09:00:00",
+    "open": 88414.69,
+    "high": 89227.56,
+    "low": 88377.23,
+    "close": 89049.58,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T10:00:00",
+    "open": 89049.57,
+    "high": 89252.01,
+    "low": 88809.89,
+    "close": 89188.14,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 89188.14,
+    "high": 89204.36,
+    "low": 88505.31,
+    "close": 88544.51,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T12:00:00",
+    "open": 88544.5,
+    "high": 88613.79,
+    "low": 87500.01,
+    "close": 87859.58,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T13:00:00",
+    "open": 87853.26,
+    "high": 88013.2,
+    "low": 86950.27,
+    "close": 87092.47,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T14:00:00",
+    "open": 87091.81,
+    "high": 87613.14,
+    "low": 85350.0,
+    "close": 87512.13,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 87511.77,
+    "high": 88435.73,
+    "low": 87285.59,
+    "close": 87447.31,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T16:00:00",
+    "open": 87447.31,
+    "high": 87702.54,
+    "low": 86167.17,
+    "close": 86696.14,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T17:00:00",
+    "open": 86695.91,
+    "high": 87191.38,
+    "low": 85564.09,
+    "close": 85942.56,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T18:00:00",
+    "open": 85942.52,
+    "high": 86400.0,
+    "low": 83324.0,
+    "close": 84175.12,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 84165.84,
+    "high": 84969.48,
+    "low": 83644.08,
+    "close": 83755.12,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T20:00:00",
+    "open": 83755.12,
+    "high": 84508.45,
+    "low": 82111.12,
+    "close": 84264.23,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T21:00:00",
+    "open": 84264.11,
+    "high": 85015.74,
+    "low": 83335.99,
+    "close": 84506.75,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T22:00:00",
+    "open": 84506.75,
+    "high": 85279.1,
+    "low": 84016.31,
+    "close": 84307.1,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 84307.09,
+    "high": 84666.67,
+    "low": 83769.01,
+    "close": 84111.78,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 84111.77,
+    "high": 84674.36,
+    "low": 83923.2,
+    "close": 84601.88,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T01:00:00",
+    "open": 84603.71,
+    "high": 85325.22,
+    "low": 84188.97,
+    "close": 84624.84,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T02:00:00",
+    "open": 84630.66,
+    "high": 85089.91,
+    "low": 84129.83,
+    "close": 84209.81,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T03:00:00",
+    "open": 84201.84,
+    "high": 85254.24,
+    "low": 84186.59,
+    "close": 85128.56,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T04:00:00",
+    "open": 85128.55,
+    "high": 85271.15,
+    "low": 84591.54,
+    "close": 85059.74,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T05:00:00",
+    "open": 85053.21,
+    "high": 85870.21,
+    "low": 84956.57,
+    "close": 85806.66,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T06:00:00",
+    "open": 85802.17,
+    "high": 86649.61,
+    "low": 85609.4,
+    "close": 86180.46,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T07:00:00",
+    "open": 86179.51,
+    "high": 86525.39,
+    "low": 86014.93,
+    "close": 86205.77,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T08:00:00",
+    "open": 86205.19,
+    "high": 86370.61,
+    "low": 85807.26,
+    "close": 86000.14,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T09:00:00",
+    "open": 86000.13,
+    "high": 86274.13,
+    "low": 85792.67,
+    "close": 86093.77,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T10:00:00",
+    "open": 86093.76,
+    "high": 86986.49,
+    "low": 85961.22,
+    "close": 86931.32,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T11:00:00",
+    "open": 86924.02,
+    "high": 86993.87,
+    "low": 86315.48,
+    "close": 86622.46,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T12:00:00",
+    "open": 86617.21,
+    "high": 86722.2,
+    "low": 86169.36,
+    "close": 86242.88,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T13:00:00",
+    "open": 86242.88,
+    "high": 86698.26,
+    "low": 85706.1,
+    "close": 86035.42,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T14:00:00",
+    "open": 86029.07,
+    "high": 86351.61,
+    "low": 84871.67,
+    "close": 84897.85,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T15:00:00",
+    "open": 84894.97,
+    "high": 86076.97,
+    "low": 84567.28,
+    "close": 85434.23,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T16:00:00",
+    "open": 85435.48,
+    "high": 85626.56,
+    "low": 84270.96,
+    "close": 84384.78,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T17:00:00",
+    "open": 84384.79,
+    "high": 84965.71,
+    "low": 84246.31,
+    "close": 84487.88,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T18:00:00",
+    "open": 84486.45,
+    "high": 84879.24,
+    "low": 84374.81,
+    "close": 84501.65,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T19:00:00",
+    "open": 84506.56,
+    "high": 84521.24,
+    "low": 83464.8,
+    "close": 83990.0,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T20:00:00",
+    "open": 83990.0,
+    "high": 84042.89,
+    "low": 82554.11,
+    "close": 83358.53,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T21:00:00",
+    "open": 83354.35,
+    "high": 84305.57,
+    "low": 83066.8,
+    "close": 84287.85,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T22:00:00",
+    "open": 84282.25,
+    "high": 84644.13,
+    "low": 83766.43,
+    "close": 84618.18,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-27T23:00:00",
+    "open": 84604.45,
+    "high": 84847.4,
+    "low": 84316.39,
+    "close": 84625.19,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T00:00:00",
+    "open": 84627.5,
+    "high": 84816.43,
+    "low": 84129.82,
+    "close": 84171.17,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T01:00:00",
+    "open": 84171.17,
+    "high": 84320.0,
+    "low": 81059.47,
+    "close": 81580.28,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T02:00:00",
+    "open": 81592.87,
+    "high": 82800.14,
+    "low": 79463.62,
+    "close": 80769.99,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T03:00:00",
+    "open": 80767.96,
+    "high": 81500.05,
+    "low": 80158.81,
+    "close": 80354.29,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T04:00:00",
+    "open": 80354.71,
+    "high": 80873.36,
+    "low": 79318.53,
+    "close": 80314.07,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T05:00:00",
+    "open": 80309.4,
+    "high": 80441.59,
+    "low": 79045.93,
+    "close": 79862.35,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T06:00:00",
+    "open": 79862.4,
+    "high": 80345.55,
+    "low": 78933.87,
+    "close": 79240.95,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T07:00:00",
+    "open": 79240.95,
+    "high": 80153.15,
+    "low": 78751.01,
+    "close": 79100.2,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T08:00:00",
+    "open": 79093.8,
+    "high": 79363.53,
+    "low": 78167.81,
+    "close": 78894.99,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T09:00:00",
+    "open": 78894.98,
+    "high": 80681.62,
+    "low": 78800.24,
+    "close": 80296.43,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T10:00:00",
+    "open": 80296.43,
+    "high": 80426.34,
+    "low": 79508.12,
+    "close": 79957.97,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T11:00:00",
+    "open": 79957.97,
+    "high": 80794.02,
+    "low": 79919.82,
+    "close": 80445.74,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T12:00:00",
+    "open": 80445.72,
+    "high": 80780.2,
+    "low": 80015.61,
+    "close": 80727.3,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T13:00:00",
+    "open": 80726.69,
+    "high": 81702.0,
+    "low": 80551.67,
+    "close": 81445.14,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T14:00:00",
+    "open": 81445.14,
+    "high": 82530.13,
+    "low": 81030.0,
+    "close": 82072.5,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T15:00:00",
+    "open": 82072.49,
+    "high": 84450.0,
+    "low": 81947.48,
+    "close": 83992.75,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T16:00:00",
+    "open": 83992.78,
+    "high": 84921.99,
+    "low": 83474.34,
+    "close": 84354.83,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T17:00:00",
+    "open": 84354.85,
+    "high": 84410.76,
+    "low": 83547.92,
+    "close": 83592.08,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T18:00:00",
+    "open": 83592.07,
+    "high": 85116.19,
+    "low": 83172.86,
+    "close": 84423.64,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T19:00:00",
+    "open": 84411.45,
+    "high": 84786.18,
+    "low": 84181.64,
+    "close": 84403.17,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T20:00:00",
+    "open": 84403.17,
+    "high": 84780.68,
+    "low": 83556.96,
+    "close": 84155.16,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T21:00:00",
+    "open": 84155.14,
+    "high": 84569.76,
+    "low": 83950.77,
+    "close": 84192.75,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T22:00:00",
+    "open": 84193.05,
+    "high": 84425.0,
+    "low": 83827.84,
+    "close": 84100.11,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-02-28T23:00:00",
+    "open": 84100.11,
+    "high": 84500.0,
+    "low": 83958.0,
+    "close": 84297.73,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T00:00:00",
+    "open": 84297.74,
+    "high": 84574.12,
+    "low": 83772.54,
+    "close": 83811.74,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T01:00:00",
+    "open": 83811.74,
+    "high": 84806.72,
+    "low": 83787.68,
+    "close": 84600.01,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T02:00:00",
+    "open": 84604.58,
+    "high": 85632.37,
+    "low": 84304.51,
+    "close": 85195.71,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T03:00:00",
+    "open": 85204.07,
+    "high": 85476.47,
+    "low": 84913.96,
+    "close": 85302.99,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T04:00:00",
+    "open": 85294.47,
+    "high": 86534.96,
+    "low": 85279.8,
+    "close": 86154.16,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T05:00:00",
+    "open": 86154.16,
+    "high": 86250.0,
+    "low": 85537.54,
+    "close": 85562.68,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T06:00:00",
+    "open": 85568.32,
+    "high": 85637.78,
+    "low": 84807.88,
+    "close": 85029.06,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T07:00:00",
+    "open": 85029.06,
+    "high": 85029.06,
+    "low": 84688.53,
+    "close": 84691.34,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T08:00:00",
+    "open": 84694.22,
+    "high": 85309.04,
+    "low": 84694.22,
+    "close": 85279.43,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T09:00:00",
+    "open": 85279.43,
+    "high": 85482.79,
+    "low": 85090.6,
+    "close": 85353.75,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T10:00:00",
+    "open": 85353.75,
+    "high": 85414.43,
+    "low": 84767.34,
+    "close": 84864.95,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T11:00:00",
+    "open": 84864.94,
+    "high": 84937.8,
+    "low": 84342.25,
+    "close": 84601.34,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T12:00:00",
+    "open": 84602.57,
+    "high": 84909.77,
+    "low": 84433.81,
+    "close": 84730.34,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T13:00:00",
+    "open": 84730.34,
+    "high": 84916.95,
+    "low": 84300.41,
+    "close": 84494.95,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T14:00:00",
+    "open": 84494.95,
+    "high": 84821.93,
+    "low": 84371.24,
+    "close": 84675.17,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T15:00:00",
+    "open": 84671.94,
+    "high": 84849.99,
+    "low": 84500.63,
+    "close": 84750.05,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T16:00:00",
+    "open": 84750.06,
+    "high": 85239.62,
+    "low": 84654.45,
+    "close": 85225.42,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T17:00:00",
+    "open": 85225.41,
+    "high": 85332.92,
+    "low": 84910.8,
+    "close": 85164.06,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T18:00:00",
+    "open": 85164.05,
+    "high": 85297.98,
+    "low": 85023.68,
+    "close": 85269.34,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T19:00:00",
+    "open": 85270.24,
+    "high": 85519.6,
+    "low": 85153.04,
+    "close": 85438.94,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T20:00:00",
+    "open": 85441.88,
+    "high": 85545.3,
+    "low": 85282.58,
+    "close": 85501.54,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T21:00:00",
+    "open": 85501.53,
+    "high": 86119.42,
+    "low": 85248.2,
+    "close": 86039.19,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T22:00:00",
+    "open": 86044.35,
+    "high": 86235.93,
+    "low": 85633.58,
+    "close": 86077.86,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-01T23:00:00",
+    "open": 86077.86,
+    "high": 86164.07,
+    "low": 85623.08,
+    "close": 86018.76,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T00:00:00",
+    "open": 86018.82,
+    "high": 86272.61,
+    "low": 85761.18,
+    "close": 85978.47,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T01:00:00",
+    "open": 85978.48,
+    "high": 86324.63,
+    "low": 85950.0,
+    "close": 86317.13,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T02:00:00",
+    "open": 86317.13,
+    "high": 86465.0,
+    "low": 85573.46,
+    "close": 85733.16,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T03:00:00",
+    "open": 85735.87,
+    "high": 86170.23,
+    "low": 85719.41,
+    "close": 85817.52,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T04:00:00",
+    "open": 85819.52,
+    "high": 85839.17,
+    "low": 85485.09,
+    "close": 85699.79,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T05:00:00",
+    "open": 85699.79,
+    "high": 86000.0,
+    "low": 85620.0,
+    "close": 85905.36,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T06:00:00",
+    "open": 85906.04,
+    "high": 86500.0,
+    "low": 85866.98,
+    "close": 86217.66,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T07:00:00",
+    "open": 86217.66,
+    "high": 86305.56,
+    "low": 86025.5,
+    "close": 86189.19,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T08:00:00",
+    "open": 86189.19,
+    "high": 86218.29,
+    "low": 85668.33,
+    "close": 85708.59,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T09:00:00",
+    "open": 85708.69,
+    "high": 86088.64,
+    "low": 85615.0,
+    "close": 85862.49,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T10:00:00",
+    "open": 85862.49,
+    "high": 85971.95,
+    "low": 85757.13,
+    "close": 85964.77,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T11:00:00",
+    "open": 85960.12,
+    "high": 86199.98,
+    "low": 85914.58,
+    "close": 86061.79,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T12:00:00",
+    "open": 86061.79,
+    "high": 86073.39,
+    "low": 85701.23,
+    "close": 85958.29,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T13:00:00",
+    "open": 85958.34,
+    "high": 85959.9,
+    "low": 85441.78,
+    "close": 85671.67,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T14:00:00",
+    "open": 85671.0,
+    "high": 85871.58,
+    "low": 85003.35,
+    "close": 85074.57,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T15:00:00",
+    "open": 85074.79,
+    "high": 88677.0,
+    "low": 85017.65,
+    "close": 87414.26,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T16:00:00",
+    "open": 87418.32,
+    "high": 91982.55,
+    "low": 87311.68,
+    "close": 91230.3,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T17:00:00",
+    "open": 91243.55,
+    "high": 95128.88,
+    "low": 90658.73,
+    "close": 94120.0,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T18:00:00",
+    "open": 94120.0,
+    "high": 94450.0,
+    "low": 92292.35,
+    "close": 92785.19,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T19:00:00",
+    "open": 92785.32,
+    "high": 93766.0,
+    "low": 92592.27,
+    "close": 93521.62,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T20:00:00",
+    "open": 93518.92,
+    "high": 94470.0,
+    "low": 93500.0,
+    "close": 94350.87,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T21:00:00",
+    "open": 94353.29,
+    "high": 94450.0,
+    "low": 93655.93,
+    "close": 94282.09,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T22:00:00",
+    "open": 94276.8,
+    "high": 94750.0,
+    "low": 93892.03,
+    "close": 94230.48,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-02T23:00:00",
+    "open": 94230.4,
+    "high": 94850.0,
+    "low": 93829.27,
+    "close": 94265.48,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T00:00:00",
+    "open": 94265.47,
+    "high": 94415.61,
+    "low": 93259.79,
+    "close": 93281.69,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T01:00:00",
+    "open": 93281.69,
+    "high": 93381.89,
+    "low": 92626.18,
+    "close": 93056.43,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T02:00:00",
+    "open": 93056.43,
+    "high": 93440.82,
+    "low": 92409.63,
+    "close": 93282.27,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T03:00:00",
+    "open": 93282.27,
+    "high": 93407.41,
+    "low": 92427.26,
+    "close": 92672.93,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T04:00:00",
+    "open": 92673.19,
+    "high": 92929.01,
+    "low": 92550.01,
+    "close": 92836.04,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T05:00:00",
+    "open": 92836.1,
+    "high": 93321.57,
+    "low": 92797.8,
+    "close": 93309.21,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T06:00:00",
+    "open": 93315.56,
+    "high": 93315.56,
+    "low": 91288.0,
+    "close": 91608.09,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T07:00:00",
+    "open": 91608.09,
+    "high": 92539.36,
+    "low": 91141.44,
+    "close": 92338.19,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T08:00:00",
+    "open": 92338.81,
+    "high": 92373.51,
+    "low": 91107.71,
+    "close": 91448.22,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T09:00:00",
+    "open": 91446.55,
+    "high": 92025.99,
+    "low": 91150.0,
+    "close": 91795.58,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T10:00:00",
+    "open": 91795.57,
+    "high": 92546.25,
+    "low": 91500.01,
+    "close": 92523.46,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T11:00:00",
+    "open": 92509.46,
+    "high": 92876.4,
+    "low": 92378.13,
+    "close": 92709.31,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T12:00:00",
+    "open": 92705.0,
+    "high": 93221.98,
+    "low": 92618.7,
+    "close": 92987.95,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T13:00:00",
+    "open": 92987.96,
+    "high": 93665.57,
+    "low": 92838.56,
+    "close": 93562.64,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T14:00:00",
+    "open": 93561.11,
+    "high": 93714.52,
+    "low": 89100.0,
+    "close": 89188.42,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T15:00:00",
+    "open": 89194.72,
+    "high": 91254.32,
+    "low": 89038.66,
+    "close": 89962.96,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T16:00:00",
+    "open": 89962.93,
+    "high": 90677.37,
+    "low": 89535.6,
+    "close": 90083.33,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T17:00:00",
+    "open": 90082.99,
+    "high": 90939.45,
+    "low": 89824.82,
+    "close": 90235.37,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T18:00:00",
+    "open": 90245.75,
+    "high": 90392.06,
+    "low": 86702.48,
+    "close": 87076.42,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T19:00:00",
+    "open": 87067.61,
+    "high": 87680.99,
+    "low": 85450.0,
+    "close": 85510.54,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T20:00:00",
+    "open": 85517.19,
+    "high": 86336.47,
+    "low": 85085.0,
+    "close": 85989.99,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T21:00:00",
+    "open": 85989.99,
+    "high": 86500.0,
+    "low": 85007.01,
+    "close": 85314.68,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T22:00:00",
+    "open": 85314.68,
+    "high": 86977.35,
+    "low": 85239.86,
+    "close": 86579.45,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-03T23:00:00",
+    "open": 86579.44,
+    "high": 86746.6,
+    "low": 85927.3,
+    "close": 86161.1,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T00:00:00",
+    "open": 86161.09,
+    "high": 86726.4,
+    "low": 85805.91,
+    "close": 85971.7,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T01:00:00",
+    "open": 85971.38,
+    "high": 86136.12,
+    "low": 82578.61,
+    "close": 83317.66,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T02:00:00",
+    "open": 83325.75,
+    "high": 84350.14,
+    "low": 82405.43,
+    "close": 83850.73,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T03:00:00",
+    "open": 83862.15,
+    "high": 84395.98,
+    "low": 83566.0,
+    "close": 83929.9,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T04:00:00",
+    "open": 83939.82,
+    "high": 84000.63,
+    "low": 83274.79,
+    "close": 83357.02,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T05:00:00",
+    "open": 83374.25,
+    "high": 84500.0,
+    "low": 83304.6,
+    "close": 84220.09,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T06:00:00",
+    "open": 84215.53,
+    "high": 84355.1,
+    "low": 83530.7,
+    "close": 83807.88,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T07:00:00",
+    "open": 83807.88,
+    "high": 83960.64,
+    "low": 83086.76,
+    "close": 83133.92,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T08:00:00",
+    "open": 83133.92,
+    "high": 83892.62,
+    "low": 82982.17,
+    "close": 83847.51,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T09:00:00",
+    "open": 83850.01,
+    "high": 84145.84,
+    "low": 83582.87,
+    "close": 83695.27,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T10:00:00",
+    "open": 83699.22,
+    "high": 84007.98,
+    "low": 83450.0,
+    "close": 83918.13,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T11:00:00",
+    "open": 83906.94,
+    "high": 84329.99,
+    "low": 83650.0,
+    "close": 83891.42,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T12:00:00",
+    "open": 83891.75,
+    "high": 83933.42,
+    "low": 83228.76,
+    "close": 83720.5,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T13:00:00",
+    "open": 83718.76,
+    "high": 83720.5,
+    "low": 82252.25,
+    "close": 82751.94,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T14:00:00",
+    "open": 82754.78,
+    "high": 84899.99,
+    "low": 82010.41,
+    "close": 83142.03,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T15:00:00",
+    "open": 83137.85,
+    "high": 83311.9,
+    "low": 81444.0,
+    "close": 82907.99,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T16:00:00",
+    "open": 82911.98,
+    "high": 83750.0,
+    "low": 81953.03,
+    "close": 83512.98,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T17:00:00",
+    "open": 83510.49,
+    "high": 85500.0,
+    "low": 83352.31,
+    "close": 85418.77,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T18:00:00",
+    "open": 85411.78,
+    "high": 86924.66,
+    "low": 85102.5,
+    "close": 86747.95,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T19:00:00",
+    "open": 86747.48,
+    "high": 88489.99,
+    "low": 86526.76,
+    "close": 88205.81,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T20:00:00",
+    "open": 88198.25,
+    "high": 88847.0,
+    "low": 86653.52,
+    "close": 86813.52,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T21:00:00",
+    "open": 86833.87,
+    "high": 88977.27,
+    "low": 86568.8,
+    "close": 87500.75,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T22:00:00",
+    "open": 87500.78,
+    "high": 87951.49,
+    "low": 87383.72,
+    "close": 87464.63,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-04T23:00:00",
+    "open": 87464.63,
+    "high": 87731.47,
+    "low": 87056.6,
+    "close": 87249.96,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BTC",
+    "timestamp": "2025-03-05T00:00:00",
+    "open": 87247.93,
+    "high": 87255.03,
+    "low": 86576.29,
+    "close": 86615.09,
+    "volume": 0.0,
+    "interval": "1h"
+  }
+]

@@ -1,0 +1,1212 @@
+[
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 1.9954,
+    "high": 1.9968,
+    "low": 1.9943,
+    "close": 1.9968,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T01:00:00",
+    "open": 1.9967,
+    "high": 1.9983,
+    "low": 1.996,
+    "close": 1.998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T02:00:00",
+    "open": 1.998,
+    "high": 2.0027001,
+    "low": 1.9978,
+    "close": 1.998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 1.9981,
+    "high": 1.9994,
+    "low": 1.9972,
+    "close": 1.9978,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T04:00:00",
+    "open": 1.9979,
+    "high": 1.9995,
+    "low": 1.9976,
+    "close": 1.9991,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T05:00:00",
+    "open": 1.999,
+    "high": 1.9991,
+    "low": 1.9971,
+    "close": 1.9975,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T06:00:00",
+    "open": 1.9975,
+    "high": 1.998,
+    "low": 1.9969,
+    "close": 1.9976,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 1.9977,
+    "high": 1.9978,
+    "low": 1.9968,
+    "close": 1.9976,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T08:00:00",
+    "open": 1.9977,
+    "high": 1.9977,
+    "low": 1.9962,
+    "close": 1.9963,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T09:00:00",
+    "open": 1.9965,
+    "high": 1.9981,
+    "low": 1.9953,
+    "close": 1.9954,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T10:00:00",
+    "open": 1.9954,
+    "high": 1.9961,
+    "low": 1.9949,
+    "close": 1.9951,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 1.9952,
+    "high": 1.9985,
+    "low": 1.995,
+    "close": 1.9985,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T12:00:00",
+    "open": 1.9983,
+    "high": 2.00079989,
+    "low": 1.9982,
+    "close": 1.9983,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T13:00:00",
+    "open": 1.9982,
+    "high": 2.00099993,
+    "low": 1.9975,
+    "close": 1.999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T14:00:00",
+    "open": 1.999,
+    "high": 1.9998,
+    "low": 1.9982,
+    "close": 1.9995,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 1.9994,
+    "high": 1.9998,
+    "low": 1.9978,
+    "close": 1.998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T16:00:00",
+    "open": 1.998,
+    "high": 1.9994,
+    "low": 1.9975,
+    "close": 1.9987,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T17:00:00",
+    "open": 1.9987,
+    "high": 1.9993,
+    "low": 1.9972,
+    "close": 1.9982,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T18:00:00",
+    "open": 1.9981,
+    "high": 1.9995,
+    "low": 1.9965,
+    "close": 1.9992,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 1.9991,
+    "high": 2.0,
+    "low": 1.9979,
+    "close": 1.9986,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T20:00:00",
+    "open": 1.9985,
+    "high": 2.0011001,
+    "low": 1.9985,
+    "close": 2.00099993,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T21:00:00",
+    "open": 2.00090003,
+    "high": 2.0016,
+    "low": 1.9997,
+    "close": 2.0016,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T22:00:00",
+    "open": 2.0016,
+    "high": 2.0035,
+    "low": 2.0016,
+    "close": 2.0033,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 2.0034001,
+    "high": 2.0051999,
+    "low": 2.0034001,
+    "close": 2.0048001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 2.0046999,
+    "high": 2.0072999,
+    "low": 2.0044,
+    "close": 2.0069001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T01:00:00",
+    "open": 2.0069001,
+    "high": 2.0095,
+    "low": 2.0067999,
+    "close": 2.0084,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T02:00:00",
+    "open": 2.0084,
+    "high": 2.0105,
+    "low": 2.0067999,
+    "close": 2.0099001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T03:00:00",
+    "open": 2.0098,
+    "high": 2.0098,
+    "low": 2.0076001,
+    "close": 2.0079999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T04:00:00",
+    "open": 2.0079999,
+    "high": 2.0092001,
+    "low": 2.0071001,
+    "close": 2.0083001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T05:00:00",
+    "open": 2.0084,
+    "high": 2.0111,
+    "low": 2.0083001,
+    "close": 2.0107,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T06:00:00",
+    "open": 2.0106,
+    "high": 2.0111,
+    "low": 2.0097001,
+    "close": 2.0107,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T07:00:00",
+    "open": 2.0107,
+    "high": 2.0124,
+    "low": 2.0107,
+    "close": 2.0117,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T08:00:00",
+    "open": 2.0118,
+    "high": 2.0124,
+    "low": 2.0104,
+    "close": 2.0107,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T09:00:00",
+    "open": 2.0104,
+    "high": 2.0118,
+    "low": 2.0079,
+    "close": 2.01,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T10:00:00",
+    "open": 2.0099001,
+    "high": 2.0102,
+    "low": 2.0086999,
+    "close": 2.0099001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T11:00:00",
+    "open": 2.0099001,
+    "high": 2.0109,
+    "low": 2.0093999,
+    "close": 2.0102,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T12:00:00",
+    "open": 2.0103,
+    "high": 2.0107,
+    "low": 2.0077,
+    "close": 2.0081,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T13:00:00",
+    "open": 2.0081,
+    "high": 2.0095999,
+    "low": 2.0072,
+    "close": 2.0091,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T14:00:00",
+    "open": 2.0090001,
+    "high": 2.0117,
+    "low": 2.0086,
+    "close": 2.0113,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T15:00:00",
+    "open": 2.0113,
+    "high": 2.0129,
+    "low": 2.011,
+    "close": 2.0125,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T16:00:00",
+    "open": 2.0125,
+    "high": 2.013,
+    "low": 2.0111,
+    "close": 2.0114,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T17:00:00",
+    "open": 2.0113,
+    "high": 2.0117,
+    "low": 2.0107,
+    "close": 2.0111,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T18:00:00",
+    "open": 2.0111,
+    "high": 2.012,
+    "low": 2.0095999,
+    "close": 2.0114,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T19:00:00",
+    "open": 2.0114,
+    "high": 2.0124,
+    "low": 2.0107,
+    "close": 2.0115,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T20:00:00",
+    "open": 2.0115,
+    "high": 2.0124,
+    "low": 2.0111,
+    "close": 2.0118,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T21:00:00",
+    "open": 2.0119,
+    "high": 2.0129,
+    "low": 2.0111,
+    "close": 2.0127,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T22:00:00",
+    "open": 2.0127,
+    "high": 2.0136,
+    "low": 2.0111,
+    "close": 2.0118,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-27T23:00:00",
+    "open": 2.0119,
+    "high": 2.0134,
+    "low": 2.011,
+    "close": 2.0122,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T00:00:00",
+    "open": 2.0122,
+    "high": 2.0162,
+    "low": 2.0118,
+    "close": 2.0157,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T01:00:00",
+    "open": 2.0157,
+    "high": 2.0197,
+    "low": 2.0151,
+    "close": 2.0193,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T02:00:00",
+    "open": 2.0194,
+    "high": 2.0208,
+    "low": 2.0183,
+    "close": 2.0187,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T03:00:00",
+    "open": 2.0188,
+    "high": 2.0197,
+    "low": 2.0179,
+    "close": 2.019,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T04:00:00",
+    "open": 2.0189,
+    "high": 2.0195,
+    "low": 2.0176,
+    "close": 2.0191,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T05:00:00",
+    "open": 2.0191,
+    "high": 2.0195,
+    "low": 2.0185,
+    "close": 2.0193,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T06:00:00",
+    "open": 2.0192,
+    "high": 2.0203,
+    "low": 2.0188,
+    "close": 2.0195,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T07:00:00",
+    "open": 2.0197,
+    "high": 2.0222,
+    "low": 2.0195,
+    "close": 2.0222,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T08:00:00",
+    "open": 2.0221,
+    "high": 2.0221,
+    "low": 2.0202,
+    "close": 2.0206,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T09:00:00",
+    "open": 2.0214,
+    "high": 2.023,
+    "low": 2.0201,
+    "close": 2.0226,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T10:00:00",
+    "open": 2.022,
+    "high": 2.0221,
+    "low": 2.0203,
+    "close": 2.0214,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T11:00:00",
+    "open": 2.0214,
+    "high": 2.0235,
+    "low": 2.0208,
+    "close": 2.0229,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T12:00:00",
+    "open": 2.0228,
+    "high": 2.0248,
+    "low": 2.0214,
+    "close": 2.0244,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T13:00:00",
+    "open": 2.0245,
+    "high": 2.0254,
+    "low": 2.0235,
+    "close": 2.0251,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T14:00:00",
+    "open": 2.0251,
+    "high": 2.0265,
+    "low": 2.0251,
+    "close": 2.026,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T15:00:00",
+    "open": 2.0259,
+    "high": 2.026,
+    "low": 2.025,
+    "close": 2.0253,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T16:00:00",
+    "open": 2.0254,
+    "high": 2.0255,
+    "low": 2.0243,
+    "close": 2.0254,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T17:00:00",
+    "open": 2.0254,
+    "high": 2.0255,
+    "low": 2.024,
+    "close": 2.0252,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T18:00:00",
+    "open": 2.0251,
+    "high": 2.0269,
+    "low": 2.0248,
+    "close": 2.0262,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T19:00:00",
+    "open": 2.026,
+    "high": 2.0277,
+    "low": 2.0259,
+    "close": 2.0269,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T20:00:00",
+    "open": 2.0269,
+    "high": 2.0279,
+    "low": 2.0265,
+    "close": 2.0267,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T21:00:00",
+    "open": 2.0267,
+    "high": 2.0278,
+    "low": 2.0259,
+    "close": 2.0266,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T22:00:00",
+    "open": 2.0266,
+    "high": 2.0272,
+    "low": 2.0248,
+    "close": 2.0255,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-02-28T23:00:00",
+    "open": 2.0256,
+    "high": 2.0273,
+    "low": 2.0248,
+    "close": 2.0271,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-01T00:00:00",
+    "open": 2.027,
+    "high": 2.0288,
+    "low": 2.0263,
+    "close": 2.0284,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-01T01:00:00",
+    "open": 2.0283,
+    "high": 2.0305,
+    "low": 2.0279,
+    "close": 2.0295,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-01T02:00:00",
+    "open": 2.0296,
+    "high": 2.0309,
+    "low": 2.0243,
+    "close": 2.025,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-01T03:00:00",
+    "open": 2.025,
+    "high": 2.0275,
+    "low": 2.0248,
+    "close": 2.0272,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-01T04:00:00",
+    "open": 2.0271,
+    "high": 2.0293,
+    "low": 2.0271,
+    "close": 2.0288,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-01T05:00:00",
+    "open": 2.0289,
+    "high": 2.0289,
+    "low": 2.0269,
+    "close": 2.0277,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-01T06:00:00",
+    "open": 2.0278,
+    "high": 2.0287,
+    "low": 2.0274,
+    "close": 2.0284,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-01T07:00:00",
+    "open": 2.0283,
+    "high": 2.0285,
+    "low": 2.0268,
+    "close": 2.0274,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-01T08:00:00",
+    "open": 2.0274,
+    "high": 2.0278,
+    "low": 2.0256,
+    "close": 2.0262,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T09:00:00",
+    "open": 2.0245,
+    "high": 2.0281,
+    "low": 2.0238,
+    "close": 2.0279,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T10:00:00",
+    "open": 2.0277,
+    "high": 2.0277,
+    "low": 2.0253,
+    "close": 2.0261,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T11:00:00",
+    "open": 2.026,
+    "high": 2.0271,
+    "low": 2.0254,
+    "close": 2.0265,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T12:00:00",
+    "open": 2.0265,
+    "high": 2.0265,
+    "low": 2.0242,
+    "close": 2.0248,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T13:00:00",
+    "open": 2.0248,
+    "high": 2.0273,
+    "low": 2.0241,
+    "close": 2.0268,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T14:00:00",
+    "open": 2.0268,
+    "high": 2.0287,
+    "low": 2.0264,
+    "close": 2.0268,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T15:00:00",
+    "open": 2.0269,
+    "high": 2.0269,
+    "low": 2.0256,
+    "close": 2.0264,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T16:00:00",
+    "open": 2.0265,
+    "high": 2.0278,
+    "low": 2.0262,
+    "close": 2.0275,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T17:00:00",
+    "open": 2.0276,
+    "high": 2.0294,
+    "low": 2.0267,
+    "close": 2.0268,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T18:00:00",
+    "open": 2.0267,
+    "high": 2.027,
+    "low": 2.0251,
+    "close": 2.0268,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T19:00:00",
+    "open": 2.0269,
+    "high": 2.0275,
+    "low": 2.0246,
+    "close": 2.025,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T20:00:00",
+    "open": 2.0249,
+    "high": 2.029,
+    "low": 2.0244,
+    "close": 2.029,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T21:00:00",
+    "open": 2.0292,
+    "high": 2.0326,
+    "low": 2.029,
+    "close": 2.0324,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T22:00:00",
+    "open": 2.0325,
+    "high": 2.0349,
+    "low": 2.0315,
+    "close": 2.0346,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-03T23:00:00",
+    "open": 2.0347,
+    "high": 2.0378,
+    "low": 2.0338,
+    "close": 2.0374,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T00:00:00",
+    "open": 2.0374,
+    "high": 2.0374,
+    "low": 2.034,
+    "close": 2.0342,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T01:00:00",
+    "open": 2.0343,
+    "high": 2.0343,
+    "low": 2.0315,
+    "close": 2.0329,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T02:00:00",
+    "open": 2.0336,
+    "high": 2.0351,
+    "low": 2.0322,
+    "close": 2.0348,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T03:00:00",
+    "open": 2.0348,
+    "high": 2.0363,
+    "low": 2.0338,
+    "close": 2.0343,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T04:00:00",
+    "open": 2.0344,
+    "high": 2.0359,
+    "low": 2.034,
+    "close": 2.0355,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T05:00:00",
+    "open": 2.0354,
+    "high": 2.0384,
+    "low": 2.0354,
+    "close": 2.0376,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T06:00:00",
+    "open": 2.0377,
+    "high": 2.0397,
+    "low": 2.037,
+    "close": 2.0396,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T07:00:00",
+    "open": 2.0396,
+    "high": 2.0445,
+    "low": 2.0395,
+    "close": 2.0412,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T08:00:00",
+    "open": 2.0412,
+    "high": 2.0412,
+    "low": 2.0401,
+    "close": 2.0405,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T09:00:00",
+    "open": 2.0416,
+    "high": 2.0426,
+    "low": 2.0401,
+    "close": 2.0422,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T10:00:00",
+    "open": 2.0422,
+    "high": 2.0441,
+    "low": 2.0415,
+    "close": 2.0435,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T11:00:00",
+    "open": 2.0435,
+    "high": 2.0449,
+    "low": 2.0424,
+    "close": 2.043,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T12:00:00",
+    "open": 2.043,
+    "high": 2.0454,
+    "low": 2.0428,
+    "close": 2.0447,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T13:00:00",
+    "open": 2.0448,
+    "high": 2.0473,
+    "low": 2.0438,
+    "close": 2.0462,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T14:00:00",
+    "open": 2.0462,
+    "high": 2.0473,
+    "low": 2.0442,
+    "close": 2.0464,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T15:00:00",
+    "open": 2.0464,
+    "high": 2.0491,
+    "low": 2.0463,
+    "close": 2.0491,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T16:00:00",
+    "open": 2.0492,
+    "high": 2.0509,
+    "low": 2.0472,
+    "close": 2.0472,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T17:00:00",
+    "open": 2.0471,
+    "high": 2.0473,
+    "low": 2.0445,
+    "close": 2.0447,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T18:00:00",
+    "open": 2.0447,
+    "high": 2.0472,
+    "low": 2.0444,
+    "close": 2.0471,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T19:00:00",
+    "open": 2.047,
+    "high": 2.0503,
+    "low": 2.0465,
+    "close": 2.0483,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T20:00:00",
+    "open": 2.0481,
+    "high": 2.0481,
+    "low": 2.0435,
+    "close": 2.0452,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T21:00:00",
+    "open": 2.0453,
+    "high": 2.046,
+    "low": 2.0428,
+    "close": 2.0443,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T22:00:00",
+    "open": 2.0443,
+    "high": 2.0447,
+    "low": 2.0422,
+    "close": 2.0429,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-04T23:00:00",
+    "open": 2.0428,
+    "high": 2.0434,
+    "low": 2.0414,
+    "close": 2.0434,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "GBPAUD",
+    "timestamp": "2025-03-05T00:00:00",
+    "open": 2.0435,
+    "high": 2.0456,
+    "low": 2.0429,
+    "close": 2.0435,
+    "volume": 0.0,
+    "interval": "1h"
+  }
+]

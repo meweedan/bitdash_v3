@@ -2,7 +2,42 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import dynamic from 'next/dynamic';
-import { useColorMode } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Select,
+  Button,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  useColorMode,
+  Text,
+  Spinner,
+  Alert,
+  AlertIcon,
+  Grid,
+  Badge,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  Input,
+  useBreakpointValue,
+  Image,
+  HStack,
+  VStack,
+  Divider,
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  Tooltip
+} from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 import {
   LineChart as LIcon,
   CandlestickChart as CIcon,
@@ -159,11 +194,14 @@ function create404() {
   return arr;
 }
 
-export default function TradingViewChart({ selectedCoin, coins, onPairSelect }) {
+export default function ChakraAdvancedChart({ selectedCoin, coins, onPairSelect }) {
   const cryptoPairs = ['BTC','ETH','BNB','XRP','ADA','DOGE','SOL','DOT','LINK','UNI','SHIB','AVAX','LTC'];
   const forexPairs = ['EURUSD','USDJPY','GBPUSD','AUDUSD','USDCAD','USDCHF','NZDUSD','XAU','XAG'];
   const stockPairs = ['AAPL','MSFT','GOOGL','AMZN','META','TSLA','NVDA','INTC','JNJ','JPM','NFLX','PYPL'];
   const intervals = ['5m','15m','1h','4h','1d'];
+  const timeframes = ['1D', '1W', '1M', '3M', '6M', '1Y', 'All'];
+  const tfMap = { '1D': 1, '1W': 7, '1M': 30, '3M': 90, '6M': 180, '1Y': 365, 'All': Infinity };
+  
   const [win, setWin] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 768,
     height: typeof window !== 'undefined' ? window.innerHeight : 600
@@ -173,7 +211,7 @@ export default function TradingViewChart({ selectedCoin, coins, onPairSelect }) 
   const dark = colorMode === 'dark';
   
   // Use the passed-in selectedCoin (if any) to initialize the pair; otherwise default to 'BTC'
-  const [selectedPair, setSelectedPair] = useState(selectedCoin ? selectedCoin.symbol.toUpperCase() : 'BTC');
+  const [selectedPair, setSelectedPair] = useState(selectedCoin ? selectedCoin.symbol.toUpperCase() : 'USDT');
   const [selectedInterval, setSelectedInterval] = useState('1d');
   const [chartData, setChartData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -185,12 +223,15 @@ export default function TradingViewChart({ selectedCoin, coins, onPairSelect }) 
   const [idx, setIdx] = useState(0);
   const [hasVol, setHasVol] = useState(true);
   const [noData, setNoData] = useState(false);
-  const tfMap = { '1D': 1, '1W': 7, '1M': 30, '3M': 90, '6M': 180, '1Y': 365, 'All': Infinity };
 
   // For mobile search modal
   const [searchTerm, setSearchTerm] = useState('');
   const [showSearch, setShowSearch] = useState(false);
-
+  
+  const isMobile = useBreakpointValue({ base: true, md: false });
+  const chartH = isMobile ? Math.min(350, win.height * 0.5) : 600;
+  const volH = isMobile ? 70 : 120;
+  
   // Update selectedPair if selectedCoin prop changes
   useEffect(() => {
     if(selectedCoin) {
@@ -312,31 +353,27 @@ export default function TradingViewChart({ selectedCoin, coins, onPairSelect }) 
     return n.toFixed(2);
   }
 
-  const mb = win.width < 768;
-  const chartH = mb ? Math.min(350, win.height * 0.5) : 600;
-  const volH = mb ? 70 : 120;
-
   const chartOptions = useMemo(() => ({
     chart: {
       type: line ? 'line' : 'candlestick',
       height: chartH,
-      background: dark ? '#000' : '#fff',
+      background: dark ? '#1A202C' : '#fff',
       toolbar: { show: false },
       zoom: { enabled: false },
       animations: { enabled: false }
     },
     plotOptions: {
-      candlestick: { colors: { upward: '#26a69a', downward: '#ef5350' }, wick: { useFillColor: true } },
+      candlestick: { colors: { upward: '#48BB78', downward: '#F56565' }, wick: { useFillColor: true } },
       bar: { columnWidth: '80%' }
     },
     xaxis: {
       type: 'datetime',
       labels: {
-        style: { color: dark ? 'white' : 'black', fontSize: '10px' },
+        style: { colors: dark ? 'white' : 'black', fontSize: '10px' },
         formatter: v => {
           const dt = new Date(v);
           if (selectedInterval === '1d') {
-            return mb ? dt.getDate() : dt.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+            return isMobile ? dt.getDate() : dt.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
           }
           return dt.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
         }
@@ -348,7 +385,7 @@ export default function TradingViewChart({ selectedCoin, coins, onPairSelect }) 
     yaxis: [
       {
         labels: {
-          style: { color: dark ? 'white' : 'black', fontSize: '10px' },
+          style: { colors: dark ? 'white' : 'black', fontSize: '10px' },
           formatter: val => fp(val)
         },
         axisBorder: { show: false },
@@ -358,7 +395,7 @@ export default function TradingViewChart({ selectedCoin, coins, onPairSelect }) 
         show: vol && hasVol,
         opposite: true,
         labels: {
-          style: { color: dark ? 'white' : 'black', fontSize: '10px' },
+          style: { colors: dark ? 'white' : 'black', fontSize: '10px' },
           formatter: val => val >= 1e6 ? (val / 1e6).toFixed(1)+'M' : (val / 1e3).toFixed(0)+'K'
         }
       }
@@ -379,7 +416,7 @@ export default function TradingViewChart({ selectedCoin, coins, onPairSelect }) 
           : d.volume >= 1e3
           ? (d.volume / 1e3).toFixed(0)+'K'
           : d.volume.toFixed(0);
-        return `<div style="background:${dark?'rgba(32,34,42,0.95)':'rgba(255,255,255,0.95)'};border:1px solid ${
+        return `<div style="background:${dark?'#2D3748':'#fff'};border:1px solid ${
           dark?'rgba(255,255,255,0.1)':'rgba(0,0,0,0.1)'
         };color:${dark?'white':'black'};padding:8px;border-radius:4px;box-shadow:0 2px 10px rgba(0,0,0,0.3);font-family:monospace;font-size:12px;">
           <div style="font-weight:bold;margin-bottom:4px;">${new Date(d.timestamp).toLocaleString()}</div>
@@ -393,17 +430,17 @@ export default function TradingViewChart({ selectedCoin, coins, onPairSelect }) 
       xaxis: [
         {
           x: filteredData[Math.floor(filteredData.length/2)]?.timestamp,
-          borderColor: '#FFC107',
+          borderColor: '#ECC94B',
           label: {
             borderColor: 'transparent',
-            style: { color:'#FFC107', background:'rgba(255,193,7,0.1)', fontSize:'20px', fontWeight:'bold' },
+            style: { color:'#ECC94B', background:'rgba(236,201,75,0.1)', fontSize:'20px', fontWeight:'bold' },
             text:'404 - No Data',
             position:'middle'
           }
         }
       ]
     } : undefined
-  }), [line, chartH, dark, selectedInterval, mb, vol, hasVol, noData, filteredData]);
+  }), [line, chartH, dark, selectedInterval, isMobile, vol, hasVol, noData, filteredData]);
 
   const mainSeries = useMemo(() => {
     let d = filteredData;
@@ -415,7 +452,7 @@ export default function TradingViewChart({ selectedCoin, coins, onPairSelect }) 
       name:'Price',
       type: line ? 'line' : 'candlestick',
       data: d.map(x=>({ x:new Date(x.timestamp), y: line ? x.close :[x.open,x.high,x.low,x.close] })),
-      color: line ? '#2962FF' : undefined
+      color: line ? '#3182CE' : undefined
     };
     if (vol && hasVol && !noData) {
       const volum = {
@@ -424,7 +461,7 @@ export default function TradingViewChart({ selectedCoin, coins, onPairSelect }) 
         data:d.map(x=>({
           x:new Date(x.timestamp),
           y:x.volume,
-          fillColor: x.close>=x.open?'rgba(38,166,154,0.5)':'rgba(239,83,80,0.5)'
+          fillColor: x.close>=x.open?'rgba(72,187,120,0.5)':'rgba(245,101,101,0.5)'
         }))
       };
       return [price, volum];
@@ -450,365 +487,501 @@ export default function TradingViewChart({ selectedCoin, coins, onPairSelect }) 
     setVol(!vol);
   };
 
-  const btnStyle = (active=false) => ({
-    backgroundColor: active ? '#2962FF' : '#8b7966',
-    color: active ? 'white' : dark ? 'white' : 'black',
-    border:'none',
-    borderRadius:'4px',
-    padding: mb ? '10px 0' : '6px 12px',
-    fontSize: mb ? '12px' : '14px',
-    cursor:'pointer',
-    margin:'0 2px',
-    display:'flex',
-    alignItems:'center',
-    justifyContent:'center',
-    flexGrow: mb ? 1 : 0,
-    minWidth: mb ? '12px' : 'auto',
-    minHeight: mb ? '20px' : 'auto',
-    touchAction:'manipulation'
-  });
-
   return (
-    <div style={{
-      backgroundColor: dark ? '#000' : '#fff',
-      color: dark ? 'white' : 'black',
-      padding: mb ? '8px' : '10px',
-      borderRadius:'8px',
-      width:'100%',
-      maxWidth:'100vw',
-      margin:'0 auto'
-    }}>
+    <Box 
+      bg={dark ? 'gray.800' : 'white'} 
+      color={dark ? 'white' : 'gray.800'}
+      borderRadius="lg" 
+      p={isMobile ? 3 : 4}
+      width="100%" 
+      maxW="100vw" 
+      mx="auto"
+      boxShadow="md"
+    >
       {/* Mobile Header: Unified Pricing and Search Markets */}
-      {mb ? (
-        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'12px' }}>
-          <div style={{ display:'flex', alignItems:'center', gap:'8px' }}>
+      {isMobile ? (
+        <Flex justifyContent="space-between" alignItems="center" mb={3}>
+          <Flex alignItems="center" gap={2}>
             {selectedCoin && selectedCoin.image && (
-              <img src={selectedCoin.image} alt={selectedCoin.name} style={{ width:'24px', height:'24px' }} />
+              <Image src={selectedCoin.image} alt={selectedCoin.name} boxSize="24px" />
             )}
-            <span style={{ fontWeight:'bold', fontSize:'16px' }}>
+            <Text fontWeight="bold" fontSize="md">
               {selectedCoin ? selectedCoin.symbol.toUpperCase() : selectedPair}
-            </span>
+            </Text>
             {!loading && filteredData.length > 0 && !noData && (
               <>
-                <span style={{ fontSize:'16px' }}>{fp(stats.currentPrice)}</span>
-                <span style={{
-                  backgroundColor: stats.isPriceUp ? 'rgba(38,166,154,0.15)' : 'rgba(239,83,80,0.15)',
-                  color: stats.isPriceUp ? '#26a69a' : '#ef5350',
-                  padding:'2px 8px',
-                  borderRadius:'4px',
-                  fontWeight:'bold'
-                }}>
+                <Text fontSize="md">{fp(stats.currentPrice)}</Text>
+                <Badge 
+                  colorScheme={stats.isPriceUp ? 'green' : 'red'} 
+                  variant="subtle" 
+                  px={2} 
+                  py={1}
+                  fontWeight="bold"
+                >
                   {stats.isPriceUp ? '+' : ''}{stats.priceChangePercent.toFixed(2)}%
-                </span>
+                </Badge>
               </>
             )}
-          </div>
-          <button onClick={() => setShowSearch(true)} style={{ padding:'8px 12px', borderRadius:'4px', backgroundColor:'#2962FF', color:'white', fontSize:'14px' }}>
-            Search Markets
-          </button>
-        </div>
+          </Flex>
+          <Button color="brand.bitdash.400" size="sm" variant="bitdash-outline" onClick={() => setShowSearch(true)}>
+            Search 
+          </Button>
+        </Flex>
       ) : (
-        // Desktop Header: Pair and Interval selectors with pricing info
-        <div style={{ display:'flex', flexDirection:'row', gap:'8px', marginBottom:'12px' }}>
-          <div style={{ display:'flex', width:'100%', gap:'8px' }}>
-            <select
+        // Desktop Header: Pair selection with integrated dropdown for timeframe/interval
+        <Flex mb={4} justify="space-between" align="center">
+          <Flex gap={4} align="center">
+            <Select
               value={selectedPair}
-              onChange={e => { 
-                setSelectedPair(e.target.value); 
-                if(onPairSelect && coins) { 
+              onChange={(e) => {
+                setSelectedPair(e.target.value);
+                if(onPairSelect && coins) {
                   const coin = coins.find(c => c.symbol.toUpperCase() === e.target.value);
                   if(coin) onPairSelect(coin);
                 }
               }}
-              style={{
-                backgroundColor:'#8b7966',
-                color: dark ? 'white' : 'black',
-                border:'none',
-                borderRadius:'4px',
-                padding:'10px',
-                fontSize:'14px',
-                flexGrow:1,
-                maxWidth:'130px',
-                appearance:'none'
-              }}
+              width="140px"
+              variant="filled"
+              bg="gray.100"
+              _dark={{ bg: "gray.700" }}
+              size="md"
             >
-              {getPairs().map(x=>(
+              {getPairs().map(x => (
                 <option key={x} value={x}>{x}</option>
               ))}
-            </select>
-            <select
-              value={selectedInterval}
-              onChange={e => setSelectedInterval(e.target.value)}
-              style={{
-                backgroundColor:'#8b7966',
-                color: dark ? 'white' : 'black',
-                border:'none',
-                borderRadius:'4px',
-                padding:'10px',
-                fontSize:'14px',
-                flexGrow:1,
-                maxWidth:'100px',
-                appearance:'none'
-              }}
-            >
-              {intervals.map(x=>(
-                <option key={x} value={x}>{x}</option>
-              ))}
-            </select>
-          </div>
-          {!loading && filteredData.length>0 && !noData && (
-            <div style={{ display:'flex', alignItems:'center', width:'auto' }}>
-              <div style={{ fontSize:'16px', fontWeight:'bold', marginRight:'8px' }}>
+            </Select>
+            
+            {/* Combined Settings Menu */}
+            <Menu closeOnSelect={false}>
+              <MenuButton 
+                as={Button} 
+                rightIcon={<ChevronDownIcon />}
+                variant="filled"
+                bg="gray.100"
+                _dark={{ bg: "gray.700" }}
+                _hover={{ bg: "gray.200" }}
+                _dark_hover={{ bg: "gray.600" }}
+              >
+                {timeframe} | {selectedInterval}
+              </MenuButton>
+              <MenuList>
+                <Text px={3} fontWeight="bold" mb={2}>Timeframe</Text>
+                <Grid templateColumns="repeat(4, 1fr)" gap={1} px={3} mb={3}>
+                  {timeframes.map(tf => (
+                    <Button 
+                      key={tf}
+                      size="sm" 
+                      colorScheme={timeframe === tf ? "blue" : "gray"}
+                      onClick={() => setTimeframe(tf)}
+                    >
+                      {tf}
+                    </Button>
+                  ))}
+                </Grid>
+                <Divider mb={2} />
+                <Text px={3} fontWeight="bold" mb={2}>Interval</Text>
+                <Grid templateColumns="repeat(4, 1fr)" gap={1} px={3}>
+                  {intervals.map(int => (
+                    <Button 
+                      key={int}
+                      size="sm" 
+                      colorScheme={selectedInterval === int ? "blue" : "gray"}
+                      onClick={() => setSelectedInterval(int)}
+                    >
+                      {int}
+                    </Button>
+                  ))}
+                </Grid>
+              </MenuList>
+            </Menu>
+            
+            {/* Chart Type & Volume Toggle */}
+            <HStack spacing={2}>
+              <Tooltip label={line ? "Switch to Candlestick" : "Switch to Line"}>
+                <IconButton
+                  icon={line ? <CIcon size={18} /> : <LIcon size={18} />}
+                  size="sm"
+                  onClick={toggleType}
+                  isDisabled={noData}
+                  aria-label={line ? "Switch to Candlestick" : "Switch to Line"}
+                />
+              </Tooltip>
+              <Tooltip label={vol ? "Hide Volume" : "Show Volume"}>
+                <Button
+                  size="sm"
+                  onClick={toggleVolume}
+                  isDisabled={!hasVol || noData}
+                  variant={vol ? "solid" : "outline"}
+                  colorScheme={vol ? "blue" : "gray"}
+                >
+                  Vol {vol ? "✓" : ""}
+                </Button>
+              </Tooltip>
+            </HStack>
+            
+            {/* Navigation Controls */}
+            <HStack spacing={2}>
+              <IconButton
+                icon={<ChLeft size={18} />}
+                size="sm"
+                onClick={() => scroll('left')}
+                isDisabled={noData}
+                aria-label="Pan left"
+              />
+              <IconButton
+                icon={<ChRight size={18} />}
+                size="sm"
+                onClick={() => scroll('right')}
+                isDisabled={noData}
+                aria-label="Pan right"
+              />
+              <IconButton
+                icon={<ZOut size={18} />}
+                size="sm"
+                onClick={zoomOut}
+                isDisabled={noData}
+                aria-label="Zoom out"
+              />
+              <IconButton
+                icon={<ZIn size={18} />}
+                size="sm"
+                onClick={zoomIn}
+                isDisabled={noData}
+                aria-label="Zoom in"
+              />
+            </HStack>
+          </Flex>
+          
+          {/* Price Display */}
+          {!loading && filteredData.length > 0 && !noData && (
+            <HStack spacing={3}>
+              <Text fontSize="xl" fontWeight="bold">
                 {fp(stats.currentPrice)}
-              </div>
-              <div style={{
-                backgroundColor: stats.isPriceUp ? 'rgba(38,166,154,0.15)' : 'rgba(239,83,80,0.15)',
-                color: stats.isPriceUp ? '#26a69a' : '#ef5350',
-                padding:'2px 8px',
-                borderRadius:'4px',
-                fontSize:'12px',
-                fontWeight:'bold'
-              }}>
-                {stats.isPriceUp ? '+' : ''}{stats.priceChangePercent.toFixed(2)}%
-              </div>
-            </div>
+              </Text>
+              <Badge 
+                colorScheme={stats.isPriceUp ? "green" : "red"} 
+                variant="subtle" 
+                px={2} 
+                py={1} 
+                fontSize="md"
+              >
+                {stats.isPriceUp ? "+" : ""}{stats.priceChangePercent.toFixed(2)}%
+              </Badge>
+            </HStack>
           )}
-        </div>
+        </Flex>
       )}
 
       {/* Search Markets Modal for Mobile */}
-      {showSearch && (
-        <div style={{
-          position:'fixed',
-          top:0,
-          left:0,
-          right:0,
-          bottom:0,
-          backgroundColor:'rgba(0,0,0,0.5)',
-          display:'flex',
-          justifyContent:'center',
-          alignItems:'center',
-          zIndex:1000
-        }} onClick={() => setShowSearch(false)}>
-          <div style={{
-            backgroundColor: dark ? '#000' : '#fff',
-            padding:'16px',
-            borderRadius:'8px',
-            width:'80%',
-            maxHeight:'80%',
-            overflowY:'auto'
-          }} onClick={e => e.stopPropagation()}>
-            <div style={{ marginBottom:'8px' }}>
-              <input
-                type="text"
-                placeholder="Search markets"
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-                style={{
-                  width:'100%',
-                  padding:'8px',
-                  fontSize:'14px',
-                  borderRadius:'4px',
-                  border:'1px solid #ccc'
-                }}
-              />
-            </div>
-            <div>
-              {coins ? coins
-                .filter(coin => 
-                  coin.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                  coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
-                )
-                .map(coin => (
-                  <div
-                    key={coin.id}
-                    style={{ padding:'8px', borderBottom:'1px solid #eee', cursor:'pointer' }}
-                    onClick={() => {
-                      setShowSearch(false);
-                      setSearchTerm('');
-                      setSelectedPair(coin.symbol.toUpperCase());
-                      if(onPairSelect) onPairSelect(coin);
-                    }}
-                  >
-                    <div style={{ display:'flex', alignItems:'center', gap:'8px' }}>
-                      <img src={coin.image} alt={coin.name} style={{ width:'24px', height:'24px' }} />
-                      <span style={{ fontWeight:'bold' }}>{coin.symbol.toUpperCase()}</span>
-                      <span>{coin.name}</span>
-                    </div>
-                  </div>
-              )) : <div>No markets available</div>}
-            </div>
-          </div>
-        </div>
-      )}
+      <Modal isOpen={showSearch} onClose={() => setShowSearch(false)} isCentered>
+        <ModalOverlay />
+        <ModalContent mx={4}>
+          <ModalHeader>Search Markets</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <Input
+              placeholder="Search by name or symbol"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              mb={4}
+            />
+            <Box maxH="60vh" overflowY="auto">
+              {/* For Crypto Domain with coin objects */}
+              {isCryptoDomain && coins ? 
+                coins
+                  .filter(coin => 
+                    coin.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                    coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
+                  )
+                  .map(coin => (
+                    <Flex
+                      key={coin.id}
+                      p={2}
+                      _hover={{ bg: "gray.50", _dark: { bg: "gray.700" } }}
+                      cursor="pointer"
+                      alignItems="center"
+                      borderBottom="1px solid"
+                      borderColor="gray.100"
+                      _dark={{ borderColor: "gray.700" }}
+                      onClick={() => {
+                        setShowSearch(false);
+                        setSearchTerm('');
+                        setSelectedPair(coin.symbol.toUpperCase());
+                        if(onPairSelect) onPairSelect(coin);
+                      }}
+                    >
+                      {coin.image && (
+                        <Image src={coin.image} boxSize="24px" mr={3} alt={coin.name} />
+                      )}
+                      <Text fontWeight="bold" mr={2}>{coin.symbol.toUpperCase()}</Text>
+                      <Text color="gray.500">{coin.name}</Text>
+                    </Flex>
+                  )) : 
+                  
+                /* For Forex and Stock Domains - direct pairs */
+                (isForexDomain || isStockDomain) ?
+                  getPairs()
+                    .filter(pair => pair.toLowerCase().includes(searchTerm.toLowerCase()))
+                    .map(pair => (
+                      <Flex
+                        key={pair}
+                        p={2}
+                        _hover={{ bg: "gray.50", _dark: { bg: "gray.700" } }}
+                        cursor="pointer"
+                        alignItems="center"
+                        borderBottom="1px solid"
+                        borderColor="gray.100"
+                        _dark={{ borderColor: "gray.700" }}
+                        onClick={() => {
+                          setShowSearch(false);
+                          setSearchTerm('');
+                          setSelectedPair(pair);
+                        }}
+                      >
+                        <Text fontWeight="bold">{pair}</Text>
+                      </Flex>
+                    )) :
+                  <Text>No markets available</Text>
+              }
+            </Box>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
 
-      <div style={{ marginBottom:'12px', display:'flex', flexDirection:'column', gap:'8px' }}>
-        <div style={{
-          display:'grid',
-          gridTemplateColumns:`repeat(${mb ? 4 : 7},1fr)`,
-          gap:'4px',
-          width:'100%'
-        }}>
-          {Object.keys(tfMap).map(x=>(
-            <button key={x} onClick={()=>setTimeframe(x)} style={btnStyle(timeframe===x)}>{x}</button>
-          ))}
-        </div>
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(6,1fr)', gap:'4px' }}>
-          <button onClick={toggleType} style={btnStyle()} title={line ? 'Candlestick' : 'Line'} disabled={noData}>
-            {line ? <CIcon size={16}/> : <LIcon size={16}/>}
-          </button>
-          <button onClick={toggleVolume} style={btnStyle(vol)} title={vol ? 'Hide volume' : 'Show volume'} disabled={!hasVol || noData}>
-            {vol ? 'Vol ✓' : 'Vol'}
-          </button>
-          <button onClick={()=>scroll('left')} style={btnStyle()} title="Pan left" disabled={noData}>
-            <ChLeft size={16}/>
-          </button>
-          <button onClick={()=>scroll('right')} style={btnStyle()} title="Pan right" disabled={noData}>
-            <ChRight size={16}/>
-          </button>
-          <button onClick={zoomOut} style={btnStyle()} title="Zoom out" disabled={noData}>
-            <ZOut size={16}/>
-          </button>
-          <button onClick={zoomIn} style={btnStyle()} title="Zoom in" disabled={noData}>
-            <ZIn size={16}/>
-          </button>
-        </div>
-      </div>
-      {loading && (
-        <div style={{ display:'flex', justifyContent:'center', alignItems:'center', height:chartH+'px' }}>
-          <div style={{ textAlign:'center' }}>
-            <div style={{
-              border:'4px solid rgba(255,255,255,0.1)',
-              borderTop:'4px solid #2962FF',
-              borderRadius:'50%',
-              width:'30px',
-              height:'30px',
-              animation:'spin 1s linear infinite',
-              margin:'0 auto 16px auto'
-            }}/>
-            <div>Loading chart...</div>
-            <style>{`@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}`}</style>
-          </div>
-        </div>
-      )}
-      {!loading && err && !noData && (
-        <div style={{
-          backgroundColor:'rgba(239,83,80,0.1)',
-          color:'#ef5350',
-          padding:'12px',
-          borderRadius:'4px',
-          marginBottom:'16px',
-          fontSize:'13px'
-        }}>
-          {err}
-        </div>
-      )}
-      {!loading && (
-        <div style={{ width:'100%', height:chartH+'px', position:'relative' }}>
-          <div style={{
-            width:'100%',
-            height: vol && hasVol && !noData ? (chartH - volH)+'px' : chartH+'px'
-          }}>
+      {/* Mobile Controls */}
+      {isMobile && (
+        <VStack spacing={2} mb={4}>
+          {/* Mobile Timeframe/Interval Menu */}
+          <Menu closeOnSelect={false}>
+            <MenuButton 
+              as={Button} 
+              rightIcon={<ChevronDownIcon />}
+              width="full"
+              variant="outline"
+            >
+              {timeframe} | {selectedInterval}
+            </MenuButton>
+            <MenuList>
+              <Text px={3} fontWeight="bold" mb={2}>Timeframe</Text>
+              <Grid templateColumns="repeat(4, 1fr)" gap={1} px={3} mb={3}>
+                {timeframes.map(tf => (
+                  <Button 
+                    key={tf}
+                    size="sm" 
+                    colorScheme={timeframe === tf ? "blue" : "gray"}
+                    onClick={() => setTimeframe(tf)}
+                  >
+                    {tf}
+                  </Button>
+                ))}
+              </Grid>
+              <Divider mb={2} />
+              <Text px={3} fontWeight="bold" mb={2}>Interval</Text>
+              <Grid templateColumns="repeat(3, 1fr)" gap={1} px={3}>
+                {intervals.map(int => (
+                  <Button 
+                    key={int}
+                    size="sm" 
+                    colorScheme={selectedInterval === int ? "blue" : "gray"}
+                    onClick={() => setSelectedInterval(int)}
+                  >
+                    {int}
+                  </Button>
+                ))}
+              </Grid>
+            </MenuList>
+          </Menu>
+          
+          {/* Chart Controls */}
+          <Grid templateColumns="repeat(6, 1fr)" gap={1} width="full">
+            <IconButton
+              icon={line ? <CIcon size={16} /> : <LIcon size={16} />}
+              onClick={toggleType}
+              isDisabled={noData}
+              aria-label={line ? "Switch to Candlestick" : "Switch to Line"}
+              size="sm"
+            />
+            <Button
+              size="sm"
+              onClick={toggleVolume}
+            isDisabled={!hasVol || noData}
+            variant={vol ? "solid" : "outline"}
+            colorScheme={vol ? "blue" : "gray"}
+          >
+            Vol
+          </Button>
+          <IconButton
+            icon={<ChLeft size={16} />}
+            onClick={() => scroll('left')}
+            isDisabled={noData}
+            aria-label="Pan left"
+            size="sm"
+          />
+          <IconButton
+            icon={<ChRight size={16} />}
+            onClick={() => scroll('right')}
+            isDisabled={noData}
+            aria-label="Pan right"
+            size="sm"
+          />
+          <IconButton
+            icon={<ZOut size={16} />}
+            onClick={zoomOut}
+            isDisabled={noData}
+            aria-label="Zoom out"
+            size="sm"
+          />
+          <IconButton
+            icon={<ZIn size={16} />}
+            onClick={zoomIn}
+            isDisabled={noData}
+            aria-label="Zoom in"
+            size="sm"
+          />
+        </Grid>
+      </VStack>
+    )}
+
+    {/* Loading State */}
+    {loading && (
+      <Flex justify="center" align="center" height={`${chartH}px`}>
+        <VStack spacing={4}>
+          <Spinner size="xl" color="blue.500" thickness="4px" />
+          <Text>Loading chart data...</Text>
+        </VStack>
+      </Flex>
+    )}
+    
+    {/* Error Display */}
+    {!loading && err && !noData && (
+      <Alert status="error" mb={4} borderRadius="md">
+        <AlertIcon />
+        {err}
+      </Alert>
+    )}
+
+    {/* Chart Display */}
+    {!loading && (
+      <Box position="relative" width="100%" height={`${chartH}px`}>
+        <Box 
+          width="100%" 
+          height={vol && hasVol && !noData ? `${chartH - volH}px` : `${chartH}px`}
+        >
+          <RChart
+            options={chartOptions}
+            series={mainSeries.length > 0 ? [mainSeries[0]] : []}
+            type={line ? 'line' : 'candlestick'}
+            height="100%"
+            width="100%"
+          />
+        </Box>
+        
+        {/* Volume Chart */}
+        {vol && hasVol && !noData && mainSeries.length > 1 && (
+          <Box position="absolute" bottom={0} width="100%" height={`${volH}px`}>
             <RChart
-              options={chartOptions}
-              series={mainSeries.length>0 ? [mainSeries[0]] : []}
-              type={line ? 'line' : 'candlestick'}
-              height="100%"
+              options={{
+                ...chartOptions,
+                chart: {...chartOptions.chart, height: volH, id: 'volume-chart'},
+                xaxis: {...chartOptions.xaxis, labels: {...chartOptions.xaxis.labels, show: false}},
+                yaxis: [{
+                  labels: {
+                    style: { colors: dark ? 'white' : 'black', fontSize: '1px' },
+                    formatter: v => v >= 1e6 ? (v/1e6).toFixed(1)+'M' : (v/1e3).toFixed(0)+'K',
+                    show: false
+                  },
+                  opposite: false
+                }],
+                tooltip: { enabled: false }
+              }}
+              series={[mainSeries[1]]}
+              type="bar"
+              height={volH}
               width="100%"
             />
-          </div>
-          {vol && hasVol && !noData && mainSeries.length>1 && (
-            <div style={{ width:'100%', height:volH+'px', position:'absolute', bottom:0 }}>
-              <RChart
-                options={{
-                  ...chartOptions,
-                  chart:{...chartOptions.chart, height:volH, id:'volume-chart'},
-                  xaxis:{...chartOptions.xaxis, labels:{...chartOptions.xaxis.labels, show:false}},
-                  yaxis:[{
-                    labels:{
-                      style:{ color: dark ? 'white' : 'black', fontSize:'1px' },
-                      formatter: v => v>=1e6 ? (v/1e6).toFixed(1)+'M' : (v/1e3).toFixed(0)+'K',
-                      show:false
-                    },
-                    opposite:false
-                  }],
-                  tooltip:{ enabled:false }
-                }}
-                series={[mainSeries[1]]}
-                type="bar"
-                height={volH}
-                width="100%"
-              />
-            </div>
-          )}
-          {!loading && noData && (
-            <div style={{
-              position:'absolute',
-              top:'50%',
-              left:'50%',
-              transform:'translate(-50%,-50%)',
-              textAlign:'center',
-              color:'#FFC107',
-              backgroundColor:'rgba(0,0,0,0.7)',
-              padding:'20px 40px',
-              borderRadius:'8px',
-              zIndex:10,
-              pointerEvents:'none'
-            }}>
-              <div style={{ fontSize:'40px', fontWeight:'bold', marginBottom:'8px' }}>404</div>
-              <div>No data available for {selectedPair} ({selectedInterval}) in timeframe {timeframe}</div>
-            </div>
-          )}
-        </div>
-      )}
-      {!loading && filteredData.length>0 && !noData && (
-        <div style={{
-          marginTop:'12px',
-          padding:'10px',
-          backgroundColor: dark ? 'rgba(42,46,57,0.5)' : 'rgba(240,240,240,0.7)',
-          borderRadius:'6px',
-          display:'grid',
-          gridTemplateColumns:'repeat(2,1fr)',
-          gap:'10px'
-        }}>
-          <div>
-            <div style={{ fontSize:'10px', color: dark ? 'rgba(180,185,190,0.7)' : 'rgba(60,60,60,0.7)' }}>Price</div>
-            <div style={{ fontWeight:'bold', fontSize:'14px' }}>{fp(stats.currentPrice)}</div>
-          </div>
-          <div>
-            <div style={{ fontSize:'10px', color: dark ? 'rgba(180,185,190,0.7)' : 'rgba(60,60,60,0.7)' }}>24h Change</div>
-            <div style={{
-              fontWeight:'bold',
-              fontSize:'14px',
-              color: stats.isPriceUp ? '#26a69a' : '#ef5350'
-            }}>
-              {stats.isPriceUp ? '+' : ''}
-              {stats.priceChangePercent.toFixed(2)}%
-            </div>
-          </div>
-          <div>
-            <div style={{ fontSize:'10px', color: dark ? 'rgba(180,185,190,0.7)' : 'rgba(60,60,60,0.7)' }}>24h High</div>
-            <div style={{ fontWeight:'bold', fontSize:'14px' }}>{fp(stats.high24h)}</div>
-          </div>
-          <div>
-            <div style={{ fontSize:'10px', color: dark ? 'rgba(180,185,190,0.7)' : 'rgba(60,60,60,0.7)' }}>24h Low</div>
-            <div style={{ fontWeight:'bold', fontSize:'14px' }}>{fp(stats.low24h)}</div>
-          </div>
-        </div>
-      )}
-      {!loading && !hasVol && !noData && (
-        <div style={{
-          marginTop:'12px',
-          backgroundColor:'rgba(255,193,7,0.1)',
-          color:'#FFC107',
-          padding:'8px 12px',
-          borderRadius:'4px',
-          fontSize:'12px',
-          textAlign:'center'
-        }}>
-          No volume data available for this pair/timeframe
-        </div>
-      )}
-    </div>
+          </Box>
+        )}
+        
+        {/* No Data Overlay */}
+        {!loading && noData && (
+          <Flex
+            position="absolute"
+            top="0"
+            left="0"
+            right="0"
+            bottom="0"
+            alignItems="center"
+            justifyContent="center"
+            bgColor="rgba(0,0,0,0.7)"
+            borderRadius="md"
+            zIndex={2}
+            pointerEvents="none"
+          >
+            <VStack spacing={2} px={8} py={6}>
+              <Text color="yellow.400" fontSize="3xl" fontWeight="bold">
+                404
+              </Text>
+              <Text color="yellow.400" textAlign="center">
+                No data available for {selectedPair} ({selectedInterval}) in timeframe {timeframe}
+              </Text>
+            </VStack>
+          </Flex>
+        )}
+      </Box>
+    )}
+    
+    {/* Statistics Cards */}
+    {!loading && filteredData.length > 0 && !noData && (
+      <Grid 
+        templateColumns={isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)"}
+        gap={4}
+        mt={4}
+        p={4}
+        bg={dark ? "gray.700" : "gray.50"}
+        borderRadius="md"
+      >
+        <Stat>
+          <StatLabel color={dark ? "gray.400" : "gray.500"}>Price</StatLabel>
+          <StatNumber fontWeight="bold" fontSize={isMobile ? "md" : "lg"}>
+            {fp(stats.currentPrice)}
+          </StatNumber>
+        </Stat>
+        
+        <Stat>
+          <StatLabel color={dark ? "gray.400" : "gray.500"}>24h Change</StatLabel>
+          <StatNumber 
+            fontWeight="bold" 
+            fontSize={isMobile ? "md" : "lg"}
+            color={stats.isPriceUp ? "green.500" : "red.500"}
+          >
+            {stats.isPriceUp ? "+" : ""}
+            {stats.priceChangePercent.toFixed(2)}%
+          </StatNumber>
+        </Stat>
+        
+        <Stat>
+          <StatLabel color={dark ? "gray.400" : "gray.500"}>24h High</StatLabel>
+          <StatNumber fontWeight="bold" fontSize={isMobile ? "md" : "lg"}>
+            {fp(stats.high24h)}
+          </StatNumber>
+        </Stat>
+        
+        <Stat>
+          <StatLabel color={dark ? "gray.400" : "gray.500"}>24h Low</StatLabel>
+          <StatNumber fontWeight="bold" fontSize={isMobile ? "md" : "lg"}>
+            {fp(stats.low24h)}
+          </StatNumber>
+        </Stat>
+      </Grid>
+    )}
+    
+    {/* No Volume Data Warning */}
+    {!loading && !hasVol && !noData && (
+      <Alert status="warning" mt={4} borderRadius="md">
+        <AlertIcon />
+        No volume data available for this pair/timeframe
+      </Alert>
+    )}
+  </Box>
   );
-}
+  }

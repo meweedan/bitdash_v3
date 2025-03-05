@@ -1,0 +1,1352 @@
+[
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-03T07:00:00",
+    "open": 1.6646,
+    "high": 1.6692,
+    "low": 1.6624,
+    "close": 1.6684,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-03T11:00:00",
+    "open": 1.6684,
+    "high": 1.6792,
+    "low": 1.6665,
+    "close": 1.6762,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-03T15:00:00",
+    "open": 1.6761,
+    "high": 1.6763,
+    "low": 1.6661,
+    "close": 1.6667,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-03T19:00:00",
+    "open": 1.6668,
+    "high": 1.6696,
+    "low": 1.6644,
+    "close": 1.6676,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-03T23:00:00",
+    "open": 1.6676,
+    "high": 1.67,
+    "low": 1.6647,
+    "close": 1.6653,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-04T03:00:00",
+    "open": 1.6654,
+    "high": 1.6666,
+    "low": 1.6628,
+    "close": 1.6635,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-04T07:00:00",
+    "open": 1.6635,
+    "high": 1.665,
+    "low": 1.6591,
+    "close": 1.6611,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-04T11:00:00",
+    "open": 1.6611,
+    "high": 1.6635,
+    "low": 1.6602,
+    "close": 1.663,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-04T15:00:00",
+    "open": 1.6629,
+    "high": 1.6667,
+    "low": 1.6612,
+    "close": 1.6614,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-04T19:00:00",
+    "open": 1.6613,
+    "high": 1.6673,
+    "low": 1.6611,
+    "close": 1.6632,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-04T23:00:00",
+    "open": 1.6631,
+    "high": 1.6648,
+    "low": 1.6602,
+    "close": 1.6612,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-05T03:00:00",
+    "open": 1.6612,
+    "high": 1.6614,
+    "low": 1.6584,
+    "close": 1.6584,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-05T07:00:00",
+    "open": 1.6584,
+    "high": 1.6606,
+    "low": 1.6583,
+    "close": 1.6595,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-05T11:00:00",
+    "open": 1.6597,
+    "high": 1.6627,
+    "low": 1.6587,
+    "close": 1.6606,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-05T15:00:00",
+    "open": 1.6606,
+    "high": 1.6617,
+    "low": 1.6589,
+    "close": 1.6592,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-05T19:00:00",
+    "open": 1.6591,
+    "high": 1.6593,
+    "low": 1.6562,
+    "close": 1.658,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-05T23:00:00",
+    "open": 1.6579,
+    "high": 1.6602,
+    "low": 1.6551,
+    "close": 1.6559,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-06T03:00:00",
+    "open": 1.6559,
+    "high": 1.6566,
+    "low": 1.655,
+    "close": 1.6558,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-06T07:00:00",
+    "open": 1.6557,
+    "high": 1.6563,
+    "low": 1.6543,
+    "close": 1.6548,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-06T11:00:00",
+    "open": 1.6548,
+    "high": 1.6596,
+    "low": 1.6543,
+    "close": 1.6589,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-06T15:00:00",
+    "open": 1.6589,
+    "high": 1.659,
+    "low": 1.6567,
+    "close": 1.6574,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-06T19:00:00",
+    "open": 1.6574,
+    "high": 1.6576,
+    "low": 1.6532,
+    "close": 1.654,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-06T23:00:00",
+    "open": 1.654,
+    "high": 1.6556,
+    "low": 1.651,
+    "close": 1.6513,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-07T03:00:00",
+    "open": 1.6513,
+    "high": 1.6536,
+    "low": 1.6505,
+    "close": 1.6534,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-07T07:00:00",
+    "open": 1.6536,
+    "high": 1.6557,
+    "low": 1.6522,
+    "close": 1.6534,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-07T11:00:00",
+    "open": 1.6535,
+    "high": 1.6535,
+    "low": 1.6496,
+    "close": 1.651,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-07T15:00:00",
+    "open": 1.6509,
+    "high": 1.6526,
+    "low": 1.6502,
+    "close": 1.6525,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-07T19:00:00",
+    "open": 1.6526,
+    "high": 1.6527,
+    "low": 1.6505,
+    "close": 1.6527,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-07T23:00:00",
+    "open": 1.6528,
+    "high": 1.6528,
+    "low": 1.649,
+    "close": 1.6503,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-08T03:00:00",
+    "open": 1.6502,
+    "high": 1.6511,
+    "low": 1.6456,
+    "close": 1.6472,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-08T07:00:00",
+    "open": 1.6472,
+    "high": 1.6479,
+    "low": 1.6458,
+    "close": 1.6466,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-10T07:00:00",
+    "open": 1.6494,
+    "high": 1.6504,
+    "low": 1.647,
+    "close": 1.6475,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-10T11:00:00",
+    "open": 1.6475,
+    "high": 1.6477,
+    "low": 1.645,
+    "close": 1.645,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-10T15:00:00",
+    "open": 1.645,
+    "high": 1.6455,
+    "low": 1.6433,
+    "close": 1.644,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-10T19:00:00",
+    "open": 1.6441,
+    "high": 1.6462,
+    "low": 1.6435,
+    "close": 1.645,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-10T23:00:00",
+    "open": 1.645,
+    "high": 1.6454,
+    "low": 1.6406,
+    "close": 1.6415,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-11T03:00:00",
+    "open": 1.6415,
+    "high": 1.6434,
+    "low": 1.641,
+    "close": 1.6414,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-11T07:00:00",
+    "open": 1.6414,
+    "high": 1.6441,
+    "low": 1.64,
+    "close": 1.6429,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-11T11:00:00",
+    "open": 1.6428,
+    "high": 1.6443,
+    "low": 1.6418,
+    "close": 1.6427,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-11T15:00:00",
+    "open": 1.6426,
+    "high": 1.6428,
+    "low": 1.6401,
+    "close": 1.6408,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-11T19:00:00",
+    "open": 1.6407,
+    "high": 1.6455,
+    "low": 1.6393,
+    "close": 1.6453,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-11T23:00:00",
+    "open": 1.6452,
+    "high": 1.6461,
+    "low": 1.6428,
+    "close": 1.6444,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-12T03:00:00",
+    "open": 1.6444,
+    "high": 1.6474,
+    "low": 1.6435,
+    "close": 1.646,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-12T07:00:00",
+    "open": 1.6458,
+    "high": 1.6473,
+    "low": 1.6455,
+    "close": 1.6458,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-12T11:00:00",
+    "open": 1.6459,
+    "high": 1.6467,
+    "low": 1.6431,
+    "close": 1.6448,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-12T15:00:00",
+    "open": 1.645,
+    "high": 1.6502,
+    "low": 1.6446,
+    "close": 1.65,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-12T19:00:00",
+    "open": 1.6499,
+    "high": 1.6535,
+    "low": 1.6495,
+    "close": 1.6524,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-12T23:00:00",
+    "open": 1.6525,
+    "high": 1.6568,
+    "low": 1.6513,
+    "close": 1.6534,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-13T03:00:00",
+    "open": 1.6534,
+    "high": 1.6549,
+    "low": 1.6522,
+    "close": 1.653,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-13T07:00:00",
+    "open": 1.653,
+    "high": 1.6545,
+    "low": 1.6528,
+    "close": 1.6545,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-13T11:00:00",
+    "open": 1.6544,
+    "high": 1.6577,
+    "low": 1.654,
+    "close": 1.6566,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-13T15:00:00",
+    "open": 1.6566,
+    "high": 1.6603,
+    "low": 1.656,
+    "close": 1.6592,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-13T19:00:00",
+    "open": 1.6592,
+    "high": 1.6635,
+    "low": 1.659,
+    "close": 1.661,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-13T23:00:00",
+    "open": 1.6609,
+    "high": 1.6612,
+    "low": 1.6563,
+    "close": 1.6568,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-14T03:00:00",
+    "open": 1.6568,
+    "high": 1.6593,
+    "low": 1.6544,
+    "close": 1.656,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-14T07:00:00",
+    "open": 1.6561,
+    "high": 1.6576,
+    "low": 1.6551,
+    "close": 1.6563,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-14T11:00:00",
+    "open": 1.6563,
+    "high": 1.6577,
+    "low": 1.6528,
+    "close": 1.6542,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-14T15:00:00",
+    "open": 1.6542,
+    "high": 1.6553,
+    "low": 1.6534,
+    "close": 1.6536,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-14T19:00:00",
+    "open": 1.6537,
+    "high": 1.6548,
+    "low": 1.6511,
+    "close": 1.6511,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-14T23:00:00",
+    "open": 1.6511,
+    "high": 1.6531,
+    "low": 1.65,
+    "close": 1.6516,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-15T03:00:00",
+    "open": 1.6517,
+    "high": 1.6526,
+    "low": 1.6507,
+    "close": 1.6511,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-15T07:00:00",
+    "open": 1.6512,
+    "high": 1.652,
+    "low": 1.6503,
+    "close": 1.6514,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-17T07:00:00",
+    "open": 1.6522,
+    "high": 1.6523,
+    "low": 1.65,
+    "close": 1.65,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-17T11:00:00",
+    "open": 1.65,
+    "high": 1.6515,
+    "low": 1.6484,
+    "close": 1.6488,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-17T15:00:00",
+    "open": 1.6488,
+    "high": 1.6491,
+    "low": 1.646,
+    "close": 1.6476,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-17T19:00:00",
+    "open": 1.6476,
+    "high": 1.6483,
+    "low": 1.6449,
+    "close": 1.6465,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-17T23:00:00",
+    "open": 1.6465,
+    "high": 1.6474,
+    "low": 1.6447,
+    "close": 1.6464,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-18T03:00:00",
+    "open": 1.6465,
+    "high": 1.6497,
+    "low": 1.6458,
+    "close": 1.6483,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-18T07:00:00",
+    "open": 1.6484,
+    "high": 1.6504,
+    "low": 1.6479,
+    "close": 1.6498,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-18T11:00:00",
+    "open": 1.6498,
+    "high": 1.6521,
+    "low": 1.6444,
+    "close": 1.6476,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-18T15:00:00",
+    "open": 1.6476,
+    "high": 1.6496,
+    "low": 1.6441,
+    "close": 1.6466,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-18T19:00:00",
+    "open": 1.6465,
+    "high": 1.6468,
+    "low": 1.6442,
+    "close": 1.6458,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-18T23:00:00",
+    "open": 1.6458,
+    "high": 1.6479,
+    "low": 1.645,
+    "close": 1.6478,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-19T03:00:00",
+    "open": 1.6478,
+    "high": 1.648,
+    "low": 1.6447,
+    "close": 1.6452,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-19T07:00:00",
+    "open": 1.6451,
+    "high": 1.6453,
+    "low": 1.6439,
+    "close": 1.6448,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-19T11:00:00",
+    "open": 1.6448,
+    "high": 1.6465,
+    "low": 1.6418,
+    "close": 1.6427,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-19T15:00:00",
+    "open": 1.6428,
+    "high": 1.6435,
+    "low": 1.6418,
+    "close": 1.6425,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-19T19:00:00",
+    "open": 1.6424,
+    "high": 1.6434,
+    "low": 1.6401,
+    "close": 1.6422,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-19T23:00:00",
+    "open": 1.6422,
+    "high": 1.644,
+    "low": 1.6399,
+    "close": 1.6418,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-20T03:00:00",
+    "open": 1.6417,
+    "high": 1.6433,
+    "low": 1.6406,
+    "close": 1.6423,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-20T07:00:00",
+    "open": 1.6423,
+    "high": 1.6442,
+    "low": 1.6404,
+    "close": 1.6435,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-20T11:00:00",
+    "open": 1.6434,
+    "high": 1.6466,
+    "low": 1.6399,
+    "close": 1.6404,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-20T15:00:00",
+    "open": 1.6405,
+    "high": 1.6405,
+    "low": 1.6375,
+    "close": 1.6389,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-20T19:00:00",
+    "open": 1.6388,
+    "high": 1.6392,
+    "low": 1.6358,
+    "close": 1.6386,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-20T23:00:00",
+    "open": 1.6386,
+    "high": 1.6391,
+    "low": 1.6359,
+    "close": 1.6379,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-21T03:00:00",
+    "open": 1.6378,
+    "high": 1.6403,
+    "low": 1.6371,
+    "close": 1.6402,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-21T07:00:00",
+    "open": 1.6401,
+    "high": 1.6419,
+    "low": 1.6391,
+    "close": 1.6401,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-21T11:00:00",
+    "open": 1.6401,
+    "high": 1.6412,
+    "low": 1.6388,
+    "close": 1.6408,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-21T15:00:00",
+    "open": 1.6407,
+    "high": 1.6433,
+    "low": 1.6405,
+    "close": 1.642,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-21T19:00:00",
+    "open": 1.6418,
+    "high": 1.6429,
+    "low": 1.6381,
+    "close": 1.6391,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-21T23:00:00",
+    "open": 1.6392,
+    "high": 1.6418,
+    "low": 1.638,
+    "close": 1.6399,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-22T03:00:00",
+    "open": 1.64,
+    "high": 1.647,
+    "low": 1.6392,
+    "close": 1.6467,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-22T07:00:00",
+    "open": 1.6466,
+    "high": 1.6466,
+    "low": 1.6443,
+    "close": 1.6457,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-24T07:00:00",
+    "open": 1.6457,
+    "high": 1.6464,
+    "low": 1.643,
+    "close": 1.6446,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-24T11:00:00",
+    "open": 1.6446,
+    "high": 1.652,
+    "low": 1.6443,
+    "close": 1.6479,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-24T15:00:00",
+    "open": 1.6479,
+    "high": 1.6495,
+    "low": 1.6464,
+    "close": 1.6466,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-24T19:00:00",
+    "open": 1.6466,
+    "high": 1.6481,
+    "low": 1.6436,
+    "close": 1.6443,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-24T23:00:00",
+    "open": 1.6444,
+    "high": 1.6494,
+    "low": 1.643,
+    "close": 1.6476,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-25T03:00:00",
+    "open": 1.6476,
+    "high": 1.6482,
+    "low": 1.6463,
+    "close": 1.6479,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-25T07:00:00",
+    "open": 1.6479,
+    "high": 1.6508,
+    "low": 1.6476,
+    "close": 1.6504,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-25T11:00:00",
+    "open": 1.6505,
+    "high": 1.6508,
+    "low": 1.6479,
+    "close": 1.6489,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-25T15:00:00",
+    "open": 1.6488,
+    "high": 1.6517,
+    "low": 1.6482,
+    "close": 1.6512,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-25T19:00:00",
+    "open": 1.6513,
+    "high": 1.6556,
+    "low": 1.6502,
+    "close": 1.6532,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-25T23:00:00",
+    "open": 1.6532,
+    "high": 1.662,
+    "low": 1.6532,
+    "close": 1.6577,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 1.6577,
+    "high": 1.6595,
+    "low": 1.6567,
+    "close": 1.6573,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 1.6572,
+    "high": 1.6586,
+    "low": 1.656,
+    "close": 1.6564,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 1.6564,
+    "high": 1.6614,
+    "low": 1.6562,
+    "close": 1.6604,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 1.6603,
+    "high": 1.6608,
+    "low": 1.6565,
+    "close": 1.6586,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 1.6586,
+    "high": 1.6627,
+    "low": 1.6582,
+    "close": 1.6617,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 1.6618,
+    "high": 1.6651,
+    "low": 1.6608,
+    "close": 1.6633,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-27T03:00:00",
+    "open": 1.6633,
+    "high": 1.6636,
+    "low": 1.6595,
+    "close": 1.663,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-27T07:00:00",
+    "open": 1.663,
+    "high": 1.6647,
+    "low": 1.6613,
+    "close": 1.6624,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-27T11:00:00",
+    "open": 1.6623,
+    "high": 1.6634,
+    "low": 1.6601,
+    "close": 1.6631,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-27T15:00:00",
+    "open": 1.6631,
+    "high": 1.6645,
+    "low": 1.6622,
+    "close": 1.6634,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-27T19:00:00",
+    "open": 1.6635,
+    "high": 1.6643,
+    "low": 1.662,
+    "close": 1.6631,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-27T23:00:00",
+    "open": 1.663,
+    "high": 1.6673,
+    "low": 1.6628,
+    "close": 1.665,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-28T03:00:00",
+    "open": 1.665,
+    "high": 1.6674,
+    "low": 1.6638,
+    "close": 1.6666,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-28T07:00:00",
+    "open": 1.6667,
+    "high": 1.6688,
+    "low": 1.6665,
+    "close": 1.6679,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-28T11:00:00",
+    "open": 1.668,
+    "high": 1.6726,
+    "low": 1.6674,
+    "close": 1.6724,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-28T15:00:00",
+    "open": 1.6723,
+    "high": 1.6737,
+    "low": 1.6709,
+    "close": 1.6733,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-28T19:00:00",
+    "open": 1.6733,
+    "high": 1.674,
+    "low": 1.6723,
+    "close": 1.6723,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-02-28T23:00:00",
+    "open": 1.6723,
+    "high": 1.6773,
+    "low": 1.6718,
+    "close": 1.6725,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-03-01T03:00:00",
+    "open": 1.6724,
+    "high": 1.676,
+    "low": 1.6722,
+    "close": 1.6728,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-03-01T07:00:00",
+    "open": 1.6727,
+    "high": 1.6729,
+    "low": 1.6709,
+    "close": 1.6715,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-03-03T07:00:00",
+    "open": 1.6743,
+    "high": 1.6757,
+    "low": 1.6729,
+    "close": 1.674,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-03-03T11:00:00",
+    "open": 1.674,
+    "high": 1.6765,
+    "low": 1.6726,
+    "close": 1.6753,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-03-03T15:00:00",
+    "open": 1.6754,
+    "high": 1.6769,
+    "low": 1.673,
+    "close": 1.6737,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-03-03T19:00:00",
+    "open": 1.6736,
+    "high": 1.6803,
+    "low": 1.6718,
+    "close": 1.6798,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-03-03T23:00:00",
+    "open": 1.6799,
+    "high": 1.6821,
+    "low": 1.6779,
+    "close": 1.68,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-03-04T03:00:00",
+    "open": 1.6799,
+    "high": 1.684,
+    "low": 1.6784,
+    "close": 1.6832,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-03-04T07:00:00",
+    "open": 1.6832,
+    "high": 1.6881,
+    "low": 1.6832,
+    "close": 1.687,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-03-04T11:00:00",
+    "open": 1.687,
+    "high": 1.6911,
+    "low": 1.6862,
+    "close": 1.6899,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-03-04T15:00:00",
+    "open": 1.6899,
+    "high": 1.6929,
+    "low": 1.6883,
+    "close": 1.6908,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-03-04T19:00:00",
+    "open": 1.6907,
+    "high": 1.6955,
+    "low": 1.6887,
+    "close": 1.6907,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURAUD",
+    "timestamp": "2025-03-04T23:00:00",
+    "open": 1.6907,
+    "high": 1.6963,
+    "low": 1.6891,
+    "close": 1.696,
+    "volume": 0.0,
+    "interval": "4h"
+  }
+]

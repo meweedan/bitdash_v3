@@ -1,0 +1,3662 @@
+[
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-05T00:00:00",
+    "open": 0.14592899,
+    "high": 0.153063,
+    "low": 0.120561,
+    "close": 0.132368,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-06T00:00:00",
+    "open": 0.132368,
+    "high": 0.138624,
+    "low": 0.12804499,
+    "close": 0.138447,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-07T00:00:00",
+    "open": 0.13858099,
+    "high": 0.143244,
+    "low": 0.13763,
+    "close": 0.14219201,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-08T00:00:00",
+    "open": 0.14219201,
+    "high": 0.14557201,
+    "low": 0.136843,
+    "close": 0.141855,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-09T00:00:00",
+    "open": 0.141855,
+    "high": 0.143885,
+    "low": 0.140319,
+    "close": 0.142501,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-10T00:00:00",
+    "open": 0.142518,
+    "high": 0.14503799,
+    "low": 0.137052,
+    "close": 0.13986,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-11T00:00:00",
+    "open": 0.13983899,
+    "high": 0.162625,
+    "low": 0.13558801,
+    "close": 0.15707099,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-12T00:00:00",
+    "open": 0.15707099,
+    "high": 0.159407,
+    "low": 0.14279599,
+    "close": 0.149378,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-13T00:00:00",
+    "open": 0.149423,
+    "high": 0.153653,
+    "low": 0.14660899,
+    "close": 0.15086199,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-14T00:00:00",
+    "open": 0.150814,
+    "high": 0.152401,
+    "low": 0.13828599,
+    "close": 0.144495,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-15T00:00:00",
+    "open": 0.14443199,
+    "high": 0.145541,
+    "low": 0.128319,
+    "close": 0.136897,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-16T00:00:00",
+    "open": 0.136897,
+    "high": 0.14298999,
+    "low": 0.126708,
+    "close": 0.12919299,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-17T00:00:00",
+    "open": 0.12919299,
+    "high": 0.133,
+    "low": 0.124686,
+    "close": 0.13201199,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-18T00:00:00",
+    "open": 0.13201199,
+    "high": 0.13756301,
+    "low": 0.12498,
+    "close": 0.13524,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-19T00:00:00",
+    "open": 0.13524,
+    "high": 0.13524,
+    "low": 0.118676,
+    "close": 0.120907,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-20T00:00:00",
+    "open": 0.120907,
+    "high": 0.131308,
+    "low": 0.117212,
+    "close": 0.130862,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-21T00:00:00",
+    "open": 0.130862,
+    "high": 0.13523901,
+    "low": 0.127891,
+    "close": 0.133311,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-22T00:00:00",
+    "open": 0.133288,
+    "high": 0.133981,
+    "low": 0.12562899,
+    "close": 0.12833101,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-23T00:00:00",
+    "open": 0.12833101,
+    "high": 0.136499,
+    "low": 0.127763,
+    "close": 0.132671,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-24T00:00:00",
+    "open": 0.132671,
+    "high": 0.13537601,
+    "low": 0.131762,
+    "close": 0.134982,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-25T00:00:00",
+    "open": 0.134982,
+    "high": 0.139486,
+    "low": 0.13411599,
+    "close": 0.136758,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-26T00:00:00",
+    "open": 0.136758,
+    "high": 0.139985,
+    "low": 0.135621,
+    "close": 0.138174,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-27T00:00:00",
+    "open": 0.138174,
+    "high": 0.139661,
+    "low": 0.132208,
+    "close": 0.133653,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-28T00:00:00",
+    "open": 0.133663,
+    "high": 0.138877,
+    "low": 0.13260899,
+    "close": 0.13800301,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-29T00:00:00",
+    "open": 0.13800301,
+    "high": 0.146639,
+    "low": 0.137327,
+    "close": 0.142758,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-30T00:00:00",
+    "open": 0.14274199,
+    "high": 0.143549,
+    "low": 0.138245,
+    "close": 0.13925301,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-03-31T00:00:00",
+    "open": 0.13925301,
+    "high": 0.141289,
+    "low": 0.138392,
+    "close": 0.14115,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-01T00:00:00",
+    "open": 0.14115,
+    "high": 0.14254799,
+    "low": 0.132292,
+    "close": 0.135616,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-02T00:00:00",
+    "open": 0.135591,
+    "high": 0.13590001,
+    "low": 0.127249,
+    "close": 0.12866101,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-03T00:00:00",
+    "open": 0.128637,
+    "high": 0.130808,
+    "low": 0.124361,
+    "close": 0.126329,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-04T00:00:00",
+    "open": 0.126329,
+    "high": 0.131955,
+    "low": 0.124351,
+    "close": 0.128859,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-05T00:00:00",
+    "open": 0.128859,
+    "high": 0.129686,
+    "low": 0.124165,
+    "close": 0.12749501,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-06T00:00:00",
+    "open": 0.12749501,
+    "high": 0.129899,
+    "low": 0.126963,
+    "close": 0.12908299,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-07T00:00:00",
+    "open": 0.12908299,
+    "high": 0.130307,
+    "low": 0.12796,
+    "close": 0.12923799,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-08T00:00:00",
+    "open": 0.12923799,
+    "high": 0.134422,
+    "low": 0.12783,
+    "close": 0.13341001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-09T00:00:00",
+    "open": 0.13341001,
+    "high": 0.13684601,
+    "low": 0.130734,
+    "close": 0.132116,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-10T00:00:00",
+    "open": 0.132116,
+    "high": 0.132175,
+    "low": 0.12567399,
+    "close": 0.129621,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-11T00:00:00",
+    "open": 0.129621,
+    "high": 0.131349,
+    "low": 0.128199,
+    "close": 0.13022199,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-12T00:00:00",
+    "open": 0.13022199,
+    "high": 0.13116699,
+    "low": 0.104084,
+    "close": 0.115247,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-13T00:00:00",
+    "open": 0.115247,
+    "high": 0.115569,
+    "low": 0.093370996,
+    "close": 0.105254,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-14T00:00:00",
+    "open": 0.105254,
+    "high": 0.111552,
+    "low": 0.101717,
+    "close": 0.110605,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-15T00:00:00",
+    "open": 0.110605,
+    "high": 0.11398,
+    "low": 0.103949,
+    "close": 0.10762,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-16T00:00:00",
+    "open": 0.10762,
+    "high": 0.110099,
+    "low": 0.10438,
+    "close": 0.109661,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-17T00:00:00",
+    "open": 0.109661,
+    "high": 0.110031,
+    "low": 0.104799,
+    "close": 0.107601,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-18T00:00:00",
+    "open": 0.107551,
+    "high": 0.11102,
+    "low": 0.105209,
+    "close": 0.110488,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-19T00:00:00",
+    "open": 0.110488,
+    "high": 0.11363,
+    "low": 0.103673,
+    "close": 0.11181,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-20T00:00:00",
+    "open": 0.11181,
+    "high": 0.116844,
+    "low": 0.110895,
+    "close": 0.116001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-21T00:00:00",
+    "open": 0.116013,
+    "high": 0.116625,
+    "low": 0.112666,
+    "close": 0.113897,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-22T00:00:00",
+    "open": 0.113896,
+    "high": 0.119188,
+    "low": 0.113656,
+    "close": 0.118253,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-23T00:00:00",
+    "open": 0.118265,
+    "high": 0.118799,
+    "low": 0.1155,
+    "close": 0.117412,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-24T00:00:00",
+    "open": 0.117412,
+    "high": 0.120375,
+    "low": 0.113257,
+    "close": 0.114462,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-25T00:00:00",
+    "open": 0.114445,
+    "high": 0.11555,
+    "low": 0.111422,
+    "close": 0.11376,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-26T00:00:00",
+    "open": 0.11376,
+    "high": 0.115128,
+    "low": 0.11195,
+    "close": 0.113931,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-27T00:00:00",
+    "open": 0.113943,
+    "high": 0.114699,
+    "low": 0.111369,
+    "close": 0.114422,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-28T00:00:00",
+    "open": 0.114422,
+    "high": 0.115865,
+    "low": 0.112001,
+    "close": 0.112287,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-29T00:00:00",
+    "open": 0.112287,
+    "high": 0.1136,
+    "low": 0.109791,
+    "close": 0.111965,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-04-30T00:00:00",
+    "open": 0.111965,
+    "high": 0.112789,
+    "low": 0.104599,
+    "close": 0.107593,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-01T00:00:00",
+    "open": 0.107612,
+    "high": 0.111113,
+    "low": 0.103074,
+    "close": 0.11099,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-02T00:00:00",
+    "open": 0.11099,
+    "high": 0.111214,
+    "low": 0.10697,
+    "close": 0.110236,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-03T00:00:00",
+    "open": 0.110279,
+    "high": 0.112565,
+    "low": 0.108826,
+    "close": 0.111788,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-04T00:00:00",
+    "open": 0.111731,
+    "high": 0.11257,
+    "low": 0.110767,
+    "close": 0.110866,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-05T00:00:00",
+    "open": 0.110867,
+    "high": 0.11127,
+    "low": 0.109437,
+    "close": 0.110962,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-06T00:00:00",
+    "open": 0.110962,
+    "high": 0.113646,
+    "low": 0.10934,
+    "close": 0.109733,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-07T00:00:00",
+    "open": 0.109733,
+    "high": 0.110789,
+    "low": 0.107871,
+    "close": 0.10799,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-08T00:00:00",
+    "open": 0.107976,
+    "high": 0.109784,
+    "low": 0.106942,
+    "close": 0.107289,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-09T00:00:00",
+    "open": 0.107242,
+    "high": 0.108748,
+    "low": 0.10592,
+    "close": 0.108581,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-10T00:00:00",
+    "open": 0.108519,
+    "high": 0.10975,
+    "low": 0.105391,
+    "close": 0.10626,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-11T00:00:00",
+    "open": 0.10626,
+    "high": 0.107055,
+    "low": 0.105405,
+    "close": 0.105823,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-12T00:00:00",
+    "open": 0.105823,
+    "high": 0.106265,
+    "low": 0.104,
+    "close": 0.104728,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-13T00:00:00",
+    "open": 0.104726,
+    "high": 0.105847,
+    "low": 0.101,
+    "close": 0.103969,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-14T00:00:00",
+    "open": 0.103956,
+    "high": 0.104467,
+    "low": 0.101625,
+    "close": 0.101863,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-15T00:00:00",
+    "open": 0.101859,
+    "high": 0.10726,
+    "low": 0.101562,
+    "close": 0.106834,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-16T00:00:00",
+    "open": 0.106834,
+    "high": 0.107962,
+    "low": 0.104963,
+    "close": 0.106668,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-17T00:00:00",
+    "open": 0.106697,
+    "high": 0.109821,
+    "low": 0.106102,
+    "close": 0.108827,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-18T00:00:00",
+    "open": 0.108827,
+    "high": 0.109508,
+    "low": 0.10738,
+    "close": 0.108143,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-19T00:00:00",
+    "open": 0.108178,
+    "high": 0.108597,
+    "low": 0.105305,
+    "close": 0.105616,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-20T00:00:00",
+    "open": 0.105616,
+    "high": 0.112504,
+    "low": 0.104616,
+    "close": 0.112504,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-21T00:00:00",
+    "open": 0.112483,
+    "high": 0.114034,
+    "low": 0.111428,
+    "close": 0.112221,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-22T00:00:00",
+    "open": 0.112215,
+    "high": 0.112561,
+    "low": 0.109204,
+    "close": 0.110614,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-23T00:00:00",
+    "open": 0.110582,
+    "high": 0.111528,
+    "low": 0.105,
+    "close": 0.109131,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-24T00:00:00",
+    "open": 0.109131,
+    "high": 0.110557,
+    "low": 0.107299,
+    "close": 0.110145,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-25T00:00:00",
+    "open": 0.110165,
+    "high": 0.11166,
+    "low": 0.110047,
+    "close": 0.110944,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-26T00:00:00",
+    "open": 0.110944,
+    "high": 0.111461,
+    "low": 0.108047,
+    "close": 0.10863,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-27T00:00:00",
+    "open": 0.108643,
+    "high": 0.11148,
+    "low": 0.108081,
+    "close": 0.110399,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-28T00:00:00",
+    "open": 0.110397,
+    "high": 0.110643,
+    "low": 0.106601,
+    "close": 0.107726,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-29T00:00:00",
+    "open": 0.107762,
+    "high": 0.109343,
+    "low": 0.106375,
+    "close": 0.106529,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-30T00:00:00",
+    "open": 0.106529,
+    "high": 0.107749,
+    "low": 0.104633,
+    "close": 0.106734,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-05-31T00:00:00",
+    "open": 0.106734,
+    "high": 0.107165,
+    "low": 0.104659,
+    "close": 0.106179,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-01T00:00:00",
+    "open": 0.106129,
+    "high": 0.106817,
+    "low": 0.105987,
+    "close": 0.10633,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-02T00:00:00",
+    "open": 0.106327,
+    "high": 0.106694,
+    "low": 0.104469,
+    "close": 0.105121,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-03T00:00:00",
+    "open": 0.105121,
+    "high": 0.10702,
+    "low": 0.10444,
+    "close": 0.105348,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-04T00:00:00",
+    "open": 0.105348,
+    "high": 0.106869,
+    "low": 0.104047,
+    "close": 0.106387,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-05T00:00:00",
+    "open": 0.106376,
+    "high": 0.10751,
+    "low": 0.105916,
+    "close": 0.106946,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-06T00:00:00",
+    "open": 0.106946,
+    "high": 0.10699,
+    "low": 0.104779,
+    "close": 0.105248,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-07T00:00:00",
+    "open": 0.105248,
+    "high": 0.106766,
+    "low": 0.093358003,
+    "close": 0.100153,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-08T00:00:00",
+    "open": 0.100096,
+    "high": 0.100133,
+    "low": 0.096574001,
+    "close": 0.098246999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-09T00:00:00",
+    "open": 0.098213002,
+    "high": 0.099918999,
+    "low": 0.098057002,
+    "close": 0.099868,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-10T00:00:00",
+    "open": 0.099868,
+    "high": 0.101246,
+    "low": 0.099152997,
+    "close": 0.099993996,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-11T00:00:00",
+    "open": 0.099972002,
+    "high": 0.100245,
+    "low": 0.095646001,
+    "close": 0.096735001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-12T00:00:00",
+    "open": 0.096735001,
+    "high": 0.101013,
+    "low": 0.095482998,
+    "close": 0.100119,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-13T00:00:00",
+    "open": 0.100119,
+    "high": 0.100263,
+    "low": 0.097159997,
+    "close": 0.097473003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-14T00:00:00",
+    "open": 0.097473003,
+    "high": 0.098899998,
+    "low": 0.094328001,
+    "close": 0.096775003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-15T00:00:00",
+    "open": 0.096772999,
+    "high": 0.098797001,
+    "low": 0.096221,
+    "close": 0.098237,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-16T00:00:00",
+    "open": 0.098241001,
+    "high": 0.099225,
+    "low": 0.097631,
+    "close": 0.099094003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-17T00:00:00",
+    "open": 0.099094003,
+    "high": 0.099394001,
+    "low": 0.095390998,
+    "close": 0.096853003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-18T00:00:00",
+    "open": 0.096853003,
+    "high": 0.096987002,
+    "low": 0.087931,
+    "close": 0.091330998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-19T00:00:00",
+    "open": 0.091312997,
+    "high": 0.094244003,
+    "low": 0.090663999,
+    "close": 0.093460999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-20T00:00:00",
+    "open": 0.093447,
+    "high": 0.095450997,
+    "low": 0.092900001,
+    "close": 0.093929,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-21T00:00:00",
+    "open": 0.093929,
+    "high": 0.094406001,
+    "low": 0.091108002,
+    "close": 0.092028998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-22T00:00:00",
+    "open": 0.092013001,
+    "high": 0.092028998,
+    "low": 0.090685003,
+    "close": 0.090823002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-23T00:00:00",
+    "open": 0.090823002,
+    "high": 0.091949999,
+    "low": 0.089263,
+    "close": 0.089509003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-24T00:00:00",
+    "open": 0.089506999,
+    "high": 0.089693002,
+    "low": 0.085612997,
+    "close": 0.089248002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-25T00:00:00",
+    "open": 0.089341998,
+    "high": 0.092946999,
+    "low": 0.089165002,
+    "close": 0.091876,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-26T00:00:00",
+    "open": 0.091876,
+    "high": 0.092491001,
+    "low": 0.089720003,
+    "close": 0.090109996,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-27T00:00:00",
+    "open": 0.090112999,
+    "high": 0.091528997,
+    "low": 0.088634998,
+    "close": 0.091340996,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-28T00:00:00",
+    "open": 0.091344997,
+    "high": 0.093074001,
+    "low": 0.090729997,
+    "close": 0.090861,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-29T00:00:00",
+    "open": 0.090861,
+    "high": 0.091842003,
+    "low": 0.089910001,
+    "close": 0.090066999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-06-30T00:00:00",
+    "open": 0.090117,
+    "high": 0.091689996,
+    "low": 0.089321002,
+    "close": 0.0911,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-01T00:00:00",
+    "open": 0.091085002,
+    "high": 0.092687003,
+    "low": 0.090438999,
+    "close": 0.091481999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-02T00:00:00",
+    "open": 0.091472,
+    "high": 0.094150998,
+    "low": 0.091435999,
+    "close": 0.093535997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-03T00:00:00",
+    "open": 0.093535997,
+    "high": 0.093599997,
+    "low": 0.089350998,
+    "close": 0.09031,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-04T00:00:00",
+    "open": 0.090314999,
+    "high": 0.090609998,
+    "low": 0.086323999,
+    "close": 0.087049,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-05T00:00:00",
+    "open": 0.086970001,
+    "high": 0.087058999,
+    "low": 0.076987997,
+    "close": 0.085501999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-06T00:00:00",
+    "open": 0.085389003,
+    "high": 0.090824999,
+    "low": 0.085060999,
+    "close": 0.090557002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-07T00:00:00",
+    "open": 0.090565003,
+    "high": 0.090577997,
+    "low": 0.083557002,
+    "close": 0.083940998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-08T00:00:00",
+    "open": 0.083968997,
+    "high": 0.087245002,
+    "low": 0.080637999,
+    "close": 0.085513003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-09T00:00:00",
+    "open": 0.085513003,
+    "high": 0.088265002,
+    "low": 0.085170999,
+    "close": 0.088064998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-10T00:00:00",
+    "open": 0.088064998,
+    "high": 0.089281,
+    "low": 0.086718999,
+    "close": 0.087571003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-11T00:00:00",
+    "open": 0.087582,
+    "high": 0.090379998,
+    "low": 0.086935997,
+    "close": 0.088776998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-12T00:00:00",
+    "open": 0.088776998,
+    "high": 0.092468999,
+    "low": 0.088211,
+    "close": 0.091349997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-13T00:00:00",
+    "open": 0.091365002,
+    "high": 0.106059,
+    "low": 0.091349997,
+    "close": 0.102277,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-14T00:00:00",
+    "open": 0.102269,
+    "high": 0.106995,
+    "low": 0.099595003,
+    "close": 0.104678,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-15T00:00:00",
+    "open": 0.104684,
+    "high": 0.105802,
+    "low": 0.102564,
+    "close": 0.104751,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-16T00:00:00",
+    "open": 0.104714,
+    "high": 0.109101,
+    "low": 0.101207,
+    "close": 0.106896,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-17T00:00:00",
+    "open": 0.106896,
+    "high": 0.112308,
+    "low": 0.106173,
+    "close": 0.109863,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-18T00:00:00",
+    "open": 0.109782,
+    "high": 0.11114,
+    "low": 0.101416,
+    "close": 0.103141,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-19T00:00:00",
+    "open": 0.103141,
+    "high": 0.105552,
+    "low": 0.100905,
+    "close": 0.105322,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-20T00:00:00",
+    "open": 0.105291,
+    "high": 0.106876,
+    "low": 0.104006,
+    "close": 0.105289,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-21T00:00:00",
+    "open": 0.105327,
+    "high": 0.106091,
+    "low": 0.101832,
+    "close": 0.105398,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-22T00:00:00",
+    "open": 0.10536,
+    "high": 0.106267,
+    "low": 0.10238,
+    "close": 0.10362,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-23T00:00:00",
+    "open": 0.103563,
+    "high": 0.104818,
+    "low": 0.099512003,
+    "close": 0.100998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-24T00:00:00",
+    "open": 0.100998,
+    "high": 0.105888,
+    "low": 0.1002,
+    "close": 0.102871,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-25T00:00:00",
+    "open": 0.102912,
+    "high": 0.104186,
+    "low": 0.099942997,
+    "close": 0.102219,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-26T00:00:00",
+    "open": 0.102219,
+    "high": 0.104431,
+    "low": 0.101445,
+    "close": 0.10317,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-27T00:00:00",
+    "open": 0.10317,
+    "high": 0.103546,
+    "low": 0.100195,
+    "close": 0.101397,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-28T00:00:00",
+    "open": 0.101421,
+    "high": 0.1022,
+    "low": 0.099600002,
+    "close": 0.10024,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-29T00:00:00",
+    "open": 0.100214,
+    "high": 0.101974,
+    "low": 0.098805003,
+    "close": 0.099117003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-30T00:00:00",
+    "open": 0.099117003,
+    "high": 0.103435,
+    "low": 0.098483004,
+    "close": 0.102492,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-07-31T00:00:00",
+    "open": 0.102505,
+    "high": 0.106375,
+    "low": 0.100479,
+    "close": 0.100495,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-01T00:00:00",
+    "open": 0.100495,
+    "high": 0.100994,
+    "low": 0.095652997,
+    "close": 0.099253997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-02T00:00:00",
+    "open": 0.099247999,
+    "high": 0.099457003,
+    "low": 0.093057998,
+    "close": 0.095475003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-03T00:00:00",
+    "open": 0.095463,
+    "high": 0.095830001,
+    "low": 0.091735996,
+    "close": 0.093337998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-04T00:00:00",
+    "open": 0.093299001,
+    "high": 0.093341,
+    "low": 0.086576,
+    "close": 0.088165,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-05T00:00:00",
+    "open": 0.088242002,
+    "high": 0.089155003,
+    "low": 0.075779997,
+    "close": 0.087963998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-06T00:00:00",
+    "open": 0.087963998,
+    "high": 0.093082003,
+    "low": 0.087820999,
+    "close": 0.092454001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-07T00:00:00",
+    "open": 0.092542998,
+    "high": 0.103832,
+    "low": 0.091844998,
+    "close": 0.101312,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-08T00:00:00",
+    "open": 0.101317,
+    "high": 0.103492,
+    "low": 0.098433003,
+    "close": 0.103117,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-09T00:00:00",
+    "open": 0.103139,
+    "high": 0.103202,
+    "low": 0.098541997,
+    "close": 0.099914998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-10T00:00:00",
+    "open": 0.099918999,
+    "high": 0.101947,
+    "low": 0.099584997,
+    "close": 0.101269,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-11T00:00:00",
+    "open": 0.101309,
+    "high": 0.10294,
+    "low": 0.097025998,
+    "close": 0.097823001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-12T00:00:00",
+    "open": 0.097823001,
+    "high": 0.100484,
+    "low": 0.097321004,
+    "close": 0.098866001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-13T00:00:00",
+    "open": 0.098843001,
+    "high": 0.099799,
+    "low": 0.097627997,
+    "close": 0.099313997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-14T00:00:00",
+    "open": 0.099307001,
+    "high": 0.099480003,
+    "low": 0.096253999,
+    "close": 0.096579999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-15T00:00:00",
+    "open": 0.096579999,
+    "high": 0.098315001,
+    "low": 0.094646998,
+    "close": 0.095632002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-16T00:00:00",
+    "open": 0.095689997,
+    "high": 0.096093997,
+    "low": 0.093120001,
+    "close": 0.094870999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-17T00:00:00",
+    "open": 0.094843,
+    "high": 0.096348003,
+    "low": 0.094521999,
+    "close": 0.095671996,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-18T00:00:00",
+    "open": 0.095659003,
+    "high": 0.096415997,
+    "low": 0.093463004,
+    "close": 0.093544997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-19T00:00:00",
+    "open": 0.093544997,
+    "high": 0.096337996,
+    "low": 0.09307,
+    "close": 0.096337996,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-20T00:00:00",
+    "open": 0.096329004,
+    "high": 0.099200003,
+    "low": 0.096074998,
+    "close": 0.097589001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-21T00:00:00",
+    "open": 0.097510003,
+    "high": 0.099060997,
+    "low": 0.096302003,
+    "close": 0.098554,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-22T00:00:00",
+    "open": 0.098568,
+    "high": 0.099661998,
+    "low": 0.097254999,
+    "close": 0.098925002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-23T00:00:00",
+    "open": 0.098925002,
+    "high": 0.102471,
+    "low": 0.098797001,
+    "close": 0.101893,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-24T00:00:00",
+    "open": 0.101893,
+    "high": 0.103659,
+    "low": 0.100881,
+    "close": 0.102558,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-25T00:00:00",
+    "open": 0.102558,
+    "high": 0.10282,
+    "low": 0.099922001,
+    "close": 0.100965,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-26T00:00:00",
+    "open": 0.100965,
+    "high": 0.10125,
+    "low": 0.096643001,
+    "close": 0.097092003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-27T00:00:00",
+    "open": 0.097070999,
+    "high": 0.097676001,
+    "low": 0.092396997,
+    "close": 0.093749002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-28T00:00:00",
+    "open": 0.093749002,
+    "high": 0.094779998,
+    "low": 0.090680003,
+    "close": 0.092757002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-29T00:00:00",
+    "open": 0.092790999,
+    "high": 0.094403997,
+    "low": 0.092095003,
+    "close": 0.093114004,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-30T00:00:00",
+    "open": 0.093114004,
+    "high": 0.094077997,
+    "low": 0.091127001,
+    "close": 0.093185,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-08-31T00:00:00",
+    "open": 0.093193002,
+    "high": 0.093703002,
+    "low": 0.091876,
+    "close": 0.092565,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-01T00:00:00",
+    "open": 0.092529997,
+    "high": 0.092563003,
+    "low": 0.089341,
+    "close": 0.090078004,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-02T00:00:00",
+    "open": 0.090033002,
+    "high": 0.092560001,
+    "low": 0.089997999,
+    "close": 0.092474997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-03T00:00:00",
+    "open": 0.092474997,
+    "high": 0.094449997,
+    "low": 0.091430999,
+    "close": 0.091467001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-04T00:00:00",
+    "open": 0.091444001,
+    "high": 0.092453003,
+    "low": 0.089087002,
+    "close": 0.091646999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-05T00:00:00",
+    "open": 0.091646999,
+    "high": 0.092001997,
+    "low": 0.089675002,
+    "close": 0.090241998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-06T00:00:00",
+    "open": 0.090255998,
+    "high": 0.090418003,
+    "low": 0.085500002,
+    "close": 0.088060997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-07T00:00:00",
+    "open": 0.088028997,
+    "high": 0.089713998,
+    "low": 0.087523997,
+    "close": 0.088573001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-08T00:00:00",
+    "open": 0.088568002,
+    "high": 0.090136997,
+    "low": 0.088437997,
+    "close": 0.089988999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-09T00:00:00",
+    "open": 0.089952998,
+    "high": 0.09364,
+    "low": 0.089905001,
+    "close": 0.09307,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-10T00:00:00",
+    "open": 0.093153998,
+    "high": 0.094531,
+    "low": 0.092482001,
+    "close": 0.094039999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-11T00:00:00",
+    "open": 0.094039999,
+    "high": 0.094039999,
+    "low": 0.091413997,
+    "close": 0.092676997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-12T00:00:00",
+    "open": 0.092641003,
+    "high": 0.095726997,
+    "low": 0.092361003,
+    "close": 0.094924003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-13T00:00:00",
+    "open": 0.094924003,
+    "high": 0.097009003,
+    "low": 0.094067,
+    "close": 0.096389003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-14T00:00:00",
+    "open": 0.096389003,
+    "high": 0.097264998,
+    "low": 0.095803998,
+    "close": 0.097140998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-15T00:00:00",
+    "open": 0.097121,
+    "high": 0.097356997,
+    "low": 0.094838001,
+    "close": 0.095170997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-16T00:00:00",
+    "open": 0.095169,
+    "high": 0.095609002,
+    "low": 0.093736,
+    "close": 0.094917998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-17T00:00:00",
+    "open": 0.094977997,
+    "high": 0.096372001,
+    "low": 0.094035998,
+    "close": 0.094558999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-18T00:00:00",
+    "open": 0.094580002,
+    "high": 0.096041001,
+    "low": 0.092910998,
+    "close": 0.096015997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-19T00:00:00",
+    "open": 0.095997997,
+    "high": 0.096969999,
+    "low": 0.094590001,
+    "close": 0.095988996,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-20T00:00:00",
+    "open": 0.095960997,
+    "high": 0.097144999,
+    "low": 0.09527,
+    "close": 0.096192002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-21T00:00:00",
+    "open": 0.096156999,
+    "high": 0.099110998,
+    "low": 0.095758997,
+    "close": 0.098036997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-22T00:00:00",
+    "open": 0.098036997,
+    "high": 0.098122999,
+    "low": 0.094815001,
+    "close": 0.096096002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-23T00:00:00",
+    "open": 0.096096002,
+    "high": 0.096786,
+    "low": 0.094921999,
+    "close": 0.096362002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-24T00:00:00",
+    "open": 0.096362002,
+    "high": 0.096910998,
+    "low": 0.095026001,
+    "close": 0.096850999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-25T00:00:00",
+    "open": 0.096845001,
+    "high": 0.097181998,
+    "low": 0.095788002,
+    "close": 0.095980003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-26T00:00:00",
+    "open": 0.09595,
+    "high": 0.099397004,
+    "low": 0.094793998,
+    "close": 0.098022997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-27T00:00:00",
+    "open": 0.098022997,
+    "high": 0.099489003,
+    "low": 0.097654998,
+    "close": 0.099459998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-28T00:00:00",
+    "open": 0.099450998,
+    "high": 0.101907,
+    "low": 0.098453,
+    "close": 0.099522002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-29T00:00:00",
+    "open": 0.099436,
+    "high": 0.103713,
+    "low": 0.098413996,
+    "close": 0.101771,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-09-30T00:00:00",
+    "open": 0.101777,
+    "high": 0.103517,
+    "low": 0.098288,
+    "close": 0.098587997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-01T00:00:00",
+    "open": 0.098415002,
+    "high": 0.100711,
+    "low": 0.092510998,
+    "close": 0.093832001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-02T00:00:00",
+    "open": 0.093856998,
+    "high": 0.095057003,
+    "low": 0.090132996,
+    "close": 0.090460002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-03T00:00:00",
+    "open": 0.090460002,
+    "high": 0.091213003,
+    "low": 0.088147998,
+    "close": 0.090407997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-04T00:00:00",
+    "open": 0.090407997,
+    "high": 0.092049003,
+    "low": 0.089639999,
+    "close": 0.091872998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-05T00:00:00",
+    "open": 0.091872998,
+    "high": 0.09268,
+    "low": 0.091049999,
+    "close": 0.092102997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-06T00:00:00",
+    "open": 0.092067003,
+    "high": 0.093180999,
+    "low": 0.091495,
+    "close": 0.092331998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-07T00:00:00",
+    "open": 0.092372,
+    "high": 0.093273997,
+    "low": 0.090873003,
+    "close": 0.091114998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-08T00:00:00",
+    "open": 0.091191001,
+    "high": 0.092239998,
+    "low": 0.089525,
+    "close": 0.089981,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-09T00:00:00",
+    "open": 0.08998,
+    "high": 0.090813,
+    "low": 0.088759,
+    "close": 0.089714,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-10T00:00:00",
+    "open": 0.089721,
+    "high": 0.090327,
+    "low": 0.08815,
+    "close": 0.09011,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-11T00:00:00",
+    "open": 0.090116,
+    "high": 0.0922,
+    "low": 0.089771,
+    "close": 0.091884,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-12T00:00:00",
+    "open": 0.091892,
+    "high": 0.092483,
+    "low": 0.0916,
+    "close": 0.091906,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-13T00:00:00",
+    "open": 0.091883,
+    "high": 0.091935,
+    "low": 0.089627,
+    "close": 0.090329,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-14T00:00:00",
+    "open": 0.090358,
+    "high": 0.093718,
+    "low": 0.089714,
+    "close": 0.09348,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-15T00:00:00",
+    "open": 0.093481,
+    "high": 0.094496,
+    "low": 0.091089,
+    "close": 0.092971,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-16T00:00:00",
+    "open": 0.092997,
+    "high": 0.096384,
+    "low": 0.092251,
+    "close": 0.095534,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-17T00:00:00",
+    "open": 0.095538,
+    "high": 0.096772,
+    "low": 0.094,
+    "close": 0.094931,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-18T00:00:00",
+    "open": 0.09487,
+    "high": 0.096869,
+    "low": 0.09435,
+    "close": 0.096642,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-19T00:00:00",
+    "open": 0.096644,
+    "high": 0.097499,
+    "low": 0.095854,
+    "close": 0.096838,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-20T00:00:00",
+    "open": 0.096853,
+    "high": 0.097273,
+    "low": 0.096119,
+    "close": 0.097196,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-21T00:00:00",
+    "open": 0.097187,
+    "high": 0.097483,
+    "low": 0.0947,
+    "close": 0.0953,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-22T00:00:00",
+    "open": 0.095301,
+    "high": 0.097,
+    "low": 0.094652,
+    "close": 0.095172,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-23T00:00:00",
+    "open": 0.095172,
+    "high": 0.095683,
+    "low": 0.09261,
+    "close": 0.094463,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-24T00:00:00",
+    "open": 0.094495,
+    "high": 0.096748,
+    "low": 0.094182,
+    "close": 0.096615,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-25T00:00:00",
+    "open": 0.096616,
+    "high": 0.097254,
+    "low": 0.091356,
+    "close": 0.093306,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-26T00:00:00",
+    "open": 0.093269,
+    "high": 0.094868,
+    "low": 0.092651,
+    "close": 0.09414,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-27T00:00:00",
+    "open": 0.094139,
+    "high": 0.096999,
+    "low": 0.093342,
+    "close": 0.094199,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-28T00:00:00",
+    "open": 0.094199,
+    "high": 0.094691,
+    "low": 0.092684,
+    "close": 0.094274,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-29T00:00:00",
+    "open": 0.094274,
+    "high": 0.096947,
+    "low": 0.094163,
+    "close": 0.096629,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-30T00:00:00",
+    "open": 0.096676,
+    "high": 0.096796,
+    "low": 0.094397,
+    "close": 0.094693,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-10-31T00:00:00",
+    "open": 0.094722,
+    "high": 0.094925,
+    "low": 0.091749,
+    "close": 0.09231,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-01T00:00:00",
+    "open": 0.092317,
+    "high": 0.093649,
+    "low": 0.090781,
+    "close": 0.093074,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-02T00:00:00",
+    "open": 0.093079,
+    "high": 0.093559,
+    "low": 0.091536,
+    "close": 0.09263,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-03T00:00:00",
+    "open": 0.092607,
+    "high": 0.092675,
+    "low": 0.08932,
+    "close": 0.090616,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-04T00:00:00",
+    "open": 0.090665,
+    "high": 0.092208,
+    "low": 0.0901,
+    "close": 0.091117,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-05T00:00:00",
+    "open": 0.091014,
+    "high": 0.093951,
+    "low": 0.090649,
+    "close": 0.093415,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-06T00:00:00",
+    "open": 0.09346,
+    "high": 0.097805,
+    "low": 0.09346,
+    "close": 0.097213,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-07T00:00:00",
+    "open": 0.097202,
+    "high": 0.102369,
+    "low": 0.09664,
+    "close": 0.102213,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-08T00:00:00",
+    "open": 0.102213,
+    "high": 0.103364,
+    "low": 0.099868,
+    "close": 0.101277,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-09T00:00:00",
+    "open": 0.101298,
+    "high": 0.102445,
+    "low": 0.099556,
+    "close": 0.102294,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-10T00:00:00",
+    "open": 0.102286,
+    "high": 0.113313,
+    "low": 0.101556,
+    "close": 0.108418,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-11T00:00:00",
+    "open": 0.10844,
+    "high": 0.114989,
+    "low": 0.107459,
+    "close": 0.114852,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-12T00:00:00",
+    "open": 0.114899,
+    "high": 0.14163,
+    "low": 0.11101,
+    "close": 0.134546,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-13T00:00:00",
+    "open": 0.134437,
+    "high": 0.13858,
+    "low": 0.120777,
+    "close": 0.124435,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-14T00:00:00",
+    "open": 0.124434,
+    "high": 0.140607,
+    "low": 0.121758,
+    "close": 0.131089,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-15T00:00:00",
+    "open": 0.131126,
+    "high": 0.148004,
+    "low": 0.128284,
+    "close": 0.14576,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-16T00:00:00",
+    "open": 0.145698,
+    "high": 0.243054,
+    "low": 0.140686,
+    "close": 0.220952,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-17T00:00:00",
+    "open": 0.220773,
+    "high": 0.225962,
+    "low": 0.188913,
+    "close": 0.196348,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-18T00:00:00",
+    "open": 0.19648,
+    "high": 0.25588,
+    "low": 0.195974,
+    "close": 0.231774,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-19T00:00:00",
+    "open": 0.231871,
+    "high": 0.244613,
+    "low": 0.222336,
+    "close": 0.231865,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-20T00:00:00",
+    "open": 0.231887,
+    "high": 0.269999,
+    "low": 0.226,
+    "close": 0.247587,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-21T00:00:00",
+    "open": 0.24751,
+    "high": 0.265,
+    "low": 0.23,
+    "close": 0.262242,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-22T00:00:00",
+    "open": 0.262243,
+    "high": 0.352816,
+    "low": 0.262243,
+    "close": 0.340474,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-23T00:00:00",
+    "open": 0.340471,
+    "high": 0.553459,
+    "low": 0.339551,
+    "close": 0.52229,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-24T00:00:00",
+    "open": 0.522643,
+    "high": 0.63898,
+    "low": 0.428144,
+    "close": 0.536547,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-25T00:00:00",
+    "open": 0.536898,
+    "high": 0.559464,
+    "low": 0.471164,
+    "close": 0.481433,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-26T00:00:00",
+    "open": 0.481395,
+    "high": 0.514123,
+    "low": 0.414924,
+    "close": 0.438407,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-27T00:00:00",
+    "open": 0.438126,
+    "high": 0.531971,
+    "low": 0.418005,
+    "close": 0.483976,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-28T00:00:00",
+    "open": 0.483909,
+    "high": 0.505,
+    "low": 0.463031,
+    "close": 0.499695,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-29T00:00:00",
+    "open": 0.499977,
+    "high": 0.56182,
+    "low": 0.48663,
+    "close": 0.548399,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-11-30T00:00:00",
+    "open": 0.547939,
+    "high": 0.562,
+    "low": 0.52099,
+    "close": 0.525545,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-01T00:00:00",
+    "open": 0.525656,
+    "high": 0.578833,
+    "low": 0.492859,
+    "close": 0.559508,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-02T00:00:00",
+    "open": 0.559521,
+    "high": 0.605416,
+    "low": 0.497501,
+    "close": 0.539436,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-03T00:00:00",
+    "open": 0.539437,
+    "high": 0.6,
+    "low": 0.48213,
+    "close": 0.507241,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-04T00:00:00",
+    "open": 0.50724,
+    "high": 0.52244,
+    "low": 0.475867,
+    "close": 0.489841,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-05T00:00:00",
+    "open": 0.490049,
+    "high": 0.503926,
+    "low": 0.460001,
+    "close": 0.471513,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-06T00:00:00",
+    "open": 0.471389,
+    "high": 0.500723,
+    "low": 0.455555,
+    "close": 0.496411,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-07T00:00:00",
+    "open": 0.496525,
+    "high": 0.531504,
+    "low": 0.480321,
+    "close": 0.504212,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-08T00:00:00",
+    "open": 0.504191,
+    "high": 0.504324,
+    "low": 0.475487,
+    "close": 0.493162,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-09T00:00:00",
+    "open": 0.493153,
+    "high": 0.493279,
+    "low": 0.354421,
+    "close": 0.411151,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-10T00:00:00",
+    "open": 0.410592,
+    "high": 0.4415,
+    "low": 0.362389,
+    "close": 0.436821,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-11T00:00:00",
+    "open": 0.43666,
+    "high": 0.446288,
+    "low": 0.402811,
+    "close": 0.435425,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-12T00:00:00",
+    "open": 0.43547,
+    "high": 0.450928,
+    "low": 0.418767,
+    "close": 0.425328,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-13T00:00:00",
+    "open": 0.42521,
+    "high": 0.453022,
+    "low": 0.411977,
+    "close": 0.437809,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-14T00:00:00",
+    "open": 0.437904,
+    "high": 0.451789,
+    "low": 0.411066,
+    "close": 0.424153,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-15T00:00:00",
+    "open": 0.424375,
+    "high": 0.435446,
+    "low": 0.416135,
+    "close": 0.430243,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-16T00:00:00",
+    "open": 0.430316,
+    "high": 0.447299,
+    "low": 0.407,
+    "close": 0.418839,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-17T00:00:00",
+    "open": 0.4189,
+    "high": 0.471542,
+    "low": 0.410209,
+    "close": 0.428778,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-18T00:00:00",
+    "open": 0.4291,
+    "high": 0.4472,
+    "low": 0.39,
+    "close": 0.395779,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-19T00:00:00",
+    "open": 0.395617,
+    "high": 0.414493,
+    "low": 0.35281,
+    "close": 0.369432,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-20T00:00:00",
+    "open": 0.369538,
+    "high": 0.383862,
+    "low": 0.311903,
+    "close": 0.375112,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-21T00:00:00",
+    "open": 0.375095,
+    "high": 0.389795,
+    "low": 0.350772,
+    "close": 0.355914,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-22T00:00:00",
+    "open": 0.355811,
+    "high": 0.371703,
+    "low": 0.342643,
+    "close": 0.356126,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-23T00:00:00",
+    "open": 0.356153,
+    "high": 0.375,
+    "low": 0.345334,
+    "close": 0.370669,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-24T00:00:00",
+    "open": 0.370612,
+    "high": 0.413916,
+    "low": 0.35974,
+    "close": 0.402221,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-25T00:00:00",
+    "open": 0.402149,
+    "high": 0.40349,
+    "low": 0.378088,
+    "close": 0.382564,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-26T00:00:00",
+    "open": 0.382715,
+    "high": 0.38652,
+    "low": 0.349516,
+    "close": 0.354302,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-27T00:00:00",
+    "open": 0.35439,
+    "high": 0.368658,
+    "low": 0.342866,
+    "close": 0.349175,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-28T00:00:00",
+    "open": 0.3492,
+    "high": 0.359351,
+    "low": 0.34428,
+    "close": 0.355586,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-29T00:00:00",
+    "open": 0.355461,
+    "high": 0.355916,
+    "low": 0.334649,
+    "close": 0.337616,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-30T00:00:00",
+    "open": 0.337626,
+    "high": 0.347409,
+    "low": 0.320209,
+    "close": 0.331293,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2024-12-31T00:00:00",
+    "open": 0.331253,
+    "high": 0.345946,
+    "low": 0.323288,
+    "close": 0.332022,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-01T00:00:00",
+    "open": 0.332022,
+    "high": 0.44,
+    "low": 0.331472,
+    "close": 0.424759,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-02T00:00:00",
+    "open": 0.42476,
+    "high": 0.459338,
+    "low": 0.412066,
+    "close": 0.431594,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-03T00:00:00",
+    "open": 0.431502,
+    "high": 0.46,
+    "low": 0.429435,
+    "close": 0.44802,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-04T00:00:00",
+    "open": 0.44805,
+    "high": 0.485725,
+    "low": 0.44432,
+    "close": 0.450405,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-05T00:00:00",
+    "open": 0.450371,
+    "high": 0.456668,
+    "low": 0.431499,
+    "close": 0.440633,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-06T00:00:00",
+    "open": 0.440589,
+    "high": 0.463373,
+    "low": 0.432501,
+    "close": 0.446855,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-07T00:00:00",
+    "open": 0.446855,
+    "high": 0.469409,
+    "low": 0.414019,
+    "close": 0.417763,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-08T00:00:00",
+    "open": 0.417699,
+    "high": 0.439254,
+    "low": 0.3893,
+    "close": 0.425252,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-09T00:00:00",
+    "open": 0.425352,
+    "high": 0.429996,
+    "low": 0.386635,
+    "close": 0.391367,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-10T00:00:00",
+    "open": 0.391371,
+    "high": 0.425968,
+    "low": 0.387232,
+    "close": 0.414288,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-11T00:00:00",
+    "open": 0.414397,
+    "high": 0.458879,
+    "low": 0.403297,
+    "close": 0.445723,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-12T00:00:00",
+    "open": 0.445602,
+    "high": 0.446521,
+    "low": 0.419428,
+    "close": 0.422054,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-13T00:00:00",
+    "open": 0.422244,
+    "high": 0.439001,
+    "low": 0.392001,
+    "close": 0.419651,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-14T00:00:00",
+    "open": 0.419597,
+    "high": 0.436611,
+    "low": 0.415253,
+    "close": 0.430099,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-15T00:00:00",
+    "open": 0.430025,
+    "high": 0.495365,
+    "low": 0.426181,
+    "close": 0.488175,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-16T00:00:00",
+    "open": 0.488078,
+    "high": 0.514783,
+    "low": 0.463439,
+    "close": 0.481883,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-17T00:00:00",
+    "open": 0.482001,
+    "high": 0.499953,
+    "low": 0.474216,
+    "close": 0.48787,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-18T00:00:00",
+    "open": 0.487971,
+    "high": 0.492166,
+    "low": 0.45116,
+    "close": 0.49007,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-19T00:00:00",
+    "open": 0.490197,
+    "high": 0.494839,
+    "low": 0.417145,
+    "close": 0.432747,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-20T00:00:00",
+    "open": 0.432653,
+    "high": 0.478172,
+    "low": 0.423157,
+    "close": 0.446662,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-21T00:00:00",
+    "open": 0.446907,
+    "high": 0.454751,
+    "low": 0.427,
+    "close": 0.442457,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-22T00:00:00",
+    "open": 0.442416,
+    "high": 0.44545,
+    "low": 0.425625,
+    "close": 0.428399,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-23T00:00:00",
+    "open": 0.428468,
+    "high": 0.437396,
+    "low": 0.412156,
+    "close": 0.430968,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-24T00:00:00",
+    "open": 0.430999,
+    "high": 0.448851,
+    "low": 0.419791,
+    "close": 0.430933,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-25T00:00:00",
+    "open": 0.430878,
+    "high": 0.437197,
+    "low": 0.41326,
+    "close": 0.417009,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-26T00:00:00",
+    "open": 0.417014,
+    "high": 0.426143,
+    "low": 0.405599,
+    "close": 0.406251,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-27T00:00:00",
+    "open": 0.406069,
+    "high": 0.410108,
+    "low": 0.363,
+    "close": 0.407363,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-28T00:00:00",
+    "open": 0.407513,
+    "high": 0.421074,
+    "low": 0.390019,
+    "close": 0.392557,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-29T00:00:00",
+    "open": 0.392502,
+    "high": 0.406625,
+    "low": 0.381771,
+    "close": 0.392914,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-30T00:00:00",
+    "open": 0.392903,
+    "high": 0.443999,
+    "low": 0.389222,
+    "close": 0.428698,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-01-31T00:00:00",
+    "open": 0.428756,
+    "high": 0.429978,
+    "low": 0.406938,
+    "close": 0.413879,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-01T00:00:00",
+    "open": 0.413896,
+    "high": 0.42031,
+    "low": 0.388655,
+    "close": 0.391985,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-02T00:00:00",
+    "open": 0.391935,
+    "high": 0.401294,
+    "low": 0.33591,
+    "close": 0.353692,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-03T00:00:00",
+    "open": 0.353998,
+    "high": 0.372777,
+    "low": 0.26127,
+    "close": 0.370934,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-04T00:00:00",
+    "open": 0.370746,
+    "high": 0.37566,
+    "low": 0.332728,
+    "close": 0.340915,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-05T00:00:00",
+    "open": 0.341001,
+    "high": 0.348829,
+    "low": 0.322252,
+    "close": 0.327256,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-06T00:00:00",
+    "open": 0.327252,
+    "high": 0.341264,
+    "low": 0.313153,
+    "close": 0.31823,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-07T00:00:00",
+    "open": 0.318284,
+    "high": 0.345443,
+    "low": 0.31663,
+    "close": 0.326857,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-08T00:00:00",
+    "open": 0.326853,
+    "high": 0.334518,
+    "low": 0.320834,
+    "close": 0.331581,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-09T00:00:00",
+    "open": 0.331616,
+    "high": 0.338872,
+    "low": 0.302853,
+    "close": 0.314062,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-10T00:00:00",
+    "open": 0.314068,
+    "high": 0.323069,
+    "low": 0.303328,
+    "close": 0.313191,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-11T00:00:00",
+    "open": 0.313311,
+    "high": 0.339466,
+    "low": 0.312041,
+    "close": 0.318039,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-12T00:00:00",
+    "open": 0.317904,
+    "high": 0.337222,
+    "low": 0.307031,
+    "close": 0.333265,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-13T00:00:00",
+    "open": 0.333269,
+    "high": 0.343,
+    "low": 0.322559,
+    "close": 0.336998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-14T00:00:00",
+    "open": 0.33704,
+    "high": 0.36293,
+    "low": 0.333967,
+    "close": 0.350607,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-15T00:00:00",
+    "open": 0.350706,
+    "high": 0.366119,
+    "low": 0.345587,
+    "close": 0.348883,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-16T00:00:00",
+    "open": 0.348798,
+    "high": 0.35195,
+    "low": 0.339701,
+    "close": 0.342565,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-17T00:00:00",
+    "open": 0.342537,
+    "high": 0.3485,
+    "low": 0.330377,
+    "close": 0.334058,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-18T00:00:00",
+    "open": 0.334059,
+    "high": 0.335336,
+    "low": 0.31553,
+    "close": 0.323431,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-19T00:00:00",
+    "open": 0.323338,
+    "high": 0.34249,
+    "low": 0.320864,
+    "close": 0.341822,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-20T00:00:00",
+    "open": 0.341885,
+    "high": 0.349764,
+    "low": 0.335835,
+    "close": 0.344592,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-21T00:00:00",
+    "open": 0.344708,
+    "high": 0.346456,
+    "low": 0.320391,
+    "close": 0.325895,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-22T00:00:00",
+    "open": 0.325976,
+    "high": 0.339796,
+    "low": 0.324201,
+    "close": 0.334261,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-23T00:00:00",
+    "open": 0.334459,
+    "high": 0.336151,
+    "low": 0.3267,
+    "close": 0.333025,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-24T00:00:00",
+    "open": 0.33311,
+    "high": 0.335,
+    "low": 0.294052,
+    "close": 0.297765,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 0.297667,
+    "high": 0.30341,
+    "low": 0.270744,
+    "close": 0.295184,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 0.295334,
+    "high": 0.298937,
+    "low": 0.277798,
+    "close": 0.286036,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 0.286144,
+    "high": 0.293475,
+    "low": 0.27686,
+    "close": 0.28305,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-02-28T00:00:00",
+    "open": 0.283128,
+    "high": 0.288677,
+    "low": 0.252364,
+    "close": 0.286236,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-03-01T00:00:00",
+    "open": 0.286319,
+    "high": 0.31864,
+    "low": 0.283414,
+    "close": 0.311209,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-03-02T00:00:00",
+    "open": 0.311428,
+    "high": 0.375175,
+    "low": 0.309353,
+    "close": 0.351196,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-03-03T00:00:00",
+    "open": 0.351196,
+    "high": 0.361473,
+    "low": 0.289707,
+    "close": 0.292341,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-03-04T00:00:00",
+    "open": 0.292022,
+    "high": 0.301171,
+    "low": 0.273756,
+    "close": 0.294893,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XLM",
+    "timestamp": "2025-03-05T00:00:00",
+    "open": 0.29478,
+    "high": 0.297173,
+    "low": 0.293364,
+    "close": 0.293953,
+    "volume": 0.0,
+    "interval": "1d"
+  }
+]

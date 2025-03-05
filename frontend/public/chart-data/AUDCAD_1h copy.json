@@ -1,0 +1,1212 @@
+[
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 0.90499997,
+    "high": 0.90570003,
+    "low": 0.90469998,
+    "close": 0.90509999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T01:00:00",
+    "open": 0.90499997,
+    "high": 0.9052,
+    "low": 0.90380001,
+    "close": 0.90399998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T02:00:00",
+    "open": 0.90399998,
+    "high": 0.90530002,
+    "low": 0.9034,
+    "close": 0.90530002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 0.9052,
+    "high": 0.90619999,
+    "low": 0.90499997,
+    "close": 0.90549999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T04:00:00",
+    "open": 0.90560001,
+    "high": 0.90579998,
+    "low": 0.90490001,
+    "close": 0.90539998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T05:00:00",
+    "open": 0.90530002,
+    "high": 0.90630001,
+    "low": 0.90530002,
+    "close": 0.90630001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T06:00:00",
+    "open": 0.90619999,
+    "high": 0.90710002,
+    "low": 0.90619999,
+    "close": 0.90710002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 0.90710002,
+    "high": 0.90780002,
+    "low": 0.90700001,
+    "close": 0.90780002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T08:00:00",
+    "open": 0.9077,
+    "high": 0.9084,
+    "low": 0.90759999,
+    "close": 0.90799999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T09:00:00",
+    "open": 0.90750003,
+    "high": 0.90880001,
+    "low": 0.90750003,
+    "close": 0.90869999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T10:00:00",
+    "open": 0.90859997,
+    "high": 0.90880001,
+    "low": 0.90810001,
+    "close": 0.9084,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 0.9084,
+    "high": 0.90850002,
+    "low": 0.90719998,
+    "close": 0.9073,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T12:00:00",
+    "open": 0.9073,
+    "high": 0.9073,
+    "low": 0.90579998,
+    "close": 0.9066,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T13:00:00",
+    "open": 0.9066,
+    "high": 0.90689999,
+    "low": 0.90549999,
+    "close": 0.90640002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T14:00:00",
+    "open": 0.90649998,
+    "high": 0.90689999,
+    "low": 0.90619999,
+    "close": 0.90630001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 0.90630001,
+    "high": 0.90679997,
+    "low": 0.90600002,
+    "close": 0.9066,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T16:00:00",
+    "open": 0.9066,
+    "high": 0.90679997,
+    "low": 0.90579998,
+    "close": 0.90619999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T17:00:00",
+    "open": 0.90630001,
+    "high": 0.9073,
+    "low": 0.90609998,
+    "close": 0.90700001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T18:00:00",
+    "open": 0.90710002,
+    "high": 0.90759999,
+    "low": 0.90630001,
+    "close": 0.9066,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 0.9066,
+    "high": 0.90710002,
+    "low": 0.90630001,
+    "close": 0.90679997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T20:00:00",
+    "open": 0.90670002,
+    "high": 0.90679997,
+    "low": 0.90609998,
+    "close": 0.90630001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T21:00:00",
+    "open": 0.90640002,
+    "high": 0.90689999,
+    "low": 0.90609998,
+    "close": 0.90619999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T22:00:00",
+    "open": 0.90619999,
+    "high": 0.90619999,
+    "low": 0.9052,
+    "close": 0.90549999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 0.90549999,
+    "high": 0.9059,
+    "low": 0.90490001,
+    "close": 0.90499997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 0.90499997,
+    "high": 0.9059,
+    "low": 0.90490001,
+    "close": 0.90499997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T01:00:00",
+    "open": 0.90490001,
+    "high": 0.90509999,
+    "low": 0.90380001,
+    "close": 0.9041,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T02:00:00",
+    "open": 0.90420002,
+    "high": 0.90640002,
+    "low": 0.9041,
+    "close": 0.90630001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T03:00:00",
+    "open": 0.90640002,
+    "high": 0.9073,
+    "low": 0.90619999,
+    "close": 0.90700001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T04:00:00",
+    "open": 0.90710002,
+    "high": 0.9077,
+    "low": 0.90399998,
+    "close": 0.90429997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T05:00:00",
+    "open": 0.90429997,
+    "high": 0.90499997,
+    "low": 0.90390003,
+    "close": 0.9041,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T06:00:00",
+    "open": 0.9041,
+    "high": 0.90420002,
+    "low": 0.90359998,
+    "close": 0.90420002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T07:00:00",
+    "open": 0.90420002,
+    "high": 0.90420002,
+    "low": 0.90329999,
+    "close": 0.90369999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T08:00:00",
+    "open": 0.90369999,
+    "high": 0.90460002,
+    "low": 0.9034,
+    "close": 0.90380001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T09:00:00",
+    "open": 0.90390003,
+    "high": 0.9052,
+    "low": 0.90390003,
+    "close": 0.90450001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T10:00:00",
+    "open": 0.90460002,
+    "high": 0.9052,
+    "low": 0.90439999,
+    "close": 0.90460002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T11:00:00",
+    "open": 0.90460002,
+    "high": 0.90469998,
+    "low": 0.90399998,
+    "close": 0.9041,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T12:00:00",
+    "open": 0.90420002,
+    "high": 0.90499997,
+    "low": 0.90380001,
+    "close": 0.9048,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T13:00:00",
+    "open": 0.9048,
+    "high": 0.90509999,
+    "low": 0.90429997,
+    "close": 0.90439999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T14:00:00",
+    "open": 0.90450001,
+    "high": 0.9048,
+    "low": 0.90329999,
+    "close": 0.90350002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T15:00:00",
+    "open": 0.90350002,
+    "high": 0.90369999,
+    "low": 0.90259999,
+    "close": 0.90280002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T16:00:00",
+    "open": 0.90280002,
+    "high": 0.90319997,
+    "low": 0.90259999,
+    "close": 0.903,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T17:00:00",
+    "open": 0.90310001,
+    "high": 0.90380001,
+    "low": 0.903,
+    "close": 0.90359998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T18:00:00",
+    "open": 0.90350002,
+    "high": 0.90359998,
+    "low": 0.90280002,
+    "close": 0.90289998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T19:00:00",
+    "open": 0.90289998,
+    "high": 0.9034,
+    "low": 0.90219998,
+    "close": 0.90259999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T20:00:00",
+    "open": 0.90249997,
+    "high": 0.90289998,
+    "low": 0.90219998,
+    "close": 0.90289998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T21:00:00",
+    "open": 0.90280002,
+    "high": 0.90319997,
+    "low": 0.90259999,
+    "close": 0.90319997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T22:00:00",
+    "open": 0.90310001,
+    "high": 0.90350002,
+    "low": 0.90289998,
+    "close": 0.90329999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-27T23:00:00",
+    "open": 0.90329999,
+    "high": 0.90429997,
+    "low": 0.903,
+    "close": 0.90390003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T00:00:00",
+    "open": 0.90390003,
+    "high": 0.90460002,
+    "low": 0.90310001,
+    "close": 0.90399998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T01:00:00",
+    "open": 0.90399998,
+    "high": 0.90420002,
+    "low": 0.90179998,
+    "close": 0.90219998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T02:00:00",
+    "open": 0.90219998,
+    "high": 0.90270001,
+    "low": 0.90140003,
+    "close": 0.90240002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T03:00:00",
+    "open": 0.90240002,
+    "high": 0.90270001,
+    "low": 0.9016,
+    "close": 0.90179998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T04:00:00",
+    "open": 0.90179998,
+    "high": 0.9023,
+    "low": 0.90109998,
+    "close": 0.90130001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T05:00:00",
+    "open": 0.90130001,
+    "high": 0.90200001,
+    "low": 0.9012,
+    "close": 0.90179998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T06:00:00",
+    "open": 0.90179998,
+    "high": 0.90189999,
+    "low": 0.90100002,
+    "close": 0.90149999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T07:00:00",
+    "open": 0.90149999,
+    "high": 0.90149999,
+    "low": 0.9005,
+    "close": 0.90060002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T08:00:00",
+    "open": 0.90069997,
+    "high": 0.90079999,
+    "low": 0.89990002,
+    "close": 0.90009999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T09:00:00",
+    "open": 0.90020001,
+    "high": 0.90060002,
+    "low": 0.8998,
+    "close": 0.8998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T10:00:00",
+    "open": 0.89990002,
+    "high": 0.9005,
+    "low": 0.8998,
+    "close": 0.90020001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T11:00:00",
+    "open": 0.90020001,
+    "high": 0.9005,
+    "low": 0.89950001,
+    "close": 0.89969999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T12:00:00",
+    "open": 0.89969999,
+    "high": 0.90020001,
+    "low": 0.89850003,
+    "close": 0.89859998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T13:00:00",
+    "open": 0.89859998,
+    "high": 0.89899999,
+    "low": 0.89780003,
+    "close": 0.898,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T14:00:00",
+    "open": 0.898,
+    "high": 0.898,
+    "low": 0.8973,
+    "close": 0.89740002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T15:00:00",
+    "open": 0.89740002,
+    "high": 0.89780003,
+    "low": 0.8973,
+    "close": 0.8976,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T16:00:00",
+    "open": 0.8976,
+    "high": 0.89780003,
+    "low": 0.89700001,
+    "close": 0.8973,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T17:00:00",
+    "open": 0.8973,
+    "high": 0.89770001,
+    "low": 0.89700001,
+    "close": 0.89719999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T18:00:00",
+    "open": 0.8973,
+    "high": 0.89789999,
+    "low": 0.89700001,
+    "close": 0.8973,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T19:00:00",
+    "open": 0.8973,
+    "high": 0.89789999,
+    "low": 0.89719999,
+    "close": 0.8976,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T20:00:00",
+    "open": 0.89749998,
+    "high": 0.89780003,
+    "low": 0.89709997,
+    "close": 0.89719999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T21:00:00",
+    "open": 0.89719999,
+    "high": 0.89740002,
+    "low": 0.89679998,
+    "close": 0.89719999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T22:00:00",
+    "open": 0.89719999,
+    "high": 0.89740002,
+    "low": 0.8969,
+    "close": 0.8973,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-02-28T23:00:00",
+    "open": 0.8973,
+    "high": 0.89789999,
+    "low": 0.89719999,
+    "close": 0.89749998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-01T00:00:00",
+    "open": 0.89749998,
+    "high": 0.89749998,
+    "low": 0.89520001,
+    "close": 0.89560002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-01T01:00:00",
+    "open": 0.89560002,
+    "high": 0.89700001,
+    "low": 0.89560002,
+    "close": 0.89700001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-01T02:00:00",
+    "open": 0.89700001,
+    "high": 0.89719999,
+    "low": 0.8955,
+    "close": 0.89569998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-01T03:00:00",
+    "open": 0.89569998,
+    "high": 0.89639997,
+    "low": 0.8955,
+    "close": 0.89630002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-01T04:00:00",
+    "open": 0.89639997,
+    "high": 0.89670002,
+    "low": 0.89600003,
+    "close": 0.89609998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-01T05:00:00",
+    "open": 0.89609998,
+    "high": 0.89630002,
+    "low": 0.89529997,
+    "close": 0.89579999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-01T06:00:00",
+    "open": 0.89569998,
+    "high": 0.89639997,
+    "low": 0.89539999,
+    "close": 0.8962,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-01T07:00:00",
+    "open": 0.89609998,
+    "high": 0.89780003,
+    "low": 0.89609998,
+    "close": 0.89770001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-01T08:00:00",
+    "open": 0.8976,
+    "high": 0.89850003,
+    "low": 0.8973,
+    "close": 0.89819998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T09:00:00",
+    "open": 0.89780003,
+    "high": 0.89840001,
+    "low": 0.8969,
+    "close": 0.8969,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T10:00:00",
+    "open": 0.89679998,
+    "high": 0.89859998,
+    "low": 0.89679998,
+    "close": 0.89840001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T11:00:00",
+    "open": 0.89840001,
+    "high": 0.8987,
+    "low": 0.89780003,
+    "close": 0.89810002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T12:00:00",
+    "open": 0.89810002,
+    "high": 0.89929998,
+    "low": 0.898,
+    "close": 0.89880002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T13:00:00",
+    "open": 0.89889997,
+    "high": 0.89920002,
+    "low": 0.898,
+    "close": 0.89819998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T14:00:00",
+    "open": 0.89810002,
+    "high": 0.89840001,
+    "low": 0.89749998,
+    "close": 0.89810002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T15:00:00",
+    "open": 0.89810002,
+    "high": 0.89850003,
+    "low": 0.89810002,
+    "close": 0.89819998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T16:00:00",
+    "open": 0.89810002,
+    "high": 0.89850003,
+    "low": 0.89789999,
+    "close": 0.898,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T17:00:00",
+    "open": 0.898,
+    "high": 0.89810002,
+    "low": 0.89719999,
+    "close": 0.89810002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T18:00:00",
+    "open": 0.89810002,
+    "high": 0.89829999,
+    "low": 0.89740002,
+    "close": 0.89780003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T19:00:00",
+    "open": 0.89780003,
+    "high": 0.898,
+    "low": 0.89709997,
+    "close": 0.89749998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T20:00:00",
+    "open": 0.8976,
+    "high": 0.89840001,
+    "low": 0.89749998,
+    "close": 0.898,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T21:00:00",
+    "open": 0.89789999,
+    "high": 0.89840001,
+    "low": 0.89770001,
+    "close": 0.89780003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T22:00:00",
+    "open": 0.89780003,
+    "high": 0.89829999,
+    "low": 0.89770001,
+    "close": 0.89819998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-03T23:00:00",
+    "open": 0.89819998,
+    "high": 0.89889997,
+    "low": 0.89810002,
+    "close": 0.89840001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T00:00:00",
+    "open": 0.89850003,
+    "high": 0.8987,
+    "low": 0.89740002,
+    "close": 0.89829999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T01:00:00",
+    "open": 0.89819998,
+    "high": 0.89999998,
+    "low": 0.898,
+    "close": 0.89950001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T02:00:00",
+    "open": 0.89950001,
+    "high": 0.89999998,
+    "low": 0.89859998,
+    "close": 0.89880002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T03:00:00",
+    "open": 0.8987,
+    "high": 0.89990002,
+    "low": 0.89859998,
+    "close": 0.89960003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T04:00:00",
+    "open": 0.89960003,
+    "high": 0.90079999,
+    "low": 0.8994,
+    "close": 0.9005,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T05:00:00",
+    "open": 0.9005,
+    "high": 0.90140003,
+    "low": 0.90020001,
+    "close": 0.90069997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T06:00:00",
+    "open": 0.90069997,
+    "high": 0.9023,
+    "low": 0.8998,
+    "close": 0.90219998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T07:00:00",
+    "open": 0.90219998,
+    "high": 0.90329999,
+    "low": 0.90179998,
+    "close": 0.90249997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T08:00:00",
+    "open": 0.90249997,
+    "high": 0.903,
+    "low": 0.90130001,
+    "close": 0.90140003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T09:00:00",
+    "open": 0.90109998,
+    "high": 0.90189999,
+    "low": 0.90079999,
+    "close": 0.90130001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T10:00:00",
+    "open": 0.90130001,
+    "high": 0.90149999,
+    "low": 0.9005,
+    "close": 0.90090001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T11:00:00",
+    "open": 0.90090001,
+    "high": 0.9012,
+    "low": 0.89999998,
+    "close": 0.90060002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T12:00:00",
+    "open": 0.90060002,
+    "high": 0.90090001,
+    "low": 0.89960003,
+    "close": 0.90009999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T13:00:00",
+    "open": 0.89999998,
+    "high": 0.90020001,
+    "low": 0.89899999,
+    "close": 0.89910001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T14:00:00",
+    "open": 0.89910001,
+    "high": 0.90009999,
+    "low": 0.8987,
+    "close": 0.89920002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T15:00:00",
+    "open": 0.89920002,
+    "high": 0.89920002,
+    "low": 0.89819998,
+    "close": 0.89889997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T16:00:00",
+    "open": 0.89899999,
+    "high": 0.89920002,
+    "low": 0.89780003,
+    "close": 0.8987,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T17:00:00",
+    "open": 0.89880002,
+    "high": 0.89950001,
+    "low": 0.89850003,
+    "close": 0.89929998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T18:00:00",
+    "open": 0.8994,
+    "high": 0.89950001,
+    "low": 0.8987,
+    "close": 0.89899999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T19:00:00",
+    "open": 0.89910001,
+    "high": 0.89929998,
+    "low": 0.89670002,
+    "close": 0.89740002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T20:00:00",
+    "open": 0.89740002,
+    "high": 0.89810002,
+    "low": 0.89700001,
+    "close": 0.89749998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T21:00:00",
+    "open": 0.89749998,
+    "high": 0.89829999,
+    "low": 0.89719999,
+    "close": 0.898,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T22:00:00",
+    "open": 0.898,
+    "high": 0.89880002,
+    "low": 0.8976,
+    "close": 0.89859998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-04T23:00:00",
+    "open": 0.89859998,
+    "high": 0.90020001,
+    "low": 0.89859998,
+    "close": 0.89999998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCAD",
+    "timestamp": "2025-03-05T00:00:00",
+    "open": 0.89990002,
+    "high": 0.90020001,
+    "low": 0.89910001,
+    "close": 0.89950001,
+    "volume": 0.0,
+    "interval": "1h"
+  }
+]

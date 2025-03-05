@@ -1,0 +1,1212 @@
+[
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 0.56699997,
+    "high": 0.56760001,
+    "low": 0.56699997,
+    "close": 0.56720001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T01:00:00",
+    "open": 0.56709999,
+    "high": 0.56730002,
+    "low": 0.56620002,
+    "close": 0.56639999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T02:00:00",
+    "open": 0.56639999,
+    "high": 0.56639999,
+    "low": 0.56389999,
+    "close": 0.56590003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 0.56580001,
+    "high": 0.56590003,
+    "low": 0.56449997,
+    "close": 0.5654,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T04:00:00",
+    "open": 0.56529999,
+    "high": 0.56550002,
+    "low": 0.56470001,
+    "close": 0.5654,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T05:00:00",
+    "open": 0.56550002,
+    "high": 0.56639999,
+    "low": 0.56519997,
+    "close": 0.5661,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T06:00:00",
+    "open": 0.56599998,
+    "high": 0.56629997,
+    "low": 0.56569999,
+    "close": 0.5661,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 0.56599998,
+    "high": 0.56669998,
+    "low": 0.56590003,
+    "close": 0.5661,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T08:00:00",
+    "open": 0.5661,
+    "high": 0.56660002,
+    "low": 0.5661,
+    "close": 0.56650001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T09:00:00",
+    "open": 0.56650001,
+    "high": 0.56699997,
+    "low": 0.56620002,
+    "close": 0.56690001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T10:00:00",
+    "open": 0.56690001,
+    "high": 0.56709999,
+    "low": 0.56660002,
+    "close": 0.5668,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 0.56690001,
+    "high": 0.56690001,
+    "low": 0.56569999,
+    "close": 0.56569999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T12:00:00",
+    "open": 0.56569999,
+    "high": 0.56580001,
+    "low": 0.56489998,
+    "close": 0.56569999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T13:00:00",
+    "open": 0.56580001,
+    "high": 0.56599998,
+    "low": 0.56489998,
+    "close": 0.56569999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T14:00:00",
+    "open": 0.56569999,
+    "high": 0.56590003,
+    "low": 0.56519997,
+    "close": 0.5654,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 0.56529999,
+    "high": 0.56580001,
+    "low": 0.56519997,
+    "close": 0.56559998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T16:00:00",
+    "open": 0.56569999,
+    "high": 0.56599998,
+    "low": 0.56550002,
+    "close": 0.56569999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T17:00:00",
+    "open": 0.56580001,
+    "high": 0.56669998,
+    "low": 0.56569999,
+    "close": 0.56660002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T18:00:00",
+    "open": 0.56660002,
+    "high": 0.56699997,
+    "low": 0.56569999,
+    "close": 0.56590003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 0.56580001,
+    "high": 0.56629997,
+    "low": 0.56559998,
+    "close": 0.5661,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T20:00:00",
+    "open": 0.5661,
+    "high": 0.56660002,
+    "low": 0.56569999,
+    "close": 0.56580001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T21:00:00",
+    "open": 0.56580001,
+    "high": 0.56599998,
+    "low": 0.56550002,
+    "close": 0.56559998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T22:00:00",
+    "open": 0.56559998,
+    "high": 0.56580001,
+    "low": 0.56529999,
+    "close": 0.56559998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 0.56559998,
+    "high": 0.56569999,
+    "low": 0.56510001,
+    "close": 0.56529999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 0.5654,
+    "high": 0.56550002,
+    "low": 0.56410003,
+    "close": 0.5643,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T01:00:00",
+    "open": 0.56419998,
+    "high": 0.56449997,
+    "low": 0.56309998,
+    "close": 0.56410003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T02:00:00",
+    "open": 0.56410003,
+    "high": 0.5654,
+    "low": 0.56400001,
+    "close": 0.56449997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T03:00:00",
+    "open": 0.56459999,
+    "high": 0.56519997,
+    "low": 0.56449997,
+    "close": 0.56459999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T04:00:00",
+    "open": 0.56459999,
+    "high": 0.56550002,
+    "low": 0.56440002,
+    "close": 0.56480002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T05:00:00",
+    "open": 0.56480002,
+    "high": 0.56489998,
+    "low": 0.56349999,
+    "close": 0.56370002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T06:00:00",
+    "open": 0.56370002,
+    "high": 0.5643,
+    "low": 0.56339997,
+    "close": 0.56389999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T07:00:00",
+    "open": 0.56379998,
+    "high": 0.56389999,
+    "low": 0.5632,
+    "close": 0.56339997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T08:00:00",
+    "open": 0.56339997,
+    "high": 0.56410003,
+    "low": 0.5632,
+    "close": 0.56410003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T09:00:00",
+    "open": 0.56419998,
+    "high": 0.56459999,
+    "low": 0.56400001,
+    "close": 0.5643,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T10:00:00",
+    "open": 0.56419998,
+    "high": 0.56459999,
+    "low": 0.56389999,
+    "close": 0.5643,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T11:00:00",
+    "open": 0.56440002,
+    "high": 0.56440002,
+    "low": 0.56389999,
+    "close": 0.56389999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T12:00:00",
+    "open": 0.56389999,
+    "high": 0.56480002,
+    "low": 0.56379998,
+    "close": 0.56459999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T13:00:00",
+    "open": 0.56449997,
+    "high": 0.565,
+    "low": 0.5643,
+    "close": 0.56470001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T14:00:00",
+    "open": 0.56470001,
+    "high": 0.56510001,
+    "low": 0.56410003,
+    "close": 0.56419998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T15:00:00",
+    "open": 0.5643,
+    "high": 0.56440002,
+    "low": 0.56379998,
+    "close": 0.56400001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T16:00:00",
+    "open": 0.56389999,
+    "high": 0.56449997,
+    "low": 0.56370002,
+    "close": 0.56440002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T17:00:00",
+    "open": 0.56449997,
+    "high": 0.56459999,
+    "low": 0.56410003,
+    "close": 0.5643,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T18:00:00",
+    "open": 0.5643,
+    "high": 0.56510001,
+    "low": 0.56379998,
+    "close": 0.56449997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T19:00:00",
+    "open": 0.56449997,
+    "high": 0.56529999,
+    "low": 0.56449997,
+    "close": 0.56519997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T20:00:00",
+    "open": 0.56519997,
+    "high": 0.56580001,
+    "low": 0.56459999,
+    "close": 0.56559998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T21:00:00",
+    "open": 0.56569999,
+    "high": 0.56599998,
+    "low": 0.56550002,
+    "close": 0.56569999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T22:00:00",
+    "open": 0.56569999,
+    "high": 0.5661,
+    "low": 0.56550002,
+    "close": 0.5661,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-27T23:00:00",
+    "open": 0.56620002,
+    "high": 0.56620002,
+    "low": 0.56510001,
+    "close": 0.56519997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T00:00:00",
+    "open": 0.56510001,
+    "high": 0.56550002,
+    "low": 0.5636,
+    "close": 0.56400001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T01:00:00",
+    "open": 0.56389999,
+    "high": 0.56440002,
+    "low": 0.56230003,
+    "close": 0.5625,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T02:00:00",
+    "open": 0.5625,
+    "high": 0.56279999,
+    "low": 0.56150001,
+    "close": 0.5625,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T03:00:00",
+    "open": 0.5625,
+    "high": 0.56269997,
+    "low": 0.56150001,
+    "close": 0.56169999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T04:00:00",
+    "open": 0.5618,
+    "high": 0.5625,
+    "low": 0.56169999,
+    "close": 0.5618,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T05:00:00",
+    "open": 0.56169999,
+    "high": 0.56260002,
+    "low": 0.56169999,
+    "close": 0.5625,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T06:00:00",
+    "open": 0.5625,
+    "high": 0.56260002,
+    "low": 0.56120002,
+    "close": 0.56160003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T07:00:00",
+    "open": 0.56169999,
+    "high": 0.56169999,
+    "low": 0.56080002,
+    "close": 0.56080002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T08:00:00",
+    "open": 0.56089997,
+    "high": 0.56110001,
+    "low": 0.5607,
+    "close": 0.56099999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T09:00:00",
+    "open": 0.56120002,
+    "high": 0.56129998,
+    "low": 0.5607,
+    "close": 0.56080002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T10:00:00",
+    "open": 0.56080002,
+    "high": 0.56129998,
+    "low": 0.5607,
+    "close": 0.56089997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T11:00:00",
+    "open": 0.56089997,
+    "high": 0.56110001,
+    "low": 0.55989999,
+    "close": 0.55989999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T12:00:00",
+    "open": 0.56,
+    "high": 0.56059998,
+    "low": 0.55919999,
+    "close": 0.55930001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T13:00:00",
+    "open": 0.55919999,
+    "high": 0.5596,
+    "low": 0.55870003,
+    "close": 0.55879998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T14:00:00",
+    "open": 0.5589,
+    "high": 0.55900002,
+    "low": 0.5582,
+    "close": 0.55839998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T15:00:00",
+    "open": 0.55849999,
+    "high": 0.55900002,
+    "low": 0.55830002,
+    "close": 0.55860001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T16:00:00",
+    "open": 0.55860001,
+    "high": 0.55909997,
+    "low": 0.55860001,
+    "close": 0.55879998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T17:00:00",
+    "open": 0.5589,
+    "high": 0.55919999,
+    "low": 0.55870003,
+    "close": 0.5589,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T18:00:00",
+    "open": 0.5589,
+    "high": 0.5607,
+    "low": 0.55879998,
+    "close": 0.56019998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T19:00:00",
+    "open": 0.56019998,
+    "high": 0.56080002,
+    "low": 0.55970001,
+    "close": 0.56029999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T20:00:00",
+    "open": 0.56040001,
+    "high": 0.5607,
+    "low": 0.55980003,
+    "close": 0.56050003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T21:00:00",
+    "open": 0.56059998,
+    "high": 0.56110001,
+    "low": 0.56029999,
+    "close": 0.56099999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T22:00:00",
+    "open": 0.56099999,
+    "high": 0.5614,
+    "low": 0.5607,
+    "close": 0.5614,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-02-28T23:00:00",
+    "open": 0.5614,
+    "high": 0.56150001,
+    "low": 0.56029999,
+    "close": 0.56059998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-01T00:00:00",
+    "open": 0.56050003,
+    "high": 0.56120002,
+    "low": 0.56040001,
+    "close": 0.56040001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-01T01:00:00",
+    "open": 0.56050003,
+    "high": 0.56110001,
+    "low": 0.55970001,
+    "close": 0.56040001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-01T02:00:00",
+    "open": 0.56040001,
+    "high": 0.5614,
+    "low": 0.56010002,
+    "close": 0.56099999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-01T03:00:00",
+    "open": 0.56110001,
+    "high": 0.56129998,
+    "low": 0.55970001,
+    "close": 0.56010002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-01T04:00:00",
+    "open": 0.56,
+    "high": 0.56019998,
+    "low": 0.55949998,
+    "close": 0.55970001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-01T05:00:00",
+    "open": 0.55970001,
+    "high": 0.56,
+    "low": 0.5589,
+    "close": 0.55949998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-01T06:00:00",
+    "open": 0.55949998,
+    "high": 0.56,
+    "low": 0.55949998,
+    "close": 0.56,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-01T07:00:00",
+    "open": 0.55989999,
+    "high": 0.56050003,
+    "low": 0.55989999,
+    "close": 0.56029999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-01T08:00:00",
+    "open": 0.56029999,
+    "high": 0.56089997,
+    "low": 0.56010002,
+    "close": 0.56059998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T09:00:00",
+    "open": 0.56110001,
+    "high": 0.5614,
+    "low": 0.56050003,
+    "close": 0.56050003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T10:00:00",
+    "open": 0.56040001,
+    "high": 0.5618,
+    "low": 0.56040001,
+    "close": 0.56150001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T11:00:00",
+    "open": 0.56150001,
+    "high": 0.5618,
+    "low": 0.56099999,
+    "close": 0.56110001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T12:00:00",
+    "open": 0.56099999,
+    "high": 0.56220001,
+    "low": 0.56099999,
+    "close": 0.56169999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T13:00:00",
+    "open": 0.56169999,
+    "high": 0.56190002,
+    "low": 0.56080002,
+    "close": 0.56089997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T14:00:00",
+    "open": 0.56080002,
+    "high": 0.56089997,
+    "low": 0.56,
+    "close": 0.5607,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T15:00:00",
+    "open": 0.56080002,
+    "high": 0.56110001,
+    "low": 0.5607,
+    "close": 0.56080002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T16:00:00",
+    "open": 0.56080002,
+    "high": 0.56110001,
+    "low": 0.5607,
+    "close": 0.56080002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T17:00:00",
+    "open": 0.56080002,
+    "high": 0.56089997,
+    "low": 0.56029999,
+    "close": 0.56089997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T18:00:00",
+    "open": 0.56089997,
+    "high": 0.56150001,
+    "low": 0.56050003,
+    "close": 0.56059998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T19:00:00",
+    "open": 0.56059998,
+    "high": 0.5607,
+    "low": 0.55989999,
+    "close": 0.56040001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T20:00:00",
+    "open": 0.56040001,
+    "high": 0.56089997,
+    "low": 0.56,
+    "close": 0.5607,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T21:00:00",
+    "open": 0.56059998,
+    "high": 0.56110001,
+    "low": 0.56029999,
+    "close": 0.56110001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T22:00:00",
+    "open": 0.56110001,
+    "high": 0.56129998,
+    "low": 0.56059998,
+    "close": 0.56110001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-03T23:00:00",
+    "open": 0.56099999,
+    "high": 0.56160003,
+    "low": 0.56050003,
+    "close": 0.56089997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T00:00:00",
+    "open": 0.56089997,
+    "high": 0.56120002,
+    "low": 0.56050003,
+    "close": 0.56089997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T01:00:00",
+    "open": 0.56080002,
+    "high": 0.56160003,
+    "low": 0.56059998,
+    "close": 0.56089997,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T02:00:00",
+    "open": 0.5607,
+    "high": 0.56120002,
+    "low": 0.56,
+    "close": 0.5607,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T03:00:00",
+    "open": 0.5607,
+    "high": 0.56089997,
+    "low": 0.56,
+    "close": 0.56050003,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T04:00:00",
+    "open": 0.56050003,
+    "high": 0.56080002,
+    "low": 0.56019998,
+    "close": 0.56029999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T05:00:00",
+    "open": 0.56029999,
+    "high": 0.56040001,
+    "low": 0.55909997,
+    "close": 0.55949998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T06:00:00",
+    "open": 0.55949998,
+    "high": 0.55980003,
+    "low": 0.55830002,
+    "close": 0.55849999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T07:00:00",
+    "open": 0.55839998,
+    "high": 0.55849999,
+    "low": 0.55620003,
+    "close": 0.55769998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T08:00:00",
+    "open": 0.55760002,
+    "high": 0.55830002,
+    "low": 0.55760002,
+    "close": 0.55830002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T09:00:00",
+    "open": 0.55830002,
+    "high": 0.55839998,
+    "low": 0.55790001,
+    "close": 0.55790001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T10:00:00",
+    "open": 0.55790001,
+    "high": 0.5582,
+    "low": 0.55720001,
+    "close": 0.5575,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T11:00:00",
+    "open": 0.5575,
+    "high": 0.55769998,
+    "low": 0.5564,
+    "close": 0.55720001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T12:00:00",
+    "open": 0.5571,
+    "high": 0.55729997,
+    "low": 0.55580002,
+    "close": 0.55629998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T13:00:00",
+    "open": 0.55629998,
+    "high": 0.55669999,
+    "low": 0.5557,
+    "close": 0.55589998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T14:00:00",
+    "open": 0.55589998,
+    "high": 0.55650002,
+    "low": 0.55549997,
+    "close": 0.55589998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T15:00:00",
+    "open": 0.55589998,
+    "high": 0.55589998,
+    "low": 0.55489999,
+    "close": 0.55500001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T16:00:00",
+    "open": 0.55510002,
+    "high": 0.55580002,
+    "low": 0.55449998,
+    "close": 0.5557,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T17:00:00",
+    "open": 0.5557,
+    "high": 0.5564,
+    "low": 0.55549997,
+    "close": 0.55629998,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T18:00:00",
+    "open": 0.55610001,
+    "high": 0.55659997,
+    "low": 0.55500001,
+    "close": 0.55559999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T19:00:00",
+    "open": 0.55559999,
+    "high": 0.55559999,
+    "low": 0.55339998,
+    "close": 0.55419999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T20:00:00",
+    "open": 0.55409998,
+    "high": 0.55510002,
+    "low": 0.55409998,
+    "close": 0.55470002,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T21:00:00",
+    "open": 0.55470002,
+    "high": 0.55510002,
+    "low": 0.55430001,
+    "close": 0.55489999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T22:00:00",
+    "open": 0.55489999,
+    "high": 0.55519998,
+    "low": 0.55430001,
+    "close": 0.55489999,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-04T23:00:00",
+    "open": 0.55479997,
+    "high": 0.55479997,
+    "low": 0.55360001,
+    "close": 0.55360001,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "AUDCHF",
+    "timestamp": "2025-03-05T00:00:00",
+    "open": 0.55360001,
+    "high": 0.5546,
+    "low": 0.55339998,
+    "close": 0.5535,
+    "volume": 0.0,
+    "interval": "1h"
+  }
+]

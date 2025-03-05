@@ -1,0 +1,1692 @@
+[
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 623.49,
+    "high": 626.51,
+    "low": 622.91,
+    "close": 624.9,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T01:00:00",
+    "open": 624.91,
+    "high": 629.15,
+    "low": 624.91,
+    "close": 627.54,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T02:00:00",
+    "open": 627.53,
+    "high": 629.74,
+    "low": 625.52,
+    "close": 629.42,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 629.42,
+    "high": 632.14,
+    "low": 629.1,
+    "close": 630.51,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T04:00:00",
+    "open": 630.51,
+    "high": 631.24,
+    "low": 625.25,
+    "close": 625.86,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T05:00:00",
+    "open": 625.86,
+    "high": 626.9,
+    "low": 621.01,
+    "close": 621.5,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T06:00:00",
+    "open": 621.51,
+    "high": 623.34,
+    "low": 621.2,
+    "close": 623.17,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 623.17,
+    "high": 625.68,
+    "low": 621.5,
+    "close": 623.7,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T08:00:00",
+    "open": 623.7,
+    "high": 625.9,
+    "low": 619.84,
+    "close": 625.26,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T09:00:00",
+    "open": 625.26,
+    "high": 631.0,
+    "low": 624.75,
+    "close": 629.63,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T10:00:00",
+    "open": 629.63,
+    "high": 629.63,
+    "low": 626.41,
+    "close": 628.42,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 628.43,
+    "high": 628.75,
+    "low": 624.27,
+    "close": 624.56,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T12:00:00",
+    "open": 624.56,
+    "high": 626.3,
+    "low": 616.85,
+    "close": 619.6,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T13:00:00",
+    "open": 619.59,
+    "high": 620.67,
+    "low": 616.2,
+    "close": 617.07,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T14:00:00",
+    "open": 617.08,
+    "high": 619.37,
+    "low": 609.09,
+    "close": 619.34,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 619.33,
+    "high": 624.5,
+    "low": 619.0,
+    "close": 623.67,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T16:00:00",
+    "open": 623.68,
+    "high": 625.04,
+    "low": 616.05,
+    "close": 619.16,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T17:00:00",
+    "open": 619.17,
+    "high": 620.1,
+    "low": 608.86,
+    "close": 609.98,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T18:00:00",
+    "open": 609.97,
+    "high": 612.15,
+    "low": 595.6,
+    "close": 598.3,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 598.3,
+    "high": 606.86,
+    "low": 596.39,
+    "close": 601.87,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T20:00:00",
+    "open": 601.87,
+    "high": 612.07,
+    "low": 594.07,
+    "close": 610.28,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T21:00:00",
+    "open": 610.27,
+    "high": 613.31,
+    "low": 604.28,
+    "close": 611.21,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T22:00:00",
+    "open": 611.22,
+    "high": 619.0,
+    "low": 611.11,
+    "close": 614.92,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 614.91,
+    "high": 617.3,
+    "low": 610.85,
+    "close": 611.57,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 611.57,
+    "high": 612.2,
+    "low": 606.04,
+    "close": 609.21,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T01:00:00",
+    "open": 609.21,
+    "high": 616.2,
+    "low": 606.29,
+    "close": 613.13,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T02:00:00",
+    "open": 613.13,
+    "high": 615.3,
+    "low": 608.71,
+    "close": 609.59,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T03:00:00",
+    "open": 609.6,
+    "high": 614.56,
+    "low": 608.94,
+    "close": 613.28,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T04:00:00",
+    "open": 613.27,
+    "high": 615.09,
+    "low": 608.6,
+    "close": 612.39,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T05:00:00",
+    "open": 612.39,
+    "high": 616.2,
+    "low": 610.35,
+    "close": 615.3,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T06:00:00",
+    "open": 615.3,
+    "high": 618.49,
+    "low": 613.83,
+    "close": 617.95,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T07:00:00",
+    "open": 617.95,
+    "high": 619.77,
+    "low": 616.31,
+    "close": 617.77,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T08:00:00",
+    "open": 617.77,
+    "high": 618.4,
+    "low": 615.0,
+    "close": 615.19,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T09:00:00",
+    "open": 615.19,
+    "high": 617.29,
+    "low": 613.3,
+    "close": 613.96,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T10:00:00",
+    "open": 613.97,
+    "high": 616.24,
+    "low": 613.09,
+    "close": 614.8,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T11:00:00",
+    "open": 614.81,
+    "high": 615.07,
+    "low": 610.86,
+    "close": 611.91,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T12:00:00",
+    "open": 611.91,
+    "high": 612.55,
+    "low": 609.35,
+    "close": 610.68,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T13:00:00",
+    "open": 610.69,
+    "high": 612.75,
+    "low": 608.84,
+    "close": 610.09,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T14:00:00",
+    "open": 610.08,
+    "high": 611.91,
+    "low": 603.0,
+    "close": 603.0,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T15:00:00",
+    "open": 603.01,
+    "high": 607.83,
+    "low": 600.9,
+    "close": 606.59,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T16:00:00",
+    "open": 606.6,
+    "high": 609.0,
+    "low": 602.32,
+    "close": 602.88,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T17:00:00",
+    "open": 602.88,
+    "high": 607.94,
+    "low": 602.51,
+    "close": 607.5,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T18:00:00",
+    "open": 607.49,
+    "high": 609.72,
+    "low": 607.09,
+    "close": 607.74,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T19:00:00",
+    "open": 607.75,
+    "high": 607.86,
+    "low": 602.95,
+    "close": 605.29,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T20:00:00",
+    "open": 605.3,
+    "high": 605.55,
+    "low": 597.36,
+    "close": 599.51,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T21:00:00",
+    "open": 599.51,
+    "high": 605.86,
+    "low": 595.84,
+    "close": 605.79,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T22:00:00",
+    "open": 605.79,
+    "high": 607.01,
+    "low": 602.16,
+    "close": 606.6,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-27T23:00:00",
+    "open": 606.6,
+    "high": 607.05,
+    "low": 604.6,
+    "close": 605.41,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T00:00:00",
+    "open": 605.41,
+    "high": 606.33,
+    "low": 601.65,
+    "close": 601.65,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T01:00:00",
+    "open": 601.66,
+    "high": 603.4,
+    "low": 586.6,
+    "close": 587.92,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T02:00:00",
+    "open": 587.92,
+    "high": 591.69,
+    "low": 574.1,
+    "close": 580.73,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T03:00:00",
+    "open": 580.74,
+    "high": 586.69,
+    "low": 572.07,
+    "close": 573.01,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T04:00:00",
+    "open": 573.03,
+    "high": 578.46,
+    "low": 569.0,
+    "close": 575.46,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T05:00:00",
+    "open": 575.45,
+    "high": 576.56,
+    "low": 567.24,
+    "close": 573.01,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T06:00:00",
+    "open": 573.01,
+    "high": 575.5,
+    "low": 564.2,
+    "close": 569.1,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T07:00:00",
+    "open": 569.1,
+    "high": 575.27,
+    "low": 565.51,
+    "close": 567.18,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T08:00:00",
+    "open": 567.19,
+    "high": 571.0,
+    "low": 559.71,
+    "close": 570.83,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T09:00:00",
+    "open": 570.83,
+    "high": 579.2,
+    "low": 570.13,
+    "close": 577.84,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T10:00:00",
+    "open": 577.83,
+    "high": 578.2,
+    "low": 569.0,
+    "close": 569.8,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T11:00:00",
+    "open": 569.81,
+    "high": 575.1,
+    "low": 569.23,
+    "close": 571.36,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T12:00:00",
+    "open": 571.36,
+    "high": 573.92,
+    "low": 567.9,
+    "close": 572.51,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T13:00:00",
+    "open": 572.51,
+    "high": 579.89,
+    "low": 571.2,
+    "close": 577.98,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T14:00:00",
+    "open": 577.97,
+    "high": 585.47,
+    "low": 577.7,
+    "close": 582.75,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T15:00:00",
+    "open": 582.74,
+    "high": 593.76,
+    "low": 582.43,
+    "close": 588.48,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T16:00:00",
+    "open": 588.48,
+    "high": 592.85,
+    "low": 585.92,
+    "close": 588.4,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T17:00:00",
+    "open": 588.4,
+    "high": 590.01,
+    "low": 586.06,
+    "close": 586.06,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T18:00:00",
+    "open": 586.06,
+    "high": 592.94,
+    "low": 584.9,
+    "close": 589.78,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T19:00:00",
+    "open": 589.77,
+    "high": 591.23,
+    "low": 587.39,
+    "close": 587.91,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T20:00:00",
+    "open": 587.9,
+    "high": 589.12,
+    "low": 584.5,
+    "close": 586.64,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T21:00:00",
+    "open": 586.65,
+    "high": 588.66,
+    "low": 584.75,
+    "close": 585.13,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T22:00:00",
+    "open": 585.12,
+    "high": 586.88,
+    "low": 583.8,
+    "close": 584.99,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-02-28T23:00:00",
+    "open": 584.99,
+    "high": 588.25,
+    "low": 584.5,
+    "close": 588.07,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T00:00:00",
+    "open": 588.07,
+    "high": 589.93,
+    "low": 586.58,
+    "close": 586.81,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T01:00:00",
+    "open": 586.8,
+    "high": 595.31,
+    "low": 586.4,
+    "close": 593.91,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T02:00:00",
+    "open": 593.91,
+    "high": 598.88,
+    "low": 590.83,
+    "close": 593.94,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T03:00:00",
+    "open": 593.95,
+    "high": 594.65,
+    "low": 591.2,
+    "close": 591.9,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T04:00:00",
+    "open": 591.9,
+    "high": 596.28,
+    "low": 591.71,
+    "close": 595.26,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T05:00:00",
+    "open": 595.26,
+    "high": 596.77,
+    "low": 592.83,
+    "close": 595.2,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T06:00:00",
+    "open": 595.2,
+    "high": 597.29,
+    "low": 595.0,
+    "close": 595.63,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T07:00:00",
+    "open": 595.63,
+    "high": 596.79,
+    "low": 595.0,
+    "close": 595.82,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T08:00:00",
+    "open": 595.82,
+    "high": 596.5,
+    "low": 595.0,
+    "close": 595.4,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T09:00:00",
+    "open": 595.4,
+    "high": 596.57,
+    "low": 595.0,
+    "close": 596.5,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T10:00:00",
+    "open": 596.5,
+    "high": 596.5,
+    "low": 595.0,
+    "close": 595.06,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T11:00:00",
+    "open": 595.05,
+    "high": 595.23,
+    "low": 591.56,
+    "close": 591.64,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T12:00:00",
+    "open": 591.64,
+    "high": 596.8,
+    "low": 591.07,
+    "close": 596.8,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T13:00:00",
+    "open": 596.8,
+    "high": 599.96,
+    "low": 593.9,
+    "close": 595.04,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T14:00:00",
+    "open": 595.05,
+    "high": 602.67,
+    "low": 594.89,
+    "close": 599.62,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T15:00:00",
+    "open": 599.62,
+    "high": 605.2,
+    "low": 598.17,
+    "close": 604.61,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T16:00:00",
+    "open": 604.6,
+    "high": 609.24,
+    "low": 602.91,
+    "close": 606.63,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T17:00:00",
+    "open": 606.63,
+    "high": 609.1,
+    "low": 605.07,
+    "close": 605.96,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T18:00:00",
+    "open": 605.95,
+    "high": 608.21,
+    "low": 603.84,
+    "close": 604.51,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T19:00:00",
+    "open": 604.51,
+    "high": 606.27,
+    "low": 603.3,
+    "close": 605.1,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T20:00:00",
+    "open": 605.09,
+    "high": 605.53,
+    "low": 604.0,
+    "close": 605.19,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T21:00:00",
+    "open": 605.2,
+    "high": 609.29,
+    "low": 604.3,
+    "close": 608.43,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T22:00:00",
+    "open": 608.43,
+    "high": 609.48,
+    "low": 606.09,
+    "close": 606.2,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-01T23:00:00",
+    "open": 606.19,
+    "high": 608.24,
+    "low": 604.46,
+    "close": 607.93,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T00:00:00",
+    "open": 607.94,
+    "high": 611.28,
+    "low": 607.21,
+    "close": 610.38,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T01:00:00",
+    "open": 610.38,
+    "high": 610.8,
+    "low": 607.7,
+    "close": 609.88,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T02:00:00",
+    "open": 609.87,
+    "high": 611.31,
+    "low": 605.76,
+    "close": 606.96,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T03:00:00",
+    "open": 606.96,
+    "high": 608.84,
+    "low": 606.54,
+    "close": 607.19,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T04:00:00",
+    "open": 607.19,
+    "high": 609.5,
+    "low": 607.16,
+    "close": 608.99,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T05:00:00",
+    "open": 608.99,
+    "high": 610.51,
+    "low": 608.01,
+    "close": 608.44,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T06:00:00",
+    "open": 608.43,
+    "high": 611.8,
+    "low": 607.4,
+    "close": 610.0,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T07:00:00",
+    "open": 610.0,
+    "high": 611.27,
+    "low": 609.79,
+    "close": 610.43,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T08:00:00",
+    "open": 610.44,
+    "high": 610.54,
+    "low": 607.75,
+    "close": 607.92,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T09:00:00",
+    "open": 607.92,
+    "high": 611.14,
+    "low": 606.84,
+    "close": 608.9,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T10:00:00",
+    "open": 608.91,
+    "high": 610.26,
+    "low": 608.01,
+    "close": 609.1,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T11:00:00",
+    "open": 609.11,
+    "high": 609.57,
+    "low": 607.8,
+    "close": 608.21,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T12:00:00",
+    "open": 608.22,
+    "high": 608.84,
+    "low": 606.26,
+    "close": 608.69,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T13:00:00",
+    "open": 608.7,
+    "high": 608.7,
+    "low": 604.84,
+    "close": 605.92,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T14:00:00",
+    "open": 605.92,
+    "high": 606.23,
+    "low": 601.5,
+    "close": 603.23,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T15:00:00",
+    "open": 603.24,
+    "high": 618.9,
+    "low": 602.6,
+    "close": 613.55,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T16:00:00",
+    "open": 613.55,
+    "high": 632.24,
+    "low": 612.35,
+    "close": 626.7,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T17:00:00",
+    "open": 626.7,
+    "high": 635.01,
+    "low": 620.21,
+    "close": 631.01,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T18:00:00",
+    "open": 631.01,
+    "high": 632.64,
+    "low": 623.76,
+    "close": 627.93,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T19:00:00",
+    "open": 627.92,
+    "high": 628.45,
+    "low": 624.22,
+    "close": 625.62,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T20:00:00",
+    "open": 625.62,
+    "high": 627.16,
+    "low": 617.96,
+    "close": 618.05,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T21:00:00",
+    "open": 618.04,
+    "high": 620.79,
+    "low": 615.03,
+    "close": 620.41,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T22:00:00",
+    "open": 620.4,
+    "high": 624.38,
+    "low": 618.34,
+    "close": 623.24,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-02T23:00:00",
+    "open": 623.24,
+    "high": 626.19,
+    "low": 622.0,
+    "close": 623.94,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T00:00:00",
+    "open": 623.94,
+    "high": 624.36,
+    "low": 618.85,
+    "close": 620.23,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T01:00:00",
+    "open": 620.23,
+    "high": 622.59,
+    "low": 615.03,
+    "close": 615.04,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T02:00:00",
+    "open": 615.04,
+    "high": 615.41,
+    "low": 608.71,
+    "close": 614.44,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T03:00:00",
+    "open": 614.44,
+    "high": 615.54,
+    "low": 607.67,
+    "close": 611.07,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T04:00:00",
+    "open": 611.06,
+    "high": 613.0,
+    "low": 610.1,
+    "close": 613.0,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T05:00:00",
+    "open": 613.0,
+    "high": 613.9,
+    "low": 610.84,
+    "close": 611.79,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T06:00:00",
+    "open": 611.8,
+    "high": 611.8,
+    "low": 599.0,
+    "close": 601.78,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T07:00:00",
+    "open": 601.78,
+    "high": 608.93,
+    "low": 597.73,
+    "close": 607.75,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T08:00:00",
+    "open": 607.75,
+    "high": 607.77,
+    "low": 595.47,
+    "close": 598.56,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T09:00:00",
+    "open": 598.56,
+    "high": 601.29,
+    "low": 596.3,
+    "close": 600.15,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T10:00:00",
+    "open": 600.1,
+    "high": 604.34,
+    "low": 599.7,
+    "close": 604.24,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T11:00:00",
+    "open": 604.23,
+    "high": 604.86,
+    "low": 602.36,
+    "close": 603.27,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T12:00:00",
+    "open": 603.26,
+    "high": 605.68,
+    "low": 602.71,
+    "close": 605.39,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T13:00:00",
+    "open": 605.4,
+    "high": 607.92,
+    "low": 604.46,
+    "close": 607.4,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T14:00:00",
+    "open": 607.4,
+    "high": 607.4,
+    "low": 585.31,
+    "close": 588.3,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T15:00:00",
+    "open": 588.3,
+    "high": 597.24,
+    "low": 587.76,
+    "close": 591.83,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T16:00:00",
+    "open": 591.84,
+    "high": 595.7,
+    "low": 589.42,
+    "close": 595.07,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T17:00:00",
+    "open": 595.07,
+    "high": 597.8,
+    "low": 592.88,
+    "close": 594.49,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T18:00:00",
+    "open": 594.48,
+    "high": 594.8,
+    "low": 578.7,
+    "close": 583.11,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T19:00:00",
+    "open": 583.11,
+    "high": 585.66,
+    "low": 571.43,
+    "close": 573.17,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T20:00:00",
+    "open": 573.17,
+    "high": 577.4,
+    "low": 568.55,
+    "close": 574.74,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T21:00:00",
+    "open": 574.73,
+    "high": 577.6,
+    "low": 567.5,
+    "close": 568.69,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T22:00:00",
+    "open": 568.7,
+    "high": 579.8,
+    "low": 568.7,
+    "close": 578.41,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-03T23:00:00",
+    "open": 578.4,
+    "high": 579.2,
+    "low": 575.0,
+    "close": 576.1,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T00:00:00",
+    "open": 576.09,
+    "high": 580.44,
+    "low": 571.6,
+    "close": 571.94,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T01:00:00",
+    "open": 571.94,
+    "high": 573.0,
+    "low": 553.19,
+    "close": 555.89,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T02:00:00",
+    "open": 555.89,
+    "high": 562.66,
+    "low": 546.83,
+    "close": 558.94,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T03:00:00",
+    "open": 558.93,
+    "high": 564.55,
+    "low": 556.9,
+    "close": 560.69,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T04:00:00",
+    "open": 560.69,
+    "high": 562.6,
+    "low": 559.0,
+    "close": 559.91,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T05:00:00",
+    "open": 559.93,
+    "high": 567.22,
+    "low": 559.48,
+    "close": 566.62,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T06:00:00",
+    "open": 566.63,
+    "high": 567.73,
+    "low": 562.28,
+    "close": 564.32,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T07:00:00",
+    "open": 564.32,
+    "high": 565.66,
+    "low": 561.5,
+    "close": 564.91,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T08:00:00",
+    "open": 564.91,
+    "high": 568.54,
+    "low": 563.4,
+    "close": 567.84,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T09:00:00",
+    "open": 567.85,
+    "high": 568.58,
+    "low": 564.4,
+    "close": 566.65,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T10:00:00",
+    "open": 566.66,
+    "high": 570.43,
+    "low": 565.99,
+    "close": 568.94,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T11:00:00",
+    "open": 568.93,
+    "high": 572.2,
+    "low": 568.1,
+    "close": 571.17,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T12:00:00",
+    "open": 571.17,
+    "high": 572.3,
+    "low": 567.75,
+    "close": 570.54,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T13:00:00",
+    "open": 570.53,
+    "high": 570.99,
+    "low": 563.39,
+    "close": 564.68,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T14:00:00",
+    "open": 564.68,
+    "high": 579.61,
+    "low": 562.84,
+    "close": 566.98,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T15:00:00",
+    "open": 566.99,
+    "high": 571.86,
+    "low": 562.21,
+    "close": 570.7,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T16:00:00",
+    "open": 570.7,
+    "high": 571.56,
+    "low": 555.01,
+    "close": 568.61,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T17:00:00",
+    "open": 568.61,
+    "high": 576.47,
+    "low": 568.05,
+    "close": 574.85,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T18:00:00",
+    "open": 574.86,
+    "high": 581.23,
+    "low": 573.75,
+    "close": 580.77,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T19:00:00",
+    "open": 580.77,
+    "high": 583.52,
+    "low": 579.03,
+    "close": 583.51,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T20:00:00",
+    "open": 583.5,
+    "high": 586.98,
+    "low": 578.9,
+    "close": 579.32,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T21:00:00",
+    "open": 579.33,
+    "high": 588.75,
+    "low": 578.28,
+    "close": 584.91,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T22:00:00",
+    "open": 584.9,
+    "high": 586.6,
+    "low": 583.52,
+    "close": 583.61,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-04T23:00:00",
+    "open": 583.61,
+    "high": 584.9,
+    "low": 581.77,
+    "close": 584.01,
+    "volume": 0.0,
+    "interval": "1h"
+  },
+  {
+    "symbol": "BNB",
+    "timestamp": "2025-03-05T00:00:00",
+    "open": 584.01,
+    "high": 584.84,
+    "low": 582.01,
+    "close": 582.42,
+    "volume": 0.0,
+    "interval": "1h"
+  }
+]

@@ -1,0 +1,1812 @@
+[
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-03T00:00:00",
+    "open": 1.552e-05,
+    "high": 1.552e-05,
+    "low": 1.16e-05,
+    "close": 1.37e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-03T04:00:00",
+    "open": 1.37e-05,
+    "high": 1.454e-05,
+    "low": 1.304e-05,
+    "close": 1.45e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-03T08:00:00",
+    "open": 1.45e-05,
+    "high": 1.492e-05,
+    "low": 1.403e-05,
+    "close": 1.465e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-03T12:00:00",
+    "open": 1.465e-05,
+    "high": 1.561e-05,
+    "low": 1.399e-05,
+    "close": 1.549e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-03T16:00:00",
+    "open": 1.548e-05,
+    "high": 1.661e-05,
+    "low": 1.542e-05,
+    "close": 1.66e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-03T20:00:00",
+    "open": 1.659e-05,
+    "high": 1.691e-05,
+    "low": 1.599e-05,
+    "close": 1.682e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-04T00:00:00",
+    "open": 1.681e-05,
+    "high": 1.695e-05,
+    "low": 1.613e-05,
+    "close": 1.623e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-04T04:00:00",
+    "open": 1.622e-05,
+    "high": 1.637e-05,
+    "low": 1.508e-05,
+    "close": 1.515e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-04T08:00:00",
+    "open": 1.515e-05,
+    "high": 1.581e-05,
+    "low": 1.507e-05,
+    "close": 1.556e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-04T12:00:00",
+    "open": 1.557e-05,
+    "high": 1.603e-05,
+    "low": 1.552e-05,
+    "close": 1.572e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-04T16:00:00",
+    "open": 1.573e-05,
+    "high": 1.649e-05,
+    "low": 1.563e-05,
+    "close": 1.583e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-04T20:00:00",
+    "open": 1.583e-05,
+    "high": 1.594e-05,
+    "low": 1.524e-05,
+    "close": 1.575e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-05T00:00:00",
+    "open": 1.576e-05,
+    "high": 1.606e-05,
+    "low": 1.56e-05,
+    "close": 1.592e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-05T04:00:00",
+    "open": 1.593e-05,
+    "high": 1.675e-05,
+    "low": 1.586e-05,
+    "close": 1.638e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-05T08:00:00",
+    "open": 1.637e-05,
+    "high": 1.648e-05,
+    "low": 1.61e-05,
+    "close": 1.645e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-05T12:00:00",
+    "open": 1.645e-05,
+    "high": 1.652e-05,
+    "low": 1.598e-05,
+    "close": 1.611e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-05T16:00:00",
+    "open": 1.611e-05,
+    "high": 1.617e-05,
+    "low": 1.563e-05,
+    "close": 1.6e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-05T20:00:00",
+    "open": 1.6e-05,
+    "high": 1.607e-05,
+    "low": 1.55e-05,
+    "close": 1.577e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-06T00:00:00",
+    "open": 1.577e-05,
+    "high": 1.597e-05,
+    "low": 1.562e-05,
+    "close": 1.59e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-06T04:00:00",
+    "open": 1.59e-05,
+    "high": 1.611e-05,
+    "low": 1.582e-05,
+    "close": 1.599e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-06T08:00:00",
+    "open": 1.6e-05,
+    "high": 1.616e-05,
+    "low": 1.575e-05,
+    "close": 1.587e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-06T12:00:00",
+    "open": 1.587e-05,
+    "high": 1.59e-05,
+    "low": 1.494e-05,
+    "close": 1.503e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-06T16:00:00",
+    "open": 1.503e-05,
+    "high": 1.525e-05,
+    "low": 1.482e-05,
+    "close": 1.486e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-06T20:00:00",
+    "open": 1.486e-05,
+    "high": 1.52e-05,
+    "low": 1.474e-05,
+    "close": 1.486e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-07T00:00:00",
+    "open": 1.486e-05,
+    "high": 1.522e-05,
+    "low": 1.478e-05,
+    "close": 1.508e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-07T04:00:00",
+    "open": 1.508e-05,
+    "high": 1.522e-05,
+    "low": 1.477e-05,
+    "close": 1.493e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-07T08:00:00",
+    "open": 1.492e-05,
+    "high": 1.533e-05,
+    "low": 1.486e-05,
+    "close": 1.529e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-07T12:00:00",
+    "open": 1.529e-05,
+    "high": 1.572e-05,
+    "low": 1.515e-05,
+    "close": 1.534e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-07T16:00:00",
+    "open": 1.535e-05,
+    "high": 1.546e-05,
+    "low": 1.503e-05,
+    "close": 1.537e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-07T20:00:00",
+    "open": 1.538e-05,
+    "high": 1.538e-05,
+    "low": 1.462e-05,
+    "close": 1.51e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-08T00:00:00",
+    "open": 1.509e-05,
+    "high": 1.528e-05,
+    "low": 1.501e-05,
+    "close": 1.513e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-08T04:00:00",
+    "open": 1.513e-05,
+    "high": 1.536e-05,
+    "low": 1.505e-05,
+    "close": 1.528e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-08T08:00:00",
+    "open": 1.529e-05,
+    "high": 1.579e-05,
+    "low": 1.522e-05,
+    "close": 1.57e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-08T12:00:00",
+    "open": 1.569e-05,
+    "high": 1.589e-05,
+    "low": 1.546e-05,
+    "close": 1.56e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-08T16:00:00",
+    "open": 1.56e-05,
+    "high": 1.608e-05,
+    "low": 1.558e-05,
+    "close": 1.587e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-08T20:00:00",
+    "open": 1.588e-05,
+    "high": 1.604e-05,
+    "low": 1.577e-05,
+    "close": 1.596e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-09T00:00:00",
+    "open": 1.597e-05,
+    "high": 1.641e-05,
+    "low": 1.592e-05,
+    "close": 1.638e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-09T04:00:00",
+    "open": 1.638e-05,
+    "high": 1.643e-05,
+    "low": 1.61e-05,
+    "close": 1.627e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-09T08:00:00",
+    "open": 1.628e-05,
+    "high": 1.653e-05,
+    "low": 1.604e-05,
+    "close": 1.605e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-09T12:00:00",
+    "open": 1.603e-05,
+    "high": 1.615e-05,
+    "low": 1.565e-05,
+    "close": 1.592e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-09T16:00:00",
+    "open": 1.592e-05,
+    "high": 1.599e-05,
+    "low": 1.557e-05,
+    "close": 1.562e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-09T20:00:00",
+    "open": 1.562e-05,
+    "high": 1.577e-05,
+    "low": 1.514e-05,
+    "close": 1.567e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-10T00:00:00",
+    "open": 1.566e-05,
+    "high": 1.594e-05,
+    "low": 1.527e-05,
+    "close": 1.571e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-10T04:00:00",
+    "open": 1.571e-05,
+    "high": 1.595e-05,
+    "low": 1.566e-05,
+    "close": 1.586e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-10T08:00:00",
+    "open": 1.586e-05,
+    "high": 1.608e-05,
+    "low": 1.581e-05,
+    "close": 1.588e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-10T12:00:00",
+    "open": 1.587e-05,
+    "high": 1.611e-05,
+    "low": 1.572e-05,
+    "close": 1.583e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-10T16:00:00",
+    "open": 1.583e-05,
+    "high": 1.596e-05,
+    "low": 1.578e-05,
+    "close": 1.583e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-10T20:00:00",
+    "open": 1.584e-05,
+    "high": 1.592e-05,
+    "low": 1.572e-05,
+    "close": 1.581e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-11T00:00:00",
+    "open": 1.581e-05,
+    "high": 1.606e-05,
+    "low": 1.581e-05,
+    "close": 1.592e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-11T04:00:00",
+    "open": 1.593e-05,
+    "high": 1.65e-05,
+    "low": 1.592e-05,
+    "close": 1.632e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-11T08:00:00",
+    "open": 1.634e-05,
+    "high": 1.646e-05,
+    "low": 1.607e-05,
+    "close": 1.615e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-11T12:00:00",
+    "open": 1.615e-05,
+    "high": 1.619e-05,
+    "low": 1.565e-05,
+    "close": 1.601e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-11T16:00:00",
+    "open": 1.601e-05,
+    "high": 1.608e-05,
+    "low": 1.544e-05,
+    "close": 1.552e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-11T20:00:00",
+    "open": 1.551e-05,
+    "high": 1.58e-05,
+    "low": 1.549e-05,
+    "close": 1.569e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-12T00:00:00",
+    "open": 1.568e-05,
+    "high": 1.585e-05,
+    "low": 1.548e-05,
+    "close": 1.555e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-12T04:00:00",
+    "open": 1.555e-05,
+    "high": 1.578e-05,
+    "low": 1.549e-05,
+    "close": 1.57e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-12T08:00:00",
+    "open": 1.57e-05,
+    "high": 1.6e-05,
+    "low": 1.569e-05,
+    "close": 1.598e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-12T12:00:00",
+    "open": 1.598e-05,
+    "high": 1.628e-05,
+    "low": 1.548e-05,
+    "close": 1.606e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-12T16:00:00",
+    "open": 1.607e-05,
+    "high": 1.687e-05,
+    "low": 1.586e-05,
+    "close": 1.681e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-12T20:00:00",
+    "open": 1.681e-05,
+    "high": 1.734e-05,
+    "low": 1.661e-05,
+    "close": 1.7e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-13T00:00:00",
+    "open": 1.7e-05,
+    "high": 1.704e-05,
+    "low": 1.677e-05,
+    "close": 1.686e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-13T04:00:00",
+    "open": 1.686e-05,
+    "high": 1.687e-05,
+    "low": 1.646e-05,
+    "close": 1.65e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-13T08:00:00",
+    "open": 1.649e-05,
+    "high": 1.654e-05,
+    "low": 1.614e-05,
+    "close": 1.625e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-13T12:00:00",
+    "open": 1.625e-05,
+    "high": 1.645e-05,
+    "low": 1.603e-05,
+    "close": 1.62e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-13T16:00:00",
+    "open": 1.618e-05,
+    "high": 1.632e-05,
+    "low": 1.593e-05,
+    "close": 1.613e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-13T20:00:00",
+    "open": 1.613e-05,
+    "high": 1.643e-05,
+    "low": 1.613e-05,
+    "close": 1.631e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-14T00:00:00",
+    "open": 1.632e-05,
+    "high": 1.655e-05,
+    "low": 1.618e-05,
+    "close": 1.651e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-14T04:00:00",
+    "open": 1.652e-05,
+    "high": 1.653e-05,
+    "low": 1.628e-05,
+    "close": 1.646e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-14T08:00:00",
+    "open": 1.646e-05,
+    "high": 1.682e-05,
+    "low": 1.644e-05,
+    "close": 1.651e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-14T12:00:00",
+    "open": 1.652e-05,
+    "high": 1.689e-05,
+    "low": 1.64e-05,
+    "close": 1.677e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-14T16:00:00",
+    "open": 1.675e-05,
+    "high": 1.719e-05,
+    "low": 1.661e-05,
+    "close": 1.683e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-14T20:00:00",
+    "open": 1.684e-05,
+    "high": 1.685e-05,
+    "low": 1.646e-05,
+    "close": 1.671e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-15T00:00:00",
+    "open": 1.671e-05,
+    "high": 1.703e-05,
+    "low": 1.659e-05,
+    "close": 1.69e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-15T04:00:00",
+    "open": 1.69e-05,
+    "high": 1.698e-05,
+    "low": 1.659e-05,
+    "close": 1.668e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-15T08:00:00",
+    "open": 1.669e-05,
+    "high": 1.68e-05,
+    "low": 1.65e-05,
+    "close": 1.66e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-15T12:00:00",
+    "open": 1.66e-05,
+    "high": 1.666e-05,
+    "low": 1.628e-05,
+    "close": 1.638e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-15T16:00:00",
+    "open": 1.637e-05,
+    "high": 1.647e-05,
+    "low": 1.625e-05,
+    "close": 1.631e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-15T20:00:00",
+    "open": 1.631e-05,
+    "high": 1.64e-05,
+    "low": 1.623e-05,
+    "close": 1.633e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-16T00:00:00",
+    "open": 1.632e-05,
+    "high": 1.639e-05,
+    "low": 1.607e-05,
+    "close": 1.62e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-16T04:00:00",
+    "open": 1.619e-05,
+    "high": 1.629e-05,
+    "low": 1.602e-05,
+    "close": 1.61e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-16T08:00:00",
+    "open": 1.611e-05,
+    "high": 1.63e-05,
+    "low": 1.608e-05,
+    "close": 1.628e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-16T12:00:00",
+    "open": 1.629e-05,
+    "high": 1.63e-05,
+    "low": 1.59e-05,
+    "close": 1.605e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-16T16:00:00",
+    "open": 1.605e-05,
+    "high": 1.61e-05,
+    "low": 1.584e-05,
+    "close": 1.598e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-16T20:00:00",
+    "open": 1.598e-05,
+    "high": 1.607e-05,
+    "low": 1.588e-05,
+    "close": 1.597e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-17T00:00:00",
+    "open": 1.597e-05,
+    "high": 1.616e-05,
+    "low": 1.588e-05,
+    "close": 1.599e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-17T04:00:00",
+    "open": 1.599e-05,
+    "high": 1.601e-05,
+    "low": 1.566e-05,
+    "close": 1.577e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-17T08:00:00",
+    "open": 1.576e-05,
+    "high": 1.607e-05,
+    "low": 1.573e-05,
+    "close": 1.598e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-17T12:00:00",
+    "open": 1.598e-05,
+    "high": 1.629e-05,
+    "low": 1.579e-05,
+    "close": 1.583e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-17T16:00:00",
+    "open": 1.583e-05,
+    "high": 1.592e-05,
+    "low": 1.538e-05,
+    "close": 1.558e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-17T20:00:00",
+    "open": 1.558e-05,
+    "high": 1.597e-05,
+    "low": 1.557e-05,
+    "close": 1.574e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-18T00:00:00",
+    "open": 1.576e-05,
+    "high": 1.58e-05,
+    "low": 1.559e-05,
+    "close": 1.566e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-18T04:00:00",
+    "open": 1.565e-05,
+    "high": 1.57e-05,
+    "low": 1.505e-05,
+    "close": 1.524e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-18T08:00:00",
+    "open": 1.522e-05,
+    "high": 1.537e-05,
+    "low": 1.507e-05,
+    "close": 1.531e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-18T12:00:00",
+    "open": 1.53e-05,
+    "high": 1.554e-05,
+    "low": 1.499e-05,
+    "close": 1.51e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-18T16:00:00",
+    "open": 1.509e-05,
+    "high": 1.521e-05,
+    "low": 1.486e-05,
+    "close": 1.507e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-18T20:00:00",
+    "open": 1.506e-05,
+    "high": 1.526e-05,
+    "low": 1.5e-05,
+    "close": 1.522e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-19T00:00:00",
+    "open": 1.521e-05,
+    "high": 1.531e-05,
+    "low": 1.506e-05,
+    "close": 1.523e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-19T04:00:00",
+    "open": 1.524e-05,
+    "high": 1.544e-05,
+    "low": 1.505e-05,
+    "close": 1.539e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-19T08:00:00",
+    "open": 1.539e-05,
+    "high": 1.55e-05,
+    "low": 1.531e-05,
+    "close": 1.547e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-19T12:00:00",
+    "open": 1.548e-05,
+    "high": 1.554e-05,
+    "low": 1.524e-05,
+    "close": 1.533e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-19T16:00:00",
+    "open": 1.533e-05,
+    "high": 1.546e-05,
+    "low": 1.524e-05,
+    "close": 1.532e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-19T20:00:00",
+    "open": 1.532e-05,
+    "high": 1.545e-05,
+    "low": 1.526e-05,
+    "close": 1.541e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-20T00:00:00",
+    "open": 1.541e-05,
+    "high": 1.559e-05,
+    "low": 1.535e-05,
+    "close": 1.554e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-20T04:00:00",
+    "open": 1.554e-05,
+    "high": 1.562e-05,
+    "low": 1.534e-05,
+    "close": 1.536e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-20T08:00:00",
+    "open": 1.536e-05,
+    "high": 1.55e-05,
+    "low": 1.533e-05,
+    "close": 1.546e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-20T12:00:00",
+    "open": 1.547e-05,
+    "high": 1.558e-05,
+    "low": 1.529e-05,
+    "close": 1.531e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-20T16:00:00",
+    "open": 1.532e-05,
+    "high": 1.561e-05,
+    "low": 1.529e-05,
+    "close": 1.556e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-20T20:00:00",
+    "open": 1.557e-05,
+    "high": 1.561e-05,
+    "low": 1.544e-05,
+    "close": 1.555e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-21T00:00:00",
+    "open": 1.555e-05,
+    "high": 1.557e-05,
+    "low": 1.541e-05,
+    "close": 1.547e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-21T04:00:00",
+    "open": 1.547e-05,
+    "high": 1.565e-05,
+    "low": 1.546e-05,
+    "close": 1.558e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-21T08:00:00",
+    "open": 1.559e-05,
+    "high": 1.591e-05,
+    "low": 1.558e-05,
+    "close": 1.574e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-21T12:00:00",
+    "open": 1.574e-05,
+    "high": 1.598e-05,
+    "low": 1.531e-05,
+    "close": 1.553e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-21T16:00:00",
+    "open": 1.554e-05,
+    "high": 1.578e-05,
+    "low": 1.485e-05,
+    "close": 1.493e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-21T20:00:00",
+    "open": 1.492e-05,
+    "high": 1.511e-05,
+    "low": 1.484e-05,
+    "close": 1.507e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-22T00:00:00",
+    "open": 1.507e-05,
+    "high": 1.523e-05,
+    "low": 1.502e-05,
+    "close": 1.517e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-22T04:00:00",
+    "open": 1.517e-05,
+    "high": 1.531e-05,
+    "low": 1.514e-05,
+    "close": 1.521e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-22T08:00:00",
+    "open": 1.521e-05,
+    "high": 1.547e-05,
+    "low": 1.517e-05,
+    "close": 1.545e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-22T12:00:00",
+    "open": 1.546e-05,
+    "high": 1.554e-05,
+    "low": 1.536e-05,
+    "close": 1.551e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-22T16:00:00",
+    "open": 1.551e-05,
+    "high": 1.571e-05,
+    "low": 1.551e-05,
+    "close": 1.566e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-22T20:00:00",
+    "open": 1.566e-05,
+    "high": 1.578e-05,
+    "low": 1.56e-05,
+    "close": 1.56e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-23T00:00:00",
+    "open": 1.562e-05,
+    "high": 1.562e-05,
+    "low": 1.552e-05,
+    "close": 1.556e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-23T04:00:00",
+    "open": 1.556e-05,
+    "high": 1.577e-05,
+    "low": 1.552e-05,
+    "close": 1.576e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-23T08:00:00",
+    "open": 1.576e-05,
+    "high": 1.578e-05,
+    "low": 1.558e-05,
+    "close": 1.559e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-23T12:00:00",
+    "open": 1.559e-05,
+    "high": 1.566e-05,
+    "low": 1.537e-05,
+    "close": 1.538e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-23T16:00:00",
+    "open": 1.54e-05,
+    "high": 1.559e-05,
+    "low": 1.539e-05,
+    "close": 1.547e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-23T20:00:00",
+    "open": 1.546e-05,
+    "high": 1.554e-05,
+    "low": 1.532e-05,
+    "close": 1.546e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-24T00:00:00",
+    "open": 1.546e-05,
+    "high": 1.555e-05,
+    "low": 1.492e-05,
+    "close": 1.497e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-24T04:00:00",
+    "open": 1.497e-05,
+    "high": 1.506e-05,
+    "low": 1.474e-05,
+    "close": 1.497e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-24T08:00:00",
+    "open": 1.497e-05,
+    "high": 1.497e-05,
+    "low": 1.461e-05,
+    "close": 1.481e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-24T12:00:00",
+    "open": 1.48e-05,
+    "high": 1.487e-05,
+    "low": 1.429e-05,
+    "close": 1.44e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-24T16:00:00",
+    "open": 1.44e-05,
+    "high": 1.455e-05,
+    "low": 1.402e-05,
+    "close": 1.419e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-24T20:00:00",
+    "open": 1.42e-05,
+    "high": 1.438e-05,
+    "low": 1.344e-05,
+    "close": 1.364e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 1.363e-05,
+    "high": 1.397e-05,
+    "low": 1.337e-05,
+    "close": 1.377e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-25T04:00:00",
+    "open": 1.377e-05,
+    "high": 1.395e-05,
+    "low": 1.303e-05,
+    "close": 1.336e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-25T08:00:00",
+    "open": 1.336e-05,
+    "high": 1.379e-05,
+    "low": 1.315e-05,
+    "close": 1.375e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-25T12:00:00",
+    "open": 1.374e-05,
+    "high": 1.4e-05,
+    "low": 1.346e-05,
+    "close": 1.376e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-25T16:00:00",
+    "open": 1.376e-05,
+    "high": 1.399e-05,
+    "low": 1.36e-05,
+    "close": 1.395e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-25T20:00:00",
+    "open": 1.396e-05,
+    "high": 1.426e-05,
+    "low": 1.388e-05,
+    "close": 1.408e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 1.407e-05,
+    "high": 1.439e-05,
+    "low": 1.397e-05,
+    "close": 1.43e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-26T04:00:00",
+    "open": 1.43e-05,
+    "high": 1.44e-05,
+    "low": 1.416e-05,
+    "close": 1.425e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-26T08:00:00",
+    "open": 1.425e-05,
+    "high": 1.449e-05,
+    "low": 1.415e-05,
+    "close": 1.43e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-26T12:00:00",
+    "open": 1.431e-05,
+    "high": 1.446e-05,
+    "low": 1.391e-05,
+    "close": 1.429e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-26T16:00:00",
+    "open": 1.43e-05,
+    "high": 1.437e-05,
+    "low": 1.374e-05,
+    "close": 1.395e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-26T20:00:00",
+    "open": 1.396e-05,
+    "high": 1.454e-05,
+    "low": 1.383e-05,
+    "close": 1.441e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 1.44e-05,
+    "high": 1.452e-05,
+    "low": 1.42e-05,
+    "close": 1.443e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-27T04:00:00",
+    "open": 1.442e-05,
+    "high": 1.477e-05,
+    "low": 1.433e-05,
+    "close": 1.469e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-27T08:00:00",
+    "open": 1.469e-05,
+    "high": 1.485e-05,
+    "low": 1.461e-05,
+    "close": 1.473e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-27T12:00:00",
+    "open": 1.474e-05,
+    "high": 1.479e-05,
+    "low": 1.436e-05,
+    "close": 1.457e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-27T16:00:00",
+    "open": 1.459e-05,
+    "high": 1.473e-05,
+    "low": 1.435e-05,
+    "close": 1.44e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-27T20:00:00",
+    "open": 1.439e-05,
+    "high": 1.447e-05,
+    "low": 1.418e-05,
+    "close": 1.441e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-28T00:00:00",
+    "open": 1.441e-05,
+    "high": 1.443e-05,
+    "low": 1.336e-05,
+    "close": 1.338e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-28T04:00:00",
+    "open": 1.338e-05,
+    "high": 1.34e-05,
+    "low": 1.305e-05,
+    "close": 1.316e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-28T08:00:00",
+    "open": 1.315e-05,
+    "high": 1.347e-05,
+    "low": 1.299e-05,
+    "close": 1.32e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-28T12:00:00",
+    "open": 1.32e-05,
+    "high": 1.389e-05,
+    "low": 1.315e-05,
+    "close": 1.381e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-28T16:00:00",
+    "open": 1.381e-05,
+    "high": 1.398e-05,
+    "low": 1.37e-05,
+    "close": 1.391e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-02-28T20:00:00",
+    "open": 1.39e-05,
+    "high": 1.396e-05,
+    "low": 1.375e-05,
+    "close": 1.393e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-01T00:00:00",
+    "open": 1.393e-05,
+    "high": 1.407e-05,
+    "low": 1.377e-05,
+    "close": 1.399e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-01T04:00:00",
+    "open": 1.399e-05,
+    "high": 1.415e-05,
+    "low": 1.382e-05,
+    "close": 1.388e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-01T08:00:00",
+    "open": 1.389e-05,
+    "high": 1.398e-05,
+    "low": 1.358e-05,
+    "close": 1.36e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-01T12:00:00",
+    "open": 1.361e-05,
+    "high": 1.361e-05,
+    "low": 1.338e-05,
+    "close": 1.358e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-01T16:00:00",
+    "open": 1.358e-05,
+    "high": 1.365e-05,
+    "low": 1.35e-05,
+    "close": 1.361e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-01T20:00:00",
+    "open": 1.361e-05,
+    "high": 1.373e-05,
+    "low": 1.351e-05,
+    "close": 1.364e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-02T00:00:00",
+    "open": 1.364e-05,
+    "high": 1.374e-05,
+    "low": 1.354e-05,
+    "close": 1.37e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-02T04:00:00",
+    "open": 1.371e-05,
+    "high": 1.378e-05,
+    "low": 1.361e-05,
+    "close": 1.371e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-02T08:00:00",
+    "open": 1.371e-05,
+    "high": 1.388e-05,
+    "low": 1.364e-05,
+    "close": 1.377e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-02T12:00:00",
+    "open": 1.377e-05,
+    "high": 1.419e-05,
+    "low": 1.348e-05,
+    "close": 1.388e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-02T16:00:00",
+    "open": 1.388e-05,
+    "high": 1.508e-05,
+    "low": 1.378e-05,
+    "close": 1.5e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-02T20:00:00",
+    "open": 1.5e-05,
+    "high": 1.52e-05,
+    "low": 1.487e-05,
+    "close": 1.515e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-03T00:00:00",
+    "open": 1.516e-05,
+    "high": 1.52e-05,
+    "low": 1.436e-05,
+    "close": 1.45e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-03T04:00:00",
+    "open": 1.451e-05,
+    "high": 1.458e-05,
+    "low": 1.399e-05,
+    "close": 1.425e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-03T08:00:00",
+    "open": 1.424e-05,
+    "high": 1.428e-05,
+    "low": 1.389e-05,
+    "close": 1.409e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-03T12:00:00",
+    "open": 1.408e-05,
+    "high": 1.426e-05,
+    "low": 1.364e-05,
+    "close": 1.372e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-03T16:00:00",
+    "open": 1.373e-05,
+    "high": 1.383e-05,
+    "low": 1.287e-05,
+    "close": 1.294e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-03T20:00:00",
+    "open": 1.293e-05,
+    "high": 1.303e-05,
+    "low": 1.269e-05,
+    "close": 1.29e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-04T00:00:00",
+    "open": 1.289e-05,
+    "high": 1.306e-05,
+    "low": 1.218e-05,
+    "close": 1.254e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-04T04:00:00",
+    "open": 1.252e-05,
+    "high": 1.285e-05,
+    "low": 1.252e-05,
+    "close": 1.266e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-04T08:00:00",
+    "open": 1.267e-05,
+    "high": 1.288e-05,
+    "low": 1.263e-05,
+    "close": 1.276e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-04T12:00:00",
+    "open": 1.277e-05,
+    "high": 1.312e-05,
+    "low": 1.245e-05,
+    "close": 1.275e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-04T16:00:00",
+    "open": 1.275e-05,
+    "high": 1.321e-05,
+    "low": 1.216e-05,
+    "close": 1.308e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-04T20:00:00",
+    "open": 1.307e-05,
+    "high": 1.325e-05,
+    "low": 1.29e-05,
+    "close": 1.307e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "SHIB",
+    "timestamp": "2025-03-05T00:00:00",
+    "open": 1.307e-05,
+    "high": 1.311e-05,
+    "low": 1.297e-05,
+    "close": 1.299e-05,
+    "volume": 0.0,
+    "interval": "4h"
+  }
+]

@@ -1,0 +1,2552 @@
+[
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-05T00:00:00",
+    "open": 104.53,
+    "high": 106.27,
+    "low": 104.32,
+    "close": 105.64,
+    "volume": 19952700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-06T00:00:00",
+    "open": 106.62,
+    "high": 107.57,
+    "low": 106.15,
+    "close": 106.77,
+    "volume": 20472800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-07T00:00:00",
+    "open": 106.6,
+    "high": 107.98,
+    "low": 106.6,
+    "close": 107.37,
+    "volume": 15195400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-08T00:00:00",
+    "open": 107.23,
+    "high": 108.4,
+    "low": 106.77,
+    "close": 108.38,
+    "volume": 16274600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-11T00:00:00",
+    "open": 108.25,
+    "high": 109.12,
+    "low": 107.34,
+    "close": 109.019997,
+    "volume": 17577300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-12T00:00:00",
+    "open": 109.059998,
+    "high": 109.28,
+    "low": 108.029999,
+    "close": 108.32,
+    "volume": 14957200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-13T00:00:00",
+    "open": 109.14,
+    "high": 110.35,
+    "low": 109.11,
+    "close": 109.53,
+    "volume": 17122200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-14T00:00:00",
+    "open": 109.83,
+    "high": 111.55,
+    "low": 109.69,
+    "close": 111.47,
+    "volume": 22121000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-15T00:00:00",
+    "open": 110.85,
+    "high": 112.3,
+    "low": 110.85,
+    "close": 111.27,
+    "volume": 38263900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-18T00:00:00",
+    "open": 111.79,
+    "high": 112.86,
+    "low": 111.099998,
+    "close": 112.3,
+    "volume": 16770500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-19T00:00:00",
+    "open": 112.22,
+    "high": 113.49,
+    "low": 112.059998,
+    "close": 113.089996,
+    "volume": 14878800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-20T00:00:00",
+    "open": 112.72,
+    "high": 113.4,
+    "low": 112.13,
+    "close": 112.99,
+    "volume": 16119700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-21T00:00:00",
+    "open": 112.92,
+    "high": 113.91,
+    "low": 112.57,
+    "close": 113.49,
+    "volume": 14878000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-22T00:00:00",
+    "open": 113.48,
+    "high": 113.69,
+    "low": 112.82,
+    "close": 113.49,
+    "volume": 14695400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-25T00:00:00",
+    "open": 113.83,
+    "high": 115.78,
+    "low": 113.83,
+    "close": 114.65,
+    "volume": 14011700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-26T00:00:00",
+    "open": 114.66,
+    "high": 114.98,
+    "low": 113.41,
+    "close": 113.79,
+    "volume": 13152300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-27T00:00:00",
+    "open": 113.48,
+    "high": 115.059998,
+    "low": 113.41,
+    "close": 114.97,
+    "volume": 12415700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-03-28T00:00:00",
+    "open": 115.53,
+    "high": 116.45,
+    "low": 115.059998,
+    "close": 116.24,
+    "volume": 18482100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-01T00:00:00",
+    "open": 116.41,
+    "high": 117.24,
+    "low": 115.38,
+    "close": 116.99,
+    "volume": 13817000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-02T00:00:00",
+    "open": 117.92,
+    "high": 119.6,
+    "low": 117.33,
+    "close": 119.28,
+    "volume": 19919600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-03T00:00:00",
+    "open": 119.48,
+    "high": 119.75,
+    "low": 118.73,
+    "close": 119.3,
+    "volume": 16504300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-04T00:00:00",
+    "open": 119.050003,
+    "high": 119.88,
+    "low": 118.64,
+    "close": 119.72,
+    "volume": 18467400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-05T00:00:00",
+    "open": 119.98,
+    "high": 122.15,
+    "low": 119.64,
+    "close": 121.37,
+    "volume": 21714100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-08T00:00:00",
+    "open": 121.080002,
+    "high": 121.74,
+    "low": 120.21,
+    "close": 120.55,
+    "volume": 17513900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-09T00:00:00",
+    "open": 121.0,
+    "high": 121.65,
+    "low": 120.34,
+    "close": 121.18,
+    "volume": 14135700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-10T00:00:00",
+    "open": 121.22,
+    "high": 122.47,
+    "low": 120.73,
+    "close": 122.2,
+    "volume": 17409200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-11T00:00:00",
+    "open": 122.69,
+    "high": 122.69,
+    "low": 120.34,
+    "close": 121.79,
+    "volume": 17555900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-12T00:00:00",
+    "open": 122.95,
+    "high": 123.75,
+    "low": 119.67,
+    "close": 120.37,
+    "volume": 21539500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-15T00:00:00",
+    "open": 121.089996,
+    "high": 121.69,
+    "low": 119.45,
+    "close": 119.68,
+    "volume": 15029500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-16T00:00:00",
+    "open": 119.56,
+    "high": 120.22,
+    "low": 117.92,
+    "close": 118.69,
+    "volume": 18082200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-17T00:00:00",
+    "open": 118.55,
+    "high": 119.35,
+    "low": 117.12,
+    "close": 118.63,
+    "volume": 14538600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-18T00:00:00",
+    "open": 119.0,
+    "high": 119.72,
+    "low": 117.97,
+    "close": 118.52,
+    "volume": 13821400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-19T00:00:00",
+    "open": 119.16,
+    "high": 120.93,
+    "low": 118.95,
+    "close": 119.88,
+    "volume": 21566500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-22T00:00:00",
+    "open": 119.26,
+    "high": 121.57,
+    "low": 118.43,
+    "close": 120.56,
+    "volume": 16340700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-23T00:00:00",
+    "open": 120.0,
+    "high": 121.059998,
+    "low": 119.45,
+    "close": 121.029999,
+    "volume": 13929800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-24T00:00:00",
+    "open": 120.3,
+    "high": 121.26,
+    "low": 119.39,
+    "close": 121.050003,
+    "volume": 12101200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-25T00:00:00",
+    "open": 121.029999,
+    "high": 121.76,
+    "low": 119.4,
+    "close": 121.33,
+    "volume": 16041000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-26T00:00:00",
+    "open": 119.0,
+    "high": 119.099998,
+    "low": 116.22,
+    "close": 117.96,
+    "volume": 27289500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-29T00:00:00",
+    "open": 117.76,
+    "high": 120.050003,
+    "low": 117.76,
+    "close": 119.64,
+    "volume": 17309900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-04-30T00:00:00",
+    "open": 119.11,
+    "high": 120.2,
+    "low": 117.98,
+    "close": 118.27,
+    "volume": 21083300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-01T00:00:00",
+    "open": 118.28,
+    "high": 118.47,
+    "low": 115.66,
+    "close": 116.029999,
+    "volume": 27777700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-02T00:00:00",
+    "open": 116.26,
+    "high": 117.26,
+    "low": 115.9,
+    "close": 116.24,
+    "volume": 25513600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-03T00:00:00",
+    "open": 116.0,
+    "high": 116.07,
+    "low": 114.13,
+    "close": 116.0,
+    "volume": 28023300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-06T00:00:00",
+    "open": 116.67,
+    "high": 118.34,
+    "low": 116.4,
+    "close": 116.75,
+    "volume": 31401300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-07T00:00:00",
+    "open": 117.28,
+    "high": 117.58,
+    "low": 115.93,
+    "close": 116.17,
+    "volume": 30122000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-08T00:00:00",
+    "open": 115.71,
+    "high": 116.95,
+    "low": 115.41,
+    "close": 116.15,
+    "volume": 18957200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-09T00:00:00",
+    "open": 116.2,
+    "high": 118.53,
+    "low": 116.19,
+    "close": 118.44,
+    "volume": 17564000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-10T00:00:00",
+    "open": 118.54,
+    "high": 118.66,
+    "low": 117.58,
+    "close": 117.96,
+    "volume": 13648100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-13T00:00:00",
+    "open": 118.42,
+    "high": 119.040001,
+    "low": 117.12,
+    "close": 117.91,
+    "volume": 15060600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-14T00:00:00",
+    "open": 116.79,
+    "high": 117.74,
+    "low": 116.48,
+    "close": 117.67,
+    "volume": 15079100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-15T00:00:00",
+    "open": 117.61,
+    "high": 118.84,
+    "low": 116.080002,
+    "close": 118.58,
+    "volume": 18244300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-16T00:00:00",
+    "open": 118.54,
+    "high": 119.3,
+    "low": 117.54,
+    "close": 117.87,
+    "volume": 15745200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-17T00:00:00",
+    "open": 118.3,
+    "high": 119.83,
+    "low": 117.96,
+    "close": 119.64,
+    "volume": 15104500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-20T00:00:00",
+    "open": 119.73,
+    "high": 119.89,
+    "low": 118.55,
+    "close": 118.67,
+    "volume": 11551300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-21T00:00:00",
+    "open": 118.4,
+    "high": 119.45,
+    "low": 117.78,
+    "close": 117.85,
+    "volume": 14495000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-22T00:00:00",
+    "open": 117.46,
+    "high": 117.46,
+    "low": 114.96,
+    "close": 115.48,
+    "volume": 17879300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-23T00:00:00",
+    "open": 115.6,
+    "high": 117.51,
+    "low": 113.36,
+    "close": 113.51,
+    "volume": 15979800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-24T00:00:00",
+    "open": 114.84,
+    "high": 115.080002,
+    "low": 113.040001,
+    "close": 113.42,
+    "volume": 12211400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-28T00:00:00",
+    "open": 113.52,
+    "high": 115.11,
+    "low": 113.07,
+    "close": 114.86,
+    "volume": 13978300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-29T00:00:00",
+    "open": 114.53,
+    "high": 114.55,
+    "low": 112.81,
+    "close": 113.63,
+    "volume": 13902000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-30T00:00:00",
+    "open": 113.27,
+    "high": 114.13,
+    "low": 112.96,
+    "close": 113.99,
+    "volume": 14692000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-05-31T00:00:00",
+    "open": 114.12,
+    "high": 117.49,
+    "low": 113.99,
+    "close": 117.26,
+    "volume": 29037400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-03T00:00:00",
+    "open": 116.3,
+    "high": 116.36,
+    "low": 113.76,
+    "close": 114.45,
+    "volume": 19589300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-04T00:00:00",
+    "open": 113.0,
+    "high": 113.089996,
+    "low": 110.92,
+    "close": 112.67,
+    "volume": 19412200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-05T00:00:00",
+    "open": 112.89,
+    "high": 113.19,
+    "low": 111.48,
+    "close": 113.12,
+    "volume": 14863500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-06T00:00:00",
+    "open": 112.75,
+    "high": 114.040001,
+    "low": 112.11,
+    "close": 113.97,
+    "volume": 13154100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-07T00:00:00",
+    "open": 113.79,
+    "high": 114.9,
+    "low": 112.67,
+    "close": 112.75,
+    "volume": 13289200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-10T00:00:00",
+    "open": 113.059998,
+    "high": 114.22,
+    "low": 112.7,
+    "close": 113.080002,
+    "volume": 15245200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-11T00:00:00",
+    "open": 112.49,
+    "high": 112.67,
+    "low": 111.31,
+    "close": 112.17,
+    "volume": 12462400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-12T00:00:00",
+    "open": 113.3,
+    "high": 113.3,
+    "low": 110.54,
+    "close": 110.93,
+    "volume": 13606800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-13T00:00:00",
+    "open": 110.84,
+    "high": 110.86,
+    "low": 109.72,
+    "close": 110.040001,
+    "volume": 14466900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-14T00:00:00",
+    "open": 110.019997,
+    "high": 110.21,
+    "low": 108.59,
+    "close": 109.11,
+    "volume": 13313400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-16T00:00:00",
+    "open": 109.17,
+    "high": 109.46,
+    "low": 108.18,
+    "close": 108.36,
+    "volume": 21147944.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-17T00:00:00",
+    "open": 109.17,
+    "high": 109.46,
+    "low": 108.18,
+    "close": 108.36,
+    "volume": 21147900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-18T00:00:00",
+    "open": 109.029999,
+    "high": 110.72,
+    "low": 108.8,
+    "close": 109.38,
+    "volume": 17762900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-19T00:00:00",
+    "open": 109.91,
+    "high": 112.62,
+    "low": 109.59,
+    "close": 111.74,
+    "volume": 17433192.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-20T00:00:00",
+    "open": 109.91,
+    "high": 112.62,
+    "low": 109.59,
+    "close": 111.74,
+    "volume": 17433200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-21T00:00:00",
+    "open": 111.9,
+    "high": 112.7,
+    "low": 110.76,
+    "close": 110.76,
+    "volume": 52220600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-23T00:00:00",
+    "open": 111.64,
+    "high": 114.52,
+    "low": 111.64,
+    "close": 114.050003,
+    "volume": 15152110.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-24T00:00:00",
+    "open": 111.64,
+    "high": 114.53,
+    "low": 111.64,
+    "close": 114.050003,
+    "volume": 16266700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-25T00:00:00",
+    "open": 114.11,
+    "high": 114.55,
+    "low": 113.46,
+    "close": 114.37,
+    "volume": 16213700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-26T00:00:00",
+    "open": 114.39,
+    "high": 114.82,
+    "low": 113.14,
+    "close": 114.41,
+    "volume": 15771800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-27T00:00:00",
+    "open": 114.99,
+    "high": 114.99,
+    "low": 114.11,
+    "close": 114.9,
+    "volume": 16812700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-06-28T00:00:00",
+    "open": 115.86,
+    "high": 116.54,
+    "low": 114.68,
+    "close": 115.12,
+    "volume": 24565900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-01T00:00:00",
+    "open": 115.71,
+    "high": 116.74,
+    "low": 114.53,
+    "close": 114.96,
+    "volume": 11972900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-02T00:00:00",
+    "open": 115.9,
+    "high": 115.94,
+    "low": 113.49,
+    "close": 114.18,
+    "volume": 13326700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-03T00:00:00",
+    "open": 114.27,
+    "high": 115.66,
+    "low": 114.27,
+    "close": 114.76,
+    "volume": 7732900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-05T00:00:00",
+    "open": 114.61,
+    "high": 114.63,
+    "low": 112.69,
+    "close": 113.37,
+    "volume": 12631000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-08T00:00:00",
+    "open": 112.39,
+    "high": 113.55,
+    "low": 111.42,
+    "close": 112.18,
+    "volume": 13350500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-09T00:00:00",
+    "open": 111.11,
+    "high": 112.54,
+    "low": 110.62,
+    "close": 110.94,
+    "volume": 11727000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-10T00:00:00",
+    "open": 110.92,
+    "high": 111.96,
+    "low": 110.42,
+    "close": 111.92,
+    "volume": 10004100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-11T00:00:00",
+    "open": 111.43,
+    "high": 113.32,
+    "low": 110.93,
+    "close": 113.25,
+    "volume": 13082700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-12T00:00:00",
+    "open": 113.99,
+    "high": 114.15,
+    "low": 112.63,
+    "close": 113.27,
+    "volume": 11684900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-15T00:00:00",
+    "open": 114.27,
+    "high": 116.16,
+    "low": 113.58,
+    "close": 115.21,
+    "volume": 13032500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-16T00:00:00",
+    "open": 114.35,
+    "high": 116.35,
+    "low": 113.71,
+    "close": 116.040001,
+    "volume": 13614100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-17T00:00:00",
+    "open": 116.74,
+    "high": 118.18,
+    "low": 116.55,
+    "close": 117.64,
+    "volume": 13602800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-18T00:00:00",
+    "open": 117.95,
+    "high": 119.92,
+    "low": 117.44,
+    "close": 118.8,
+    "volume": 13033600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-19T00:00:00",
+    "open": 118.59,
+    "high": 118.88,
+    "low": 115.87,
+    "close": 116.07,
+    "volume": 16157700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-22T00:00:00",
+    "open": 115.18,
+    "high": 115.94,
+    "low": 114.58,
+    "close": 115.27,
+    "volume": 12065900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-23T00:00:00",
+    "open": 114.81,
+    "high": 115.17,
+    "low": 113.17,
+    "close": 113.41,
+    "volume": 11251700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-24T00:00:00",
+    "open": 113.77,
+    "high": 115.2,
+    "low": 113.07,
+    "close": 115.010002,
+    "volume": 14925200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-25T00:00:00",
+    "open": 115.17,
+    "high": 118.029999,
+    "low": 114.56,
+    "close": 117.43,
+    "volume": 17021700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-26T00:00:00",
+    "open": 116.77,
+    "high": 118.029999,
+    "low": 116.47,
+    "close": 117.33,
+    "volume": 11252500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-29T00:00:00",
+    "open": 117.32,
+    "high": 117.39,
+    "low": 115.38,
+    "close": 116.099998,
+    "volume": 8861800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-30T00:00:00",
+    "open": 116.36,
+    "high": 118.6,
+    "low": 116.23,
+    "close": 118.17,
+    "volume": 12483900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-07-31T00:00:00",
+    "open": 119.64,
+    "high": 119.76,
+    "low": 118.56,
+    "close": 118.59,
+    "volume": 15137700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-01T00:00:00",
+    "open": 118.35,
+    "high": 119.49,
+    "low": 116.36,
+    "close": 116.95,
+    "volume": 15051500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-02T00:00:00",
+    "open": 115.97,
+    "high": 118.87,
+    "low": 115.42,
+    "close": 116.88,
+    "volume": 20403800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-05T00:00:00",
+    "open": 115.54,
+    "high": 116.029999,
+    "low": 113.25,
+    "close": 114.77,
+    "volume": 18025900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-06T00:00:00",
+    "open": 114.45,
+    "high": 115.63,
+    "low": 113.63,
+    "close": 114.16,
+    "volume": 13647800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-07T00:00:00",
+    "open": 115.45,
+    "high": 117.12,
+    "low": 115.26,
+    "close": 115.68,
+    "volume": 13660700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-08T00:00:00",
+    "open": 116.080002,
+    "high": 118.11,
+    "low": 115.73,
+    "close": 117.89,
+    "volume": 13851000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-09T00:00:00",
+    "open": 117.89,
+    "high": 119.31,
+    "low": 117.36,
+    "close": 118.85,
+    "volume": 12151900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-12T00:00:00",
+    "open": 119.55,
+    "high": 120.17,
+    "low": 118.019997,
+    "close": 119.0,
+    "volume": 13228900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-13T00:00:00",
+    "open": 118.28,
+    "high": 118.51,
+    "low": 117.5,
+    "close": 117.86,
+    "volume": 11585100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-14T00:00:00",
+    "open": 118.099998,
+    "high": 119.9,
+    "low": 117.63,
+    "close": 118.95,
+    "volume": 12194500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-15T00:00:00",
+    "open": 118.25,
+    "high": 119.63,
+    "low": 118.12,
+    "close": 118.73,
+    "volume": 11579400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-16T00:00:00",
+    "open": 117.99,
+    "high": 118.48,
+    "low": 117.66,
+    "close": 118.17,
+    "volume": 10056000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-19T00:00:00",
+    "open": 118.4,
+    "high": 120.5,
+    "low": 118.17,
+    "close": 118.53,
+    "volume": 12417500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-20T00:00:00",
+    "open": 118.65,
+    "high": 118.65,
+    "low": 114.51,
+    "close": 114.58,
+    "volume": 15632000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-21T00:00:00",
+    "open": 115.010002,
+    "high": 115.57,
+    "low": 113.76,
+    "close": 113.85,
+    "volume": 11752400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-22T00:00:00",
+    "open": 113.78,
+    "high": 115.010002,
+    "low": 113.64,
+    "close": 114.73,
+    "volume": 10609500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-23T00:00:00",
+    "open": 115.029999,
+    "high": 116.72,
+    "low": 115.029999,
+    "close": 116.32,
+    "volume": 10381400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-26T00:00:00",
+    "open": 117.76,
+    "high": 118.94,
+    "low": 116.92,
+    "close": 118.81,
+    "volume": 13671000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-27T00:00:00",
+    "open": 118.96,
+    "high": 119.41,
+    "low": 117.4,
+    "close": 117.68,
+    "volume": 9991600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-28T00:00:00",
+    "open": 117.0,
+    "high": 117.58,
+    "low": 116.26,
+    "close": 116.52,
+    "volume": 10742900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-29T00:00:00",
+    "open": 117.2,
+    "high": 118.79,
+    "low": 116.35,
+    "close": 118.13,
+    "volume": 10753900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-08-30T00:00:00",
+    "open": 116.79,
+    "high": 118.019997,
+    "low": 116.29,
+    "close": 117.94,
+    "volume": 13284700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-03T00:00:00",
+    "open": 115.84,
+    "high": 116.089996,
+    "low": 114.040001,
+    "close": 115.47,
+    "volume": 15725100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-04T00:00:00",
+    "open": 115.29,
+    "high": 116.15,
+    "low": 113.98,
+    "close": 114.059998,
+    "volume": 12620600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-05T00:00:00",
+    "open": 115.07,
+    "high": 115.28,
+    "low": 113.07,
+    "close": 113.17,
+    "volume": 17200800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-06T00:00:00",
+    "open": 113.59,
+    "high": 114.18,
+    "low": 111.73,
+    "close": 112.64,
+    "volume": 13467700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-09T00:00:00",
+    "open": 112.87,
+    "high": 116.15,
+    "low": 112.66,
+    "close": 115.010002,
+    "volume": 21645300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-10T00:00:00",
+    "open": 115.099998,
+    "high": 115.4,
+    "low": 110.17,
+    "close": 110.82,
+    "volume": 20913400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-11T00:00:00",
+    "open": 110.78,
+    "high": 110.95,
+    "low": 107.77,
+    "close": 109.72,
+    "volume": 19571900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-12T00:00:00",
+    "open": 109.9,
+    "high": 111.33,
+    "low": 109.76,
+    "close": 111.23,
+    "volume": 15923300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-13T00:00:00",
+    "open": 111.47,
+    "high": 112.47,
+    "low": 110.93,
+    "close": 111.15,
+    "volume": 10035400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-16T00:00:00",
+    "open": 112.050003,
+    "high": 113.089996,
+    "low": 111.69,
+    "close": 112.71,
+    "volume": 11729000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-17T00:00:00",
+    "open": 112.32,
+    "high": 114.37,
+    "low": 112.12,
+    "close": 114.18,
+    "volume": 12202600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-18T00:00:00",
+    "open": 114.11,
+    "high": 115.63,
+    "low": 113.81,
+    "close": 114.58,
+    "volume": 12569900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-19T00:00:00",
+    "open": 116.16,
+    "high": 117.58,
+    "low": 115.19,
+    "close": 116.0,
+    "volume": 12660600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-20T00:00:00",
+    "open": 115.46,
+    "high": 115.51,
+    "low": 114.25,
+    "close": 115.27,
+    "volume": 36206200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-23T00:00:00",
+    "open": 115.33,
+    "high": 117.79,
+    "low": 115.12,
+    "close": 117.36,
+    "volume": 16066300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-24T00:00:00",
+    "open": 117.84,
+    "high": 118.16,
+    "low": 116.83,
+    "close": 117.050003,
+    "volume": 11984900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-25T00:00:00",
+    "open": 116.49,
+    "high": 117.050003,
+    "low": 114.040001,
+    "close": 114.77,
+    "volume": 13816000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-26T00:00:00",
+    "open": 111.14,
+    "high": 113.48,
+    "low": 111.14,
+    "close": 112.8,
+    "volume": 16887900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-27T00:00:00",
+    "open": 113.76,
+    "high": 116.089996,
+    "low": 113.25,
+    "close": 115.82,
+    "volume": 15964000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-09-30T00:00:00",
+    "open": 115.46,
+    "high": 117.39,
+    "low": 114.96,
+    "close": 117.22,
+    "volume": 13247600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-01T00:00:00",
+    "open": 116.040001,
+    "high": 120.6,
+    "low": 115.93,
+    "close": 119.93,
+    "volume": 23235900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-02T00:00:00",
+    "open": 121.93,
+    "high": 122.82,
+    "low": 120.2,
+    "close": 121.52,
+    "volume": 17129700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-03T00:00:00",
+    "open": 121.9,
+    "high": 123.17,
+    "low": 120.93,
+    "close": 122.58,
+    "volume": 16524300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-04T00:00:00",
+    "open": 123.2,
+    "high": 125.19,
+    "low": 122.43,
+    "close": 124.83,
+    "volume": 19752300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-07T00:00:00",
+    "open": 125.25,
+    "high": 126.34,
+    "low": 124.86,
+    "close": 125.37,
+    "volume": 15714400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-08T00:00:00",
+    "open": 123.88,
+    "high": 124.019997,
+    "low": 121.26,
+    "close": 122.040001,
+    "volume": 14818500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-09T00:00:00",
+    "open": 120.9,
+    "high": 122.58,
+    "low": 120.8,
+    "close": 122.089996,
+    "volume": 11144900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-10T00:00:00",
+    "open": 123.16,
+    "high": 123.7,
+    "low": 122.29,
+    "close": 123.14,
+    "volume": 10243300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-11T00:00:00",
+    "open": 123.099998,
+    "high": 124.029999,
+    "low": 122.94,
+    "close": 123.61,
+    "volume": 8294800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-14T00:00:00",
+    "open": 120.82,
+    "high": 121.95,
+    "low": 119.78,
+    "close": 120.35,
+    "volume": 15771317.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-15T00:00:00",
+    "open": 120.89,
+    "high": 121.435,
+    "low": 120.6,
+    "close": 120.66,
+    "volume": 8426770.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-16T00:00:00",
+    "open": 120.89,
+    "high": 121.44,
+    "low": 120.6,
+    "close": 120.66,
+    "volume": 8426800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-17T00:00:00",
+    "open": 120.76,
+    "high": 121.58,
+    "low": 119.71,
+    "close": 120.35,
+    "volume": 11204900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-18T00:00:00",
+    "open": 120.44,
+    "high": 120.64,
+    "low": 119.15,
+    "close": 120.010002,
+    "volume": 12898600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-20T00:00:00",
+    "open": 120.98,
+    "high": 121.48,
+    "low": 119.72,
+    "close": 120.080002,
+    "volume": 10177777.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-21T00:00:00",
+    "open": 120.98,
+    "high": 121.48,
+    "low": 119.72,
+    "close": 120.080002,
+    "volume": 10177800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-22T00:00:00",
+    "open": 120.26,
+    "high": 121.19,
+    "low": 119.94,
+    "close": 120.7,
+    "volume": 9201400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-23T00:00:00",
+    "open": 119.97,
+    "high": 120.75,
+    "low": 119.4,
+    "close": 120.27,
+    "volume": 8320300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-24T00:00:00",
+    "open": 120.0,
+    "high": 120.44,
+    "low": 119.13,
+    "close": 119.59,
+    "volume": 9905600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-25T00:00:00",
+    "open": 120.2,
+    "high": 120.43,
+    "low": 119.32,
+    "close": 119.49,
+    "volume": 10714600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-28T00:00:00",
+    "open": 116.79,
+    "high": 119.010002,
+    "low": 116.77,
+    "close": 118.9,
+    "volume": 11844500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-29T00:00:00",
+    "open": 118.58,
+    "high": 119.17,
+    "low": 117.07,
+    "close": 117.28,
+    "volume": 14731000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-30T00:00:00",
+    "open": 117.66,
+    "high": 118.27,
+    "low": 116.48,
+    "close": 116.69,
+    "volume": 12303700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-10-31T00:00:00",
+    "open": 117.15,
+    "high": 118.67,
+    "low": 116.68,
+    "close": 116.78,
+    "volume": 20512000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-01T00:00:00",
+    "open": 119.93,
+    "high": 119.95,
+    "low": 114.84,
+    "close": 114.95,
+    "volume": 20939300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-04T00:00:00",
+    "open": 116.07,
+    "high": 118.7,
+    "low": 115.93,
+    "close": 118.61,
+    "volume": 14965400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-05T00:00:00",
+    "open": 119.080002,
+    "high": 119.21,
+    "low": 118.010002,
+    "close": 118.96,
+    "volume": 10436700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-06T00:00:00",
+    "open": 121.15,
+    "high": 121.91,
+    "low": 119.3,
+    "close": 121.0,
+    "volume": 20807700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-07T00:00:00",
+    "open": 121.3,
+    "high": 121.5,
+    "low": 119.61,
+    "close": 121.15,
+    "volume": 12184400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-08T00:00:00",
+    "open": 120.98,
+    "high": 121.42,
+    "low": 119.66,
+    "close": 121.11,
+    "volume": 12836000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-11T00:00:00",
+    "open": 121.0,
+    "high": 121.62,
+    "low": 120.07,
+    "close": 120.47,
+    "volume": 11969700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-12T00:00:00",
+    "open": 121.13,
+    "high": 121.31,
+    "low": 119.84,
+    "close": 120.35,
+    "volume": 11972800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-13T00:00:00",
+    "open": 120.57,
+    "high": 122.050003,
+    "low": 118.8,
+    "close": 121.47,
+    "volume": 15127900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-14T00:00:00",
+    "open": 121.66,
+    "high": 121.88,
+    "low": 120.33,
+    "close": 120.56,
+    "volume": 13041800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-15T00:00:00",
+    "open": 120.4,
+    "high": 121.24,
+    "low": 119.13,
+    "close": 119.31,
+    "volume": 19051700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-18T00:00:00",
+    "open": 119.79,
+    "high": 120.62,
+    "low": 119.27,
+    "close": 120.31,
+    "volume": 14243700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-19T00:00:00",
+    "open": 119.75,
+    "high": 119.75,
+    "low": 118.2,
+    "close": 118.63,
+    "volume": 11584400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-20T00:00:00",
+    "open": 119.17,
+    "high": 120.47,
+    "low": 118.64,
+    "close": 120.32,
+    "volume": 11360900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-21T00:00:00",
+    "open": 121.080002,
+    "high": 122.55,
+    "low": 120.27,
+    "close": 121.93,
+    "volume": 14675400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-22T00:00:00",
+    "open": 121.82,
+    "high": 123.21,
+    "low": 121.64,
+    "close": 121.79,
+    "volume": 13323400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-25T00:00:00",
+    "open": 121.43,
+    "high": 121.88,
+    "low": 119.61,
+    "close": 119.97,
+    "volume": 26580300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-26T00:00:00",
+    "open": 119.53,
+    "high": 119.68,
+    "low": 117.85,
+    "close": 117.97,
+    "volume": 14827300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-27T00:00:00",
+    "open": 118.089996,
+    "high": 118.73,
+    "low": 117.43,
+    "close": 117.66,
+    "volume": 11079100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-11-29T00:00:00",
+    "open": 117.44,
+    "high": 118.5,
+    "low": 116.95,
+    "close": 117.96,
+    "volume": 9426500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-02T00:00:00",
+    "open": 118.050003,
+    "high": 118.2,
+    "low": 116.82,
+    "close": 117.85,
+    "volume": 12687300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-03T00:00:00",
+    "open": 118.72,
+    "high": 118.72,
+    "low": 117.26,
+    "close": 117.67,
+    "volume": 11756600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-04T00:00:00",
+    "open": 117.5,
+    "high": 117.55,
+    "low": 113.86,
+    "close": 114.28,
+    "volume": 19520600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-05T00:00:00",
+    "open": 114.71,
+    "high": 115.62,
+    "low": 114.059998,
+    "close": 114.78,
+    "volume": 15751200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-06T00:00:00",
+    "open": 114.54,
+    "high": 114.77,
+    "low": 113.5,
+    "close": 113.57,
+    "volume": 16171100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-09T00:00:00",
+    "open": 114.64,
+    "high": 114.94,
+    "low": 112.75,
+    "close": 112.9,
+    "volume": 17412600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-10T00:00:00",
+    "open": 113.59,
+    "high": 113.88,
+    "low": 111.75,
+    "close": 112.67,
+    "volume": 20990900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-11T00:00:00",
+    "open": 112.0,
+    "high": 112.39,
+    "low": 111.11,
+    "close": 111.92,
+    "volume": 32392200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-12T00:00:00",
+    "open": 111.59,
+    "high": 112.38,
+    "low": 110.78,
+    "close": 111.82,
+    "volume": 14543300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-13T00:00:00",
+    "open": 111.9,
+    "high": 111.9,
+    "low": 110.25,
+    "close": 110.84,
+    "volume": 13106100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-16T00:00:00",
+    "open": 110.2,
+    "high": 110.4,
+    "low": 108.16,
+    "close": 108.47,
+    "volume": 20256100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-17T00:00:00",
+    "open": 107.24,
+    "high": 108.17,
+    "low": 106.79,
+    "close": 108.010002,
+    "volume": 17554000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-18T00:00:00",
+    "open": 107.57,
+    "high": 108.83,
+    "low": 106.31,
+    "close": 106.42,
+    "volume": 17114500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-19T00:00:00",
+    "open": 107.39,
+    "high": 107.67,
+    "low": 105.21,
+    "close": 105.51,
+    "volume": 20565600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-20T00:00:00",
+    "open": 105.45,
+    "high": 106.14,
+    "low": 104.84,
+    "close": 105.87,
+    "volume": 40141200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-23T00:00:00",
+    "open": 105.31,
+    "high": 106.6,
+    "low": 104.92,
+    "close": 106.3,
+    "volume": 12285100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-24T00:00:00",
+    "open": 106.52,
+    "high": 107.19,
+    "low": 105.7,
+    "close": 106.4,
+    "volume": 7807000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-26T00:00:00",
+    "open": 106.52,
+    "high": 107.029999,
+    "low": 105.94,
+    "close": 106.49,
+    "volume": 9652400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-27T00:00:00",
+    "open": 106.3,
+    "high": 107.99,
+    "low": 105.77,
+    "close": 106.48,
+    "volume": 11943900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-30T00:00:00",
+    "open": 106.3,
+    "high": 106.56,
+    "low": 105.51,
+    "close": 105.76,
+    "volume": 11080800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2024-12-31T00:00:00",
+    "open": 106.17,
+    "high": 107.9,
+    "low": 105.78,
+    "close": 107.57,
+    "volume": 12387800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-02T00:00:00",
+    "open": 108.28,
+    "high": 109.0,
+    "low": 106.88,
+    "close": 107.31,
+    "volume": 12685400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-03T00:00:00",
+    "open": 108.0,
+    "high": 108.49,
+    "low": 107.46,
+    "close": 107.86,
+    "volume": 14237900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-06T00:00:00",
+    "open": 108.24,
+    "high": 109.78,
+    "low": 107.52,
+    "close": 107.74,
+    "volume": 15623700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-07T00:00:00",
+    "open": 108.94,
+    "high": 110.059998,
+    "low": 108.28,
+    "close": 108.75,
+    "volume": 12625900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-08T00:00:00",
+    "open": 107.31,
+    "high": 107.71,
+    "low": 106.010002,
+    "close": 106.93,
+    "volume": 17858100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-10T00:00:00",
+    "open": 108.7,
+    "high": 110.099998,
+    "low": 105.78,
+    "close": 106.54,
+    "volume": 19304500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-13T00:00:00",
+    "open": 107.13,
+    "high": 109.63,
+    "low": 107.13,
+    "close": 109.29,
+    "volume": 17073400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-14T00:00:00",
+    "open": 108.79,
+    "high": 109.76,
+    "low": 107.83,
+    "close": 109.72,
+    "volume": 11191200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-15T00:00:00",
+    "open": 110.050003,
+    "high": 111.73,
+    "low": 109.47,
+    "close": 111.51,
+    "volume": 14521100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-16T00:00:00",
+    "open": 111.19,
+    "high": 111.69,
+    "low": 110.55,
+    "close": 111.32,
+    "volume": 10366600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-17T00:00:00",
+    "open": 111.029999,
+    "high": 112.87,
+    "low": 110.82,
+    "close": 112.32,
+    "volume": 19298500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-21T00:00:00",
+    "open": 112.050003,
+    "high": 112.18,
+    "low": 111.13,
+    "close": 111.47,
+    "volume": 20416300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-22T00:00:00",
+    "open": 111.2,
+    "high": 111.57,
+    "low": 109.4,
+    "close": 109.53,
+    "volume": 15718000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-23T00:00:00",
+    "open": 110.31,
+    "high": 111.14,
+    "low": 109.61,
+    "close": 110.15,
+    "volume": 13726800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-24T00:00:00",
+    "open": 110.24,
+    "high": 110.71,
+    "low": 108.41,
+    "close": 108.66,
+    "volume": 14235900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-27T00:00:00",
+    "open": 109.010002,
+    "high": 110.45,
+    "low": 108.39,
+    "close": 110.17,
+    "volume": 15926700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-28T00:00:00",
+    "open": 110.41,
+    "high": 110.87,
+    "low": 107.79,
+    "close": 108.040001,
+    "volume": 15862000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-29T00:00:00",
+    "open": 109.24,
+    "high": 109.85,
+    "low": 108.7,
+    "close": 109.57,
+    "volume": 14346335.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-30T00:00:00",
+    "open": 109.24,
+    "high": 109.85,
+    "low": 108.7,
+    "close": 109.57,
+    "volume": 14346300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-01-31T00:00:00",
+    "open": 110.55,
+    "high": 110.55,
+    "low": 106.099998,
+    "close": 106.83,
+    "volume": 20381400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-02T00:00:00",
+    "open": 106.64,
+    "high": 107.3,
+    "low": 105.3225,
+    "close": 107.089996,
+    "volume": 14623197.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-03T00:00:00",
+    "open": 106.64,
+    "high": 107.3,
+    "low": 105.32,
+    "close": 107.089996,
+    "volume": 14623200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-04T00:00:00",
+    "open": 106.71,
+    "high": 110.28,
+    "low": 106.53,
+    "close": 109.96,
+    "volume": 14835700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-05T00:00:00",
+    "open": 109.74,
+    "high": 110.010002,
+    "low": 109.099998,
+    "close": 109.88,
+    "volume": 13364400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-06T00:00:00",
+    "open": 110.77,
+    "high": 111.050003,
+    "low": 107.99,
+    "close": 108.43,
+    "volume": 13411400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-07T00:00:00",
+    "open": 108.78,
+    "high": 109.73,
+    "low": 108.32,
+    "close": 108.89,
+    "volume": 10051600.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-10T00:00:00",
+    "open": 110.010002,
+    "high": 111.029999,
+    "low": 109.88,
+    "close": 110.97,
+    "volume": 12142200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-11T00:00:00",
+    "open": 111.6,
+    "high": 112.51,
+    "low": 110.82,
+    "close": 111.67,
+    "volume": 12713100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-12T00:00:00",
+    "open": 110.050003,
+    "high": 110.23,
+    "low": 107.18,
+    "close": 107.35,
+    "volume": 18244100.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-13T00:00:00",
+    "open": 107.15,
+    "high": 108.41,
+    "low": 106.52,
+    "close": 108.13,
+    "volume": 15460000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-14T00:00:00",
+    "open": 108.52,
+    "high": 110.23,
+    "low": 108.099998,
+    "close": 108.24,
+    "volume": 15733500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-18T00:00:00",
+    "open": 108.63,
+    "high": 110.99,
+    "low": 108.32,
+    "close": 110.14,
+    "volume": 20060300.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-19T00:00:00",
+    "open": 110.76,
+    "high": 112.13,
+    "low": 110.059998,
+    "close": 110.3,
+    "volume": 10964700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-20T00:00:00",
+    "open": 110.57,
+    "high": 112.42,
+    "low": 109.95,
+    "close": 112.0,
+    "volume": 16325800.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-21T00:00:00",
+    "open": 111.32,
+    "high": 111.85,
+    "low": 110.56,
+    "close": 110.69,
+    "volume": 14710000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-24T00:00:00",
+    "open": 110.93,
+    "high": 111.86,
+    "low": 110.32,
+    "close": 111.27,
+    "volume": 13153500.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 111.3,
+    "high": 112.13,
+    "low": 108.89,
+    "close": 109.73,
+    "volume": 14497000.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 109.74,
+    "high": 109.87,
+    "low": 108.52,
+    "close": 109.46,
+    "volume": 10446400.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 110.010002,
+    "high": 111.29,
+    "low": 109.28,
+    "close": 110.15,
+    "volume": 15293200.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-02-28T00:00:00",
+    "open": 110.11,
+    "high": 111.58,
+    "low": 109.34,
+    "close": 111.33,
+    "volume": 18821700.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-03-03T00:00:00",
+    "open": 111.7,
+    "high": 112.16,
+    "low": 106.51,
+    "close": 107.76,
+    "volume": 18706900.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "XOM",
+    "timestamp": "2025-03-04T00:00:00",
+    "open": 106.36,
+    "high": 108.955,
+    "low": 105.94,
+    "close": 107.54,
+    "volume": 14137287.0,
+    "interval": "1d"
+  }
+]

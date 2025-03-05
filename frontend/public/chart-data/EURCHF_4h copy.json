@@ -1,0 +1,1352 @@
+[
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-03T07:00:00",
+    "open": 0.93800002,
+    "high": 0.93889999,
+    "low": 0.93629998,
+    "close": 0.93779999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-03T11:00:00",
+    "open": 0.93779999,
+    "high": 0.9393,
+    "low": 0.93620002,
+    "close": 0.93730003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-03T15:00:00",
+    "open": 0.93720001,
+    "high": 0.93989998,
+    "low": 0.93709999,
+    "close": 0.93940002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-03T19:00:00",
+    "open": 0.93949997,
+    "high": 0.94019997,
+    "low": 0.93839997,
+    "close": 0.9393,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-03T23:00:00",
+    "open": 0.9393,
+    "high": 0.94139999,
+    "low": 0.9368,
+    "close": 0.94050002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-04T03:00:00",
+    "open": 0.9404,
+    "high": 0.9411,
+    "low": 0.93879998,
+    "close": 0.93889999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-04T07:00:00",
+    "open": 0.93889999,
+    "high": 0.94209999,
+    "low": 0.93879998,
+    "close": 0.94150001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-04T11:00:00",
+    "open": 0.94150001,
+    "high": 0.94160002,
+    "low": 0.9404,
+    "close": 0.9404,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-04T15:00:00",
+    "open": 0.9404,
+    "high": 0.94069999,
+    "low": 0.93760002,
+    "close": 0.94029999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-04T19:00:00",
+    "open": 0.94019997,
+    "high": 0.94090003,
+    "low": 0.93839997,
+    "close": 0.93910003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-04T23:00:00",
+    "open": 0.93910003,
+    "high": 0.94069999,
+    "low": 0.93879998,
+    "close": 0.94029999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-05T03:00:00",
+    "open": 0.94029999,
+    "high": 0.9404,
+    "low": 0.93910003,
+    "close": 0.93949997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-05T07:00:00",
+    "open": 0.93949997,
+    "high": 0.94,
+    "low": 0.93910003,
+    "close": 0.93910003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-05T11:00:00",
+    "open": 0.93919998,
+    "high": 0.94,
+    "low": 0.93910003,
+    "close": 0.9393,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-05T15:00:00",
+    "open": 0.93919998,
+    "high": 0.94029999,
+    "low": 0.93919998,
+    "close": 0.94019997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-05T19:00:00",
+    "open": 0.94019997,
+    "high": 0.94069999,
+    "low": 0.93870002,
+    "close": 0.93970001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-05T23:00:00",
+    "open": 0.93980002,
+    "high": 0.94029999,
+    "low": 0.93839997,
+    "close": 0.93849999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-06T03:00:00",
+    "open": 0.93849999,
+    "high": 0.93879998,
+    "low": 0.9375,
+    "close": 0.93769997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-06T07:00:00",
+    "open": 0.93779999,
+    "high": 0.93830001,
+    "low": 0.93739998,
+    "close": 0.93739998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-06T11:00:00",
+    "open": 0.9375,
+    "high": 0.93800002,
+    "low": 0.93720001,
+    "close": 0.93779999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-06T15:00:00",
+    "open": 0.93790001,
+    "high": 0.93839997,
+    "low": 0.93760002,
+    "close": 0.93790001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-06T19:00:00",
+    "open": 0.93779999,
+    "high": 0.93849999,
+    "low": 0.93669999,
+    "close": 0.93779999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-06T23:00:00",
+    "open": 0.93779999,
+    "high": 0.93959999,
+    "low": 0.93739998,
+    "close": 0.9386,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-07T03:00:00",
+    "open": 0.9386,
+    "high": 0.94019997,
+    "low": 0.93849999,
+    "close": 0.94,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-07T07:00:00",
+    "open": 0.94010001,
+    "high": 0.9404,
+    "low": 0.93940002,
+    "close": 0.94010001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-07T11:00:00",
+    "open": 0.94010001,
+    "high": 0.9411,
+    "low": 0.93949997,
+    "close": 0.94069999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-07T15:00:00",
+    "open": 0.94069999,
+    "high": 0.9418,
+    "low": 0.94010001,
+    "close": 0.94150001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-07T19:00:00",
+    "open": 0.94160002,
+    "high": 0.94209999,
+    "low": 0.94120002,
+    "close": 0.94150001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-07T23:00:00",
+    "open": 0.94160002,
+    "high": 0.94300002,
+    "low": 0.93980002,
+    "close": 0.94150001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-08T03:00:00",
+    "open": 0.94150001,
+    "high": 0.94169998,
+    "low": 0.93839997,
+    "close": 0.93940002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-08T07:00:00",
+    "open": 0.93949997,
+    "high": 0.94,
+    "low": 0.93919998,
+    "close": 0.93980002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-10T07:00:00",
+    "open": 0.93650001,
+    "high": 0.9393,
+    "low": 0.93650001,
+    "close": 0.93919998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-10T11:00:00",
+    "open": 0.93919998,
+    "high": 0.93980002,
+    "low": 0.93910003,
+    "close": 0.93970001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-10T15:00:00",
+    "open": 0.93980002,
+    "high": 0.94059998,
+    "low": 0.93900001,
+    "close": 0.93940002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-10T19:00:00",
+    "open": 0.93940002,
+    "high": 0.9404,
+    "low": 0.93900001,
+    "close": 0.93949997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-10T23:00:00",
+    "open": 0.93949997,
+    "high": 0.94,
+    "low": 0.9382,
+    "close": 0.93900001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-11T03:00:00",
+    "open": 0.93910003,
+    "high": 0.94,
+    "low": 0.93889999,
+    "close": 0.93949997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-11T07:00:00",
+    "open": 0.93940002,
+    "high": 0.93970001,
+    "low": 0.93730003,
+    "close": 0.93879998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-11T11:00:00",
+    "open": 0.93889999,
+    "high": 0.93919998,
+    "low": 0.93839997,
+    "close": 0.93879998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-11T15:00:00",
+    "open": 0.93879998,
+    "high": 0.93980002,
+    "low": 0.93879998,
+    "close": 0.93949997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-11T19:00:00",
+    "open": 0.93959999,
+    "high": 0.94239998,
+    "low": 0.93919998,
+    "close": 0.94239998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-11T23:00:00",
+    "open": 0.94239998,
+    "high": 0.94489998,
+    "low": 0.94220001,
+    "close": 0.9443,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-12T03:00:00",
+    "open": 0.9443,
+    "high": 0.94709998,
+    "low": 0.94410002,
+    "close": 0.94599998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-12T07:00:00",
+    "open": 0.94590002,
+    "high": 0.94669998,
+    "low": 0.94559997,
+    "close": 0.94630003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-12T11:00:00",
+    "open": 0.94639999,
+    "high": 0.9465,
+    "low": 0.94559997,
+    "close": 0.9465,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-12T15:00:00",
+    "open": 0.94639999,
+    "high": 0.94669998,
+    "low": 0.94550002,
+    "close": 0.94660002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-12T19:00:00",
+    "open": 0.9465,
+    "high": 0.94669998,
+    "low": 0.94419998,
+    "close": 0.94520003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-12T23:00:00",
+    "open": 0.94520003,
+    "high": 0.9479,
+    "low": 0.94440001,
+    "close": 0.94760001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-13T03:00:00",
+    "open": 0.94760001,
+    "high": 0.9508,
+    "low": 0.94630003,
+    "close": 0.94910002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-13T07:00:00",
+    "open": 0.949,
+    "high": 0.94940001,
+    "low": 0.94800001,
+    "close": 0.94929999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-13T11:00:00",
+    "open": 0.94929999,
+    "high": 0.95029998,
+    "low": 0.94919997,
+    "close": 0.95029998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-13T15:00:00",
+    "open": 0.95029998,
+    "high": 0.95139998,
+    "low": 0.94749999,
+    "close": 0.94800001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-13T19:00:00",
+    "open": 0.94800001,
+    "high": 0.94800001,
+    "low": 0.94349998,
+    "close": 0.94419998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-13T23:00:00",
+    "open": 0.9443,
+    "high": 0.94620001,
+    "low": 0.94209999,
+    "close": 0.94440001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-14T03:00:00",
+    "open": 0.94450003,
+    "high": 0.94480002,
+    "low": 0.94019997,
+    "close": 0.94340003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-14T07:00:00",
+    "open": 0.94340003,
+    "high": 0.94580001,
+    "low": 0.94340003,
+    "close": 0.94499999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-14T11:00:00",
+    "open": 0.94499999,
+    "high": 0.94559997,
+    "low": 0.94410002,
+    "close": 0.94550002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-14T15:00:00",
+    "open": 0.94550002,
+    "high": 0.94700003,
+    "low": 0.94499999,
+    "close": 0.94679999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-14T19:00:00",
+    "open": 0.94679999,
+    "high": 0.94730002,
+    "low": 0.94349998,
+    "close": 0.94370002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-14T23:00:00",
+    "open": 0.9436,
+    "high": 0.9447,
+    "low": 0.94260001,
+    "close": 0.9436,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-15T03:00:00",
+    "open": 0.9436,
+    "high": 0.94400001,
+    "low": 0.94279999,
+    "close": 0.94349998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-15T07:00:00",
+    "open": 0.94349998,
+    "high": 0.94419998,
+    "low": 0.94349998,
+    "close": 0.94389999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-17T07:00:00",
+    "open": 0.94209999,
+    "high": 0.94440001,
+    "low": 0.94169998,
+    "close": 0.94389999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-17T11:00:00",
+    "open": 0.94389999,
+    "high": 0.94510001,
+    "low": 0.94379997,
+    "close": 0.94480002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-17T15:00:00",
+    "open": 0.94489998,
+    "high": 0.94489998,
+    "low": 0.94340003,
+    "close": 0.94340003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-17T19:00:00",
+    "open": 0.94349998,
+    "high": 0.94499999,
+    "low": 0.94260001,
+    "close": 0.94440001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-17T23:00:00",
+    "open": 0.94459999,
+    "high": 0.9447,
+    "low": 0.94340003,
+    "close": 0.94419998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-18T03:00:00",
+    "open": 0.94419998,
+    "high": 0.94450003,
+    "low": 0.94379997,
+    "close": 0.94440001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-18T07:00:00",
+    "open": 0.9443,
+    "high": 0.94459999,
+    "low": 0.94389999,
+    "close": 0.94450003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-18T11:00:00",
+    "open": 0.94450003,
+    "high": 0.9447,
+    "low": 0.94379997,
+    "close": 0.94410002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-18T15:00:00",
+    "open": 0.94410002,
+    "high": 0.94440001,
+    "low": 0.94300002,
+    "close": 0.94330001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-18T19:00:00",
+    "open": 0.94330001,
+    "high": 0.9436,
+    "low": 0.94150001,
+    "close": 0.94340003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-18T23:00:00",
+    "open": 0.94340003,
+    "high": 0.94370002,
+    "low": 0.9418,
+    "close": 0.94370002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-19T03:00:00",
+    "open": 0.94370002,
+    "high": 0.94410002,
+    "low": 0.94309998,
+    "close": 0.94379997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-19T07:00:00",
+    "open": 0.94389999,
+    "high": 0.9447,
+    "low": 0.94279999,
+    "close": 0.94419998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-19T11:00:00",
+    "open": 0.94419998,
+    "high": 0.9447,
+    "low": 0.94389999,
+    "close": 0.94419998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-19T15:00:00",
+    "open": 0.94410002,
+    "high": 0.94480002,
+    "low": 0.94389999,
+    "close": 0.94459999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-19T19:00:00",
+    "open": 0.9447,
+    "high": 0.94550002,
+    "low": 0.94199997,
+    "close": 0.9425,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-19T23:00:00",
+    "open": 0.9425,
+    "high": 0.94370002,
+    "low": 0.94129997,
+    "close": 0.94209999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-20T03:00:00",
+    "open": 0.94209999,
+    "high": 0.94239998,
+    "low": 0.94169998,
+    "close": 0.94239998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-20T07:00:00",
+    "open": 0.94230002,
+    "high": 0.94309998,
+    "low": 0.94209999,
+    "close": 0.94270003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-20T11:00:00",
+    "open": 0.94270003,
+    "high": 0.94279999,
+    "low": 0.94160002,
+    "close": 0.94199997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-20T15:00:00",
+    "open": 0.94190001,
+    "high": 0.94199997,
+    "low": 0.94090003,
+    "close": 0.94160002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-20T19:00:00",
+    "open": 0.94160002,
+    "high": 0.94230002,
+    "low": 0.94120002,
+    "close": 0.94199997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-20T23:00:00",
+    "open": 0.94190001,
+    "high": 0.94349998,
+    "low": 0.94160002,
+    "close": 0.94239998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-21T03:00:00",
+    "open": 0.9425,
+    "high": 0.9429,
+    "low": 0.9418,
+    "close": 0.94270003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-21T07:00:00",
+    "open": 0.94270003,
+    "high": 0.9447,
+    "low": 0.9425,
+    "close": 0.94319999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-21T11:00:00",
+    "open": 0.94319999,
+    "high": 0.94349998,
+    "low": 0.94270003,
+    "close": 0.94330001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-21T15:00:00",
+    "open": 0.94340003,
+    "high": 0.94349998,
+    "low": 0.94230002,
+    "close": 0.94230002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-21T19:00:00",
+    "open": 0.94230002,
+    "high": 0.94270003,
+    "low": 0.94010001,
+    "close": 0.94090003,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-21T23:00:00",
+    "open": 0.94090003,
+    "high": 0.94279999,
+    "low": 0.94029999,
+    "close": 0.94050002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-22T03:00:00",
+    "open": 0.94050002,
+    "high": 0.94080001,
+    "low": 0.93809998,
+    "close": 0.93879998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-22T07:00:00",
+    "open": 0.93870002,
+    "high": 0.93959999,
+    "low": 0.93839997,
+    "close": 0.9393,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-24T07:00:00",
+    "open": 0.93959999,
+    "high": 0.94139999,
+    "low": 0.93919998,
+    "close": 0.94120002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-24T11:00:00",
+    "open": 0.9411,
+    "high": 0.94279999,
+    "low": 0.94059998,
+    "close": 0.94220001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-24T15:00:00",
+    "open": 0.94220001,
+    "high": 0.94260001,
+    "low": 0.94019997,
+    "close": 0.94120002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-24T19:00:00",
+    "open": 0.94120002,
+    "high": 0.94209999,
+    "low": 0.94,
+    "close": 0.9418,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-24T23:00:00",
+    "open": 0.9418,
+    "high": 0.9418,
+    "low": 0.93809998,
+    "close": 0.93900001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-25T03:00:00",
+    "open": 0.93900001,
+    "high": 0.94010001,
+    "low": 0.93879998,
+    "close": 0.93919998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-25T07:00:00",
+    "open": 0.9393,
+    "high": 0.93970001,
+    "low": 0.9386,
+    "close": 0.93879998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-25T11:00:00",
+    "open": 0.93879998,
+    "high": 0.93980002,
+    "low": 0.93879998,
+    "close": 0.93959999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-25T15:00:00",
+    "open": 0.93959999,
+    "high": 0.94,
+    "low": 0.93830001,
+    "close": 0.93839997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-25T19:00:00",
+    "open": 0.93830001,
+    "high": 0.94,
+    "low": 0.93800002,
+    "close": 0.93900001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-25T23:00:00",
+    "open": 0.93889999,
+    "high": 0.93919998,
+    "low": 0.93720001,
+    "close": 0.93800002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-26T03:00:00",
+    "open": 0.93800002,
+    "high": 0.9386,
+    "low": 0.93669999,
+    "close": 0.9382,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-26T07:00:00",
+    "open": 0.9382,
+    "high": 0.93980002,
+    "low": 0.93800002,
+    "close": 0.93889999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-26T11:00:00",
+    "open": 0.93889999,
+    "high": 0.93889999,
+    "low": 0.93830001,
+    "close": 0.93870002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-26T15:00:00",
+    "open": 0.9386,
+    "high": 0.93940002,
+    "low": 0.93839997,
+    "close": 0.9386,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-26T19:00:00",
+    "open": 0.9386,
+    "high": 0.94010001,
+    "low": 0.93830001,
+    "close": 0.93989998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-26T23:00:00",
+    "open": 0.93980002,
+    "high": 0.93989998,
+    "low": 0.9375,
+    "close": 0.93889999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-27T03:00:00",
+    "open": 0.93900001,
+    "high": 0.93970001,
+    "low": 0.93709999,
+    "close": 0.93769997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-27T07:00:00",
+    "open": 0.93769997,
+    "high": 0.93879998,
+    "low": 0.93730003,
+    "close": 0.93809998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-27T11:00:00",
+    "open": 0.9382,
+    "high": 0.93870002,
+    "low": 0.93760002,
+    "close": 0.93839997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-27T15:00:00",
+    "open": 0.93830001,
+    "high": 0.93949997,
+    "low": 0.93800002,
+    "close": 0.93900001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-27T19:00:00",
+    "open": 0.93910003,
+    "high": 0.94160002,
+    "low": 0.93879998,
+    "close": 0.94150001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-27T23:00:00",
+    "open": 0.94160002,
+    "high": 0.94160002,
+    "low": 0.93540001,
+    "close": 0.93650001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-28T03:00:00",
+    "open": 0.93660003,
+    "high": 0.93699998,
+    "low": 0.93510002,
+    "close": 0.93599999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-28T07:00:00",
+    "open": 0.93610001,
+    "high": 0.93629998,
+    "low": 0.93510002,
+    "close": 0.93559998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-28T11:00:00",
+    "open": 0.93559998,
+    "high": 0.93559998,
+    "low": 0.93330002,
+    "close": 0.9339,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-28T15:00:00",
+    "open": 0.93400002,
+    "high": 0.93769997,
+    "low": 0.93379998,
+    "close": 0.93739998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-28T19:00:00",
+    "open": 0.93739998,
+    "high": 0.93910003,
+    "low": 0.9368,
+    "close": 0.93870002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-02-28T23:00:00",
+    "open": 0.93870002,
+    "high": 0.9404,
+    "low": 0.93769997,
+    "close": 0.93839997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-03-01T03:00:00",
+    "open": 0.93839997,
+    "high": 0.93900001,
+    "low": 0.93540001,
+    "close": 0.93669999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-03-01T07:00:00",
+    "open": 0.93669999,
+    "high": 0.93720001,
+    "low": 0.93599999,
+    "close": 0.93709999,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-03-03T07:00:00",
+    "open": 0.93940002,
+    "high": 0.94069999,
+    "low": 0.93870002,
+    "close": 0.93989998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-03-03T11:00:00",
+    "open": 0.93989998,
+    "high": 0.94050002,
+    "low": 0.93879998,
+    "close": 0.93940002,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-03-03T15:00:00",
+    "open": 0.93940002,
+    "high": 0.93959999,
+    "low": 0.93809998,
+    "close": 0.93830001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-03-03T19:00:00",
+    "open": 0.9382,
+    "high": 0.9425,
+    "low": 0.93660003,
+    "close": 0.94239998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-03-03T23:00:00",
+    "open": 0.94239998,
+    "high": 0.9436,
+    "low": 0.94139999,
+    "close": 0.94190001,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-03-04T03:00:00",
+    "open": 0.94190001,
+    "high": 0.94270003,
+    "low": 0.94,
+    "close": 0.94,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-03-04T07:00:00",
+    "open": 0.93989998,
+    "high": 0.94129997,
+    "low": 0.93849999,
+    "close": 0.9404,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-03-04T11:00:00",
+    "open": 0.9404,
+    "high": 0.94069999,
+    "low": 0.93870002,
+    "close": 0.93949997,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-03-04T15:00:00",
+    "open": 0.93949997,
+    "high": 0.94,
+    "low": 0.93800002,
+    "close": 0.9393,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-03-04T19:00:00",
+    "open": 0.9393,
+    "high": 0.93949997,
+    "low": 0.9364,
+    "close": 0.93809998,
+    "volume": 0.0,
+    "interval": "4h"
+  },
+  {
+    "symbol": "EURCHF",
+    "timestamp": "2025-03-04T23:00:00",
+    "open": 0.93800002,
+    "high": 0.93830001,
+    "low": 0.9346,
+    "close": 0.93730003,
+    "volume": 0.0,
+    "interval": "4h"
+  }
+]
