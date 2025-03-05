@@ -14,8 +14,8 @@ const Logo = () => {
       setPlatform('cash');
     } else if (hostname.includes('stock')) {
       setPlatform('stock');
-    } else if (hostname.includes('fund')) {
-      setPlatform('fund');  
+    } else if (hostname.includes('crypto')) {
+      setPlatform('crypto');  
     } else if (hostname.includes('forex')) {
       setPlatform('forex');
     } else if (process.env.NODE_ENV === 'development') {

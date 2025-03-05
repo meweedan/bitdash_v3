@@ -60,7 +60,7 @@ import {
   ExternalLink,
   ChevronDown
 } from 'lucide-react';
-import { FaWhatsapp, FaRegFile, FaHandHoldingUsd, FaBalanceScale, FaFileContract, FaMosque, FaChartLine, FaExchangeAlt, FaUniversity, FaShieldAlt, FaChevronRight, FaBitcoin, FaDollarSign, FaChartBar, FaCoins, FaUser } from 'react-icons/fa';
+import { FaWhatsapp, FaRegFile, FaRegCreditCard, FaHandHoldingUsd, FaBalanceScale, FaFileContract, FaMosque, FaChartLine, FaExchangeAlt, FaUniversity, FaShieldAlt, FaChevronRight, FaBitcoin, FaDollarSign, FaChartBar, FaCoins, FaUser } from 'react-icons/fa';
 
 const checkIsPWA = () => {
   if (typeof window === 'undefined') return false;
@@ -146,106 +146,118 @@ export default function Landing() {
   }
 
   // Main Hero Section
-  const HeroSection = () => {
-    const isMobile = useBreakpointValue({ base: true, md: false });
-    const parallaxOffset = useBreakpointValue({ base: 30, md: 100 });
-    
-    return (
-      <Box 
-        as="section" 
-        position="relative"
-        pt={{ base: 18, md: 20 }}
-        pb={{ base: 32, md: 48 }}
-        overflow="hidden"
+  // Updated HeroSection with i18n
+const HeroSection = () => {
+  const isMobile = useBreakpointValue({ base: true, md: false });
+  const parallaxOffset = useBreakpointValue({ base: 30, md: 100 });
+  
+  return (
+    <Box 
+      as="section" 
+      position="relative"
+      pt={{ base: 18, md: 20 }}
+      pb={{ base: 32, md: 48 }}
+      overflow="hidden"
+    >
+      {/* Background image */}
+      <Box
+        position="absolute"
+        top="0"
+        left="0"
+        right="0"
+        bottom="0"
       >
-        {/* Background image */}
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          right="0"
-          bottom="0"
-        >
-          <Image
-            src="/images/background-image.png"
-            alt="Background"
-            width="100%"
-            opacity="0.75"
-            height="100%"
-            objectFit="cover"
-            objectPosition="center"
-          />
-          
-        </Box>
         <Image
-          src="/images/ldn-skyline.png"
-          position="absolute"
-          alt="Background"
-          opacity="0.25"
+          src="/images/background-image.png"
+          alt={t('alt.backgroundImage')}
           width="100%"
-          zIndex={1}
+          opacity="0.75"
           height="100%"
           objectFit="cover"
           objectPosition="center"
-          />
-        {/* Hero content */}
-        <Container maxW="container.xl" position="relative" zIndex="2">
-          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 12, lg: 18 }} alignItems="center">
-            <GridItem>
-              <MotionBox
-                initial="hidden"
-                animate="visible"
-                variants={fadeIn}
-              >
-                <VStack spacing={8} align="flex-start">
-                  <Heading
-                    as="h1"
-                    fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                    fontWeight="bold"
-                    color="brand.bitdash.700"
-                  >
-                    {t('heroTitle')}
-                  </Heading>
-                </VStack>
-              </MotionBox>
-            </GridItem>
-            
-            <GridItem display={{ base: "block", lg: "block" }}>
-              <ParallaxBox offset={parallaxOffset}>
-                <MotionBox
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  position="relative"
-                >
-                  <Image 
-                    src="/images/trading-banner.png" 
-                    alt="BitDash MT5"
-                    borderRadius="xl"
-                    width="full"
-                  />
-                </MotionBox>
-              </ParallaxBox>
-            </GridItem>
-          </Grid>
-        </Container>
-        
-        {/* Trading features banner at bottom of hero */}
-        <Box
-          position="absolute"
-          zIndex="1"
-        >
-          <Image
-            src="/images/trading-features.png"
-            alt="Trading Features"
-            objectFit="cover"
-            objectPosition="center"
-            align="center"
-          />
-        </Box>
+        />
       </Box>
-    );
-  };
+      <Image
+        src="/images/ldn-skyline.png"
+        position="absolute"
+        alt={t('alt.londonSkyline')}
+        opacity="0.25"
+        width="100%"
+        zIndex={1}
+        height="100%"
+        objectFit="cover"
+        objectPosition="center"
+      />
+      {/* Hero content */}
+      <Container maxW="container.xl" position="relative" zIndex="2">
+        <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 12, lg: 18 }} alignItems="center">
+          <GridItem>
+            <MotionBox
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+            >
+              <VStack spacing={8} align="flex-start">
+                <Heading
+                  as="h1"
+                  fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
+                  fontWeight="bold"
+                  color="brand.bitdash.700"
+                >
+                  {t('hero.title')}
+                </Heading>
+                <Text
+                  fontSize={{ base: "lg", md: "xl" }}
+                  color={isDark ? "white" : "gray.700"}
+                >
+                  {t('hero.subtitle')}
+                </Text>
+                <HStack spacing={4} pt={4}>
+                  <Button
+                    bg="#8b7966"
+                    color="white"
+                    _hover={{ bg: "#9c7c63" }}
+                    size="lg"
+                    onClick={() => router.push('/signup')}
+                  >
+                    {t('hero.getStarted')}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    borderColor="#8b7966"
+                    color="#8b7966"
+                    size="lg"
+                    onClick={() => router.push('/demo')}
+                  >
+                    {t('hero.learnMore')}
+                  </Button>
+                </HStack>
+              </VStack>
+            </MotionBox>
+          </GridItem>
+          
+          <GridItem display={{ base: "block", lg: "block" }}>
+            <ParallaxBox offset={parallaxOffset}>
+              <MotionBox
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                position="relative"
+              >
+                <Image 
+                  src="/images/trading-banner.png" 
+                  alt={t('alt.tradingPlatform')}
+                  borderRadius="xl"
+                  width="full"
+                />
+              </MotionBox>
+            </ParallaxBox>
+          </GridItem>
+        </Grid>
+      </Container>
+    </Box>
+  );
+};
   
   // MT5 Platform Section
   const MT5PlatformSection = () => {
@@ -622,172 +634,211 @@ export default function Landing() {
   };
   
   // Multi-Platform Section
-  const PlatformSection = () => {
-    const platforms = [
-      {
-        name: t('bitcash.name', 'Cash by BitDash'),
-        icon: CreditCard,
-        description: t('bitcash.description', 'Shariah-compliant payment solutions with seamless cross-border transactions and 0% hidden fees.'),
-        subdomain: "cash.bitdash.app",
-        color: "#8b7966",
-        bgGradient: "linear(to-br, #8b7966, #b8a28b)"
-      },
-      {
-        name: t('crypto.name', 'Crypto by BitDash'),
-        icon: LineChart,
-        description: t('bitfund.description', 'Ethical trading platform with verified performance-based funding for traders following Islamic principles.'),
-        subdomain: "crypto.bitdash.app",
-        color: "#8b7966",
-        bgGradient: "linear(to-br, #8b7966, #b8a28b)"
-      },
-      {
-        name: t('stock.name', 'Stock by BitDash'),
-        icon: BarChart2,
-        description: t('stock.description', 'Shariah-compliant investment platform tailored for MENA & GCC investors to access global halal markets.'),
-        subdomain: "stock.bitdash.app",
-        color: "#8b7966",
-        bgGradient: "linear(to-br, #8b7966, #b8a28b)"
-      },
-      {
-        name: t('forex.name', 'Forex by BitDash'),
-        icon: TrendingUp,
-        description: t('forex.description', 'Regulated Islamic forex trading with zero interest (riba) and institutional-grade security protocols.'),
-        subdomain: "forex.bitdash.app",
-        color: "#8b7966",
-        bgGradient: "linear(to-br, #8b7966, #b8a28b)"
-      }
-    ];
+  // Updated PlatformSection with specific selling points
+const PlatformSection = () => {
+  const platforms = [
+    {
+      name: t('platforms.forex.name', 'Forex by BitDash'),
+      icon: TrendingUp,
+      description: t('platforms.forex.description', 'Revolutionary forex brokerage offering insane perks: zero commission, ultra-tight spreads, and lightning-fast execution speeds that outperform the industry. Trade with institutional-grade tools and leverage up to 1:500.'),
+      benefits: [
+        t('platforms.forex.benefit1', 'Zero-commission trading with spreads from 0.0 pips'),
+        t('platforms.forex.benefit2', 'Advanced MT5 platform with Expert Advisors'),
+        t('platforms.forex.benefit3', 'Same-day withdrawals with no processing fees')
+      ],
+      subdomain: "forex.bitdash.app",
+      color: "#8b7966",
+      image: "/images/eur.png"
+    },
+    {
+      name: t('platforms.crypto.name', 'Crypto by BitDash'),
+      icon: FaBitcoin,
+      description: t('platforms.crypto.description', 'Next-generation crypto exchange and DeFi platform with the lowest fees in the industry. Trade 100+ cryptocurrencies, access yield farming opportunities, and participate in upcoming token launches.'),
+      benefits: [
+        t('platforms.crypto.benefit1', 'Industry-lowest 0.05% trading fees'),
+        t('platforms.crypto.benefit2', 'Advanced DeFi staking and yield farming'),
+        t('platforms.crypto.benefit3', 'Cold storage security with insurance protection')
+      ],
+      subdomain: "crypto.bitdash.app",
+      color: "#8b7966",
+      image: "/images/btc.png"
+    },
+    {
+      name: t('platforms.stock.name', 'Stock by BitDash'),
+      icon: FaChartLine,
+      description: t('platforms.stock.description', 'Premium investment platform for US and EU stocks with access to exclusive privately-held assets. Fractional shares, zero commissions, and extended trading hours for global markets.'),
+      benefits: [
+        t('platforms.stock.benefit1', 'Commission-free trading on all stocks'),
+        t('platforms.stock.benefit2', 'Exclusive access to pre-IPO and private equity'),
+        t('platforms.stock.benefit3', 'Advanced portfolio analysis and tax reporting')
+      ],
+      subdomain: "stock.bitdash.app",
+      color: "#8b7966",
+      image: "/images/tsla.png"
+    },
+    {
+      name: t('platforms.cash.name', 'Cash by BitDash'),
+      icon: FaRegCreditCard,
+      description: t('platforms.cash.description', 'Cutting-edge payment processor leveraging blockchain technology for instant global transfers. Send and receive money via QR codes with zero fees and immediate settlement.'),
+      benefits: [
+        t('platforms.cash.benefit1', 'Instant transfers via QR code scanning'),
+        t('platforms.cash.benefit2', 'Zero-fee global payments using blockchain'),
+        t('platforms.cash.benefit3', 'Multi-currency accounts with best-in-market exchange rates')
+      ],
+      subdomain: "cash.bitdash.app",
+      color: "#8b7966",
+      image: "/images/usd.png" 
+    }
+  ];
 
-    return (
-      <Box 
-        as="section" 
-        py={24} 
-        position="relative"
-        overflow="hidden"
-      >
-        <Container maxW="container.xl" position="relative">
-          <VStack spacing={16}>
+  return (
+    <Box 
+      as="section" 
+      py={24} 
+      position="relative"
+      overflow="hidden"
+      bg={isDark ? "gray.900" : "gray.50"}
+    >
+      <Container maxW="container.xl" position="relative">
+        <VStack spacing={16}>
+          <MotionBox
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeIn}
+            textAlign="center"
+          >
+            <Text 
+              color="#8b7966" 
+              fontWeight="bold" 
+              mb={3}
+              textTransform="uppercase"
+              letterSpacing="wide"
+            >
+              {t('platformSection.subtitle', 'REVOLUTIONARY FINANCIAL ECOSYSTEM')}
+            </Text>
+            <Heading
+              fontSize={{ base: "3xl", md: "4xl" }}
+              fontWeight="bold"
+              color={isDark ? "brand.bitdash.400" : "brand.bitdash.700"}
+              mb={5}
+            >
+              {t('platformSection.title', 'Our Cutting-Edge Financial Solutions')}
+            </Heading>
+            <Text
+              fontSize={{ base: "md", md: "lg" }}
+              color={isDark ? "gray.300" : "gray.600"}
+              maxW="3xl"
+              mx="auto"
+            >
+              {t('platformSection.description', 'Discover our suite of next-generation financial platforms designed to revolutionize how you trade, invest, and transfer money globally.')}
+            </Text>
+          </MotionBox>
+          
+          {platforms.map((platform, idx) => (
             <MotionBox
+              key={platform.name}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeIn}
-              textAlign="center"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: { 
+                    duration: 0.7, 
+                    delay: idx * 0.15,
+                    ease: [0.22, 1, 0.36, 1]
+                  }
+                }
+              }}
             >
-              <Text 
-                color="#8b7966" 
-                fontWeight="bold" 
-                mb={3}
-                textTransform="uppercase"
-                letterSpacing="wide"
+              <Grid
+                templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+                gap={10}
+                bg={isDark ? "gray.800" : "white"}
+                p={{ base: 6, md: 10 }}
+                borderRadius="xl"
+                boxShadow="lg"
+                overflow="hidden"
+                position="relative"
+                borderLeft="4px solid"
+                borderColor={platform.color}
               >
-                {t('platformSubtitle', 'COMPREHENSIVE ECOSYSTEM')}
-              </Text>
-              <Heading
-                fontSize={{ base: "3xl", md: "4xl" }}
-                fontWeight="bold"
-                color={isDark ? "brand.bitdash.400" : "brand.bitdash.700"}
-                mb={5}
-              >
-                {t('platformTitle', 'Our Shariah-Compliant Solutions')}
-              </Heading>
-              <Text
-                fontSize={{ base: "md", md: "lg" }}
-                color={isDark ? "brand.bitdash.400" : "brand.bitdash.700"}
-                maxW="3xl"
-                mx="auto"
-              >
-                {t('platformDescription', 'Integrated Islamic financial technology solutions designed for modern businesses, from halal payment processing to ethical trading systems.')}
-              </Text>
-            </MotionBox>
-            
-            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} w="full">
-              {platforms.map((platform, idx) => (
-                <MotionBox
-                  key={platform.name}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-50px" }}
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: { 
-                      opacity: 1, 
-                      y: 0,
-                      transition: { 
-                        duration: 0.7, 
-                        delay: idx * 0.15,
-                        ease: [0.22, 1, 0.36, 1]
-                      }
-                    }
-                  }}
-                >
-                  <Grid
-                    templateColumns={{ base: "1fr", md: "100px 1fr" }}
-                    gap={6}
-                    p={8}
-                    borderRadius="lg"
-                    overflow="hidden"
-                    position="relative"
-                    onClick={() => window.location.href = `https://${platform.subdomain}`}
-                    cursor="pointer"
-                    transition="all 0.3s"
-                    _hover={{
-                      transform: 'translateY(-8px)',
-                      boxShadow: 'xl'
-                    }}
-                  >
-                    {/* Icon in circle with gradient background */}
-                    <GridItem>
-                      <Center 
-                        h="80px" 
-                        w="80px" 
-                        borderRadius="full"
-                        bg={platform.color}
-                        color="white"
-                      >
-                        <Icon as={platform.icon} boxSize={6} />
-                      </Center>
-                    </GridItem>
+                <GridItem>
+                  <VStack align="flex-start" spacing={6}>
+                    <HStack>
+                      <Icon as={platform.icon} boxSize={8} color={platform.color} />
+                      <Heading size="lg" color={platform.color}>
+                        {platform.name}
+                      </Heading>
+                    </HStack>
                     
-                    {/* Content */}
-                    <GridItem>
-                      <VStack align="flex-start" spacing={4}>
-                        <Heading
-                          as="h3"
-                          size="md"
-                          fontWeight="bold"
-                          color={isDark ? "white" : "gray.800"}
-                        >
-                          {platform.name}
-                        </Heading>
-                        
-                        <Text
-                          color={isDark ? "gray.300" : "gray.600"}
-                          fontSize="md"
-                        >
-                          {platform.description}
-                        </Text>
-                        
-                        <Flex 
-                          align="center"
-                          color="#8b7966" 
-                          fontWeight="medium"
-                          mt={2}
-                        >
-                          <Text>{t('exploreService', 'Explore Service')}</Text>
-                          <Icon as={ArrowRight} boxSize={4} ml={2} />
-                        </Flex>
-                      </VStack>
-                    </GridItem>
-                  </Grid>
-                </MotionBox>
-              ))}
-            </SimpleGrid>
-          </VStack>
-        </Container>
-      </Box>
-    );
-  };
+                    <Text fontSize="lg" color={isDark ? "gray.300" : "gray.600"}>
+                      {platform.description}
+                    </Text>
+                    
+                    <VStack align="flex-start" spacing={3} mt={4}>
+                      {platform.benefits.map((benefit, idx) => (
+                        <HStack key={idx} align="flex-start">
+                          <Icon as={CheckCircle} color={platform.color} mt={1} />
+                          <Text>{benefit}</Text>
+                        </HStack>
+                      ))}
+                    </VStack>
+                    
+                    <Button
+                      mt={4}
+                      bg={platform.color}
+                      color="white"
+                      _hover={{ bg: "#9c7c63" }}
+                      px={8}
+                      onClick={() => window.open(`https://${platform.subdomain}`, "_blank")}
+                      rightIcon={<ArrowRightCircle size={16} />}
+                    >
+                      {t('platformSection.explore', 'Explore')} {platform.name.split(' ')[0]}
+                    </Button>
+                  </VStack>
+                </GridItem>
+                
+                <GridItem>
+                  <Flex 
+                    justifyContent="center" 
+                    alignItems="center" 
+                    h="full"
+                    position="relative"
+                  >
+                    <Box
+                      boxSize={{ base: "200px", md: "300px" }}
+                      position="relative"
+                      overflow="hidden"
+                    >
+                      <Image
+                        src={platform.image}
+                        alt={platform.name}
+                        objectFit="contain"
+                        width="100%"
+                        height="100%"
+                      />
+                    </Box>
+                    <Circle
+                      position="absolute"
+                      size="350px"
+                      bg={platform.color}
+                      opacity="0.1"
+                      zIndex="0"
+                    />
+                  </Flex>
+                </GridItem>
+              </Grid>
+            </MotionBox>
+          ))}
+        </VStack>
+      </Container>
+    </Box>
+  );
+};
   
    // Mobile App Section
   const MobileAppSection = () => {

@@ -90,8 +90,8 @@ const PlatformBox = styled(Box)`
 const PLATFORMS = {
   CASH: {
     subdomain: 'cash',
-    name: 'BitCash',
-    nameKey: 'bitcash.name',
+    name: 'Cash by BitDash',
+    nameKey: 'cash.name',
     themeKey: 'bitcash',
     title: 'Digital Payment Solutions',
     titleKey: 'bitcash.title',
@@ -128,10 +128,10 @@ const PLATFORMS = {
       }
     ]
   },
-  FUND: {
-    subdomain: 'fund',
-    name: 'BitFund',
-    nameKey: 'bitfund.name',
+  CRYPTO: {
+    subdomain: 'crypto',
+    name: 'Crypto by BitDash',
+    nameKey: 'crypto.name',
     themeKey: 'bitfund',
     title: 'Proprietary Trading Platform',
     titleKey: 'bitfund.title',
@@ -152,7 +152,7 @@ const PLATFORMS = {
   },
   STOCK: {
     subdomain: 'stock',
-    name: 'BitStock',
+    name: 'Stock by BitDash',
     nameKey: 'bitstock.name',
     themeKey: 'bitstock',
     title: 'Global Investment Platform',
@@ -181,12 +181,12 @@ const PLATFORMS = {
       }
     ]
   },
-  TRADE: {
-    subdomain: 'trade',
-    name: 'BitTrade',
-    nameKey: 'bittrade.name',
+  FOREX: {
+    subdomain: 'forex',
+    name: 'Forex by BitDash',
+    nameKey: 'forex.name',
     themeKey: 'bittrade',
-    title: 'Regulated Forex & Crypto Exchange',
+    title: 'Regulated Forex Broker',
     titleKey: 'bittrade.title',
     description: 'Professional trading platform for forex, cryptocurrencies and commodities with institutional liquidity.',
     descriptionKey: 'bittrade.description',
@@ -196,7 +196,7 @@ const PLATFORMS = {
         type: 'retail',
         title: 'Retail Trader',
         titleKey: 'bittrade.retail.title',
-        description: 'Trade forex, crypto, indices and commodities with competitive spreads and leverage.',
+        description: 'Trade forex, crypto, indices and commodity CFDs with competitive spreads and high leverage.',
         descriptionKey: 'bittrade.retail.description',
         icon: FaUserTie,
         signupPath: '/signup/trader',
@@ -475,7 +475,7 @@ export default function SignupChoice() {
                 </Heading>
                 
                 <SimpleGrid 
-                  columns={currentPlatform.subdomain === 'fund' ? 1 : { base: 1, lg: currentPlatform.options.length > 2 ? 3 : 2 }}
+                  columns={currentPlatform.subdomain === 'crypto' ? 1 : { base: 1, lg: currentPlatform.options.length > 2 ? 3 : 2 }}
                   spacing={8} 
                   w="full"
                   justifyItems="center"

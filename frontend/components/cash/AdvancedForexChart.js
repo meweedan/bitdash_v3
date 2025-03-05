@@ -47,9 +47,9 @@ const TradingViewChart = () => {
     GRID_COLOR: isDark ? 'rgba(120, 123, 134, 0.1)' : 'rgba(0, 0, 0, 0.1)',
     CROSSHAIR_COLOR: isDark ? 'rgba(120, 123, 134, 0.6)' : 'rgba(0, 0, 0, 0.4)',
     LINE_COLOR: '#2962FF',
-    BACKGROUND: isDark ? '#131722' : '#ffffff',
-    TEXT_COLOR: isDark ? '#38a4a4' : '#131722',
-    BUTTON_BG: isDark ? '#2a2e39' : '#e0e0e0',
+    BACKGROUND: isDark ? '#000000' : '#ffffff',
+    TEXT_COLOR: isDark ? 'white' : 'black',
+    BUTTON_BG: isDark ? '#8b7966' : '#8b7966',
     BUTTON_HOVER: '#38a4a4',
   }), [isDark]);
 

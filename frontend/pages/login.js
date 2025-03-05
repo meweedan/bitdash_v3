@@ -18,9 +18,9 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/components/Layout';
 
 const PLATFORM_ROUTES = {
-  fund: {
-    prop_trader: '/fund/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://fund.bitdash.app'
+  crypto: {
+    prop_trader: '/crypto/dashboard',
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://crypto.bitdash.app'
   },
   cash: {
     merchant: '/merchant/dashboard',
@@ -33,16 +33,16 @@ const PLATFORM_ROUTES = {
     individual: '/individual/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://stock.bitdash.app'
   },
-  trade: {
+  forex: {
     retail_trader: '/trader/dashboard',
     ib: '/ib/dashboard',
     institute: '/institute/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://trade.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://forex.bitdash.app'
   }
 };
 
 const PROFILE_ENDPOINTS = {
-  fund: {
+  crypto: {
     prop_trader: '/api/prop-traders',
   },
   cash: {
@@ -54,7 +54,7 @@ const PROFILE_ENDPOINTS = {
     owner: '/api/institutional-clients',
     individual: '/api/investors'
   },
-  trade: {
+  forex: {
     retail_trader: '/api/retail-traders',
     ib: '/api/introducing-brokers',
     institute: '/api/institutional-clients'
@@ -62,30 +62,30 @@ const PROFILE_ENDPOINTS = {
 };
 
 const BUSINESS_TYPE_ROUTES = {
-  fund: { platform: 'fund', userType: 'prop_trader' },
+  prop_trader: { platform: 'crypto', userType: 'prop_trader' },
   merchant: { platform: 'cash', userType: 'merchant' },
   agent: { platform: 'cash', userType: 'agent' },
   customer: { platform: 'cash', userType: 'customer' },
   institutional: { platform: 'stock', userType: 'institutional' },
   individual: { platform: 'stock', userType: 'individual' },
-  retail_trader: { platform: 'trade', userType: 'retail_trader' },
-  ib: { platform: 'trade', userType: 'ib' },
-  institute: { platform: 'trade', userType: 'institute' }
+  retail_trader: { platform: 'forex', userType: 'retail_trader' },
+  ib: { platform: 'forex', userType: 'ib' },
+  institute: { platform: 'fore', userType: 'institute' }
 };
 
 const getPlatformFromURL = () => {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
     if (hostname.includes('cash')) return 'bitcash';
-    if (hostname.includes('fund')) return 'bitfund';
-    if (hostname.includes('trade')) return 'bittrade';
+    if (hostname.includes('crypto')) return 'bitfund';
+    if (hostname.includes('forex')) return 'bittrade';
     if (hostname.includes('stock')) return 'bitstock';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
       if (path.includes('/cash')) return 'bitcash';
-      if (path.includes('/fund')) return 'bitfund';
-      if (path.includes('/trade')) return 'bittrade';
+      if (path.includes('/crypto')) return 'bitfund';
+      if (path.includes('/forex')) return 'bittrade';
       if (path.includes('/stock')) return 'bitstock';
     }
   }
@@ -247,7 +247,7 @@ const LoginPage = () => {
 
   const checkBusinessType = async (token, userId) => {
     try {
-      if (currentPlatform === 'bittrade') {
+      if (currentPlatform === 'forex') {
         console.log('Checking trader status...');
         const traderResponse = await fetch(
           `${BASE_URL}/api/retail-traders?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
@@ -299,7 +299,7 @@ const LoginPage = () => {
     const platform = currentPlatform.replace('bit', '');
     console.log('Current platform:', platform);
     
-    if (platform === 'trade') {
+    if (platform === 'forex') {
       const businessType = await checkBusinessType(token, userId);
       console.log('Business type check result:', businessType);
       
@@ -333,7 +333,7 @@ const LoginPage = () => {
     }
 
     // Check business type for other platforms
-    if (platform !== 'fund') {
+    if (platform !== 'crypto') {
       const businessType = await checkBusinessType(token, userId);
       if (businessType && BUSINESS_TYPE_ROUTES[businessType]) {
         const route = BUSINESS_TYPE_ROUTES[businessType];
