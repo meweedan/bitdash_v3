@@ -94,7 +94,7 @@ import {
 
 // Components
 import Layout from '@/components/Layout';
-import AdvancedForexChart from '@/components/cash/AdvancedForexChart';
+import AdvancedChart from '@/components/AdvancedChart';
 import MarketTicker from '@/components/MarketTicker';
 import CryptoMatrix from '@/components/CryptoMatrix';
 

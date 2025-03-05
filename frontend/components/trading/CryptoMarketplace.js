@@ -38,7 +38,7 @@ const CryptoMarketplace = () => {
   const router = useRouter();
 
   const borderColor = useColorModeValue('gray.200', 'gray.600');
-  const hoverBg = useColorModeValue('blue.50', 'blue.900');
+  const hoverBg = useColorModeValue('brand.bittrade.400', 'brand.bittrade.700');
 
   // Fetch market data from CoinGecko API
   useEffect(() => {
@@ -215,7 +215,7 @@ const CryptoMarketplace = () => {
                 </Text>
                 
                 <Button 
-                  colorScheme="blue" 
+                  color="brand.bittrade.400"
                   size="sm" 
                   width="full" 
                   mt={4}
@@ -231,7 +231,6 @@ const CryptoMarketplace = () => {
       ) : (
         <Box
           p={8}
-          
           borderRadius="md"
           borderWidth="1px"
           borderColor={borderColor}

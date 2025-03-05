@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '@/hooks/useAuth';
 import Layout from '@/components/Layout';
 import GlassCard from '@/components/GlassCard';
-import AdvancedForexChart from '@/components/cash/AdvancedForexChart';
+import AdvancedChart from '@/components/AdvancedChart';
 
 import {
   Box,

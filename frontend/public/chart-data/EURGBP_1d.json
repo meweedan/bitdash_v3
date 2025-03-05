@@ -1,0 +1,2872 @@
+[
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-05T00:00:00",
+    "open": 0.85546499,
+    "high": 0.85606998,
+    "low": 0.85350001,
+    "close": 0.8545,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-06T00:00:00",
+    "open": 0.854415,
+    "high": 0.85635,
+    "low": 0.85399997,
+    "close": 0.85519999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-07T00:00:00",
+    "open": 0.85530001,
+    "high": 0.856305,
+    "low": 0.85229999,
+    "close": 0.85479999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-08T00:00:00",
+    "open": 0.85479999,
+    "high": 0.85505003,
+    "low": 0.85039997,
+    "close": 0.85100001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-09T00:00:00",
+    "open": 0.85100001,
+    "high": 0.85124999,
+    "low": 0.8506,
+    "close": 0.85062999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-11T00:00:00",
+    "open": 0.85100001,
+    "high": 0.85350001,
+    "low": 0.85079998,
+    "close": 0.85299999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-12T00:00:00",
+    "open": 0.85299999,
+    "high": 0.85549998,
+    "low": 0.85219997,
+    "close": 0.85390002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-13T00:00:00",
+    "open": 0.853975,
+    "high": 0.85614997,
+    "low": 0.8538,
+    "close": 0.8556,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-14T00:00:00",
+    "open": 0.8556,
+    "high": 0.85589999,
+    "low": 0.85350502,
+    "close": 0.8538,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-15T00:00:00",
+    "open": 0.8538,
+    "high": 0.85540003,
+    "low": 0.85320002,
+    "close": 0.85479999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-16T00:00:00",
+    "open": 0.85487002,
+    "high": 0.85514998,
+    "low": 0.85404998,
+    "close": 0.8549,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-18T00:00:00",
+    "open": 0.85500002,
+    "high": 0.85624999,
+    "low": 0.85390002,
+    "close": 0.85399997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-19T00:00:00",
+    "open": 0.85399997,
+    "high": 0.8556,
+    "low": 0.85320002,
+    "close": 0.85407501,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-20T00:00:00",
+    "open": 0.85409999,
+    "high": 0.85579997,
+    "low": 0.85350001,
+    "close": 0.85436499,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-21T00:00:00",
+    "open": 0.85434997,
+    "high": 0.85825002,
+    "low": 0.85299999,
+    "close": 0.8581,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-22T00:00:00",
+    "open": 0.85834998,
+    "high": 0.86025,
+    "low": 0.85675502,
+    "close": 0.85790002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-23T00:00:00",
+    "open": 0.85798001,
+    "high": 0.85825002,
+    "low": 0.85764998,
+    "close": 0.85769999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-25T00:00:00",
+    "open": 0.85820001,
+    "high": 0.85855001,
+    "low": 0.85659999,
+    "close": 0.85769999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-26T00:00:00",
+    "open": 0.85763502,
+    "high": 0.85890001,
+    "low": 0.85650003,
+    "close": 0.85790002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-27T00:00:00",
+    "open": 0.85780001,
+    "high": 0.85860002,
+    "low": 0.85654002,
+    "close": 0.85680002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-28T00:00:00",
+    "open": 0.856745,
+    "high": 0.85724998,
+    "low": 0.85446,
+    "close": 0.85479999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-29T00:00:00",
+    "open": 0.85479999,
+    "high": 0.85554999,
+    "low": 0.85299999,
+    "close": 0.85509998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-03-30T00:00:00",
+    "open": 0.85509998,
+    "high": 0.85570002,
+    "low": 0.854105,
+    "close": 0.85525,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-01T00:00:00",
+    "open": 0.85439998,
+    "high": 0.8563,
+    "low": 0.85390002,
+    "close": 0.85600001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-02T00:00:00",
+    "open": 0.85610002,
+    "high": 0.85759997,
+    "low": 0.85399997,
+    "close": 0.85610002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-03T00:00:00",
+    "open": 0.85619998,
+    "high": 0.85820001,
+    "low": 0.85570002,
+    "close": 0.85659999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-04T00:00:00",
+    "open": 0.85644501,
+    "high": 0.85815001,
+    "low": 0.85619998,
+    "close": 0.85715002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-05T00:00:00",
+    "open": 0.85720003,
+    "high": 0.85885,
+    "low": 0.85710001,
+    "close": 0.85764998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-06T00:00:00",
+    "open": 0.85759997,
+    "high": 0.85780001,
+    "low": 0.85749,
+    "close": 0.85750002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-08T00:00:00",
+    "open": 0.85790002,
+    "high": 0.85855001,
+    "low": 0.85734999,
+    "close": 0.85811001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-09T00:00:00",
+    "open": 0.85834998,
+    "high": 0.8585,
+    "low": 0.85610002,
+    "close": 0.85639,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-10T00:00:00",
+    "open": 0.85641003,
+    "high": 0.85715002,
+    "low": 0.854765,
+    "close": 0.85675001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-11T00:00:00",
+    "open": 0.85675001,
+    "high": 0.85715002,
+    "low": 0.85415,
+    "close": 0.85444999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-12T00:00:00",
+    "open": 0.85444999,
+    "high": 0.85535002,
+    "low": 0.85280001,
+    "close": 0.85470003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-15T00:00:00",
+    "open": 0.85470003,
+    "high": 0.85530001,
+    "low": 0.85278499,
+    "close": 0.85360003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-16T00:00:00",
+    "open": 0.85364997,
+    "high": 0.85505003,
+    "low": 0.85280001,
+    "close": 0.85451502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-17T00:00:00",
+    "open": 0.85447502,
+    "high": 0.85734999,
+    "low": 0.852,
+    "close": 0.85698497,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-18T00:00:00",
+    "open": 0.85677499,
+    "high": 0.85715002,
+    "low": 0.85509998,
+    "close": 0.85579997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-19T00:00:00",
+    "open": 0.855775,
+    "high": 0.86164999,
+    "low": 0.85549998,
+    "close": 0.86140001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-22T00:00:00",
+    "open": 0.86154002,
+    "high": 0.86444998,
+    "low": 0.86089998,
+    "close": 0.86269999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-23T00:00:00",
+    "open": 0.86263502,
+    "high": 0.86449999,
+    "low": 0.85932499,
+    "close": 0.85960001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-24T00:00:00",
+    "open": 0.85954499,
+    "high": 0.86014998,
+    "low": 0.85829997,
+    "close": 0.85855001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-25T00:00:00",
+    "open": 0.85843998,
+    "high": 0.85979998,
+    "low": 0.85645002,
+    "close": 0.8574,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-26T00:00:00",
+    "open": 0.8574,
+    "high": 0.85842502,
+    "low": 0.85579997,
+    "close": 0.85588998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-29T00:00:00",
+    "open": 0.85600001,
+    "high": 0.85614997,
+    "low": 0.85329998,
+    "close": 0.85338002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-04-30T00:00:00",
+    "open": 0.85335499,
+    "high": 0.85554999,
+    "low": 0.85299999,
+    "close": 0.85385501,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-01T00:00:00",
+    "open": 0.85399997,
+    "high": 0.85584998,
+    "low": 0.85360003,
+    "close": 0.85530001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-02T00:00:00",
+    "open": 0.85519999,
+    "high": 0.85659999,
+    "low": 0.85465002,
+    "close": 0.85562998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-03T00:00:00",
+    "open": 0.855645,
+    "high": 0.85869998,
+    "low": 0.85505003,
+    "close": 0.85790002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-06T00:00:00",
+    "open": 0.85766,
+    "high": 0.85834998,
+    "low": 0.85571998,
+    "close": 0.85732001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-07T00:00:00",
+    "open": 0.85720003,
+    "high": 0.86005002,
+    "low": 0.85689503,
+    "close": 0.85979998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-08T00:00:00",
+    "open": 0.85971498,
+    "high": 0.86194998,
+    "low": 0.85918498,
+    "close": 0.86014998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-09T00:00:00",
+    "open": 0.85995001,
+    "high": 0.86199999,
+    "low": 0.85909998,
+    "close": 0.86087,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-10T00:00:00",
+    "open": 0.86115003,
+    "high": 0.86135,
+    "low": 0.85949999,
+    "close": 0.86000001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-13T00:00:00",
+    "open": 0.86009997,
+    "high": 0.86094999,
+    "low": 0.85900003,
+    "close": 0.85911,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-14T00:00:00",
+    "open": 0.85914999,
+    "high": 0.86164999,
+    "low": 0.85874999,
+    "close": 0.85930002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-15T00:00:00",
+    "open": 0.859245,
+    "high": 0.86014998,
+    "low": 0.85759997,
+    "close": 0.85799998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-16T00:00:00",
+    "open": 0.85799497,
+    "high": 0.85879999,
+    "low": 0.85681999,
+    "close": 0.85768503,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-17T00:00:00",
+    "open": 0.85755002,
+    "high": 0.85825002,
+    "low": 0.85544997,
+    "close": 0.85578001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-20T00:00:00",
+    "open": 0.85589999,
+    "high": 0.85685003,
+    "low": 0.85409999,
+    "close": 0.85439998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-21T00:00:00",
+    "open": 0.85445499,
+    "high": 0.85525,
+    "low": 0.85332501,
+    "close": 0.85434997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-22T00:00:00",
+    "open": 0.85391998,
+    "high": 0.85461003,
+    "low": 0.85039997,
+    "close": 0.85110003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-23T00:00:00",
+    "open": 0.85105002,
+    "high": 0.85294998,
+    "low": 0.84990001,
+    "close": 0.85175002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-24T00:00:00",
+    "open": 0.85154498,
+    "high": 0.85325003,
+    "low": 0.85114998,
+    "close": 0.85175002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-27T00:00:00",
+    "open": 0.85158998,
+    "high": 0.852,
+    "low": 0.84964502,
+    "close": 0.85030001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-28T00:00:00",
+    "open": 0.85044998,
+    "high": 0.85194999,
+    "low": 0.84957498,
+    "close": 0.85070002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-29T00:00:00",
+    "open": 0.85078502,
+    "high": 0.85170001,
+    "low": 0.8484,
+    "close": 0.850465,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-30T00:00:00",
+    "open": 0.85052502,
+    "high": 0.85180002,
+    "low": 0.85004997,
+    "close": 0.85070002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-05-31T00:00:00",
+    "open": 0.85075498,
+    "high": 0.85415,
+    "low": 0.85004997,
+    "close": 0.85140997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-03T00:00:00",
+    "open": 0.85152,
+    "high": 0.85364997,
+    "low": 0.85089999,
+    "close": 0.851385,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-04T00:00:00",
+    "open": 0.85139501,
+    "high": 0.85250002,
+    "low": 0.85039997,
+    "close": 0.85197997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-05T00:00:00",
+    "open": 0.85189497,
+    "high": 0.85229498,
+    "low": 0.84979999,
+    "close": 0.84995002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-06T00:00:00",
+    "open": 0.849985,
+    "high": 0.85250002,
+    "low": 0.84985,
+    "close": 0.85140002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-07T00:00:00",
+    "open": 0.85130501,
+    "high": 0.85215002,
+    "low": 0.84883499,
+    "close": 0.84930003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-10T00:00:00",
+    "open": 0.84689999,
+    "high": 0.84724998,
+    "low": 0.84399998,
+    "close": 0.84560001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-11T00:00:00",
+    "open": 0.845505,
+    "high": 0.84705001,
+    "low": 0.84179997,
+    "close": 0.84299999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-12T00:00:00",
+    "open": 0.84305,
+    "high": 0.84525001,
+    "low": 0.84179997,
+    "close": 0.84460002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-13T00:00:00",
+    "open": 0.84474999,
+    "high": 0.84595001,
+    "low": 0.84125,
+    "close": 0.84131002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-14T00:00:00",
+    "open": 0.84149998,
+    "high": 0.84415001,
+    "low": 0.83969998,
+    "close": 0.84366,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-17T00:00:00",
+    "open": 0.84389502,
+    "high": 0.84635001,
+    "low": 0.84368002,
+    "close": 0.84495002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-18T00:00:00",
+    "open": 0.84494501,
+    "high": 0.84654999,
+    "low": 0.84439999,
+    "close": 0.84514999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-19T00:00:00",
+    "open": 0.84509498,
+    "high": 0.84587002,
+    "low": 0.84299999,
+    "close": 0.84460503,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-20T00:00:00",
+    "open": 0.84474999,
+    "high": 0.84614998,
+    "low": 0.84346497,
+    "close": 0.84549999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-21T00:00:00",
+    "open": 0.84552997,
+    "high": 0.84665,
+    "low": 0.84425002,
+    "close": 0.84561998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-24T00:00:00",
+    "open": 0.84579998,
+    "high": 0.84780002,
+    "low": 0.84525001,
+    "close": 0.84600002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-25T00:00:00",
+    "open": 0.84609002,
+    "high": 0.84670001,
+    "low": 0.84310001,
+    "close": 0.84457999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-26T00:00:00",
+    "open": 0.84434497,
+    "high": 0.84654999,
+    "low": 0.84333497,
+    "close": 0.84609997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-27T00:00:00",
+    "open": 0.84614998,
+    "high": 0.84759998,
+    "low": 0.84535003,
+    "close": 0.84689999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-06-28T00:00:00",
+    "open": 0.84682,
+    "high": 0.84820002,
+    "low": 0.84579998,
+    "close": 0.84729999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-01T00:00:00",
+    "open": 0.8488,
+    "high": 0.85004997,
+    "low": 0.84750003,
+    "close": 0.84909999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-02T00:00:00",
+    "open": 0.84904999,
+    "high": 0.84974998,
+    "low": 0.846645,
+    "close": 0.84715003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-03T00:00:00",
+    "open": 0.84707999,
+    "high": 0.84785002,
+    "low": 0.84579998,
+    "close": 0.84670001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-04T00:00:00",
+    "open": 0.84632999,
+    "high": 0.84775001,
+    "low": 0.84555,
+    "close": 0.84750003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-05T00:00:00",
+    "open": 0.84733999,
+    "high": 0.84785002,
+    "low": 0.84509999,
+    "close": 0.84623498,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-08T00:00:00",
+    "open": 0.8452,
+    "high": 0.84614998,
+    "low": 0.84390002,
+    "close": 0.84530002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-09T00:00:00",
+    "open": 0.84522003,
+    "high": 0.84614998,
+    "low": 0.84420002,
+    "close": 0.84584999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-10T00:00:00",
+    "open": 0.84574997,
+    "high": 0.84605002,
+    "low": 0.84259999,
+    "close": 0.84288001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-11T00:00:00",
+    "open": 0.84294999,
+    "high": 0.84334999,
+    "low": 0.841335,
+    "close": 0.84149998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-12T00:00:00",
+    "open": 0.84154999,
+    "high": 0.84235001,
+    "low": 0.83920002,
+    "close": 0.83943498,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-15T00:00:00",
+    "open": 0.83952999,
+    "high": 0.84119999,
+    "low": 0.8391,
+    "close": 0.84020001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-16T00:00:00",
+    "open": 0.84025002,
+    "high": 0.84114999,
+    "low": 0.8398,
+    "close": 0.84004003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-17T00:00:00",
+    "open": 0.84025002,
+    "high": 0.84105003,
+    "low": 0.83835,
+    "close": 0.8409,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-18T00:00:00",
+    "open": 0.84105003,
+    "high": 0.84254998,
+    "low": 0.84031498,
+    "close": 0.84189999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-19T00:00:00",
+    "open": 0.84195,
+    "high": 0.84334999,
+    "low": 0.84069997,
+    "close": 0.8427,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-22T00:00:00",
+    "open": 0.8427,
+    "high": 0.84324998,
+    "low": 0.84135002,
+    "close": 0.84210002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-23T00:00:00",
+    "open": 0.84213501,
+    "high": 0.84275001,
+    "low": 0.83969998,
+    "close": 0.84090501,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-24T00:00:00",
+    "open": 0.84090501,
+    "high": 0.84184998,
+    "low": 0.83934999,
+    "close": 0.83990002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-25T00:00:00",
+    "open": 0.83995003,
+    "high": 0.84404999,
+    "low": 0.83917499,
+    "close": 0.84390002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-26T00:00:00",
+    "open": 0.84385002,
+    "high": 0.84504998,
+    "low": 0.84280002,
+    "close": 0.84359002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-29T00:00:00",
+    "open": 0.84359998,
+    "high": 0.84605002,
+    "low": 0.84119999,
+    "close": 0.84139001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-30T00:00:00",
+    "open": 0.84136498,
+    "high": 0.84297502,
+    "low": 0.84105003,
+    "close": 0.84254998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-07-31T00:00:00",
+    "open": 0.84254998,
+    "high": 0.84487998,
+    "low": 0.84169,
+    "close": 0.84210002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-01T00:00:00",
+    "open": 0.84210497,
+    "high": 0.84740001,
+    "low": 0.84162498,
+    "close": 0.84715003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-02T00:00:00",
+    "open": 0.84625,
+    "high": 0.85364997,
+    "low": 0.84625,
+    "close": 0.852,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-05T00:00:00",
+    "open": 0.85259998,
+    "high": 0.86189997,
+    "low": 0.852395,
+    "close": 0.85699999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-06T00:00:00",
+    "open": 0.85688001,
+    "high": 0.8617,
+    "low": 0.85619998,
+    "close": 0.86119998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-07T00:00:00",
+    "open": 0.86110002,
+    "high": 0.86164999,
+    "low": 0.857575,
+    "close": 0.86059999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-08T00:00:00",
+    "open": 0.86050999,
+    "high": 0.86255002,
+    "low": 0.85597003,
+    "close": 0.85640001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-09T00:00:00",
+    "open": 0.8563,
+    "high": 0.85790002,
+    "low": 0.8549,
+    "close": 0.85549998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-12T00:00:00",
+    "open": 0.85580498,
+    "high": 0.85689998,
+    "low": 0.85434997,
+    "close": 0.85589999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-13T00:00:00",
+    "open": 0.85734999,
+    "high": 0.85734999,
+    "low": 0.8531,
+    "close": 0.85460001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-14T00:00:00",
+    "open": 0.85504502,
+    "high": 0.85925001,
+    "low": 0.85404998,
+    "close": 0.85829997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-15T00:00:00",
+    "open": 0.85855001,
+    "high": 0.85925001,
+    "low": 0.85344499,
+    "close": 0.8538,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-16T00:00:00",
+    "open": 0.85355502,
+    "high": 0.85404998,
+    "low": 0.85100001,
+    "close": 0.85205001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-19T00:00:00",
+    "open": 0.85189003,
+    "high": 0.85364997,
+    "low": 0.85079998,
+    "close": 0.85271502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-20T00:00:00",
+    "open": 0.85306501,
+    "high": 0.85404998,
+    "low": 0.851565,
+    "close": 0.85390002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-21T00:00:00",
+    "open": 0.85390002,
+    "high": 0.85455,
+    "low": 0.85089999,
+    "close": 0.85180002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-22T00:00:00",
+    "open": 0.85196,
+    "high": 0.85292,
+    "low": 0.84780002,
+    "close": 0.84890002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-23T00:00:00",
+    "open": 0.84886998,
+    "high": 0.84944999,
+    "low": 0.84539998,
+    "close": 0.84689999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-26T00:00:00",
+    "open": 0.847,
+    "high": 0.84759998,
+    "low": 0.84500003,
+    "close": 0.84630001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-27T00:00:00",
+    "open": 0.84635001,
+    "high": 0.84694999,
+    "low": 0.84310001,
+    "close": 0.84350002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-28T00:00:00",
+    "open": 0.84350002,
+    "high": 0.84429002,
+    "low": 0.84100002,
+    "close": 0.84305,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-29T00:00:00",
+    "open": 0.84302002,
+    "high": 0.84350002,
+    "low": 0.84020001,
+    "close": 0.84130001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-08-30T00:00:00",
+    "open": 0.84170502,
+    "high": 0.84285003,
+    "low": 0.83999997,
+    "close": 0.84149998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-02T00:00:00",
+    "open": 0.84119999,
+    "high": 0.84329998,
+    "low": 0.84109998,
+    "close": 0.84210002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-03T00:00:00",
+    "open": 0.84193498,
+    "high": 0.84350002,
+    "low": 0.84069997,
+    "close": 0.84210002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-04T00:00:00",
+    "open": 0.84153497,
+    "high": 0.84359998,
+    "low": 0.84153497,
+    "close": 0.84289497,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-05T00:00:00",
+    "open": 0.84334499,
+    "high": 0.84380001,
+    "low": 0.84179997,
+    "close": 0.84299999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-06T00:00:00",
+    "open": 0.84305501,
+    "high": 0.84469998,
+    "low": 0.84109998,
+    "close": 0.84424502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-09T00:00:00",
+    "open": 0.84408498,
+    "high": 0.8448,
+    "low": 0.84332001,
+    "close": 0.84411502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-10T00:00:00",
+    "open": 0.84397501,
+    "high": 0.8448,
+    "low": 0.84240001,
+    "close": 0.84245002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-11T00:00:00",
+    "open": 0.84232002,
+    "high": 0.84640002,
+    "low": 0.84224999,
+    "close": 0.844235,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-12T00:00:00",
+    "open": 0.84420002,
+    "high": 0.84560001,
+    "low": 0.84334999,
+    "close": 0.84380001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-13T00:00:00",
+    "open": 0.84381002,
+    "high": 0.84530002,
+    "low": 0.8427,
+    "close": 0.843885,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-16T00:00:00",
+    "open": 0.84420002,
+    "high": 0.84439999,
+    "low": 0.84200001,
+    "close": 0.84240001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-17T00:00:00",
+    "open": 0.84236002,
+    "high": 0.84549999,
+    "low": 0.84179997,
+    "close": 0.84450001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-18T00:00:00",
+    "open": 0.84439498,
+    "high": 0.84544998,
+    "low": 0.84036499,
+    "close": 0.84144002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-19T00:00:00",
+    "open": 0.84156501,
+    "high": 0.84235001,
+    "low": 0.83920002,
+    "close": 0.84030002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-20T00:00:00",
+    "open": 0.84029502,
+    "high": 0.84069997,
+    "low": 0.83780003,
+    "close": 0.83780003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-23T00:00:00",
+    "open": 0.83810002,
+    "high": 0.8387,
+    "low": 0.83230001,
+    "close": 0.83240002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-24T00:00:00",
+    "open": 0.83301002,
+    "high": 0.83415002,
+    "low": 0.83170003,
+    "close": 0.83348,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-25T00:00:00",
+    "open": 0.83363497,
+    "high": 0.83724999,
+    "low": 0.83315003,
+    "close": 0.8355,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-26T00:00:00",
+    "open": 0.83538997,
+    "high": 0.83614999,
+    "low": 0.83269,
+    "close": 0.83319998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-27T00:00:00",
+    "open": 0.83363003,
+    "high": 0.83515,
+    "low": 0.83219999,
+    "close": 0.83484,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-09-30T00:00:00",
+    "open": 0.8348,
+    "high": 0.83600003,
+    "low": 0.83130997,
+    "close": 0.8326,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-01T00:00:00",
+    "open": 0.83265001,
+    "high": 0.83459997,
+    "low": 0.83104998,
+    "close": 0.83304501,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-02T00:00:00",
+    "open": 0.83324999,
+    "high": 0.83405,
+    "low": 0.83209997,
+    "close": 0.83254999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-03T00:00:00",
+    "open": 0.83241999,
+    "high": 0.84355003,
+    "low": 0.83219999,
+    "close": 0.8405,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-04T00:00:00",
+    "open": 0.84029001,
+    "high": 0.84085,
+    "low": 0.83533502,
+    "close": 0.83649498,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-07T00:00:00",
+    "open": 0.83609998,
+    "high": 0.83995497,
+    "low": 0.83555001,
+    "close": 0.83885002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-08T00:00:00",
+    "open": 0.8387,
+    "high": 0.8405,
+    "low": 0.83740002,
+    "close": 0.83815002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-09T00:00:00",
+    "open": 0.838,
+    "high": 0.83894998,
+    "low": 0.83670002,
+    "close": 0.8373,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-10T00:00:00",
+    "open": 0.8373,
+    "high": 0.83859998,
+    "low": 0.83544999,
+    "close": 0.83759999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-11T00:00:00",
+    "open": 0.83753002,
+    "high": 0.83845001,
+    "low": 0.83649999,
+    "close": 0.8369,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-12T00:00:00",
+    "open": 0.83679998,
+    "high": 0.83724999,
+    "low": 0.83653003,
+    "close": 0.8369,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-14T00:00:00",
+    "open": 0.83670002,
+    "high": 0.83745003,
+    "low": 0.8348,
+    "close": 0.83530003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-15T00:00:00",
+    "open": 0.83530003,
+    "high": 0.83693498,
+    "low": 0.8326,
+    "close": 0.83310002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-16T00:00:00",
+    "open": 0.83310002,
+    "high": 0.83802998,
+    "low": 0.83270001,
+    "close": 0.83634502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-17T00:00:00",
+    "open": 0.83634001,
+    "high": 0.83705002,
+    "low": 0.83174998,
+    "close": 0.832075,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-18T00:00:00",
+    "open": 0.83200002,
+    "high": 0.8337,
+    "low": 0.82950002,
+    "close": 0.83295,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-19T00:00:00",
+    "open": 0.83289999,
+    "high": 0.83315003,
+    "low": 0.832605,
+    "close": 0.83270001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-21T00:00:00",
+    "open": 0.83270001,
+    "high": 0.83394998,
+    "low": 0.83244997,
+    "close": 0.83289999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-22T00:00:00",
+    "open": 0.833,
+    "high": 0.83469999,
+    "low": 0.83143502,
+    "close": 0.83148003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-23T00:00:00",
+    "open": 0.83149999,
+    "high": 0.83455002,
+    "low": 0.83034497,
+    "close": 0.83399999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-24T00:00:00",
+    "open": 0.83399999,
+    "high": 0.83534998,
+    "low": 0.83149999,
+    "close": 0.83455497,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-25T00:00:00",
+    "open": 0.83459997,
+    "high": 0.83555001,
+    "low": 0.83265001,
+    "close": 0.83289999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-26T00:00:00",
+    "open": 0.83301997,
+    "high": 0.83324999,
+    "low": 0.83279997,
+    "close": 0.83305001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-28T00:00:00",
+    "open": 0.83240002,
+    "high": 0.8344,
+    "low": 0.83209997,
+    "close": 0.8337,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-29T00:00:00",
+    "open": 0.83359998,
+    "high": 0.83424997,
+    "low": 0.82990003,
+    "close": 0.83147502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-30T00:00:00",
+    "open": 0.83144999,
+    "high": 0.83765,
+    "low": 0.83064002,
+    "close": 0.83735001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-10-31T00:00:00",
+    "open": 0.83740002,
+    "high": 0.8448,
+    "low": 0.83539999,
+    "close": 0.84380001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-01T00:00:00",
+    "open": 0.84369999,
+    "high": 0.84445,
+    "low": 0.83684999,
+    "close": 0.8387,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-02T00:00:00",
+    "open": 0.83867502,
+    "high": 0.83894998,
+    "low": 0.83840001,
+    "close": 0.83859497,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-04T00:00:00",
+    "open": 0.83880001,
+    "high": 0.84187001,
+    "low": 0.83850002,
+    "close": 0.8398,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-05T00:00:00",
+    "open": 0.8398,
+    "high": 0.84061497,
+    "low": 0.83780003,
+    "close": 0.83950001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-06T00:00:00",
+    "open": 0.83960003,
+    "high": 0.83969998,
+    "low": 0.83148003,
+    "close": 0.83279997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-07T00:00:00",
+    "open": 0.83279997,
+    "high": 0.83399999,
+    "low": 0.83060002,
+    "close": 0.83160001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-08T00:00:00",
+    "open": 0.83160001,
+    "high": 0.83315003,
+    "low": 0.77574003,
+    "close": 0.82959998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-09T00:00:00",
+    "open": 0.82959998,
+    "high": 0.83011502,
+    "low": 0.8294,
+    "close": 0.82963997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-11T00:00:00",
+    "open": 0.82924002,
+    "high": 0.83041,
+    "low": 0.82599998,
+    "close": 0.82810003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-12T00:00:00",
+    "open": 0.82810003,
+    "high": 0.83345002,
+    "low": 0.82743001,
+    "close": 0.83329999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-13T00:00:00",
+    "open": 0.83319998,
+    "high": 0.83459997,
+    "low": 0.83069998,
+    "close": 0.83160001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-14T00:00:00",
+    "open": 0.83170003,
+    "high": 0.83317775,
+    "low": 0.78167999,
+    "close": 0.83139998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-15T00:00:00",
+    "open": 0.83130002,
+    "high": 0.83590001,
+    "low": 0.83099997,
+    "close": 0.83560002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-16T00:00:00",
+    "open": 0.8355,
+    "high": 0.83565003,
+    "low": 0.83469999,
+    "close": 0.83520001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-18T00:00:00",
+    "open": 0.83410501,
+    "high": 0.83740002,
+    "low": 0.83389997,
+    "close": 0.83569998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-19T00:00:00",
+    "open": 0.83579999,
+    "high": 0.83759999,
+    "low": 0.83329999,
+    "close": 0.83565998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-20T00:00:00",
+    "open": 0.83569998,
+    "high": 0.83595002,
+    "low": 0.83134502,
+    "close": 0.83340001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-21T00:00:00",
+    "open": 0.83332503,
+    "high": 0.83424997,
+    "low": 0.83170003,
+    "close": 0.83195502,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-22T00:00:00",
+    "open": 0.8319,
+    "high": 0.83469999,
+    "low": 0.82679999,
+    "close": 0.8312,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-23T00:00:00",
+    "open": 0.83117503,
+    "high": 0.83165002,
+    "low": 0.83085001,
+    "close": 0.83165002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-25T00:00:00",
+    "open": 0.833,
+    "high": 0.83609998,
+    "low": 0.83090001,
+    "close": 0.8355,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-26T00:00:00",
+    "open": 0.8355,
+    "high": 0.83649999,
+    "low": 0.833,
+    "close": 0.83469999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-27T00:00:00",
+    "open": 0.8348,
+    "high": 0.83560002,
+    "low": 0.83329999,
+    "close": 0.83359998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-28T00:00:00",
+    "open": 0.83350003,
+    "high": 0.83389997,
+    "low": 0.83149999,
+    "close": 0.8319,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-29T00:00:00",
+    "open": 0.8319,
+    "high": 0.83319998,
+    "low": 0.83029997,
+    "close": 0.83060002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-11-30T00:00:00",
+    "open": 0.83060002,
+    "high": 0.8308,
+    "low": 0.8301,
+    "close": 0.83039999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-02T00:00:00",
+    "open": 0.83060002,
+    "high": 0.83090001,
+    "low": 0.82700002,
+    "close": 0.82929999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-03T00:00:00",
+    "open": 0.82929999,
+    "high": 0.83130002,
+    "low": 0.82870001,
+    "close": 0.82929999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-04T00:00:00",
+    "open": 0.82920003,
+    "high": 0.83020002,
+    "low": 0.82690001,
+    "close": 0.82779998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-05T00:00:00",
+    "open": 0.82779998,
+    "high": 0.82990003,
+    "low": 0.82730001,
+    "close": 0.82990003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-06T00:00:00",
+    "open": 0.82990003,
+    "high": 0.8301,
+    "low": 0.82789999,
+    "close": 0.82870001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-07T00:00:00",
+    "open": 0.82880002,
+    "high": 0.82950002,
+    "low": 0.82870001,
+    "close": 0.82950002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-09T00:00:00",
+    "open": 0.82889998,
+    "high": 0.82920003,
+    "low": 0.82690001,
+    "close": 0.82770002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-10T00:00:00",
+    "open": 0.8276,
+    "high": 0.82840002,
+    "low": 0.82389998,
+    "close": 0.824,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-11T00:00:00",
+    "open": 0.82419997,
+    "high": 0.82520002,
+    "low": 0.82260001,
+    "close": 0.82319999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-12T00:00:00",
+    "open": 0.82319999,
+    "high": 0.82730001,
+    "low": 0.82270002,
+    "close": 0.82660002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-13T00:00:00",
+    "open": 0.8265,
+    "high": 0.8319,
+    "low": 0.82560003,
+    "close": 0.83179998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-14T00:00:00",
+    "open": 0.8319,
+    "high": 0.83230001,
+    "low": 0.83170003,
+    "close": 0.83209997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-16T00:00:00",
+    "open": 0.83160001,
+    "high": 0.83284998,
+    "low": 0.82725,
+    "close": 0.82859999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-17T00:00:00",
+    "open": 0.82859999,
+    "high": 0.82959998,
+    "low": 0.82489997,
+    "close": 0.8251,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-18T00:00:00",
+    "open": 0.82520002,
+    "high": 0.82779998,
+    "low": 0.82345003,
+    "close": 0.824,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-19T00:00:00",
+    "open": 0.82380003,
+    "high": 0.82870001,
+    "low": 0.82230002,
+    "close": 0.82859999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-20T00:00:00",
+    "open": 0.82859999,
+    "high": 0.83139998,
+    "low": 0.82704997,
+    "close": 0.829,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-21T00:00:00",
+    "open": 0.82905,
+    "high": 0.82994998,
+    "low": 0.82870001,
+    "close": 0.82975,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-23T00:00:00",
+    "open": 0.83004999,
+    "high": 0.83160001,
+    "low": 0.82770002,
+    "close": 0.83060002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-24T00:00:00",
+    "open": 0.83055001,
+    "high": 0.83060002,
+    "low": 0.82779998,
+    "close": 0.82800001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-25T00:00:00",
+    "open": 0.82980001,
+    "high": 0.82980001,
+    "low": 0.82950002,
+    "close": 0.82950002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-26T00:00:00",
+    "open": 0.82854998,
+    "high": 0.83249998,
+    "low": 0.82849997,
+    "close": 0.83170003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-27T00:00:00",
+    "open": 0.83165002,
+    "high": 0.83289999,
+    "low": 0.82819998,
+    "close": 0.82884997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-28T00:00:00",
+    "open": 0.82880002,
+    "high": 0.82920003,
+    "low": 0.82859999,
+    "close": 0.82884997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-30T00:00:00",
+    "open": 0.82894999,
+    "high": 0.83020002,
+    "low": 0.82725,
+    "close": 0.82875001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2024-12-31T00:00:00",
+    "open": 0.82884997,
+    "high": 0.83074999,
+    "low": 0.8283,
+    "close": 0.82929999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-01T00:00:00",
+    "open": 0.8276,
+    "high": 0.8276,
+    "low": 0.82730001,
+    "close": 0.82730001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-02T00:00:00",
+    "open": 0.8276,
+    "high": 0.8326,
+    "low": 0.82669997,
+    "close": 0.82859999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-03T00:00:00",
+    "open": 0.82880002,
+    "high": 0.83039999,
+    "low": 0.82849997,
+    "close": 0.82880002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-04T00:00:00",
+    "open": 0.829,
+    "high": 0.82990003,
+    "low": 0.82880002,
+    "close": 0.82990003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-06T00:00:00",
+    "open": 0.82959998,
+    "high": 0.83179998,
+    "low": 0.82859999,
+    "close": 0.83020002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-07T00:00:00",
+    "open": 0.83020002,
+    "high": 0.83060002,
+    "low": 0.82870001,
+    "close": 0.829,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-08T00:00:00",
+    "open": 0.82910001,
+    "high": 0.83520001,
+    "low": 0.82840002,
+    "close": 0.83429998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-09T00:00:00",
+    "open": 0.83429998,
+    "high": 0.84069997,
+    "low": 0.83420002,
+    "close": 0.83670002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-10T00:00:00",
+    "open": 0.83670002,
+    "high": 0.83939999,
+    "low": 0.83649999,
+    "close": 0.8391,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-11T00:00:00",
+    "open": 0.8391,
+    "high": 0.83929998,
+    "low": 0.83880001,
+    "close": 0.83920002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-13T00:00:00",
+    "open": 0.83950001,
+    "high": 0.84249997,
+    "low": 0.83859998,
+    "close": 0.83890003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-14T00:00:00",
+    "open": 0.83890003,
+    "high": 0.84509999,
+    "low": 0.83850002,
+    "close": 0.84420002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-15T00:00:00",
+    "open": 0.8441,
+    "high": 0.84649998,
+    "low": 0.8405,
+    "close": 0.8416,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-16T00:00:00",
+    "open": 0.8416,
+    "high": 0.84380001,
+    "low": 0.84039998,
+    "close": 0.84200001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-17T00:00:00",
+    "open": 0.84200001,
+    "high": 0.84539998,
+    "low": 0.84130001,
+    "close": 0.84450001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-18T00:00:00",
+    "open": 0.84450001,
+    "high": 0.84460002,
+    "low": 0.84390002,
+    "close": 0.8441,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-20T00:00:00",
+    "open": 0.84429997,
+    "high": 0.84740001,
+    "low": 0.84369999,
+    "close": 0.84490001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-21T00:00:00",
+    "open": 0.8448,
+    "high": 0.84630001,
+    "low": 0.84439999,
+    "close": 0.84509999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-22T00:00:00",
+    "open": 0.84509999,
+    "high": 0.84640002,
+    "low": 0.84320003,
+    "close": 0.84539998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-23T00:00:00",
+    "open": 0.84549999,
+    "high": 0.84579998,
+    "low": 0.84320003,
+    "close": 0.8434,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-24T00:00:00",
+    "open": 0.84329998,
+    "high": 0.84630001,
+    "low": 0.84069997,
+    "close": 0.84079999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-25T00:00:00",
+    "open": 0.84079999,
+    "high": 0.8409,
+    "low": 0.84039998,
+    "close": 0.84069997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-27T00:00:00",
+    "open": 0.84149998,
+    "high": 0.84210002,
+    "low": 0.83920002,
+    "close": 0.84009999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-28T00:00:00",
+    "open": 0.84009999,
+    "high": 0.84020001,
+    "low": 0.838,
+    "close": 0.83859998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-29T00:00:00",
+    "open": 0.8387,
+    "high": 0.83890003,
+    "low": 0.83639997,
+    "close": 0.83700001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-30T00:00:00",
+    "open": 0.83710003,
+    "high": 0.8391,
+    "low": 0.83600003,
+    "close": 0.83700001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-01-31T00:00:00",
+    "open": 0.83700001,
+    "high": 0.83749998,
+    "low": 0.8355,
+    "close": 0.83679998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-01T00:00:00",
+    "open": 0.83679998,
+    "high": 0.83700001,
+    "low": 0.8355,
+    "close": 0.83590001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-03T00:00:00",
+    "open": 0.83249998,
+    "high": 0.83459997,
+    "low": 0.82920003,
+    "close": 0.82980001,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-04T00:00:00",
+    "open": 0.82969999,
+    "high": 0.83310002,
+    "low": 0.82969999,
+    "close": 0.83170003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-05T00:00:00",
+    "open": 0.83179998,
+    "high": 0.8337,
+    "low": 0.83050001,
+    "close": 0.83219999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-06T00:00:00",
+    "open": 0.83230001,
+    "high": 0.83770001,
+    "low": 0.83149999,
+    "close": 0.8351,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-07T00:00:00",
+    "open": 0.8351,
+    "high": 0.83560002,
+    "low": 0.83179998,
+    "close": 0.83240002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-08T00:00:00",
+    "open": 0.83240002,
+    "high": 0.83289999,
+    "low": 0.83230001,
+    "close": 0.83279997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-10T00:00:00",
+    "open": 0.83139998,
+    "high": 0.83359998,
+    "low": 0.83099997,
+    "close": 0.83350003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-11T00:00:00",
+    "open": 0.83340001,
+    "high": 0.83530003,
+    "low": 0.83249998,
+    "close": 0.83279997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-12T00:00:00",
+    "open": 0.83270001,
+    "high": 0.83560002,
+    "low": 0.83209997,
+    "close": 0.83490002,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-13T00:00:00",
+    "open": 0.8348,
+    "high": 0.83569998,
+    "low": 0.83139998,
+    "close": 0.8326,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-14T00:00:00",
+    "open": 0.83249998,
+    "high": 0.83410001,
+    "low": 0.83160001,
+    "close": 0.83359998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-15T00:00:00",
+    "open": 0.83350003,
+    "high": 0.83380002,
+    "low": 0.83340001,
+    "close": 0.83359998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-17T00:00:00",
+    "open": 0.83279997,
+    "high": 0.83389997,
+    "low": 0.82969999,
+    "close": 0.82999998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-18T00:00:00",
+    "open": 0.82999998,
+    "high": 0.83099997,
+    "low": 0.82840002,
+    "close": 0.82920003,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-19T00:00:00",
+    "open": 0.82910001,
+    "high": 0.82920003,
+    "low": 0.82669997,
+    "close": 0.82849997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-20T00:00:00",
+    "open": 0.82849997,
+    "high": 0.82920003,
+    "low": 0.82700002,
+    "close": 0.82889998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-21T00:00:00",
+    "open": 0.82889998,
+    "high": 0.82920003,
+    "low": 0.82660002,
+    "close": 0.8283,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-22T00:00:00",
+    "open": 0.8283,
+    "high": 0.82840002,
+    "low": 0.82749999,
+    "close": 0.82819998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-24T00:00:00",
+    "open": 0.82910001,
+    "high": 0.83029997,
+    "low": 0.8276,
+    "close": 0.82929999,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-25T00:00:00",
+    "open": 0.82920003,
+    "high": 0.83029997,
+    "low": 0.8283,
+    "close": 0.82959998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-26T00:00:00",
+    "open": 0.82959998,
+    "high": 0.83050001,
+    "low": 0.82660002,
+    "close": 0.82709998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-27T00:00:00",
+    "open": 0.82709998,
+    "high": 0.8276,
+    "low": 0.82429999,
+    "close": 0.82529998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-02-28T00:00:00",
+    "open": 0.82520002,
+    "high": 0.82679999,
+    "low": 0.82429999,
+    "close": 0.8247,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-03-01T00:00:00",
+    "open": 0.8247,
+    "high": 0.8251,
+    "low": 0.82419997,
+    "close": 0.82489997,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-03-03T00:00:00",
+    "open": 0.82679999,
+    "high": 0.82679999,
+    "low": 0.82480001,
+    "close": 0.82529998,
+    "volume": 0.0,
+    "interval": "1d"
+  },
+  {
+    "symbol": "EURGBP",
+    "timestamp": "2025-03-04T00:00:00",
+    "open": 0.82520002,
+    "high": 0.82920003,
+    "low": 0.8251,
+    "close": 0.829,
+    "volume": 0.0,
+    "interval": "1d"
+  }
+]

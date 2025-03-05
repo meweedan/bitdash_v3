@@ -208,7 +208,7 @@ const HeroSection = () => {
                 </Heading>
                 <Text
                   fontSize={{ base: "lg", md: "xl" }}
-                  color={isDark ? "white" : "gray.700"}
+                  color={isDark ? "brand.bitdash.400" : "brand.bitdash.700"}
                 >
                   {t('hero.subtitle')}
                 </Text>

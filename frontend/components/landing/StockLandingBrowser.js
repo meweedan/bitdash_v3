@@ -48,7 +48,7 @@ import {
   FaHandshake
 } from 'react-icons/fa';
 import MarketOverview from '@/components/stock/MarketOverview';
-import StockTicker from '@/components/stock/StockTicker';
+import AdvancedChart from '@/components/AdvancedChart';
 import AssetPerformanceChart from '@/components/stock/AssetPerformanceChart';
 
 const BitStockLanding = () => {
@@ -233,6 +233,8 @@ const BitStockLanding = () => {
               <MarketOverview />
 
               <AssetPerformanceChart />
+
+              <AdvancedChart />
 
               <HStack spacing={6} pt={8}>
                 <Button

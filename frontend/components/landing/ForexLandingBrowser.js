@@ -72,7 +72,7 @@ import {
 import ForexPairDisplay from '@/components/trading/ForexPairDisplay';
 import CryptoMarketplace from '@/components/trading/CryptoMarketplace';
 import TradingPlatformPreview from '@/components/trading/TradingPlatformPreview';
-import AdvancedForexChart from '@/components/cash/AdvancedForexChart';
+import AdvancedChart from '@/components/AdvancedChart';
 
 const ForexLandingBrowser = () => {
   const { t } = useTranslation('common');
@@ -86,7 +86,8 @@ const ForexLandingBrowser = () => {
   );
   
   const glassCardBg = useColorModeValue('whiteAlpha.900', 'whiteAlpha.100');
-  const textColor = useColorModeValue('gray.700', 'white');
+  const headingColor = useColorModeValue('whiteAlpha.900', 'brand.bitdash.400');
+  const textColor = useColorModeValue('brand.bitdash.400', 'brand.bitdash.400');
   const accentColor = '#8b7966'; // The gold/brown accent color from the main site
 
   const { scrollYProgress } = useScroll({
@@ -304,7 +305,6 @@ const ForexLandingBrowser = () => {
             objectFit="cover"
             objectPosition="center"
           />
-          
         </Box>
         <Image
           src="/images/ldn-skyline.png"
@@ -317,7 +317,7 @@ const ForexLandingBrowser = () => {
           objectFit="cover"
           objectPosition="center"
           />
-        
+          
         <Container maxW="container.xl" position="relative" zIndex="2">
           <motion.div style={{ scale: heroScale }}>
             <Flex
@@ -330,12 +330,12 @@ const ForexLandingBrowser = () => {
                 <Heading
                   fontSize={{ base: '4xl', md: '5xl', lg: '6xl' }}
                   fontWeight="bold"
-                  color={accentColor}
+                  color={headingColor}
                 >
                   {t('trade.hero.title', 'Trade with Confidence')}
                 </Heading>
                 
-                <Text fontSize={{ base: "lg", md: "xl" }} color={textColor}>
+                <Text fontSize={{ base: "lg", md: "xl" }} color={headingColor}>
                   Access global markets with a regulated Forex broker offering competitive spreads, fast execution, and powerful trading platforms.
                 </Text>
 
@@ -368,7 +368,7 @@ const ForexLandingBrowser = () => {
               </VStack>
               
               <Box 
-                maxW={{ base: "100%", lg: "50%" }}
+                maxW={{ base: "100%", lg: "100%" }}
                 position="relative"
                 shadow="2xl"
                 borderRadius="lg"
@@ -383,16 +383,22 @@ const ForexLandingBrowser = () => {
             </Flex>
           </motion.div>
         </Container>
-        <Box>
+        <Box  
+          maxW={{ base: "100%", lg: "100%" }}
+          position="relative"
+          shadow="2xl"
+          borderRadius="lg"
+          overflow="hidden"
+        >
+{/* 
           <Image
           src="/images/trading-features.png"
           alt="Hero Bottom"
-          position="relative"
           bottom={0}
           left={0}
           right={0}
           h="100%"
-          />
+          /> */}
           {/* Trading features banner */}
         <Box
           left="0"
@@ -595,11 +601,11 @@ const ForexLandingBrowser = () => {
             overflow="hidden"
             p={4}
           >
-            <Box overflowX="auto" px={{ base: 0, md: 4 }} py={4}>
-              <AdvancedForexChart />
+            <Box px={{ base: 0, md: 4 }} py={4} position="relative">
+              <AdvancedChart />
             </Box>
             
-            <Box p={4}>
+            <Box p={4} color="brand.bittrade.400">
               <Tabs variant="soft-rounded">
                 <TabList mb={6} justifyContent="center">
                   <Tab>Forex</Tab>

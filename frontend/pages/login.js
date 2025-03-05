@@ -76,17 +76,17 @@ const BUSINESS_TYPE_ROUTES = {
 const getPlatformFromURL = () => {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
-    if (hostname.includes('cash')) return 'bitcash';
-    if (hostname.includes('crypto')) return 'bitfund';
-    if (hostname.includes('forex')) return 'bittrade';
-    if (hostname.includes('stock')) return 'bitstock';
+    if (hostname.includes('cash')) return 'cash';
+    if (hostname.includes('crypto')) return 'crypto';
+    if (hostname.includes('forex')) return 'forex';
+    if (hostname.includes('stock')) return 'stock';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
-      if (path.includes('/cash')) return 'bitcash';
-      if (path.includes('/crypto')) return 'bitfund';
-      if (path.includes('/forex')) return 'bittrade';
-      if (path.includes('/stock')) return 'bitstock';
+      if (path.includes('/cash')) return 'cash';
+      if (path.includes('/crypto')) return 'crypto';
+      if (path.includes('/forex')) return 'forex';
+      if (path.includes('/stock')) return 'stock';
     }
   }
   return 'bitdash';
