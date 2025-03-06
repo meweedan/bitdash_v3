@@ -113,6 +113,8 @@ export default function LandingPage() {
   const router = useRouter();
   const isDark = colorMode === 'dark';
   const containerRef = useRef(null);
+  const { locale } = router;
+  const isRTL = locale === 'ar';
 
   
   // For responsive design
@@ -125,7 +127,7 @@ export default function LandingPage() {
   const accentColor = '#8b7966'; // The gold/brown accent color from the main site
   
   return (
-    <Box ref={containerRef} overflow="hidden">
+    <Box ref={containerRef} overflow="hidden" dir={isRTL ? 'rtl' : 'ltr'}>
      <Box 
         as="section" 
         position="relative"
