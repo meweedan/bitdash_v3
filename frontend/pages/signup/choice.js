@@ -133,7 +133,7 @@ const PLATFORMS = {
     name: 'Crypto by BitDash',
     nameKey: 'crypto.name',
     themeKey: 'bitfund',
-    title: 'Proprietary Trading Platform',
+    title: 'Crypto exchange and marketplace',
     titleKey: 'bitfund.title',
     description: 'Performance-based funding for skilled traders with comprehensive evaluation.',
     descriptionKey: 'bitfund.description',
@@ -442,20 +442,10 @@ export default function SignupChoice() {
                     textAlign="center"
                     size={headingSize}
                     p={8}
-                    bgGradient="linear(to-r, blue.400, blue.600)"
-                    bgClip="text"
+                    color={currentPlatform ? 'brand.bitdash.400' : 'brand.bitdash.700'}
                   >
                     {t('choosePlatform', 'Choose Your Financial Platform')}
                   </Heading>
-                  
-                  <Text 
-                    textAlign="center" 
-                    color={isDark ? 'gray.300' : 'gray.600'}
-                    maxW="2xl"
-                    fontSize={textSize}
-                  >
-                    {t('platformChoice', 'Select the BitDash financial platform that best suits your needs')}
-                  </Text>
                 </>
               )}
             </VStack>
@@ -501,7 +491,7 @@ export default function SignupChoice() {
               </Text>
               <Button
                 variant="link"
-                color={currentPlatform ? `brand.${currentPlatform.themeKey}.500` : 'blue.500'}
+                color={currentPlatform ? 'brand.bitdash.400' : 'brand.bitdash.700'}
                 onClick={() => router.push('/login')}
                 fontSize={textSize}
               >

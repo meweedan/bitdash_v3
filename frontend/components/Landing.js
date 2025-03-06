@@ -75,7 +75,7 @@ export default function LandingPage() {
   const isDark = colorMode === 'dark';
   const containerRef = useRef(null);
   const { locale } = router;
-  const isRTL = locale === 'ar';
+  const isRTL = router.locale === 'ar';
 
   
   // For responsive design

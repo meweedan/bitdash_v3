@@ -16,7 +16,6 @@ import {
   Icon,
   Badge,
   useColorMode,
-  CheckCircle,
   Grid,
   GridItem,
   Divider,
@@ -71,7 +70,7 @@ import {
   FaChartBar,
   FaCoins
 } from 'react-icons/fa';
-import { Download } from 'lucide-react';
+import { Download, CheckCircle } from 'lucide-react';
 import ForexPairDisplay from '@/components/trading/ForexPairDisplay';
 import CryptoMarketplace from '@/components/trading/CryptoMarketplace';
 import TradingPlatformPreview from '@/components/trading/TradingPlatformPreview';
