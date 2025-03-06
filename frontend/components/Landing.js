@@ -65,47 +65,7 @@ import {
 import { FaWhatsapp, FaRegFile, FaRegCreditCard, FaHandHoldingUsd, FaBalanceScale, FaFileContract, FaMosque, FaChartLine, FaExchangeAlt, FaUniversity, FaShieldAlt, FaChevronRight, FaBitcoin, FaDollarSign, FaChartBar, FaCoins, FaUser } from 'react-icons/fa';
 
 const MotionBox = motion(Box);
-const ChakraBox = motion(Box);
-
-// Custom parallax component
-const ParallaxBox = ({ children, offset = 100, ...rest }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
-  
-  const y = useTransform(scrollYProgress, [0, 1], [offset, -offset]);
-  
-  return (
-    <MotionBox
-      ref={ref}
-      style={{ y }}
-      {...rest}
-    >
-      {children}
-    </MotionBox>
-  );
-};
-
-// Animation variants
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-  }
-};
-
-const scaleUp = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
-    scale: 1,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-  }
-};
+  const ChakraBox = motion(Box);
 
 export default function LandingPage() {
   const { t } = useTranslation('common');
@@ -125,6 +85,46 @@ export default function LandingPage() {
   const headingColor = useColorModeValue('whiteAlpha.900', 'brand.bitdash.700');
   const textColor = useColorModeValue('brand.bitdash.400', 'brand.bitdash.400');
   const accentColor = '#8b7966'; // The gold/brown accent color from the main site
+
+  // Custom parallax component
+  const ParallaxBox = ({ children, offset = 100, ...rest }) => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+      target: ref,
+      offset: ["start end", "end start"]
+    });
+    
+    const y = useTransform(scrollYProgress, [0, 1], [offset, -offset]);
+    
+    return (
+      <MotionBox
+        ref={ref}
+        style={{ y }}
+        {...rest}
+      >
+        {children}
+      </MotionBox>
+    );
+  };
+
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    }
+  };
+
+  const scaleUp = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    }
+  };
   
   return (
     <Box ref={containerRef} overflow="hidden" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -151,14 +151,14 @@ export default function LandingPage() {
                     bgGradient="linear(to-r, #8b7966, #b8a28b)"
                     bgClip="text"
                   >
-                    {t('LandingheroTitle')}
+                    {t('Landinghero.title')}
                   </Heading>
                   
                   <Text
                     fontSize={{ base: "lg", md: "xl" }}
                     maxW="550px"
                   >
-                    {t('LandingheroSubtitle')}
+                    {t('Landinghero.subtitle')}
                   </Text>
                   
                   <HStack spacing={6} mt={6} color={isDark ? "gray.400" : "gray.600"} flexWrap="wrap">

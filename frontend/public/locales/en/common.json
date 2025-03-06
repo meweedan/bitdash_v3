@@ -82,20 +82,6 @@
       "Analytics: Track orders, sales, and customer preferences."
     ]
   },
-  "cta": {
-    "title": "Join BitDash Today",
-    "description": "Get started now",
-    "buttonText": "I'm in",
-    "subtitle": "Experience the power of innovation.",
-    "action": "Get Started",
-    "demo": "",
-    "signup": "",
-    "final": {
-      "title": "",
-      "action": "",
-      "subtitle": ""
-    }
-  },
   "myAccount": "My Account",
   "loginSuccess": "Login successful",
   "loginFailed": "Login failed",
@@ -1614,5 +1600,58 @@
       "feature2": "24/5 support",
       "feature3": "Standard execution"
     }
+  },
+  "app": {
+    "title": "Download BitDash Application",
+    "subtitle": "Stay in the Know Anywhere, Anytime",
+    "description": "Download now and try our dashboard with real-time trading, instant notifications, and secure account management on the go.",
+    "screenshotAlt": "BitDash Mobile Application Screenshot"
+  },
+  "steps": {
+    "subtitle": "Getting Started",
+    "title": "Fast Account Opening in 3 Simple Steps",
+    "description": "Start trading with BitDash in just minutes. Our streamlined process gets you from registration to trading in no time.",
+    "step1": {
+      "title": "Register",
+      "description": "Choose account type and complete our fast and secure application form"
+    },
+    "step2": {
+      "title": "Fund",
+      "description": "Fund your trading account using a wide range of funding methods"
+    },
+    "step3": {
+      "title": "Trade",
+      "description": "Start trading on your live account & access 100+ instruments"
+    },
+    "cta": "Open Account Now"
+  },
+  "cta": {
+    "subtitle": "Start Your Journey",
+    "title": "Ready to Transform Your Financial Operations?",
+    "description": "Join leading Islamic financial institutions already leveraging our shariah-compliant fintech ecosystem to streamline operations, reduce costs, and ensure ethical financial practices.",
+    "primaryButton": "Start Your Free Trial",
+    "secondaryButton": "Schedule Demo",
+    "note": "No credit card required. 30-day free trial with full features and dedicated support."
+  },
+  "legal": {
+    "title": "Risk Warning & Regulatory Information",
+    "riskWarning": "Contracts for Difference ('CFDs') are complex financial products that are traded on margin. Trading CFDs carries a high level of risk since leverage can work both to your advantage and disadvantage. As a result, CFDs may not be suitable for all investors because you may lose all your invested capital. You should not risk more than you are prepared to lose. Before deciding to trade, you need to ensure that you understand the risks involved taking into account your investment objectives and level of experience.",
+    "license": {
+      "title": "Licensed and Regulated",
+      "content": "BitDash LLC is officially licensed and regulated, holding an International Brokerage License in Saint Vincent and the Grenadines, numbered 1547 LLC. The registered address is Richmond Hill Rd, Kingstown, St. Vincent and the Grenadines, VC0100. BitDash adheres to strict regulatory standards to ensure the highest level of service and protection for our clients."
+    },
+    "restricted": {
+      "title": "Restricted Jurisdictions",
+      "content": "BitDash does not provide services to citizens and residents of certain jurisdictions such as United States of America, United Kingdom, Canada, Japan, EU countries, Iran, Israel and North Korea. Before you proceed, please ensure that you are not accessing this website from a restricted jurisdiction."
+    },
+    "links": {
+      "privacy": "Privacy Policy",
+      "aml": "AML Policy",
+      "terms": "Terms & Conditions",
+      "security": "Security of Funds",
+      "risk": "Risk Disclosure",
+      "complaints": "Complaints Handling Policy"
+    },
+    "copyright": "© {{year}} BitDash LLC. All rights reserved."
   }
 }
