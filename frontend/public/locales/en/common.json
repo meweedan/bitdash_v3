@@ -1483,9 +1483,171 @@
     "zeroFees": "Zero Fees",
     "tightSpreads": "Tight Spreads"
   },
+  "stock": {
+    "hero": {
+      "badge": "Smart Investing",
+      "title": "Smart investments, at your fingertips",
+      "subtitle": "Access global stock markets from anywhere in MENA with our user-friendly platform designed for regional investors.",
+      "cta": "Start Investing",
+      "demo": "Watch Demo",
+      "feature1": "Zero Commission",
+      "feature2": "Shariah Compliant",
+      "feature3": "24/7 Support",
+      "dashboard": {
+        "alt": "Stock Trading Dashboard"
+      }
+    },
+    "stats": {
+      "investors": "Active Investors",
+      "countries": "Countries Served",
+      "trades": "Daily Trades"
+    },
+    "features": {
+      "subtitle": "Why Choose BitStock",
+      "title": "Trading Features Designed for You",
+      "description": "Our platform offers unique features tailored specifically for MENA investors looking to access global markets.",
+      "global": {
+        "title": "Global Markets Access",
+        "description": "Seamless access to US and EU stock markets with localized support and trading hours"
+      },
+      "mobile": {
+        "title": "Mobile Trading Platform",
+        "description": "Trade anytime, anywhere with our award-winning mobile app designed for MENA users"
+      },
+      "compliant": {
+        "title": "Compliant Investing",
+        "description": "Fully compliant with regional regulations while providing access to global markets"
+      },
+      "payment": {
+        "title": "Local Payment Methods",
+        "description": "Deposit and withdraw using popular payment methods in the MENA and GCC regions"
+      }
+    },
+    "investment": {
+      "subtitle": "Diverse Investment Options",
+      "title": "Build Your Global Portfolio",
+      "description": "Explore a wide range of investment opportunities from global markets with options tailored for regional investors.",
+      "stocks": {
+        "title": "US & EU Stocks",
+        "description": "Access over 5,000 stocks from the world's largest exchanges with zero commission"
+      },
+      "private": {
+        "title": "Private Assets",
+        "description": "Exclusive access to pre-IPO companies and private equity opportunities with minimum investments of $1,000"
+      },
+      "gold": {
+        "title": "Gold & Precious Metals",
+        "description": "Invest in gold and other precious metals with full ownership or through ETFs and funds"
+      },
+      "oil": {
+        "title": "Oil & Commodities",
+        "description": "Trade oil futures or invest in energy companies with specialized regional insights"
+      }
+    },
+    "most": {
+      "popular": "Most Popular"
+    },
+    "exclusive": "Exclusive",
+    "traditional": "Traditional",
+    "strategic": "Strategic",
+    "regional": {
+      "subtitle": "Regional Advantage",
+      "title": "Designed for MENA & GCC Investors",
+      "description": "BitStock brings global investment opportunities to MENA and GCC investors with localized features and support designed specifically for the region.",
+      "learn_more": "Learn More",
+      "map": {
+        "alt": "MENA Region Map"
+      }
+    },
+    "benefits": {
+      "arabic": {
+        "title": "Arabic Interface",
+        "description": "Fully localized Arabic interface with regional market insights and analysis"
+      },
+      "shariah": {
+        "title": "Shariah-Compliant Options",
+        "description": "Filter and invest in Shariah-compliant stocks and funds with ease"
+      },
+      "support": {
+        "title": "Local Support Team",
+        "description": "24/7 customer support from our offices in Dubai, Riyadh, and Cairo"
+      },
+      "banks": {
+        "title": "Regional Bank Integration",
+        "description": "Seamless deposit and withdrawal with major MENA and GCC banks"
+      },
+      "hours": {
+        "title": "Regional Market Hours",
+        "description": "Extended trading hours aligned with GCC time zones"
+      },
+      "research": {
+        "title": "Dual Language Research",
+        "description": "Investment research and reports available in both English and Arabic"
+      }
+    },
+    "insights": {
+      "subtitle": "Market Insights",
+      "title": "Powerful Analysis Tools",
+      "description": "Access professional-grade charting, real-time data, and comprehensive market analysis in both English and Arabic.",
+      "explore": "Explore All Analysis Tools"
+    },
+    "testimonials": {
+      "subtitle": "Success Stories",
+      "title": "What Our Investors Say",
+      "description": "Hear from investors across the MENA region who have transformed their investment journey with BitStock.",
+      "ahmed": {
+        "name": "Ahmed K.",
+        "location": "Dubai, UAE",
+        "quote": "BitStock made investing in US tech stocks incredibly easy. As a Dubai resident, I had always found it challenging to access global markets until now."
+      },
+      "layla": {
+        "name": "Layla M.",
+        "location": "Riyadh, KSA",
+        "quote": "The Shariah-compliant screening tools help me invest according to my values. The Arabic interface and local support make everything so much more accessible."
+      },
+      "omar": {
+        "name": "Omar J.",
+        "location": "Cairo, Egypt",
+        "quote": "Being able to invest in both local and international markets through one platform has diversified my portfolio significantly. The local bank integration makes funding my account seamless."
+      }
+    },
+    "regulatory": {
+      "subtitle": "Trust & Security",
+      "title": "Fully Licensed & Regulated",
+      "description": "BitStock operates with full regulatory compliance across the MENA and GCC regions, ensuring your investments are secure and protected under local laws.",
+      "dfsa": {
+        "name": "Dubai Financial Services Authority (DFSA)",
+        "license": "License No. F0099"
+      },
+      "cma": {
+        "name": "Capital Market Authority (CMA)",
+        "license": "Authorization No. 23-455"
+      },
+      "fra": {
+        "name": "Financial Regulatory Authority (FRA)",
+        "license": "License No. 12877"
+      },
+      "cbb": {
+        "name": "Central Bank of Bahrain (CBB)",
+        "license": "Investment Business Firm License IBF-235"
+      },
+      "uae": "UAE",
+      "saudi": "Saudi Arabia",
+      "egypt": "Egypt", 
+      "bahrain": "Bahrain"
+    },
+    "cta": {
+      "subtitle": "Start Your Journey",
+      "title": "Start Your Global Investment Journey Today",
+      "description": "Join thousands of MENA and GCC investors who are growing their wealth through global markets with BitStock's localized approach.",
+      "button": "Create Account",
+      "demo": "Request Demo",
+      "note": "No credit card required. 30-day free trial with full features and dedicated support."
+    }
+  },
   "Landinghero": {
     "badge": "Trade Smarter",
-    "title": "Unified Finance. Multiple Markets. One Platform.",
+    "title": "Your partners to secure financial freedom.",
     "subtitle": "Access forex, crypto, stocks and payment solutions through a single integrated ecosystem designed for global traders.",
     "getStarted": "Get Started",
     "learnMore": "Learn More",

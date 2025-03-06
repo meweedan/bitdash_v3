@@ -1,3 +1,7 @@
 node_modules/
 .next/
 *.env.local
+/images/background-vid.mov
+/images/background-vid.webm
+/images/background-vid.mp4
+/images/background-vid.gif

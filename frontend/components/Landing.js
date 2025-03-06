@@ -616,8 +616,6 @@ export default function LandingPage() {
               textAlign="center"
               py={{ base: 10, md: 16 }}
               px={{ base: 6, md: 10 }}
-              borderRadius="xl"
-              boxShadow="2xl"
               color={isDark ? "white" : "#333"}
               borderWidth="1px"
               borderColor={isDark ? "gray.700" : "gray.200"}
@@ -633,6 +631,38 @@ export default function LandingPage() {
                 height="6px"
                 bg="#8b7966"
               />
+              <HStack justify="center" textAlign="center" position="relative">
+               <Image
+              src="/images/TSLA.png"
+              width="7%"
+              height="7%"
+              mb="10"
+              />
+               <Image
+              src="/images/BTC.png"
+              width="8%"
+              height="8%"
+              mb="10"
+              />
+               <Image
+              src="/images/oil.png"
+              width="5%"
+              height="5%"
+              mb="10"
+              />
+               <Image
+              src="/images/USD.png"
+              width="5%"
+              height="5%"
+              mb="10"
+              />
+               <Image
+              src="/images/AAPL.png"
+              width="5%"
+              height="5%"
+              mb="10"
+              />
+              </HStack>
               
               <VStack spacing={8} maxW="3xl" position="relative" zIndex="1">
                 <Text 
@@ -686,30 +716,7 @@ export default function LandingPage() {
                     {t('cta.secondaryButton')}
                   </Button>
                 </HStack>
-                
-                <Text fontSize="sm" color={isDark ? "gray.400" : "gray.500"} pt={2}>
-                  {t('cta.note')}
-                </Text>
               </VStack>
-              
-              {/* Decorative elements */}
-              <Circle
-                position="absolute"
-                bottom="30px"
-                left="30px"
-                size="120px"
-                opacity="0.1"
-                bg="#8b7966"
-              />
-              
-              <Circle
-                position="absolute"
-                top="60px"
-                right="40px"
-                size="80px"
-                opacity="0.1"
-                bg="#8b7966"
-              />
             </Flex>
           </MotionBox>
         </Container>

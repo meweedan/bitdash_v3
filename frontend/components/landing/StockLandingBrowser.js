@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import {
   Box,
   Container,
@@ -28,6 +28,11 @@ import {
   WrapItem,
   Tag,
   Image,
+  useBreakpointValue,
+  Center,
+  Circle,
+  chakra,
+  Tooltip
 } from '@chakra-ui/react';
 import { 
   FaChartLine,
@@ -45,24 +50,287 @@ import {
   FaMapMarkedAlt,
   FaStar,
   FaRegCreditCard,
-  FaHandshake
+  FaHandshake,
+  FaArrowRight,
+  FaArrowDown,
+  FaLock,
+  FaBriefcase,
+  FaChartPie,
+  FaRocket,
+  FaSearch
 } from 'react-icons/fa';
+import { CheckCircle } from 'lucide-react';
 import MarketOverview from '@/components/stock/MarketOverview';
 import AdvancedChart from '@/components/AdvancedChart';
 import AssetPerformanceChart from '@/components/stock/AssetPerformanceChart';
 
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
+const scaleUp = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  }
+};
+
+// Custom animated stat component
+const AnimatedStat = ({ icon, label, value, color, delay = 0 }) => {
+  const [animatedValue, setAnimatedValue] = useState(0);
+  
+  useEffect(() => {
+    const numericValue = parseInt(value.replace(/[^0-9]/g, ''));
+    let startTimestamp;
+    const duration = 1500;
+    
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      setAnimatedValue(Math.floor(progress * numericValue));
+      
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    
+    const animationId = window.requestAnimationFrame(step);
+    return () => window.cancelAnimationFrame(animationId);
+  }, [value]);
+  
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: { 
+          opacity: 1, 
+          y: 0,
+          transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }
+        }
+      }}
+    >
+      <VStack
+        p={8}
+        borderRadius="xl"
+        boxShadow="xl"
+        spacing={4}
+        height="full"
+        borderLeft="4px solid"
+        borderColor={color}
+        position="relative"
+        overflow="hidden"
+        _hover={{
+          transform: 'translateY(-5px)',
+          boxShadow: '2xl'
+        }}
+        transition="all 0.3s ease"
+      >
+        <Circle 
+          position="absolute" 
+          right="-20px"
+          top="-20px"
+          size="100px" 
+          bg={color} 
+          opacity={0.1}
+        />
+        <Icon as={icon} boxSize={10} color={color} />
+        <Text fontWeight="bold" fontSize="lg">{label}</Text>
+        <Text fontSize="4xl" fontWeight="bold" color={color}>
+          {value.includes('k') ? 
+            `${animatedValue}k+` : 
+            value.includes('M') ? 
+              `${(animatedValue / 1000000).toFixed(1)}M+` : 
+              animatedValue}
+        </Text>
+      </VStack>
+    </motion.div>
+  );
+};
+
+// Feature card component
+const FeatureCard = ({ feature, index }) => {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        visible: { 
+          opacity: 1, 
+          y: 0,
+          transition: { 
+            duration: 0.6, 
+            delay: index * 0.1,
+            ease: [0.22, 1, 0.36, 1]
+          }
+        }
+      }}
+    >
+      <Box
+        p={8}
+        h="full"
+        bg={useColorModeValue('white', 'gray.800')}
+        borderRadius="xl"
+        boxShadow="lg"
+        borderLeft="4px solid"
+        borderColor={feature.color}
+        position="relative"
+        overflow="hidden"
+        _hover={{
+          transform: 'translateY(-8px)',
+          boxShadow: '2xl'
+        }}
+        transition="all 0.3s ease"
+      >
+        <Circle
+          position="absolute"
+          top="-20px"
+          right="-20px"
+          size="100px"
+          bg={feature.color}
+          opacity={0.1}
+        />
+        
+        <VStack align="start" spacing={6}>
+          <Icon as={feature.icon} boxSize={12} color={feature.color} />
+          <Heading size="md" color={feature.color}>
+            {feature.title}
+          </Heading>
+          <Text>
+            {feature.description}
+          </Text>
+        </VStack>
+      </Box>
+    </motion.div>
+  );
+};
+
+// Investment option card component
+const InvestmentCard = ({ option, index }) => {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        visible: { 
+          opacity: 1, 
+          y: 0,
+          transition: { 
+            duration: 0.6, 
+            delay: index * 0.15,
+            ease: [0.22, 1, 0.36, 1]
+          }
+        }
+      }}
+    >
+      <Box
+        p={8}
+        h="full"
+        bg={useColorModeValue('white', 'gray.800')}
+        borderRadius="xl"
+        boxShadow="lg"
+        borderLeft="4px solid"
+        borderColor={option.color}
+        position="relative"
+        overflow="hidden"
+        _hover={{
+          transform: 'translateY(-8px)',
+          boxShadow: '2xl'
+        }}
+        transition="all 0.3s ease"
+      >
+        {option.badge && (
+          <Badge
+            position="absolute"
+            top={4}
+            right={4}
+            bg={option.color}
+            color="white"
+            px={3}
+            py={1}
+            borderRadius="full"
+            fontWeight="bold"
+            fontSize="xs"
+            textTransform="uppercase"
+            letterSpacing="wide"
+          >
+            {option.badge}
+          </Badge>
+        )}
+        
+        <Circle
+          position="absolute"
+          top="-20px"
+          right="-20px"
+          size="100px"
+          bg={option.color}
+          opacity={0.1}
+        />
+        
+        <VStack align="start" spacing={6}>
+          <Icon as={option.icon} boxSize={12} color={option.color} />
+          <Heading size="md" color={option.color}>
+            {option.title}
+          </Heading>
+          <Text>
+            {option.description}
+          </Text>
+          <Button
+            mt="auto"
+            variant="outline"
+            color={option.color}
+            borderColor={option.color}
+            size="md"
+            rightIcon={<FaArrowRight />}
+            _hover={{
+              bg: option.color,
+              color: 'white'
+            }}
+          >
+            Learn More
+          </Button>
+        </VStack>
+      </Box>
+    </motion.div>
+  );
+};
+
 const BitStockLanding = () => {
-  const { t } = useTranslation('common');
+  const { t, i18n } = useTranslation('common');
   const router = useRouter();
   const containerRef = useRef(null);
+  const isRTL = router.locale === 'ar';
   
   const bgGradient = useColorModeValue(
-    'linear(to-b, brand.bitstock.400, white)',
+    'linear(to-b, #F8F9FA, white)',
     'linear(to-b, gray.900, black)'
   );
   
-  const glassCardBg = useColorModeValue('whiteAlpha.900', 'whiteAlpha.100');
-
+  const headingSize = useBreakpointValue({ base: "3xl", md: "4xl", lg: "5xl" });
+  const accentColor = '#8b7966';
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -74,594 +342,662 @@ const BitStockLanding = () => {
       stiffness: 100,
       damping: 20
     }),
-    [0, 1],
-    [1, 0.92]
+    [0, 0.2],
+    [1, 0.95]
   );
 
+  const marketOverviewOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.1, 0.2],
+    [1, 0.8, 0]
+  );
+
+  // Features
   const features = [
     {
       icon: FaGlobeAmericas,
-      title: 'global.markets.access.title',
-      description: 'Seamless access to US and EU stock markets with localized support and trading hours',
+      title: t('stock.features.global.title', 'Global Markets Access'),
+      description: t('stock.features.global.description', 'Seamless access to US and EU stock markets with localized support and trading hours'),
       color: 'brand.bitstock.400'
     },
     {
       icon: FaMobileAlt,
-      title: 'mobile.trading.title',
-      description: 'Trade anytime, anywhere with our award-winning mobile app designed for MENA users',
+      title: t('stock.features.mobile.title', 'Mobile Trading Platform'),
+      description: t('stock.features.mobile.description', 'Trade anytime, anywhere with our award-winning mobile app designed for MENA users'),
       color: 'brand.bitstock.500'
     },
     {
       icon: FaShieldAlt,
-      title: 'compliant.investing.title',
-      description: 'Fully compliant with regional regulations while providing access to global markets',
+      title: t('stock.features.compliant.title', 'Compliant Investing'),
+      description: t('stock.features.compliant.description', 'Fully compliant with regional regulations while providing access to global markets'),
       color: 'brand.bitstock.600'
     },
     {
       icon: FaRegCreditCard,
-      title: 'local.payment.methods.title',
-      description: 'Deposit and withdraw using popular payment methods in the MENA and GCC regions',
+      title: t('stock.features.payment.title', 'Local Payment Methods'),
+      description: t('stock.features.payment.description', 'Deposit and withdraw using popular payment methods in the MENA and GCC regions'),
       color: 'brand.bitstock.700'
     }
   ];
 
+  // Investment options
   const investmentOptions = [
     {
       icon: FaChartLine,
-      title: 'US & EU Stocks',
-      description: 'Access over 5,000 stocks from the world\'s largest exchanges with zero commission',
-      badge: 'Most Popular',
+      title: t('stock.investment.stocks.title', 'US & EU Stocks'),
+      description: t('stock.investment.stocks.description', 'Access over 5,000 stocks from the world\'s largest exchanges with zero commission'),
+      badge: t('stock.most.popular', 'Most Popular'),
       color: 'brand.bitstock.400'
     },
     {
       icon: FaBuilding,
-      title: 'Private Assets',
-      description: 'Exclusive access to pre-IPO companies and private equity opportunities with minimum investments of $1,000',
-      badge: 'Exclusive',
+      title: t('stock.investment.private.title', 'Private Assets'),
+      description: t('stock.investment.private.description', 'Exclusive access to pre-IPO companies and private equity opportunities with minimum investments of $1,000'),
+      badge: t('stock.exclusive', 'Exclusive'),
       color: 'brand.bitstock.500'
     },
     {
       icon: FaCoins,
-      title: 'Gold & Precious Metals',
-      description: 'Invest in gold and other precious metals with full ownership or through ETFs and funds',
-      badge: 'Traditional',
+      title: t('stock.investment.gold.title', 'Gold & Precious Metals'),
+      description: t('stock.investment.gold.description', 'Invest in gold and other precious metals with full ownership or through ETFs and funds'),
+      badge: t('stock.traditional', 'Traditional'),
       color: 'brand.bitstock.600'
     },
     {
       icon: FaOilCan,
-      title: 'Oil & Commodities',
-      description: 'Trade oil futures or invest in energy companies with specialized regional insights',
-      badge: 'Strategic',
+      title: t('stock.investment.oil.title', 'Oil & Commodities'),
+      description: t('stock.investment.oil.description', 'Trade oil futures or invest in energy companies with specialized regional insights'),
+      badge: t('stock.strategic', 'Strategic'),
       color: 'brand.bitstock.700'
     }
   ];
 
+  // Regional benefits
   const regionalBenefits = [
     {
-      title: 'Arabic Interface',
-      description: 'Fully localized Arabic interface with regional market insights and analysis'
+      title: t('stock.benefits.arabic.title', 'Arabic Interface'),
+      description: t('stock.benefits.arabic.description', 'Fully localized Arabic interface with regional market insights and analysis')
     },
     {
-      title: 'Shariah-Compliant Options',
-      description: 'Filter and invest in Shariah-compliant stocks and funds with ease'
+      title: t('stock.benefits.shariah.title', 'Shariah-Compliant Options'),
+      description: t('stock.benefits.shariah.description', 'Filter and invest in Shariah-compliant stocks and funds with ease')
     },
     {
-      title: 'Local Support Team',
-      description: '24/7 customer support from our offices in Dubai, Riyadh, and Cairo'
+      title: t('stock.benefits.support.title', 'Local Support Team'),
+      description: t('stock.benefits.support.description', '24/7 customer support from our offices in Dubai, Riyadh, and Cairo')
     },
     {
-      title: 'Regional Bank Integration',
-      description: 'Seamless deposit and withdrawal with major MENA and GCC banks'
+      title: t('stock.benefits.banks.title', 'Regional Bank Integration'),
+      description: t('stock.benefits.banks.description', 'Seamless deposit and withdrawal with major MENA and GCC banks')
     },
     {
-      title: 'Regional Market Hours',
-      description: 'Extended trading hours aligned with GCC time zones'
+      title: t('stock.benefits.hours.title', 'Regional Market Hours'),
+      description: t('stock.benefits.hours.description', 'Extended trading hours aligned with GCC time zones')
     },
     {
-      title: 'Dual Language Research',
-      description: 'Investment research and reports available in both English and Arabic'
+      title: t('stock.benefits.research.title', 'Dual Language Research'),
+      description: t('stock.benefits.research.description', 'Investment research and reports available in both English and Arabic')
     }
   ];
 
+  // Regulatory information
   const regulatoryInfo = [
     {
-      authority: 'Dubai Financial Services Authority (DFSA)',
-      license: 'License No. F0099',
-      country: 'UAE'
+      authority: t('stock.regulatory.dfsa.name', 'Dubai Financial Services Authority (DFSA)'),
+      license: t('stock.regulatory.dfsa.license', 'License No. F0099'),
+      country: t('stock.regulatory.uae', 'UAE')
     },
     {
-      authority: 'Capital Market Authority (CMA)',
-      license: 'Authorization No. 23-455',
-      country: 'Saudi Arabia'
+      authority: t('stock.regulatory.cma.name', 'Capital Market Authority (CMA)'),
+      license: t('stock.regulatory.cma.license', 'Authorization No. 23-455'),
+      country: t('stock.regulatory.saudi', 'Saudi Arabia')
     },
     {
-      authority: 'Financial Regulatory Authority (FRA)',
-      license: 'License No. 12877',
-      country: 'Egypt'
+      authority: t('stock.regulatory.fra.name', 'Financial Regulatory Authority (FRA)'),
+      license: t('stock.regulatory.fra.license', 'License No. 12877'),
+      country: t('stock.regulatory.egypt', 'Egypt')
     },
     {
-      authority: 'Central Bank of Bahrain (CBB)',
-      license: 'Investment Business Firm License IBF-235',
-      country: 'Bahrain'
+      authority: t('stock.regulatory.cbb.name', 'Central Bank of Bahrain (CBB)'),
+      license: t('stock.regulatory.cbb.license', 'Investment Business Firm License IBF-235'),
+      country: t('stock.regulatory.bahrain', 'Bahrain')
     }
   ];
 
+  // Testimonials
   const testimonials = [
     {
-      name: 'Ahmed K.',
-      location: 'Dubai, UAE',
+      name: t('stock.testimonials.ahmed.name', 'Ahmed K.'),
+      location: t('stock.testimonials.ahmed.location', 'Dubai, UAE'),
       image: '/images/testimonials/ahmed.jpg',
-      quote: 'BitStock made investing in US tech stocks incredibly easy. As a Dubai resident, I had always found it challenging to access global markets until now.',
+      quote: t('stock.testimonials.ahmed.quote', 'BitStock made investing in US tech stocks incredibly easy. As a Dubai resident, I had always found it challenging to access global markets until now.'),
       rating: 5
     },
     {
-      name: 'Layla M.',
-      location: 'Riyadh, KSA',
+      name: t('stock.testimonials.layla.name', 'Layla M.'),
+      location: t('stock.testimonials.layla.location', 'Riyadh, KSA'),
       image: '/images/testimonials/layla.jpg',
-      quote: 'The Shariah-compliant screening tools help me invest according to my values. The Arabic interface and local support make everything so much more accessible.',
+      quote: t('stock.testimonials.layla.quote', 'The Shariah-compliant screening tools help me invest according to my values. The Arabic interface and local support make everything so much more accessible.'),
       rating: 5
     },
     {
-      name: 'Omar J.',
-      location: 'Cairo, Egypt',
+      name: t('stock.testimonials.omar.name', 'Omar J.'),
+      location: t('stock.testimonials.omar.location', 'Cairo, Egypt'),
       image: '/images/testimonials/omar.jpg',
-      quote: 'Being able to invest in both local and international markets through one platform has diversified my portfolio significantly. The local bank integration makes funding my account seamless.',
+      quote: t('stock.testimonials.omar.quote', 'Being able to invest in both local and international markets through one platform has diversified my portfolio significantly. The local bank integration makes funding my account seamless.'),
       rating: 4
     }
   ];
 
   return (
-    <Box ref={containerRef} bg={bgGradient} overflow="hidden">
-      <Container maxW="8xl" pt={8}>
-        {/* Hero Section */}
-        <motion.div style={{ scale: heroScale }}>
-          <Flex
-            direction="column"
-            align="center"
-            textAlign="center"
-            position="relative"
-          >
-            <VStack spacing={8} maxW="4xl">
-              <Heading
-                fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
-                bgGradient="linear(to-r, brand.bitstock.400, brand.bitstock.700)"
-                bgClip="text"
-              >
-                {t('invest.hero.title', 'Smart investments, at your fingertips')}
-              </Heading>
-
-              <MarketOverview />
-
-              <AssetPerformanceChart />
-
-              <AdvancedChart />
-
-              <HStack spacing={6} pt={8}>
-                <Button
-                  size="lg"
-                  color="brand.bitstock.400"
-                  px={8}
-                  h={14}
-                  fontSize="lg"
-                  onClick={() => router.push('/signup')}
-                >
-                  {t('invest.hero.get_started', 'Start Investing')}
-                </Button>
-                <Button
-                  size="lg"
-                  variant="bitstock-outline"
-                  color="brand.bitstock.400"
-                  px={8}
-                  h={14}
-                  fontSize="lg"
-                  onClick={() => router.push('/learn')}
-                >
-                  {t('hero.learn_more', 'Learn More')}
-                </Button>
-              </HStack>
-            </VStack>
-
-            {/* Stats Preview */}
-            <Box
-              mt={16}
-              w="full"
-              maxW="6xl"
-              p={8}
-              borderRadius="3xl"
-              bg={glassCardBg}
-              borderColor="brand.bitstock.500"
-              borderWidth={2}
-              boxShadow="xl"
-            >
-              <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8}>
-                <VStack
-                  p={6}
-                  borderRadius="xl"
-                  bg={useColorModeValue('white', 'gray.800')}
-                  spacing={4}
-                >
-                  <Icon as={FaUsers} boxSize={8} color="brand.bitstock.500" />
-                  <Text fontWeight="bold">{t('demo.active_investors', 'Active Investors')}</Text>
-                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitstock.500">
-                    350k+
-                  </Text>
-                </VStack>
-                <VStack
-                  p={6}
-                  borderRadius="xl"
-                  bg={useColorModeValue('white', 'gray.800')}
-                  spacing={4}
-                >
-                  <Icon as={FaGlobeAmericas} boxSize={8} color="brand.bitstock.500" />
-                  <Text fontWeight="bold">{t('demo.countries_served', 'Countries Served')}</Text>
-                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitstock.500">
-                    18
-                  </Text>
-                </VStack>
-                <VStack
-                  p={6}
-                  borderRadius="xl"
-                  bg={useColorModeValue('white', 'gray.800')}
-                  spacing={4}
-                >
-                  <Icon as={FaExchangeAlt} boxSize={8} color="brand.bitstock.500" />
-                  <Text fontWeight="bold">{t('demo.daily_trades', 'Daily Trades')}</Text>
-                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitstock.500">
-                    2.5M+
-                  </Text>
-                </VStack>
-              </SimpleGrid>
-            </Box>
-          </Flex>
-        </motion.div>
-
-        {/* Features Grid */}
-        <Box mt={24}>
-          <Heading
-            textAlign="center"
-            mb={12}
-            fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.bitstock.500, brand.bitstock.700)"
-            bgClip="text"
-          >
-            {t('invest.why.choose.us', 'Why Choose BitStock')}
-          </Heading>
+    <Box ref={containerRef} bg={bgGradient} overflow="hidden" dir={isRTL ? 'rtl' : 'ltr'}>
+      {/* Hero Section */}
+      <Box 
+        position="relative" 
+        pt={{ base: 20, md: 32 }}
+        pb={{ base: 20, md: 32 }}
+        overflow="hidden"
+      >
+        {/* Background elements */}
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          right="0"
+          bottom="0"
+          zIndex={0}
+        >
+          {/* Financial chart pattern background */}
+          <Image
+            src="/images/background-1.png"
+            alt="Chart pattern"
+            width="100%"
+            height="100%"
+            objectFit="cover"
+            objectPosition="center"
+            opacity={0.25}
+            position="absolute"
+          />
           
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} mb={16}>
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Box
-                  p={8}
-                  h="full"
-                  bg={glassCardBg}
-                  borderRadius="xl"
-                  borderColor={feature.color}
-                  borderWidth={2}
-                  _hover={{
-                    transform: 'translateY(-5px)',
-                    boxShadow: 'xl'
-                  }}
-                  transition="all 0.3s ease"
-                >
-                  <VStack align="start" spacing={6}>
-                    <Icon as={feature.icon} boxSize={12} color={feature.color} />
-                    <Heading size="md" color={feature.color}>
-                      {t(feature.title, feature.title)}
-                    </Heading>
-                    <Text>
-                      {t(feature.description, feature.description)}
-                    </Text>
-                  </VStack>
-                </Box>
-              </motion.div>
-            ))}
-          </SimpleGrid>
-        </Box>
-        
-        {/* Investment Options */}
-        <Box mt={24}>
-          <Heading
-            textAlign="center"
-            mb={12}
-            fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.bitstock.500, brand.bitstock.700)"
-            bgClip="text"
-          >
-            {t('invest.options', 'Investment Options')}
-          </Heading>
-          
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} mb={16}>
-            {investmentOptions.map((option, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Box
-                  p={8}
-                  h="full"
-                  bg={glassCardBg}
-                  borderRadius="xl"
-                  borderColor={option.color}
-                  borderWidth={2}
-                  position="relative"
-                  _hover={{
-                    transform: 'translateY(-5px)',
-                    boxShadow: 'xl'
-                  }}
-                  transition="all 0.3s ease"
-                >
-                  {option.badge && (
-                    <Badge
-                      position="absolute"
-                      top={3}
-                      right={3}
-                      colorScheme="brand.bitstock.400"
-                      variant="solid"
-                      px={2}
-                      py={1}
-                      borderRadius="md"
-                    >
-                      {option.badge}
-                    </Badge>
-                  )}
-                  <VStack align="start" spacing={6}>
-                    <Icon as={option.icon} boxSize={12} color={option.color} />
-                    <Heading size="md" color={option.color}>
-                      {option.title}
-                    </Heading>
-                    <Text>
-                      {option.description}
-                    </Text>
-                    <Button
-                      variant="outline"
-                      color="brand.bitstock.400"
-                      size="sm"
-                      onClick={() => router.push(`/stock/${option.title.toLowerCase().replace(/[&\s]+/g, '-')}`)}
-                    >
-                      Learn More
-                    </Button>
-                  </VStack>
-                </Box>
-              </motion.div>
-            ))}
-          </SimpleGrid>
-        </Box>
-        
-        {/* Regional Benefits */}
-        <Box mt={24}>
-          <Heading
-            textAlign="center"
-            mb={12}
-            fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.bitstock.500, brand.bitstock.700)"
-            bgClip="text"
-          >
-            {t('invest.regional.benefits', 'Designed for MENA & GCC Investors')}
-          </Heading>
-          
+          {/* Animated gradient orbs */}
           <Box
-            p={8}
-            bg={glassCardBg}
-            borderRadius="xl"
-            borderColor="brand.bitstock.500"
-            borderWidth={2}
-            boxShadow="xl"
-          >
-            <Flex 
-              direction={{ base: "column", md: "row" }}
-              align="center"
-              justify="space-between"
-              mb={8}
+            position="absolute"
+            top="10%"
+            left="5%"
+            width="300px"
+            height="300px"
+            borderRadius="full"
+            bg="radial-gradient(circle, rgba(139,121,102,0.3) 0%, rgba(139,121,102,0) 70%)"
+            filter="blur(40px)"
+            animation="pulse 15s infinite"
+          />
+          <Box
+            position="absolute"
+            bottom="10%"
+            right="5%"
+            width="400px"
+            height="400px"
+            borderRadius="full"
+            bg="radial-gradient(circle, rgba(139,121,102,0.2) 0%, rgba(139,121,102,0) 70%)"
+            filter="blur(40px)"
+            animation="pulse 18s infinite 2s"
+          />
+        </Box>
+        
+        <Container maxW="container.xl" position="relative" zIndex={2}>
+          <motion.div style={{ scale: heroScale }}>
+            <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
+              <GridItem>
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={fadeInUp}
+                >
+                  <VStack spacing={6} align="flex-start">
+                    <Heading
+                      as="h1"
+                      fontSize={headingSize}
+                      fontWeight="bold"
+                      lineHeight="1.2"
+                      bgGradient="linear(to-r, #8b7966, #b8a28b)"
+                      bgClip="text"
+                    >
+                      {t('stock.hero.title', 'Smart investments, at your fingertips')}
+                    </Heading>
+                    
+                    <Text
+                      fontSize={{ base: "lg", md: "xl" }}
+                      maxW="550px"
+                    >
+                      {t('stock.hero.subtitle', 'Access global stock markets from anywhere in MENA with our user-friendly platform designed for regional investors.')}
+                    </Text>
+                    
+                    <HStack spacing={6} mt={4}>
+                      <Button
+                        size="lg"
+                        bg="#8b7966"
+                        color="white"
+                        _hover={{ bg: "#9c7c63" }}
+                        px={8}
+                        rightIcon={<FaArrowRight />}
+                        onClick={() => router.push('/signup')}
+                      >
+                        {t('stock.hero.cta', 'Start Investing')}
+                      </Button>
+                      
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        borderColor="#8b7966"
+                        color="#8b7966"
+                        _hover={{ 
+                          bg: "rgba(139,121,102,0.1)",
+                          borderColor: "#9c7c63",
+                          color: "#9c7c63"
+                        }}
+                        px={8}
+                      >
+                        {t('stock.hero.demo', 'Watch Demo')}
+                      </Button>
+                    </HStack>
+                    
+                    <HStack spacing={8} mt={8} color={useColorModeValue("gray.600", "gray.400")} flexWrap="wrap">
+                      <HStack>
+                        <Icon as={CheckCircle} color="#8b7966" />
+                        <Text>{t('stock.hero.feature1', 'Zero Commission')}</Text>
+                      </HStack>
+                      
+                      <HStack>
+                        <Icon as={CheckCircle} color="#8b7966" />
+                        <Text>{t('stock.hero.feature2', 'Shariah Compliant')}</Text>
+                      </HStack>
+                      
+                      <HStack>
+                        <Icon as={CheckCircle} color="#8b7966" />
+                        <Text>{t('stock.hero.feature3', '24/7 Support')}</Text>
+                      </HStack>
+                    </HStack>
+                  </VStack>
+                </motion.div>
+              </GridItem>
+              
+              <GridItem>
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={scaleUp}
+                >
+                  <Box
+                    borderRadius="2xl"
+                    overflow="hidden"
+                    transform="perspective(1000px) rotateY(-5deg) rotateX(5deg)"
+                    transition="all 0.5s ease"
+                    borderColor={useColorModeValue("gray.200", "gray.700")}
+                  >
+                    <motion.div style={{ opacity: marketOverviewOpacity }}>
+                      <Image 
+                        src="/images/iphones-chart.webp" 
+                        alt={t('stock.hero.dashboard.alt', 'Stock Trading Dashboard')}
+                        width="100%"
+                      />
+                    </motion.div>
+                  </Box>
+                </motion.div>
+              </GridItem>
+            </Grid>
+          </motion.div>
+          
+          {/* Stats section */}
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8} mt={20}>
+            <AnimatedStat 
+              icon={FaUsers}
+              label={t('stock.stats.investors', 'Active Investors')}
+              value="350k+"
+              color="#8b7966"
+              delay={0.1}
+            />
+            <AnimatedStat 
+              icon={FaGlobeAmericas}
+              label={t('stock.stats.countries', 'Countries Served')}
+              value="18"
+              color="#9c7c63"
+              delay={0.2}
+            />
+            <AnimatedStat 
+              icon={FaExchangeAlt}
+              label={t('stock.stats.trades', 'Daily Trades')}
+              value="2.5M+"
+              color="#b8a28b"
+              delay={0.3}
+            />
+          </SimpleGrid>
+          <Box py={{ base: 5, md: 10 }}>
+            <AssetPerformanceChart />
+          </Box>
+        </Container>
+      </Box>
+      
+      {/* Features Section */}
+      <Box as="section" >
+        <Container maxW="container.xl">
+          <VStack spacing={16}>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              style={{ width: '100%' }}
             >
-              <VStack align={{ base: "center", md: "start" }} mb={{ base: 6, md: 0 }}>
-                <Heading size="lg" color="brand.bitstock.500">
-                  {t('invest.regional.title', 'Local Expertise, Global Opportunities')}
+              <VStack spacing={4} textAlign="center" mb={12}>
+                <Text 
+                  color="#8b7966" 
+                  fontWeight="bold" 
+                  textTransform="uppercase"
+                  letterSpacing="wider"
+                >
+                  {t('stock.features.subtitle', 'Why Choose BitStock')}
+                </Text>
+                
+                <Heading
+                  fontSize={{ base: "3xl", md: "4xl" }}
+                  fontWeight="bold"
+                  color={useColorModeValue("#333", "white")}
+                  bgGradient="linear(to-r, #8b7966, #b8a28b)"
+                  bgClip="text"
+                >
+                  {t('stock.features.title', 'Trading Features Designed for You')}
                 </Heading>
-                <Text maxW="xl">
-                  {t('invest.regional.description', 'BitStock brings global investment opportunities to MENA and GCC investors with localized features and support designed specifically for the region.')}
+                
+                <Text
+                  fontSize={{ base: "md", md: "lg" }}
+                  color={useColorModeValue("gray.600", "gray.300")}
+                  maxW="3xl"
+                  mx="auto"
+                >
+                  {t('stock.features.description', 'Our platform offers unique features tailored specifically for MENA investors looking to access global markets.')}
                 </Text>
               </VStack>
-              
-              <Icon 
-                as={FaMapMarkedAlt} 
-                boxSize={{ base: 16, md: 24 }} 
-                color="brand.bitstock.400" 
-                opacity={0.8}
-              />
-            </Flex>
+            </motion.div>
             
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
-              {regionalBenefits.map((benefit, index) => (
-                <HStack key={index} align="start" spacing={3}>
-                  <Icon as={FaCheckCircle} color="brand.bitstock.500" mt={1} />
-                  <VStack align="start" spacing={1}>
-                    <Text fontWeight="bold">{benefit.title}</Text>
-                    <Text fontSize="sm" color="gray.600">{benefit.description}</Text>
-                  </VStack>
-                </HStack>
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} width="full">
+              {features.map((feature, index) => (
+                <FeatureCard key={index} feature={feature} index={index} />
               ))}
             </SimpleGrid>
-          </Box>
-        </Box>
-        
-        {/* Testimonials */}
-        <Box mt={24}>
-          <Heading
-            textAlign="center"
-            mb={12}
-            fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.bitstock.400, brand.bitstock.700)"
-            bgClip="text"
-          >
-            {t('invest.testimonials', 'What Our Investors Say')}
-          </Heading>
-          
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8} mb={16}>
-            {testimonials.map((testimonial, index) => (
+          </VStack>
+        </Container>
+      </Box>
+      
+      {/* Investment Options Section */}
+      <Box 
+        as="section" 
+        py={{ base: 20, md: 32 }}
+        position="relative"
+        overflow="hidden"
+      > 
+        <Container maxW="container.xl" position="relative" zIndex={1}>
+          <VStack spacing={16}>
+            <motion.div
+             initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              style={{ width: '100%' }}
+            >
+              <VStack spacing={4} textAlign="center" mb={12}>
+                <Text 
+                  color="#8b7966" 
+                  fontWeight="bold" 
+                  textTransform="uppercase"
+                  letterSpacing="wider"
+                >
+                  {t('stock.investment.subtitle', 'Diverse Investment Options')}
+                </Text>
+                
+                <Heading
+                  fontSize={{ base: "3xl", md: "4xl" }}
+                  fontWeight="bold"
+                  color={useColorModeValue("#333", "white")}
+                  bgGradient="linear(to-r, #8b7966, #b8a28b)"
+                  bgClip="text"
+                >
+                  {t('stock.investment.title', 'Build Your Global Portfolio')}
+                </Heading>
+                
+                <Text
+                  fontSize={{ base: "md", md: "lg" }}
+                  color={useColorModeValue("gray.600", "gray.300")}
+                  maxW="3xl"
+                  mx="auto"
+                >
+                  {t('stock.investment.description', 'Explore a wide range of investment opportunities from global markets with options tailored for regional investors.')}
+                </Text>
+              </VStack>
+            </motion.div>
+            
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} width="full">
+              {investmentOptions.map((option, index) => (
+                <InvestmentCard key={index} option={option} index={index} />
+              ))}
+            </SimpleGrid>
+          </VStack>
+        </Container>
+      </Box>
+      
+      {/* Regional Benefits Section */}
+      <Box as="section" py={{ base: 20, md: 32 }}>
+        <Container maxW="container.xl">
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
+            <MarketOverview/>
+            <GridItem>
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+              >
+                <VStack spacing={6} align="flex-start">
+                  <Text 
+                    color="#8b7966" 
+                    fontWeight="bold" 
+                    textTransform="uppercase"
+                    letterSpacing="wider"
+                  >
+                    {t('stock.regional.subtitle', 'Regional Advantage')}
+                  </Text>
+                  
+                  <Heading
+                    fontSize={{ base: "3xl", md: "4xl" }}
+                    fontWeight="bold"
+                    lineHeight="1.2"
+                    bgGradient="linear(to-r, #8b7966, #b8a28b)"
+                    bgClip="text"
+                  >
+                    {t('stock.regional.title', 'Designed for MENA & GCC Investors')}
+                  </Heading>
+                  
+                  <Text
+                    fontSize={{ base: "md", md: "lg" }}
+                    color={useColorModeValue("gray.600", "gray.300")}
+                    maxW="xl"
+                  >
+                    {t('stock.regional.description', 'BitStock brings global investment opportunities to MENA and GCC investors with localized features and support designed specifically for the region.')}
+                  </Text>
+                  
+                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4} mt={6} width="full">
+                    {regionalBenefits.map((benefit, index) => (
+                      <HStack key={index} align="start" spacing={3} mt={2}>
+                        <Icon as={FaCheckCircle} color="#8b7966" mt={1} boxSize={5} />
+                        <VStack align="start" spacing={1}>
+                          <Text fontWeight="bold">{benefit.title}</Text>
+                          <Text fontSize="sm" color={useColorModeValue("gray.600", "gray.400")}>
+                            {benefit.description}
+                          </Text>
+                        </VStack>
+                      </HStack>
+                    ))}
+                  </SimpleGrid>
+                  
+                  <Button
+                    mt={8}
+                    size="lg"
+                    bg="#8b7966"
+                    color="white"
+                    _hover={{ bg: "#9c7c63" }}
+                    px={8}
+                    rightIcon={<FaArrowRight />}
+                    onClick={() => router.push('/about')}
+                  >
+                    {t('stock.regional.learn_more', 'Learn More')}
+                  </Button>
+                </VStack>
+              </motion.div>
+            </GridItem>
+            
+            <GridItem>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={scaleUp}
               >
                 <Box
-                  p={8}
-                  bg={glassCardBg}
-                  borderRadius="xl"
-                  borderColor="brand.bitstock.400"
-                  borderWidth={1}
-                  boxShadow="md"
-                  height="full"
-                  display="flex"
-                  flexDirection="column"
+                  position="relative"
+                  borderRadius="2xl"
+                  overflow="hidden"
+                  boxShadow="2xl"
+                  transform="perspective(1000px) rotateY(-5deg) rotateX(5deg)"
+                  transition="all 0.5s ease"
+                  _hover={{
+                    transform: "perspective(1000px) rotateY(0deg) rotateX(0deg)"
+                  }}
                 >
-                  <Flex mb={6}>
-                    <Box boxSize={12} mr={4}>
-                      <Avatar 
-                        size="full" 
-                        name={testimonial.name} 
-                        src={testimonial.image}
-                      />
-                    </Box>
-                    <VStack align="start" spacing={0}>
-                      <Text fontWeight="bold">{testimonial.name}</Text>
-                      <Text fontSize="sm" color="gray.500">{testimonial.location}</Text>
-                      <HStack mt={1}>
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Icon key={i} as={FaStar} color="yellow.400" boxSize={3} />
-                        ))}
-                      </HStack>
-                    </VStack>
-                  </Flex>
-                  
-                  <Text flex="1" fontStyle="italic" fontSize="sm">
-                    "{testimonial.quote}"
-                  </Text>
                 </Box>
               </motion.div>
-            ))}
-          </SimpleGrid>
-        </Box>
-        
-        {/* Regulatory Information */}
-        <Box mt={24}>
-          <Heading
-            textAlign="center"
-            mb={12}
-            fontSize={{ base: '3xl', md: '4xl' }}
-            bgGradient="linear(to-r, brand.bitstock.400, brand.bitstock.700)"
-            bgClip="text"
+            </GridItem>
+          </Grid>
+        </Container>
+      </Box>
+      
+      {/* Call to Action Section */}
+      <Box 
+        as="section" 
+        py={{ base: 20, md: 32 }}
+      >
+        <Container maxW="container.xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
           >
-            {t('invest.regulatory', 'Regulatory Information')}
-          </Heading>
-          
-          <Flex 
-            direction={{ base: "column", md: "row" }}
-            bg={glassCardBg}
-            borderRadius="xl"
-            borderColor="brand.bitstock.400"
-            borderWidth={2}
-            boxShadow="xl"
-            overflow="hidden"
-          >
-            <Box 
-              p={8} 
-              bg="brand.bitstock.400" 
-              color="white"
-              width={{ base: "full", md: "40%" }}
-              display="flex"
-              flexDirection="column"
-              justifyContent="center"
+            <Flex
+              direction="column"
+              align="center"
+              textAlign="center"
+              py={{ base: 16, md: 20 }}
+              px={{ base: 6, md: 10 }}
+              borderRadius="xl"
+              boxShadow="2xl"
+              borderWidth="1px"
+              borderColor={useColorModeValue("gray.200", "gray.700")}
+              position="relative"
+              overflow="hidden"
             >
-              <Icon as={FaUniversity} boxSize={16} mb={6} />
-              <Heading size="lg" mb={4}>
-                {t('invest.regulatory.title', 'Fully Licensed & Regulated')}
-              </Heading>
-              <Text>
-                {t('invest.regulatory.description', 'BitStock operates with full regulatory compliance across the MENA and GCC regions, ensuring your investments are secure and protected under local laws.')}
-              </Text>
-              <Button
-                mt={8}
-                variant="bitstock-solid"
-                leftIcon={<FaShieldAlt />}
-                onClick={() => router.push('/compliance')}
-              >
-                Our Security Measures
-              </Button>
-            </Box>
-            
-            <Box p={8} width={{ base: "full", md: "60%" }}>
-              <Heading size="md" mb={6}>
-                {t('invest.regulatory.licenses', 'Our Licenses & Authorizations')}
-              </Heading>
+              {/* Decorative elements */}
+              <Box
+                position="absolute"
+                top="0"
+                left="0"
+                right="0"
+                height="6px"
+                bg="#8b7966"
+              />
               
-              <VStack spacing={4} align="stretch">
-                {regulatoryInfo.map((regulation, index) => (
-                  <Box key={index} p={4} borderRadius="md" bg={useColorModeValue('white', 'gray.700')} boxShadow="sm">
-                    <Flex justify="space-between" align="center">
-                      <VStack align="start" spacing={0}>
-                        <Text fontWeight="bold">{regulation.authority}</Text>
-                        <Text fontSize="sm" color="gray.500">{regulation.country}</Text>
-                      </VStack>
-                      <Badge colorScheme="brand.bitstock.400" p={2}>
-                        {regulation.license}
-                      </Badge>
-                    </Flex>
-                  </Box>
-                ))}
+              <Circle
+                position="absolute"
+                bottom="-50px"
+                left="-50px"
+                size="200px"
+                bg="#8b7966"
+                opacity={0.05}
+              />
+              
+              <Circle
+                position="absolute"
+                top="-30px"
+                right="-30px"
+                size="150px"
+                bg="#8b7966"
+                opacity={0.05}
+              />
+              
+              <VStack spacing={8} maxW="3xl" position="relative" zIndex={1}>
+                <Text 
+                  color="#8b7966" 
+                  fontWeight="bold" 
+                  textTransform="uppercase"
+                  letterSpacing="wider"
+                >
+                  {t('stock.cta.subtitle', 'Start Your Journey')}
+                </Text>
+                
+                <Heading
+                  fontSize={{ base: "3xl", md: "4xl" }}
+                  fontWeight="bold"
+                  color={useColorModeValue("#333", "white")}
+                  bgGradient="linear(to-r, #8b7966, #b8a28b)"
+                  bgClip="text"
+                >
+                  {t('stock.cta.title', 'Start Your Global Investment Journey Today')}
+                </Heading>
+                
+                <Text 
+                  fontSize={{ base: "md", md: "lg" }}
+                  color={useColorModeValue("gray.600", "gray.300")}
+                >
+                  {t('stock.cta.description', 'Join thousands of MENA and GCC investors who are growing their wealth through global markets with BitStock\'s localized approach.')}
+                </Text>
+                
+                <HStack spacing={6} pt={4} wrap="wrap" justify="center">
+                  <Button
+                    bg="#8b7966"
+                    color="white"
+                    _hover={{ bg: "#9c7c63" }}
+                    size="lg"
+                    px={8}
+                    rightIcon={<FaArrowRight />}
+                    onClick={() => router.push('/signup')}
+                  >
+                    {t('stock.cta.button', 'Create Account')}
+                  </Button>
+                  
+                  <Button
+                    variant="outline"
+                    borderColor="#8b7966"
+                    color="#8b7966"
+                    _hover={{ 
+                      bg: "rgba(139,121,102,0.1)",
+                      borderColor: "#9c7c63",
+                      color: "#9c7c63"
+                    }}
+                    size="lg"
+                    px={8}
+                    leftIcon={<FaHandshake />}
+                    onClick={() => router.push('/demo')}
+                  >
+                    {t('stock.cta.demo', 'Request Demo')}
+                  </Button>
+                </HStack>
+                
+                <Text fontSize="sm" color={useColorModeValue("gray.500", "gray.400")} pt={2}>
+                  {t('stock.cta.note', 'No credit card required. 30-day free trial with full features and dedicated support.')}
+                </Text>
               </VStack>
-            </Box>
-          </Flex>
-        </Box>
-        
-        {/* Call to Action */}
-        <Box
-          mt={24}
-          mb={16}
-          p={12}
-          borderRadius="xl"
-            borderColor="brand.bitstock.400"
-            borderWidth={2}
-            boxShadow="xl"
-            overflow="hidden"
-          color="brand.bitstock.400"
-          textAlign="center"
-        >
-          <VStack spacing={6}>
-            <Heading size="xl">
-              {t('invest.cta.title', 'Start Your Global Investment Journey Today')}
-            </Heading>
-            <Text fontSize="lg" maxW="2xl">
-              {t('invest.cta.description', 'Join thousands of MENA and GCC investors who are growing their wealth through global markets with BitStock\'s localized approach.')}
-            </Text>
-            <HStack spacing={4}>
-              <Button
-                h={14}
-                variant="bitstock-solid"
-                leftIcon={<FaUserTie />}
-                onClick={() => router.push('/signup')}
-              >
-                {t('invest.cta.button', 'Create Account')}
-              </Button>
-              <Button
-                variant="bitstock-solid"
-                h={14}
-                leftIcon={<FaHandshake />}
-                onClick={() => router.push('/demo')}
-              >
-                {t('invest.cta.demo', 'Request Demo')}
-              </Button>
-            </HStack>
-          </VStack>
-        </Box>
-      </Container>
+            </Flex>
+          </motion.div>
+        </Container>
+      </Box>
     </Box>
   );
 };
