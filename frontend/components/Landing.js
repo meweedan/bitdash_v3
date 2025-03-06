@@ -631,38 +631,6 @@ export default function LandingPage() {
                 height="6px"
                 bg="#8b7966"
               />
-              <HStack justify="center" textAlign="center" position="relative">
-               <Image
-              src="/images/TSLA.png"
-              width="7%"
-              height="7%"
-              mb="10"
-              />
-               <Image
-              src="/images/BTC.png"
-              width="8%"
-              height="8%"
-              mb="10"
-              />
-               <Image
-              src="/images/oil.png"
-              width="5%"
-              height="5%"
-              mb="10"
-              />
-               <Image
-              src="/images/USD.png"
-              width="5%"
-              height="5%"
-              mb="10"
-              />
-               <Image
-              src="/images/AAPL.png"
-              width="5%"
-              height="5%"
-              mb="10"
-              />
-              </HStack>
               
               <VStack spacing={8} maxW="3xl" position="relative" zIndex="1">
                 <Text 
@@ -778,7 +746,7 @@ export default function LandingPage() {
               ].map((key, idx) => (
                 <WrapItem key={idx}>
                   <Link 
-                    href={`/${t(key).toLowerCase().replace(/\s+/g, '-')}`}
+                    href={`/policies/${t(key).toLowerCase().replace(/\s+/g, '-')}`}
                     fontSize="xs"
                     color={isDark ? "gray.400" : "gray.600"}
                     _hover={{ color: "#8b7966" }}

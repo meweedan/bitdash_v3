@@ -279,31 +279,16 @@
   "scan": "Scan QR",
   "favouritesTab": "Favourites",
   "rewardsTab": "Rewards",
-  "qrOrderingSystem": "Smart QR Ordering System",
-  "qrOrderingDescription": "Transform your restaurant's ordering experience with our seamless QR-based solution",
   "qrScan": "Scan QR",
-  "qrScanDescription": "Customers scan your table's unique QR code",
-  "menuBrowse": "Browse Menu",
-  "menuBrowseDescription": "View digital menu with photos and detailed descriptions",
-  "orderPlace": "Place Order",
-  "orderPlaceDescription": "Select items and customize orders effortlessly",
-  "orderTrack": "Track Order",
-  "orderTrackDescription": "Real-time updates on order status",
   "futureServices": "Coming Soon to BitDash",
   "coming2024Q2": "Coming Q2 2024",
   "coming2024Q3": "Coming Q3 2024",
   "coming2024Q4": "Coming Q4 2024",
-  "bitBIDescription": "Advanced business intelligence platform for restaurants",
-  "leftoverStockDescription": "Smart inventory and surplus management system",
-  "bitShopDescription": "Integrated grocery delivery platform",
   "predictiveAnalytics": "AI-Powered Predictive Analytics",
   "customerInsights": "Deep Customer Insights",
   "inventoryOptimization": "Inventory Optimization",
   "salesForecasting": "Sales Forecasting",
-  "revolutionizingRestaurants": "Revolutionizing Restaurant Operations",
-  "aboutDescription": "Empowering restaurants with innovative technology solutions for the digital age",
   "ourMission": "Our Mission",
-  "missionText": "To transform the restaurant industry through innovative technology solutions that enhance efficiency and customer experience",
   "ourCommitment": "Our Commitment",
   "commitmentText": "Providing reliable, secure, and user-friendly solutions backed by exceptional customer support",
   "about": {
@@ -533,7 +518,6 @@
   "enterEmail": "Enter Email",
   "sendResetLink": "Send Reset Link",
   "backToLogin": "Back to Login",
-  "platform": "Platform",
   "checkoutError": "Checkout error occurred.",
   "pleaseSelectTable": "Please select a table.",
   "guestInfoRequired": "Guest information is required.",
@@ -696,11 +680,7 @@
         "title": "Instant Payments for the Digital Age",
         "subtitle": "Transfer money instantly, pay merchants in real-time, and shop globally with BitCash's secure payment network",
         "get_started": "Get Started"
-      }
-    },
-    "hero": {
-      "merchant_signup": "For Merchants"
-    },
+      },
     "demo": {
       "instant_transfer": "Transfer Speed",
       "global_reach": "Countries",
@@ -752,6 +732,7 @@
   "meta": {
     "title": "BitCash - Fintech Solutions",
     "description": "Advanced financial platform combining payments, trading, and compliance"
+  }
   },
   "bitcash": {
     "hero": {
@@ -788,16 +769,6 @@
       "title": "",
       "description": "",
       "button": ""
-    }
-  },
-  "highlights": {
-    "mobile": {
-      "title": "Mobile-First Design",
-      "description": "Seamless experience across all devices"
-    },
-    "regulatory": {
-      "title": "Regulatory Compliance",
-      "description": "Fully aligned with Central Bank of Libya regulations"
     }
   },
   "solutions": {
@@ -1243,46 +1214,12 @@
   "monthly_limit": "Monthly Limit",
   "default_200000_lyd": "Default: 200,000 LYD",
   "create_agent_account": "Create Agent Account",
-  "biteats_become_a_delivery_capt": "BitEats - Become a Delivery Captain",
-  "become_a_captain": "Become a Captain",
-  "earn_more_with_biteats": "Earn more with BitEats!",
   "account_details": "Account Details",
   "phone_number": "Phone Number",
-  "vehicle_type": "Vehicle Type",
-  "motorcycle": "Motorcycle",
-  "car": "Car",
-  "scooter": "Scooter",
-  "location_details": "Location Details",
-  "join_as_captain": "Join as Captain",
-  "optional_upload_a_profile_pict": "Optional: Upload a profile picture (max 5MB)",
-  "bitwork_job_seeker_signup": "BitWork - Job Seeker Signup",
-  "create_job_seeker_account": "Create Job Seeker Account",
-  "find_your_next_opportunity": "Find Your Next Opportunity",
-  "professional_information": "Professional Information",
-  "professional_title": "Professional Title",
-  "years_of_experience": "Years of Experience",
-  "02_years": "0-2 years",
-  "35_years": "3-5 years",
-  "610_years": "6-10 years",
-  "10_years": "10+ years",
-  "education": "Education",
-  "skills": "Skills",
-  "press_enter_to_add_skills": "Press Enter to add skills",
-  "professional_bio": "Professional Bio",
-  "job_preferences": "Job Preferences",
-  "work_type": "Work Type",
-  "full_time": "Full Time",
-  "part_time": "Part Time",
   "contract": "Contract",
-  "internship": "Internship",
-  "minimum_expected_salary": "Minimum Expected Salary",
   "wallet_setup": "Wallet Setup",
   "wallet_pin": "Wallet PIN",
   "create_a_6digit_pin_for_your_b": "Create a 6-digit PIN for your BitCash wallet",
-  "create_an_employer_account": "Create an Employer Account",
-  "bitwork_employer_signup": "BitWork - Employer Signup",
-  "create_employer_account": "Create Employer Account",
-  "post_jobs_find_talent": "Post Jobs & Find Talent",
   "company_information": "Company Information",
   "company_name": "Company Name",
   "company_type": "Company Type",
@@ -1312,47 +1249,21 @@
   "contact_details": "Contact Details",
   "contact_person_name": "Contact Person Name",
   "contact_email": "Contact Email",
-  "month": "/month",
-  "first_month_free": "First month free",
-  "basic_information": "Basic Information",
-  "restaurant_logo": "Restaurant Logo",
-  "commission_rate_5_per_transact": "Commission Rate: 5% per transaction",
-  "commission_rate_3_per_transact": "Commission Rate: 3% per transaction",
-  "choose_your_plan": "Choose Your Plan",
-  "start_with_a_30day_free_trial": "Start with a 30-day free trial",
-  "create_your_shop_bitshop": "Create Your Shop - BitShop",
-  "create_your_bitshop_store": "Create Your BitShop Store",
-  "start_selling_today": "Start Selling Today",
   "email_address": "Email Address",
   "wallet_security": "Wallet Security",
   "wallet_pin_6_digits": "Wallet PIN (6 digits)",
   "confirm_pin": "Confirm PIN",
-  "shop_name": "Shop Name",
   "business_type": "Business Type",
   "retail": "Retail",
   "wholesale": "Wholesale",
   "manufacturer": "Manufacturer",
-  "shop_details": "Shop Details",
   "contact_name": "Contact Name",
-  "shop_media": "Shop Media",
-  "shop_logo": "Shop Logo",
-  "upload_logo": "Upload Logo",
-  "cover_image": "Cover Image",
-  "upload_cover_image": "Upload Cover Image",
-  "business_documents": "Business Documents",
-  "upload_documents": "Upload Documents",
-  "create_shop": "Create Shop",
   "terms_of_service": "Terms of Service",
   "1_service_usage": "1. Service Usage",
   "account_responsibility": "Account Responsibility",
   "you_are_responsible_for_mainta": "You are responsible for maintaining account security and confidentiality.",
   "acceptable_use": "Acceptable Use",
   "services_must_be_used_in_compl": "Services must be used in compliance with applicable laws and our guidelines.",
-  "2_subscription_terms": "2. Subscription Terms",
-  "billing": "Billing",
-  "subscription_fees_are_billed_a": "Subscription fees are billed according to your selected plan.",
-  "cancellation": "Cancellation",
-  "you_may_cancel_your_subscripti": "You may cancel your subscription at any time with 30 days notice.",
   "3_service_availability": "3. Service Availability",
   "bitdash_strives_to_maintain": "BitDash strives to maintain:",
   "999_uptime_for_all_platforms": "99.9% uptime for all platforms",
@@ -1708,13 +1619,6 @@
       "description": "Lightning-fast order execution with minimal slippage for optimal trading."
     }
   },
-  "mt5": {
-    "title": "MT5: Trade Wide Range of Markets With One Platform",
-    "subtitle": "Your Go-To Solution for Forex and CFD Trading",
-    "description": "MetaTrader 5 is a powerful trading platform that offers a wide range of features and tools for traders of all levels. It allows you to trade forex, stocks, and futures from a single platform with advanced charting and algorithmic trading capabilities.",
-    "download": "Download MT5",
-    "imageAlt": "MT5 Platform"
-  },
   "islamic": {
     "subtitle": "Islamic Finance Principles",
     "title": "Built On Strong Ethical Foundations",
@@ -1748,19 +1652,6 @@
       "crypto": "Crypto",
       "stocks": "Stocks",
       "commodities": "Commodities"
-    }
-  },
-  "accounts": {
-    "subtitle": "Find Your Perfect Fit",
-    "title": "Account Types",
-    "standard": {
-      "title": "Standard",
-      "minDeposit": "$150",
-      "spread": "From 1.0 pips",
-      "leverage": "Up to 1:200",
-      "feature1": "100+ trading instruments",
-      "feature2": "24/5 support",
-      "feature3": "Standard execution"
     }
   },
   "companyProfile": "Company Profile",
@@ -1869,5 +1760,226 @@
       "complaints": "Complaints Handling Policy"
     },
     "copyright": "© {{year}} BitDash LLC. All rights reserved."
+  },
+  "trade": {
+    "hero": {
+      "title": "Trade with Confidence",
+      "description": "Access global markets with a regulated Forex broker offering competitive spreads, fast execution, and powerful trading platforms.",
+      "get_started": "Open Account"
+    },
+    "products": {
+      "title": "Trading Products",
+      "explore": "Explore",
+      "forex": {
+        "title": "Forex",
+        "description": "Trade 80+ currency pairs with tight spreads starting from 0.1 pips and leverage up to 1:500",
+        "highlight1": "Major, Minor & Exotic Pairs",
+        "highlight2": "Institutional-grade liquidity",
+        "highlight3": "Advanced charting tools"
+      },
+      "crypto": {
+        "title": "Cryptocurrencies",
+        "description": "Access 50+ cryptocurrencies with institutional liquidity and competitive fees",
+        "highlight1": "BTC, ETH, SOL, ADA & more",
+        "highlight2": "24/7 trading availability",
+        "highlight3": "Cold storage security"
+      },
+      "stocks": {
+        "title": "Stocks",
+        "description": "Diversify with global indices and stocks from US, EU, and Asian markets",
+        "highlight1": "0% commission on stocks",
+        "highlight2": "Fractional shares available",
+        "highlight3": "Extended market hours"
+      },
+      "commodities": {
+        "title": "Commodities",
+        "description": "Trade gold, silver, oil and other commodities with competitive pricing",
+        "highlight1": "Spot & futures contracts",
+        "highlight2": "Low margin requirements",
+        "highlight3": "Hedge against inflation"
+      }
+    },
+    "chart": {
+      "title": "Real-Time Market Analysis"
+    },
+    "platform": {
+      "title": "Why Choose Forex by BitDash"
+    },
+    "islamic": {
+      "title": "Shariah-Compliant Trading"
+    },
+    "regulatory": {
+      "title": "Regulated & Trusted Globally",
+      "subtitle": "Your Security is Our Priority",
+      "description": "Forex by BitDash is regulated by leading financial authorities across multiple jurisdictions, ensuring a secure and compliant trading environment for all clients."
+    }
+  },
+  "hero": {
+    "try_demo": "Try Demo",
+    "background": {
+      "alt": "Background"
+    },
+    "skyline": {
+      "alt": "London Skyline"
+    },
+    "banner": {
+      "alt": "Trading Banner"
+    }
+  },
+  "highlights": {
+    "commission": {
+      "title": "0% Commission Fees",
+      "description": "Trade with zero commission on all instruments"
+    },
+    "products": {
+      "title": "100+ Trading Products",
+      "description": "Access a wide range of global markets"
+    },
+    "conditions": {
+      "title": "Competitive Conditions",
+      "description": "Low spreads and high leverage options"
+    },
+     "mobile": {
+      "title": "Mobile-First Design",
+      "description": "Seamless experience across all devices"
+    },
+    "regulatory": {
+      "title": "Regulatory Compliance",
+      "description": "Fully aligned with Central Bank of Libya regulations"
+    }
+  },
+  "platform": {
+    "features": {
+      "trading": {
+        "title": "Advanced Trading Platforms",
+        "description": "Trade on our proprietary platform, MetaTrader 5, or via robust API solutions"
+      },
+      "security": {
+        "title": "Bank-Grade Security",
+        "description": "Funds held in segregated accounts with multi-layer security protocols"
+      },
+      "mobile": {
+        "title": "Mobile Trading",
+        "description": "Trade anytime, anywhere with our award-winning mobile applications"
+      },
+      "support": {
+        "title": "24/7 Support",
+        "description": "Dedicated customer support in multiple languages via chat, email, and phone"
+      }
+    }
+  },
+  "mt5": {
+    "title": "MetaTrader 5",
+    "subtitle": "The world's most powerful trading platform for forex and financial markets",
+    "description": "Access advanced trading tools, real-time market data, automated trading capabilities, and comprehensive technical analysis options all in one platform. MetaTrader 5 is a powerful trading platform that offers a wide range of features and tools for traders of all levels. It allows you to trade forex, stocks, and futures from a single platform with advanced charting and algorithmic trading capabilities.",
+    "download": "Download MT5",
+    "imageAlt": "MetaTrader 5 Platform"
+  },
+  "accounts": {
+    "title": "Account Types",
+    "subtitle": "Choose Your Trading Experience",
+    "minDeposit": "Min Deposit",
+    "spread": "Spread",
+    "leverage": "Leverage",
+    "openAccount": "Open Account",
+    "popular": "Popular",
+    "standard": {
+      "title": "Standard",
+      "minDeposit": "$150",
+      "spread": "From 1.0 pips",
+      "leverage": "Up to 1:200",
+      "feature1": "100+ trading instruments",
+      "feature2": "24/5 support",
+      "feature3": "Standard execution",
+      "ideal": "Beginner traders"
+    },
+    "premium": {
+      "title": "Premium",
+      "minDeposit": "$5,000",
+      "spread": "From 0.5 pips",
+      "leverage": "Up to 1:300",
+      "feature1": "100+ trading instruments",
+      "feature2": "24/5 dedicated support",
+      "feature3": "Priority execution",
+      "feature4": "Advanced tools",
+      "ideal": "Active traders"
+    },
+    "professional": {
+      "title": "Professional",
+      "minDeposit": "$25,000",
+      "spread": "From 0.1 pips",
+      "leverage": "Up to 1:500",
+      "feature1": "All available instruments",
+      "feature2": "24/7 personal account manager",
+      "feature3": "Ultra-fast execution",
+      "feature4": "VIP events",
+      "ideal": "Professional traders"
+    },
+    "institutional": {
+      "title": "Institutional",
+      "minDeposit": "$100,000",
+      "spread": "Raw spreads",
+      "leverage": "Customized",
+      "feature1": "All available instruments",
+      "feature2": "API trading",
+      "feature3": "Custom solutions",
+      "feature4": "Dedicated desk",
+      "ideal": "Institutions & funds"
+    }
+  },
+  "mobileApp": {
+    "title": "DOWNLOAD BITDASH APPLICATION",
+    "subtitle": "STAY IN THE KNOW ANYWHERE, ANYTIME.",
+    "description": "Trade on the go with our powerful mobile app. Get real-time market data, execute trades, and manage your account from anywhere in the world.",
+    "imageAlt": "Mobile App Screenshot"
+  },
+  "partners": {
+    "title": "Become a Forex Introducing Broker",
+    "subtitle": "Expand your business with our IB Programme",
+    "description": "Our Introducing Broker program offers competitive rebates, dedicated support, and powerful tools to help you grow your business.",
+    "benefit1": "Competitive commission structures",
+    "benefit2": "Dedicated partnership manager",
+    "benefit3": "Marketing materials and support",
+    "benefit4": "Advanced reporting tools",
+    "cta": "Become a Partner",
+    "imageAlt": "Partnership Program"
+  },
+  "fx.steps": {
+    "title": "Start Trading in 3 Simple Steps",
+    "cta": "Open Your Account Now",
+    "register": {
+      "title": "Register",
+      "description": "Complete our quick and secure account registration process"
+    },
+    "fund": {
+      "title": "Fund",
+      "description": "Deposit funds using one of our multiple payment methods"
+    },
+    "trade": {
+      "title": "Trade",
+      "description": "Start trading over 100 instruments across global markets"
+    }
+  },
+  "regulatory": {
+    "imageAlt": "Security Shield",
+    "tag1": "Segregated Client Funds",
+    "tag2": "Negative Balance Protection",
+    "tag3": "SSL Encryption",
+    "tag4": "Two-Factor Authentication",
+    "fca": {
+      "name": "Financial Conduct Authority (FCA)",
+      "license": "Reference No. 612025",
+      "country": "United Kingdom"
+    },
+    "cysec": {
+      "name": "Cyprus Securities and Exchange Commission (CySEC)",
+      "license": "License No. 250/14",
+      "country": "Cyprus"
+    },
+    "asic": {
+      "name": "Australian Securities and Investments Commission (ASIC)",
+      "license": "AFSL No. 417727",
+      "country": "Australia"
+    }
   }
 }

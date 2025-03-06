@@ -11,6 +11,9 @@ import {
   VStack,
   HStack,
   SimpleGrid,
+  useColorMode,
+  colorMode,
+  Link,
   useColorModeValue,
   Flex,
   Icon,
@@ -63,6 +66,45 @@ import { CheckCircle } from 'lucide-react';
 import MarketOverview from '@/components/stock/MarketOverview';
 import AdvancedChart from '@/components/AdvancedChart';
 import AssetPerformanceChart from '@/components/stock/AssetPerformanceChart';
+
+
+const BitStockLanding = () => {
+  const { t, i18n } = useTranslation('common');
+  const router = useRouter();
+  const containerRef = useRef(null);
+  const isRTL = router.locale === 'ar';
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+  
+  const bgGradient = useColorModeValue(
+    'linear(to-b, #F8F9FA, white)',
+    'linear(to-b, gray.900, black)'
+  );
+  
+  const headingSize = useBreakpointValue({ base: "3xl", md: "4xl", lg: "5xl" });
+  const accentColor = '#8b7966';
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const heroScale = useTransform(
+    useSpring(scrollYProgress, {
+      mass: 0.1,
+      stiffness: 100,
+      damping: 20
+    }),
+    [0, 0.2],
+    [1, 0.95]
+  );
+
+  const marketOverviewOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.1, 0.2],
+    [1, 0.8, 0]
+  );
+
 
 // Animation variants
 const fadeInUp = {
@@ -186,7 +228,10 @@ const FeatureCard = ({ feature, index }) => {
         }
       }}
     >
-      <Box
+      <Box 
+        ref={containerRef}
+        overflow="hidden"
+        dir={isRTL ? 'rtl' : 'ltr'}
         p={8}
         h="full"
         bg={useColorModeValue('white', 'gray.800')}
@@ -195,7 +240,6 @@ const FeatureCard = ({ feature, index }) => {
         borderLeft="4px solid"
         borderColor={feature.color}
         position="relative"
-        overflow="hidden"
         _hover={{
           transform: 'translateY(-8px)',
           boxShadow: '2xl'
@@ -316,41 +360,6 @@ const InvestmentCard = ({ option, index }) => {
     </motion.div>
   );
 };
-
-const BitStockLanding = () => {
-  const { t, i18n } = useTranslation('common');
-  const router = useRouter();
-  const containerRef = useRef(null);
-  const isRTL = router.locale === 'ar';
-  
-  const bgGradient = useColorModeValue(
-    'linear(to-b, #F8F9FA, white)',
-    'linear(to-b, gray.900, black)'
-  );
-  
-  const headingSize = useBreakpointValue({ base: "3xl", md: "4xl", lg: "5xl" });
-  const accentColor = '#8b7966';
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const heroScale = useTransform(
-    useSpring(scrollYProgress, {
-      mass: 0.1,
-      stiffness: 100,
-      damping: 20
-    }),
-    [0, 0.2],
-    [1, 0.95]
-  );
-
-  const marketOverviewOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.1, 0.2],
-    [1, 0.8, 0]
-  );
 
   // Features
   const features = [
@@ -636,7 +645,7 @@ const BitStockLanding = () => {
                   >
                     <motion.div style={{ opacity: marketOverviewOpacity }}>
                       <Image 
-                        src="/images/iphones-chart.webp" 
+                        src="/images/shares.webp" 
                         alt={t('stock.hero.dashboard.alt', 'Stock Trading Dashboard')}
                         width="100%"
                       />
@@ -989,14 +998,79 @@ const BitStockLanding = () => {
                     {t('stock.cta.demo', 'Request Demo')}
                   </Button>
                 </HStack>
-                
-                <Text fontSize="sm" color={useColorModeValue("gray.500", "gray.400")} pt={2}>
-                  {t('stock.cta.note', 'No credit card required. 30-day free trial with full features and dedicated support.')}
-                </Text>
               </VStack>
             </Flex>
           </motion.div>
         </Container>
+
+        {/* Legal Notices Section */}
+        <Box 
+          as="section" 
+          py={10} 
+        >
+          <Container maxW="container.xl">
+            <VStack spacing={8} align="stretch">
+              <Heading size="md" color="#8b7966">
+                {t('legal.title')}
+              </Heading>
+              
+              <Text fontSize="sm" color={isDark ? "gray.400" : "gray.600"} lineHeight="tall">
+                {t('legal.riskWarning')}
+              </Text>
+              
+              <Divider borderColor={isDark ? "gray.700" : "gray.200"} />
+              
+              <Grid templateColumns={{ base: "1fr", md: "2fr 1fr" }} gap={8}>
+                <GridItem>
+                  <VStack align="flex-start" spacing={4}>
+                    <Heading size="sm" color={isDark ? "white" : "gray.800"}>
+                      {t('legal.license.title')}
+                    </Heading>
+                    
+                    <Text fontSize="sm" color={isDark ? "gray.400" : "gray.600"} lineHeight="tall">
+                      {t('legal.license.content')}
+                    </Text>
+                  </VStack>
+                </GridItem>
+                
+                <GridItem>
+                  <VStack align="flex-start" spacing={4}>
+                    <Heading size="sm" color={isDark ? "white" : "gray.800"}>
+                      {t('legal.restricted.title')}
+                    </Heading>
+                    
+                    <Text fontSize="sm" color={isDark ? "gray.400" : "gray.600"} lineHeight="tall">
+                      {t('legal.restricted.content')}
+                    </Text>
+                  </VStack>
+                </GridItem>
+              </Grid>
+              
+              <Wrap spacing={4}>
+                {[
+                  'legal.links.privacy',
+                  'legal.links.aml',
+                  'legal.links.terms',
+                  'legal.links.security',
+                  'legal.links.risk',
+                  'legal.links.complaints'
+                ].map((key, idx) => (
+                  <WrapItem key={idx}>
+                    <Link 
+                      href={`/${t(key).toLowerCase().replace(/\s+/g, '-')}`}
+                      fontSize="xs"
+                      color={isDark ? "gray.400" : "gray.600"}
+                      _hover={{ color: "#8b7966" }}
+                      zIndex={1}
+                    >
+                      {t(key)}
+                    </Link>
+                  </WrapItem>
+                ))}
+              </Wrap>
+            </VStack>
+          </Container>
+        </Box>
       </Box>
     </Box>
   );
