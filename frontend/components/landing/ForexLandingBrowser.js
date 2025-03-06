@@ -798,8 +798,6 @@ const scaleUp = {
                   src="/images/mt5-multi.png" 
                   alt={t('mt5.imageAlt')}
                   width="100%"
-                  borderRadius="lg"
-                  boxShadow="xl"
                 />
               </MotionBox>
             </GridItem>
@@ -1276,8 +1274,6 @@ const scaleUp = {
                           <Image 
                             src="/images/ib.png" 
                             alt="Partnership Program" 
-                            borderRadius="xl"
-                            boxShadow="xl"
                           />
                         </motion.div>
                       </GridItem>

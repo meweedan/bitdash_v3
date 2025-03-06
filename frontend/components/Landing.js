@@ -63,6 +63,7 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { FaWhatsapp, FaRegFile, FaRegCreditCard, FaHandHoldingUsd, FaBalanceScale, FaFileContract, FaMosque, FaChartLine, FaExchangeAlt, FaUniversity, FaShieldAlt, FaChevronRight, FaBitcoin, FaDollarSign, FaChartBar, FaCoins, FaUser } from 'react-icons/fa';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const MotionBox = motion(Box);
   const ChakraBox = motion(Box);
@@ -774,16 +775,13 @@ export default function LandingPage() {
                     fontSize="xs"
                     color={isDark ? "gray.400" : "gray.600"}
                     _hover={{ color: "#8b7966" }}
+                    zIndex={1}
                   >
                     {t(key)}
                   </Link>
                 </WrapItem>
               ))}
             </Wrap>
-            
-            <Text fontSize="xs" color={isDark ? "gray.500" : "gray.400"} textAlign="center">
-              {t('legal.copyright', { year: new Date().getFullYear() })}
-            </Text>
           </VStack>
         </Container>
       </Box>
@@ -1098,3 +1096,11 @@ const StepCard = ({ number, title, description, delay }) => {
     </MotionBox>
   );
 };
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
+}

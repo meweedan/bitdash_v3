@@ -159,163 +159,168 @@ export default function Header() {
     </Link>
   );
   
-  // Main menu items (LDN style)
-  const mainMenuItems = [
-    { 
-      name: 'Platforms', 
-      path: '/platforms',
-      submenu: [
-        { name: 'MT5 Platform', path: '/platforms/mt5' },
-        { name: 'Web Trader', path: '/platforms/web-trader' },
-        { name: 'Mobile Apps', path: '/platforms/mobile' },
-      ]
-    },
-    { 
-      name: 'Funding', 
-      path: '/funding',
-      submenu: [
-        { name: 'Deposit Methods', path: '/funding/deposit' },
-        { name: 'Withdrawals', path: '/funding/withdrawal' },
-        { name: 'Payment FAQ', path: '/funding/faq' },
-      ]
-    },
-    { 
-      name: 'About', 
-      path: '/about',
-      submenu: [
-        { name: 'Company Profile', path: '/about/profile' },
-        { name: 'Regulation', path: '/about/regulation' },
-        { name: 'Contact Us', path: '/about/contact' },
-      ]
-    },
-  ];
-
-  // Platform-specific menu items for mobile
+  // Main menu items for main domain (bitdash.app)
+  const getMainDomainMenuItems = () => {
+    return [
+      { 
+        name: t('aboutUs', 'About Us'),
+        path: '/about',
+        submenu: [
+          { name: t('companyProfile', 'Company Profile'), path: '/about/profile' },
+          { name: t('ourTeam', 'Our Team'), path: '/about/team' },
+          { name: t('regulation', 'Regulation'), path: '/about/regulation' },
+        ]
+      },
+      { 
+        name: t('institutionalServices', 'Institutional Services'),
+        path: '/institutional',
+        submenu: [
+          { name: t('tradingAPI', 'Trading API'), path: '/institutional/api' },
+          { name: t('liquidityServices', 'Liquidity Services'), path: '/institutional/liquidity' },
+          { name: t('wealthManagement', 'Wealth Management'), path: '/institutional/wealth' },
+        ]
+      },
+      { 
+        name: t('contactUs', 'Contact Us'), 
+        path: '/contact',
+        submenu: [
+          { name: t('support', 'Support'), path: '/contact/support' },
+          { name: t('careers', 'Careers'), path: '/contact/careers' },
+          { name: t('offices', 'Offices'), path: '/contact/offices' },
+        ]
+      },
+    ];
+  };
+  
+  // Platform-specific menu items 
   const getPlatformMenuItems = () => {
     if (platform === 'bitfund') { // Crypto
       return [
         { 
-          name: 'Exchange', 
+          name: t('exchange', 'Exchange'), 
           path: '/crypto/exchange',
           submenu: [
-            { name: 'Spot Trading', path: '/crypto/exchange/spot' },
-            { name: 'Futures', path: '/crypto/exchange/futures' },
-            { name: 'Options', path: '/crypto/exchange/options' },
+            { name: t('spotTrading', 'Spot Trading'), path: '/crypto/exchange/spot' },
+            { name: t('futures', 'Futures'), path: '/crypto/exchange/futures' },
+            { name: t('options', 'Options'), path: '/crypto/exchange/options' },
           ]
         },
         { 
-          name: 'Markets', 
+          name: t('markets', 'Markets'), 
           path: '/crypto/markets',
           submenu: [
-            { name: 'Top Coins', path: '/crypto/markets/top-coins' },
-            { name: 'Market Cap', path: '/crypto/markets/market-cap' },
-            { name: 'New Listings', path: '/crypto/markets/new-listings' },
+            { name: t('topCoins', 'Top Coins'), path: '/crypto/markets/top-coins' },
+            { name: t('marketCap', 'Market Cap'), path: '/crypto/markets/market-cap' },
+            { name: t('newListings', 'New Listings'), path: '/crypto/markets/new-listings' },
           ]
         },
         { 
-          name: 'Earn', 
+          name: t('earn', 'Earn'), 
           path: '/crypto/earn',
           submenu: [
-            { name: 'Staking', path: '/crypto/earn/staking' },
-            { name: 'Yield Farming', path: '/crypto/earn/yield' },
-            { name: 'Savings', path: '/crypto/earn/savings' },
+            { name: t('staking', 'Staking'), path: '/crypto/earn/staking' },
+            { name: t('yieldFarming', 'Yield Farming'), path: '/crypto/earn/yield' },
+            { name: t('savings', 'Savings'), path: '/crypto/earn/savings' },
           ]
         },
       ];
     } else if (platform === 'bitstock') { // Stock
       return [
         { 
-          name: 'Invest', 
+          name: t('invest', 'Invest'), 
           path: '/stock/invest',
           submenu: [
-            { name: 'Stocks', path: '/stock/invest/stocks' },
-            { name: 'ETFs', path: '/stock/invest/etfs' },
-            { name: 'IPOs', path: '/stock/invest/ipos' },
+            { name: t('stocks', 'Stocks'), path: '/stock/invest/stocks' },
+            { name: t('etfs', 'ETFs'), path: '/stock/invest/etfs' },
+            { name: t('ipos', 'IPOs'), path: '/stock/invest/ipos' },
           ]
         },
         { 
-          name: 'Research', 
+          name: t('research', 'Research'), 
           path: '/stock/research',
           submenu: [
-            { name: 'Market News', path: '/stock/research/news' },
-            { name: 'Analyst Ratings', path: '/stock/research/ratings' },
-            { name: 'Screener', path: '/stock/research/screener' },
+            { name: t('marketNews', 'Market News'), path: '/stock/research/news' },
+            { name: t('analystRatings', 'Analyst Ratings'), path: '/stock/research/ratings' },
+            { name: t('screener', 'Screener'), path: '/stock/research/screener' },
           ]
         },
         { 
-          name: 'Portfolio', 
+          name: t('portfolio', 'Portfolio'), 
           path: '/stock/portfolio',
           submenu: [
-            { name: 'My Holdings', path: '/stock/portfolio/holdings' },
-            { name: 'Performance', path: '/stock/portfolio/performance' },
-            { name: 'Dividends', path: '/stock/portfolio/dividends' },
+            { name: t('myHoldings', 'My Holdings'), path: '/stock/portfolio/holdings' },
+            { name: t('performance', 'Performance'), path: '/stock/portfolio/performance' },
+            { name: t('dividends', 'Dividends'), path: '/stock/portfolio/dividends' },
           ]
         },
       ];
     } else if (platform === 'bittrade') { // Forex
       return [
         { 
-          name: 'Trading', 
+          name: t('trading', 'Trading'), 
           path: '/forex/trading',
           submenu: [
-            { name: 'Currency Pairs', path: '/forex/trading/currency-pairs' },
-            { name: 'Commodities', path: '/forex/trading/commodities' },
-            { name: 'Indices', path: '/forex/trading/indices' },
+            { name: t('currencyPairs', 'Currency Pairs'), path: '/forex/trading/currency-pairs' },
+            { name: t('commodities', 'Commodities'), path: '/forex/trading/commodities' },
+            { name: t('indices', 'Indices'), path: '/forex/trading/indices' },
           ]
         },
         { 
-          name: 'Analysis', 
+          name: t('analysis', 'Analysis'), 
           path: '/forex/analysis',
           submenu: [
-            { name: 'Economic Calendar', path: '/forex/analysis/economic-calendar' },
-            { name: 'Market Sentiment', path: '/forex/analysis/sentiment' },
-            { name: 'Technical Tools', path: '/forex/analysis/technical' },
+            { name: t('economicCalendar', 'Economic Calendar'), path: '/forex/analysis/economic-calendar' },
+            { name: t('marketSentiment', 'Market Sentiment'), path: '/forex/analysis/sentiment' },
+            { name: t('technicalTools', 'Technical Tools'), path: '/forex/analysis/technical' },
           ]
         },
         { 
-          name: 'Education', 
+          name: t('education', 'Education'), 
           path: '/forex/education',
           submenu: [
-            { name: 'Trading Guides', path: '/forex/education/guides' },
-            { name: 'Webinars', path: '/forex/education/webinars' },
-            { name: 'Strategy Resources', path: '/forex/education/strategies' },
+            { name: t('tradingGuides', 'Trading Guides'), path: '/forex/education/guides' },
+            { name: t('webinars', 'Webinars'), path: '/forex/education/webinars' },
+            { name: t('strategyResources', 'Strategy Resources'), path: '/forex/education/strategies' },
           ]
         },
       ];
     } else if (platform === 'bitcash') { // Cash
       return [
         { 
-          name: 'Payments', 
+          name: t('payments', 'Payments'), 
           path: '/cash/payments',
           submenu: [
-            { name: 'Send Money', path: '/cash/payments/send' },
-            { name: 'Request Money', path: '/cash/payments/request' },
-            { name: 'Pay Bills', path: '/cash/payments/bills' },
+            { name: t('sendMoney', 'Send Money'), path: '/cash/payments/send' },
+            { name: t('requestMoney', 'Request Money'), path: '/cash/payments/request' },
+            { name: t('payBills', 'Pay Bills'), path: '/cash/payments/bills' },
           ]
         },
         { 
-          name: 'Cards', 
+          name: t('cards', 'Cards'), 
           path: '/cash/cards',
           submenu: [
-            { name: 'Virtual Cards', path: '/cash/cards/virtual' },
-            { name: 'Physical Cards', path: '/cash/cards/physical' },
-            { name: 'Card Settings', path: '/cash/cards/settings' },
+            { name: t('virtualCards', 'Virtual Cards'), path: '/cash/cards/virtual' },
+            { name: t('physicalCards', 'Physical Cards'), path: '/cash/cards/physical' },
+            { name: t('cardSettings', 'Card Settings'), path: '/cash/cards/settings' },
           ]
         },
         { 
-          name: 'Banking', 
+          name: t('banking', 'Banking'), 
           path: '/cash/banking',
           submenu: [
-            { name: 'Accounts', path: '/cash/banking/accounts' },
-            { name: 'Statements', path: '/cash/banking/statements' },
-            { name: 'Savings', path: '/cash/banking/savings' },
+            { name: t('accounts', 'Accounts'), path: '/cash/banking/accounts' },
+            { name: t('statements', 'Statements'), path: '/cash/banking/statements' },
+            { name: t('bankingSavings', 'Savings'), path: '/cash/banking/savings' },
           ]
         },
       ];
     } else {
-      return mainMenuItems; // Default menu items
+      return []; // Empty for main domain as we'll handle that separately
     }
   };
+
+  // Determine which menu items to display based on domain
+  const menuItems = isMainDomain() ? getMainDomainMenuItems() : getPlatformMenuItems();
   
   return (
     <Flex
@@ -397,13 +402,14 @@ export default function Header() {
           </Link>
         </Box>
 
-        {/* Desktop Main Menu - LDN Style */}
+        {/* Desktop Main Menu */}
         <HStack 
           spacing={6}
           display={{ base: 'none', lg: 'flex' }}
           position="relative"
         >
-          {getPlatformMenuItems().map ((item) => (
+          {/* Display menu items based on domain */}
+          {menuItems.map((item) => (
             <Popover key={item.name} trigger="hover" placement="bottom-start">
               <PopoverTrigger>
                 <Box>
@@ -457,7 +463,7 @@ export default function Header() {
             </Popover>
           ))}
           
-          {/* Our Solutions Button */}
+          {/* Our Solutions Button - Always visible regardless of domain */}
           <Box position="relative">
             <HStack 
               spacing={1} 
@@ -470,7 +476,7 @@ export default function Header() {
                 fontSize="xl"
                 color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`}
               >
-                {t('ourSolutions')}
+                {t('ourSolutions', 'Our Solutions')}
               </Text>
               <Icon as={FaChevronDown} boxSize={3} color={isDark ? `brand.${platform}.400` : `brand.${platform}.700`} />
             </HStack>
@@ -533,7 +539,7 @@ export default function Header() {
                     onClick={() => router.push('/dashboard')}
                     _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
                   >
-                    {t('myAccount')}
+                    {t('myAccount', 'My Account')}
                   </Button>
                   <Button
                     leftIcon={<FaSignOutAlt size={16} />}
@@ -542,7 +548,7 @@ export default function Header() {
                     variant={`${platform}-outline`}
                     colorScheme="red"
                   >
-                    {t('logout')}
+                    {t('logout', 'Logout')}
                   </Button>
                 </>
               ) : (
@@ -555,7 +561,7 @@ export default function Header() {
                     onClick={() => router.push('/login')}
                     _hover={{bg : isDark ? `brand.${platform}.700` : `brand.${platform}.700`}}
                   >
-                    {t('login')}
+                    {t('login', 'Login')}
                   </Button>
                   <Button 
                     leftIcon={<FaUserPlus size={16} />}
@@ -566,7 +572,7 @@ export default function Header() {
                     onClick={() => router.push('/signup')}
                     _hover={{bg : `brand.${platform}.700`}}
                   >
-                    {t('signup')}
+                    {t('signup', 'Sign Up')}
                   </Button>
                 </>
               )}
@@ -574,7 +580,7 @@ export default function Header() {
           )}
         </HStack>
 
-        {/* Mobile Controls - From pasted item 2 */}
+        {/* Mobile Controls */}
         <HStack display={{ base: 'flex', lg: 'none'}} spacing={2}>
           <Box>
             <LanguageSwitcher 
@@ -644,7 +650,7 @@ export default function Header() {
                       onClose();
                     }}
                   >
-                    {t('myAccount')}
+                    {t('myAccount', 'My Account')}
                   </Button>
                   <Button 
                     leftIcon={<FaSignOutAlt />}
@@ -656,7 +662,7 @@ export default function Header() {
                       onClose();
                     }}
                   >
-                    {t('logout')}
+                    {t('logout', 'Logout')}
                   </Button>
                 </>
               ) : (
@@ -670,27 +676,28 @@ export default function Header() {
                       onClose();
                     }}
                   >
-                      {t('login')}
-                    </Button>
-                    <Button 
-                      leftIcon={<FaUserPlus />}
-                      bg={`brand.${platform}.600`}
-                      color="white"
-                      _hover={{ bg: `brand.${platform}.700` }}
-                      w="full"
-                      onClick={() => {
-                        router.push('/signup');
-                        onClose();
-                      }}
-                    >
-                      {t('signup')}
-                    </Button>
-                  </>
-                )}
-              </HStack>
-            )}
-          <VStack align="stretch" spacing={4}>
-            {getPlatformMenuItems().map ((item) => (
+                    {t('login', 'Login')}
+                  </Button>
+                  <Button 
+                    leftIcon={<FaUserPlus />}
+                    bg={`brand.${platform}.600`}
+                    color="white"
+                    _hover={{ bg: `brand.${platform}.700` }}
+                    w="full"
+                   onClick={() => {
+                      router.push('/signup');
+                      onClose();
+                    }}
+                  >
+                    {t('signup', 'Sign Up')}
+                  </Button>
+                </>
+              )}
+            </HStack>
+          )}
+          <VStack align="stretch" spacing={4} mt={!isMainDomain() ? 4 : 0}>
+            {/* Display menu items based on domain */}
+            {menuItems.map((item) => (
               <Box key={item.name}>
                 <Link href={item.path} passHref>
                   <Text
@@ -724,7 +731,7 @@ export default function Header() {
               </Box>
             ))}
             
-            {/* Our Solutions Section */}
+            {/* Our Solutions Section - always present regardless of domain */}
             <Box>
               <Text
                 fontWeight="bold"
@@ -735,17 +742,17 @@ export default function Header() {
                 onClick={() => setShowPlatforms(!showPlatforms)}
                 cursor="pointer"
               >
-                {t('ourSolutions')}
+                {t('ourSolutions', 'Our Solutions')}
               </Text>
               <Flex 
-                mt={4}  // Increased from 2
-                justify="center"  // Changed from space-between
+                mt={4}
+                justify="center"
                 align="center" 
-                px={2}  // Reduced from 4
+                px={2}
                 w="full" 
-                gap={4}  // Added gap between items
+                gap={4}
                 overflowX="auto"
-                flexWrap="wrap"  // Allow wrapping on smaller screens
+                flexWrap="wrap"
                 css={{
                   '&::-webkit-scrollbar': {
                     display: 'none'
@@ -761,7 +768,7 @@ export default function Header() {
                     rel="noopener noreferrer"
                     style={{ textDecoration: 'none' }}
                   >
-                    <VStack spacing={2}>  // Added spacing
+                    <VStack spacing={2}>
                       <Text fontSize="xl" fontWeight="bold" color={isDark ? "brand.bitdash.400" : "brand.bitdash.700"}>
                         {platform.name.split(' ')[0]}
                       </Text>
