@@ -53,3 +53,8 @@ backend/public/uploads/*
 **/.cache
 **/*.pack
 **/*.pack.*
+
+frontend/public/images/*.mp4
+frontend/public/images/*.webm
+frontend/public/images/*.mov
+frontend/public/images/*.gif
