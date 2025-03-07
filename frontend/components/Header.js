@@ -94,7 +94,7 @@ export default function Header() {
       name: 'Stocks by BitDash',
       image: '/stocks.png',
       mobileImage: '/stocks.png',
-      href: 'https://stock.bitdash.app/',
+      href: 'https://stocks.bitdash.app/',
     },
      {
       name: 'Crypto by BitDash',
