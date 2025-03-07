@@ -364,7 +364,7 @@ export default function Header() {
                 _hover={{ transform: 'translateY(-5px)' }}
               >
                 {/* Fixed size container with consistent dimensions */}
-                <Box position="relative" width="180px" height="60px">
+                <Box position="relative" width="200px" height="70px">
                   <Image 
                     src={platform.image}
                     alt={platform.name}
@@ -394,7 +394,7 @@ export default function Header() {
         backdropFilter="blur(10px)"
       >
         {/* Logo - Using the display from first version */}
-        <Box width={{ base: '110px', md: '150px' }}>
+        <Box width={{ base: '200px', md: '200px' }}>
           <Link href="/" passHref>
             <Box display="block">
               <Logo />

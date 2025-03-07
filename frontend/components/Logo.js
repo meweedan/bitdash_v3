@@ -60,7 +60,7 @@ const Logo = () => {
   const aspectRatio = logoConfig.width / logoConfig.height;
   
   // Base size (mobile)
-  const mobileWidth = "100px";
+  const mobileWidth = "125px";
   const mobileHeight = `${parseInt(mobileWidth) / aspectRatio}px`;
   
   // Desktop size (25% bigger)
