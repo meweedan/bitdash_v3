@@ -1,8 +1,8 @@
 // pages/crypto-exchange.js
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next'; // Remove if not using next-i18next
+import { useTranslation } from 'next-i18next';
 import dynamic from 'next/dynamic';
 import {
   Box,
@@ -12,11 +12,12 @@ import {
   Button,
   VStack,
   HStack,
-  SimpleGrid,
+  Flex,
   useColorModeValue,
   Icon,
   Grid,
   GridItem,
+  Spinner,
   useBreakpointValue,
   Stack,
   useColorMode,
@@ -51,35 +52,79 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
+  Select,
+  Slider,
   useDisclosure,
-  Select
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  Skeleton,
+  Avatar,
+  Link
 } from '@chakra-ui/react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   FaSearch,
   FaStar,
-  FaCog,
   FaCreditCard,
   FaWallet,
   FaClipboard,
   FaQrcode,
-  FaDollarSign
+  FaChevronLeft,
+  FaChevronRight,
+  FaRegClock,
+  FaSync,
+  FaChartLine,
+  FaArrowDown,
+  FaArrowUp,
+  FaNewspaper,
+  FaGlobe,
+  FaCog,
+  FaExternalLinkAlt
 } from 'react-icons/fa';
-import AdvancedChart from '@/components/AdvancedChart';
+import CryptoNews from '@/components/crypto/CryptoNews';
+import TradeForm from '@/components/crypto/TradeForm'; // Ensure you have this component defined
 
-// DYNAMIC IMPORT: Candlestick chart from ApexCharts (no SSR).
+// DYNAMIC IMPORT: Candlestick chart from ApexCharts (no SSR)
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
-// Simple example top-coins ticker from CoinGecko
+// --- Helper Format Functions ---
+function formatPrice(p) {
+  if (!p) return '0.00';
+  if (p < 1) return p.toFixed(6);
+  if (p < 10) return p.toFixed(4);
+  if (p < 1000) return p.toFixed(2);
+  return p.toFixed(2);
+}
+
+function formatPercent(num) {
+  if (!num) return '0.00%';
+  return num > 0 ? `+${num.toFixed(2)}%` : `${num.toFixed(2)}%`;
+}
+
+function formatCompactNumber(num) {
+  if (!num) return '0';
+  if (num >= 1e9) return (num / 1e9).toFixed(1) + 'B';
+  if (num >= 1e6) return (num / 1e6).toFixed(1) + 'M';
+  if (num >= 1e3) return (num / 1e3).toFixed(1) + 'K';
+  return num.toFixed(0);
+}
+
+function formatTime(date) {
+  return new Date(date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+}
+
+// --- Top Coins Ticker ---
 function TopCoinsTicker() {
+  const { t } = useTranslation('common');
   const [coins, setCoins] = useState([]);
+  const bg = useColorModeValue('gray.100', 'gray.700');
 
   useEffect(() => {
     async function fetchTopCoins() {
       try {
         const res = await fetch(
-          'https://api.coingecko.com/api/v3/coins/markets' +
-            '?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false'
+          'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=15&page=1&sparkline=true'
         );
         if (!res.ok) throw new Error('Failed fetching ticker data.');
         const data = await res.json();
@@ -88,684 +133,825 @@ function TopCoinsTicker() {
         console.error(err);
       }
     }
-
     fetchTopCoins();
-    // Optional: re-fetch every 60 seconds (or however often).
-    const interval = setInterval(fetchTopCoins, 60000);
+    const interval = setInterval(fetchTopCoins, 30000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <Box
-      bg={useColorModeValue('gray.100', 'gray.700')}
-      borderRadius="md"
-      p={2}
-      overflow="hidden"
-      whiteSpace="nowrap"
-      mb={4}
-    >
-      <motion.div
-        animate={{ x: ['100%', '-100%'] }}
-        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-        style={{ display: 'inline-flex' }}
-      >
-        {coins.map((coin) => (
-          <HStack key={coin.id} spacing={2} mx={4}>
-            <Box boxSize={5}>
-              <img src={coin.image} alt={coin.name} />
-            </Box>
-            <Text fontWeight="bold">{coin.symbol.toUpperCase()}</Text>
-            <Text color="green.400">${coin.current_price.toFixed(2)}</Text>
-          </HStack>
-        ))}
-      </motion.div>
+    <Box borderRadius="md" boxShadow="sm" overflowX="auto" mb={4}>
+      <Table variant="simple">
+        <Thead>
+          <Tr>
+            <Th>{t('pair', 'Pair')}</Th>
+            <Th isNumeric>{t('price', 'Price')}</Th>
+            <Th isNumeric>{t('24h_change', '24h Change')}</Th>
+            <Th>{t('actions', 'Actions')}</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {coins.length === 0 ? (
+            Array(5)
+              .fill(0)
+              .map((_, i) => (
+                <Tr key={i}>
+                  <Td><Skeleton height="20px" width="100px" /></Td>
+                  <Td><Skeleton height="20px" width="80px" /></Td>
+                  <Td><Skeleton height="20px" width="70px" /></Td>
+                  <Td><Skeleton height="20px" width="100px" /></Td>
+                  <Td><Skeleton height="20px" width="60px" /></Td>
+                </Tr>
+              ))
+          ) : (
+            coins.map(coin => (
+              <Tr key={coin.id} _hover={{ bg: useColorModeValue('gray.50', 'gray.700') }}>
+                <Td>
+                  <HStack spacing={2}>
+                    <Avatar src={coin.image} size="xs" />
+                    <Text fontWeight="medium">{coin.symbol.toUpperCase()}/USDT</Text>
+                  </HStack>
+                </Td>
+                <Td isNumeric fontWeight="medium">${formatPrice(coin.current_price)}</Td>
+                <Td isNumeric>
+                  <Text color={coin.price_change_percentage_24h >= 0 ? 'green.500' : 'red.500'} fontWeight="medium">
+                    {formatPercent(coin.price_change_percentage_24h)}
+                  </Text>
+                </Td>
+                <Td>
+                  <Button size="xs" variant="crypto-solid">
+                    {t('crypto.trade', 'Trade')}
+                  </Button>
+                </Td>
+              </Tr>
+            ))
+          )}
+        </Tbody>
+      </Table>
     </Box>
   );
 }
 
-// The main page
+// --- Main CryptoExchange Page ---
 function CryptoExchange() {
   const router = useRouter();
   const { locale } = router;
-  const { t } = useTranslation('common'); // Remove if not using next-i18next
+  const { t } = useTranslation('common');
 
-  // For parallax effect on the hero (optional).
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end end'] });
-  const heroScale = useTransform(
-    useSpring(scrollYProgress, { mass: 0.1, stiffness: 100, damping: 20 }),
-    [0, 1],
-    [1, 0.93]
-  );
-
-  // Adjust text direction & language
   useEffect(() => {
     document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = locale;
   }, [locale]);
 
-  // Color/theme usage
-  const bgGradient = useColorModeValue('linear(to-b, gray.50, white)', 'linear(to-b, gray.900, black)');
+  // Use brand colors and custom variants (assumed to be in your theme)
   const panelBg = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
-  const textColorSecondary = useColorModeValue('gray.600', 'gray.400');
+  const textColorSecondary = useColorModeValue('gray.200', 'gray.700');
+  const textColorPrimary = useColorModeValue('gray.200', 'gray.700');
   const { colorMode } = useColorMode();
   const dark = colorMode === 'dark';
 
   // States
-  const [showSearch, setShowSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const intervals = ['5m','15m','1h','4h','1d'];
-  const [sub, setSub] = useState('');
-  const [win, setWin] = useState({
-    width: typeof window !== 'undefined' ? window.innerWidth : 768,
-    height: typeof window !== 'undefined' ? window.innerHeight : 600
-  });
-  const [favoritePairs, setFavoritePairs] = useState([]);
-  const [coins, setCoins] = useState([]); // All coins from CoinGecko
-  const [selectedCoin, setSelectedCoin] = useState(null); // The user’s selected coin object
-  const [selectedPair, setSelectedPair] = useState(selectedCoin ? selectedCoin.symbol.toUpperCase() : 'BTC');
+  const [showSearch, setShowSearch] = useState(false);
   const [selectedInterval, setSelectedInterval] = useState('1d');
-  const [loading, setLoading] = useState(true);
+  const [favoritePairs, setFavoritePairs] = useState([]);
+  const [coins, setCoins] = useState([]);
+  const [selectedCoin, setSelectedCoin] = useState(null);
   const [chartTimeframe, setChartTimeframe] = useState('1D');
   const [orderSide, setOrderSide] = useState('buy');
+  const [loading, setLoading] = useState(true);
   const [orderType, setOrderType] = useState('limit');
+  const [orderBook, setOrderBook] = useState({ bids: [], asks: [] });
+  const [recentTrades, setRecentTrades] = useState([]);
+  const [tradeAmount, setTradeAmount] = useState(0);
+  const [tradePrice, setTradePrice] = useState(0);
+  const [line, setLine] = useState(false);
+  const [vol, setVol] = useState(true);
+  const [leverage, setLeverage] = useState(1);
+  const [activeTab, setActiveTab] = useState(0);
+  const [chartData, setChartData] = useState([]);
+  const [chartLoading, setChartLoading] = useState(false);
+  const [err, setErr] = useState('');
+  const [noData, setNoData] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const [idx, setIdx] = useState(0);
+  const [selectedPair, setSelectedPair] = useState('');
+
+  const win = useMemo(() => ({
+    width: typeof window !== 'undefined' ? window.innerWidth : 768,
+    height: typeof window !== 'undefined' ? window.innerHeight : 600
+  }), []);
+  const isLargeScreen = useBreakpointValue({ base: false, lg: true });
   const mb = win.width < 768;
+  const chartH = mb ? Math.min(350, win.height * 0.5) : 600;
+  const volH = mb ? 10 : 10;
 
-  // For modals
-  const { isOpen: depositOpen, onOpen: onDepositOpen, onClose: onDepositClose } = useDisclosure();
-  const { isOpen: withdrawOpen, onOpen: onWithdrawOpen, onClose: onWithdrawClose } = useDisclosure();
-   const {
-    isOpen: isSearchOpen,
-    onOpen: onSearchOpen,
-    onClose: onSearchClose
-  } = useDisclosure();
+  const { isOpen: isSearchOpen, onOpen: onSearchOpen, onClose: onSearchClose } = useDisclosure();
 
-  // Fetch the top ~20 coins from CoinGecko for the “market pairs” list
+  // Fetch coins for market list
   useEffect(() => {
     async function fetchCoins() {
       try {
         const res = await fetch(
-          'https://api.coingecko.com/api/v3/coins/markets' +
-            '?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false'
+          'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=true'
         );
         if (!res.ok) throw new Error('Failed fetching market data.');
         const data = await res.json();
         setCoins(data);
-        // Default selected: the first coin
         setSelectedCoin(data[0]);
+        setTradePrice(data[0]?.current_price || 0);
       } catch (err) {
         console.error(err);
       }
     }
-
     fetchCoins();
   }, []);
 
-  // Toggle coin in favorites
-  const toggleFavorite = (coinId) => {
-    setFavoritePairs((prev) =>
-      prev.includes(coinId) ? prev.filter((id) => id !== coinId) : [...prev, coinId]
+  const toggleFavorite = coinId => {
+    setFavoritePairs(prev =>
+      prev.includes(coinId) ? prev.filter(id => id !== coinId) : [...prev, coinId]
     );
   };
 
-  const isCryptoDomain = sub === 'crypto';
-  const isForexDomain = sub === 'forex';
-  const isStockDomain = sub === 'stock';
-
-
-  const getPairs = () => {
-    if (isCryptoDomain) return cryptoPairs;
-    if (isForexDomain) return forexPairs;
-    if (isStockDomain) return stockPairs;
-    return [];
-  };
-
-  // Filter coins by search term
-  const filteredCoins = coins.filter((coin) =>
+  const filteredCoins = coins.filter(coin =>
     coin.symbol.toLowerCase().includes(searchTerm.toLowerCase()) ||
     coin.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Decide which coin ID to chart
-  // e.g. "bitcoin", "ethereum", "cardano", etc.
-  const coinIdForChart = selectedCoin ? selectedCoin.id : null;
-
-  // ----------------------------------------------------------------
-  // Live Chart with OHLC data from CoinGecko
-  // ----------------------------------------------------------------
-  const [chartData, setChartData] = useState([]);
-  const [chartLoading, setChartLoading] = useState(false);
-
+  // Fetch chart data
   useEffect(() => {
-    if (!coinIdForChart) return;
-
-    async function fetchCoinOHLC() {
-      setChartLoading(true);
+    if (!selectedCoin) return;
+    setChartLoading(true);
+    (async () => {
       try {
-        // According to CoinGecko docs, valid days param: 1, 7, 14, 30, 90, 180, 365, max
-        // We'll interpret timeframes as: '1D' -> 1, '7D' -> 7, '1M' -> 30, '3M' -> 90, etc.
         let days = 1;
-        if (chartTimeframe === '7D') days = 7;
-        else if (chartTimeframe === '1M') days = 30;
-        else if (chartTimeframe === '3M') days = 90;
-        else if (chartTimeframe === '1Y') days = 365;
-
+        if (['1W', '1M', '3M', '6M', '1Y', 'All'].includes(chartTimeframe)) {
+          const longtermMap = {
+            '1W': 7,
+            '1M': 30,
+            '3M': 90,
+            '6M': 180,
+            '1Y': 365,
+            'All': Infinity
+          };
+          days = longtermMap[chartTimeframe];
+        }
         const res = await fetch(
-          `https://api.coingecko.com/api/v3/coins/${coinIdForChart}/ohlc` +
-            `?vs_currency=usd&days=${days}`
+          `https://api.coingecko.com/api/v3/coins/${selectedCoin.id}/ohlc?vs_currency=usd&days=${days}`
         );
         if (!res.ok) throw new Error('Failed fetching OHLC data.');
         const data = await res.json();
-        // data => Array of [timestamp, open, high, low, close]
-        const formatted = data.map((entry) => {
-          return {
-            x: new Date(entry[0]).getTime(),
-            y: [entry[1], entry[2], entry[3], entry[4]]
-          };
-        });
+        const formatted = data.map(entry => ({
+          x: new Date(entry[0]).getTime(),
+          y: [entry[1], entry[2], entry[3], entry[4]],
+          timestamp: entry[0],
+          open: entry[1],
+          high: entry[2],
+          low: entry[3],
+          close: entry[4],
+          volume: Math.random() * 1000000 // Mock volume data since ohlc doesn't include it
+        }));
         setChartData(formatted);
-      } catch (err) {
-        console.error(err);
+      } catch (error) {
+        console.error(error);
       }
       setChartLoading(false);
+    })();
+  }, [selectedCoin, chartTimeframe]);
+
+  const stats = useMemo(() => {
+    if (!chartData.length || noData) {
+      return {
+        currentPrice: 0,
+        priceChangePercent: 0,
+        isPriceUp: false,
+        high24h: 0,
+        low24h: 0
+      };
     }
+    const cp = chartData[chartData.length - 1].y[3];
+    const prev = chartData.length > 1 ? chartData[chartData.length - 2].y[3] : cp;
+    const change = cp - prev;
+    return {
+      currentPrice: cp,
+      priceChangePercent: prev ? (change / prev) * 100 : 0,
+      isPriceUp: change >= 0,
+      high24h: selectedCoin?.high_24h || 0,
+      low24h: selectedCoin?.low_24h || 0
+    };
+  }, [chartData, noData, selectedCoin]);
 
-    fetchCoinOHLC();
-  }, [coinIdForChart, chartTimeframe]);
+  const fp = n => (n ? n.toFixed(2) : '0.00');
 
-  // ApexCharts options
-  const chartOptions = {
-    chart: {
-      type: 'candlestick',
-      background: 'transparent',
-      toolbar: { show: false }
+  // Timeframe wheel with two groups:
+  const intradayOptions = ['5m', '15m', '1h', '4h'];
+  const longtermOptions = ['1d', '1w', '1m', '3m', '6m', '1y', 'All'];
+  const renderTimeframeButtons = () => {
+  const timeframes = ['5m', '15m', '1h', '4h', '1D', '1W', '1M'];
+  return (
+    <HStack spacing={2} wrap="wrap">
+      {timeframes.map(interval => (
+        <Button
+          key={interval}
+          size="xs"
+          variant={chartTimeframe === interval ? 'crypto-solid' : 'crypto-outline'}
+          onClick={() => setChartTimeframe(interval)}
+        >
+          {interval}
+        </Button>
+      ))}
+    </HStack>
+  );
+};
+
+  const renderControlButtons = () => (
+    <HStack spacing={2} mt={4}>
+      <Button onClick={() => setLine(!line)}  isDisabled={noData} title={line ? 'Candlestick' : 'Line'}>
+        {line ? <Icon as={FaChartLine} boxSize={4} /> : <Icon as={FaChartLine} boxSize={4} />}
+      </Button>
+      <Button onClick={() => setVol(!vol)} isDisabled={!selectedCoin || noData} title={vol ? 'Hide volume' : 'Show volume'}>
+        {vol ? 'Vol ✓' : 'Vol'}
+      </Button>
+      <Button onClick={() => scroll('left')} title="Pan left">
+        <Icon as={FaChevronLeft} boxSize={4} />
+      </Button>
+      <Button onClick={() => scroll('right')}title="Pan right">
+        <Icon as={FaChevronRight} boxSize={4} />
+      </Button>
+      <Button onClick={zoomOut} isDisabled={noData} title="Zoom out">
+        <Icon as={FaSync} boxSize={4} />
+      </Button>
+      <Button onClick={zoomIn} isDisabled={noData} title="Zoom in">
+        <Icon as={FaSync} boxSize={4} />
+      </Button>
+    </HStack>
+  );
+
+  const mainSeries = useMemo(() => {
+    let d = chartData;
+    if (!d.length) {
+      if (err || noData) return [];
+      else return [];
+    }
+    const priceSeries = {
+      name: 'Price',
+      type: line ? 'line' : 'candlestick',
+      data: d.map(x => ({ 
+        x: x.x, 
+        y: line ? x.y[3] : x.y 
+      })),
+      color: line ? 'blue' : 'blue'
+    };
+    if (vol && selectedCoin && !noData) {
+      const volumeSeries = {
+        name: 'Volume',
+        type: 'bar',
+        data: d.map(x => ({
+          x: x.x,
+          y: x.volume,
+          fillColor: x.y[3] >= x.y[0] ? 'green' : 'red'
+        }))
+      };
+      return [priceSeries, volumeSeries];
+    }
+    return [priceSeries];
+  }, [chartData, line, vol, noData, err, selectedCoin]);
+
+  const chartOptions = useMemo(() => ({
+  chart: {
+    type: line ? 'line' : 'candlestick',
+    height: chartH,
+    background: 'transparent',
+    toolbar: { show: true },
+    zoom: { enabled: true }, // Enable zoom
+    animations: { enabled: false }
+  },
+  plotOptions: {
+    candlestick: {
+      colors: { upward: '#26A69A', downward: '#EF5350' },
+      wick: { useFillColor: true }
     },
-    xaxis: { type: 'datetime' },
-    yaxis: { tooltip: { enabled: true } },
-    theme: { mode: 'dark' },
-    tooltip: { enabled: true, theme: 'dark' }
+    bar: { columnWidth: '80%' }
+  },
+  xaxis: {
+    type: 'datetime',
+    labels: {
+      show: true, // Make sure labels are visible
+      style: { colors: dark ? '#B2B5BE' : '#555', fontSize: '10px' }, // Proper color values
+      formatter: v => {
+        const dt = new Date(v);
+        return selectedInterval === '1d'
+          ? dt.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
+          : dt.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+      }
+    },
+    axisBorder: { show: true, color: dark ? '#363C4E' : '#E7E7E7' }, // Add border
+    axisTicks: { show: true, color: dark ? '#363C4E' : '#E7E7E7' }, // Show ticks
+    tooltip: { enabled: true }
+  },
+  yaxis: [
+    {
+      show: true, // Make sure yaxis is visible
+      labels: { 
+        show: true,
+        style: { colors: dark ? '#B2B5BE' : '#555', fontSize: '10px' }, 
+        formatter: val => fp(val) 
+      },
+      axisBorder: { show: true, color: dark ? '#363C4E' : '#E7E7E7' },
+      tooltip: { enabled: true }
+    },
+    {
+      show: vol && selectedCoin && !noData,
+      opposite: true,
+      labels: { 
+        show: true,
+        style: { colors: dark ? '#B2B5BE' : '#555', fontSize: '10px' }, 
+        formatter: val => val >= 1e6 ? (val/1e6).toFixed(1)+'M' : (val/1e3).toFixed(0)+'K' 
+      }
+    }
+  ],
+  grid: {
+    borderColor: dark ? '#363C4E' : '#E7E7E7', // Proper color values
+    strokeDashArray: 4,
+    xaxis: { lines: { show: true } }, // Show xaxis lines
+    yaxis: { lines: { show: true } }  // Show yaxis lines
+  },
+  tooltip: {
+    enabled: true,
+    theme: dark ? 'dark' : 'light', // Proper theme values
+    style: { fontSize: '12px' }
+  }
+}), [line, chartH, dark, selectedInterval, vol, selectedCoin, noData]);
+
+  // Simple scroll and zoom logic
+  const scroll = dir => {
+    if (noData) return;
+    const s = Math.max(1, Math.floor(chartData.length / 20));
+    setIdx(prev => {
+      if (dir === 'left') return Math.max(0, prev - s);
+      const mx = Math.max(0, chartData.length - Math.floor(chartData.length / zoomLevel));
+      return Math.min(mx, prev + s);
+    });
   };
 
-  // Some helper format functions
-  function formatPrice(p) {
-    if (!p) return '0.00';
-    if (p < 1) return p.toFixed(6);
-    return p.toFixed(2);
-  }
-  function formatPercent(num) {
-    if (!num) return '';
-    return num > 0 ? `+${num.toFixed(2)}%` : `${num.toFixed(2)}%`;
-  }
+  const zoomIn = () => setZoomLevel(prev => Math.min(prev + 0.5, 4));
+  const zoomOut = () => setZoomLevel(prev => Math.max(prev - 0.5, 1));
 
-  // RESPONSIVENESS
-  const isLargeScreen = useBreakpointValue({ base: false, lg: true });
+  // For mock data generation
+  const create404 = () => [];
 
   return (
-    <Box ref={containerRef} bg={bgGradient} minH="100vh">
-      <Container maxW="8xl" pt={{ base: 4, md: 8 }}>
-        {/* OPTIONAL Parallax Hero */}
-        <motion.div style={{ scale: heroScale }}>
-          <VStack spacing={4} textAlign="center" mb={4}>
-            <Heading
-              color="brand.crypto.400"
-              fontSize={{ base: '2xl', md: '4xl', lg: '5xl' }}
-              fontWeight="extrabold"
-            >
-              {t('crypto_exchange.hero.title', 'Unlock financial freedom')}
-            </Heading>
-          </VStack>
-        </motion.div>
+    <Box minH="100vh" width="100%" pb={8}>
+      <Container maxW="8xl" width="100%" pt={{ base: 2, md: 4 }}>
+        {/* Mobile Search Button */}
+        {!isLargeScreen && (
+          <Button
+            w="full"
+            leftIcon={<FaSearch />}
+            mb={4}
+            onClick={onSearchOpen}
+            variant="crypto-outline"
+            colorScheme="crypto-outline"
+          >
+            {t('search_markets', 'Search Markets')}
+          </Button>
+        )}
 
-        {/* Top Ticker */}
-        <TopCoinsTicker />
+        {/* Market Search Modal (Mobile) */}
+        <Modal isOpen={isSearchOpen} onClose={onSearchClose} size="lg" isCentered>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader color="brand.crypto.600">{t('search_markets', 'Search Markets')}</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody pb={6}>
+              <VStack spacing={4}>
+                <InputGroup>
+                  <InputLeftElement pointerEvents="none">
+                    <Icon as={FaSearch} color="gray.500" />
+                  </InputLeftElement>
+                  <Input
+                    placeholder={t('search_by_name_or_symbol', 'Search by name or symbol')}
+                    value={searchTerm}
+                    onChange={e => setSearchTerm(e.target.value)}
+                    autoFocus
+                  />
+                </InputGroup>
+                <Box borderTopWidth="1px" borderColor={borderColor} pt={4} width="100%">
+                  <Tabs isFitted variant="enclosed" colorScheme="crypto-solid">
+                    <TabList mb={2}>
+                    </TabList>
+                    <TabPanels>
+                      <TabPanel p={0}>
+                        <TableContainer maxH="400px" overflowY="auto">
+                          <Table size="sm" variant="simple">
+                            <Thead>
+                              <Tr>
+                                <Th>{t('name', 'Name')}</Th>
+                                <Th isNumeric>{t('price', 'Price')}</Th>
+                                <Th isNumeric>{t('24h_change', '24h Change')}</Th>
+                              </Tr>
+                            </Thead>
+                            <Tbody>
+                              {filteredCoins.map(coin => {
+                                const isFav = favoritePairs.includes(coin.id);
+                                return (
+                                  <Tr
+                                    key={coin.id}
+                                    _hover={{ bg: 'gray.50' }}
+                                    cursor="pointer"
+                                    onClick={() => {
+                                      setSelectedCoin(coin);
+                                      onSearchClose();
+                                    }}
+                                  >
+                                    <Td>
+                                      <HStack>
+                                        <Avatar src={coin.image} />
+                                        <VStack spacing={10}>
+                                          <Text fontWeight="medium">{coin.symbol.toUpperCase()}</Text>
+                                          <Text fontSize="xs" color="gray.500">{coin.name}</Text>
+                                        </VStack>
+                                      </HStack>
+                                    </Td>
+                                    <Td isNumeric fontWeight="medium">${formatPrice(coin.current_price)}</Td>
+                                    <Td isNumeric>
+                                      <Text color={coin.price_change_percentage_24h >= 0 ? 'green.500' : 'red.500'}>
+                                        {formatPercent(coin.price_change_percentage_24h)}
+                                      </Text>
+                                    </Td>
+                                  </Tr>
+                                );
+                              })}
+                            </Tbody>
+                          </Table>
+                        </TableContainer>
+                      </TabPanel>
+                    </TabPanels>
+                  </Tabs>
+                </Box>
+              </VStack>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
 
-        <Grid templateColumns={{ base: '1fr', lg: '280px 1fr' }} gap={4}>
+        {/* MAIN TRADING INTERFACE */}
+        <Grid templateColumns={{ base: '1fr', lg: '300px 1fr 300px' }} gap={2}>
           {/* LEFT SIDEBAR: Market List */}
           {isLargeScreen && (
             <GridItem>
-              <Box
-                bg={panelBg}
-                borderRadius="md"
-                borderWidth="1px"
-                borderColor={borderColor}
-                position="relative"
-                zIndex={1}
-                overflow="hidden"
-              >
-                {/* Search */}
-                <Box p={3}>
-                  <InputGroup size="sm">
-                    <InputLeftElement pointerEvents="none">
-                      <Icon as={FaSearch} color="gray.500" />
-                    </InputLeftElement>
-                    <Input
-                      placeholder={t('search.markets', 'Search markets')}
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      borderRadius="md"
-                    />
-                  </InputGroup>
+              <VStack spacing={4} align="stretch">
+                <Box borderRadius="md" borderWidth="1px" borderColor={borderColor} boxShadow="sm" overflow="hidden">
+                  <Tabs size="sm" variant="enclosed" colorScheme="crypto-solid">
+                    <Box p={3}>
+                      <InputGroup size="sm" mb={2}>
+                        <InputLeftElement pointerEvents="none">
+                          <Icon as={FaSearch} color="gray.500" />
+                        </InputLeftElement>
+                        <Input
+                          placeholder={t('search_markets', 'Search markets')}
+                          value={searchTerm}
+                          onChange={e => setSearchTerm(e.target.value)}
+                          borderRadius="md"
+                        />
+                      </InputGroup>
+                    </Box>
+                    <Box maxH="calc(100vh - 360px)" overflowY="hidden">
+                      <TableContainer>
+                        <Table size="sm" variant="simple">
+                          <Thead bg={useColorModeValue('gray.50', 'gray.700')}>
+                            <Tr>
+                              <Th>{t('pair', 'Pair')}</Th>
+                              <Th isNumeric>{t('price', 'Price')}</Th>
+                              <Th isNumeric>{t('change', 'Change')}</Th>
+                            </Tr>
+                          </Thead>
+                          <Tbody>
+                            {filteredCoins.map(coin => {
+                              return (
+                                <Tr
+                                  key={coin.id}
+                                  cursor="pointer"
+                                  onClick={() => setSelectedCoin(coin)}
+                                  bg={selectedCoin && selectedCoin.id === coin.id ? useColorModeValue('brand.crypto.500', 'brand.crypto.700') : 'transparent'}
+                                  _hover={{ bg: useColorModeValue('gray.50', 'gray.700') }}
+                                >
+                                  <Td >
+                                    <HStack>
+                                      <Text fontWeight="medium">{coin.symbol.toUpperCase()}</Text>
+                                    </HStack>
+                                  </Td>
+                                  <Td isNumeric>
+                                    <Text fontWeight="medium">${formatPrice(coin.current_price)}</Text>
+                                  </Td>
+                                  <Td isNumeric py={2}>
+                                    <Text fontSize="xs" color={coin.price_change_percentage_24h >= 0 ? 'green.500' : 'red.500'}>
+                                      {formatPercent(coin.price_change_percentage_24h)}
+                                    </Text>
+                                  </Td>
+                                </Tr>
+                              );
+                            })}
+                          </Tbody>
+                        </Table>
+                      </TableContainer>
+                    </Box>
+                  </Tabs>
                 </Box>
 
-                {/* Coin Listing */}
-                <Box maxH="calc(100vh - 220px)" overflowY="auto">
-                  <TableContainer>
-                    <Table size="sm" variant="simple">
-                      <Thead bg={useColorModeValue('gray.50', 'gray.700')}>
-                        <Tr>
-                          <Th>{t('coin', 'Coin')}</Th>
-                          <Th isNumeric>{t('price', 'Price')}</Th>
-                        </Tr>
-                      </Thead>
-                      <Tbody>
-                        {filteredCoins.map((coin) => {
-                          const isFav = favoritePairs.includes(coin.id);
-                          return (
-                            <Tr
-                              key={coin.id}
-                              cursor="pointer"
-                              onClick={() => setSelectedCoin(coin)}
-                              bg={
-                                selectedCoin && selectedCoin.id === coin.id
-                                  ? useColorModeValue('blue.50', 'blue.900')
-                                  : 'transparent'
-                              }
-                              _hover={{ bg: useColorModeValue('gray.50', 'gray.700') }}
-                            >
-                              <Td>
-                                <HStack spacing={2}>
-                                  <IconButton
-                                    aria-label="Toggle favorite"
-                                    icon={<FaStar />}
-                                    size="xs"
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      toggleFavorite(coin.id);
-                                    }}
-                                    color={isFav ? 'yellow.400' : 'gray.300'}
-                                    variant="ghost"
-                                  />
-                                  <Box boxSize="5">
-                                    <img src={coin.image} alt={coin.name} />
-                                  </Box>
-                                  <Text fontWeight="medium">{coin.symbol.toUpperCase()}</Text>
-                                </HStack>
-                              </Td>
-                              <Td isNumeric>
-                                <Text fontWeight="medium">
-                                  ${formatPrice(coin.current_price)}
-                                </Text>
-                                <Text
-                                  fontSize="xs"
-                                  color={coin.price_change_percentage_24h >= 0 ? 'green.100' : 'red.100'}
-                                >
-                                  {formatPercent(coin.price_change_percentage_24h)}
-                                </Text>
-                              </Td>
-                            </Tr>
-                          );
-                        })}
-                      </Tbody>
-                    </Table>
-                  </TableContainer>
-                </Box>
-              </Box>
+                {/* Market Overview */}
+                {selectedCoin && (
+                  <Box borderRadius="md" borderWidth="1px" borderColor={borderColor} boxShadow="sm" p={3}>
+                    <Heading size="xs" mb={3} color="brand.crypto.600">
+                      {t('market_info', 'Market Info')}
+                    </Heading>
+                    <Stack spacing={2}>
+                      <HStack justify="space-between">
+                        <Text fontSize="xs" color={textColorSecondary}>{t('24h_high', '24h High')}</Text>
+                        <Text fontSize="xs" fontWeight="bold">${formatPrice(selectedCoin.high_24h)}</Text>
+                      </HStack>
+                      <HStack justify="space-between">
+                        <Text fontSize="xs" color={textColorSecondary}>{t('24h_low', '24h Low')}</Text>
+                        <Text fontSize="xs" fontWeight="bold">${formatPrice(selectedCoin.low_24h)}</Text>
+                      </HStack>
+                      <HStack justify="space-between">
+                        <Text fontSize="xs" color={textColorSecondary}>{t('24h_volume', '24h Volume')}</Text>
+                        <Text fontSize="xs" fontWeight="bold">${formatCompactNumber(selectedCoin.total_volume)}</Text>
+                      </HStack>
+                      <HStack justify="space-between">
+                        <Text fontSize="xs" color={textColorSecondary}>{t('market_cap', 'Market Cap')}</Text>
+                        <Text fontSize="xs" fontWeight="bold">${formatCompactNumber(selectedCoin.market_cap)}</Text>
+                      </HStack>
+                    </Stack>
+                  </Box>
+                )}
+              </VStack>
             </GridItem>
           )}
-
-          {/* MAIN PANEL: Chart + Order Form */}
+          
+          {/* MAIN PANEL: Chart and Trading Activity */}
           <GridItem>
             <VStack spacing={4} align="stretch">
-              {/* SELECTED COIN INFO */}
-              {selectedCoin && (
-                <Box
-                  bg={panelBg}
-                  borderRadius="md"
-                  p={3}
-                  borderWidth="1px"
-                  borderColor={borderColor}
-                >
-                  <HStack justify="space-between" flexWrap="wrap" gap={2}>
-                    <HStack>
-                      <Box boxSize="6">
-                        <img src={selectedCoin.image} alt={selectedCoin.name} />
-                      </Box>
-                      <VStack align="start" spacing={0}>
-                        <Heading size="sm">{selectedCoin.name}</Heading>
-                        <Text fontSize="xs" color={textColorSecondary}>
-                          {t('rank', 'Rank')}: {selectedCoin.market_cap_rank}
-                        </Text>
-                      </VStack>
-                    </HStack>
-
-                    <Box textAlign="right">
-                      <Heading
-                        size="xl"
-                        color={
-                          selectedCoin.price_change_percentage_24h >= 0 ? 'green.300' : 'red.300'
-                        }
-                      >
-                        ${formatPrice(selectedCoin.current_price)}
-                      </Heading>
-                      <Text fontSize="xs" color={textColorSecondary}>
-                        {formatPercent(selectedCoin.price_change_percentage_24h)} (24h)
-                      </Text>
-                    </Box>
-                  </HStack>
+              {/* Selected Coin Header */}
+              {selectedCoin && (isLargeScreen || activeTab === 0 || activeTab === 1) && (
+                <Box borderRadius="md" p={3} borderWidth="1px">
+                  <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gap={4}>
+                    <GridItem>
+                      <HStack>
+                        <Box boxSize="14">
+                          <Avatar src={selectedCoin.image} />
+                        </Box>
+                        <VStack align="stretch" spacing={0}>
+                          <HStack>
+                            <Heading size="md">{selectedCoin.symbol.toUpperCase()}/USDT</Heading>
+                          </HStack>
+                          <Text fontSize="sm" color={textColorSecondary}>
+                            {selectedCoin.name} • {t('rank', 'Rank')} #{selectedCoin.market_cap_rank}
+                          </Text>
+                        </VStack>
+                      </HStack>
+                    </GridItem>
+                    <GridItem>
+                      <Flex justify={{ base: 'flex-start', md: 'flex-end' }} align="center">
+                        <VStack align={{ base: 'start', md: 'end' }} spacing={0}>
+                          <Heading size="md" color={selectedCoin.price_change_percentage_24h >= 0 ? 'green.500' : 'red.500'}>
+                            ${formatPrice(selectedCoin.current_price)}
+                          </Heading>
+                          <HStack>
+                            <Badge
+                              colorScheme={selectedCoin.price_change_percentage_24h >= 0 ? 'green' : 'red'}
+                              variant="subtle"
+                              px={2}
+                              py={0.5}
+                              borderRadius="full"
+                            >
+                              <HStack spacing={1}>
+                                <Icon as={selectedCoin.price_change_percentage_24h >= 0 ? FaArrowUp : FaArrowDown} boxSize={3} />
+                                <Text fontSize="xs">{formatPercent(selectedCoin.price_change_percentage_24h)}</Text>
+                              </HStack>
+                            </Badge>
+                            <Text fontSize="xs" color={textColorSecondary}>
+                              {t('24h', '24h')}
+                            </Text>
+                          </HStack>
+                        </VStack>
+                      </Flex>
+                    </GridItem>
+                  </Grid>
                 </Box>
               )}
 
-              {/* Search Markets Modal for Mobile */}
-              <Modal isOpen={isSearchOpen} onClose={onSearchClose} isCentered>
-                <ModalOverlay />
-                <ModalContent>
-                  <ModalHeader>Search Markets</ModalHeader>
-                  <ModalCloseButton />
-                  <ModalBody>
-                    <VStack spacing={4}>
-                      <Input
-                        placeholder="Search markets"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                      />
-                      {coins && coins.length > 0 ? (
-                        coins
-                          .filter(
-                            (coin) =>
-                              coin.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                              coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
-                          )
-                          .map((coin) => (
-                            <Box
-                              key={coin.id}
-                              w="100%"
-                              p={2}
-                              borderBottom="1px solid"
-                              borderColor="gray.200"
-                              cursor="pointer"
-                              onClick={() => {
-                                onSearchClose();
-                                setSearchTerm('');
-                                setSelectedPair(coin.symbol.toUpperCase());
-                                setSelectedCoin(coin);
-                              }}
-                            >
-                              <HStack spacing={4}>
-                                <Box boxSize={6}>
-                                  <img src={coin.image} alt={coin.name} />
-                                </Box>
-                                <Text fontWeight="bold">{coin.symbol.toUpperCase()}</Text>
-                                <Text>{coin.name}</Text>
-                              </HStack>
-                            </Box>
-                          ))
-                      ) : (
-                        <Text>No markets available</Text>
-                      )}
-                    </VStack>
-                  </ModalBody>
-                </ModalContent>
-              </Modal>
+              {/* Chart Panel */}
+              {(isLargeScreen || activeTab === 0) && (
+                <Box borderRadius="md" borderWidth="1px" borderColor={borderColor} boxShadow="sm" overflow="hidden">
+                  <HStack p={3} borderBottomWidth="1px" borderBottomColor={borderColor} justify="space-between">
+                    <HStack p={3} borderBottomWidth="1px" borderBottomColor={borderColor} justify="space-between">
+                      <HStack spacing={2} wrap="wrap">
+                        {['5m', '15m', '1h', '4h', '1D', '1W', '1M'].map(interval => (
+                          <Button
+                            key={interval}
+                            size="xs"
+                            variant={chartTimeframe === interval ? 'crypto-solid' : 'crypto-outline'}
+                            colorScheme="crypto-solid"
+                            onClick={() => setChartTimeframe(interval)}
+                          >
+                            {interval}
+                          </Button>
+                        ))}
+                      </HStack>
+                      <HStack>
+                        <IconButton icon={<FaCog />} size="sm" variant="crypto-outline" aria-label={t('chart_settings', 'Chart settings')} />
+                        <IconButton icon={<FaChartLine />} size="sm" variant="crypto-outline" aria-label={t('full_screen_chart', 'Full screen chart')} />
+                      </HStack>
+                    </HStack>
+                  </HStack>
+                  <Box p={2} h="400px" position="relative">
+                    {chartLoading ? (
+                      <Flex justify="center" align="center" h="100%">
+                        <Spinner size="xl" color="brand.crypto.400" />
+                      </Flex>
+                    ) : (
+                      chartData.length > 0 && (
+                        <Chart
+                          options={chartOptions}
+                          series={[{ data: mainSeries[0].data }]}
+                          type={line ? 'line' : 'candlestick'}
+                          height="100%"
+                          width="100%"
+                        />
+                      )
+                    )}
+                    {vol && selectedCoin && !noData && mainSeries.length > 1 && (
+                      <Box position="absolute" bottom={0} width="100%" height={`${volH}px`}>
+                        <Chart
+                          options={{
+                            ...chartOptions,
+                            chart: { ...chartOptions.chart, height: volH, id: 'volume-chart' },
+                            xaxis: { ...chartOptions.xaxis, labels: { ...chartOptions.xaxis.labels, show: false } },
+                            yaxis: [{
+                              labels: {
+                                show: true, // Hide the volume numbers
+                                style: { colors: dark ? '#B2B5BE' : '#555', fontSize: '1px' },
+                                formatter: v => v >= 1e6 ? (v / 1e6).toFixed(1) + 'M' : (v / 1e3).toFixed(0) + 'K',
+                              },
+                              opposite: false
+                            }],
+                            tooltip: { enabled: true } // Optionally hide tooltips as well
+                          }}
+                          series={[{ data: mainSeries[1].data }]}
+                          type="bar"
+                          height={volH}
+                          width="100%"
+                        />
+                      </Box>
+                    )}
+                    {!loading && noData && (
+                      <Flex
+                        position="absolute"
+                        top="50%"
+                        left="50%"
+                        transform="translate(-50%, -50%)"
+                        direction="column"
+                        align="center"
+                        bg="rgba(0,0,0,0.7)"
+                        p={4}
+                        borderRadius="md"
+                      >
+                        <Text fontSize="4xl" fontWeight="bold" mb={2}>404</Text>
+                        <Text>
+                          No data available for {selectedPair} ({selectedInterval}) in timeframe {chartTimeframe}
+                        </Text>
+                      </Flex>
+                    )}
+                  </Box>
+                </Box>
+              )}
 
-              {/* CANDLESTICK CHART with updated AdvancedChart */}
-              <Box
-                bg={panelBg}
-                borderRadius="md"
-                p={3}
-                borderWidth="1px"
-                borderColor={borderColor}
-                minH={{ base: '300px', md: '400px' }}
-                position="relative"
-              >
-                <AdvancedChart 
+              {/* Additional Components */}
+              <Box mt={4}>
+                <TradeForm 
                   selectedCoin={selectedCoin} 
-                  coins={coins} 
-                  onPairSelect={setSelectedCoin} 
+                  initialTradePrice={selectedCoin?.current_price} 
+                  onSubmit={(data) => console.log("Trade submitted:", data)}
                 />
               </Box>
 
-              {/* BUY/SELL PANEL (placeholder) */}
-              <Box
-                bg={panelBg}
-                borderRadius="md"
-                p={3}
-                borderWidth="1px"
-                borderColor={borderColor}
-              >
-                <Tabs variant="soft-rounded" colorScheme="blue">
-                  <TabList mb={4}>
-                    <Tab>{t('spot', 'Spot')}</Tab>
-                    <Tab>{t('margin', 'Margin')}</Tab>
-                    <Tab>{t('futures', 'Futures')}</Tab>
-                  </TabList>
-                  <TabPanels>
-                    <TabPanel px={0}>
-                      <Stack direction={{ base: 'column', md: 'row' }} gap={4}>
-                        {/* ORDER FORM */}
-                        <Box flex="1">
-                          {/* Buy / Sell toggle */}
-                          <HStack mb={4}>
-                            <Button
-                              colorScheme="green"
-                              size="sm"
-                              flex="1"
-                              variant={orderSide === 'buy' ? 'solid' : 'outline'}
-                              onClick={() => setOrderSide('buy')}
-                            >
-                              {t('buy', 'Buy')}
-                            </Button>
-                            <Button
-                              colorScheme="red"
-                              size="sm"
-                              flex="1"
-                              variant={orderSide === 'sell' ? 'solid' : 'outline'}
-                              onClick={() => setOrderSide('sell')}
-                            >
-                              {t('sell', 'Sell')}
-                            </Button>
-                          </HStack>
-
-                          {/* Limit / Market */}
-                          <HStack mb={4}>
-                            <Button
-                              size="xs"
-                              variant={orderType === 'limit' ? 'solid' : 'ghost'}
-                              onClick={() => setOrderType('limit')}
-                            >
-                              {t('limit', 'Limit')}
-                            </Button>
-                            <Button
-                              size="xs"
-                              variant={orderType === 'market' ? 'solid' : 'ghost'}
-                              onClick={() => setOrderType('market')}
-                            >
-                              {t('market', 'Market')}
-                            </Button>
-                          </HStack>
-
-                          {/* Example form controls */}
-                          {orderType === 'limit' && (
-                            <FormControl mb={3}>
-                              <FormLabel fontSize="xs">{t('price', 'Price')} (USD)</FormLabel>
-                              <NumberInput size="sm" defaultValue={0} precision={2} min={0}>
-                                <NumberInputField />
-                                <NumberInputStepper>
-                                  <NumberIncrementStepper />
-                                  <NumberDecrementStepper />
-                                </NumberInputStepper>
-                              </NumberInput>
-                            </FormControl>
-                          )}
-
-                          <FormControl mb={3}>
-                            <FormLabel fontSize="xs">
-                              {t('amount', 'Amount')}{' '}
-                              {selectedCoin ? `(${selectedCoin.symbol.toUpperCase()})` : ''}
-                            </FormLabel>
-                            <NumberInput size="sm" defaultValue={0} precision={6} min={0}>
-                              <NumberInputField />
-                              <NumberInputStepper>
-                                <NumberIncrementStepper />
-                                <NumberDecrementStepper />
-                              </NumberInputStepper>
-                            </NumberInput>
-                          </FormControl>
-
-                          <FormControl mb={4}>
-                            <FormLabel fontSize="xs">
-                              {t('total', 'Total')} (USD)
-                            </FormLabel>
-                            <NumberInput size="sm" defaultValue={0} precision={2} min={0} isReadOnly>
-                              <NumberInputField />
-                            </NumberInput>
-                          </FormControl>
-
-                          <Button
-                            w="full"
-                            size="md"
-                            colorScheme={orderSide === 'buy' ? 'green.500' : 'red.500'}
-                          >
-                            {orderSide === 'buy'
-                              ? t('buy_coin', 'Buy {{coin}}', {
-                                  coin: selectedCoin ? selectedCoin.symbol.toUpperCase() : '?'
-                                })
-                              : t('sell_coin', 'Sell {{coin}}', {
-                                  coin: selectedCoin ? selectedCoin.symbol.toUpperCase() : '?'
-                                })}
-                          </Button>
-                        </Box>
-                      </Stack>
-                    </TabPanel>
-
-                    {/* Margin & Futures tabs are placeholders */}
-                    <TabPanel>
-                      <Text fontSize="sm" opacity={0.8}>
-                        {t(
-                          'margin_placeholder',
-                          'Margin trading data would go here. Integrate a real exchange API.'
-                        )}
-                      </Text>
-                    </TabPanel>
-                    <TabPanel>
-                      <Text fontSize="sm" opacity={0.8}>
-                        {t(
-                          'futures_placeholder',
-                          'Futures trading data would go here. Integrate a real exchange API.'
-                        )}
-                      </Text>
-                    </TabPanel>
-                  </TabPanels>
-                </Tabs>
+              <Box mt={4}>
+                <CryptoNews 
+                  coinId={selectedCoin?.id} 
+                  coinSymbol={selectedCoin?.symbol?.toUpperCase()} 
+                />
               </Box>
             </VStack>
           </GridItem>
+
+          {/* RIGHT SIDEBAR: Order Book & More (if on desktop) */}
+          {isLargeScreen && (
+            <GridItem>
+              <VStack spacing={4} align="stretch">
+                <Box borderRadius="md" borderWidth="1px" borderColor={borderColor} boxShadow="sm" p={3}>
+                  <Tabs variant="enclosed" size="sm" colorScheme="crypto-solid">
+                    <TabList mb={3}>
+                      <Tab>{t('spot', 'Spot')}</Tab>
+                      <Tab>{t('margin', 'Margin')}</Tab>
+                      <Tab>{t('futures', 'Futures')}</Tab>
+                    </TabList>
+                    <TabPanels>
+                      <TabPanel p={0}>
+                        {/* Order Form inline for desktop */}
+                        <TradeForm 
+                          selectedCoin={selectedCoin} 
+                          initialTradePrice={selectedCoin?.current_price}
+                          onSubmit={(data) => console.log("Trade submitted:", data)}
+                        />
+                      </TabPanel>
+                      <TabPanel p={0}>
+                        <Box textAlign="center" py={8}>
+                          <Icon as={FaRegClock} boxSize={10} color="gray.300" mb={4} />
+                          <Text>{t('no_open_orders', 'No open orders')}</Text>
+                          <Button mt={4} variant="crypto-solid" size="sm">
+                            {t('view_order_history', 'View Order History')}
+                          </Button>
+                        </Box>
+                      </TabPanel>
+                      <TabPanel p={0}>
+                        <VStack spacing={3} align="stretch">
+                          <HStack>
+                            <Text fontSize="sm" fontWeight="medium">{t('futures_leverage', 'Futures Leverage')}</Text>
+                            <Text fontSize="sm" fontWeight="bold" color="brand.crypto.400">{leverage}x</Text>
+                          </HStack>
+                          <Slider
+                            defaultValue={1}
+                            min={1}
+                            max={20}
+                            step={1}
+                            colorScheme="crypto-solid"
+                            value={leverage}
+                            onChange={(val) => setLeverage(val)}
+                          >
+                            <SliderTrack>
+                              <SliderFilledTrack />
+                            </SliderTrack>
+                            <SliderThumb boxSize={4} />
+                          </Slider>
+                          <Text fontSize="xs" color="brand.crypto.500">
+                            {t('futures_leverage_available', 'Up to 20x leverage available for futures trading')}
+                          </Text>
+                        </VStack>
+                      </TabPanel>
+                    </TabPanels>
+                  </Tabs>
+                </Box>
+
+                {/* Order Book */}
+                <Box borderRadius="md" borderWidth="1px" borderColor={borderColor} boxShadow="sm" p={3}>
+                  <Heading size="xs" mb={3} color="brand.crypto.600">{t('order_book', 'Order Book')}</Heading>
+                  <VStack spacing={2} align="stretch">
+                    <Text fontSize="xs" color={textColorSecondary}>{t('asks', 'Asks')}</Text>
+                    {orderBook.asks && orderBook.asks.slice(0, 5).map((ask, i) => (
+                      <HStack key={i} justify="space-between" fontSize="xs">
+                        <Text color="red.500">${formatPrice(ask.price)}</Text>
+                        <Text>{ask.amount.toFixed(4)}</Text>
+                        <Text>${formatCompactNumber(ask.total)}</Text>
+                      </HStack>
+                    ))}
+                    <Divider />
+                    {/* Current price indicator */}
+                    <Flex 
+                      justify="space-between" 
+                      bg={selectedCoin?.price_change_percentage_24h >= 0 ? 'green.50' : 'red.50'} 
+                      p={1} 
+                      borderRadius="md"
+                    >
+                      <Text fontWeight="bold" color={selectedCoin?.price_change_percentage_24h >= 0 ? 'green.500' : 'red.500'}>
+                        ${selectedCoin ? formatPrice(selectedCoin.current_price) : '0.00'}
+                      </Text>
+                      <Text fontSize="xs" color="gray.500">≈ ${formatCompactNumber(selectedCoin?.current_price || 0)}</Text>
+                    </Flex>
+                    <Divider />
+                    <Text fontSize="xs" color={textColorSecondary}>{t('bids', 'Bids')}</Text>
+                    {orderBook.bids && orderBook.bids.slice(0, 5).map((bid, i) => (
+                      <HStack key={i} justify="space-between" fontSize="xs">
+                        <Text color="green.500">${formatPrice(bid.price)}</Text>
+                        <Text>{bid.amount.toFixed(4)}</Text>
+                        <Text>${formatCompactNumber(bid.total)}</Text>
+                      </HStack>
+                    ))}
+                  </VStack>
+                </Box>
+              </VStack>
+            </GridItem>
+          )}
         </Grid>
-
-        {/* Dummy "Wallet" / "Deposit"/"Withdraw" for demonstration */}
-        <HStack justify="flex-end" mt={4} spacing={3}>
-          <Button leftIcon={<FaCreditCard />} onClick={onDepositOpen}>
-            {t('deposit', 'Deposit')}
-          </Button>
-          <Button leftIcon={<FaWallet />} onClick={onWithdrawOpen}>
-            {t('withdraw', 'Withdraw')}
-          </Button>
-        </HStack>
       </Container>
-
-      {/* Deposit Modal */}
-      <Modal isOpen={depositOpen} onClose={onDepositClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>{t('deposit', 'Deposit')}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <VStack spacing={4} align="stretch">
-              <Select placeholder={t('select_coin', 'Select Coin')}>
-                {coins.map((c) => (
-                  <option key={c.id} value={c.symbol}>
-                    {c.symbol.toUpperCase()}
-                  </option>
-                ))}
-              </Select>
-
-              <FormControl>
-                <FormLabel>{t('deposit_amount', 'Deposit Amount')}</FormLabel>
-                <NumberInput defaultValue={0}>
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-              </FormControl>
-
-              <Button leftIcon={<FaQrcode />} variant="outline">
-                {t('show_qr', 'Show Deposit QR')}
-              </Button>
-              <Button colorScheme="blue">{t('confirm_deposit', 'Confirm Deposit')}</Button>
-            </VStack>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-
-      {/* Withdraw Modal */}
-      <Modal isOpen={withdrawOpen} onClose={onWithdrawClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>{t('withdraw', 'Withdraw')}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <VStack spacing={4} align="stretch">
-              <Select placeholder={t('select_coin', 'Select Coin')}>
-                {coins.map((c) => (
-                  <option key={c.id} value={c.symbol}>
-                    {c.symbol.toUpperCase()}
-                  </option>
-                ))}
-              </Select>
-
-              <FormControl>
-                <FormLabel>{t('withdraw_amount', 'Withdraw Amount')}</FormLabel>
-                <NumberInput defaultValue={0}>
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-              </FormControl>
-
-              <FormControl>
-                <FormLabel>{t('withdrawal_address', 'Withdrawal Address')}</FormLabel>
-                <InputGroup>
-                  <Input placeholder={t('enter_address', 'Enter wallet address')} />
-                  <IconButton
-                    aria-label="Paste address"
-                    icon={<FaClipboard />}
-                    size="sm"
-                    variant="ghost"
-                    ml={2}
-                  />
-                </InputGroup>
-              </FormControl>
-
-              <Button colorScheme="red">{t('confirm_withdraw', 'Confirm Withdrawal')}</Button>
-            </VStack>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
     </Box>
   );
 }
 
 export default CryptoExchange;
 
-// (OPTIONAL) If you use next-i18next, enable serverSideTranslations:
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      // remove or adjust if not using next-i18next
       ...(await import('next-i18next/serverSideTranslations').then(({ serverSideTranslations }) =>
         serverSideTranslations(locale, ['common'])
       ))

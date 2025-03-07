@@ -1,9 +1,9 @@
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
-import { Box, useBreakpointValue } from '@chakra-ui/react';
+import { Box, SimpleGrid, useBreakpointValue } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 
-const Logo = () => {
+const Logo = ({ variant = 'header' }) => {
   const { i18n } = useTranslation();
   const isArabic = i18n.language === 'ar';
   const [platform, setPlatform] = useState(null);
@@ -24,73 +24,105 @@ const Logo = () => {
     }
   }, []);
 
-  const getLogoConfig = () => {
-    // Updated dimensions as requested
-    const configs = {
-      cash: {
-        en: { path: '/cash.png', width: 862, height: 304 },
-        ar: { path: '/cash-ar.png', width: 862, height: 304 }
-      },
-      stocks: {
-        en: { path: '/stocks.png', width: 862, height: 304 },
-        ar: { path: '/stocks-ar.png', width: 862, height: 304 }
-      },
-      forex: {
-        en: { path: '/forex.png', width: 862, height: 304 },
-        ar: { path: '/forex-ar.png', width: 862, height: 304 }
-      },
-      crypto: {
-        en: { path: '/crypto.png', width: 862, height: 304 },
-        ar: { path: '/crypto-ar.png', width: 862, height: 304 }
-      },
-      main: {
-        en: { path: '/bitdash-logo.png', width: 1080, height: 249 },
-        ar: { path: '/bitdash-ar-logo.png', width: 1080, height: 249 }
-      }
-    };
-
-    const platformKey = platform || 'main';
-    return configs[platformKey]?.[isArabic ? 'ar' : 'en'] || configs.main[isArabic ? 'ar' : 'en'];
+  // Updated with accurate dimensions from the specs provided
+  const logoConfigs = {
+    cash: {
+      en: { path: '/cash.png', width: 1174, height: 520 },
+      ar: { path: '/cash-ar.png', width: 1134, height: 634 }
+    },
+    stocks: {
+      en: { path: '/stocks.png', width: 1186, height: 398 },
+      ar: { path: '/stocks-ar.png', width: 1186, height: 398 }
+    },
+    forex: {
+      en: { path: '/forex.png', width: 1186, height: 398 },
+      ar: { path: '/forex-ar.png', width: 1348, height: 492 }
+    },
+    crypto: {
+      en: { path: '/crypto.png', width: 1204, height: 548 },
+      ar: { path: '/crypto-ar.png', width: 1204, height: 548 }
+    },
+    main: {
+      en: { path: '/bitdash-logo.png', width: 1080, height: 249 },
+      ar: { path: '/bitdash-ar-logo.png', width: 1080, height: 249 }
+    }
   };
 
-  // Responsive sizing for perfect fit on mobile and 25% bigger on desktop
-  const logoConfig = getLogoConfig();
-  
-  // Calculate aspect ratio to maintain proportions
-  const aspectRatio = logoConfig.width / logoConfig.height;
-  
-  // Base size (mobile)
-  const mobileWidth = "125px";
-  const mobileHeight = `${parseInt(mobileWidth) / aspectRatio}px`;
-  
-  // Desktop size (25% bigger)
-  const desktopWidth = `${parseInt(mobileWidth) * 1.6}px`;
-  const desktopHeight = `${parseInt(mobileHeight) * 1.6}px`;
-  
-  // Use breakpoint to switch between mobile and desktop sizes
-  const width = useBreakpointValue({ base: mobileWidth, md: desktopWidth });
-  const height = useBreakpointValue({ base: mobileHeight, md: desktopHeight });
+  // Renders a single logo based on current platform
+  const renderSingleLogo = () => {
+    const platformKey = platform || 'main';
+    const logoConfig = logoConfigs[platformKey]?.[isArabic ? 'ar' : 'en'] || logoConfigs.main[isArabic ? 'ar' : 'en'];
+    
+    // Calculate aspect ratio to maintain proportions
+    const aspectRatio = logoConfig.width / logoConfig.height;
+    
+    // Header logo sizes - updated for better fit in header
+    const headerWidth = useBreakpointValue({ base: "125px", md: "200px" });
+    const headerHeight = `${parseInt(headerWidth) / aspectRatio}px`;
+    
+    return (
+      <Box 
+        display="block" 
+        width={headerWidth}
+        height={headerHeight}
+        position="relative"
+        overflow="hidden"
+      >
+        <Image
+          src={logoConfig.path}
+          alt="Logo"
+          fill
+          priority={true}
+          style={{ 
+            objectFit: 'contain',
+            objectPosition: isArabic ? 'right center' : 'left center'
+          }}
+        />
+      </Box>
+    );
+  };
 
-  return (
-    <Box 
-      display="block" 
-      width={width}
-      height={height}
-      position="relative"
-      overflow="hidden"
-    >
-      <Image
-        src={logoConfig.path}
-        alt="Logo"
-        fill
-        priority={true}
-        style={{ 
-          objectFit: 'contain',
-          objectPosition: isArabic ? 'right center' : 'left center'
-        }}
-      />
-    </Box>
-  );
+  // Renders all platform logos in a 2x2 grid (for mobile solutions menu)
+  const renderLogoGrid = () => {
+    const platformOptions = ['cash', 'stocks', 'crypto', 'forex'];
+    
+    return (
+      <SimpleGrid columns={2} spacing={4} width="100%">
+        {platformOptions.map((plat) => {
+          const logoConfig = logoConfigs[plat][isArabic ? 'ar' : 'en'];
+          const aspectRatio = logoConfig.width / logoConfig.height;
+          
+          // Fixed dimensions for grid items to ensure consistent layout
+          const gridItemWidth = "140px";
+          const gridItemHeight = `${parseInt(gridItemWidth) / aspectRatio}px`;
+          
+          return (
+            <Box 
+              key={plat}
+              width={gridItemWidth}
+              height={gridItemHeight}
+              position="relative"
+              overflow="hidden"
+              justifySelf="center"
+            >
+              <Image
+                src={logoConfig.path}
+                alt={`${plat} Logo`}
+                fill
+                style={{ 
+                  objectFit: 'contain',
+                  objectPosition: 'center'
+                }}
+              />
+            </Box>
+          );
+        })}
+      </SimpleGrid>
+    );
+  };
+
+  // Conditionally render single logo or grid based on variant prop
+  return variant === 'grid' ? renderLogoGrid() : renderSingleLogo();
 };
 
 export default Logo;

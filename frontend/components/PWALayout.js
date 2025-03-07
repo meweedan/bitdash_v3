@@ -16,8 +16,8 @@ import {
 } from '@chakra-ui/react';
 import { Search, ShoppingBag, Clock, BellRing, Package, BarChart2, Car, Tool, DollarSign } from 'lucide-react';
 
-// Food PWA Landing
-const FoodPWALanding = () => {
+// Stocks PWA Landing
+const StocksPWALanding = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -67,8 +67,59 @@ const FoodPWALanding = () => {
   );
 };
 
-// shop PWA Landing
-const ShopPWALanding = () => {
+// Stocks PWA Landing
+const ForexPWALanding = () => {
+  const router = useRouter();
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+
+  const features = [
+    { icon: Search, title: 'Browse Menus', description: 'Explore local restaurants' },
+    { icon: ShoppingBag, title: 'Easy Ordering', description: 'Order with just a few taps' },
+    { icon: Clock, title: 'Real-time Tracking', description: 'Track your order status' },
+    { icon: BellRing, title: 'Notifications', description: 'Get updates on your order' }
+  ];
+
+  return (
+    <Box 
+      minH="100vh" 
+      pt={20}
+    >
+      <Container maxW="container.lg">
+        <VStack spacing={8} align="center" pb={20}>
+          <Image
+            src="/food.png"
+            alt="BitFood"
+            w="150px"
+            h="150px"
+            objectFit="contain"
+          />
+          <Heading size="2xl" color="green.500">BitFood</Heading>
+          <Text fontSize="xl" textAlign="center" color={isDark ? 'gray.400' : 'gray.600'}>
+            Your digital menu and ordering solution
+          </Text>
+          
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} w="full" pt={8}>
+            {features.map((feature, index) => (
+              <Card key={index}>
+                <CardBody>
+                  <VStack align="center" spacing={4}>
+                    <Icon as={feature.icon} boxSize={8} color="green.500" />
+                    <Heading size="md">{feature.title}</Heading>
+                    <Text textAlign="center">{feature.description}</Text>
+                  </VStack>
+                </CardBody>
+              </Card>
+            ))}
+          </SimpleGrid>
+        </VStack>
+      </Container>
+    </Box>
+  );
+};
+
+// Crypto PWA Landing
+const CryptoPWALanding = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -178,11 +229,14 @@ const PWALayout = ({ children }) => {
   useEffect(() => {
     if (isPWA && router.pathname === '/') {
       switch(hostname) {
-        case 'food.bitdash.app':
-          router.replace('/food');
+        case 'crypto.bitdash.app':
+          router.replace('/crypto');
           break;
-        case 'shop.bitdash.app':
-          router.replace('/shop');
+        case 'forex.bitdash.app':
+          router.replace('/forex');
+          break;
+        case 'stocks.bitdash.app':
+          router.replace('/stocks');
           break;
         case 'cash.bitdash.app':
           router.replace('/cash');
@@ -196,4 +250,4 @@ const PWALayout = ({ children }) => {
   return children;
 };
 
-export { FoodPWALanding, ShopPWALanding, CashPWALanding, PWALayout };
+export { ForexPWALanding, CryptoPWALanding, StocksPWALanding, CashPWALanding, PWALayout };

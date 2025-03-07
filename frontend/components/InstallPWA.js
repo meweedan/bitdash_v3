@@ -37,7 +37,7 @@ const InstallPrompt = () => {
   const toast = useToast();
 
   // We'll choose an icon once at mount
-  const [iconSrc, setIconSrc] = useState('/app-logo.png');
+  const [iconSrc, setIconSrc] = useState('/bitdash-logo.png');
 
   // Responsive positioning
   const positioning = useBreakpointValue({
