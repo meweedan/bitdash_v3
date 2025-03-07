@@ -357,7 +357,7 @@ const ForexLandingBrowser = () => {
             height="100%"
             objectFit="cover"
             objectPosition="center"
-            opacity={0.3}
+            opacity={0.2}
             position="absolute"
           />
           <Image
@@ -367,7 +367,7 @@ const ForexLandingBrowser = () => {
             height="100%"
             objectFit="cover"
             objectPosition="center"
-            opacity={0.3}
+            opacity={0.2}
             position="absolute"
           />
           
@@ -417,13 +417,15 @@ const ForexLandingBrowser = () => {
                   </Heading>
                   
                   <Text
-                    fontSize={{ base: "lg", md: "xl" }}
+                    fontSize={{ base: "xl", md: "xl" }}
+                    fontWeight="bold"
                     maxW="550px"
+                    color={isDark ? "white" : "black"}
                   >
                     {t('trade.hero.description', 'Access global markets with a regulated Forex broker offering competitive spreads, fast execution, and powerful trading platforms.')}
                   </Text>
                   
-                  <HStack spacing={6} mt={6} color={isDark ? "white" : "black"} flexWrap="wrap">
+                  <HStack spacing={6} mt={6} color={isDark ? "white" : "black"} fontWeight="bold" flexWrap="wrap">
                     <HStack>
                       <Icon as={CheckCircle} color={isDark ? "white" : "black"} />
                       <Text>{t('Landinghero.feature1', 'Regulated Broker')}</Text>
@@ -444,7 +446,7 @@ const ForexLandingBrowser = () => {
                     <Button
                       size="lg"
                       px={8}
-                      bg={accentColor}
+                      variant="forex-solid"
                       color="white"
                       _hover={{ bg: "#9c8877" }}
                       h={14}

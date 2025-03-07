@@ -35,7 +35,7 @@ const Logo = ({ variant = 'header' }) => {
       ar: { path: '/stocks-ar.png', width: 1186, height: 398 }
     },
     forex: {
-      en: { path: '/forex.png', width: 1186, height: 398 },
+      en: { path: '/forex.png', width: 1085, height: 350 },
       ar: { path: '/forex-ar.png', width: 1348, height: 492 }
     },
     crypto: {
