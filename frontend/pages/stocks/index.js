@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { usePWA } from '@/hooks/usePWA';
 import { StockPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component
-import StockLandingBrowser from '@/components/landing/StockLandingBrowser';
+import StocskLandingBrowser from '@/components/landing/StocksLandingBrowser';
 
 const CashPage = () => {
   const { isPWA } = usePWA();
@@ -11,13 +11,13 @@ const CashPage = () => {
 
   useEffect(() => {
     if (isBrowser && hostname === 'bitdash.app') {
-      window.location.href = 'https://stock.bitdash.app';
+      window.location.href = 'https://stocks.bitdash.app';
     }
   }, [hostname, isBrowser]);
 
   if (hostname === 'bitdash.app') return null;
 
-  return isPWA ? <StockPWALanding /> : <StockLandingBrowser />;
+  return isPWA ? <StocskPWALanding /> : <StocksLandingBrowser />;
 };
 
 export default CashPage;
