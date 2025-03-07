@@ -64,8 +64,8 @@ const Logo = () => {
   const mobileHeight = `${parseInt(mobileWidth) / aspectRatio}px`;
   
   // Desktop size (25% bigger)
-  const desktopWidth = `${parseInt(mobileWidth) * 1.5}px`;
-  const desktopHeight = `${parseInt(mobileHeight) * 1.5}px`;
+  const desktopWidth = `${parseInt(mobileWidth) * 1.6}px`;
+  const desktopHeight = `${parseInt(mobileHeight) * 1.6}px`;
   
   // Use breakpoint to switch between mobile and desktop sizes
   const width = useBreakpointValue({ base: mobileWidth, md: desktopWidth });
