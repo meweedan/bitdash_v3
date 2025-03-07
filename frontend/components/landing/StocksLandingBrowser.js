@@ -502,7 +502,6 @@ const InvestmentCard = ({ option, index }) => {
           {/* Financial chart pattern background */}
            <Image
             src="/images/background-image.png"
-            alt="Chart pattern"
             width="100%"
             height="100%"
             objectFit="cover"
@@ -522,17 +521,6 @@ const InvestmentCard = ({ option, index }) => {
             bg="radial-gradient(circle, rgba(139,121,102,0.3) 0%, rgba(139,121,102,0) 70%)"
             filter="blur(40px)"
             animation="pulse 15s infinite"
-          />
-          <Image
-            src="/images/ldn-eye.png"
-            alt="Chart pattern"
-            width="100%"
-            right="50%"
-            height="100%"
-            objectFit="cover"
-            objectPosition="center"
-            opacity={0.25}
-            position="absolute"
           />
           <Box
             position="absolute"
@@ -562,8 +550,7 @@ const InvestmentCard = ({ option, index }) => {
                       fontSize={headingSize}
                       fontWeight="bold"
                       lineHeight="1.2"
-                      bgGradient="linear(to-r, #8b7966, #b8a28b)"
-                      bgClip="text"
+                      color={isDark ? '#8b7966' : 'white'}
                     >
                       {t('stock.hero.title', 'Smart investments, at your fingertips')}
                     </Heading>
@@ -571,6 +558,7 @@ const InvestmentCard = ({ option, index }) => {
                     <Text
                       fontSize={{ base: "lg", md: "xl" }}
                       maxW="550px"
+                      color={isDark ? '#8b7966' : 'white'}
                     >
                       {t('stock.hero.subtitle', 'Access global stock markets from anywhere in MENA with our user-friendly platform designed for regional investors.')}
                     </Text>
@@ -578,10 +566,8 @@ const InvestmentCard = ({ option, index }) => {
                     <HStack spacing={6} mt={4}>
                       <Button
                         size="lg"
-                        bg="#8b7966"
-                        color="white"
-                        _hover={{ bg: "#9c7c63" }}
                         px={8}
+                        variant="stocks-solid"
                         rightIcon={<FaArrowRight />}
                         onClick={() => router.push('/signup')}
                       >
@@ -589,19 +575,19 @@ const InvestmentCard = ({ option, index }) => {
                       </Button>
                     </HStack>
                     
-                    <HStack spacing={8} mt={8} color={useColorModeValue("gray.600", "gray.400")} flexWrap="wrap">
+                    <HStack spacing={8} mt={8} color={isDark ? '#8b7966' : 'white'} flexWrap="wrap">
                       <HStack>
-                        <Icon as={CheckCircle} color="#8b7966" />
+                        <Icon as={CheckCircle} color={isDark ? '#8b7966' : 'white'} />
                         <Text>{t('stock.hero.feature1', 'Zero Commission')}</Text>
                       </HStack>
                       
                       <HStack>
-                        <Icon as={CheckCircle} color="#8b7966" />
+                        <Icon as={CheckCircle} color={isDark ? '#8b7966' : 'white'} />
                         <Text>{t('stock.hero.feature2', 'Shariah Compliant')}</Text>
                       </HStack>
                       
                       <HStack>
-                        <Icon as={CheckCircle} color="#8b7966" />
+                        <Icon as={CheckCircle} color={isDark ? '#8b7966' : 'white'} />
                         <Text>{t('stock.hero.feature3', '24/7 Support')}</Text>
                       </HStack>
                     </HStack>
@@ -729,7 +715,7 @@ const InvestmentCard = ({ option, index }) => {
         <Container maxW="container.xl">
           <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
           <Image
-                src="/images/shares.webp"
+                src="/images/shares.png"
                 alt="Investment Options"
                 objectFit="cover"
                 />
