@@ -1,8 +1,8 @@
 // frontend/pages/stock/index.js
 import { useEffect } from 'react';
 import { usePWA } from '@/hooks/usePWA';
-import { StockPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component
-import StocskLandingBrowser from '@/components/landing/StocksLandingBrowser';
+import { StocksPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component
+import StocksLandingBrowser from '@/components/landing/StocksLandingBrowser';
 
 const CashPage = () => {
   const { isPWA } = usePWA();
@@ -17,7 +17,7 @@ const CashPage = () => {
 
   if (hostname === 'bitdash.app') return null;
 
-  return isPWA ? <StocskPWALanding /> : <StocksLandingBrowser />;
+  return isPWA ? <StocksPWALanding /> : <StocksLandingBrowser />;
 };
 
 export default CashPage;
