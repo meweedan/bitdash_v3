@@ -48,7 +48,7 @@ export const CHALLENGE_PLANS = [
       { label: 'Maximum Leverage', value: '1:30' }
     ],
     badge: 'blue',
-    color: 'brand.bitfund.400'
+    color: 'brand.crypto.400'
   },
   {
     id: 'professional-challenge',
@@ -76,7 +76,7 @@ export const CHALLENGE_PLANS = [
       { label: 'Maximum Leverage', value: '1:30' }
     ],
     badge: 'purple',
-    color: 'brand.bitfund.500',
+    color: 'brand.crypto.500',
     popular: true
   },
   {
@@ -105,7 +105,7 @@ export const CHALLENGE_PLANS = [
       { label: 'Maximum Leverage', value: '1:30' }
     ],
     badge: 'orange',
-    color: 'brand.bitfund.600'
+    color: 'brand.crypto.600'
   },
   {
     id: 'super-challenge',
@@ -133,7 +133,7 @@ export const CHALLENGE_PLANS = [
       { label: 'Maximum Leverage', value: '1:30' }
     ],
     badge: 'red',
-    color: 'brand.bitfund.700'
+    color: 'brand.crypto.700'
   }
 ];
 

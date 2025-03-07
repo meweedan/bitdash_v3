@@ -9,25 +9,25 @@ const theme = extendTheme({
         600: '#9c7c63',    // Hover
         700: '#c4b2a0',    // Emphasis
       },
-      bitcash: {
+      cash: {
         400: '#8b7966',
         500: '#b8a28b',    // Base
         600: '#9c7c63',    // Hover
         700: '#c4b2a0',    // Emphasis
       },
-      bitfund: {
+      crypto: {
         400: '#8b7966',
         500: '#b8a28b',    // Base
         600: '#9c7c63',    // Hover
         700: '#c4b2a0',    // Emphasis
       },
-      bittrade: {
+      forex: {
         400: '#8b7966',
         500: '#b8a28b',    // Base
         600: '#9c7c63',    // Hover
         700: '#c4b2a0',    // Emphasis
       },
-      bitstock: {
+      stocks: {
         400: '#8b7966',
         500: '#b8a28b',    // Base
         600: '#9c7c63',    // Hover
@@ -55,53 +55,53 @@ const theme = extendTheme({
           color: 'brand.bitdash.500',
           _hover: { bg: 'brand.bitdash.500', color: 'white' }
         },
-        // BitCash variants
-        'bitcash-solid': {
-          bg: 'brand.bitcash.500',
+        // Cash variants
+        'cash-solid': {
+          bg: 'brand.cash.500',
           color: 'white',
-          _hover: { bg: 'brand.bitcash.600' }
+          _hover: { bg: 'brand.cash.600' }
         },
-        'bitcash-outline': {
+        'cash-outline': {
           border: '2px solid',
-          borderColor: 'brand.bitcash.500',
-          color: 'brand.bitcash.500',
-          _hover: { bg: 'brand.bitcash.500', color: 'white' }
+          borderColor: 'brand.cash.500',
+          color: 'brand.cash.500',
+          _hover: { bg: 'brand.cash.500', color: 'white' }
         },
-        // BitFund variants
-        'bitfund-solid': {
-          bg: 'brand.bitfund.500',
+        // Crypto variants
+        'crypto-solid': {
+          bg: 'brand.crypto.500',
           color: 'white',
-          _hover: { bg: 'brand.bitfund.600' }
+          _hover: { bg: 'brand.crypto.600' }
         },
-        'bitfund-outline': {
+        'crypto-outline': {
           border: '2px solid',
-          borderColor: 'brand.bitfund.500',
-          color: 'brand.bitfund.500',
-          _hover: { bg: 'brand.bitfund.500', color: 'white' }
+          borderColor: 'brand.crypto.500',
+          color: 'brand.crypto.500',
+          _hover: { bg: 'brand.crypto.500', color: 'white' }
         },
-        // BitTrade variants
-        'bittrade-solid': {
-          bg: 'brand.bittrade.500',
+        // Forex variants
+        'forex-solid': {
+          bg: 'brand.forex.500',
           color: 'white',
-          _hover: { bg: 'brand.bittrade.600' }
+          _hover: { bg: 'brand.forex.600' }
         },
-        'bittrade-outline': {
+        'forex-outline': {
           border: '2px solid',
-          borderColor: 'brand.bittrade.500',
-          color: 'brand.bittrade.500',
-          _hover: { bg: 'brand.bittrade.500', color: 'white' }
+          borderColor: 'brand.forex.500',
+          color: 'brand.forex.500',
+          _hover: { bg: 'brand.forex.500', color: 'white' }
         },
-        // BitStock variants
-        'bitstock-solid': {
-          bg: 'brand.bitstock.500',
+        // Stocks variants
+        'stocks-solid': {
+          bg: 'brand.stocks.500',
           color: 'white',
-          _hover: { bg: 'brand.bitstock.600' }
+          _hover: { bg: 'brand.stocks.600' }
         },
-        'bitstock-outline': {
+        'stocks-outline': {
           border: '2px solid',
-          borderColor: 'brand.bitstock.500',
-          color: 'brand.bitstock.500',
-          _hover: { bg: 'brand.bitstock.500', color: 'white' }
+          borderColor: 'brand.stocks.500',
+          color: 'brand.stocks.500',
+          _hover: { bg: 'brand.stocks.500', color: 'white' }
         }
       },
     },
@@ -117,17 +117,17 @@ const theme = extendTheme({
         bitdash: {
           borderColor: 'brand.bitdash.500',
         },
-        bitcash: {
-          borderColor: 'brand.bitcash.500',
+        cash: {
+          borderColor: 'brand.cash.500',
         },
-        bitfund: {
-          borderColor: 'brand.bitfund.500',
+        crypto: {
+          borderColor: 'brand.crypto.500',
         },
-        bittrade: {
-          borderColor: 'brand.bittrade.500',
+        forex: {
+          borderColor: 'brand.forex.500',
         },
-        bitstock: {
-          borderColor: 'brand.bitstock.500',
+        stocks: {
+          borderColor: 'brand.stocks.500',
         }
       }
     },

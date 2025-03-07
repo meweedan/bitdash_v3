@@ -12,8 +12,8 @@ const Logo = () => {
     const hostname = window.location.hostname;
     if (hostname.includes('cash')) {
       setPlatform('cash');
-    } else if (hostname.includes('stock')) {
-      setPlatform('stock');
+    } else if (hostname.includes('stocks')) {
+      setPlatform('stocks');
     } else if (hostname.includes('crypto')) {
       setPlatform('crypto');  
     } else if (hostname.includes('forex')) {
@@ -31,9 +31,9 @@ const Logo = () => {
         en: { path: '/cash.png', width: 862, height: 304 },
         ar: { path: '/cash-ar.png', width: 862, height: 304 }
       },
-      stock: {
-        en: { path: '/stock.png', width: 862, height: 304 },
-        ar: { path: '/stock-ar.png', width: 862, height: 304 }
+      stocks: {
+        en: { path: '/stocks.png', width: 862, height: 304 },
+        ar: { path: '/stocks-ar.png', width: 862, height: 304 }
       },
       forex: {
         en: { path: '/forex.png', width: 862, height: 304 },

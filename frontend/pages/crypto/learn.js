@@ -205,7 +205,7 @@ const LearnPage = () => {
             <VStack spacing={{ base: 4, md: 8 }} maxW="4xl">
               <Heading
                 fontSize={headingSize}
-                bgGradient="linear(to-r, brand.bitfund.500, brand.bitfund.700)"
+                bgGradient="linear(to-r, brand.crypto.500, brand.crypto.700)"
                 bgClip="text"
                 lineHeight="1.2"
                 textAlign="center"
@@ -232,7 +232,7 @@ const LearnPage = () => {
           <Heading
             fontSize={{ base: "2xl", md: "3xl" }}
             mb={{ base: 4, md: 8 }}
-            color="brand.bitfund.600"
+            color="brand.crypto.600"
           >
             What is Proprietary Trading?
           </Heading>
@@ -250,29 +250,29 @@ const LearnPage = () => {
             bg={useColorModeValue("blue.50", "blue.900")} 
             borderRadius="md"
             borderLeft="4px solid" 
-            borderColor="brand.bitfund.500"
+            borderColor="brand.crypto.500"
             my={8}
           >
-            <Heading size="md" mb={3} color="brand.bitfund.500">How Proprietary Trading Firms Work</Heading>
+            <Heading size="md" mb={3} color="brand.crypto.500">How Proprietary Trading Firms Work</Heading>
             <List spacing={3}>
               <ListItem>
-                <ListIcon as={FaCheck} color="brand.bitfund.500" />
+                <ListIcon as={FaCheck} color="brand.crypto.500" />
                 <Text as="span" fontWeight="medium">Capital Provision:</Text> The firm provides trading capital, removing the trader's personal financial risk
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="brand.bitfund.500" />
+                <ListIcon as={FaCheck} color="brand.crypto.500" />
                 <Text as="span" fontWeight="medium">Talent Evaluation:</Text> Firms assess traders through challenges with specific profit targets and risk parameters
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="brand.bitfund.500" />
+                <ListIcon as={FaCheck} color="brand.crypto.500" />
                 <Text as="span" fontWeight="medium">Profit Sharing:</Text> Successful traders receive a significant percentage of the profits they generate
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="brand.bitfund.500" />
+                <ListIcon as={FaCheck} color="brand.crypto.500" />
                 <Text as="span" fontWeight="medium">Risk Management:</Text> Strict rules ensure responsible trading and protect the firm's capital
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="brand.bitfund.500" />
+                <ListIcon as={FaCheck} color="brand.crypto.500" />
                 <Text as="span" fontWeight="medium">Scaling Opportunity:</Text> Consistently profitable traders often gain access to larger capital allocations
               </ListItem>
             </List>
@@ -290,7 +290,7 @@ const LearnPage = () => {
           <Heading
             fontSize={{ base: "2xl", md: "3xl" }}
             mb={{ base: 4, md: 8 }}
-            color="brand.bitfund.600"
+            color="brand.crypto.600"
           >
             The Challenge Evaluation System
           </Heading>
@@ -307,14 +307,14 @@ const LearnPage = () => {
                 bg={useColorModeValue("gray.50", "gray.700")}
                 borderRadius="lg"
                 borderWidth="1px"
-                borderColor="brand.bitfund.400"
+                borderColor="brand.crypto.400"
                 textAlign="center"
               >
                 <VStack spacing={4}>
-                  <Heading size="md" color="brand.bitfund.500">
+                  <Heading size="md" color="brand.crypto.500">
                     {challenge.title}
                   </Heading>
-                  <Text fontSize="2xl" fontWeight="bold" color="brand.bitfund.600">
+                  <Text fontSize="2xl" fontWeight="bold" color="brand.crypto.600">
                     {challenge.amount}
                   </Text>
                   <Divider />
@@ -445,7 +445,7 @@ const LearnPage = () => {
           <Heading
             fontSize={{ base: "2xl", md: "3xl" }}
             mb={{ base: 4, md: 8 }}
-            color="brand.bitfund.600"
+            color="brand.crypto.600"
           >
             The BitFund Islamic Advantage
           </Heading>
@@ -464,7 +464,7 @@ const LearnPage = () => {
                 borderRadius="md"
                 bg={useColorModeValue("gray.50", "gray.700")}
               >
-                <Icon as={feature.icon} boxSize={8} color="brand.bitfund.500" />
+                <Icon as={feature.icon} boxSize={8} color="brand.crypto.500" />
                 <Box>
                   <Heading size="sm" mb={2}>{feature.title}</Heading>
                   <Text fontSize="sm">{feature.description}</Text>
@@ -521,7 +521,7 @@ const LearnPage = () => {
             fontSize={{ base: "2xl", md: "3xl" }}
             mb={{ base: 6, md: 10 }}
             textAlign="center"
-            color="brand.bitfund.600"
+            color="brand.crypto.600"
           >
             Frequently Asked Questions
           </Heading>
@@ -543,7 +543,7 @@ const LearnPage = () => {
                   >
                     <Box flex="1" textAlign="left" fontWeight="medium" fontSize={{ base: "md", md: "lg" }}>
                       <HStack>
-                        <Icon as={FaQuestionCircle} color="brand.bitfund.500" mr={2} />
+                        <Icon as={FaQuestionCircle} color="brand.crypto.500" mr={2} />
                         <Text>{item.question}</Text>
                       </HStack>
                     </Box>
@@ -564,7 +564,7 @@ const LearnPage = () => {
           mb={{ base: 8, md: 16 }}
           p={{ base: 6, md: 12 }}
           borderRadius={{ base: "xl", md: "2xl" }}
-          bg="brand.bitfund.600"
+          bg="brand.crypto.600"
           color="white"
           textAlign="center"
         >
@@ -579,7 +579,7 @@ const LearnPage = () => {
               <Button
                 leftIcon={<FaTrophy />}
                 size={buttonSize}
-                color="brand.bitfund.400"
+                color="brand.crypto.400"
                 px={{ base: 4, md: 8 }}
                 h={buttonHeight}
                 fontSize={{ base: "md", md: "lg" }}
@@ -591,7 +591,7 @@ const LearnPage = () => {
                 leftIcon={<FaGraduationCap />}
                 size={buttonSize}
                 variant="bitfund-solid"
-                color="brand.bitfund.400"
+                color="brand.crypto.400"
                 px={{ base: 4, md: 8 }}
                 h={buttonHeight}
                 fontSize={{ base: "md", md: "lg" }}

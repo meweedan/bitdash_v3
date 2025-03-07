@@ -316,10 +316,10 @@ const PlatformsAnimation = () => {
   const scale = useBreakpointValue({ base: 0.7, md: 1 });
   
   const platforms = [
-    { name: 'BitCash', icon: FaMoneyBillWave, color: 'brand.bitcash.500' },
-    { name: 'BitFund', icon: FaChartLine, color: 'brand.bitfund.500' },
-    { name: 'BitStock', icon: FaUniversity, color: 'brand.bitstock.500' },
-    { name: 'BitTrade', icon: FaExchangeAlt, color: 'brand.bittrade.500' }
+    { name: 'BitCash', icon: FaMoneyBillWave, color: 'brand.cash.500' },
+    { name: 'BitFund', icon: FaChartLine, color: 'brand.crypto.500' },
+    { name: 'BitStock', icon: FaUniversity, color: 'brand.stocks.500' },
+    { name: 'BitTrade', icon: FaExchangeAlt, color: 'brand.forex.500' }
   ];
   
   return (

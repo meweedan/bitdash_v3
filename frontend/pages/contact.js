@@ -130,17 +130,17 @@ const Contact = () => {
     { 
       title: t('generalInquiries', 'General Inquiries'), 
       value: 'info@bitdash.app',
-      color: 'brand.bitfund.400'
+      color: 'brand.crypto.400'
     },
     { 
       title: t('technicalSupport', 'Technical Support'), 
       value: 'help@bitdash.app',
-      color: 'brand.bittrade.400'
+      color: 'brand.forex.400'
     },
     { 
       title: t('accountQuestions', 'Account Questions'), 
       value: 'contact@bitdash.app',
-      color: 'brand.bitcash.400'
+      color: 'brand.cash.400'
     }
   ];
 

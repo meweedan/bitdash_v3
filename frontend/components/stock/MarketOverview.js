@@ -290,7 +290,7 @@ const MarketOverview = () => {
         textAlign="center"
         py={10}
       >
-        <Spinner color="brand.bitstock.500" size="xl" />
+        <Spinner color="brand.stocks.500" size="xl" />
         <Text mt={4}>Loading market data...</Text>
       </Box>
     );
@@ -378,8 +378,8 @@ const MarketPanel = ({ markets, title, icon }) => {
   return (
     <Box>
       <HStack mb={4} ml={2}>
-        <Icon as={icon} color="brand.bitstock.500" />
-        <Heading size="md" color="brand.bitstock.500">{title}</Heading>
+        <Icon as={icon} color="brand.stocks.500" />
+        <Heading size="md" color="brand.stocks.500">{title}</Heading>
       </HStack>
       
       <SimpleGrid columns={{ base: 2, md: 4 }} spacing={3}>

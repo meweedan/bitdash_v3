@@ -426,17 +426,17 @@ const ForexLandingBrowser = () => {
                   <HStack spacing={6} mt={6} color={isDark ? "white" : "black"} flexWrap="wrap">
                     <HStack>
                       <Icon as={CheckCircle} color={isDark ? "white" : "black"} />
-                      <Text>{t('trade.hero.feature1', 'Regulated Broker')}</Text>
+                      <Text>{t('Landinghero.feature1', 'Regulated Broker')}</Text>
                     </HStack>
                     
                     <HStack>
                       <Icon as={CheckCircle} color={isDark ? "white" : "black"}/>
-                      <Text>{t('trade.hero.feature2', 'Fast Execution')}</Text>
+                      <Text>{t('Landinghero.feature2', 'Fast Execution')}</Text>
                     </HStack>
                     
                     <HStack>
                       <Icon as={CheckCircle} color={isDark ? "white" : "black"} />
-                      <Text>{t('trade.hero.feature3', 'Competitive Spreads')}</Text>
+                      <Text>{t('Landinghero.feature3', 'Competitive Spreads')}</Text>
                     </HStack>
                   </HStack>
 

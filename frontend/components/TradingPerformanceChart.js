@@ -81,11 +81,11 @@ const TradingPerformanceChart = () => {
   const textColor = useColorModeValue('gray.800', 'white');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   const cardBg = useColorModeValue('gray.50', 'gray.700');
-  const buttonBgActive = useColorModeValue('brand.bitfund.500', 'brand.bitfund.400');
+  const buttonBgActive = useColorModeValue('brand.crypto.500', 'brand.crypto.400');
   const buttonColorActive = useColorModeValue('white', 'white');
-  const lineColor = useColorModeValue('brand.bitfund.500', 'brand.bitfund.400');
+  const lineColor = useColorModeValue('brand.crypto.500', 'brand.crypto.400');
   const tooltipBg = useColorModeValue('white', 'gray.700');
-  const accentColor = useColorModeValue('brand.bitfund.500', 'brand.bitfund.400');
+  const accentColor = useColorModeValue('brand.crypto.500', 'brand.crypto.400');
 
   // Tabs for mobile
   const tabs = [

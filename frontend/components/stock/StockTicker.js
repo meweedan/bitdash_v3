@@ -239,7 +239,7 @@ const StockTicker = () => {
         p={4}
         textAlign="center"
       >
-        <Spinner color="brand.bitstock.500" />
+        <Spinner color="brand.stocks.500" />
         <Text mt={2}>Loading stock data...</Text>
       </Box>
     );
@@ -310,7 +310,7 @@ const StockTicker = () => {
               bg={useColorModeValue('white', 'gray.700')}
               boxShadow="sm"
             >
-              <Text fontWeight="bold" fontSize="sm" mr={2} color="brand.bitstock.500">
+              <Text fontWeight="bold" fontSize="sm" mr={2} color="brand.stocks.500">
                 {stock.symbol}
               </Text>
               <Text fontSize="sm" mr={2}>

@@ -429,7 +429,7 @@ export default function IndividualInvestorSignup() {
             size="lg" 
             color={isDark ? 'white' : 'gray.800'}
             textAlign="center"
-            bgGradient="linear(to-r, brand.bitstock.400, brand.bitstock.600)"
+            bgGradient="linear(to-r, brand.stocks.400, brand.stocks.600)"
             bgClip="text"
           >
             {t('becomeAnInvestor')}

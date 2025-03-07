@@ -449,7 +449,7 @@ export default function IBSignup() {
             size="lg" 
             color={isDark ? 'white' : 'gray.800'}
             textAlign="center"
-            bgGradient="linear(to-r, brand.bittrade.400, brand.bittrade.600)"
+            bgGradient="linear(to-r, brand.forex.400, brand.forex.600)"
             bgClip="text"
           >
             {t('becomeIntroducingBroker')}

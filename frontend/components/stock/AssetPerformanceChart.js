@@ -120,7 +120,7 @@ const AssetPerformanceFOMO = () => {
         borderColor={borderColor}
         textAlign="center"
       >
-        <Spinner size="xl" color="brand.bitstock.400" />
+        <Spinner size="xl" color="brand.stocks.400" />
         <Text mt={4}>Loading data for {symbol}...</Text>
       </Box>
     );
@@ -198,7 +198,7 @@ const AssetPerformanceFOMO = () => {
       {/* Header */}
       <Flex justify="space-between" align="center" mb={4} wrap="wrap">
         <HStack spacing={3} mb={{ base: 2, md: 0 }}>
-          {AssetIcon && <Icon as={AssetIcon} color="brand.bitstock.400" boxSize={5} />}
+          {AssetIcon && <Icon as={AssetIcon} color="brand.stocks.400" boxSize={5} />}
           <Heading size="md" color={textColor}>
             {assetLabel} ({symbol})
           </Heading>
@@ -242,7 +242,7 @@ const AssetPerformanceFOMO = () => {
         <VStack align="flex-start" spacing={3}>
           <Text fontSize="lg" color={textColor}>
             If you had invested{' '}
-            <Text as="span" fontWeight="bold" color="brand.bitstock.500">
+            <Text as="span" fontWeight="bold" color="brand.stocks.500">
               ${HYPOTHETICAL_INVESTMENT.toLocaleString()}
             </Text>{' '}
             in <Text as="span" fontWeight="semibold">{symbol}</Text> at the start of this {timeframe} period...
@@ -251,7 +251,7 @@ const AssetPerformanceFOMO = () => {
           <Text
             fontSize="xl"
             fontWeight="bold"
-            color={isPositive ? 'brand.bitstock.500' : 'brand.bitstock.600'}
+            color={isPositive ? 'brand.stocks.500' : 'brand.stocks.600'}
           >
             You&apos;d have 
             {' $'}

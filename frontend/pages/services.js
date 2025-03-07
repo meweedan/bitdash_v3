@@ -40,7 +40,7 @@ const platforms = [
     description: 'Experience seamless cross-border transactions with our institutional-grade payment infrastructure designed for businesses and consumers globally.',
     image: '/cash.png',
     imageAr: '/cash-ar.png',
-    color: 'brand.bitcash.500',
+    color: 'brand.cash.500',
     stats: [
       { value: '$2.5B+', label: 'Monthly Volume' },
       { value: '99.99%', label: 'Uptime' },
@@ -60,7 +60,7 @@ const platforms = [
     description: 'Access capital up to $200,000 by proving your trading skill through our rigorous evaluation process and performance-based funding program.',
     image: '/fund.png',
     imageAr: '/fund-ar.png',
-    color: 'brand.bitfund.500',
+    color: 'brand.crypto.500',
     stats: [
       { value: '12.5%', label: 'Pass Rate' },
       { value: '$450M+', label: 'Capital Allocated' },
@@ -80,7 +80,7 @@ const platforms = [
     description: 'Your gateway to US and EU markets tailored specifically for MENA and GCC investors with access to stocks, privately held assets, commodities and more.',
     image: '/stock.png',
     imageAr: '/stock-ar.png',
-    color: 'brand.bitstock.500',
+    color: 'brand.stocks.500',
     stats: [
       { value: '350K+', label: 'Active Investors' },
       { value: '18', label: 'Countries Served' },
@@ -100,7 +100,7 @@ const platforms = [
     description: 'Trade forex pairs, cryptocurrencies and commodities on our secure, regulated platform with institutional liquidity and advanced trading tools.',
     image: '/trade.png',
     imageAr: '/trade-ar.png',
-    color: 'brand.bittrade.500',
+    color: 'brand.forex.500',
     stats: [
       { value: '80+', label: 'Currency Pairs' },
       { value: '50+', label: 'Cryptocurrencies' },
@@ -495,7 +495,7 @@ const Services = () => {
             >
               <Heading
                 fontSize={{ base: '4xl', md: '7xl' }}
-                bgGradient="linear(to-r, brand.bitcash.500, brand.bitfund.500, brand.bitstock.500, brand.bittrade.500)"
+                bgGradient="linear(to-r, brand.cash.500, brand.crypto.500, brand.stocks.500, brand.forex.500)"
                 bgClip="text"
                 letterSpacing="tight"
                 lineHeight="shorter"

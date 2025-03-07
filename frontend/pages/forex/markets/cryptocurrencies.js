@@ -129,10 +129,10 @@ const CryptoPage = () => {
 
   // Colors & UI
   const cardBg = useColorModeValue('white', 'gray.800');
-  const accentColor = useColorModeValue('brand.bittrade.400', 'brand.bittrade.700');
+  const accentColor = useColorModeValue('brand.forex.400', 'brand.forex.700');
   const softShadow = useColorModeValue('lg', 'dark-lg');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
-  const ctaBgColor = useColorModeValue('brand.bittrade.700', 'brand.bittrade.400');
+  const ctaBgColor = useColorModeValue('brand.forex.700', 'brand.forex.400');
   const statBg = useColorModeValue('blue.50', 'gray.700');
 
   // Responsive values
@@ -157,7 +157,7 @@ const CryptoPage = () => {
             left="-5%"
             w="35%"
             h="120%"
-            bg="brand.bittrade.700"
+            bg="brand.forex.700"
             opacity="0.3"
             transform="rotate(-15deg)"
             roundedRight="full"
@@ -168,7 +168,7 @@ const CryptoPage = () => {
             right="-5%"
             w="30%"
             h="60%"
-            bg="brand.bittrade.400"
+            bg="brand.forex.400"
             opacity="0.4"
             transform="rotate(25deg)"
             roundedLeft="full"
@@ -771,7 +771,7 @@ const CryptoPage = () => {
                       <Flex
                         minW={8}
                         h={8}
-                        bg="brand.bittrade.500"
+                        bg="brand.forex.500"
                         borderRadius="full"
                         justify="center"
                         align="center"
@@ -791,7 +791,7 @@ const CryptoPage = () => {
                       <Flex
                         minW={8}
                         h={8}
-                        bg="brand.bittrade.500"
+                        bg="brand.forex.500"
                         borderRadius="full"
                         justify="center"
                         align="center"
@@ -811,7 +811,7 @@ const CryptoPage = () => {
                       <Flex
                         minW={8}
                         h={8}
-                        bg="brand.bittrade.500"
+                        bg="brand.forex.500"
                         borderRadius="full"
                         justify="center"
                         align="center"
@@ -831,7 +831,7 @@ const CryptoPage = () => {
                       <Flex
                         minW={8}
                         h={8}
-                        bg="brand.bittrade.500"
+                        bg="brand.forex.500"
                         borderRadius="full"
                         justify="center"
                         align="center"
@@ -869,7 +869,7 @@ const CryptoPage = () => {
                       <Box
                         w="100%"
                         h="350px"
-                        bg="brand.bittrade.400"
+                        bg="brand.forex.400"
                         borderRadius="xl"
                         display="flex"
                         alignItems="center"

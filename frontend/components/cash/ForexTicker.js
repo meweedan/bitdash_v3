@@ -45,7 +45,7 @@ const RatePanel = ({ rates, isLoading, error, onSwitch }) => {
   const bgColor = useColorModeValue('gray.100', 'gray.800');
   const textColor = useColorModeValue('gray.800', 'white');
 
-  if (isLoading) return <Spinner color="brand.bitfund.700" />;
+  if (isLoading) return <Spinner color="brand.crypto.700" />;
   if (error) return <Alert status="error"><AlertIcon />{error.message}</Alert>;
   if (!Array.isArray(rates) || rates.length === 0) return <Text>No data available</Text>;
   
@@ -73,13 +73,13 @@ const RatePanel = ({ rates, isLoading, error, onSwitch }) => {
                 variant="ghost" 
                 size="xs"
                 p={2}
-                color="brand.bitfund.400"
+                color="brand.crypto.400"
               >
                 <ArrowUpDown size={16} />
               </Button>
             </HStack>
             
-            <Text fontSize={isMobile ? 'lg' : 'xl'} fontWeight="bold" color="brand.bitfund.700">
+            <Text fontSize={isMobile ? 'lg' : 'xl'} fontWeight="bold" color="brand.crypto.700">
               {rate.rate.toFixed(4)}
             </Text>
           </HStack>
@@ -91,7 +91,7 @@ const RatePanel = ({ rates, isLoading, error, onSwitch }) => {
             flexDirection={isMobile ? 'column' : 'row'}
           >
             <HStack spacing={4}>
-              <Text fontSize="sm" fontWeight="bold" color="brand.bitfund.400">
+              <Text fontSize="sm" fontWeight="bold" color="brand.crypto.400">
                 Buy: {rate.buy.toFixed(4)}
               </Text>
               <Text fontSize="sm" fontWeight="bold" color="red.400">
@@ -133,7 +133,7 @@ const ForexTicker = () => {
   // Color theming
   const bgColor = useColorModeValue('white', 'gray.900');
   const tabBg = useColorModeValue('gray.100', 'gray.800');
-  const brandGradient = "linear(to-r, brand.bitfund.500, brand.bitfund.700)";
+  const brandGradient = "linear(to-r, brand.crypto.500, brand.crypto.700)";
 
   // Fetch exchange rate data
   useEffect(() => {
@@ -395,7 +395,7 @@ const ForexTicker = () => {
           <Tab 
             _selected={{ 
               color: "black", 
-              bg: "brand.bitfund.700" 
+              bg: "brand.crypto.700" 
             }}
           >
             LYD
@@ -403,7 +403,7 @@ const ForexTicker = () => {
           <Tab 
             _selected={{ 
               color: "black", 
-              bg: "brand.bitfund.700" 
+              bg: "brand.crypto.700" 
             }}
           >
             EGP
@@ -411,7 +411,7 @@ const ForexTicker = () => {
           <Tab 
             _selected={{ 
               color: "black", 
-              bg: "brand.bitfund.700" 
+              bg: "brand.crypto.700" 
             }}
           >
             Crypto
@@ -419,7 +419,7 @@ const ForexTicker = () => {
           <Tab 
             _selected={{ 
               color: "black", 
-              bg: "brand.bitfund.700" 
+              bg: "brand.crypto.700" 
             }}
           >
             Metals
@@ -432,7 +432,7 @@ const ForexTicker = () => {
             variant="ghost" 
             size="sm" 
             leftIcon={<RefreshCw size={16} />}
-            color="brand.bitfund.500"
+            color="brand.crypto.500"
           >
             Refresh
           </Button>

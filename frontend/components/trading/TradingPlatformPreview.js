@@ -31,7 +31,7 @@ const TradingPlatformPreview = () => {
   
   const cardBg = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
-  const accentColor = useColorModeValue('brand.bittrade.500', 'brand.bittrade.400');
+  const accentColor = useColorModeValue('brand.forex.500', 'brand.forex.400');
   const secondaryBg = useColorModeValue('gray.50', 'gray.700');
 
 
@@ -89,7 +89,7 @@ const TradingPlatformPreview = () => {
             <HStack mt={4} justify="center" spacing={4}>
               <Button
                 leftIcon={<FaDownload />}
-                color="brand.bittrade.400"
+                color="brand.forex.400"
               >
                 Web Platform
               </Button>
@@ -172,13 +172,13 @@ const TradingPlatformPreview = () => {
             <HStack mt={4} justify="center" spacing={4}>
               <Button
                 leftIcon={<FaApple />}
-                color="brand.bittrade.400"
+                color="brand.forex.400"
               >
                 iOS
               </Button>
               <Button
                 leftIcon={<FaAndroid />}
-                color="brand.bittrade.400"
+                color="brand.forex.400"
               >
                 Android
               </Button>
@@ -204,7 +204,7 @@ const Heading = ({ platformType }) => {
   
   return (
     <HStack spacing={2}>
-      <Icon as={icons[platformType]} color="brand.bittrade.500" boxSize={5} />
+      <Icon as={icons[platformType]} color="brand.forex.500" boxSize={5} />
       <Text fontSize="lg" fontWeight="bold">
         {headings[platformType]}
       </Text>

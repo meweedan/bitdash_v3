@@ -11,33 +11,33 @@ const FlowingShawl = () => {
     setIsClient(true);
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
-      if (hostname.includes('cash')) setPlatform('bitcash');
-      else if (hostname.includes('crypto')) setPlatform('bitfund');
-      else if (hostname.includes('stock')) setPlatform('bitstock');
-      else if (hostname.includes('forex')) setPlatform('bittrade');
+      if (hostname.includes('cash')) setPlatform('cash');
+      else if (hostname.includes('crypto')) setPlatform('crypto');
+      else if (hostname.includes('stocks')) setPlatform('stocks');
+      else if (hostname.includes('forex')) setPlatform('forex');
     }
   }, []);
 
   const themeColors = {
-    bitstock: [
+    stocks: [
       new THREE.Color('#8b7966'),
       new THREE.Color('#b8a28b'),
       new THREE.Color('#9c7c63'),
       new THREE.Color('#c4b2a0')
     ],
-    bitcash: [
+    cash: [
       new THREE.Color('#8b7966'),
       new THREE.Color('#b8a28b'),
       new THREE.Color('#9c7c63'),
       new THREE.Color('#c4b2a0')
     ],
-    bitfund: [
+    crypto: [
       new THREE.Color('#8b7966'),
       new THREE.Color('#b8a28b'),
       new THREE.Color('#9c7c63'),
       new THREE.Color('#c4b2a0')
     ],
-    bittrade: [
+    forex: [
       new THREE.Color('#8b7966'),
       new THREE.Color('#b8a28b'),
       new THREE.Color('#9c7c63'),

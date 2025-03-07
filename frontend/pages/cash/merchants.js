@@ -103,7 +103,7 @@ function MerchantsPage() {
     'linear(to-b, gray.900, black)'
   );
   const cardBg = useColorModeValue('white', 'gray.800');
-  const accentColor = useColorModeValue('brand.bitcash.600', 'brand.bitcash.400');
+  const accentColor = useColorModeValue('brand.cash.600', 'brand.cash.400');
   const headingSize = useBreakpointValue({ base: '2xl', md: '3xl', lg: '4xl' });
   const sectionPadding = useBreakpointValue({ base: 8, md: 16 });
   const buttonSize = useBreakpointValue({ base: 'md', md: 'lg' });
@@ -124,7 +124,7 @@ function MerchantsPage() {
               <VStack spacing={{ base: 4, md: 8 }} maxW="4xl">
                 <Heading
                   fontSize={headingSize}
-                  bgGradient="linear(to-r, brand.bitcash.500, brand.bitcash.700)"
+                  bgGradient="linear(to-r, brand.cash.500, brand.cash.700)"
                   bgClip="text"
                   lineHeight="1.2"
                 >
@@ -167,7 +167,7 @@ function MerchantsPage() {
               <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mb={6}>
                 <VStack align="start" spacing={4}>
                   <HStack>
-                    <ArrowForwardIcon color="brand.bitcash.500" boxSize={6} />
+                    <ArrowForwardIcon color="brand.cash.500" boxSize={6} />
                     <Heading size="md">{t('merchants.benefits.feature1.title', 'Payment Links & QR Codes')}</Heading>
                   </HStack>
                   <Text fontSize="sm">
@@ -175,7 +175,7 @@ function MerchantsPage() {
                   </Text>
                   <Divider />
                   <HStack>
-                    <ArrowForwardIcon color="brand.bitcash.500" boxSize={6} />
+                    <ArrowForwardIcon color="brand.cash.500" boxSize={6} />
                     <Heading size="md">{t('merchants.benefits.feature2.title', 'Instant Settlement')}</Heading>
                   </HStack>
                   <Text fontSize="sm">
@@ -185,7 +185,7 @@ function MerchantsPage() {
 
                 <VStack align="start" spacing={4}>
                   <HStack>
-                    <ArrowForwardIcon color="brand.bitcash.500" boxSize={6} />
+                    <ArrowForwardIcon color="brand.cash.500" boxSize={6} />
                     <Heading size="md">Flexible Withdrawals</Heading>
                   </HStack>
                   <Text fontSize="sm">
@@ -193,7 +193,7 @@ function MerchantsPage() {
                   </Text>
                   <Divider />
                   <HStack>
-                    <ArrowForwardIcon color="brand.bitcash.500" boxSize={6} />
+                    <ArrowForwardIcon color="brand.cash.500" boxSize={6} />
                     <Heading size="md">Comprehensive Dashboard</Heading>
                   </HStack>
                   <Text fontSize="sm">
@@ -207,26 +207,26 @@ function MerchantsPage() {
                 bg={useColorModeValue('green.50', 'green.900')}
                 borderRadius="md"
                 borderLeft="4px solid"
-                borderColor="brand.bitcash.500"
+                borderColor="brand.cash.500"
               >
-                <Heading size="md" mb={3} color="brand.bitcash.500">
+                <Heading size="md" mb={3} color="brand.cash.500">
                   {t('merchants.benefits.whyChoose.heading', 'Why Businesses Choose BitCash')}
                 </Heading>
                 <List spacing={3}>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitcash.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.cash.500" />
                     {t('merchants.benefits.whyChoose.reason1', 'Low 1.5% transaction fee with no hidden costs')}
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitcash.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.cash.500" />
                     {t('merchants.benefits.whyChoose.reason2', 'Instant access to your funds, no settlement delays')}
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitcash.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.cash.500" />
                     {t('merchants.benefits.whyChoose.reason3', 'Multiple withdrawal options for maximum flexibility')}
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitcash.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.cash.500" />
                     {t('merchants.benefits.whyChoose.reason4', 'Secure transactions with advanced fraud protection')}
                   </ListItem>
                 </List>
@@ -250,12 +250,12 @@ function MerchantsPage() {
                   bg={useColorModeValue('gray.50', 'gray.700')}
                   borderRadius="lg"
                   borderTop="4px solid"
-                  borderColor="brand.bitcash.500"
+                  borderColor="brand.cash.500"
                   transition="all 0.3s"
                   _hover={{ transform: 'translateY(-5px)', boxShadow: 'lg' }}
                 >
                   <VStack spacing={4} align="start">
-                    <Heading size="md" color="brand.bitcash.500">
+                    <Heading size="md" color="brand.cash.500">
                       Payment Generation
                     </Heading>
                     <Text fontSize="sm">
@@ -270,12 +270,12 @@ function MerchantsPage() {
                   bg={useColorModeValue('gray.50', 'gray.700')}
                   borderRadius="lg"
                   borderTop="4px solid"
-                  borderColor="brand.bitcash.500"
+                  borderColor="brand.cash.500"
                   transition="all 0.3s"
                   _hover={{ transform: 'translateY(-5px)', boxShadow: 'lg' }}
                 >
                   <VStack spacing={4} align="start">
-                    <Heading size="md" color="brand.bitcash.500">
+                    <Heading size="md" color="brand.cash.500">
                       Sales Analytics
                     </Heading>
                     <Text fontSize="sm">
@@ -290,12 +290,12 @@ function MerchantsPage() {
                   bg={useColorModeValue('gray.50', 'gray.700')}
                   borderRadius="lg"
                   borderTop="4px solid"
-                  borderColor="brand.bitcash.500"
+                  borderColor="brand.cash.500"
                   transition="all 0.3s"
                   _hover={{ transform: 'translateY(-5px)', boxShadow: 'lg' }}
                 >
                   <VStack spacing={4} align="start">
-                    <Heading size="md" color="brand.bitcash.500">
+                    <Heading size="md" color="brand.cash.500">
                       Withdrawal Management
                     </Heading>
                     <Text fontSize="sm">
@@ -311,9 +311,9 @@ function MerchantsPage() {
                 bg={useColorModeValue('green.50', 'green.900')}
                 borderRadius="md"
                 borderLeft="4px solid"
-                borderColor="brand.bitcash.500"
+                borderColor="brand.cash.500"
               >
-                <Heading size="md" mb={3} color="brand.bitcash.500">
+                <Heading size="md" mb={3} color="brand.cash.500">
                   Integration Options
                 </Heading>
                 <Text mb={4}>
@@ -321,19 +321,19 @@ function MerchantsPage() {
                 </Text>
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
                   <HStack p={3} bg={cardBg} borderRadius="md">
-                    <CheckCircleIcon color="brand.bitcash.500" />
+                    <CheckCircleIcon color="brand.cash.500" />
                     <Text>Developer API for custom integrations</Text>
                   </HStack>
                   <HStack p={3} bg={cardBg} borderRadius="md">
-                    <CheckCircleIcon color="brand.bitcash.500" />
+                    <CheckCircleIcon color="brand.cash.500" />
                     <Text>E-commerce plugins (Shopify, WooCommerce)</Text>
                   </HStack>
                   <HStack p={3} bg={cardBg} borderRadius="md">
-                    <CheckCircleIcon color="brand.bitcash.500" />
+                    <CheckCircleIcon color="brand.cash.500" />
                     <Text>POS system compatibility</Text>
                   </HStack>
                   <HStack p={3} bg={cardBg} borderRadius="md">
-                    <CheckCircleIcon color="brand.bitcash.500" />
+                    <CheckCircleIcon color="brand.cash.500" />
                     <Text>Mobile SDKs for app integration</Text>
                   </HStack>
                 </SimpleGrid>
@@ -414,7 +414,7 @@ function MerchantsPage() {
                   boxShadow="md"
                 >
                   <VStack spacing={4}>
-                    <Text fontSize="5xl" fontWeight="bold" color="brand.bitcash.500">5,000+</Text>
+                    <Text fontSize="5xl" fontWeight="bold" color="brand.cash.500">5,000+</Text>
                     <Text fontWeight="medium">Active Merchants</Text>
                   </VStack>
                 </Box>
@@ -426,7 +426,7 @@ function MerchantsPage() {
                   boxShadow="md"
                 >
                   <VStack spacing={4}>
-                    <Text fontSize="5xl" fontWeight="bold" color="brand.bitcash.500">$25M+</Text>
+                    <Text fontSize="5xl" fontWeight="bold" color="brand.cash.500">$25M+</Text>
                     <Text fontWeight="medium">Monthly Transaction Volume</Text>
                   </VStack>
                 </Box>
@@ -438,7 +438,7 @@ function MerchantsPage() {
                   boxShadow="md"
                 >
                   <VStack spacing={4}>
-                    <Text fontSize="5xl" fontWeight="bold" color="brand.bitcash.500">98%</Text>
+                    <Text fontSize="5xl" fontWeight="bold" color="brand.cash.500">98%</Text>
                     <Text fontWeight="medium">Merchant Satisfaction</Text>
                   </VStack>
                 </Box>
@@ -457,7 +457,7 @@ function MerchantsPage() {
               mb={{ base: 8, md: 16 }}
               p={{ base: 6, md: 12 }}
               borderRadius={{ base: 'xl', md: '2xl' }}
-              bg="brand.bitcash.600"
+              bg="brand.cash.600"
               color="white"
               textAlign="center"
             >

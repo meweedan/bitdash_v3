@@ -66,7 +66,7 @@ function LearnMore() {
 
   // Colors & UI
   const cardBg = useColorModeValue('white', 'gray.800');
-  const accentColor = useColorModeValue('brand.bitcash.600', 'brand.bitcash.400');
+  const accentColor = useColorModeValue('brand.cash.600', 'brand.cash.400');
   const accentBg = useColorModeValue('brand.bitcash.50', 'brand.bitcash.900');
   const softShadow = useColorModeValue('lg', 'dark-lg');
 
@@ -265,7 +265,7 @@ function LearnMore() {
                   alt={t('learnMore.value.imageAlt', 'BitCash agent serving customer')}
                   fallback={
                     <Box 
-                      bg="brand.bitcash.400" 
+                      bg="brand.cash.400" 
                       width="100%" 
                       height="100%" 
                       display="flex" 
@@ -455,7 +455,7 @@ function LearnMore() {
                       <Flex 
                         w={12} 
                         h={12} 
-                        bg="brand.bitcash.400" 
+                        bg="brand.cash.400" 
                         color="white" 
                         borderRadius="full" 
                         justifyContent="center" 
@@ -556,12 +556,12 @@ function LearnMore() {
                           h={12}
                           borderRadius="full"
                           overflow="hidden"
-                          bg="brand.bitcash.400"
+                          bg="brand.cash.400"
                         >
                           <Image
                             src={story.image}
                             alt={story.name}
-                            fallback={<Box bg="brand.bitcash.400" w="100%" h="100%" />}
+                            fallback={<Box bg="brand.cash.400" w="100%" h="100%" />}
                           />
                         </Box>
                         <Box>
@@ -608,7 +608,7 @@ function LearnMore() {
                       <AccordionButton 
                         bg={accentBg} 
                         borderRadius="md" 
-                        _expanded={{ bg: "brand.bitcash.400", color: "white" }}
+                        _expanded={{ bg: "brand.cash.400", color: "white" }}
                       >
                         <Box flex='1' textAlign='left' py={2}>
                           <Text fontWeight="medium">{item.question}</Text>
@@ -628,7 +628,7 @@ function LearnMore() {
           {/* CTA Section */}
           <SlideFade in offsetY="30px">
             <Box 
-              bg="brand.bitcash.600" 
+              bg="brand.cash.600" 
               color="white" 
               p={{ base: 6, md: 10 }} 
               borderRadius="xl" 

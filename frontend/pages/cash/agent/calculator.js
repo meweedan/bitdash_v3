@@ -102,7 +102,7 @@ function Calculator() {
 
   // Colors & UI
   const cardBg = useColorModeValue('white', 'gray.800');
-  const accentColor = useColorModeValue('brand.bitcash.600', 'brand.bitcash.400');
+  const accentColor = useColorModeValue('brand.cash.600', 'brand.cash.400');
   const accentBg = useColorModeValue('brand.bitcash.50', 'brand.bitcash.900');
   const softShadow = useColorModeValue('lg', 'dark-lg');
 
@@ -176,7 +176,7 @@ function Calculator() {
                         flex="1"
                       >
                         <SliderTrack>
-                          <SliderFilledTrack bg="brand.bitcash.400" />
+                          <SliderFilledTrack bg="brand.cash.400" />
                         </SliderTrack>
                         <SliderThumb />
                       </Slider>
@@ -205,7 +205,7 @@ function Calculator() {
                         flex="1"
                       >
                         <SliderTrack>
-                          <SliderFilledTrack bg="brand.bitcash.400" />
+                          <SliderFilledTrack bg="brand.cash.400" />
                         </SliderTrack>
                         <SliderThumb />
                       </Slider>
@@ -236,7 +236,7 @@ function Calculator() {
                         flex="1"
                       >
                         <SliderTrack>
-                          <SliderFilledTrack bg="brand.bitcash.400" />
+                          <SliderFilledTrack bg="brand.cash.400" />
                         </SliderTrack>
                         <SliderThumb />
                       </Slider>
@@ -265,7 +265,7 @@ function Calculator() {
                         flex="1"
                       >
                         <SliderTrack>
-                          <SliderFilledTrack bg="brand.bitcash.400" />
+                          <SliderFilledTrack bg="brand.cash.400" />
                         </SliderTrack>
                         <SliderThumb />
                       </Slider>
@@ -296,7 +296,7 @@ function Calculator() {
                         flex="1"
                       >
                         <SliderTrack>
-                          <SliderFilledTrack bg="brand.bitcash.400" />
+                          <SliderFilledTrack bg="brand.cash.400" />
                         </SliderTrack>
                         <SliderThumb />
                       </Slider>
@@ -325,7 +325,7 @@ function Calculator() {
                         flex="1"
                       >
                         <SliderTrack>
-                          <SliderFilledTrack bg="brand.bitcash.400" />
+                          <SliderFilledTrack bg="brand.cash.400" />
                         </SliderTrack>
                         <SliderThumb />
                       </Slider>
@@ -356,7 +356,7 @@ function Calculator() {
                         flex="1"
                       >
                         <SliderTrack>
-                          <SliderFilledTrack bg="brand.bitcash.400" />
+                          <SliderFilledTrack bg="brand.cash.400" />
                         </SliderTrack>
                         <SliderThumb />
                       </Slider>

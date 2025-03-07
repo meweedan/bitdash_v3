@@ -8,7 +8,7 @@ import Layout from '@/components/Layout';
 // Subdomain landings
 import MainLanding from '@/components/Landing';
 import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
-import StockLandingBrowser from '@/components/landing/StockLandingBrowser';
+import StocksLandingBrowser from '@/components/landing/StocksLandingBrowser';
 import CryptoLandingBrowser from '@/components/landing/CryptoLandingBrowser';
 import ForexLandingBrowser from '@/components/landing/ForexLandingBrowser';
 
@@ -26,8 +26,8 @@ export default function HomePage() {
       setPlatform('crypto');
     } else if (hostname.includes('forex.')) {
       setPlatform('forex');
-    } else if (hostname.includes('stock.')) {
-      setPlatform('stock');
+    } else if (hostname.includes('stocks.')) {
+      setPlatform('stocks');
     } else if (process.env.NODE_ENV === 'development') {
       // For dev, e.g. http://localhost:3000?platform=cash
       const param = new URLSearchParams(window.location.search).get('platform');
@@ -62,11 +62,11 @@ export default function HomePage() {
           favicon: '/forex-icons/favicon.ico',
           manifest: '/manifests/forex-manifest.json',
         };
-      case 'stock':
+      case 'stocks':
       return {
-        title: t('stock.title', 'Stock by BitDash'),
-        favicon: '/stock-icons/favicon.ico',
-        manifest: '/manifests/stock-manifest.json',
+        title: t('stocks.title', 'Stocks by BitDash'),
+        favicon: '/stocks-icons/favicon.ico',
+        manifest: '/manifests/stocks-manifest.json',
       };
       default:
         return {
@@ -86,8 +86,8 @@ export default function HomePage() {
         return <CashLandingBrowser />;
       case 'crypto':
         return <CryptoLandingBrowser />;
-      case 'stock':
-        return <StockLandingBrowser />;
+      case 'stocks':
+        return <StocksLandingBrowser />;
       case 'forex':
         return <ForexLandingBrowser />;
       default:

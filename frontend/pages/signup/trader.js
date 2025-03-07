@@ -101,12 +101,12 @@ const formStyles = {
 
 const inputStyles = {
   bg: "rgba(255, 255, 255, 0.05)",
-  borderColor: "brand.bittrade.400",
+  borderColor: "brand.forex.400",
   _hover: {
     borderColor: "whiteAlpha.400",
   },
   _focus: {
-    borderColor: "brand.bittrade.400",
+    borderColor: "brand.forex.400",
     bg: "rgba(255, 255, 255, 0.08)",
   }
 };
@@ -594,7 +594,7 @@ export default function TraderSignup() {
       
       <Alert status="info" borderRadius="md">
         <AlertIcon />
-        <Text fontSize="sm" color="linear(to-r, brand.bittrade.500, brand.bittrade.700)">
+        <Text fontSize="sm" color="linear(to-r, brand.forex.500, brand.forex.700)">
           {t('createTradingAccountInfo')}
         </Text>
       </Alert>
@@ -660,7 +660,7 @@ export default function TraderSignup() {
 
       <Box pt={4}>
         <Button
-          color="brand.bittrade.400"
+          color="brand.forex.400"
           variant="bittrade-outline"
           size="lg"
           onClick={nextStep}
@@ -803,7 +803,7 @@ export default function TraderSignup() {
         </Button>
         <Button
           variant="bittrade-outline"
-          color="brand.bittrade.400"
+          color="brand.forex.400"
           onClick={nextStep}
         >
           {t('continue')}
@@ -841,7 +841,7 @@ export default function TraderSignup() {
                 _hover={{ borderColor: accentColor }}
                 onClick={() => setFormData(prev => ({ ...prev, accountType: type.value }))}
               >
-                <Radio value={type.value} color="brand.bittrade.400">
+                <Radio value={type.value} color="brand.forex.400">
                   <Text fontWeight="bold">{type.label}</Text>
                 </Radio>
                 <Text ml={6} fontSize="sm" mt={1}>{type.description}</Text>
@@ -865,7 +865,7 @@ export default function TraderSignup() {
         >
           <Stack direction="column" spacing={2}>
             {TRADING_EXPERIENCE_OPTIONS.map(option => (
-              <Radio key={option.value} value={option.value} color="brand.bittrade.400">
+              <Radio key={option.value} value={option.value} color="brand.forex.400">
                 {option.label}
               </Radio>
             ))}
@@ -881,10 +881,10 @@ export default function TraderSignup() {
           onChange={(value) => setFormData(prev => ({ ...prev, tradingFrequency: value }))}
         >
           <Stack direction="column" spacing={2}>
-            <Radio value="rarely" color="brand.bittrade.400">{t('rarely')}</Radio>
-            <Radio value="occasionally" color="brand.bittrade.400">{t('occasionally')}</Radio>
-            <Radio value="frequently" color="brand.bittrade.400">{t('frequently')}</Radio>
-            <Radio value="daily" color="brand.bittrade.400">{t('daily')}</Radio>
+            <Radio value="rarely" color="brand.forex.400">{t('rarely')}</Radio>
+            <Radio value="occasionally" color="brand.forex.400">{t('occasionally')}</Radio>
+            <Radio value="frequently" color="brand.forex.400">{t('frequently')}</Radio>
+            <Radio value="daily" color="brand.forex.400">{t('daily')}</Radio>
           </Stack>
         </RadioGroup>
       </FormControl>
@@ -897,9 +897,9 @@ export default function TraderSignup() {
           onChange={(value) => setFormData(prev => ({ ...prev, riskTolerance: value }))}
         >
           <Stack direction="column" spacing={2}>
-            <Radio value="conservative" color="brand.bittrade.400">{t('conservative')}</Radio>
-            <Radio value="moderate" color="brand.bittrade.400">{t('moderate')}</Radio>
-            <Radio value="aggressive" color="brand.bittrade.400">{t('aggressive')}</Radio>
+            <Radio value="conservative" color="brand.forex.400">{t('conservative')}</Radio>
+            <Radio value="moderate" color="brand.forex.400">{t('moderate')}</Radio>
+            <Radio value="aggressive" color="brand.forex.400">{t('aggressive')}</Radio>
           </Stack>
         </RadioGroup>
       </FormControl>
@@ -999,7 +999,7 @@ export default function TraderSignup() {
         </Button>
         <Button
           variant="bittrade-outline"
-          color="brand.bittrade.400"
+          color="brand.forex.400"
           onClick={nextStep}
         >
           {t('continue')}
@@ -1135,7 +1135,7 @@ export default function TraderSignup() {
           {t('back')}
         </Button>
         <Button
-          color="brand.bittrade.400"
+          color="brand.forex.400"
           onClick={handleSubmit}
           isLoading={loading}
           loadingText={t('creatingAccount')}
@@ -1147,7 +1147,7 @@ export default function TraderSignup() {
   );
   
   // Helper for accent color based on color mode
-  const accentColor = useColorModeValue('brand.bittrade.500', 'brand.bittrade.700');
+  const accentColor = useColorModeValue('brand.forex.500', 'brand.forex.700');
   
   // Progress step indicator
   const renderProgressSteps = () => (
@@ -1155,7 +1155,7 @@ export default function TraderSignup() {
       <Progress 
         value={progress} 
         size="sm" 
-        color="brand.bittrade.400" 
+        color="brand.forex.400" 
         borderRadius="full" 
         mb={4}
       />

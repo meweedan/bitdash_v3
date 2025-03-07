@@ -127,7 +127,7 @@ const PortfolioPreview = ({ value, size = 200 }) => (
       bottom="15%"
       left="50%"
       transform="translateX(-50%)"
-      bg="brand.bitstock.500"
+      bg="brand.stocks.500"
       fontSize="xs"
       fontWeight="bold"
       px={2}
@@ -204,8 +204,8 @@ function BitStockDemo() {
 
   // Colors & UI values
   const cardBg = useColorModeValue('white', 'gray.800');
-  const accentColor = useColorModeValue('brand.bitstock.600', 'brand.bitstock.400');
-  const accentBg = useColorModeValue('brand.bitstock.400', 'brand.bitstock.700');
+  const accentColor = useColorModeValue('brand.stocks.600', 'brand.stocks.400');
+  const accentBg = useColorModeValue('brand.stocks.400', 'brand.stocks.700');
   const softShadow = useColorModeValue('lg', 'dark-lg');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
 
@@ -235,13 +235,13 @@ function BitStockDemo() {
             mb={8}
             sx={{
                 '.chakra-step__indicator': {
-                color: 'brand.bitstock.400',
+                color: 'brand.stocks.400',
                 },
                 '.chakra-step__separator': {
-                bg: 'brand.bitstock.400',
+                bg: 'brand.stocks.400',
                 },
                 '.chakra-step__number': {
-                color: 'brand.bitstock.400',
+                color: 'brand.stocks.400',
                 },
             }}
             >
@@ -320,25 +320,25 @@ function BitStockDemo() {
                           </Heading>
                           <VStack align="start" spacing={3}>
                             <HStack>
-                              <CheckCircleIcon color="brand.bitstock.500" />
+                              <CheckCircleIcon color="brand.stocks.500" />
                               <Text fontSize="sm">
                                 {t('bitstockDemo.step1.benefits.benefit1', 'Access global markets')}
                               </Text>
                             </HStack>
                             <HStack>
-                              <CheckCircleIcon color="brand.bitstock.500" />
+                              <CheckCircleIcon color="brand.stocks.500" />
                               <Text fontSize="sm">
                                 {t('bitstockDemo.step1.benefits.benefit2', 'Invest Shariah-compliantly')}
                               </Text>
                             </HStack>
                             <HStack>
-                              <CheckCircleIcon color="brand.bitstock.500" />
+                              <CheckCircleIcon color="brand.stocks.500" />
                               <Text fontSize="sm">
                                 {t('bitstockDemo.step1.benefits.benefit3', 'Low fees, competitive returns')}
                               </Text>
                             </HStack>
                             <HStack>
-                              <CheckCircleIcon color="brand.bitstock.500" />
+                              <CheckCircleIcon color="brand.stocks.500" />
                               <Text fontSize="sm">
                                 {t('bitstockDemo.step1.benefits.benefit4', 'Real-time portfolio tracking')}
                               </Text>
@@ -641,19 +641,19 @@ function BitStockDemo() {
                             </Heading>
                             <VStack align="start" spacing={2}>
                               <HStack>
-                                <CheckCircleIcon color="brand.bitstock.500" />
+                                <CheckCircleIcon color="brand.stocks.500" />
                                 <Text fontSize="sm">{t('bitstockDemo.step4.tips.tip1', 'Diversify your investments')}</Text>
                               </HStack>
                               <HStack>
-                                <CheckCircleIcon color="brand.bitstock.500" />
+                                <CheckCircleIcon color="brand.stocks.500" />
                                 <Text fontSize="sm">{t('bitstockDemo.step4.tips.tip2', 'Stay informed on market trends')}</Text>
                               </HStack>
                               <HStack>
-                                <CheckCircleIcon color="brand.bitstock.500" />
+                                <CheckCircleIcon color="brand.stocks.500" />
                                 <Text fontSize="sm">{t('bitstockDemo.step4.tips.tip3', 'Invest for the long term')}</Text>
                               </HStack>
                               <HStack>
-                                <CheckCircleIcon color="brand.bitstock.500" />
+                                <CheckCircleIcon color="brand.stocks.500" />
                                 <Text fontSize="sm">{t('bitstockDemo.step4.tips.tip4', 'Review your portfolio regularly')}</Text>
                               </HStack>
                             </VStack>
@@ -674,18 +674,18 @@ function BitStockDemo() {
                             borderWidth={1}
                             borderColor={borderColor}
                           >
-                            <Box bg="brand.bitstock.500" p={3}>
+                            <Box bg="brand.stocks.500" p={3}>
                               <Text fontWeight="bold" textAlign="center">BitStock Portfolio</Text>
                             </Box>
                             <VStack p={4} spacing={4}>
                               <Text fontWeight="bold" textAlign="center">{investorName || 'Investor'}</Text>
-                              <Text fontSize="lg" fontWeight="bold" color="brand.bitstock.500">
+                              <Text fontSize="lg" fontWeight="bold" color="brand.stocks.500">
                                 ${initialInvestment.toFixed(2)}
                               </Text>
                               {investmentGoal && (
                                 <Text fontSize="sm" textAlign="center">{investmentGoal}</Text>
                               )}
-                              <Button color="brand.bitcash.400" width="full">
+                              <Button color="brand.cash.400" width="full">
                                 {t('bitstockDemo.step4.preview.investButton', 'Invest Now')}
                               </Button>
                               <Text fontSize="xs" color="gray.500" textAlign="center">
@@ -710,7 +710,7 @@ function BitStockDemo() {
                         </Button>
                         <Button
                           leftIcon={<RepeatIcon />}
-                          color="brand.bitstock.400"
+                          color="brand.stocks.400"
                           onClick={resetDemo}
                         >
                           {t('bitstockDemo.step4.restartButton', 'Restart Demo')}
@@ -768,7 +768,7 @@ function BitStockDemo() {
                     <VStack spacing={6} align="stretch">
                       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
                         <HStack align="start" spacing={4}>
-                          <Box p={2} bg="brand.bitstock.700" color="white" borderRadius="md">
+                          <Box p={2} bg="brand.stocks.700" color="white" borderRadius="md">
                             <LinkIcon boxSize={5} />
                           </Box>
                           <Box>
@@ -782,7 +782,7 @@ function BitStockDemo() {
                         </HStack>
                         
                         <HStack align="start" spacing={4}>
-                          <Box p={2} bg="brand.bitstock.700" color="white" borderRadius="md">
+                          <Box p={2} bg="brand.stocks.700" color="white" borderRadius="md">
                             <ViewIcon boxSize={5} />
                           </Box>
                           <Box>
@@ -796,7 +796,7 @@ function BitStockDemo() {
                         </HStack>
                         
                         <HStack align="start" spacing={4}>
-                          <Box p={2} bg="brand.bitstock.700" color="white" borderRadius="md">
+                          <Box p={2} bg="brand.stocks.700" color="white" borderRadius="md">
                             <EmailIcon boxSize={5} />
                           </Box>
                           <Box>
@@ -810,7 +810,7 @@ function BitStockDemo() {
                         </HStack>
                         
                         <HStack align="start" spacing={4}>
-                          <Box p={2} bg="brand.bitstock.700" color="white" borderRadius="md">
+                          <Box p={2} bg="brand.stocks.700" color="white" borderRadius="md">
                             <CheckCircleIcon boxSize={5} />
                           </Box>
                           <Box>
@@ -892,7 +892,7 @@ function BitStockDemo() {
 
           {/* CTA Section */}
           <SlideFade in offsetY="30px">
-            <Box bg="brand.bitstock.400" p={{ base: 6, md: 10 }} borderRadius="xl" boxShadow={softShadow} mb={8} textAlign="center">
+            <Box bg="brand.stocks.400" p={{ base: 6, md: 10 }} borderRadius="xl" boxShadow={softShadow} mb={8} textAlign="center">
               <Heading size="lg" mb={4}>
                 {t('bitstockDemo.cta.heading', 'Ready to Transform Your Investments?')}
               </Heading>
@@ -938,7 +938,7 @@ function BitStockDemo() {
           <ModalCloseButton/>
           <ModalBody py={6}>
             <VStack spacing={4}>
-              <CheckCircleIcon boxSize={12} color="brand.bitstock.500" />
+              <CheckCircleIcon boxSize={12} color="brand.stocks.500" />
               <Text fontWeight="bold">
                 {t('bitstockDemo.modal.success', 'Your customized portfolio has been generated successfully.')}
               </Text>
@@ -948,7 +948,7 @@ function BitStockDemo() {
             </VStack>
           </ModalBody>
           <ModalFooter>
-            <Button color="brand.bitstock.500" mr={3} onClick={onClose}>
+            <Button color="brand.stocks.500" mr={3} onClick={onClose}>
               {t('bitstockDemo.modal.continueButton', 'Continue')}
             </Button>
           </ModalFooter>

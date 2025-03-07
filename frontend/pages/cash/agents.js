@@ -147,8 +147,8 @@ function AgentsPage() {
     'linear(to-b, gray.900, gray.800)'
   );
   const cardBg = useColorModeValue('white', 'gray.800');
-  const accentColor = useColorModeValue('brand.bitcash.600', 'brand.bitcash.400');
-  const accentBg = useColorModeValue('brand.bitcash.400', 'brand.bitcash.700');
+  const accentColor = useColorModeValue('brand.cash.600', 'brand.cash.400');
+  const accentBg = useColorModeValue('brand.cash.400', 'brand.cash.700');
   const headingSize = useBreakpointValue({ base: '2xl', md: '3xl', lg: '4xl' });
   const sectionPadding = useBreakpointValue({ base: 8, md: 16 });
   const buttonSize = useBreakpointValue({ base: 'md', md: 'lg' });
@@ -263,7 +263,7 @@ function AgentsPage() {
                     alt={t('agents.hero.image.alt', 'BitCash agent serving a customer')} 
                     fallback={
                       <Box 
-                        bg="brand.bitcash.400" 
+                        bg="brand.cash.400" 
                         width="100%" 
                         height="100%" 
                         display="flex" 
@@ -303,7 +303,7 @@ function AgentsPage() {
             <VStack textAlign="center" spacing={4} mb={12}>
               <Heading 
                 fontSize={{ base: 'xl', md: '2xl' }} 
-                color="brand.bitcash.400"
+                color="brand.cash.400"
               >
                 {t('agents.valueProp.heading', 'The BitCash Agent Network Advantage')}
               </Heading>
@@ -320,14 +320,14 @@ function AgentsPage() {
                 borderRadius="xl" 
                 boxShadow={softShadow}
                 borderTop="4px solid"
-                borderColor="brand.bitcash.400"
+                borderColor="brand.cash.400"
               >
                 <VStack spacing={4} align="stretch">
                   <Flex 
                     w={12} 
                     h={12} 
-                    bg="brand.bitcash.400" 
-                    color="brand.bitcash.600" 
+                    bg="brand.cash.400" 
+                    color="brand.cash.600" 
                     borderRadius="lg" 
                     align="center" 
                     justify="center"
@@ -350,14 +350,14 @@ function AgentsPage() {
                 borderRadius="xl" 
                 boxShadow={softShadow}
                 borderTop="4px solid"
-                borderColor="brand.bitcash.400"
+                borderColor="brand.cash.400"
               >
                 <VStack spacing={4} align="stretch">
                   <Flex 
                     w={12} 
                     h={12} 
-                    bg="brand.bitcash.400" 
-                    color="brand.bitcash.600" 
+                    bg="brand.cash.400" 
+                    color="brand.cash.600" 
                     borderRadius="lg" 
                     align="center" 
                     justify="center"
@@ -380,14 +380,14 @@ function AgentsPage() {
                 borderRadius="xl" 
                 boxShadow={softShadow}
                 borderTop="4px solid"
-                borderColor="brand.bitcash.400"
+                borderColor="brand.cash.400"
               >
                 <VStack spacing={4} align="stretch">
                   <Flex 
                     w={12} 
                     h={12} 
-                    bg="brand.bitcash.400" 
-                    color="brand.bitcash.600" 
+                    bg="brand.cash.400" 
+                    color="brand.cash.600" 
                     borderRadius="lg" 
                     align="center" 
                     justify="center"
@@ -410,14 +410,14 @@ function AgentsPage() {
                 borderRadius="xl" 
                 boxShadow={softShadow}
                 borderTop="4px solid"
-                borderColor="brand.bitcash.400"
+                borderColor="brand.cash.400"
               >
                 <VStack spacing={4} align="stretch">
                   <Flex 
                     w={12} 
                     h={12} 
-                    bg="brand.bitcash.400" 
-                    color="brand.bitcash.600" 
+                    bg="brand.cash.400" 
+                    color="brand.cash.600" 
                     borderRadius="lg" 
                     align="center" 
                     justify="center"
@@ -441,7 +441,7 @@ function AgentsPage() {
               <VStack textAlign="center" spacing={4} mb={8}>
                 <Heading 
                   fontSize={{ base: 'xl', md: '2xl' }} 
-                  color="brand.bitcash.400"
+                  color="brand.cash.400"
                 >
                   {t('agents.howItWorks.heading', 'How the BitCash Agent Network Works')}
                 </Heading>
@@ -473,7 +473,7 @@ function AgentsPage() {
                         <Flex 
                           w={12} 
                           h={12} 
-                          bg="brand.bitcash.400" 
+                          bg="brand.cash.400" 
                           borderRadius="full" 
                           align="center" 
                           justify="center"
@@ -500,7 +500,7 @@ function AgentsPage() {
                         <Flex 
                           w={12} 
                           h={12} 
-                          bg="brand.bitcash.400" 
+                          bg="brand.cash.400" 
                           borderRadius="full" 
                           align="center" 
                           justify="center"
@@ -527,7 +527,7 @@ function AgentsPage() {
                         <Flex 
                           w={12} 
                           h={12} 
-                          bg="brand.bitcash.400" 
+                          bg="brand.cash.400" 
                           borderRadius="full" 
                           align="center" 
                           justify="center"
@@ -554,7 +554,7 @@ function AgentsPage() {
                         <Flex 
                           w={12} 
                           h={12} 
-                          bg="brand.bitcash.400" 
+                          bg="brand.cash.400" 
                           
                           borderRadius="full" 
                           align="center" 
@@ -586,7 +586,7 @@ function AgentsPage() {
                         <Flex 
                           w={12} 
                           h={12} 
-                          bg="brand.bitcash.400" 
+                          bg="brand.cash.400" 
                           
                           borderRadius="full" 
                           align="center" 
@@ -614,7 +614,7 @@ function AgentsPage() {
                         <Flex 
                           w={12} 
                           h={12} 
-                          bg="brand.bitcash.400" 
+                          bg="brand.cash.400" 
                           
                           borderRadius="full" 
                           align="center" 
@@ -642,7 +642,7 @@ function AgentsPage() {
                         <Flex 
                           w={12} 
                           h={12} 
-                          bg="brand.bitcash.400" 
+                          bg="brand.cash.400" 
                           
                           borderRadius="full" 
                           align="center" 
@@ -670,7 +670,7 @@ function AgentsPage() {
                         <Flex 
                           w={12} 
                           h={12} 
-                          bg="brand.bitcash.400" 
+                          bg="brand.cash.400" 
                           
                           borderRadius="full" 
                           align="center" 
@@ -703,14 +703,14 @@ function AgentsPage() {
     borderRadius="xl" 
     boxShadow={softShadow}
     borderLeft="4px solid"
-    borderColor="brand.bitcash.400"
+    borderColor="brand.cash.400"
   >
     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} alignItems="center">
       <Box>
         <Heading 
           fontSize={{ base: 'xl', md: '2xl' }} 
           mb={4} 
-          color="brand.bitcash.600"
+          color="brand.cash.600"
         >
           {t('agents.commissions.heading', 'Transparent Commission Structure')}
         </Heading>
@@ -721,25 +721,25 @@ function AgentsPage() {
         <List spacing={4} mb={6}>
           <ListItem>
             <HStack>
-              <ListIcon as={SmallAddIcon} color="brand.bitcash.400" />
+              <ListIcon as={SmallAddIcon} color="brand.cash.400" />
               <Text>{t('agents.commissions.benefit1', 'Weekly commission payouts directly to your account')}</Text>
             </HStack>
           </ListItem>
           <ListItem>
             <HStack>
-              <ListIcon as={SmallAddIcon} color="brand.bitcash.400" />
+              <ListIcon as={SmallAddIcon} color="brand.cash.400" />
               <Text>{t('agents.commissions.benefit2', 'Performance bonuses for top-tier agents')}</Text>
             </HStack>
           </ListItem>
           <ListItem>
             <HStack>
-              <ListIcon as={SmallAddIcon} color="brand.bitcash.400" />
+              <ListIcon as={SmallAddIcon} color="brand.cash.400" />
               <Text>{t('agents.commissions.benefit3', 'New customer acquisition rewards')}</Text>
             </HStack>
           </ListItem>
           <ListItem>
             <HStack>
-              <ListIcon as={SmallAddIcon} color="brand.bitcash.400" />
+              <ListIcon as={SmallAddIcon} color="brand.cash.400" />
               <Text>{t('agents.commissions.benefit4', 'Monthly volume-based incentive programs')}</Text>
             </HStack>
           </ListItem>
@@ -757,7 +757,7 @@ function AgentsPage() {
           borderRadius="lg" 
           boxShadow="md"
           borderLeft="4px solid" 
-          borderColor="brand.bitcash.400"
+          borderColor="brand.cash.400"
         >
           <StatLabel fontSize="lg">{t('agents.commissions.deposit', 'Cash Deposits')}</StatLabel>
           <StatNumber fontSize="3xl" color="green.500">1.2%</StatNumber>
@@ -770,7 +770,7 @@ function AgentsPage() {
           borderRadius="lg" 
           boxShadow="md"
           borderLeft="4px solid" 
-          borderColor="brand.bitcash.400"
+          borderColor="brand.cash.400"
         >
           <StatLabel fontSize="lg">{t('agents.commissions.withdrawal', 'Cash Withdrawals')}</StatLabel>
           <StatNumber fontSize="3xl" color="green.500">0.8%</StatNumber>
@@ -783,7 +783,7 @@ function AgentsPage() {
           borderRadius="lg" 
           boxShadow="md"
           borderLeft="4px solid" 
-          borderColor="brand.bitcash.400"
+          borderColor="brand.cash.400"
         >
           <StatLabel fontSize="lg">{t('agents.commissions.merchantPay', 'Merchant Settlements')}</StatLabel>
           <StatNumber fontSize="3xl" color="green.500">0.5%</StatNumber>
@@ -796,7 +796,7 @@ function AgentsPage() {
           borderRadius="lg" 
           boxShadow="md"
           borderLeft="4px solid" 
-          borderColor="brand.bitcash.400"
+          borderColor="brand.cash.400"
         >
           <StatLabel fontSize="lg">{t('agents.commissions.newCustomer', 'New Customer Bonus')}</StatLabel>
           <StatNumber fontSize="3xl" color="green.500">$2.50</StatNumber>
@@ -825,8 +825,8 @@ function AgentsPage() {
           <Flex 
             w={12} 
             h={12} 
-            bg="brand.bitcash.400" 
-            color="brand.bitcash.600" 
+            bg="brand.cash.400" 
+            color="brand.cash.600" 
             borderRadius="lg" 
             align="center" 
             justify="center"
@@ -837,7 +837,7 @@ function AgentsPage() {
           <Heading 
             fontSize="xl" 
             mb={4} 
-            color="brand.bitcash.600"
+            color="brand.cash.600"
           >
             {t('agents.security.heading', 'Security & Compliance First')}
           </Heading>
@@ -848,7 +848,7 @@ function AgentsPage() {
             mt={6} 
             rightIcon={<ChevronRightIcon />} 
             variant="link" 
-            color="brand.bitcash.400"
+            color="brand.cash.400"
             onClick={() => router.push('/agent/security')}
           >
             {t('agents.security.learnMore', 'Learn about our security protocols')}
@@ -876,7 +876,7 @@ function AgentsPage() {
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
             <VStack align="start" spacing={1}>
               <HStack>
-                <Icon as={SecurityIcon} color="brand.bitcash.400" />
+                <Icon as={SecurityIcon} color="brand.cash.400" />
                 <Text fontWeight="bold">{t('agents.security.measures.blockchain', 'Blockchain Technology')}</Text>
               </HStack>
               <Text fontSize="sm" ml={8}>{t('agents.security.measures.blockchainDesc', 'Immutable transaction records and cryptographic verification for all activities')}</Text>
@@ -884,7 +884,7 @@ function AgentsPage() {
             
             <VStack align="start" spacing={1}>
               <HStack>
-                <TimeIcon color="brand.bitcash.400" />
+                <TimeIcon color="brand.cash.400" />
                 <Text fontWeight="bold">{t('agents.security.measures.monitoring', 'Real-time Monitoring')}</Text>
               </HStack>
               <Text fontSize="sm" ml={8}>{t('agents.security.measures.monitoringDesc', 'AI-powered transaction analysis to detect and prevent suspicious activities')}</Text>
@@ -892,7 +892,7 @@ function AgentsPage() {
             
             <VStack align="start" spacing={1}>
               <HStack>
-                <InfoIcon color="brand.bitcash.400" />
+                <InfoIcon color="brand.cash.400" />
                 <Text fontWeight="bold">{t('agents.security.measures.verification', 'Strict Verification')}</Text>
               </HStack>
               <Text fontSize="sm" ml={8}>{t('agents.security.measures.verificationDesc', 'Thorough KYC and background checks for all agents before approval')}</Text>
@@ -900,7 +900,7 @@ function AgentsPage() {
             
             <VStack align="start" spacing={1}>
               <HStack>
-                <CheckCircleIcon color="brand.bitcash.400" />
+                <CheckCircleIcon color="brand.cash.400" />
                 <Text fontWeight="bold">{t('agents.security.measures.compliance', 'Compliance Training')}</Text>
               </HStack>
               <Text fontSize="sm" ml={8}>{t('agents.security.measures.complianceDesc', 'Mandatory anti-fraud and compliance training for all network members')}</Text>
@@ -932,7 +932,7 @@ function AgentsPage() {
   <Box mb={16}>
     <Heading 
       fontSize={{ base: 'xl', md: '2xl' }} 
-      color="brand.bitcash.400"
+      color="brand.cash.400"
       textAlign="center"
       mb={8}
     >
@@ -972,13 +972,13 @@ function AgentsPage() {
             w={12} 
             h={12} 
             borderRadius="full" 
-            bg="brand.bitcash.400"
+            bg="brand.cash.400"
             overflow="hidden"
           >
             <Image 
               src="/images/testimonial-1.jpg" 
               alt="Agent"
-              fallback={<Box bg="brand.bitcash.400" w="100%" h="100%" />}
+              fallback={<Box bg="brand.cash.400" w="100%" h="100%" />}
             />
           </Box>
           <VStack align="start" spacing={0}>
@@ -1024,13 +1024,13 @@ function AgentsPage() {
             w={12} 
             h={12} 
             borderRadius="full" 
-            bg="brand.bitcash.400"
+            bg="brand.cash.400"
             overflow="hidden"
           >
             <Image 
               src="/images/testimonial-2.jpg" 
               alt="Agent"
-              fallback={<Box bg="brand.bitcash.400" w="100%" h="100%" />}
+              fallback={<Box bg="brand.cash.400" w="100%" h="100%" />}
             />
           </Box>
           <VStack align="start" spacing={0}>
@@ -1076,13 +1076,13 @@ function AgentsPage() {
             w={12} 
             h={12} 
             borderRadius="full" 
-            bg="brand.bitcash.400"
+            bg="brand.cash.400"
             overflow="hidden"
           >
             <Image 
               src="/images/testimonial-3.jpg" 
               alt="Agent"
-              fallback={<Box bg="brand.bitcash.400" w="100%" h="100%" />}
+              fallback={<Box bg="brand.cash.400" w="100%" h="100%" />}
             />
           </Box>
           <VStack align="start" spacing={0}>
@@ -1106,7 +1106,7 @@ function AgentsPage() {
       fontSize={{ base: 'xl', md: '2xl' }} 
       mb={4}
       textAlign="center"
-      color="brand.bitcash.600"
+      color="brand.cash.600"
     >
       {t('agents.faq.heading', 'Frequently Asked Questions')}
     </Heading>
@@ -1129,7 +1129,7 @@ function AgentsPage() {
               <h2>
                 <AccordionButton 
                   p={5} 
-                  _expanded={{ bg: useColorModeValue('brand.bitcash.400', 'brand.bitcash.700') }}
+                  _expanded={{ bg: useColorModeValue('brand.cash.400', 'brand.cash.700') }}
                   _hover={{ bg: useColorModeValue('gray.50', 'gray.700') }}
                 >
                   <Box
@@ -1143,7 +1143,7 @@ function AgentsPage() {
                         animate={{ rotate: isExpanded ? 90 : 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <ChevronRightIcon color="brand.bitcash.400" boxSize={5} />
+                        <ChevronRightIcon color="brand.cash.400" boxSize={5} />
                       </motion.div>
                       <Text>{faq.question}</Text>
                     </HStack>
@@ -1167,7 +1167,7 @@ function AgentsPage() {
     mb={16}
     p={{ base: 8, md: 12 }}
     borderRadius="xl"
-    bg="brand.bitcash.700"
+    bg="brand.cash.700"
     position="relative"
     overflow="hidden"
     boxShadow="2xl"
@@ -1179,7 +1179,7 @@ function AgentsPage() {
       right="-5%" 
       w="30%" 
       h="120%" 
-      bg="brand.bitcash.400" 
+      bg="brand.cash.400" 
       opacity="0.2" 
       transform="rotate(-15deg)" 
       roundedLeft="full" 

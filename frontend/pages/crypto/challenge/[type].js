@@ -62,7 +62,7 @@ const challengeData = {
     duration: '30 days',
     profitTarget: '8%',
     maxLoss: '5%',
-    color: 'brand.bitfund.400',
+    color: 'brand.crypto.400',
     badge: 'blue',
     description: 'Perfect for beginners starting their prop trading journey',
     benefits: [
@@ -88,7 +88,7 @@ const challengeData = {
     duration: '60 days',
     profitTarget: '10%',
     maxLoss: '8%',
-    color: 'brand.bitfund.500',
+    color: 'brand.crypto.500',
     badge: 'purple',
     description: 'For experienced traders looking for a larger capital allocation',
     benefits: [
@@ -114,7 +114,7 @@ const challengeData = {
     duration: '60 days',
     profitTarget: '12%',
     maxLoss: '10%',
-    color: 'brand.bitfund.600',
+    color: 'brand.crypto.600',
     badge: 'orange',
     description: 'For professional traders with proven track records',
     benefits: [
@@ -140,7 +140,7 @@ const challengeData = {
     duration: '90 days',
     profitTarget: '15%',
     maxLoss: '12%',
-    color: 'brand.bitfund.700',
+    color: 'brand.crypto.700',
     badge: 'red',
     description: 'Our highest tier for elite traders seeking maximum capital',
     benefits: [
@@ -294,7 +294,7 @@ const ChallengePage = () => {
                   <Heading 
                     as="h1" 
                     size={headingSize}
-                    bgGradient={`linear(to-r, ${challenge.color}, brand.bitfund.600)`}
+                    bgGradient={`linear(to-r, ${challenge.color}, brand.crypto.600)`}
                     bgClip="text"
                   >
                     {challenge.title}
@@ -559,7 +559,7 @@ const ChallengePage = () => {
             {/* CTA Section */}
             <motion.div variants={itemVariants}>
               <Box
-                bg="brand.bitfund.700"
+                bg="brand.crypto.700"
                 p={{ base: 6, md: 10 }}
                 borderRadius="xl"
                 color="white"
@@ -595,7 +595,7 @@ const ChallengePage = () => {
                   </Text>
                   <Button
                     size="lg"
-                    color="brand.bitfund.400"
+                    color="brand.crypto.400"
                     variant="bitfund-solid"
                     rightIcon={<FaArrowRight />}
                     onClick={handleCheckout}

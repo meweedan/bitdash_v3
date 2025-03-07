@@ -238,7 +238,7 @@ const CompliancePage = () => {
             <Heading
               as="h1"
               fontSize={{ base: '4xl', md: '5xl' }}
-              bgGradient="linear(to-r, brand.bitstock.500, brand.bitstock.700)"
+              bgGradient="linear(to-r, brand.stocks.500, brand.stocks.700)"
               bgClip="text"
               mb={6}
             >
@@ -252,7 +252,7 @@ const CompliancePage = () => {
               <Card bg={cardBg} shadow="md" borderRadius="lg" borderColor={borderColor} borderWidth="1px">
                 <CardBody>
                   <VStack spacing={4}>
-                    <Icon as={FaUserShield} boxSize={10} color="brand.bitstock.500" />
+                    <Icon as={FaUserShield} boxSize={10} color="brand.stocks.500" />
                     <Heading size="md">Investor Protection</Heading>
                     <Text>Client funds are segregated and protected with up to $500,000 in additional insurance coverage.</Text>
                   </VStack>
@@ -262,7 +262,7 @@ const CompliancePage = () => {
               <Card bg={cardBg} shadow="md" borderRadius="lg" borderColor={borderColor} borderWidth="1px">
                 <CardBody>
                   <VStack spacing={4}>
-                    <Icon as={FaBalanceScale} boxSize={10} color="brand.bitstock.500" />
+                    <Icon as={FaBalanceScale} boxSize={10} color="brand.stocks.500" />
                     <Heading size="md">Full Regulatory Compliance</Heading>
                     <Text>Licensed and regulated by major financial authorities across the MENA and GCC regions.</Text>
                   </VStack>
@@ -272,7 +272,7 @@ const CompliancePage = () => {
               <Card bg={cardBg} shadow="md" borderRadius="lg" borderColor={borderColor} borderWidth="1px">
                 <CardBody>
                   <VStack spacing={4}>
-                    <Icon as={FaLock} boxSize={10} color="brand.bitstock.500" />
+                    <Icon as={FaLock} boxSize={10} color="brand.stocks.500" />
                     <Heading size="md">Advanced Security</Heading>
                     <Text>Multi-layered security infrastructure with encryption, biometrics, and continuous monitoring.</Text>
                   </VStack>
@@ -307,7 +307,7 @@ const CompliancePage = () => {
                         <Card key={index} bg={subtleCardBg} overflow="hidden">
                           <CardBody>
                             <HStack mb={4}>
-                              <Icon as={regulator.icon} boxSize={6} color="brand.bitstock.500" />
+                              <Icon as={regulator.icon} boxSize={6} color="brand.stocks.500" />
                               <Heading size="md">{regulator.authority}</Heading>
                             </HStack>
                             
@@ -371,7 +371,7 @@ const CompliancePage = () => {
                         <Card key={index} bg={subtleCardBg} height="100%">
                           <CardBody>
                             <VStack align="start" spacing={4}>
-                              <Icon as={measure.icon} boxSize={8} color="brand.bitstock.500" />
+                              <Icon as={measure.icon} boxSize={8} color="brand.stocks.500" />
                               <Heading size="md">{measure.title}</Heading>
                               <Text>{measure.description}</Text>
                             </VStack>
@@ -441,7 +441,7 @@ const CompliancePage = () => {
                                       framework.name.includes('CTF') ? FaShieldAlt : 
                                       FaHandshake
                                     } 
-                                    color="brand.bitstock.500" 
+                                    color="brand.stocks.500" 
                                   />
                                   <Text fontWeight="bold">{framework.name}</Text>
                                 </HStack>
@@ -472,7 +472,7 @@ const CompliancePage = () => {
                           <Box 
                             borderRadius="full" 
                             bg="brand.bitstock.100" 
-                            color="brand.bitstock.700"
+                            color="brand.stocks.700"
                             p={4}
                             mb={2}
                           >
@@ -486,7 +486,7 @@ const CompliancePage = () => {
                           <Box 
                             borderRadius="full" 
                             bg="brand.bitstock.100" 
-                            color="brand.bitstock.700"
+                            color="brand.stocks.700"
                             p={4}
                             mb={2}
                           >
@@ -500,7 +500,7 @@ const CompliancePage = () => {
                           <Box 
                             borderRadius="full" 
                             bg="brand.bitstock.100" 
-                            color="brand.bitstock.700"
+                            color="brand.stocks.700"
                             p={4}
                             mb={2}
                           >
@@ -514,7 +514,7 @@ const CompliancePage = () => {
                           <Box 
                             borderRadius="full" 
                             bg="brand.bitstock.100" 
-                            color="brand.bitstock.700"
+                            color="brand.stocks.700"
                             p={4}
                             mb={2}
                           >
@@ -547,7 +547,7 @@ const CompliancePage = () => {
                         bg={subtleCardBg}
                         borderRadius="lg"
                         borderLeft="4px solid"
-                        borderColor="brand.bitstock.500"
+                        borderColor="brand.stocks.500"
                       >
                         <Heading size="md" mb={4}>{region.region}</Heading>
                         <List spacing={3}>
@@ -565,7 +565,7 @@ const CompliancePage = () => {
                       <Card bg={useColorModeValue('white', 'gray.700')} shadow="md" borderRadius="lg">
                         <CardBody>
                           <VStack align="start" spacing={4}>
-                            <Icon as={FaGlobe} boxSize={8} color="brand.bitstock.500" />
+                            <Icon as={FaGlobe} boxSize={8} color="brand.stocks.500" />
                             <Heading size="md">Cross-Border Compliance</Heading>
                             <Text>
                               Our multi-jurisdictional approach allows you to invest across borders while maintaining full compliance with both your home country regulations and the regulations of the market you're investing in.
@@ -577,7 +577,7 @@ const CompliancePage = () => {
                       <Card bg={useColorModeValue('white', 'gray.700')} shadow="md" borderRadius="lg">
                         <CardBody>
                           <VStack align="start" spacing={4}>
-                            <Icon as={FaBalanceScale} boxSize={8} color="brand.bitstock.500" />
+                            <Icon as={FaBalanceScale} boxSize={8} color="brand.stocks.500" />
                             <Heading size="md">Tax Compliance</Heading>
                             <Text>
                               BitStock provides the necessary tax documentation for all jurisdictions we operate in, helping you maintain tax compliance when investing in global markets from MENA and GCC countries.
@@ -607,7 +607,7 @@ const CompliancePage = () => {
                         borderWidth="1px" 
                         borderColor={borderColor} 
                         _hover={{ 
-                          borderColor: "brand.bitstock.500",
+                          borderColor: "brand.stocks.500",
                           transform: "translateY(-5px)",
                           transition: "all 0.3s ease"
                         }}
@@ -615,7 +615,7 @@ const CompliancePage = () => {
                         onClick={() => router.push('/policies/privacy')}
                       >
                         <VStack align="start" spacing={4}>
-                          <Icon as={FaUserShield} boxSize={6} color="brand.bitstock.500" />
+                          <Icon as={FaUserShield} boxSize={6} color="brand.stocks.500" />
                           <Heading size="md">Privacy Policy</Heading>
                           <Text>Our commitment to protecting your personal information and how we process your data.</Text>
                           <Button variant="link" colorScheme="bitstock" size="sm">Read Policy</Button>
@@ -628,7 +628,7 @@ const CompliancePage = () => {
                         borderWidth="1px" 
                         borderColor={borderColor} 
                         _hover={{ 
-                          borderColor: "brand.bitstock.500",
+                          borderColor: "brand.stocks.500",
                           transform: "translateY(-5px)",
                           transition: "all 0.3s ease"
                         }}
@@ -636,7 +636,7 @@ const CompliancePage = () => {
                         onClick={() => router.push('/policies/terms')}
                       >
                         <VStack align="start" spacing={4}>
-                          <Icon as={FaFileContract} boxSize={6} color="brand.bitstock.500" />
+                          <Icon as={FaFileContract} boxSize={6} color="brand.stocks.500" />
                           <Heading size="md">Terms of Service</Heading>
                           <Text>The terms and conditions governing your use of BitStock's services and platform.</Text>
                           <Button variant="link" colorScheme="bitstock" size="sm">Read Terms</Button>
@@ -649,7 +649,7 @@ const CompliancePage = () => {
                         borderWidth="1px" 
                         borderColor={borderColor} 
                         _hover={{ 
-                          borderColor: "brand.bitstock.500",
+                          borderColor: "brand.stocks.500",
                           transform: "translateY(-5px)",
                           transition: "all 0.3s ease"
                         }}
@@ -657,7 +657,7 @@ const CompliancePage = () => {
                         onClick={() => router.push('/policies/kyc-aml')}
                       >
                         <VStack align="start" spacing={4}>
-                          <Icon as={FaIdCard} boxSize={6} color="brand.bitstock.500" />
+                          <Icon as={FaIdCard} boxSize={6} color="brand.stocks.500" />
                           <Heading size="md">KYC & AML Policy</Heading>
                           <Text>Our procedures for customer identity verification and prevention of money laundering.</Text>
                           <Button variant="link" colorScheme="bitstock" size="sm">Read Policy</Button>
@@ -670,7 +670,7 @@ const CompliancePage = () => {
                         borderWidth="1px" 
                         borderColor={borderColor} 
                         _hover={{ 
-                          borderColor: "brand.bitstock.500",
+                          borderColor: "brand.stocks.500",
                           transform: "translateY(-5px)",
                           transition: "all 0.3s ease"
                         }}
@@ -678,7 +678,7 @@ const CompliancePage = () => {
                         onClick={() => router.push('/policies/risk')}
                       >
                         <VStack align="start" spacing={4}>
-                          <Icon as={FaExclamationTriangle} boxSize={6} color="brand.bitstock.500" />
+                          <Icon as={FaExclamationTriangle} boxSize={6} color="brand.stocks.500" />
                           <Heading size="md">Risk Disclosure</Heading>
                           <Text>Important information about the risks associated with investing in financial markets.</Text>
                           <Button variant="link" colorScheme="bitstock" size="sm">Read Disclosure</Button>
@@ -734,7 +734,7 @@ const CompliancePage = () => {
                             textAlign="center"
                             mb={12}
                             fontSize={{ base: '3xl', md: '4xl' }}
-                            bgGradient="linear(to-r, brand.bitstock.500, brand.bitstock.700)"
+                            bgGradient="linear(to-r, brand.stocks.500, brand.stocks.700)"
                             bgClip="text"
                         >
                             Frequently Asked Questions

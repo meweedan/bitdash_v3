@@ -13,8 +13,8 @@ export const PLATFORMS = {
     entityName: 'auto_dealer',
     steps: ['Account', 'Profile', 'Dealership Details']
   },
-  stock: {
-    name: 'BitStock',
+  stocks: {
+    name: 'BitStocks',
     role: 6,  // ID for Trader role
     endpoint: '/api/traders',
     entityName: 'trader',

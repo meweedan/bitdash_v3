@@ -73,10 +73,10 @@ export const ForexPWALanding = () => {
   );
 };
 
-export const StockPWALanding = () => {
+export const StocksPWALanding = () => {
   const router = useRouter();
   const config = {
-    title: 'BitStock',
+    title: 'BitStocks',
     description: 'Reimagining Libyan Finances',
     image: '/stock.png',
     color: '#4CAF50'
@@ -101,7 +101,7 @@ const PWALanding = () => {
   if (hostname.includes('cash')) return <CashPWALanding />;
   if (hostname.includes('crypto')) return <CryptoPWALanding />;
   if (hostname.includes('forex')) return <ForexPWALanding />;
-  if (hostname.includes('stock')) return <StockPWALanding />;
+  if (hostname.includes('stocks')) return <StocksPWALanding />;
 
   const config = {
     title: 'BitDash',

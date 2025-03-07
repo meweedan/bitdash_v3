@@ -16,13 +16,13 @@ export const PLATFORMS = {
     displayName: 'Auto Dealer Platform',
     dashboardPath: '/auto/dealer/dashboard'
   },
-  STOCK: {
-    subdomain: 'stock',
-    name: 'BitStock',
+  STOCKS: {
+    subdomain: 'stocks',
+    name: 'BitStocks',
     role: 'stock_trader',
     businessType: 'trader',
     displayName: 'Inventory Management',
-    dashboardPath: '/stock/dashboard'
+    dashboardPath: '/stocks/dashboard'
   }
 };
 

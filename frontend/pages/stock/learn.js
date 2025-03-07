@@ -106,7 +106,7 @@ function LearnPage() {
     'linear(to-b, gray.900, black)'
   );
   const cardBg = useColorModeValue('white', 'gray.800');
-  const accentColor = useColorModeValue('brand.bitstock.400', 'brand.bitstock.700');
+  const accentColor = useColorModeValue('brand.stocks.400', 'brand.stocks.700');
   const headingSize = useBreakpointValue({ base: '2xl', md: '3xl', lg: '4xl' });
   const sectionPadding = useBreakpointValue({ base: 8, md: 16 });
   const buttonSize = useBreakpointValue({ base: 'md', md: 'lg' });
@@ -127,7 +127,7 @@ function LearnPage() {
               <VStack spacing={{ base: 4, md: 8 }} maxW="4xl">
                 <Heading
                   fontSize={headingSize}
-                  bgGradient="linear(to-r, brand.bitstock.500, brand.bitstock.700)"
+                  bgGradient="linear(to-r, brand.stocks.500, brand.stocks.700)"
                   bgClip="text"
                   lineHeight="1.2"
                 >
@@ -153,7 +153,7 @@ function LearnPage() {
               <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mb={6}>
                 <VStack align="start" spacing={4}>
                   <HStack>
-                    <ArrowForwardIcon color="brand.bitstock.500" boxSize={6} />
+                    <ArrowForwardIcon color="brand.stocks.500" boxSize={6} />
                     <Heading size="md">Gold & Precious Metals</Heading>
                   </HStack>
                   <Text fontSize="sm">
@@ -161,7 +161,7 @@ function LearnPage() {
                   </Text>
                   <Divider />
                   <HStack>
-                    <ArrowForwardIcon color="brand.bitstock.500" boxSize={6} />
+                    <ArrowForwardIcon color="brand.stocks.500" boxSize={6} />
                     <Heading size="md">ETFs & Indices</Heading>
                   </HStack>
                   <Text fontSize="sm">
@@ -171,7 +171,7 @@ function LearnPage() {
 
                 <VStack align="start" spacing={4}>
                   <HStack>
-                    <ArrowForwardIcon color="brand.bitstock.500" boxSize={6} />
+                    <ArrowForwardIcon color="brand.stocks.500" boxSize={6} />
                     <Heading size="md">NYSE & LSE Stocks</Heading>
                   </HStack>
                   <Text fontSize="sm">
@@ -179,7 +179,7 @@ function LearnPage() {
                   </Text>
                   <Divider />
                   <HStack>
-                    <ArrowForwardIcon color="brand.bitstock.500" boxSize={6} />
+                    <ArrowForwardIcon color="brand.stocks.500" boxSize={6} />
                     <Heading size="md">Long-Term Growth</Heading>
                   </HStack>
                   <Text fontSize="sm">
@@ -193,22 +193,22 @@ function LearnPage() {
                 bg={useColorModeValue('blue.50', 'blue.900')}
                 borderRadius="md"
                 borderLeft="4px solid"
-                borderColor="brand.bitstock.500"
+                borderColor="brand.stocks.500"
               >
-                <Heading size="md" mb={3} color="brand.bitstock.500">
+                <Heading size="md" mb={3} color="brand.stocks.500">
                   Key Advantages of a Diversified Portfolio
                 </Heading>
                 <List spacing={3}>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.stocks.500" />
                     Lower overall volatility and risk
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.stocks.500" />
                     Potential for steady, compounding returns
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.stocks.500" />
                     Protection against single-market downturns
                   </ListItem>
                 </List>
@@ -231,26 +231,26 @@ function LearnPage() {
                 bg={useColorModeValue('blue.50', 'blue.900')}
                 borderRadius="md"
                 borderLeft="4px solid"
-                borderColor="brand.bitstock.500"
+                borderColor="brand.stocks.500"
               >
-                <Heading size="md" mb={3} color="brand.bitstock.500">
+                <Heading size="md" mb={3} color="brand.stocks.500">
                   Simple Strategy Tips
                 </Heading>
                 <List spacing={3}>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.stocks.500" />
                     Define clear goals (e.g., retirement, generational wealth)
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.stocks.500" />
                     Rebalance periodically—don’t let one asset overshadow the rest
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.stocks.500" />
                     Keep an eye on major economic trends but avoid panic-selling
                   </ListItem>
                   <ListItem>
-                    <ListIcon as={CheckCircleIcon} color="brand.bitstock.500" />
+                    <ListIcon as={CheckCircleIcon} color="brand.stocks.500" />
                     Utilize professional research or consult advisors when needed
                   </ListItem>
                 </List>
@@ -323,7 +323,7 @@ function LearnPage() {
               mb={{ base: 8, md: 16 }}
               p={{ base: 6, md: 12 }}
               borderRadius={{ base: 'xl', md: '2xl' }}
-              bg="brand.bitstock.600"
+              bg="brand.stocks.600"
               color="white"
               textAlign="center"
             >

@@ -69,8 +69,8 @@ const nextConfig = {
       // Stock platform routes
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'stock.bitdash.app' }],
-        destination: '/stock/:path*',
+        has: [{ type: 'host', value: 'stocks.bitdash.app' }],
+        destination: '/stocks/:path*',
       }
     ];
   },

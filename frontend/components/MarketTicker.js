@@ -92,7 +92,7 @@ const MarketTicker = () => {
   const tickerBg = useColorModeValue('white', 'gray.700');
   const labelColor = useColorModeValue('gray.600', 'gray.300');
   const tickerHeaderBg = useColorModeValue('blue.100', 'gray.700');
-  const accentColor = useColorModeValue('brand.bitfund.500', 'brand.bitfund.400');
+  const accentColor = useColorModeValue('brand.crypto.500', 'brand.crypto.400');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
   const highlightColor = useColorModeValue('blue.100', 'blue.800');
   

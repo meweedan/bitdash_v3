@@ -132,7 +132,7 @@ const QRCode = ({ value, size = 200 }) => (
       bottom="15%"
       left="50%"
       transform="translateX(-50%)"
-      bg="brand.bitcash.500"
+      bg="brand.cash.500"
       fontSize="xs"
       fontWeight="bold"
       px={2}
@@ -210,8 +210,8 @@ function MerchantDemo() {
 
   // Colors & UI
   const cardBg = useColorModeValue('white', 'gray.800');
-  const accentColor = useColorModeValue('brand.bitcash.600', 'brand.bitcash.400');
-  const accentBg = useColorModeValue('brand.bitcash.400', 'brand.bitcash.700');
+  const accentColor = useColorModeValue('brand.cash.600', 'brand.cash.400');
+  const accentBg = useColorModeValue('brand.cash.400', 'brand.cash.700');
   const softShadow = useColorModeValue('lg', 'dark-lg');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
 
@@ -725,7 +725,7 @@ function MerchantDemo() {
                             borderWidth={1}
                             borderColor={borderColor}
                           >
-                            <Box bg="brand.bitcash.500" p={3}>
+                            <Box bg="brand.cash.500" p={3}>
                               <Text fontWeight="bold" textAlign="center">BitCash Payment</Text>
                             </Box>
                             <VStack p={4} spacing={4}>
@@ -763,7 +763,7 @@ function MerchantDemo() {
                           </Button>
                           <Button
                             leftIcon={<RepeatIcon />}
-                            color="brand.bitcash.400"
+                            color="brand.cash.400"
                             onClick={resetDemo}
                           >
                             {t('merchantDemo.step4.restartButton', 'Restart Demo')}
@@ -847,8 +847,8 @@ function MerchantDemo() {
                           <HStack align="start" spacing={4}>
                             <Box
                               p={2}
-                              bg="brand.bitcash.400"
-                              color="brand.bitcash.500"
+                              bg="brand.cash.400"
+                              color="brand.cash.500"
                               borderRadius="md"
                             >
                               <LinkIcon boxSize={5} />
@@ -866,8 +866,8 @@ function MerchantDemo() {
                           <HStack align="start" spacing={4}>
                             <Box
                               p={2}
-                              bg="brand.bitcash.400"
-                              color="brand.bitcash.500"
+                              bg="brand.cash.400"
+                              color="brand.cash.500"
                               borderRadius="md"
                             >
                               <ViewIcon boxSize={5} />
@@ -885,8 +885,8 @@ function MerchantDemo() {
                           <HStack align="start" spacing={4}>
                             <Box
                               p={2}
-                              bg="brand.bitcash.400"
-                              color="brand.bitcash.500"
+                              bg="brand.cash.400"
+                              color="brand.cash.500"
                               borderRadius="md"
                             >
                               <EmailIcon boxSize={5} />
@@ -904,8 +904,8 @@ function MerchantDemo() {
                           <HStack align="start" spacing={4}>
                             <Box
                               p={2}
-                              bg="brand.bitcash.400"
-                              color="brand.bitcash.500"
+                              bg="brand.cash.400"
+                              color="brand.cash.500"
                               borderRadius="md"
                             >
                               <CheckCircleIcon boxSize={5} />
@@ -990,7 +990,7 @@ function MerchantDemo() {
             {/* CTA Section */}
             <SlideFade in offsetY="30px">
               <Box 
-                bg="brand.bitcash.400" 
+                bg="brand.cash.400" 
                 p={{ base: 6, md: 10 }} 
                 borderRadius="xl" 
                 boxShadow={softShadow}

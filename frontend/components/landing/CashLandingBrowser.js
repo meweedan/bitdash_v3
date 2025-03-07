@@ -61,25 +61,25 @@ const BitCashLanding = () => {
       icon: FaBolt,
       title: 'instant.payments.title',
       description: 'instant.payments.description',
-      color: 'brand.bitcash.400'
+      color: 'brand.cash.400'
     },
     {
       icon: FaStore,
       title: 'merchant.solutions.title',
       description: 'merchant.solutions.description',
-      color: 'brand.bitcash.500'
+      color: 'brand.cash.500'
     },
     {
       icon: FaQrcode,
       title: 'qr.payments.title',
       description: 'qr.payments.description',
-      color: 'brand.bitcash.600'
+      color: 'brand.cash.600'
     },
     {
       icon: FaMobileAlt,
       title: 'mobile.app.title',
       description: 'mobile.app.description',
-      color: 'brand.bitcash.700'
+      color: 'brand.cash.700'
     }
   ];
 
@@ -89,21 +89,21 @@ const BitCashLanding = () => {
       title: 'solutions.real.time.transfers.title',
       description: 'solutions.real.time.transfers.description',
       technical: 'solutions.real.time.transfers.technical',
-      color: 'brand.bitcash.500'
+      color: 'brand.cash.500'
     },
     {
       icon: FaShieldAlt,
       title: 'solutions.secure.payments.title',
       description: 'solutions.secure.payments.description',
       technical: 'solutions.secure.payments.technical',
-      color: 'brand.bitcash.600'
+      color: 'brand.cash.600'
     },
     {
       icon: FaChartLine,
       title: 'solutions.business.analytics.title',
       description: 'solutions.business.analytics.description',
       technical: 'solutions.business.analytics.technical',
-      color: 'brand.bitcash.700'
+      color: 'brand.cash.700'
     }
   ];
 
@@ -121,7 +121,7 @@ const BitCashLanding = () => {
             <VStack spacing={8} maxW="4xl">
               <Heading
                 fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
-                bgGradient="linear(to-r, brand.bitcash.500, brand.bitcash.700)"
+                bgGradient="linear(to-r, brand.cash.500, brand.cash.700)"
                 bgClip="text"
               >
                 {t('cash.hero.title', 'Instant Payments for the Digital Age')}
@@ -157,7 +157,7 @@ const BitCashLanding = () => {
               p={8}
               borderRadius="3xl"
               bg={glassCardBg}
-              borderColor="brand.bitcash.500"
+              borderColor="brand.cash.500"
               borderWidth={2}
               boxShadow="xl"
             >
@@ -168,9 +168,9 @@ const BitCashLanding = () => {
                   bg={useColorModeValue('white', 'gray.800')}
                   spacing={4}
                 >
-                  <Icon as={FaBolt} boxSize={8} color="brand.bitcash.500" />
+                  <Icon as={FaBolt} boxSize={8} color="brand.cash.500" />
                   <Text fontWeight="bold">{t('demo.instant_transfer', 'Transfer Speed')}</Text>
-                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitcash.500">
+                  <Text fontSize="3xl" fontWeight="bold" color="brand.cash.500">
                     &lt; 1s
                   </Text>
                 </VStack>
@@ -180,9 +180,9 @@ const BitCashLanding = () => {
                   bg={useColorModeValue('white', 'gray.800')}
                   spacing={4}
                 >
-                  <Icon as={FaGlobe} boxSize={8} color="brand.bitcash.500" />
+                  <Icon as={FaGlobe} boxSize={8} color="brand.cash.500" />
                   <Text fontWeight="bold">{t('demo.global_reach', 'Countries')}</Text>
-                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitcash.500">
+                  <Text fontSize="3xl" fontWeight="bold" color="brand.cash.500">
                     180+
                   </Text>
                 </VStack>
@@ -192,9 +192,9 @@ const BitCashLanding = () => {
                   bg={useColorModeValue('white', 'gray.800')}
                   spacing={4}
                 >
-                  <Icon as={FaStore} boxSize={8} color="brand.bitcash.500" />
+                  <Icon as={FaStore} boxSize={8} color="brand.cash.500" />
                   <Text fontWeight="bold">{t('demo.merchants', 'Active Merchants')}</Text>
-                  <Text fontSize="3xl" fontWeight="bold" color="brand.bitcash.500">
+                  <Text fontSize="3xl" fontWeight="bold" color="brand.cash.500">
                     50k+
                   </Text>
                 </VStack>
@@ -232,13 +232,13 @@ const BitCashLanding = () => {
                 <VStack align="start" spacing={6}>
                   <Icon as={feature.icon} boxSize={12} color={feature.color} />
                   <Heading
-                    bgGradient="linear(to-r, brand.bitcash.500, brand.bitcash.700)"
+                    bgGradient="linear(to-r, brand.cash.500, brand.cash.700)"
                     bgClip="text"
                   >
                 {t(feature.title, 'Feature')}
                 </Heading>
                   <Text
-                    bgGradient="linear(to-r, brand.bitcash.500, brand.bitcash.700)"
+                    bgGradient="linear(to-r, brand.cash.500, brand.cash.700)"
                     bgClip="text"
                   >
                     {t(feature.description, 'Feature description')}

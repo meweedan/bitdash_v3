@@ -1307,7 +1307,7 @@ export default function InstitutionalSignup() {
   );
 
   // Main component return
-  const accentColor = useColorModeValue('brand.bitstock.500', 'brand.bitstock.400');
+  const accentColor = useColorModeValue('brand.stocks.500', 'brand.stocks.400');
   
   return (
     <Layout>
@@ -1321,7 +1321,7 @@ export default function InstitutionalSignup() {
             size="lg" 
             color={isDark ? 'white' : 'gray.800'}
             textAlign="center"
-            bgGradient="linear(to-r, brand.bitstock.400, brand.bitstock.600)"
+            bgGradient="linear(to-r, brand.stocks.400, brand.stocks.600)"
             bgClip="text"
           >
             {t('institutionalAccount')}

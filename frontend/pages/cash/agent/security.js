@@ -77,7 +77,7 @@ function Security() {
 
   // Colors & UI
   const cardBg = useColorModeValue('white', 'gray.800');
-  const accentColor = useColorModeValue('brand.bitcash.600', 'brand.bitcash.400');
+  const accentColor = useColorModeValue('brand.cash.600', 'brand.cash.400');
   const accentBg = useColorModeValue('brand.bitcash.50', 'brand.bitcash.900');
   const softShadow = useColorModeValue('lg', 'dark-lg');
 
@@ -465,7 +465,7 @@ function Security() {
                   <Flex
                     w={12}
                     h={12}
-                    bg="brand.bitcash.400"
+                    bg="brand.cash.400"
                     color="white"
                     borderRadius="full"
                     justifyContent="center"
@@ -486,7 +486,7 @@ function Security() {
                   <Flex
                     w={12}
                     h={12}
-                    bg="brand.bitcash.400"
+                    bg="brand.cash.400"
                     color="white"
                     borderRadius="full"
                     justifyContent="center"
@@ -507,7 +507,7 @@ function Security() {
                   <Flex
                     w={12}
                     h={12}
-                    bg="brand.bitcash.400"
+                    bg="brand.cash.400"
                     color="white"
                     borderRadius="full"
                     justifyContent="center"
@@ -616,7 +616,7 @@ function Security() {
           {/* CTA Section */}
           <SlideFade in offsetY="30px">
             <Box 
-              bg="brand.bitcash.600" 
+              bg="brand.cash.600" 
               color="white" 
               p={{ base: 6, md: 8 }} 
               borderRadius="xl" 

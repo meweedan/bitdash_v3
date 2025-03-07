@@ -77,7 +77,7 @@ const Footer = () => {
       if (hostname.includes('crypto')) setPlatform('crypto');
       else if (hostname.includes('forex')) setPlatform('forex');
       else if (hostname.includes('cash')) setPlatform('cash');
-      else if (hostname.includes('stock')) setPlatform('stock');
+      else if (hostname.includes('stocks')) setPlatform('stocks');
       else setPlatform('main');
 
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
@@ -95,13 +95,13 @@ const Footer = () => {
   const getPlatformColor = (intensity) => {
     switch(platform) {
       case 'cash':
-        return `brand.bitcash.${intensity}`;
+        return `brand.cash.${intensity}`;
       case 'crypto':
-        return `brand.bitfund.${intensity}`;
+        return `brand.crypto.${intensity}`;
       case 'forex':
-        return `brand.bittrade.${intensity}`;
-      case 'stock':
-        return `brand.bitstock.${intensity}`;
+        return `brand.forex.${intensity}`;
+      case 'stocks':
+        return `brand.stocks.${intensity}`;
       default:
         return `blue.${intensity}`;
     }
@@ -119,11 +119,11 @@ const Footer = () => {
       { label: 'Tokens', href: '/crypto/tokens', icon: TrendingUp },
       { label: 'FAQ', href: '/crypto/faq', icon: HelpCircle },
     ],
-    stock: [
-      { label: 'US Markets', href: '/stock/us-markets', icon: Globe },
-      { label: 'EU Markets', href: '/stock/eu-markets', icon: Building },
-      { label: 'Commodities', href: '/stock/commodities', icon: TrendingUp },
-      { label: 'Portfolio', href: '/stock/portfolio', icon: BarChart2 },
+    stocks: [
+      { label: 'US Markets', href: '/stocks/us-markets', icon: Globe },
+      { label: 'EU Markets', href: '/stocks/eu-markets', icon: Building },
+      { label: 'Commodities', href: '/stocks/commodities', icon: TrendingUp },
+      { label: 'Portfolio', href: '/stocks/portfolio', icon: BarChart2 },
     ],
     forex: [
       { label: 'Forex Pairs', href: '/forex/pairs', icon: Globe },
@@ -148,7 +148,7 @@ const Footer = () => {
         { label: 'History', action: 'history', icon: Clock },
         { label: 'Account', action: 'account', icon: User },
       ],
-      stock: [
+      stocks: [
         { label: 'Portfolio', action: 'portfolio', icon: BarChart2 },
         { label: 'Markets', action: 'markets', icon: Globe },
         { label: 'Trade', action: 'stock-trade', icon: ArrowUpRight },
@@ -199,11 +199,11 @@ const Footer = () => {
         history: '/crypto/history',
         account: '/crypto/account',
       },
-      stock: {
-        portfolio: '/stock/portfolio',
-        markets: '/stock/markets',
-        'stock-trade': '/stock/trade',
-        account: '/stock/account',
+      stocks: {
+        portfolio: '/stocks/portfolio',
+        markets: '/stocks/markets',
+        trade: '/stocks/trade',
+        account: '/stocks/account',
       },
       forex: {
         trading: '/forex/platform',
@@ -266,8 +266,8 @@ const Footer = () => {
       case 'crypto':
         path = `/crypto/challenge/${trackingNumber}`;
         break;
-      case 'stock':
-        path = `/stock/order/${trackingNumber}`;
+      case 'stocks':
+        path = `/stocks/order/${trackingNumber}`;
         break;
       case 'forex':
         path = `/forex/transaction/${trackingNumber}`;
@@ -292,7 +292,7 @@ const Footer = () => {
     switch(platform) {
       case 'crypto':
         return 'Track Challenge';
-      case 'stock':
+      case 'stocks':
         return 'Track Investment Order';
       case 'forex':
         return 'Track Withdrawals and Deposits';
@@ -451,7 +451,7 @@ const Footer = () => {
         <DrawerContent borderTopRadius="20px">
           <DrawerHeader borderBottomWidth="1px">
             {platform === 'crypt' ? 'Crypto Menu' : 
-             platform === 'stock' ? 'Stock Menu' : 
+             platform === 'stocks' ? 'Stocks Menu' : 
              platform === 'forex' ? 'Forex Menu' :
              platform === 'cash' ? 'Cash Menu' :
              'Menu'}
@@ -516,7 +516,7 @@ const Footer = () => {
             <FormControl isRequired isInvalid={!!error}>
               <FormLabel>
                 {platform === 'crypto' ? 'Challenge ID' : 
-                 platform === 'stock' ? 'Order ID' : 
+                 platform === 'stocks' ? 'Order ID' : 
                  platform === 'forex' ? 'Transaction ID' :
                  platform === 'cash' ? 'Payment ID' :
                  'Tracking Number'}
@@ -529,7 +529,7 @@ const Footer = () => {
                 }}
                 placeholder={
                   platform === 'crypto' ? 'Enter Wallet ID' : 
-                  platform === 'stock' ? 'Enter order ID' : 
+                  platform === 'stocks' ? 'Enter order ID' : 
                   platform === 'forex' ? 'Enter transaction ID' :
                   platform === 'cash' ? 'Enter payment ID' :
                   'Enter tracking number'
@@ -539,7 +539,7 @@ const Footer = () => {
             </FormControl>
             <Button
               mt={4}
-              colorScheme={platform === 'cash' ? 'brand.bitcash.400' : platform}
+              colorScheme={platform === 'cash' ? 'brand.cash.400' : platform}
               onClick={handleTracking}
               isFullWidth
             >

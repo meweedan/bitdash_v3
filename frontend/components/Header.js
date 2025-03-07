@@ -44,7 +44,7 @@ export default function Header() {
   const accentColor = `brand.${platform}.400`;
   
   // Always show announcements for these platforms
-  const showAnnouncements = platform === 'forex' || platform === 'stock' || platform === 'crypto' || platform === 'cash';
+  const showAnnouncements = platform === 'forex' || platform === 'stocks' || platform === 'crypto' || platform === 'cash';
 
   useEffect(() => {
     const checkAuth = () => {
@@ -91,9 +91,9 @@ export default function Header() {
       href: 'https://forex.bitdash.app/',
     }, 
     {
-      name: 'Stock by BitDash',
-      image: '/stock.png',
-      mobileImage: '/stock.png',
+      name: 'Stocks by BitDash',
+      image: '/stocks.png',
+      mobileImage: '/stocks.png',
       href: 'https://stock.bitdash.app/',
     },
      {
@@ -105,10 +105,10 @@ export default function Header() {
   ];
 
   const bgColor = useColorModeValue(
-    platform === 'bitcash' ? 'brand.bitcash.500' : 
-    platform === 'bitstock' ? 'brand.bitstock.500' :
-    platform === 'bittrade' ? 'brand.bittrade.500' :
-    platform === 'bitfund' ? 'brand.bitfund.500' :
+    platform === 'cash' ? 'brand.cash.500' : 
+    platform === 'stocks' ? 'brand.stocks.500' :
+    platform === 'forex' ? 'brand.forex.500' :
+    platform === 'crypto' ? 'brand.crypto.500' :
     'gray.50',
     'gray.900'
   );
@@ -119,17 +119,17 @@ export default function Header() {
       const hostname = window.location.hostname;
       
       // More specific checks to avoid partial matches
-      if (hostname.includes('cash.bitdash') || hostname === 'cash.localhost') return 'bitcash';
-      if (hostname.includes('crypto.bitdash') || hostname === 'crypto.localhost') return 'bitfund';
-      if (hostname.includes('forex.bitdash') || hostname === 'forex.localhost') return 'bittrade';
-      if (hostname.includes('stock.bitdash') || hostname === 'stock.localhost') return 'bitstock';
+      if (hostname.includes('cash.bitdash') || hostname === 'cash.localhost') return 'cash';
+      if (hostname.includes('crypto.bitdash') || hostname === 'crypto.localhost') return 'crypto';
+      if (hostname.includes('forex.bitdash') || hostname === 'forex.localhost') return 'forex';
+      if (hostname.includes('stocks.bitdash') || hostname === 'stocks.localhost') return 'stocks';
       
       // Also check URL path for local development
       const pathname = window.location.pathname;
-      if (pathname.startsWith('/cash')) return 'bitcash';
-      if (pathname.startsWith('/crypto')) return 'bitfund';
-      if (pathname.startsWith('/forex')) return 'bittrade';
-      if (pathname.startsWith('/stock')) return 'bitstock';
+      if (pathname.startsWith('/cash')) return 'cash';
+      if (pathname.startsWith('/crypto')) return 'crypto';
+      if (pathname.startsWith('/forex')) return 'forex';
+      if (pathname.startsWith('/stocks')) return 'stocks';
     }
     return 'bitdash'; // Default platform
   };
@@ -184,7 +184,7 @@ export default function Header() {
         name: t('contactUs', 'Contact Us'), 
         path: '/contact',
         submenu: [
-          { name: t('support', 'Support'), path: '/contact/support' },
+          { name: t('support', 'Support'), path: '/contact' },
           { name: t('careers', 'Careers'), path: '/contact/careers' },
           { name: t('offices', 'Offices'), path: '/contact/offices' },
         ]
@@ -194,7 +194,7 @@ export default function Header() {
   
   // Platform-specific menu items 
   const getPlatformMenuItems = () => {
-    if (platform === 'bitfund') { // Crypto
+    if (platform === 'crypto') { // Crypto
       return [
         { 
           name: t('exchange', 'Exchange'), 
@@ -224,37 +224,37 @@ export default function Header() {
           ]
         },
       ];
-    } else if (platform === 'bitstock') { // Stock
+    } else if (platform === 'stocks') { // Stock
       return [
         { 
           name: t('invest', 'Invest'), 
-          path: '/stock/invest',
+          path: '/stocks/invest',
           submenu: [
-            { name: t('stocks', 'Stocks'), path: '/stock/invest/stocks' },
-            { name: t('etfs', 'ETFs'), path: '/stock/invest/etfs' },
-            { name: t('ipos', 'IPOs'), path: '/stock/invest/ipos' },
+            { name: t('stocks', 'Stocks'), path: '/stocks/invest/stocks' },
+            { name: t('etfs', 'ETFs'), path: '/stocks/invest/etfs' },
+            { name: t('ipos', 'IPOs'), path: '/stocks/invest/ipos' },
           ]
         },
         { 
           name: t('research', 'Research'), 
-          path: '/stock/research',
+          path: '/stocks/research',
           submenu: [
-            { name: t('marketNews', 'Market News'), path: '/stock/research/news' },
-            { name: t('analystRatings', 'Analyst Ratings'), path: '/stock/research/ratings' },
-            { name: t('screener', 'Screener'), path: '/stock/research/screener' },
+            { name: t('marketNews', 'Market News'), path: '/stocks/research/news' },
+            { name: t('analystRatings', 'Analyst Ratings'), path: '/stocks/research/ratings' },
+            { name: t('screener', 'Screener'), path: '/stocks/research/screener' },
           ]
         },
         { 
           name: t('portfolio', 'Portfolio'), 
-          path: '/stock/portfolio',
+          path: '/stocks/portfolio',
           submenu: [
-            { name: t('myHoldings', 'My Holdings'), path: '/stock/portfolio/holdings' },
-            { name: t('performance', 'Performance'), path: '/stock/portfolio/performance' },
-            { name: t('dividends', 'Dividends'), path: '/stock/portfolio/dividends' },
+            { name: t('myHoldings', 'My Holdings'), path: '/stocks/portfolio/holdings' },
+            { name: t('performance', 'Performance'), path: '/stocks/portfolio/performance' },
+            { name: t('dividends', 'Dividends'), path: '/stockss/portfolio/dividends' },
           ]
         },
       ];
-    } else if (platform === 'bittrade') { // Forex
+    } else if (platform === 'forex') { // Forex
       return [
         { 
           name: t('trading', 'Trading'), 
@@ -284,7 +284,7 @@ export default function Header() {
           ]
         },
       ];
-    } else if (platform === 'bitcash') { // Cash
+    } else if (platform === 'cash') { // Cash
       return [
         { 
           name: t('payments', 'Payments'), 

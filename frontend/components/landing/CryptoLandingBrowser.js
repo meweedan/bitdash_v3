@@ -308,7 +308,7 @@ function CryptoExchange() {
         <motion.div style={{ scale: heroScale }}>
           <VStack spacing={4} textAlign="center" mb={4}>
             <Heading
-              color="brand.bitfund.400"
+              color="brand.crypto.400"
               fontSize={{ base: '2xl', md: '4xl', lg: '5xl' }}
               fontWeight="extrabold"
             >

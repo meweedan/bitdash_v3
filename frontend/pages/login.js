@@ -96,31 +96,31 @@ const getColorScheme = (platform, isDark) => {
   const colorSchemes = {
     bitcash: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.bitcash.400' : 'brand.bitcash.600',
-      button: 'brand.bitcash.500',
-      hover: 'brand.bitcash.600',
-      border: 'brand.bitcash.500'
+      text: isDark ? 'brand.cash.400' : 'brand.cash.600',
+      button: 'brand.cash.500',
+      hover: 'brand.cash.600',
+      border: 'brand.cash.500'
     },
     bitfund: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.bitfund.400' : 'brand.bitfund.600',
-      button: 'brand.bitfund.500',
-      hover: 'brand.bitfund.600',
-      border: 'brand.bitfund.500'
+      text: isDark ? 'brand.crypto.400' : 'brand.crypto.600',
+      button: 'brand.crypto.500',
+      hover: 'brand.crypto.600',
+      border: 'brand.crypto.500'
     },
     bitstock: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.bitstock.400' : 'brand.bitstock.600',
-      button: 'brand.bitstock.500',
-      hover: 'brand.bitstock.600',
-      border: 'brand.bitstock.500'
+      text: isDark ? 'brand.stocks.400' : 'brand.stocks.600',
+      button: 'brand.stocks.500',
+      hover: 'brand.stocks.600',
+      border: 'brand.stocks.500'
     },
     bittrade: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.bittrade.400' : 'brand.bittrade.600',
-      button: 'brand.bittrade.500',
-      hover: 'brand.bittrade.600',
-      border: 'brand.bittrade.500'
+      text: isDark ? 'brand.forex.400' : 'brand.forex.600',
+      button: 'brand.forex.500',
+      hover: 'brand.forex.600',
+      border: 'brand.forex.500'
     },
     bitdash: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',

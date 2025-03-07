@@ -1430,7 +1430,7 @@ export default function InstituteSignup() {
   );
 
   // Main component return
-  const accentColor = useColorModeValue('brand.bittrade.500', 'brand.bittrade.400');
+  const accentColor = useColorModeValue('brand.forex.500', 'brand.forex.400');
   
   return (
     <Layout>
@@ -1444,7 +1444,7 @@ export default function InstituteSignup() {
             size="lg" 
             color={isDark ? 'white' : 'gray.800'}
             textAlign="center"
-            bgGradient="linear(to-r, brand.bittrade.400, brand.bittrade.600)"
+            bgGradient="linear(to-r, brand.forex.400, brand.forex.600)"
             bgClip="text"
           >
             {t('institutionalTradingAccount')}
