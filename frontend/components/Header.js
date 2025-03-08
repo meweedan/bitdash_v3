@@ -171,7 +171,6 @@ export default function Header() {
         name: t('contactUs', 'Contact Us'), 
         path: '/contact',
         submenu: [
-          { name: t('support', 'Support'), path: '/contact' },
           { name: t('Careers', 'Careers'), path: '/contact/careers' },
           { name: t('Offices', 'Offices'), path: '/contact/offices' },
         ]
