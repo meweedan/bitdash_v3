@@ -34,7 +34,7 @@ import {
 import { motion } from 'framer-motion';
 import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
-import Layout from '../components/Layout';
+import Layout from '@/components/Layout';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { 
   FaWhatsapp, 
