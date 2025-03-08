@@ -1,4 +1,4 @@
-// frontend/pages/fund/index.js
+// frontend/pages/crypto/index.js
 import { useEffect } from 'react';
 import { usePWA } from '@/hooks/usePWA';
 import { CryptoPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component

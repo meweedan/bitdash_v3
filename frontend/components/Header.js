@@ -155,7 +155,7 @@ export default function Header() {
         submenu: [
           { name: t('companyProfile', 'Company Profile'), path: '/about/profile' },
           { name: t('ourTeam', 'Our Team'), path: '/about/team' },
-          { name: t('regulation', 'Regulation'), path: '/about/regulation' },
+          { name: t('team.regulation', 'Regulation'), path: '/about/regulation' },
         ]
       },
       { 
@@ -172,8 +172,8 @@ export default function Header() {
         path: '/contact',
         submenu: [
           { name: t('support', 'Support'), path: '/contact' },
-          { name: t('careers', 'Careers'), path: '/contact/careers' },
-          { name: t('offices', 'Offices'), path: '/contact/offices' },
+          { name: t('Careers', 'Careers'), path: '/contact/careers' },
+          { name: t('Offices', 'Offices'), path: '/contact/offices' },
         ]
       },
     ];
@@ -704,7 +704,7 @@ export default function Header() {
                       borderRadius="full"
                       color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                       onClick={() => {
-                        router.push(`${platform}/dashboard`);
+                        router.push('/login');
                         onClose();
                       }}
                       _hover={{ bg: isDark ? 'whiteAlpha.200' : 'blackAlpha.100' }}

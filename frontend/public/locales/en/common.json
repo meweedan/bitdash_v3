@@ -62,15 +62,6 @@
       "Pay via card or cash."
     ]
   },
-  "howItWorks": {
-    "title": "How It Works",
-    "steps": [
-      "QR Code Generation: Each table gets a unique QR code linked to your menu.",
-      "Menu Integration: Update your menu anytime from the BitDash dashboard.",
-      "Order Submission: Orders go directly to your kitchen.",
-      "Payment Options: Customers can pay via card or cash."
-    ]
-  },
   "benefits": {
     "title": "Why BitDash is a Game-Changer",
     "points": [
@@ -1645,14 +1636,424 @@
     }
   },
   "companyProfile": "Company Profile",
+  "careers": {
+    "pageTitle": "Careers at BitDash | Join Our Team",
+    "metaDescription": "Explore exciting career opportunities at BitDash. Join our innovative team and help revolutionize the financial technology landscape.",
+    "subtitle": "Work With Us",
+    "title": "Build Your Career at BitDash",
+    "introduction": "Join our diverse team of innovators, creators, and problem-solvers. At BitDash, you'll work on challenging projects that transform how people interact with financial technology worldwide.",
+    "viewOpenings": "View Current Openings",
+    "exploreCulture": "Explore Our Culture",
+    "heroImageAlt": "BitDash team members collaborating in a modern office",
+    
+    "cultureTitle": "Our Culture & Values",
+    "cultureDescription": "At BitDash, our culture is built on collaboration, innovation, and a shared commitment to excellence. Our values guide everything we do and shape the environment where our team thrives.",
+    
+    "values": {
+      "innovation": {
+        "title": "Innovation",
+        "description": "We encourage creative thinking and embrace new technologies to solve complex financial challenges."
+      },
+      "collaboration": {
+        "title": "Collaboration",
+        "description": "We believe in the power of diverse teams working together toward common goals."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "We strive for the highest standards in everything we do, from code quality to customer service."
+      },
+      "integrity": {
+        "title": "Integrity",
+        "description": "We operate with transparency, ethical practices, and a commitment to doing what's right."
+      },
+      "growth": {
+        "title": "Growth",
+        "description": "We invest in our team members' professional development and personal growth."
+      },
+      "impact": {
+        "title": "Impact",
+        "description": "We're committed to making a positive difference in how people manage their finances worldwide."
+      }
+    },
+    
+    "benefitsTitle": "Benefits & Perks",
+    "benefitsDescription": "We believe in taking care of our team members. At BitDash, you'll enjoy a comprehensive benefits package designed to support your well-being, professional growth, and work-life balance.",
+    
+    "benefitsTabs": {
+      "professional": "Professional Growth",
+      "health": "Health & Wellness",
+      "work": "Work-Life Balance",
+      "financial": "Financial Benefits"
+    },
+    
+    "professionalDescription": "We invest in our team members' professional development, offering resources and opportunities to expand your skills and advance your career.",
+    "healthDescription": "Your well-being matters. We provide comprehensive programs to support your physical and mental health.",
+    "workDescription": "We respect your life outside of work and offer flexibility to help you maintain a healthy balance.",
+    "financialDescription": "We offer competitive compensation and benefits to reward your contributions and help you build financial security.",
+    
+    "benefits": {
+      "professional": {
+        "development": "Professional development budget",
+        "mentoring": "Internal mentoring program",
+        "conferences": "Conference attendance opportunities",
+        "training": "Regular training workshops"
+      },
+      "health": {
+        "insurance": "Comprehensive health insurance",
+        "wellness": "Wellness programs",
+        "mental": "Mental health support",
+        "gym": "Gym membership subsidy"
+      },
+      "work": {
+        "flexible": "Flexible working hours",
+        "remote": "Remote work options",
+        "vacation": "Generous vacation policy",
+        "sabbatical": "Sabbatical program"
+      },
+      "financial": {
+        "equity": "Equity options",
+        "retirement": "Retirement plans",
+        "bonus": "Performance bonuses",
+        "assistance": "Relocation assistance"
+      }
+    },
+    
+    "images": {
+      "professionalGrowth": "Professional development at BitDash",
+      "healthWellness": "Health and wellness programs at BitDash",
+      "workLife": "Work-life balance at BitDash",
+      "financial": "Financial benefits at BitDash"
+    },
+    
+    "openingsTitle": "Current Openings",
+    "openingsDescription": "Browse our current job opportunities and find your perfect role at BitDash. We're looking for talented individuals to join our team across various departments.",
+    
+    "searchPlaceholder": "Search jobs...",
+    "departmentFilter": "Filter by department",
+    "locationFilter": "Filter by location",
+    
+    "departments": {
+      "all": "All Departments",
+      "engineering": "Engineering",
+      "business": "Business",
+      "customer-service": "Customer Service",
+      "operations": "Operations"
+    },
+    
+    "locations": {
+      "all": "All Locations",
+      "london": "London",
+      "singapore": "Singapore",
+      "new-york": "New York",
+      "cairo": "Cairo",
+      "istanbul": "Istanbul",
+      "remote": "Remote"
+    },
+    
+    "viewDetails": "View Details",
+    "noJobsFound": "No jobs matching your criteria",
+    "tryAdjusting": "Try adjusting your filters or search query",
+    "clearFilters": "Clear all filters",
+    
+    "noSuitablePositions": "Don't see a suitable position?",
+    "speculative": "We're always interested in hearing from talented individuals. Send us your CV for future opportunities.",
+    "sendCV": "Send Your CV",
+    
+    "processTitle": "Our Application Process",
+    "processDescription": "We've designed a transparent hiring process that helps us get to know you better while giving you insight into our team and how we work.",
+    
+    "process": {
+      "application": {
+        "title": "Application Submission",
+        "description": "Submit your application through our careers portal. Include your resume/CV and a brief cover letter explaining why you're interested in the role and how your experience aligns with our requirements."
+      },
+      "screening": {
+        "title": "Initial Screening",
+        "description": "Our recruitment team will review your application and may contact you for a brief phone or video screening to discuss your background and interest in the role."
+      },
+      "assessment": {
+        "title": "Skills Assessment",
+        "description": "Depending on the role, you may be asked to complete a skills assessment, technical challenge, or portfolio review to demonstrate your expertise. We design these to be respectful of your time while showcasing your abilities."
+      },
+      "interviews": {
+        "title": "Team Interviews",
+        "description": "You'll meet with potential team members and leaders through a series of structured interviews. These conversations help us understand your experience, working style, and how you might contribute to our team, while giving you the opportunity to learn more about us."
+      },
+      "offer": {
+        "title": "Offer & Onboarding",
+        "description": "If there's a strong mutual fit, we'll extend an offer detailing compensation, benefits, and start date. Once you accept, our onboarding team will guide you through the process of joining BitDash and set you up for success."
+      }
+    },
+    
+    "jobApplication": "Job Application",
+    "jobDescription": "Job Description",
+    "requirements": "Requirements",
+    "specificBenefits": "Position Benefits",
+    "applyNow": "Apply Now",
+    
+    "form": {
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Enter your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your email",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
+      "linkedin": "LinkedIn Profile (Optional)",
+      "linkedinPlaceholder": "https://linkedin.com/in/yourprofile",
+      "resume": "Resume/CV",
+      "resumeUpload": "Upload Resume/CV (PDF, DOC, DOCX)",
+      "coverLetter": "Cover Letter or Introduction",
+      "coverLetterPlaceholder": "Tell us why you're interested in this position and how your experience makes you a good fit.",
+      "submit": "Submit Application"
+    },
+    
+    "applicationSuccess": "Application submitted successfully! We will review your application and contact you soon.",
+    "apiError": "There was an error loading job listings. Please try again later."
+  },
   "ourTeam": "Our Team",
-  "regulation": "Regulation",
+   "officesPageTitle": "Global Offices | BitDash",
+  "officesMetaDescription": "Discover BitDash's global presence with offices in major financial hubs worldwide. Find contact information and details for all our locations.",
+  "officesSubtitle": "Global Presence",
+  "officesTitle": "Our Global Offices",
+  "officesIntroduction": "BitDash operates from strategic locations around the world, ensuring we can provide localized support and service to our global client base. Our offices are situated in major financial hubs, allowing us to stay connected with financial markets and regulatory developments in key regions.",
+  "worldPresence": "Our Worldwide Presence",
+  "worldMapAlt": "World map showing BitDash office locations",
+  "viewOfficeDetails": "View Details",
+  "contactDetails": "Contact Details",
+  "teamsAtLocation": "Teams at this Location",
+  "getDirections": "Get Directions",
+  "virtualTour": "Virtual Tour",
+  "workWithUsTitle": "Work With Us",
+  "workWithUsDesc1": "Our offices are designed to foster innovation, collaboration, and well-being. We believe that the right environment plays a crucial role in our team's success and productivity.",
+  "workWithUsDesc2": "Each BitDash location reflects our commitment to creating spaces where great ideas can flourish. From state-of-the-art technology to comfortable collaborative areas, our offices are built for the future of work.",
+  "viewCareers": "View Career Opportunities",
+  "workspaceAlt": "BitDash modern workspace",
+  
+  "regions": {
+    "all": "All Locations",
+    "europe": "Europe",
+    "americas": "Americas",
+    "asia": "Asia-Pacific",
+    "mena": "Middle East"
+  },
+  
+  "teams": {
+    "executive": "Executive Leadership",
+    "engineering": "Engineering",
+    "finance": "Finance",
+    "legal": "Legal & Compliance",
+    "product": "Product",
+    "compliance": "Compliance",
+    "sales": "Sales",
+    "marketing": "Marketing",
+    "trading": "Trading Technology",
+    "wealth": "Wealth Management",
+    "relationship": "Relationship Management",
+    "operations": "Regional Operations",
+    "customer": "Customer Success",
+    "localEngineering": "Local Engineering",
+    "development": "Software Development",
+    "design": "Design",
+    "support": "Customer Support"
+  },
+  
+  "offices": {
+    "london": {
+      "name": "London (Headquarters)",
+      "address": "1 Fintech Square, Canary Wharf, London E14 5AB, United Kingdom",
+      "imageAlt": "BitDash London headquarters building",
+      "hours": "Monday-Friday: 9:00 AM - 6:00 PM",
+      "featuredImageAlt": "BitDash London office interior",
+      "description": "Our London headquarters houses our executive leadership team and serves as the primary hub for our European operations. Located in the heart of Canary Wharf, the office features state-of-the-art facilities including collaborative workspaces, a tech lab, and a rooftop terrace with views of the Thames."
+    },
+    "singapore": {
+      "name": "Singapore",
+      "address": "88 Market Street #32-01, CapitaSpring, Singapore 048948",
+      "imageAlt": "BitDash Singapore office",
+      "hours": "Monday-Friday: 9:00 AM - 6:00 PM",
+      "featuredImageAlt": "BitDash Singapore office interior",
+      "description": "Our Singapore office serves as our Asia-Pacific headquarters and is home to our regional product and engineering teams. The modern facility in the heart of the financial district features collaborative workspaces designed to foster innovation and cross-team collaboration."
+    },
+    "newyork": {
+      "name": "New York",
+      "address": "100 Wall Street, Suite 800, New York, NY 10005, USA",
+      "imageAlt": "BitDash New York office",
+      "hours": "Monday-Friday: 8:30 AM - 5:30 PM",
+      "featuredImageAlt": "BitDash New York office interior",
+      "description": "Located in the heart of Manhattan's financial district, our New York office focuses on North American operations and houses our institutional sales team. The office features a modern trading floor design with state-of-the-art technology to support our financial service offerings."
+    },
+    "cairo": {
+      "name": "Cairo",
+      "address": "4 Hassan Maamoun, Nasr City, Cairo, Egypt",
+      "imageAlt": "BitDash Cairo office",
+      "hours": "Sunday-Thursday: 9:00 AM - 6:00 PM",
+      "featuredImageAlt": "BitDash Cairo office interior",
+      "description": "Our Cairo office, located in the heart of Egypt, serves as our Middle East and North Africa headquarters. From here, we provide wealth management services and support for high-net-worth clients throughout the region in a sophisticated environment designed for privacy and service excellence."
+    },
+    "istanbul": {
+      "name": "Sydney",
+      "address": "Level 32, 200 Basaksehir Avenue, Istanbul, Turkey",
+      "imageAlt": "BitDash Istanbul office",
+      "hours": "Monday-Friday: 8:30 AM - 5:30 PM",
+      "featuredImageAlt": "BitDash Istanbul office interior",
+      "description": "Our Istanbul office provides a strategic base for our EU and Asia operations. The waterfront location offers breathtaking harbor views and serves as home to our regional product and customer success teams. The space is designed to reflect Turkey's balanced approach to work and lifestyle."
+    },
+    "remote": {
+      "name": "Remote Teams",
+      "address": "Global",
+      "imageAlt": "BitDash remote worker",
+      "featuredImageAlt": "BitDash remote team collaboration",
+      "description": "In addition to our physical locations, BitDash proudly supports a global remote workforce. Our remote team members are distributed across multiple time zones, allowing us to provide 24/7 support and development capabilities while fostering a diverse and inclusive culture."
+    }
+  },
+  "exchangePageTitle": "Cryptocurrency Exchange | Trade Bitcoin, Ethereum & More | BitDash",
+  "exchangeMetaDescription": "Trade cryptocurrencies on BitDash's secure and advanced exchange platform. Buy and sell Bitcoin, Ethereum, and other digital assets with low fees and deep liquidity.",
+  "earnPageTitle": "Earn Crypto | Staking, Yield Farming & Savings | BitDash",
+  "earnMetaDescription": "Earn passive income on your cryptocurrency holdings with BitDash's staking, yield farming, and savings products. Get competitive APYs on Bitcoin, Ethereum, and more.",
+  "earnProducts": "Earn Products",
+  "earnTitle": "Grow Your Crypto Assets",
+  "earnIntroduction": "Put your cryptocurrency to work and earn passive income through our range of investment products. Choose from staking, yield farming, and savings options with competitive APYs.",
+  "exploreStaking": "Explore Staking",
+  "exploreYieldFarming": "Explore Yield Farming",
+  "totalStaked": "Total Staked",
+  "acrossTokens": "Across all tokens",
+  "totalTVL": "Total TVL",
+  "acrossAllPools": "Across all liquidity pools",
+  "savingsDeposits": "Savings Deposits",
+  "acrossAllAssets": "Across all supported assets",
+  "yourEarnings": "Your Earnings",
+  "marketsPageTitle": "Cryptocurrency Markets | Live Prices & Data | BitDash",
+  "marketsMetaDescription": "Track real-time cryptocurrency prices, market caps, trading volumes, and more. Get comprehensive market data for Bitcoin, Ethereum, and thousands of altcoins.",
+  "liveMarkets": "Live Markets",
+  "marketsTitle": "Cryptocurrency Markets",
+  "marketsIntroduction": "Track real-time cryptocurrency prices, market capitalization, and trading volumes. Stay updated with detailed information on thousands of digital assets from Bitcoin to the latest altcoins.",
+  "startTrading": "Start Trading",
+  "createWatchlist": "Create Watchlist",
+  "totalMarketCap": "Total Market Cap",
+  "24hVolume": "24h Volume",
+  "btcDominance": "BTC Dominance",
+  "ethDominance": "ETH Dominance",
+  "activeCryptocurrencies": "Active Cryptocurrencies",
+  "trendingCoins": "Trending Coins",
+  "cryptoMarkets": "Cryptocurrency Markets",
+  "searchCoin": "Search coins...",
+  "sortBy": "Sort by",
+  "volume": "24h Volume",
+  "allCoins": "All Coins",
+  "gainers": "Top Gainers",
+  "losers": "Top Losers",
+  "24hChange": "24h Change",
+  "supply": "Circulating Supply",
+  "7dChart": "7d Chart",
+  "noFavorites": "No favorite coins yet",
+  "favoritesDescription": "Click the star icon next to any coin to add it to your favorites for quick access.",
+  "loadMore": "Load More",
+  "viewAllNews": "View All News",
+  "readMore": "Read more",
+  "adoption": "Adoption",
+  "marketResources": "Market Resources",
+  "resourcesDescription": "Explore our comprehensive suite of tools and educational resources to enhance your crypto trading knowledge and strategy.",
+  "cryptoAcademy": "Crypto Academy",
+  "academyDescription": "Learn the fundamentals of blockchain technology, cryptocurrencies, and trading strategies through our comprehensive educational resources.",
+  "tradingTools": "Trading Tools",
+  "toolsDescription": "Access advanced charting, technical analysis indicators, and portfolio tracking tools to optimize your trading decisions.",
+  "insightsDescription": "Get expert analysis, market reports, and the latest research on cryptocurrency trends and developments.",
+  "tradingCTA": "Join thousands of traders on BitDash. Create an account today to access our full suite of trading tools and features.",
+  "stakingDescription": "Lock your assets to earn passive income and support blockchain networks",
+  "viewAll": "View All",
+  "lockPeriod": "Lock Period",
+  "flexible": "Flexible",
+  "days": "days",
+  "minimumStake": "Minimum Stake",
+   "viewMore": "View More",
+  "backToMarkets": "Back to Markets",
+  "backToExchange": "Back to Exchange",
+  "backToEarn": "Back to Earn",
+  "mostPopular": "Most Popular",
+  "featuredCoins": "Featured Coins",
+  "refreshData": "Refresh Data",
+  "comingSoon": "Coming Soon",
+  "yourStake": "Your Stake",
+  "pendingRewards": "Pending Rewards",
+  "manageStake": "Manage Stake",
+  "stakeNow": "Stake Now",
+  "yieldFarmingDescription": "Provide liquidity to earn high APYs and token rewards",
+  "riskLevel": "Risk Level",
+  "totalValueLocked": "TVL",
+  "rewardToken": "Reward Token",
+  "yourLiquidity": "Your Liquidity",
+  "manageLiquidity": "Manage Liquidity",
+  "provideLiquidity": "Provide Liquidity",
+  "yieldFarmingRiskNote": "Note on Risk",
+  "yieldFarmingRiskDescription": "Yield farming involves providing liquidity to decentralized exchanges, which carries risks including impermanent loss, smart contract vulnerabilities, and market volatility. Always research thoroughly before committing your assets.",
+  "savingsDescription": "Deposit your crypto assets to earn interest with lower risk",
+  "fixed": "Fixed Term",
+  "minimumDeposit": "Minimum Deposit",
+  "totalDeposited": "Total Deposited",
+  "yourDeposit": "Your Deposit",
+  "accruedInterest": "Accrued Interest",
+  "manageDeposit": "Manage Deposit",
+  "depositNow": "Deposit Now",
+  "howItWorks": "How BitDash Earn Works",
+  "depositAssets": "Deposit Your Assets",
+  "depositAssetsDescription": "Transfer your crypto assets to BitDash and choose from our range of earn products based on your risk tolerance and time horizon.",
+  "earnInterest": "Earn Interest & Rewards",
+  "earnInterestDescription": "Your assets begin earning interest immediately. Monitor your growing balance and rewards in real-time through the BitDash dashboard.",
+  "withdrawAnytime": "Withdraw Anytime",
+  "withdrawAnytimeDescription": "Access your assets and earned interest according to the terms of your chosen product. Flexible options allow withdrawal at any time, while fixed terms provide higher returns.",
+  "readyToStart": "Ready to Start Earning?",
+  "readyToStartDescription": "Join thousands of users who are growing their crypto assets with BitDash Earn. Start with as little as $1 equivalent in supported cryptocurrencies.",
+  "stakeAsset": "Stake",
+  "stakeAmount": "Stake Amount",
+  "min": "Min",
+  "estimatedApy": "Estimated APY",
+  "autoCompound": "Auto-compound rewards",
+  "termsAndConditions": "Terms & Conditions",
+  "stakingTerms": "By staking your assets, you agree to lock them for the specified period. Early unstaking may result in forfeiture of accrued rewards. Staking rewards are calculated daily and distributed according to the protocol's schedule.",
+  "confirmStake": "Confirm Stake",
+  "lpProvisionGuide": "To provide liquidity, you need to supply an equal value of both tokens in the pair.",
+  "visitPlatform": "Visit",
+  "dexWarning": "BitDash is providing information about this pool but does not directly manage these liquidity pools. Always conduct your own research before providing liquidity to any protocol.",
+  "poolInfo": "Pool Information",
+  "goToProtocol": "Go to Protocol",
+  "depositAsset": "Deposit",
+  "depositAmount": "Deposit Amount",
+  "savingsTerms": "Savings Terms",
+  "flexibleTerms": "Flexible savings allow you to deposit and withdraw at any time. Interest is calculated daily and paid out daily to your savings account.",
+  "fixedTerms": "Fixed term savings require your deposit to remain locked for the full term to receive the stated interest rate. Early withdrawal may result in reduced interest payments.",
+  "confirmDeposit": "Confirm Deposit",
+  "searchPairs": "Search pairs",
+  "highLabel": "24h High",
+  "lowLabel": "24h Low",
+  "volumeLabel": "24h Volume",
+  "tradingChart": "Trading Chart",
+  "errorLoadingChart": "Error loading chart data. Please refresh the page.",
+  "orderBook": "Order Book",
+  "errorLoadingOrderBook": "Error loading order book. Please refresh the page.",
+  "stopLimit": "Stop-Limit",
+  "buyAmount": "Amount to Buy",
+  "sellAmount": "Amount to Sell",
+  "buyBTC": "Buy BTC",
+  "sellBTC": "Sell BTC",
+  "availableBalance": "Available",
+  "openOrders": "Open Orders",
+  "orderHistory": "Order History",
+  "tradeHistory": "Trade History",
+  "fundingHistory": "Funding History",
+  "noOpenOrders": "You have no open orders for this trading pair.",
+  "noOrderHistory": "No order history available in demo mode.",
+  "errorLoadingHistory": "Error loading trade history.",
+  "side": "Side",
+  "loadingMarketData": "Loading market data...",
+  "btcPairsNotAvailable": "BTC trading pairs not available in demo mode",
+  "ethPairsNotAvailable": "ETH trading pairs not available in demo mode",
+  "team.regulation": "Regulation",
   "institutionalServices": "Institutional Services",
   "tradingAPI": "Trading API",
   "liquidityServices": "Liquidity Services",
   "wealthManagement": "Wealth Management",
-  "careers": "Careers",
-  "offices": "Offices",
+  "Careers": "Careers",
+  "Offices": "Offices",
   "exchange": "Exchange",
   "spotTrading": "Spot Trading",
   "options": "Options",
@@ -1739,6 +2140,246 @@
   "time": "Time",
   "bids": "Bids",
   "asks": "Asks",
+  "team": {
+    "pageTitle": "Our Team | BitDash",
+    "metaDescription": "Meet the talented team behind BitDash. Our leadership and experts are dedicated to revolutionizing financial technology worldwide.",
+    "subtitle": "Meet Our Team",
+    "title": "Driven by Excellence",
+    "introduction": "Our team brings together experts in finance, technology, and customer experience. United by our mission to transform financial services, we work collaboratively to build innovative solutions that empower our users worldwide.",
+    "leadershipTitle": "Our Leadership",
+    "leadershipDesc": "Meet the experienced professionals guiding BitDash's vision and growth. Our executive team combines expertise from finance, technology, and global business.",
+    "departmentsTitle": "Meet Our Experts",
+    "tabs": {
+      "technology": "Technology",
+      "business": "Business & Operations"
+    },
+    "titles": {
+      "ceo": "Chief Executive Officer",
+      "cto": "Chief Technology Officer",
+      "cfo": "Chief Financial Officer",
+      "coo": "Chief Operating Officer",
+      "headEng": "Head of Engineering",
+      "cybersec": "Cybersecurity Director",
+      "productDir": "Product Director",
+      "aiLead": "AI Research Lead",
+      "marketing": "Marketing Director",
+      "salesDir": "Global Sales Director",
+      "customerExp": "Customer Experience Head",
+      "bizDev": "Business Development Lead",
+      "frontendDev": "Frontend Developer",
+      "dataScientist": "Data Scientist",
+      "projectManager": "Project Manager"
+    },
+    "bios": {
+      "ceo": "With over 20 years of experience in fintech, Sarah has led BitDash from a startup to a global financial platform.",
+      "cto": "David oversees our technical strategy and innovation. Previously led engineering at major tech companies.",
+      "cfo": "Michael brings deep expertise in financial operations and strategic growth from his 15 years in global banking.",
+      "coo": "Aisha leads our global operations and expansion strategy, focusing on efficiency and customer experience.",
+      "headEng": "Alex leads our engineering teams with a focus on scalable architecture and performance optimization.",
+      "cybersec": "Jun manages our security infrastructure, ensuring the highest standards of data protection.",
+      "productDir": "Rachel drives product vision and development across our platforms, focusing on user experience.",
+      "aiLead": "Omar leads AI innovation at BitDash, developing intelligent solutions for financial analytics.",
+      "marketing": "Emma oversees our global marketing strategy, brand development, and customer acquisition.",
+      "salesDir": "Carlos leads our worldwide sales operations, focusing on institutional partnerships and growth.",
+      "customerExp": "Priya ensures excellent service across all customer touchpoints and support channels.",
+      "bizDev": "Thomas identifies and develops strategic partnerships to expand BitDash services globally."
+    },
+    "testimonialsTitle": "Our Culture",
+    "testimonialsDesc": "At BitDash, we foster a culture of innovation, collaboration, and continuous learning. Hear directly from our team members about what makes working here special.",
+    "testimonials": {
+      "quote1": "Working at BitDash means being at the cutting edge of fintech innovation. We're empowered to push boundaries and create solutions that truly impact people's financial lives.",
+      "quote2": "The collaborative culture here is unlike anywhere I've worked before. Everyone has a voice, and leadership truly values diverse perspectives.",
+      "quote3": "BitDash encourages continuous learning and professional growth. I've had opportunities to take on challenging projects that have significantly expanded my skill set."
+    },
+    "joinTitle": "Join Our Team",
+    "joinDesc1": "We're constantly looking for talented individuals to join our diverse and growing team. At BitDash, you'll work on challenging projects in a collaborative environment while developing innovative solutions that impact millions of users worldwide.",
+    "joinDesc2": "We offer competitive compensation, continuous learning opportunities, flexible work arrangements, and a supportive, inclusive culture. Check our careers page for current openings or send your resume to careers@bitdash.com.",
+    "benefits": {
+      "remote": "Remote-Friendly",
+      "development": "Professional Development",
+      "health": "Health Benefits",
+      "equity": "Equity Options"
+    },
+    "viewOpenings": "View Current Openings",
+    "officeImageAlt": "BitDash modern office space"
+  },
+  
+  "regulation": {
+    "pageTitle": "Regulation & Compliance | BitDash",
+    "metaDescription": "Learn about BitDash's regulatory framework, licenses, and compliance standards that ensure secure and transparent financial services.",
+    "subtitle": "Regulatory Framework",
+    "title": "Integrity & Compliance",
+    "introduction": "At BitDash, regulatory compliance forms the foundation of everything we do. We operate within a robust regulatory framework to ensure the highest standards of security, transparency, and client protection across all our services.",
+    "licensesTitle": "Our Regulatory Licenses",
+    "licensesDesc": "BitDash maintains licenses with respected financial authorities worldwide. These licenses ensure our operations meet stringent regulatory requirements in each jurisdiction.",
+    "coverageTitle": "Coverage Areas",
+    "licensesDisclaimer": "The regulatory coverage may vary by jurisdiction. Services available to you depend on your country of residence. Please contact our compliance team for details specific to your location.",
+    "frameworksTitle": "Compliance Frameworks",
+    "frameworksDesc": "BitDash implements comprehensive compliance frameworks that meet or exceed industry standards and regulatory requirements. These frameworks are regularly reviewed and updated to address emerging requirements.",
+    "keyProcedures": "Key Procedures",
+    "protectionTitle": "Client Protection Measures",
+    "protectionDesc": "Your security is our priority. BitDash implements rigorous measures to protect client assets and personal information beyond standard regulatory requirements.",
+    "questionsTitle": "Have Questions About Our Regulatory Compliance?",
+    "questionsDesc": "Our compliance team is available to address any questions regarding our regulatory status, licenses, or security measures.",
+    "contactCompliance": "Contact Compliance Team",
+    "documentsTitle": "Regulatory Documents",
+    "documentsDesc": "Access our regulatory documentation, policies, and disclosure statements. These documents provide detailed information about our operations, terms of service, and compliance measures.",
+    
+    "documents": {
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "aml": "AML Policy",
+      "risk": "Risk Disclosure"
+    },
+    
+    "licenses": {
+      "uk": {
+        "region": "United Kingdom",
+        "authority": "Financial Conduct Authority (FCA)",
+        "description": "Our FCA license allows us to provide investment services, payment processing, and electronic money issuance throughout the United Kingdom."
+      },
+      "eu": {
+        "region": "European Union",
+        "authority": "Cyprus Securities and Exchange Commission (CySEC)",
+        "description": "Our CySEC license enables BitDash to offer regulated investment services across all European Economic Area (EEA) member states under MiFID II passporting rules."
+      },
+      "australia": {
+        "region": "Australia",
+        "authority": "Australian Securities and Investments Commission (ASIC)",
+        "description": "Our ASIC license permits BitDash to provide financial services including trading in derivatives and foreign exchange in Australia."
+      },
+      "singapore": {
+        "region": "Singapore",
+        "authority": "Monetary Authority of Singapore (MAS)",
+        "description": "BitDash holds a Capital Markets Services license from MAS, allowing us to deal in securities and provide custodial services for digital assets in Singapore."
+      }
+    },
+    
+    "coverageAreas": {
+      "investment": "Investment Services",
+      "payment": "Payment Processing",
+      "electronic": "Electronic Money Issuance",
+      "brokerage": "Brokerage Services",
+      "portfolio": "Portfolio Management",
+      "derivatives": "Derivatives Trading",
+      "forex": "Foreign Exchange",
+      "securities": "Securities Trading",
+      "digitalAssets": "Digital Asset Custody",
+      "advising": "Advising on Investments"
+    },
+    
+    "frameworks": {
+      "aml": {
+        "name": "Anti-Money Laundering (AML)",
+        "description": "Our comprehensive AML program follows global standards including risk assessment, customer due diligence, transaction monitoring, and suspicious activity reporting.",
+        "procedures": {
+          "kyc": "Know Your Customer (KYC) verification",
+          "monitoring": "Continuous transaction monitoring",
+          "screening": "Sanctions and PEP screening",
+          "reporting": "Suspicious activity reporting"
+        }
+      },
+      "data": {
+        "name": "Data Protection and Privacy",
+        "description": "BitDash maintains strict data protection standards in compliance with GDPR, CCPA, and other relevant privacy regulations across our operating jurisdictions.",
+        "procedures": {
+          "consent": "Transparent consent mechanisms",
+          "management": "Secure data management practices",
+          "rights": "User data access and deletion rights",
+          "breach": "Data breach notification protocols"
+        }
+      },
+      "security": {
+        "name": "Information Security",
+        "description": "Our information security framework is aligned with ISO 27001 standards, ensuring protection of customer data and company systems through robust policies and controls.",
+        "procedures": {
+          "encryption": "End-to-end encryption",
+          "authentication": "Multi-factor authentication",
+          "audits": "Regular security audits",
+          "controls": "Access control mechanisms"
+        }
+      }
+    },
+    
+    "protection": {
+      "funds": {
+        "title": "Segregated Client Funds",
+        "description": "All client funds are held in segregated accounts separate from company operational funds, ensuring client assets are protected and not used for company operations."
+      },
+      "insurance": {
+        "title": "Professional Indemnity Insurance",
+        "description": "BitDash maintains comprehensive insurance coverage to protect against operational risks, professional liability, and cyber threats."
+      },
+      "schemes": {
+        "title": "Investor Compensation Schemes",
+        "description": "As a regulated entity, BitDash participates in investor compensation schemes in applicable jurisdictions, providing additional protection for eligible clients."
+      }
+    }
+  },
+  "pageTitle": "Company Profile | BitDash",
+  "metaDescription": "Learn about BitDash, our history, mission, and regulatory status in the global financial technology landscape.",
+  "profile.title": "Pioneering Financial Technology",
+  "introduction": "BitDash is a leading fintech company offering integrated trading, investment, and payment solutions. Our mission is to empower users with accessible financial tools that help them achieve their financial goals with confidence.",
+  "founded": "Founded",
+  "countries": "Countries",
+  "clients": "Clients",
+  "regulated": "Regulated",
+  "imageAlt": "BitDash office with team members collaborating",
+  
+  "profile.aboutUs": {
+    "title": "Who We Are",
+    "paragraph1": "BitDash was founded with a clear vision: to democratize access to financial markets and services for everyone. What began as a small fintech startup has grown into a global company with offices in major financial hubs around the world.",
+    "paragraph2": "Our multi-platform approach combines trading, investment, and payment solutions under one ecosystem, all powered by our proprietary technology and backed by stringent security measures. We believe that financial tools should be accessible, transparent, and easy to use for everyone, regardless of their background or experience."
+  },
+  
+  "values": {
+    "innovation": "Innovation",
+    "integrity": "Integrity",
+    "accessibility": "Accessibility",
+    "security": "Security"
+  },
+  
+  "profile.history": {
+    "title": "Our Journey",
+    "subtitle": "Discover key milestones in our evolution from a small startup to a global financial technology leader."
+  },
+  
+  "milestones": {
+    "foundation": {
+      "title": "Company Foundation",
+      "desc": "BitDash was founded with a vision to transform the financial technology landscape."
+    },
+    "expansion": {
+      "title": "Global Expansion",
+      "desc": "Expanded operations to 15 countries across Europe and Asia."
+    },
+    "platform": {
+      "title": "Multi-Asset Platform",
+      "desc": "Launched our integrated multi-asset platform covering forex, stocks, and cryptocurrencies."
+    },
+    "payments": {
+      "title": "Cash Solutions",
+      "desc": "Introduced our revolutionary payments solution, transforming everyday banking."
+    }
+  },
+  
+  "profile.regulatory": {
+    "title": "Regulatory Status",
+    "subtitle": "BitDash operates with full regulatory compliance across multiple jurisdictions. Our licenses ensure that we meet the highest standards of financial service operation.",
+    "disclaimer": "The services offered by BitDash may be subject to different regulations depending on your country of residence. Please ensure that you are aware of and comply with any relevant laws in your jurisdiction before using our services."
+  },
+  
+  "licenses": {
+    "uk": {
+      "region": "United Kingdom"
+    },
+    "eu": {
+      "region": "European Union"
+    },
+    "aus": {
+      "region": "Australia"
+    }
+  },
   "no_open_orders": "No open orders",
   "view_order_history": "View Order History",
   "latest_news": "Latest News",

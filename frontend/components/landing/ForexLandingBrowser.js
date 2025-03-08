@@ -349,7 +349,7 @@ const ForexLandingBrowser = () => {
           bottom="0"
           zIndex={0}
         >
-          {/* Financial chart pattern background */}
+          {/* Images for background */}
           <Image
             src="/images/background-1.png"
             alt="Background image"
@@ -589,7 +589,7 @@ const ForexLandingBrowser = () => {
         </Box>
         
         {/* MT5 Platform Section */}
-        <Box as="section" py={{ base: 16, md: 24 }} position="relative">
+        <Box as="section" py={{ base: 16, md: 24 }} position="relative" zIndex={1}>
           <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
             <GridItem>
               <MotionBox
@@ -622,19 +622,6 @@ const ForexLandingBrowser = () => {
                   >
                     {t('mt5.description', 'Access advanced trading tools, real-time market data, automated trading capabilities, and comprehensive technical analysis options all in one platform.')}
                   </Text>
-                  
-                  <Button
-                    bg="#8b7966"
-                    color="white"
-                    _hover={{ bg: "#9c7c63" }}
-                    size="lg"
-                    px={8}
-                    onClick={() => router.push('/mt5')}
-                    rightIcon={<Download />}
-                    mt={4}
-                  >
-                    {t('mt5.download', 'Download MT5')}
-                  </Button>
                 </VStack>
               </MotionBox>
             </GridItem>
@@ -941,7 +928,10 @@ const ForexLandingBrowser = () => {
                     {t('mobileApp.description', 'Trade on the go with our powerful mobile app. Get real-time market data, execute trades, and manage your account from anywhere in the world.')}
                   </Text>
 
-                  <HStack spacing={4} mt={{ base: 2, md: 4 }}>
+                  <HStack spacing={4} mt={{ base: 2, md: 4 }} zIndex={1}>
+                    <Link onClick={() => {
+                        router.push("https://apps.apple.com/us/app/metatrader-5/id413251709");
+                        }}>
                     <Image 
                       src="/images/app-store.png" 
                       alt="App Store" 
@@ -950,6 +940,12 @@ const ForexLandingBrowser = () => {
                       transition="transform 0.3s ease"
                       _hover={{ transform: "scale(1.05)" }}
                     />
+                    </Link>
+                    <Link
+                     onClick={() => {
+                        router.push("https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5&hl=en&gl=US");
+                        }}
+                     >
                     <Image 
                       src="/images/google-play.png" 
                       alt="Google Play" 
@@ -958,6 +954,7 @@ const ForexLandingBrowser = () => {
                       transition="transform 0.3s ease"
                       _hover={{ transform: "scale(1.05)" }}
                     />
+                    </Link>
                   </HStack>
                 </VStack>
               </motion.div>
@@ -974,6 +971,7 @@ const ForexLandingBrowser = () => {
                   borderRadius="xl" 
                   overflow="hidden" 
                   boxShadow="2xl"
+                  zIndex={1}
                   transform="perspective(1000px) rotateY(-5deg) rotateX(5deg)"
                   transition="all 0.5s ease"
                   _hover={{

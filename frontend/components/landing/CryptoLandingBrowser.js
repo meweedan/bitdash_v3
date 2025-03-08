@@ -618,7 +618,7 @@ function CryptoExchange() {
                     <Box maxH="calc(100vh - 360px)" overflowY="hidden">
                       <TableContainer>
                         <Table size="sm" variant="simple">
-                          <Thead bg={useColorModeValue('gray.50', 'gray.700')}>
+                          <Thead bg={useColorModeValue('gray.100', 'gray.900')}>
                             <Tr>
                               <Th>{t('pair', 'Pair')}</Th>
                               <Th isNumeric>{t('price', 'Price')}</Th>
@@ -693,7 +693,7 @@ function CryptoExchange() {
             <VStack spacing={4} align="stretch">
               {/* Selected Coin Header */}
               {selectedCoin && (isLargeScreen || activeTab === 0 || activeTab === 1) && (
-                <Box borderRadius="md" p={3} borderWidth="1px">
+                <Box borderRadius="md" p={3} borderWidth="1px" bg={useColorModeValue('gray.100', 'gray.900')}>
                   <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gap={4}>
                     <GridItem>
                       <HStack>
@@ -704,7 +704,7 @@ function CryptoExchange() {
                           <HStack>
                             <Heading size="md">{selectedCoin.symbol.toUpperCase()}/USDT</Heading>
                           </HStack>
-                          <Text fontSize="sm" color={textColorSecondary}>
+                          <Text fontSize="sm" color={useColorModeValue('black', 'white')}>
                             {selectedCoin.name} • {t('rank', 'Rank')} #{selectedCoin.market_cap_rank}
                           </Text>
                         </VStack>
@@ -726,7 +726,7 @@ function CryptoExchange() {
                             >
                               <HStack spacing={1}>
                                 <Icon as={selectedCoin.price_change_percentage_24h >= 0 ? FaArrowUp : FaArrowDown} boxSize={3} />
-                                <Text fontSize="xs">{formatPercent(selectedCoin.price_change_percentage_24h)}</Text>
+                                <Text fontSize="xs" color={useColorModeValue('black', 'white')}>{formatPercent(selectedCoin.price_change_percentage_24h)}</Text>
                               </HStack>
                             </Badge>
                             <Text fontSize="xs" color={textColorSecondary}>
