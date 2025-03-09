@@ -523,7 +523,7 @@ const ForexLandingBrowser = () => {
               >
                 <VStack align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
                   <Image 
-                    src="/images/100usd-100eur-bills.webp" 
+                    src="/images/100usd-100eur-bills.png" 
                     alt={t('features.image.alt', 'Trading Features')}
                     width={{ base: "300px", md: "500px" }}
                     as={motion.img}

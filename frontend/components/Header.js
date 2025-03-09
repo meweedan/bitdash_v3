@@ -491,7 +491,7 @@ export default function Header() {
               >
                 <HStack spacing={1}>
                   <Text 
-                    fontSize="sm"
+                    fontSize="lg"
                     fontWeight="600"
                     color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                   >
