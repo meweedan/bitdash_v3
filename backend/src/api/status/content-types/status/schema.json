@@ -48,7 +48,7 @@
         "bitdash",
         "crypto",
         "cash",
-        "forex",
+        "ldn",
         "stock"
       ],
       "default": "all",

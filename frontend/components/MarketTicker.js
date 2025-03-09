@@ -341,7 +341,7 @@ const MarketTicker = () => {
     const numPrice = typeof price === 'string' ? parseFloat(price) : price;
     
     // Format based on category
-    if (category === 'forex') {
+    if (category === 'ldn') {
       return numPrice.toFixed(4);
     } else if (category === 'crypto') {
       return `$${numPrice.toFixed(2)}`;
@@ -568,7 +568,7 @@ const TickerItem = ({ market }) => (
       
       // Category specific stats
       switch(selectedTicker.category) {
-        case 'forex':
+        case 'ldn':
           return [
             ...commonStats,
             {

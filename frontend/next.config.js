@@ -48,7 +48,7 @@ const nextConfig = {
   // Subdomain redirects
   async rewrites() {
     return [
-      // Forex platform routes
+      // LDN platform routes
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'ldn.bitdash.app' }],

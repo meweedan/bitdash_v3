@@ -46,7 +46,7 @@
     },
     "platformType": {
       "type": "enumeration",
-      "enum": ["crypto", "stock", "forex", "cash", "multi_platform"],
+      "enum": ["crypto", "stock", "ldn", "cash", "multi_platform"],
       "default": "multi_platform"
     },
     "primaryContactPerson": {

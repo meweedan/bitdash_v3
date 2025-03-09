@@ -14,7 +14,7 @@ const FlowingShawl = () => {
       if (hostname.includes('cash')) setPlatform('cash');
       else if (hostname.includes('crypto')) setPlatform('crypto');
       else if (hostname.includes('stocks')) setPlatform('stocks');
-      else if (hostname.includes('forex')) setPlatform('forex');
+      else if (hostname.includes('ldn')) setPlatform('ldn');
     }
   }, []);
 
@@ -37,7 +37,7 @@ const FlowingShawl = () => {
       new THREE.Color('#9c7c63'),
       new THREE.Color('#c4b2a0')
     ],
-    forex: [
+    ldn: [
       new THREE.Color('#8b7966'),
       new THREE.Color('#b8a28b'),
       new THREE.Color('#9c7c63'),

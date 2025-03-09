@@ -70,7 +70,7 @@ const BUSINESS_TYPE_ROUTES = {
   individual: { platform: 'stock', userType: 'individual' },
   retail_trader: { platform: 'ldn', userType: 'retail_trader' },
   ib: { platform: 'ldn', userType: 'ib' },
-  institute: { platform: 'fore', userType: 'institute' }
+  institute: { platform: 'ldn', userType: 'institute' }
 };
 
 const getPlatformFromURL = () => {
