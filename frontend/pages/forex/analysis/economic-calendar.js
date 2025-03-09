@@ -660,9 +660,8 @@ export default function ForexEconomicCalendar() {
                         ))}
                         <Button
                           as={NextLink}
-                          href="/forex/news"
-                          variant="outline"
-                          colorScheme="blue"
+                          href="/forex/analtsisnews"
+                          variant="forex-outline"
                           size="sm"
                           rightIcon={<ChevronRightIcon />}
                         >
