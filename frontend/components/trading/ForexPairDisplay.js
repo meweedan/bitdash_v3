@@ -203,7 +203,7 @@ const ForexPairDisplay = () => {
     try {
       const subDomain = getSubdomain();
       
-      if (subDomain === 'forex' || !subDomain) {
+      if (subDomain === 'ldn' || !subDomain) {
         const majorData = await fetchDataForMapping(majorMapping);
         const minorData = await fetchDataForMapping(minorMapping);
         const exoticData = await fetchDataForMapping(exoticMapping);

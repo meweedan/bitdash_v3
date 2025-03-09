@@ -250,7 +250,7 @@ export default function ChakraAdvancedChart({ selectedCoin, coins, onPairSelect 
   }, []);
 
   const isCryptoDomain = sub === 'crypto';
-  const isForexDomain = sub === 'forex';
+  const isForexDomain = sub === 'ldn';
   const isStockDomain = sub === 'stock';
 
   const getPairs = () => {
