@@ -861,10 +861,15 @@ const ForexLandingBrowser = () => {
         </Box>
                 
         {/* Mobile App Section */}
-        <Box mt={24}>
-          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} alignItems="center">
-            <GridItem>
-                <VStack align={{ base: "center", lg: "flex-start" }} spacing={{ base: 4, md: 8 }} textAlign={{ base: "center", lg: "left" }}>
+          <Box mt={24}>
+            <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} 
+                  alignItems="center" 
+                  gap={{ base: 8, lg: 12 }}>
+              <GridItem>
+                <VStack align={{ base: "center", lg: "flex-start" }} 
+                        spacing={{ base: 4, md: 8 }} 
+                        textAlign={{ base: "center", lg: "left" }}
+                        px={{ base: 4, lg: 8 }}>
                   <Heading
                     fontSize={{ base: "xl", md: "3xl" }}
                     fontWeight="bold"
@@ -872,7 +877,7 @@ const ForexLandingBrowser = () => {
                   >
                     {t('mobileApp.title', 'DOWNLOAD BITDASH APPLICATION')}
                   </Heading>
-                                    
+                                      
                   <Text
                     fontSize={{ base: "sm", md: "lg" }}
                     color={textColor}
@@ -899,37 +904,47 @@ const ForexLandingBrowser = () => {
                     />
                     </Link>
                     <Link
-                     onClick={() => {
+                    onClick={() => {
                         router.push("https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5&hl=en&gl=US");
                         }}
-                     >
+                    >
                     <Image 
                       src="/images/google-play.png" 
                       alt="Google Play" 
                       height={{ base: "40px", md: "50px" }}
                       cursor="pointer"
+                      transition="transform 0.3s ease"
+                      _hover={{ transform: "scale(1.05)" }}
                     />
                     </Link>
                   </HStack>
                 </VStack>
-            </GridItem>
-                            
-            <GridItem>
+              </GridItem>
+                              
+              <GridItem display="flex" justifyContent={{ base: "center", lg: "flex-end" }}>
                 <Box 
+                  position="relative"
+                  height={{ base: "auto", md: "500px", lg: "600px" }}
+                  width={{ base: "auto", md: "auto" }}
+                  maxWidth={{ base: "300px", md: "300px", lg: "320px" }}
+                  overflow="hidden"
+                  borderRadius="xl"
+                  boxShadow="2xl"
+                  my={{ base: 8, lg: 0 }}
                   zIndex={1}
                 >
                   <Image 
                     src="/images/dashboard-ldn.png" 
                     alt={t('mobileApp.imageAlt', 'Mobile App Screenshot')}
-                    width="30%"
-                    height="30%"
+                    width="100%"
+                    height="100%"
                     objectFit="cover"
                     objectPosition="center"
                   />
                 </Box>
-            </GridItem>
-          </Grid>
-        </Box>
+              </GridItem>
+            </Grid>
+          </Box>
 
         {/* CTA Section */}
         <Box as="section" py={{ base: 16, md: 24 }}>
