@@ -74,7 +74,7 @@ const ForexLandingBrowser = () => {
   // For responsive design
   const isMobile = useBreakpointValue({ base: true, md: false });
   const heroImageSize = useBreakpointValue({ base: "100%", md: "90%" });
-  const headingSize = useBreakpointValue({ base: "3xl", md: "4xl", lg: "5xl" });
+  const headingSize = useBreakpointValue({ base: "4xl", md: "5xl", lg: "6xl" });
   const glassCardBg = useColorModeValue('whiteAlpha.900', 'whiteAlpha.100');
   const headingColor = useColorModeValue('whiteAlpha.900', 'brand.bitdash.400');
   const textColor = useColorModeValue('brand.bitdash.400', 'brand.bitdash.400');
@@ -357,39 +357,64 @@ const ForexLandingBrowser = () => {
             height="100%"
             objectFit="cover"
             objectPosition="center"
-            opacity={0.25}
+            opacity={0.35}
             position="absolute"
           />
           <Image
-              src="/images/clouds.png"
+              src="/images/background-image.png"
               alt="Clouds skyline"
               width="100%"
               height="100%"
               objectFit="cover"
               objectPosition="bottom center"
-              opacity={0.25}
+              opacity={0.45}
             />
           
           {/* London skyline image */}
-          <Box
+         <Box
             position="absolute"
             bottom="0"
             width="100%"
             height="100%"
             display="flex"
             justifyContent="center"
-            alignItems="flex-end" // Ensures alignment at the bottom
+            alignItems="flex-end"
           >
-            <Image
+            {/* London skyline image */}
+            <Image 
               src="/images/ldn-skyline.png"
               alt="London skyline"
               width="100%"
-              height="100%"
+              height="auto"
               objectFit="contain"
-              objectPosition="bottom center"
-              opacity={0.35}
-              style={{ marginTop: "auto" }} // Pushes the image to the bottom
+              objectPosition={isRTL ? "bottom left" : "bottom right"}
+              opacity={0.6}
+              maxHeight={{ base: "50vh", md: "100%" }}
+              preserveAspectRatio="xMidYMax slice"
+              position="relative"
+              zIndex={1}
             />
+            
+            {/* Clouds overlay */}
+            <Box
+              position="absolute"
+              bottom="0"
+              left="0"
+              right="0"
+              height="1%"
+              zIndex={2}
+              width="100%"
+            >
+              <Image
+                src="/images/ib.png"
+                alt="Clouds overlay"
+                width="100%"
+                height="100%"
+                objectFit="cover"
+                objectPosition="bottom"
+                opacity={0.15}
+              />
+            </Box>
           </Box>
         </Box>
 
@@ -407,8 +432,6 @@ const ForexLandingBrowser = () => {
                     fontSize={headingSize}
                     fontWeight="bold"
                     lineHeight="1.2"
-                    bgGradient="linear(to-r, brand.bitdash.400, brand.bitdash.600)"
-                    bgClip="text"
                   >
                     {t('trade.hero.title', 'Trade with Confidence')}
                   </Heading>
@@ -429,23 +452,6 @@ const ForexLandingBrowser = () => {
                     >
                       {t('trade.hero.get_started', 'Open Account')}
                     </Button>
-
-                  <HStack spacing={6} mt={6} color={isDark ? "white" : "black"} fontWeight="bold" flexWrap="wrap">
-                    <HStack>
-                      <Icon as={CheckCircle} color={isDark ? "white" : "black"} />
-                      <Text>{t('Landinghero.feature1', 'Regulated Broker')}</Text>
-                    </HStack>
-                    
-                    <HStack>
-                      <Icon as={CheckCircle} color={isDark ? "white" : "black"}/>
-                      <Text>{t('Landinghero.feature2', 'Fast Execution')}</Text>
-                    </HStack>
-                    
-                    <HStack>
-                      <Icon as={CheckCircle} color={isDark ? "white" : "black"} />
-                      <Text>{t('Landinghero.feature3', 'Competitive Spreads')}</Text>
-                    </HStack>
-                  </HStack>
                 </VStack>
               </MotionBox>
             </GridItem>
@@ -460,7 +466,7 @@ const ForexLandingBrowser = () => {
             {featureHighlights.map((feature, idx) => (
               <Box
                 key={idx}
-                bg={useColorModeValue('white', 'gray.800')}
+                bg={useColorModeValue('white', 'gray.900')}
                 borderRadius="lg"
                 overflow="hidden"
                 boxShadow="xl"
