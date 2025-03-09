@@ -127,7 +127,7 @@ const CryptoNews = ({ coinId, coinSymbol }) => {
         <VStack spacing={4} align="stretch">
           {[1, 2, 3].map(i => (
             <HStack key={i} spacing={3}>
-              <Skeleton height="70px" width="70px" borderRadius="md" />
+              <Skeleton height="70px" width="70px"/>
               <Box flex="1">
                 <Skeleton height="20px" mb={2} />
                 <Skeleton height="15px" width="60%" />
@@ -142,8 +142,6 @@ const CryptoNews = ({ coinId, coinSymbol }) => {
             <Link key={item.id} href={item.url} isExternal _hover={{ textDecoration: 'none' }}>
               <Box
                 p={3}
-                borderWidth="1px"
-                borderRadius="md"
                 boxShadow="sm"
                 _hover={{ borderColor: 'brand.crypto.400', boxShadow: 'md', transform: 'translateY(-2px)', transition: 'all 0.2s ease-in-out' }}
                 transition="all 0.2s ease-in-out"
@@ -166,12 +164,6 @@ const CryptoNews = ({ coinId, coinSymbol }) => {
                       <Text>{item.source}</Text>
                       <Text>•</Text>
                       <Text>{formatRelativeTime(item.created_at)}</Text>
-                      <HStack ml="auto">
-                        <Icon as={FaArrowUp} color="green.500" />
-                        <Text color="green.500">{item.votes.positive}</Text>
-                        <Icon as={FaArrowDown} color="red.500" ml={1} />
-                        <Text color="red.500">{item.votes.negative}</Text>
-                      </HStack>
                     </HStack>
                     <HStack mt={1} spacing={2}>
                       {item.categories.map(category => (

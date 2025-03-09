@@ -19,7 +19,7 @@ import Layout from '@/components/Layout';
 
 const PLATFORM_ROUTES = {
   crypto: {
-    prop_trader: '/crypto/dashboard',
+    crypto_trader: '/crypto/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://crypto.bitdash.app'
   },
   cash: {
@@ -43,7 +43,7 @@ const PLATFORM_ROUTES = {
 
 const PROFILE_ENDPOINTS = {
   crypto: {
-    prop_trader: '/api/prop-traders',
+    crypto_trader: '/api/crypto-traders',
   },
   cash: {
     merchant: '/api/merchants',
@@ -62,7 +62,7 @@ const PROFILE_ENDPOINTS = {
 };
 
 const BUSINESS_TYPE_ROUTES = {
-  prop_trader: { platform: 'crypto', userType: 'prop_trader' },
+  crypto_trader: { platform: 'crypto', userType: 'crypto_trader' },
   merchant: { platform: 'cash', userType: 'merchant' },
   agent: { platform: 'cash', userType: 'agent' },
   customer: { platform: 'cash', userType: 'customer' },

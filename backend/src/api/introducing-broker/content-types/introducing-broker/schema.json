@@ -75,12 +75,6 @@
       "target": "api::retail-trader.retail-trader",
       "mappedBy": "referredBy"
     },
-    "referredPropTraders": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::prop-trader.prop-trader",
-      "mappedBy": "referredBy"
-    },
     "totalCommissionEarned": {
       "type": "decimal",
       "default": 0

@@ -33,7 +33,6 @@
         "trade",
         "commission",
         "profit_split",
-        "challenge_fee",
         "investment"
       ]
     },
@@ -89,12 +88,6 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::agent.agent"
-    },
-    "prop_trader": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::prop-trader.prop-trader",
-      "inversedBy": "trading_history"
     },
     "retail_trader": {
       "type": "relation",

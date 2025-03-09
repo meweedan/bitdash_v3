@@ -159,15 +159,6 @@ export default function Header() {
         ]
       },
       { 
-        name: t('institutionalServices', 'Institutional Services'),
-        path: '/institutional',
-        submenu: [
-          { name: t('tradingAPI', 'Trading API'), path: '/institutional/api' },
-          { name: t('liquidityServices', 'Liquidity Services'), path: '/institutional/liquidity' },
-          { name: t('wealthManagement', 'Wealth Management'), path: '/institutional/wealth' },
-        ]
-      },
-      { 
         name: t('contactUs', 'Contact Us'), 
         path: '/contact',
         submenu: [
@@ -183,31 +174,12 @@ export default function Header() {
     if (platform === 'crypto') { // Crypto
       return [
         { 
-          name: t('exchange', 'Exchange'), 
-          path: '/crypto/exchange',
-          submenu: [
-            { name: t('spotTrading', 'Spot Trading'), path: '/crypto/exchange/spot' },
-            { name: t('futures', 'Futures'), path: '/crypto/exchange/futures' },
-            { name: t('options', 'Options'), path: '/crypto/exchange/options' },
-          ]
-        },
-        { 
-          name: t('markets', 'Markets'), 
-          path: '/crypto/markets',
-          submenu: [
-            { name: t('topCoins', 'Top Coins'), path: '/crypto/markets/top-coins' },
-            { name: t('marketCap', 'Market Cap'), path: '/crypto/markets/market-cap' },
-            { name: t('newListings', 'New Listings'), path: '/crypto/markets/new-listings' },
-          ]
+          name: t('spotTrading', 'Exchange'), 
+          path: '/crypto/exchange/spot',
         },
         { 
           name: t('earn', 'Earn'), 
           path: '/crypto/earn',
-          submenu: [
-            { name: t('staking', 'Staking'), path: '/crypto/earn/staking' },
-            { name: t('yieldFarming', 'Yield Farming'), path: '/crypto/earn/yield' },
-            { name: t('savings', 'Savings'), path: '/crypto/earn/savings' },
-          ]
         },
       ];
     } else if (platform === 'stocks') { // Stock
@@ -226,38 +198,19 @@ export default function Header() {
           path: '/stocks/research',
           submenu: [
             { name: t('marketNews', 'Market News'), path: '/stocks/research/news' },
-            { name: t('analystRatings', 'Analyst Ratings'), path: '/stocks/research/ratings' },
             { name: t('screener', 'Screener'), path: '/stocks/research/screener' },
-          ]
-        },
-        { 
-          name: t('portfolio', 'Portfolio'), 
-          path: '/stocks/portfolio',
-          submenu: [
-            { name: t('myHoldings', 'My Holdings'), path: '/stocks/portfolio/holdings' },
-            { name: t('performance', 'Performance'), path: '/stocks/portfolio/performance' },
-            { name: t('dividends', 'Dividends'), path: '/stockss/portfolio/dividends' },
           ]
         },
       ];
     } else if (platform === 'forex') { // Forex
       return [
         { 
-          name: t('trading', 'Trading'), 
-          path: '/forex/trading',
-          submenu: [
-            { name: t('currencyPairs', 'Currency Pairs'), path: '/forex/trading/currency-pairs' },
-            { name: t('commodities', 'Commodities'), path: '/forex/trading/commodities' },
-            { name: t('indices', 'Indices'), path: '/forex/trading/indices' },
-          ]
-        },
-        { 
           name: t('analysis', 'Analysis'), 
           path: '/forex/analysis',
           submenu: [
             { name: t('economicCalendar', 'Economic Calendar'), path: '/forex/analysis/economic-calendar' },
             { name: t('marketSentiment', 'Market Sentiment'), path: '/forex/analysis/sentiment' },
-            { name: t('technicalTools', 'Technical Tools'), path: '/forex/analysis/technical' },
+            { name: t('forex:forexNews"', 'Forex News'), path: '/forex/analysis/news' },
           ]
         },
         { 
@@ -289,16 +242,7 @@ export default function Header() {
             { name: t('physicalCards', 'Physical Cards'), path: '/cash/cards/physical' },
             { name: t('cardSettings', 'Card Settings'), path: '/cash/cards/settings' },
           ]
-        },
-        { 
-          name: t('banking', 'Banking'), 
-          path: '/cash/banking',
-          submenu: [
-            { name: t('accounts', 'Accounts'), path: '/cash/banking/accounts' },
-            { name: t('statements', 'Statements'), path: '/cash/banking/statements' },
-            { name: t('bankingSavings', 'Savings'), path: '/cash/banking/savings' },
-          ]
-        },
+        }
       ];
     } else {
       return []; // Empty for main domain as we'll handle that separately

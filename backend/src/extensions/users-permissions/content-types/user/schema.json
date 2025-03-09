@@ -89,12 +89,6 @@
       "target": "api::merchant.merchant",
       "mappedBy": "users_permissions_user"
     },
-    "prop_trader": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::prop-trader.prop-trader",
-      "mappedBy": "users_permissions_user"
-    },
     "retail_trader": {
       "type": "relation",
       "relation": "oneToOne",

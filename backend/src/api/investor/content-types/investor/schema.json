@@ -62,11 +62,6 @@
       "type": "boolean",
       "default": false
     },
-    "fundedTraders": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::prop-trader.prop-trader"
-    },
     "profitShareRatio": {
       "type": "decimal",
       "default": 20

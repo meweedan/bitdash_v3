@@ -123,23 +123,9 @@ export default function CompanyProfile() {
         >
             {/* Hero Section */}
             <Box 
-            bg={isDark ? 'gray.900' : 'gray.50'}
             position="relative"
             py={20}
             >
-            {/* Background design element */}
-            <Box 
-                position="absolute" 
-                right="-5%" 
-                top="10%" 
-                opacity={0.1} 
-                w="50%" 
-                h="80%" 
-                bg="brand.bitdash.500" 
-                borderRadius="3xl" 
-                transform="rotate(-15deg)"
-                zIndex={0}
-            />
             
             <Container maxW="container.xl" position="relative" zIndex={1}>
                 <Stack spacing={8} align="center" textAlign="center">
@@ -215,7 +201,7 @@ export default function CompanyProfile() {
             </Box>
             
             {/* About Us Section */}
-            <Box py={16} bg={isDark ? "gray.800" : "gray.50"}>
+            <Box py={16}>
             <Container maxW="container.xl">
                 <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={10} alignItems="center">
                 <Box position="relative" height={{ base: "300px", md: "400px" }}>
@@ -379,7 +365,7 @@ export default function CompanyProfile() {
             </Box>
             
             {/* Regulatory and Licenses */}
-            <Box py={16} bg={isDark ? "gray.800" : "gray.50"}>
+            <Box py={16}>
             <Container maxW="container.xl">
                 <Stack spacing={10}>
                 <Stack spacing={3} textAlign="center" maxW="3xl" mx="auto">
@@ -447,7 +433,6 @@ export default function CompanyProfile() {
                 <Box 
                     mt={6} 
                     p={6} 
-                    bg={isDark ? "gray.700" : "white"} 
                     borderRadius="lg" 
                     boxShadow="md"
                 >

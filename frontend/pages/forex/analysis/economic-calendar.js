@@ -1,6 +1,6 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   Box,
   Container,
@@ -12,11 +12,19 @@ import {
   Stack,
   HStack,
   VStack,
+  Grid,
+  GridItem,
   Tabs,
   TabList,
   TabPanels,
   Tab,
   TabPanel,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Badge,
+  Spinner,
   Icon,
   Table,
   Thead,
@@ -24,1303 +32,690 @@ import {
   Tr,
   Th,
   Td,
-  TableContainer,
-  Badge,
+  Divider,
+  useColorMode,
+  useBreakpointValue,
+  Select,
   Input,
   InputGroup,
   InputLeftElement,
-  Select,
+  Image,
+  Link,
+  Alert,
+  AlertIcon,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  IconButton,
-  Stat,
-  StatLabel,
-  StatNumber,
-  StatHelpText,
-  StatArrow,
-  Image,
-  Divider,
-  Link,
-  useColorMode,
-  useColorModeValue,
-  useBreakpointValue,
-  Skeleton
+  Tag,
+  TagLabel,
+  TagLeftIcon,
+  useToast
 } from '@chakra-ui/react';
-import { SearchIcon, ChevronDownIcon, StarIcon, InfoIcon, ExternalLinkIcon, TriangleUpIcon, TriangleDownIcon } from '@chakra-ui/icons';
-import { FaBitcoin, FaEthereum, FaChartLine, FaChartPie, FaGlobeAmericas, FaRegNewspaper, FaFire } from 'react-icons/fa';
+import {
+  CalendarIcon,
+  ChevronDownIcon,
+  ChevronRightIcon,
+  SearchIcon,
+  ExternalLinkIcon,
+  InfoIcon,
+  TimeIcon,
+  StarIcon
+} from '@chakra-ui/icons';
+import {
+  FaNewspaper,
+  FaRegNewspaper,
+  FaChartLine,
+  FaGlobeAmericas,
+  FaFilter,
+  FaCalendarAlt,
+  FaStar,
+  FaDollarSign,
+  FaEuroSign,
+  FaPoundSign,
+  FaYenSign,
+  FaMoneyBillWave
+} from 'react-icons/fa';
+import { format, parseISO, startOfToday, endOfDay, addDays, isAfter, isBefore, isToday } from 'date-fns';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import Layout from '@/components/Layout';
+import ForexRates from '@/components/ForexRates';
 
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'crypto'])),
+      ...(await serverSideTranslations(locale, ['common', 'forex'])),
     },
   };
 }
 
-export default function CryptoMarkets() {
-  const { t, i18n } = useTranslation(['common', 'crypto']);
+// Currency icons mapping
+const currencyIcons = {
+  USD: FaDollarSign,
+  EUR: FaEuroSign,
+  GBP: FaPoundSign,
+  JPY: FaYenSign,
+  DEFAULT: FaMoneyBillWave
+};
+
+// Impact level colors
+const impactColors = {
+  high: "red",
+  medium: "orange",
+  low: "green"
+};
+
+export default function ForexEconomicCalendar() {
+  const { t } = useTranslation(['common', 'forex']);
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-  const isRTL = i18n.language === 'ar' || i18n.language === 'he';
-  
+  const toast = useToast();
+
   // Responsive settings
   const headingSize = useBreakpointValue({ base: 'xl', md: '2xl' });
-  const subheadingSize = useBreakpointValue({ base: 'md', md: 'lg' });
-  const textSize = useBreakpointValue({ base: 'sm', md: 'md' });
-  const isMobile = useBreakpointValue({ base: true, md: false });
-  
-  // Market data state
-  const [marketData, setMarketData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState('market_cap');
-  const [sortDirection, setSortDirection] = useState('desc');
-  const [filteredData, setFilteredData] = useState([]);
-  const [favorites, setFavorites] = useState([]);
-  
-  // Market stats
-  const [marketStats, setMarketStats] = useState({
-    total_market_cap: 0,
-    total_volume: 0,
-    btc_dominance: 0,
-    eth_dominance: 0,
-    market_change_24h: 0
+  const cardColumns = useBreakpointValue({ base: 1, md: 2, lg: 3 });
+
+  // State variables
+  const [calendarEvents, setCalendarEvents] = useState([]);
+  const [news, setNews] = useState([]);
+  const [loadingEvents, setLoadingEvents] = useState(true);
+  const [loadingNews, setLoadingNews] = useState(true);
+  const [filter, setFilter] = useState({
+    country: "all",
+    currency: "all",
+    impact: "all",
+    search: "",
+    dateRange: "today"
   });
-  
-  // Fetch market data
+  const [favoriteEvents, setFavoriteEvents] = useState([]);
+  const [timeframe, setTimeframe] = useState("week");
+
+  // Options
+  const currencyOptions = [
+    { label: t('forex:allCurrencies', 'All Currencies'), value: "all" },
+    { label: "USD", value: "USD" },
+    { label: "EUR", value: "EUR" },
+    { label: "GBP", value: "GBP" },
+    { label: "JPY", value: "JPY" },
+    { label: "AUD", value: "AUD" },
+    { label: "CAD", value: "CAD" },
+    { label: "CHF", value: "CHF" },
+    { label: "NZD", value: "NZD" }
+  ];
+
+  const countryOptions = [
+    { label: t('forex:allCountries', 'All Countries'), value: "all" },
+    { label: t('forex:unitedStates', 'United States'), value: "US" },
+    { label: t('forex:eurozone', 'Eurozone'), value: "EU" },
+    { label: t('forex:unitedKingdom', 'United Kingdom'), value: "UK" },
+    { label: t('forex:japan', 'Japan'), value: "JP" },
+    { label: t('forex:australia', 'Australia'), value: "AU" },
+    { label: t('forex:canada', 'Canada'), value: "CA" },
+    { label: t('forex:switzerland', 'Switzerland'), value: "CH" },
+    { label: t('forex:newZealand', 'New Zealand'), value: "NZ" },
+    { label: t('forex:china', 'China'), value: "CN" }
+  ];
+
+  const impactOptions = [
+    { label: t('forex:allImpacts', 'All Impacts'), value: "all" },
+    { label: t('forex:highImpact', 'High Impact'), value: "high" },
+    { label: t('forex:mediumImpact', 'Medium Impact'), value: "medium" },
+    { label: t('forex:lowImpact', 'Low Impact'), value: "low" }
+  ];
+
+  const dateRangeOptions = [
+    { label: t('forex:today', 'Today'), value: "today" },
+    { label: t('forex:tomorrow', 'Tomorrow'), value: "tomorrow" },
+    { label: t('forex:thisWeek', 'This Week'), value: "week" },
+    { label: t('forex:nextWeek', 'Next Week'), value: "nextWeek" },
+  ];
+
+  // Fetch economic calendar events using TradingEconomics' free API via your API route
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchEconomicCalendar = async () => {
       try {
-        setLoading(true);
-        
-        // In a real implementation, you would fetch data from your API or a third-party service
-        // For example: const response = await fetch('/api/crypto/markets');
-        
-        // Simulate API delay
-        setTimeout(() => {
-          setLoading(false);
-        }, 1500);
-        
-      } catch (err) {
-        console.error('Error fetching market data:', err);
-        setError(err.message);
-        setLoading(false);
+        setLoadingEvents(true);
+        const res = await fetch('/api/calendar');
+        if (!res.ok) {
+          throw new Error(`Error fetching economic calendar: ${res.statusText}`);
+        }
+        const data = await res.json();
+        // Map TradingEconomics data to expected structure.
+        // Use Importance field to derive impact:
+        const mappedData = data.map(item => ({
+        id: item.CalendarId || `${item.Event}_${item.Date}`,
+        event: item.Event,
+        country: item.Country,
+        // If Currency is provided (non-empty), use it; otherwise use the country name.
+        currency: item.Currency && item.Currency.trim() ? item.Currency : (item.Country || "N/A"),
+        impact: item.Importance === 1 ? "high" : item.Importance === 2 ? "medium" : "low",
+        actual: item.Actual,
+        forecast: item.Forecast,
+        previous: item.Previous,
+        date: item.Date, // Format: "YYYY-MM-DDT..."
+        time: item.Date.split("T")[1] || item.Time
+        }));
+        setCalendarEvents(mappedData);
+        setLoadingEvents(false);
+      } catch (error) {
+        console.error('Error fetching economic calendar:', error);
+        toast({
+          title: t('forex:errorFetchingCalendar', 'Error fetching economic calendar'),
+          description: error.message || 'Unknown error',
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+        setLoadingEvents(false);
       }
     };
-    
-    fetchData();
-    
-    // Load saved favorites from localStorage
-    const savedFavorites = localStorage.getItem('cryptoFavorites');
-    if (savedFavorites) {
-      setFavorites(JSON.parse(savedFavorites));
-    }
-  }, []);
-  
-  // Handle adding/removing favorites
-  const toggleFavorite = (coinId) => {
-    const newFavorites = favorites.includes(coinId)
-      ? favorites.filter(id => id !== coinId)
-      : [...favorites, coinId];
-    
-    setFavorites(newFavorites);
-    localStorage.setItem('cryptoFavorites', JSON.stringify(newFavorites));
-  };
-  
-  // Sort and filter market data
+    fetchEconomicCalendar();
+  }, [t, toast]);
+
+  // Fetch forex news using fetch from Finnhub (free tier)
   useEffect(() => {
-    if (!marketData.length) return;
+    const fetchForexNews = async () => {
+      try {
+        setLoadingNews(true);
+        const API_KEY = process.env.NEXT_PUBLIC_FINNHUB_API_KEY;
+        if (!API_KEY) {
+          throw new Error("Finnhub API key is missing. Please set NEXT_PUBLIC_FINNHUB_API_KEY in your environment.");
+        }
+        const res = await fetch(`https://finnhub.io/api/v1/news?category=forex&token=${API_KEY}`);
+        if (!res.ok) {
+          throw new Error(`Error fetching forex news: ${res.statusText}`);
+        }
+        const data = await res.json();
+        const articles = data.map(article => ({
+          id: article.id,
+          title: article.headline,
+          description: article.summary,
+          source: { name: article.source },
+          url: article.url,
+          urlToImage: article.image,
+          publishedAt: new Date(article.datetime * 1000).toISOString()
+        }));
+        setNews(articles);
+        setLoadingNews(false);
+      } catch (error) {
+        console.error('Error fetching forex news:', error);
+        toast({
+          title: t('forex:errorFetchingNews', 'Error fetching forex news'),
+          description: error.message,
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+        setLoadingNews(false);
+      }
+    };
+    fetchForexNews();
+  }, [t, toast]);
+
+  // Filter events based on user selection
+  const filteredEvents = useMemo(() => {
+    if (!calendarEvents.length) return [];
     
-    let filtered = [...marketData];
+    let filtered = [...calendarEvents];
+    const today = startOfToday();
+    const tomorrow = addDays(today, 1);
+    const endOfWeek = addDays(today, 7);
+    const nextWeekStart = addDays(today, 7);
+    const nextWeekEnd = addDays(today, 14);
     
-    // Apply search filter
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(coin => 
-        coin.name.toLowerCase().includes(query) || 
-        coin.symbol.toLowerCase().includes(query)
+    if (filter.dateRange === "today") {
+      filtered = filtered.filter(event => {
+        const eventDate = parseISO(event.date);
+        return isToday(eventDate);
+      });
+    } else if (filter.dateRange === "tomorrow") {
+      filtered = filtered.filter(event => {
+        const eventDate = parseISO(event.date);
+        return isAfter(eventDate, endOfDay(today)) && isBefore(eventDate, endOfDay(tomorrow));
+      });
+    } else if (filter.dateRange === "week") {
+      filtered = filtered.filter(event => {
+        const eventDate = parseISO(event.date);
+        return isAfter(eventDate, today) && isBefore(eventDate, endOfWeek);
+      });
+    } else if (filter.dateRange === "nextWeek") {
+      filtered = filtered.filter(event => {
+        const eventDate = parseISO(event.date);
+        return isAfter(eventDate, nextWeekStart) && isBefore(eventDate, nextWeekEnd);
+      });
+    }
+    
+    if (filter.currency !== "all") {
+      filtered = filtered.filter(event => event.currency === filter.currency);
+    }
+    
+    if (filter.country !== "all") {
+      filtered = filtered.filter(event => event.country === filter.country);
+    }
+    
+    if (filter.impact !== "all") {
+      filtered = filtered.filter(event => event.impact === filter.impact);
+    }
+    
+    if (filter.search) {
+      const searchLower = filter.search.toLowerCase();
+      filtered = filtered.filter(event => 
+        event.event.toLowerCase().includes(searchLower) ||
+        event.currency.toLowerCase().includes(searchLower) ||
+        event.country.toLowerCase().includes(searchLower)
       );
     }
     
-    // Apply sorting
-    filtered.sort((a, b) => {
-      const aValue = a[sortBy];
-      const bValue = b[sortBy];
-      
-      if (sortDirection === 'asc') {
-        return aValue - bValue;
+    filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+    
+    return filtered;
+  }, [calendarEvents, filter]);
+
+  // Toggle favorite event
+  const toggleFavorite = (eventId) => {
+    setFavoriteEvents(prev => {
+      if (prev.includes(eventId)) {
+        return prev.filter(id => id !== eventId);
       } else {
-        return bValue - aValue;
+        return [...prev, eventId];
       }
     });
-    
-    setFilteredData(filtered);
-  }, [marketData, searchQuery, sortBy, sortDirection]);
-  
-  // Change sort method
-  const handleSort = (column) => {
-    if (sortBy === column) {
-      // Toggle direction if clicking the same column
-      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-    } else {
-      // Default to descending for new column
-      setSortBy(column);
-      setSortDirection('desc');
+  };
+
+  // Format event date for display
+  const formatEventDate = (dateString) => {
+    try {
+      const date = parseISO(dateString);
+      return format(date, 'EEE, MMM d');
+    } catch (e) {
+      return dateString;
     }
   };
-  
-  // Data for trending coins section
-  const trendingCoins = [
-    {
-      id: 'bitcoin',
-      name: 'Bitcoin',
-      symbol: 'BTC',
-      price: 34250.75,
-      change_24h: 2.45,
-      icon: '/crypto/icons/btc.png'
-    },
-    {
-      id: 'ethereum',
-      name: 'Ethereum',
-      symbol: 'ETH',
-      price: 1845.30,
-      change_24h: 1.75,
-      icon: '/crypto/icons/eth.png'
-    },
-    {
-      id: 'solana',
-      name: 'Solana',
-      symbol: 'SOL',
-      price: 52.88,
-      change_24h: 5.32,
-      icon: '/crypto/icons/sol.png'
-    },
-    {
-      id: 'doge',
-      name: 'Dogecoin',
-      symbol: 'DOGE',
-      price: 0.082,
-      change_24h: -1.25,
-      icon: '/crypto/icons/doge.png'
-    }
-  ];
-  
-  // Format numbers for display
-  const formatNumber = (number, digits = 2) => {
-    if (number === null || number === undefined) return 'N/A';
-    
-    // Format as currency for prices above 1
-    if (number >= 1) {
-      return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: digits,
-        maximumFractionDigits: digits
-      }).format(number);
-    }
-    
-    // For very small values, use scientific notation
-    if (number < 0.00001) {
-      return number.toExponential(2);
-    }
-    
-    // For small values, use more decimal places
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 6,
-      maximumFractionDigits: 6
-    }).format(number);
-  };
-  
-  // Format large numbers with abbreviations (K, M, B, T)
-  const formatLargeNumber = (number) => {
-    if (number === null || number === undefined) return 'N/A';
-    
-    if (number >= 1e12) {
-      return `$${(number / 1e12).toFixed(2)}T`;
-    }
-    if (number >= 1e9) {
-      return `$${(number / 1e9).toFixed(2)}B`;
-    }
-    if (number >= 1e6) {
-      return `$${(number / 1e6).toFixed(2)}M`;
-    }
-    if (number >= 1e3) {
-      return `$${(number / 1e3).toFixed(2)}K`;
-    }
-    return `$${number.toFixed(2)}`;
-  };
-  
+
+  // Group events by date
+  const eventsByDate = useMemo(() => {
+    const grouped = {};
+    filteredEvents.forEach(event => {
+      const dateKey = formatEventDate(event.date);
+      if (!grouped[dateKey]) {
+        grouped[dateKey] = [];
+      }
+      grouped[dateKey].push(event);
+    });
+    return grouped;
+  }, [filteredEvents]);
+
   return (
     <>
       <Head>
-        <title>{t('crypto:marketsPageTitle', 'Cryptocurrency Markets | Live Prices & Data | BitDash')}</title>
-        <meta 
-          name="description" 
-          content={t('crypto:marketsMetaDescription', 'Track real-time cryptocurrency prices, market caps, trading volumes, and more. Get comprehensive market data for Bitcoin, Ethereum, and thousands of altcoins.')}
+        <title>{t('forex:economicCalendarTitle', 'Economic Calendar | Forex Analysis | BitDash')}</title>
+        <meta
+          name="description"
+          content={t('forex:economicCalendarDescription', 'Stay updated with the latest economic events and forex news that impact currency markets. BitDash economic calendar provides real-time updates and market analysis.')}
         />
       </Head>
       <Layout>
-      <Box w="full" minH="100vh">
-        {/* Hero Section */}
-        <Box 
-          py={12}
-          position="relative"
-          overflow="hidden"
-        >
-          <Container maxW="container.xl" position="relative" zIndex={1}>
-            <Stack spacing={8} align={{ base: "center", md: "flex-start" }} textAlign={{ base: "center", md: "left" }}>
-              <VStack spacing={3} align={{ base: "center", md: "flex-start" }}>
-                <Heading 
-                  as="h1" 
-                  size={headingSize} 
+        <Box w="full" minH="100vh">
+          <Container maxW="container.xl" py={6}>
+            {/* Page Header */}
+            <HStack mb={6} justify="space-between" wrap="wrap">
+              <VStack align="start" spacing={1}>
+                <Heading
+                  as="h1"
+                  size={headingSize}
                   fontWeight="bold"
-                  bgGradient={isDark ? 
-                    "linear(to-r, brand.crypto.400, brand.crypto.700)" : 
-                    "linear(to-r, brand.crypto.700, brand.crypto.400)"
+                  bgGradient={isDark ?
+                    "linear(to-r, brand.forex.400, brand.forex.700)" :
+                    "linear(to-r, brand.forex.700, brand.forex.400)"
                   }
                   bgClip="text"
                 >
-                  {t('crypto:marketsTitle', 'Cryptocurrency Markets')}
+                  {t('forex:economicCalendar', 'Economic Calendar')}
                 </Heading>
+                <Text color="brand.forex.400" maxW="2xl">
+                  {t('forex:economicCalendarSubtitle', 'Stay informed with upcoming economic events that impact currency markets')}
+                </Text>
               </VStack>
-              
-              <Text 
-                fontSize={textSize} 
-                maxW="2xl" 
-                color={isDark ? "gray.300" : "gray.700"}
-              >
-                {t('crypto:marketsIntroduction', 'Track real-time cryptocurrency prices, market capitalization, and trading volumes. Stay updated with detailed information on thousands of digital assets from Bitcoin to the latest altcoins.')}
-              </Text>
-              
-              <HStack spacing={4} flexWrap="wrap">
-                <Button
-                  as={NextLink}
-                  href="/crypto/exchange"
-                  bg={isDark ? "brand.crypto.600" : "brand.crypto.500"}
-                  color="white"
-                  _hover={{
-                    bg: isDark ? "brand.crypto.500" : "brand.crypto.600",
-                  }}
-                  leftIcon={<FaChartLine />}
-                  size="md"
-                  borderRadius="full"
+            </HStack>
+
+            {/* Filter Section */}
+            <Card mb={6} variant="outline">
+              <CardBody>
+                <Grid
+                  templateColumns={{ base: "1fr", md: "1fr 1fr", lg: "1fr 1fr 1fr 1fr" }}
+                  gap={4}
                 >
-                  {t('crypto:startTrading', 'Start Trading')}
-                </Button>
-                
-                <Button
-                  as={NextLink}
-                  href="/crypto/markets/watchlist"
-                  variant="outline"
-                  borderColor={isDark ? "brand.crypto.400" : "brand.crypto.500"}
-                  color={isDark ? "brand.crypto.400" : "brand.crypto.500"}
-                  _hover={{
-                    bg: isDark ? "whiteAlpha.100" : "brand.crypto.50",
-                  }}
-                  leftIcon={<StarIcon />}
-                  size="md"
-                  borderRadius="full"
-                >
-                  {t('crypto:createWatchlist', 'Create Watchlist')}
-                </Button>
-              </HStack>
-            </Stack>
-          </Container>
-        </Box>
-        
-        {/* Market Stats */}
-        <Box py={8}>
-          <Container maxW="container.xl">
-            <SimpleGrid columns={{ base: 1, md: 3, lg: 5 }} spacing={4}>
-              <Stat
-                bg={isDark ? 'gray.800' : 'white'}
-                p={4}
-                borderRadius="lg"
-                boxShadow="sm"
-              >
-                <StatLabel>{t('crypto:totalMarketCap', 'Total Market Cap')}</StatLabel>
-                {loading ? (
-                  <Skeleton height="36px" mt={2} />
-                ) : (
-                  <>
-                    <StatNumber>$2.15T</StatNumber>
-                    <StatHelpText>
-                      <StatArrow type="increase" />
-                      2.3%
-                    </StatHelpText>
-                  </>
-                )}
-              </Stat>
-              
-              <Stat
-                bg={isDark ? 'gray.800' : 'white'}
-                p={4}
-                borderRadius="lg"
-                boxShadow="sm"
-              >
-                <StatLabel>{t('crypto:24hVolume', '24h Volume')}</StatLabel>
-                {loading ? (
-                  <Skeleton height="36px" mt={2} />
-                ) : (
-                  <>
-                    <StatNumber>$85.7B</StatNumber>
-                    <StatHelpText>
-                      <StatArrow type="decrease" />
-                      4.2%
-                    </StatHelpText>
-                  </>
-                )}
-              </Stat>
-              
-              <Stat
-                bg={isDark ? 'gray.800' : 'white'}
-                p={4}
-                borderRadius="lg"
-                boxShadow="sm"
-              >
-                <StatLabel>{t('crypto:btcDominance', 'BTC Dominance')}</StatLabel>
-                {loading ? (
-                  <Skeleton height="36px" mt={2} />
-                ) : (
-                  <>
-                    <StatNumber>48.2%</StatNumber>
-                    <StatHelpText>
-                      <StatArrow type="increase" />
-                      0.8%
-                    </StatHelpText>
-                  </>
-                )}
-              </Stat>
-              
-              <Stat
-                bg={isDark ? 'gray.800' : 'white'}
-                p={4}
-                borderRadius="lg"
-                boxShadow="sm"
-              >
-                <StatLabel>{t('crypto:ethDominance', 'ETH Dominance')}</StatLabel>
-                {loading ? (
-                  <Skeleton height="36px" mt={2} />
-                ) : (
-                  <>
-                    <StatNumber>17.5%</StatNumber>
-                    <StatHelpText>
-                      <StatArrow type="decrease" />
-                      0.3%
-                    </StatHelpText>
-                  </>
-                )}
-              </Stat>
-              
-              <Stat
-                bg={isDark ? 'gray.800' : 'white'}
-                p={4}
-                borderRadius="lg"
-                boxShadow="sm"
-              >
-                <StatLabel>{t('crypto:activeCryptocurrencies', 'Active Cryptocurrencies')}</StatLabel>
-                {loading ? (
-                  <Skeleton height="36px" mt={2} />
-                ) : (
-                  <>
-                    <StatNumber>12,453</StatNumber>
-                    <StatHelpText>
-                      <StatArrow type="increase" />
-                      35
-                    </StatHelpText>
-                  </>
-                )}
-              </Stat>
-            </SimpleGrid>
-          </Container>
-        </Box>
-        
-        {/* Trending Coins */}
-        <Box py={8}>
-          <Container maxW="container.xl">
-            <VStack spacing={6} align="stretch">
-              <HStack justify="space-between">
-                <HStack>
-                  <Icon as={FaFire} color={isDark ? 'brand.crypto.400' : 'brand.crypto.600'} />
-                  <Heading as="h2" size="md">{t('crypto:trendingCoins', 'Trending Coins')}</Heading>
-                </HStack>
-                
-                <Button
-                  as={NextLink}
-                  href="/crypto/markets/trending"
-                  variant="ghost"
-                  colorScheme="brand.crypto"
-                  size="sm"
-                >
-                  {t('crypto:viewAll', 'View All')}
-                </Button>
-              </HStack>
-              
-              <SimpleGrid columns={{ base: 2, md: 4 }} spacing={4}>
-                {loading ? (
-                  Array(4).fill(0).map((_, index) => (
-                    <Skeleton key={index} height="120px" borderRadius="lg" />
-                  ))
-                ) : (
-                  trendingCoins.map((coin) => (
-                    <Box
-                      key={coin.id}
-                      bg={isDark ? 'gray.700' : 'gray.50'}
-                      p={4}
-                      borderRadius="lg"
-                      boxShadow="sm"
-                      transition="all 0.3s"
-                      _hover={{
-                        transform: "translateY(-5px)",
-                        boxShadow: "md"
-                      }}
-                      as={NextLink}
-                      href={`/crypto/markets/${coin.id}`}
+                  <GridItem>
+                    <InputGroup>
+                      <InputLeftElement>
+                        <SearchIcon color="brand.forex.400" />
+                      </InputLeftElement>
+                      <Input
+                        placeholder={t('forex:searchEvents', 'Search events...')}
+                        value={filter.search}
+                        onChange={(e) => setFilter({ ...filter, search: e.target.value })}
+                      />
+                    </InputGroup>
+                  </GridItem>
+
+                  <GridItem>
+                    <Select
+                      value={filter.dateRange}
+                      onChange={(e) => setFilter({ ...filter, dateRange: e.target.value })}
+                      icon={<CalendarIcon />}
                     >
-                      <VStack spacing={2} align="start">
-                        <HStack>
-                          <Box boxSize={8} position="relative">
-                            <Image
-                              src={coin.icon}
-                              alt={coin.name}
-                              width={32}
-                              height={32}
-                            />
-                          </Box>
-                          <VStack spacing={0} align="start">
-                            <Text fontWeight="bold">{coin.name}</Text>
-                            <Text fontSize="xs" color={isDark ? 'gray.400' : 'gray.600'}>
-                              {coin.symbol}
-                            </Text>
-                          </VStack>
-                        </HStack>
-                        
-                        <Text fontSize="xl" fontWeight="bold">
-                          ${coin.price.toLocaleString(undefined, {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: coin.price < 1 ? 6 : 2
-                          })}
+                      {dateRangeOptions.map(option => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </Select>
+                  </GridItem>
+
+                  <GridItem>
+                    <Select
+                      value={filter.currency}
+                      onChange={(e) => setFilter({ ...filter, currency: e.target.value })}
+                      icon={<ChevronDownIcon />}
+                    >
+                      {currencyOptions.map(option => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </Select>
+                  </GridItem>
+
+                  <GridItem>
+                    <Select
+                      value={filter.impact}
+                      onChange={(e) => setFilter({ ...filter, impact: e.target.value })}
+                      icon={<ChevronDownIcon />}
+                    >
+                      {impactOptions.map(option => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </Select>
+                  </GridItem>
+                </Grid>
+              </CardBody>
+            </Card>
+
+            {/* Main Content */}
+            <Grid templateColumns={{ base: "1fr", lg: "2fr 1fr" }} gap={6}>
+              {/* Economic Calendar Section */}
+              <GridItem>
+                <Card variant="outline">
+                  <CardHeader pb={2}>
+                    <HStack justify="space-between">
+                      <Heading size="md">
+                        <Icon as={FaCalendarAlt} mr={2} color="brand.forex.400" />
+                        {t('forex:upcomingEvents', 'Upcoming Economic Events')}
+                      </Heading>
+                      <HStack>
+                        <Text fontSize="sm" color="brand.forex.400">
+                          {filteredEvents.length} {t('forex:eventsFound', 'events found')}
                         </Text>
-                        
-                        <Badge
-                          colorScheme={coin.change_24h >= 0 ? 'green' : 'red'}
-                          display="flex"
-                          alignItems="center"
+                      </HStack>
+                    </HStack>
+                  </CardHeader>
+
+                  <CardBody pt={0}>
+                    {loadingEvents ? (
+                      <Flex justify="center" py={10}>
+                        <Spinner size="xl" color="brand.forex.400" />
+                      </Flex>
+                    ) : filteredEvents.length === 0 ? (
+                      <Flex direction="column" align="center" justify="center" py={10}>
+                        <Icon as={CalendarIcon} boxSize={10} color="brand.forex.400" mb={4} />
+                        <Text color="brand.forex.400">
+                          {t('forex:noEventsFound', 'No economic events found for your criteria')}
+                        </Text>
+                        <Button
+                          mt={4}
+                          variant="outline"
+                          leftIcon={<FaFilter />}
+                          onClick={() => setFilter({
+                            country: "all",
+                            currency: "all",
+                            impact: "all",
+                            search: "",
+                            dateRange: "week"
+                          })}
                         >
-                          {coin.change_24h >= 0 ? (
-                            <TriangleUpIcon mr={1} boxSize={3} />
-                          ) : (
-                            <TriangleDownIcon mr={1} boxSize={3} />
-                          )}
-                          {Math.abs(coin.change_24h)}%
-                        </Badge>
+                          {t('forex:clearFilters', 'Clear Filters')}
+                        </Button>
+                      </Flex>
+                    ) : (
+                      <VStack spacing={6} align="stretch">
+                        {Object.entries(eventsByDate).map(([date, events]) => (
+                          <Box key={date}>
+                            <HStack
+                              bg={isDark ? "gray.700" : "gray.100"}
+                              p={2}
+                              borderRadius="md"
+                              mb={2}
+                            >
+                              <Icon as={CalendarIcon} />
+                              <Text fontWeight="medium">{date}</Text>
+                            </HStack>
+
+                            <Table variant="simple" size="sm">
+                              <Thead>
+                                <Tr>
+                                  <Th>{t('forex:time', 'Time')}</Th>
+                                  <Th>{t('forex:country', 'Country')}</Th>
+                                  <Th>{t('forex:event', 'Event')}</Th>
+                                  <Th>{t('forex:impact', 'Impact')}</Th>
+                                  <Th>{t('forex:actual', 'Actual')}</Th>
+                                  <Th>{t('forex:forecast', 'Forecast')}</Th>
+                                  <Th>{t('forex:previous', 'Previous')}</Th>
+                                </Tr>
+                              </Thead>
+                              <Tbody>
+                                {events.map((event) => {
+                                  return (
+                                    <Tr key={event.id}>
+                                      <Td>
+                                        <HStack>
+                                          <Icon as={TimeIcon} color="brand.forex.400" />
+                                          <Text>{event.time}</Text>
+                                        </HStack>
+                                      </Td>
+                                      <Td>
+                                        <Tag
+                                          size="md"
+                                          colorScheme={
+                                            event.currency === "USD" ? "green" :
+                                            event.currency === "EUR" ? "blue" :
+                                            event.currency === "GBP" ? "purple" :
+                                            event.currency === "JPY" ? "red" :
+                                            "gray"
+                                          }
+                                          borderRadius="full"
+                                        >
+                                          <TagLabel>{event.currency}</TagLabel>
+                                        </Tag>
+                                      </Td>
+                                      <Td>
+                                        <HStack>
+                                          <Text fontWeight="medium">{event.event}</Text>
+                                          <Icon
+                                            as={StarIcon}
+                                            color={favoriteEvents.includes(event.id) ? "yellow.400" : "gray.300"}
+                                            cursor="pointer"
+                                            onClick={() => toggleFavorite(event.id)}
+                                          />
+                                        </HStack>
+                                      </Td>
+                                      <Td>
+                                        <Badge
+                                          colorScheme={impactColors[event.impact]}
+                                          variant="solid"
+                                          px={2}
+                                          py={1}
+                                          borderRadius="full"
+                                        >
+                                          {event.impact}
+                                        </Badge>
+                                      </Td>
+                                      <Td>
+                                        <Text
+                                          fontWeight="bold"
+                                          color={
+                                            !event.actual ? "gray.400" :
+                                            event.previous && parseFloat(event.actual) > parseFloat(event.previous) ? "green.500" :
+                                            event.previous && parseFloat(event.actual) < parseFloat(event.previous) ? "red.500" :
+                                            "blue.500"
+                                          }
+                                        >
+                                          {event.actual || "-"}
+                                        </Text>
+                                      </Td>
+                                      <Td>{event.forecast || "-"}</Td>
+                                      <Td>{event.previous || "-"}</Td>
+                                    </Tr>
+                                  );
+                                })}
+                              </Tbody>
+                            </Table>
+                          </Box>
+                        ))}
                       </VStack>
-                    </Box>
-                  ))
-                )}
-              </SimpleGrid>
-            </VStack>
-          </Container>
-        </Box>
-        
-        {/* Main Markets Table */}
-        <Box py={12}>
-          <Container maxW="container.xl">
-            <VStack spacing={8} align="stretch">
-              <HStack justify="space-between" wrap="wrap">
-                <Heading as="h2" size="lg">{t('crypto:cryptoMarkets', 'Cryptocurrency Markets')}</Heading>
-                
-                <HStack spacing={4}>
-                  <InputGroup maxW="300px">
-                    <InputLeftElement pointerEvents="none">
-                      <SearchIcon color="gray.500" />
-                    </InputLeftElement>
-                    <Input
-                      placeholder={t('crypto:searchCoin', 'Search coins...')}
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      bg={isDark ? 'gray.800' : 'white'}
-                      borderRadius="full"
-                    />
-                  </InputGroup>
-                  
-                  <Menu>
-                    <MenuButton
-                      as={Button}
-                      rightIcon={<ChevronDownIcon />}
-                      bg={isDark ? 'gray.800' : 'white'}
-                      display={{ base: 'none', md: 'flex' }}
-                    >
-                      {t('crypto:sortBy', 'Sort by')}
-                    </MenuButton>
-                    <MenuList>
-                      <MenuItem onClick={() => handleSort('market_cap')}>
-                        {t('crypto:marketCap', 'Market Cap')}
-                      </MenuItem>
-                      <MenuItem onClick={() => handleSort('price')}>
-                        {t('crypto:price', 'Price')}
-                      </MenuItem>
-                      <MenuItem onClick={() => handleSort('volume_24h')}>
-                        {t('crypto:volume', '24h Volume')}
-                      </MenuItem>
-                      <MenuItem onClick={() => handleSort('change_24h')}>
-                        {t('crypto:change', '24h Change')}
-                      </MenuItem>
-                    </MenuList>
-                  </Menu>
-                </HStack>
-              </HStack>
-              
-              <Tabs isFitted variant="enclosed" colorScheme="brand.crypto">
-                <TabList>
-                  <Tab>{t('crypto:allCoins', 'All Coins')}</Tab>
-                  <Tab>{t('crypto:favorites', 'Favorites')}</Tab>
-                  <Tab>{t('crypto:gainers', 'Top Gainers')}</Tab>
-                  <Tab>{t('crypto:losers', 'Top Losers')}</Tab>
-                </TabList>
-                
-                <TabPanels>
-                  <TabPanel p={0} pt={4}>
-                    <TableContainer
-                      bg={isDark ? 'gray.800' : 'white'}
-                      borderRadius="lg"
-                      boxShadow="sm"
-                      overflowX="auto"
-                    >
-                      <Table variant="simple">
-                        <Thead>
-                          <Tr>
-                            <Th w="50px">#</Th>
-                            <Th w="50px"></Th>
-                            <Th>{t('crypto:name', 'Name')}</Th>
-                            <Th isNumeric>{t('crypto:price', 'Price')}</Th>
-                            <Th isNumeric>{t('crypto:24hChange', '24h Change')}</Th>
-                            <Th isNumeric display={{ base: 'none', md: 'table-cell' }}>
-                              {t('crypto:marketCap', 'Market Cap')}
-                            </Th>
-                            <Th isNumeric display={{ base: 'none', lg: 'table-cell' }}>
-                              {t('crypto:volume', 'Volume (24h)')}
-                            </Th>
-                            <Th isNumeric display={{ base: 'none', lg: 'table-cell' }}>
-                              {t('crypto:supply', 'Circulating Supply')}
-                            </Th>
-                            <Th w="100px" display={{ base: 'none', md: 'table-cell' }}>
-                              {t('crypto:7dChart', '7d Chart')}
-                            </Th>
-                            <Th w="50px">{t('crypto:trade', 'Trade')}</Th>
-                          </Tr>
-                        </Thead>
-                        <Tbody>
-                          {loading ? (
-                            Array(10).fill(0).map((_, index) => (
-                              <Tr key={index}>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td display={{ base: 'none', md: 'table-cell' }}><Skeleton height="20px" /></Td>
-                                <Td display={{ base: 'none', lg: 'table-cell' }}><Skeleton height="20px" /></Td>
-                                <Td display={{ base: 'none', lg: 'table-cell' }}><Skeleton height="20px" /></Td>
-                                <Td display={{ base: 'none', md: 'table-cell' }}><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                              </Tr>
-                            ))
-                          ) : (
-                            <>
-                              <Tr>
-                                <Td>1</Td>
-                                <Td>
-                                  <IconButton
-                                    icon={<StarIcon color="yellow.400" />}
-                                    variant="ghost"
-                                    size="sm"
-                                    aria-label="Favorite"
-                                  />
-                                </Td>
-                                <Td>
-                                  <HStack>
-                                    <Box boxSize={8} position="relative">
-                                      <Image
-                                        src="/crypto/icons/btc.png"
-                                        alt="Bitcoin"
-                                        width={32}
-                                        height={32}
-                                      />
-                                    </Box>
-                                    <VStack spacing={0} align="start">
-                                      <Text fontWeight="bold">Bitcoin</Text>
-                                      <Text fontSize="xs" color={isDark ? 'gray.400' : 'gray.600'}>
-                                        BTC
-                                      </Text>
-                                    </VStack>
-                                  </HStack>
-                                </Td>
-                                <Td isNumeric fontWeight="medium">$34,250.75</Td>
-                                <Td isNumeric>
-                                  <Badge colorScheme="green">+2.45%</Badge>
-                                </Td>
-                                <Td isNumeric display={{ base: 'none', md: 'table-cell' }}>$667.52B</Td>
-                                <Td isNumeric display={{ base: 'none', lg: 'table-cell' }}>$28.24B</Td>
-                                <Td isNumeric display={{ base: 'none', lg: 'table-cell' }}>19.5M BTC</Td>
-                                <Td display={{ base: 'none', md: 'table-cell' }}>
-                                  <Box h="40px" w="100px" bg="gray.100" borderRadius="md"></Box>
-                                </Td>
-                                <Td>
-                                  <Button
-                                    as={NextLink}
-                                    href="/crypto/exchange"
-                                    size="sm"
-                                    colorScheme="brand.crypto"
-                                    borderRadius="full"
-                                  >
-                                    {t('crypto:trade', 'Trade')}
-                                  </Button>
-                                </Td>
-                              </Tr>
-                              <Tr>
-                                <Td>2</Td>
-                                <Td>
-                                  <IconButton
-                                    icon={<StarIcon color="gray.400" />}
-                                    variant="ghost"
-                                    size="sm"
-                                    aria-label="Favorite"
-                                  />
-                                </Td>
-                                <Td>
-                                  <HStack>
-                                    <Box boxSize={8} position="relative">
-                                      <Image
-                                        src="/crypto/icons/eth.png"
-                                        alt="Ethereum"
-                                        width={32}
-                                        height={32}
-                                      />
-                                    </Box>
-                                    <VStack spacing={0} align="start">
-                                      <Text fontWeight="bold">Ethereum</Text>
-                                      <Text fontSize="xs" color={isDark ? 'gray.400' : 'gray.600'}>
-                                        ETH
-                                      </Text>
-                                    </VStack>
-                                  </HStack>
-                                </Td>
-                                <Td isNumeric fontWeight="medium">$1,845.30</Td>
-                                <Td isNumeric>
-                                  <Badge colorScheme="green">+1.75%</Badge>
-                                </Td>
-                                <Td isNumeric display={{ base: 'none', md: 'table-cell' }}>$221.64B</Td>
-                                <Td isNumeric display={{ base: 'none', lg: 'table-cell' }}>$12.36B</Td>
-                                <Td isNumeric display={{ base: 'none', lg: 'table-cell' }}>120.1M ETH</Td>
-                                <Td display={{ base: 'none', md: 'table-cell' }}>
-                                  <Box h="40px" w="100px" bg="gray.100" borderRadius="md"></Box>
-                                </Td>
-                                <Td>
-                                  <Button
-                                    as={NextLink}
-                                    href="/crypto/exchange"
-                                    size="sm"
-                                    colorScheme="brand.crypto"
-                                    borderRadius="full"
-                                  >
-                                    {t('crypto:trade', 'Trade')}
-                                  </Button>
-                                </Td>
-                              </Tr>
-                              <Tr>
-                                <Td>3</Td>
-                                <Td>
-                                  <IconButton
-                                    icon={<StarIcon color="gray.400" />}
-                                    variant="ghost"
-                                    size="sm"
-                                    aria-label="Favorite"
-                                  />
-                                </Td>
-                                <Td>
-                                  <HStack>
-                                    <Box boxSize={8} position="relative">
-                                      <Image
-                                        src="/crypto/icons/usdt.png"
-                                        alt="Tether"
-                                        width={32}
-                                        height={32}
-                                      />
-                                    </Box>
-                                    <VStack spacing={0} align="start">
-                                      <Text fontWeight="bold">Tether</Text>
-                                      <Text fontSize="xs" color={isDark ? 'gray.400' : 'gray.600'}>
-                                        USDT
-                                      </Text>
-                                    </VStack>
-                                  </HStack>
-                                </Td>
-                                <Td isNumeric fontWeight="medium">$1.00</Td>
-                                <Td isNumeric>
-                                  <Badge colorScheme="gray">0.00%</Badge>
-                                </Td>
-                                <Td isNumeric display={{ base: 'none', md: 'table-cell' }}>$83.76B</Td>
-                                <Td isNumeric display={{ base: 'none', lg: 'table-cell' }}>$42.20B</Td>
-                                <Td isNumeric display={{ base: 'none', lg: 'table-cell' }}>83.8B USDT</Td>
-                                <Td display={{ base: 'none', md: 'table-cell' }}>
-                                  <Box h="40px" w="100px" bg="gray.100" borderRadius="md"></Box>
-                                </Td>
-                                <Td>
-                                  <Button
-                                    as={NextLink}
-                                    href="/crypto/exchange"
-                                    size="sm"
-                                    colorScheme="brand.crypto"
-                                    borderRadius="full"
-                                  >
-                                    {t('crypto:trade', 'Trade')}
-                                  </Button>
-                                </Td>
-                              </Tr>
-                            </>
-                          )}
-                        </Tbody>
-                      </Table>
-                    </TableContainer>
-                    
-                    <HStack justify="center" mt={6}>
+                    )}
+                  </CardBody>
+                </Card>
+              </GridItem>
+
+              {/* Market News Section */}
+              <GridItem>
+                <Card variant="outline">
+                  <CardHeader pb={2}>
+                    <HStack justify="space-between">
+                      <Heading size="md">
+                        <Icon as={FaNewspaper} mr={2} color="brand.forex.400" />
+                        {t('forex:latestNews', 'Latest Forex News')}
+                      </Heading>
                       <Button
-                        colorScheme="brand.crypto"
-                        variant="outline"
-                        size="md"
-                        isDisabled={loading}
+                        as={NextLink}
+                        href="/forex/news"
+                        variant="ghost"
+                        size="sm"
+                        rightIcon={<ChevronRightIcon />}
                       >
-                        {t('crypto:loadMore', 'Load More')}
+                        {t('forex:viewAll', 'View All')}
                       </Button>
                     </HStack>
-                  </TabPanel>
-                  
-                  <TabPanel p={0} pt={4}>
-                    {/* Favorites Tab Content */}
-                    <Box
-                      bg={isDark ? 'gray.800' : 'white'}
-                      p={8}
-                      borderRadius="lg"
-                      boxShadow="sm"
-                      textAlign="center"
-                    >
-                      <VStack spacing={4}>
-                        <Icon as={StarIcon} boxSize={12} color="gray.400" />
-                        <Heading size="md">{t('crypto:noFavorites', 'No favorite coins yet')}</Heading>
-                        <Text color={isDark ? 'gray.400' : 'gray.600'}>
-                          {t('crypto:favoritesDescription', 'Click the star icon next to any coin to add it to your favorites for quick access.')}
-                        </Text>
+                  </CardHeader>
+
+                  <CardBody pt={0}>
+                    {loadingNews ? (
+                      <Flex justify="center" py={10}>
+                        <Spinner size="xl" color="blue.500" />
+                      </Flex>
+                    ) : (
+                      <VStack spacing={4} align="stretch">
+                        {news.slice(0, 5).map((article) => (
+                          <Card
+                            key={article.id}
+                            variant="outline"
+                            direction="row"
+                            overflow="hidden"
+                            size="sm"
+                          >
+                            <Image
+                              objectFit="cover"
+                              maxW={{ base: "100px", sm: "120px" }}
+                              src={article.urlToImage}
+                              alt={article.title}
+                            />
+                            <Stack>
+                              <CardBody py={2} px={3}>
+                                <Heading size="xs" mb={1}>
+                                  <Link
+                                    href={article.url}
+                                    isExternal
+                                    color={isDark ? "blue.300" : "blue.600"}
+                                  >
+                                    {article.title}
+                                  </Link>
+                                </Heading>
+                                <Text fontSize="xs" noOfLines={2}>
+                                  {article.description}
+                                </Text>
+                                <HStack mt={2} spacing={2}>
+                                  <Badge fontSize="10px" colorScheme="blue">
+                                    {article.source.name}
+                                  </Badge>
+                                  <Text fontSize="xs" color="gray.500">
+                                    {format(new Date(article.publishedAt), 'MMM d, h:mm a')}
+                                  </Text>
+                                </HStack>
+                              </CardBody>
+                            </Stack>
+                          </Card>
+                        ))}
+                        <Button
+                          as={NextLink}
+                          href="/forex/news"
+                          variant="outline"
+                          colorScheme="blue"
+                          size="sm"
+                          rightIcon={<ChevronRightIcon />}
+                        >
+                          {t('forex:moreNews', 'More News')}
+                        </Button>
                       </VStack>
-                    </Box>
-                  </TabPanel>
-                  
-                  <TabPanel p={0} pt={4}>
-                    {/* Top Gainers Tab Content */}
-                    <TableContainer
-                      bg={isDark ? 'gray.800' : 'white'}
-                      borderRadius="lg"
-                      boxShadow="sm"
-                      overflowX="auto"
-                    >
-                      {/* Similar table structure as All Coins but with sorted data */}
-                      <Table variant="simple">
-                        <Thead>
-                          <Tr>
-                            <Th w="50px">#</Th>
-                            <Th w="50px"></Th>
-                            <Th>{t('crypto:name', 'Name')}</Th>
-                            <Th isNumeric>{t('crypto:price', 'Price')}</Th>
-                            <Th isNumeric>{t('crypto:24hChange', '24h Change')}</Th>
-                            <Th isNumeric display={{ base: 'none', md: 'table-cell' }}>{t('crypto:marketCap', 'Market Cap')}</Th>
-                            <Th isNumeric display={{ base: 'none', lg: 'table-cell' }}>{t('crypto:volume', 'Volume (24h)')}</Th>
-                            <Th w="50px">{t('crypto:trade', 'Trade')}</Th>
-                          </Tr>
-                        </Thead>
-                        <Tbody>
-                          {loading ? (
-                            Array(5).fill(0).map((_, index) => (
-                              <Tr key={index}>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td display={{ base: 'none', md: 'table-cell' }}><Skeleton height="20px" /></Td>
-                                <Td display={{ base: 'none', lg: 'table-cell' }}><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                              </Tr>
-                            ))
-                          ) : (
-                            <>
-                              <Tr>
-                                <Td>1</Td>
-                                <Td>
-                                  <IconButton
-                                    icon={<StarIcon color="gray.400" />}
-                                    variant="ghost"
-                                    size="sm"
-                                    aria-label="Favorite"
-                                  />
-                                </Td>
-                                <Td>
-                                  <HStack>
-                                    <Box boxSize={8} position="relative">
-                                      <Image
-                                        src="/crypto/icons/sol.png"
-                                        alt="Solana"
-                                        width={32}
-                                        height={32}
-                                      />
-                                    </Box>
-                                    <VStack spacing={0} align="start">
-                                      <Text fontWeight="bold">Solana</Text>
-                                      <Text fontSize="xs" color={isDark ? 'gray.400' : 'gray.600'}>
-                                        SOL
-                                      </Text>
-                                    </VStack>
-                                  </HStack>
-                                </Td>
-                                <Td isNumeric fontWeight="medium">$52.88</Td>
-                                <Td isNumeric>
-                                  <Badge colorScheme="green">+5.32%</Badge>
-                                </Td>
-                                <Td isNumeric display={{ base: 'none', md: 'table-cell' }}>$22.53B</Td>
-                                <Td isNumeric display={{ base: 'none', lg: 'table-cell' }}>$1.82B</Td>
-                                <Td>
-                                  <Button
-                                    as={NextLink}
-                                    href="/crypto/exchange"
-                                    size="sm"
-                                    colorScheme="brand.crypto"
-                                    borderRadius="full"
-                                  >
-                                    {t('crypto:trade', 'Trade')}
-                                  </Button>
-                                </Td>
-                              </Tr>
-                            </>
-                          )}
-                        </Tbody>
-                      </Table>
-                    </TableContainer>
-                  </TabPanel>
-                  
-                  <TabPanel p={0} pt={4}>
-                    {/* Top Losers Tab Content - similar to Top Gainers */}
-                    <TableContainer
-                      bg={isDark ? 'gray.800' : 'white'}
-                      borderRadius="lg"
-                      boxShadow="sm"
-                      overflowX="auto"
-                    >
-                      <Table variant="simple">
-                        {/* Similar structure as other tabs */}
-                        <Thead>
-                          <Tr>
-                            <Th w="50px">#</Th>
-                            <Th w="50px"></Th>
-                            <Th>{t('crypto:name', 'Name')}</Th>
-                            <Th isNumeric>{t('crypto:price', 'Price')}</Th>
-                            <Th isNumeric>{t('crypto:24hChange', '24h Change')}</Th>
-                            <Th isNumeric display={{ base: 'none', md: 'table-cell' }}>{t('crypto:marketCap', 'Market Cap')}</Th>
-                            <Th isNumeric display={{ base: 'none', lg: 'table-cell' }}>{t('crypto:volume', 'Volume (24h)')}</Th>
-                            <Th w="50px">{t('crypto:trade', 'Trade')}</Th>
-                          </Tr>
-                        </Thead>
-                        <Tbody>
-                          {loading ? (
-                            Array(5).fill(0).map((_, index) => (
-                              <Tr key={index}>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                                <Td display={{ base: 'none', md: 'table-cell' }}><Skeleton height="20px" /></Td>
-                                <Td display={{ base: 'none', lg: 'table-cell' }}><Skeleton height="20px" /></Td>
-                                <Td><Skeleton height="20px" /></Td>
-                              </Tr>
-                            ))
-                          ) : (
-                            <>
-                              <Tr>
-                                <Td>1</Td>
-                                <Td>
-                                  <IconButton
-                                    icon={<StarIcon color="gray.400" />}
-                                    variant="ghost"
-                                    size="sm"
-                                    aria-label="Favorite"
-                                  />
-                                </Td>
-                                <Td>
-                                  <HStack>
-                                    <Box boxSize={8} position="relative">
-                                      <Image
-                                        src="/crypto/icons/doge.png"
-                                        alt="Dogecoin"
-                                        width={32}
-                                        height={32}
-                                      />
-                                    </Box>
-                                    <VStack spacing={0} align="start">
-                                      <Text fontWeight="bold">Dogecoin</Text>
-                                      <Text fontSize="xs" color={isDark ? 'gray.400' : 'gray.600'}>
-                                        DOGE
-                                      </Text>
-                                    </VStack>
-                                  </HStack>
-                                </Td>
-                                <Td isNumeric fontWeight="medium">$0.082</Td>
-                                <Td isNumeric>
-                                  <Badge colorScheme="red">-1.25%</Badge>
-                                </Td>
-                                <Td isNumeric display={{ base: 'none', md: 'table-cell' }}>$11.25B</Td>
-                                <Td isNumeric display={{ base: 'none', lg: 'table-cell' }}>$354.7M</Td>
-                                <Td>
-                                  <Button
-                                    as={NextLink}
-                                    href="/crypto/exchange"
-                                    size="sm"
-                                    colorScheme="brand.crypto"
-                                    borderRadius="full"
-                                  >
-                                    {t('crypto:trade', 'Trade')}
-                                  </Button>
-                                </Td>
-                              </Tr>
-                            </>
-                          )}
-                        </Tbody>
-                      </Table>
-                    </TableContainer>
-                  </TabPanel>
-                </TabPanels>
-              </Tabs>
-            </VStack>
-          </Container>
-        </Box>
-        
-        {/* Market News Section */}
-        <Box py={12} bg={isDark ? 'gray.800' : 'white'}>
-          <Container maxW="container.xl">
-            <VStack spacing={8} align="stretch">
-              <HStack justify="space-between">
-                <HStack>
-                  <Icon as={FaRegNewspaper} color={isDark ? 'brand.crypto.400' : 'brand.crypto.600'} />
-                  <Heading as="h2" size="lg">{t('crypto:marketNews', 'Market News')}</Heading>
-                </HStack>
-                
-                <Button
-                  as={NextLink}
-                  href="/crypto/news"
-                  variant="ghost"
-                  colorScheme="brand.crypto"
-                  size="sm"
-                >
-                  {t('crypto:viewAllNews', 'View All News')}
-                </Button>
-              </HStack>
-              
-              <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-                {loading ? (
-                  Array(3).fill(0).map((_, index) => (
-                    <Skeleton key={index} height="300px" borderRadius="lg" />
-                  ))
-                ) : (
-                  <>
-                    <Box
-                      bg={isDark ? 'gray.700' : 'gray.50'}
-                      borderRadius="lg"
-                      overflow="hidden"
-                      boxShadow="sm"
-                      transition="all 0.3s"
-                      _hover={{
-                        transform: "translateY(-5px)",
-                        boxShadow: "md"
-                      }}
-                    >
-                      <Box position="relative" height="160px">
-                        <Image
-                          src="/crypto/news/news1.jpg"
-                          alt="Crypto news"
-                          fill
-                          sizes="100%"
-                          style={{ objectFit: 'cover' }}
-                        />
-                      </Box>
-                      <Box p={4}>
-                        <VStack align="start" spacing={3}>
-                          <Badge colorScheme="brand.crypto">{t('crypto:featured', 'Featured')}</Badge>
-                          <Heading size="md">
-                            {t('crypto:newsHeadline1', 'Bitcoin Surpasses $30K as Institutional Interest Grows')}
-                          </Heading>
-                          <Text fontSize="sm" color={isDark ? 'gray.400' : 'gray.600'} noOfLines={3}>
-                            {t('crypto:newsExcerpt1', 'Major institutional investors are increasingly adding Bitcoin to their portfolios as inflation concerns and regulatory clarity drive adoption.')}
-                          </Text>
-                          <HStack justify="space-between" w="full">
-                            <Text fontSize="xs" color={isDark ? 'gray.500' : 'gray.500'}>2 hours ago</Text>
-                            <Button 
-                              as={NextLink}
-                              href="/crypto/news/1"
-                              size="xs" 
-                              variant="ghost" 
-                              colorScheme="brand.crypto"
-                              rightIcon={<ExternalLinkIcon />}
-                            >
-                              {t('crypto:readMore', 'Read more')}
-                            </Button>
-                          </HStack>
-                        </VStack>
-                      </Box>
-                    </Box>
-                    
-                    <Box
-                      bg={isDark ? 'gray.700' : 'gray.50'}
-                      borderRadius="lg"
-                      overflow="hidden"
-                      boxShadow="sm"
-                      transition="all 0.3s"
-                      _hover={{
-                        transform: "translateY(-5px)",
-                        boxShadow: "md"
-                      }}
-                    >
-                      <Box position="relative" height="160px">
-                        <Image
-                          src="/crypto/news/news2.jpg"
-                          alt="Crypto news"
-                          fill
-                          sizes="100%"
-                          style={{ objectFit: 'cover' }}
-                        />
-                      </Box>
-                      <Box p={4}>
-                        <VStack align="start" spacing={3}>
-                          <Badge colorScheme="blue">{t('crypto:regulation', 'Regulation')}</Badge>
-                          <Heading size="md">
-                            {t('crypto:newsHeadline2', 'EU Finalizes Comprehensive Crypto Regulation Framework')}
-                          </Heading>
-                          <Text fontSize="sm" color={isDark ? 'gray.400' : 'gray.600'} noOfLines={3}>
-                            {t('crypto:newsExcerpt2', 'The European Union has approved a comprehensive regulatory framework for cryptocurrencies that aims to protect consumers while fostering innovation.')}
-                          </Text>
-                          <HStack justify="space-between" w="full">
-                            <Text fontSize="xs" color={isDark ? 'gray.500' : 'gray.500'}>5 hours ago</Text>
-                            <Button 
-                              as={NextLink}
-                              href="/crypto/news/2"
-                              size="xs" 
-                              variant="ghost" 
-                              colorScheme="brand.crypto"
-                              rightIcon={<ExternalLinkIcon />}
-                            >
-                              {t('crypto:readMore', 'Read more')}
-                            </Button>
-                          </HStack>
-                        </VStack>
-                      </Box>
-                    </Box>
-                    
-                    <Box
-                      bg={isDark ? 'gray.700' : 'gray.50'}
-                      borderRadius="lg"
-                      overflow="hidden"
-                      boxShadow="sm"
-                      transition="all 0.3s"
-                      _hover={{
-                        transform: "translateY(-5px)",
-                        boxShadow: "md"
-                      }}
-                    >
-                      <Box position="relative" height="160px">
-                        <Image
-                          src="/crypto/news/news3.jpg"
-                          alt="Crypto news"
-                          fill
-                          sizes="100%"
-                          style={{ objectFit: 'cover' }}
-                        />
-                      </Box>
-                      <Box p={4}>
-                        <VStack align="start" spacing={3}>
-                          <Badge colorScheme="green">{t('crypto:adoption', 'Adoption')}</Badge>
-                          <Heading size="md">
-                            {t('crypto:newsHeadline3', 'Major Retailer Announces Bitcoin Payment Integration')}
-                          </Heading>
-                          <Text fontSize="sm" color={isDark ? 'gray.400' : 'gray.600'} noOfLines={3}>
-                            {t('crypto:newsExcerpt3', 'A leading global retailer has announced plans to accept Bitcoin as payment across all online platforms, marking a significant milestone for mainstream crypto adoption.')}
-                          </Text>
-                          <HStack justify="space-between" w="full">
-                            <Text fontSize="xs" color={isDark ? 'gray.500' : 'gray.500'}>8 hours ago</Text>
-                            <Button 
-                              as={NextLink}
-                              href="/crypto/news/3"
-                              size="xs" 
-                              variant="ghost" 
-                              colorScheme="brand.crypto"
-                              rightIcon={<ExternalLinkIcon />}
-                            >
-                              {t('crypto:readMore', 'Read more')}
-                            </Button>
-                          </HStack>
-                        </VStack>
-                      </Box>
-                    </Box>
-                  </>
-                )}
-              </SimpleGrid>
-            </VStack>
-          </Container>
-        </Box>
-        
-        {/* Market Resources */}
-        <Box py={12}>
-          <Container maxW="container.xl">
-            <VStack spacing={8} align="center">
-              <Heading 
-                as="h2" 
-                size="lg" 
-                textAlign="center"
-              >
-                {t('crypto:marketResources', 'Market Resources')}
-              </Heading>
-              
-              <Text 
-                textAlign="center" 
-                maxW="3xl" 
-                color={isDark ? "gray.300" : "gray.700"}
-              >
-                {t('crypto:resourcesDescription', 'Explore our comprehensive suite of tools and educational resources to enhance your crypto trading knowledge and strategy.')}
+                    )}
+                  </CardBody>
+                </Card>
+
+                {/* Analysis Summary */}
+                <Card variant="outline" mt={6}>
+                  <CardHeader pb={2}>
+                    <HStack justify="space-between">
+                      <Heading size="md">
+                        <Icon as={FaChartLine} mr={2} color="brand.forex.400" />
+                        {t('forex:marketSummary', 'Market Summary')}
+                      </Heading>
+                    </HStack>
+                  </CardHeader>
+
+                  <CardBody pt={0}>
+                    <VStack spacing={4} align="stretch">
+                        <Box>
+                          <ForexRates />
+                        </Box>
+                      <Divider />
+                      <Button
+                        as={NextLink}
+                        href="/forex/analysis"
+                        variant="outline"
+                        colorScheme="blue"
+                        size="sm"
+                        rightIcon={<ChevronRightIcon />}
+                      >
+                        {t('forex:fullAnalysis', 'Full Market Analysis')}
+                      </Button>
+                    </VStack>
+                  </CardBody>
+                </Card>
+              </GridItem>
+            </Grid>
+
+            {/* Disclaimer Section */}
+            <Alert status="info" mt={8} borderRadius="md">
+              <AlertIcon />
+              <Text fontSize="sm">
+                {t('forex:disclaimer', 'Disclaimer: Economic calendar events and forex news are provided for informational purposes only. Trading foreign exchange carries high risk and may not be suitable for all investors. Past performance is not indicative of future results.')}
               </Text>
-              
-              <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8} w="full">
-                <Box
-                  as={NextLink}
-                  href="/crypto/learn"
-                  bg={isDark ? 'gray.800' : 'white'}
-                  p={6}
-                  borderRadius="lg"
-                  boxShadow="sm"
-                  transition="all 0.3s"
-                  _hover={{
-                    transform: "translateY(-5px)",
-                    boxShadow: "md"
-                  }}
-                >
-                  <VStack spacing={4}>
-                    <Box
-                      p={3}
-                      borderRadius="full"
-                      bg={isDark ? 'whiteAlpha.100' : 'brand.crypto.50'}
-                      color={isDark ? 'brand.crypto.400' : 'brand.crypto.600'}
-                    >
-                      <Icon as={FaGlobeAmericas} boxSize={8} />
-                    </Box>
-                    <Heading size="md">{t('crypto:cryptoAcademy', 'Crypto Academy')}</Heading>
-                    <Text textAlign="center" color={isDark ? 'gray.400' : 'gray.600'}>
-                      {t('crypto:academyDescription', 'Learn the fundamentals of blockchain technology, cryptocurrencies, and trading strategies through our comprehensive educational resources.')}
-                    </Text>
-                  </VStack>
-                </Box>
-                
-                <Box
-                  as={NextLink}
-                  href="/crypto/tools"
-                  bg={isDark ? 'gray.800' : 'white'}
-                  p={6}
-                  borderRadius="lg"
-                  boxShadow="sm"
-                  transition="all 0.3s"
-                  _hover={{
-                    transform: "translateY(-5px)",
-                    boxShadow: "md"
-                  }}
-                >
-                  <VStack spacing={4}>
-                    <Box
-                      p={3}
-                      borderRadius="full"
-                      bg={isDark ? 'whiteAlpha.100' : 'brand.crypto.50'}
-                      color={isDark ? 'brand.crypto.400' : 'brand.crypto.600'}
-                    >
-                      <Icon as={FaChartLine} boxSize={8} />
-                    </Box>
-                    <Heading size="md">{t('crypto:tradingTools', 'Trading Tools')}</Heading>
-                    <Text textAlign="center" color={isDark ? 'gray.400' : 'gray.600'}>
-                      {t('crypto:toolsDescription', 'Access advanced charting, technical analysis indicators, and portfolio tracking tools to optimize your trading decisions.')}
-                    </Text>
-                  </VStack>
-                </Box>
-                
-                <Box
-                  as={NextLink}
-                  href="/crypto/insights"
-                  bg={isDark ? 'gray.800' : 'white'}
-                  p={6}
-                  borderRadius="lg"
-                  boxShadow="sm"
-                  transition="all 0.3s"
-                  _hover={{
-                    transform: "translateY(-5px)",
-                    boxShadow: "md"
-                  }}
-                >
-                  <VStack spacing={4}>
-                    <Box
-                      p={3}
-                      borderRadius="full"
-                      bg={isDark ? 'whiteAlpha.100' : 'brand.crypto.50'}
-                      color={isDark ? 'brand.crypto.400' : 'brand.crypto.600'}
-                    >
-                      <Icon as={FaChartPie} boxSize={8} />
-                    </Box>
-                    <Heading size="md">{t('crypto:marketInsights', 'Market Insights')}</Heading>
-                    <Text textAlign="center" color={isDark ? 'gray.400' : 'gray.600'}>
-                      {t('crypto:insightsDescription', 'Get expert analysis, market reports, and the latest research on cryptocurrency trends and developments.')}
-                    </Text>
-                  </VStack>
-                </Box>
-              </SimpleGrid>
-              
-              <Box 
-                bg={isDark ? "whiteAlpha.100" : "brand.crypto.50"} 
-                p={6} 
-                borderRadius="lg"
-                mt={4}
-                maxW="3xl"
-                w="full"
-              >
-                <VStack spacing={4} align="center">
-                  <Heading size="md">{t('crypto:startTrading', 'Ready to Start Trading?')}</Heading>
-                  <Text textAlign="center" maxW="2xl" color={isDark ? 'gray.300' : 'gray.700'}>
-                    {t('crypto:tradingCTA', 'Join thousands of traders on BitDash. Create an account today to access our full suite of trading tools and features.')}
-                  </Text>
-                  <Button
-                    as={NextLink}
-                    href="/signup"
-                    colorScheme="brand.crypto"
-                    size="lg"
-                    borderRadius="full"
-                    px={8}
-                  >
-                    {t('crypto:createAccount', 'Create an Account')}
-                  </Button>
-                </VStack>
-              </Box>
-            </VStack>
+            </Alert>
           </Container>
         </Box>
-      </Box>
-    </Layout>
+      </Layout>
     </>
   );
 }
