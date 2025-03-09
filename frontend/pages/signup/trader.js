@@ -1092,7 +1092,7 @@ export default function TraderSignup() {
               </Checkbox>
               
               <RiskDisclosure 
-                platform="LDN" 
+                platform="ldn" 
                 accountType="retail" 
                 onAccept={handleRiskAcceptance} 
               />

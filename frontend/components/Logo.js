@@ -84,7 +84,7 @@ const Logo = ({ variant = 'header' }) => {
 
   // Renders all platform logos in a 2x2 grid (for mobile solutions menu)
   const renderLogoGrid = () => {
-    const platformOptions = ['cash', 'stocks', 'crypto', 'forex'];
+    const platformOptions = ['cash', 'stocks', 'crypto', 'ldn'];
     
     return (
       <SimpleGrid columns={2} spacing={4} width="100%">

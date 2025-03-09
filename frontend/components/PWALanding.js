@@ -100,7 +100,7 @@ const PWALanding = () => {
 
   if (hostname.includes('cash')) return <CashPWALanding />;
   if (hostname.includes('crypto')) return <CryptoPWALanding />;
-  if (hostname.includes('forex')) return <ForexPWALanding />;
+  if (hostname.includes('ldn')) return <LDNPWALanding />;
   if (hostname.includes('stocks')) return <StocksPWALanding />;
 
   const config = {

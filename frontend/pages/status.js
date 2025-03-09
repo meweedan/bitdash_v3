@@ -64,10 +64,10 @@ const getBrandKeyFromSubdomain = (hostname) => {
     if (hostname.includes('.') && hostname.split('.').length >= 3) {
       const subdomain = hostname.split('.')[0];
       
-      if (subdomain === 'crypto') return 'bitfund';
-      if (subdomain === 'cash') return 'bitcash';
-      if (subdomain === 'forex') return 'bittrade';
-      if (subdomain === 'stock') return 'bitstock';
+      if (subdomain === 'crypto') return 'crypto';
+      if (subdomain === 'cash') return 'cash';
+      if (subdomain === 'ldn') return 'ldn';
+      if (subdomain === 'stocks') return 'stocks';
     }
   } catch (e) {
     console.error("Error parsing subdomain:", e);
