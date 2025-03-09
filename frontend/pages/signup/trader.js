@@ -1092,7 +1092,7 @@ export default function TraderSignup() {
               </Checkbox>
               
               <RiskDisclosure 
-                platform="BitTrade" 
+                platform="LDN" 
                 accountType="retail" 
                 onAccept={handleRiskAcceptance} 
               />
