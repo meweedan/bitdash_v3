@@ -113,11 +113,6 @@
       "target": "api::introducing-broker.introducing-broker",
       "mappedBy": "users_permissions_user"
     },
-    "primaryPlatform": {
-      "type": "enumeration",
-      "enum": ["crypto", "stock", "ldn", "cash", "multiple"],
-      "default": "bitcash"
-    },
     "registrationDate": {
       "type": "datetime"
     },

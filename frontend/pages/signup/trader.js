@@ -661,7 +661,7 @@ export default function TraderSignup() {
       <Box pt={4}>
         <Button
           color="brand.ldn.400"
-          variant="bittrade-outline"
+          variant="ldn-outline"
           size="lg"
           onClick={nextStep}
           width="full"
@@ -992,13 +992,13 @@ export default function TraderSignup() {
 
       <HStack justify="space-between" pt={4}>
         <Button
-          variant="bittrade-outline"
+          variant="ldn-outline"
           onClick={prevStep}
         >
           {t('back')}
         </Button>
         <Button
-          variant="bittrade-outline"
+          variant="ldn-outline"
           color="brand.ldn.400"
           onClick={nextStep}
         >
@@ -1129,7 +1129,7 @@ export default function TraderSignup() {
       
       <HStack justify="space-between" pt={4}>
         <Button
-          variant="bittrade-outline"
+          variant="ldn-outline"
           onClick={prevStep}
         >
           {t('back')}

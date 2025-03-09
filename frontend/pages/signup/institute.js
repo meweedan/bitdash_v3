@@ -495,7 +495,7 @@ export default function InstituteSignup() {
           businessRegistrationNumber: formData.businessRegistrationNumber,
           countryOfIncorporation: formData.countryOfIncorporation,
           taxIdentificationNumber: formData.taxIdentificationNumber,
-          platformType: 'bittrade', // Set to BitTrade for institutional trading
+          platformType: 'ldn', // Set to LDN for institutional trading
           primaryContactPerson: JSON.stringify(formData.primaryContactPerson),
           billingAddress: JSON.stringify(formData.businessAddress),
           operationalAddress: JSON.stringify(formData.businessAddress),

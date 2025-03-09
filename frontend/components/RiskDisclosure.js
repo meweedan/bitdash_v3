@@ -120,7 +120,7 @@ const RiskDisclosure = ({ platform, accountType, onAccept, isRequired = true }) 
     
     // Platform-specific risks
     const platformRisks = {
-      trade: [
+      ldn: [
         {
           title: t('leverageRisk.title', 'Leverage Risk'),
           content: t('leverageRisk.content', 'Trading with leverage can significantly increase potential profits, but it also magnifies potential losses. You may lose more than your initial investment and be required to deposit additional funds to maintain your positions or cover losses.')
@@ -203,7 +203,7 @@ const RiskDisclosure = ({ platform, accountType, onAccept, isRequired = true }) 
     if (!accountType || !platformKey) return [];
     
     const disclaimers = {
-      trade: {
+      ldn: {
         retail: [
           t('tradingIsRisky', 'Trading in financial instruments carries a high level of risk and may not be suitable for all investors. You should carefully consider your investment objectives, level of experience, and risk appetite.'),
           t('leverageWarning', 'Trading on margin with leverage means you may lose more than your initial deposit. Make sure you fully understand the risks involved and if necessary, seek independent financial advice.')
@@ -326,7 +326,7 @@ const RiskDisclosure = ({ platform, accountType, onAccept, isRequired = true }) 
                   </Text>
                   <Text mt={2}>
                     {t(`${platformKey}SpecificRisk.content`, {
-                      trade: 'Trading in forex, cryptocurrencies, and other leveraged products carries a high level of risk and may not be suitable for all investors. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite.',
+                      ldn: 'Trading in forex, cryptocurrencies, and other leveraged products carries a high level of risk and may not be suitable for all investors. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite.',
                       fund: 'Proprietary trading involves significant risk of loss. Past performance in the evaluation process or in live trading is not indicative of future results. The funding process involves stringent rules that, if violated, may result in immediate termination without prior notice.',
                       stock: 'The value of investments and the income from them may go down as well as up, and you may not get back the original amount invested. Past performance is not a reliable indicator of future performance.',
                       cash: 'Payment processing services involve risks related to compliance, fraud, and operational issues. Merchants and agents face additional risks related to chargebacks, regulatory requirements, and handling of client funds.'
