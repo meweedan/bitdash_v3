@@ -73,7 +73,7 @@ export default function AboutIndex() {
   // Company stats
   const companyStats = [
     {
-      value: '2014',
+      value: '2019',
       label: t('about:stats.founded', 'Founded'),
     },
     {
@@ -140,7 +140,7 @@ export default function AboutIndex() {
                   fontSize={textSize} 
                   color={isDark ? "gray.300" : "gray.700"}
                 >
-                  {t('about:introduction', 'Founded in 2014, BitDash is on a mission to make financial services more accessible, transparent, and efficient. We combine innovative technology with deep financial expertise to deliver solutions that empower individuals and institutions worldwide.')}
+                  {t('about:introduction', 'Founded in 2019, BitDash is on a mission to make financial services more accessible, transparent, and efficient. We combine innovative technology with deep financial expertise to deliver solutions that empower individuals and institutions worldwide.')}
                 </Text>
                 
                 <HStack spacing={4} wrap="wrap">
