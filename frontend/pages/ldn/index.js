@@ -1,8 +1,8 @@
 // frontend/pages/trade/index.js
 import { useEffect } from 'react';
 import { usePWA } from '@/hooks/usePWA';
-import { ForexPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component
-import ForexLandingBrowser from '@/components/landing/ForexLandingBrowser';
+import { LDNPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component
+import LDNLandingBrowser from '@/components/landing/LDNLandingBrowser';
 
 const CashPage = () => {
   const { isPWA } = usePWA();
@@ -11,13 +11,13 @@ const CashPage = () => {
 
   useEffect(() => {
     if (isBrowser && hostname === 'bitdash.app') {
-      window.location.href = 'https://forex.bitdash.app';
+      window.location.href = 'https://ldn.bitdash.app';
     }
   }, [hostname, isBrowser]);
 
   if (hostname === 'bitdash.app') return null;
 
-  return isPWA ? <ForexPWALanding /> : <ForexLandingBrowser />;
+  return isPWA ? <LDNPWALanding /> : <LDNLandingBrowser />;
 };
 
 export default CashPage;

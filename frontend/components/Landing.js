@@ -249,7 +249,7 @@ export default function LandingPage() {
                 description={t('platforms.forex.description')}
                 image="/images/eur.png"
                 cta={t('platforms.forex.cta')}
-                link="https://forex.bitdash.app"
+                link="https://ldn.bitdash.app"
                 color="#8b7966"
                 delay={0}
               />

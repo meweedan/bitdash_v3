@@ -53,12 +53,12 @@ export const CryptoPWALanding = () => {
   );
 };
 
-export const ForexPWALanding = () => {
+export const LDNPWALanding = () => {
   const router = useRouter();
   const config = {
-    title: 'Forex by BitDash',
+    title: 'LDN Prime Markets',
     description: 'Your trusted forex broker',
-    image: '/forex.png',
+    image: '/ldn.png',
     color: '#4CAF50'
   };
 

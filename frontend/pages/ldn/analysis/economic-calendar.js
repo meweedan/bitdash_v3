@@ -601,7 +601,7 @@ export default function ForexEconomicCalendar() {
                       </Heading>
                       <Button
                         as={NextLink}
-                        href="/forex/news"
+                        href="/ldn/news"
                         variant="ghost"
                         size="sm"
                         rightIcon={<ChevronRightIcon />}
@@ -660,7 +660,7 @@ export default function ForexEconomicCalendar() {
                         ))}
                         <Button
                           as={NextLink}
-                          href="/forex/analtsisnews"
+                          href="/ldn/analysis/news"
                           variant="forex-outline"
                           size="sm"
                           rightIcon={<ChevronRightIcon />}
@@ -691,7 +691,7 @@ export default function ForexEconomicCalendar() {
                       <Divider />
                       <Button
                         as={NextLink}
-                        href="/forex/analysis"
+                        href="/ldn/analysis"
                         variant="outline"
                         colorScheme="blue"
                         size="sm"

@@ -10,7 +10,7 @@ import MainLanding from '@/components/Landing';
 import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
 import StocksLandingBrowser from '@/components/landing/StocksLandingBrowser';
 import CryptoLandingBrowser from '@/components/landing/CryptoLandingBrowser';
-import ForexLandingBrowser from '@/components/landing/ForexLandingBrowser';
+import LDNLandingBrowser from '@/components/landing/LDNLandingBrowser';
 
 export default function HomePage() {
   const { t } = useTranslation('common');
@@ -24,8 +24,8 @@ export default function HomePage() {
       setPlatform('cash');
     } else if (hostname.includes('crypto.')) {
       setPlatform('crypto');
-    } else if (hostname.includes('forex.')) {
-      setPlatform('forex');
+    } else if (hostname.includes('ldn.')) {
+      setPlatform('ldn');
     } else if (hostname.includes('stocks.')) {
       setPlatform('stocks');
     } else if (process.env.NODE_ENV === 'development') {
@@ -56,11 +56,11 @@ export default function HomePage() {
           favicon: '/crypto-icons/favicon.ico',
           manifest: '/manifests/crypto-manifest.json',
         };
-      case 'forex':
+      case 'ldn':
         return {
-          title: t('trade.title', 'Forex by BitDash'),
-          favicon: '/forex-icons/favicon.ico',
-          manifest: '/manifests/forex-manifest.json',
+          title: t('trade.title', 'LDN Prime Markets'),
+          favicon: '/ldn-icons/favicon.ico',
+          manifest: '/manifests/ldn-manifest.json',
         };
       case 'stocks':
       return {
@@ -88,8 +88,8 @@ export default function HomePage() {
         return <CryptoLandingBrowser />;
       case 'stocks':
         return <StocksLandingBrowser />;
-      case 'forex':
-        return <ForexLandingBrowser />;
+      case 'ldn':
+        return <LDNLandingBrowser />;
       default:
         return <MainLanding />;
     }

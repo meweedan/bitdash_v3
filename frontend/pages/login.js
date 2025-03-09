@@ -33,11 +33,11 @@ const PLATFORM_ROUTES = {
     individual: '/individual/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://stock.bitdash.app'
   },
-  forex: {
+  ldn: {
     retail_trader: '/trader/dashboard',
     ib: '/ib/dashboard',
     institute: '/institute/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://forex.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://ldn.bitdash.app'
   }
 };
 
@@ -54,7 +54,7 @@ const PROFILE_ENDPOINTS = {
     owner: '/api/institutional-clients',
     individual: '/api/investors'
   },
-  forex: {
+  ldn: {
     retail_trader: '/api/retail-traders',
     ib: '/api/introducing-brokers',
     institute: '/api/institutional-clients'
@@ -68,8 +68,8 @@ const BUSINESS_TYPE_ROUTES = {
   customer: { platform: 'cash', userType: 'customer' },
   institutional: { platform: 'stock', userType: 'institutional' },
   individual: { platform: 'stock', userType: 'individual' },
-  retail_trader: { platform: 'forex', userType: 'retail_trader' },
-  ib: { platform: 'forex', userType: 'ib' },
+  retail_trader: { platform: 'ldn', userType: 'retail_trader' },
+  ib: { platform: 'ldn', userType: 'ib' },
   institute: { platform: 'fore', userType: 'institute' }
 };
 
@@ -78,14 +78,14 @@ const getPlatformFromURL = () => {
     const hostname = window.location.hostname;
     if (hostname.includes('cash')) return 'cash';
     if (hostname.includes('crypto')) return 'crypto';
-    if (hostname.includes('forex')) return 'forex';
+    if (hostname.includes('ldn')) return 'ldn';
     if (hostname.includes('stock')) return 'stock';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
       if (path.includes('/cash')) return 'cash';
       if (path.includes('/crypto')) return 'crypto';
-      if (path.includes('/forex')) return 'forex';
+      if (path.includes('/ldn')) return 'ldn';
       if (path.includes('/stock')) return 'stock';
     }
   }
@@ -247,7 +247,7 @@ const LoginPage = () => {
 
   const checkBusinessType = async (token, userId) => {
     try {
-      if (currentPlatform === 'forex') {
+      if (currentPlatform === 'ldn') {
         console.log('Checking trader status...');
         const traderResponse = await fetch(
           `${BASE_URL}/api/retail-traders?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
@@ -299,7 +299,7 @@ const LoginPage = () => {
     const platform = currentPlatform.replace('bit', '');
     console.log('Current platform:', platform);
     
-    if (platform === 'forex') {
+    if (platform === 'ldn') {
       const businessType = await checkBusinessType(token, userId);
       console.log('Business type check result:', businessType);
       

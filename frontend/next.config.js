@@ -51,8 +51,8 @@ const nextConfig = {
       // Forex platform routes
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'forex.bitdash.app' }],
-        destination: '/forex/:path*',
+        has: [{ type: 'host', value: 'ldn.bitdash.app' }],
+        destination: '/ldn/:path*',
       },
       // Crypto platform routes
       {

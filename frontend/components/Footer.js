@@ -126,10 +126,10 @@ const Footer = () => {
       { label: 'Portfolio', href: '/stocks/portfolio', icon: BarChart2 },
     ],
     forex: [
-      { label: 'Forex Pairs', href: '/forex/pairs', icon: Globe },
-      { label: 'Analysis', href: '/trade/analysis', icon: LineChart },
-      { label: 'Tools', href: '/trade/tools', icon: Settings },
-      { label: 'Charts', href: '/trade/charts', icon: BarChart2 },
+      { label: 'Forex Pairs', href: '/ldn/pairs', icon: Globe },
+      { label: 'Analysis', href: '/ldn/analysis', icon: LineChart },
+      { label: 'Tools', href: '/ldn/tools', icon: Settings },
+      { label: 'Charts', href: '/ldn/charts', icon: BarChart2 },
     ],
     cash: [
       { label: 'Transfer Money', href: '/cash/client/transfer', icon: FiArrowRightCircle },
@@ -205,11 +205,11 @@ const Footer = () => {
         trade: '/stocks/trade',
         account: '/stocks/account',
       },
-      forex: {
-        trading: '/forex/platform',
-        markets: '/forex/markets',
-        analysis: '/forex/analysis',
-        account: '/forex/account',
+      ldn: {
+        trading: '/ldn/platform',
+        markets: '/ldn/markets',
+        analysis: '/ldn/analysis',
+        account: '/ldn/account',
       },
       cash: {
         transfer: 'cash/client/transfer',
@@ -269,8 +269,8 @@ const Footer = () => {
       case 'stocks':
         path = `/stocks/order/${trackingNumber}`;
         break;
-      case 'forex':
-        path = `/forex/transaction/${trackingNumber}`;
+      case 'ldn':
+        path = `/ldn/transaction/${trackingNumber}`;
         break;
       case 'cash':
         path = `/cash/transaction/${trackingNumber}`;

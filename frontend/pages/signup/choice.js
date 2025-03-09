@@ -181,11 +181,11 @@ const PLATFORMS = {
       }
     ]
   },
-  FOREX: {
-    subdomain: 'forex',
-    name: 'Forex by BitDash',
+  LDN: {
+    subdomain: 'ldn',
+    name: 'LDN Prime Marketsh',
     nameKey: 'forex.name',
-    themeKey: 'bittrade',
+    themeKey: 'ldn',
     title: 'Regulated Forex Broker',
     titleKey: 'bittrade.title',
     description: 'Professional trading platform for forex, cryptocurrencies and commodities with institutional liquidity.',

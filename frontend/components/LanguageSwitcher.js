@@ -21,7 +21,7 @@ const LanguageSwitcher = () => {
     const hostname = window.location.hostname;
     if (hostname.includes('stocks')) setPlatform('stocks');
     else if (hostname.includes('cash')) setPlatform('cash');
-    else if (hostname.includes('forex')) setPlatform('forex');
+    else if (hostname.includes('ldn')) setPlatform('ldn');
     else if (hostname.includes('crypto')) setPlatform('crypto');
     
     // For local development
@@ -29,7 +29,7 @@ const LanguageSwitcher = () => {
       const path = window.location.pathname;
       if (path.includes('/stocks')) setPlatform('stocks');
       if (path.includes('/cash')) setPlatform('cash');
-      if (path.includes('/forex')) setPlatform('forex');
+      if (path.includes('/ldn')) setPlatform('ldn');
       if (path.includes('/crypto')) setPlatform('crypto');
     }
   }, []);

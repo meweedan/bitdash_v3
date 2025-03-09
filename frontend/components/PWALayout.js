@@ -232,8 +232,8 @@ const PWALayout = ({ children }) => {
         case 'crypto.bitdash.app':
           router.replace('/crypto');
           break;
-        case 'forex.bitdash.app':
-          router.replace('/forex');
+        case 'ldn.bitdash.app':
+          router.replace('/ldn');
           break;
         case 'stocks.bitdash.app':
           router.replace('/stocks');
@@ -250,4 +250,4 @@ const PWALayout = ({ children }) => {
   return children;
 };
 
-export { ForexPWALanding, CryptoPWALanding, StocksPWALanding, CashPWALanding, PWALayout };
+export { LDNPWALanding, CryptoPWALanding, StocksPWALanding, CashPWALanding, PWALayout };

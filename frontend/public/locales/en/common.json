@@ -1554,7 +1554,7 @@
   },
   "platforms": {
     "forex": {
-      "title": "Forex by BitDash",
+      "title": "LDN Prime Markets",
       "description": "Global currency trading with zero commission, ultra-tight spreads from 0.0 pips, and lightning-fast execution speeds.",
       "cta": "Trade Forex",
       "imageAlt": "Forex Trading"
@@ -2683,7 +2683,7 @@
       "title": "Real-Time Market Analysis"
     },
     "platform": {
-      "title": "Why Choose Forex by BitDash"
+      "title": "Why Choose LDN Prime Markets"
     },
     "islamic": {
       "title": "Shariah-Compliant Trading"
@@ -2691,7 +2691,7 @@
     "regulatory": {
       "title": "Regulated & Trusted Globally",
       "subtitle": "Your Security is Our Priority",
-      "description": "Forex by BitDash is regulated by leading financial authorities across multiple jurisdictions, ensuring a secure and compliant trading environment for all clients."
+      "description": "LDN Prime Markets is regulated by leading financial authorities across multiple jurisdictions, ensuring a secure and compliant trading environment for all clients."
     }
   },
   "hero": {

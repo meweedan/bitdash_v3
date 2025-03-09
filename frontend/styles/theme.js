@@ -21,7 +21,7 @@ const theme = extendTheme({
         600: '#9c7c63',    // Hover
         700: '#c4b2a0',    // Emphasis
       },
-      forex: {
+      ldn: {
         400: '#8b7966',
         500: '#b8a28b',    // Base
         600: '#9c7c63',    // Hover
@@ -79,17 +79,17 @@ const theme = extendTheme({
           color: 'brand.crypto.500',
           _hover: { bg: 'brand.crypto.500', color: 'white' }
         },
-        // Forex variants
-        'forex-solid': {
-          bg: 'brand.forex.500',
+        // LDN variants
+        'ldn-solid': {
+          bg: 'brand.ldn.500',
           color: 'white',
-          _hover: { bg: 'brand.forex.600' }
+          _hover: { bg: 'brand.ldn.600' }
         },
-        'forex-outline': {
+        'ldn-outline': {
           border: '2px solid',
-          borderColor: 'brand.forex.500',
-          color: 'brand.forex.500',
-          _hover: { bg: 'brand.forex.500', color: 'white' }
+          borderColor: 'brand.ldn.500',
+          color: 'brand.ldn.500',
+          _hover: { bg: 'brand.ldn.500', color: 'white' }
         },
         // Stocks variants
         'stocks-solid': {
@@ -123,8 +123,8 @@ const theme = extendTheme({
         crypto: {
           borderColor: 'brand.crypto.500',
         },
-        forex: {
-          borderColor: 'brand.forex.500',
+        ldn: {
+          borderColor: 'brand.ldn.500',
         },
         stocks: {
           borderColor: 'brand.stocks.500',

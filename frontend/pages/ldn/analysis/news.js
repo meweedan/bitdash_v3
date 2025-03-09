@@ -352,7 +352,7 @@ export default function ForexNewsPage({ initialNewsData }) {
               <HStack>
                 <Button
                   as={NextLink}
-                  href="/forex/analysis/economic-calendar"
+                  href="/ldn/analysis/economic-calendar"
                   variant="forex-outline"
                   size="sm"
                   leftIcon={<Icon as={FaRegNewspaper} />}
@@ -361,7 +361,7 @@ export default function ForexNewsPage({ initialNewsData }) {
                 </Button>
                 <Button
                   as={NextLink}
-                  href="/forex/analysis"
+                  href="/ldn/analysis"
                   variant="forex-outline"
                   size="sm"
                   leftIcon={<Icon as={FaChartLine} />}

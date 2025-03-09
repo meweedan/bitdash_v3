@@ -16,8 +16,8 @@ const Logo = ({ variant = 'header' }) => {
       setPlatform('stocks');
     } else if (hostname.includes('crypto')) {
       setPlatform('crypto');  
-    } else if (hostname.includes('forex')) {
-      setPlatform('forex');
+    } else if (hostname.includes('ldn')) {
+      setPlatform('ldn');
     } else if (process.env.NODE_ENV === 'development') {
       const urlPlatform = new URLSearchParams(window.location.search).get('platform');
       setPlatform(urlPlatform);
@@ -34,9 +34,9 @@ const Logo = ({ variant = 'header' }) => {
       en: { path: '/stocks.png', width: 1186, height: 398 },
       ar: { path: '/stocks-ar.png', width: 1186, height: 398 }
     },
-    forex: {
-      en: { path: '/forex.png', width: 1085, height: 350 },
-      ar: { path: '/forex-ar.png', width: 1348, height: 492 }
+    ldn: {
+      en: { path: '/ldn.png', width: 1085, height: 350 },
+      ar: { path: '/ldn-ar.png', width: 1348, height: 492 }
     },
     crypto: {
       en: { path: '/crypto.png', width: 1204, height: 548 },

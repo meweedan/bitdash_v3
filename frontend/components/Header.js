@@ -45,7 +45,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   
   // Always show announcements for these platforms
-  const showAnnouncements = platform === 'forex' || platform === 'stocks' || platform === 'crypto' || platform === 'cash';
+  const showAnnouncements = platform === 'ldn' || platform === 'stocks' || platform === 'crypto' || platform === 'cash';
 
   // Handle scroll effect
   useEffect(() => {
@@ -97,10 +97,10 @@ export default function Header() {
       color: 'brand.cash'
     },
     {
-      name: 'Forex by BitDash',
-      image: '/forex.png',
-      mobileImage: '/forex.png',
-      href: 'https://forex.bitdash.app/',
+      name: 'LDN Prime Markets',
+      image: '/ldn.png',
+      mobileImage: '/ldn.png',
+      href: 'https://ldn.bitdash.app/',
       color: 'brand.forex'
     }, 
     {
@@ -127,14 +127,14 @@ export default function Header() {
       // More specific checks to avoid partial matches
       if (hostname.includes('cash.bitdash') || hostname === 'cash.localhost') return 'cash';
       if (hostname.includes('crypto.bitdash') || hostname === 'crypto.localhost') return 'crypto';
-      if (hostname.includes('forex.bitdash') || hostname === 'forex.localhost') return 'forex';
+      if (hostname.includes('ldn.bitdash') || hostname === 'ldn.localhost') return 'ldn';
       if (hostname.includes('stocks.bitdash') || hostname === 'stocks.localhost') return 'stocks';
       
       // Also check URL path for local development
       const pathname = window.location.pathname;
       if (pathname.startsWith('/cash')) return 'cash';
       if (pathname.startsWith('/crypto')) return 'crypto';
-      if (pathname.startsWith('/forex')) return 'forex';
+      if (pathname.startsWith('/ldn')) return 'ldn';
       if (pathname.startsWith('/stocks')) return 'stocks';
     }
     return 'bitdash'; // Default platform
@@ -202,24 +202,24 @@ export default function Header() {
           ]
         },
       ];
-    } else if (platform === 'forex') { // Forex
+    } else if (platform === 'ldn') { // Forex
       return [
         { 
           name: t('analysis', 'Analysis'), 
-          path: '/forex/analysis',
+          path: '/ldn/analysis',
           submenu: [
-            { name: t('economicCalendar', 'Economic Calendar'), path: '/forex/analysis/economic-calendar' },
-            { name: t('marketSentiment', 'Market Sentiment'), path: '/forex/analysis/sentiment' },
-            { name: t('forex:forexNews"', 'Forex News'), path: '/forex/analysis/news' },
+            { name: t('economicCalendar', 'Economic Calendar'), path: '/ldn/analysis/economic-calendar' },
+            { name: t('marketSentiment', 'Market Sentiment'), path: '/ldn/analysis/sentiment' },
+            { name: t('forex:forexNews"', 'Forex News'), path: '/ldn/analysis/news' },
           ]
         },
         { 
           name: t('education', 'Education'), 
-          path: '/forex/education',
+          path: '/ldn/education',
           submenu: [
-            { name: t('tradingGuides', 'Trading Guides'), path: '/forex/education/guides' },
-            { name: t('webinars', 'Webinars'), path: '/forex/education/webinars' },
-            { name: t('strategyResources', 'Strategy Resources'), path: '/forex/education/strategies' },
+            { name: t('tradingGuides', 'Trading Guides'), path: '/ldn/education/guides' },
+            { name: t('webinars', 'Webinars'), path: '/ldn/education/webinars' },
+            { name: t('strategyResources', 'Strategy Resources'), path: '/ldn/education/strategies' },
           ]
         },
       ];
@@ -377,107 +377,136 @@ export default function Header() {
           >
             {/* Menu Items */}
             {menuItems.map((item) => (
-              <Popover key={item.name} trigger="hover" placement="bottom-start" gutter={5}>
-                <PopoverTrigger>
-                  <Box 
-                    as={motion.div}
-                    initial="hidden"
-                    animate="visible"
-                    variants={menuItemVariants}
-                    position="relative"
-                    px={2}
-                    py={2}
-                    borderRadius="md"
-                    _hover={{ bg: isDark ? 'whiteAlpha.100' : 'blackAlpha.50' }}
-                    cursor="pointer"
-                  >
-                    <HStack spacing={1} height="100%">
-                      <Link href={item.path} passHref>
-                        <Text 
-                          fontSize="sm"
-                          fontWeight="600"
-                          color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
-                        >
-                          {item.name}
-                        </Text>
-                      </Link>
-                      <Icon 
-                        as={FaChevronDown} 
-                        boxSize={2.5} 
-                        color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
-                      />
-                    </HStack>
-                  </Box>
-                </PopoverTrigger>
-                <Portal>
-                  <PopoverContent 
-                    bg={isDark ? "gray.800" : "white"}
-                    borderColor={isDark ? "gray.700" : "gray.200"}
-                    boxShadow="lg"
-                    p={1}
-                    minW="180px"
-                    maxW="220px"
-                    borderRadius="md"
-                    _focus={{ boxShadow: "lg" }}
-                  >
-                    <PopoverArrow bg={isDark ? "gray.800" : "white"} />
-                    <PopoverBody p={0}>
-                      <VStack align="stretch" spacing={0}>
-                        {item.submenu && item.submenu.map((subItem, idx) => (
-                          <Link key={subItem.name} href={subItem.path} passHref>
-                            <Box
-                              p={2}
-                              borderRadius="md"
-                              _hover={{ 
-                                bg: isDark ? "gray.700" : "gray.50",
-                                color: `brand.${platform}.500`
-                              }}
-                              transition="all 0.2s"
+              <Box key={item.name}>
+                {item.submenu && item.submenu.length > 0 ? (
+                  <Popover trigger="hover" placement="bottom-start" gutter={5}>
+                    <PopoverTrigger>
+                      <Box 
+                        as={motion.div}
+                        initial="hidden"
+                        animate="visible"
+                        variants={menuItemVariants}
+                        position="relative"
+                        px={2}
+                        py={2}
+                        borderRadius="md"
+                        _hover={{ bg: isDark ? 'whiteAlpha.100' : 'blackAlpha.50' }}
+                        cursor="pointer"
+                      >
+                        <HStack spacing={1} height="100%">
+                          <Link href={item.path} passHref>
+                            <Text 
+                              fontSize="sm"
+                              fontWeight="600"
+                              color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                             >
-                              <Text fontSize="sm" fontWeight="500">
-                                {subItem.name}
-                              </Text>
-                            </Box>
+                              {item.name}
+                            </Text>
                           </Link>
-                        ))}
-                      </VStack>
-                    </PopoverBody>
-                  </PopoverContent>
-                </Portal>
-              </Popover>
+                          <Icon 
+                            as={FaChevronDown} 
+                            boxSize={2.5} 
+                            color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                          />
+                        </HStack>
+                      </Box>
+                    </PopoverTrigger>
+                    <Portal>
+                      <PopoverContent 
+                        bg={isDark ? "gray.800" : "white"}
+                        borderColor={isDark ? "gray.700" : "gray.200"}
+                        boxShadow="lg"
+                        p={1}
+                        minW="180px"
+                        maxW="220px"
+                        borderRadius="md"
+                        _focus={{ boxShadow: "lg" }}
+                      >
+                        <PopoverArrow bg={isDark ? "gray.800" : "white"} />
+                        <PopoverBody p={0}>
+                          <VStack align="stretch" spacing={0}>
+                            {item.submenu.map((subItem, idx) => (
+                              <Link key={subItem.name} href={subItem.path} passHref>
+                                <Box
+                                  p={2}
+                                  borderRadius="md"
+                                  _hover={{ 
+                                    bg: isDark ? "gray.700" : "gray.50",
+                                    color: `brand.${platform}.500`
+                                  }}
+                                  transition="all 0.2s"
+                                >
+                                  <Text fontSize="sm" fontWeight="500">
+                                    {subItem.name}
+                                  </Text>
+                                </Box>
+                              </Link>
+                            ))}
+                          </VStack>
+                        </PopoverBody>
+                      </PopoverContent>
+                    </Portal>
+                  </Popover>
+                ) : (
+                  <Link href={item.path} passHref>
+                    <Box 
+                      as={motion.div}
+                      initial="hidden"
+                      animate="visible"
+                      variants={menuItemVariants}
+                      position="relative"
+                      px={2}
+                      py={2}
+                      borderRadius="md"
+                      _hover={{ bg: isDark ? 'whiteAlpha.100' : 'blackAlpha.50' }}
+                      cursor="pointer"
+                    >
+                      <Text 
+                        fontSize="sm"
+                        fontWeight="600"
+                        color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                      >
+                        {item.name}
+                      </Text>
+                    </Box>
+                  </Link>
+                )}
+              </Box>
             ))}
             
-            {/* Our Solutions Button */}
-            <Box 
-              as={motion.div}
-              initial="hidden"
-              animate="visible"
-              variants={menuItemVariants}
-              position="relative"
-              px={2}
-              py={2}
-              borderRadius="md"
-              _hover={{ bg: isDark ? 'whiteAlpha.100' : 'blackAlpha.50' }}
-              cursor="pointer"
-              onClick={() => setShowPlatforms(!showPlatforms)}
-            >
-              <HStack spacing={1}>
-                <Text 
-                  fontSize="sm"
-                  fontWeight="600"
-                  color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
-                >
-                  {t('ourSolutions', 'Our Solutions')}
-                </Text>
-                <Icon 
-                  as={FaChevronDown} 
-                  boxSize={2.5} 
-                  color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
-                  transform={showPlatforms ? 'rotate(180deg)' : 'rotate(0deg)'}
-                  transition="transform 0.3s ease"
-                />
-              </HStack>
-            </Box>
+            {/* Our Solutions Button - Only if there are platforms to show */}
+            {platforms.length > 0 && (
+              <Box 
+                as={motion.div}
+                initial="hidden"
+                animate="visible"
+                variants={menuItemVariants}
+                position="relative"
+                px={2}
+                py={2}
+                borderRadius="md"
+                _hover={{ bg: isDark ? 'whiteAlpha.100' : 'blackAlpha.50' }}
+                cursor="pointer"
+                onClick={() => setShowPlatforms(!showPlatforms)}
+              >
+                <HStack spacing={1}>
+                  <Text 
+                    fontSize="sm"
+                    fontWeight="600"
+                    color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                  >
+                    {t('ourSolutions', 'Our Solutions')}
+                  </Text>
+                  <Icon 
+                    as={FaChevronDown} 
+                    boxSize={2.5} 
+                    color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                    transform={showPlatforms ? 'rotate(180deg)' : 'rotate(0deg)'}
+                    transition="transform 0.3s ease"
+                  />
+                </HStack>
+              </Box>
+            )}
           </HStack>
 
           {/* Desktop Controls */}
@@ -654,7 +683,7 @@ export default function Header() {
                     >
                       {t('myAccount', 'My Account')}
                     </Button>
-                    <Button 
+                    <Button
                       leftIcon={<FaSignOutAlt size={14} />}
                       variant="ghost"
                       w="full"
@@ -710,65 +739,85 @@ export default function Header() {
             {/* Display menu items based on domain */}
             {menuItems.map((item) => (
               <Box key={item.name}>
-                <Link href={item.path} passHref>
-                  <Text
-                    fontSize="sm"
-                    fontWeight="600"
-                    color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
-                    py={2}
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="space-between"
-                  >
-                    {item.name}
-                    <Icon as={FaChevronDown} boxSize={3} />
-                  </Text>
-                </Link>
-                {item.submenu && (
-                  <VStack align="stretch" mt={1} mb={3} spacing={1} pl={3}>
-                    {item.submenu.map((subItem) => (
-                      <Link key={subItem.name} href={subItem.path} passHref>
-                        <Text
-                          fontSize="xs"
-                          py={1.5}
-                          fontWeight="500"
-                          _hover={{
-                            color: `brand.${platform}.500`
-                          }}
-                          onClick={onClose}
-                        >
-                          {subItem.name}
-                        </Text>
-                      </Link>
-                    ))}
-                  </VStack>
+                {item.submenu && item.submenu.length > 0 ? (
+                  <>
+                    <Text
+                      fontSize="sm"
+                      fontWeight="600"
+                      color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                      py={2}
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="space-between"
+                      onClick={() => {
+                        // Navigate to the path on click
+                        router.push(item.path);
+                        onClose();
+                      }}
+                      cursor="pointer"
+                    >
+                      {item.name}
+                      <Icon as={FaChevronDown} boxSize={3} />
+                    </Text>
+                    <VStack align="stretch" mt={1} mb={3} spacing={1} pl={3}>
+                      {item.submenu.map((subItem) => (
+                        <Link key={subItem.name} href={subItem.path} passHref>
+                          <Text
+                            fontSize="xs"
+                            py={1.5}
+                            fontWeight="500"
+                            _hover={{
+                              color: `brand.${platform}.500`
+                            }}
+                            onClick={onClose}
+                          >
+                            {subItem.name}
+                          </Text>
+                        </Link>
+                      ))}
+                    </VStack>
+                  </>
+                ) : (
+                  <Link href={item.path} passHref>
+                    <Text
+                      fontSize="sm"
+                      fontWeight="600"
+                      color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                      py={2}
+                      onClick={onClose}
+                    >
+                      {item.name}
+                    </Text>
+                  </Link>
                 )}
                 <Divider borderColor={isDark ? "gray.700" : "gray.200"} opacity={0.5} />
               </Box>
             ))}
             
-            {/* Our Solutions Section - always present regardless of domain */}
-            <Box>
-              <Text
-                fontSize="sm"
-                fontWeight="600"
-                py={2}
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-                color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
-                onClick={() => setShowPlatforms(!showPlatforms)}
-                cursor="pointer"
-              >
-                {t('ourSolutions', 'Our Solutions')}
-                <Icon 
-                  as={FaChevronDown} 
-                  boxSize={3}
-                  transform={showPlatforms ? 'rotate(180deg)' : 'rotate(0deg)'}
-                  transition="transform 0.3s ease"
-                />
-              </Text>
-            </Box>
+            {/* Our Solutions Section - only if we have platforms to show */}
+            {platforms.length > 0 && (
+              <Box>
+                <Text
+                  fontSize="sm"
+                  fontWeight="600"
+                  py={2}
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                  onClick={() => setShowPlatforms(!showPlatforms)}
+                  cursor="pointer"
+                >
+                  {t('ourSolutions', 'Our Solutions')}
+                  <Icon 
+                    as={FaChevronDown} 
+                    boxSize={3}
+                    transform={showPlatforms ? 'rotate(180deg)' : 'rotate(0deg)'}
+                    transition="transform 0.3s ease"
+                  />
+                </Text>
+              </Box>
+            )}
           </VStack>
         </Box>
       </Collapse>
