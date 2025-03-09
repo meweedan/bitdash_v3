@@ -361,7 +361,6 @@ export default function TraderSignup() {
 
     setLoading(true);
     try {
-      // 1. Register user
       const userResponse = await fetch(`${BASE_URL}/api/auth/local/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -371,12 +370,19 @@ export default function TraderSignup() {
           password: formData.password,
           confirmed: true,
           blocked: false,
-          role: ROLES.RETAIL_TRADER
+          role: ROLES.RETAIL_TRADER,
+          primaryPlatform: "ldn"  // Try with this value first
         })
       });
 
       const userData = await userResponse.json();
+      
+      // Log the full response for debugging
+      console.log('User registration response:', userData);
+      
       if (!userResponse.ok) {
+        // Show the detailed error in the console
+        console.error('Registration error details:', userData);
         throw new Error(userData.error?.message || t('registrationFailed'));
       }
 
