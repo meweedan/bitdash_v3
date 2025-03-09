@@ -921,7 +921,10 @@ const ForexLandingBrowser = () => {
                   <Image 
                     src="/images/dashboard-ldn.png" 
                     alt={t('mobileApp.imageAlt', 'Mobile App Screenshot')}
-                    width="100%"
+                    width="30%"
+                    height="30%"
+                    objectFit="cover"
+                    objectPosition="center"
                   />
                 </Box>
             </GridItem>

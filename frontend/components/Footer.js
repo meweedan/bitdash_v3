@@ -75,7 +75,7 @@ const Footer = () => {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
       if (hostname.includes('crypto')) setPlatform('crypto');
-      else if (hostname.includes('forex')) setPlatform('forex');
+      else if (hostname.includes('ldn')) setPlatform('ldn');
       else if (hostname.includes('cash')) setPlatform('cash');
       else if (hostname.includes('stocks')) setPlatform('stocks');
       else setPlatform('main');
@@ -98,8 +98,8 @@ const Footer = () => {
         return `brand.cash.${intensity}`;
       case 'crypto':
         return `brand.crypto.${intensity}`;
-      case 'forex':
-        return `brand.forex.${intensity}`;
+      case 'ldn':
+        return `brand.ldn.${intensity}`;
       case 'stocks':
         return `brand.stocks.${intensity}`;
       default:
@@ -125,7 +125,7 @@ const Footer = () => {
       { label: 'Commodities', href: '/stocks/commodities', icon: TrendingUp },
       { label: 'Portfolio', href: '/stocks/portfolio', icon: BarChart2 },
     ],
-    forex: [
+    ldn: [
       { label: 'Forex Pairs', href: '/ldn/pairs', icon: Globe },
       { label: 'Analysis', href: '/ldn/analysis', icon: LineChart },
       { label: 'Tools', href: '/ldn/tools', icon: Settings },
@@ -154,7 +154,7 @@ const Footer = () => {
         { label: 'Trade', action: 'stock-trade', icon: ArrowUpRight },
         { label: 'Account', action: 'account', icon: User },
       ],
-      forex: [
+      ldn: [
         { label: 'Trading', action: 'trading', icon: LineChart },
         { label: 'Markets', action: 'markets', icon: Globe },
         { label: 'Analysis', action: 'analysis', icon: BarChart2 },
@@ -294,7 +294,7 @@ const Footer = () => {
         return 'Track Challenge';
       case 'stocks':
         return 'Track Investment Order';
-      case 'forex':
+      case 'ldn':
         return 'Track Withdrawals and Deposits';
       case 'cash':
         return 'Track Payment';
@@ -452,7 +452,7 @@ const Footer = () => {
           <DrawerHeader borderBottomWidth="1px">
             {platform === 'crypt' ? 'Crypto Menu' : 
              platform === 'stocks' ? 'Stocks Menu' : 
-             platform === 'forex' ? 'Forex Menu' :
+             platform === 'ldn' ? 'Forex Menu' :
              platform === 'cash' ? 'Cash Menu' :
              'Menu'}
           </DrawerHeader>
@@ -517,7 +517,7 @@ const Footer = () => {
               <FormLabel>
                 {platform === 'crypto' ? 'Challenge ID' : 
                  platform === 'stocks' ? 'Order ID' : 
-                 platform === 'forex' ? 'Transaction ID' :
+                 platform === 'ldn' ? 'Transaction ID' :
                  platform === 'cash' ? 'Payment ID' :
                  'Tracking Number'}
               </FormLabel>
@@ -530,7 +530,7 @@ const Footer = () => {
                 placeholder={
                   platform === 'crypto' ? 'Enter Wallet ID' : 
                   platform === 'stocks' ? 'Enter order ID' : 
-                  platform === 'forex' ? 'Enter transaction ID' :
+                  platform === 'ldn' ? 'Enter transaction ID' :
                   platform === 'cash' ? 'Enter payment ID' :
                   'Enter tracking number'
                 }
