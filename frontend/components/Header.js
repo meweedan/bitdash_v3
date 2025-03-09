@@ -532,8 +532,8 @@ export default function Header() {
                       variant="bitdash-outline"
                       color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                       borderRadius="full"
-                      fontSize="xl"
-                      onClick={() => router.push('/dashboard')}
+                      fontSize="md"
+                      onClick={() => router.push('/login')}
                       _hover={{ bg: isDark ? 'whiteAlpha.200' : 'blackAlpha.100' }}
                     >
                       {t('myAccount', 'My Account')}
@@ -544,7 +544,7 @@ export default function Header() {
                       variant="bitdash-outline"
                       color="red.400"
                       borderRadius="full"
-                      fontSize="xl"
+                      fontSize="md"
                       onClick={handleLogout}
                       _hover={{ bg: isDark ? 'whiteAlpha.200' : 'blackAlpha.100' }}
                     >
@@ -559,7 +559,7 @@ export default function Header() {
                       variant="bitdash-outline"
                       borderRadius="full"
                       color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
-                      fontSize="xl"
+                      fontSize="md"
                       onClick={() => router.push('/login')}
                       _hover={{ bg: isDark ? 'whiteAlpha.200' : 'blackAlpha.100' }}
                     >
@@ -571,7 +571,7 @@ export default function Header() {
                       variant="bitdash-solid"
                       borderRadius="full"
                       color="white"
-                      fontSize="xl"
+                      fontSize="md"
                       bg={`brand.${platform}.500`}
                       _hover={{ bg: buttonBgHover }}
                       onClick={() => router.push('/signup')}
