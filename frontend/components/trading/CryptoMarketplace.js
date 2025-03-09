@@ -38,7 +38,7 @@ const CryptoMarketplace = () => {
   const router = useRouter();
 
   const borderColor = useColorModeValue('gray.200', 'gray.600');
-  const hoverBg = useColorModeValue('brand.forex.400', 'brand.forex.700');
+  const hoverBg = useColorModeValue('brand.ldn.400', 'brand.ldn.700');
 
   // Fetch market data from CoinGecko API
   useEffect(() => {
@@ -215,7 +215,7 @@ const CryptoMarketplace = () => {
                 </Text>
                 
                 <Button 
-                  color="brand.forex.400"
+                  color="brand.ldn.400"
                   size="sm" 
                   width="full" 
                   mt={4}
@@ -250,7 +250,7 @@ const CryptoMarketplace = () => {
           <VStack spacing={1} align="start">
             <Text fontSize="xs" color="gray.500">Trading Hours</Text>
             <HStack>
-              <Icon as={FaRegClock} color="brand.forex.500" boxSize={3} />
+              <Icon as={FaRegClock} color="brand.ldn.500" boxSize={3} />
               <Text fontWeight="bold">24/7</Text>
             </HStack>
           </VStack>

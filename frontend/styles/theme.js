@@ -81,9 +81,9 @@ const theme = extendTheme({
         },
         // LDN variants
         'ldn-solid': {
-          bg: 'brand.ldn.500',
+          bg: 'brand.ldn.700',
           color: 'white',
-          _hover: { bg: 'brand.ldn.600' }
+          _hover: { bg: 'brand.ldn.400' }
         },
         'ldn-outline': {
           border: '2px solid',

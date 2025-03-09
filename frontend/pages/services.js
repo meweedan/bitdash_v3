@@ -100,7 +100,7 @@ const platforms = [
     description: 'Trade forex pairs, cryptocurrencies and commodities on our secure, regulated platform with institutional liquidity and advanced trading tools.',
     image: '/trade.png',
     imageAr: '/trade-ar.png',
-    color: 'brand.forex.500',
+    color: 'brand.ldn.500',
     stats: [
       { value: '80+', label: 'Currency Pairs' },
       { value: '50+', label: 'Cryptocurrencies' },
@@ -495,7 +495,7 @@ const Services = () => {
             >
               <Heading
                 fontSize={{ base: '4xl', md: '7xl' }}
-                bgGradient="linear(to-r, brand.cash.500, brand.crypto.500, brand.stocks.500, brand.forex.500)"
+                bgGradient="linear(to-r, brand.cash.500, brand.crypto.500, brand.stocks.500, brand.ldn.500)"
                 bgClip="text"
                 letterSpacing="tight"
                 lineHeight="shorter"

@@ -361,7 +361,7 @@ export default function Header() {
           align="center"
         >
           {/* Logo */}
-          <Box width={{ base: '180px', md: '200px' }} py={1}>
+          <Box width={{ base: '190px', md: '250px' }} py={1}>
             <Link href="/" passHref>
               <Box display="block">
                 <Logo />
@@ -371,7 +371,7 @@ export default function Header() {
 
           {/* Desktop Main Menu */}
           <HStack 
-            spacing={{ base: 3, lg: 5 }}
+            spacing={{ base: 3, lg: 2 }}
             display={{ base: 'none', lg: 'flex' }}
             height="100%"
           >
@@ -396,7 +396,7 @@ export default function Header() {
                         <HStack spacing={1} height="100%">
                           <Link href={item.path} passHref>
                             <Text 
-                              fontSize="sm"
+                              fontSize="lg"
                               fontWeight="600"
                               color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                             >

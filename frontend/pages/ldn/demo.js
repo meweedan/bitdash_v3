@@ -32,7 +32,7 @@ const TradeDemo = () => {
     'linear(to-r, gray.700, gray.800)'
   );
   // Use subtle, neutral accent colors
-  const accentColor = useColorModeValue('brand,bittrade.400', 'brand.forex.700');
+  const accentColor = useColorModeValue('brand,bittrade.400', 'brand.ldn.700');
   const cardBg = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
 

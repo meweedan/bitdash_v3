@@ -111,8 +111,8 @@ const ForexPage = () => {
     'linear(to-b, gray.900, gray.800)'
   );
   const cardBg = useColorModeValue('white', 'gray.800');
-  const accentColor = useColorModeValue('brand.forex.400', 'brand.forex.700');
-  const accentBg = useColorModeValue('brand.forex.400', 'brand.forex.700');
+  const accentColor = useColorModeValue('brand.ldn.400', 'brand.ldn.700');
+  const accentBg = useColorModeValue('brand.ldn.400', 'brand.ldn.700');
   const softShadow = useColorModeValue('lg', 'dark-lg');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   const statBg = useColorModeValue('blue.50', 'gray.700');
@@ -150,7 +150,7 @@ const ForexPage = () => {
             left="-5%"
             w="35%"
             h="120%"
-            bg="brand.forex.500"
+            bg="brand.ldn.500"
             opacity="0.3"
             transform="rotate(-15deg)"
             roundedRight="full"
@@ -161,7 +161,7 @@ const ForexPage = () => {
             right="-5%"
             w="30%"
             h="60%"
-            bg="brand.forex.700"
+            bg="brand.ldn.700"
             opacity="0.2"
             transform="rotate(25deg)"
             roundedLeft="full"
@@ -214,7 +214,7 @@ const ForexPage = () => {
                         <Box
                           w="100%"
                           h="350px"
-                          bg="brand.forex.400"
+                          bg="brand.ldn.400"
                           borderRadius="xl"
                           display="flex"
                           alignItems="center"
@@ -266,7 +266,7 @@ const ForexPage = () => {
                     align="center"
                     w={12}
                     h={12}
-                    bg="brand.forex.500"
+                    bg="brand.ldn.500"
                     color="white"
                     borderRadius="lg"
                   >
@@ -294,7 +294,7 @@ const ForexPage = () => {
                     align="center"
                     w={12}
                     h={12}
-                    bg="brand.forex.500"
+                    bg="brand.ldn.500"
                     color="white"
                     borderRadius="lg"
                   >
@@ -322,7 +322,7 @@ const ForexPage = () => {
                     align="center"
                     w={12}
                     h={12}
-                    bg="brand.forex.500"
+                    bg="brand.ldn.500"
                     color="white"
                     borderRadius="lg"
                   >
@@ -350,7 +350,7 @@ const ForexPage = () => {
                     align="center"
                     w={12}
                     h={12}
-                    bg="brand.forex.500"
+                    bg="brand.ldn.500"
                     color="white"
                     borderRadius="lg"
                   >
@@ -378,7 +378,7 @@ const ForexPage = () => {
                     align="center"
                     w={12}
                     h={12}
-                    bg="brand.forex.500"
+                    bg="brand.ldn.500"
                     color="white"
                     borderRadius="lg"
                   >
@@ -406,7 +406,7 @@ const ForexPage = () => {
                     align="center"
                     w={12}
                     h={12}
-                    bg="brand.forex.500"
+                    bg="brand.ldn.500"
                     color="white"
                     borderRadius="lg"
                   >
@@ -537,7 +537,7 @@ const ForexPage = () => {
                       <Flex
                         minW={8}
                         h={8}
-                        bg="brand.forex.500"
+                        bg="brand.ldn.500"
                         color="white"
                         borderRadius="full"
                         justify="center"
@@ -556,7 +556,7 @@ const ForexPage = () => {
                       <Flex
                         minW={8}
                         h={8}
-                        bg="brand.forex.500"
+                        bg="brand.ldn.500"
                         color="white"
                         borderRadius="full"
                         justify="center"
@@ -575,7 +575,7 @@ const ForexPage = () => {
                       <Flex
                         minW={8}
                         h={8}
-                        bg="brand.forex.500"
+                        bg="brand.ldn.500"
                         color="white"
                         borderRadius="full"
                         justify="center"
@@ -594,7 +594,7 @@ const ForexPage = () => {
                       <Flex
                         minW={8}
                         h={8}
-                        bg="brand.forex.500"
+                        bg="brand.ldn.500"
                         color="white"
                         borderRadius="full"
                         justify="center"
@@ -847,7 +847,7 @@ const ForexPage = () => {
                   <Text fontSize="sm">
                     {t('forex.education.resource1.description', 'Comprehensive guide to forex trading basics, strategies, and market analysis techniques.')}
                   </Text>
-                  <Button color="brand.forex.500" fontWeight="bold" href="/education/forex-guide">
+                  <Button color="brand.ldn.500" fontWeight="bold" href="/education/forex-guide">
                     {t('forex.education.resource1.link', 'Read the Guide →')}
                   </Button>
                 </VStack>
@@ -862,7 +862,7 @@ const ForexPage = () => {
                   <Text fontSize="sm">
                     {t('forex.education.resource2.description', 'Stay informed with our expert analysis of market trends, major events, and trading opportunities.')}
                   </Text>
-                  <Button color="brand.forex.500" fontWeight="bold" href="/research/market-analysis">
+                  <Button color="brand.ldn.500" fontWeight="bold" href="/research/market-analysis">
                     {t('forex.education.resource2.link', 'View Analysis →')}
                   </Button>
                 </VStack>
@@ -877,7 +877,7 @@ const ForexPage = () => {
                   <Text fontSize="sm">
                     {t('forex.education.resource3.description', 'Join our live webinars with professional traders covering strategies, risk management, and more.')}
                   </Text>
-                  <Button color="brand.forex.500" fontWeight="bold" href="/education/webinars">
+                  <Button color="brand.ldn.500" fontWeight="bold" href="/education/webinars">
                     {t('forex.education.resource3.link', 'Register Now →')}
                   </Button>
                 </VStack>
@@ -892,7 +892,7 @@ const ForexPage = () => {
               borderRadius="xl"
               boxShadow="2xl"
               mb={8}
-              bg="brand.forex.400"
+              bg="brand.ldn.400"
               textAlign="center"
               position="relative"
               overflow="hidden"

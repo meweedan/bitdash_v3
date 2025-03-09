@@ -377,7 +377,7 @@ const CommodityMarketplace = () => {
 
             {isLoading && commodities.length === 0 ? (
               <Flex justify="center" align="center" minH="300px" direction="column">
-                <Spinner size="xl" color="brand.forex.500" mb={4} />
+                <Spinner size="xl" color="brand.ldn.500" mb={4} />
                 <Text>{t('commodities.marketplace.loading', 'Loading commodity data...')}</Text>
               </Flex>
             ) : (
@@ -506,7 +506,7 @@ const CommodityMarketplace = () => {
             {/* Precious Metals Tab */}
             {isLoading && commodities.length === 0 ? (
               <Flex justify="center" align="center" minH="300px" direction="column">
-                <Spinner size="xl" color="brand.forex.500" mb={4} />
+                <Spinner size="xl" color="brand.ldn.500" mb={4} />
                 <Text>{t('commodities.marketplace.loading', 'Loading commodity data...')}</Text>
               </Flex>
             ) : (
@@ -571,7 +571,7 @@ const CommodityMarketplace = () => {
             {/* Energy Tab */}
             {isLoading && commodities.length === 0 ? (
               <Flex justify="center" align="center" minH="300px" direction="column">
-                <Spinner size="xl" color="brand.forex.500" mb={4} />
+                <Spinner size="xl" color="brand.ldn.500" mb={4} />
                 <Text>{t('commodities.marketplace.loading', 'Loading commodity data...')}</Text>
               </Flex>
             ) : (
@@ -636,7 +636,7 @@ const CommodityMarketplace = () => {
             {/* Agriculture Tab */}
             {isLoading && commodities.length === 0 ? (
               <Flex justify="center" align="center" minH="300px" direction="column">
-                <Spinner size="xl" color="brand.forex.500" mb={4} />
+                <Spinner size="xl" color="brand.ldn.500" mb={4} />
                 <Text>{t('commodities.marketplace.loading', 'Loading commodity data...')}</Text>
               </Flex>
             ) : (

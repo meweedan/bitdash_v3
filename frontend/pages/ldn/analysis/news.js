@@ -340,7 +340,7 @@ export default function ForexNewsPage({ initialNewsData }) {
                   as="h1" 
                   size={headingSize} 
                   fontWeight="bold"
-                  bgGradient={isDark ? "linear(to-r, brand.forex.400, brand.forex.700)" : "linear(to-r, brand.forex.700, brand.forex.400)"}
+                  bgGradient={isDark ? "linear(to-r, brand.ldn.400, brand.ldn.700)" : "linear(to-r, brand.ldn.700, brand.ldn.400)"}
                   bgClip="text"
                 >
                   {t('forex:forexNews', 'Forex News')}
@@ -353,7 +353,7 @@ export default function ForexNewsPage({ initialNewsData }) {
                 <Button
                   as={NextLink}
                   href="/ldn/analysis/economic-calendar"
-                  variant="forex-outline"
+                  variant="ldn-outline"
                   size="sm"
                   leftIcon={<Icon as={FaRegNewspaper} />}
                 >
@@ -362,7 +362,7 @@ export default function ForexNewsPage({ initialNewsData }) {
                 <Button
                   as={NextLink}
                   href="/ldn/analysis"
-                  variant="forex-outline"
+                  variant="ldn-outline"
                   size="sm"
                   leftIcon={<Icon as={FaChartLine} />}
                 >
@@ -372,13 +372,13 @@ export default function ForexNewsPage({ initialNewsData }) {
             </HStack>
 
             {/* Filter Section */}
-            <Card mb={6} variant="forex-outline">
+            <Card mb={6} variant="ldn-outline">
               <CardBody>
                 <Grid templateColumns={{ base: "1fr", md: "1fr 1fr", lg: "1fr 1fr 1fr 1fr" }} gap={4}>
                   <GridItem>
                     <InputGroup>
                       <InputLeftElement>
-                        <SearchIcon color="brand.forex.500" />
+                        <SearchIcon color="brand.ldn.500" />
                       </InputLeftElement>
                       <Input 
                         placeholder={t('forex:searchNews', 'Search news...')}
@@ -430,11 +430,11 @@ export default function ForexNewsPage({ initialNewsData }) {
 
             {/* Featured Article Section */}
             {loadingNews ? (
-              <Card mb={6} variant="forex-outline" overflow="hidden">
+              <Card mb={6} variant="ldn-outline" overflow="hidden">
                 <Skeleton height="400px" />
               </Card>
             ) : featured ? (
-              <Card mb={6} variant="forex-outline" overflow="hidden" position="relative">
+              <Card mb={6} variant="ldn-outline" overflow="hidden" position="relative">
                 <Box 
                   bg="linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 80%)"
                   position="absolute"
@@ -460,7 +460,7 @@ export default function ForexNewsPage({ initialNewsData }) {
                   zIndex={2}
                 >
                   <HStack mb={2}>
-                    <Badge color="brand.forex.400" px={2} py={1} borderRadius="full">
+                    <Badge color="brand.ldn.400" px={2} py={1} borderRadius="full">
                       {t('forex:featured', 'Featured')}
                     </Badge>
                     {featured.sentiment && (
@@ -472,7 +472,7 @@ export default function ForexNewsPage({ initialNewsData }) {
                       </Badge>
                     )}
                     {featured.tickers && featured.tickers.slice(0, 2).map(ticker => (
-                      <Badge key={ticker} px={2} py={1} borderRadius="full" variant="forex-outline">
+                      <Badge key={ticker} px={2} py={1} borderRadius="full" variant="ldn-outline">
                         {ticker}
                       </Badge>
                     ))}
@@ -493,7 +493,7 @@ export default function ForexNewsPage({ initialNewsData }) {
                       href={featured.url}
                       isExternal
                       rightIcon={<ExternalLinkIcon />}
-                      variant="forex-outline"
+                      variant="ldn-outline"
                       size="sm"
                     >
                       {t('forex:readMore', 'Read More')}
@@ -507,11 +507,11 @@ export default function ForexNewsPage({ initialNewsData }) {
             <Grid templateColumns={{ base: "1fr", md: "3fr 1fr" }} gap={6}>
               {/* Main News Content */}
               <GridItem>
-                <Card variant="forex-outline">
+                <Card variant="ldn-outline">
                   <CardHeader pb={2}>
                     <HStack justify="space-between">
                       <Heading size="md">
-                        <Icon as={FaNewspaper} mr={2} color="brand.forex.400" />
+                        <Icon as={FaNewspaper} mr={2} color="brand.ldn.400" />
                         {t('forex:latestNews', 'Latest News')}
                       </Heading>
                       <Text fontSize="sm" color="gray.500">
@@ -534,7 +534,7 @@ export default function ForexNewsPage({ initialNewsData }) {
                         </Text>
                         <Button 
                           mt={4} 
-                          variant="forex-outline" 
+                          variant="ldn-outline" 
                           leftIcon={<FaFilter />}
                           onClick={() => setFilter({ pair: 'all', category: 'all', search: '', timeframe: '7d' })}
                         >
@@ -544,7 +544,7 @@ export default function ForexNewsPage({ initialNewsData }) {
                     ) : (
                       <VStack spacing={6} align="stretch">
                         {filteredNews.map(article => (
-                          <Card key={article.id} variant="forex-outline" direction={{ base: 'column', sm: 'row' }} overflow="hidden">
+                          <Card key={article.id} variant="ldn-outline" direction={{ base: 'column', sm: 'row' }} overflow="hidden">
                             <Image
                               objectFit="cover"
                               maxW={{ base: '100%', sm: '200px' }}
@@ -571,7 +571,7 @@ export default function ForexNewsPage({ initialNewsData }) {
                                     </Badge>
                                   )}
                                   {article.tickers && article.tickers.map(ticker => (
-                                    <Badge key={ticker} px={2} py={1} borderRadius="full" variant="forex-outline" colorScheme="blue">
+                                    <Badge key={ticker} px={2} py={1} borderRadius="full" variant="ldn-outline" colorScheme="blue">
                                       {ticker}
                                     </Badge>
                                   ))}
@@ -580,7 +580,7 @@ export default function ForexNewsPage({ initialNewsData }) {
                                   </Badge>
                                 </HStack>
                                 <Heading size="md" mb={2}>
-                                  <Link href={article.url} isExternal color={isDark ? "brand.forex.400" : "brand.forex.400"}>
+                                  <Link href={article.url} isExternal color={isDark ? "brand.ldn.400" : "brand.ldn.400"}>
                                     {article.title}
                                   </Link>
                                 </Heading>
@@ -602,7 +602,7 @@ export default function ForexNewsPage({ initialNewsData }) {
                                   href={article.url}
                                   isExternal
                                   rightIcon={<ExternalLinkIcon />}
-                                  variant="forex-outline"
+                                  variant="ldn-outline"
                                   colorScheme="blue"
                                   size="sm"
                                 >
@@ -621,10 +621,10 @@ export default function ForexNewsPage({ initialNewsData }) {
               {/* Sidebar */}
               <GridItem>
                 {/* News Sources */}
-                <Card variant="forex-outline" mb={6}>
+                <Card variant="ldn-outline" mb={6}>
                   <CardHeader pb={2}>
                     <Heading size="md">
-                      <Icon as={FaRss} mr={2} color="brand.forex.500" />
+                      <Icon as={FaRss} mr={2} color="brand.ldn.500" />
                       {t('forex:newsSources', 'News Sources')}
                     </Heading>
                   </CardHeader>
@@ -652,7 +652,7 @@ export default function ForexNewsPage({ initialNewsData }) {
 
             {/* Disclaimer Section */}
             <Alert status="info" mt={8} borderRadius="md">
-              <AlertIcon color="brand.forex.400" />
+              <AlertIcon color="brand.ldn.400" />
               <Text fontSize="sm">
                 {t('forex:disclaimer', 'Disclaimer: Forex news and analysis are provided for informational purposes only. Trading foreign exchange carries high risk and may not be suitable for all investors. Past performance is not indicative of future results.')}
               </Text>

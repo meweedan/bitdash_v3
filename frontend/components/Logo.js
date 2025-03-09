@@ -57,7 +57,7 @@ const Logo = ({ variant = 'header' }) => {
     const aspectRatio = logoConfig.width / logoConfig.height;
     
     // Header logo sizes - updated for better fit in header
-    const headerWidth = useBreakpointValue({ base: "125px", md: "200px" });
+    const headerWidth = useBreakpointValue({ base: "150px", md: "260px" });
     const headerHeight = `${parseInt(headerWidth) / aspectRatio}px`;
     
     return (
@@ -93,7 +93,7 @@ const Logo = ({ variant = 'header' }) => {
           const aspectRatio = logoConfig.width / logoConfig.height;
           
           // Fixed dimensions for grid items to ensure consistent layout
-          const gridItemWidth = "140px";
+          const gridItemWidth = "180px";
           const gridItemHeight = `${parseInt(gridItemWidth) / aspectRatio}px`;
           
           return (

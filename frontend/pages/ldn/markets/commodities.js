@@ -140,10 +140,10 @@ const CommoditiesPage = () => {
 
   // Colors & UI
   const cardBg = useColorModeValue('white', 'gray.800');
-  const accentColor = useColorModeValue('brand.forex.400', 'brand.forex.700');
+  const accentColor = useColorModeValue('brand.ldn.400', 'brand.ldn.700');
   const softShadow = useColorModeValue('lg', 'dark-lg');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
-  const ctaBgColor = useColorModeValue('brand.forex.700', 'brand.forex.400');
+  const ctaBgColor = useColorModeValue('brand.ldn.700', 'brand.ldn.400');
   const statBg = useColorModeValue('blue.50', 'gray.700');
 
   // Responsive values
@@ -168,7 +168,7 @@ const CommoditiesPage = () => {
             left="-5%"
             w="35%"
             h="120%"
-            bg="brand.forex.700"
+            bg="brand.ldn.700"
             opacity="0.3"
             transform="rotate(-15deg)"
             roundedRight="full"
@@ -771,7 +771,7 @@ const CommoditiesPage = () => {
                       <Flex
                         minW={8}
                         h={8}
-                        bg="brand.forex.500"
+                        bg="brand.ldn.500"
                         borderRadius="full"
                         justify="center"
                         align="center"
@@ -791,7 +791,7 @@ const CommoditiesPage = () => {
                       <Flex
                         minW={8}
                         h={8}
-                        bg="brand.forex.500"
+                        bg="brand.ldn.500"
                         justify="center"
                         align="center"
                         fontWeight="bold"
@@ -810,7 +810,7 @@ const CommoditiesPage = () => {
                       <Flex
                         minW={8}
                         h={8}
-                        bg="brand.forex.500"
+                        bg="brand.ldn.500"
                         borderRadius="full"
                         justify="center"
                         align="center"
@@ -830,7 +830,7 @@ const CommoditiesPage = () => {
                       <Flex
                         minW={8}
                         h={8}
-                        bg="brand.forex.500"
+                        bg="brand.ldn.500"
                         borderRadius="full"
                         justify="center"
                         align="center"
@@ -868,7 +868,7 @@ const CommoditiesPage = () => {
                       <Box
                         w="100%"
                         h="350px"
-                        bg="brand.forex.400"
+                        bg="brand.ldn.400"
                         borderRadius="xl"
                         display="flex"
                         alignItems="center"

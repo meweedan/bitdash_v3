@@ -366,14 +366,14 @@ export default function ForexEconomicCalendar() {
                   size={headingSize}
                   fontWeight="bold"
                   bgGradient={isDark ?
-                    "linear(to-r, brand.forex.400, brand.forex.700)" :
-                    "linear(to-r, brand.forex.700, brand.forex.400)"
+                    "linear(to-r, brand.ldn.400, brand.ldn.700)" :
+                    "linear(to-r, brand.ldn.700, brand.ldn.400)"
                   }
                   bgClip="text"
                 >
                   {t('forex:economicCalendar', 'Economic Calendar')}
                 </Heading>
-                <Text color="brand.forex.400" maxW="2xl">
+                <Text color="brand.ldn.400" maxW="2xl">
                   {t('forex:economicCalendarSubtitle', 'Stay informed with upcoming economic events that impact currency markets')}
                 </Text>
               </VStack>
@@ -389,7 +389,7 @@ export default function ForexEconomicCalendar() {
                   <GridItem>
                     <InputGroup>
                       <InputLeftElement>
-                        <SearchIcon color="brand.forex.400" />
+                        <SearchIcon color="brand.ldn.400" />
                       </InputLeftElement>
                       <Input
                         placeholder={t('forex:searchEvents', 'Search events...')}
@@ -452,11 +452,11 @@ export default function ForexEconomicCalendar() {
                   <CardHeader pb={2}>
                     <HStack justify="space-between">
                       <Heading size="md">
-                        <Icon as={FaCalendarAlt} mr={2} color="brand.forex.400" />
+                        <Icon as={FaCalendarAlt} mr={2} color="brand.ldn.400" />
                         {t('forex:upcomingEvents', 'Upcoming Economic Events')}
                       </Heading>
                       <HStack>
-                        <Text fontSize="sm" color="brand.forex.400">
+                        <Text fontSize="sm" color="brand.ldn.400">
                           {filteredEvents.length} {t('forex:eventsFound', 'events found')}
                         </Text>
                       </HStack>
@@ -466,12 +466,12 @@ export default function ForexEconomicCalendar() {
                   <CardBody pt={0}>
                     {loadingEvents ? (
                       <Flex justify="center" py={10}>
-                        <Spinner size="xl" color="brand.forex.400" />
+                        <Spinner size="xl" color="brand.ldn.400" />
                       </Flex>
                     ) : filteredEvents.length === 0 ? (
                       <Flex direction="column" align="center" justify="center" py={10}>
-                        <Icon as={CalendarIcon} boxSize={10} color="brand.forex.400" mb={4} />
-                        <Text color="brand.forex.400">
+                        <Icon as={CalendarIcon} boxSize={10} color="brand.ldn.400" mb={4} />
+                        <Text color="brand.ldn.400">
                           {t('forex:noEventsFound', 'No economic events found for your criteria')}
                         </Text>
                         <Button
@@ -521,7 +521,7 @@ export default function ForexEconomicCalendar() {
                                     <Tr key={event.id}>
                                       <Td>
                                         <HStack>
-                                          <Icon as={TimeIcon} color="brand.forex.400" />
+                                          <Icon as={TimeIcon} color="brand.ldn.400" />
                                           <Text>{event.time}</Text>
                                         </HStack>
                                       </Td>
@@ -596,7 +596,7 @@ export default function ForexEconomicCalendar() {
                   <CardHeader pb={2}>
                     <HStack justify="space-between">
                       <Heading size="md">
-                        <Icon as={FaNewspaper} mr={2} color="brand.forex.400" />
+                        <Icon as={FaNewspaper} mr={2} color="brand.ldn.400" />
                         {t('forex:latestNews', 'Latest Forex News')}
                       </Heading>
                       <Button
@@ -661,7 +661,7 @@ export default function ForexEconomicCalendar() {
                         <Button
                           as={NextLink}
                           href="/ldn/analysis/news"
-                          variant="forex-outline"
+                          variant="ldn-outline"
                           size="sm"
                           rightIcon={<ChevronRightIcon />}
                         >
@@ -677,7 +677,7 @@ export default function ForexEconomicCalendar() {
                   <CardHeader pb={2}>
                     <HStack justify="space-between">
                       <Heading size="md">
-                        <Icon as={FaChartLine} mr={2} color="brand.forex.400" />
+                        <Icon as={FaChartLine} mr={2} color="brand.ldn.400" />
                         {t('forex:marketSummary', 'Market Summary')}
                       </Heading>
                     </HStack>

@@ -135,7 +135,7 @@ const Contact = () => {
     { 
       title: t('technicalSupport', 'Technical Support'), 
       value: 'help@bitdash.app',
-      color: 'brand.forex.400'
+      color: 'brand.ldn.400'
     },
     { 
       title: t('accountQuestions', 'Account Questions'), 

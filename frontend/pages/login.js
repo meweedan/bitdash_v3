@@ -117,10 +117,10 @@ const getColorScheme = (platform, isDark) => {
     },
     bittrade: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.forex.400' : 'brand.forex.600',
-      button: 'brand.forex.500',
-      hover: 'brand.forex.600',
-      border: 'brand.forex.500'
+      text: isDark ? 'brand.ldn.400' : 'brand.ldn.600',
+      button: 'brand.ldn.500',
+      hover: 'brand.ldn.600',
+      border: 'brand.ldn.500'
     },
     bitdash: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',

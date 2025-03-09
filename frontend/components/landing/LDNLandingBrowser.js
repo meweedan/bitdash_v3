@@ -332,13 +332,12 @@ const ForexLandingBrowser = () => {
   ];
 
   return (
-    <Box ref={containerRef} overflow="hidden" dir={isRTL ? 'rtl' : 'ltr'}>
-      {/* Hero Section */}
-      <Box 
+  <Box ref={containerRef} dir={isRTL ? 'rtl' : 'ltr'}>
+    {/* Hero Section */}
+    <Box 
         as="section" 
         position="relative"
-        pt={{ base: 18, md: 20 }}
-        overflow="hidden"
+        p={{ base: 18, md: 20 }}
       >
         {/* Background elements */}
         <Box
@@ -348,8 +347,9 @@ const ForexLandingBrowser = () => {
           right="0"
           bottom="0"
           zIndex={0}
+          overflow="hidden" // This prevents image overflow
         >
-          {/* Images for background */}
+          {/* First background image */}
           <Image
             src="/images/background-1.png"
             alt="Background image"
@@ -357,47 +357,44 @@ const ForexLandingBrowser = () => {
             height="100%"
             objectFit="cover"
             objectPosition="center"
-            opacity={0.2}
+            opacity={0.25}
             position="absolute"
           />
           <Image
-            src="/images/ldn-skyline.png"
-            alt="Background image"
+              src="/images/clouds.png"
+              alt="Clouds skyline"
+              width="100%"
+              height="100%"
+              objectFit="cover"
+              objectPosition="bottom center"
+              opacity={0.25}
+            />
+          
+          {/* London skyline image */}
+          <Box
+            position="absolute"
+            bottom="0"
             width="100%"
             height="100%"
-            objectFit="cover"
-            objectPosition="center"
-            opacity={0.2}
-            position="absolute"
-          />
-          
-          {/* Animated gradient orbs */}
-          <Box
-            position="absolute"
-            top="10%"
-            left="5%"
-            width="300px"
-            height="300px"
-            borderRadius="full"
-            bg="radial-gradient(circle, rgba(139,121,102,0.3) 0%, rgba(139,121,102,0) 70%)"
-            filter="blur(40px)"
-            animation="pulse 15s infinite"
-          />
-          <Box
-            position="absolute"
-            bottom="10%"
-            right="5%"
-            width="400px"
-            height="400px"
-            borderRadius="full"
-            bg="radial-gradient(circle, rgba(139,121,102,0.2) 0%, rgba(139,121,102,0) 70%)"
-            filter="blur(40px)"
-            animation="pulse 18s infinite 2s"
-          />
+            display="flex"
+            justifyContent="center"
+            alignItems="flex-end" // Ensures alignment at the bottom
+          >
+            <Image
+              src="/images/ldn-skyline.png"
+              alt="London skyline"
+              width="100%"
+              height="100%"
+              objectFit="contain"
+              objectPosition="bottom center"
+              opacity={0.35}
+              style={{ marginTop: "auto" }} // Pushes the image to the bottom
+            />
+          </Box>
         </Box>
 
         <Container maxW="container.xl" position="relative" zIndex="2">
-          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 1, lg: 10 }} alignItems="center">
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 1, lg: 10 }} alignItems="center" mt={{ base: 18, md: 20 }}>
             <GridItem>
               <MotionBox
                 initial="hidden"
@@ -424,7 +421,15 @@ const ForexLandingBrowser = () => {
                   >
                     {t('trade.hero.description', 'Access global markets with a regulated Forex broker offering competitive spreads, fast execution, and powerful trading platforms.')}
                   </Text>
-                  
+                  <Button
+                      variant="ldn-solid"
+                      color="white"
+                      _hover={{ bg: "#9c8877" }}
+                      onClick={() => router.push('/signup')}
+                    >
+                      {t('trade.hero.get_started', 'Open Account')}
+                    </Button>
+
                   <HStack spacing={6} mt={6} color={isDark ? "white" : "black"} fontWeight="bold" flexWrap="wrap">
                     <HStack>
                       <Icon as={CheckCircle} color={isDark ? "white" : "black"} />
@@ -441,34 +446,8 @@ const ForexLandingBrowser = () => {
                       <Text>{t('Landinghero.feature3', 'Competitive Spreads')}</Text>
                     </HStack>
                   </HStack>
-
-                  <HStack spacing={6} pt={4}>
-                    <Button
-                      size="lg"
-                      px={8}
-                      variant="forex-solid"
-                      color="white"
-                      _hover={{ bg: "#9c8877" }}
-                      h={14}
-                      fontSize="lg"
-                      onClick={() => router.push('/signup')}
-                    >
-                      {t('trade.hero.get_started', 'Open Account')}
-                    </Button>
-                  </HStack>
                 </VStack>
               </MotionBox>
-            </GridItem>
-            
-            <GridItem>
-              <ParallaxBox offset={isMobile ? 30 : 100}>
-                <Image 
-                  src="/images/trading-banner.png" 
-                  alt={t('hero.banner.alt', 'Trading Banner')}
-                  borderRadius="xl"
-                  width={heroImageSize}
-                />
-              </ParallaxBox>
             </GridItem>
           </Grid>
         </Container>
@@ -651,7 +630,7 @@ const ForexLandingBrowser = () => {
             fontSize={{ base: '3xl', md: '4xl' }}
             color={accentColor}
           >
-            {t('trade.platform.title', 'Why Choose Forex by BitDash')}
+            {t('trade.platform.title')}
           </Heading>
           
           <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} mb={16}>
@@ -833,17 +812,8 @@ const ForexLandingBrowser = () => {
         </Box>
         
         {/* Steps to Start Trading Section */}
-        <Box as="section">
+        <Box>
           <VStack spacing={16}>
-            <MotionBox
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              textAlign="center"
-              maxW="3xl"
-              mx="auto"
-            >
               <Text 
                 color="#8b7966" 
                 fontWeight="bold" 
@@ -855,7 +825,6 @@ const ForexLandingBrowser = () => {
               </Text>
               
               <Heading
-                fontSize={{ base: "3xl", md: "4xl" }}
                 fontWeight="bold"
                 color={isDark ? "white" : "#333"}
                 mb={5}
@@ -864,12 +833,10 @@ const ForexLandingBrowser = () => {
               </Heading>
               
               <Text
-                fontSize={{ base: "md", md: "lg" }}
                 color={isDark ? "gray.300" : "gray.600"}
               >
                 {t('steps.description', 'Begin your trading journey with BitDash in just a few easy steps')}
               </Text>
-            </MotionBox>
             
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} width="full">
               {tradingSteps.map((step, index) => (
@@ -878,7 +845,6 @@ const ForexLandingBrowser = () => {
                   number={step.number}
                   title={step.title}
                   description={step.description}
-                  delay={index * 0.1}
                 />
               ))}
             </SimpleGrid>
@@ -886,9 +852,6 @@ const ForexLandingBrowser = () => {
             <Button
               bg="#8b7966"
               color="white"
-              _hover={{ bg: "#9c7c63" }}
-              size="lg"
-              px={10}
               onClick={() => router.push('/signup')}
               rightIcon={<ArrowRight />}
             >
@@ -898,15 +861,9 @@ const ForexLandingBrowser = () => {
         </Box>
                 
         {/* Mobile App Section */}
-        <Box mb={24}>
-          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 8, lg: 16 }} alignItems="center">
+        <Box mt={24}>
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} alignItems="center">
             <GridItem>
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
                 <VStack align={{ base: "center", lg: "flex-start" }} spacing={{ base: 4, md: 8 }} textAlign={{ base: "center", lg: "left" }}>
                   <Heading
                     fontSize={{ base: "xl", md: "3xl" }}
@@ -951,40 +908,22 @@ const ForexLandingBrowser = () => {
                       alt="Google Play" 
                       height={{ base: "40px", md: "50px" }}
                       cursor="pointer"
-                      transition="transform 0.3s ease"
-                      _hover={{ transform: "scale(1.05)" }}
                     />
                     </Link>
                   </HStack>
                 </VStack>
-              </motion.div>
             </GridItem>
                             
             <GridItem>
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
                 <Box 
-                  borderRadius="xl" 
-                  overflow="hidden" 
-                  boxShadow="2xl"
                   zIndex={1}
-                  transform="perspective(1000px) rotateY(-5deg) rotateX(5deg)"
-                  transition="all 0.5s ease"
-                  _hover={{
-                    transform: "perspective(1000px) rotateY(0deg) rotateX(0deg)"
-                  }}
                 >
                   <Image 
-                    src="/images/dashboard-screenshot.png" 
+                    src="/images/dashboard-ldn.png" 
                     alt={t('mobileApp.imageAlt', 'Mobile App Screenshot')}
                     width="100%"
                   />
                 </Box>
-              </motion.div>
             </GridItem>
           </Grid>
         </Box>
