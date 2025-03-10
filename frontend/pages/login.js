@@ -18,20 +18,11 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/components/Layout';
 
 const PLATFORM_ROUTES = {
-  crypto: {
-    crypto_trader: '/crypto/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://crypto.bitdash.app'
-  },
-  cash: {
+  adfaaly: {
     merchant: '/merchant/dashboard',
     agent: '/agent/dashboard',
     customer: '/client/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://cash.bitdash.app'
-  },
-  stock: {
-    institutional: '/institutional/dashboard',
-    individual: '/individual/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://stock.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://adfaaly.bitdash.app'
   },
   ldn: {
     retail_trader: '/trader/dashboard',
@@ -42,17 +33,10 @@ const PLATFORM_ROUTES = {
 };
 
 const PROFILE_ENDPOINTS = {
-  crypto: {
-    crypto_trader: '/api/crypto-traders',
-  },
-  cash: {
+  adfaaly: {
     merchant: '/api/merchants',
     agent: '/api/agents',
     customer: '/api/customer-profiles'
-  },
-  stock: {
-    owner: '/api/institutional-clients',
-    individual: '/api/investors'
   },
   ldn: {
     retail_trader: '/api/retail-traders',
@@ -62,12 +46,9 @@ const PROFILE_ENDPOINTS = {
 };
 
 const BUSINESS_TYPE_ROUTES = {
-  crypto_trader: { platform: 'crypto', userType: 'crypto_trader' },
-  merchant: { platform: 'cash', userType: 'merchant' },
-  agent: { platform: 'cash', userType: 'agent' },
-  customer: { platform: 'cash', userType: 'customer' },
-  institutional: { platform: 'stock', userType: 'institutional' },
-  individual: { platform: 'stock', userType: 'individual' },
+  merchant: { platform: 'adfaaly', userType: 'merchant' },
+  agent: { platform: 'adfaaly', userType: 'agent' },
+  customer: { platform: 'adfaaly', userType: 'customer' },
   retail_trader: { platform: 'ldn', userType: 'retail_trader' },
   ib: { platform: 'ldn', userType: 'ib' },
   institute: { platform: 'ldn', userType: 'institute' }
@@ -76,17 +57,13 @@ const BUSINESS_TYPE_ROUTES = {
 const getPlatformFromURL = () => {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
-    if (hostname.includes('cash')) return 'cash';
-    if (hostname.includes('crypto')) return 'crypto';
+    if (hostname.includes('adfaaly')) return 'adfaaly';
     if (hostname.includes('ldn')) return 'ldn';
-    if (hostname.includes('stock')) return 'stock';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
-      if (path.includes('/cash')) return 'cash';
-      if (path.includes('/crypto')) return 'crypto';
+      if (path.includes('/adfaaly')) return 'adfaaly';
       if (path.includes('/ldn')) return 'ldn';
-      if (path.includes('/stock')) return 'stock';
     }
   }
   return 'bitdash';
@@ -94,28 +71,14 @@ const getPlatformFromURL = () => {
 
 const getColorScheme = (platform, isDark) => {
   const colorSchemes = {
-    bitcash: {
+    adfaaly: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.cash.400' : 'brand.cash.600',
-      button: 'brand.cash.500',
-      hover: 'brand.cash.600',
-      border: 'brand.cash.500'
+      text: isDark ? 'brand.adfaaly.400' : 'brand.adfaaly.600',
+      button: 'brand.adfaaly.500',
+      hover: 'brand.adfaaly.600',
+      border: 'brand.adfaaly.500'
     },
-    bitfund: {
-      bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.crypto.400' : 'brand.crypto.600',
-      button: 'brand.crypto.500',
-      hover: 'brand.crypto.600',
-      border: 'brand.crypto.500'
-    },
-    bitstock: {
-      bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.stocks.400' : 'brand.stocks.600',
-      button: 'brand.stocks.500',
-      hover: 'brand.stocks.600',
-      border: 'brand.stocks.500'
-    },
-    bittrade: {
+    ldn: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
       text: isDark ? 'brand.ldn.400' : 'brand.ldn.600',
       button: 'brand.ldn.500',
@@ -176,7 +139,7 @@ const LoginPage = () => {
   };
 
   const buttonStyles = {
-    variant: currentPlatform.includes('bit') ? `${currentPlatform}-solid` : 'bitdash-solid',
+    variant: currentPlatform.includes('adfaaly') ? `${currentPlatform}-solid` : 'ldn-solid',
     bg: colors.button,
     color: 'white',
     _hover: {
@@ -309,8 +272,8 @@ const LoginPage = () => {
       }
     }
     
-    // Handle cash platform customer check
-    if (platform === 'cash') {
+    // Handle adfaaly platform customer check
+    if (platform === 'adfaaly') {
       const customerProfileResponse = await fetch(
         `${BASE_URL}/api/customer-profiles?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
         { 
