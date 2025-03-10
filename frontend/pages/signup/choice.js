@@ -342,37 +342,12 @@ export default function SignupChoice() {
         justify="center"
         dir={isRTL ? 'rtl' : 'ltr'}
       >
-        <Container maxW={currentPlatform ? "5xl" : "2xl"} centerContent>
-          <VStack spacing={12} w="full">
+        <Container maxW={currentPlatform ? "2xl" : "2xl"} centerContent>
+          <VStack spacing={4} w="full">
             {/* Header */}
             <VStack spacing={6}>
               {currentPlatform ? (
                 <>
-                  <Circle
-                    size={circleSizeLarge}
-                    bg={isDark ? `brand.${currentPlatform.themeKey}.900` : `brand.${currentPlatform.themeKey}.100`}
-                    color={`brand.${currentPlatform.themeKey}.500`}
-                  >
-                    <Icon as={currentPlatform.icon} boxSize={iconSizeLarge} />
-                  </Circle>
-                  
-                  <Heading
-                    textAlign="center"
-                    size={headingSize}
-                    bgGradient={`linear(to-r, brand.${currentPlatform.themeKey}.400, brand.${currentPlatform.themeKey}.600)`}
-                    bgClip="text"
-                  >
-                    {t('joinPlatform', { name: t(currentPlatform.nameKey, currentPlatform.name) })}
-                  </Heading>
-                  
-                  <Text 
-                    textAlign="center" 
-                    color={isDark ? 'gray.300' : 'gray.600'}
-                    maxW="2xl"
-                    fontSize={textSize}
-                  >
-                    {t(currentPlatform.descriptionKey, currentPlatform.description)}
-                  </Text>
                 </>
               ) : (
                 <>
