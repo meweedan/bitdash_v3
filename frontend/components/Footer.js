@@ -114,10 +114,10 @@ const Footer = () => {
       { label: 'Charts', href: '/ldn/charts', icon: BarChart2 },
     ],
     adfaaly: [
-      { label: 'Transfer Money', href: '/cash/client/transfer', icon: FiArrowRightCircle },
-      { label: 'Payment Solutions', href: '/cash/solutions', icon: CreditCard },
-      { label: 'Business Tools', href: '/cash/business', icon: Building },
-      { label: 'Account', href: '/cash/account', icon: User },
+      { label: 'Transfer Money', href: '/adfaaly/client/transfer', icon: FiArrowRightCircle },
+      { label: 'Payment Solutions', href: '/adfaaly/solutions', icon: CreditCard },
+      { label: 'Business Tools', href: '/adfaaly/business', icon: Building },
+      { label: 'Account', href: '/adfaaly/account', icon: User },
     ]
   };
 
@@ -170,10 +170,10 @@ const Footer = () => {
         account: '/ldn/account',
       },
       adfaaly: {
-        transfer: 'cash/client/transfer',
-        wallet: '/cash/wallet',
-        history: '/cash/transactions',
-        account: '/cash/client/dashboard',
+        transfer: 'adfaaly/client/transfer',
+        wallet: '/adfaaly/wallet',
+        history: '/adfaaly/transactions',
+        account: '/adfaaly/client/dashboard',
       }
     };
 
@@ -225,7 +225,7 @@ const Footer = () => {
         path = `/ldn/transaction/${trackingNumber}`;
         break;
       case 'adfaaly':
-        path = `/cash/transaction/${trackingNumber}`;
+        path = `/adfaaly/transaction/${trackingNumber}`;
         break;
       default:
         path = `/tracking/${trackingNumber}`;

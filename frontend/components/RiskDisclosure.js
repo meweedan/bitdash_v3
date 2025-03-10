@@ -175,10 +175,6 @@ const RiskDisclosure = ({ platform, accountType, onAccept, isRequired = true }) 
         'introducing-broker': [
           t('introducingBrokerWarning', 'As an Introducing Broker, you are responsible for properly representing our services to clients. Misrepresenting products or making guaranteed return promises is strictly prohibited.'),
           t('clientLossWarning', 'Your clients may experience losses when trading. You must ensure all referred clients understand the risks associated with trading our products.')
-        ],
-        institutional: [
-          t('institutionalWarning', 'Even with advanced trading tools and infrastructure, institutional trading carries significant risks. Market disruptions, liquidity events, and system failures can impact operations.'),
-          t('dueDigenceReminder', 'Your organization should conduct thorough due diligence and risk assessment before utilizing our services.')
         ]
       },
       adfaaly: {

@@ -58,7 +58,7 @@ const nextConfig = {
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'adfaaly.bitdash.app' }],
-        destination: '/cash/:path*',
+        destination: '/adfaaly/:path*',
       }
     ];
   },

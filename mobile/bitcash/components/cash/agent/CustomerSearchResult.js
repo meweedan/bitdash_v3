@@ -1,4 +1,4 @@
-// components/cash/agent/CustomerSearchResult.js
+// components/adfaaly/agent/CustomerSearchResult.js
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import ThemedText from '../../ThemedText';

@@ -1,4 +1,4 @@
-// components/cash/merchant/PremiumQRGenerator.js
+// components/adfaaly/merchant/PremiumQRGenerator.js
 import React, { useRef, useState } from 'react';
 import {
   Modal,

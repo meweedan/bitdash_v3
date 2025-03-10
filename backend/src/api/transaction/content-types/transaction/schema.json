@@ -95,18 +95,6 @@
       "target": "api::retail-trader.retail-trader",
       "inversedBy": "trading_history"
     },
-    "investor": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::investor.investor",
-      "inversedBy": "investmentHistory"
-    },
-    "institutional_client": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::institutional-client.institutional-client",
-      "inversedBy": "transactionHistory"
-    },
     "introducing_broker": {
       "type": "relation",
       "relation": "manyToOne",

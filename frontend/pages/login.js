@@ -27,7 +27,6 @@ const PLATFORM_ROUTES = {
   ldn: {
     retail_trader: '/trader/dashboard',
     ib: '/ib/dashboard',
-    institute: '/institute/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://ldn.bitdash.app'
   }
 };
@@ -41,7 +40,6 @@ const PROFILE_ENDPOINTS = {
   ldn: {
     retail_trader: '/api/retail-traders',
     ib: '/api/introducing-brokers',
-    institute: '/api/institutional-clients'
   }
 };
 
@@ -51,7 +49,6 @@ const BUSINESS_TYPE_ROUTES = {
   customer: { platform: 'adfaaly', userType: 'customer' },
   retail_trader: { platform: 'ldn', userType: 'retail_trader' },
   ib: { platform: 'ldn', userType: 'ib' },
-  institute: { platform: 'ldn', userType: 'institute' }
 };
 
 const getPlatformFromURL = () => {

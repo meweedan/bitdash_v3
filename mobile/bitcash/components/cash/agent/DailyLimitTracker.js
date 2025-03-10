@@ -1,4 +1,4 @@
-// components/cash/agent/DailyLimitTracker.js
+// components/adfaaly/agent/DailyLimitTracker.js
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ThemedText } from '../../ThemedText';

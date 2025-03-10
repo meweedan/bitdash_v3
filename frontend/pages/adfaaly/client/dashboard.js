@@ -81,7 +81,7 @@ import WalletQRModal from '@/components/modals/WalletQRModal';
 import SpendingCategoryChart from '@/components/charts/SpendingCategoryChart';
 import MonthlyTrendChart from '@/components/charts/MonthlyTrendChart';
 import PaymentLinkList from '@/components/transactions/PaymentLinkList';
-import AgentLocator from '@/components/cash/customer/AgentLocator';
+import AgentLocator from '@/components/adfaaly/customer/AgentLocator';
 
 const MotionStat = motion(Stat);
 

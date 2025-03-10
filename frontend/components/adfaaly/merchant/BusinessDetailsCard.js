@@ -1,4 +1,4 @@
-// components/cash/merchant/BusinessDetailsCard.js
+// components/adfaaly/merchant/BusinessDetailsCard.js
 import React, { useState } from 'react';
 import {
   Box,

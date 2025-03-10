@@ -101,12 +101,12 @@ const formStyles = {
 
 const inputStyles = {
   bg: "rgba(255, 255, 255, 0.05)",
-  borderColor: "brand.ldn.400",
+  borderColor: "brand.bittrade.400",
   _hover: {
     borderColor: "whiteAlpha.400",
   },
   _focus: {
-    borderColor: "brand.ldn.400",
+    borderColor: "brand.bittrade.400",
     bg: "rgba(255, 255, 255, 0.08)",
   }
 };
@@ -361,6 +361,7 @@ export default function TraderSignup() {
 
     setLoading(true);
     try {
+      // 1. Register user
       const userResponse = await fetch(`${BASE_URL}/api/auth/local/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -370,19 +371,12 @@ export default function TraderSignup() {
           password: formData.password,
           confirmed: true,
           blocked: false,
-          role: ROLES.RETAIL_TRADER,
-          primaryPlatform: "ldn"  // Try with this value first
+          role: ROLES.RETAIL_TRADER
         })
       });
 
       const userData = await userResponse.json();
-      
-      // Log the full response for debugging
-      console.log('User registration response:', userData);
-      
       if (!userResponse.ok) {
-        // Show the detailed error in the console
-        console.error('Registration error details:', userData);
         throw new Error(userData.error?.message || t('registrationFailed'));
       }
 
@@ -470,7 +464,7 @@ export default function TraderSignup() {
       }
 
        // 4. Update user with retail trader role
-        await fetch(`${BASE_URL}/api/users/${user.id}`, {
+        await fetch(`${API_URL}/api/users/${user.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -600,7 +594,7 @@ export default function TraderSignup() {
       
       <Alert status="info" borderRadius="md">
         <AlertIcon />
-        <Text fontSize="sm" color="linear(to-r, brand.ldn.500, brand.ldn.700)">
+        <Text fontSize="sm" color="linear(to-r, brand.bittrade.500, brand.bittrade.700)">
           {t('createTradingAccountInfo')}
         </Text>
       </Alert>
@@ -666,8 +660,8 @@ export default function TraderSignup() {
 
       <Box pt={4}>
         <Button
-          color="brand.ldn.400"
-          variant="ldn-outline"
+          color="brand.bittrade.400"
+          variant="bittrade-outline"
           size="lg"
           onClick={nextStep}
           width="full"
@@ -802,14 +796,14 @@ export default function TraderSignup() {
 
       <HStack justify="space-between" pt={4}>
         <Button
-          variant="ldn-outline"
+          variant="bittrade-outline"
           onClick={prevStep}
         >
           {t('back')}
         </Button>
         <Button
-          variant="ldn-outline"
-          color="brand.ldn.400"
+          variant="bittrade-outline"
+          color="brand.bittrade.400"
           onClick={nextStep}
         >
           {t('continue')}
@@ -847,7 +841,7 @@ export default function TraderSignup() {
                 _hover={{ borderColor: accentColor }}
                 onClick={() => setFormData(prev => ({ ...prev, accountType: type.value }))}
               >
-                <Radio value={type.value} color="brand.ldn.400">
+                <Radio value={type.value} color="brand.bittrade.400">
                   <Text fontWeight="bold">{type.label}</Text>
                 </Radio>
                 <Text ml={6} fontSize="sm" mt={1}>{type.description}</Text>
@@ -871,7 +865,7 @@ export default function TraderSignup() {
         >
           <Stack direction="column" spacing={2}>
             {TRADING_EXPERIENCE_OPTIONS.map(option => (
-              <Radio key={option.value} value={option.value} color="brand.ldn.400">
+              <Radio key={option.value} value={option.value} color="brand.bittrade.400">
                 {option.label}
               </Radio>
             ))}
@@ -887,10 +881,10 @@ export default function TraderSignup() {
           onChange={(value) => setFormData(prev => ({ ...prev, tradingFrequency: value }))}
         >
           <Stack direction="column" spacing={2}>
-            <Radio value="rarely" color="brand.ldn.400">{t('rarely')}</Radio>
-            <Radio value="occasionally" color="brand.ldn.400">{t('occasionally')}</Radio>
-            <Radio value="frequently" color="brand.ldn.400">{t('frequently')}</Radio>
-            <Radio value="daily" color="brand.ldn.400">{t('daily')}</Radio>
+            <Radio value="rarely" color="brand.bittrade.400">{t('rarely')}</Radio>
+            <Radio value="occasionally" color="brand.bittrade.400">{t('occasionally')}</Radio>
+            <Radio value="frequently" color="brand.bittrade.400">{t('frequently')}</Radio>
+            <Radio value="daily" color="brand.bittrade.400">{t('daily')}</Radio>
           </Stack>
         </RadioGroup>
       </FormControl>
@@ -903,9 +897,9 @@ export default function TraderSignup() {
           onChange={(value) => setFormData(prev => ({ ...prev, riskTolerance: value }))}
         >
           <Stack direction="column" spacing={2}>
-            <Radio value="conservative" color="brand.ldn.400">{t('conservative')}</Radio>
-            <Radio value="moderate" color="brand.ldn.400">{t('moderate')}</Radio>
-            <Radio value="aggressive" color="brand.ldn.400">{t('aggressive')}</Radio>
+            <Radio value="conservative" color="brand.bittrade.400">{t('conservative')}</Radio>
+            <Radio value="moderate" color="brand.bittrade.400">{t('moderate')}</Radio>
+            <Radio value="aggressive" color="brand.bittrade.400">{t('aggressive')}</Radio>
           </Stack>
         </RadioGroup>
       </FormControl>
@@ -998,14 +992,14 @@ export default function TraderSignup() {
 
       <HStack justify="space-between" pt={4}>
         <Button
-          variant="ldn-outline"
+          variant="bittrade-outline"
           onClick={prevStep}
         >
           {t('back')}
         </Button>
         <Button
-          variant="ldn-outline"
-          color="brand.ldn.400"
+          variant="bittrade-outline"
+          color="brand.bittrade.400"
           onClick={nextStep}
         >
           {t('continue')}
@@ -1098,7 +1092,7 @@ export default function TraderSignup() {
               </Checkbox>
               
               <RiskDisclosure 
-                platform="ldn" 
+                platform="BitTrade" 
                 accountType="retail" 
                 onAccept={handleRiskAcceptance} 
               />
@@ -1135,13 +1129,13 @@ export default function TraderSignup() {
       
       <HStack justify="space-between" pt={4}>
         <Button
-          variant="ldn-outline"
+          variant="bittrade-outline"
           onClick={prevStep}
         >
           {t('back')}
         </Button>
         <Button
-          color="brand.ldn.400"
+          color="brand.bittrade.400"
           onClick={handleSubmit}
           isLoading={loading}
           loadingText={t('creatingAccount')}
@@ -1153,7 +1147,7 @@ export default function TraderSignup() {
   );
   
   // Helper for accent color based on color mode
-  const accentColor = useColorModeValue('brand.ldn.500', 'brand.ldn.700');
+  const accentColor = useColorModeValue('brand.bittrade.500', 'brand.bittrade.700');
   
   // Progress step indicator
   const renderProgressSteps = () => (
@@ -1161,7 +1155,7 @@ export default function TraderSignup() {
       <Progress 
         value={progress} 
         size="sm" 
-        color="brand.ldn.400" 
+        color="brand.bittrade.400" 
         borderRadius="full" 
         mb={4}
       />

@@ -156,15 +156,6 @@ const PLATFORMS = {
         descriptionKey: 'ldn.ib.description',
         icon: FaHandshake,
         signupPath: '/signup/ib',
-      },
-      {
-        type: 'institutional',
-        title: 'Institutional Trading',
-        titleKey: 'ldn.institutional.title',
-        description: 'Access deep liquidity pools, prime brokerage services, and custom API solutions.',
-        descriptionKey: 'ldn.institutional.description',
-        icon: FaBuilding,
-        signupPath: '/signup/institute',
       }
     ]
   }

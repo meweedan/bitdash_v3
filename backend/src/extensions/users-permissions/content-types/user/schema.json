@@ -95,18 +95,6 @@
       "target": "api::retail-trader.retail-trader",
       "mappedBy": "users_permissions_user"
     },
-    "investor": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::investor.investor",
-      "mappedBy": "users_permissions_user"
-    },
-    "institutional_client": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::institutional-client.institutional-client",
-      "mappedBy": "users_permissions_user"
-    },
     "introducing_broker": {
       "type": "relation",
       "relation": "oneToOne",

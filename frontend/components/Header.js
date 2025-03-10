@@ -178,20 +178,20 @@ export default function Header() {
       return [
         { 
           name: t('payments', 'Payments'), 
-          path: '/cash/payments',
+          path: '/adfaaly/payments',
           submenu: [
-            { name: t('sendMoney', 'Send Money'), path: '/cash/payments/send' },
-            { name: t('requestMoney', 'Request Money'), path: '/cash/payments/request' },
-            { name: t('payBills', 'Pay Bills'), path: '/cash/payments/bills' },
+            { name: t('sendMoney', 'Send Money'), path: '/adfaaly/payments/send' },
+            { name: t('requestMoney', 'Request Money'), path: '/adfaaly/payments/request' },
+            { name: t('payBills', 'Pay Bills'), path: '/adfaaly/payments/bills' },
           ]
         },
         { 
           name: t('cards', 'Cards'), 
-          path: '/cash/cards',
+          path: '/adfaaly/cards',
           submenu: [
-            { name: t('virtualCards', 'Virtual Cards'), path: '/cash/cards/virtual' },
-            { name: t('physicalCards', 'Physical Cards'), path: '/cash/cards/physical' },
-            { name: t('cardSettings', 'Card Settings'), path: '/cash/cards/settings' },
+            { name: t('virtualCards', 'Virtual Cards'), path: '/adfaaly/cards/virtual' },
+            { name: t('physicalCards', 'Physical Cards'), path: '/adfaaly/cards/physical' },
+            { name: t('cardSettings', 'Card Settings'), path: '/adfaaly/cards/settings' },
           ]
         }
       ];

@@ -127,12 +127,6 @@
       "relation": "oneToMany",
       "target": "api::audit-log.audit-log",
       "mappedBy": "operator"
-    },
-    "managedInstitutionalClients": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::institutional-client.institutional-client",
-      "mappedBy": "dedicatedManager"
     }
   }
 }

@@ -33,7 +33,7 @@
     },
     "wallet_type": {
       "type": "enumeration",
-      "enum": ["customer", "agent", "merchant", "operator", "trader", "investor", "corporate", "platform"],
+      "enum": ["customer", "agent", "merchant", "operator", "trader", "platform"],
       "default": "customer",
       "required": true
     },
@@ -62,17 +62,6 @@
       "relation": "oneToOne",
       "target": "api::retail-trader.retail-trader",
       "inversedBy": "wallet"
-    },
-    "investor": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::investor.investor"
-    },
-    "institutional_client": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::institutional-client.institutional-client",
-      "inversedBy": "wallets"
     },
     "introducing_broker": {
       "type": "relation",

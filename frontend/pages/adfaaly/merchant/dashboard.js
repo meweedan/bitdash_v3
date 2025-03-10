@@ -56,10 +56,10 @@ import { FaQrcode } from 'react-icons/fa';
 import format from 'date-fns/format';
 
 // Components
-import TransactionsList from '@/components/cash/merchant/TransactionsList';
-import PaymentLinksList from '@/components/cash/merchant/PaymentLinksList';
-import WalletBalance from '@/components/cash/WalletBalance';
-import PaymentLinkGenerator from '@/components/cash/merchant/PaymentLinkGenerator';
+import TransactionsList from '@/components/adfaaly/merchant/TransactionsList';
+import PaymentLinksList from '@/components/adfaaly/merchant/PaymentLinksList';
+import WalletBalance from '@/components/adfaaly/WalletBalance';
+import PaymentLinkGenerator from '@/components/adfaaly/merchant/PaymentLinkGenerator';
 
 const statusColors = {
   active: 'green',
