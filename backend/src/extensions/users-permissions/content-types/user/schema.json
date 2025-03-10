@@ -115,7 +115,7 @@
     },
     "primaryPlatform": {
       "type": "enumeration",
-      "enum": ["crypto", "stock", "ldn", "cash", "multiple"],
+      "enum": ["ldn", "cash", "multiple"],
       "default": "bitcash"
     },
     "registrationDate": {

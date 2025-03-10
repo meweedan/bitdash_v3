@@ -88,134 +88,81 @@ const PlatformBox = styled(Box)`
 
 // Updated platforms with fintech focus - using i18n keys
 const PLATFORMS = {
-  CASH: {
-    subdomain: 'cash',
-    name: 'Cash by BitDash',
-    nameKey: 'cash.name',
-    themeKey: 'bitcash',
+  ADFAALY: {
+    subdomain: 'adfaaly',
+    name: 'Adfaaly',
+    nameKey: 'adfaaly.name',
+    themeKey: 'adfaaly',
     title: 'Digital Payment Solutions',
-    titleKey: 'bitcash.title',
+    titleKey: 'adfaaly.title',
     description: 'Streamlined payment processing and financial services for businesses and individuals.',
-    descriptionKey: 'bitcash.description',
+    descriptionKey: 'adfaaly.description',
     icon: FaMoneyBillWave,
     options: [
       {
         type: 'merchant',
         title: 'Business Account',
-        titleKey: 'bitcash.merchant.title',
+        titleKey: 'adfaaly.merchant.title',
         description: 'Accept payments, manage transactions, and access financial tools for your business.',
-        descriptionKey: 'bitcash.merchant.description',
+        descriptionKey: 'adfaaly.merchant.description',
         icon: FaStore,
         signupPath: '/signup/merchant',
       },
       {
         type: 'agent',
         title: 'Payment Agent',
-        titleKey: 'bitcash.agent.title',
+        titleKey: 'adfaaly.agent.title',
         description: 'Facilitate payments and earn commission on processed transactions.',
-        descriptionKey: 'bitcash.agent.description',
+        descriptionKey: 'adfaaly.agent.description',
         icon: FaHandshake,
         signupPath: '/signup/agent',
       },
       {
         type: 'customer',
         title: 'Customer Account',
-        titleKey: 'bitcash.customer.title',
+        titleKey: 'adfaaly.customer.title',
         description: 'Send and receive money instantly with low fees and global coverage.',
-        descriptionKey: 'bitcash.customer.description',
+        descriptionKey: 'adfaaly.customer.description',
         icon: FaUserTie,
         signupPath: '/signup/customer'
       }
     ]
   },
-  CRYPTO: {
-    subdomain: 'crypto',
-    name: 'Crypto by BitDash',
-    nameKey: 'crypto.name',
-    themeKey: 'bitfund',
-    title: 'Crypto exchange and marketplace',
-    titleKey: 'bitfund.title',
-    description: 'Performance-based funding for skilled traders with comprehensive evaluation.',
-    descriptionKey: 'bitfund.description',
-    icon: FaChartLine,
-    options: [
-      {
-        type: 'trader',
-        title: 'Challenge Account',
-        titleKey: 'bitfund.trader.title',
-        description: 'Prove your trading skill and get funded up to $200,000 with our evaluation process.',
-        descriptionKey: 'bitfund.trader.description',
-        icon: FaChartBar,
-        signupPath: '/signup/challenger',
-      }
-    ]
-  },
-  STOCK: {
-    subdomain: 'stock',
-    name: 'Stock by BitDash',
-    nameKey: 'bitstock.name',
-    themeKey: 'bitstock',
-    title: 'Global Investment Platform',
-    titleKey: 'bitstock.title',
-    description: 'Access US and EU markets, private assets, commodities, and more from MENA and GCC regions.',
-    descriptionKey: 'bitstock.description',
-    icon: FaUniversity,
-    options: [
-      {
-        type: 'individual',
-        title: 'Individual Investor',
-        titleKey: 'bitstock.individual.title',
-        description: 'Invest in global markets with access to stocks, ETFs, and alternative assets.',
-        descriptionKey: 'bitstock.individual.description',
-        icon: FaUserTie,
-        signupPath: '/signup/individual',
-      },
-      {
-        type: 'institutional',
-        title: 'Institutional Account',
-        titleKey: 'bitstock.institutional.title',
-        description: 'Customized investment solutions for funds, family offices, and corporations.',
-        descriptionKey: 'bitstock.institutional.description',
-        icon: FaBuilding,
-        signupPath: '/signup/institutional',
-      }
-    ]
-  },
   LDN: {
     subdomain: 'ldn',
-    name: 'LDN Prime Marketsh',
+    name: 'LDN Prime Markets',
     nameKey: 'forex.name',
     themeKey: 'ldn',
     title: 'Regulated Forex Broker',
-    titleKey: 'bittrade.title',
+    titleKey: 'ldn.title',
     description: 'Professional trading platform for forex, cryptocurrencies and commodities with institutional liquidity.',
-    descriptionKey: 'bittrade.description',
+    descriptionKey: 'ldn.description',
     icon: FaExchangeAlt,
     options: [
       {
         type: 'retail',
         title: 'Retail Trader',
-        titleKey: 'bittrade.retail.title',
+        titleKey: 'ldn.retail.title',
         description: 'Trade forex, crypto, indices and commodity CFDs with competitive spreads and high leverage.',
-        descriptionKey: 'bittrade.retail.description',
+        descriptionKey: 'ldn.retail.description',
         icon: FaUserTie,
         signupPath: '/signup/trader',
       },
       {
         type: 'introducing-broker',
         title: 'Introducing Broker',
-        titleKey: 'bittrade.ib.title',
+        titleKey: 'ldn.ib.title',
         description: 'Refer clients and earn ongoing commissions on their trading activity.',
-        descriptionKey: 'bittrade.ib.description',
+        descriptionKey: 'ldn.ib.description',
         icon: FaHandshake,
         signupPath: '/signup/ib',
       },
       {
         type: 'institutional',
         title: 'Institutional Trading',
-        titleKey: 'bittrade.institutional.title',
+        titleKey: 'ldn.institutional.title',
         description: 'Access deep liquidity pools, prime brokerage services, and custom API solutions.',
-        descriptionKey: 'bittrade.institutional.description',
+        descriptionKey: 'ldn.institutional.description',
         icon: FaBuilding,
         signupPath: '/signup/institute',
       }
@@ -465,7 +412,7 @@ export default function SignupChoice() {
                 </Heading>
                 
                 <SimpleGrid 
-                  columns={currentPlatform.subdomain === 'crypto' ? 1 : { base: 1, lg: currentPlatform.options.length > 2 ? 3 : 2 }}
+                  columns={currentPlatform.subdomain === 'ldn' ? 1 : { base: 1, lg: currentPlatform.options.length > 2 ? 3 : 2 }}
                   spacing={8} 
                   w="full"
                   justifyItems="center"

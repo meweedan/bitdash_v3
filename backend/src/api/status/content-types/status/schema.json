@@ -46,10 +46,8 @@
       "enum": [
         "all",
         "bitdash",
-        "crypto",
         "cash",
-        "ldn",
-        "stock"
+        "ldn"
       ],
       "default": "all",
       "required": true

@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
       <ChakraProvider theme={customTheme}>
           <CurrencyProvider>
               <PaymentProvider>
-                <FlowingLines />
+                <FlowingLines/>
                 <InstallPWA />
                 <CartProvider>
                   <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />

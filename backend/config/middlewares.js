@@ -7,10 +7,8 @@ module.exports = [
       headers: ['*'],
       origin: [
         'https://bitdash.app',
-        'https://cash.bitdash.app',
+        'https://adfaaly.bitdash.app',
         'https://ldn.bitdash.app',
-        'https://crypto.bitdash.app',
-        'https://stocks.bitdash.app',
         'http://localhost:3000', 
         'https://bitdash-backend.onrender.com'],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],

@@ -8,8 +8,6 @@ import Layout from '@/components/Layout';
 // Subdomain landings
 import MainLanding from '@/components/Landing';
 import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
-import StocksLandingBrowser from '@/components/landing/StocksLandingBrowser';
-import CryptoLandingBrowser from '@/components/landing/CryptoLandingBrowser';
 import LDNLandingBrowser from '@/components/landing/LDNLandingBrowser';
 
 export default function HomePage() {
@@ -20,14 +18,10 @@ export default function HomePage() {
     // 1) Detect subdomain by checking window.location.hostname
     const hostname = window.location.hostname.toLowerCase();
 
-    if (hostname.includes('cash.')) {
-      setPlatform('cash');
-    } else if (hostname.includes('crypto.')) {
-      setPlatform('crypto');
+    if (hostname.includes('adfaaly.')) {
+      setPlatform('adfaaly');
     } else if (hostname.includes('ldn.')) {
       setPlatform('ldn');
-    } else if (hostname.includes('stocks.')) {
-      setPlatform('stocks');
     } else if (process.env.NODE_ENV === 'development') {
       // For dev, e.g. http://localhost:3000?platform=cash
       const param = new URLSearchParams(window.location.search).get('platform');
@@ -44,17 +38,11 @@ export default function HomePage() {
   // 2) For each platform, choose a distinct manifest + icons
   const getPlatformMeta = () => {
     switch (platform) {
-      case 'cash':
+      case 'adfaaly':
         return {
-          title: t('cash.title', 'Cash by BitDash'),
-          favicon: '/cash-icons/favicon.ico',
-          manifest: '/manifests/cash-manifest.json',
-        };
-      case 'crypto':
-        return {
-          title: t('fund.title', 'Crypto by BitDash'),
-          favicon: '/crypto-icons/favicon.ico',
-          manifest: '/manifests/crypto-manifest.json',
+          title: t('adfaaly.title', 'Adfaaly'),
+          favicon: '/adfaaly-icons/favicon.ico',
+          manifest: '/manifests/adfaaly-manifest.json',
         };
       case 'ldn':
         return {
@@ -62,12 +50,6 @@ export default function HomePage() {
           favicon: '/ldn-icons/favicon.ico',
           manifest: '/manifests/ldn-manifest.json',
         };
-      case 'stocks':
-      return {
-        title: t('stocks.title', 'Stocks by BitDash'),
-        favicon: '/stocks-icons/favicon.ico',
-        manifest: '/manifests/stocks-manifest.json',
-      };
       default:
         return {
           title: t('home', 'BitDash'),
@@ -82,12 +64,8 @@ export default function HomePage() {
   // 3) Render subdomain landing
   const renderPlatform = () => {
     switch (platform) {
-      case 'cash':
+      case 'adfaaly':
         return <CashLandingBrowser />;
-      case 'crypto':
-        return <CryptoLandingBrowser />;
-      case 'stocks':
-        return <StocksLandingBrowser />;
       case 'ldn':
         return <LDNLandingBrowser />;
       default:

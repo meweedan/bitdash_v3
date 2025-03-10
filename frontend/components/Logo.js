@@ -10,12 +10,8 @@ const Logo = ({ variant = 'header' }) => {
   
   useEffect(() => {
     const hostname = window.location.hostname;
-    if (hostname.includes('cash')) {
-      setPlatform('cash');
-    } else if (hostname.includes('stocks')) {
-      setPlatform('stocks');
-    } else if (hostname.includes('crypto')) {
-      setPlatform('crypto');  
+    if (hostname.includes('adfaaly')) {
+      setPlatform('adfaaly'); 
     } else if (hostname.includes('ldn')) {
       setPlatform('ldn');
     } else if (process.env.NODE_ENV === 'development') {
@@ -26,21 +22,13 @@ const Logo = ({ variant = 'header' }) => {
 
   // Updated with accurate dimensions from the specs provided
   const logoConfigs = {
-    cash: {
-      en: { path: '/cash.png', width: 1174, height: 520 },
-      ar: { path: '/cash-ar.png', width: 1134, height: 634 }
-    },
-    stocks: {
-      en: { path: '/stocks.png', width: 1186, height: 398 },
-      ar: { path: '/stocks-ar.png', width: 1186, height: 398 }
+    adfaaly: {
+      en: { path: '/adfaaly.png', width: 1174, height: 520 },
+      ar: { path: '/adfaaly-ar.png', width: 1134, height: 634 }
     },
     ldn: {
       en: { path: '/ldn.png', width: 1085, height: 350 },
       ar: { path: '/ldn-ar.png', width: 1348, height: 492 }
-    },
-    crypto: {
-      en: { path: '/crypto.png', width: 1204, height: 548 },
-      ar: { path: '/crypto-ar.png', width: 1204, height: 548 }
     },
     main: {
       en: { path: '/bitdash-logo.png', width: 1080, height: 249 },
@@ -84,7 +72,7 @@ const Logo = ({ variant = 'header' }) => {
 
   // Renders all platform logos in a 2x2 grid (for mobile solutions menu)
   const renderLogoGrid = () => {
-    const platformOptions = ['cash', 'stocks', 'crypto', 'ldn'];
+    const platformOptions = ['adfaaly', 'ldn'];
     
     return (
       <SimpleGrid columns={2} spacing={4} width="100%">

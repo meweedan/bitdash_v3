@@ -74,10 +74,8 @@ const Footer = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
-      if (hostname.includes('crypto')) setPlatform('crypto');
-      else if (hostname.includes('ldn')) setPlatform('ldn');
-      else if (hostname.includes('cash')) setPlatform('cash');
-      else if (hostname.includes('stocks')) setPlatform('stocks');
+      if (hostname.includes('ldn')) setPlatform('ldn');
+      else if (hostname.includes('adfaaly')) setPlatform('adfaaly');
       else setPlatform('main');
 
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
@@ -94,14 +92,10 @@ const Footer = () => {
   // Get platform-specific color based on the current platform
   const getPlatformColor = (intensity) => {
     switch(platform) {
-      case 'cash':
-        return `brand.cash.${intensity}`;
-      case 'crypto':
-        return `brand.crypto.${intensity}`;
+      case 'adfaaly':
+        return `brand.adfaaly.${intensity}`;
       case 'ldn':
         return `brand.ldn.${intensity}`;
-      case 'stocks':
-        return `brand.stocks.${intensity}`;
       default:
         return `blue.${intensity}`;
     }
@@ -113,25 +107,13 @@ const Footer = () => {
       { label: 'Privacy', href: '/policies/privacy', icon: Shield },
       { label: 'Terms', href: '/policies/terms', icon: FileText },
     ],
-    crypto: [
-      { label: 'Wallet', href: '/crypto/wallet', icon: WalletIcon },
-      { label: 'Crypto Rules', href: '/crypto/rules', icon: FileText },
-      { label: 'Tokens', href: '/crypto/tokens', icon: TrendingUp },
-      { label: 'FAQ', href: '/crypto/faq', icon: HelpCircle },
-    ],
-    stocks: [
-      { label: 'US Markets', href: '/stocks/us-markets', icon: Globe },
-      { label: 'EU Markets', href: '/stocks/eu-markets', icon: Building },
-      { label: 'Commodities', href: '/stocks/commodities', icon: TrendingUp },
-      { label: 'Portfolio', href: '/stocks/portfolio', icon: BarChart2 },
-    ],
     ldn: [
       { label: 'Forex Pairs', href: '/ldn/pairs', icon: Globe },
       { label: 'Analysis', href: '/ldn/analysis', icon: LineChart },
       { label: 'Tools', href: '/ldn/tools', icon: Settings },
       { label: 'Charts', href: '/ldn/charts', icon: BarChart2 },
     ],
-    cash: [
+    adfaaly: [
       { label: 'Transfer Money', href: '/cash/client/transfer', icon: FiArrowRightCircle },
       { label: 'Payment Solutions', href: '/cash/solutions', icon: CreditCard },
       { label: 'Business Tools', href: '/cash/business', icon: Building },
@@ -142,25 +124,13 @@ const Footer = () => {
   const getPWANavItems = (isLoggedIn) => {
     // Define navigation items specific to each platform
     const navItems = {
-      crypto: [
-        { label: 'Dashboard', action: 'dashboard', icon: BarChart2 },
-        { label: 'Wallets', action: 'wallets', icon: WalletIcon },
-        { label: 'History', action: 'history', icon: Clock },
-        { label: 'Account', action: 'account', icon: User },
-      ],
-      stocks: [
-        { label: 'Portfolio', action: 'portfolio', icon: BarChart2 },
-        { label: 'Markets', action: 'markets', icon: Globe },
-        { label: 'Trade', action: 'stock-trade', icon: ArrowUpRight },
-        { label: 'Account', action: 'account', icon: User },
-      ],
       ldn: [
         { label: 'Trading', action: 'trading', icon: LineChart },
         { label: 'Markets', action: 'markets', icon: Globe },
         { label: 'Analysis', action: 'analysis', icon: BarChart2 },
         { label: 'Account', action: 'account', icon: User },
       ],
-      cash: [
+      adfaaly: [
         { label: 'Transfer', action: 'transfer', icon: FiArrowRightCircle },
         { label: 'Wallet', action: 'wallet', icon: Wallet },
         { label: 'History', action: 'history', icon: Clock },
@@ -193,25 +163,13 @@ const Footer = () => {
   const handlePWAAction = async (action) => {
     // Define platform-specific paths
     const platformPaths = {
-      crypto: {
-        dashboard: '/crypto/dashboard',
-        challenges: '/crypto/challenges',
-        history: '/crypto/history',
-        account: '/crypto/account',
-      },
-      stocks: {
-        portfolio: '/stocks/portfolio',
-        markets: '/stocks/markets',
-        trade: '/stocks/trade',
-        account: '/stocks/account',
-      },
       ldn: {
         trading: '/ldn/platform',
         markets: '/ldn/markets',
         analysis: '/ldn/analysis',
         account: '/ldn/account',
       },
-      cash: {
+      adfaaly: {
         transfer: 'cash/client/transfer',
         wallet: '/cash/wallet',
         history: '/cash/transactions',
@@ -263,16 +221,10 @@ const Footer = () => {
     // Determine where to redirect based on platform
     let path = '';
     switch(platform) {
-      case 'crypto':
-        path = `/crypto/challenge/${trackingNumber}`;
-        break;
-      case 'stocks':
-        path = `/stocks/order/${trackingNumber}`;
-        break;
       case 'ldn':
         path = `/ldn/transaction/${trackingNumber}`;
         break;
-      case 'cash':
+      case 'adfaaly':
         path = `/cash/transaction/${trackingNumber}`;
         break;
       default:
@@ -290,13 +242,9 @@ const Footer = () => {
   // Get the drawer title based on platform
   const getDrawerTitle = () => {
     switch(platform) {
-      case 'crypto':
-        return 'Track Challenge';
-      case 'stocks':
-        return 'Track Investment Order';
       case 'ldn':
         return 'Track Withdrawals and Deposits';
-      case 'cash':
+      case 'adfaaly':
         return 'Track Payment';
       default:
         return 'Tracking';
@@ -450,10 +398,8 @@ const Footer = () => {
         <DrawerOverlay />
         <DrawerContent borderTopRadius="20px">
           <DrawerHeader borderBottomWidth="1px">
-            {platform === 'crypt' ? 'Crypto Menu' : 
-             platform === 'stocks' ? 'Stocks Menu' : 
-             platform === 'ldn' ? 'Forex Menu' :
-             platform === 'cash' ? 'Cash Menu' :
+            {platform === 'ldn' ? 'Forex Menu' :
+             platform === 'adfaaly' ? 'Cash Menu' :
              'Menu'}
           </DrawerHeader>
           <DrawerCloseButton />
@@ -515,10 +461,8 @@ const Footer = () => {
           <DrawerBody py={4}>
             <FormControl isRequired isInvalid={!!error}>
               <FormLabel>
-                {platform === 'crypto' ? 'Challenge ID' : 
-                 platform === 'stocks' ? 'Order ID' : 
-                 platform === 'ldn' ? 'Transaction ID' :
-                 platform === 'cash' ? 'Payment ID' :
+                {platform === 'ldn' ? 'Transaction ID' :
+                 platform === 'adfaaly' ? 'Payment ID' :
                  'Tracking Number'}
               </FormLabel>
               <Input
@@ -528,8 +472,6 @@ const Footer = () => {
                   setError('');
                 }}
                 placeholder={
-                  platform === 'crypto' ? 'Enter Wallet ID' : 
-                  platform === 'stocks' ? 'Enter order ID' : 
                   platform === 'ldn' ? 'Enter transaction ID' :
                   platform === 'cash' ? 'Enter payment ID' :
                   'Enter tracking number'
@@ -539,7 +481,7 @@ const Footer = () => {
             </FormControl>
             <Button
               mt={4}
-              colorScheme={platform === 'cash' ? 'brand.cash.400' : platform}
+              colorScheme={platform === 'adfaaly' ? 'brand.adfaaly.400' : platform}
               onClick={handleTracking}
               isFullWidth
             >

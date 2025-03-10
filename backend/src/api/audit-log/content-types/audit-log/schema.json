@@ -126,7 +126,7 @@
     },
     "platform": {
       "type": "enumeration",
-      "enum": ["cash", "crypto", "ldn", "stock", "admin", "api"],
+      "enum": ["cash", "ldn", "admin", "api"],
       "default": "bitcash",
       "required": true
     },

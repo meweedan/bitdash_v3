@@ -9,25 +9,13 @@ const theme = extendTheme({
         600: '#9c7c63',    // Hover
         700: '#c4b2a0',    // Emphasis
       },
-      cash: {
-        400: '#8b7966',
-        500: '#b8a28b',    // Base
-        600: '#9c7c63',    // Hover
-        700: '#c4b2a0',    // Emphasis
-      },
-      crypto: {
-        400: '#8b7966',
-        500: '#b8a28b',    // Base
-        600: '#9c7c63',    // Hover
-        700: '#c4b2a0',    // Emphasis
+      adfaaly: {
+        400: '#00bf63',
+        500: '#00bf63',    // Base
+        600: '#00bf63',    // Hover
+        700: '#00bf63',    // Emphasis
       },
       ldn: {
-        400: '#8b7966',
-        500: '#b8a28b',    // Base
-        600: '#9c7c63',    // Hover
-        700: '#c4b2a0',    // Emphasis
-      },
-      stocks: {
         400: '#8b7966',
         500: '#b8a28b',    // Base
         600: '#9c7c63',    // Hover
@@ -55,17 +43,17 @@ const theme = extendTheme({
           color: 'brand.bitdash.500',
           _hover: { bg: 'brand.bitdash.500', color: 'white' }
         },
-        // Cash variants
-        'cash-solid': {
-          bg: 'brand.cash.500',
+        // adfaaly variants
+        'adfaaly-solid': {
+          bg: 'brand.adfaaly.500',
           color: 'white',
-          _hover: { bg: 'brand.cash.600' }
+          _hover: { bg: 'brand.adfaaly.600' }
         },
-        'cash-outline': {
+        'adfaaly-outline': {
           border: '2px solid',
-          borderColor: 'brand.cash.500',
-          color: 'brand.cash.500',
-          _hover: { bg: 'brand.cash.500', color: 'white' }
+          borderColor: 'brand.adfaaly.500',
+          color: 'brand.adfaaly.500',
+          _hover: { bg: 'brand.adfaaly.500', color: 'white' }
         },
         // Crypto variants
         'crypto-solid': {
@@ -117,17 +105,11 @@ const theme = extendTheme({
         bitdash: {
           borderColor: 'brand.bitdash.500',
         },
-        cash: {
-          borderColor: 'brand.cash.500',
-        },
-        crypto: {
-          borderColor: 'brand.crypto.500',
+        adfaaly: {
+          borderColor: 'brand.adfaaly.500',
         },
         ldn: {
           borderColor: 'brand.ldn.500',
-        },
-        stocks: {
-          borderColor: 'brand.stocks.500',
         }
       }
     },

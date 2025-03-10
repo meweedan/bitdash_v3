@@ -54,23 +54,11 @@ const nextConfig = {
         has: [{ type: 'host', value: 'ldn.bitdash.app' }],
         destination: '/ldn/:path*',
       },
-      // Crypto platform routes
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'crypto.bitdash.app' }],
-        destination: '/crypto/:path*',
-      },
       // Cash platform routes
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'cash.bitdash.app' }],
+        has: [{ type: 'host', value: 'adfaaly.bitdash.app' }],
         destination: '/cash/:path*',
-      },
-      // Stock platform routes
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'stocks.bitdash.app' }],
-        destination: '/stocks/:path*',
       }
     ];
   },

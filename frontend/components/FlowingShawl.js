@@ -11,31 +11,17 @@ const FlowingShawl = () => {
     setIsClient(true);
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
-      if (hostname.includes('cash')) setPlatform('cash');
-      else if (hostname.includes('crypto')) setPlatform('crypto');
-      else if (hostname.includes('stocks')) setPlatform('stocks');
+      if (hostname.includes('adfaaly')) setPlatform('adfaaly');
       else if (hostname.includes('ldn')) setPlatform('ldn');
     }
   }, []);
 
   const themeColors = {
-    stocks: [
-      new THREE.Color('#8b7966'),
-      new THREE.Color('#b8a28b'),
-      new THREE.Color('#9c7c63'),
-      new THREE.Color('#c4b2a0')
-    ],
-    cash: [
-      new THREE.Color('#8b7966'),
-      new THREE.Color('#b8a28b'),
-      new THREE.Color('#9c7c63'),
-      new THREE.Color('#c4b2a0')
-    ],
-    crypto: [
-      new THREE.Color('#8b7966'),
-      new THREE.Color('#b8a28b'),
-      new THREE.Color('#9c7c63'),
-      new THREE.Color('#c4b2a0')
+    adfaaly: [
+      new THREE.Color('#00bf63'),
+      new THREE.Color('#00bf63'),
+      new THREE.Color('#00bf63'),
+      new THREE.Color('#00bf63')
     ],
     ldn: [
       new THREE.Color('#8b7966'),

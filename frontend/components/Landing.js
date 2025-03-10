@@ -243,7 +243,7 @@ export default function LandingPage() {
             
             {/* Platform Cards */}
             <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} width="full">
-              {/* Forex Platform */}
+              {/* LDN Platform */}
               <PlatformCard
                 title={t('platforms.forex.title')}
                 description={t('platforms.forex.description')}
@@ -254,35 +254,13 @@ export default function LandingPage() {
                 delay={0}
               />
               
-              {/* Crypto Platform */}
+              {/* Adfaaly Platform */}
               <PlatformCard
-                title={t('platforms.crypto.title')}
-                description={t('platforms.crypto.description')}
-                image="/images/btc.png"
-                cta={t('platforms.crypto.cta')}
-                link="https://crypto.bitdash.app"
-                color="#8b7966"
-                delay={0.1}
-              />
-              
-              {/* Stock Platform */}
-              <PlatformCard
-                title={t('platforms.stock.title')}
-                description={t('platforms.stock.description')}
-                image="/images/tsla.png"
-                cta={t('platforms.stock.cta')}
-                link="https://stock.bitdash.app"
-                color="#8b7966"
-                delay={0.2}
-              />
-              
-              {/* Cash Platform */}
-              <PlatformCard
-                title={t('platforms.cash.title')}
-                description={t('platforms.cash.description')}
+                title={t('platforms.adfaaly.title')}
+                description={t('platforms.adfaaly.description')}
                 image="/images/usd.png"
-                cta={t('platforms.cash.cta')}
-                link="https://cash.bitdash.app"
+                cta={t('platforms.adfaaly.cta')}
+                link="https://adfaaly.bitdash.app"
                 color="#8b7966"
                 delay={0.3}
               />

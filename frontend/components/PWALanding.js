@@ -13,32 +13,12 @@ const PWAContainer = ({ children }) => (
   </div>
 );
 
-export const CashPWALanding = () => {
+export const AdfaalyPWALanding = () => {
   const router = useRouter();
   const config = {
-    title: 'BitCash',
+    title: 'Adfaaly',
     description: 'Reimagining Libyan Finances',
-    image: '/cash.png',
-    color: '#4CAF50'
-  };
-
-  return (
-    <PWAContainer>
-      <Container config={config} router={router}>
-        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
-          <CryptoMatrix />
-        </div>
-      </Container>
-    </PWAContainer>
-  );
-};
-
-export const CryptoPWALanding = () => {
-  const router = useRouter();
-  const config = {
-    title: 'Crypto by BitDash',
-    description: 'Unlock financial freedom via Crypto and DeFi',
-    image: '/crypto.png',
+    image: '/adfaaly.png',
     color: '#4CAF50'
   };
 
@@ -73,35 +53,14 @@ export const LDNPWALanding = () => {
   );
 };
 
-export const StocksPWALanding = () => {
-  const router = useRouter();
-  const config = {
-    title: 'BitStocks',
-    description: 'Reimagining Libyan Finances',
-    image: '/stock.png',
-    color: '#4CAF50'
-  };
-
-  return (
-    <PWAContainer>
-      <Container config={config} router={router}>
-        <div className="mt-8 w-full h-64 relative overflow-hidden rounded-lg">
-          <CryptoMatrix />
-        </div>
-      </Container>
-    </PWAContainer>
-  );
-};
 
 // Default export for backwards compatibility
 const PWALanding = () => {
   const router = useRouter();
   const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
 
-  if (hostname.includes('cash')) return <CashPWALanding />;
-  if (hostname.includes('crypto')) return <CryptoPWALanding />;
+  if (hostname.includes('adfaaly')) return <AdfaalyPWALanding />;
   if (hostname.includes('ldn')) return <LDNPWALanding />;
-  if (hostname.includes('stocks')) return <StocksPWALanding />;
 
   const config = {
     title: 'BitDash',

@@ -45,7 +45,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   
   // Always show announcements for these platforms
-  const showAnnouncements = platform === 'ldn' || platform === 'stocks' || platform === 'crypto' || platform === 'cash';
+  const showAnnouncements = platform === 'ldn' || platform === 'cash';
 
   // Handle scroll effect
   useEffect(() => {
@@ -90,33 +90,19 @@ export default function Header() {
 
   const platforms = [
      {
-      name: 'Cash by BitDash',
-      image: '/cash.png',
-      mobileImage: '/cash.png',
-      href: 'https://cash.bitdash.app/',
-      color: 'brand.cash'
+      name: 'Adfaaly',
+      image: '/adfaaly.png',
+      mobileImage: '/adfaaly.png',
+      href: 'https://adfaaly.bitdash.app/',
+      color: 'brand.adfaaly'
     },
     {
       name: 'LDN Prime Markets',
       image: '/ldn.png',
       mobileImage: '/ldn.png',
       href: 'https://ldn.bitdash.app/',
-      color: 'brand.forex'
+      color: 'brand.ldn'
     }, 
-    {
-      name: 'Stocks by BitDash',
-      image: '/stocks.png',
-      mobileImage: '/stocks.png',
-      href: 'https://stocks.bitdash.app/',
-      color: 'brand.stocks'
-    },
-     {
-      name: 'Crypto by BitDash',
-      image: '/crypto.png',
-      mobileImage: '/crypto.png',
-      href: 'https://crypto.bitdash.app/',
-      color: 'brand.crypto'
-    }
   ];
 
   const getPlatformFromURL = () => {
@@ -125,17 +111,13 @@ export default function Header() {
       const hostname = window.location.hostname;
       
       // More specific checks to avoid partial matches
-      if (hostname.includes('cash.bitdash') || hostname === 'cash.localhost') return 'cash';
-      if (hostname.includes('crypto.bitdash') || hostname === 'crypto.localhost') return 'crypto';
+      if (hostname.includes('adfaaly.bitdash') || hostname === 'adfaaly.localhost') return 'adfaaly';
       if (hostname.includes('ldn.bitdash') || hostname === 'ldn.localhost') return 'ldn';
-      if (hostname.includes('stocks.bitdash') || hostname === 'stocks.localhost') return 'stocks';
       
       // Also check URL path for local development
       const pathname = window.location.pathname;
-      if (pathname.startsWith('/cash')) return 'cash';
-      if (pathname.startsWith('/crypto')) return 'crypto';
+      if (pathname.startsWith('/adfaaly')) return 'adfaaly';
       if (pathname.startsWith('/ldn')) return 'ldn';
-      if (pathname.startsWith('/stocks')) return 'stocks';
     }
     return 'bitdash'; // Default platform
   };
@@ -171,38 +153,7 @@ export default function Header() {
   
   // Platform-specific menu items 
   const getPlatformMenuItems = () => {
-    if (platform === 'crypto') { // Crypto
-      return [
-        { 
-          name: t('spotTrading', 'Exchange'), 
-          path: '/crypto/exchange/spot',
-        },
-        { 
-          name: t('earn', 'Earn'), 
-          path: '/crypto/earn',
-        },
-      ];
-    } else if (platform === 'stocks') { // Stock
-      return [
-        { 
-          name: t('invest', 'Invest'), 
-          path: '/stocks/invest',
-          submenu: [
-            { name: t('stocks', 'Stocks'), path: '/stocks/invest/stocks' },
-            { name: t('etfs', 'ETFs'), path: '/stocks/invest/etfs' },
-            { name: t('ipos', 'IPOs'), path: '/stocks/invest/ipos' },
-          ]
-        },
-        { 
-          name: t('research', 'Research'), 
-          path: '/stocks/research',
-          submenu: [
-            { name: t('marketNews', 'Market News'), path: '/stocks/research/news' },
-            { name: t('screener', 'Screener'), path: '/stocks/research/screener' },
-          ]
-        },
-      ];
-    } else if (platform === 'ldn') { // Forex
+    if (platform === 'ldn') { // Forex
       return [
         { 
           name: t('analysis', 'Analysis'), 
@@ -223,7 +174,7 @@ export default function Header() {
           ]
         },
       ];
-    } else if (platform === 'cash') { // Cash
+    } else if (platform === 'adfaaly') { // Cash
       return [
         { 
           name: t('payments', 'Payments'), 
@@ -516,7 +467,7 @@ export default function Header() {
             <IconButton
               onClick={toggleColorMode}
               aria-label="Toggle Theme"
-              variant="bitdash-outline"
+              variant={`${platform}-outline`}
               size="md"
               color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
               icon={isDark ? 
@@ -530,7 +481,7 @@ export default function Header() {
               <IconButton
                 icon={<FaWhatsapp size={16} />}
                 size="md"
-                variant="bitdash-outline"
+                variant={`${platform}-outline`}
                 color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                 borderRadius="full"
                 onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
@@ -541,7 +492,7 @@ export default function Header() {
               <IconButton
                 icon={<FaTelegram size={16} />}
                 size="md"
-                variant="bitdash-outline"
+                variant={`${platform}-outline`}
                 color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                 borderRadius="full"
                 onClick={() => window.open("https://t.me/BitDashSupport", "_blank")}
@@ -558,7 +509,7 @@ export default function Header() {
                     <Button 
                       leftIcon={<FaUser size={12} />} 
                       size="sm"
-                      variant="bitdash-outline"
+                      variant={`${platform}-outline`}
                       color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                       borderRadius="full"
                       fontSize="md"
@@ -570,7 +521,7 @@ export default function Header() {
                     <Button
                       leftIcon={<FaSignOutAlt size={12} />}
                       size="sm"
-                      variant="bitdash-outline"
+                      variant={`${platform}-outline`}
                       color="red.400"
                       borderRadius="full"
                       fontSize="md"
@@ -585,7 +536,7 @@ export default function Header() {
                     <Button 
                       leftIcon={<FaSignInAlt size={12} />}
                       size="sm"
-                      variant="bitdash-outline"
+                      variant={`${platform}-outline`}
                       borderRadius="full"
                       color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                       fontSize="md"
@@ -597,7 +548,7 @@ export default function Header() {
                     <Button 
                       leftIcon={<FaUserPlus size={12} />}
                       size="sm"
-                      variant="bitdash-solid"
+                      variant={`${platform}-solid`}
                       borderRadius="full"
                       color="white"
                       fontSize="md"
@@ -621,7 +572,7 @@ export default function Header() {
 
             <IconButton
               onClick={toggleColorMode}
-              variant="bitdash-outline"
+              variant={`${platform}-outline`}
               size="md"
               borderRadius="full"
               color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
@@ -638,7 +589,7 @@ export default function Header() {
 
             <IconButton
               icon={isOpen ? <CloseIcon boxSize={3} /> : <HamburgerIcon boxSize={5} />}
-              variant="bitdash-outline"
+              variant={`${platform}-outline`}
               size="md"
               borderRadius="full"
               color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
@@ -671,7 +622,7 @@ export default function Header() {
                   <>
                     <Button 
                       leftIcon={<FaUser size={14} />}
-                      variant="bitdash-outline"
+                      variant={`${platform}-outline`}
                       w="full"
                       borderRadius="full"
                       color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
@@ -685,7 +636,7 @@ export default function Header() {
                     </Button>
                     <Button
                       leftIcon={<FaSignOutAlt size={14} />}
-                      variant="ghost"
+                      variant={`${platform}-outline`}
                       w="full"
                       borderRadius="full"
                       color="red.400"
@@ -702,7 +653,7 @@ export default function Header() {
                   <>
                     <Button 
                       leftIcon={<FaSignInAlt size={14} />}
-                      variant="bitdash-outline"
+                      variant={`${platform}-outline`}
                       w="full"
                       borderRadius="full"
                       color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
@@ -718,6 +669,7 @@ export default function Header() {
                       leftIcon={<FaUserPlus size={14} />}
                       w="full"
                       borderRadius="full"
+                      variant={`${platform}-outline`}
                       color="white"
                       bg={`brand.${platform}.500`}
                       _hover={{ bg: buttonBgHover }}
@@ -780,7 +732,6 @@ export default function Header() {
                 ) : (
                   <Link href={item.path} passHref>
                     <Text
-                      fontSize="sm"
                       fontWeight="600"
                       color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                       py={2}
