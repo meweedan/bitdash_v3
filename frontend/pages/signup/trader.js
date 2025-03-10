@@ -464,7 +464,7 @@ export default function TraderSignup() {
       }
 
        // 4. Update user with retail trader role
-        await fetch(`${API_URL}/api/users/${user.id}`, {
+        await fetch(`${BASE_URL}/api/users/${user.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
