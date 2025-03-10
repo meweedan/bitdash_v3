@@ -115,8 +115,8 @@
     },
     "primaryPlatform": {
       "type": "enumeration",
-      "enum": ["ldn", "cash", "multiple"],
-      "default": "bitcash"
+      "enum": ["ldn", "adfaaly", "multiple"],
+      "default": "adfaaly"
     },
     "registrationDate": {
       "type": "datetime"

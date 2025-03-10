@@ -45,7 +45,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   
   // Always show announcements for these platforms
-  const showAnnouncements = platform === 'ldn' || platform === 'cash';
+  const showAnnouncements = platform === 'ldn' || platform === 'adfaaly';
 
   // Handle scroll effect
   useEffect(() => {

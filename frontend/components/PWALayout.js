@@ -68,7 +68,7 @@ const LDNPWALanding = () => {
 };
 
 // Cash PWA Landing
-const CashPWALanding = () => {
+const AdfaalyPWALanding = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -88,8 +88,8 @@ const CashPWALanding = () => {
       <Container maxW="container.lg">
         <VStack spacing={8} align="center" pb={20}>
           <Image
-            src="/cash.png"
-            alt="BitCash"
+            src="/adfaaly.png"
+            alt="Adfaaly"
             w="150px"
             h="150px"
             objectFit="contain"

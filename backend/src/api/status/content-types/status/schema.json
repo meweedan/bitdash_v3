@@ -46,7 +46,7 @@
       "enum": [
         "all",
         "bitdash",
-        "cash",
+        "adfaaly",
         "ldn"
       ],
       "default": "all",

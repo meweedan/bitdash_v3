@@ -126,8 +126,8 @@
     },
     "platform": {
       "type": "enumeration",
-      "enum": ["cash", "ldn", "admin", "api"],
-      "default": "bitcash",
+      "enum": ["adfaaly", "ldn", "admin", "api"],
+      "default": "adfaaly",
       "required": true
     },
     "request_url": {
