@@ -154,7 +154,6 @@ const handleTableAction = async (action, tableId, tableName) => {
         duration: 2000
       });
       
-      window.location.reload(); // Force reload
     }
     
     if (action === 'edit') {
@@ -188,7 +187,6 @@ const handleTableAction = async (action, tableId, tableName) => {
         duration: 2000
       });
       
-      window.location.reload(); // Force reload
     }
   } catch (error) {
     toast({
@@ -201,112 +199,330 @@ const handleTableAction = async (action, tableId, tableName) => {
 };
 
   // Color Customization Modal
-  const ColorCustomizationModal = ({ isOpen, onClose, userData }) => {
-    const [colors, setColors] = useState({
-      primary: '#3182CE',
-      secondary: '#48BB78',
-      accent: '#ED64A6'
-    });
-    
-    const handleSave = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        
-        if (!userData.restaurant?.id) {
-          toast({
-            title: 'Error',
-            description: 'Restaurant ID is missing',
-            status: 'error',
-            duration: 3000
-          });
-          return;
+  const ColorCustomizationModal = ({ 
+  isColorModalOpen, 
+  closeColorCustomizationModal, 
+  userData, 
+  setUserData,
+  selectedColors,
+  setSelectedColors,
+  qrSettings,
+  setQrSettings,
+  toast,
+  t,
+  BASE_URL
+}) => {
+  const handleColorChange = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`${BASE_URL}/api/restaurants/${userData.restaurant.id}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          data: {
+            custom_colors: selectedColors,
+            qr_settings: qrSettings
+          }
+        })
+      });
+
+      if (!response.ok) throw new Error('Failed to update customization settings');
+
+      // Update the restaurant data in userData
+      setUserData(prev => ({
+        ...prev,
+        restaurant: {
+          ...prev.restaurant,
+          custom_colors: selectedColors,
+          qr_settings: qrSettings
         }
-        
-        const response = await fetch(`${BASE_URL}/api/restaurants/${userData.restaurant.id}`, {
-          method: 'PUT',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            data: {
-              custom_colors: colors
-            }
-          })
-        });
-        
-        if (!response.ok) {
-          throw new Error('Failed to update colors');
-        }
-        
-        toast({
-          title: 'Success',
-          description: 'Colors updated successfully',
-          status: 'success',
-          duration: 2000
-        });
-        
-        onClose();
-        window.location.reload(); // Force reload to update data
-      } catch (error) {
-        toast({
-          title: 'Error',
-          description: error.message,
-          status: 'error',
-          duration: 3000
-        });
-      }
-    };
-    
-    return (
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Customize Colors</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <FormControl mb={4}>
-              <FormLabel>Primary Color</FormLabel>
-              <Input 
-                type="color"
-                value={colors.primary}
-                onChange={(e) => setColors({...colors, primary: e.target.value})}
-              />
-            </FormControl>
-            
-            <FormControl mb={4}>
-              <FormLabel>Secondary Color</FormLabel>
-              <Input 
-                type="color"
-                value={colors.secondary}
-                onChange={(e) => setColors({...colors, secondary: e.target.value})}
-              />
-            </FormControl>
-            
-            <FormControl mb={4}>
-              <FormLabel>Accent Color</FormLabel>
-              <Input 
-                type="color"
-                value={colors.accent}
-                onChange={(e) => setColors({...colors, accent: e.target.value})}
-              />
-            </FormControl>
-          </ModalBody>
-          <ModalFooter>
-            <Button variant="ghost" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
+      }));
+
+      toast({
+        title: t('success'),
+        description: t('settingsUpdated'),
+        status: 'success',
+        duration: 2000
+      });
+
+      closeColorCustomizationModal();
+    } catch (error) {
+      toast({
+        title: t('error'),
+        description: error.message,
+        status: 'error'
+      });
+    }
+  };
+
+  return (
+    <Modal 
+      isOpen={isColorModalOpen} 
+      onClose={closeColorCustomizationModal} 
+      size="xl"
+      motionPreset="slideInBottom"
+    >
+      <ModalOverlay backdropFilter="blur(10px)" />
+      <ModalContent>
+        <ModalHeader>
+          <HStack>
+            <Icon as={IoIosColorFill} />
+            <Text>Customize QR Cards</Text>
+          </HStack>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <VStack spacing={6}>
+            {/* QR Code Customization */}
+            <Box borderWidth="1px" borderRadius="md" p={4} w="100%" shadow="sm">
+              <Heading size="sm" mb={4}>QR Code Settings</Heading>
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                <FormControl>
+                  <FormLabel>QR Code Color</FormLabel>
+                  <Input 
+                    type="color"
+                    value={selectedColors.qrForeground}
+                    onChange={(e) => setSelectedColors(prev => ({
+                      ...prev, 
+                      qrForeground: e.target.value
+                    }))}
+                    h="40px"
+                  />
+                </FormControl>
+                <FormControl>
+                  <FormLabel>QR Background Color</FormLabel>
+                  <Input 
+                    type="color"
+                    value={selectedColors.qrBackground}
+                    onChange={(e) => setSelectedColors(prev => ({
+                      ...prev, 
+                      qrBackground: e.target.value
+                    }))}
+                    h="40px"
+                  />
+                </FormControl>
+              </SimpleGrid>
+            </Box>
+
+            {/* Display Settings */}
+            <Box borderWidth="1px" borderRadius="md" p={4} w="100%" shadow="sm">
+              <Heading size="sm" mb={4}>Display Settings</Heading>
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                <FormControl display="flex" alignItems="center">
+                  <FormLabel mb="0">Show Restaurant Logo</FormLabel>
+                  <Switch 
+                    isChecked={qrSettings.showLogo}
+                    onChange={(e) => setQrSettings(prev => ({
+                      ...prev,
+                      showLogo: e.target.checked
+                    }))}
+                  />
+                </FormControl>
+                <FormControl display="flex" alignItems="center">
+                  <FormLabel mb="0">Show Restaurant Name</FormLabel>
+                  <Switch 
+                    isChecked={qrSettings.showName}
+                    onChange={(e) => setQrSettings(prev => ({
+                      ...prev,
+                      showName: e.target.checked
+                    }))}
+                  />
+                </FormControl>
+              </SimpleGrid>
+            </Box>
+
+            {/* Card Colors */}
+            <Box borderWidth="1px" borderRadius="md" p={4} w="100%" shadow="sm">
+              <Heading size="sm" mb={4}>Card Colors</Heading>
+              <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4}>
+                <FormControl>
+                  <FormLabel>Primary Color</FormLabel>
+                  <Input 
+                    type="color"
+                    value={selectedColors.primary}
+                    onChange={(e) => setSelectedColors(prev => ({
+                      ...prev, 
+                      primary: e.target.value
+                    }))}
+                    h="40px"
+                  />
+                </FormControl>
+                <FormControl>
+                  <FormLabel>Secondary Color</FormLabel>
+                  <Input 
+                    type="color"
+                    value={selectedColors.secondary}
+                    onChange={(e) => setSelectedColors(prev => ({
+                      ...prev, 
+                      secondary: e.target.value
+                    }))}
+                    h="40px"
+                  />
+                </FormControl>
+                <FormControl>
+                  <FormLabel>Accent Color</FormLabel>
+                  <Input 
+                    type="color"
+                    value={selectedColors.accent}
+                    onChange={(e) => setSelectedColors(prev => ({
+                      ...prev, 
+                      accent: e.target.value
+                    }))}
+                    h="40px"
+                  />
+                </FormControl>
+              </SimpleGrid>
+            </Box>
+
+            {/* Preview */}
+            <Box borderWidth="1px" borderRadius="md" p={4} w="100%" shadow="sm">
+              <Heading size="sm" mb={4}>Live Preview</Heading>
+              <Box 
+                p={4} 
+                borderRadius="md"
+                display="flex"
+                justifyContent="center"
+              >
+                <QRCodeCard
+                  tableName="Preview"
+                  qrValue="https://preview.example.com"
+                  isDarkMode={false}
+                  restaurantName={userData?.restaurant?.name || "Restaurant Name"}
+                  customColors={selectedColors}
+                  showLogo={qrSettings.showLogo}
+                  showName={qrSettings.showName}
+                  logoUrl={userData?.restaurant?.logo ? `${BASE_URL}${userData.restaurant.logo.url}` : null}
+                />
+              </Box>
+            </Box>
+          </VStack>
+        </ModalBody>
+        <ModalFooter>
+          <HStack spacing={3}>
             <Button 
               colorScheme="blue" 
-              onClick={handleSave}
+              leftIcon={<Icon as={mdiCheckCircle} />}
+              onClick={handleColorChange}
             >
-              Save Colors
+              Save Changes
             </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    );
-  };
+            <Button 
+              variant="ghost" 
+              onClick={closeColorCustomizationModal}
+            >
+              Cancel
+            </Button>
+          </HStack>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  );
+};
+
+  const handlePrint = async (tableName) => {
+  try {
+    // First capture the QR code using html2canvas
+    const element = document.getElementById(`qr-box-${tableName}`);
+    if (!element) return;
+
+    const html2canvas = (await import('html2canvas')).default;
+    const canvas = await html2canvas(element, {
+      scale: 4,
+      useCORS: true,
+      logging: false,
+      allowTaint: true,
+      backgroundColor: qrDarkMode ? '#1f2029' : '#0284c7',
+    });
+
+    // Convert canvas to image
+    const image = canvas.toDataURL('image/png');
+
+    // Create print window with the image
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) {
+      toast({
+        title: 'Error',
+        description: 'Please allow pop-ups to print QR codes',
+        status: 'error',
+        duration: 3000
+      });
+      return;
+    }
+
+    const html = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Print QR Code - ${tableName}</title>
+          <style>
+            @page {
+              size: 85.60mm 53.98mm;
+              margin: 0;
+            }
+            body {
+              margin: 0;
+              padding: 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              min-height: 53.98mm;
+            }
+            img {
+              width: 85.60mm;
+              height: 53.98mm;
+              object-fit: contain;
+              display: block;
+            }
+            @media print {
+              body {
+                width: 85.60mm;
+                height: 53.98mm;
+              }
+              img {
+                width: 100%;
+                height: 100%;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          <img src="${image}" alt="QR Code ${tableName}" />
+        </body>
+      </html>
+    `;
+
+    printWindow.document.write(html);
+    printWindow.document.close();
+
+    // Wait for the image to load before printing
+    const img = printWindow.document.querySelector('img');
+    if (img) {
+      img.onload = () => {
+        printWindow.print();
+        // Close the window after a short delay to ensure print dialog appears
+        setTimeout(() => {
+          printWindow.close();
+        }, 500);
+      };
+    } else {
+      printWindow.print();
+      setTimeout(() => {
+        printWindow.close();
+      }, 500);
+    }
+  } catch (error) {
+    console.error('Print error:', error);
+    toast({
+      title: 'Error',
+      description: 'Failed to print QR code',
+      status: 'error',
+      duration: 3000
+    });
+  }
+};
 
   // Menu Modal Component
   const MenuModal = ({ isOpen, onClose, menu }) => {
@@ -369,7 +585,6 @@ const handleTableAction = async (action, tableId, tableName) => {
         });
         
         onClose();
-        window.location.reload(); // Force reload to update data
       } catch (error) {
         toast({
           title: 'Error',
@@ -572,104 +787,6 @@ const handleTableAction = async (action, tableId, tableName) => {
         </ModalContent>
       </Modal>
     );
-  };
-
-  // QR Code printing functionality
-  const handlePrint = async (tableName) => {
-    try {
-      const element = document.getElementById(`qr-box-${tableName}`);
-      if (!element) return;
-
-      const html2canvas = (await import('html2canvas')).default;
-      const canvas = await html2canvas(element, {
-        scale: 4,
-        useCORS: true,
-        logging: false,
-        allowTaint: true,
-        backgroundColor: qrDarkMode ? '#1f2029' : '#0284c7',
-      });
-
-      const image = canvas.toDataURL('image/png');
-      const printWindow = window.open('', '_blank');
-      
-      if (!printWindow) {
-        toast({
-          title: 'Error',
-          description: 'Please allow pop-ups to print QR codes',
-          status: 'error',
-          duration: 3000
-        });
-        return;
-      }
-
-      const html = `
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <title>Print QR Code - ${tableName}</title>
-            <style>
-              @page {
-                size: 85.60mm 53.98mm;
-                margin: 0;
-              }
-              body {
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: 53.98mm;
-              }
-              img {
-                width: 85.60mm;
-                height: 53.98mm;
-                object-fit: contain;
-                display: block;
-              }
-              @media print {
-                body {
-                  width: 85.60mm;
-                  height: 53.98mm;
-                }
-                img {
-                  width: 100%;
-                  height: 100%;
-                }
-              }
-            </style>
-          </head>
-          <body>
-            <img src="${image}" alt="QR Code ${tableName}" />
-          </body>
-        </html>
-      `;
-
-      printWindow.document.write(html);
-      printWindow.document.close();
-
-      const img = printWindow.document.querySelector('img');
-      if (img) {
-        img.onload = () => {
-          printWindow.print();
-          setTimeout(() => {
-            printWindow.close();
-          }, 500);
-        };
-      } else {
-        printWindow.print();
-        setTimeout(() => {
-          printWindow.close();
-        }, 500);
-      }
-    } catch (error) {
-      console.error('Print error:', error);
-      toast({
-        title: 'Error',
-        description: 'Failed to print QR code',
-        status: 'error',
-        duration: 3000
-      });
-    }
   };
 
   const handleCancelSubscription = async () => {
@@ -1267,68 +1384,82 @@ const handleUpdate = (type, item) => {
 
   // Table creation function
   const handleAddTable = async () => {
+    // Check subscription tier
+    const subscriptionTier = userData?.restaurant?.subscription?.tier || 'standard';
+    
+    // Count existing tables
+    const existingTableCount = userData?.restaurant?.tables?.length || 0;
+
+    // Restrict table creation based on subscription
+    if (subscriptionTier === 'standard' && existingTableCount >= 5) {
+      toast({
+        title: 'Upgrade Required',
+        description: 'You have reached the maximum number of tables for the standard subscription.',
+        status: 'warning',
+        duration: 5000,
+        render: () => (
+          <Box 
+            p={3} 
+            borderRadius="md"
+          >
+            <Flex align="center" justify="space-between">
+              <VStack align="start" spacing={1}>
+                <Text fontWeight="bold">Upgrade to Premium</Text>
+                <Text fontSize="sm">Unlock unlimited table creation</Text>
+              </VStack>
+              <Button 
+                size="sm" 
+                onClick={() => handleUpgradeSubscription('premium')}
+              >
+                Upgrade
+              </Button>
+            </Flex>
+          </Box>
+        )
+      });
+      return;
+    }
+
     const tableName = prompt(t('enterTableName'));
-    if (!tableName || tableName.trim() === '') return;
+    if (!tableName) return;
 
-    if (!userData?.restaurant?.id) {
-        toast({
-          title: t('error'),
-          description: 'Restaurant information is missing. Please refresh or contact support.',
-          status: 'error',
-          duration: 3000
-        });
-        return;
-      }
-
-      try {
-        setIsLoading(true);
-        const token = localStorage.getItem('token');
-        
-        // Construct the table data object based on the schema
-        const tableData = {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`${BASE_URL}/api/tables`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
           data: {
-            name: tableName.trim(),
-            restaurant: userData.restaurant.id,
-            status: 'Available', // Using the enum values from schema
-            description: `Table created on ${new Date().toLocaleDateString()}`
+            name: tableName,
+            restaurant: userData?.restaurant?.id,
+            status: 'Available',
+            color: subscriptionTier === 'premium' 
+              ? getRandomTableColor() 
+              : '#3182CE' // Default blue for standard
           }
-        };
-        
-        const response = await fetch(`${BASE_URL}/api/tables`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(tableData)
-        });
+        })
+      });
 
-        if (!response.ok) {
-          const responseData = await response.json().catch(() => ({}));
-          throw new Error(responseData.error?.message || `Failed to create table: ${response.status}`);
-        }
+      if (!response.ok) throw new Error('Failed to create table');
 
-        // Refresh data after successful creation
-        await checkAuth();
-        
-        toast({
-          title: t('tableCreated'),
-          description: `Table "${tableName}" has been created successfully.`,
-          status: 'success',
-          duration: 2000
-        });
-      } catch (error) {
-        console.error('Table creation error:', error);
-        toast({
-          title: t('error'),
-          description: error.message || 'Failed to create table. Please try again.',
-          status: 'error',
-          duration: 5000
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    };
+      checkAuth();
+      toast({
+        title: t('tableCreated'),
+        status: 'success',
+        duration: 2000
+      });
+    } catch (error) {
+      toast({
+        title: t('error'),
+        description: error.message,
+        status: 'error',
+        duration: 3000
+      });
+    }
+  };
   
     const handleUpdateTable = async (tableId, currentTableName) => {
       if (!tableId) {
@@ -1525,7 +1656,7 @@ const handleUpdate = (type, item) => {
       onClick, 
       colorScheme = "blue",
       size = "md",
-      variant = "solid",
+      variant = "tolbah-solid",
       isDisabled = false,
       iconsOnly = false
     }) => (
