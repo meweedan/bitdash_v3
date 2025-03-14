@@ -9,7 +9,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import Layout from '@/components/Layout';
 import OperatorMessages from '@/components/OperatorMessages';
 import SubscriptionInfo from '@/components/SubscriptionInfo';
-import AnalyticsTab from '@/components/AnalyticsTab';
+import AnalyticsTab from '@/components/bsoraa/operator/AnalyticsTab';
 
 import {
   Box,
@@ -741,6 +741,9 @@ const QRCodeCard = ({
   );
 };
 const checkAuth = async () => {
+  // Set loading state
+  setIsLoading(true);
+  
   const token = localStorage.getItem('token');
   if (!token) {
     router.push('/login');
@@ -748,6 +751,7 @@ const checkAuth = async () => {
   }
 
   try {
+    // Remove the extra question mark and ensure proper URL format
     const response = await fetch(
       `${BASE_URL}/api/users/me?populate[restaurant][populate][]=logo&populate[restaurant][populate][]=tables&populate[restaurant][populate][]=menus&populate[restaurant][populate][]=menus.menu_items&populate[restaurant][populate][]=subscription&populate[restaurant][populate][]=custom_colors&populate[restaurant][populate][]=qr_settings`,
       {
@@ -758,76 +762,104 @@ const checkAuth = async () => {
       }
     );
 
-    if (!response.ok) throw new Error('Failed to fetch user data');
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error?.message || 'Failed to fetch user data');
+    }
 
     const userData = await response.json();
     
-    // Check subscription status
+    // Add safety check for restaurant data
+    if (!userData || !userData.restaurant) {
+      setUserData({
+        ...initialUserData,
+        noRestaurant: true
+      });
+      return;
+    }
+    
+    // Check subscription status if exists
     if (userData.restaurant?.subscription) {
-      const subscriptionEndDate = new Date(userData.restaurant.subscription.end_date);
-      const now = new Date();
-      const timeUntilExpiry = subscriptionEndDate - now;
-      const daysUntilExpiry = timeUntilExpiry / (1000 * 60 * 60 * 24);
+      // Check if end_date exists before proceeding
+      if (userData.restaurant.subscription.end_date) {
+        const subscriptionEndDate = new Date(userData.restaurant.subscription.end_date);
+        const now = new Date();
+        const timeUntilExpiry = subscriptionEndDate - now;
+        const daysUntilExpiry = timeUntilExpiry / (1000 * 60 * 60 * 24);
 
-      if (timeUntilExpiry <= 0) {
-        // Subscription has ended
-        setUserData({
-          ...userData,
-          subscriptionExpired: true
-        });
-        
-        toast({
-          title: "Subscription Expired",
-          description: (
-            <VStack align="start" spacing={2}>
-              <Text>Your subscription has expired. Please renew to continue using our services.</Text>
-              <Button
-                size="sm"
-                colorScheme="blue"
-                onClick={() => handleUpgradeSubscription(userData.restaurant.subscription.tier)}
-              >
-                Renew Now
-              </Button>
-            </VStack>
-          ),
-          status: "error",
-          duration: null,
-          isClosable: true,
-          position: "top-right"
-        });
-      } else if (daysUntilExpiry <= 2) {
-        // Show 48-hour warning
-        setUserData(userData);
-        
-        toast({
-          title: "Subscription Ending Soon",
-          description: (
-            <HStack spacing={2}>
-              <Text>⏳ {Math.ceil(daysUntilExpiry * 24)} hours left until subscription ends. ⏳</Text>
-              <Button
-                size="sm"
-                variant="link"
-                colorScheme="blue"
-                onClick={() => handleUpgradeSubscription(userData.restaurant.subscription.tier)}
-              >
-                Renew Now
-              </Button>
-            </HStack>
-          ),
-          status: "error",
-          duration: 10000,
-          isClosable: true,
-          position: "top-right"
-        });
+        if (timeUntilExpiry <= 0) {
+          // Subscription has ended
+          setUserData({
+            ...userData,
+            subscriptionExpired: true
+          });
+          
+          toast({
+            title: "Subscription Expired",
+            description: (
+              <VStack align="start" spacing={2}>
+                <Text>Your subscription has expired. Please renew to continue using our services.</Text>
+                <Button
+                  size="sm"
+                  colorScheme="blue"
+                  onClick={() => handleUpgradeSubscription(userData.restaurant.subscription.tier)}
+                >
+                  Renew Now
+                </Button>
+              </VStack>
+            ),
+            status: "error",
+            duration: null,
+            isClosable: true,
+            position: "top-right"
+          });
+        } else if (daysUntilExpiry <= 2) {
+          // Show 48-hour warning
+          setUserData(userData);
+          
+          toast({
+            title: "Subscription Ending Soon",
+            description: (
+              <HStack spacing={2}>
+                <Text>⏳ {Math.ceil(daysUntilExpiry * 24)} hours left until subscription ends. ⏳</Text>
+                <Button
+                  size="sm"
+                  variant="link"
+                  colorScheme="blue"
+                  onClick={() => handleUpgradeSubscription(userData.restaurant.subscription.tier)}
+                >
+                  Renew Now
+                </Button>
+              </HStack>
+            ),
+            status: "warning",
+            duration: 10000,
+            isClosable: true,
+            position: "top-right"
+          });
+        } else {
+          setUserData(userData);
+        }
       } else {
+        // Handle case where subscription exists but end_date is missing
+        setUserData(userData);
+        console.warn('Subscription exists but end_date is missing');
+      }
+    } else if (userData.restaurant?.id) {
+      // Create default subscription if none exists and restaurant ID is available
+      try {
+        await createDefaultSubscription(userData.restaurant.id, token);
+      } catch (subscriptionError) {
+        console.error('Failed to create default subscription:', subscriptionError);
+        // Still set userData even if subscription creation fails
         setUserData(userData);
       }
     } else {
-      // Create default subscription if none exists
-      await createDefaultSubscription(userData.restaurant.id, token);
+      // Just set userData if no subscription and no restaurant ID
+      setUserData(userData);
     }
 
-    // Load custom colors and settings
+    // Load custom colors and settings with null checks
     if (userData.restaurant?.custom_colors) {
       setSelectedColors(prevColors => ({
         ...prevColors,
@@ -842,18 +874,111 @@ const checkAuth = async () => {
       }));
     }
 
+    // Fetch initial orders data if restaurant exists
+    if (userData.restaurant?.id) {
+      fetchOrders(userData.restaurant.id, token).catch(error => {
+        console.error('Error fetching initial orders:', error);
+      });
+    }
+
   } catch (error) {
     console.error('Dashboard error:', error);
-    toast({
-      title: t('error'),
-      description: error.message || t('failedLoadDashboard'),
-      status: 'error',
-      duration: 3000
-    });
-    router.push('/login');
+    
+    // Check if it's an auth error or network error
+    if (error.message?.includes('401') || error.message?.includes('Unauthorized')) {
+      toast({
+        title: t('sessionExpired'),
+        description: t('pleaseLoginAgain'),
+        status: 'error',
+        duration: 3000
+      });
+      router.push('/login');
+    } else {
+      toast({
+        title: t('error'),
+        description: error.message || t('failedLoadDashboard'),
+        status: 'error',
+        duration: 5000
+      });
+      
+      // Set default userData structure to prevent null errors
+      setUserData(initialUserData);
+    }
   } finally {
     setIsLoading(false);
   }
+};
+
+// Updated fetchOrders function with explicit restaurant ID and token parameters
+const fetchOrders = async (restaurantId, token) => {
+  if (!restaurantId) {
+    console.warn('Cannot fetch orders: No restaurant ID provided');
+    return;
+  }
+  
+  try {
+    const response = await fetch(
+      `${BASE_URL}/api/orders?filters[restaurant][id]=${restaurantId}&populate[customer_profile][populate][*]=*&populate[order_items][populate][menu_item]=*&populate[tables][populate][*]=*&sort[0]=createdAt:desc`,
+      {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error?.message || 'Failed to fetch orders');
+    }
+
+    const data = await response.json();
+    setOrders(data.data || []);
+  } catch (error) {
+    console.error('Error fetching orders:', error);
+    toast({
+      title: t('error'),
+      description: t('failedToLoadOrders'),
+      status: 'error',
+      duration: 3000
+    });
+    // Set empty orders array to prevent undefined errors
+    setOrders([]);
+  }
+};
+
+// Updated createDefaultSubscription function with better error handling
+const createDefaultSubscription = async (restaurantId, token) => {
+  if (!restaurantId) {
+    throw new Error('Cannot create subscription: No restaurant ID');
+  }
+  
+  const response = await fetch(`${BASE_URL}/api/subscriptions`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      data: {
+        tier: 'standard',
+        status: 'active',
+        commission_rate: 2.5,
+        monthly_fee: 80,
+        start_date: new Date().toISOString(),
+        end_date: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days from now
+        restaurant: restaurantId
+      }
+    })
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.error?.message || 'Failed to create default subscription');
+  }
+  
+  // Get the updated user data after creating subscription
+  return checkAuth();
 };
 
 const ExpiredSubscriptionView = ({ subscription }) => (
@@ -880,35 +1005,6 @@ const ExpiredSubscriptionView = ({ subscription }) => (
     </Button>
   </VStack>
 );
-
-const createDefaultSubscription = async (restaurantId, token) => {
-  try {
-    const response = await fetch(`${BASE_URL}/api/subscriptions`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        data: {
-          tier: 'standard',
-          status: 'active',
-          commission_rate: 2.5,
-          monthly_fee: 80,
-          start_date: new Date().toISOString(),
-          restaurant: restaurantId
-        }
-      })
-    });
-
-    if (!response.ok) throw new Error('Failed to create default subscription');
-    
-    // Refresh user data to include new subscription
-    checkAuth();
-  } catch (error) {
-    console.error('Error creating default subscription:', error);
-  }
-};
 
   useEffect(() => {
     checkAuth();
@@ -987,36 +1083,6 @@ const handleCancelSubscription = async () => {
   }
 };
 
-// Update the fetchOrders function
-const fetchOrders = async () => {
-  try {
-    const token = localStorage.getItem('token');
-    // Update the populate parameter to include order_items
-    const response = await fetch(
-      `${BASE_URL}/api/orders?filters[restaurant][id]=${userData.restaurant.id}&populate[customer_profile][populate][*]=*&populate[order_items][populate][menu_item]=*&populate[tables][populate][*]=*&sort[0]=createdAt:desc`,
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      }
-    );
-
-    if (!response.ok) throw new Error('Failed to fetch orders');
-
-    const data = await response.json();
-    setOrders(data.data || []);
-  } catch (error) {
-    console.error('Error fetching orders:', error);
-    toast({
-      title: t('error'),
-      description: t('failedToLoadOrders'),
-      status: 'error',
-      duration: 3000
-    });
-  }
-};
-
   const handleUpdateOrderStatus = async (orderId, newStatus) => {
   try {
     const token = localStorage.getItem('token');
@@ -1068,13 +1134,13 @@ const handleViewOrderDetails = (order) => {
 const handleAdd = (type) => {
   switch (type) {
     case 'restaurant':
-      router.push('/menu/operator/create-page');
+      router.push('/bsoraa/operator/create-page');
       break;
     case 'menu':
-      router.push('/menu/operator/dashboard/menus/create'); // This path doesn't exist
+      router.push('/bsoraa/operator/dashboard/menus/create'); // This path doesn't exist
       break;
     case 'menuItem':
-      router.push('/menu/operator/dashboard/menu-items/create'); // This path doesn't exist
+      router.push('/bsoraa/operator/dashboard/menu-items/create'); // This path doesn't exist
       break;
     case 'table':
       handleAddTable();
@@ -1226,10 +1292,10 @@ const handleUpdateTable = async (tableId) => {
 const handleUpdate = (type, id) => {
   switch (type) {
     case 'menu':
-      router.push(`/menu/operator/dashboard/menus/${id}/edit`);
+      router.push(`/bsoraa/operator/dashboard/menus/${id}/edit`);
       break;
     case 'menuItem':
-      router.push(`/menu/operator/dashboard/menu-items/${id}/edit`);
+      router.push(`/bsoraa/operator/dashboard/menu-items/${id}/edit`);
       break;
   }
 };
@@ -1531,7 +1597,7 @@ const handleDelete = async (type, id) => {
                                   >
                                     <QRCodeCard
                                       tableName={table.name}
-                                      qrValue={`https://menu.bitdash.app/menu/${userData.restaurant.id}`}
+                                      qrValue={`https://bsoraa.bitdash.app/bsoraa/${userData.restaurant.id}`}
                                       isDarkMode={qrDarkMode}
                                       restaurantName={userData.restaurant.name}
                                       poweredByText={t('poweredBy')}

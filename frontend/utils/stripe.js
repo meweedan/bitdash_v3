@@ -1,17 +1,11 @@
-'use strict';
-
-const Stripe = require('stripe');
-const { verify } = require('jsonwebtoken');
-// If you have a local function to map plan => priceId
-// adjust the import path to match your project
-const { getPlanStripePriceId } = require('@/config/subscriptionConfig');
+// utils/stripe.js
+import Stripe from 'stripe';
+import { getPlanStripePriceId } from '@/config/subscriptionConfig';
+import { verify } from 'jsonwebtoken';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-/**
- * Verify a JWT token
- */
-async function verifyToken(token) {
+export const verifyToken = async (token) => {
   try {
     const decoded = verify(token, process.env.JWT_SECRET);
     return decoded;
@@ -19,21 +13,19 @@ async function verifyToken(token) {
     console.error('Token verification error:', error);
     throw new Error('Invalid token');
   }
-}
+};
 
-/**
- * Create a Stripe subscription checkout session
- */
-async function createCheckoutSession({
+export const createCheckoutSession = async ({
   platform,
   tier,
   currency = 'usd',
   successUrl,
   cancelUrl,
   customerEmail,
-  metadata = {},
-}) {
+  metadata = {}
+}) => {
   const priceId = getPlanStripePriceId(platform, tier);
+  
   if (!priceId) {
     throw new Error('Invalid plan selected');
   }
@@ -49,20 +41,17 @@ async function createCheckoutSession({
     ],
     success_url: successUrl,
     cancel_url: cancelUrl,
+    currency: currency.toLowerCase(),
     customer_email: customerEmail,
-    allow_promotion_codes: true,
     metadata: {
       platform,
       tier,
-      ...metadata,
+      ...metadata
     },
+    allow_promotion_codes: true,
   });
 
   return session;
-}
-
-module.exports = {
-  stripe,
-  verifyToken,
-  createCheckoutSession,
 };
+
+export { stripe };

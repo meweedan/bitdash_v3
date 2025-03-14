@@ -36,41 +36,17 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.log(`Processing event: ${event.type}`);
-    
     switch (event.type) {
-      case 'checkout.session.completed':
-        const session = event.data.object;
-        
-        // Log the successful checkout
-        console.log('Checkout completed:', session.id);
-        
-        // Extract the metadata from the session
-        const { userId, customerId, challengeType } = session.metadata;
-        
-        // You could trigger your challenge creation logic here
-        // Instead of waiting for the redirect back to your application
-        console.log('Creating challenge for user:', userId, 'type:', challengeType);
-        
-        // You could call your API to create the challenge
-        // await fetch(`${process.env.NEXTAUTH_URL}/api/create-challenge`, {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify({ userId, challengeType })
-        // });
-        
-        break;
-        
       case 'payment_intent.succeeded':
         const paymentIntent = event.data.object;
+        // Handle successful payment
         console.log('Payment successful:', paymentIntent.id);
         break;
-        
       case 'payment_intent.payment_failed':
         const failedPayment = event.data.object;
+        // Handle failed payment
         console.log('Payment failed:', failedPayment.id);
         break;
-        
       default:
         console.log(`Unhandled event type ${event.type}`);
     }

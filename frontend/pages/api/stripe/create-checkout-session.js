@@ -1,6 +1,6 @@
 // pages/api/stripe/create-checkout-session.js
 import Stripe from 'stripe';
-import { getChallengeById } from '@/config/challengeConfig';
+import { getPlanById } from '@/config/subscriptionConfig';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -11,44 +11,33 @@ export default async function handler(req, res) {
 
   try {
     const {
-      challengeId,
+      planId,
+      platform,
       userId,
+      operatorId,
       email,
-      successUrl = `${process.env.FRONTEND_URL}/fund/challenger/dashboard?success=true&challenge=`,
-      cancelUrl = `${process.env.FRONTEND_URL}/fund/challenger/dashboard`,
+      priceAmount,
+      successUrl,
+      cancelUrl,
       customerName,
-      referralCode
+      businessName
     } = req.body;
 
-    // Get challenge details
-    const challenge = getChallengeById(challengeId);
-    if (!challenge) {
-      return res.status(400).json({ error: 'Invalid challenge selected' });
-    }
-
-    // Create product
+    // Create or get product
     const product = await stripe.products.create({
-      name: challenge.name,
-      description: challenge.description,
-      metadata: {
-        challenge_id: challengeId,
-        account_size: challenge.account_size,
-        profit_target: challenge.profit_target,
-        max_drawdown: challenge.max_drawdown,
-        daily_drawdown: challenge.daily_drawdown,
-        duration_days: challenge.duration_days
-      }
+      name: `${platform.toUpperCase()} ${planId.toUpperCase()} Plan - ${businessName}`,
+      description: `Subscription for ${businessName}`,
     });
 
     // Create price
     const price = await stripe.prices.create({
       product: product.id,
-      unit_amount: challenge.price * 100, // Convert to cents
-      currency: 'usd'
+      unit_amount: Math.round(priceAmount * 100), // Convert to cents
+      currency: 'usd',
+      recurring: {
+        interval: 'month'
+      },
     });
-
-    // Generate a complete success URL with the challenge ID
-    const completeSuccessUrl = `${successUrl}${challengeId}`;
 
     // Create checkout session
     const session = await stripe.checkout.sessions.create({
@@ -59,20 +48,24 @@ export default async function handler(req, res) {
           quantity: 1,
         },
       ],
-      mode: 'payment',
-      success_url: completeSuccessUrl,
+      mode: 'subscription',
+      success_url: successUrl,
       cancel_url: cancelUrl,
       customer_email: email,
       metadata: {
         userId,
-        challengeId,
-        referralCode
+        operatorId,
+        platform,
+        planId,
+        businessName
       },
-      payment_intent_data: {
+      subscription_data: {
         metadata: {
           userId,
-          challengeId,
-          referralCode
+          operatorId,
+          platform,
+          planId,
+          businessName
         }
       },
       customer_creation: 'always',
