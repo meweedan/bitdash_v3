@@ -232,7 +232,7 @@ const CaptainSignup = () => {
         duration: 5000
       });
 
-      router.push('/bsoraa/captain/dashboard');
+      router.push('/tolbah/captain/dashboard');
 
     } catch (error) {
       console.error('Signup error:', error);
@@ -256,7 +256,7 @@ const CaptainSignup = () => {
   return (
     <Layout>
       <Head>
-        <title>Bsoraa - Become a Delivery Captain</title>
+        <title>Tolbah - Become a Delivery Captain</title>
       </Head>
 
       <Container maxW="container.md" py={8}>
@@ -283,7 +283,7 @@ const CaptainSignup = () => {
             <VStack align="center" spacing={2}>
               <Heading size="lg">Become a Captain</Heading>
               <Badge colorScheme="green" p={2} borderRadius="full">
-                Earn more with Bsoraa!
+                Earn more with Tolbah!
               </Badge>
             </VStack>
 

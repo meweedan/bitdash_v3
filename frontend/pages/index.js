@@ -8,7 +8,7 @@ import Layout from '@/components/Layout';
 // Subdomain landings
 import MainLanding from '@/components/Landing';
 import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
-import BsoraaLandingBrowser from '@/components/landing/BsoraaLandingBrowser';
+import TolbahLandingBrowser from '@/components/landing/TolbahLandingBrowser';
 
 export default function HomePage() {
   const { t } = useTranslation('common');
@@ -20,8 +20,8 @@ export default function HomePage() {
 
     if (hostname.includes('adfaaly.')) {
       setPlatform('adfaaly');
-    } else if (hostname.includes('bsoraa.')) {
-      setPlatform('bsoraa');
+    } else if (hostname.includes('tolbah.')) {
+      setPlatform('tolbah');
     } else if (process.env.NODE_ENV === 'development') {
       // For dev, e.g. http://localhost:3000?platform=cash
       const param = new URLSearchParams(window.location.search).get('platform');
@@ -44,11 +44,11 @@ export default function HomePage() {
           favicon: '/adfaaly-icons/favicon.ico',
           manifest: '/manifests/adfaaly-manifest.json',
         };
-      case 'bsoraa':
+      case 'tolbah':
         return {
-          title: t('bsoraa.title', 'Bsoraa'),
-          favicon: '/bsoraa-icons/favicon.ico',
-          manifest: '/manifests/bsoraa-manifest.json',
+          title: t('tolbah.title', 'Tolbah'),
+          favicon: '/tolbah-icons/favicon.ico',
+          manifest: '/manifests/tolbah-manifest.json',
         };
       default:
         return {
@@ -66,8 +66,8 @@ export default function HomePage() {
     switch (platform) {
       case 'adfaaly':
         return <CashLandingBrowser />;
-      case 'bsoraa':
-        return <BsoraaLandingBrowser />;
+      case 'tolbah':
+        return <TolbahLandingBrowser />;
       default:
         return <MainLanding />;
     }

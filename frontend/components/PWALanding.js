@@ -33,12 +33,12 @@ export const AdfaalyPWALanding = () => {
   );
 };
 
-export const BsoraaPWALanding = () => {
+export const TolbahPWALanding = () => {
   const router = useRouter();
   const config = {
-    title: 'Bsoraa',
+    title: 'Tolbah',
     description: 'Your trusted forex broker',
-    image: '/bsoraa.png',
+    image: '/tolbah.png',
     color: '#4CAF50'
   };
 
@@ -60,7 +60,7 @@ const PWALanding = () => {
   const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
 
   if (hostname.includes('adfaaly')) return <AdfaalyPWALanding />;
-  if (hostname.includes('bsoraa')) return <BsoraaPWALanding />;
+  if (hostname.includes('tolbah')) return <TolbahPWALanding />;
 
   const config = {
     title: 'BitDash',

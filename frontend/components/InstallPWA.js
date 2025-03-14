@@ -22,7 +22,7 @@ function getAppIconByDomain() {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname.toLowerCase();
     if (hostname.includes('adfaaly')) return '/adfaaly.png';
-    if (hostname.includes('bsoraa')) return '/bsoraa.png';
+    if (hostname.includes('tolbah')) return '/tolbah.png';
   }
   // fallback
   return '/app-logo.png';

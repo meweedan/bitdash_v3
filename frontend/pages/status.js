@@ -64,7 +64,7 @@ const getBrandKeyFromSubdomain = (hostname) => {
     if (hostname.includes('.') && hostname.split('.').length >= 3) {
       const subdomain = hostname.split('.')[0];
       if (subdomain === 'adfaaly') return 'adfaaly';
-      if (subdomain === 'bsoraa') return 'bsoraa';
+      if (subdomain === 'tolbah') return 'tolbah';
     }
   } catch (e) {
     console.error("Error parsing subdomain:", e);
@@ -246,7 +246,7 @@ const StatusPage = () => {
     { value: 'all', label: t('status:allPlatforms', 'All Platforms') },
     { value: 'bitdash', label: 'BitDash' },
     { value: 'adfaaly', label: 'Adfaaly' },
-    { value: 'bsoraa', label: 'Bsoraa' }
+    { value: 'tolbah', label: 'Tolbah' }
   ];
 
   return (

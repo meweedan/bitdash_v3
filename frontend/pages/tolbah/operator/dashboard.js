@@ -362,14 +362,14 @@ const ColorCustomizationModal = ({
         <ModalFooter>
           <HStack spacing={3}>
             <Button 
-              colorScheme="blue" 
+              variant="bsoraa-solid"
               leftIcon={<Icon as={mdiCheckCircle} />}
               onClick={handleColorChange}
             >
               Save Changes
             </Button>
             <Button 
-              variant="ghost" 
+              variant="bsoraa-outline"
               onClick={closeColorCustomizationModal}
             >
               Cancel
@@ -1434,7 +1434,7 @@ const handleUpdateTableColor = async (tableId, tableName, currentColor) => {
             <Text fontSize="sm">Table color customization is only available with Premium subscription.</Text>
             <Button 
               size="sm" 
-              colorScheme="blue"
+              variant="bsoraa-outline"
               onClick={() => handleUpgradeSubscription('premium')}
             >
               Upgrade Now
@@ -1842,17 +1842,13 @@ const handleDelete = async (type, id) => {
 
                                   <Flex mt={4} gap={4} justify="center">
                                     <Button
-                                      bg={qrDarkMode ? '#FFFFFF' : '#000000'}
-                                      color={qrDarkMode ? '#000000' : '#FFFFFF'}
-                                      variant="outline"
+                                      variant="bsoraa-outline"
                                       onClick={() => setQrDarkMode(!qrDarkMode)}
                                       leftIcon={qrDarkMode ? <FiSun /> : <FiMoon />}
                                     >
                                     </Button>
                                     <Button
-                                      bg={qrDarkMode ? '#FFFFFF' : '#000000'}
-                                      color={qrDarkMode ? '#000000' : '#FFFFFF'}
-                                      variant="outline"
+                                      variant="bsoraa-outline"
                                       onClick={() => captureAndDownload(table.name)}
                                       leftIcon={<FiDownload />}
                                     >

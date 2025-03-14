@@ -8,7 +8,7 @@ module.exports = [
       origin: [
         'https://bitdash.app',
         'https://adfaaly.bitdash.app',
-        'https://bsoraa.bitdash.app',
+        'https://tolbah.bitdash.app',
         'http://localhost:3000', 
         'https://bitdash-backend.onrender.com'],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],

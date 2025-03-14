@@ -12,7 +12,7 @@ const FlowingShawl = () => {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
       if (hostname.includes('adfaaly')) setPlatform('adfaaly');
-      else if (hostname.includes('bsoraa')) setPlatform('bsoraa');
+      else if (hostname.includes('tolbah')) setPlatform('tolbah');
     }
   }, []);
 
@@ -23,7 +23,7 @@ const FlowingShawl = () => {
       new THREE.Color('#00bf63'),
       new THREE.Color('#00bf63')
     ],
-    bsoraa: [
+    tolbah: [
       new THREE.Color('#ff914d'),
       new THREE.Color('#ff914d'),
       new THREE.Color('#ff914d'),

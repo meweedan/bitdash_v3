@@ -54,7 +54,7 @@ const MotionContainer = motion(Container);
 // Platform definitions
 const PLATFORMS = {
   ADFAALY: { themeKey: 'adfaaly', subdomain: 'adfaaly' },
-  BSORAA: { themeKey: 'bsoraa', subdomain: 'bsoraa' },
+  TOLBAH: { themeKey: 'tolbah', subdomain: 'tolbah' },
   DEFAULT: { themeKey: 'adfaaly', subdomain: 'adfaaly' }, // Default platform
 };
 
@@ -63,7 +63,7 @@ const getPlatformFromHostname = (hostname) => {
   if (!hostname) return PLATFORMS.DEFAULT;
   
   // Check for each possible subdomain
-  if (hostname.includes('bsoraa.')) return PLATFORMS.BSORAA;
+  if (hostname.includes('tolbah.')) return PLATFORMS.TOLBAH;
   if (hostname.includes('adfaaly.')) return PLATFORMS.ADFAALY;
   
   return PLATFORMS.DEFAULT;
@@ -109,7 +109,7 @@ const Contact = () => {
   const [errorMessage, setErrorMessage] = useState('');
   
   // Get current theme key safely
-  const themeKey = currentPlatform?.themeKey || 'bsoraa';
+  const themeKey = currentPlatform?.themeKey || 'tolbah';
   
   const cardBg = useColorModeValue('white', 'black.800');
   const highlightColor = useColorModeValue(`brand.${themeKey}.500`, `brand.${themeKey}.300`);
@@ -117,24 +117,24 @@ const Contact = () => {
   const platforms = [
     { value: 'all', label: t('allPlatforms', 'All Platforms') },
     { value: 'Adfaaly', label: t('Adfaaly', 'Adfaaly') },
-    { value: 'Bsoraa', label: t('Bsoraa', 'Bsoraa') }
+    { value: 'Tolbah', label: t('Tolbah', 'Tolbah') }
   ];
   
   const contactInfo = [
     { 
       title: t('generalInquiries', 'General Inquiries'), 
       value: 'info@bitdash.app',
-      color: 'brand.bsoraa.400'
+      color: 'brand.tolbah.400'
     },
     { 
       title: t('technicalSupport', 'Technical Support'), 
       value: 'help@bitdash.app',
-      color: 'brand.bsoraa.400'
+      color: 'brand.tolbah.400'
     },
     { 
       title: t('accountQuestions', 'Account Questions'), 
       value: 'contact@bitdash.app',
-      color: 'brand.bsoraa.400'
+      color: 'brand.tolbah.400'
     }
   ];
 

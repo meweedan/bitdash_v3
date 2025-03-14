@@ -109,7 +109,7 @@ export default function LandingPage() {
   const headingColor = useColorModeValue('whiteAlpha.900', 'brand.bitdash.700');
   const textColor = useColorModeValue('brand.bitdash.400', 'brand.bitdash.400');
   const accentColor = '#8b7966'; // The gold/brown accent color from the main site
-  const bsoraaColor = '#FF7D1A'; // Orange color for Bsoraa
+  const tolbahColor = '#FF7D1A'; // Orange color for tolbah
   const adfaalyColor = '#00bf63'; // Green color for Adfaaly
 
   // Custom parallax component
@@ -268,14 +268,14 @@ export default function LandingPage() {
             
             {/* Platform Cards */}
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} width="full">
-              {/* Bsoraa Platform */}
+              {/* tolbah Platform */}
               <PlatformCard
-                title={t('platforms.bsoraa.title', 'Bsoraa')}
-                description={t('platforms.bsoraa.description', 'Your complete delivery solution for food, groceries, and retail items. Features QR ordering for seamless in-restaurant experiences.')}
-                image="/bsoraa.png"
-                cta={t('platforms.bsoraa.cta', 'Try Bsoraa')}
-                link="https://bsoraa.bitdash.app"
-                color={bsoraaColor}
+                title={t('platforms.tolbah.title', 'Tolbah')}
+                description={t('platforms.tolbah.description', 'Your complete delivery solution for food, groceries, and retail items. Features QR ordering for seamless in-restaurant experiences.')}
+                image="/tolbah.png"
+                cta={t('platforms.tolbah.cta', 'Try Tolbah')}
+                link="https://tolbah.bitdash.app"
+                color={tolbahColor}
                 delay={0}
               />
               
@@ -294,7 +294,7 @@ export default function LandingPage() {
         </Container>
       </Box>
       
-      {/* Bsoraa Features Section */}
+      {/* tolbah Features Section */}
       <Box 
         as="section" 
         py={{ base: 16, md: 24 }}
@@ -312,13 +312,13 @@ export default function LandingPage() {
               mx="auto"
             >
               <Text 
-                color={bsoraaColor} 
+                color={tolbahColor} 
                 fontWeight="bold" 
                 mb={3}
                 textTransform="uppercase"
                 letterSpacing="wide"
               >
-                {t('bsoraa.subtitle', 'Delivery Solutions')}
+                {t('tolbah.subtitle', 'Delivery Solutions')}
               </Text>
               
               <Heading
@@ -327,14 +327,14 @@ export default function LandingPage() {
                 color={isDark ? "white" : "#333"}
                 mb={5}
               >
-                {t('bsoraa.title', 'Bsoraa: Beyond Delivery')}
+                {t('tolbah.title', 'Tolbah: Beyond Delivery')}
               </Heading>
               
               <Text
                 fontSize={{ base: "md", md: "lg" }}
                 color={isDark ? "gray.300" : "gray.600"}
               >
-                {t('bsoraa.description', 'Experience seamless delivery of food, groceries, and retail items, plus innovative QR ordering for a contactless dining experience.')}
+                {t('tolbah.description', 'Experience seamless delivery of food, groceries, and retail items, plus innovative QR ordering for a contactless dining experience.')}
               </Text>
             </MotionBox>
           </VStack>
@@ -345,34 +345,34 @@ export default function LandingPage() {
                 {/* Feature Cards */}
                 <FeatureCard
                   icon={FaUtensils}
-                  title={t('bsoraa.features.food.title', 'Food Delivery')}
-                  description={t('bsoraa.features.food.description', 'Get hot, fresh food delivered directly to your doorstep from your favorite restaurants')}
+                  title={t('tolbah.features.food.title', 'Food Delivery')}
+                  description={t('tolbah.features.food.description', 'Get hot, fresh food delivered directly to your doorstep from your favorite restaurants')}
                   delay={0}
-                  color={bsoraaColor}
+                  color={tolbahColor}
                 />
                 
                 <FeatureCard
                   icon={FaShoppingBasket}
-                  title={t('bsoraa.features.grocery.title', 'Grocery Delivery')}
-                  description={t('bsoraa.features.grocery.description', 'Fresh produce and pantry essentials delivered when you need them')}
+                  title={t('tolbah.features.grocery.title', 'Grocery Delivery')}
+                  description={t('tolbah.features.grocery.description', 'Fresh produce and pantry essentials delivered when you need them')}
                   delay={0.1}
-                  color={bsoraaColor}
+                  color={tolbahColor}
                 />
                 
                 <FeatureCard
                   icon={FaStore}
-                  title={t('bsoraa.features.retail.title', 'Retail Items')}
-                  description={t('bsoraa.features.retail.description', 'Shop electronics, gifts, and more from local stores with same-day delivery')}
+                  title={t('tolbah.features.retail.title', 'Retail Items')}
+                  description={t('tolbah.features.retail.description', 'Shop electronics, gifts, and more from local stores with same-day delivery')}
                   delay={0.2}
-                  color={bsoraaColor}
+                  color={tolbahColor}
                 />
                 
                 <FeatureCard
                   icon={FaQrcode}
-                  title={t('bsoraa.features.qr.title', 'QR Ordering')}
-                  description={t('bsoraa.features.qr.description', 'Scan, order, and pay directly from your table at participating restaurants')}
+                  title={t('tolbah.features.qr.title', 'QR Ordering')}
+                  description={t('tolbah.features.qr.description', 'Scan, order, and pay directly from your table at participating restaurants')}
                   delay={0.3}
-                  color={bsoraaColor}
+                  color={tolbahColor}
                 />
               </SimpleGrid>
             </GridItem>
@@ -387,7 +387,7 @@ export default function LandingPage() {
                 <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
                   <Image 
                     src="/images/delivery-app-screen.png" 
-                    alt={t('bsoraa.imageAlt', 'Bsoraa Delivery App Screenshot')}
+                    alt={t('tolbah.imageAlt', 'tolbah Delivery App Screenshot')}
                     width={{ base: "300px", md: "400px" }}
                     as={motion.img}
                     animate={{ scale: [1, 1.03, 1] }}
@@ -525,7 +525,7 @@ export default function LandingPage() {
                   <Heading
                     fontSize={{ base: "2xl", md: "3xl" }}
                     fontWeight="bold"
-                    color={bsoraaColor}
+                    color={tolbahColor}
                   >
                     {t('qr.title', 'QR Table Ordering')}
                   </Heading>
@@ -547,7 +547,7 @@ export default function LandingPage() {
                   </Text>
                   
                   <Button
-                    bg={bsoraaColor}
+                    bg={tolbahColor}
                     color="white"
                     _hover={{ bg: "#E86C00" }}
                     size="lg"
@@ -683,7 +683,7 @@ export default function LandingPage() {
                     color={isDark ? "gray.300" : "gray.600"}
                     maxW="600px"
                   >
-                    {t('app.description', 'Get our mobile apps for both Bsoraa and Adfaaly to enjoy seamless deliveries and payments wherever you go. Feature-rich interfaces designed for intuitive use.')}
+                    {t('app.description', 'Get our mobile apps for both Tolbah and Adfaaly to enjoy seamless deliveries and payments wherever you go. Feature-rich interfaces designed for intuitive use.')}
                   </Text>
                   
                   <HStack spacing={4} mt={6} flexWrap="wrap">
@@ -774,7 +774,7 @@ export default function LandingPage() {
                 fontSize={{ base: "md", md: "lg" }}
                 color={isDark ? "gray.300" : "gray.600"}
               >
-                {t('steps.description', 'Whether it\'s deliveries with Bsoraa or cashless payments with Adfaaly, getting started is quick and easy.')}
+                {t('steps.description', 'Whether it\'s deliveries with Tolbah or cashless payments with Adfaaly, getting started is quick and easy.')}
               </Text>
             </MotionBox>
             
@@ -782,7 +782,7 @@ export default function LandingPage() {
               <StepCard
                 number="1"
                 title={t('steps.step1.title', 'Download App')}
-                description={t('steps.step1.description', 'Download Bsoraa for deliveries or Adfaaly for payments from your app store')}
+                description={t('steps.step1.description', 'Download Tolbah for deliveries or Adfaaly for payments from your app store')}
                 delay={0}
               />
               
@@ -866,7 +866,7 @@ export default function LandingPage() {
                   fontWeight="bold"
                   color={isDark ? "white" : "#333"}
                 >
-                  {t('cta.title', 'Get Started with Bsoraa and Adfaaly Today')}
+                  {t('cta.title', 'Get Started with Tolbah and Adfaaly Today')}
                 </Heading>
                 
                 <Text 
@@ -879,15 +879,15 @@ export default function LandingPage() {
                 
                 <HStack spacing={6} pt={4} wrap="wrap" justify="center">
                   <Button
-                    bg={bsoraaColor}
+                    bg={tolbahColor}
                     color="white"
                     _hover={{ bg: "#E86C00" }}
                     size="lg"
                     px={8}
                     rightIcon={<ArrowRight />}
-                    onClick={() => router.push('/signup/bsoraa')}
+                    onClick={() => router.push('/signup')}
                   >
-                    {t('cta.bsoraaButton', 'Try Bsoraa')}
+                    {t('cta.tolbahButton', 'Try Tolbah')}
                   </Button>
                   
                   <Button
@@ -897,7 +897,7 @@ export default function LandingPage() {
                     size="lg"
                     px={8}
                     rightIcon={<ArrowRight />}
-                    onClick={() => router.push('/signup/adfaaly')}
+                    onClick={() => router.push('/signup')}
                   >
                     {t('cta.adfaalyButton', 'Try Adfaaly')}
                   </Button>
@@ -910,7 +910,7 @@ export default function LandingPage() {
                     size="lg"
                     px={8}
                     leftIcon={<FaWhatsapp />}
-                    onClick={() => window.open("https://api.whatsapp.com/send?phone=YOURPHONENUMBER", "_blank")}
+                    onClick={() => window.open("https://api.whatsapp.com/send?phone=+447538636207", "_blank")}
                   >
                     {t('cta.supportButton', 'Contact Support')}
                   </Button>
@@ -935,7 +935,7 @@ export default function LandingPage() {
             </Heading>
             
             <Text fontSize="sm" color={isDark ? "gray.400" : "gray.600"} lineHeight="tall">
-              {t('legal.disclaimer', 'Bsoraa and Adfaaly are products of BitDash. Our delivery and payment services are designed to provide convenience and security. Please refer to our terms of service for complete information.')}
+              {t('legal.disclaimer', 'Tolbah and Adfaaly are products of BitDash. Our delivery and payment services are designed to provide convenience and security. Please refer to our terms of service for complete information.')}
             </Text>
             
             <Divider borderColor={isDark ? "gray.700" : "gray.200"} />

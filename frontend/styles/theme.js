@@ -15,7 +15,7 @@ const theme = extendTheme({
         600: '#00bf63',    // Hover
         700: '#00bf63',    // Emphasis
       },
-      bsoraa: {
+      tolbah: {
         400: '#ff914d',
         500: '#E86C00',    // Base
         600: '#ff914d',    // Hover
@@ -67,17 +67,17 @@ const theme = extendTheme({
           color: 'brand.crypto.500',
           _hover: { bg: 'brand.crypto.500', color: 'white' }
         },
-        // bsoraa variants
-        'bsoraa-solid': {
-          bg: 'brand.bsoraa.700',
+        // tolbah variants
+        'tolbah-solid': {
+          bg: 'brand.tolbah.700',
           color: 'white',
-          _hover: { bg: 'brand.bsoraa.400' }
+          _hover: { bg: 'brand.tolbah.400' }
         },
-        'bsoraa-outline': {
+        'tolbah-outline': {
           border: '2px solid',
-          borderColor: 'brand.bsoraa.500',
-          color: 'brand.bsoraa.500',
-          _hover: { bg: 'brand.bsoraa.500', color: 'white' }
+          borderColor: 'brand.tolbah.500',
+          color: 'brand.tolbah.500',
+          _hover: { bg: 'brand.tolbah.500', color: 'white' }
         },
         // Stocks variants
         'stocks-solid': {
@@ -108,8 +108,8 @@ const theme = extendTheme({
         adfaaly: {
           borderColor: 'brand.adfaaly.500',
         },
-        bsoraa: {
-          borderColor: 'brand.bsoraa.500',
+        tolbah: {
+          borderColor: 'brand.tolbah.500',
         }
       }
     },

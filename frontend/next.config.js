@@ -48,11 +48,11 @@ const nextConfig = {
   // Subdomain redirects
   async rewrites() {
     return [
-      // Bsoraa platform routes
+      // Tolbah platform routes
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'bsoraa.bitdash.app' }],
-        destination: '/bsoraa/:path*',
+        has: [{ type: 'host', value: 'tolbah.bitdash.app' }],
+        destination: '/tolbah/:path*',
       },
       // adfaaly platform routes
       {

@@ -86,7 +86,7 @@
     "imageAlt": "QR Ordering System"
   },
   "platform": {
-    "title": "Why Choose Bsoraa",
+    "title": "Why Choose Tolbah",
     "features": {
       "security": {
         "title": "Secure Payments",
@@ -107,7 +107,7 @@
     }
   },
   "partners": {
-    "title": "Partner With Bsoraa",
+    "title": "Partner With Tolbah",
     "subtitle": "Grow Your Business With Us",
     "description1": "Join our network of restaurants, grocery stores, and retailers to reach more customers and increase your revenue.",
     "description2": "Our platform provides the technology, logistics, and customer base to help your business thrive in the digital marketplace.",
@@ -159,15 +159,15 @@
     }
   },
   "mobileApp": {
-    "title": "DOWNLOAD BSORAA APP",
-    "subtitle": "YOUR FAVORITE FOOD AND ESSENTIALS, ONE TAP AWAY.",
+    "title": "Download the Tolbah app",
+    "subtitle": "Your fav food + essentials, a tap away.",
     "description": "Browse restaurants and stores, track your orders in real-time, and enjoy exclusive mobile-only deals and discounts. Get everything you need delivered with just a few taps.",
     "imageAlt": "Mobile App Screenshot"
   },
   "steps": {
     "subtitle": "Getting Started",
-    "title": "Start Using Bsoraa in 3 Simple Steps",
-    "description": "It's easy to get started with Bsoraa. Just follow these simple steps and you'll be enjoying delicious food and convenient deliveries in no time.",
+    "title": "Start Using Tolbah in 3 Simple Steps",
+    "description": "It's easy to get started with Tolbah. Just follow these simple steps and you'll be enjoying delicious food and convenient deliveries in no time.",
     "cta": "Download Our App Now",
     "step1": {
       "title": "Download",
@@ -185,13 +185,13 @@
   "cta": {
     "subtitle": "Ready to Order?",
     "title": "Delicious Food & Essential Items at Your Doorstep",
-    "description": "Join thousands of satisfied customers who trust Bsoraa for all their delivery needs. Download our app today and experience the convenience.",
+    "description": "Join thousands of satisfied customers who trust Tolbah for all their delivery needs. Download our app today and experience the convenience.",
     "primaryButton": "Create Your Account",
     "secondaryButton": "Contact Support"
   },
   "legal": {
-    "title": "Bsoraa",
-    "description": "Bsoraa is a comprehensive food and grocery delivery platform that also offers retail item delivery and QR table ordering services. Our mission is to make life more convenient by bringing your favorite meals, essential groceries, and everyday items straight to your doorstep.",
+    "title": "Tolbah",
+    "description": "Tolbah is a comprehensive food and grocery delivery platform that also offers retail item delivery and QR table ordering services. Our mission is to make life more convenient by bringing your favorite meals, essential groceries, and everyday items straight to your doorstep.",
     "coverage": {
       "title": "Service Coverage",
       "content": "Currently available in select cities with plans for rapid expansion. Check our app to see if delivery is available in your area. New locations added regularly."
@@ -208,7 +208,7 @@
       "help": "Help Center",
       "contact": "Contact Us"
     },
-    "copyright": "© 2025 Bsoraa. All rights reserved."
+    "copyright": "© 2025 Tolbah. All rights reserved."
   },
   "getStarted": "Get Started",
   "giveEdgeCompetitors": "Gain an edge over competitors.",

@@ -97,7 +97,7 @@
     },
     "primaryPlatform": {
       "type": "enumeration",
-      "enum": ["bsoraa", "adfaaly", "multiple"],
+      "enum": ["tolbah", "adfaaly", "multiple"],
       "default": "adfaaly"
     },
     "registrationDate": {

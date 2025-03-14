@@ -54,13 +54,13 @@ const platforms = [
     ]
   },
   {
-    id: 'bsoraa',
-    title: 'Bsoraa',
+    id: 'tolbah',
+    title: 'Tolbah',
     tagline: 'Your orders, instantly delivered.',
     description: 'Order your favourite cravings, your late night snacks or your montly grocery run and get it delivered instantly.',
-    image: '/bsoraa.png',
-    imageAr: '/bsoraa-ar.png',
-    color: 'brand.bsoraa.500',
+    image: '/tolbah.png',
+    imageAr: '/tolbah-ar.png',
+    color: 'brand.tolbah.500',
     stats: [
       { value: '80+', label: 'Currency Pairs' },
       { value: '50+', label: 'Cryptocurrencies' },
@@ -455,7 +455,7 @@ const Services = () => {
             >
               <Heading
                 fontSize={{ base: '4xl', md: '7xl' }}
-                bgGradient="linear(to-r, brand.adfaaly.500, brand.bsoraa.500)"
+                bgGradient="linear(to-r, brand.adfaaly.500, brand.tolbah.500)"
                 bgClip="text"
                 letterSpacing="tight"
                 lineHeight="shorter"

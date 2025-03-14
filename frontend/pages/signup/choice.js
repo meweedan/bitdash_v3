@@ -128,41 +128,41 @@ const PLATFORMS = {
       }
     ]
   },
-  BSORAA: {
-    subdomain: 'bsoraa',
-    name: 'Bsoraa',
-    nameKey: 'bsoraa.name',
-    themeKey: 'bsoraa',
+  TOLBAH: {
+    subdomain: 'tolbah',
+    name: 'Tolbah',
+    nameKey: 'tolbah.name',
+    themeKey: 'tolbah',
     title: 'Your cravings courier',
-    titleKey: 'bsoraa.title',
+    titleKey: 'tolbah.title',
     description: 'Gain access to a whole new world of food ordering, whether its in person or at the comfort of your home.',
-    descriptionKey: 'bsoraa.description',
+    descriptionKey: 'tolbah.description',
     icon: FaExchangeAlt,
     options: [
       {
         type: 'captain',
         title: 'Captain',
-        titleKey: 'bsoraa.captain.title',
+        titleKey: 'tolbah.captain.title',
         description: 'Help us deliver to our customer and gain competitive rates and amazing perks.',
-        descriptionKey: 'bsoraa.captain.description',
+        descriptionKey: 'tolbah.captain.description',
         icon: FaUserTie,
         signupPath: '/signup/captain',
       },
       {
         type: 'customer',
         title: 'Customer',
-        titleKey: 'bsoraa.customer.title',
+        titleKey: 'tolbah.customer.title',
         description: 'Order all of your favs, discover new cravings and get those groceries you need instantly!',
-        descriptionKey: 'bsoraa.customer.description',
+        descriptionKey: 'tolbah.customer.description',
         icon: FaUserTie,
         signupPath: '/signup/customer',
       },
       {
         type: 'operator',
         title: 'Operator',
-        titleKey: 'bsoraa.operator.title',
-        description: 'List your business on Bsoraa and gain more customers and give your old ones access to their fav cravings!',
-        descriptionKey: 'bsoraa.operator.description',
+        titleKey: 'tolbah.operator.title',
+        description: 'List your business on Tolbah and gain more customers and give your old ones access to their fav cravings!',
+        descriptionKey: 'tolbah.operator.description',
         icon: FaHandshake,
         signupPath: '/signup/operator',
       }
@@ -387,7 +387,7 @@ export default function SignupChoice() {
                 </Heading>
                 
                 <SimpleGrid 
-                  columns={currentPlatform.subdomain === 'bsoraa' ? 1 : { base: 1, lg: currentPlatform.options.length > 2 ? 3 : 2 }}
+                  columns={currentPlatform.subdomain === 'tolbah' ? 1 : { base: 1, lg: currentPlatform.options.length > 2 ? 3 : 2 }}
                   spacing={8} 
                   w="full"
                   justifyItems="center"

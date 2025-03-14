@@ -45,7 +45,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   
   // Always show announcements for these platforms
-  const showAnnouncements = platform === 'bsoraa' || platform === 'adfaaly';
+  const showAnnouncements = platform === 'tolbah' || platform === 'adfaaly';
 
   // Handle scroll effect
   useEffect(() => {
@@ -97,11 +97,11 @@ export default function Header() {
       color: 'brand.adfaaly'
     },
     {
-      name: 'Bsoraa',
-      image: '/bsoraa.png',
-      mobileImage: '/bsoraa.png',
-      href: 'https://bsoraa.bitdash.app/',
-      color: 'brand.bsoraa'
+      name: 'Tolbah',
+      image: '/tolbah.png',
+      mobileImage: '/tolbah.png',
+      href: 'https://tolbah.bitdash.app/',
+      color: 'brand.tolbah'
     }, 
   ];
 
@@ -112,12 +112,12 @@ export default function Header() {
       
       // More specific checks to avoid partial matches
       if (hostname.includes('adfaaly.bitdash') || hostname === 'adfaaly.localhost') return 'adfaaly';
-      if (hostname.includes('bsoraa.bitdash') || hostname === 'bsoraa.localhost') return 'bsoraa';
+      if (hostname.includes('tolbah.bitdash') || hostname === 'tolbah.localhost') return 'tolbah';
       
       // Also check URL path for local development
       const pathname = window.location.pathname;
       if (pathname.startsWith('/adfaaly')) return 'adfaaly';
-      if (pathname.startsWith('/bsoraa')) return 'bsoraa';
+      if (pathname.startsWith('/tolbah')) return 'tolbah';
     }
     return 'bitdash'; // Default platform
   };
@@ -153,24 +153,24 @@ export default function Header() {
   
   // Platform-specific menu items 
   const getPlatformMenuItems = () => {
-    if (platform === 'bsoraa') { // Forex
+    if (platform === 'tolbah') { // Forex
       return [
         { 
           name: t('analysis', 'Analysis'), 
-          path: '/bsoraa/analysis',
+          path: '/tolbah/analysis',
           submenu: [
-            { name: t('economicCalendar', 'Economic Calendar'), path: '/bsoraa/analysis/economic-calendar' },
-            { name: t('marketSentiment', 'Market Sentiment'), path: '/bsoraa/analysis/sentiment' },
-            { name: t('forex:forexNews"', 'Forex News'), path: '/bsoraa/analysis/news' },
+            { name: t('economicCalendar', 'Economic Calendar'), path: '/tolbah/analysis/economic-calendar' },
+            { name: t('marketSentiment', 'Market Sentiment'), path: '/tolbah/analysis/sentiment' },
+            { name: t('forex:forexNews"', 'Forex News'), path: '/tolbah/analysis/news' },
           ]
         },
         { 
           name: t('education', 'Education'), 
-          path: '/bsoraa/education',
+          path: '/tolbah/education',
           submenu: [
-            { name: t('tradingGuides', 'Trading Guides'), path: '/bsoraa/education/guides' },
-            { name: t('webinars', 'Webinars'), path: '/bsoraa/education/webinars' },
-            { name: t('strategyResources', 'Strategy Resources'), path: '/bsoraa/education/strategies' },
+            { name: t('tradingGuides', 'Trading Guides'), path: '/tolbah/education/guides' },
+            { name: t('webinars', 'Webinars'), path: '/tolbah/education/webinars' },
+            { name: t('strategyResources', 'Strategy Resources'), path: '/tolbah/education/strategies' },
           ]
         },
       ];

@@ -16,8 +16,8 @@ import {
 } from '@chakra-ui/react';
 import { Search, ShoppingBag, Clock, BellRing, Package, BarChart2, Car, Tool, DollarSign } from 'lucide-react';
 
-// Bsoraa PWA Landing
-const BsoraaPWALanding = () => {
+// Tolbah PWA Landing
+const TolbahPWALanding = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -127,8 +127,8 @@ const PWALayout = ({ children }) => {
   useEffect(() => {
     if (isPWA && router.pathname === '/') {
       switch(hostname) {
-        case 'bsoraa.bitdash.app':
-          router.replace('/bsoraa');
+        case 'tolbah.bitdash.app':
+          router.replace('/tolbah');
           break;
         case 'adfaaly.bitdash.app':
           router.replace('/adfaaly');
@@ -142,4 +142,4 @@ const PWALayout = ({ children }) => {
   return children;
 };
 
-export { BsoraaPWALanding, AdfaalyPWALanding, PWALayout };
+export { TolbahPWALanding, AdfaalyPWALanding, PWALayout };

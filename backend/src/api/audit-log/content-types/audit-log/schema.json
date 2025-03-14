@@ -126,7 +126,7 @@
     },
     "platform": {
       "type": "enumeration",
-      "enum": ["adfaaly", "bsoraa", "admin", "api"],
+      "enum": ["adfaaly", "tolbah", "admin", "api"],
       "default": "adfaaly",
       "required": true
     },

@@ -24,11 +24,11 @@ const PLATFORM_ROUTES = {
     customer: '/client/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://adfaaly.bitdash.app'
   },
-  bsoraa: {
+  tolbah: {
     customer: '/customer/dashboard',
     captain: '/captain/dashboard',
     operator: '/operator/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://bsoraa.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://tolbah.bitdash.app'
   }
 };
 
@@ -38,7 +38,7 @@ const PROFILE_ENDPOINTS = {
     agent: '/api/agents',
     customer: '/api/customer-profiles'
   },
-  bsoraa: {
+  tolbah: {
     customer: '/api/customer_profiles',
     captain: '/api/captains',
     operator: '/api/operators'
@@ -49,21 +49,21 @@ const BUSINESS_TYPE_ROUTES = {
   merchant: { platform: 'adfaaly', userType: 'merchant' },
   agent: { platform: 'adfaaly', userType: 'agent' },
   customer: { platform: 'adfaaly', userType: 'customer' },
-  customer: { platform: 'bsoraa', userType: 'customer' },
-  captain: { platform: 'bsoraa', userType: 'captain' },
-  operator: { platform: 'bsoraa', userType: 'operator' }
+  customer: { platform: 'tolbah', userType: 'customer' },
+  captain: { platform: 'tolbah', userType: 'captain' },
+  operator: { platform: 'tolbah', userType: 'operator' }
 };
 
 const getPlatformFromURL = () => {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
     if (hostname.includes('adfaaly')) return 'adfaaly';
-    if (hostname.includes('bsoraa')) return 'bsoraa';
+    if (hostname.includes('tolbah')) return 'tolbah';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
       if (path.includes('/adfaaly')) return 'adfaaly';
-      if (path.includes('/bsoraa')) return 'bsoraa';
+      if (path.includes('/tolbah')) return 'tolbah';
     }
   }
   return 'bitdash';
@@ -78,12 +78,12 @@ const getColorScheme = (platform, isDark) => {
       hover: 'brand.adfaaly.600',
       border: 'brand.adfaaly.500'
     },
-    bsoraa: {
+    tolbah: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.bsoraa.400' : 'brand.bsoraa.600',
-      button: 'brand.bsoraa.500',
-      hover: 'brand.bsoraa.600',
-      border: 'brand.bsoraa.500'
+      text: isDark ? 'brand.tolbah.400' : 'brand.tolbah.600',
+      button: 'brand.tolbah.500',
+      hover: 'brand.tolbah.600',
+      border: 'brand.tolbah.500'
     },
     bitdash: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
@@ -139,7 +139,7 @@ const LoginPage = () => {
   };
 
   const buttonStyles = {
-    variant: currentPlatform.includes('adfaaly') ? `${currentPlatform}-solid` : 'bsoraa-solid',
+    variant: currentPlatform.includes('adfaaly') ? `${currentPlatform}-solid` : 'tolbah-solid',
     bg: colors.button,
     color: 'white',
     _hover: {
@@ -210,7 +210,7 @@ const LoginPage = () => {
 
   const checkBusinessType = async (token, userId) => {
     try {
-      if (currentPlatform === 'bsoraa') {
+      if (currentPlatform === 'tolbah') {
         console.log('Checking operator status...');
         const traderResponse = await fetch(
           `${BASE_URL}/api/operators?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
@@ -262,7 +262,7 @@ const LoginPage = () => {
     const platform = currentPlatform.replace('bit', '');
     console.log('Current platform:', platform);
     
-    if (platform === 'bsoraa') {
+    if (platform === 'tolbah') {
       const businessType = await checkBusinessType(token, userId);
       console.log('Business type check result:', businessType);
       

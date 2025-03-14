@@ -59,7 +59,7 @@ import {
   Truck
 } from 'lucide-react';
 
-const DeliveryLandingPage = () => {
+const TolbahLandingBrowser = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
   const containerRef = useRef(null);
@@ -74,9 +74,9 @@ const DeliveryLandingPage = () => {
   const heroImageSize = useBreakpointValue({ base: "100%", md: "90%" });
   const headingSize = useBreakpointValue({ base: "4xl", md: "5xl", lg: "6xl" });
   const glassCardBg = useColorModeValue('whiteAlpha.900', 'whiteAlpha.400');
-  const headingColor = useColorModeValue('brand.bsoraa.700', 'brand.bsoraa.400');
+  const headingColor = useColorModeValue('brand.tolbah.700', 'brand.tolbah.400');
   const textColor = useColorModeValue('gray.600', 'gray.300');
-  const accentColor = '#ff914d'; // Primary orange color for Bsoraa
+  const accentColor = '#ff914d'; // Primary orange color for tolbah
 
   // Parallax component
   const ParallaxBox = ({ children, offset = 100, ...rest }) => {
@@ -399,23 +399,20 @@ const DeliveryLandingPage = () => {
                     maxW="550px"
                     color={isDark ? "gray.300" : "gray.600"}
                   >
-                    {t('hero.description', 'From restaurant meals to groceries and retail items, Bsoraa delivers it all to your doorstep. Fast, reliable, and contactless.')}
+                    {t('hero.description', 'From restaurant meals to groceries and retail items, Tolbah delivers it all to your doorstep. Fast, reliable, and contactless.')}
                   </Text>
                   
                   <HStack spacing={4} pt={2}>
                     <Button
-                      size="lg"
-                      variant="bsoraa-outline"
+                      variant="tolbah-outline"
                       onClick={() => router.push('/signup')}
                     >
                       {t('hero.get_started', 'Get Started')}
                     </Button>
                     
                     <Button
-                      variant="bsoraa-outline"
+                      variant="tolbah-outline"
                       borderColor={accentColor}
-                      color={accentColor}
-                      size="lg"
                       leftIcon={<Download />}
                       onClick={() => router.push('/download')}
                     >
@@ -535,7 +532,7 @@ const DeliveryLandingPage = () => {
             maxW="800px"
             mx="auto"
           >
-            {t('services.description', 'From fresh meals to groceries and everyday essentials, Bsoraa delivers everything you need with speed and reliability.')}
+            {t('services.description', 'From fresh meals to groceries and everyday essentials, Tolbah delivers everything you need with speed and reliability.')}
           </Text>
           
           <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} mb={16}>
@@ -619,7 +616,7 @@ const DeliveryLandingPage = () => {
                   </Text>
                   
                   <Button
-                  variant="bsoraa-outline"
+                  variant="tolbah-outline"
                     size="lg"
                     rightIcon={<ArrowRight />}
                     onClick={() => router.push('/qr-ordering')}
@@ -655,7 +652,7 @@ const DeliveryLandingPage = () => {
             fontSize={{ base: '3xl', md: '4xl' }}
             color={accentColor}
           >
-            {t('platform.title', 'Why Choose Bsoraa')}
+            {t('platform.title', 'Why Choose Tolbah')}
           </Heading>
           
           <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} mb={16}>
@@ -708,7 +705,7 @@ const DeliveryLandingPage = () => {
             fontSize={{ base: '3xl', md: '4xl' }}
             color={accentColor}
           >
-            {t('partners.title', 'Partner With Bsoraa')}
+            {t('partners.title', 'Partner With Tolbah')}
           </Heading>
           
           <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={16} alignItems="center">
@@ -741,7 +738,7 @@ const DeliveryLandingPage = () => {
                   {t('partners.description2', 'Our platform provides the technology, logistics, and customer base to help your business thrive in the digital marketplace.')}
                 </Text>
                 <Button
-                variant="bsoraa-outline"
+                variant="tolbah-outline"
                   _hover={{ bg: "#E86C00" }}
                   px={8}
                   size="lg"
@@ -854,7 +851,7 @@ const DeliveryLandingPage = () => {
                   fontWeight="bold"
                   color={accentColor}
                 >
-                  {t('mobileApp.title', 'DOWNLOAD BSORAA APP')}
+                  {t('mobileApp.title', 'DOWNLOAD Tolbah APP')}
                 </Heading>
                                     
                 <Text
@@ -945,7 +942,7 @@ const DeliveryLandingPage = () => {
                 color={isDark ? "white" : "gray.800"}
                 mb={5}
               >
-                {t('steps.title', 'Start Using Bsoraa in 3 Simple Steps')}
+                {t('steps.title', 'Start Using Tolbah in 3 Simple Steps')}
               </Heading>
               
               <Text
@@ -953,7 +950,7 @@ const DeliveryLandingPage = () => {
                 textAlign="center"
                 maxW="800px"
               >
-                {t('steps.description', 'It\'s easy to get started with Bsoraa. Just follow these simple steps and you\'ll be enjoying delicious food and convenient deliveries in no time.')}
+                {t('steps.description', 'It\'s easy to get started with Tolbah. Just follow these simple steps and you\'ll be enjoying delicious food and convenient deliveries in no time.')}
               </Text>
             
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} width="full">
@@ -968,7 +965,7 @@ const DeliveryLandingPage = () => {
             </SimpleGrid>
             
             <Button
-            variant="bsoraa-outline"
+            variant="tolbah-outline"
               onClick={() => router.push('/signup')}
               rightIcon={<ArrowRight />}
               size="lg"
@@ -1030,14 +1027,14 @@ const DeliveryLandingPage = () => {
                   color={textColor}
                   maxW="2xl"
                 >
-                  {t('cta.description', 'Join thousands of satisfied customers who trust Bsoraa for all their delivery needs. Download our app today and experience the convenience.')}
+                  {t('cta.description', 'Join thousands of satisfied customers who trust Tolbah for all their delivery needs. Download our app today and experience the convenience.')}
                 </Text>
                 
                 <HStack spacing={6} pt={4} wrap="wrap" justify="center">
                   <Button
                     bg={accentColor}
                     color="white"
-                    variant="bsoraa-outline"
+                    variant="tolbah-outline"
                     _hover={{ bg: "#E86C00" }}
                     size="lg"
                     px={8}
@@ -1055,7 +1052,7 @@ const DeliveryLandingPage = () => {
                     size="lg"
                     px={8}
                     leftIcon={<FaWhatsapp />}
-                    onClick={() => window.open("https://api.whatsapp.com/send?phone=YOURNUMBERHERE", "_blank")}
+                    onClick={() => window.open("https://api.whatsapp.com/send?phone=+447538636207", "_blank")}
                   >
                     {t('cta.secondaryButton', 'Contact Support')}
                   </Button>
@@ -1076,11 +1073,11 @@ const DeliveryLandingPage = () => {
         <Container maxW="container.xl">
           <VStack spacing={8} align="stretch">
             <Heading size="md" color={accentColor}>
-              {t('legal.title', 'Bsoraa')}
+              {t('legal.title', 'Tolbah')}
             </Heading>
             
             <Text fontSize="sm" color={textColor} lineHeight="tall">
-              {t('legal.description', 'Bsoraa is a comprehensive food and grocery delivery platform that also offers retail item delivery and QR table ordering services. Our mission is to make life more convenient by bringing your favorite meals, essential groceries, and everyday items straight to your doorstep.')}
+              {t('legal.description', 'Tolbah is a comprehensive food and grocery delivery platform that also offers retail item delivery and QR table ordering services. Our mission is to make life more convenient by bringing your favorite meals, essential groceries, and everyday items straight to your doorstep.')}
             </Text>
             
             <Divider borderColor={isDark ? "gray.700" : "gray.200"} />
@@ -1135,7 +1132,7 @@ const DeliveryLandingPage = () => {
             </Wrap>
             
             <Text fontSize="xs" color={textColor} textAlign="center" mt={4}>
-              {t('legal.copyright', '© 2025 Bsoraa. All rights reserved.')}
+              {t('legal.copyright', '© 2025 Tolbah. All rights reserved.')}
             </Text>
           </VStack>
         </Container>
@@ -1294,4 +1291,4 @@ const StepCard = ({ number, title, description, delay }) => {
   );
 };
 
-export default DeliveryLandingPage;
+export default TolbahLandingBrowser;
