@@ -710,6 +710,42 @@ const Dashboard = ({ initialUserData }) => {
     }
   };
 
+  const handleCancelSubscription = async () => {
+  if (!window.confirm(t('confirmCancelSubscription'))) return;
+
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`${BASE_URL}/api/subscriptions/${userData.restaurant.subscription.id}/cancel`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) throw new Error('Failed to cancel subscription');
+
+    toast({
+      title: t('success'),
+      description: t('subscriptionCancelled'),
+      status: 'success',
+      duration: 3000
+    });
+
+    // Refresh data
+    await checkAuth();
+  } catch (error) {
+    console.error('Error cancelling subscription:', error);
+    toast({
+      title: t('error'),
+      description: error.message,
+      status: 'error',
+      duration: 3000
+    });
+  }
+};
+
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -915,14 +951,14 @@ const QRCodeCard = ({
       mx="auto"
       boxShadow="0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)"
     >
-      {/* BitMenu Brand */}
+      {/* Tolbah Brand */}
       <Text 
         fontSize="xs" 
         textAlign="center"
         fontWeight="bold" 
         color={customColors?.accent || (isDarkMode ? 'white' : 'black')}
       >
-        Powered by BitMenu
+        Powered by Tolbah
       </Text>
 
       {/* Main Content Area */}
