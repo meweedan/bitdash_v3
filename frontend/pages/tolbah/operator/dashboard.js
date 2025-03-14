@@ -763,89 +763,124 @@ const Dashboard = ({ initialUserData }) => {
   };
 
   // Fetch restaurant data and check authentication
-  const checkAuth = async () => {
-    setIsLoading(true);
+  // The core authentication and data fetching function
+const checkAuth = async () => {
+  setIsLoading(true);
+  
+  const token = localStorage.getItem('token');
+  if (!token) {
+    router.push('/login');
+    return;
+  }
+  
+  try {
+    // STEP 1: First get the user data - this is the starting point
+    const userResponse = await fetch(`${BASE_URL}/api/users/me`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!userResponse.ok) {
+      throw new Error('Failed to fetch user data');
+    }
     
-    const token = localStorage.getItem('token');
+    const userData = await userResponse.json();
+    console.log("User data:", userData);
     
-    if (!token) {
-      router.push('/login');
+    // STEP 2: Fetch the operator data using the user ID
+    const operatorResponse = await fetch(
+      `${BASE_URL}/api/operators?filters[users_permissions_user][id]=${userData.id}&populate=*`,
+      {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    
+    if (!operatorResponse.ok) {
+      throw new Error('Failed to fetch operator data');
+    }
+    
+    const operatorData = await operatorResponse.json();
+    console.log("Operator data:", operatorData);
+    
+    if (!operatorData.data || operatorData.data.length === 0) {
+      throw new Error('No operator data found for this user');
+    }
+    
+    // Save operator data to state
+    setOperatorData(operatorData.data[0]);
+    
+    // STEP 3: Get restaurant data from operator relationship
+    const operatorId = operatorData.data[0].id;
+    const restaurantResponse = await fetch(
+      `${BASE_URL}/api/restaurants?filters[operator][id]=${operatorId}&populate[logo]=*&populate[tables]=*&populate[menus][populate][menu_items]=*&populate[subscription]=*&populate[custom_colors]=*&populate[qr_settings]=*`,
+      {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+      }
+    );
+    
+    if (!restaurantResponse.ok) {
+      throw new Error('Failed to fetch restaurant data');
+    }
+    
+    const restaurantData = await restaurantResponse.json();
+    console.log("Restaurant data:", restaurantData);
+    
+    if (!restaurantData.data || restaurantData.data.length === 0) {
+      setUserData({
+        ...initialUserData,
+        noRestaurant: true
+      });
+      setIsLoading(false);
       return;
     }
     
-    // Try to fetch operator data but continue if it fails
-    try {
-      await fetchOperatorData();
-      
-      // Then fetch associated restaurant data
-      const restaurantResponse = await fetch(
-        `${BASE_URL}/api/restaurants?populate=*`, // For simplicity, fetch all related fields
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
+    // Process restaurant data
+    const restaurant = restaurantData.data[0];
+    const processedUserData = {
+      restaurant: {
+        id: restaurant.id,
+        ...restaurant.attributes,
+        logo: restaurant.attributes.logo?.data,
+        tables: restaurant.attributes.tables?.data || [],
+        menus: restaurant.attributes.menus?.data || [],
+        subscription: restaurant.attributes.subscription?.data?.attributes || {
+          tier: 'standard',
+          status: 'active'
         }
-      );
-      
-      if (!restaurantResponse.ok) {
-        throw new Error('Failed to fetch restaurant data');
       }
-      
-      const restaurantData = await restaurantResponse.json();
-      
-      if (!restaurantData || !restaurantData.data || restaurantData.data.length === 0) {
-        setUserData({
-          ...initialUserData,
-          noRestaurant: true
-        });
-        setIsLoading(false);
-        return;
-      }
-      
-      // Use the first restaurant for simplicity
-      const restaurant = restaurantData.data[0];
-      setUserData({
-        restaurant: {
-          id: restaurant.id,
-          ...restaurant.attributes,
-          logo: restaurant.attributes.logo?.data,
-          tables: restaurant.attributes.tables?.data,
-          menus: restaurant.attributes.menus?.data,
-          subscription: restaurant.attributes.subscription?.data?.attributes
-        }
-      });
-      
-      // Fetch orders data
-      if (restaurant.id) {
-        fetchOrders(restaurant.id, token);
-      }
-      
-    } catch (error) {
-      console.error('Dashboard error:', error);
-      
-      if (error.message?.includes('401') || error.message?.includes('Unauthorized')) {
-        toast({
-          title: t('sessionExpired'),
-          description: t('pleaseLoginAgain'),
-          status: 'error',
-          duration: 3000
-        });
-        router.push('/login');
-      } else {
-        toast({
-          title: t('error'),
-          description: error.message || t('failedLoadDashboard'),
-          status: 'error',
-          duration: 5000
-        });
-        
-        setUserData(initialUserData);
-      }
-    } finally {
-      setIsLoading(false);
+    };
+    
+    // Set main user data state
+    setUserData(processedUserData);
+    
+    // STEP 4: Fetch orders if restaurant exists
+    if (restaurant.id) {
+      await fetchOrders(restaurant.id, token);
     }
-  };
+    
+  } catch (error) {
+    console.error('Dashboard error:', error);
+    
+    toast({
+      title: 'Error',
+      description: error.message || 'Failed to load dashboard data',
+      status: 'error',
+      duration: 5000
+    });
+    
+    setUserData(initialUserData);
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   // Fetch orders function with proper error handling
   const fetchOrders = async (restaurantId, token) => {
