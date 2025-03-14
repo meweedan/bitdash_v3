@@ -710,33 +710,51 @@ const Dashboard = ({ initialUserData }) => {
   const fetchOperatorData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const userId = JSON.parse(localStorage.getItem('user'))?.id;
+      const userObj = localStorage.getItem('user');
+      let userId;
+      
+      try {
+        userId = userObj ? JSON.parse(userObj).id : null;
+      } catch (e) {
+        console.error('Error parsing user object:', e);
+        userId = null;
+      }
       
       if (!token || !userId) {
+        console.error('Authentication information missing:', { token: !!token, userId });
         throw new Error('Authentication information missing');
       }
       
-      const response = await fetch(`${BASE_URL}/api/operators?filters[id]=${userId}`, {
+      // Use the correct endpoint for operators - check your actual API path
+      const response = await fetch(`${BASE_URL}/api/operators`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         }
       });
       
-      if (!response.ok) throw new Error('Failed to fetch operator data');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error?.message || 'Failed to fetch operator data');
+      }
       
       const data = await response.json();
-      if (data.data && data.data.length > 0) {
-        setOperatorData(data.data[0]);
-        return data.data[0];
+      console.log('Operator data response:', data);
+      
+      // Find the operator that matches the user ID
+      const operator = data.data?.find(op => op.id === userId);
+      if (operator) {
+        setOperatorData(operator);
+        return operator;
       } else {
+        console.error('No matching operator found for user ID:', userId);
         throw new Error('No operator data found');
       }
     } catch (error) {
       console.error('Error fetching operator data:', error);
       toast({
         title: 'Error',
-        description: 'Failed to load operator data',
+        description: 'Failed to load operator data: ' + error.message,
         status: 'error',
         duration: 3000
       });
@@ -749,15 +767,14 @@ const Dashboard = ({ initialUserData }) => {
     setIsLoading(true);
     
     const token = localStorage.getItem('token');
-    const userId = JSON.parse(localStorage.getItem('user'))?.id;
     
-    if (!token || !userId) {
+    if (!token) {
       router.push('/login');
       return;
     }
     
+    // Try to fetch operator data but continue if it fails
     try {
-      // First fetch operator data
       await fetchOperatorData();
       
       // Then fetch associated restaurant data
