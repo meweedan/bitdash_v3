@@ -104,7 +104,8 @@ const Dashboard = ({ initialUserData }) => {
 
   // Load colors and settings when userData changes
   useEffect(() => {
-    if (userData?.restaurant) {
+  if (userData?.restaurant) {
+    const timeoutId = setTimeout(() => {
       if (userData.restaurant.custom_colors) {
         setSelectedColors(prevColors => ({
           ...prevColors,
@@ -118,8 +119,11 @@ const Dashboard = ({ initialUserData }) => {
           ...userData.restaurant.qr_settings
         }));
       }
-    }
-  }, [userData?.restaurant?.custom_colors, userData?.restaurant?.qr_settings]);
+    }, 100); // Small delay to prevent too many state updates at once
+    
+    return () => clearTimeout(timeoutId);
+  }
+}, [userData?.restaurant?.custom_colors, userData?.restaurant?.qr_settings]);
 
   // Color Customization Modal
   const ColorCustomizationModal = ({ 
@@ -135,49 +139,11 @@ const Dashboard = ({ initialUserData }) => {
     t,
     BASE_URL
   }) => {
-    const handleColorChange = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const response = await fetch(`${BASE_URL}/api/restaurants/${userData.restaurant.id}`, {
-          method: 'PUT',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            data: {
-              custom_colors: selectedColors,
-              qr_settings: qrSettings
-            }
-          })
-        });
-
-        if (!response.ok) throw new Error('Failed to update customization settings');
-
-        setUserData(prev => ({
-          ...prev,
-          restaurant: {
-            ...prev.restaurant,
-            custom_colors: selectedColors,
-            qr_settings: qrSettings
-          }
-        }));
-
-        toast({
-          title: t('success'),
-          description: t('settingsUpdated'),
-          status: 'success',
-          duration: 2000
-        });
-
-        closeColorCustomizationModal();
-      } catch (error) {
-        toast({
-          title: t('error'),
-          description: error.message,
-          status: 'error'
-        });
-      }
+    const handleColorChange = (colorType, value) => {
+      setSelectedColors(prev => ({
+        ...prev,
+        [colorType]: value
+      }));
     };
 
     return (
@@ -359,61 +325,77 @@ const Dashboard = ({ initialUserData }) => {
     }, [menu]);
     
     const handleSubmit = async () => {
-      try {
-        console.log("Submitting menu form:", menuForm);
-        
-        const token = localStorage.getItem('token');
-        const method = isEditing ? 'PUT' : 'POST';
-        const url = isEditing 
-          ? `${BASE_URL}/api/menus/${menu.id}` 
-          : `${BASE_URL}/api/menus`;
-        
-        const body = {
-          data: {
-            name: menuForm.name,
-            description: menuForm.description,
-            restaurant: userData.restaurant.id
-          }
-        };
-        
-        console.log("Menu request:", { method, url, body });
-        
-        const response = await fetch(url, {
-          method,
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(body)
-        });
-        
-        const responseData = await response.json();
-        console.log("Menu response:", responseData);
-        
-        if (!response.ok) {
-          throw new Error(responseData.error?.message || `Failed to ${isEditing ? 'update' : 'create'} menu`);
-        }
-        
-        toast({
-          title: 'Success',
-          description: `Menu ${isEditing ? 'updated' : 'created'} successfully`,
-          status: 'success',
-          duration: 2000
-        });
-        
-        // Refresh data
-        await checkAuth();
-        onClose();
-      } catch (error) {
-        console.error('Menu operation error:', error);
-        toast({
-          title: 'Error',
-          description: error.message,
-          status: 'error',
-          duration: 3000
-        });
+  try {
+    if (!menuForm.name.trim()) {
+      toast({
+        title: 'Error',
+        description: 'Menu name is required',
+        status: 'error',
+        duration: 2000
+      });
+      return;
+    }
+    
+    console.log("Submitting menu form:", menuForm);
+    
+    const token = localStorage.getItem('token');
+    const method = isEditing ? 'PUT' : 'POST';
+    const url = isEditing 
+      ? `${BASE_URL}/api/menus/${menu.id}` 
+      : `${BASE_URL}/api/menus`;
+    
+    // Ensure we have a valid restaurant ID
+    if (!userData.restaurant || !userData.restaurant.id) {
+      throw new Error('Restaurant data is missing');
+    }
+    
+    const body = {
+      data: {
+        name: menuForm.name.trim(),
+        description: menuForm.description.trim(),
+        restaurant: userData.restaurant.id
       }
     };
+    
+    console.log("Menu request details:", { method, url, body });
+    
+    const response = await fetch(url, {
+      method,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+    
+    // Check for errors even if the response is "ok"
+    const responseData = await response.json();
+    console.log("Menu creation response:", responseData);
+    
+    if (!response.ok) {
+      throw new Error(responseData.error?.message || `Failed to ${isEditing ? 'update' : 'create'} menu`);
+    }
+    
+    toast({
+      title: 'Success',
+      description: `Menu ${isEditing ? 'updated' : 'created'} successfully`,
+      status: 'success',
+      duration: 2000
+    });
+    
+    // Refresh data
+    await checkAuth();
+    onClose();
+  } catch (error) {
+    console.error('Menu operation error:', error);
+    toast({
+      title: 'Error',
+      description: error.message,
+      status: 'error',
+      duration: 3000
+    });
+  }
+};
     
     return (
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -811,6 +793,7 @@ const Dashboard = ({ initialUserData }) => {
   // Fetch restaurant data and check authentication
   // The core authentication and data fetching function
 // Improved checkAuth function that correctly handles the data structure
+// Update the checkAuth function to correctly extract subscription data from the operator
 const checkAuth = async () => {
   setIsLoading(true);
   
@@ -836,9 +819,9 @@ const checkAuth = async () => {
     const userData = await userResponse.json();
     console.log("User data:", userData);
     
-    // Then fetch operator data
+    // Then fetch operator data with subscription information
     const operatorResponse = await fetch(
-      `${BASE_URL}/api/operators?filters[users_permissions_user][id]=${userData.id}&populate[restaurant][populate][0]=logo&populate[restaurant][populate][1]=tables&populate[restaurant][populate][2]=menus&populate[restaurant][populate][3]=menus.menu_items&populate[restaurant][populate][4]=subscription&populate[restaurant][populate][5]=custom_colors&populate[restaurant][populate][6]=qr_settings`,
+      `${BASE_URL}/api/operators?filters[users_permissions_user][id]=${userData.id}&populate[restaurant][populate][]=logo&populate[restaurant][populate][]=tables&populate[restaurant][populate][]=menus&populate[restaurant][populate][]=menus.menu_items&populate[subscription][fields][]=tier&populate[subscription][fields][]=status&populate[subscription][fields][]=commission_rate&populate[subscription][fields][]=monthly_fee&populate[subscription][fields][]=start_date&populate[subscription][fields][]=end_date&populate[restaurant][populate][]=custom_colors&populate[restaurant][populate][]=qr_settings`,
       {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -858,11 +841,15 @@ const checkAuth = async () => {
     if (operatorData.data && operatorData.data.length > 0) {
       setOperatorData(operatorData.data[0]);
       
-      // Extract restaurant data from operator relationship
-      const restaurant = operatorData.data[0].attributes?.restaurant?.data;
+      const operator = operatorData.data[0];
+      const restaurant = operator.attributes?.restaurant?.data;
+      
+      // Extract subscription directly from operator
+      const subscription = operator.attributes?.subscription?.data;
+      console.log("Subscription data:", subscription);
       
       if (restaurant) {
-        // Process restaurant data carefully with null checks
+        // Process restaurant data
         const processedRestaurantData = {
           id: restaurant.id,
           name: restaurant.attributes?.name || '',
@@ -871,21 +858,37 @@ const checkAuth = async () => {
           qr_settings: restaurant.attributes?.qr_settings || null,
           logo: restaurant.attributes?.logo?.data || null,
           tables: restaurant.attributes?.tables?.data || [],
-          menus: restaurant.attributes?.menus?.data || [],
-          subscription: restaurant.attributes?.subscription?.data?.attributes || {
-            tier: 'standard',
-            status: 'active'
-          }
+          menus: restaurant.attributes?.menus?.data || []
         };
         
-        // Set user data with restaurant info
+        // Add subscription data if available
+        if (subscription) {
+          processedRestaurantData.subscription = {
+            id: subscription.id,
+            tier: subscription.attributes?.tier || 'standard',
+            status: subscription.attributes?.status || 'active',
+            commission_rate: subscription.attributes?.commission_rate || 0,
+            monthly_fee: subscription.attributes?.monthly_fee || 0,
+            start_date: subscription.attributes?.start_date,
+            end_date: subscription.attributes?.end_date
+          };
+        } else {
+          // Default subscription data if none exists
+          processedRestaurantData.subscription = {
+            tier: 'standard',
+            status: 'active',
+            commission_rate: 0,
+            monthly_fee: 0
+          };
+        }
+        
+        // Set user data with restaurant info and subscription
         setUserData({
           restaurant: processedRestaurantData
         });
         
         // Fetch orders if restaurant exists
         if (restaurant.id) {
-          const token = localStorage.getItem('token');
           await fetchOrders(restaurant.id, token);
         }
       } else {
@@ -1171,7 +1174,7 @@ const QRCodeCard = ({
   const handleAdd = (type) => {
   switch (type) {
     case 'restaurant':
-      router.push('/bsoraa/operator/create-page');
+      router.push('/tolbah/operator/create-page');
       break;
     case 'menu':
       // Reset the form first
@@ -1195,6 +1198,60 @@ const QRCodeCard = ({
     case 'table':
       handleAddTable();
       break;
+  }
+};
+
+const handleUpgradeSubscription = async (newTier) => {
+  try {
+    console.log('Upgrading subscription to:', newTier);
+    
+    const token = localStorage.getItem('token');
+    // Make sure to use the full absolute URL
+    const stripeEndpoint = `${BASE_URL}/api/stripe/create-checkout-session`;
+    
+    console.log('Sending request to:', stripeEndpoint);
+    
+    const response = await fetch(stripeEndpoint, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 
+        planId: newTier,
+        restaurantId: userData.restaurant.id
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error('Subscription error response:', errorData);
+      throw new Error(errorData.error?.message || 'Failed to create checkout session');
+    }
+    
+    const data = await response.json();
+    console.log('Stripe session created:', data);
+    
+    if (!data.sessionId) {
+      throw new Error('No session ID returned from Stripe');
+    }
+
+    // Initialize Stripe and redirect to checkout
+    const stripe = await stripePromise;
+    const { error } = await stripe.redirectToCheckout({ sessionId: data.sessionId });
+    
+    if (error) {
+      console.error('Stripe redirect error:', error);
+      throw error;
+    }
+  } catch (error) {
+    console.error('Subscription upgrade error:', error);
+    toast({
+      title: 'Error',
+      description: error.message || 'Failed to process subscription upgrade',
+      status: 'error',
+      duration: 3000
+    });
   }
 };
 
@@ -1305,14 +1362,17 @@ const handleUpdate = (type, item) => {
         return;
       }
 
+      // Ensure we have a valid table name
+      const tableName = currentTableName || "Table";
+      
       // Prompt for new table name with current name as default
-      const newTableName = prompt(t('enterNewTableName'), currentTableName);
+      const newTableName = prompt(t('enterNewTableName'), tableName);
       
       // Check if user canceled or submitted empty name
       if (!newTableName || newTableName.trim() === '') return;
       
       // Check if name didn't change
-      if (newTableName.trim() === currentTableName) return;
+      if (newTableName.trim() === tableName) return;
 
       try {
         setIsLoading(true);
@@ -1324,6 +1384,8 @@ const handleUpdate = (type, item) => {
             name: newTableName.trim()
           }
         };
+        
+        console.log('Updating table', tableId, 'with name', newTableName);
         
         const response = await fetch(`${BASE_URL}/api/tables/${tableId}`, {
           method: 'PUT',
@@ -1344,7 +1406,7 @@ const handleUpdate = (type, item) => {
         
         toast({
           title: t('tableUpdated'),
-          description: `Table renamed from "${currentTableName}" to "${newTableName}".`,
+          description: `Table renamed to "${newTableName}".`,
           status: 'success',
           duration: 2000,
         });
@@ -1708,7 +1770,7 @@ const handleUpdate = (type, item) => {
                                       >
                                         <QRCodeCard
                                           tableName={table.attributes?.name || table.name}
-                                          qrValue={`https://bsoraa.bitdash.app/bsoraa/${userData.restaurant.id}`}
+                                          qrValue={`https://tolbah.bitdash.app/tolbah/${userData.restaurant.id}`}
                                           isDarkMode={qrDarkMode}
                                           restaurantName={userData.restaurant.name}
                                           customColors={userData.restaurant.custom_colors}
