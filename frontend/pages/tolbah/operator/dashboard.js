@@ -125,183 +125,183 @@ const Dashboard = ({ initialUserData }) => {
   }
 }, [userData?.restaurant?.custom_colors, userData?.restaurant?.qr_settings]);
 
-  // Color Customization Modal
-  const ColorCustomizationModal = ({ 
-    isColorModalOpen, 
-    closeColorCustomizationModal, 
-    userData, 
-    setUserData,
-    selectedColors,
-    setSelectedColors,
-    qrSettings,
-    setQrSettings,
-    toast,
-    t,
-    BASE_URL
-  }) => {
-    const handleColorChange = (colorType, value) => {
-      setSelectedColors(prev => ({
-        ...prev,
-        [colorType]: value
-      }));
-    };
+// Update the handler for table actions
+const handleTableAction = async (action, tableId, tableName) => {
+  try {
+    const token = localStorage.getItem('token');
+    
+    if (action === 'delete') {
+      if (!confirm(`Delete table "${tableName}"?`)) {
+        return;
+      }
+      
+      const response = await fetch(`${BASE_URL}/api/tables/${tableId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to delete table');
+      }
+      
+      toast({
+        title: 'Success',
+        description: 'Table deleted successfully',
+        status: 'success',
+        duration: 2000
+      });
+      
+      window.location.reload(); // Force reload
+    }
+    
+    if (action === 'edit') {
+      const newName = prompt('Enter new table name:', tableName);
+      
+      if (!newName || newName === tableName) {
+        return;
+      }
+      
+      const response = await fetch(`${BASE_URL}/api/tables/${tableId}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          data: {
+            name: newName
+          }
+        })
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to update table');
+      }
+      
+      toast({
+        title: 'Success',
+        description: 'Table updated successfully',
+        status: 'success',
+        duration: 2000
+      });
+      
+      window.location.reload(); // Force reload
+    }
+  } catch (error) {
+    toast({
+      title: 'Error',
+      description: error.message,
+      status: 'error',
+      duration: 3000
+    });
+  }
+};
 
+  // Color Customization Modal
+  const ColorCustomizationModal = ({ isOpen, onClose, userData }) => {
+    const [colors, setColors] = useState({
+      primary: '#3182CE',
+      secondary: '#48BB78',
+      accent: '#ED64A6'
+    });
+    
+    const handleSave = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        
+        if (!userData.restaurant?.id) {
+          toast({
+            title: 'Error',
+            description: 'Restaurant ID is missing',
+            status: 'error',
+            duration: 3000
+          });
+          return;
+        }
+        
+        const response = await fetch(`${BASE_URL}/api/restaurants/${userData.restaurant.id}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            data: {
+              custom_colors: colors
+            }
+          })
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to update colors');
+        }
+        
+        toast({
+          title: 'Success',
+          description: 'Colors updated successfully',
+          status: 'success',
+          duration: 2000
+        });
+        
+        onClose();
+        window.location.reload(); // Force reload to update data
+      } catch (error) {
+        toast({
+          title: 'Error',
+          description: error.message,
+          status: 'error',
+          duration: 3000
+        });
+      }
+    };
+    
     return (
-      <Modal 
-        isOpen={isColorModalOpen} 
-        onClose={closeColorCustomizationModal} 
-        size="xl"
-      >
-        <ModalOverlay backdropFilter="blur(10px)" />
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
         <ModalContent>
-          <ModalHeader>
-            <HStack>
-              <Icon as={IoIosColorFill} />
-              <Text>Customize QR Cards</Text>
-            </HStack>
-          </ModalHeader>
+          <ModalHeader>Customize Colors</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <VStack spacing={6}>
-              {/* QR Code Customization */}
-              <Box borderWidth="1px" borderRadius="md" p={4} w="100%" shadow="sm">
-                <Heading size="sm" mb={4}>QR Code Settings</Heading>
-                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-                  <FormControl>
-                    <FormLabel>QR Code Color</FormLabel>
-                    <Input 
-                      type="color"
-                      value={selectedColors.qrForeground}
-                      onChange={(e) => setSelectedColors(prev => ({
-                        ...prev, 
-                        qrForeground: e.target.value
-                      }))}
-                      h="40px"
-                    />
-                  </FormControl>
-                  <FormControl>
-                    <FormLabel>QR Background Color</FormLabel>
-                    <Input 
-                      type="color"
-                      value={selectedColors.qrBackground}
-                      onChange={(e) => setSelectedColors(prev => ({
-                        ...prev, 
-                        qrBackground: e.target.value
-                      }))}
-                      h="40px"
-                    />
-                  </FormControl>
-                </SimpleGrid>
-              </Box>
-
-              {/* Display Settings */}
-              <Box borderWidth="1px" borderRadius="md" p={4} w="100%" shadow="sm">
-                <Heading size="sm" mb={4}>Display Settings</Heading>
-                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-                  <FormControl display="flex" alignItems="center">
-                    <FormLabel mb="0">Show Restaurant Logo</FormLabel>
-                    <Switch 
-                      isChecked={qrSettings.showLogo}
-                      onChange={(e) => setQrSettings(prev => ({
-                        ...prev,
-                        showLogo: e.target.checked
-                      }))}
-                    />
-                  </FormControl>
-                  <FormControl display="flex" alignItems="center">
-                    <FormLabel mb="0">Show Restaurant Name</FormLabel>
-                    <Switch 
-                      isChecked={qrSettings.showName}
-                      onChange={(e) => setQrSettings(prev => ({
-                        ...prev,
-                        showName: e.target.checked
-                      }))}
-                    />
-                  </FormControl>
-                </SimpleGrid>
-              </Box>
-
-              {/* Card Colors */}
-              <Box borderWidth="1px" borderRadius="md" p={4} w="100%" shadow="sm">
-                <Heading size="sm" mb={4}>Card Colors</Heading>
-                <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4}>
-                  <FormControl>
-                    <FormLabel>Primary Color</FormLabel>
-                    <Input 
-                      type="color"
-                      value={selectedColors.primary}
-                      onChange={(e) => setSelectedColors(prev => ({
-                        ...prev, 
-                        primary: e.target.value
-                      }))}
-                      h="40px"
-                    />
-                  </FormControl>
-                  <FormControl>
-                    <FormLabel>Secondary Color</FormLabel>
-                    <Input 
-                      type="color"
-                      value={selectedColors.secondary}
-                      onChange={(e) => setSelectedColors(prev => ({
-                        ...prev, 
-                        secondary: e.target.value
-                      }))}
-                      h="40px"
-                    />
-                  </FormControl>
-                  <FormControl>
-                    <FormLabel>Accent Color</FormLabel>
-                    <Input 
-                      type="color"
-                      value={selectedColors.accent}
-                      onChange={(e) => setSelectedColors(prev => ({
-                        ...prev, 
-                        accent: e.target.value
-                      }))}
-                      h="40px"
-                    />
-                  </FormControl>
-                </SimpleGrid>
-              </Box>
-
-              {/* Preview */}
-              <Box borderWidth="1px" borderRadius="md" p={4} w="100%" shadow="sm">
-                <Heading size="sm" mb={4}>Live Preview</Heading>
-                <Box 
-                  p={4} 
-                  borderRadius="md"
-                  display="flex"
-                  justifyContent="center"
-                >
-                  <QRCodeCard
-                    tableName="Preview"
-                    qrValue="https://preview.example.com"
-                    isDarkMode={false}
-                    restaurantName={userData?.restaurant?.name || "Restaurant Name"}
-                    customColors={selectedColors}
-                    showLogo={qrSettings.showLogo}
-                    showName={qrSettings.showName}
-                    logoUrl={userData?.restaurant?.logo ? `${BASE_URL}${userData.restaurant.logo.url}` : null}
-                  />
-                </Box>
-              </Box>
-            </VStack>
+            <FormControl mb={4}>
+              <FormLabel>Primary Color</FormLabel>
+              <Input 
+                type="color"
+                value={colors.primary}
+                onChange={(e) => setColors({...colors, primary: e.target.value})}
+              />
+            </FormControl>
+            
+            <FormControl mb={4}>
+              <FormLabel>Secondary Color</FormLabel>
+              <Input 
+                type="color"
+                value={colors.secondary}
+                onChange={(e) => setColors({...colors, secondary: e.target.value})}
+              />
+            </FormControl>
+            
+            <FormControl mb={4}>
+              <FormLabel>Accent Color</FormLabel>
+              <Input 
+                type="color"
+                value={colors.accent}
+                onChange={(e) => setColors({...colors, accent: e.target.value})}
+              />
+            </FormControl>
           </ModalBody>
           <ModalFooter>
-            <HStack spacing={3}>
-              <Button 
-                colorScheme="blue"
-                leftIcon={<Icon as={FiCheck} />}
-                onClick={handleColorChange}
-              >
-                Save Changes
-              </Button>
-              <Button 
-                onClick={closeColorCustomizationModal}
-              >
-                Cancel
-              </Button>
-            </HStack>
+            <Button variant="ghost" mr={3} onClick={onClose}>
+              Cancel
+            </Button>
+            <Button 
+              colorScheme="blue" 
+              onClick={handleSave}
+            >
+              Save Colors
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -314,7 +314,6 @@ const Dashboard = ({ initialUserData }) => {
     
     useEffect(() => {
       if (menu) {
-        console.log("Menu data for form:", menu);
         setMenuForm({
           name: menu.attributes?.name || menu.name || '',
           description: menu.attributes?.description || menu.description || ''
@@ -325,77 +324,61 @@ const Dashboard = ({ initialUserData }) => {
     }, [menu]);
     
     const handleSubmit = async () => {
-  try {
-    if (!menuForm.name.trim()) {
-      toast({
-        title: 'Error',
-        description: 'Menu name is required',
-        status: 'error',
-        duration: 2000
-      });
-      return;
-    }
-    
-    console.log("Submitting menu form:", menuForm);
-    
-    const token = localStorage.getItem('token');
-    const method = isEditing ? 'PUT' : 'POST';
-    const url = isEditing 
-      ? `${BASE_URL}/api/menus/${menu.id}` 
-      : `${BASE_URL}/api/menus`;
-    
-    // Ensure we have a valid restaurant ID
-    if (!userData.restaurant || !userData.restaurant.id) {
-      throw new Error('Restaurant data is missing');
-    }
-    
-    const body = {
-      data: {
-        name: menuForm.name.trim(),
-        description: menuForm.description.trim(),
-        restaurant: userData.restaurant.id
+      try {
+        const token = localStorage.getItem('token');
+        
+        if (!userData.restaurant?.id) {
+          toast({
+            title: 'Error',
+            description: 'Restaurant ID is missing',
+            status: 'error',
+            duration: 3000
+          });
+          return;
+        }
+        
+        const body = {
+          data: {
+            name: menuForm.name,
+            description: menuForm.description,
+            restaurant: userData.restaurant.id
+          }
+        };
+        
+        // For new menu
+        const url = `${BASE_URL}/api/menus`;
+        
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to create menu');
+        }
+        
+        toast({
+          title: 'Success',
+          description: 'Menu created successfully',
+          status: 'success',
+          duration: 2000
+        });
+        
+        onClose();
+        window.location.reload(); // Force reload to update data
+      } catch (error) {
+        toast({
+          title: 'Error',
+          description: error.message,
+          status: 'error',
+          duration: 3000
+        });
       }
     };
-    
-    console.log("Menu request details:", { method, url, body });
-    
-    const response = await fetch(url, {
-      method,
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    });
-    
-    // Check for errors even if the response is "ok"
-    const responseData = await response.json();
-    console.log("Menu creation response:", responseData);
-    
-    if (!response.ok) {
-      throw new Error(responseData.error?.message || `Failed to ${isEditing ? 'update' : 'create'} menu`);
-    }
-    
-    toast({
-      title: 'Success',
-      description: `Menu ${isEditing ? 'updated' : 'created'} successfully`,
-      status: 'success',
-      duration: 2000
-    });
-    
-    // Refresh data
-    await checkAuth();
-    onClose();
-  } catch (error) {
-    console.error('Menu operation error:', error);
-    toast({
-      title: 'Error',
-      description: error.message,
-      status: 'error',
-      duration: 3000
-    });
-  }
-};
     
     return (
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -404,24 +387,22 @@ const Dashboard = ({ initialUserData }) => {
           <ModalHeader>{isEditing ? 'Edit Menu' : 'Create Menu'}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <VStack spacing={4}>
-              <FormControl isRequired>
-                <FormLabel>Menu Name</FormLabel>
-                <Input 
-                  value={menuForm.name} 
-                  onChange={(e) => setMenuForm({...menuForm, name: e.target.value})}
-                  placeholder="Enter menu name"
-                />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Description</FormLabel>
-                <Textarea
-                  value={menuForm.description}
-                  onChange={(e) => setMenuForm({...menuForm, description: e.target.value})}
-                  placeholder="Enter menu description"
-                />
-              </FormControl>
-            </VStack>
+            <FormControl isRequired mb={4}>
+              <FormLabel>Menu Name</FormLabel>
+              <Input 
+                value={menuForm.name} 
+                onChange={(e) => setMenuForm({...menuForm, name: e.target.value})}
+                placeholder="Enter menu name"
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Description</FormLabel>
+              <Textarea
+                value={menuForm.description}
+                onChange={(e) => setMenuForm({...menuForm, description: e.target.value})}
+                placeholder="Enter menu description"
+              />
+            </FormControl>
           </ModalBody>
           <ModalFooter>
             <Button variant="ghost" mr={3} onClick={onClose}>
@@ -430,7 +411,6 @@ const Dashboard = ({ initialUserData }) => {
             <Button 
               colorScheme="blue" 
               onClick={handleSubmit}
-              isDisabled={!menuForm.name}
             >
               {isEditing ? 'Update' : 'Create'}
             </Button>
@@ -947,7 +927,6 @@ const QRCodeCard = ({
         maxHeight: '53.98mm',
         direction: 'ltr'
       }}
-      borderRadius="8px"
       position="relative"
       overflow="hidden"
       padding="15px"
@@ -1478,29 +1457,61 @@ const handleUpdate = (type, item) => {
     };
 
     const captureAndDownload = async (tableName) => {
-      const element = document.getElementById(`qr-box-${tableName}`);
-      if (!element || !userData?.restaurant) return;
-
       try {
+        // Get the element to capture
+        const element = document.getElementById(`qr-box-${tableName}`);
+        if (!element) {
+          console.error(`Element with ID "qr-box-${tableName}" not found`);
+          toast({
+            title: 'Error',
+            description: 'Failed to find QR code element',
+            status: 'error',
+            duration: 3000
+          });
+          return;
+        }
+
+        // Make sure html2canvas is imported properly
         const html2canvas = (await import('html2canvas')).default;
+        
+        // Capture the element with better settings
         const canvas = await html2canvas(element, {
-          backgroundColor: qrDarkMode ? '#1f2029' : '#0284c7',
-          scale: 4,
-          logging: false,
+          scale: 2, // Higher quality but not too high
           useCORS: true,
-          allowTaint: false,
+          allowTaint: true,
+          backgroundColor: null,
+          logging: true, // Enable logging for debugging
+          onclone: (doc) => {
+            // Make sure the element is visible in the cloned document
+            const clonedElement = doc.getElementById(`qr-box-${tableName}`);
+            if (clonedElement) {
+              clonedElement.style.display = 'block';
+            }
+          }
         });
 
-        const url = canvas.toDataURL('image/png');
+        // Convert to image data URL
+        const image = canvas.toDataURL('image/png');
+        
+        // Create a simple download link
         const link = document.createElement('a');
-        link.download = `${userData.restaurant.name}-${tableName}-QR.png`;
-        link.href = url;
+        link.href = image;
+        link.download = `${tableName}-qrcode.png`;
+        document.body.appendChild(link);
         link.click();
+        document.body.removeChild(link);
+        
+        toast({
+          title: 'Success',
+          description: 'QR code downloaded successfully',
+          status: 'success',
+          duration: 2000
+        });
       } catch (error) {
         console.error('Error capturing QR code:', error);
         toast({
-          title: t('error'),
-          description: t('failedToDownload'),
+          title: 'Error',
+          description: `Failed to download QR code: ${error.message}`,
           status: 'error',
           duration: 3000
         });
@@ -1541,11 +1552,7 @@ const handleUpdate = (type, item) => {
     const DashboardCard = motion(({ children, ...props }) => (
       <Box
         p={6}
-        borderWidth="1px"
-        borderRadius="lg"
         backdropFilter="blur(10px)"
-        borderColor="whiteAlpha.200"
-        boxShadow="lg"
         transition="all 0.2s"
         _hover={{ transform: 'translateY(-2px)', boxShadow: 'xl' }}
         {...props}
@@ -1576,10 +1583,7 @@ const handleUpdate = (type, item) => {
                   maxW="1500px"
                   mx="auto"
                   p={8}
-                  borderRadius="xl"
-                  boxShadow="xl"
                   backdropFilter="blur(20px)"
-                  border="1px solid"
                 >
                   <VStack spacing={8} align="stretch">
                     {/* Header */}
@@ -1683,8 +1687,7 @@ const handleUpdate = (type, item) => {
                                   icon={<IoIosColorFill />}
                                   aria-label="Customize QR Cards"
                                   onClick={() => setIsColorModalOpen(true)}
-                                  colorScheme="purple"
-                                  variant="outline"
+                                  variant="tolbah-outline"
                                 />
                                 <ResponsiveIconButton
                                   icon={FiPlus}
@@ -1742,23 +1745,23 @@ const handleUpdate = (type, item) => {
                                           )}
                                         </Box>
                                         <HStack spacing={2}>
-                                          <ResponsiveIconButton
-                                            icon={FiEdit}
-                                            label={t('edit')}
-                                            onClick={() => handleUpdate('table', table)}
+                                          <Button
                                             size="sm"
                                             variant="outline"
-                                            iconsOnly={true}
-                                          />
-                                          <ResponsiveIconButton
-                                            icon={FiTrash}
-                                            label={t('delete')}
-                                            onClick={() => handleDelete('table', table.id)}
+                                            leftIcon={<FiEdit />}
+                                            onClick={() => handleTableAction('edit', table.id, table.attributes?.name || table.name)}
+                                          >
+                                            Edit
+                                          </Button>
+                                          <Button
                                             size="sm"
                                             colorScheme="red"
                                             variant="outline"
-                                            iconsOnly={true}
-                                          />
+                                            leftIcon={<FiTrash />}
+                                            onClick={() => handleTableAction('delete', table.id, table.attributes?.name || table.name)}
+                                          >
+                                            Delete
+                                          </Button>
                                         </HStack>
                                       </Flex>
 
@@ -1784,12 +1787,6 @@ const handleUpdate = (type, item) => {
 
                                       <Flex mt={4} gap={4} justify="center">
                                         <Button
-                                          onClick={() => setQrDarkMode(!qrDarkMode)}
-                                          leftIcon={qrDarkMode ? <FiSun /> : <FiMoon />}
-                                        >
-                                          {qrDarkMode ? 'Light Mode' : 'Dark Mode'}
-                                        </Button>
-                                        <Button
                                           onClick={() => captureAndDownload(table.attributes?.name || table.name)}
                                           leftIcon={<FiDownload />}
                                         >
@@ -1811,13 +1808,18 @@ const handleUpdate = (type, item) => {
                               <Heading size="md">
                                 {t('menus')}
                               </Heading>
-                              <ResponsiveIconButton
-                                icon={FiPlus}
-                                label={t('addMenu')}
-                                onClick={() => handleAdd('menu')}
+                              <Button
+                                leftIcon={<FiPlus />}
                                 colorScheme="green"
+                                onClick={() => {
+                                  setCurrentMenu(null);
+                                  setMenuForm({ name: '', description: '' });
+                                  setIsMenuModalOpen(true);
+                                }}
                                 isDisabled={!userData?.restaurant}
-                              />
+                              >
+                                {t('addMenu')}
+                              </Button>
                             </Flex>
 
                             {!userData?.restaurant ? (
@@ -1961,10 +1963,10 @@ const handleUpdate = (type, item) => {
                                                     {item.attributes?.description || item.description}
                                                   </Text>
                                                   <HStack spacing={2} mt={2}>
-                                                    <Badge colorScheme="purple" rounded="full">
+                                                    <Badge rounded="full">
                                                       {item.attributes?.category || item.category || 'Uncategorized'}
                                                     </Badge>
-                                                    <Badge colorScheme="green" rounded="full">
+                                                    <Badge rounded="full">
                                                       ${item.attributes?.price || item.price || '0.00'}
                                                     </Badge>
                                                   </HStack>
@@ -2060,7 +2062,7 @@ const handleUpdate = (type, item) => {
                                           ))}
                                         </VStack>
                                         <HStack mt={2} spacing={2}>
-                                          <Badge colorScheme="purple" rounded="full">
+                                          <Badge rounded="full">
                                             {order.attributes?.payment_method || 'N/A'}
                                           </Badge>
                                           <Badge colorScheme="green" rounded="full">
@@ -2202,7 +2204,7 @@ const handleUpdate = (type, item) => {
                                 
                                 <HStack mt={6} spacing={4} justify="center">
                                   <Button 
-                                    colorScheme="purple" 
+                                    variant="tolbah-outline"
                                     leftIcon={<FiArrowRight />}
                                     onClick={() => handleUpgradeSubscription(userData.restaurant.subscription.tier === 'standard' ? 'premium' : 'standard')}
                                   >
@@ -2211,8 +2213,7 @@ const handleUpdate = (type, item) => {
                                   
                                   {userData.restaurant.subscription.status === 'active' && (
                                     <Button 
-                                      colorScheme="red" 
-                                      variant="outline"
+                                      variant="tolbah-solid"
                                       onClick={handleCancelSubscription}
                                     >
                                       Cancel Subscription
