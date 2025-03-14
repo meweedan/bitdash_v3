@@ -1149,6 +1149,7 @@ const handleAdd = (type) => {
 };
 
 // In the handleAddTable function
+// Function to add a new table
 const handleAddTable = async () => {
   // Check subscription tier
   const subscriptionTier = userData?.restaurant?.subscription?.tier || 'standard';
@@ -1167,6 +1168,8 @@ const handleAddTable = async () => {
         <Box 
           p={3} 
           borderRadius="md"
+          bg={useColorModeValue("white", "gray.800")}
+          boxShadow="md"
         >
           <Flex align="center" justify="space-between">
             <VStack align="start" spacing={1}>
@@ -1175,6 +1178,7 @@ const handleAddTable = async () => {
             </VStack>
             <Button 
               size="sm" 
+              colorScheme="blue"
               onClick={() => handleUpgradeSubscription('premium')}
             >
               Upgrade
@@ -1187,43 +1191,209 @@ const handleAddTable = async () => {
   }
 
   const tableName = prompt(t('enterTableName'));
-  if (!tableName) return;
+  if (!tableName || tableName.trim() === '') return;
+
+  // Check if restaurant ID exists
+  if (!userData?.restaurant?.id) {
+    toast({
+      title: t('error'),
+      description: 'Restaurant information is missing. Please refresh or contact support.',
+      status: 'error',
+      duration: 3000
+    });
+    return;
+  }
 
   try {
+    setIsLoading(true);
     const token = localStorage.getItem('token');
+    
+    // Construct the table data object
+    const tableData = {
+      data: {
+        name: tableName.trim(),
+        restaurant: userData.restaurant.id,
+        status: 'Available',
+        color: subscriptionTier === 'premium' 
+          ? getRandomTableColor() 
+          : '#3182CE' // Default blue for standard
+      }
+    };
+    
+    // Log the request for debugging
+    console.log('Table creation request:', tableData);
+    
     const response = await fetch(`${BASE_URL}/api/tables`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        data: {
-          name: tableName,
-          restaurant: userData?.restaurant?.id,
-          status: 'Available',
-          color: subscriptionTier === 'premium' 
-            ? getRandomTableColor() 
-            : '#3182CE' // Default blue for standard
-        }
-      })
+      body: JSON.stringify(tableData)
     });
 
-    if (!response.ok) throw new Error('Failed to create table');
+    // Get the response data regardless of success
+    const responseData = await response.json().catch(() => ({}));
+    
+    // Handle non-successful responses
+    if (!response.ok) {
+      console.error('Table creation error response:', responseData);
+      throw new Error(responseData.error?.message || `Failed to create table: ${response.status}`);
+    }
 
-    checkAuth();
+    // Refresh data after successful creation
+    await checkAuth();
+    
     toast({
       title: t('tableCreated'),
+      description: `Table "${tableName}" has been created successfully.`,
       status: 'success',
       duration: 2000
     });
   } catch (error) {
+    console.error('Table creation error:', error);
     toast({
       title: t('error'),
-      description: error.message,
+      description: error.message || 'Failed to create table. Please try again.',
+      status: 'error',
+      duration: 5000
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+// Function to delete a table
+const handleDeleteTable = async (tableId, tableName) => {
+  // Confirmation dialog
+  if (!window.confirm(t('confirmDeleteTable', {tableName: tableName}))) {
+    return;
+  }
+
+  if (!tableId) {
+    toast({
+      title: t('error'),
+      description: 'Invalid table ID',
       status: 'error',
       duration: 3000
     });
+    return;
+  }
+
+  try {
+    setIsLoading(true);
+    const token = localStorage.getItem('token');
+    
+    // Delete the table
+    const response = await fetch(`${BASE_URL}/api/tables/${tableId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    // Handle non-successful responses
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error('Table deletion error response:', errorData);
+      throw new Error(errorData.error?.message || `Failed to delete table: ${response.status}`);
+    }
+
+    // Refresh data after successful deletion
+    await checkAuth();
+    
+    toast({
+      title: t('tableDeleted'),
+      description: `Table "${tableName}" has been deleted.`,
+      status: 'success',
+      duration: 2000
+    });
+  } catch (error) {
+    console.error('Table deletion error:', error);
+    toast({
+      title: t('error'),
+      description: error.message || 'Failed to delete table. Please try again.',
+      status: 'error',
+      duration: 3000
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+// Function to update/edit a table
+const handleUpdateTable = async (tableId, currentTableName) => {
+  if (!tableId) {
+    toast({
+      title: t('error'),
+      description: 'Invalid table ID',
+      status: 'error',
+      duration: 3000
+    });
+    return;
+  }
+
+  // Prompt for new table name with current name as default
+  const newTableName = prompt(t('enterNewTableName'), currentTableName);
+  
+  // Check if user canceled or submitted empty name
+  if (!newTableName || newTableName.trim() === '') return;
+  
+  // Check if name didn't change
+  if (newTableName.trim() === currentTableName) return;
+
+  try {
+    setIsLoading(true);
+    const token = localStorage.getItem('token');
+    
+    // Update the table data
+    const updateData = {
+      data: {
+        name: newTableName.trim()
+      }
+    };
+    
+    // Log the request for debugging
+    console.log('Table update request:', updateData);
+    
+    const response = await fetch(`${BASE_URL}/api/tables/${tableId}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updateData),
+    });
+
+    // Get the response data regardless of success
+    const responseData = await response.json().catch(() => ({}));
+    
+    // Handle non-successful responses
+    if (!response.ok) {
+      console.error('Table update error response:', responseData);
+      throw new Error(responseData.error?.message || `Failed to update table: ${response.status}`);
+    }
+
+    // Refresh data after successful update
+    await checkAuth();
+    
+    toast({
+      title: t('tableUpdated'),
+      description: `Table renamed from "${currentTableName}" to "${newTableName}".`,
+      status: 'success',
+      duration: 2000,
+    });
+  } catch (error) {
+    console.error('Table update error:', error);
+    toast({
+      title: t('error'),
+      description: error.message || 'Failed to update table. Please try again.',
+      status: 'error',
+      duration: 3000,
+    });
+  } finally {
+    setIsLoading(false);
   }
 };
 
@@ -1241,52 +1411,98 @@ const getRandomTableColor = () => {
   return colors[Math.floor(Math.random() * colors.length)];
 };
 
-// Modify the table rendering to use custom color
-{userData.restaurant.tables.map((table) => (
-  <DashboardCard 
-    key={table.id} 
-    borderLeft="4px solid" 
-    borderColor={table.color || '#3182CE'}
-  >
-    {/* Existing table card content */}
-  </DashboardCard>
-))}
-
-const handleUpdateTable = async (tableId) => {
-  const newTableName = prompt(t('enterNewTableName'));
-  if (!newTableName) return;
-
-  try {
-    const token = localStorage.getItem('token');
-    const response = await fetch(`${BASE_URL}/api/tables/${tableId}`, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: {
-          name: newTableName,
-        },
-      }),
-    });
-
-    if (!response.ok) throw new Error('Failed to update table');
-
-    checkAuth();
+// Function to update table color (Premium feature)
+const handleUpdateTableColor = async (tableId, tableName, currentColor) => {
+  // Check if premium subscription
+  const subscriptionTier = userData?.restaurant?.subscription?.tier || 'standard';
+  if (subscriptionTier !== 'premium') {
     toast({
-      title: t('tableUpdated'),
-      status: 'success',
-      duration: 2000,
-    });
-  } catch (error) {
-    toast({
-      title: t('error'),
-      description: error.message,
-      status: 'error',
+      title: 'Premium Feature',
+      description: 'Table color customization is only available with Premium subscription.',
+      status: 'warning',
       duration: 3000,
+      isClosable: true,
+      render: () => (
+        <Box 
+          p={3} 
+          borderRadius="md"
+          bg={useColorModeValue("white", "gray.800")}
+          boxShadow="md"
+        >
+          <VStack align="start" spacing={2}>
+            <Text fontWeight="bold">Premium Feature</Text>
+            <Text fontSize="sm">Table color customization is only available with Premium subscription.</Text>
+            <Button 
+              size="sm" 
+              colorScheme="blue"
+              onClick={() => handleUpgradeSubscription('premium')}
+            >
+              Upgrade Now
+            </Button>
+          </VStack>
+        </Box>
+      )
     });
+    return;
   }
+
+  // Create a color picker modal or use browser's color picker
+  // For simplicity, using the browser's color input via a prompt-like approach
+  const colorPicker = document.createElement('input');
+  colorPicker.type = 'color';
+  colorPicker.value = currentColor || '#3182CE';
+  
+  // When color is selected
+  colorPicker.addEventListener('input', async (e) => {
+    const newColor = e.target.value;
+    if (newColor === currentColor) return;
+    
+    try {
+      setIsLoading(true);
+      const token = localStorage.getItem('token');
+      
+      const response = await fetch(`${BASE_URL}/api/tables/${tableId}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          data: {
+            color: newColor
+          }
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error?.message || `Failed to update table color: ${response.status}`);
+      }
+  
+      // Refresh data after successful update
+      await checkAuth();
+      
+      toast({
+        title: t('tableColorUpdated'),
+        description: `Color updated for table "${tableName}".`,
+        status: 'success',
+        duration: 2000,
+      });
+    } catch (error) {
+      console.error('Table color update error:', error);
+      toast({
+        title: t('error'),
+        description: error.message || 'Failed to update table color. Please try again.',
+        status: 'error',
+        duration: 3000,
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  });
+
+  // Trigger color picker
+  colorPicker.click();
 };
 
 const handleUpdate = (type, id) => {
