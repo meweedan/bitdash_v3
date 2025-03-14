@@ -63,11 +63,8 @@ const getBrandKeyFromSubdomain = (hostname) => {
     // For domains like "fund.bitdash.app"
     if (hostname.includes('.') && hostname.split('.').length >= 3) {
       const subdomain = hostname.split('.')[0];
-      
-      if (subdomain === 'crypto') return 'crypto';
-      if (subdomain === 'cash') return 'cash';
-      if (subdomain === 'ldn') return 'ldn';
-      if (subdomain === 'stocks') return 'stocks';
+      if (subdomain === 'adfaaly') return 'adfaaly';
+      if (subdomain === 'bsoraa') return 'bsoraa';
     }
   } catch (e) {
     console.error("Error parsing subdomain:", e);
@@ -248,10 +245,8 @@ const StatusPage = () => {
   const platformOptions = [
     { value: 'all', label: t('status:allPlatforms', 'All Platforms') },
     { value: 'bitdash', label: 'BitDash' },
-    { value: 'bitfund', label: 'BitFund' },
-    { value: 'bitcash', label: 'BitCash' },
-    { value: 'bittrade', label: 'BitTrade' },
-    { value: 'bitstock', label: 'BitStock' }
+    { value: 'adfaaly', label: 'Adfaaly' },
+    { value: 'bsoraa', label: 'Bsoraa' }
   ];
 
   return (

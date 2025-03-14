@@ -27,7 +27,7 @@ const PaymentLinkGenerator = ({ merchantData, visible, onClose }) => {
   const [isDarkQR, setIsDarkQR] = useState(false);
   const { colors } = useTheme();
 
-  const frontendUrl = 'https://cash.bitdash.app';
+  const frontendUrl = 'https://adfaaly.bitdash.app';
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const businessName = merchantData?.attributes?.metadata?.businessName 

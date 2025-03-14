@@ -79,7 +79,7 @@ const PremiumQRGenerator = ({
   };
 
   const handleCopyLink = () => {
-    const paymentUrl = `https://cash.bitdash.app/pay/${merchantData.id}`;
+    const paymentUrl = `https://adfaaly.bitdash.app/pay/${merchantData.id}`;
     navigator.clipboard.writeText(paymentUrl);
     toast({
       title: 'Link Copied',
@@ -89,7 +89,7 @@ const PremiumQRGenerator = ({
   };
 
   const handleShare = async () => {
-    const paymentUrl = `https://cash.bitdash.app/pay/${merchantData.id}`;
+    const paymentUrl = `https://adfaaly.bitdash.app/pay/${merchantData.id}`;
     if (navigator.share) {
       try {
         await navigator.share({
@@ -149,7 +149,7 @@ const PremiumQRGenerator = ({
         boxShadow="xl"
       >
         <QRCode
-          value={`https://cash.bitdash.app/pay/${merchantData.id}`}
+          value={`https://adfaaly.bitdash.app/pay/${merchantData.id}`}
           size={300}
           level="H"
           bgColor={qrStyles[selectedTheme].bgColor}

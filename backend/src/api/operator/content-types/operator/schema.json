@@ -110,6 +110,18 @@
         "images"
       ]
     },
+     "restaurant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::restaurant.restaurant",
+      "inversedBy": "operator"
+    },
+     "orders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::order.order",
+      "mappedBy": "operator"
+    },
     "wallet": {
       "type": "relation",
       "relation": "oneToOne",

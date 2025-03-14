@@ -53,11 +53,9 @@ const MotionContainer = motion(Container);
 
 // Platform definitions
 const PLATFORMS = {
-  BITFUND: { themeKey: 'bitfund', subdomain: 'fund' },
-  BITSTOCK: { themeKey: 'bitstock', subdomain: 'stock' },
-  BITTRADE: { themeKey: 'bittrade', subdomain: 'trade' },
-  BITCASH: { themeKey: 'bitcash', subdomain: 'cash' },
-  DEFAULT: { themeKey: 'bitfund', subdomain: 'fund' }, // Default platform
+  ADFAALY: { themeKey: 'adfaaly', subdomain: 'adfaaly' },
+  BSORAA: { themeKey: 'bsoraa', subdomain: 'bsoraa' },
+  DEFAULT: { themeKey: 'adfaaly', subdomain: 'adfaaly' }, // Default platform
 };
 
 // Helper function to detect platform from hostname
@@ -65,10 +63,8 @@ const getPlatformFromHostname = (hostname) => {
   if (!hostname) return PLATFORMS.DEFAULT;
   
   // Check for each possible subdomain
-  if (hostname.includes('fund.')) return PLATFORMS.BITFUND;
-  if (hostname.includes('stock.')) return PLATFORMS.BITSTOCK;
-  if (hostname.includes('trade.')) return PLATFORMS.BITTRADE;
-  if (hostname.includes('cash.')) return PLATFORMS.BITCASH;
+  if (hostname.includes('bsoraa.')) return PLATFORMS.BSORAA;
+  if (hostname.includes('adfaaly.')) return PLATFORMS.ADFAALY;
   
   return PLATFORMS.DEFAULT;
 };
@@ -113,34 +109,32 @@ const Contact = () => {
   const [errorMessage, setErrorMessage] = useState('');
   
   // Get current theme key safely
-  const themeKey = currentPlatform?.themeKey || 'bitfund';
+  const themeKey = currentPlatform?.themeKey || 'bsoraa';
   
   const cardBg = useColorModeValue('white', 'black.800');
   const highlightColor = useColorModeValue(`brand.${themeKey}.500`, `brand.${themeKey}.300`);
   
   const platforms = [
     { value: 'all', label: t('allPlatforms', 'All Platforms') },
-    { value: 'BitFund', label: t('BitFund', 'BitFund') },
-    { value: 'BitStock', label: t('BitStock', 'BitStock') },
-    { value: 'BitTrade', label: t('BitTrade', 'BitTrade') },
-    { value: 'BitCash', label: t('BitCash', 'BitCash') }
+    { value: 'Adfaaly', label: t('Adfaaly', 'Adfaaly') },
+    { value: 'Bsoraa', label: t('Bsoraa', 'Bsoraa') }
   ];
   
   const contactInfo = [
     { 
       title: t('generalInquiries', 'General Inquiries'), 
       value: 'info@bitdash.app',
-      color: 'brand.crypto.400'
+      color: 'brand.bsoraa.400'
     },
     { 
       title: t('technicalSupport', 'Technical Support'), 
       value: 'help@bitdash.app',
-      color: 'brand.ldn.400'
+      color: 'brand.bsoraa.400'
     },
     { 
       title: t('accountQuestions', 'Account Questions'), 
       value: 'contact@bitdash.app',
-      color: 'brand.cash.400'
+      color: 'brand.bsoraa.400'
     }
   ];
 

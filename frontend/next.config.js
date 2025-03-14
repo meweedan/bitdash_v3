@@ -48,11 +48,11 @@ const nextConfig = {
   // Subdomain redirects
   async rewrites() {
     return [
-      // LDN platform routes
+      // Bsoraa platform routes
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'ldn.bitdash.app' }],
-        destination: '/ldn/:path*',
+        has: [{ type: 'host', value: 'bsoraa.bitdash.app' }],
+        destination: '/bsoraa/:path*',
       },
       // adfaaly platform routes
       {

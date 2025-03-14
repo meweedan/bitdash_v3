@@ -57,18 +57,6 @@
       "relation": "oneToOne",
       "target": "api::operator.operator"
     },
-    "retail_trader": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::retail-trader.retail-trader",
-      "inversedBy": "wallet"
-    },
-    "introducing_broker": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::introducing-broker.introducing-broker",
-      "inversedBy": "wallet"
-    },
     "sent_transactions": {
       "type": "relation",
       "relation": "oneToMany",

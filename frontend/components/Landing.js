@@ -243,13 +243,13 @@ export default function LandingPage() {
             
             {/* Platform Cards */}
             <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} width="full">
-              {/* LDN Platform */}
+              {/* Bsoraa Platform */}
               <PlatformCard
                 title={t('platforms.forex.title')}
                 description={t('platforms.forex.description')}
                 image="/images/eur.png"
                 cta={t('platforms.forex.cta')}
-                link="https://ldn.bitdash.app"
+                link="https://bsoraa.bitdash.app"
                 color="#8b7966"
                 delay={0}
               />

@@ -45,7 +45,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   
   // Always show announcements for these platforms
-  const showAnnouncements = platform === 'ldn' || platform === 'adfaaly';
+  const showAnnouncements = platform === 'bsoraa' || platform === 'adfaaly';
 
   // Handle scroll effect
   useEffect(() => {
@@ -97,11 +97,11 @@ export default function Header() {
       color: 'brand.adfaaly'
     },
     {
-      name: 'LDN Prime Markets',
-      image: '/ldn.png',
-      mobileImage: '/ldn.png',
-      href: 'https://ldn.bitdash.app/',
-      color: 'brand.ldn'
+      name: 'Bsoraa',
+      image: '/bsoraa.png',
+      mobileImage: '/bsoraa.png',
+      href: 'https://bsoraa.bitdash.app/',
+      color: 'brand.bsoraa'
     }, 
   ];
 
@@ -112,12 +112,12 @@ export default function Header() {
       
       // More specific checks to avoid partial matches
       if (hostname.includes('adfaaly.bitdash') || hostname === 'adfaaly.localhost') return 'adfaaly';
-      if (hostname.includes('ldn.bitdash') || hostname === 'ldn.localhost') return 'ldn';
+      if (hostname.includes('bsoraa.bitdash') || hostname === 'bsoraa.localhost') return 'bsoraa';
       
       // Also check URL path for local development
       const pathname = window.location.pathname;
       if (pathname.startsWith('/adfaaly')) return 'adfaaly';
-      if (pathname.startsWith('/ldn')) return 'ldn';
+      if (pathname.startsWith('/bsoraa')) return 'bsoraa';
     }
     return 'bitdash'; // Default platform
   };
@@ -153,24 +153,24 @@ export default function Header() {
   
   // Platform-specific menu items 
   const getPlatformMenuItems = () => {
-    if (platform === 'ldn') { // Forex
+    if (platform === 'bsoraa') { // Forex
       return [
         { 
           name: t('analysis', 'Analysis'), 
-          path: '/ldn/analysis',
+          path: '/bsoraa/analysis',
           submenu: [
-            { name: t('economicCalendar', 'Economic Calendar'), path: '/ldn/analysis/economic-calendar' },
-            { name: t('marketSentiment', 'Market Sentiment'), path: '/ldn/analysis/sentiment' },
-            { name: t('forex:forexNews"', 'Forex News'), path: '/ldn/analysis/news' },
+            { name: t('economicCalendar', 'Economic Calendar'), path: '/bsoraa/analysis/economic-calendar' },
+            { name: t('marketSentiment', 'Market Sentiment'), path: '/bsoraa/analysis/sentiment' },
+            { name: t('forex:forexNews"', 'Forex News'), path: '/bsoraa/analysis/news' },
           ]
         },
         { 
           name: t('education', 'Education'), 
-          path: '/ldn/education',
+          path: '/bsoraa/education',
           submenu: [
-            { name: t('tradingGuides', 'Trading Guides'), path: '/ldn/education/guides' },
-            { name: t('webinars', 'Webinars'), path: '/ldn/education/webinars' },
-            { name: t('strategyResources', 'Strategy Resources'), path: '/ldn/education/strategies' },
+            { name: t('tradingGuides', 'Trading Guides'), path: '/bsoraa/education/guides' },
+            { name: t('webinars', 'Webinars'), path: '/bsoraa/education/webinars' },
+            { name: t('strategyResources', 'Strategy Resources'), path: '/bsoraa/education/strategies' },
           ]
         },
       ];

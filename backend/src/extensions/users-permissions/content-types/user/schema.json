@@ -89,21 +89,9 @@
       "target": "api::merchant.merchant",
       "mappedBy": "users_permissions_user"
     },
-    "retail_trader": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::retail-trader.retail-trader",
-      "mappedBy": "users_permissions_user"
-    },
-    "introducing_broker": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::introducing-broker.introducing-broker",
-      "mappedBy": "users_permissions_user"
-    },
     "primaryPlatform": {
       "type": "enumeration",
-      "enum": ["ldn", "adfaaly", "multiple"],
+      "enum": ["bsoraa", "adfaaly", "multiple"],
       "default": "adfaaly"
     },
     "registrationDate": {

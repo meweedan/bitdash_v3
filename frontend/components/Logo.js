@@ -12,8 +12,8 @@ const Logo = ({ variant = 'header' }) => {
     const hostname = window.location.hostname;
     if (hostname.includes('adfaaly')) {
       setPlatform('adfaaly'); 
-    } else if (hostname.includes('ldn')) {
-      setPlatform('ldn');
+    } else if (hostname.includes('bsoraa')) {
+      setPlatform('bsoraa');
     } else if (process.env.NODE_ENV === 'development') {
       const urlPlatform = new URLSearchParams(window.location.search).get('platform');
       setPlatform(urlPlatform);
@@ -26,9 +26,9 @@ const Logo = ({ variant = 'header' }) => {
       en: { path: '/adfaaly.png', width: 1174, height: 520 },
       ar: { path: '/adfaaly-ar.png', width: 1134, height: 634 }
     },
-    ldn: {
-      en: { path: '/ldn.png', width: 1085, height: 350 },
-      ar: { path: '/ldn-ar.png', width: 1348, height: 492 }
+    bsoraa: {
+      en: { path: '/bsoraa.png', width: 1174, height: 520 },
+      ar: { path: '/bsoraa-ar.png', width: 1134, height: 634 }
     },
     main: {
       en: { path: '/bitdash-logo.png', width: 1080, height: 249 },
@@ -72,7 +72,7 @@ const Logo = ({ variant = 'header' }) => {
 
   // Renders all platform logos in a 2x2 grid (for mobile solutions menu)
   const renderLogoGrid = () => {
-    const platformOptions = ['adfaaly', 'ldn'];
+    const platformOptions = ['adfaaly', 'bsoraa'];
     
     return (
       <SimpleGrid columns={2} spacing={4} width="100%">

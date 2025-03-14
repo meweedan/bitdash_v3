@@ -189,7 +189,7 @@ function MerchantDemo() {
     setTimeout(() => {
       // Create a mock payment link
       const mockId = Math.random().toString(36).substring(2, 10);
-      const link = `https://cash.bitdash.app/${mockId}`;
+      const link = `https://adfaaly.bitdash.app/${mockId}`;
       setPaymentLink(link);
       setIsLinkGenerated(true);
       setIsGenerating(false);

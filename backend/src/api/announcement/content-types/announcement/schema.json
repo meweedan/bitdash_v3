@@ -35,7 +35,7 @@
     "platform": {
       "type": "enumeration",
       "enum": [
-        "ldn",
+        "bsoraa",
         "adfaaly"
       ],
       "required": true

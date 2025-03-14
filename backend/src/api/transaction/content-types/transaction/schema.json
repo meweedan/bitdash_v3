@@ -88,22 +88,6 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::agent.agent"
-    },
-    "retail_trader": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::retail-trader.retail-trader",
-      "inversedBy": "trading_history"
-    },
-    "introducing_broker": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::introducing-broker.introducing-broker",
-      "inversedBy": "commissionHistory"
-    },
-    "trade_details": {
-      "type": "json",
-      "comment": "For trade transactions with details like symbol, entry/exit prices, etc."
     }
   }
 }

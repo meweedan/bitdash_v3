@@ -74,7 +74,7 @@ const Footer = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
-      if (hostname.includes('ldn')) setPlatform('ldn');
+      if (hostname.includes('bsoraa')) setPlatform('bsoraa');
       else if (hostname.includes('adfaaly')) setPlatform('adfaaly');
       else setPlatform('main');
 
@@ -94,8 +94,8 @@ const Footer = () => {
     switch(platform) {
       case 'adfaaly':
         return `brand.adfaaly.${intensity}`;
-      case 'ldn':
-        return `brand.ldn.${intensity}`;
+      case 'bsoraa':
+        return `brand.bsoraa.${intensity}`;
       default:
         return `blue.${intensity}`;
     }
@@ -107,11 +107,11 @@ const Footer = () => {
       { label: 'Privacy', href: '/policies/privacy', icon: Shield },
       { label: 'Terms', href: '/policies/terms', icon: FileText },
     ],
-    ldn: [
-      { label: 'Forex Pairs', href: '/ldn/pairs', icon: Globe },
-      { label: 'Analysis', href: '/ldn/analysis', icon: LineChart },
-      { label: 'Tools', href: '/ldn/tools', icon: Settings },
-      { label: 'Charts', href: '/ldn/charts', icon: BarChart2 },
+    bsoraa: [
+      { label: 'Forex Pairs', href: '/bsoraa/pairs', icon: Globe },
+      { label: 'Analysis', href: '/bsoraa/analysis', icon: LineChart },
+      { label: 'Tools', href: '/bsoraa/tools', icon: Settings },
+      { label: 'Charts', href: '/bsoraa/charts', icon: BarChart2 },
     ],
     adfaaly: [
       { label: 'Transfer Money', href: '/adfaaly/client/transfer', icon: FiArrowRightCircle },
@@ -124,7 +124,7 @@ const Footer = () => {
   const getPWANavItems = (isLoggedIn) => {
     // Define navigation items specific to each platform
     const navItems = {
-      ldn: [
+      bsoraa: [
         { label: 'Trading', action: 'trading', icon: LineChart },
         { label: 'Markets', action: 'markets', icon: Globe },
         { label: 'Analysis', action: 'analysis', icon: BarChart2 },
@@ -163,11 +163,11 @@ const Footer = () => {
   const handlePWAAction = async (action) => {
     // Define platform-specific paths
     const platformPaths = {
-      ldn: {
-        trading: '/ldn/platform',
-        markets: '/ldn/markets',
-        analysis: '/ldn/analysis',
-        account: '/ldn/account',
+      bsoraa: {
+        trading: '/bsoraa/platform',
+        markets: '/bsoraa/markets',
+        analysis: '/bsoraa/analysis',
+        account: '/bsoraa/account',
       },
       adfaaly: {
         transfer: 'adfaaly/client/transfer',
@@ -221,8 +221,8 @@ const Footer = () => {
     // Determine where to redirect based on platform
     let path = '';
     switch(platform) {
-      case 'ldn':
-        path = `/ldn/transaction/${trackingNumber}`;
+      case 'bsoraa':
+        path = `/bsoraa/transaction/${trackingNumber}`;
         break;
       case 'adfaaly':
         path = `/adfaaly/transaction/${trackingNumber}`;
@@ -242,7 +242,7 @@ const Footer = () => {
   // Get the drawer title based on platform
   const getDrawerTitle = () => {
     switch(platform) {
-      case 'ldn':
+      case 'bsoraa':
         return 'Track Withdrawals and Deposits';
       case 'adfaaly':
         return 'Track Payment';
@@ -398,7 +398,7 @@ const Footer = () => {
         <DrawerOverlay />
         <DrawerContent borderTopRadius="20px">
           <DrawerHeader borderBottomWidth="1px">
-            {platform === 'ldn' ? 'Forex Menu' :
+            {platform === 'bsoraa' ? 'Forex Menu' :
              platform === 'adfaaly' ? 'Cash Menu' :
              'Menu'}
           </DrawerHeader>
@@ -461,7 +461,7 @@ const Footer = () => {
           <DrawerBody py={4}>
             <FormControl isRequired isInvalid={!!error}>
               <FormLabel>
-                {platform === 'ldn' ? 'Transaction ID' :
+                {platform === 'bsoraa' ? 'Transaction ID' :
                  platform === 'adfaaly' ? 'Payment ID' :
                  'Tracking Number'}
               </FormLabel>
@@ -472,7 +472,7 @@ const Footer = () => {
                   setError('');
                 }}
                 placeholder={
-                  platform === 'ldn' ? 'Enter transaction ID' :
+                  platform === 'bsoraa' ? 'Enter transaction ID' :
                   platform === 'cash' ? 'Enter payment ID' :
                   'Enter tracking number'
                 }

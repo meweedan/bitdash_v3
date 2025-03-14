@@ -34,13 +34,13 @@ import Head from 'next/head';
 
 const platforms = [
   {
-    id: 'cash',
-    title: 'BitCash',
-    tagline: 'Digital Payment Solutions',
+    id: 'adfaaly',
+    title: 'Adfaaly',
+    tagline: 'Digital payment solution that fits your needs.',
     description: 'Experience seamless cross-border transactions with our institutional-grade payment infrastructure designed for businesses and consumers globally.',
-    image: '/cash.png',
-    imageAr: '/cash-ar.png',
-    color: 'brand.cash.500',
+    image: '/adfaaly.png',
+    imageAr: '/adfaaly-ar.png',
+    color: 'brand.adfaaly.500',
     stats: [
       { value: '$2.5B+', label: 'Monthly Volume' },
       { value: '99.99%', label: 'Uptime' },
@@ -54,53 +54,13 @@ const platforms = [
     ]
   },
   {
-    id: 'fund',
-    title: 'BitFund',
-    tagline: 'Proprietary Trading Platform',
-    description: 'Access capital up to $200,000 by proving your trading skill through our rigorous evaluation process and performance-based funding program.',
-    image: '/fund.png',
-    imageAr: '/fund-ar.png',
-    color: 'brand.crypto.500',
-    stats: [
-      { value: '12.5%', label: 'Pass Rate' },
-      { value: '$450M+', label: 'Capital Allocated' },
-      { value: '12K+', label: 'Active Traders' }
-    ],
-    features: [
-      'Challenge Accounts',
-      'Performance Metrics',
-      'Trading Education',
-      'Real-time Analytics'
-    ]
-  },
-  {
-    id: 'stock',
-    title: 'BitStock',
-    tagline: 'Global Investment Platform',
-    description: 'Your gateway to US and EU markets tailored specifically for MENA and GCC investors with access to stocks, privately held assets, commodities and more.',
-    image: '/stock.png',
-    imageAr: '/stock-ar.png',
-    color: 'brand.stocks.500',
-    stats: [
-      { value: '350K+', label: 'Active Investors' },
-      { value: '18', label: 'Countries Served' },
-      { value: '2.5M+', label: 'Daily Trades' }
-    ],
-    features: [
-      'US & EU Market Access',
-      'Shariah-Compliant Options',
-      'Private Equity Access',
-      'Gold & Oil Trading'
-    ]
-  },
-  {
-    id: 'trade',
-    title: 'BitTrade',
-    tagline: 'Regulated Forex & Crypto Exchange',
-    description: 'Trade forex pairs, cryptocurrencies and commodities on our secure, regulated platform with institutional liquidity and advanced trading tools.',
-    image: '/trade.png',
-    imageAr: '/trade-ar.png',
-    color: 'brand.ldn.500',
+    id: 'bsoraa',
+    title: 'Bsoraa',
+    tagline: 'Your orders, instantly delivered.',
+    description: 'Order your favourite cravings, your late night snacks or your montly grocery run and get it delivered instantly.',
+    image: '/bsoraa.png',
+    imageAr: '/bsoraa-ar.png',
+    color: 'brand.bsoraa.500',
     stats: [
       { value: '80+', label: 'Currency Pairs' },
       { value: '50+', label: 'Cryptocurrencies' },
@@ -495,7 +455,7 @@ const Services = () => {
             >
               <Heading
                 fontSize={{ base: '4xl', md: '7xl' }}
-                bgGradient="linear(to-r, brand.cash.500, brand.crypto.500, brand.stocks.500, brand.ldn.500)"
+                bgGradient="linear(to-r, brand.adfaaly.500, brand.bsoraa.500)"
                 bgClip="text"
                 letterSpacing="tight"
                 lineHeight="shorter"

@@ -19,14 +19,14 @@ const LanguageSwitcher = () => {
   // Get current platform based on URL/hostname
   useEffect(() => {
     const hostname = window.location.hostname;
-    if (hostname.includes('ldn')) setPlatform('ldn');
+    if (hostname.includes('bsoraa')) setPlatform('bsoraa');
     else if (hostname.includes('adfaaly')) setPlatform('adfaaly');
     
     // For local development
     if (hostname === 'localhost') {
       const path = window.location.pathname;
       if (path.includes('/adfaaly')) setPlatform('adfaaly');
-      if (path.includes('/ldn')) setPlatform('ldn');
+      if (path.includes('/bsoraa')) setPlatform('bsoraa');
     }
   }, []);
 

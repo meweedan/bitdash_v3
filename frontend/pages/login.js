@@ -24,10 +24,11 @@ const PLATFORM_ROUTES = {
     customer: '/client/dashboard',
     baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://adfaaly.bitdash.app'
   },
-  ldn: {
-    retail_trader: '/trader/dashboard',
-    ib: '/ib/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://ldn.bitdash.app'
+  bsoraa: {
+    customer: '/customer/dashboard',
+    captain: '/captain/dashboard',
+    operator: '/operator/dashboard',
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://bsoraa.bitdash.app'
   }
 };
 
@@ -37,9 +38,10 @@ const PROFILE_ENDPOINTS = {
     agent: '/api/agents',
     customer: '/api/customer-profiles'
   },
-  ldn: {
-    retail_trader: '/api/retail-traders',
-    ib: '/api/introducing-brokers',
+  bsoraa: {
+    customer: '/api/customer_profiles',
+    captain: '/api/captains',
+    operator: '/api/operators'
   }
 };
 
@@ -47,20 +49,21 @@ const BUSINESS_TYPE_ROUTES = {
   merchant: { platform: 'adfaaly', userType: 'merchant' },
   agent: { platform: 'adfaaly', userType: 'agent' },
   customer: { platform: 'adfaaly', userType: 'customer' },
-  retail_trader: { platform: 'ldn', userType: 'retail_trader' },
-  ib: { platform: 'ldn', userType: 'ib' },
+  customer: { platform: 'bsoraa', userType: 'customer' },
+  captain: { platform: 'bsoraa', userType: 'captain' },
+  operator: { platform: 'bsoraa', userType: 'operator' }
 };
 
 const getPlatformFromURL = () => {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
     if (hostname.includes('adfaaly')) return 'adfaaly';
-    if (hostname.includes('ldn')) return 'ldn';
+    if (hostname.includes('bsoraa')) return 'bsoraa';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
       if (path.includes('/adfaaly')) return 'adfaaly';
-      if (path.includes('/ldn')) return 'ldn';
+      if (path.includes('/bsoraa')) return 'bsoraa';
     }
   }
   return 'bitdash';
@@ -75,12 +78,12 @@ const getColorScheme = (platform, isDark) => {
       hover: 'brand.adfaaly.600',
       border: 'brand.adfaaly.500'
     },
-    ldn: {
+    bsoraa: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.ldn.400' : 'brand.ldn.600',
-      button: 'brand.ldn.500',
-      hover: 'brand.ldn.600',
-      border: 'brand.ldn.500'
+      text: isDark ? 'brand.bsoraa.400' : 'brand.bsoraa.600',
+      button: 'brand.bsoraa.500',
+      hover: 'brand.bsoraa.600',
+      border: 'brand.bsoraa.500'
     },
     bitdash: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
@@ -136,7 +139,7 @@ const LoginPage = () => {
   };
 
   const buttonStyles = {
-    variant: currentPlatform.includes('adfaaly') ? `${currentPlatform}-solid` : 'ldn-solid',
+    variant: currentPlatform.includes('adfaaly') ? `${currentPlatform}-solid` : 'bsoraa-solid',
     bg: colors.button,
     color: 'white',
     _hover: {
@@ -207,10 +210,10 @@ const LoginPage = () => {
 
   const checkBusinessType = async (token, userId) => {
     try {
-      if (currentPlatform === 'ldn') {
-        console.log('Checking trader status...');
+      if (currentPlatform === 'bsoraa') {
+        console.log('Checking operator status...');
         const traderResponse = await fetch(
-          `${BASE_URL}/api/retail-traders?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
+          `${BASE_URL}/api/operators?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
           { 
             headers: { 
               Authorization: `Bearer ${token}`,
@@ -221,11 +224,11 @@ const LoginPage = () => {
 
         if (traderResponse.ok) {
           const { data } = await traderResponse.json();
-          console.log('Trader data:', data);
+          console.log('Operator data:', data);
           // The fix is here - check the results array in attributes
           if (data?.attributes?.results?.length > 0) {
             // Found a trader record
-            return 'trader';
+            return 'operator';
           }
         }
 
@@ -259,13 +262,13 @@ const LoginPage = () => {
     const platform = currentPlatform.replace('bit', '');
     console.log('Current platform:', platform);
     
-    if (platform === 'ldn') {
+    if (platform === 'bsoraa') {
       const businessType = await checkBusinessType(token, userId);
       console.log('Business type check result:', businessType);
       
-      if (businessType === 'trader') {
-        console.log('Returning trader type');
-        return 'trader';
+      if (businessType === 'operator') {
+        console.log('Returning operator type');
+        return 'operator';
       }
     }
     

@@ -15,11 +15,11 @@ const theme = extendTheme({
         600: '#00bf63',    // Hover
         700: '#00bf63',    // Emphasis
       },
-      ldn: {
-        400: '#8b7966',
-        500: '#b8a28b',    // Base
-        600: '#9c7c63',    // Hover
-        700: '#c4b2a0',    // Emphasis
+      bsoraa: {
+        400: '#ff914d',
+        500: '#E86C00',    // Base
+        600: '#ff914d',    // Hover
+        700: '#E86C00',    // Emphasis
       }
     },
   },
@@ -67,17 +67,17 @@ const theme = extendTheme({
           color: 'brand.crypto.500',
           _hover: { bg: 'brand.crypto.500', color: 'white' }
         },
-        // LDN variants
-        'ldn-solid': {
-          bg: 'brand.ldn.700',
+        // bsoraa variants
+        'bsoraa-solid': {
+          bg: 'brand.bsoraa.700',
           color: 'white',
-          _hover: { bg: 'brand.ldn.400' }
+          _hover: { bg: 'brand.bsoraa.400' }
         },
-        'ldn-outline': {
+        'bsoraa-outline': {
           border: '2px solid',
-          borderColor: 'brand.ldn.500',
-          color: 'brand.ldn.500',
-          _hover: { bg: 'brand.ldn.500', color: 'white' }
+          borderColor: 'brand.bsoraa.500',
+          color: 'brand.bsoraa.500',
+          _hover: { bg: 'brand.bsoraa.500', color: 'white' }
         },
         // Stocks variants
         'stocks-solid': {
@@ -108,8 +108,8 @@ const theme = extendTheme({
         adfaaly: {
           borderColor: 'brand.adfaaly.500',
         },
-        ldn: {
-          borderColor: 'brand.ldn.500',
+        bsoraa: {
+          borderColor: 'brand.bsoraa.500',
         }
       }
     },

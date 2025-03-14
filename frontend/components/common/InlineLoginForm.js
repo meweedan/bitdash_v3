@@ -25,7 +25,7 @@ const PLATFORM_ROUTES = {
     merchant: '/merchant/dashboard',
     agent: '/agent/dashboard',
     customer: '/client/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://cash.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://adfaaly.bitdash.app'
   },
   shop: {
     owner: '/owner/dashboard',

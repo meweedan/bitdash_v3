@@ -33,12 +33,12 @@ export const AdfaalyPWALanding = () => {
   );
 };
 
-export const LDNPWALanding = () => {
+export const BsoraaPWALanding = () => {
   const router = useRouter();
   const config = {
-    title: 'LDN Prime Markets',
+    title: 'Bsoraa',
     description: 'Your trusted forex broker',
-    image: '/ldn.png',
+    image: '/bsoraa.png',
     color: '#4CAF50'
   };
 
@@ -60,7 +60,7 @@ const PWALanding = () => {
   const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
 
   if (hostname.includes('adfaaly')) return <AdfaalyPWALanding />;
-  if (hostname.includes('ldn')) return <LDNPWALanding />;
+  if (hostname.includes('bsoraa')) return <BsoraaPWALanding />;
 
   const config = {
     title: 'BitDash',

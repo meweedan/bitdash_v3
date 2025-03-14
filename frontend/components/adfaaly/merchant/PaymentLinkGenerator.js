@@ -38,7 +38,7 @@ const PaymentLinkGenerator = ({
   const { hasCopied, onCopy } = useClipboard(paymentLink?.url || '');
 
   // Ensure environment variables are defined
-  const frontendUrl = 'https://cash.bitdash.app';
+  const frontendUrl = 'https://adfaaly.bitdash.app';
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   if (!backendUrl) {
