@@ -5,6 +5,211 @@
   "scrolldown": "Scroll down for more",
   "ourpartners": "Our Partners",
   "search": "Search",
+  "hero": {
+    "title": "Your One-Stop Delivery Solution",
+    "description": "From restaurant meals to groceries and retail items, we deliver it all to your doorstep. Fast, reliable, and contactless.",
+    "get_started": "Get Started",
+    "download_app": "Download App"
+  },
+  "highlights": {
+    "delivery": {
+      "title": "Free Delivery",
+      "description": "On your first three orders"
+    },
+    "products": {
+      "title": "10,000+ Items",
+      "description": "From local and chain stores"
+    },
+    "time": {
+      "title": "30-Minute Delivery",
+      "description": "For nearby restaurants and stores"
+    }
+  },
+  "features": {
+    "tracking": {
+      "title": "Real-Time Tracking",
+      "description": "Follow your delivery from store to door with live GPS tracking"
+    },
+    "contactless": {
+      "title": "Contactless Delivery",
+      "description": "Options for safe, contactless drop-off at your preferred location"
+    },
+    "local": {
+      "title": "Local Businesses",
+      "description": "Support your community by ordering from local shops and restaurants"
+    },
+    "scheduled": {
+      "title": "Scheduled Orders",
+      "description": "Plan ahead with scheduled deliveries for your convenience"
+    },
+    "image": {
+      "alt": "Delivery App Screenshot"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "From fresh meals to groceries and everyday essentials, we deliver everything you need with speed and reliability.",
+    "food": {
+      "title": "Food Delivery",
+      "description": "Order from your favorite restaurants and get hot, fresh meals delivered to your doorstep in minutes",
+      "highlight1": "Thousands of restaurant options",
+      "highlight2": "Real-time order tracking",
+      "highlight3": "Contactless delivery available"
+    },
+    "grocery": {
+      "title": "Grocery Delivery",
+      "description": "Shop for fresh produce, pantry essentials, and household items with same-day delivery",
+      "highlight1": "Fresh and quality products",
+      "highlight2": "Wide selection of stores",
+      "highlight3": "Scheduled delivery options"
+    },
+    "qrorder": {
+      "title": "QR Table Ordering",
+      "description": "Scan, order, and pay directly from your table at participating restaurants",
+      "highlight1": "No app download required",
+      "highlight2": "Contactless ordering experience",
+      "highlight3": "Integrated payment solutions"
+    },
+    "retail": {
+      "title": "Retail Items",
+      "description": "Shop electronics, essentials, gifts and more from local stores with fast delivery",
+      "highlight1": "Wide variety of products",
+      "highlight2": "Local store partnerships",
+      "highlight3": "Same-day delivery options"
+    }
+  },
+  "qr": {
+    "title": "QR Table Ordering",
+    "subtitle": "A contactless dining experience that revolutionizes how customers order in restaurants",
+    "description": "Customers scan a QR code at their table to view the menu, place orders, and pay directly from their phones. No app download required, just a seamless web experience that enhances dining for everyone.",
+    "learn_more": "Learn More",
+    "imageAlt": "QR Ordering System"
+  },
+  "platform": {
+    "title": "Why Choose Bsoraa",
+    "features": {
+      "security": {
+        "title": "Secure Payments",
+        "description": "Multiple secure payment options with encrypted transactions"
+      },
+      "delivery": {
+        "title": "Fast Delivery",
+        "description": "Optimized routes ensure your orders arrive quickly and efficiently"
+      },
+      "mobile": {
+        "title": "User-Friendly App",
+        "description": "Intuitive mobile experience for browsing and ordering on the go"
+      },
+      "support": {
+        "title": "24/7 Support",
+        "description": "Customer service available around the clock to assist with any issues"
+      }
+    }
+  },
+  "partners": {
+    "title": "Partner With Bsoraa",
+    "subtitle": "Grow Your Business With Us",
+    "description1": "Join our network of restaurants, grocery stores, and retailers to reach more customers and increase your revenue.",
+    "description2": "Our platform provides the technology, logistics, and customer base to help your business thrive in the digital marketplace.",
+    "register": "Register Your Business",
+    "benefits": {
+      "visibility": {
+        "title": "Increased Visibility",
+        "description": "Reach new customers and expand your market presence through our platform"
+      },
+      "revenue": {
+        "title": "New Revenue Streams",
+        "description": "Boost sales with delivery and takeout options without additional overhead"
+      },
+      "qr": {
+        "title": "QR Table Ordering",
+        "description": "Streamline in-restaurant service with our contactless ordering system"
+      },
+      "customers": {
+        "title": "Customer Insights",
+        "description": "Access valuable data on ordering patterns and customer preferences"
+      }
+    }
+  },
+  "customers": {
+    "title": "Solutions For Everyone",
+    "description": "Whether you're ordering for yourself, your family, or your business, we have tailored solutions to meet your needs.",
+    "popular": "Popular",
+    "select": "Select",
+    "individual": {
+      "title": "Individual",
+      "description": "Perfect for personal food and grocery deliveries",
+      "feature1": "No minimum order",
+      "feature2": "Fast delivery",
+      "feature3": "Personalized recommendations"
+    },
+    "family": {
+      "title": "Family",
+      "description": "Great for households with regular grocery and meal needs",
+      "feature1": "Family meal deals",
+      "feature2": "Scheduled weekly deliveries",
+      "feature3": "Special discounts"
+    },
+    "business": {
+      "title": "Business",
+      "description": "Tailored solutions for offices and corporate events",
+      "feature1": "Bulk ordering options",
+      "feature2": "Corporate accounts",
+      "feature3": "Catering services"
+    }
+  },
+  "mobileApp": {
+    "title": "DOWNLOAD BSORAA APP",
+    "subtitle": "YOUR FAVORITE FOOD AND ESSENTIALS, ONE TAP AWAY.",
+    "description": "Browse restaurants and stores, track your orders in real-time, and enjoy exclusive mobile-only deals and discounts. Get everything you need delivered with just a few taps.",
+    "imageAlt": "Mobile App Screenshot"
+  },
+  "steps": {
+    "subtitle": "Getting Started",
+    "title": "Start Using Bsoraa in 3 Simple Steps",
+    "description": "It's easy to get started with Bsoraa. Just follow these simple steps and you'll be enjoying delicious food and convenient deliveries in no time.",
+    "cta": "Download Our App Now",
+    "step1": {
+      "title": "Download",
+      "description": "Get our app on iOS or Android and create an account"
+    },
+    "step2": {
+      "title": "Browse & Order",
+      "description": "Select from thousands of restaurants, grocery stores, and retail shops"
+    },
+    "step3": {
+      "title": "Enjoy",
+      "description": "Track your order and receive it at your doorstep"
+    }
+  },
+  "cta": {
+    "subtitle": "Ready to Order?",
+    "title": "Delicious Food & Essential Items at Your Doorstep",
+    "description": "Join thousands of satisfied customers who trust Bsoraa for all their delivery needs. Download our app today and experience the convenience.",
+    "primaryButton": "Create Your Account",
+    "secondaryButton": "Contact Support"
+  },
+  "legal": {
+    "title": "Bsoraa",
+    "description": "Bsoraa is a comprehensive food and grocery delivery platform that also offers retail item delivery and QR table ordering services. Our mission is to make life more convenient by bringing your favorite meals, essential groceries, and everyday items straight to your doorstep.",
+    "coverage": {
+      "title": "Service Coverage",
+      "content": "Currently available in select cities with plans for rapid expansion. Check our app to see if delivery is available in your area. New locations added regularly."
+    },
+    "hours": {
+      "title": "Operating Hours",
+      "content": "Most services available 24/7, though individual restaurant and store hours may vary. QR ordering available during restaurant operating hours."
+    },
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "about": "About Us",
+      "careers": "Careers",
+      "help": "Help Center",
+      "contact": "Contact Us"
+    },
+    "copyright": "© 2025 Bsoraa. All rights reserved."
+  },
   "getStarted": "Get Started",
   "giveEdgeCompetitors": "Gain an edge over competitors.",
   "allRightsReserved": "All Rights Reserved",
@@ -297,10 +502,6 @@
     "happyCustomers": "Happy Customers",
     "joinUs": "Join Our Journey",
     "title": ""
-  },
-  "services": {
-    "title": "",
-    "description": ""
   },
   "countriesServed": "Countries Served",
   "restaurantsHelped": "Restaurants Helped",
@@ -1578,28 +1779,6 @@
       "imageAlt": "Cash Transfer"
     }
   },
-  "features": {
-    "title": "Advanced Trading Features",
-    "subtitle": "BitDash offers a comprehensive suite of powerful trading tools and features designed to enhance your trading experience.",
-    "exploreMore": "Explore All Features",
-    "imageAlt": "Trading Features",
-    "global": {
-      "title": "Global Markets",
-      "description": "Access multiple markets and asset classes through a single integrated platform."
-    },
-    "secure": {
-      "title": "Bank-Grade Security",
-      "description": "Industry-leading security measures to protect your assets and personal information."
-    },
-    "analysis": {
-      "title": "Advanced Analysis",
-      "description": "Powerful tools for technical and fundamental analysis to inform your trading decisions."
-    },
-    "execution": {
-      "title": "Ultra-Fast Execution",
-      "description": "Lightning-fast order execution with minimal slippage for optimal trading."
-    }
-  },
   "islamic": {
     "subtitle": "Islamic Finance Principles",
     "title": "Built On Strong Ethical Foundations",
@@ -2594,53 +2773,6 @@
     "description": "Download now and try our dashboard with real-time trading, instant notifications, and secure account management on the go.",
     "screenshotAlt": "BitDash Mobile Application Screenshot"
   },
-  "steps": {
-    "subtitle": "Getting Started",
-    "title": "Fast Account Opening in 3 Simple Steps",
-    "description": "Start trading with BitDash in just minutes. Our streamlined process gets you from registration to trading in no time.",
-    "step1": {
-      "title": "Register",
-      "description": "Choose account type and complete our fast and secure application form"
-    },
-    "step2": {
-      "title": "Fund",
-      "description": "Fund your trading account using a wide range of funding methods"
-    },
-    "step3": {
-      "title": "Trade",
-      "description": "Start trading on your live account & access 100+ instruments"
-    },
-    "cta": "Open Account Now"
-  },
-  "cta": {
-    "subtitle": "Start Your Journey",
-    "title": "Ready to Transform Your Financial Operations?",
-    "description": "Join leading Islamic financial institutions already leveraging our shariah-compliant fintech ecosystem to streamline operations, reduce costs, and ensure ethical financial practices.",
-    "primaryButton": "Start Your Free Trial",
-    "secondaryButton": "Schedule Demo",
-    "note": "No credit card required. 30-day free trial with full features and dedicated support."
-  },
-  "legal": {
-    "title": "Risk Warning & Regulatory Information",
-    "riskWarning": "Contracts for Difference ('CFDs') are complex financial products that are traded on margin. Trading CFDs carries a high level of risk since leverage can work both to your advantage and disadvantage. As a result, CFDs may not be suitable for all investors because you may lose all your invested capital. You should not risk more than you are prepared to lose. Before deciding to trade, you need to ensure that you understand the risks involved taking into account your investment objectives and level of experience.",
-    "license": {
-      "title": "Licensed and Regulated",
-      "content": "BitDash LLC is officially licensed and regulated, holding an International Brokerage License in Saint Vincent and the Grenadines, numbered 1547 LLC. The registered address is Richmond Hill Rd, Kingstown, St. Vincent and the Grenadines, VC0100. BitDash adheres to strict regulatory standards to ensure the highest level of service and protection for our clients."
-    },
-    "restricted": {
-      "title": "Restricted Jurisdictions",
-      "content": "BitDash does not provide services to citizens and residents of certain jurisdictions such as United States of America, United Kingdom, Canada, Japan, EU countries, Iran, Israel and North Korea. Before you proceed, please ensure that you are not accessing this website from a restricted jurisdiction."
-    },
-    "links": {
-      "privacy": "Privacy Policy",
-      "aml": "AML Policy",
-      "terms": "Terms & Conditions",
-      "security": "Security of Funds",
-      "risk": "Risk Disclosure",
-      "complaints": "Complaints Handling Policy"
-    },
-    "copyright": "© {{year}} BitDash LLC. All rights reserved."
-  },
   "trade": {
     "hero": {
       "title": "Trade with Confidence",
@@ -2692,60 +2824,6 @@
       "title": "Regulated & Trusted Globally",
       "subtitle": "Your Security is Our Priority",
       "description": "LDN Prime Markets is regulated by leading financial authorities across multiple jurisdictions, ensuring a secure and compliant trading environment for all clients."
-    }
-  },
-  "hero": {
-    "try_demo": "Try Demo",
-    "background": {
-      "alt": "Background"
-    },
-    "skyline": {
-      "alt": "London Skyline"
-    },
-    "banner": {
-      "alt": "Trading Banner"
-    }
-  },
-  "highlights": {
-    "commission": {
-      "title": "0% Commission Fees",
-      "description": "Trade with zero commission on all instruments"
-    },
-    "products": {
-      "title": "100+ Trading Products",
-      "description": "Access a wide range of global markets"
-    },
-    "conditions": {
-      "title": "Competitive Conditions",
-      "description": "Low spreads and high leverage options"
-    },
-     "mobile": {
-      "title": "Mobile-First Design",
-      "description": "Seamless experience across all devices"
-    },
-    "regulatory": {
-      "title": "Regulatory Compliance",
-      "description": "Fully aligned with Central Bank of Libya regulations"
-    }
-  },
-  "platform": {
-    "features": {
-      "trading": {
-        "title": "Advanced Trading Platforms",
-        "description": "Trade on our proprietary platform, MetaTrader 5, or via robust API solutions"
-      },
-      "security": {
-        "title": "Bank-Grade Security",
-        "description": "Funds held in segregated accounts with multi-layer security protocols"
-      },
-      "mobile": {
-        "title": "Mobile Trading",
-        "description": "Trade anytime, anywhere with our award-winning mobile applications"
-      },
-      "support": {
-        "title": "24/7 Support",
-        "description": "Dedicated customer support in multiple languages via chat, email, and phone"
-      }
     }
   },
   "mt5": {
@@ -2806,23 +2884,6 @@
       "feature4": "Dedicated desk",
       "ideal": "Institutions & funds"
     }
-  },
-  "mobileApp": {
-    "title": "Download our app!",
-    "subtitle": "Stay in the know anywhere, anytime.",
-    "description": "Trade on the go with our powerful mobile app. Get real-time market data, execute trades, and manage your account from anywhere in the world.",
-    "imageAlt": "Mobile App Screenshot"
-  },
-  "partners": {
-    "title": "Become a Forex Introducing Broker",
-    "subtitle": "Expand your business with our IB Programme",
-    "description": "Our Introducing Broker program offers competitive rebates, dedicated support, and powerful tools to help you grow your business.",
-    "benefit1": "Competitive commission structures",
-    "benefit2": "Dedicated partnership manager",
-    "benefit3": "Marketing materials and support",
-    "benefit4": "Advanced reporting tools",
-    "cta": "Become a Partner",
-    "imageAlt": "Partnership Program"
   },
   "fx.steps": {
     "title": "Start Trading in 3 Simple Steps",

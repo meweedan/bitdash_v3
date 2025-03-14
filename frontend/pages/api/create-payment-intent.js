@@ -9,12 +9,12 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { challengeId, amount } = req.body;
+    const { planId, amount } = req.body;
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount * 100,
       currency: 'usd',
-      metadata: { challengeId }
+      metadata: { planId }
     });
 
     res.status(200).json({ clientSecret: paymentIntent.client_secret });

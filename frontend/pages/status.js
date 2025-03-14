@@ -118,8 +118,8 @@ const StatusPage = () => {
   
   // Background colors
   const bgGradient = useColorModeValue(
-    `linear(to-br, ${brandColors['50']}, white)`,
-    `linear(to-br, gray.900, ${brandColors['900']})`
+    `linear(to-br, ${brandColors['400']}, white)`,
+    `linear(to-br, gray.900, ${brandColors['700']})`
   );
   
   const cardBg = useColorModeValue('white', 'gray.800');
