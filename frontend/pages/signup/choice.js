@@ -128,34 +128,43 @@ const PLATFORMS = {
       }
     ]
   },
-  LDN: {
-    subdomain: 'ldn',
-    name: 'LDN Prime Markets',
-    nameKey: 'forex.name',
-    themeKey: 'ldn',
-    title: 'Regulated Forex Broker',
-    titleKey: 'ldn.title',
-    description: 'Professional trading platform for forex, cryptocurrencies and commodities with institutional liquidity.',
-    descriptionKey: 'ldn.description',
+  BSORAA: {
+    subdomain: 'bsoraa',
+    name: 'Bsoraa',
+    nameKey: 'bsoraa.name',
+    themeKey: 'bsoraa',
+    title: 'Your cravings courier',
+    titleKey: 'bsoraa.title',
+    description: 'Gain access to a whole new world of food ordering, whether its in person or at the comfort of your home.',
+    descriptionKey: 'bsoraa.description',
     icon: FaExchangeAlt,
     options: [
       {
-        type: 'retail',
-        title: 'Retail Trader',
-        titleKey: 'ldn.retail.title',
-        description: 'Trade forex, crypto, indices and commodity CFDs with competitive spreads and high leverage.',
-        descriptionKey: 'ldn.retail.description',
+        type: 'captain',
+        title: 'Captain',
+        titleKey: 'bsoraa.captain.title',
+        description: 'Help us deliver to our customer and gain competitive rates and amazing perks.',
+        descriptionKey: 'bsoraa.captain.description',
         icon: FaUserTie,
-        signupPath: '/signup/trader',
+        signupPath: '/signup/captain',
       },
       {
-        type: 'introducing-broker',
-        title: 'Introducing Broker',
-        titleKey: 'ldn.ib.title',
-        description: 'Refer clients and earn ongoing commissions on their trading activity.',
-        descriptionKey: 'ldn.ib.description',
+        type: 'customer',
+        title: 'Customer',
+        titleKey: 'bsoraa.customer.title',
+        description: 'Order all of your favs, discover new cravings and get those groceries you need instantly!',
+        descriptionKey: 'bsoraa.customer.description',
+        icon: FaUserTie,
+        signupPath: '/signup/customer',
+      },
+      {
+        type: 'operator',
+        title: 'Operator',
+        titleKey: 'bsoraa.operator.title',
+        description: 'List your business on Bsoraa and gain more customers and give your old ones access to their fav cravings!',
+        descriptionKey: 'bsoraa.operator.description',
         icon: FaHandshake,
-        signupPath: '/signup/ib',
+        signupPath: '/signup/operator',
       }
     ]
   }
@@ -378,7 +387,7 @@ export default function SignupChoice() {
                 </Heading>
                 
                 <SimpleGrid 
-                  columns={currentPlatform.subdomain === 'ldn' ? 1 : { base: 1, lg: currentPlatform.options.length > 2 ? 3 : 2 }}
+                  columns={currentPlatform.subdomain === 'bsoraa' ? 1 : { base: 1, lg: currentPlatform.options.length > 2 ? 3 : 2 }}
                   spacing={8} 
                   w="full"
                   justifyItems="center"

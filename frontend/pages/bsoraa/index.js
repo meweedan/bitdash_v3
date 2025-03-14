@@ -1,7 +1,7 @@
 // frontend/pages/bsoraa/index.js
 import { useEffect } from 'react';
 import { usePWA } from '@/hooks/usePWA';
-import { BsoraaPWALanding } from '@/components/BsoraaPWALanding';
+import { BsoraaPWALanding } from '@/components/PWALanding';
 import BsoraaLandingBrowser from '@/components/landing/BsoraaLandingBrowser';
 
 const BsoraaPage = () => {

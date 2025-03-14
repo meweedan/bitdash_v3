@@ -1,4 +1,4 @@
-// pages/eats/customer/index.js
+// pages/bsoraa/customer/index.js
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -33,19 +33,19 @@ const CustomerHome = () => {
     {
       title: 'Order History',
       icon: History,
-      path: '/eats/customer/dashboard',
+      path: '/bsoraa/customer/dashboard',
       color: 'blue'
     },
     {
       title: 'Track Order',
       icon: Clock,
-      path: '/eats/customer/track',
+      path: '/bsoraa/customer/track',
       color: 'green'
     },
     {
       title: 'Favorites',
       icon: Star,
-      path: '/eats/browse?filter=favorites',
+      path: '/bsoraa/browse?filter=favorites',
       color: 'yellow'
     }
   ];
@@ -119,7 +119,7 @@ const CustomerHome = () => {
                   <Button
                     size="sm"
                     variant="ghost"
-                    onClick={() => router.push(`/eats/customer/track/${order.id}`)}
+                    onClick={() => router.push(`/bsoraa/customer/track/${order.id}`)}
                   >
                     Track Order
                   </Button>

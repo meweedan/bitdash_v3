@@ -1,4 +1,4 @@
-// frontend/pages/eats/customer/dashboard.js
+// frontend/pages/bsoraa/customer/dashboard.js
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {

@@ -1,4 +1,4 @@
-// pages/eats/captain/index.js
+// pages/bsoraa/captain/index.js
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -148,7 +148,7 @@ const DriverHome = () => {
                     <Button
                       size="sm"
                       rightIcon={<ChevronRight />}
-                      onClick={() => router.push(`/eats/captain/tasks/${activeTask.id}`)}
+                      onClick={() => router.push(`/bsoraa/captain/tasks/${activeTask.id}`)}
                     >
                       View Details
                     </Button>
@@ -163,7 +163,7 @@ const DriverHome = () => {
             <Button
               size="lg"
               leftIcon={<Navigation />}
-              onClick={() => router.push('/eats/captain/dashboard')}
+              onClick={() => router.push('/bsoraa/captain/dashboard')}
             >
               Open Navigation
             </Button>
@@ -171,7 +171,7 @@ const DriverHome = () => {
               size="lg"
               leftIcon={<Clock />}
               variant="outline"
-              onClick={() => router.push('/eats/captain/dashboard')}
+              onClick={() => router.push('/bsoraa/captain/dashboard')}
             >
               View Dashboard
             </Button>

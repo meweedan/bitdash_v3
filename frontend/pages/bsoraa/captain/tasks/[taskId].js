@@ -1,4 +1,4 @@
-// pages/eats/captain/tasks/[taskId].js
+// pages/bsoraa/captain/tasks/[taskId].js
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';

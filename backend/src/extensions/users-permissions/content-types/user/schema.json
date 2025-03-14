@@ -77,6 +77,12 @@
       "target": "api::operator.operator",
       "mappedBy": "users_permissions_user"
     },
+    "captain": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::captain.captain",
+      "mappedBy": "users_permissions_user"
+    },
     "agent": {
       "type": "relation",
       "relation": "oneToOne",

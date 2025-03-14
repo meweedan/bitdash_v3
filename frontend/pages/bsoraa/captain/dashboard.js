@@ -1,4 +1,4 @@
-// pages/eats/captain/dashboard.js
+// pages/bsoraa/captain/dashboard.js
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
@@ -48,7 +48,7 @@ import {
 import { FiMessageSquare, FiX, FiSend } from 'react-icons/fi';
 import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
-import HotspotMap from '@/components/eats/captain/HotspotMap';
+import HotspotMap from '@/components/bsoraa/captain/HotspotMap';
 import { useTranslation } from 'next-i18next';
 
 const ORDER_STATUSES = {
