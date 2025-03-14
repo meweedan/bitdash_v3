@@ -30,6 +30,12 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "customer_profile"
     },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "customer_profile"
+    },
     "wallet": {
       "type": "relation",
       "relation": "oneToOne",

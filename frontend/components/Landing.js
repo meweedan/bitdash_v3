@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { 
-  Box, 
-  Heading, 
-  Text, 
-  VStack, 
-  Button, 
-  useColorMode, 
+import {
+  Box,
+  Heading,
+  Text,
+  VStack,
+  Button,
+  useColorMode,
   Container,
   Flex,
   Circle,
@@ -33,12 +33,12 @@ import {
 } from '@chakra-ui/react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
-import { 
-  ArrowRight, 
-  Users, 
+import {
+  ArrowRight,
+  Users,
   CheckCircle,
   Shield,
-  Globe,
+  QrCode,
   CreditCard,
   Key,
   LineChart,
@@ -60,13 +60,37 @@ import {
   PlayCircle,
   Download,
   ExternalLink,
-  ChevronDown
+  ChevronDown,
+  Truck,
+  ShoppingBag
 } from 'lucide-react';
-import { FaWhatsapp, FaRegFile, FaRegCreditCard, FaHandHoldingUsd, FaBalanceScale, FaFileContract, FaMosque, FaChartLine, FaExchangeAlt, FaUniversity, FaShieldAlt, FaChevronRight, FaBitcoin, FaDollarSign, FaChartBar, FaCoins, FaUser } from 'react-icons/fa';
+import { 
+  FaWhatsapp, 
+  FaRegFile, 
+  FaRegCreditCard, 
+  FaHandHoldingUsd, 
+  FaBalanceScale, 
+  FaFileContract, 
+  FaMosque, 
+  FaExchangeAlt, 
+  FaUniversity, 
+  FaShieldAlt, 
+  FaChevronRight, 
+  FaMoneyBillWave, 
+  FaDollarSign, 
+  FaChartBar, 
+  FaCoins, 
+  FaUser,
+  FaQrcode,
+  FaStore,
+  FaUtensils,
+  FaShoppingBasket,
+  FaMobileAlt
+} from 'react-icons/fa';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const MotionBox = motion(Box);
-  const ChakraBox = motion(Box);
+const ChakraBox = motion(Box);
 
 export default function LandingPage() {
   const { t } = useTranslation('common');
@@ -76,7 +100,6 @@ export default function LandingPage() {
   const containerRef = useRef(null);
   const { locale } = router;
   const isRTL = router.locale === 'ar';
-
   
   // For responsive design
   const isMobile = useBreakpointValue({ base: true, md: false });
@@ -86,6 +109,8 @@ export default function LandingPage() {
   const headingColor = useColorModeValue('whiteAlpha.900', 'brand.bitdash.700');
   const textColor = useColorModeValue('brand.bitdash.400', 'brand.bitdash.400');
   const accentColor = '#8b7966'; // The gold/brown accent color from the main site
+  const bsoraaColor = '#FF7D1A'; // Orange color for Bsoraa
+  const adfaalyColor = '#00bf63'; // Green color for Adfaaly
 
   // Custom parallax component
   const ParallaxBox = ({ children, offset = 100, ...rest }) => {
@@ -129,12 +154,12 @@ export default function LandingPage() {
   
   return (
     <Box ref={containerRef} overflow="hidden" dir={isRTL ? 'rtl' : 'ltr'}>
-     <Box 
+      <Box 
         as="section" 
         position="relative"
         pt={{ base: 18, md: 20 }}
         overflow="hidden"
-      > 
+      >
         <Container maxW="container.xl" position="relative" zIndex="2">
           <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 1, lg: 10 }} alignItems="center">
             <GridItem>
@@ -152,30 +177,30 @@ export default function LandingPage() {
                     bgGradient="linear(to-r, #8b7966, #b8a28b)"
                     bgClip="text"
                   >
-                    {t('Landinghero.title')}
+                    {t('Landinghero.title', 'Revolutionizing Digital Services')}
                   </Heading>
                   
                   <Text
                     fontSize={{ base: "lg", md: "xl" }}
                     maxW="550px"
                   >
-                    {t('Landinghero.subtitle')}
+                    {t('Landinghero.subtitle', 'From seamless deliveries to cashless payments, we offer innovative solutions for modern lifestyles.')}
                   </Text>
                   
                   <HStack spacing={6} mt={6} color={isDark ? "gray.400" : "gray.600"} flexWrap="wrap">
                     <HStack>
                       <Icon as={CheckCircle} />
-                      <Text>{t('Landinghero.feature1')}</Text>
+                      <Text>{t('Landinghero.feature1', 'Delivery and Cashless Solutions')}</Text>
                     </HStack>
                     
                     <HStack>
                       <Icon as={CheckCircle} />
-                      <Text>{t('Landinghero.feature2')}</Text>
+                      <Text>{t('Landinghero.feature2', 'Innovative Digital Services')}</Text>
                     </HStack>
                     
                     <HStack>
                       <Icon as={CheckCircle} />
-                      <Text>{t('Landinghero.feature3')}</Text>
+                      <Text>{t('Landinghero.feature3', 'Secure Transactions')}</Text>
                     </HStack>
                   </HStack>
                 </VStack>
@@ -184,12 +209,12 @@ export default function LandingPage() {
             
             <GridItem>
               <ParallaxBox offset={isMobile ? 30 : 100}>
-                  <Image 
-                    src="/images/iphones-chart.webp" 
-                    alt={t('alt.tradingPlatform')}
-                    borderRadius="xl"
-                    width={heroImageSize}
-                  />
+                <Image
+                  src="/images/digital-services.webp"
+                  alt={t('alt.digitalServices', 'Digital Services Platform')}
+                  borderRadius="xl"
+                  width={heroImageSize}
+                />
               </ParallaxBox>
             </GridItem>
           </Grid>
@@ -221,7 +246,7 @@ export default function LandingPage() {
                 textTransform="uppercase"
                 letterSpacing="wide"
               >
-                {t('platformSection.subtitle')}
+                {t('platformSection.subtitle', 'Our Digital Ecosystem')}
               </Text>
               
               <Heading
@@ -230,38 +255,38 @@ export default function LandingPage() {
                 color={isDark ? "white" : "#333"}
                 mb={5}
               >
-                {t('platformSection.title')}
+                {t('platformSection.title', 'Two Revolutionary Platforms')}
               </Heading>
               
               <Text
                 fontSize={{ base: "md", md: "lg" }}
                 color={isDark ? "gray.300" : "gray.600"}
               >
-                {t('platformSection.description')}
+                {t('platformSection.description', 'Discover our innovative platforms designed to transform how you handle daily tasks, from deliveries to payments.')}
               </Text>
             </MotionBox>
             
             {/* Platform Cards */}
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} width="full">
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} width="full">
               {/* Bsoraa Platform */}
               <PlatformCard
-                title={t('platforms.forex.title')}
-                description={t('platforms.forex.description')}
-                image="/images/eur.png"
-                cta={t('platforms.forex.cta')}
+                title={t('platforms.bsoraa.title', 'Bsoraa')}
+                description={t('platforms.bsoraa.description', 'Your complete delivery solution for food, groceries, and retail items. Features QR ordering for seamless in-restaurant experiences.')}
+                image="/bsoraa.png"
+                cta={t('platforms.bsoraa.cta', 'Try Bsoraa')}
                 link="https://bsoraa.bitdash.app"
-                color="#8b7966"
+                color={bsoraaColor}
                 delay={0}
               />
               
               {/* Adfaaly Platform */}
               <PlatformCard
-                title={t('platforms.adfaaly.title')}
-                description={t('platforms.adfaaly.description')}
-                image="/images/usd.png"
-                cta={t('platforms.adfaaly.cta')}
+                title={t('platforms.adfaaly.title', 'Adfaaly')}
+                description={t('platforms.adfaaly.description', 'Cashless payment solution featuring merchant accounts, payment links, QR code payments, and a network of agent-operated human ATMs.')}
+                image="/adfaaly.png"
+                cta={t('platforms.adfaaly.cta', 'Try Adfaaly')}
                 link="https://adfaaly.bitdash.app"
-                color="#8b7966"
+                color={adfaalyColor}
                 delay={0.3}
               />
             </SimpleGrid>
@@ -269,43 +294,85 @@ export default function LandingPage() {
         </Container>
       </Box>
       
-      {/* Trading Features Section */}
+      {/* Bsoraa Features Section */}
       <Box 
         as="section" 
         py={{ base: 16, md: 24 }}
         position="relative"
       >
         <Container maxW="container.xl">
+          <VStack spacing={12} mb={12}>
+            <MotionBox
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              textAlign="center"
+              maxW="3xl"
+              mx="auto"
+            >
+              <Text 
+                color={bsoraaColor} 
+                fontWeight="bold" 
+                mb={3}
+                textTransform="uppercase"
+                letterSpacing="wide"
+              >
+                {t('bsoraa.subtitle', 'Delivery Solutions')}
+              </Text>
+              
+              <Heading
+                fontSize={{ base: "3xl", md: "4xl" }}
+                fontWeight="bold"
+                color={isDark ? "white" : "#333"}
+                mb={5}
+              >
+                {t('bsoraa.title', 'Bsoraa: Beyond Delivery')}
+              </Heading>
+              
+              <Text
+                fontSize={{ base: "md", md: "lg" }}
+                color={isDark ? "gray.300" : "gray.600"}
+              >
+                {t('bsoraa.description', 'Experience seamless delivery of food, groceries, and retail items, plus innovative QR ordering for a contactless dining experience.')}
+              </Text>
+            </MotionBox>
+          </VStack>
+
           <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
             <GridItem order={{ base: 2, lg: 1 }}>
               <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
                 {/* Feature Cards */}
                 <FeatureCard
-                  icon={Globe}
-                  title={t('features.global.title')}
-                  description={t('features.global.description')}
+                  icon={FaUtensils}
+                  title={t('bsoraa.features.food.title', 'Food Delivery')}
+                  description={t('bsoraa.features.food.description', 'Get hot, fresh food delivered directly to your doorstep from your favorite restaurants')}
                   delay={0}
+                  color={bsoraaColor}
                 />
                 
                 <FeatureCard
-                  icon={Shield}
-                  title={t('features.secure.title')}
-                  description={t('features.secure.description')}
+                  icon={FaShoppingBasket}
+                  title={t('bsoraa.features.grocery.title', 'Grocery Delivery')}
+                  description={t('bsoraa.features.grocery.description', 'Fresh produce and pantry essentials delivered when you need them')}
                   delay={0.1}
+                  color={bsoraaColor}
                 />
                 
                 <FeatureCard
-                  icon={LineChart}
-                  title={t('features.analysis.title')}
-                  description={t('features.analysis.description')}
+                  icon={FaStore}
+                  title={t('bsoraa.features.retail.title', 'Retail Items')}
+                  description={t('bsoraa.features.retail.description', 'Shop electronics, gifts, and more from local stores with same-day delivery')}
                   delay={0.2}
+                  color={bsoraaColor}
                 />
                 
                 <FeatureCard
-                  icon={Clock}
-                  title={t('features.execution.title')}
-                  description={t('features.execution.description')}
+                  icon={FaQrcode}
+                  title={t('bsoraa.features.qr.title', 'QR Ordering')}
+                  description={t('bsoraa.features.qr.description', 'Scan, order, and pay directly from your table at participating restaurants')}
                   delay={0.3}
+                  color={bsoraaColor}
                 />
               </SimpleGrid>
             </GridItem>
@@ -318,14 +385,14 @@ export default function LandingPage() {
                 variants={fadeIn}
               >
                 <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
-                   <Image 
-                      src="/images/trading-banner.png" 
-                      alt={t('products.hundredsAlt')}
-                      width={{ base: "300px", md: "500px" }}
-                      as={motion.img}
-                      animate={{ scale: [1, 1.03, 1] }}
-                      transition={{ repeat: Infinity, duration: 3 }}
-                     />        
+                  <Image 
+                    src="/images/delivery-app-screen.png" 
+                    alt={t('bsoraa.imageAlt', 'Bsoraa Delivery App Screenshot')}
+                    width={{ base: "300px", md: "400px" }}
+                    as={motion.img}
+                    animate={{ scale: [1, 1.03, 1] }}
+                    transition={{ repeat: Infinity, duration: 3 }}
+                  />        
                 </VStack>
               </MotionBox>
             </GridItem>
@@ -333,14 +400,14 @@ export default function LandingPage() {
         </Container>
       </Box>
       
-      {/* Islamic Finance Section */}
+      {/* Adfaaly Features Section */}
       <Box 
         as="section" 
         py={{ base: 16, md: 24 }}
         position="relative"
       >
         <Container maxW="container.xl">
-          <VStack spacing={12}>
+          <VStack spacing={12} mb={12}>
             <MotionBox
               initial="hidden"
               whileInView="visible"
@@ -351,13 +418,13 @@ export default function LandingPage() {
               mx="auto"
             >
               <Text 
-                color="#8b7966" 
+                color={adfaalyColor} 
                 fontWeight="bold" 
                 mb={3}
                 textTransform="uppercase"
                 letterSpacing="wide"
               >
-                {t('islamic.subtitle')}
+                {t('adfaaly.subtitle', 'Payment Solutions')}
               </Text>
               
               <Heading
@@ -366,47 +433,220 @@ export default function LandingPage() {
                 color={isDark ? "white" : "#333"}
                 mb={5}
               >
-                {t('islamic.title')}
+                {t('adfaaly.title', 'Adfaaly: The Cashless Revolution')}
               </Heading>
               
               <Text
                 fontSize={{ base: "md", md: "lg" }}
                 color={isDark ? "gray.300" : "gray.600"}
               >
-                {t('islamic.description')}
+                {t('adfaaly.description', 'A comprehensive payment solution that transforms how people handle cash, with merchant tools, agent networks, and instant transfers.')}
               </Text>
             </MotionBox>
-            
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} width="full">
-              <IslamicPrincipleCard
-                icon={FaMosque}
-                title={t('islamic.principles.compliant.title')}
-                description={t('islamic.principles.compliant.description')}
-                delay={0}
-              />
-              
-              <IslamicPrincipleCard
-                icon={FaHandHoldingUsd}
-                title={t('islamic.principles.noRiba.title')}
-                description={t('islamic.principles.noRiba.description')}
-                delay={0.1}
-              />
-              
-              <IslamicPrincipleCard
-                icon={FaBalanceScale}
-                title={t('islamic.principles.ethical.title')}
-                description={t('islamic.principles.ethical.description')}
-                delay={0.2}
-              />
-              
-              <IslamicPrincipleCard
-                icon={FaFileContract}
-                title={t('islamic.principles.transparent.title')}
-                description={t('islamic.principles.transparent.description')}
-                delay={0.3}
-              />
-            </SimpleGrid>
           </VStack>
+
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
+            <GridItem>
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+              >
+                <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
+                  <Image 
+                    src="/images/payment-app-screen.png" 
+                    alt={t('adfaaly.imageAlt', 'Adfaaly Payment App Screenshot')}
+                    width={{ base: "300px", md: "400px" }}
+                    as={motion.img}
+                    animate={{ scale: [1, 1.03, 1] }}
+                    transition={{ repeat: Infinity, duration: 3 }}
+                  />        
+                </VStack>
+              </MotionBox>
+            </GridItem>
+            
+            <GridItem>
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+                {/* Feature Cards */}
+                <FeatureCard
+                  icon={FaStore}
+                  title={t('adfaaly.features.merchant.title', 'Merchant Tools')}
+                  description={t('adfaaly.features.merchant.description', 'Issue payment links and QR codes to collect payments seamlessly')}
+                  delay={0}
+                  color={adfaalyColor}
+                />
+                
+                <FeatureCard
+                  icon={FaUser}
+                  title={t('adfaaly.features.agent.title', 'Agent Network')}
+                  description={t('adfaaly.features.agent.description', 'Human ATMs for cash deposits and withdrawals across the community')}
+                  delay={0.1}
+                  color={adfaalyColor}
+                />
+                
+                <FeatureCard
+                  icon={FaExchangeAlt}
+                  title={t('adfaaly.features.transfer.title', 'Instant Transfers')}
+                  description={t('adfaaly.features.transfer.description', 'Send money instantly to anyone, anywhere with just a few taps')}
+                  delay={0.2}
+                  color={adfaalyColor}
+                />
+                
+                <FeatureCard
+                  icon={FaShieldAlt}
+                  title={t('adfaaly.features.secure.title', 'Secure Transactions')}
+                  description={t('adfaaly.features.secure.description', 'Enterprise-grade security for all your financial activities')}
+                  delay={0.3}
+                  color={adfaalyColor}
+                />
+              </SimpleGrid>
+            </GridItem>
+          </Grid>
+        </Container>
+      </Box>
+      
+      {/* QR Ordering Section */}
+      <Box 
+        as="section" 
+        py={{ base: 16, md: 24 }}
+        position="relative"
+      >
+        <Container maxW="container.xl">
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
+            <GridItem>
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+              >
+                <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
+                  <Heading
+                    fontSize={{ base: "2xl", md: "3xl" }}
+                    fontWeight="bold"
+                    color={bsoraaColor}
+                  >
+                    {t('qr.title', 'QR Table Ordering')}
+                  </Heading>
+                  
+                  <Text
+                    fontSize={{ base: "md", md: "lg" }}
+                    color={textColor}
+                    maxW="600px"
+                  >
+                    {t('qr.subtitle', 'A contactless dining experience that revolutionizes how customers order in restaurants')}
+                  </Text>
+                  
+                  <Text
+                    fontSize={{ base: "md", md: "lg" }}
+                    color={textColor}
+                    maxW="600px"
+                  >
+                    {t('qr.description', 'Customers scan a QR code at their table to view the menu, place orders, and pay directly from their phones. No app download required, just a seamless web experience that enhances dining for everyone.')}
+                  </Text>
+                  
+                  <Button
+                    bg={bsoraaColor}
+                    color="white"
+                    _hover={{ bg: "#E86C00" }}
+                    size="lg"
+                    rightIcon={<ArrowRight />}
+                    onClick={() => router.push('/qr-ordering')}
+                  >
+                    {t('qr.learn_more', 'Learn More')}
+                  </Button>
+                </VStack>
+              </MotionBox>
+            </GridItem>
+            
+            <GridItem>
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={scaleUp}
+              >
+                <Image 
+                  src="/images/qr-ordering-screen.png" 
+                  alt={t('qr.imageAlt', 'QR Ordering System')}
+                  width="100%"
+                />
+              </MotionBox>
+            </GridItem>
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Agent Banking Section */}
+      <Box 
+        as="section" 
+        py={{ base: 16, md: 24 }}
+        position="relative"
+      >
+        <Container maxW="container.xl">
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
+            <GridItem order={{ base: 1, lg: 2 }}>
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+              >
+                <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
+                  <Heading
+                    fontSize={{ base: "2xl", md: "3xl" }}
+                    fontWeight="bold"
+                    color={adfaalyColor}
+                  >
+                    {t('agent.title', 'Human ATM Network')}
+                  </Heading>
+                  
+                  <Text
+                    fontSize={{ base: "md", md: "lg" }}
+                    color={textColor}
+                    maxW="600px"
+                  >
+                    {t('agent.subtitle', 'A network of trusted agents providing cash services in your community')}
+                  </Text>
+                  
+                  <Text
+                    fontSize={{ base: "md", md: "lg" }}
+                    color={textColor}
+                    maxW="600px"
+                  >
+                    {t('agent.description', 'Our agent network transforms local businesses and individuals into human ATMs, allowing for cash deposits and withdrawals from your Adfaaly account. Find agents near you, request services, and complete transactions with ease.')}
+                  </Text>
+                  
+                  <Button
+                    bg={adfaalyColor}
+                    color="white"
+                    _hover={{ bg: "#1D4044" }}
+                    size="lg"
+                    rightIcon={<ArrowRight />}
+                    onClick={() => router.push('/agent-network')}
+                  >
+                    {t('agent.learn_more', 'Learn More')}
+                  </Button>
+                </VStack>
+              </MotionBox>
+            </GridItem>
+            
+            <GridItem order={{ base: 2, lg: 1 }}>
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={scaleUp}
+              >
+                <Image 
+                  src="/images/agent-banking.png" 
+                  alt={t('agent.imageAlt', 'Agent Banking Network')}
+                  width="100%"
+                />
+              </MotionBox>
+            </GridItem>
+          </Grid>
         </Container>
       </Box>
       
@@ -427,7 +667,7 @@ export default function LandingPage() {
                     fontWeight="bold"
                     color={isDark ? "white" : "#333"}
                   >
-                    {t('app.title')}
+                    {t('app.title', 'Mobile Apps for All Services')}
                   </Heading>
                   
                   <Text
@@ -435,7 +675,7 @@ export default function LandingPage() {
                     fontWeight="bold"
                     color="#8b7966"
                   >
-                    {t('app.subtitle')}
+                    {t('app.subtitle', 'DOWNLOAD AND EXPERIENCE THE DIFFERENCE')}
                   </Text>
                   
                   <Text
@@ -443,7 +683,7 @@ export default function LandingPage() {
                     color={isDark ? "gray.300" : "gray.600"}
                     maxW="600px"
                   >
-                    {t('app.description')}
+                    {t('app.description', 'Get our mobile apps for both Bsoraa and Adfaaly to enjoy seamless deliveries and payments wherever you go. Feature-rich interfaces designed for intuitive use.')}
                   </Text>
                   
                   <HStack spacing={4} mt={6} flexWrap="wrap">
@@ -477,8 +717,8 @@ export default function LandingPage() {
                 variants={scaleUp}
               >
                 <Box 
-                  borderRadius="xl" 
-                  overflow="hidden" 
+                  borderRadius="xl"
+                  overflow="hidden"
                   transform="perspective(1000px) rotateY(-5deg) rotateX(5deg)"
                   transition="all 0.5s ease"
                   _hover={{
@@ -486,8 +726,8 @@ export default function LandingPage() {
                   }}
                 >
                   <Image 
-                    src="/images/mt5-multi.png" 
-                    alt={t('app.screenshotAlt')}
+                    src="/images/mobile-apps.png" 
+                    alt={t('app.screenshotAlt', 'Mobile Apps')}
                     borderRadius="md"
                     width="100%"
                   />
@@ -498,7 +738,7 @@ export default function LandingPage() {
         </Container>
       </Box>
       
-      {/* Steps to Start Trading Section */}
+      {/* Steps to Start Section */}
       <Box as="section" py={{ base: 16, md: 24 }}>
         <Container maxW="container.xl">
           <VStack spacing={16}>
@@ -518,7 +758,7 @@ export default function LandingPage() {
                 textTransform="uppercase"
                 letterSpacing="wide"
               >
-                {t('steps.subtitle')}
+                {t('steps.subtitle', 'Getting Started')}
               </Text>
               
               <Heading
@@ -527,36 +767,36 @@ export default function LandingPage() {
                 color={isDark ? "white" : "#333"}
                 mb={5}
               >
-                {t('steps.title')}
+                {t('steps.title', 'Start Using Our Services in 3 Simple Steps')}
               </Heading>
               
               <Text
                 fontSize={{ base: "md", md: "lg" }}
                 color={isDark ? "gray.300" : "gray.600"}
               >
-                {t('steps.description')}
+                {t('steps.description', 'Whether it\'s deliveries with Bsoraa or cashless payments with Adfaaly, getting started is quick and easy.')}
               </Text>
             </MotionBox>
             
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} width="full">
               <StepCard
                 number="1"
-                title={t('steps.step1.title')}
-                description={t('steps.step1.description')}
+                title={t('steps.step1.title', 'Download App')}
+                description={t('steps.step1.description', 'Download Bsoraa for deliveries or Adfaaly for payments from your app store')}
                 delay={0}
               />
               
               <StepCard
                 number="2"
-                title={t('steps.step2.title')}
-                description={t('steps.step2.description')}
+                title={t('steps.step2.title', 'Create Account')}
+                description={t('steps.step2.description', 'Sign up with your phone number and complete a simple verification process')}
                 delay={0.1}
               />
               
               <StepCard
                 number="3"
-                title={t('steps.step3.title')}
-                description={t('steps.step3.description')}
+                title={t('steps.step3.title', 'Start Using')}
+                description={t('steps.step3.description', 'Order deliveries or make cashless payments instantly')}
                 delay={0.2}
               />
             </SimpleGrid>
@@ -567,10 +807,10 @@ export default function LandingPage() {
               _hover={{ bg: "#9c7c63" }}
               size="lg"
               px={10}
-              onClick={() => router.push('/signup')}
+              onClick={() => router.push('/download')}
               rightIcon={<ArrowRight />}
             >
-              {t('steps.cta')}
+              {t('steps.cta', 'Download Our Apps')}
             </Button>
           </VStack>
         </Container>
@@ -599,6 +839,7 @@ export default function LandingPage() {
               borderColor={isDark ? "gray.700" : "gray.200"}
               position="relative"
               overflow="hidden"
+              borderRadius="xl"
             >
               {/* Decorative top border */}
               <Box
@@ -617,7 +858,7 @@ export default function LandingPage() {
                   textTransform="uppercase"
                   letterSpacing="wide"
                 >
-                  {t('cta.subtitle')}
+                  {t('cta.subtitle', 'Ready to Transform Your Experience?')}
                 </Text>
                 
                 <Heading
@@ -625,7 +866,7 @@ export default function LandingPage() {
                   fontWeight="bold"
                   color={isDark ? "white" : "#333"}
                 >
-                  {t('cta.title')}
+                  {t('cta.title', 'Get Started with Bsoraa and Adfaaly Today')}
                 </Heading>
                 
                 <Text 
@@ -633,20 +874,32 @@ export default function LandingPage() {
                   color={isDark ? "gray.300" : "gray.600"}
                   maxW="2xl"
                 >
-                  {t('cta.description')}
+                  {t('cta.description', 'Join thousands of users who have transformed their daily routines with our digital solutions. Experience seamless deliveries and cashless payments.')}
                 </Text>
                 
                 <HStack spacing={6} pt={4} wrap="wrap" justify="center">
                   <Button
-                    bg="#8b7966"
+                    bg={bsoraaColor}
                     color="white"
-                    _hover={{ bg: "#9c7c63" }}
+                    _hover={{ bg: "#E86C00" }}
                     size="lg"
                     px={8}
                     rightIcon={<ArrowRight />}
-                    onClick={() => router.push('/signup')}
+                    onClick={() => router.push('/signup/bsoraa')}
                   >
-                    {t('cta.primaryButton')}
+                    {t('cta.bsoraaButton', 'Try Bsoraa')}
+                  </Button>
+                  
+                  <Button
+                    bg={adfaalyColor}
+                    color="white"
+                    _hover={{ bg: "#1D4044" }}
+                    size="lg"
+                    px={8}
+                    rightIcon={<ArrowRight />}
+                    onClick={() => router.push('/signup/adfaaly')}
+                  >
+                    {t('cta.adfaalyButton', 'Try Adfaaly')}
                   </Button>
                   
                   <Button
@@ -657,9 +910,9 @@ export default function LandingPage() {
                     size="lg"
                     px={8}
                     leftIcon={<FaWhatsapp />}
-                    onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
+                    onClick={() => window.open("https://api.whatsapp.com/send?phone=YOURPHONENUMBER", "_blank")}
                   >
-                    {t('cta.secondaryButton')}
+                    {t('cta.supportButton', 'Contact Support')}
                   </Button>
                 </HStack>
               </VStack>
@@ -678,11 +931,11 @@ export default function LandingPage() {
         <Container maxW="container.xl">
           <VStack spacing={8} align="stretch">
             <Heading size="md" color="#8b7966">
-              {t('legal.title')}
+              {t('legal.title', 'BitDash Digital Services')}
             </Heading>
             
             <Text fontSize="sm" color={isDark ? "gray.400" : "gray.600"} lineHeight="tall">
-              {t('legal.riskWarning')}
+              {t('legal.disclaimer', 'Bsoraa and Adfaaly are products of BitDash. Our delivery and payment services are designed to provide convenience and security. Please refer to our terms of service for complete information.')}
             </Text>
             
             <Divider borderColor={isDark ? "gray.700" : "gray.200"} />
@@ -691,11 +944,11 @@ export default function LandingPage() {
               <GridItem>
                 <VStack align="flex-start" spacing={4}>
                   <Heading size="sm" color={isDark ? "white" : "gray.800"}>
-                    {t('legal.license.title')}
+                    {t('legal.coverage.title', 'Service Coverage')}
                   </Heading>
                   
                   <Text fontSize="sm" color={isDark ? "gray.400" : "gray.600"} lineHeight="tall">
-                    {t('legal.license.content')}
+                    {t('legal.coverage.content', 'Our services are currently available in select cities with plans for rapid expansion. Check our apps to see if delivery and payment services are available in your area.')}
                   </Text>
                 </VStack>
               </GridItem>
@@ -703,11 +956,11 @@ export default function LandingPage() {
               <GridItem>
                 <VStack align="flex-start" spacing={4}>
                   <Heading size="sm" color={isDark ? "white" : "gray.800"}>
-                    {t('legal.restricted.title')}
+                    {t('legal.support.title', 'Customer Support')}
                   </Heading>
                   
                   <Text fontSize="sm" color={isDark ? "gray.400" : "gray.600"} lineHeight="tall">
-                    {t('legal.restricted.content')}
+                    {t('legal.support.content', 'Our dedicated support team is available to assist you with all delivery and payment related inquiries. Contact us through our apps or website.')}
                   </Text>
                 </VStack>
               </GridItem>
@@ -716,15 +969,15 @@ export default function LandingPage() {
             <Wrap spacing={4}>
               {[
                 'legal.links.privacy',
-                'legal.links.aml',
                 'legal.links.terms',
-                'legal.links.security',
-                'legal.links.risk',
-                'legal.links.complaints'
+                'legal.links.about',
+                'legal.links.careers',
+                'legal.links.help',
+                'legal.links.contact'
               ].map((key, idx) => (
                 <WrapItem key={idx}>
                   <Link 
-                    href={`/policies/${t(key).toLowerCase().replace(/\s+/g, '-')}`}
+                    href={`/${t(key).toLowerCase().replace(/\s+/g, '-')}`}
                     fontSize="xs"
                     color={isDark ? "gray.400" : "gray.600"}
                     _hover={{ color: "#8b7966" }}
@@ -735,6 +988,10 @@ export default function LandingPage() {
                 </WrapItem>
               ))}
             </Wrap>
+            
+            <Text fontSize="xs" color={isDark ? "gray.400" : "gray.600"} textAlign="center" mt={4}>
+              {t('legal.copyright', '© 2025 BitDash. All rights reserved.')}
+            </Text>
           </VStack>
         </Container>
       </Box>
@@ -773,6 +1030,7 @@ const PlatformCard = ({ title, description, image, cta, link, color, delay }) =>
         borderColor={color}
         boxShadow="lg"
         height="full"
+        bg={isDark ? "gray.800" : "white"}
         transition="all 0.3s"
         _hover={{
           transform: 'translateY(-8px)',
@@ -797,14 +1055,14 @@ const PlatformCard = ({ title, description, image, cta, link, color, delay }) =>
         </Text>
         
         <Button 
-          colorScheme="gray" 
-          variant="ghost" 
+          colorScheme="gray"
+          variant="ghost"
           size="sm"
           rightIcon={<ExternalLink size={16} />}
           justifyContent="flex-start"
           pl={0}
           color={color}
-          _hover={{ bg: "transparent", color: "#9c7c63" }}
+          _hover={{ bg: "transparent", color: isDark ? `${color}300` : `${color}600` }}
           as="a"
           href={link}
           target="_blank"
@@ -819,7 +1077,7 @@ const PlatformCard = ({ title, description, image, cta, link, color, delay }) =>
 };
 
 // Component for Feature Cards
-const FeatureCard = ({ icon, title, description, delay }) => {
+const FeatureCard = ({ icon, title, description, delay, color }) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   
@@ -847,6 +1105,7 @@ const FeatureCard = ({ icon, title, description, delay }) => {
         borderRadius="lg"
         boxShadow="md"
         height="full"
+        bg={isDark ? "gray.700" : "white"}
         transition="all 0.3s"
         _hover={{
           transform: 'translateY(-5px)',
@@ -855,7 +1114,7 @@ const FeatureCard = ({ icon, title, description, delay }) => {
       >
         <Circle
           size="40px"
-          bg="#8b7966"
+          bg={color || "#8b7966"}
           color="white"
           mb={4}
         >
@@ -903,6 +1162,7 @@ const IslamicPrincipleCard = ({ icon, title, description, delay }) => {
         borderRadius="lg"
         boxShadow="md"
         height="full"
+        bg={isDark ? "gray.700" : "white"}
         transition="all 0.3s"
         _hover={{
           transform: 'translateY(-5px)',
@@ -925,60 +1185,6 @@ const IslamicPrincipleCard = ({ icon, title, description, delay }) => {
         <Text fontSize="sm" color={isDark ? "gray.300" : "gray.600"}>
           {description}
         </Text>
-      </Flex>
-    </MotionBox>
-  );
-};
-
-// Component for Product Cards
-const ProductCard = ({ image, title, category, delay }) => {
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
-  
-  return (
-    <MotionBox
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      variants={{
-        hidden: { opacity: 0, scale: 0.9 },
-        visible: { 
-          opacity: 1, 
-          scale: 1,
-          transition: { 
-            duration: 0.5, 
-            delay: delay,
-            ease: [0.22, 1, 0.36, 1]
-          }
-        }
-      }}
-    >
-      <Flex
-        direction="column"
-        align="center"
-        p={4}
-        borderRadius="lg"
-        boxShadow="md"
-        height="full"
-        transition="all 0.3s"
-        _hover={{
-          transform: 'scale(1.05)',
-          boxShadow: 'lg'
-        }}
-      >
-        <Image 
-          src={image} 
-          alt={title}
-          boxSize="80px"
-          objectFit="contain"
-          mb={4}
-        />
-        
-        <Heading as="h3" size="sm" mb={1} textAlign="center">
-          {title}
-        </Heading>
-        
-        <Badge colorScheme="gray">{category}</Badge>
       </Flex>
     </MotionBox>
   );
