@@ -348,9 +348,10 @@ const Dashboard = ({ initialUserData }) => {
     
     useEffect(() => {
       if (menu) {
+        console.log("Menu data for form:", menu);
         setMenuForm({
-          name: menu.name,
-          description: menu.description || ''
+          name: menu.attributes?.name || menu.name || '',
+          description: menu.attributes?.description || menu.description || ''
         });
       } else {
         setMenuForm({ name: '', description: '' });
@@ -359,6 +360,8 @@ const Dashboard = ({ initialUserData }) => {
     
     const handleSubmit = async () => {
       try {
+        console.log("Submitting menu form:", menuForm);
+        
         const token = localStorage.getItem('token');
         const method = isEditing ? 'PUT' : 'POST';
         const url = isEditing 
@@ -373,6 +376,8 @@ const Dashboard = ({ initialUserData }) => {
           }
         };
         
+        console.log("Menu request:", { method, url, body });
+        
         const response = await fetch(url, {
           method,
           headers: {
@@ -382,7 +387,12 @@ const Dashboard = ({ initialUserData }) => {
           body: JSON.stringify(body)
         });
         
-        if (!response.ok) throw new Error(`Failed to ${isEditing ? 'update' : 'create'} menu`);
+        const responseData = await response.json();
+        console.log("Menu response:", responseData);
+        
+        if (!response.ok) {
+          throw new Error(responseData.error?.message || `Failed to ${isEditing ? 'update' : 'create'} menu`);
+        }
         
         toast({
           title: 'Success',
@@ -764,6 +774,7 @@ const Dashboard = ({ initialUserData }) => {
 
   // Fetch restaurant data and check authentication
   // The core authentication and data fetching function
+// Improved checkAuth function that correctly handles the data structure
 const checkAuth = async () => {
   setIsLoading(true);
   
@@ -774,7 +785,7 @@ const checkAuth = async () => {
   }
   
   try {
-    // STEP 1: First get the user data - this is the starting point
+    // First fetch user data
     const userResponse = await fetch(`${BASE_URL}/api/users/me`, {
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -789,9 +800,9 @@ const checkAuth = async () => {
     const userData = await userResponse.json();
     console.log("User data:", userData);
     
-    // STEP 2: Fetch the operator data using the user ID
+    // Then fetch operator data
     const operatorResponse = await fetch(
-      `${BASE_URL}/api/operators?filters[users_permissions_user][id]=${userData.id}&populate=*`,
+      `${BASE_URL}/api/operators?filters[users_permissions_user][id]=${userData.id}&populate[restaurant][populate][0]=logo&populate[restaurant][populate][1]=tables&populate[restaurant][populate][2]=menus&populate[restaurant][populate][3]=menus.menu_items&populate[restaurant][populate][4]=subscription&populate[restaurant][populate][5]=custom_colors&populate[restaurant][populate][6]=qr_settings`,
       {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -807,71 +818,55 @@ const checkAuth = async () => {
     const operatorData = await operatorResponse.json();
     console.log("Operator data:", operatorData);
     
-    if (!operatorData.data || operatorData.data.length === 0) {
-      throw new Error('No operator data found for this user');
-    }
-    
-    // Save operator data to state
-    setOperatorData(operatorData.data[0]);
-    
-    // STEP 3: Get restaurant data from operator relationship
-    const operatorId = operatorData.data[0].id;
-    const restaurantResponse = await fetch(
-      `${BASE_URL}/api/restaurants?filters[operator][id]=${operatorId}&populate[logo]=*&populate[tables]=*&populate[menus][populate][menu_items]=*&populate[subscription]=*&populate[custom_colors]=*&populate[qr_settings]=*`,
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-      }
-    );
-    
-    if (!restaurantResponse.ok) {
-      throw new Error('Failed to fetch restaurant data');
-    }
-    
-    const restaurantData = await restaurantResponse.json();
-    console.log("Restaurant data:", restaurantData);
-    
-    if (!restaurantData.data || restaurantData.data.length === 0) {
-      setUserData({
-        ...initialUserData,
-        noRestaurant: true
-      });
-      setIsLoading(false);
-      return;
-    }
-    
-    // Process restaurant data
-    const restaurant = restaurantData.data[0];
-    const processedUserData = {
-      restaurant: {
-        id: restaurant.id,
-        ...restaurant.attributes,
-        logo: restaurant.attributes.logo?.data,
-        tables: restaurant.attributes.tables?.data || [],
-        menus: restaurant.attributes.menus?.data || [],
-        subscription: restaurant.attributes.subscription?.data?.attributes || {
-          tier: 'standard',
-          status: 'active'
+    // Save operator data
+    if (operatorData.data && operatorData.data.length > 0) {
+      setOperatorData(operatorData.data[0]);
+      
+      // Extract restaurant data from operator relationship
+      const restaurant = operatorData.data[0].attributes?.restaurant?.data;
+      
+      if (restaurant) {
+        // Process restaurant data carefully with null checks
+        const processedRestaurantData = {
+          id: restaurant.id,
+          name: restaurant.attributes?.name || '',
+          description: restaurant.attributes?.description || '',
+          custom_colors: restaurant.attributes?.custom_colors || null,
+          qr_settings: restaurant.attributes?.qr_settings || null,
+          logo: restaurant.attributes?.logo?.data || null,
+          tables: restaurant.attributes?.tables?.data || [],
+          menus: restaurant.attributes?.menus?.data || [],
+          subscription: restaurant.attributes?.subscription?.data?.attributes || {
+            tier: 'standard',
+            status: 'active'
+          }
+        };
+        
+        // Set user data with restaurant info
+        setUserData({
+          restaurant: processedRestaurantData
+        });
+        
+        // Fetch orders if restaurant exists
+        if (restaurant.id) {
+          const token = localStorage.getItem('token');
+          await fetchOrders(restaurant.id, token);
         }
+      } else {
+        setUserData({
+          ...initialUserData,
+          noRestaurant: true
+        });
       }
-    };
-    
-    // Set main user data state
-    setUserData(processedUserData);
-    
-    // STEP 4: Fetch orders if restaurant exists
-    if (restaurant.id) {
-      await fetchOrders(restaurant.id, token);
+    } else {
+      throw new Error('No operator data found');
     }
-    
   } catch (error) {
     console.error('Dashboard error:', error);
     
     toast({
       title: 'Error',
-      description: error.message || 'Failed to load dashboard data',
+      description: error.message || 'Failed to load dashboard',
       status: 'error',
       duration: 5000
     });
@@ -880,6 +875,166 @@ const checkAuth = async () => {
   } finally {
     setIsLoading(false);
   }
+};
+
+// Update QRCodeCard to safely handle logo URL
+const QRCodeCard = ({ 
+  tableName,
+  qrValue,
+  isDarkMode,
+  restaurantName,
+  poweredByText,
+  customColors = null,
+  showLogo = true,
+  showName = true,
+  logoUrl = null
+}) => {
+  const backgroundColor = customColors 
+    ? `linear-gradient(110deg, ${customColors.primary} 0%, ${customColors.secondary} 100%)`
+    : isDarkMode 
+      ? 'linear-gradient(110deg, #111111 0%, #67bdfd 100%)'
+      : 'linear-gradient(110deg, #67bdfd 0%, #111111 100%)';
+  
+  return (
+    <Box 
+      id={`qr-box-${tableName}`}
+      background={backgroundColor}
+      width="85.60mm"
+      height="53.98mm"
+      style={{
+        minWidth: '85.60mm',
+        minHeight: '53.98mm',
+        maxWidth: '85.60mm',
+        maxHeight: '53.98mm',
+        direction: 'ltr'
+      }}
+      borderRadius="8px"
+      position="relative"
+      overflow="hidden"
+      padding="15px"
+      mx="auto"
+      boxShadow="0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)"
+    >
+      {/* BitMenu Brand */}
+      <Text 
+        fontSize="xs" 
+        textAlign="center"
+        fontWeight="bold" 
+        color={customColors?.accent || (isDarkMode ? 'white' : 'black')}
+      >
+        Powered by BitMenu
+      </Text>
+
+      {/* Main Content Area */}
+      <Flex 
+        height="calc(100% - 60px)"
+        width="100%"
+        position="relative"
+        justifyContent="flex-end"
+        alignItems="center"
+        style={{ direction: 'ltr' }}
+      >
+        {/* Restaurant Name (if shown) */}
+        {showName && (
+          <Box 
+            position="absolute"
+            left="0"
+            maxWidth="calc(100% - 35mm)"
+          >
+            <Text 
+              fontSize="sm"
+              color="whiteAlpha.800"
+              letterSpacing="wide"
+              noOfLines={1}
+              style={{ direction: 'ltr' }}
+            >
+              {restaurantName}
+            </Text>
+          </Box>
+        )}
+
+        {/* QR Code */}
+        <Box
+          bg={customColors?.qrBackground || 'white'}
+          p={2}
+          borderRadius="md"
+          width="25mm"
+          height="25mm"
+          style={{
+            minWidth: '25mm',
+            minHeight: '25mm',
+            maxWidth: '25mm',
+            maxHeight: '25mm'
+          }}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          flexShrink={0}
+          boxShadow="md"
+        >
+          <QRCodeCanvas
+            id={`qr-canvas-${tableName}`}
+            value={qrValue}
+            size={180}
+            level="H"
+            bgColor={customColors?.qrBackground || 'white'}
+            fgColor={customColors?.qrForeground || (isDarkMode ? '#111111' : '#1179be')}
+            style={{
+              width: '100%',
+              height: '100%'
+            }}
+          />
+        </Box>
+      </Flex>
+
+      {/* Bottom Area */}
+      <Flex 
+        position="absolute"
+        bottom="15px"
+        left="15px"
+        right="15px"
+        justifyContent="space-between"
+        alignItems="flex-end"
+        style={{ direction: 'ltr' }}
+      >
+        {/* Table Number */}
+        <Text 
+          fontSize="3xl"
+          fontWeight="bold" 
+          color={customColors?.accent || 'white'}
+          letterSpacing="wide"
+        >
+          {tableName}
+        </Text>
+
+        {/* Restaurant Logo */}
+        {showLogo && logoUrl && (
+          <Box
+            width="12mm"
+            height="8mm"
+            position="relative"
+            overflow="hidden"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Image
+              src={logoUrl}
+              alt={restaurantName}
+              style={{
+                maxWidth: '12mm',
+                maxHeight: '8mm',
+                width: 'auto',
+                height: 'auto',
+                objectFit: 'contain',
+                filter: 'brightness(0) invert(1)'
+              }}
+            />
+          </Box>
+        )}
+      </Flex>
+    </Box>
+  );
 };
 
   // Fetch orders function with proper error handling
@@ -978,23 +1133,65 @@ const checkAuth = async () => {
 
   // Handle different actions (add, update, delete)
   const handleAdd = (type) => {
-    switch (type) {
-      case 'restaurant':
-        router.push('/bsoraa/operator/create-page');
-        break;
-      case 'menu':
-        setCurrentMenu(null); // Ensure we're creating a new menu
-        setIsMenuModalOpen(true);
-        break;
-      case 'menuItem':
-        setCurrentMenuItem(null); // Ensure we're creating a new menu item
-        setIsMenuItemModalOpen(true);
-        break;
-      case 'table':
-        handleAddTable();
-        break;
-    }
-  };
+  switch (type) {
+    case 'restaurant':
+      router.push('/bsoraa/operator/create-page');
+      break;
+    case 'menu':
+      // Reset the form first
+      setMenuForm({ name: '', description: '' });
+      setCurrentMenu(null);
+      setIsMenuModalOpen(true);
+      break;
+    case 'menuItem':
+      // Reset the form with default menu if available
+      const defaultMenuId = userData?.restaurant?.menus?.length > 0 ? userData.restaurant.menus[0].id : null;
+      setMenuItemForm({ 
+        name: '', 
+        description: '', 
+        price: 0, 
+        category: '',
+        menuId: defaultMenuId
+      });
+      setCurrentMenuItem(null);
+      setIsMenuItemModalOpen(true);
+      break;
+    case 'table':
+      handleAddTable();
+      break;
+  }
+};
+
+const handleUpdate = (type, item) => {
+  console.log("Updating item:", type, item); // Debug logging
+  
+  switch (type) {
+    case 'menu':
+      // Populate form with menu data
+      setMenuForm({
+        name: item.attributes?.name || item.name || '',
+        description: item.attributes?.description || item.description || ''
+      });
+      setCurrentMenu(item);
+      setIsMenuModalOpen(true);
+      break;
+    case 'menuItem':
+      // Populate form with menu item data
+      setMenuItemForm({
+        name: item.attributes?.name || item.name || '',
+        description: item.attributes?.description || item.description || '',
+        price: item.attributes?.price || item.price || 0,
+        category: item.attributes?.category || item.category || '',
+        menuId: item.attributes?.menus?.data?.id || item.menus?.id || item.menuId || null
+      });
+      setCurrentMenuItem(item);
+      setIsMenuItemModalOpen(true);
+      break;
+    case 'table':
+      handleUpdateTable(item.id, item.attributes?.name || item.name);
+      break;
+  }
+};
 
   // Table creation function
   const handleAddTable = async () => {
@@ -1128,22 +1325,6 @@ const checkAuth = async () => {
       }
     };
 
-    const handleUpdate = (type, item) => {
-      switch (type) {
-        case 'menu':
-          setCurrentMenu(item);
-          setIsMenuModalOpen(true);
-          break;
-        case 'menuItem':
-          setCurrentMenuItem(item);
-          setIsMenuItemModalOpen(true);
-          break;
-        case 'table':
-          handleUpdateTable(item.id, item.name);
-          break;
-      }
-    };
-
     const handleDelete = async (type, id) => {
       if (!window.confirm(t('confirmDelete'))) return;
 
@@ -1226,165 +1407,6 @@ const checkAuth = async () => {
           duration: 3000
         });
       }
-    };
-
-    // QR Code Card Component
-    const QRCodeCard = ({ 
-      tableName,
-      qrValue,
-      isDarkMode,
-      restaurantName,
-      customColors = null,
-      showLogo = true,
-      showName = true,
-      logoUrl = null
-    }) => {
-      const backgroundColor = customColors 
-        ? `linear-gradient(110deg, ${customColors.primary} 0%, ${customColors.secondary} 100%)`
-        : isDarkMode 
-          ? 'linear-gradient(110deg, #111111 0%, #67bdfd 100%)'
-          : 'linear-gradient(110deg, #67bdfd 0%, #111111 100%)';
-      
-      return (
-        <Box 
-          id={`qr-box-${tableName}`}
-          background={backgroundColor}
-          width="85.60mm"
-          height="53.98mm"
-          style={{
-            minWidth: '85.60mm',
-            minHeight: '53.98mm',
-            maxWidth: '85.60mm',
-            maxHeight: '53.98mm',
-            direction: 'ltr'
-          }}
-          borderRadius="8px"
-          position="relative"
-          overflow="hidden"
-          padding="15px"
-          mx="auto"
-          boxShadow="0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)"
-        >
-          {/* BitMenu Brand */}
-          <Text 
-            fontSize="xs" 
-            textAlign="center"
-            fontWeight="bold" 
-            color={customColors?.accent || (isDarkMode ? 'white' : 'black')}
-          >
-            Powered by BitMenu
-          </Text>
-
-          {/* Main Content Area */}
-          <Flex 
-            height="calc(100% - 60px)"
-            width="100%"
-            position="relative"
-            justifyContent="flex-end"
-            alignItems="center"
-            style={{ direction: 'ltr' }}
-          >
-            {/* Restaurant Name (if shown) */}
-            {showName && (
-              <Box 
-                position="absolute"
-                left="0"
-                maxWidth="calc(100% - 35mm)"
-              >
-                <Text 
-                  fontSize="sm"
-                  color="whiteAlpha.800"
-                  letterSpacing="wide"
-                  noOfLines={1}
-                  style={{ direction: 'ltr' }}
-                >
-                  {restaurantName}
-                </Text>
-              </Box>
-            )}
-
-            {/* QR Code */}
-            <Box
-              bg={customColors?.qrBackground || 'white'}
-              p={2}
-              borderRadius="md"
-              width="25mm"
-              height="25mm"
-              style={{
-                minWidth: '25mm',
-                minHeight: '25mm',
-                maxWidth: '25mm',
-                maxHeight: '25mm'
-              }}
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              flexShrink={0}
-              boxShadow="md"
-            >
-              <QRCodeCanvas
-                id={`qr-canvas-${tableName}`}
-                value={qrValue}
-                size={180}
-                level="H"
-                bgColor={customColors?.qrBackground || 'white'}
-                fgColor={customColors?.qrForeground || (isDarkMode ? '#111111' : '#1179be')}
-                style={{
-                  width: '100%',
-                  height: '100%'
-                }}
-              />
-            </Box>
-          </Flex>
-
-          {/* Bottom Area */}
-          <Flex 
-            position="absolute"
-            bottom="15px"
-            left="15px"
-            right="15px"
-            justifyContent="space-between"
-            alignItems="flex-end"
-            style={{ direction: 'ltr' }}
-          >
-            {/* Table Number */}
-            <Text 
-              fontSize="3xl"
-              fontWeight="bold" 
-              color={customColors?.accent || 'white'}
-              letterSpacing="wide"
-            >
-              {tableName}
-            </Text>
-
-            {/* Restaurant Logo */}
-            {showLogo && logoUrl && (
-              <Box
-                width="12mm"
-                height="8mm"
-                position="relative"
-                overflow="hidden"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Image
-                  src={logoUrl}
-                  alt={restaurantName}
-                  style={{
-                    maxWidth: '12mm',
-                    maxHeight: '8mm',
-                    width: 'auto',
-                    height: 'auto',
-                    objectFit: 'contain',
-                    filter: 'brightness(0) invert(1)'
-                  }}
-                />
-              </Box>
-            )}
-          </Flex>
-        </Box>
-      );
     };
 
     // Component for responsive buttons with icons
@@ -1539,6 +1561,14 @@ const checkAuth = async () => {
                         <Tab>
                           <Icon as={FiList} display={{ base: "block", md: "none" }} />
                           <Text display={{ base: "none", md: "block" }}>{t('orders')}</Text>
+                        </Tab>
+                        <Tab>
+                          <Icon as={FiTrendingUp} display={{ base: "block", md: "none" }} />
+                          <Text display={{ base: "none", md: "block" }}>{t('analytics')}</Text>
+                        </Tab>
+                        <Tab>
+                          <Icon as={FiCreditCard} display={{ base: "block", md: "none" }} />
+                          <Text display={{ base: "none", md: "block" }}>{t('subscription')}</Text>
                         </Tab>
                       </TabList>
 
@@ -2015,6 +2045,93 @@ const checkAuth = async () => {
                                   </Flex>
                                 ))}
                               </VStack>
+                            )}
+                          </VStack>
+                        </TabPanel>
+
+                        {/* Analytics Tab */}
+                        <TabPanel>
+                          <AnalyticsTab 
+                            orders={orders} 
+                            subscription={userData?.restaurant?.subscription || {
+                              tier: 'standard',
+                              status: 'active'
+                            }}
+                            dir="ltr" 
+                          />
+                        </TabPanel>
+                        
+                        {/* Subscription Tab */}
+                        <TabPanel>
+                          <VStack spacing={4} align="stretch">
+                            <Heading size="md">{t('subscriptionDetails')}</Heading>
+                            {userData?.restaurant?.subscription ? (
+                              <Box p={6} borderWidth="1px" borderRadius="lg" boxShadow="md">
+                                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                                  <Box>
+                                    <Text fontWeight="bold">Tier:</Text>
+                                    <Badge colorScheme={userData.restaurant.subscription.tier === 'premium' ? 'purple' : 'blue'}>
+                                      {userData.restaurant.subscription.tier || 'standard'}
+                                    </Badge>
+                                  </Box>
+                                  <Box>
+                                    <Text fontWeight="bold">Status:</Text>
+                                    <Badge colorScheme={userData.restaurant.subscription.status === 'active' ? 'green' : 'red'}>
+                                      {userData.restaurant.subscription.status || 'active'}
+                                    </Badge>
+                                  </Box>
+                                  <Box>
+                                    <Text fontWeight="bold">Monthly Fee:</Text>
+                                    <Text>${userData.restaurant.subscription.monthly_fee || 0}</Text>
+                                  </Box>
+                                  <Box>
+                                    <Text fontWeight="bold">Commission Rate:</Text>
+                                    <Text>{userData.restaurant.subscription.commission_rate || 0}%</Text>
+                                  </Box>
+                                  {userData.restaurant.subscription.start_date && (
+                                    <Box>
+                                      <Text fontWeight="bold">Start Date:</Text>
+                                      <Text>{new Date(userData.restaurant.subscription.start_date).toLocaleDateString()}</Text>
+                                    </Box>
+                                  )}
+                                  {userData.restaurant.subscription.end_date && (
+                                    <Box>
+                                      <Text fontWeight="bold">End Date:</Text>
+                                      <Text>{new Date(userData.restaurant.subscription.end_date).toLocaleDateString()}</Text>
+                                    </Box>
+                                  )}
+                                </SimpleGrid>
+                                
+                                <HStack mt={6} spacing={4} justify="center">
+                                  <Button 
+                                    colorScheme="purple" 
+                                    leftIcon={<FiArrowRight />}
+                                    onClick={() => handleUpgradeSubscription(userData.restaurant.subscription.tier === 'standard' ? 'premium' : 'standard')}
+                                  >
+                                    {userData.restaurant.subscription.tier === 'standard' ? 'Upgrade to Premium' : 'Downgrade to Standard'}
+                                  </Button>
+                                  
+                                  {userData.restaurant.subscription.status === 'active' && (
+                                    <Button 
+                                      colorScheme="red" 
+                                      variant="outline"
+                                      onClick={handleCancelSubscription}
+                                    >
+                                      Cancel Subscription
+                                    </Button>
+                                  )}
+                                </HStack>
+                              </Box>
+                            ) : (
+                              <Box textAlign="center" p={8}>
+                                <VStack spacing={4}>
+                                  <Icon as={FiCreditCard} boxSize={12} />
+                                  <Text>No active subscription found</Text>
+                                  <Button colorScheme="blue" onClick={() => handleUpgradeSubscription('standard')}>
+                                    Subscribe Now
+                                  </Button>
+                                </VStack>
+                              </Box>
                             )}
                           </VStack>
                         </TabPanel>
