@@ -1,4 +1,4 @@
-// components/Adfaly/merchant/MerchantMetrics.js
+// components/adfaly/merchant/MerchantMetrics.js
 import React from 'react';
 import {
   SimpleGrid,

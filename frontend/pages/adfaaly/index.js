@@ -1,4 +1,4 @@
-// frontend/pages/Adfaly/index.js
+// frontend/pages/adfaly/index.js
 import { useEffect } from 'react';
 import { usePWA } from '@/hooks/usePWA';
 import { AdfalyPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component

@@ -1,4 +1,4 @@
-// components/Adfaly/agent/CashBalanceWidget.js
+// components/adfaly/agent/CashBalanceWidget.js
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ThemedText } from '../../ThemedText';

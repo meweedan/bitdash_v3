@@ -1,4 +1,4 @@
-// components/Adfaly/agent/CustomerSearchResult.js
+// components/adfaly/agent/CustomerSearchResult.js
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import ThemedText from '../../ThemedText';

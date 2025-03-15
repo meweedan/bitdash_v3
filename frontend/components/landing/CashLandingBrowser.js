@@ -27,7 +27,7 @@ import {
   FaChartLine
 } from 'react-icons/fa';
 import CryptoMatrix from '../CryptoMatrix';
-import AgentLocator from '../Adfaly/customer/AgentLocator';
+import AgentLocator from '../adfaly/customer/AgentLocator';
 
 const BitCashLanding = () => {
   const { t } = useTranslation('common');

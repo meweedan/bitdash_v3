@@ -18,7 +18,7 @@ import QRScannerModal from '../../components/QRScannerModal';
 import { useNavigation } from '@react-navigation/native';
 import ThemedView from '../../components/ThemedView';
 import ThemedText from '../../components/ThemedText';
-import CashBalanceWidget from '../../components/Adfaly/agent/CashBalanceWidget';
+import CashBalanceWidget from '../../components/adfaly/agent/CashBalanceWidget';
 import { Card } from '../../components/SharedComponents';
 
 const ProcessingFeesWidget = ({ transactions }) => {

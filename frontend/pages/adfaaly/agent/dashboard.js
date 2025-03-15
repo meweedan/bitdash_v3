@@ -10,11 +10,11 @@ import GlassCard from '@/components/GlassCard';
 import QRScanner from '@/components/QRScanner';
 
 // Agent Components
-import AgentHeader from '@/components/Adfaly/agent/AgentHeader';
-import AgentMetrics from '@/components/Adfaly/agent/AgentMetrics';
-import CashBalanceWidget from '@/components/Adfaly/agent/CashBalanceWidget';
-import DailyLimitTracker from '@/components/Adfaly/agent/DailyLimitTracker';
-import LocationManager from '@/components/Adfaly/agent/LocationManager';
+import AgentHeader from '@/components/adfaly/agent/AgentHeader';
+import AgentMetrics from '@/components/adfaly/agent/AgentMetrics';
+import CashBalanceWidget from '@/components/adfaly/agent/CashBalanceWidget';
+import DailyLimitTracker from '@/components/adfaly/agent/DailyLimitTracker';
+import LocationManager from '@/components/adfaly/agent/LocationManager';
 
 // Agent deposit + withdraw logic
 import DepositPage from './deposit';
