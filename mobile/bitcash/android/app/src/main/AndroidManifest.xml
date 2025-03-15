@@ -24,8 +24,8 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="bitcash"/>
-        <data android:scheme="app.bitdash.bitcash"/>
+        <data android:scheme="adfaly"/>
+        <data android:scheme="app.bitdash.adfaly"/>
       </intent-filter>
     </activity>
   </application>

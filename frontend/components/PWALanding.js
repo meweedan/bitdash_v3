@@ -13,12 +13,12 @@ const PWAContainer = ({ children }) => (
   </div>
 );
 
-export const AdfaalyPWALanding = () => {
+export const AdfalyPWALanding = () => {
   const router = useRouter();
   const config = {
-    title: 'Adfaaly',
+    title: 'Adfaly',
     description: 'Reimagining Libyan Finances',
-    image: '/adfaaly.png',
+    image: '/Adfaly.png',
     color: '#4CAF50'
   };
 
@@ -33,12 +33,12 @@ export const AdfaalyPWALanding = () => {
   );
 };
 
-export const TolbahPWALanding = () => {
+export const UtlubhaPWALanding = () => {
   const router = useRouter();
   const config = {
-    title: 'Tolbah',
+    title: 'Utlubha',
     description: 'Your trusted forex broker',
-    image: '/tolbah.png',
+    image: '/utlubha.png',
     color: '#4CAF50'
   };
 
@@ -59,8 +59,8 @@ const PWALanding = () => {
   const router = useRouter();
   const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
 
-  if (hostname.includes('adfaaly')) return <AdfaalyPWALanding />;
-  if (hostname.includes('tolbah')) return <TolbahPWALanding />;
+  if (hostname.includes('Adfaly')) return <AdfalyPWALanding />;
+  if (hostname.includes('utlubha')) return <UtlubhaPWALanding />;
 
   const config = {
     title: 'BitDash',

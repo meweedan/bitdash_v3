@@ -113,7 +113,7 @@ const getPlatformColors = (platformKey) => {
   switch (platformKey) {
     case 'bitfund':
       return { primary: '#5c87cb', secondary: '#305896' };
-    case 'bitcash':
+    case 'adfaly':
       return { primary: '#56bba5', secondary: '#7bcfbd' };
     case 'bittrade':
       return { primary: '#59c6c6', secondary: '#38a4a4' };
@@ -129,7 +129,7 @@ const platformOptions = [
   { value: 'all', label: 'All Platforms' },
   { value: 'bitdash', label: 'BitDash' },
   { value: 'bitfund', label: 'BitFund' },
-  { value: 'bitcash', label: 'BitCash' },
+  { value: 'adfaly', label: 'BitCash' },
   { value: 'bittrade', label: 'BitTrade' },
   { value: 'bitstock', label: 'BitStock' }
 ];

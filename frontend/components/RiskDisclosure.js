@@ -138,7 +138,7 @@ const RiskDisclosure = ({ platform, accountType, onAccept, isRequired = true }) 
           content: t('cryptoVolatilityRisk.content', 'Cryptocurrencies often experience significant price volatility. The value of cryptocurrency instruments may decrease substantially in a short period, potentially resulting in complete loss of invested capital.')
         }
       ],
-      adfaaly: [
+      Adfaly: [
         {
           title: t('paymentProcessingRisk.title', 'Payment Processing Risk'),
           content: t('paymentProcessingRisk.content', 'Transactions may be delayed, rejected, or reversed due to compliance checks, technical issues, or third-party payment processor policies beyond our control.')
@@ -177,7 +177,7 @@ const RiskDisclosure = ({ platform, accountType, onAccept, isRequired = true }) 
           t('clientLossWarning', 'Your clients may experience losses when trading. You must ensure all referred clients understand the risks associated with trading our products.')
         ]
       },
-      adfaaly: {
+      Adfaly: {
         merchant: [
           t('merchantWarning', 'Payment processing involves compliance with complex regulations. Your account may be subject to holds or reserves based on your business type, transaction volume, or risk profile.'),
           t('chargebackRisk', 'You bear the financial responsibility for chargebacks and payment disputes. Maintain proper documentation and clear refund policies to mitigate these risks.')
@@ -271,7 +271,7 @@ const RiskDisclosure = ({ platform, accountType, onAccept, isRequired = true }) 
                   <Text mt={2}>
                     {t(`${platformKey}SpecificRisk.content`, {
                       ldn: 'Trading in forex, cryptocurrencies, and other leveraged products carries a high level of risk and may not be suitable for all investors. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite.',
-                      adfaaly: 'Payment processing services involve risks related to compliance, fraud, and operational issues. Merchants and agents face additional risks related to chargebacks, regulatory requirements, and handling of client funds.'
+                      Adfaly: 'Payment processing services involve risks related to compliance, fraud, and operational issues. Merchants and agents face additional risks related to chargebacks, regulatory requirements, and handling of client funds.'
                     }[platformKey] || 'This platform involves financial risks that you should fully understand before proceeding.')}
                   </Text>
                 </Box>

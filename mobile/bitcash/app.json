@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "BitCash",
-    "slug": "bitcash",
+    "slug": "adfaly",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -30,7 +30,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.bitdash.bitcash",
+      "bundleIdentifier": "com.bitdash.adfaly",
       "buildNumber": "1.0.0",
       "infoPlist": {
         "NSCameraUsageDescription": "BitCash needs access to your camera for QR code scanning",
@@ -43,7 +43,7 @@
       }
     },
     "android": {
-      "package": "app.bitdash.bitcash",
+      "package": "app.bitdash.adfaly",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",

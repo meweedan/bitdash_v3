@@ -45,7 +45,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   
   // Always show announcements for these platforms
-  const showAnnouncements = platform === 'tolbah' || platform === 'adfaaly';
+  const showAnnouncements = platform === 'utlubha' || platform === 'Adfaly';
 
   // Handle scroll effect
   useEffect(() => {
@@ -90,19 +90,26 @@ export default function Header() {
 
   const platforms = [
      {
-      name: 'Adfaaly',
-      image: '/adfaaly.png',
-      mobileImage: '/adfaaly.png',
-      href: 'https://adfaaly.bitdash.app/',
-      color: 'brand.adfaaly'
+      name: 'Adfaly',
+      image: '/Adfaly.png',
+      mobileImage: '/Adfaly.png',
+      href: 'https://Adfaly.bitdash.app/',
+      color: 'brand.Adfaly'
     },
     {
-      name: 'Tolbah',
-      image: '/tolbah.png',
-      mobileImage: '/tolbah.png',
-      href: 'https://tolbah.bitdash.app/',
-      color: 'brand.tolbah'
+      name: 'Utlubha',
+      image: '/utlubha.png',
+      mobileImage: '/utlubha.png',
+      href: 'https://utlubha.bitdash.app/',
+      color: 'brand.utlubha'
     }, 
+    {
+      name: 'Mirrsal',
+      image: '/mirrsal.png',
+      mobileImage: '/mirrsal.png',
+      href: 'https://mirrsal.bitdash.app/',
+      color: 'brand.mirrsal'
+    },
   ];
 
   const getPlatformFromURL = () => {
@@ -111,13 +118,15 @@ export default function Header() {
       const hostname = window.location.hostname;
       
       // More specific checks to avoid partial matches
-      if (hostname.includes('adfaaly.bitdash') || hostname === 'adfaaly.localhost') return 'adfaaly';
-      if (hostname.includes('tolbah.bitdash') || hostname === 'tolbah.localhost') return 'tolbah';
+      if (hostname.includes('Adfaly.bitdash') || hostname === 'Adfaly.localhost') return 'Adfaly';
+      if (hostname.includes('utlubha.bitdash') || hostname === 'utlubha.localhost') return 'utlubha';
+      if (hostname.includes('mirrsal.bitdash') || hostname === 'mirrsal.localhost') return 'mirrsal';
       
       // Also check URL path for local development
       const pathname = window.location.pathname;
-      if (pathname.startsWith('/adfaaly')) return 'adfaaly';
-      if (pathname.startsWith('/tolbah')) return 'tolbah';
+      if (pathname.startsWith('/Adfaly')) return 'Adfaly';
+      if (pathname.startsWith('/utlubha')) return 'utlubha';
+      if (pathname.startsWith('/mirrsal')) return 'mirrsal';
     }
     return 'bitdash'; // Default platform
   };
@@ -153,45 +162,45 @@ export default function Header() {
   
   // Platform-specific menu items 
   const getPlatformMenuItems = () => {
-    if (platform === 'tolbah') { // Forex
+    if (platform === 'utlubha') { // Forex
       return [
         { 
           name: t('analysis', 'Analysis'), 
-          path: '/tolbah/analysis',
+          path: '/utlubha/analysis',
           submenu: [
-            { name: t('economicCalendar', 'Economic Calendar'), path: '/tolbah/analysis/economic-calendar' },
-            { name: t('marketSentiment', 'Market Sentiment'), path: '/tolbah/analysis/sentiment' },
-            { name: t('forex:forexNews"', 'Forex News'), path: '/tolbah/analysis/news' },
+            { name: t('economicCalendar', 'Economic Calendar'), path: '/utlubha/analysis/economic-calendar' },
+            { name: t('marketSentiment', 'Market Sentiment'), path: '/utlubha/analysis/sentiment' },
+            { name: t('forex:forexNews"', 'Forex News'), path: '/utlubha/analysis/news' },
           ]
         },
         { 
           name: t('education', 'Education'), 
-          path: '/tolbah/education',
+          path: '/utlubha/education',
           submenu: [
-            { name: t('tradingGuides', 'Trading Guides'), path: '/tolbah/education/guides' },
-            { name: t('webinars', 'Webinars'), path: '/tolbah/education/webinars' },
-            { name: t('strategyResources', 'Strategy Resources'), path: '/tolbah/education/strategies' },
+            { name: t('tradingGuides', 'Trading Guides'), path: '/utlubha/education/guides' },
+            { name: t('webinars', 'Webinars'), path: '/utlubha/education/webinars' },
+            { name: t('strategyResources', 'Strategy Resources'), path: '/utlubha/education/strategies' },
           ]
         },
       ];
-    } else if (platform === 'adfaaly') { // Cash
+    } else if (platform === 'Adfaly') { // Cash
       return [
         { 
           name: t('payments', 'Payments'), 
-          path: '/adfaaly/payments',
+          path: '/Adfaly/payments',
           submenu: [
-            { name: t('sendMoney', 'Send Money'), path: '/adfaaly/payments/send' },
-            { name: t('requestMoney', 'Request Money'), path: '/adfaaly/payments/request' },
-            { name: t('payBills', 'Pay Bills'), path: '/adfaaly/payments/bills' },
+            { name: t('sendMoney', 'Send Money'), path: '/Adfaly/payments/send' },
+            { name: t('requestMoney', 'Request Money'), path: '/Adfaly/payments/request' },
+            { name: t('payBills', 'Pay Bills'), path: '/Adfaly/payments/bills' },
           ]
         },
         { 
           name: t('cards', 'Cards'), 
-          path: '/adfaaly/cards',
+          path: '/Adfaly/cards',
           submenu: [
-            { name: t('virtualCards', 'Virtual Cards'), path: '/adfaaly/cards/virtual' },
-            { name: t('physicalCards', 'Physical Cards'), path: '/adfaaly/cards/physical' },
-            { name: t('cardSettings', 'Card Settings'), path: '/adfaaly/cards/settings' },
+            { name: t('virtualCards', 'Virtual Cards'), path: '/Adfaly/cards/virtual' },
+            { name: t('physicalCards', 'Physical Cards'), path: '/Adfaly/cards/physical' },
+            { name: t('cardSettings', 'Card Settings'), path: '/Adfaly/cards/settings' },
           ]
         }
       ];
@@ -268,7 +277,7 @@ export default function Header() {
                   whileHover={{ y: -5 }}
                   transition={{ duration: 0.2 }}
                   position="relative"
-                  width={{ base: "140px", md: "190px" }}
+                  width={{ base: "150px", md: "200px" }}
                   height="50px"
                   p={3}
                   _hover={{

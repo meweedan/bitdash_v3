@@ -9,13 +9,13 @@ const theme = extendTheme({
         600: '#9c7c63',    // Hover
         700: '#c4b2a0',    // Emphasis
       },
-      adfaaly: {
+      adfaly: {
         400: '#00bf63',
         500: '#00bf63',    // Base
         600: '#00bf63',    // Hover
         700: '#00bf63',    // Emphasis
       },
-      tolbah: {
+      utlubha: {
         400: '#ff914d',
         500: '#E86C00',    // Base
         600: '#ff914d',    // Hover
@@ -43,41 +43,29 @@ const theme = extendTheme({
           color: 'brand.bitdash.500',
           _hover: { bg: 'brand.bitdash.500', color: 'white' }
         },
-        // adfaaly variants
-        'adfaaly-solid': {
-          bg: 'brand.adfaaly.500',
+        // Adfaly variants
+        'adfaly-solid': {
+          bg: 'brand.adfaly.500',
           color: 'white',
-          _hover: { bg: 'brand.adfaaly.600' }
+          _hover: { bg: 'brand.adfaly.600' }
         },
-        'adfaaly-outline': {
+        'adfaly-outline': {
           border: '2px solid',
-          borderColor: 'brand.adfaaly.500',
-          color: 'brand.adfaaly.500',
-          _hover: { bg: 'brand.adfaaly.500', color: 'white' }
+          borderColor: 'brand.adfaly.500',
+          color: 'brand.adfaly.500',
+          _hover: { bg: 'brand.adfaly.500', color: 'white' }
         },
-        // Crypto variants
-        'crypto-solid': {
-          bg: 'brand.crypto.500',
+        // utlubha variants
+        'utlubha-solid': {
+          bg: 'brand.utlubha.700',
           color: 'white',
-          _hover: { bg: 'brand.crypto.600' }
+          _hover: { bg: 'brand.utlubha.400' }
         },
-        'crypto-outline': {
+        'utlubha-outline': {
           border: '2px solid',
-          borderColor: 'brand.crypto.500',
-          color: 'brand.crypto.500',
-          _hover: { bg: 'brand.crypto.500', color: 'white' }
-        },
-        // tolbah variants
-        'tolbah-solid': {
-          bg: 'brand.tolbah.700',
-          color: 'white',
-          _hover: { bg: 'brand.tolbah.400' }
-        },
-        'tolbah-outline': {
-          border: '2px solid',
-          borderColor: 'brand.tolbah.500',
-          color: 'brand.tolbah.500',
-          _hover: { bg: 'brand.tolbah.500', color: 'white' }
+          borderColor: 'brand.utlubha.500',
+          color: 'brand.utlubha.500',
+          _hover: { bg: 'brand.utlubha.500', color: 'white' }
         },
         // Stocks variants
         'stocks-solid': {
@@ -105,11 +93,11 @@ const theme = extendTheme({
         bitdash: {
           borderColor: 'brand.bitdash.500',
         },
-        adfaaly: {
-          borderColor: 'brand.adfaaly.500',
+        Adfaly: {
+          borderColor: 'brand.Adfaly.500',
         },
-        tolbah: {
-          borderColor: 'brand.tolbah.500',
+        utlubha: {
+          borderColor: 'brand.utlubha.500',
         }
       }
     },

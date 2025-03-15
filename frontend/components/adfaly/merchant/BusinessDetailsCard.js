@@ -1,4 +1,4 @@
-// components/adfaaly/merchant/BusinessDetailsCard.js
+// components/Adfaly/merchant/BusinessDetailsCard.js
 import React, { useState } from 'react';
 import {
   Box,
@@ -42,8 +42,8 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
   
   // Theme colors
   const bgGradient = useColorModeValue(
-    'linear(to-r, bitcash.400, bitcash.700)',
-    'linear(to-r, bitcash.600, bitcash.800)'
+    'linear(to-r, adfaly.400, adfaly.700)',
+    'linear(to-r, adfaly.600, adfaly.800)'
   );
   const cardBg = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
@@ -91,7 +91,7 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
         borderRadius="xl"
         overflow="hidden"
         borderWidth={2}
-        borderColor="bitcash.500"
+        borderColor="adfaly.500"
       >
         {merchant.logo?.data?.attributes?.url ? (
           <Image
@@ -102,15 +102,15 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
           />
         ) : (
           <Box
-            bg="bitcash.50"
-            _dark={{ bg: 'bitcash.900' }}
+            bg="adfaly.50"
+            _dark={{ bg: 'adfaly.900' }}
             display="flex"
             alignItems="center"
             justifyContent="center"
           >
             <Building2 
               size={useBreakpointValue({ base: 32, md: 48 })}
-              className="text-bitcash-500"
+              className="text-adfaly-500"
             />
           </Box>
         )}
@@ -125,7 +125,7 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
           icon={<MapPin size={18} />}
           aria-label="Location"
           variant="ghost"
-          colorScheme="bitcash"
+          colorScheme="adfaly"
           size="sm"
         />
         <Text fontSize="sm" noOfLines={1}>
@@ -137,7 +137,7 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
           icon={<Phone size={18} />}
           aria-label="Phone"
           variant="ghost"
-          colorScheme="bitcash"
+          colorScheme="adfaly"
           size="sm"
         />
         <Text fontSize="sm">
@@ -149,7 +149,7 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
           icon={<FileText size={18} />}
           aria-label="Registration"
           variant="ghost"
-          colorScheme="bitcash"
+          colorScheme="adfaly"
           size="sm"
         />
         <Text fontSize="sm">
@@ -260,7 +260,7 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
 
             <VStack align="stretch" spacing={4} flex={1}>
               <VStack align="stretch" spacing={1}>
-                <Heading size="lg" color="bitcash.500">
+                <Heading size="lg" color="adfaly.500">
                   {merchant.businessName || 'Unnamed Business'}
                 </Heading>
                 <Text color="gray.500">
@@ -276,7 +276,7 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
               <Tooltip label="View QR Code" placement="top">
                 <IconButton
                   icon={<QrCode size={20} />}
-                  colorScheme="bitcash"
+                  colorScheme="adfaly"
                   variant="outline"
                   size="lg"
                   onClick={onQROpen}
@@ -284,7 +284,7 @@ const BusinessDetailsCard = ({ merchant, onQROpen, onCreateLink }) => {
               </Tooltip>
               <Button
                 leftIcon={<Plus size={20} />}
-                colorScheme="bitcash"
+                colorScheme="adfaly"
                 onClick={onCreateLink}
                 size="lg"
               >
@@ -331,7 +331,7 @@ const MetricBox = ({ icon: Icon, label, value, trend }) => {
         <IconButton
           icon={<Icon size={18} />}
           variant="ghost"
-          colorScheme="bitcash"
+          colorScheme="adfaly"
           size="sm"
           aria-label={label}
         />

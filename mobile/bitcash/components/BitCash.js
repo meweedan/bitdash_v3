@@ -51,7 +51,7 @@ const BitCashHeader = () => {
         </TouchableOpacity>
 
         <Image 
-          source={require('../assets/bitcash-logo.png')} 
+          source={require('../assets/adfaly-logo.png')} 
           style={styles.logo} 
           resizeMode="contain"
         />

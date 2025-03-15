@@ -97,8 +97,8 @@
     },
     "primaryPlatform": {
       "type": "enumeration",
-      "enum": ["tolbah", "adfaaly", "multiple"],
-      "default": "adfaaly"
+      "enum": ["utlubha", "adfaly", "mirrsal", "multiple"],
+      "default": "adfaly"
     },
     "registrationDate": {
       "type": "datetime"

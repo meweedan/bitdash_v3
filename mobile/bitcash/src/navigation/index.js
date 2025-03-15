@@ -39,7 +39,7 @@ const MerchantTabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: theme.colors.bitcash[500],
+        tabBarActiveTintColor: theme.colors.adfaly[500],
         tabBarInactiveTintColor: 'gray',
         headerShown: false,
       }}
@@ -85,7 +85,7 @@ const AgentTabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: theme.colors.bitcash[500],
+        tabBarActiveTintColor: theme.colors.adfaly[500],
         tabBarInactiveTintColor: 'gray',
         headerShown: false,
       }}
@@ -121,7 +121,7 @@ const ClientTabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: theme.colors.bitcash[500],
+        tabBarActiveTintColor: theme.colors.adfaly[500],
         tabBarInactiveTintColor: 'gray',
         headerShown: false,
       }}

@@ -144,7 +144,7 @@ function MerchantsPage() {
                   </Button>
                   <Button
                     size={buttonSize}
-                    variant="bitcash-outline"
+                    variant="adfaly-outline"
                     onClick={() => router.push('/merchant/demo')}
                   >
                     {t('merchants.hero.demoButton', 'See Demo')}

@@ -108,7 +108,7 @@ const ProfileEditor = ({ merchant, isOpen, onClose, onUpdate }) => {
                 position="absolute"
                 bottom={0}
                 right={0}
-                colorScheme="bitcash"
+                colorScheme="adfaly"
                 onClick={() => fileInputRef.current.click()}
               />
               <input
@@ -158,7 +158,7 @@ const ProfileEditor = ({ merchant, isOpen, onClose, onUpdate }) => {
 
             <Button
               type="submit"
-              colorScheme="bitcash"
+              colorScheme="adfaly"
               w="full"
               isLoading={isLoading}
             >

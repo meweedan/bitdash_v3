@@ -202,7 +202,7 @@ const MerchantSettings = () => {
   if (isLoading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color={theme.colors.bitcash[500]} />
+        <ActivityIndicator size="large" color={theme.colors.adfaly[500]} />
       </View>
     );
   }
@@ -422,7 +422,7 @@ const styles = StyleSheet.create({
     color: '#666'
   },
   saveButton: {
-    backgroundColor: theme.colors.bitcash[500],
+    backgroundColor: theme.colors.adfaly[500],
     padding: 16,
     borderRadius: 8,
     alignItems: 'center',

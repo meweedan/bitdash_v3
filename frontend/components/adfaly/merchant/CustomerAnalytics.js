@@ -1,4 +1,4 @@
-// components/adfaaly/merchant/CustomerAnalytics.js
+// components/Adfaly/merchant/CustomerAnalytics.js
 import React from 'react';
 import {
   Box,

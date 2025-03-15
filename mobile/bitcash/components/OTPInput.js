@@ -76,7 +76,7 @@ const OTPInput = ({
           keyboardType="number-pad"
           maxLength={1}
           selectTextOnFocus
-          selectionColor={theme.colors.bitcash[500]}
+          selectionColor={theme.colors.adfaly[500]}
         />
       ))}
     </View>
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     }),
   },
   inputFilled: {
-    borderColor: theme.colors.bitcash[500],
+    borderColor: theme.colors.adfaly[500],
     backgroundColor: '#F7FAFC',
   },
   inputIOS: {

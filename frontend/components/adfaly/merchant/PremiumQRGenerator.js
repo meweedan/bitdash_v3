@@ -1,4 +1,4 @@
-// components/adfaaly/merchant/PremiumQRGenerator.js
+// components/Adfaly/merchant/PremiumQRGenerator.js
 import React, { useRef, useState } from 'react';
 import {
   Modal,
@@ -55,17 +55,17 @@ const PremiumQRGenerator = ({
     default: {
       bgColor: '#FFFFFF',
       fgColor: '#1179BE',
-      logoImage: '/images/bitcash-logo.png'
+      logoImage: '/images/adfaly-logo.png'
     },
     premium: {
       bgColor: '#000000',
       fgColor: '#FFFFFF',
-      logoImage: '/images/bitcash-logo-white.png'
+      logoImage: '/images/adfaly-logo-white.png'
     },
     modern: {
       bgColor: '#1A1A1A',
       fgColor: '#00F6FF',
-      logoImage: '/images/bitcash-logo-blue.png'
+      logoImage: '/images/adfaly-logo-blue.png'
     }
   };
 
@@ -79,7 +79,7 @@ const PremiumQRGenerator = ({
   };
 
   const handleCopyLink = () => {
-    const paymentUrl = `https://adfaaly.bitdash.app/pay/${merchantData.id}`;
+    const paymentUrl = `https://Adfaly.bitdash.app/pay/${merchantData.id}`;
     navigator.clipboard.writeText(paymentUrl);
     toast({
       title: 'Link Copied',
@@ -89,7 +89,7 @@ const PremiumQRGenerator = ({
   };
 
   const handleShare = async () => {
-    const paymentUrl = `https://adfaaly.bitdash.app/pay/${merchantData.id}`;
+    const paymentUrl = `https://Adfaly.bitdash.app/pay/${merchantData.id}`;
     if (navigator.share) {
       try {
         await navigator.share({
@@ -149,7 +149,7 @@ const PremiumQRGenerator = ({
         boxShadow="xl"
       >
         <QRCode
-          value={`https://adfaaly.bitdash.app/pay/${merchantData.id}`}
+          value={`https://Adfaly.bitdash.app/pay/${merchantData.id}`}
           size={300}
           level="H"
           bgColor={qrStyles[selectedTheme].bgColor}

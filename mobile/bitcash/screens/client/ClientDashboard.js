@@ -1,4 +1,4 @@
-// mobile/bitcash/screens/client/ClientDashboard.js
+// mobile/adfaly/screens/client/ClientDashboard.js
 import React, { useState, useMemo } from 'react';
 import {
   View,

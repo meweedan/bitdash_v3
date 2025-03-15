@@ -20,8 +20,8 @@ const QRScanner = ({ isOpen, onClose }) => {
         (decodedText) => {
           // Check if URL contains any of our subdomains
           const validDomains = [
-            'tolbah.bitdash.app',
-            'adfaaly.bitdash.app'
+            'utlubha.bitdash.app',
+            'Adfaly.bitdash.app'
           ];
           
           const isValidUrl = validDomains.some(domain => decodedText.includes(domain));

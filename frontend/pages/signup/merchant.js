@@ -29,7 +29,7 @@ import RiskDisclosure from '@/components/RiskDisclosure';
 import { useTranslation } from 'react-i18next';
 
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
-const PAYMENT_URL = 'https://adfaaly.bitdash.app';
+const PAYMENT_URL = 'https://Adfaly.bitdash.app';
 
 const MerchantSignup = () => {
   const router = useRouter();

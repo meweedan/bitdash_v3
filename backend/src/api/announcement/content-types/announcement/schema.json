@@ -35,8 +35,9 @@
     "platform": {
       "type": "enumeration",
       "enum": [
-        "tolbah",
-        "adfaaly"
+        "utlubha",
+        "mirrsal",
+        "adfaly"
       ],
       "required": true
     },

@@ -8,7 +8,7 @@ import Layout from '@/components/Layout';
 // Subdomain landings
 import MainLanding from '@/components/Landing';
 import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
-import TolbahLandingBrowser from '@/components/landing/TolbahLandingBrowser';
+import UtlubhaLandingBrowser from '@/components/landing/UtlubhaLandingBrowser';
 
 export default function HomePage() {
   const { t } = useTranslation('common');
@@ -18,10 +18,10 @@ export default function HomePage() {
     // 1) Detect subdomain by checking window.location.hostname
     const hostname = window.location.hostname.toLowerCase();
 
-    if (hostname.includes('adfaaly.')) {
-      setPlatform('adfaaly');
-    } else if (hostname.includes('tolbah.')) {
-      setPlatform('tolbah');
+    if (hostname.includes('Adfaly.')) {
+      setPlatform('Adfaly');
+    } else if (hostname.includes('utlubha.')) {
+      setPlatform('utlubha');
     } else if (process.env.NODE_ENV === 'development') {
       // For dev, e.g. http://localhost:3000?platform=cash
       const param = new URLSearchParams(window.location.search).get('platform');
@@ -38,17 +38,17 @@ export default function HomePage() {
   // 2) For each platform, choose a distinct manifest + icons
   const getPlatformMeta = () => {
     switch (platform) {
-      case 'adfaaly':
+      case 'Adfaly':
         return {
-          title: t('adfaaly.title', 'Adfaaly'),
-          favicon: '/adfaaly-icons/favicon.ico',
-          manifest: '/manifests/adfaaly-manifest.json',
+          title: t('Adfaly.title', 'Adfaly'),
+          favicon: '/Adfaly-icons/favicon.ico',
+          manifest: '/manifests/Adfaly-manifest.json',
         };
-      case 'tolbah':
+      case 'utlubha':
         return {
-          title: t('tolbah.title', 'Tolbah'),
-          favicon: '/tolbah-icons/favicon.ico',
-          manifest: '/manifests/tolbah-manifest.json',
+          title: t('utlubha.title', 'Utlubha'),
+          favicon: '/utlubha-icons/favicon.ico',
+          manifest: '/manifests/utlubha-manifest.json',
         };
       default:
         return {
@@ -64,10 +64,10 @@ export default function HomePage() {
   // 3) Render subdomain landing
   const renderPlatform = () => {
     switch (platform) {
-      case 'adfaaly':
+      case 'Adfaly':
         return <CashLandingBrowser />;
-      case 'tolbah':
-        return <TolbahLandingBrowser />;
+      case 'utlubha':
+        return <UtlubhaLandingBrowser />;
       default:
         return <MainLanding />;
     }

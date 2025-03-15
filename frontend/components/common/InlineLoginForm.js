@@ -25,7 +25,7 @@ const PLATFORM_ROUTES = {
     merchant: '/merchant/dashboard',
     agent: '/agent/dashboard',
     customer: '/client/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://adfaaly.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://Adfaly.bitdash.app'
   },
   shop: {
     owner: '/owner/dashboard',
@@ -48,13 +48,13 @@ const BUSINESS_TYPE_ROUTES = {
 const getPlatformFromURL = () => {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
-    if (hostname.includes('cash')) return 'bitcash';
+    if (hostname.includes('cash')) return 'adfaly';
     if (hostname.includes('food')) return 'bitfood';
     if (hostname.includes('shop')) return 'bitshop';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
-      if (path.includes('/cash')) return 'bitcash';
+      if (path.includes('/cash')) return 'adfaly';
       if (path.includes('/food')) return 'bitfood';
       if (path.includes('/shop')) return 'bitshop';
     }

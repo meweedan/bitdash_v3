@@ -109,8 +109,8 @@ export default function LandingPage() {
   const headingColor = useColorModeValue('whiteAlpha.900', 'brand.bitdash.700');
   const textColor = useColorModeValue('brand.bitdash.400', 'brand.bitdash.400');
   const accentColor = '#8b7966'; // The gold/brown accent color from the main site
-  const tolbahColor = '#FF7D1A'; // Orange color for tolbah
-  const adfaalyColor = '#00bf63'; // Green color for Adfaaly
+  const utlubhaColor = '#FF7D1A'; // Orange color for utlubha
+  const AdfalyColor = '#00bf63'; // Green color for Adfaly
 
   // Custom parallax component
   const ParallaxBox = ({ children, offset = 100, ...rest }) => {
@@ -268,25 +268,25 @@ export default function LandingPage() {
             
             {/* Platform Cards */}
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} width="full">
-              {/* tolbah Platform */}
+              {/* utlubha Platform */}
               <PlatformCard
-                title={t('platforms.tolbah.title', 'Tolbah')}
-                description={t('platforms.tolbah.description', 'Your complete delivery solution for food, groceries, and retail items. Features QR ordering for seamless in-restaurant experiences.')}
-                image="/tolbah.png"
-                cta={t('platforms.tolbah.cta', 'Try Tolbah')}
-                link="https://tolbah.bitdash.app"
-                color={tolbahColor}
+                title={t('platforms.utlubha.title', 'Utlubha')}
+                description={t('platforms.utlubha.description', 'Your complete delivery solution for food, groceries, and retail items. Features QR ordering for seamless in-restaurant experiences.')}
+                image="/utlubha.png"
+                cta={t('platforms.utlubha.cta', 'Try Utlubha')}
+                link="https://utlubha.bitdash.app"
+                color={utlubhaColor}
                 delay={0}
               />
               
-              {/* Adfaaly Platform */}
+              {/* Adfaly Platform */}
               <PlatformCard
-                title={t('platforms.adfaaly.title', 'Adfaaly')}
-                description={t('platforms.adfaaly.description', 'Cashless payment solution featuring merchant accounts, payment links, QR code payments, and a network of agent-operated human ATMs.')}
-                image="/adfaaly.png"
-                cta={t('platforms.adfaaly.cta', 'Try Adfaaly')}
-                link="https://adfaaly.bitdash.app"
-                color={adfaalyColor}
+                title={t('platforms.Adfaly.title', 'Adfaly')}
+                description={t('platforms.Adfaly.description', 'Cashless payment solution featuring merchant accounts, payment links, QR code payments, and a network of agent-operated human ATMs.')}
+                image="/Adfaly.png"
+                cta={t('platforms.Adfaly.cta', 'Try Adfaly')}
+                link="https://Adfaly.bitdash.app"
+                color={AdfalyColor}
                 delay={0.3}
               />
             </SimpleGrid>
@@ -294,7 +294,7 @@ export default function LandingPage() {
         </Container>
       </Box>
       
-      {/* tolbah Features Section */}
+      {/* utlubha Features Section */}
       <Box 
         as="section" 
         py={{ base: 16, md: 24 }}
@@ -312,13 +312,13 @@ export default function LandingPage() {
               mx="auto"
             >
               <Text 
-                color={tolbahColor} 
+                color={utlubhaColor} 
                 fontWeight="bold" 
                 mb={3}
                 textTransform="uppercase"
                 letterSpacing="wide"
               >
-                {t('tolbah.subtitle', 'Delivery Solutions')}
+                {t('utlubha.subtitle', 'Delivery Solutions')}
               </Text>
               
               <Heading
@@ -327,14 +327,14 @@ export default function LandingPage() {
                 color={isDark ? "white" : "#333"}
                 mb={5}
               >
-                {t('tolbah.title', 'Tolbah: Beyond Delivery')}
+                {t('utlubha.title', 'Utlubha: Beyond Delivery')}
               </Heading>
               
               <Text
                 fontSize={{ base: "md", md: "lg" }}
                 color={isDark ? "gray.300" : "gray.600"}
               >
-                {t('tolbah.description', 'Experience seamless delivery of food, groceries, and retail items, plus innovative QR ordering for a contactless dining experience.')}
+                {t('utlubha.description', 'Experience seamless delivery of food, groceries, and retail items, plus innovative QR ordering for a contactless dining experience.')}
               </Text>
             </MotionBox>
           </VStack>
@@ -345,34 +345,34 @@ export default function LandingPage() {
                 {/* Feature Cards */}
                 <FeatureCard
                   icon={FaUtensils}
-                  title={t('tolbah.features.food.title', 'Food Delivery')}
-                  description={t('tolbah.features.food.description', 'Get hot, fresh food delivered directly to your doorstep from your favorite restaurants')}
+                  title={t('utlubha.features.food.title', 'Food Delivery')}
+                  description={t('utlubha.features.food.description', 'Get hot, fresh food delivered directly to your doorstep from your favorite restaurants')}
                   delay={0}
-                  color={tolbahColor}
+                  color={utlubhaColor}
                 />
                 
                 <FeatureCard
                   icon={FaShoppingBasket}
-                  title={t('tolbah.features.grocery.title', 'Grocery Delivery')}
-                  description={t('tolbah.features.grocery.description', 'Fresh produce and pantry essentials delivered when you need them')}
+                  title={t('utlubha.features.grocery.title', 'Grocery Delivery')}
+                  description={t('utlubha.features.grocery.description', 'Fresh produce and pantry essentials delivered when you need them')}
                   delay={0.1}
-                  color={tolbahColor}
+                  color={utlubhaColor}
                 />
                 
                 <FeatureCard
                   icon={FaStore}
-                  title={t('tolbah.features.retail.title', 'Retail Items')}
-                  description={t('tolbah.features.retail.description', 'Shop electronics, gifts, and more from local stores with same-day delivery')}
+                  title={t('utlubha.features.retail.title', 'Retail Items')}
+                  description={t('utlubha.features.retail.description', 'Shop electronics, gifts, and more from local stores with same-day delivery')}
                   delay={0.2}
-                  color={tolbahColor}
+                  color={utlubhaColor}
                 />
                 
                 <FeatureCard
                   icon={FaQrcode}
-                  title={t('tolbah.features.qr.title', 'QR Ordering')}
-                  description={t('tolbah.features.qr.description', 'Scan, order, and pay directly from your table at participating restaurants')}
+                  title={t('utlubha.features.qr.title', 'QR Ordering')}
+                  description={t('utlubha.features.qr.description', 'Scan, order, and pay directly from your table at participating restaurants')}
                   delay={0.3}
-                  color={tolbahColor}
+                  color={utlubhaColor}
                 />
               </SimpleGrid>
             </GridItem>
@@ -387,7 +387,7 @@ export default function LandingPage() {
                 <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
                   <Image 
                     src="/images/delivery-app-screen.png" 
-                    alt={t('tolbah.imageAlt', 'tolbah Delivery App Screenshot')}
+                    alt={t('utlubha.imageAlt', 'utlubha Delivery App Screenshot')}
                     width={{ base: "300px", md: "400px" }}
                     as={motion.img}
                     animate={{ scale: [1, 1.03, 1] }}
@@ -400,7 +400,7 @@ export default function LandingPage() {
         </Container>
       </Box>
       
-      {/* Adfaaly Features Section */}
+      {/* Adfaly Features Section */}
       <Box 
         as="section" 
         py={{ base: 16, md: 24 }}
@@ -418,13 +418,13 @@ export default function LandingPage() {
               mx="auto"
             >
               <Text 
-                color={adfaalyColor} 
+                color={AdfalyColor} 
                 fontWeight="bold" 
                 mb={3}
                 textTransform="uppercase"
                 letterSpacing="wide"
               >
-                {t('adfaaly.subtitle', 'Payment Solutions')}
+                {t('Adfaly.subtitle', 'Payment Solutions')}
               </Text>
               
               <Heading
@@ -433,14 +433,14 @@ export default function LandingPage() {
                 color={isDark ? "white" : "#333"}
                 mb={5}
               >
-                {t('adfaaly.title', 'Adfaaly: The Cashless Revolution')}
+                {t('Adfaly.title', 'Adfaly: The Cashless Revolution')}
               </Heading>
               
               <Text
                 fontSize={{ base: "md", md: "lg" }}
                 color={isDark ? "gray.300" : "gray.600"}
               >
-                {t('adfaaly.description', 'A comprehensive payment solution that transforms how people handle cash, with merchant tools, agent networks, and instant transfers.')}
+                {t('Adfaly.description', 'A comprehensive payment solution that transforms how people handle cash, with merchant tools, agent networks, and instant transfers.')}
               </Text>
             </MotionBox>
           </VStack>
@@ -456,7 +456,7 @@ export default function LandingPage() {
                 <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
                   <Image 
                     src="/images/payment-app-screen.png" 
-                    alt={t('adfaaly.imageAlt', 'Adfaaly Payment App Screenshot')}
+                    alt={t('Adfaly.imageAlt', 'Adfaly Payment App Screenshot')}
                     width={{ base: "300px", md: "400px" }}
                     as={motion.img}
                     animate={{ scale: [1, 1.03, 1] }}
@@ -471,34 +471,34 @@ export default function LandingPage() {
                 {/* Feature Cards */}
                 <FeatureCard
                   icon={FaStore}
-                  title={t('adfaaly.features.merchant.title', 'Merchant Tools')}
-                  description={t('adfaaly.features.merchant.description', 'Issue payment links and QR codes to collect payments seamlessly')}
+                  title={t('Adfaly.features.merchant.title', 'Merchant Tools')}
+                  description={t('Adfaly.features.merchant.description', 'Issue payment links and QR codes to collect payments seamlessly')}
                   delay={0}
-                  color={adfaalyColor}
+                  color={AdfalyColor}
                 />
                 
                 <FeatureCard
                   icon={FaUser}
-                  title={t('adfaaly.features.agent.title', 'Agent Network')}
-                  description={t('adfaaly.features.agent.description', 'Human ATMs for cash deposits and withdrawals across the community')}
+                  title={t('Adfaly.features.agent.title', 'Agent Network')}
+                  description={t('Adfaly.features.agent.description', 'Human ATMs for cash deposits and withdrawals across the community')}
                   delay={0.1}
-                  color={adfaalyColor}
+                  color={AdfalyColor}
                 />
                 
                 <FeatureCard
                   icon={FaExchangeAlt}
-                  title={t('adfaaly.features.transfer.title', 'Instant Transfers')}
-                  description={t('adfaaly.features.transfer.description', 'Send money instantly to anyone, anywhere with just a few taps')}
+                  title={t('Adfaly.features.transfer.title', 'Instant Transfers')}
+                  description={t('Adfaly.features.transfer.description', 'Send money instantly to anyone, anywhere with just a few taps')}
                   delay={0.2}
-                  color={adfaalyColor}
+                  color={AdfalyColor}
                 />
                 
                 <FeatureCard
                   icon={FaShieldAlt}
-                  title={t('adfaaly.features.secure.title', 'Secure Transactions')}
-                  description={t('adfaaly.features.secure.description', 'Enterprise-grade security for all your financial activities')}
+                  title={t('Adfaly.features.secure.title', 'Secure Transactions')}
+                  description={t('Adfaly.features.secure.description', 'Enterprise-grade security for all your financial activities')}
                   delay={0.3}
-                  color={adfaalyColor}
+                  color={AdfalyColor}
                 />
               </SimpleGrid>
             </GridItem>
@@ -525,7 +525,7 @@ export default function LandingPage() {
                   <Heading
                     fontSize={{ base: "2xl", md: "3xl" }}
                     fontWeight="bold"
-                    color={tolbahColor}
+                    color={utlubhaColor}
                   >
                     {t('qr.title', 'QR Table Ordering')}
                   </Heading>
@@ -547,7 +547,7 @@ export default function LandingPage() {
                   </Text>
                   
                   <Button
-                    bg={tolbahColor}
+                    bg={utlubhaColor}
                     color="white"
                     _hover={{ bg: "#E86C00" }}
                     size="lg"
@@ -597,7 +597,7 @@ export default function LandingPage() {
                   <Heading
                     fontSize={{ base: "2xl", md: "3xl" }}
                     fontWeight="bold"
-                    color={adfaalyColor}
+                    color={AdfalyColor}
                   >
                     {t('agent.title', 'Human ATM Network')}
                   </Heading>
@@ -615,11 +615,11 @@ export default function LandingPage() {
                     color={textColor}
                     maxW="600px"
                   >
-                    {t('agent.description', 'Our agent network transforms local businesses and individuals into human ATMs, allowing for cash deposits and withdrawals from your Adfaaly account. Find agents near you, request services, and complete transactions with ease.')}
+                    {t('agent.description', 'Our agent network transforms local businesses and individuals into human ATMs, allowing for cash deposits and withdrawals from your Adfaly account. Find agents near you, request services, and complete transactions with ease.')}
                   </Text>
                   
                   <Button
-                    bg={adfaalyColor}
+                    bg={AdfalyColor}
                     color="white"
                     _hover={{ bg: "#1D4044" }}
                     size="lg"
@@ -683,7 +683,7 @@ export default function LandingPage() {
                     color={isDark ? "gray.300" : "gray.600"}
                     maxW="600px"
                   >
-                    {t('app.description', 'Get our mobile apps for both Tolbah and Adfaaly to enjoy seamless deliveries and payments wherever you go. Feature-rich interfaces designed for intuitive use.')}
+                    {t('app.description', 'Get our mobile apps for both Utlubha and Adfaly to enjoy seamless deliveries and payments wherever you go. Feature-rich interfaces designed for intuitive use.')}
                   </Text>
                   
                   <HStack spacing={4} mt={6} flexWrap="wrap">
@@ -774,7 +774,7 @@ export default function LandingPage() {
                 fontSize={{ base: "md", md: "lg" }}
                 color={isDark ? "gray.300" : "gray.600"}
               >
-                {t('steps.description', 'Whether it\'s deliveries with Tolbah or cashless payments with Adfaaly, getting started is quick and easy.')}
+                {t('steps.description', 'Whether it\'s deliveries with Utlubha or cashless payments with Adfaly, getting started is quick and easy.')}
               </Text>
             </MotionBox>
             
@@ -782,7 +782,7 @@ export default function LandingPage() {
               <StepCard
                 number="1"
                 title={t('steps.step1.title', 'Download App')}
-                description={t('steps.step1.description', 'Download Tolbah for deliveries or Adfaaly for payments from your app store')}
+                description={t('steps.step1.description', 'Download Utlubha for deliveries or Adfaly for payments from your app store')}
                 delay={0}
               />
               
@@ -866,7 +866,7 @@ export default function LandingPage() {
                   fontWeight="bold"
                   color={isDark ? "white" : "#333"}
                 >
-                  {t('cta.title', 'Get Started with Tolbah and Adfaaly Today')}
+                  {t('cta.title', 'Get Started with Utlubha and Adfaly Today')}
                 </Heading>
                 
                 <Text 
@@ -879,7 +879,7 @@ export default function LandingPage() {
                 
                 <HStack spacing={6} pt={4} wrap="wrap" justify="center">
                   <Button
-                    bg={tolbahColor}
+                    bg={utlubhaColor}
                     color="white"
                     _hover={{ bg: "#E86C00" }}
                     size="lg"
@@ -887,11 +887,11 @@ export default function LandingPage() {
                     rightIcon={<ArrowRight />}
                     onClick={() => router.push('/signup')}
                   >
-                    {t('cta.tolbahButton', 'Try Tolbah')}
+                    {t('cta.utlubhaButton', 'Try Utlubha')}
                   </Button>
                   
                   <Button
-                    bg={adfaalyColor}
+                    bg={AdfalyColor}
                     color="white"
                     _hover={{ bg: "#1D4044" }}
                     size="lg"
@@ -899,7 +899,7 @@ export default function LandingPage() {
                     rightIcon={<ArrowRight />}
                     onClick={() => router.push('/signup')}
                   >
-                    {t('cta.adfaalyButton', 'Try Adfaaly')}
+                    {t('cta.AdfalyButton', 'Try Adfaly')}
                   </Button>
                   
                   <Button
@@ -935,7 +935,7 @@ export default function LandingPage() {
             </Heading>
             
             <Text fontSize="sm" color={isDark ? "gray.400" : "gray.600"} lineHeight="tall">
-              {t('legal.disclaimer', 'Tolbah and Adfaaly are products of BitDash. Our delivery and payment services are designed to provide convenience and security. Please refer to our terms of service for complete information.')}
+              {t('legal.disclaimer', 'Utlubha and Adfaly are products of BitDash. Our delivery and payment services are designed to provide convenience and security. Please refer to our terms of service for complete information.')}
             </Text>
             
             <Divider borderColor={isDark ? "gray.700" : "gray.200"} />

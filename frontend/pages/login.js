@@ -18,27 +18,27 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/components/Layout';
 
 const PLATFORM_ROUTES = {
-  adfaaly: {
+  Adfaly: {
     merchant: '/merchant/dashboard',
     agent: '/agent/dashboard',
     customer: '/client/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://adfaaly.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://Adfaly.bitdash.app'
   },
-  tolbah: {
+  utlubha: {
     customer: '/customer/dashboard',
     captain: '/captain/dashboard',
     operator: '/operator/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://tolbah.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://utlubha.bitdash.app'
   }
 };
 
 const PROFILE_ENDPOINTS = {
-  adfaaly: {
+  Adfaly: {
     merchant: '/api/merchants',
     agent: '/api/agents',
     customer: '/api/customer-profiles'
   },
-  tolbah: {
+  utlubha: {
     customer: '/api/customer_profiles',
     captain: '/api/captains',
     operator: '/api/operators'
@@ -46,24 +46,24 @@ const PROFILE_ENDPOINTS = {
 };
 
 const BUSINESS_TYPE_ROUTES = {
-  merchant: { platform: 'adfaaly', userType: 'merchant' },
-  agent: { platform: 'adfaaly', userType: 'agent' },
-  customer: { platform: 'adfaaly', userType: 'customer' },
-  customer: { platform: 'tolbah', userType: 'customer' },
-  captain: { platform: 'tolbah', userType: 'captain' },
-  operator: { platform: 'tolbah', userType: 'operator' }
+  merchant: { platform: 'Adfaly', userType: 'merchant' },
+  agent: { platform: 'Adfaly', userType: 'agent' },
+  customer: { platform: 'Adfaly', userType: 'customer' },
+  customer: { platform: 'utlubha', userType: 'customer' },
+  captain: { platform: 'utlubha', userType: 'captain' },
+  operator: { platform: 'utlubha', userType: 'operator' }
 };
 
 const getPlatformFromURL = () => {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
-    if (hostname.includes('adfaaly')) return 'adfaaly';
-    if (hostname.includes('tolbah')) return 'tolbah';
+    if (hostname.includes('Adfaly')) return 'Adfaly';
+    if (hostname.includes('utlubha')) return 'utlubha';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
-      if (path.includes('/adfaaly')) return 'adfaaly';
-      if (path.includes('/tolbah')) return 'tolbah';
+      if (path.includes('/Adfaly')) return 'Adfaly';
+      if (path.includes('/utlubha')) return 'utlubha';
     }
   }
   return 'bitdash';
@@ -71,19 +71,19 @@ const getPlatformFromURL = () => {
 
 const getColorScheme = (platform, isDark) => {
   const colorSchemes = {
-    adfaaly: {
+    Adfaly: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.adfaaly.400' : 'brand.adfaaly.600',
-      button: 'brand.adfaaly.500',
-      hover: 'brand.adfaaly.600',
-      border: 'brand.adfaaly.500'
+      text: isDark ? 'brand.Adfaly.400' : 'brand.Adfaly.600',
+      button: 'brand.Adfaly.500',
+      hover: 'brand.Adfaly.600',
+      border: 'brand.Adfaly.500'
     },
-    tolbah: {
+    utlubha: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.tolbah.400' : 'brand.tolbah.600',
-      button: 'brand.tolbah.500',
-      hover: 'brand.tolbah.600',
-      border: 'brand.tolbah.500'
+      text: isDark ? 'brand.utlubha.400' : 'brand.utlubha.600',
+      button: 'brand.utlubha.500',
+      hover: 'brand.utlubha.600',
+      border: 'brand.utlubha.500'
     },
     bitdash: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
@@ -139,7 +139,7 @@ const LoginPage = () => {
   };
 
   const buttonStyles = {
-    variant: currentPlatform.includes('adfaaly') ? `${currentPlatform}-solid` : 'tolbah-solid',
+    variant: currentPlatform.includes('Adfaly') ? `${currentPlatform}-solid` : 'utlubha-solid',
     bg: colors.button,
     color: 'white',
     _hover: {
@@ -210,7 +210,7 @@ const LoginPage = () => {
 
   const checkBusinessType = async (token, userId) => {
     try {
-      if (currentPlatform === 'tolbah') {
+      if (currentPlatform === 'utlubha') {
         console.log('Checking operator status...');
         const traderResponse = await fetch(
           `${BASE_URL}/api/operators?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
@@ -262,7 +262,7 @@ const LoginPage = () => {
     const platform = currentPlatform.replace('bit', '');
     console.log('Current platform:', platform);
     
-    if (platform === 'tolbah') {
+    if (platform === 'utlubha') {
       const businessType = await checkBusinessType(token, userId);
       console.log('Business type check result:', businessType);
       
@@ -272,8 +272,8 @@ const LoginPage = () => {
       }
     }
     
-    // Handle adfaaly platform customer check
-    if (platform === 'adfaaly') {
+    // Handle Adfaly platform customer check
+    if (platform === 'Adfaly') {
       const customerProfileResponse = await fetch(
         `${BASE_URL}/api/customer-profiles?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
         { 

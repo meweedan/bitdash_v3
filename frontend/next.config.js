@@ -48,17 +48,23 @@ const nextConfig = {
   // Subdomain redirects
   async rewrites() {
     return [
-      // Tolbah platform routes
+      // Mirrsal platform routes
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'tolbah.bitdash.app' }],
-        destination: '/tolbah/:path*',
+        has: [{ type: 'host', value: 'mirrsal.bitdash.app' }],
+        destination: '/mirrsal/:path*',
       },
-      // adfaaly platform routes
+      // Utlubha platform routes
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'adfaaly.bitdash.app' }],
-        destination: '/adfaaly/:path*',
+        has: [{ type: 'host', value: 'utlubha.bitdash.app' }],
+        destination: '/utlubha/:path*',
+      },
+      // Adfaly platform routes
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'adfaly.bitdash.app' }],
+        destination: '/adfaly/:path*',
       }
     ];
   },

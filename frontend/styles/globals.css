@@ -1,13 +1,13 @@
 /* globals.css */
 :root {
   /* Base colors */
-  --bitcash-color: #56bba5;
+  --adfaly-color: #56bba5;
   --bitshop-color: #77a2e4;
   --bitfood-color: #ff7f50;
   --bitride-color: #edb26d;
 
   /* Gradient definitions */
-  --bitcash-gradient: linear-gradient(135deg, #e8f7f4, #56bba5, #306f63);
+  --adfaly-gradient: linear-gradient(135deg, #e8f7f4, #56bba5, #306f63);
   --bitshop-gradient: linear-gradient(135deg, #eef3fb, #77a2e4, #466088);
   --bitfood-gradient: linear-gradient(135deg, #fff2ef, #ff7f50, #994b30);
   --bitride-gradient: linear-gradient(135deg, #fcf6eb, #edb26d, #8e6a41);
@@ -25,7 +25,7 @@
 
 /* Subdomain-specific backgrounds */
 [data-subdomain="cash"] {
-  background: var(--bitcash-gradient);
+  background: var(--adfaly-gradient);
 }
 
 [data-subdomain="shop"] {
@@ -59,8 +59,8 @@
 }
 
 /* Gradient text effects */
-.gradient-text-bitcash {
-  background: var(--bitcash-gradient);
+.gradient-text-adfaly {
+  background: var(--adfaly-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

@@ -53,9 +53,9 @@ const MotionContainer = motion(Container);
 
 // Platform definitions
 const PLATFORMS = {
-  ADFAALY: { themeKey: 'adfaaly', subdomain: 'adfaaly' },
-  TOLBAH: { themeKey: 'tolbah', subdomain: 'tolbah' },
-  DEFAULT: { themeKey: 'adfaaly', subdomain: 'adfaaly' }, // Default platform
+  Adfaly: { themeKey: 'Adfaly', subdomain: 'Adfaly' },
+  Utlubha: { themeKey: 'utlubha', subdomain: 'utlubha' },
+  DEFAULT: { themeKey: 'Adfaly', subdomain: 'Adfaly' }, // Default platform
 };
 
 // Helper function to detect platform from hostname
@@ -63,8 +63,8 @@ const getPlatformFromHostname = (hostname) => {
   if (!hostname) return PLATFORMS.DEFAULT;
   
   // Check for each possible subdomain
-  if (hostname.includes('tolbah.')) return PLATFORMS.TOLBAH;
-  if (hostname.includes('adfaaly.')) return PLATFORMS.ADFAALY;
+  if (hostname.includes('utlubha.')) return PLATFORMS.Utlubha;
+  if (hostname.includes('Adfaly.')) return PLATFORMS.Adfaly;
   
   return PLATFORMS.DEFAULT;
 };
@@ -109,32 +109,32 @@ const Contact = () => {
   const [errorMessage, setErrorMessage] = useState('');
   
   // Get current theme key safely
-  const themeKey = currentPlatform?.themeKey || 'tolbah';
+  const themeKey = currentPlatform?.themeKey || 'utlubha';
   
   const cardBg = useColorModeValue('white', 'black.800');
   const highlightColor = useColorModeValue(`brand.${themeKey}.500`, `brand.${themeKey}.300`);
   
   const platforms = [
     { value: 'all', label: t('allPlatforms', 'All Platforms') },
-    { value: 'Adfaaly', label: t('Adfaaly', 'Adfaaly') },
-    { value: 'Tolbah', label: t('Tolbah', 'Tolbah') }
+    { value: 'Adfaly', label: t('Adfaly', 'Adfaly') },
+    { value: 'Utlubha', label: t('Utlubha', 'Utlubha') }
   ];
   
   const contactInfo = [
     { 
       title: t('generalInquiries', 'General Inquiries'), 
       value: 'info@bitdash.app',
-      color: 'brand.tolbah.400'
+      color: 'brand.utlubha.400'
     },
     { 
       title: t('technicalSupport', 'Technical Support'), 
       value: 'help@bitdash.app',
-      color: 'brand.tolbah.400'
+      color: 'brand.utlubha.400'
     },
     { 
       title: t('accountQuestions', 'Account Questions'), 
       value: 'contact@bitdash.app',
-      color: 'brand.tolbah.400'
+      color: 'brand.utlubha.400'
     }
   ];
 

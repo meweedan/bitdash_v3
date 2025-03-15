@@ -59,7 +59,7 @@ import {
   Truck
 } from 'lucide-react';
 
-const TolbahLandingBrowser = () => {
+const UtlubhaLandingBrowser = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
   const containerRef = useRef(null);
@@ -74,9 +74,9 @@ const TolbahLandingBrowser = () => {
   const heroImageSize = useBreakpointValue({ base: "100%", md: "90%" });
   const headingSize = useBreakpointValue({ base: "4xl", md: "5xl", lg: "6xl" });
   const glassCardBg = useColorModeValue('whiteAlpha.900', 'whiteAlpha.400');
-  const headingColor = useColorModeValue('brand.tolbah.700', 'brand.tolbah.400');
+  const headingColor = useColorModeValue('brand.utlubha.700', 'brand.utlubha.400');
   const textColor = useColorModeValue('gray.600', 'gray.300');
-  const accentColor = '#ff914d'; // Primary orange color for tolbah
+  const accentColor = '#ff914d'; // Primary orange color for utlubha
 
   // Parallax component
   const ParallaxBox = ({ children, offset = 100, ...rest }) => {
@@ -399,19 +399,19 @@ const TolbahLandingBrowser = () => {
                     maxW="550px"
                     color={isDark ? "gray.300" : "gray.600"}
                   >
-                    {t('hero.description', 'From restaurant meals to groceries and retail items, Tolbah delivers it all to your doorstep. Fast, reliable, and contactless.')}
+                    {t('hero.description', 'From restaurant meals to groceries and retail items, Utlubha delivers it all to your doorstep. Fast, reliable, and contactless.')}
                   </Text>
                   
                   <HStack spacing={4} pt={2}>
                     <Button
-                      variant="tolbah-outline"
+                      variant="utlubha-outline"
                       onClick={() => router.push('/signup')}
                     >
                       {t('hero.get_started', 'Get Started')}
                     </Button>
                     
                     <Button
-                      variant="tolbah-outline"
+                      variant="utlubha-outline"
                       borderColor={accentColor}
                       leftIcon={<Download />}
                       onClick={() => router.push('/download')}
@@ -532,7 +532,7 @@ const TolbahLandingBrowser = () => {
             maxW="800px"
             mx="auto"
           >
-            {t('services.description', 'From fresh meals to groceries and everyday essentials, Tolbah delivers everything you need with speed and reliability.')}
+            {t('services.description', 'From fresh meals to groceries and everyday essentials, Utlubha delivers everything you need with speed and reliability.')}
           </Text>
           
           <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} mb={16}>
@@ -616,7 +616,7 @@ const TolbahLandingBrowser = () => {
                   </Text>
                   
                   <Button
-                  variant="tolbah-outline"
+                  variant="utlubha-outline"
                     size="lg"
                     rightIcon={<ArrowRight />}
                     onClick={() => router.push('/qr-ordering')}
@@ -652,7 +652,7 @@ const TolbahLandingBrowser = () => {
             fontSize={{ base: '3xl', md: '4xl' }}
             color={accentColor}
           >
-            {t('platform.title', 'Why Choose Tolbah')}
+            {t('platform.title', 'Why Choose Utlubha')}
           </Heading>
           
           <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} mb={16}>
@@ -705,7 +705,7 @@ const TolbahLandingBrowser = () => {
             fontSize={{ base: '3xl', md: '4xl' }}
             color={accentColor}
           >
-            {t('partners.title', 'Partner With Tolbah')}
+            {t('partners.title', 'Partner With Utlubha')}
           </Heading>
           
           <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={16} alignItems="center">
@@ -738,7 +738,7 @@ const TolbahLandingBrowser = () => {
                   {t('partners.description2', 'Our platform provides the technology, logistics, and customer base to help your business thrive in the digital marketplace.')}
                 </Text>
                 <Button
-                variant="tolbah-outline"
+                variant="utlubha-outline"
                   _hover={{ bg: "#E86C00" }}
                   px={8}
                   size="lg"
@@ -851,7 +851,7 @@ const TolbahLandingBrowser = () => {
                   fontWeight="bold"
                   color={accentColor}
                 >
-                  {t('mobileApp.title', 'DOWNLOAD Tolbah APP')}
+                  {t('mobileApp.title', 'DOWNLOAD Utlubha APP')}
                 </Heading>
                                     
                 <Text
@@ -942,7 +942,7 @@ const TolbahLandingBrowser = () => {
                 color={isDark ? "white" : "gray.800"}
                 mb={5}
               >
-                {t('steps.title', 'Start Using Tolbah in 3 Simple Steps')}
+                {t('steps.title', 'Start Using Utlubha in 3 Simple Steps')}
               </Heading>
               
               <Text
@@ -950,7 +950,7 @@ const TolbahLandingBrowser = () => {
                 textAlign="center"
                 maxW="800px"
               >
-                {t('steps.description', 'It\'s easy to get started with Tolbah. Just follow these simple steps and you\'ll be enjoying delicious food and convenient deliveries in no time.')}
+                {t('steps.description', 'It\'s easy to get started with Utlubha. Just follow these simple steps and you\'ll be enjoying delicious food and convenient deliveries in no time.')}
               </Text>
             
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} width="full">
@@ -965,7 +965,7 @@ const TolbahLandingBrowser = () => {
             </SimpleGrid>
             
             <Button
-            variant="tolbah-outline"
+            variant="utlubha-outline"
               onClick={() => router.push('/signup')}
               rightIcon={<ArrowRight />}
               size="lg"
@@ -1027,14 +1027,14 @@ const TolbahLandingBrowser = () => {
                   color={textColor}
                   maxW="2xl"
                 >
-                  {t('cta.description', 'Join thousands of satisfied customers who trust Tolbah for all their delivery needs. Download our app today and experience the convenience.')}
+                  {t('cta.description', 'Join thousands of satisfied customers who trust Utlubha for all their delivery needs. Download our app today and experience the convenience.')}
                 </Text>
                 
                 <HStack spacing={6} pt={4} wrap="wrap" justify="center">
                   <Button
                     bg={accentColor}
                     color="white"
-                    variant="tolbah-outline"
+                    variant="utlubha-outline"
                     _hover={{ bg: "#E86C00" }}
                     size="lg"
                     px={8}
@@ -1073,11 +1073,11 @@ const TolbahLandingBrowser = () => {
         <Container maxW="container.xl">
           <VStack spacing={8} align="stretch">
             <Heading size="md" color={accentColor}>
-              {t('legal.title', 'Tolbah')}
+              {t('legal.title', 'Utlubha')}
             </Heading>
             
             <Text fontSize="sm" color={textColor} lineHeight="tall">
-              {t('legal.description', 'Tolbah is a comprehensive food and grocery delivery platform that also offers retail item delivery and QR table ordering services. Our mission is to make life more convenient by bringing your favorite meals, essential groceries, and everyday items straight to your doorstep.')}
+              {t('legal.description', 'Utlubha is a comprehensive food and grocery delivery platform that also offers retail item delivery and QR table ordering services. Our mission is to make life more convenient by bringing your favorite meals, essential groceries, and everyday items straight to your doorstep.')}
             </Text>
             
             <Divider borderColor={isDark ? "gray.700" : "gray.200"} />
@@ -1132,7 +1132,7 @@ const TolbahLandingBrowser = () => {
             </Wrap>
             
             <Text fontSize="xs" color={textColor} textAlign="center" mt={4}>
-              {t('legal.copyright', '© 2025 Tolbah. All rights reserved.')}
+              {t('legal.copyright', '© 2025 Utlubha. All rights reserved.')}
             </Text>
           </VStack>
         </Container>
@@ -1291,4 +1291,4 @@ const StepCard = ({ number, title, description, delay }) => {
   );
 };
 
-export default TolbahLandingBrowser;
+export default UtlubhaLandingBrowser;

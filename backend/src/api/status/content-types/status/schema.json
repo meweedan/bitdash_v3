@@ -46,8 +46,9 @@
       "enum": [
         "all",
         "bitdash",
-        "adfaaly",
-        "tolbah"
+        "adfaly",
+        "utlubha",
+        "mirrsal"
       ],
       "default": "all",
       "required": true

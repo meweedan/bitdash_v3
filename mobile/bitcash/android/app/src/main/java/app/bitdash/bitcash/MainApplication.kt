@@ -1,4 +1,4 @@
-package app.bitdash.bitcash
+package app.bitdash.adfaly
 
 import android.app.Application
 import android.content.res.Configuration

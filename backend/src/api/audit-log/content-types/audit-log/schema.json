@@ -126,8 +126,8 @@
     },
     "platform": {
       "type": "enumeration",
-      "enum": ["adfaaly", "tolbah", "admin", "api"],
-      "default": "adfaaly",
+      "enum": ["adfaly", "utlubha", "mirrsal", "admin", "api"],
+      "default": "adfaly",
       "required": true
     },
     "request_url": {

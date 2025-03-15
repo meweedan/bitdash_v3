@@ -28,7 +28,7 @@ import { format, parseISO, isPast } from 'date-fns';
 const PaymentLinkItem = ({ paymentLink, onDelete }) => {
   const { attributes } = paymentLink;
   const metadata = attributes.metadata || {};
-  const paymentUrl = `https://adfaaly.bitdash.app/${metadata.businessName?.toLowerCase().replace(/[^a-z0-9]/g, '-')}/${attributes.link_id}`;
+  const paymentUrl = `https://Adfaly.bitdash.app/${metadata.businessName?.toLowerCase().replace(/[^a-z0-9]/g, '-')}/${attributes.link_id}`;
   
   const { onCopy, hasCopied } = useClipboard(paymentUrl);
   const bg = useColorModeValue('white', 'gray.800');

@@ -217,7 +217,7 @@ function AgentsPage() {
                   <HStack spacing={4} pt={2}>
                     <Button
                       size={buttonSize}
-                      variant="bitcash-solid"
+                      variant="adfaly-solid"
                       rightIcon={<ArrowForwardIcon />}
                       onClick={() => router.push('/signup/agent')}
                     >
@@ -225,7 +225,7 @@ function AgentsPage() {
                     </Button>
                     <Button
                       size={buttonSize}
-                      variant="bitcash-outline"
+                      variant="adfaly-outline"
                       onClick={() => router.push('/agent/calculator')}
                     >
                       {t('agents.hero.calculatorButton', 'Earnings Calculator')}
@@ -745,7 +745,7 @@ function AgentsPage() {
           </ListItem>
         </List>
         
-        <Button variant="bitcash-outline" onClick={() => router.push('/agent/calculator')}>
+        <Button variant="adfaly-outline" onClick={() => router.push('/agent/calculator')}>
           {t('agents.commissions.calculatorButton', 'Calculate Your Potential Earnings')}
         </Button>
       </Box>
@@ -1220,7 +1220,7 @@ function AgentsPage() {
             {t('agents.cta.option1.description', 'Add a new revenue stream to your existing business')}
           </Text>
           <Button 
-            variant="bitcash-solid"
+            variant="adfaly-solid"
             size="sm" 
             mt={2}
             onClick={() => router.push('/signup/agent')}

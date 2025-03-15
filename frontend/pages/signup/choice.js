@@ -88,81 +88,81 @@ const PlatformBox = styled(Box)`
 
 // Updated platforms with fintech focus - using i18n keys
 const PLATFORMS = {
-  ADFAALY: {
-    subdomain: 'adfaaly',
-    name: 'Adfaaly',
-    nameKey: 'adfaaly.name',
-    themeKey: 'adfaaly',
+  Adfaly: {
+    subdomain: 'Adfaly',
+    name: 'Adfaly',
+    nameKey: 'Adfaly.name',
+    themeKey: 'Adfaly',
     title: 'Digital Payment Solutions',
-    titleKey: 'adfaaly.title',
+    titleKey: 'Adfaly.title',
     description: 'Streamlined payment processing and financial services for businesses and individuals.',
-    descriptionKey: 'adfaaly.description',
+    descriptionKey: 'Adfaly.description',
     icon: FaMoneyBillWave,
     options: [
       {
         type: 'merchant',
         title: 'Business Account',
-        titleKey: 'adfaaly.merchant.title',
+        titleKey: 'Adfaly.merchant.title',
         description: 'Accept payments, manage transactions, and access financial tools for your business.',
-        descriptionKey: 'adfaaly.merchant.description',
+        descriptionKey: 'Adfaly.merchant.description',
         icon: FaStore,
         signupPath: '/signup/merchant',
       },
       {
         type: 'agent',
         title: 'Payment Agent',
-        titleKey: 'adfaaly.agent.title',
+        titleKey: 'Adfaly.agent.title',
         description: 'Facilitate payments and earn commission on processed transactions.',
-        descriptionKey: 'adfaaly.agent.description',
+        descriptionKey: 'Adfaly.agent.description',
         icon: FaHandshake,
         signupPath: '/signup/agent',
       },
       {
         type: 'customer',
         title: 'Customer Account',
-        titleKey: 'adfaaly.customer.title',
+        titleKey: 'Adfaly.customer.title',
         description: 'Send and receive money instantly with low fees and global coverage.',
-        descriptionKey: 'adfaaly.customer.description',
+        descriptionKey: 'Adfaly.customer.description',
         icon: FaUserTie,
         signupPath: '/signup/customer'
       }
     ]
   },
-  TOLBAH: {
-    subdomain: 'tolbah',
-    name: 'Tolbah',
-    nameKey: 'tolbah.name',
-    themeKey: 'tolbah',
+  Utlubha: {
+    subdomain: 'utlubha',
+    name: 'Utlubha',
+    nameKey: 'utlubha.name',
+    themeKey: 'utlubha',
     title: 'Your cravings courier',
-    titleKey: 'tolbah.title',
+    titleKey: 'utlubha.title',
     description: 'Gain access to a whole new world of food ordering, whether its in person or at the comfort of your home.',
-    descriptionKey: 'tolbah.description',
+    descriptionKey: 'utlubha.description',
     icon: FaExchangeAlt,
     options: [
       {
         type: 'captain',
         title: 'Captain',
-        titleKey: 'tolbah.captain.title',
+        titleKey: 'utlubha.captain.title',
         description: 'Help us deliver to our customer and gain competitive rates and amazing perks.',
-        descriptionKey: 'tolbah.captain.description',
+        descriptionKey: 'utlubha.captain.description',
         icon: FaUserTie,
         signupPath: '/signup/captain',
       },
       {
         type: 'customer',
         title: 'Customer',
-        titleKey: 'tolbah.customer.title',
+        titleKey: 'utlubha.customer.title',
         description: 'Order all of your favs, discover new cravings and get those groceries you need instantly!',
-        descriptionKey: 'tolbah.customer.description',
+        descriptionKey: 'utlubha.customer.description',
         icon: FaUserTie,
         signupPath: '/signup/customer',
       },
       {
         type: 'operator',
         title: 'Operator',
-        titleKey: 'tolbah.operator.title',
-        description: 'List your business on Tolbah and gain more customers and give your old ones access to their fav cravings!',
-        descriptionKey: 'tolbah.operator.description',
+        titleKey: 'utlubha.operator.title',
+        description: 'List your business on Utlubha and gain more customers and give your old ones access to their fav cravings!',
+        descriptionKey: 'utlubha.operator.description',
         icon: FaHandshake,
         signupPath: '/signup/operator',
       }
@@ -387,7 +387,7 @@ export default function SignupChoice() {
                 </Heading>
                 
                 <SimpleGrid 
-                  columns={currentPlatform.subdomain === 'tolbah' ? 1 : { base: 1, lg: currentPlatform.options.length > 2 ? 3 : 2 }}
+                  columns={currentPlatform.subdomain === 'utlubha' ? 1 : { base: 1, lg: currentPlatform.options.length > 2 ? 3 : 2 }}
                   spacing={8} 
                   w="full"
                   justifyItems="center"

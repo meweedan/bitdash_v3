@@ -1,23 +1,23 @@
-// frontend/pages/tolbah/index.js
+// frontend/pages/utlubha/index.js
 import { useEffect } from 'react';
 import { usePWA } from '@/hooks/usePWA';
-import { TolbahPWALanding } from '@/components/PWALanding';
-import TolbahLandingBrowser from '@/components/landing/TolbahLandingBrowser';
+import { UtlubhaPWALanding } from '@/components/PWALanding';
+import UtlubhaLandingBrowser from '@/components/landing/UtlubhaLandingBrowser';
 
-const TolbahPage = () => {
+const UtlubhaPage = () => {
   const { isPWA } = usePWA();
   const isBrowser = typeof window !== 'undefined';
   const hostname = isBrowser ? window.location.hostname : '';
 
   useEffect(() => {
     if (isBrowser && hostname === 'bitdash.app') {
-      window.location.href = 'https://tolbah.bitdash.app';
+      window.location.href = 'https://utlubha.bitdash.app';
     }
   }, [hostname, isBrowser]);
 
   if (hostname === 'bitdash.app') return null;
 
-  return isPWA ? <TolbahPWALanding /> : <TolbahLandingBrowser />;
+  return isPWA ? <UtlubhaPWALanding /> : <UtlubhaLandingBrowser />;
 };
 
-export default TolbahPage;
+export default UtlubhaPage;

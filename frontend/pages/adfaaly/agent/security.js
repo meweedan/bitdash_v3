@@ -78,7 +78,7 @@ function Security() {
   // Colors & UI
   const cardBg = useColorModeValue('white', 'gray.800');
   const accentColor = useColorModeValue('brand.cash.600', 'brand.cash.400');
-  const accentBg = useColorModeValue('brand.bitcash.50', 'brand.bitcash.900');
+  const accentBg = useColorModeValue('brand.adfaly.50', 'brand.adfaly.900');
   const softShadow = useColorModeValue('lg', 'dark-lg');
 
   return (
@@ -631,7 +631,7 @@ function Security() {
                 {t('security.cta.description', 'BitCash is committed to maintaining the highest standards of security, integrity, and compliance across our agent network. Our multi-layered approach protects agents, customers, and the overall financial ecosystem.')}
               </Text>
               <Button 
-                variant="bitcash-solid" 
+                variant="adfaly-solid" 
                 size="lg"
                 onClick={() => router.push('/signup/agent')}
                 rightIcon={<ArrowForwardIcon />}

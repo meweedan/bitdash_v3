@@ -1,7 +1,7 @@
-// frontend/pages/adfaaly/index.js
+// frontend/pages/Adfaly/index.js
 import { useEffect } from 'react';
 import { usePWA } from '@/hooks/usePWA';
-import { AdfaalyPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component
+import { AdfalyPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component
 import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
 
 const CashPage = () => {
@@ -11,13 +11,13 @@ const CashPage = () => {
 
   useEffect(() => {
     if (isBrowser && hostname === 'bitdash.app') {
-      window.location.href = 'https://adfaaly.bitdash.app';
+      window.location.href = 'https://Adfaly.bitdash.app';
     }
   }, [hostname, isBrowser]);
 
   if (hostname === 'bitdash.app') return null;
 
-  return isPWA ? <AdfaalyPWALanding /> : <CashLandingBrowser />;
+  return isPWA ? <AdfalyPWALanding /> : <CashLandingBrowser />;
 };
 
 export default CashPage;

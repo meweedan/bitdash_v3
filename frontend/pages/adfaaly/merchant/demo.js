@@ -189,7 +189,7 @@ function MerchantDemo() {
     setTimeout(() => {
       // Create a mock payment link
       const mockId = Math.random().toString(36).substring(2, 10);
-      const link = `https://adfaaly.bitdash.app/${mockId}`;
+      const link = `https://Adfaly.bitdash.app/${mockId}`;
       setPaymentLink(link);
       setIsLinkGenerated(true);
       setIsGenerating(false);
@@ -756,7 +756,7 @@ function MerchantDemo() {
                         <Flex justify="space-between" mt={4}>
                           <Button
                             leftIcon={<ArrowForwardIcon transform="rotate(180deg)" />}
-                            variant="bitcash-outline"
+                            variant="adfaly-outline"
                             onClick={() => setActiveStep(2)}
                           >
                             {t('merchantDemo.common.backButton', 'Back')}
@@ -1006,7 +1006,7 @@ function MerchantDemo() {
                 
                 <HStack spacing={4} justifyContent="center">
                   <Button 
-                    variant="bitcash-solid" 
+                    variant="adfaly-solid" 
                     size="lg"
                     onClick={() => router.push('/signup/merchant')}
                     rightIcon={<ArrowForwardIcon />}
@@ -1015,7 +1015,7 @@ function MerchantDemo() {
                   </Button>
                   
                   <Button 
-                    variant="bitcash-solid" 
+                    variant="adfaly-solid" 
                     size="lg"
                     onClick={() => router.push('/merchants')}
                   >

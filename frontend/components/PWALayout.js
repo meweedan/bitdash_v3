@@ -16,8 +16,8 @@ import {
 } from '@chakra-ui/react';
 import { Search, ShoppingBag, Clock, BellRing, Package, BarChart2, Car, Tool, DollarSign } from 'lucide-react';
 
-// Tolbah PWA Landing
-const TolbahPWALanding = () => {
+// Utlubha PWA Landing
+const UtlubhaPWALanding = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -68,7 +68,7 @@ const TolbahPWALanding = () => {
 };
 
 // Cash PWA Landing
-const AdfaalyPWALanding = () => {
+const AdfalyPWALanding = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -88,8 +88,8 @@ const AdfaalyPWALanding = () => {
       <Container maxW="container.lg">
         <VStack spacing={8} align="center" pb={20}>
           <Image
-            src="/adfaaly.png"
-            alt="Adfaaly"
+            src="/Adfaly.png"
+            alt="Adfaly"
             w="150px"
             h="150px"
             objectFit="contain"
@@ -127,11 +127,11 @@ const PWALayout = ({ children }) => {
   useEffect(() => {
     if (isPWA && router.pathname === '/') {
       switch(hostname) {
-        case 'tolbah.bitdash.app':
-          router.replace('/tolbah');
+        case 'utlubha.bitdash.app':
+          router.replace('/utlubha');
           break;
-        case 'adfaaly.bitdash.app':
-          router.replace('/adfaaly');
+        case 'Adfaly.bitdash.app':
+          router.replace('/Adfaly');
           break;
         default:
           router.replace('/');
@@ -142,4 +142,4 @@ const PWALayout = ({ children }) => {
   return children;
 };
 
-export { TolbahPWALanding, AdfaalyPWALanding, PWALayout };
+export { UtlubhaPWALanding, AdfalyPWALanding, PWALayout };

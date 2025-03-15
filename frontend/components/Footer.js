@@ -74,8 +74,8 @@ const Footer = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
-      if (hostname.includes('tolbah')) setPlatform('tolbah');
-      else if (hostname.includes('adfaaly')) setPlatform('adfaaly');
+      if (hostname.includes('utlubha')) setPlatform('utlubha');
+      else if (hostname.includes('adfaly')) setPlatform('adfaly');
       else setPlatform('main');
 
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
@@ -92,10 +92,10 @@ const Footer = () => {
   // Get platform-specific color based on the current platform
   const getPlatformColor = (intensity) => {
     switch(platform) {
-      case 'adfaaly':
-        return `brand.adfaaly.${intensity}`;
-      case 'tolbah':
-        return `brand.tolbah.${intensity}`;
+      case 'Adfaly':
+        return `brand.Adfaly.${intensity}`;
+      case 'utlubha':
+        return `brand.utlubha.${intensity}`;
       default:
         return `blue.${intensity}`;
     }
@@ -107,30 +107,30 @@ const Footer = () => {
       { label: 'Privacy', href: '/policies/privacy', icon: Shield },
       { label: 'Terms', href: '/policies/terms', icon: FileText },
     ],
-    tolbah: [
-      { label: 'Forex Pairs', href: '/tolbah/pairs', icon: Globe },
-      { label: 'Analysis', href: '/tolbah/analysis', icon: LineChart },
-      { label: 'Tools', href: '/tolbah/tools', icon: Settings },
-      { label: 'Charts', href: '/tolbah/charts', icon: BarChart2 },
+    utlubha: [
+      { label: 'Forex Pairs', href: '/utlubha/pairs', icon: Globe },
+      { label: 'Analysis', href: '/utlubha/analysis', icon: LineChart },
+      { label: 'Tools', href: '/utlubha/tools', icon: Settings },
+      { label: 'Charts', href: '/utlubha/charts', icon: BarChart2 },
     ],
-    adfaaly: [
-      { label: 'Transfer Money', href: '/adfaaly/client/transfer', icon: FiArrowRightCircle },
-      { label: 'Payment Solutions', href: '/adfaaly/solutions', icon: CreditCard },
-      { label: 'Business Tools', href: '/adfaaly/business', icon: Building },
-      { label: 'Account', href: '/adfaaly/account', icon: User },
+    Adfaly: [
+      { label: 'Transfer Money', href: '/Adfaly/client/transfer', icon: FiArrowRightCircle },
+      { label: 'Payment Solutions', href: '/Adfaly/solutions', icon: CreditCard },
+      { label: 'Business Tools', href: '/Adfaly/business', icon: Building },
+      { label: 'Account', href: '/Adfaly/account', icon: User },
     ]
   };
 
   const getPWANavItems = (isLoggedIn) => {
     // Define navigation items specific to each platform
     const navItems = {
-      tolbah: [
+      utlubha: [
         { label: 'Trading', action: 'trading', icon: LineChart },
         { label: 'Markets', action: 'markets', icon: Globe },
         { label: 'Analysis', action: 'analysis', icon: BarChart2 },
         { label: 'Account', action: 'account', icon: User },
       ],
-      adfaaly: [
+      Adfaly: [
         { label: 'Transfer', action: 'transfer', icon: FiArrowRightCircle },
         { label: 'Wallet', action: 'wallet', icon: Wallet },
         { label: 'History', action: 'history', icon: Clock },
@@ -163,17 +163,17 @@ const Footer = () => {
   const handlePWAAction = async (action) => {
     // Define platform-specific paths
     const platformPaths = {
-      tolbah: {
-        trading: '/tolbah/platform',
-        markets: '/tolbah/markets',
-        analysis: '/tolbah/analysis',
-        account: '/tolbah/account',
+      utlubha: {
+        trading: '/utlubha/platform',
+        markets: '/utlubha/markets',
+        analysis: '/utlubha/analysis',
+        account: '/utlubha/account',
       },
-      adfaaly: {
-        transfer: 'adfaaly/client/transfer',
-        wallet: '/adfaaly/wallet',
-        history: '/adfaaly/transactions',
-        account: '/adfaaly/client/dashboard',
+      Adfaly: {
+        transfer: 'Adfaly/client/transfer',
+        wallet: '/Adfaly/wallet',
+        history: '/Adfaly/transactions',
+        account: '/Adfaly/client/dashboard',
       }
     };
 
@@ -221,11 +221,11 @@ const Footer = () => {
     // Determine where to redirect based on platform
     let path = '';
     switch(platform) {
-      case 'tolbah':
-        path = `/tolbah/transaction/${trackingNumber}`;
+      case 'utlubha':
+        path = `/utlubha/transaction/${trackingNumber}`;
         break;
-      case 'adfaaly':
-        path = `/adfaaly/transaction/${trackingNumber}`;
+      case 'Adfaly':
+        path = `/Adfaly/transaction/${trackingNumber}`;
         break;
       default:
         path = `/tracking/${trackingNumber}`;
@@ -242,9 +242,9 @@ const Footer = () => {
   // Get the drawer title based on platform
   const getDrawerTitle = () => {
     switch(platform) {
-      case 'tolbah':
+      case 'utlubha':
         return 'Track Withdrawals and Deposits';
-      case 'adfaaly':
+      case 'Adfaly':
         return 'Track Payment';
       default:
         return 'Tracking';
@@ -398,8 +398,8 @@ const Footer = () => {
         <DrawerOverlay />
         <DrawerContent borderTopRadius="20px">
           <DrawerHeader borderBottomWidth="1px">
-            {platform === 'tolbah' ? 'Forex Menu' :
-             platform === 'adfaaly' ? 'Cash Menu' :
+            {platform === 'utlubha' ? 'Forex Menu' :
+             platform === 'Adfaly' ? 'Cash Menu' :
              'Menu'}
           </DrawerHeader>
           <DrawerCloseButton />
@@ -461,8 +461,8 @@ const Footer = () => {
           <DrawerBody py={4}>
             <FormControl isRequired isInvalid={!!error}>
               <FormLabel>
-                {platform === 'tolbah' ? 'Transaction ID' :
-                 platform === 'adfaaly' ? 'Payment ID' :
+                {platform === 'utlubha' ? 'Transaction ID' :
+                 platform === 'Adfaly' ? 'Payment ID' :
                  'Tracking Number'}
               </FormLabel>
               <Input
@@ -472,8 +472,8 @@ const Footer = () => {
                   setError('');
                 }}
                 placeholder={
-                  platform === 'tolbah' ? 'Enter transaction ID' :
-                  platform === 'adfaaly' ? 'Enter payment ID' :
+                  platform === 'utlubha' ? 'Enter transaction ID' :
+                  platform === 'Adfaly' ? 'Enter payment ID' :
                   'Enter tracking number'
                 }
               />
@@ -481,7 +481,7 @@ const Footer = () => {
             </FormControl>
             <Button
               mt={4}
-              colorScheme={platform === 'adfaaly' ? 'brand.adfaaly.400' : platform}
+              colorScheme={platform === 'Adfaly' ? 'brand.Adfaly.400' : platform}
               onClick={handleTracking}
               isFullWidth
             >

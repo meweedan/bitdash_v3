@@ -1,6 +1,6 @@
 // src/theme/theme.js
 export const colors = {
-  bitcash: {
+  adfaly: {
     400: '#7bcfbd',
     500: '#56bba5',    // Base
     600: '#1eb495',    // Hover
@@ -82,7 +82,7 @@ export const componentStyles = {
   },
   button: {
     primary: {
-      backgroundColor: colors.bitcash[500],
+      backgroundColor: colors.adfaly[500],
       borderRadius: borderRadius.md,
       paddingVertical: spacing.sm,
       paddingHorizontal: spacing.md,
@@ -90,7 +90,7 @@ export const componentStyles = {
     outline: {
       backgroundColor: 'transparent',
       borderWidth: 1,
-      borderColor: colors.bitcash[500],
+      borderColor: colors.adfaly[500],
       borderRadius: borderRadius.md,
       paddingVertical: spacing.sm,
       paddingHorizontal: spacing.md,

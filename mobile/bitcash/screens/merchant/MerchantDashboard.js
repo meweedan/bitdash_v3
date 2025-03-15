@@ -1,4 +1,4 @@
-// mobile/bitcash/screens/merchant/MerchantDashboard.js
+// mobile/adfaly/screens/merchant/MerchantDashboard.js
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -22,7 +22,7 @@ import * as Sharing from 'expo-sharing';
 // Custom Components
 import ThemedView from '../../components/ThemedView';
 import ThemedText from '../../components/ThemedText';
-import WalletBalance from '../../components/adfaaly/merchant/WalletBalance';
+import WalletBalance from '../../components/Adfaly/merchant/WalletBalance';
 import PaymentLinkGenerator from './PaymentLinkGenerator';
 import TransactionsList from './MerchantTransactions';
 import { Card } from '../../components/SharedComponents';

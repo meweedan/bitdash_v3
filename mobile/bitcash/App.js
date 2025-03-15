@@ -61,7 +61,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <SafeAreaProvider>
         <NavigationContainer>
-          <View style={{ flex: 1, backgroundColor: theme.colors.bitcash[500] }}>
+          <View style={{ flex: 1, backgroundColor: theme.colors.adfaly[500] }}>
             <AppNavigator />
             <StatusBar style="light" />
           </View>

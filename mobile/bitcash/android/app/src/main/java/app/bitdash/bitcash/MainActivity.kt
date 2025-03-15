@@ -1,4 +1,4 @@
-package app.bitdash.bitcash
+package app.bitdash.adfaly
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

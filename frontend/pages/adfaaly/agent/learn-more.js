@@ -67,7 +67,7 @@ function LearnMore() {
   // Colors & UI
   const cardBg = useColorModeValue('white', 'gray.800');
   const accentColor = useColorModeValue('brand.cash.600', 'brand.cash.400');
-  const accentBg = useColorModeValue('brand.bitcash.50', 'brand.bitcash.900');
+  const accentBg = useColorModeValue('brand.adfaly.50', 'brand.adfaly.900');
   const softShadow = useColorModeValue('lg', 'dark-lg');
 
   // Agent journey steps
@@ -645,7 +645,7 @@ function LearnMore() {
               
               <HStack spacing={4} justifyContent="center">
                 <Button 
-                  variant="bitcash-solid" 
+                  variant="adfaly-solid" 
                   size="lg"
                   onClick={() => router.push('/signup/agent')}
                   rightIcon={<ArrowForwardIcon />}

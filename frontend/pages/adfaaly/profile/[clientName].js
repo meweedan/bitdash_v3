@@ -1,4 +1,4 @@
-// frontend/pages/adfaaly/profile/[clientName].js
+// frontend/pages/Adfaly/profile/[clientName].js
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';

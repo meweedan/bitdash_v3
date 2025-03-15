@@ -103,7 +103,7 @@ function Calculator() {
   // Colors & UI
   const cardBg = useColorModeValue('white', 'gray.800');
   const accentColor = useColorModeValue('brand.cash.600', 'brand.cash.400');
-  const accentBg = useColorModeValue('brand.bitcash.50', 'brand.bitcash.900');
+  const accentBg = useColorModeValue('brand.adfaly.50', 'brand.adfaly.900');
   const softShadow = useColorModeValue('lg', 'dark-lg');
 
   return (
@@ -453,7 +453,7 @@ function Calculator() {
                 </Alert>
                 
                 <Button 
-                  variant="bitcash-solid" 
+                  variant="adfaly-solid" 
                   width="full"
                   onClick={() => router.push('/signup/agent')}
                 >

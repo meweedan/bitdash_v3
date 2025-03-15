@@ -7,7 +7,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import Layout from '@/components/Layout';
 import OperatorMessages from '@/components/OperatorMessages';
 import SubscriptionInfo from '@/components/SubscriptionInfo';
-import AnalyticsTab from '@/components/tolbah/operator/AnalyticsTab';
+import AnalyticsTab from '@/components/utlubha/operator/AnalyticsTab';
 import Head from 'next/head';
 import { QRCodeCanvas } from 'qrcode.react';
 
@@ -1050,14 +1050,14 @@ const QRCodeCard = ({
       mx="auto"
       boxShadow="0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)"
     >
-      {/* Tolbah Brand */}
+      {/* Utlubha Brand */}
       <Text 
         fontSize="xs" 
         textAlign="center"
         fontWeight="bold" 
         color={customColors?.accent || (isDarkMode ? 'white' : 'black')}
       >
-        Powered by Tolbah
+        Powered by Utlubha
       </Text>
 
       {/* Main Content Area */}
@@ -1270,7 +1270,7 @@ const QRCodeCard = ({
   const handleAdd = (type) => {
   switch (type) {
     case 'restaurant':
-      router.push('/tolbah/operator/create-page');
+      router.push('/utlubha/operator/create-page');
       break;
     case 'menu':
       // Reset the form first
@@ -1656,7 +1656,7 @@ const handleUpdate = (type, item) => {
       onClick, 
       colorScheme = "blue",
       size = "md",
-      variant = "tolbah-solid",
+      variant = "utlubha-solid",
       isDisabled = false,
       iconsOnly = false
     }) => (
@@ -1818,7 +1818,7 @@ const handleUpdate = (type, item) => {
                                   icon={<IoIosColorFill />}
                                   aria-label="Customize QR Cards"
                                   onClick={() => setIsColorModalOpen(true)}
-                                  variant="tolbah-outline"
+                                  variant="utlubha-outline"
                                 />
                                 <ResponsiveIconButton
                                   icon={FiPlus}
@@ -1904,7 +1904,7 @@ const handleUpdate = (type, item) => {
                                       >
                                         <QRCodeCard
                                           tableName={table.attributes?.name || table.name}
-                                          qrValue={`https://tolbah.bitdash.app/tolbah/${userData.restaurant.id}`}
+                                          qrValue={`https://utlubha.bitdash.app/utlubha/${userData.restaurant.id}`}
                                           isDarkMode={qrDarkMode}
                                           restaurantName={userData.restaurant.name}
                                           customColors={userData.restaurant.custom_colors}
@@ -2335,7 +2335,7 @@ const handleUpdate = (type, item) => {
                                 
                                 <HStack mt={6} spacing={4} justify="center">
                                   <Button 
-                                    variant="tolbah-outline"
+                                    variant="utlubha-outline"
                                     leftIcon={<FiArrowRight />}
                                     onClick={() => handleUpgradeSubscription(userData.restaurant.subscription.tier === 'standard' ? 'premium' : 'standard')}
                                   >
@@ -2344,7 +2344,7 @@ const handleUpdate = (type, item) => {
                                   
                                   {userData.restaurant.subscription.status === 'active' && (
                                     <Button 
-                                      variant="tolbah-solid"
+                                      variant="utlubha-solid"
                                       onClick={handleCancelSubscription}
                                     >
                                       Cancel Subscription

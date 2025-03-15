@@ -13,7 +13,7 @@ const LANGUAGES = {
 
 const LANG_CODES = Object.keys(LANGUAGES);
 
-const STORAGE_KEY = '@bitcash_language';
+const STORAGE_KEY = '@adfaly_language';
 
 const resources = {
   en: {

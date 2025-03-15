@@ -34,13 +34,13 @@ import Head from 'next/head';
 
 const platforms = [
   {
-    id: 'adfaaly',
-    title: 'Adfaaly',
+    id: 'Adfaly',
+    title: 'Adfaly',
     tagline: 'Digital payment solution that fits your needs.',
     description: 'Experience seamless cross-border transactions with our institutional-grade payment infrastructure designed for businesses and consumers globally.',
-    image: '/adfaaly.png',
-    imageAr: '/adfaaly-ar.png',
-    color: 'brand.adfaaly.500',
+    image: '/Adfaly.png',
+    imageAr: '/Adfaly-ar.png',
+    color: 'brand.Adfaly.500',
     stats: [
       { value: '$2.5B+', label: 'Monthly Volume' },
       { value: '99.99%', label: 'Uptime' },
@@ -54,13 +54,13 @@ const platforms = [
     ]
   },
   {
-    id: 'tolbah',
-    title: 'Tolbah',
+    id: 'utlubha',
+    title: 'Utlubha',
     tagline: 'Your orders, instantly delivered.',
     description: 'Order your favourite cravings, your late night snacks or your montly grocery run and get it delivered instantly.',
-    image: '/tolbah.png',
-    imageAr: '/tolbah-ar.png',
-    color: 'brand.tolbah.500',
+    image: '/utlubha.png',
+    imageAr: '/utlubha-ar.png',
+    color: 'brand.utlubha.500',
     stats: [
       { value: '80+', label: 'Currency Pairs' },
       { value: '50+', label: 'Cryptocurrencies' },
@@ -455,7 +455,7 @@ const Services = () => {
             >
               <Heading
                 fontSize={{ base: '4xl', md: '7xl' }}
-                bgGradient="linear(to-r, brand.adfaaly.500, brand.tolbah.500)"
+                bgGradient="linear(to-r, brand.Adfaly.500, brand.utlubha.500)"
                 bgClip="text"
                 letterSpacing="tight"
                 lineHeight="shorter"

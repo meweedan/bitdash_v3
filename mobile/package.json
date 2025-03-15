@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "apps/bitcash",
+    "apps/adfaly",
     "apps/bitfood",
     "apps/bitride",
     "apps/bitshop",
@@ -12,7 +12,7 @@
     "packages/*"
   ],
   "scripts": {
-    "bitcash": "yarn workspace bitcash start",
+    "adfaly": "yarn workspace adfaly start",
     "bitfood": "yarn workspace bitfood start",
     "bitride": "yarn workspace bitride start",
     "bitshop": "yarn workspace bitshop start",
