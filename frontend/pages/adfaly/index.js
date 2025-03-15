@@ -11,7 +11,7 @@ const CashPage = () => {
 
   useEffect(() => {
     if (isBrowser && hostname === 'bitdash.app') {
-      window.location.href = 'https://Adfaly.bitdash.app';
+      window.location.href = 'https://adfaly.bitdash.app';
     }
   }, [hostname, isBrowser]);
 

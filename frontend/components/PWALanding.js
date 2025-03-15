@@ -18,7 +18,7 @@ export const AdfalyPWALanding = () => {
   const config = {
     title: 'Adfaly',
     description: 'Reimagining Libyan Finances',
-    image: '/Adfaly.png',
+    image: '/adfaly.png',
     color: '#4CAF50'
   };
 
@@ -59,7 +59,7 @@ const PWALanding = () => {
   const router = useRouter();
   const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
 
-  if (hostname.includes('Adfaly')) return <AdfalyPWALanding />;
+  if (hostname.includes('adfaly')) return <adfalyPWALanding />;
   if (hostname.includes('utlubha')) return <UtlubhaPWALanding />;
 
   const config = {
