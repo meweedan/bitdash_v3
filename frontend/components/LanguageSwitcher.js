@@ -20,12 +20,12 @@ const LanguageSwitcher = () => {
   useEffect(() => {
     const hostname = window.location.hostname;
     if (hostname.includes('utlubha')) setPlatform('utlubha');
-    else if (hostname.includes('Adfaly')) setPlatform('Adfaly');
+    else if (hostname.includes('adfaly')) setPlatform('adfaly');
     
     // For local development
     if (hostname === 'localhost') {
       const path = window.location.pathname;
-      if (path.includes('/Adfaly')) setPlatform('Adfaly');
+      if (path.includes('/adfaly')) setPlatform('adfaly');
       if (path.includes('/utlubha')) setPlatform('utlubha');
     }
   }, []);

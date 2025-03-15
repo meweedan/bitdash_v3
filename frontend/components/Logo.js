@@ -24,9 +24,9 @@ const Logo = ({ variant = 'header' }) => {
 
   // Updated with accurate dimensions from the specs provided
   const logoConfigs = {
-    Adfaly: {
-      en: { path: '/Adfaly.png', width: 1174, height: 520 },
-      ar: { path: '/Adfaly-ar.png', width: 1134, height: 634 }
+    adfaly: {
+      en: { path: '/adfaly.png', width: 1174, height: 520 },
+      ar: { path: '/adfaly-ar.png', width: 1134, height: 634 }
     },
     mirrsal: {
       en: { path: '/mirrsal.png', width: 1174, height: 520 },

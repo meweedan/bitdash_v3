@@ -92,8 +92,8 @@ const Footer = () => {
   // Get platform-specific color based on the current platform
   const getPlatformColor = (intensity) => {
     switch(platform) {
-      case 'Adfaly':
-        return `brand.Adfaly.${intensity}`;
+      case 'adfaly':
+        return `brand.adfaly.${intensity}`;
       case 'utlubha':
         return `brand.utlubha.${intensity}`;
       default:
@@ -113,11 +113,11 @@ const Footer = () => {
       { label: 'Tools', href: '/utlubha/tools', icon: Settings },
       { label: 'Charts', href: '/utlubha/charts', icon: BarChart2 },
     ],
-    Adfaly: [
-      { label: 'Transfer Money', href: '/Adfaly/client/transfer', icon: FiArrowRightCircle },
-      { label: 'Payment Solutions', href: '/Adfaly/solutions', icon: CreditCard },
-      { label: 'Business Tools', href: '/Adfaly/business', icon: Building },
-      { label: 'Account', href: '/Adfaly/account', icon: User },
+    adfaly: [
+      { label: 'Transfer Money', href: '/adfaly/client/transfer', icon: FiArrowRightCircle },
+      { label: 'Payment Solutions', href: '/adfaly/solutions', icon: CreditCard },
+      { label: 'Business Tools', href: '/adfaly/business', icon: Building },
+      { label: 'Account', href: '/adfaly/account', icon: User },
     ]
   };
 
@@ -130,7 +130,7 @@ const Footer = () => {
         { label: 'Analysis', action: 'analysis', icon: BarChart2 },
         { label: 'Account', action: 'account', icon: User },
       ],
-      Adfaly: [
+      adfaly: [
         { label: 'Transfer', action: 'transfer', icon: FiArrowRightCircle },
         { label: 'Wallet', action: 'wallet', icon: Wallet },
         { label: 'History', action: 'history', icon: Clock },
@@ -169,11 +169,11 @@ const Footer = () => {
         analysis: '/utlubha/analysis',
         account: '/utlubha/account',
       },
-      Adfaly: {
-        transfer: 'Adfaly/client/transfer',
-        wallet: '/Adfaly/wallet',
-        history: '/Adfaly/transactions',
-        account: '/Adfaly/client/dashboard',
+      adfaly: {
+        transfer: 'adfaly/client/transfer',
+        wallet: '/adfaly/wallet',
+        history: '/adfaly/transactions',
+        account: '/adfaly/client/dashboard',
       }
     };
 
@@ -224,8 +224,8 @@ const Footer = () => {
       case 'utlubha':
         path = `/utlubha/transaction/${trackingNumber}`;
         break;
-      case 'Adfaly':
-        path = `/Adfaly/transaction/${trackingNumber}`;
+      case 'adfaly':
+        path = `/adfaly/transaction/${trackingNumber}`;
         break;
       default:
         path = `/tracking/${trackingNumber}`;
@@ -244,7 +244,7 @@ const Footer = () => {
     switch(platform) {
       case 'utlubha':
         return 'Track Withdrawals and Deposits';
-      case 'Adfaly':
+      case 'adfaly':
         return 'Track Payment';
       default:
         return 'Tracking';
@@ -399,7 +399,7 @@ const Footer = () => {
         <DrawerContent borderTopRadius="20px">
           <DrawerHeader borderBottomWidth="1px">
             {platform === 'utlubha' ? 'Forex Menu' :
-             platform === 'Adfaly' ? 'Cash Menu' :
+             platform === 'adfaly' ? 'Cash Menu' :
              'Menu'}
           </DrawerHeader>
           <DrawerCloseButton />
@@ -462,7 +462,7 @@ const Footer = () => {
             <FormControl isRequired isInvalid={!!error}>
               <FormLabel>
                 {platform === 'utlubha' ? 'Transaction ID' :
-                 platform === 'Adfaly' ? 'Payment ID' :
+                 platform === 'adfaly' ? 'Payment ID' :
                  'Tracking Number'}
               </FormLabel>
               <Input
@@ -473,7 +473,7 @@ const Footer = () => {
                 }}
                 placeholder={
                   platform === 'utlubha' ? 'Enter transaction ID' :
-                  platform === 'Adfaly' ? 'Enter payment ID' :
+                  platform === 'adfaly' ? 'Enter payment ID' :
                   'Enter tracking number'
                 }
               />
@@ -481,7 +481,7 @@ const Footer = () => {
             </FormControl>
             <Button
               mt={4}
-              colorScheme={platform === 'Adfaly' ? 'brand.Adfaly.400' : platform}
+              colorScheme={platform === 'adfaly' ? 'brand.adfaly.400' : platform}
               onClick={handleTracking}
               isFullWidth
             >

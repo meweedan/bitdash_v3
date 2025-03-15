@@ -43,7 +43,7 @@ const theme = extendTheme({
           color: 'brand.bitdash.500',
           _hover: { bg: 'brand.bitdash.500', color: 'white' }
         },
-        // Adfaly variants
+        // adfaly variants
         'adfaly-solid': {
           bg: 'brand.adfaly.500',
           color: 'white',
@@ -93,8 +93,8 @@ const theme = extendTheme({
         bitdash: {
           borderColor: 'brand.bitdash.500',
         },
-        Adfaly: {
-          borderColor: 'brand.Adfaly.500',
+        adfaly: {
+          borderColor: 'brand.adfaly.500',
         },
         utlubha: {
           borderColor: 'brand.utlubha.500',

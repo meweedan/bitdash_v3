@@ -45,7 +45,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   
   // Always show announcements for these platforms
-  const showAnnouncements = platform === 'utlubha' || platform === 'Adfaly';
+  const showAnnouncements = platform === 'utlubha' || platform === 'adfaly';
 
   // Handle scroll effect
   useEffect(() => {
@@ -91,10 +91,10 @@ export default function Header() {
   const platforms = [
      {
       name: 'Adfaly',
-      image: '/Adfaly.png',
-      mobileImage: '/Adfaly.png',
-      href: 'https://Adfaly.bitdash.app/',
-      color: 'brand.Adfaly'
+      image: '/adfaly.png',
+      mobileImage: '/adfaly.png',
+      href: 'https://adfaly.bitdash.app/',
+      color: 'brand.adfaly'
     },
     {
       name: 'Utlubha',
@@ -118,13 +118,13 @@ export default function Header() {
       const hostname = window.location.hostname;
       
       // More specific checks to avoid partial matches
-      if (hostname.includes('Adfaly.bitdash') || hostname === 'Adfaly.localhost') return 'Adfaly';
+      if (hostname.includes('adfaly.bitdash') || hostname === 'adfaly.localhost') return 'adfaly';
       if (hostname.includes('utlubha.bitdash') || hostname === 'utlubha.localhost') return 'utlubha';
       if (hostname.includes('mirrsal.bitdash') || hostname === 'mirrsal.localhost') return 'mirrsal';
       
       // Also check URL path for local development
       const pathname = window.location.pathname;
-      if (pathname.startsWith('/Adfaly')) return 'Adfaly';
+      if (pathname.startsWith('/adfaly')) return 'adfaly';
       if (pathname.startsWith('/utlubha')) return 'utlubha';
       if (pathname.startsWith('/mirrsal')) return 'mirrsal';
     }
@@ -183,24 +183,24 @@ export default function Header() {
           ]
         },
       ];
-    } else if (platform === 'Adfaly') { // Cash
+    } else if (platform === 'adfaly') { // Cash
       return [
         { 
           name: t('payments', 'Payments'), 
-          path: '/Adfaly/payments',
+          path: '/adfaly/payments',
           submenu: [
-            { name: t('sendMoney', 'Send Money'), path: '/Adfaly/payments/send' },
-            { name: t('requestMoney', 'Request Money'), path: '/Adfaly/payments/request' },
-            { name: t('payBills', 'Pay Bills'), path: '/Adfaly/payments/bills' },
+            { name: t('sendMoney', 'Send Money'), path: '/adfaly/payments/send' },
+            { name: t('requestMoney', 'Request Money'), path: '/adfaly/payments/request' },
+            { name: t('payBills', 'Pay Bills'), path: '/adfaly/payments/bills' },
           ]
         },
         { 
           name: t('cards', 'Cards'), 
-          path: '/Adfaly/cards',
+          path: '/adfaly/cards',
           submenu: [
-            { name: t('virtualCards', 'Virtual Cards'), path: '/Adfaly/cards/virtual' },
-            { name: t('physicalCards', 'Physical Cards'), path: '/Adfaly/cards/physical' },
-            { name: t('cardSettings', 'Card Settings'), path: '/Adfaly/cards/settings' },
+            { name: t('virtualCards', 'Virtual Cards'), path: '/adfaly/cards/virtual' },
+            { name: t('physicalCards', 'Physical Cards'), path: '/adfaly/cards/physical' },
+            { name: t('cardSettings', 'Card Settings'), path: '/adfaly/cards/settings' },
           ]
         }
       ];

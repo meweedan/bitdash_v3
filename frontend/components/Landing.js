@@ -110,7 +110,7 @@ export default function LandingPage() {
   const textColor = useColorModeValue('brand.bitdash.400', 'brand.bitdash.400');
   const accentColor = '#8b7966'; // The gold/brown accent color from the main site
   const utlubhaColor = '#FF7D1A'; // Orange color for utlubha
-  const AdfalyColor = '#00bf63'; // Green color for Adfaly
+  const adfalyColor = '#00bf63'; // Green color for adfaly
 
   // Custom parallax component
   const ParallaxBox = ({ children, offset = 100, ...rest }) => {
@@ -279,14 +279,14 @@ export default function LandingPage() {
                 delay={0}
               />
               
-              {/* Adfaly Platform */}
+              {/* adfaly Platform */}
               <PlatformCard
-                title={t('platforms.Adfaly.title', 'Adfaly')}
-                description={t('platforms.Adfaly.description', 'Cashless payment solution featuring merchant accounts, payment links, QR code payments, and a network of agent-operated human ATMs.')}
-                image="/Adfaly.png"
-                cta={t('platforms.Adfaly.cta', 'Try Adfaly')}
-                link="https://Adfaly.bitdash.app"
-                color={AdfalyColor}
+                title={t('platforms.adfaly.title', 'adfaly')}
+                description={t('platforms.adfaly.description', 'Cashless payment solution featuring merchant accounts, payment links, QR code payments, and a network of agent-operated human ATMs.')}
+                image="/adfaly.png"
+                cta={t('platforms.adfaly.cta', 'Try adfaly')}
+                link="https://adfaly.bitdash.app"
+                color={adfalyColor}
                 delay={0.3}
               />
             </SimpleGrid>
@@ -400,7 +400,7 @@ export default function LandingPage() {
         </Container>
       </Box>
       
-      {/* Adfaly Features Section */}
+      {/* adfaly Features Section */}
       <Box 
         as="section" 
         py={{ base: 16, md: 24 }}
@@ -418,13 +418,13 @@ export default function LandingPage() {
               mx="auto"
             >
               <Text 
-                color={AdfalyColor} 
+                color={adfalyColor} 
                 fontWeight="bold" 
                 mb={3}
                 textTransform="uppercase"
                 letterSpacing="wide"
               >
-                {t('Adfaly.subtitle', 'Payment Solutions')}
+                {t('adfaly.subtitle', 'Payment Solutions')}
               </Text>
               
               <Heading
@@ -433,14 +433,14 @@ export default function LandingPage() {
                 color={isDark ? "white" : "#333"}
                 mb={5}
               >
-                {t('Adfaly.title', 'Adfaly: The Cashless Revolution')}
+                {t('adfaly.title', 'adfaly: The Cashless Revolution')}
               </Heading>
               
               <Text
                 fontSize={{ base: "md", md: "lg" }}
                 color={isDark ? "gray.300" : "gray.600"}
               >
-                {t('Adfaly.description', 'A comprehensive payment solution that transforms how people handle cash, with merchant tools, agent networks, and instant transfers.')}
+                {t('adfaly.description', 'A comprehensive payment solution that transforms how people handle cash, with merchant tools, agent networks, and instant transfers.')}
               </Text>
             </MotionBox>
           </VStack>
@@ -456,7 +456,7 @@ export default function LandingPage() {
                 <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
                   <Image 
                     src="/images/payment-app-screen.png" 
-                    alt={t('Adfaly.imageAlt', 'Adfaly Payment App Screenshot')}
+                    alt={t('adfaly.imageAlt', 'adfaly Payment App Screenshot')}
                     width={{ base: "300px", md: "400px" }}
                     as={motion.img}
                     animate={{ scale: [1, 1.03, 1] }}
@@ -471,34 +471,34 @@ export default function LandingPage() {
                 {/* Feature Cards */}
                 <FeatureCard
                   icon={FaStore}
-                  title={t('Adfaly.features.merchant.title', 'Merchant Tools')}
-                  description={t('Adfaly.features.merchant.description', 'Issue payment links and QR codes to collect payments seamlessly')}
+                  title={t('adfaly.features.merchant.title', 'Merchant Tools')}
+                  description={t('adfaly.features.merchant.description', 'Issue payment links and QR codes to collect payments seamlessly')}
                   delay={0}
-                  color={AdfalyColor}
+                  color={adfalyColor}
                 />
                 
                 <FeatureCard
                   icon={FaUser}
-                  title={t('Adfaly.features.agent.title', 'Agent Network')}
-                  description={t('Adfaly.features.agent.description', 'Human ATMs for cash deposits and withdrawals across the community')}
+                  title={t('adfaly.features.agent.title', 'Agent Network')}
+                  description={t('adfaly.features.agent.description', 'Human ATMs for cash deposits and withdrawals across the community')}
                   delay={0.1}
-                  color={AdfalyColor}
+                  color={adfalyColor}
                 />
                 
                 <FeatureCard
                   icon={FaExchangeAlt}
-                  title={t('Adfaly.features.transfer.title', 'Instant Transfers')}
-                  description={t('Adfaly.features.transfer.description', 'Send money instantly to anyone, anywhere with just a few taps')}
+                  title={t('adfaly.features.transfer.title', 'Instant Transfers')}
+                  description={t('adfaly.features.transfer.description', 'Send money instantly to anyone, anywhere with just a few taps')}
                   delay={0.2}
-                  color={AdfalyColor}
+                  color={adfalyColor}
                 />
                 
                 <FeatureCard
                   icon={FaShieldAlt}
-                  title={t('Adfaly.features.secure.title', 'Secure Transactions')}
-                  description={t('Adfaly.features.secure.description', 'Enterprise-grade security for all your financial activities')}
+                  title={t('adfaly.features.secure.title', 'Secure Transactions')}
+                  description={t('adfaly.features.secure.description', 'Enterprise-grade security for all your financial activities')}
                   delay={0.3}
-                  color={AdfalyColor}
+                  color={adfalyColor}
                 />
               </SimpleGrid>
             </GridItem>
@@ -597,7 +597,7 @@ export default function LandingPage() {
                   <Heading
                     fontSize={{ base: "2xl", md: "3xl" }}
                     fontWeight="bold"
-                    color={AdfalyColor}
+                    color={adfalyColor}
                   >
                     {t('agent.title', 'Human ATM Network')}
                   </Heading>
@@ -615,11 +615,11 @@ export default function LandingPage() {
                     color={textColor}
                     maxW="600px"
                   >
-                    {t('agent.description', 'Our agent network transforms local businesses and individuals into human ATMs, allowing for cash deposits and withdrawals from your Adfaly account. Find agents near you, request services, and complete transactions with ease.')}
+                    {t('agent.description', 'Our agent network transforms local businesses and individuals into human ATMs, allowing for cash deposits and withdrawals from your adfaly account. Find agents near you, request services, and complete transactions with ease.')}
                   </Text>
                   
                   <Button
-                    bg={AdfalyColor}
+                    bg={adfalyColor}
                     color="white"
                     _hover={{ bg: "#1D4044" }}
                     size="lg"
@@ -683,7 +683,7 @@ export default function LandingPage() {
                     color={isDark ? "gray.300" : "gray.600"}
                     maxW="600px"
                   >
-                    {t('app.description', 'Get our mobile apps for both Utlubha and Adfaly to enjoy seamless deliveries and payments wherever you go. Feature-rich interfaces designed for intuitive use.')}
+                    {t('app.description', 'Get our mobile apps for both Utlubha and adfaly to enjoy seamless deliveries and payments wherever you go. Feature-rich interfaces designed for intuitive use.')}
                   </Text>
                   
                   <HStack spacing={4} mt={6} flexWrap="wrap">
@@ -774,7 +774,7 @@ export default function LandingPage() {
                 fontSize={{ base: "md", md: "lg" }}
                 color={isDark ? "gray.300" : "gray.600"}
               >
-                {t('steps.description', 'Whether it\'s deliveries with Utlubha or cashless payments with Adfaly, getting started is quick and easy.')}
+                {t('steps.description', 'Whether it\'s deliveries with Utlubha or cashless payments with adfaly, getting started is quick and easy.')}
               </Text>
             </MotionBox>
             
@@ -782,7 +782,7 @@ export default function LandingPage() {
               <StepCard
                 number="1"
                 title={t('steps.step1.title', 'Download App')}
-                description={t('steps.step1.description', 'Download Utlubha for deliveries or Adfaly for payments from your app store')}
+                description={t('steps.step1.description', 'Download Utlubha for deliveries or adfaly for payments from your app store')}
                 delay={0}
               />
               
@@ -866,7 +866,7 @@ export default function LandingPage() {
                   fontWeight="bold"
                   color={isDark ? "white" : "#333"}
                 >
-                  {t('cta.title', 'Get Started with Utlubha and Adfaly Today')}
+                  {t('cta.title', 'Get Started with Utlubha and adfaly Today')}
                 </Heading>
                 
                 <Text 
@@ -891,7 +891,7 @@ export default function LandingPage() {
                   </Button>
                   
                   <Button
-                    bg={AdfalyColor}
+                    bg={adfalyColor}
                     color="white"
                     _hover={{ bg: "#1D4044" }}
                     size="lg"
@@ -899,7 +899,7 @@ export default function LandingPage() {
                     rightIcon={<ArrowRight />}
                     onClick={() => router.push('/signup')}
                   >
-                    {t('cta.AdfalyButton', 'Try Adfaly')}
+                    {t('cta.adfalyButton', 'Try adfaly')}
                   </Button>
                   
                   <Button
@@ -935,7 +935,7 @@ export default function LandingPage() {
             </Heading>
             
             <Text fontSize="sm" color={isDark ? "gray.400" : "gray.600"} lineHeight="tall">
-              {t('legal.disclaimer', 'Utlubha and Adfaly are products of BitDash. Our delivery and payment services are designed to provide convenience and security. Please refer to our terms of service for complete information.')}
+              {t('legal.disclaimer', 'Utlubha and adfaly are products of BitDash. Our delivery and payment services are designed to provide convenience and security. Please refer to our terms of service for complete information.')}
             </Text>
             
             <Divider borderColor={isDark ? "gray.700" : "gray.200"} />

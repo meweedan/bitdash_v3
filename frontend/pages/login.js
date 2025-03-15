@@ -18,11 +18,11 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/components/Layout';
 
 const PLATFORM_ROUTES = {
-  Adfaly: {
+  adfaly: {
     merchant: '/merchant/dashboard',
     agent: '/agent/dashboard',
     customer: '/client/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://Adfaly.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://adfaly.bitdash.app'
   },
   utlubha: {
     customer: '/customer/dashboard',
@@ -33,7 +33,7 @@ const PLATFORM_ROUTES = {
 };
 
 const PROFILE_ENDPOINTS = {
-  Adfaly: {
+  adfaly: {
     merchant: '/api/merchants',
     agent: '/api/agents',
     customer: '/api/customer-profiles'
@@ -46,9 +46,9 @@ const PROFILE_ENDPOINTS = {
 };
 
 const BUSINESS_TYPE_ROUTES = {
-  merchant: { platform: 'Adfaly', userType: 'merchant' },
-  agent: { platform: 'Adfaly', userType: 'agent' },
-  customer: { platform: 'Adfaly', userType: 'customer' },
+  merchant: { platform: 'adfaly', userType: 'merchant' },
+  agent: { platform: 'adfaly', userType: 'agent' },
+  customer: { platform: 'adfaly', userType: 'customer' },
   customer: { platform: 'utlubha', userType: 'customer' },
   captain: { platform: 'utlubha', userType: 'captain' },
   operator: { platform: 'utlubha', userType: 'operator' }
@@ -57,12 +57,12 @@ const BUSINESS_TYPE_ROUTES = {
 const getPlatformFromURL = () => {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
-    if (hostname.includes('Adfaly')) return 'Adfaly';
+    if (hostname.includes('adfaly')) return 'adfaly';
     if (hostname.includes('utlubha')) return 'utlubha';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
-      if (path.includes('/Adfaly')) return 'Adfaly';
+      if (path.includes('/adfaly')) return 'adfaly';
       if (path.includes('/utlubha')) return 'utlubha';
     }
   }
@@ -71,12 +71,12 @@ const getPlatformFromURL = () => {
 
 const getColorScheme = (platform, isDark) => {
   const colorSchemes = {
-    Adfaly: {
+    adfaly: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.Adfaly.400' : 'brand.Adfaly.600',
-      button: 'brand.Adfaly.500',
-      hover: 'brand.Adfaly.600',
-      border: 'brand.Adfaly.500'
+      text: isDark ? 'brand.adfaly.400' : 'brand.adfaly.600',
+      button: 'brand.adfaly.500',
+      hover: 'brand.adfaly.600',
+      border: 'brand.adfaly.500'
     },
     utlubha: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
@@ -139,7 +139,7 @@ const LoginPage = () => {
   };
 
   const buttonStyles = {
-    variant: currentPlatform.includes('Adfaly') ? `${currentPlatform}-solid` : 'utlubha-solid',
+    variant: currentPlatform.includes('adfaly') ? `${currentPlatform}-solid` : 'utlubha-solid',
     bg: colors.button,
     color: 'white',
     _hover: {
@@ -273,7 +273,7 @@ const LoginPage = () => {
     }
     
     // Handle Adfaly platform customer check
-    if (platform === 'Adfaly') {
+    if (platform === 'adfaly') {
       const customerProfileResponse = await fetch(
         `${BASE_URL}/api/customer-profiles?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
         { 

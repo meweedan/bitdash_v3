@@ -18,8 +18,8 @@ export default function HomePage() {
     // 1) Detect subdomain by checking window.location.hostname
     const hostname = window.location.hostname.toLowerCase();
 
-    if (hostname.includes('Adfaly.')) {
-      setPlatform('Adfaly');
+    if (hostname.includes('adfaly.')) {
+      setPlatform('adfaly');
     } else if (hostname.includes('utlubha.')) {
       setPlatform('utlubha');
     } else if (process.env.NODE_ENV === 'development') {
@@ -38,11 +38,11 @@ export default function HomePage() {
   // 2) For each platform, choose a distinct manifest + icons
   const getPlatformMeta = () => {
     switch (platform) {
-      case 'Adfaly':
+      case 'adfaly':
         return {
-          title: t('Adfaly.title', 'Adfaly'),
-          favicon: '/Adfaly-icons/favicon.ico',
-          manifest: '/manifests/Adfaly-manifest.json',
+          title: t('adfaly.title', 'adfaly'),
+          favicon: '/adfaly-icons/favicon.ico',
+          manifest: '/manifests/adfaly-manifest.json',
         };
       case 'utlubha':
         return {
@@ -64,7 +64,7 @@ export default function HomePage() {
   // 3) Render subdomain landing
   const renderPlatform = () => {
     switch (platform) {
-      case 'Adfaly':
+      case 'adfaly':
         return <CashLandingBrowser />;
       case 'utlubha':
         return <UtlubhaLandingBrowser />;
