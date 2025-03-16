@@ -270,10 +270,10 @@ export default function LandingPage() {
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} width="full">
               {/* utlubha Platform */}
               <PlatformCard
-                title={t('platforms.utlubha.title', 'Utlubha')}
+                title={t('platforms.utlubha.title', 'utlubha')}
                 description={t('platforms.utlubha.description', 'Your complete delivery solution for food, groceries, and retail items. Features QR ordering for seamless in-restaurant experiences.')}
                 image="/utlubha.png"
-                cta={t('platforms.utlubha.cta', 'Try Utlubha')}
+                cta={t('platforms.utlubha.cta', 'Try utlubha')}
                 link="https://utlubha.bitdash.app"
                 color={utlubhaColor}
                 delay={0}
@@ -327,7 +327,7 @@ export default function LandingPage() {
                 color={isDark ? "white" : "#333"}
                 mb={5}
               >
-                {t('utlubha.title', 'Utlubha: Beyond Delivery')}
+                {t('utlubha.title', 'utlubha: Beyond Delivery')}
               </Heading>
               
               <Text

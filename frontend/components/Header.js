@@ -97,7 +97,7 @@ export default function Header() {
       color: 'brand.tazdani'
     },
     {
-      name: 'Utlubha',
+      name: 'utlubha',
       image: '/utlubha.png',
       mobileImage: '/utlubha.png',
       href: 'https://utlubha.bitdash.app/',
