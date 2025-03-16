@@ -5,7 +5,7 @@
     "singularName": "operator",
     "pluralName": "operators",
     "displayName": "Operator",
-    "description": "Administrative operators for BitDash platforms"
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -44,18 +44,16 @@
       "type": "string",
       "required": true
     },
-    "businessLicense": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
+      "inversedBy": "operator"
+    },
+    "restaurant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::restaurant.restaurant",
       "inversedBy": "operator"
     },
     "status": {
@@ -64,43 +62,21 @@
         "Active",
         "Inactive",
         "Pending"
-      ],
-      "default": "Pending"
+      ]
     },
     "dateJoined": {
       "type": "datetime"
     },
     "verificationStatus": {
-      "type": "boolean",
-      "default": false
+      "type": "boolean"
     },
-    "operatorType": {
+    "businessType": {
       "type": "enumeration",
       "enum": [
-        "admin",
-        "manager",
-        "support",
-        "compliance",
-        "finance"
-      ],
-      "default": "support"
-    },
-    "accessLevel": {
-      "type": "enumeration",
-      "enum": [
-        "read_only",
-        "standard",
-        "advanced",
-        "full_access"
-      ],
-      "default": "standard"
-    },
-    "platformAccess": {
-      "type": "json",
-      "comment": "Which BitDash platforms this operator can access"
-    },
-    "taxId": {
-      "type": "string"
+        "restaurant",
+        "agent",
+        "merchant"
+      ]
     },
     "profileImage": {
       "type": "media",
@@ -110,11 +86,11 @@
         "images"
       ]
     },
-     "restaurant": {
+    "payments": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::restaurant.restaurant",
-      "inversedBy": "operator"
+      "relation": "oneToMany",
+      "target": "api::payment.payment",
+      "mappedBy": "operator"
     },
      "orders": {
       "type": "relation",

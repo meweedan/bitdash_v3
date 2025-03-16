@@ -772,6 +772,14 @@ export default function Header() {
           </VStack>
         </Box>
       </Collapse>
+
+      {/* Add the announcement banner with debug logging */}
+      {showAnnouncements && (
+        <>
+          {console.log(`Rendering announcement banner for platform: ${platform}`)}
+          <AnnouncementBanner platform={platform} />
+        </>
+      )}
     </Flex>
   );
 }
