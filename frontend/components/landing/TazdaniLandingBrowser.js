@@ -691,16 +691,14 @@ const TazdaniLanding = () => {
                 <HStack spacing={4}>
                   <Button 
                     leftIcon={<FaApple />} 
-                    colorScheme="blackAlpha" 
-                    variant="solid"
+                    variant="tazdani-solid"
                     onClick={() => router.push(t('app.store.ios.link'))}
                   >
                     {t('app.store.ios')}
                   </Button>
                   <Button 
                     leftIcon={<FaGooglePlay />} 
-                    colorScheme="blackAlpha" 
-                    variant="solid"
+                    variant="tazdani-solid"
                     onClick={() => router.push(t('app.store.android.link'))}
                   >
                     {t('app.store.android')}
@@ -1010,13 +1008,6 @@ const TazdaniLanding = () => {
                     </VStack>
                   </HStack>
                 </SimpleGrid>
-                <Button 
-                  colorScheme="green" 
-                  size="md"
-                  onClick={() => router.push('/agent-locator')}
-                >
-                  {t('agentMap.cta')}
-                </Button>
               </VStack>
             </GridItem>
             <GridItem>
@@ -1406,8 +1397,8 @@ const TazdaniLanding = () => {
         {/* Final CTA Section */}
         <Box py={20}>
           <Box
-            bg={useColorModeValue('brand.tazdani.500', 'brand.tazdani.600')}
-            color="white"
+          borderWidth={1}
+          borderColor={useColorModeValue('brand.tazdani.400', 'brand.tazdani.700')}
             borderRadius="2xl"
             overflow="hidden"
             position="relative"
@@ -1419,8 +1410,8 @@ const TazdaniLanding = () => {
               left={0}
               right={0}
               bottom={0}
-              opacity={0.1}
-              backgroundImage="url('/images/pattern.svg')"
+              opacity={0.2}
+              backgroundImage="url('/images/tazdani-pattern.png')"
               backgroundSize="cover"
             />
             
@@ -1432,21 +1423,16 @@ const TazdaniLanding = () => {
                 </Text>
                 <HStack spacing={6} pt={4}>
                   <Button
-                    size="lg"
-                    colorScheme="white"
-                    color="brand.tazdani.500"
-                    _hover={{ bg: "white", transform: "translateY(-2px)" }}
+                  variant="tazdani-outline"
+                    _hover={{ bg: "lightgreen", transform: "translateY(-2px)" }}
                     px={8}
                     onClick={() => router.push('/signup')}
                   >
                     {t('finalCta.primary')}
                   </Button>
                   <Button
-                    size="lg"
-                    variant="outline"
-                    color="white"
-                    borderColor="white"
-                    _hover={{ bg: "whiteAlpha.200", transform: "translateY(-2px)" }}
+                    variant="tazdani-outline"
+                    _hover={{ bg: "lightgreen", transform: "translateY(-2px)" }}
                     px={8}
                     onClick={() => router.push('/contact')}
                   >
@@ -1458,101 +1444,6 @@ const TazdaniLanding = () => {
           </Box>
         </Box>
       </Container>
-      
-      {/* Footer */}
-      <Box color={useColorModeValue('gray.700', 'gray.200')}>
-        <Container maxW="8xl" py={16}>
-          <Grid templateColumns={{ base: "1fr", md: "2fr 1fr 1fr 1fr" }} gap={12}>
-            <GridItem>
-              <VStack align="flex-start" spacing={6} zIndex={1}>
-                <Image src="/images/tazdani-logo.png" alt="Tazdani" height="50px" />
-                <Text>
-                  {t('footer.description')}
-                </Text>
-                <HStack spacing={4}>
-                  <IconButton
-                    aria-label={t('footer.social.facebook')}
-                    icon={<FaFacebook />}
-                    colorScheme="green"
-                    variant="ghost"
-                    onClick={() => window.open(t('footer.social.facebook.url'), '_blank')}
-                  />
-                  <IconButton
-                    aria-label={t('footer.social.twitter')}
-                    icon={<FaTwitter />}
-                    colorScheme="green"
-                    variant="ghost"
-                    onClick={() => window.open(t('footer.social.twitter.url'), '_blank')}
-                  />
-                  <IconButton
-                    aria-label={t('footer.social.instagram')}
-                    icon={<FaInstagram />}
-                    colorScheme="green"
-                    variant="ghost"
-                    onClick={() => window.open(t('footer.social.instagram.url'), '_blank')}
-                  />
-                  <IconButton
-                    aria-label={t('footer.social.linkedin')}
-                    icon={<FaLinkedin />}
-                    colorScheme="green"
-                    variant="ghost"
-                    onClick={() => window.open(t('footer.social.linkedin.url'), '_blank')}
-                  />
-                </HStack>
-              </VStack>
-            </GridItem>
-            
-            <GridItem>
-              <VStack align="flex-start" spacing={4}>
-                <Text fontWeight="bold" fontSize="lg">{t('footer.products.title')}</Text>
-                <Link href="/personal">{t('footer.products.personal')}</Link>
-                <Link href="/business">{t('footer.products.business')}</Link>
-                <Link href="/agents">{t('footer.products.agents')}</Link>
-                <Link href="/api">{t('footer.products.api')}</Link>
-              </VStack>
-            </GridItem>
-            
-            <GridItem>
-              <VStack align="flex-start" spacing={4}>
-                <Text fontWeight="bold" fontSize="lg">{t('footer.company.title')}</Text>
-                <Link href="/about">{t('footer.company.about')}</Link>
-                <Link href="/careers">{t('footer.company.careers')}</Link>
-                <Link href="/press">{t('footer.company.press')}</Link>
-                <Link href="/contact">{t('footer.company.contact')}</Link>
-              </VStack>
-            </GridItem>
-            
-            <GridItem>
-              <VStack align="flex-start" spacing={4}>
-                <Text fontWeight="bold" fontSize="lg">{t('footer.support.title')}</Text>
-                <Link href="/help">{t('footer.support.help')}</Link>
-                <Link href="/security">{t('footer.support.security')}</Link>
-                <Link href="/legal">{t('footer.support.legal')}</Link>
-                <Link href="/privacy">{t('footer.support.privacy')}</Link>
-              </VStack>
-            </GridItem>
-          </Grid>
-          
-          <Divider my={12} />
-          
-          <Flex 
-            direction={{ base: "column", md: "row" }} 
-            justify="space-between" 
-            align={{ base: "center", md: "flex-start" }}
-            textAlign={{ base: "center", md: "left" }}
-            gap={4}
-          >
-            <Text fontSize="sm">
-              © {new Date().getFullYear()} {t('footer.copyright')}
-            </Text>
-            <HStack spacing={4} flexWrap="wrap" justify={{ base: "center", md: "flex-end" }}>
-              <Link href="/terms" fontSize="sm">{t('footer.legal.terms')}</Link>
-              <Link href="/privacy" fontSize="sm">{t('footer.legal.privacy')}</Link>
-              <Link href="/cookies" fontSize="sm">{t('footer.legal.cookies')}</Link>
-            </HStack>
-          </Flex>
-        </Container>
-      </Box>
     </Box>
   );
 };
