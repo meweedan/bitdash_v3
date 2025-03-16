@@ -475,6 +475,41 @@ const Dashboard = ({ initialUserData }) => {
     router.push('/login');
   };
 
+  const handleCancelSubscription = async () => {
+  if (!window.confirm(t('confirmCancelSubscription'))) return;
+
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`${BASE_URL}/api/subscriptions/${userData.restaurant.subscription.id}/cancel`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) throw new Error('Failed to cancel subscription');
+
+    toast({
+      title: t('success'),
+      description: t('subscriptionCancelled'),
+      status: 'success',
+      duration: 3000
+    });
+
+    // Refresh data
+    await checkAuth();
+  } catch (error) {
+    console.error('Error cancelling subscription:', error);
+    toast({
+      title: t('error'),
+      description: error.message,
+      status: 'error',
+      duration: 3000
+    });
+  }
+};
+
   // Menu Modal (for creating/editing menus)
   const MenuModal = ({ isOpen, onClose, menu }) => {
     const isEditing = !!menu;
