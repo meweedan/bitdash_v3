@@ -469,6 +469,12 @@ const Dashboard = ({ initialUserData }) => {
     );
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    router.push('/login');
+  };
+
   // Menu Modal (for creating/editing menus)
   const MenuModal = ({ isOpen, onClose, menu }) => {
     const isEditing = !!menu;
