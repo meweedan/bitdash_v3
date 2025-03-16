@@ -75,7 +75,7 @@ const Footer = () => {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
       if (hostname.includes('utlubha')) setPlatform('utlubha');
-      else if (hostname.includes('adfaly')) setPlatform('adfaly');
+      else if (hostname.includes('tazdani')) setPlatform('tazdani');
       else setPlatform('main');
 
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
@@ -92,8 +92,8 @@ const Footer = () => {
   // Get platform-specific color based on the current platform
   const getPlatformColor = (intensity) => {
     switch(platform) {
-      case 'adfaly':
-        return `brand.adfaly.${intensity}`;
+      case 'tazdani':
+        return `brand.tazdani.${intensity}`;
       case 'utlubha':
         return `brand.utlubha.${intensity}`;
       default:
@@ -113,11 +113,11 @@ const Footer = () => {
       { label: 'Tools', href: '/utlubha/tools', icon: Settings },
       { label: 'Charts', href: '/utlubha/charts', icon: BarChart2 },
     ],
-    adfaly: [
-      { label: 'Transfer Money', href: '/adfaly/client/transfer', icon: FiArrowRightCircle },
-      { label: 'Payment Solutions', href: '/adfaly/solutions', icon: CreditCard },
-      { label: 'Business Tools', href: '/adfaly/business', icon: Building },
-      { label: 'Account', href: '/adfaly/account', icon: User },
+    tazdani: [
+      { label: 'Transfer Money', href: '/tazdani/client/transfer', icon: FiArrowRightCircle },
+      { label: 'Payment Solutions', href: '/tazdani/solutions', icon: CreditCard },
+      { label: 'Business Tools', href: '/tazdani/business', icon: Building },
+      { label: 'Account', href: '/tazdani/account', icon: User },
     ]
   };
 
@@ -130,7 +130,7 @@ const Footer = () => {
         { label: 'Analysis', action: 'analysis', icon: BarChart2 },
         { label: 'Account', action: 'account', icon: User },
       ],
-      adfaly: [
+      tazdani: [
         { label: 'Transfer', action: 'transfer', icon: FiArrowRightCircle },
         { label: 'Wallet', action: 'wallet', icon: Wallet },
         { label: 'History', action: 'history', icon: Clock },
@@ -169,11 +169,11 @@ const Footer = () => {
         analysis: '/utlubha/analysis',
         account: '/utlubha/account',
       },
-      adfaly: {
-        transfer: 'adfaly/client/transfer',
-        wallet: '/adfaly/wallet',
-        history: '/adfaly/transactions',
-        account: '/adfaly/client/dashboard',
+      tazdani: {
+        transfer: 'tazdani/client/transfer',
+        wallet: '/tazdani/wallet',
+        history: '/tazdani/transactions',
+        account: '/tazdani/client/dashboard',
       }
     };
 
@@ -224,8 +224,8 @@ const Footer = () => {
       case 'utlubha':
         path = `/utlubha/transaction/${trackingNumber}`;
         break;
-      case 'adfaly':
-        path = `/adfaly/transaction/${trackingNumber}`;
+      case 'tazdani':
+        path = `/tazdani/transaction/${trackingNumber}`;
         break;
       default:
         path = `/tracking/${trackingNumber}`;
@@ -244,7 +244,7 @@ const Footer = () => {
     switch(platform) {
       case 'utlubha':
         return 'Track Withdrawals and Deposits';
-      case 'adfaly':
+      case 'tazdani':
         return 'Track Payment';
       default:
         return 'Tracking';
@@ -399,7 +399,7 @@ const Footer = () => {
         <DrawerContent borderTopRadius="20px">
           <DrawerHeader borderBottomWidth="1px">
             {platform === 'utlubha' ? 'Forex Menu' :
-             platform === 'adfaly' ? 'Cash Menu' :
+             platform === 'tazdani' ? 'Cash Menu' :
              'Menu'}
           </DrawerHeader>
           <DrawerCloseButton />
@@ -462,7 +462,7 @@ const Footer = () => {
             <FormControl isRequired isInvalid={!!error}>
               <FormLabel>
                 {platform === 'utlubha' ? 'Transaction ID' :
-                 platform === 'adfaly' ? 'Payment ID' :
+                 platform === 'tazdani' ? 'Payment ID' :
                  'Tracking Number'}
               </FormLabel>
               <Input
@@ -473,7 +473,7 @@ const Footer = () => {
                 }}
                 placeholder={
                   platform === 'utlubha' ? 'Enter transaction ID' :
-                  platform === 'adfaly' ? 'Enter payment ID' :
+                  platform === 'tazdani' ? 'Enter payment ID' :
                   'Enter tracking number'
                 }
               />
@@ -481,7 +481,7 @@ const Footer = () => {
             </FormControl>
             <Button
               mt={4}
-              colorScheme={platform === 'adfaly' ? 'brand.adfaly.400' : platform}
+              colorScheme={platform === 'tazdani' ? 'brand.tazdani.400' : platform}
               onClick={handleTracking}
               isFullWidth
             >

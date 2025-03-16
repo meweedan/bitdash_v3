@@ -1,4 +1,4 @@
-// mobile/adfaly/screens/LoginScreen.js
+// mobile/tazdani/screens/LoginScreen.js
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -156,7 +156,7 @@ const LoginScreen = ({ navigation }) => {
         style={styles.keyboardAvoid}
       >
         <View style={styles.content}>
-          <ThemedText style={styles.title}>BitCash Login</ThemedText>
+          <ThemedText style={styles.title}>tazdani Login</ThemedText>
 
           <FormField
             label="Email"

@@ -21,7 +21,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
   }
 }
 
-rootProject.name = 'BitCash'
+rootProject.name = 'tazdani'
 
 dependencyResolutionManagement {
   versionCatalogs {

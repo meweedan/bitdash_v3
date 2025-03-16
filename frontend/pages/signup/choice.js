@@ -88,41 +88,41 @@ const PlatformBox = styled(Box)`
 
 // Updated platforms with fintech focus - using i18n keys
 const PLATFORMS = {
-  Adfaly: {
-    subdomain: 'Adfaly',
-    name: 'Adfaly',
-    nameKey: 'Adfaly.name',
-    themeKey: 'Adfaly',
+  tazdani: {
+    subdomain: 'tazdani',
+    name: 'tazdani',
+    nameKey: 'tazdani.name',
+    themeKey: 'tazdani',
     title: 'Digital Payment Solutions',
-    titleKey: 'Adfaly.title',
+    titleKey: 'tazdani.title',
     description: 'Streamlined payment processing and financial services for businesses and individuals.',
-    descriptionKey: 'Adfaly.description',
+    descriptionKey: 'tazdani.description',
     icon: FaMoneyBillWave,
     options: [
       {
         type: 'merchant',
         title: 'Business Account',
-        titleKey: 'Adfaly.merchant.title',
+        titleKey: 'tazdani.merchant.title',
         description: 'Accept payments, manage transactions, and access financial tools for your business.',
-        descriptionKey: 'Adfaly.merchant.description',
+        descriptionKey: 'tazdani.merchant.description',
         icon: FaStore,
         signupPath: '/signup/merchant',
       },
       {
         type: 'agent',
         title: 'Payment Agent',
-        titleKey: 'Adfaly.agent.title',
+        titleKey: 'tazdani.agent.title',
         description: 'Facilitate payments and earn commission on processed transactions.',
-        descriptionKey: 'Adfaly.agent.description',
+        descriptionKey: 'tazdani.agent.description',
         icon: FaHandshake,
         signupPath: '/signup/agent',
       },
       {
         type: 'customer',
         title: 'Customer Account',
-        titleKey: 'Adfaly.customer.title',
+        titleKey: 'tazdani.customer.title',
         description: 'Send and receive money instantly with low fees and global coverage.',
-        descriptionKey: 'Adfaly.customer.description',
+        descriptionKey: 'tazdani.customer.description',
         icon: FaUserTie,
         signupPath: '/signup/customer'
       }

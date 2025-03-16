@@ -1,4 +1,4 @@
-// mobile/adfaly/screens/agent/AgentDashboard.js
+// mobile/tazdani/screens/agent/AgentDashboard.js
 import React, { useState, useEffect, useMemo } from 'react';
 import {
   View,
@@ -18,7 +18,7 @@ import QRScannerModal from '../../components/QRScannerModal';
 import { useNavigation } from '@react-navigation/native';
 import ThemedView from '../../components/ThemedView';
 import ThemedText from '../../components/ThemedText';
-import CashBalanceWidget from '../../components/adfaly/agent/CashBalanceWidget';
+import CashBalanceWidget from '../../components/tazdani/agent/CashBalanceWidget';
 import { Card } from '../../components/SharedComponents';
 
 const ProcessingFeesWidget = ({ transactions }) => {

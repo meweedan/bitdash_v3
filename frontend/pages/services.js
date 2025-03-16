@@ -34,13 +34,13 @@ import Head from 'next/head';
 
 const platforms = [
   {
-    id: 'Adfaly',
-    title: 'Adfaly',
+    id: 'tazdani',
+    title: 'tazdani',
     tagline: 'Digital payment solution that fits your needs.',
     description: 'Experience seamless cross-border transactions with our institutional-grade payment infrastructure designed for businesses and consumers globally.',
-    image: '/Adfaly.png',
-    imageAr: '/Adfaly-ar.png',
-    color: 'brand.Adfaly.500',
+    image: '/tazdani.png',
+    imageAr: '/tazdani-ar.png',
+    color: 'brand.tazdani.500',
     stats: [
       { value: '$2.5B+', label: 'Monthly Volume' },
       { value: '99.99%', label: 'Uptime' },
@@ -455,7 +455,7 @@ const Services = () => {
             >
               <Heading
                 fontSize={{ base: '4xl', md: '7xl' }}
-                bgGradient="linear(to-r, brand.Adfaly.500, brand.utlubha.500)"
+                bgGradient="linear(to-r, brand.tazdani.500, brand.utlubha.500)"
                 bgClip="text"
                 letterSpacing="tight"
                 lineHeight="shorter"

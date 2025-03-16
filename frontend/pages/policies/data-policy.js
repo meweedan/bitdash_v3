@@ -37,7 +37,7 @@ const DataPolicy = () => {
       const hostname = window.location.hostname;
       if (hostname.includes('fund')) setPlatform('bitfund');
       else if (hostname.includes('trade')) setPlatform('bittrade');
-      else if (hostname.includes('cash')) setPlatform('adfaly');
+      else if (hostname.includes('cash')) setPlatform('tazdani');
       else if (hostname.includes('stock')) setPlatform('bitstock');
       else setPlatform('bitdash');
     }
@@ -86,7 +86,7 @@ const DataPolicy = () => {
                   <ListItem>{t('bitfundService', 'BitFund - Proprietary Trading Platform')}</ListItem>
                   <ListItem>{t('bittradeService', 'BitTrade - Forex & Crypto Trading')}</ListItem>
                   <ListItem>{t('bitstocktService', 'BitStock - Investment Services')}</ListItem>
-                  <ListItem>{t('adfalyService', 'BitCash - Payment Processing')}</ListItem>
+                  <ListItem>{t('tazdaniService', 'tazdani - Payment Processing')}</ListItem>
                 </UnorderedList>
               </Box>
             </Alert>
@@ -255,8 +255,8 @@ const DataPolicy = () => {
                       </Box>
                       
                       <Box>
-                        <Text fontWeight="bold">{t('adfalySpecific', 'BitCash')}</Text>
-                        <Text>{t('adfalyUses', 'We process your payment information to facilitate transactions, detect fraudulent activities, and provide merchant payment services and transaction reporting.')}</Text>
+                        <Text fontWeight="bold">{t('tazdaniSpecific', 'tazdani')}</Text>
+                        <Text>{t('tazdaniUses', 'We process your payment information to facilitate transactions, detect fraudulent activities, and provide merchant payment services and transaction reporting.')}</Text>
                       </Box>
                     </VStack>
                   </Box>

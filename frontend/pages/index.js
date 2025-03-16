@@ -7,8 +7,8 @@ import Layout from '@/components/Layout';
 
 // Subdomain landings
 import MainLanding from '@/components/Landing';
-import CashLandingBrowser from '@/components/landing/CashLandingBrowser';
 import UtlubhaLandingBrowser from '@/components/landing/UtlubhaLandingBrowser';
+import TazdaniLandingBrowser from '@/components/landing/TazdaniLandingBrowser';
 
 export default function HomePage() {
   const { t } = useTranslation('common');
@@ -18,8 +18,8 @@ export default function HomePage() {
     // 1) Detect subdomain by checking window.location.hostname
     const hostname = window.location.hostname.toLowerCase();
 
-    if (hostname.includes('adfaly.')) {
-      setPlatform('adfaly');
+    if (hostname.includes('tazdani.')) {
+      setPlatform('tazdani');
     } else if (hostname.includes('utlubha.')) {
       setPlatform('utlubha');
     } else if (process.env.NODE_ENV === 'development') {
@@ -38,11 +38,11 @@ export default function HomePage() {
   // 2) For each platform, choose a distinct manifest + icons
   const getPlatformMeta = () => {
     switch (platform) {
-      case 'adfaly':
+      case 'tazdani':
         return {
-          title: t('adfaly.title', 'adfaly'),
-          favicon: '/adfaly-icons/favicon.ico',
-          manifest: '/manifests/adfaly-manifest.json',
+          title: t('tazdani.title', 'tazdani'),
+          favicon: '/tazdani-icons/favicon.ico',
+          manifest: '/manifests/tazdani-manifest.json',
         };
       case 'utlubha':
         return {
@@ -64,8 +64,8 @@ export default function HomePage() {
   // 3) Render subdomain landing
   const renderPlatform = () => {
     switch (platform) {
-      case 'adfaly':
-        return <CashLandingBrowser />;
+      case 'tazdani':
+        return <TazdaniLandingBrowser />;
       case 'utlubha':
         return <UtlubhaLandingBrowser />;
       default:

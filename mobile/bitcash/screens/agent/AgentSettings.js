@@ -1,4 +1,4 @@
-// mobile/adfaly/screens/agent/AgentSettings.js
+// mobile/tazdani/screens/agent/AgentSettings.js
 import React, { useState, useEffect } from 'react';
 import {
   View,
@@ -232,7 +232,7 @@ const AgentSettings = () => {
   if (isLoading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color={theme.colors.adfaly[500]} />
+        <ActivityIndicator size="large" color={theme.colors.tazdani[500]} />
       </View>
     );
   }
@@ -483,7 +483,7 @@ const styles = StyleSheet.create({
     color: '#666'
   },
   saveButton: {
-    backgroundColor: theme.colors.adfaly[500],
+    backgroundColor: theme.colors.tazdani[500],
     padding: 16,
     borderRadius: 8,
     alignItems: 'center',

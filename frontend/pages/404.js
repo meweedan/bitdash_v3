@@ -54,8 +54,7 @@ const getBrandKeyFromSubdomain = (hostname) => {
     if (hostname.includes('.') && hostname.split('.').length >= 3) {
       const subdomain = hostname.split('.')[0];
       
-      if (subdomain === 'adfaly') return 'adfaly';
-      if (subdomain === 'mirrsal') return 'mirrsal';
+      if (subdomain === 'tazdani') return 'tazdani';
       if (subdomain === 'utlubha') return 'utlubha';
     }
   } catch (e) {

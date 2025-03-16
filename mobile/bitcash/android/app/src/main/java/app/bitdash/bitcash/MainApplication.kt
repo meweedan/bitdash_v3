@@ -1,4 +1,4 @@
-package app.bitdash.adfaly
+package app.bitdash.tazdani
 
 import android.app.Application
 import android.content.res.Configuration

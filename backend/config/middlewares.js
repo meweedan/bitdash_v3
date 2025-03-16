@@ -7,8 +7,7 @@ module.exports = [
       headers: ['*'],
       origin: [
         'https://bitdash.app',
-        'https://adfaly.bitdash.app',
-        'https://mirrsal.bitdash.app',
+        'https://tazdani.bitdash.app',
         'https://utlubha.bitdash.app',
         'http://localhost:3000', 
         'https://bitdash-backend.onrender.com'],

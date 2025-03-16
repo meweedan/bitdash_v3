@@ -308,7 +308,7 @@ export default function CustomerSignup() {
       const hostname = window.location.hostname;
       if (hostname === 'food.bitdash.app') {
         router.push('/customer/dashboard');
-      } else if (hostname === 'Adfaly.bitdash.app') {
+      } else if (hostname === 'tazdani.bitdash.app') {
         router.push('/client/dashboard');
       }
 
@@ -498,7 +498,7 @@ export default function CustomerSignup() {
                     </Checkbox>
                     
                     <RiskDisclosure 
-                      platform="BitCash" 
+                      platform="tazdani" 
                       accountType="customer" 
                       onAccept={handleRiskAcceptance}
                     />

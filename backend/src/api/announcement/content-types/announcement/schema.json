@@ -36,8 +36,7 @@
       "type": "enumeration",
       "enum": [
         "utlubha",
-        "mirrsal",
-        "adfaly"
+        "tazdani"
       ],
       "required": true
     },

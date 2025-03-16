@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "BitCash",
-    "slug": "adfaly",
+    "name": "tazdani",
+    "slug": "tazdani",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -30,12 +30,12 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.bitdash.adfaly",
+      "bundleIdentifier": "com.bitdash.tazdani",
       "buildNumber": "1.0.0",
       "infoPlist": {
-        "NSCameraUsageDescription": "BitCash needs access to your camera for QR code scanning",
-        "NSPhotoLibraryUsageDescription": "BitCash needs access to your photos for profile and business logo uploads",
-        "NSLocationWhenInUseUsageDescription": "BitCash needs your location to find nearby agents and merchants",
+        "NSCameraUsageDescription": "tazdani needs access to your camera for QR code scanning",
+        "NSPhotoLibraryUsageDescription": "tazdani needs access to your photos for profile and business logo uploads",
+        "NSLocationWhenInUseUsageDescription": "tazdani needs your location to find nearby agents and merchants",
         "UIBackgroundModes": [
           "fetch",
           "remote-notification"
@@ -43,7 +43,7 @@
       }
     },
     "android": {
-      "package": "app.bitdash.adfaly",
+      "package": "app.bitdash.tazdani",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",

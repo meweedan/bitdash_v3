@@ -29,7 +29,7 @@ import RiskDisclosure from '@/components/RiskDisclosure';
 import { useTranslation } from 'react-i18next';
 
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
-const PAYMENT_URL = 'https://Adfaly.bitdash.app';
+const PAYMENT_URL = 'https://tazdani.bitdash.app';
 
 const MerchantSignup = () => {
   const router = useRouter();
@@ -381,7 +381,7 @@ await Promise.all([
   return (
     <Layout>
       <Head>
-        <title>BitCash - Merchant Signup</title>
+        <title>tazdani - Merchant Signup</title>
       </Head>
 
       <Container maxW="container.md" py={8}>
@@ -630,7 +630,7 @@ await Promise.all([
                     </Checkbox>
                     
                     <RiskDisclosure 
-                      platform="BitCash" 
+                      platform="tazdani" 
                       accountType="merchant" 
                       onAccept={handleRiskAcceptance}
                     />

@@ -147,7 +147,7 @@ const CustomerSettings = () => {
   if (isLoading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color={theme.colors.adfaly[500]} />
+        <ActivityIndicator size="large" color={theme.colors.tazdani[500]} />
       </View>
     );
   }
@@ -311,7 +311,7 @@ const styles = StyleSheet.create({
     gap: 16
   },
   saveButton: {
-    backgroundColor: theme.colors.adfaly[500],
+    backgroundColor: theme.colors.tazdani[500],
     padding: 16,
     borderRadius: 8,
     alignItems: 'center',

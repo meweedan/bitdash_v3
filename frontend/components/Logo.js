@@ -10,12 +10,10 @@ const Logo = ({ variant = 'header' }) => {
   
   useEffect(() => {
     const hostname = window.location.hostname;
-    if (hostname.includes('adfaly')) {
-      setPlatform('adfaly'); 
+    if (hostname.includes('tazdani')) {
+      setPlatform('tazdani'); 
     } else if (hostname.includes('utlubha')) {
       setPlatform('utlubha');
-    } else if (hostname.includes('mirrsal')) {
-      setPlatform('mirrsal');
     } else if (process.env.NODE_ENV === 'development') {
       const urlPlatform = new URLSearchParams(window.location.search).get('platform');
       setPlatform(urlPlatform);
@@ -24,13 +22,9 @@ const Logo = ({ variant = 'header' }) => {
 
   // Updated with accurate dimensions from the specs provided
   const logoConfigs = {
-    adfaly: {
-      en: { path: '/adfaly.png', width: 1174, height: 520 },
-      ar: { path: '/adfaly-ar.png', width: 1134, height: 634 }
-    },
-    mirrsal: {
-      en: { path: '/mirrsal.png', width: 1174, height: 520 },
-      ar: { path: '/mirrsal-ar.png', width: 1134, height: 634},
+    tazdani: {
+      en: { path: '/tazdani.png', width: 1174, height: 520 },
+      ar: { path: '/tazdani-ar.png', width: 1134, height: 634 }
     },
     utlubha: {
       en: { path: '/utlubha.png', width: 1174, height: 520 },
@@ -51,7 +45,7 @@ const Logo = ({ variant = 'header' }) => {
     const aspectRatio = logoConfig.width / logoConfig.height;
     
     // Header logo sizes - updated for better fit in header
-    const headerWidth = useBreakpointValue({ base: "140px", md: "200px" });
+    const headerWidth = useBreakpointValue({ base: "150px", md: "250px" });
     const headerHeight = `${parseInt(headerWidth) / aspectRatio}px`;
     
     return (
@@ -78,7 +72,7 @@ const Logo = ({ variant = 'header' }) => {
 
   // Renders all platform logos in a 2x2 grid (for mobile solutions menu)
   const renderLogoGrid = () => {
-    const platformOptions = ['adfaly', 'utlubha', 'mirrsal'];
+    const platformOptions = ['tazdani', 'utlubha'];
     
     return (
       <SimpleGrid columns={2} spacing={4} width="100%">

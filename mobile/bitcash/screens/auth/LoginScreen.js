@@ -108,7 +108,7 @@ export default function LoginScreen() {
  return (
    <ThemedView style={styles.container}>
      <View style={styles.loginForm}>
-       <ThemedText style={styles.title}>BitCash</ThemedText>
+       <ThemedText style={styles.title}>tazdani</ThemedText>
        
        <TextInput
          style={styles.input}

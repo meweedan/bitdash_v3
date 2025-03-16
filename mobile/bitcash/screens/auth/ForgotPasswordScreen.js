@@ -185,7 +185,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
           style={[styles.toggleButton, isEmail && styles.toggleButtonActive]}
           onPress={() => setIsEmail(true)}
         >
-          <Icon name="mail" size={20} color={isEmail ? theme.colors.adfaly[500] : '#666'} />
+          <Icon name="mail" size={20} color={isEmail ? theme.colors.tazdani[500] : '#666'} />
           <ThemedText style={[styles.toggleText, isEmail && styles.toggleTextActive]}>
             {t('auth.email')}
           </ThemedText>
@@ -194,7 +194,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
           style={[styles.toggleButton, !isEmail && styles.toggleButtonActive]}
           onPress={() => setIsEmail(false)}
         >
-          <Icon name="phone" size={20} color={!isEmail ? theme.colors.adfaly[500] : '#666'} />
+          <Icon name="phone" size={20} color={!isEmail ? theme.colors.tazdani[500] : '#666'} />
           <ThemedText style={[styles.toggleText, !isEmail && styles.toggleTextActive]}>
             {t('auth.phone')}
           </ThemedText>
@@ -374,10 +374,10 @@ const styles = StyleSheet.create({
     color: '#666'
   },
   toggleTextActive: {
-    color: theme.colors.adfaly[500]
+    color: theme.colors.tazdani[500]
   },
   button: {
-    backgroundColor: theme.colors.adfaly[500],
+    backgroundColor: theme.colors.tazdani[500],
     padding: 16,
     borderRadius: 12,
     alignItems: 'center',
@@ -416,7 +416,7 @@ const styles = StyleSheet.create({
     marginTop: 16
   },
   resendText: {
-    color: theme.colors.adfaly[500],
+    color: theme.colors.tazdani[500],
     fontSize: 14
   }
 });

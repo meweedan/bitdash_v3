@@ -20,7 +20,7 @@ export default function LandingScreen() {
           resizeMode="contain"
         />
         
-        <Text style={styles.title}>BitCash</Text>
+        <Text style={styles.title}>tazdani</Text>
         <Text style={styles.subtitle}>Your Digital Payment Companion</Text>
         
         <View style={styles.buttonContainer}>

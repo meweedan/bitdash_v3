@@ -1,4 +1,4 @@
-// components/adfaly/agent/DailyLimitTracker.js
+// components/tazdani/agent/DailyLimitTracker.js
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ThemedText } from '../../ThemedText';

@@ -149,7 +149,7 @@ module.exports = createCoreController('api::agent.agent', ({ strapi }) => ({
       .filter(agent => agent.location && agent.location.coordinates)
       .map(agent => ({
         id: `agent-${agent.id}`,
-        name: agent.operator?.fullName || 'Adfaly Agent',
+        name: agent.operator?.fullName || 'tazdani Agent',
         type: 'agent',
         latitude: agent.location.coordinates.lat,
         longitude: agent.location.coordinates.lng,

@@ -7,7 +7,7 @@ BitDash v3 is a comprehensive digital services ecosystem that now revolves aroun
 ## BitTrade: Multi-Asset Trading (Brokerage)
 ## BitFund: Funded Trader Program (Prop Trading)
 ## BitStocks: Hedge Fund & Retail Investing
-## BitCash: Payments & Merchant Solutions
+## tazdani: Payments & Merchant Solutions
 This new approach enables users to trade, invest, and manage payments all in one unified platform.
 
 ## Fintech Services
@@ -35,7 +35,7 @@ Diversified investments across stocks, bonds, ETFs, and crypto.
 AI-powered portfolio management powered by BitAI.
 Target Market: Retail investors, high-net-worth individuals, and institutional investors.
 
-## 4️⃣ BitCash (Payments) – Fintech & Merchant Solutions
+## 4️⃣ tazdani (Payments) – Fintech & Merchant Solutions
 Offerings:
 USDT & QR code payment options.
 Instant cross-border transfers serving Africa, MENA, and LatAm.
@@ -106,7 +106,7 @@ ADMIN_JWT_SECRET=your-admin-jwt-secret
 BITTRADE_API_KEY=your-bittrade-api-key
 BITFUND_API_KEY=your-bitfund-api-key
 BITSTOCKS=your-bitstocks-api-key
-BITCASH_API_KEY=your-bitcash-api-key
+tazdani_API_KEY=your-tazdani-api-key
 BITAI_API_KEY=your-bitai-api-key
 
 ## Deployment

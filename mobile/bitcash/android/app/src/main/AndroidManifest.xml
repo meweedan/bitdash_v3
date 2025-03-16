@@ -24,8 +24,8 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="adfaly"/>
-        <data android:scheme="app.bitdash.adfaly"/>
+        <data android:scheme="tazdani"/>
+        <data android:scheme="app.bitdash.tazdani"/>
       </intent-filter>
     </activity>
   </application>

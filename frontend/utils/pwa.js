@@ -23,7 +23,7 @@ export const getPlatformInfo = () => {
     }
     if (hostname.includes('cash')) {
       return {
-        name: 'BitCash',
+        name: 'tazdani',
         platform: 'cash',
         description: 'Digital payments and remittance system'
       };

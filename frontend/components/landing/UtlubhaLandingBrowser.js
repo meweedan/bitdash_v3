@@ -390,7 +390,7 @@ const UtlubhaLandingBrowser = () => {
                     lineHeight="1.2"
                     color={isDark ? "white" : "gray.800"}
                   >
-                    {t('hero.title', 'Your One-Stop Delivery Solution')}
+                    {t('utlubha.hero.title', 'Your One-Stop Delivery Solution')}
                   </Heading>
                   
                   <Text
@@ -399,7 +399,7 @@ const UtlubhaLandingBrowser = () => {
                     maxW="550px"
                     color={isDark ? "gray.300" : "gray.600"}
                   >
-                    {t('hero.description', 'From restaurant meals to groceries and retail items, Utlubha delivers it all to your doorstep. Fast, reliable, and contactless.')}
+                    {t('utlubha.hero.description', 'From restaurant meals to groceries and retail items, Utlubha delivers it all to your doorstep. Fast, reliable, and contactless.')}
                   </Text>
                   
                   <HStack spacing={4} pt={2}>
@@ -407,7 +407,7 @@ const UtlubhaLandingBrowser = () => {
                       variant="utlubha-outline"
                       onClick={() => router.push('/signup')}
                     >
-                      {t('hero.get_started', 'Get Started')}
+                      {t('utlubha.hero.get_started', 'Get Started')}
                     </Button>
                     
                     <Button
@@ -416,7 +416,7 @@ const UtlubhaLandingBrowser = () => {
                       leftIcon={<Download />}
                       onClick={() => router.push('/download')}
                     >
-                      {t('hero.download_app', 'Download App')}
+                      {t('utlubha.hero.download_app', 'Download App')}
                     </Button>
                   </HStack>
                 </VStack>
@@ -1073,7 +1073,7 @@ const UtlubhaLandingBrowser = () => {
         <Container maxW="container.xl">
           <VStack spacing={8} align="stretch">
             <Heading size="md" color={accentColor}>
-              {t('legal.title', 'Utlubha')}
+              {t('legal.title', 'BitDash Digital Services')}
             </Heading>
             
             <Text fontSize="sm" color={textColor} lineHeight="tall">

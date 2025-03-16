@@ -18,11 +18,11 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '@/components/Layout';
 
 const PLATFORM_ROUTES = {
-  adfaly: {
+  tazdani: {
     merchant: '/merchant/dashboard',
     agent: '/agent/dashboard',
     customer: '/client/dashboard',
-    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://adfaly.bitdash.app'
+    baseUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://tazdani.bitdash.app'
   },
   utlubha: {
     customer: '/customer/dashboard',
@@ -33,7 +33,7 @@ const PLATFORM_ROUTES = {
 };
 
 const PROFILE_ENDPOINTS = {
-  adfaly: {
+  tazdani: {
     merchant: '/api/merchants',
     agent: '/api/agents',
     customer: '/api/customer-profiles'
@@ -46,9 +46,9 @@ const PROFILE_ENDPOINTS = {
 };
 
 const BUSINESS_TYPE_ROUTES = {
-  merchant: { platform: 'adfaly', userType: 'merchant' },
-  agent: { platform: 'adfaly', userType: 'agent' },
-  customer: { platform: 'adfaly', userType: 'customer' },
+  merchant: { platform: 'tazdani', userType: 'merchant' },
+  agent: { platform: 'tazdani', userType: 'agent' },
+  customer: { platform: 'tazdani', userType: 'customer' },
   customer: { platform: 'utlubha', userType: 'customer' },
   captain: { platform: 'utlubha', userType: 'captain' },
   operator: { platform: 'utlubha', userType: 'operator' }
@@ -57,12 +57,12 @@ const BUSINESS_TYPE_ROUTES = {
 const getPlatformFromURL = () => {
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
-    if (hostname.includes('adfaly')) return 'adfaly';
+    if (hostname.includes('tazdani')) return 'tazdani';
     if (hostname.includes('utlubha')) return 'utlubha';
     
     if (hostname === 'localhost') {
       const path = window.location.pathname;
-      if (path.includes('/adfaly')) return 'adfaly';
+      if (path.includes('/tazdani')) return 'tazdani';
       if (path.includes('/utlubha')) return 'utlubha';
     }
   }
@@ -71,12 +71,12 @@ const getPlatformFromURL = () => {
 
 const getColorScheme = (platform, isDark) => {
   const colorSchemes = {
-    adfaly: {
+    tazdani: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
-      text: isDark ? 'brand.adfaly.400' : 'brand.adfaly.600',
-      button: 'brand.adfaly.500',
-      hover: 'brand.adfaly.600',
-      border: 'brand.adfaly.500'
+      text: isDark ? 'brand.tazdani.400' : 'brand.tazdani.600',
+      button: 'brand.tazdani.500',
+      hover: 'brand.tazdani.600',
+      border: 'brand.tazdani.500'
     },
     utlubha: {
       bg: isDark ? 'whiteAlpha.50' : 'gray.50',
@@ -139,7 +139,7 @@ const LoginPage = () => {
   };
 
   const buttonStyles = {
-    variant: currentPlatform.includes('adfaly') ? `${currentPlatform}-solid` : 'utlubha-solid',
+    variant: currentPlatform.includes('tazdani') ? `${currentPlatform}-solid` : 'utlubha-solid',
     bg: colors.button,
     color: 'white',
     _hover: {
@@ -272,8 +272,8 @@ const LoginPage = () => {
       }
     }
     
-    // Handle Adfaly platform customer check
-    if (platform === 'adfaly') {
+    // Handle tazdani platform customer check
+    if (platform === 'tazdani') {
       const customerProfileResponse = await fetch(
         `${BASE_URL}/api/customer-profiles?filters[users_permissions_user][id][$eq]=${userId}&populate=*`,
         { 

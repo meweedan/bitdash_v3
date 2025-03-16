@@ -1,4 +1,4 @@
-package app.bitdash.adfaly
+package app.bitdash.tazdani
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

@@ -25,7 +25,7 @@ const WalletQRModal = ({ isOpen, onClose, walletData, profileId }) => {
   // Ensure we have a valid profile ID, either from props or from walletData
   const customerId = profileId || walletData?.customer?.data?.id || walletData?.customer?.id;
   const paymentLink = customerId 
-    ? `https://Adfaly.bitdash.app/profile/${customerId}`
+    ? `https://tazdani.bitdash.app/profile/${customerId}`
     : '';
 
   const { hasCopied: hasWalletCopied, onCopy: onWalletCopy } = useClipboard(walletData.walletId);
@@ -46,7 +46,7 @@ const WalletQRModal = ({ isOpen, onClose, walletData, profileId }) => {
       try {
         await navigator.share({
           title: 'My Payment Link',
-          text: `Send me money using my BitCash payment link`,
+          text: `Send me money using my tazdani payment link`,
           url: paymentLink
         });
       } catch (err) {

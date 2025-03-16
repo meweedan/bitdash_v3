@@ -1,4 +1,4 @@
-// components/adfaly/merchant/WalletBalance.js
+// components/tazdani/merchant/WalletBalance.js
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ThemedText } from '../../ThemedText';

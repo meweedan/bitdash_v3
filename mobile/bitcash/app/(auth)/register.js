@@ -285,7 +285,7 @@ export default function RegisterScreen() {
         {/* Header */}
         <View style={styles.header}>
           <ThemedText style={styles.title}>Create Account</ThemedText>
-          <ThemedText style={styles.subtitle}>Join BitCash Today</ThemedText>
+          <ThemedText style={styles.subtitle}>Join tazdani Today</ThemedText>
         </View>
 
         {/* User Type Selection */}

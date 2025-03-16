@@ -6,7 +6,7 @@ const sizes = [16, 32, 72, 96, 128, 144, 152, 167, 180, 192, 384, 512];
 
 async function generateIcons() {
   // Make sure the icons directory exists
-  const iconsDir = path.join(process.cwd(), 'public', 'utlubha-icons');
+  const iconsDir = path.join(process.cwd(), 'public', 'tazdani-icons');
   try {
     await fs.mkdir(iconsDir, { recursive: true });
   } catch (err) {
@@ -14,7 +14,7 @@ async function generateIcons() {
   }
 
   // Your source image should be at least 512x512 pixels
-  const sourceImage = path.join(process.cwd(), 'public', 'utlubha.png');
+  const sourceImage = path.join(process.cwd(), 'public', 'tazdani.png');
 
   // Generate icons for each size
   for (const size of sizes) {

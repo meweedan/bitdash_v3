@@ -353,7 +353,7 @@ const AgentSignup = () => {
   return (
     <Layout>
       <Head>
-        <title>BitCash - Agent Signup</title>
+        <title>tazdani - Agent Signup</title>
       </Head>
 
       <Container maxW="container.md" py={8}>
@@ -378,7 +378,7 @@ const AgentSignup = () => {
         >
           <VStack spacing={6} align="stretch">
             <VStack align="center" spacing={2}>
-              <Heading size="lg">Become a BitCash Agent</Heading>
+              <Heading size="lg">Become a tazdani Agent</Heading>
               <Badge colorScheme="blue" p={2} borderRadius="full">
                 1% Commission on All Transactions
               </Badge>
@@ -600,7 +600,7 @@ const AgentSignup = () => {
                         </Checkbox>
                         
                         <RiskDisclosure 
-                          platform="BitCash" 
+                          platform="tazdani" 
                           accountType="agent" 
                           onAccept={handleRiskAcceptance}
                         />

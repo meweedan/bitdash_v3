@@ -126,8 +126,8 @@
     },
     "platform": {
       "type": "enumeration",
-      "enum": ["adfaly", "utlubha", "mirrsal", "admin", "api"],
-      "default": "adfaly",
+      "enum": ["tazdani", "utlubha", "admin", "api"],
+      "default": "tazdani",
       "required": true
     },
     "request_url": {

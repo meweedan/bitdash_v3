@@ -11,13 +11,13 @@ const FlowingShawl = () => {
     setIsClient(true);
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname;
-      if (hostname.includes('adfaly')) setPlatform('adfaly');
+      if (hostname.includes('tazdani')) setPlatform('tazdani');
       else if (hostname.includes('utlubha')) setPlatform('utlubha');
     }
   }, []);
 
   const themeColors = {
-    adfaly: [
+    tazdani: [
       new THREE.Color('#00bf63'),
       new THREE.Color('#00bf63'),
       new THREE.Color('#00bf63'),
@@ -30,10 +30,10 @@ const FlowingShawl = () => {
       new THREE.Color('#ff914d')
     ],
     bitdash: [
-      new THREE.Color('#8b7966'),
-      new THREE.Color('#b8a28b'),
-      new THREE.Color('#9c7c63'),
-      new THREE.Color('#c4b2a0')
+      new THREE.Color('#387fc2'),
+      new THREE.Color('#387fc2'),
+      new THREE.Color('#387fc2'),
+      new THREE.Color('#387fc2')
     ]
   };
 

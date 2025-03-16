@@ -97,8 +97,8 @@
     },
     "primaryPlatform": {
       "type": "enumeration",
-      "enum": ["utlubha", "adfaly", "mirrsal", "multiple"],
-      "default": "adfaly"
+      "enum": ["utlubha", "tazdani", "multiple"],
+      "default": "tazdani"
     },
     "registrationDate": {
       "type": "datetime"

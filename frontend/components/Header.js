@@ -45,7 +45,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   
   // Always show announcements for these platforms
-  const showAnnouncements = platform === 'utlubha' || platform === 'adfaly';
+  const showAnnouncements = platform === 'utlubha' || platform === 'tazdani';
 
   // Handle scroll effect
   useEffect(() => {
@@ -90,11 +90,11 @@ export default function Header() {
 
   const platforms = [
      {
-      name: 'Adfaly',
-      image: '/adfaly.png',
-      mobileImage: '/adfaly.png',
-      href: 'https://adfaly.bitdash.app/',
-      color: 'brand.adfaly'
+      name: 'tazdani',
+      image: '/tazdani.png',
+      mobileImage: '/tazdani.png',
+      href: 'https://tazdani.bitdash.app/',
+      color: 'brand.tazdani'
     },
     {
       name: 'Utlubha',
@@ -103,13 +103,6 @@ export default function Header() {
       href: 'https://utlubha.bitdash.app/',
       color: 'brand.utlubha'
     }, 
-    {
-      name: 'Mirrsal',
-      image: '/mirrsal.png',
-      mobileImage: '/mirrsal.png',
-      href: 'https://mirrsal.bitdash.app/',
-      color: 'brand.mirrsal'
-    },
   ];
 
   const getPlatformFromURL = () => {
@@ -118,15 +111,13 @@ export default function Header() {
       const hostname = window.location.hostname;
       
       // More specific checks to avoid partial matches
-      if (hostname.includes('adfaly.bitdash') || hostname === 'adfaly.localhost') return 'adfaly';
+      if (hostname.includes('tazdani.bitdash') || hostname === 'tazdani.localhost') return 'tazdani';
       if (hostname.includes('utlubha.bitdash') || hostname === 'utlubha.localhost') return 'utlubha';
-      if (hostname.includes('mirrsal.bitdash') || hostname === 'mirrsal.localhost') return 'mirrsal';
       
       // Also check URL path for local development
       const pathname = window.location.pathname;
-      if (pathname.startsWith('/adfaly')) return 'adfaly';
+      if (pathname.startsWith('/tazdani')) return 'tazdani';
       if (pathname.startsWith('/utlubha')) return 'utlubha';
-      if (pathname.startsWith('/mirrsal')) return 'mirrsal';
     }
     return 'bitdash'; // Default platform
   };
@@ -183,24 +174,24 @@ export default function Header() {
           ]
         },
       ];
-    } else if (platform === 'adfaly') { // Cash
+    } else if (platform === 'tazdani') { // Cash
       return [
         { 
           name: t('payments', 'Payments'), 
-          path: '/adfaly/payments',
+          path: '/tazdani/payments',
           submenu: [
-            { name: t('sendMoney', 'Send Money'), path: '/adfaly/payments/send' },
-            { name: t('requestMoney', 'Request Money'), path: '/adfaly/payments/request' },
-            { name: t('payBills', 'Pay Bills'), path: '/adfaly/payments/bills' },
+            { name: t('sendMoney', 'Send Money'), path: '/tazdani/payments/send' },
+            { name: t('requestMoney', 'Request Money'), path: '/tazdani/payments/request' },
+            { name: t('payBills', 'Pay Bills'), path: '/tazdani/payments/bills' },
           ]
         },
         { 
           name: t('cards', 'Cards'), 
-          path: '/adfaly/cards',
+          path: '/tazdani/cards',
           submenu: [
-            { name: t('virtualCards', 'Virtual Cards'), path: '/adfaly/cards/virtual' },
-            { name: t('physicalCards', 'Physical Cards'), path: '/adfaly/cards/physical' },
-            { name: t('cardSettings', 'Card Settings'), path: '/adfaly/cards/settings' },
+            { name: t('virtualCards', 'Virtual Cards'), path: '/tazdani/cards/virtual' },
+            { name: t('physicalCards', 'Physical Cards'), path: '/tazdani/cards/physical' },
+            { name: t('cardSettings', 'Card Settings'), path: '/tazdani/cards/settings' },
           ]
         }
       ];

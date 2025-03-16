@@ -68,7 +68,7 @@ const UtlubhaPWALanding = () => {
 };
 
 // Cash PWA Landing
-const AdfalyPWALanding = () => {
+const tazdaniPWALanding = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -88,8 +88,8 @@ const AdfalyPWALanding = () => {
       <Container maxW="container.lg">
         <VStack spacing={8} align="center" pb={20}>
           <Image
-            src="/Adfaly.png"
-            alt="Adfaly"
+            src="/tazdani.png"
+            alt="tazdani"
             w="150px"
             h="150px"
             objectFit="contain"
@@ -130,8 +130,8 @@ const PWALayout = ({ children }) => {
         case 'utlubha.bitdash.app':
           router.replace('/utlubha');
           break;
-        case 'Adfaly.bitdash.app':
-          router.replace('/Adfaly');
+        case 'tazdani.bitdash.app':
+          router.replace('/tazdani');
           break;
         default:
           router.replace('/');
@@ -142,4 +142,4 @@ const PWALayout = ({ children }) => {
   return children;
 };
 
-export { UtlubhaPWALanding, AdfalyPWALanding, PWALayout };
+export { UtlubhaPWALanding, tazdaniPWALanding, PWALayout };

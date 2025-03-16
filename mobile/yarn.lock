@@ -3045,9 +3045,9 @@ big-integer@1.6.x:
   resolved "https://registry.npmjs.org/big-integer/-/big-integer-1.6.52.tgz"
   integrity sha512-QxD8cf2eVqJOOz63z6JIN9BzvVs/dlySa5HGSBH5xtR8dPteIRQnBxxKqkNTiT6jbDTF6jAfrd4oMcND9RGbQg==
 
-"adfaly@file:/Users/moeawidan/Desktop/bitdash_v3/mobile/apps/adfaly":
+"tazdani@file:/Users/moeawidan/Desktop/bitdash_v3/mobile/apps/tazdani":
   version "1.0.0"
-  resolved "file:apps/adfaly"
+  resolved "file:apps/tazdani"
   dependencies:
     "@expo/vector-icons" "^14.0.2"
     "@react-native-async-storage/async-storage" "1.23.1"

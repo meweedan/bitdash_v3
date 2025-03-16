@@ -53,9 +53,9 @@ const MotionContainer = motion(Container);
 
 // Platform definitions
 const PLATFORMS = {
-  Adfaly: { themeKey: 'Adfaly', subdomain: 'Adfaly' },
+  tazdani: { themeKey: 'tazdani', subdomain: 'tazdani' },
   Utlubha: { themeKey: 'utlubha', subdomain: 'utlubha' },
-  DEFAULT: { themeKey: 'Adfaly', subdomain: 'Adfaly' }, // Default platform
+  DEFAULT: { themeKey: 'tazdani', subdomain: 'tazdani' }, // Default platform
 };
 
 // Helper function to detect platform from hostname
@@ -64,7 +64,7 @@ const getPlatformFromHostname = (hostname) => {
   
   // Check for each possible subdomain
   if (hostname.includes('utlubha.')) return PLATFORMS.Utlubha;
-  if (hostname.includes('Adfaly.')) return PLATFORMS.Adfaly;
+  if (hostname.includes('tazdani.')) return PLATFORMS.tazdani;
   
   return PLATFORMS.DEFAULT;
 };
@@ -116,7 +116,7 @@ const Contact = () => {
   
   const platforms = [
     { value: 'all', label: t('allPlatforms', 'All Platforms') },
-    { value: 'Adfaly', label: t('Adfaly', 'Adfaly') },
+    { value: 'tazdani', label: t('tazdani', 'tazdani') },
     { value: 'Utlubha', label: t('Utlubha', 'Utlubha') }
   ];
   

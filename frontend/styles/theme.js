@@ -4,12 +4,12 @@ const theme = extendTheme({
   colors: {
     brand: {
       bitdash: {
-       400: '#8b7966',
-        500: '#b8a28b',    // Base
-        600: '#9c7c63',    // Hover
-        700: '#c4b2a0',    // Emphasis
+       400: '#387fc2',
+        500: '#387fc2',    // Base
+        600: '#387fc2',    // Hover
+        700: '#387fc2',    // Emphasis
       },
-      adfaly: {
+      tazdani: {
         400: '#00bf63',
         500: '#00bf63',    // Base
         600: '#00bf63',    // Hover
@@ -43,17 +43,17 @@ const theme = extendTheme({
           color: 'brand.bitdash.500',
           _hover: { bg: 'brand.bitdash.500', color: 'white' }
         },
-        // adfaly variants
-        'adfaly-solid': {
-          bg: 'brand.adfaly.500',
+        // tazdani variants
+        'tazdani-solid': {
+          bg: 'brand.tazdani.500',
           color: 'white',
-          _hover: { bg: 'brand.adfaly.600' }
+          _hover: { bg: 'brand.tazdani.600' }
         },
-        'adfaly-outline': {
+        'tazdani-outline': {
           border: '2px solid',
-          borderColor: 'brand.adfaly.500',
-          color: 'brand.adfaly.500',
-          _hover: { bg: 'brand.adfaly.500', color: 'white' }
+          borderColor: 'brand.tazdani.500',
+          color: 'brand.tazdani.500',
+          _hover: { bg: 'brand.tazdani.500', color: 'white' }
         },
         // utlubha variants
         'utlubha-solid': {
@@ -93,8 +93,8 @@ const theme = extendTheme({
         bitdash: {
           borderColor: 'brand.bitdash.500',
         },
-        adfaly: {
-          borderColor: 'brand.adfaly.500',
+        tazdani: {
+          borderColor: 'brand.tazdani.500',
         },
         utlubha: {
           borderColor: 'brand.utlubha.500',

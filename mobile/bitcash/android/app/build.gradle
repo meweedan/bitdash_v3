@@ -86,9 +86,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'app.bitdash.adfaly'
+    namespace 'app.bitdash.tazdani'
     defaultConfig {
-        applicationId 'app.bitdash.adfaly'
+        applicationId 'app.bitdash.tazdani'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -5,7 +5,7 @@
   "scrolldown": "Scroll down for more",
   "ourpartners": "Our Partners",
   "search": "Search",
-  "hero": {
+  "utlubha.hero": {
     "title": "Your One-Stop Delivery Solution",
     "description": "From restaurant meals to groceries and retail items, we deliver it all to your doorstep. Fast, reliable, and contactless.",
     "get_started": "Get Started",
@@ -25,7 +25,7 @@
       "description": "For nearby restaurants and stores"
     }
   },
-  "features": {
+  "utlubha.features": {
     "tracking": {
       "title": "Real-Time Tracking",
       "description": "Follow your delivery from store to door with live GPS tracking"
@@ -863,66 +863,7 @@
   "Chatbot": "Chatbot",
   "scheduleDemo": "Schedule a Demo",
   "noResults": "No results found.",
-  "cash": {
-      "hero": {
-        "title": "Instant Payments for the Digital Age",
-        "subtitle": "Transfer money instantly, pay merchants in real-time, and shop globally with BitCash's secure payment network",
-        "get_started": "Get Started"
-      },
-    "demo": {
-      "instant_transfer": "Transfer Speed",
-      "global_reach": "Countries",
-      "merchants": "Active Merchants"
-    },
-    "instant": {
-      "payments": {
-        "title": "Instant Transfers",
-        "description": "Send and receive money instantly with zero delays. Perfect for both personal and business transactions."
-      }
-    },
-    "merchant": {
-      "solutions": {
-        "title": "Merchant Solutions",
-        "description": "Accept payments in-store and online with our comprehensive merchant platform and integrated payment solutions."
-      }
-    },
-    "qr": {
-      "payments": {
-        "title": "QR Code Payments",
-        "description": "Seamless point-of-sale payments using quick QR code scanning for contactless transactions."
-      }
-    },
-    "mobile": {
-      "app": {
-        "title": "Mobile First",
-        "description": "Manage your money, make payments, and track transactions from our powerful mobile app."
-      }
-    },
-      "secure": {
-        "payments": {
-          "title": "Secure Payments",
-          "description": "Enterprise-grade security with fraud protection",
-          "technical": "End-to-end encryption, 2FA, Fraud AI"
-        }
-      },
-      "business": {
-        "analytics": {
-          "title": "Business Analytics",
-          "description": "Real-time insights into your payment flows",
-          "technical": "Custom reports, API access, Dashboard"
-        }
-      },
-    "cash.cta": {
-      "title": "Ready to Transform Your Payments?",
-      "description": "Join thousands of businesses and millions of users on the fastest growing payment network",
-      "button": "Start Now"
-    },
-  "meta": {
-    "title": "BitCash - Fintech Solutions",
-    "description": "Advanced financial platform combining payments, trading, and compliance"
-  }
-  },
-  "adfaly": {
+  "tazdani": {
     "hero": {
       "title": "Reimagining Libya's Finances",
       "subtitle": "Enterprise-grade financial infrastructure based in Libya combining payments, trading, and crypto solutions",
@@ -981,9 +922,9 @@
     "subtitle": "Powerful infrastructure designed for scalability, security, and seamless integration"
   },
   "agent": {
-    "title": "Become a BitCash Agent",
+    "title": "Become a tazdani Agent",
     "subtitle": "Transform Your Local Business into a Financial Services Hub",
-    "earnMore": "Earn More with BitCash Agency",
+    "earnMore": "Earn More with tazdani Agency",
     "services": {
       "cash": "Cash Deposit & Withdrawal Services",
       "fx": "Foreign Exchange (FX) Operations",
@@ -995,7 +936,7 @@
       "support": "Full Technological Support"
     },
     "cta": {
-      "question": "Interested in Becoming a BitCash Agent?",
+      "question": "Interested in Becoming a tazdani Agent?",
       "apply": "Apply Now",
       "learnMore": "Learn More"
     },
@@ -1013,8 +954,8 @@
     "marketTrends": "Market Trends",
     "totalPortfolioValue": "Total Portfolio Value",
     "24hChange": "24h Change",
-    "agentSignup": "Become a BitCash Agent",
-    "agentDescription": "Process cash deposits and withdrawals for BitCash users. Earn commission on every transaction.",
+    "agentSignup": "Become a tazdani Agent",
+    "agentDescription": "Process cash deposits and withdrawals for tazdani users. Earn commission on every transaction.",
     "merchant": "Business Account",
     "merchantDescription": "Accept payments in-store and online. Generate QR codes and payment links for your customers.",
     "chooseAccountType": "Choose Your Account Type",
@@ -1025,7 +966,7 @@
     "instantSetup": "Instant Setup",
     "totalAssets": "Total Assets",
     "liveTracking": "Live Tracking",
-    "bitCashIntegration": "BitCash Integration",
+    "tazdaniIntegration": "tazdani Integration",
     "delivery": "Delivery Service",
     "partnerBenefits": {
       "drivers": [
@@ -1110,6 +1051,55 @@
   "transaction_id": "Transaction ID:",
   "balance_before": "Balance Before:",
   "balance_after": "Balance After:",
+   "tazdani.hero": {
+    "title": "Libya's Digital Payment Revolution",
+    "description": "Send money instantly, shop online, and manage your finances with Libya's most innovative payment solution.",
+    "cta": {
+      "primary": "Create Free Account",
+      "secondary": "Watch Demo"
+    }
+  },
+  "stats": {
+    "speed": {
+      "label": "Transfer Speed",
+      "value": "< 1s"
+    },
+    "locations": {
+      "label": "Agent Locations",
+      "value": "500+"
+    },
+    "users": {
+      "label": "Active Users",
+      "value": "250k+"
+    },
+    "merchants": {
+      "label": "Merchants",
+      "value": "10k+"
+    }
+  },
+  "tazdani.features": {
+    "section": {
+      "subtitle": "Why Choose Tazdani",
+      "title": "Redefining Financial Services in Libya",
+      "description": "Our innovative platform combines cutting-edge technology with a nationwide network to deliver a seamless payment experience."
+    },
+    "instant": {
+      "title": "Instant Transfers",
+      "description": "Send money across Libya in seconds with our lightning-fast transfer system"
+    },
+    "business": {
+      "title": "Business Solutions",
+      "description": "Accept digital payments in-store or online with our merchant integration"
+    },
+    "qr": {
+      "title": "QR Payments",
+      "description": "Scan and pay instantly with our secure QR code technology"
+    },
+    "mobile": {
+      "title": "Mobile App",
+      "description": "Manage your money on the go with our intuitive mobile application"
+    }
+  },
   "close": "Close",
   "invalid_payment_link": "Invalid Payment Link",
   "the_payment_link_youre_trying_": "The payment link you're trying to access is invalid or has expired.",
@@ -1127,21 +1117,21 @@
   "loading_your_dashboard": "Loading your dashboard...",
   "error_loading_dashboard": "Error Loading Dashboard",
   "return_to_login": "Return to Login",
-  "agent_dashboard_adfaly": "Agent Dashboard | BitCash",
+  "agent_dashboard_tazdani": "Agent Dashboard | tazdani",
   "agent_dashboard": "Agent Dashboard",
   "refresh": "Refresh",
   "all_transactions": "All Transactions",
   "recent_transactions": "Recent Transactions",
-  "cash_deposit_adfaly": "Cash Deposit | BitCash",
+  "cash_deposit_tazdani": "Cash Deposit | tazdani",
   "find_customer": "Find Customer",
   "scan_qr_code": "Scan QR Code",
   "selected": "Selected",
   "amount_lyd": "Amount (LYD)",
   "customer_pin": "Customer PIN",
   "complete_deposit": "Complete Deposit",
-  "cash_withdrawal_adfaly": "Cash Withdrawal | BitCash",
+  "cash_withdrawal_tazdani": "Cash Withdrawal | tazdani",
   "complete_withdrawal": "Complete Withdrawal",
-  "dashboard_adfaly": "Dashboard | BitCash",
+  "dashboard_tazdani": "Dashboard | tazdani",
   "quick_actions": "Quick Actions",
   "profile_settings": "Profile Settings",
   "payment_links": "Payment Links",
@@ -1163,7 +1153,7 @@
   "processing_time": "Processing Time",
   "transfer_fee": "Transfer Fee",
   "free": "Free",
-  "find_adfaly_locations": "Find BitCash Locations",
+  "find_tazdani_locations": "Find tazdani Locations",
   "filter_locations": "Filter Locations",
   "location_type": "Location Type",
   "all_types": "All Types",
@@ -1177,7 +1167,7 @@
   "within_20_km": "Within 20 km",
   "apply_filters": "Apply Filters",
   "open_in_maps": "Open in Maps",
-  "merchant_dashboard_adfaly": "Merchant Dashboard | BitCash",
+  "merchant_dashboard_tazdani": "Merchant Dashboard | tazdani",
   "merchant_dashboard": "Merchant Dashboard",
   "generate_qr_code": "Generate QR Code",
   "create_payment_link": "Create Payment Link",
@@ -1372,8 +1362,8 @@
   "customize_theme": "Customize Theme",
   "add_new_product": "Add New Product",
   "check_low_stock": "Check Low Stock",
-  "adfaly_agent_signup": "BitCash - Agent Signup",
-  "become_a_adfaly_agent": "Become a BitCash Agent",
+  "tazdani_agent_signup": "tazdani - Agent Signup",
+  "become_a_tazdani_agent": "Become a tazdani Agent",
   "1_commission_on_all_transactio": "1% Commission on All Transactions",
   "account_credentials": "Account Credentials",
   "minimum_8_characters": "Minimum 8 characters",
@@ -1401,7 +1391,7 @@
   "contract": "Contract",
   "wallet_setup": "Wallet Setup",
   "wallet_pin": "Wallet PIN",
-  "create_a_6digit_pin_for_your_b": "Create a 6-digit PIN for your BitCash wallet",
+  "create_a_6digit_pin_for_your_b": "Create a 6-digit PIN for your tazdani wallet",
   "company_information": "Company Information",
   "company_name": "Company Name",
   "company_type": "Company Type",
@@ -1419,7 +1409,7 @@
   "contact_information": "Contact Information",
   "position": "Position",
   "business_address": "Business Address",
-  "adfaly_merchant_signup": "BitCash - Merchant Signup",
+  "tazdani_merchant_signup": "tazdani - Merchant Signup",
   "create_merchant_account": "Create Merchant Account",
   "15_transaction_fee": "1.5% Transaction Fee",
   "monthly_volume": "Monthly Volume",
@@ -1740,13 +1730,13 @@
   },
   "Landinghero": {
     "badge": "Trade Smarter",
-    "title": "Your partners to secure financial freedom.",
-    "subtitle": "Access forex, crypto, stocks and payment solutions through a single integrated ecosystem designed for global traders.",
+    "title": "Growing together, bit by bit.",
+    "subtitle": "Our firm currently offers Tazdani, a revolutionary cash alternative and Utlubha, a food and grocery ordering platform that serves all your needs!",
     "getStarted": "Get Started",
     "learnMore": "Learn More",
-    "feature1": "Zero Commission",
-    "feature2": "Fast Execution",
-    "feature3": "Secure & Regulated"
+    "feature1": "Libyan-made",
+    "feature2": "Fast delivery of food and funds",
+    "feature3": "Safe and Trusted"
   },
   "platformSection": {
     "subtitle": "Revolutionary Financial Ecosystem",

@@ -12,7 +12,7 @@ import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
-const BitCashHeader = () => {
+const tazdaniHeader = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigation = useNavigation();
 
@@ -51,7 +51,7 @@ const BitCashHeader = () => {
         </TouchableOpacity>
 
         <Image 
-          source={require('../assets/adfaly-logo.png')} 
+          source={require('../assets/tazdani-logo.png')} 
           style={styles.logo} 
           resizeMode="contain"
         />
@@ -121,4 +121,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default BitCashHeader;
+export default tazdaniHeader;

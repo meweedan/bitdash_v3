@@ -1,4 +1,4 @@
-// components/adfaly/agent/TransactionForm.js
+// components/tazdani/agent/TransactionForm.js
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import FormField from '../../FormField';

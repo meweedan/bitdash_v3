@@ -48,7 +48,7 @@ export default function HomeScreen() {
   const renderDashboard = () => (
     <View style={styles.dashboard}>
       <ThemedText style={styles.welcomeText}>
-        Welcome back to BitCash!
+        Welcome back to tazdani!
       </ThemedText>
       
       <View style={styles.quickActions}>
@@ -77,7 +77,7 @@ export default function HomeScreen() {
             style={styles.logo}
             resizeMode="contain"
           />
-          <ThemedText style={styles.headerTitle}>BitCash</ThemedText>
+          <ThemedText style={styles.headerTitle}>tazdani</ThemedText>
         </View>
       )}
     >
@@ -86,7 +86,7 @@ export default function HomeScreen() {
         
         <View style={styles.features}>
           <ThemedText style={styles.featuresTitle}>
-            Why Choose BitCash?
+            Why Choose tazdani?
           </ThemedText>
           
           <View style={styles.featureItem}>

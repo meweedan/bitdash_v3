@@ -13,12 +13,12 @@ const PWAContainer = ({ children }) => (
   </div>
 );
 
-export const AdfalyPWALanding = () => {
+export const tazdaniPWALanding = () => {
   const router = useRouter();
   const config = {
-    title: 'Adfaly',
+    title: 'tazdani',
     description: 'Reimagining Libyan Finances',
-    image: '/adfaly.png',
+    image: '/tazdani.png',
     color: '#4CAF50'
   };
 
@@ -59,7 +59,7 @@ const PWALanding = () => {
   const router = useRouter();
   const hostname = typeof window !== 'undefined' ? window.location.hostname : '';
 
-  if (hostname.includes('adfaly')) return <adfalyPWALanding />;
+  if (hostname.includes('tazdani')) return <tazdaniPWALanding />;
   if (hostname.includes('utlubha')) return <UtlubhaPWALanding />;
 
   const config = {
