@@ -1410,7 +1410,7 @@ const TazdaniLanding = () => {
               left={0}
               right={0}
               bottom={0}
-              opacity={0.2}
+              opacity={0.15}
               backgroundImage="url('/images/tazdani-pattern.png')"
               backgroundSize="cover"
             />
