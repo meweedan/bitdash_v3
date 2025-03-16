@@ -20,7 +20,7 @@ const OrderTracker = ({ onClose }) => {
       setError('Please enter a valid order number');
       return;
     }
-    router.push(`/order-tracking/${orderNumber.trim()}`);
+    router.push(`/track/${orderNumber.trim()}`);
     onClose();
   };
 
