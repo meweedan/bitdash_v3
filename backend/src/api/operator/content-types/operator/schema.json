@@ -126,7 +126,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::order.order",
-      "mappedBy": "operator"
+      "mappedBy": "operators"
     },
     "wallet": {
       "type": "relation",

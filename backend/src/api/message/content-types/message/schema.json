@@ -40,13 +40,13 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::customer-profile.customer-profile",
-      "inversedBy": "customer-profile"
+      "inversedBy": "messages"
     },
     "operator": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::operator.operator",
-      "inversedBy": "operators"
+      "inversedBy": "messages"
     },
     "guest_info": {
       "type": "json"
