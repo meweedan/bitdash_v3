@@ -39,7 +39,7 @@ import {
   FiCheck, FiPackage, FiArrowRight, FiSettings, FiDownload,
   FiSun, FiClock, FiX, FiCreditCard, FiTrendingUp, FiMoon,
   FiUser, FiPrinter, FiMaximize2, FiDollarSign, FiShoppingCart,
-  FiCheckCircle, FiMinimize2
+  FiCheckCircle, FiMinimize2, FiMessageSquare, FiRefreshCw 
 } from 'react-icons/fi';
 
 // Initialize Stripe
@@ -65,6 +65,391 @@ export async function getServerSideProps({ locale }) {
     },
   };
 }
+
+const OrderDetails = ({ order, onClose, onUpdateStatus, operatorData }) => {
+  const { t } = useTranslation('common');
+  const toast = useToast();
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState('');
+  const messagesEndRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // Get base URL from environment variable
+  const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+  
+  // Scroll to bottom of messages
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+  
+  // Fetch messages when component mounts or order changes
+  useEffect(() => {
+    if (order?.id) {
+      loadMessages();
+    }
+  }, [order?.id]);
+  
+  // Set up message polling
+  useEffect(() => {
+    if (!order?.id) return;
+    
+    // Poll for new messages every 10 seconds
+    const intervalId = setInterval(loadMessages, 10000);
+    
+    // Clean up interval on unmount
+    return () => clearInterval(intervalId);
+  }, [order?.id]);
+  
+  // Scroll to bottom when messages change
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+  
+  // Load messages function
+  const loadMessages = async () => {
+    if (!order?.id) return;
+    
+    try {
+      setIsLoading(true);
+      
+      const token = localStorage.getItem('token');
+      const response = await fetch(
+        `${baseUrl}/api/messages?filters[order][id]=${order.id}&sort=timestamp:asc&populate=*`,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch messages: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      if (data && data.data) {
+        setMessages(data.data);
+      } else {
+        console.warn('No messages found for order:', order.id);
+        setMessages([]);
+      }
+    } catch (error) {
+      console.error('Error loading messages:', error);
+      toast({
+        title: 'Error',
+        description: `Failed to load messages: ${error.message}`,
+        status: 'error',
+        duration: 3000
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
+  // Send message function
+  const handleSendMessage = async () => {
+    if (!newMessage.trim() || !order?.id) return;
+    
+    try {
+      const token = localStorage.getItem('token');
+      
+      // Create message data
+      const messageData = {
+        data: {
+          content: newMessage,
+          sender_type: 'operator',
+          timestamp: new Date().toISOString(),
+          order: order.id,
+          read: false
+        }
+      };
+      
+      // Add operator ID if available
+      if (operatorData && operatorData.id) {
+        messageData.data.operator = operatorData.id;
+      }
+      
+      // Add optimistic update for better UX
+      const tempMessage = {
+        id: `temp-${Date.now()}`,
+        attributes: {
+          content: newMessage,
+          sender_type: 'operator',
+          timestamp: new Date().toISOString(),
+          read: false
+        }
+      };
+      
+      setMessages(prev => [...prev, tempMessage]);
+      setNewMessage('');
+      
+      // Send the actual message
+      const response = await fetch(
+        `${baseUrl}/api/messages`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(messageData)
+        }
+      );
+      
+      if (!response.ok) {
+        throw new Error(`Failed to send message: ${response.status}`);
+      }
+      
+      // Reload messages to get the real message
+      await loadMessages();
+      
+      toast({
+        title: 'Success',
+        description: 'Message sent',
+        status: 'success',
+        duration: 2000
+      });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: 'Error',
+        description: `Failed to send message: ${error.message}`,
+        status: 'error',
+        duration: 3000
+      });
+      
+      // Reload messages to remove the optimistic update
+      await loadMessages();
+    }
+  };
+  
+  // Format timestamp to readable time
+  const formatTime = (timestamp) => {
+    try {
+      const date = new Date(timestamp);
+      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    } catch (e) {
+      return 'Unknown time';
+    }
+  };
+  
+  if (!order) {
+    return (
+      <Flex justify="center" align="center" height="100%">
+        <Text>No order selected</Text>
+      </Flex>
+    );
+  }
+  
+  return (
+    <VStack spacing={4} align="stretch" h="full">
+      {/* Order Header */}
+      <Flex justify="space-between" align="center">
+        <Heading size="md">Order #{order.id}</Heading>
+        <Badge
+          colorScheme={
+            order.attributes?.status === 'pending' ? 'yellow' :
+            order.attributes?.status === 'preparing' ? 'blue' :
+            order.attributes?.status === 'ready' ? 'orange' :
+            order.attributes?.status === 'completed' ? 'green' : 'red'
+          }
+          fontSize="sm"
+          px={2}
+          py={1}
+          borderRadius="full"
+        >
+          {order.attributes?.status}
+        </Badge>
+      </Flex>
+      
+      <Divider />
+      
+      {/* Order Information */}
+      <Box bg="gray.50" p={4} borderRadius="md">
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+          <Box>
+            <Text fontWeight="bold">Customer:</Text>
+            <Text>
+              {order.attributes?.customer_profile?.data?.attributes?.fullName || 
+               order.attributes?.guest_info?.name || 
+               'Guest'}
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="bold">Contact:</Text>
+            <Text>
+              {order.attributes?.customer_profile?.data?.attributes?.phone || 
+               order.attributes?.guest_info?.phone || 
+               'N/A'}
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="bold">Table:</Text>
+            <Text>
+              {order.attributes?.tables?.data?.[0]?.attributes?.name || 'N/A'}
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="bold">Payment:</Text>
+            <Text>{order.attributes?.payment_method || 'N/A'}</Text>
+          </Box>
+        </SimpleGrid>
+      </Box>
+      
+      {/* Order Items */}
+      <Box>
+        <Text fontWeight="bold" mb={2}>Order Items:</Text>
+        <VStack spacing={2} align="stretch">
+          {order.attributes?.order_items?.data?.map((item, index) => (
+            <Box 
+              key={index} 
+              p={3} 
+              borderWidth="1px" 
+              borderRadius="md" 
+              bg="white"
+            >
+              <Flex justify="space-between">
+                <Box>
+                  <Text fontWeight="medium">
+                    {item.attributes?.quantity || 1}x {item.attributes?.menu_item?.data?.attributes?.name || 'Unknown Item'}
+                  </Text>
+                  {item.attributes?.special_instructions && (
+                    <Text fontSize="sm" color="gray.600">
+                      Note: {item.attributes.special_instructions}
+                    </Text>
+                  )}
+                </Box>
+                <Text fontWeight="bold">${item.attributes?.subtotal || '0.00'}</Text>
+              </Flex>
+            </Box>
+          ))}
+        </VStack>
+        
+        <Flex justify="space-between" mt={4} fontWeight="bold">
+          <Text>Total:</Text>
+          <Text>${order.attributes?.total || '0.00'}</Text>
+        </Flex>
+      </Box>
+      
+      <Divider />
+      
+      {/* Action Buttons */}
+      <SimpleGrid columns={2} spacing={4}>
+        {order.attributes?.status === 'pending' && (
+          <Button 
+            colorScheme="blue" 
+            onClick={() => onUpdateStatus(order.id, 'preparing')}
+            leftIcon={<Icon as={FiList} />}
+          >
+            Start Preparing
+          </Button>
+        )}
+        {order.attributes?.status === 'preparing' && (
+          <Button 
+            colorScheme="orange" 
+            onClick={() => onUpdateStatus(order.id, 'ready')}
+            leftIcon={<Icon as={FiClock} />}
+          >
+            Mark Ready
+          </Button>
+        )}
+        {order.attributes?.status === 'ready' && (
+          <Button 
+            colorScheme="green" 
+            onClick={() => onUpdateStatus(order.id, 'completed')}
+            leftIcon={<Icon as={FiCheck} />}
+          >
+            Complete
+          </Button>
+        )}
+        {['pending', 'preparing', 'ready'].includes(order.attributes?.status) && (
+          <Button 
+            colorScheme="red" 
+            onClick={() => onUpdateStatus(order.id, 'cancelled')}
+            leftIcon={<Icon as={FiX} />}
+          >
+            Cancel
+          </Button>
+        )}
+      </SimpleGrid>
+      
+      <Divider />
+      
+      {/* Messages Section */}
+      <Box flex="1">
+        <Text fontWeight="bold" mb={2}>Customer Communication:</Text>
+        
+        {/* Messages List */}
+        <Box 
+          borderWidth="1px" 
+          borderRadius="md" 
+          height="200px" 
+          overflowY="auto"
+          p={3}
+          bg="gray.50"
+        >
+          {isLoading ? (
+            <Flex justify="center" align="center" height="100%">
+              <Spinner />
+            </Flex>
+          ) : messages.length === 0 ? (
+            <Flex justify="center" align="center" height="100%" color="gray.500">
+              <Text>No messages yet</Text>
+            </Flex>
+          ) : (
+            messages.map((message, index) => (
+              <Box 
+                key={message.id || index}
+                mb={2}
+                display="flex"
+                justifyContent={message.attributes.sender_type === 'operator' ? 'flex-end' : 'flex-start'}
+              >
+                <Box
+                  maxWidth="80%"
+                  p={2}
+                  borderRadius="md"
+                  bg={message.attributes.sender_type === 'operator' ? 'blue.100' : 'gray.200'}
+                >
+                  <Text fontSize="sm">
+                    {message.attributes.content}
+                  </Text>
+                  <Text fontSize="xs" color="gray.500" textAlign="right">
+                    {formatTime(message.attributes.timestamp)}
+                  </Text>
+                </Box>
+              </Box>
+            ))
+          )}
+          <div ref={messagesEndRef} />
+        </Box>
+        
+        {/* Message Input */}
+        <Flex mt={2}>
+          <Input
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Type your message here..."
+            mr={2}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                handleSendMessage();
+              }
+            }}
+          />
+          <Button
+            colorScheme="blue"
+            onClick={handleSendMessage}
+            isDisabled={!newMessage.trim()}
+          >
+            Send
+          </Button>
+        </Flex>
+      </Box>
+    </VStack>
+  );
+};
 
 const Dashboard = ({ initialUserData }) => {
   // State variables
@@ -271,428 +656,6 @@ const Dashboard = ({ initialUserData }) => {
       isLoadingRef.current = false;
     }
   }, [BASE_URL, router, t, toast, initialUserData]);
-  
-  // Enhanced Order Details Component
-const OrderDetails = ({ order, onClose, onUpdateStatus }) => {
-  const { t } = useTranslation('common');
-  const toast = useToast();
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState('');
-  const messagesEndRef = useRef(null);
-  const [isLoading, setIsLoading] = useState(false);
-  
-  // Scroll to bottom of messages
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-  
-  // Fetch messages on component mount
-  useEffect(() => {
-    if (order?.id) {
-      fetchMessages();
-    }
-  }, [order?.id]);
-  
-  // Scroll to bottom when messages change
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-  
-  // Fetch messages from API
-  const fetchMessages = async () => {
-    if (!order?.id) {
-      console.warn('No order ID provided to fetch messages');
-      return;
-    }
-    
-    try {
-      setIsLoading(true);
-      const token = localStorage.getItem('token');
-      
-      // Log for debugging
-      console.log(`Fetching messages for order ID: ${order.id}`);
-      console.log(`API URL: ${BASE_URL}/api/messages?filters[order][id]=${order.id}`);
-      
-      // Try explicitly setting the relationship field
-      const response = await fetch(
-        `${BASE_URL}/api/messages?filters[order][id]=${order.id}&sort=timestamp:asc&populate=*`,
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        }
-      );
-      
-      // Debugging response
-      console.log('Messages API response status:', response.status);
-      
-      if (!response.ok) {
-        throw new Error(`Failed to fetch messages: ${response.status} ${response.statusText}`);
-      }
-      
-      const data = await response.json();
-      console.log('Messages data received:', data);
-      
-      if (data && data.data) {
-        setMessages(data.data);
-      } else {
-        console.warn('No messages data in response:', data);
-        setMessages([]);
-      }
-    } catch (error) {
-      console.error('Error fetching messages:', error);
-      toast({
-        title: 'Error',
-        description: `Failed to load messages: ${error.message}`,
-        status: 'error',
-        duration: 3000
-      });
-      setMessages([]); // Set empty array on error
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const fetchMessagesAlternative = async () => {
-  if (!order?.id) return;
-  
-  try {
-    setIsLoading(true);
-    const token = localStorage.getItem('token');
-    
-    // First get all messages
-    const response = await fetch(
-      `${BASE_URL}/api/messages?sort=timestamp:asc&populate=*`,
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      }
-    );
-    
-    if (!response.ok) {
-      throw new Error(`Failed to fetch messages: ${response.status}`);
-    }
-    
-    const data = await response.json();
-    console.log('All messages:', data);
-    
-    // Filter messages that belong to this order manually
-    // (This is a workaround if the relationship filtering isn't working)
-    const filteredMessages = data.data.filter(message => {
-      return message.attributes?.order?.data?.id === order.id ||
-             message.attributes?.order === order.id;
-    });
-    
-    console.log('Filtered messages for order:', filteredMessages);
-    setMessages(filteredMessages || []);
-  } catch (error) {
-    console.error('Error fetching messages:', error);
-    toast({
-      title: 'Error',
-      description: 'Failed to load messages',
-      status: 'error',
-      duration: 3000
-    });
-    setMessages([]);
-  } finally {
-    setIsLoading(false);
-  }
-};
-  
-  // Send a new message
-  const sendMessage = async () => {
-    if (!newMessage.trim() || !order?.id) return;
-    
-    try {
-      const token = localStorage.getItem('token');
-      
-      // Create the basic message data with what we know works
-      const messageData = {
-        data: {
-          content: newMessage,
-          sender_type: 'operator',
-          timestamp: new Date().toISOString(),
-          read: false
-        }
-      };
-      
-      // Add order ID - this is the critical relationship
-      if (order.id) {
-        messageData.data.order = order.id;
-      }
-      
-      // Add operator ID if available
-      if (operatorData && operatorData.id) {
-        messageData.data.operator = operatorData.id;
-      }
-      
-      console.log('Sending message with data:', messageData);
-      
-      const response = await fetch(
-        `${BASE_URL}/api/messages`,
-        {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(messageData)
-        }
-      );
-      
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.error('API Error response when sending message:', errorData);
-        throw new Error(`Failed to send message: ${response.status} ${response.statusText}`);
-      }
-      
-      // Add successfully sent message to our UI immediately
-      const responseData = await response.json();
-      console.log('Message sent successfully, response:', responseData);
-      
-      // Clear input
-      setNewMessage('');
-      
-      // Refresh messages
-      fetchMessages();
-      
-      toast({
-        title: 'Success',
-        description: 'Message sent',
-        status: 'success',
-        duration: 2000
-      });
-    } catch (error) {
-      console.error('Error sending message:', error);
-      toast({
-        title: 'Error',
-        description: `Failed to send message: ${error.message}`,
-        status: 'error',
-        duration: 3000
-      });
-    }
-  };
-  
-  // Format timestamp to readable time
-  const formatTime = (timestamp) => {
-    try {
-      const date = new Date(timestamp);
-      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    } catch (e) {
-      return 'Unknown time';
-    }
-  };
-  
-  return (
-    <VStack spacing={4} align="stretch" h="full">
-      {/* Order Header */}
-      <Flex justify="space-between" align="center">
-        <Heading size="md">Order #{order.id}</Heading>
-        <Badge
-          colorScheme={
-            order.attributes?.status === 'pending' ? 'yellow' :
-            order.attributes?.status === 'preparing' ? 'blue' :
-            order.attributes?.status === 'ready' ? 'orange' :
-            order.attributes?.status === 'completed' ? 'green' : 'red'
-          }
-          fontSize="sm"
-          px={2}
-          py={1}
-          borderRadius="full"
-        >
-          {order.attributes?.status}
-        </Badge>
-      </Flex>
-      
-      <Divider />
-      
-      {/* Order Information */}
-      <Box bg="gray.50" p={4} borderRadius="md">
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-          <Box>
-            <Text fontWeight="bold">Customer:</Text>
-            <Text>
-              {order.attributes?.customer_profile?.data?.attributes?.fullName || 
-               order.attributes?.guest_info?.name || 
-               'Guest'}
-            </Text>
-          </Box>
-          <Box>
-            <Text fontWeight="bold">Contact:</Text>
-            <Text>
-              {order.attributes?.customer_profile?.data?.attributes?.phone || 
-               order.attributes?.guest_info?.phone || 
-               'N/A'}
-            </Text>
-          </Box>
-          <Box>
-            <Text fontWeight="bold">Table:</Text>
-            <Text>
-              {order.attributes?.tables?.data?.[0]?.attributes?.name || 'N/A'}
-            </Text>
-          </Box>
-          <Box>
-            <Text fontWeight="bold">Payment:</Text>
-            <Text>{order.attributes?.payment_method || 'N/A'}</Text>
-          </Box>
-        </SimpleGrid>
-      </Box>
-      
-      {/* Order Items */}
-      <Box>
-        <Text fontWeight="bold" mb={2}>Order Items:</Text>
-        <VStack spacing={2} align="stretch">
-          {order.attributes?.order_items?.data?.map((item, index) => (
-            <Box 
-              key={index} 
-              p={3} 
-              borderWidth="1px" 
-              borderRadius="md" 
-              bg="white"
-            >
-              <Flex justify="space-between">
-                <Box>
-                  <Text fontWeight="medium">
-                    {item.attributes?.quantity || 1}x {item.attributes?.menu_item?.data?.attributes?.name || 'Unknown Item'}
-                  </Text>
-                  {item.attributes?.special_instructions && (
-                    <Text fontSize="sm" color="gray.600">
-                      Note: {item.attributes.special_instructions}
-                    </Text>
-                  )}
-                </Box>
-                <Text fontWeight="bold">${item.attributes?.subtotal || '0.00'}</Text>
-              </Flex>
-            </Box>
-          ))}
-        </VStack>
-        
-        <Flex justify="space-between" mt={4} fontWeight="bold">
-          <Text>Total:</Text>
-          <Text>${order.attributes?.total || '0.00'}</Text>
-        </Flex>
-      </Box>
-      
-      <Divider />
-      
-      {/* Action Buttons */}
-      <SimpleGrid columns={2} spacing={4}>
-        {order.attributes?.status === 'pending' && (
-          <Button 
-            variant="utlubha-outline"
-            onClick={() => onUpdateStatus(order.id, 'preparing')}
-            leftIcon={<Icon as={FiList} />}
-          >
-            Start Preparing
-          </Button>
-        )}
-        {order.attributes?.status === 'preparing' && (
-          <Button 
-            colorScheme="orange" 
-            onClick={() => onUpdateStatus(order.id, 'ready')}
-            leftIcon={<Icon as={FiClock} />}
-          >
-            Mark Ready
-          </Button>
-        )}
-        {order.attributes?.status === 'ready' && (
-          <Button 
-            colorScheme="green" 
-            onClick={() => onUpdateStatus(order.id, 'completed')}
-            leftIcon={<Icon as={FiCheck} />}
-          >
-            Complete
-          </Button>
-        )}
-        {['pending', 'preparing', 'ready'].includes(order.attributes?.status) && (
-          <Button 
-            colorScheme="red" 
-            onClick={() => onUpdateStatus(order.id, 'cancelled')}
-            leftIcon={<Icon as={FiX} />}
-          >
-            Cancel
-          </Button>
-        )}
-      </SimpleGrid>
-      
-      <Divider />
-      
-      {/* Messages Section */}
-      <Box flex="1">
-        <Text fontWeight="bold" mb={2}>Customer Communication:</Text>
-        
-        {/* Messages List */}
-        <Box 
-          borderWidth="1px" 
-          borderRadius="md" 
-          height="200px" 
-          overflowY="auto"
-          p={3}
-          bg="gray.50"
-        >
-          {isLoading ? (
-            <Flex justify="center" align="center" height="100%">
-              <Spinner />
-            </Flex>
-          ) : messages.length === 0 ? (
-            <Flex justify="center" align="center" height="100%" color="gray.500">
-              <Text>No messages yet</Text>
-            </Flex>
-          ) : (
-            messages.map((message, index) => (
-              <Box 
-                key={index}
-                mb={2}
-                display="flex"
-                justifyContent={message.attributes.sender_type === 'operator' ? 'flex-end' : 'flex-start'}
-              >
-                <Box
-                  maxWidth="80%"
-                  p={2}
-                  borderRadius="md"
-                  bg={message.attributes.sender_type === 'operator' ? 'blue.100' : 'gray.200'}
-                >
-                  <Text fontSize="sm">
-                    {message.attributes.content}
-                  </Text>
-                  <Text fontSize="xs" color="gray.500" textAlign="right">
-                    {formatTime(message.attributes.timestamp)}
-                  </Text>
-                </Box>
-              </Box>
-            ))
-          )}
-          <div ref={messagesEndRef} />
-        </Box>
-        
-        {/* Message Input */}
-        <Flex mt={2}>
-          <Input
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            placeholder="Type your message here..."
-            mr={2}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter') {
-                sendMessage();
-              }
-            }}
-          />
-          <Button
-            variant="utlubha-outline"
-            onClick={sendMessage}
-            isDisabled={!newMessage.trim()}
-          >
-            Send
-          </Button>
-        </Flex>
-      </Box>
-    </VStack>
-  );
-};
 
 // Analytics Tab with improved data visualization
 const AnalyticsTab = ({ orders, subscription }) => {
@@ -1174,14 +1137,168 @@ const OperatorMessages = ({ orderId }) => {
   );
 }
 
+const TableCard = ({ 
+  table,
+  orders,
+  restaurant,
+  onViewDetails,
+  onDownloadQR,
+  onPrintQR,
+  isDarkMode,
+  customColors,
+  qrSettings,
+  baseUrl
+}) => {
+  // Filter only active orders (pending, preparing, ready) for this table
+  const activeOrders = orders.filter(order => 
+    order.attributes?.tables?.data?.some(t => t.id === table.id) && 
+    ['pending', 'preparing', 'ready'].includes(order.attributes?.status)
+  );
+
+  return (
+    <DashboardCard>
+      <VStack spacing={4} align="stretch">
+        <Flex justify="space-between" align="center">
+          <Box>
+            <Heading as="h4" size="sm">
+              {table.attributes?.name || table.name}
+            </Heading>
+            {(table.attributes?.description || table.description) && (
+              <Text fontSize="sm">
+                {table.attributes?.description || table.description}
+              </Text>
+            )}
+            <Badge colorScheme={activeOrders.length > 0 ? "red" : "green"} mt={1}>
+              {activeOrders.length > 0 ? `${activeOrders.length} Active Orders` : "Available"}
+            </Badge>
+          </Box>
+          <HStack spacing={2}>
+            <Button
+              size="sm"
+              variant="outline"
+              leftIcon={<FiEdit />}
+              onClick={() => onViewDetails('edit', table.id, table.attributes?.name || table.name)}
+            >
+              Edit
+            </Button>
+            <Button
+              size="sm"
+              colorScheme="red"
+              variant="outline"
+              leftIcon={<FiTrash />}
+              onClick={() => onViewDetails('delete', table.id, table.attributes?.name || table.name)}
+            >
+              Delete
+            </Button>
+          </HStack>
+        </Flex>
+
+        {/* Active Orders Section */}
+        {activeOrders.length > 0 && (
+          <Box bg="gray.50" p={3} borderRadius="md" mb={2}>
+            <Text fontWeight="bold" mb={2}>Active Orders:</Text>
+            <VStack align="stretch" spacing={2}>
+              {activeOrders.map(order => (
+                <Flex key={order.id} justify="space-between" align="center" p={2} bg="white" borderRadius="md" boxShadow="sm">
+                  <Box>
+                    <Text fontSize="sm" fontWeight="medium">Order #{order.id}</Text>
+                    <Badge 
+                      colorScheme={
+                        order.attributes?.status === 'pending' ? 'yellow' :
+                        order.attributes?.status === 'preparing' ? 'blue' : 'orange'
+                      }
+                      fontSize="xs"
+                    >
+                      {order.attributes?.status}
+                    </Badge>
+                  </Box>
+                  <HStack>
+                    <Button 
+                      size="xs" 
+                      colorScheme="blue" 
+                      leftIcon={<FiMessageSquare />}
+                      onClick={() => onViewDetails('messages', order)}
+                    >
+                      Messages
+                    </Button>
+                    <Button 
+                      size="xs" 
+                      variant="outline"
+                      onClick={() => onViewDetails('order', order)}
+                    >
+                      Details
+                    </Button>
+                  </HStack>
+                </Flex>
+              ))}
+            </VStack>
+          </Box>
+        )}
+
+        {/* QR Code */}
+        <Box 
+          display="flex" 
+          justifyContent="center" 
+          width="100%" 
+          py={4}
+        >
+          <QRCodeCard
+            tableName={table.attributes?.name || table.name}
+            qrValue={`https://utlubha.bitdash.app/${restaurant.id}/${table.id}`}
+            isDarkMode={isDarkMode}
+            restaurantName={restaurant.name}
+            customColors={customColors}
+            showLogo={qrSettings?.showLogo ?? true}
+            showName={qrSettings?.showName ?? true}
+            logoUrl={restaurant.logo 
+              ? `${baseUrl}${restaurant.logo.url}` 
+              : null}
+          />
+        </Box>
+
+        <Flex mt={4} gap={4} justify="center">
+          <Button
+            onClick={() => onDownloadQR(table.attributes?.name || table.name)}
+            leftIcon={<FiDownload />}
+            variant="utlubha-outline"
+            isFullWidth
+          >
+            Download QR
+          </Button>
+          <Button
+            onClick={() => onPrintQR(table.attributes?.name || table.name)}
+            leftIcon={<FiPrinter />}
+            colorScheme="green"
+            isFullWidth
+          >
+            Print QR
+          </Button>
+        </Flex>
+      </VStack>
+    </DashboardCard>
+  );
+};
+
   // Fetch orders function
   const fetchOrders = async () => {
     if (!userData?.restaurant?.id) return;
     
     try {
+      setIsLoading(true);
       const token = localStorage.getItem('token');
+      
+      // Show loading toast for longer operations
+      const loadingToast = toast({
+        title: t('loading'),
+        description: t('fetchingOrders'),
+        status: 'info',
+        duration: null,
+        isClosable: false
+      });
+      
+      // Fetch orders with full relationship data
       const response = await fetch(
-        `${BASE_URL}/api/orders?filters[restaurant][id]=${userData.restaurant.id}&populate=*`,
+        `${BASE_URL}/api/orders?filters[restaurant][id]=${userData.restaurant.id}&populate[tables][populate]=*&populate[order_items][populate][menu_item]=*&populate[customer_profile]=*&populate[messages]=*&sort=createdAt:desc`,
         {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -1190,12 +1307,27 @@ const OperatorMessages = ({ orderId }) => {
         }
       );
 
+      // Close loading toast
+      toast.close(loadingToast);
+
       if (!response.ok) {
-        throw new Error('Failed to fetch orders');
+        console.error(`Failed to fetch orders: ${response.status} ${response.statusText}`);
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Error data:', errorData);
+        throw new Error(`Failed to fetch orders: ${response.status}`);
       }
 
       const data = await response.json();
+      console.log('Orders data received:', data);
+      
+      if (!data || !data.data) {
+        console.warn('No orders data in response');
+        setOrders([]);
+        return [];
+      }
+      
       setOrders(data.data || []);
+      return data.data;
     } catch (error) {
       console.error('Error fetching orders:', error);
       toast({
@@ -1204,6 +1336,9 @@ const OperatorMessages = ({ orderId }) => {
         status: 'error',
         duration: 3000
       });
+      return [];
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -2675,6 +2810,14 @@ const OperatorMessages = ({ orderId }) => {
                               onClick={() => handleAdd('table')}
                               isDisabled={!userData?.restaurant}
                             />
+                            <Button
+                              leftIcon={<FiRefreshCw />}
+                              variant="outline"
+                              size="sm"
+                              onClick={fetchOrders}
+                            >
+                              Refresh
+                            </Button>
                           </HStack>
                         </Flex>
 
@@ -2711,80 +2854,28 @@ const OperatorMessages = ({ orderId }) => {
                         ) : (
                           <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={6}>
                             {userData.restaurant.tables.map((table) => (
-                              <DashboardCard key={table.id}>
-                                <VStack spacing={4} align="stretch">
-                                  <Flex justify="space-between" align="center">
-                                    <Box>
-                                      <Heading as="h4" size="sm">
-                                        {table.attributes?.name || table.name}
-                                      </Heading>
-                                      {(table.attributes?.description || table.description) && (
-                                        <Text fontSize="sm">
-                                          {table.attributes?.description || table.description}
-                                        </Text>
-                                      )}
-                                    </Box>
-                                    <HStack spacing={2}>
-                                      <Button
-                                        size="sm"
-                                        variant="outline"
-                                        leftIcon={<FiEdit />}
-                                        onClick={() => handleTableAction('edit', table.id, table.attributes?.name || table.name)}
-                                      >
-                                        Edit
-                                      </Button>
-                                      <Button
-                                        size="sm"
-                                        colorScheme="red"
-                                        variant="outline"
-                                        leftIcon={<FiTrash />}
-                                        onClick={() => handleTableAction('delete', table.id, table.attributes?.name || table.name)}
-                                      >
-                                        Delete
-                                      </Button>
-                                    </HStack>
-                                  </Flex>
-
-                                  <Box 
-                                    display="flex" 
-                                    justifyContent="center" 
-                                    width="100%" 
-                                    py={4}
-                                  >
-                                    <QRCodeCard
-                                      tableName={table.attributes?.name || table.name}
-                                      qrValue={`https://utlubha.bitdash.app/${userData.restaurant.id}`}
-                                      isDarkMode={qrDarkMode}
-                                      restaurantName={userData.restaurant.name}
-                                      customColors={userData.restaurant.custom_colors}
-                                      showLogo={userData.restaurant.qr_settings?.showLogo ?? true}
-                                      showName={userData.restaurant.qr_settings?.showName ?? true}
-                                      logoUrl={userData.restaurant.logo 
-                                        ? `${BASE_URL}${userData.restaurant.logo.url}` 
-                                        : null}
-                                    />
-                                  </Box>
-
-                                  <Flex mt={4} gap={4} justify="center">
-                                    <Button
-                                      onClick={() => captureAndDownload(table.attributes?.name || table.name)}
-                                      leftIcon={<FiDownload />}
-                                      variant="utlubha-outline"
-                                      isFullWidth
-                                    >
-                                      Download QR Code
-                                    </Button>
-                                    <Button
-                                      onClick={() => handlePrint(table.attributes?.name || table.name)}
-                                      leftIcon={<FiPrinter />}
-                                      colorScheme="green"
-                                      isFullWidth
-                                    >
-                                      Print QR Code
-                                    </Button>
-                                  </Flex>
-                                </VStack>
-                              </DashboardCard>
+                              <TableCard
+                                key={table.id}
+                                table={table}
+                                orders={orders}
+                                restaurant={userData.restaurant}
+                                onViewDetails={(action, id, name) => {
+                                  if (action === 'edit' || action === 'delete') {
+                                    handleTableAction(action, id, name);
+                                  } else if (action === 'order') {
+                                    handleViewOrderDetails(id);
+                                  } else if (action === 'messages') {
+                                    handleViewOrderDetails(id);
+                                    // After opening the order details, focus on messages tab if needed
+                                  }
+                                }}
+                                onDownloadQR={captureAndDownload}
+                                onPrintQR={handlePrint}
+                                isDarkMode={qrDarkMode}
+                                customColors={userData.restaurant.custom_colors}
+                                qrSettings={userData.restaurant.qr_settings}
+                                baseUrl={BASE_URL}
+                              />
                             ))}
                           </SimpleGrid>
                         )}
