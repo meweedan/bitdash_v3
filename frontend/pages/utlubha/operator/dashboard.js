@@ -30,10 +30,16 @@ import { mdiCheckCircle } from '@mdi/js';
 import { IoIosColorFill } from "react-icons/io";
 
 import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  PieChart, Pie, ResponsiveContainer, Cell
+} from 'recharts';
+
+import {
   FiLogOut, FiPlus, FiEdit, FiTrash, FiMenu, FiGrid, FiList,
   FiCheck, FiPackage, FiArrowRight, FiSettings, FiDownload,
   FiSun, FiClock, FiX, FiCreditCard, FiTrendingUp, FiMoon,
-  FiUser
+  FiUser, FiPrinter, FiMaximize2, FiDollarSign, FiShoppingCart,
+  FiCheckCircle,  
 } from 'react-icons/fi';
 
 // Initialize Stripe
@@ -265,6 +271,811 @@ const Dashboard = ({ initialUserData }) => {
       isLoadingRef.current = false;
     }
   }, [BASE_URL, router, t, toast, initialUserData]);
+  
+  // Enhanced Order Details Component
+const OrderDetails = ({ order, onClose, onUpdateStatus }) => {
+  const { t } = useTranslation('common');
+  const toast = useToast();
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState('');
+  const messagesEndRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
+  
+  // Scroll to bottom of messages
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+  
+  // Fetch messages on component mount
+  useEffect(() => {
+    if (order?.id) {
+      fetchMessages();
+    }
+  }, [order?.id]);
+  
+  // Scroll to bottom when messages change
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+  
+  // Fetch messages from API
+  const fetchMessages = async () => {
+    try {
+      setIsLoading(true);
+      const token = localStorage.getItem('token');
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/messages?filters[order][id]=${order.id}&sort=timestamp:asc&populate=*`,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          }
+        }
+      );
+      
+      if (!response.ok) throw new Error('Failed to fetch messages');
+      
+      const data = await response.json();
+      setMessages(data.data || []);
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to load messages',
+        status: 'error',
+        duration: 3000
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
+  // Send a new message
+  const sendMessage = async () => {
+    if (!newMessage.trim()) return;
+    
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/messages`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            data: {
+              content: newMessage,
+              sender_type: 'operator',
+              timestamp: new Date().toISOString(),
+              order: order.id
+            }
+          })
+        }
+      );
+      
+      if (!response.ok) throw new Error('Failed to send message');
+      
+      // Clear input and refresh messages
+      setNewMessage('');
+      fetchMessages();
+      
+      toast({
+        title: 'Success',
+        description: 'Message sent',
+        status: 'success',
+        duration: 2000
+      });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to send message',
+        status: 'error',
+        duration: 3000
+      });
+    }
+  };
+  
+  // Format timestamp to readable time
+  const formatTime = (timestamp) => {
+    try {
+      const date = new Date(timestamp);
+      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    } catch (e) {
+      return 'Unknown time';
+    }
+  };
+  
+  return (
+    <VStack spacing={4} align="stretch" h="full">
+      {/* Order Header */}
+      <Flex justify="space-between" align="center">
+        <Heading size="md">Order #{order.id}</Heading>
+        <Badge
+          colorScheme={
+            order.attributes?.status === 'pending' ? 'yellow' :
+            order.attributes?.status === 'preparing' ? 'blue' :
+            order.attributes?.status === 'ready' ? 'orange' :
+            order.attributes?.status === 'completed' ? 'green' : 'red'
+          }
+          fontSize="sm"
+          px={2}
+          py={1}
+          borderRadius="full"
+        >
+          {order.attributes?.status}
+        </Badge>
+      </Flex>
+      
+      <Divider />
+      
+      {/* Order Information */}
+      <Box bg="gray.50" p={4} borderRadius="md">
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+          <Box>
+            <Text fontWeight="bold">Customer:</Text>
+            <Text>
+              {order.attributes?.customer_profile?.data?.attributes?.fullName || 
+               order.attributes?.guest_info?.name || 
+               'Guest'}
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="bold">Contact:</Text>
+            <Text>
+              {order.attributes?.customer_profile?.data?.attributes?.phone || 
+               order.attributes?.guest_info?.phone || 
+               'N/A'}
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="bold">Table:</Text>
+            <Text>
+              {order.attributes?.tables?.data?.[0]?.attributes?.name || 'N/A'}
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="bold">Payment:</Text>
+            <Text>{order.attributes?.payment_method || 'N/A'}</Text>
+          </Box>
+        </SimpleGrid>
+      </Box>
+      
+      {/* Order Items */}
+      <Box>
+        <Text fontWeight="bold" mb={2}>Order Items:</Text>
+        <VStack spacing={2} align="stretch">
+          {order.attributes?.order_items?.data?.map((item, index) => (
+            <Box 
+              key={index} 
+              p={3} 
+              borderWidth="1px" 
+              borderRadius="md" 
+              bg="white"
+            >
+              <Flex justify="space-between">
+                <Box>
+                  <Text fontWeight="medium">
+                    {item.attributes?.quantity || 1}x {item.attributes?.menu_item?.data?.attributes?.name || 'Unknown Item'}
+                  </Text>
+                  {item.attributes?.special_instructions && (
+                    <Text fontSize="sm" color="gray.600">
+                      Note: {item.attributes.special_instructions}
+                    </Text>
+                  )}
+                </Box>
+                <Text fontWeight="bold">${item.attributes?.subtotal || '0.00'}</Text>
+              </Flex>
+            </Box>
+          ))}
+        </VStack>
+        
+        <Flex justify="space-between" mt={4} fontWeight="bold">
+          <Text>Total:</Text>
+          <Text>${order.attributes?.total || '0.00'}</Text>
+        </Flex>
+      </Box>
+      
+      <Divider />
+      
+      {/* Action Buttons */}
+      <SimpleGrid columns={2} spacing={4}>
+        {order.attributes?.status === 'pending' && (
+          <Button 
+            variant="utlubha-outline"
+            onClick={() => onUpdateStatus(order.id, 'preparing')}
+            leftIcon={<Icon as={FiList} />}
+          >
+            Start Preparing
+          </Button>
+        )}
+        {order.attributes?.status === 'preparing' && (
+          <Button 
+            colorScheme="orange" 
+            onClick={() => onUpdateStatus(order.id, 'ready')}
+            leftIcon={<Icon as={FiClock} />}
+          >
+            Mark Ready
+          </Button>
+        )}
+        {order.attributes?.status === 'ready' && (
+          <Button 
+            colorScheme="green" 
+            onClick={() => onUpdateStatus(order.id, 'completed')}
+            leftIcon={<Icon as={FiCheck} />}
+          >
+            Complete
+          </Button>
+        )}
+        {['pending', 'preparing', 'ready'].includes(order.attributes?.status) && (
+          <Button 
+            colorScheme="red" 
+            onClick={() => onUpdateStatus(order.id, 'cancelled')}
+            leftIcon={<Icon as={FiX} />}
+          >
+            Cancel
+          </Button>
+        )}
+      </SimpleGrid>
+      
+      <Divider />
+      
+      {/* Messages Section */}
+      <Box flex="1">
+        <Text fontWeight="bold" mb={2}>Customer Communication:</Text>
+        
+        {/* Messages List */}
+        <Box 
+          borderWidth="1px" 
+          borderRadius="md" 
+          height="200px" 
+          overflowY="auto"
+          p={3}
+          bg="gray.50"
+        >
+          {isLoading ? (
+            <Flex justify="center" align="center" height="100%">
+              <Spinner />
+            </Flex>
+          ) : messages.length === 0 ? (
+            <Flex justify="center" align="center" height="100%" color="gray.500">
+              <Text>No messages yet</Text>
+            </Flex>
+          ) : (
+            messages.map((message, index) => (
+              <Box 
+                key={index}
+                mb={2}
+                display="flex"
+                justifyContent={message.attributes.sender_type === 'operator' ? 'flex-end' : 'flex-start'}
+              >
+                <Box
+                  maxWidth="80%"
+                  p={2}
+                  borderRadius="md"
+                  bg={message.attributes.sender_type === 'operator' ? 'blue.100' : 'gray.200'}
+                >
+                  <Text fontSize="sm">
+                    {message.attributes.content}
+                  </Text>
+                  <Text fontSize="xs" color="gray.500" textAlign="right">
+                    {formatTime(message.attributes.timestamp)}
+                  </Text>
+                </Box>
+              </Box>
+            ))
+          )}
+          <div ref={messagesEndRef} />
+        </Box>
+        
+        {/* Message Input */}
+        <Flex mt={2}>
+          <Input
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Type your message here..."
+            mr={2}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                sendMessage();
+              }
+            }}
+          />
+          <Button
+            variant="utlubha-outline"
+            onClick={sendMessage}
+            isDisabled={!newMessage.trim()}
+          >
+            Send
+          </Button>
+        </Flex>
+      </Box>
+    </VStack>
+  );
+};
+
+// Analytics Tab with improved data visualization
+const AnalyticsTab = ({ orders, subscription }) => {
+  const { t } = useTranslation('common');
+  const [timeFrame, setTimeFrame] = useState('weekly');
+  const [isExpandedView, setIsExpandedView] = useState(false);
+  
+  // Function to get appropriate time ranges based on selected timeframe
+  const getTimeRanges = () => {
+    const now = new Date();
+    const periods = [];
+    
+    if (timeFrame === 'daily') {
+      // Last 7 days
+      for (let i = 6; i >= 0; i--) {
+        const date = new Date(now);
+        date.setDate(date.getDate() - i);
+        periods.push({
+          label: date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }),
+          start: new Date(date.setHours(0, 0, 0, 0)),
+          end: new Date(date.setHours(23, 59, 59, 999))
+        });
+      }
+    } else if (timeFrame === 'weekly') {
+      // Last 4 weeks
+      for (let i = 3; i >= 0; i--) {
+        const startDate = new Date(now);
+        startDate.setDate(startDate.getDate() - (i * 7 + 6));
+        const endDate = new Date(now);
+        endDate.setDate(endDate.getDate() - i * 7);
+        
+        periods.push({
+          label: `Week ${4-i}`,
+          start: new Date(startDate.setHours(0, 0, 0, 0)),
+          end: new Date(endDate.setHours(23, 59, 59, 999))
+        });
+      }
+    } else if (timeFrame === 'monthly') {
+      // Last 6 months
+      for (let i = 5; i >= 0; i--) {
+        const date = new Date(now);
+        date.setMonth(date.getMonth() - i);
+        
+        const startDate = new Date(date.getFullYear(), date.getMonth(), 1);
+        const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        
+        periods.push({
+          label: date.toLocaleDateString(undefined, { month: 'short', year: 'numeric' }),
+          start: new Date(startDate.setHours(0, 0, 0, 0)),
+          end: new Date(endDate.setHours(23, 59, 59, 999))
+        });
+      }
+    }
+    
+    return periods;
+  };
+  
+  // Calculate sales data based on orders and time ranges
+  const calculateSalesData = () => {
+    const periods = getTimeRanges();
+    
+    // Calculate sales for each period
+    return periods.map(period => {
+      const periodOrders = orders.filter(order => {
+        const orderDate = new Date(order.attributes?.createdAt);
+        return orderDate >= period.start && orderDate <= period.end;
+      });
+      
+      const totalSales = periodOrders.reduce((sum, order) => 
+        sum + parseFloat(order.attributes?.total || 0), 0);
+      
+      const completedOrders = periodOrders.filter(order => 
+        order.attributes?.status === 'completed').length;
+      
+      const cancelledOrders = periodOrders.filter(order => 
+        order.attributes?.status === 'cancelled').length;
+      
+      return {
+        period: period.label,
+        sales: totalSales.toFixed(2),
+        orders: periodOrders.length,
+        completed: completedOrders,
+        cancelled: cancelledOrders,
+        averageOrderValue: periodOrders.length > 0 
+          ? (totalSales / periodOrders.length).toFixed(2) 
+          : '0.00'
+      };
+    });
+  };
+  
+  // Generate chart data
+  const salesData = calculateSalesData();
+  
+  // Calculate KPIs
+  const calculateKPIs = () => {
+    const totalSales = orders.reduce((sum, order) => 
+      sum + parseFloat(order.attributes?.total || 0), 0);
+    
+    const completedOrders = orders.filter(order => 
+      order.attributes?.status === 'completed').length;
+    
+    const averageOrderValue = orders.length > 0 
+      ? totalSales / orders.length 
+      : 0;
+    
+    return {
+      totalSales: totalSales.toFixed(2),
+      orderCount: orders.length,
+      completedOrders,
+      completionRate: orders.length > 0 
+        ? ((completedOrders / orders.length) * 100).toFixed(1) 
+        : '0.0',
+      averageOrderValue: averageOrderValue.toFixed(2)
+    };
+  };
+  
+  const kpis = calculateKPIs();
+  
+  return (
+    <VStack spacing={6} align="stretch">
+      <Flex justify="space-between" align="center">
+        <Heading size="md">{t('analytics')}</Heading>
+        
+        <HStack>
+          <Select 
+            value={timeFrame} 
+            onChange={(e) => setTimeFrame(e.target.value)}
+            size="sm"
+            w="150px"
+          >
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </Select>
+          
+          <IconButton
+            icon={isExpandedView ? <FiMinimize2 /> : <FiMaximize2 />}
+            aria-label="Toggle expanded view"
+            size="sm"
+            onClick={() => setIsExpandedView(!isExpandedView)}
+          />
+        </HStack>
+      </Flex>
+      
+      {/* KPI Summary Cards */}
+      <SimpleGrid columns={{ base: 2, md: 4 }} spacing={4}>
+        <StatCard
+          label="Total Sales"
+          value={`$${kpis.totalSales}`}
+          icon={FiDollarSign}
+          color="green.500"
+        />
+        
+        <StatCard
+          label="Order Count"
+          value={kpis.orderCount.toString()}
+          icon={FiShoppingCart}
+          color="brand.utlubha.500"
+        />
+        
+        <StatCard
+          label="Completion Rate"
+          value={`${kpis.completionRate}%`}
+          icon={FiCheckCircle}
+          color="brand.utlubha.500"
+        />
+        
+        <StatCard
+          label="Avg. Order Value"
+          value={`$${kpis.averageOrderValue}`}
+          icon={FiTrendingUp}
+          color="brand.utlubha.500"
+        />
+      </SimpleGrid>
+      
+      {/* Sales Chart */}
+      <Box 
+        p={6}
+        borderWidth="1px"
+        borderRadius="lg"
+        boxShadow="sm"
+        h={isExpandedView ? "400px" : "300px"}
+      >
+        <Heading size="sm" mb={4}>Sales Trend</Heading>
+        <Box h={isExpandedView ? "350px" : "250px"}>
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={salesData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="period" />
+              <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
+              <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
+              <Tooltip />
+              <Legend />
+              <Bar yAxisId="left" dataKey="sales" name="Sales ($)" fill="#8884d8" />
+              <Bar yAxisId="right" dataKey="orders" name="Order Count" fill="#82ca9d" />
+            </BarChart>
+          </ResponsiveContainer>
+        </Box>
+      </Box>
+      
+      {/* Order Status Distribution */}
+      <Box 
+        p={6}
+        borderWidth="1px"
+        borderRadius="lg"
+        bg="white"
+        boxShadow="sm"
+      >
+        <Heading size="sm" mb={4}>Order Status Distribution</Heading>
+        <Flex justify="center" h="250px">
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                data={[
+                  { name: 'Pending', value: orders.filter(o => o.attributes?.status === 'pending').length, fill: '#F6E05E' },
+                  { name: 'Preparing', value: orders.filter(o => o.attributes?.status === 'preparing').length, fill: '#4299E1' },
+                  { name: 'Ready', value: orders.filter(o => o.attributes?.status === 'ready').length, fill: '#ED8936' },
+                  { name: 'Completed', value: orders.filter(o => o.attributes?.status === 'completed').length, fill: '#48BB78' },
+                  { name: 'Cancelled', value: orders.filter(o => o.attributes?.status === 'cancelled').length, fill: '#F56565' }
+                ]}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={80}
+                label={({name, percent}) => `${name}: ${(percent * 100).toFixed(0)}%`}
+              >
+              </Pie>
+              <Tooltip formatter={(value) => [`${value} orders`, null]} />
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
+        </Flex>
+      </Box>
+      
+      {/* Premium Features Banner (if not on premium) */}
+      {subscription?.tier !== 'premium' && (
+        <Box
+          p={6}
+          borderWidth="1px"
+          borderRadius="lg"
+          bg="purple.50"
+          borderColor="purple.200"
+        >
+          <Flex justify="space-between" align="center">
+            <Box>
+              <Heading size="sm" mb={2} color="purple.700">
+                Upgrade to Premium Analytics
+              </Heading>
+              <Text fontSize="sm" color="purple.600">
+                Get access to advanced analytics, customer insights, and sales forecasting.
+              </Text>
+            </Box>
+            <Button
+              colorScheme="purple"
+              size="sm"
+              onClick={() => handleUpgradeSubscription('premium')}
+            >
+              Upgrade Now
+            </Button>
+          </Flex>
+        </Box>
+      )}
+    </VStack>
+  );
+};
+
+// Stat Card Component for Analytics
+const StatCard = ({ label, value, icon: Icon, color }) => {
+  return (
+    <Box
+      p={5}
+      borderRadius="lg"
+      borderWidth="1px"
+      bg="white"
+      boxShadow="sm"
+      transition="all 0.2s"
+      _hover={{ transform: 'translateY(-2px)', boxShadow: 'md' }}
+    >
+      <Flex justify="space-between" align="center">
+        <Box>
+          <Text fontSize="sm" color="gray.500">{label}</Text>
+          <Text fontSize="2xl" fontWeight="bold" mt={1}>{value}</Text>
+        </Box>
+        <Icon color={color} size={24} />
+      </Flex>
+    </Box>
+  );
+};
+
+// OperatorMessages Component (Used in Order Details)
+const OperatorMessages = ({ orderId }) => {
+  const { t } = useTranslation('common');
+  const toast = useToast();
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const messagesEndRef = useRef(null);
+  
+  // Fetch messages
+  const fetchMessages = useCallback(async () => {
+    if (!orderId) return;
+    
+    try {
+      setIsLoading(true);
+      const token = localStorage.getItem('token');
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/messages?filters[order][id]=${orderId}&sort=timestamp:asc&populate=*`,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          }
+        }
+      );
+      
+      if (!response.ok) throw new Error('Failed to fetch messages');
+      
+      const data = await response.json();
+      setMessages(data.data || []);
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to load messages',
+        status: 'error',
+        duration: 3000
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  }, [orderId, toast]);
+  
+  // Send message
+  const handleSendMessage = async () => {
+    if (!newMessage.trim() || !orderId) return;
+    
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/messages`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            data: {
+              content: newMessage,
+              sender_type: 'operator',
+              timestamp: new Date().toISOString(),
+              order: orderId,
+              read: false
+            }
+          })
+        }
+      );
+      
+      if (!response.ok) throw new Error('Failed to send message');
+      
+      setNewMessage('');
+      fetchMessages();
+      
+      toast({
+        title: 'Success',
+        description: 'Message sent successfully',
+        status: 'success',
+        duration: 2000
+      });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to send message',
+        status: 'error',
+        duration: 3000
+      });
+    }
+  };
+  
+  // Initial fetch and setup message polling
+  useEffect(() => {
+    if (orderId) {
+      fetchMessages();
+      
+      // Set up polling for new messages
+      const intervalId = setInterval(fetchMessages, 15000); // Poll every 15 seconds
+      
+      return () => clearInterval(intervalId);
+    }
+  }, [orderId, fetchMessages]);
+  
+  // Scroll to bottom when messages change
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+  
+  // Format timestamp
+  const formatTime = (timestamp) => {
+    try {
+      const date = new Date(timestamp);
+      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    } catch (e) {
+      return 'Unknown time';
+    }
+  };
+  
+  return (
+    <Box>
+      <Heading size="sm" mb={2}>
+        {t('messages')}
+      </Heading>
+      
+      {/* Messages Container */}
+      <Box
+        maxH="300px"
+        overflowY="auto"
+        p={3}
+        borderWidth="1px"
+        borderRadius="md"
+        bg="gray.50"
+        mb={3}
+      >
+        {isLoading ? (
+          <Flex justify="center" p={4}>
+            <Spinner size="sm" />
+          </Flex>
+        ) : messages.length === 0 ? (
+          <Text color="gray.500" textAlign="center" py={4}>
+            {t('noMessages')}
+          </Text>
+        ) : (
+          messages.map((message, index) => (
+            <Box 
+              key={index}
+              mb={2}
+              display="flex"
+              justifyContent={message.attributes.sender_type === 'operator' ? 'flex-end' : 'flex-start'}
+            >
+              <Box
+                maxWidth="80%"
+                p={2}
+                borderRadius="md"
+                bg={message.attributes.sender_type === 'operator' ? 'blue.100' : 'gray.200'}
+              >
+                <Text fontSize="sm">
+                  {message.attributes.content}
+                </Text>
+                <Text fontSize="xs" color="gray.500" textAlign="right">
+                  {formatTime(message.attributes.timestamp)}
+                </Text>
+              </Box>
+            </Box>
+          ))
+        )}
+        <div ref={messagesEndRef} />
+      </Box>
+      
+      {/* Message Input */}
+      <Flex>
+        <Input
+          placeholder={t('typeMessage')}
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              handleSendMessage();
+            }
+          }}
+          mr={2}
+        />
+        <Button
+          variant="utlubha-outline"
+          onClick={handleSendMessage}
+          isDisabled={!newMessage.trim()}
+        >
+          {t('send')}
+        </Button>
+      </Flex>
+    </Box>
+  );
+}
 
   // Fetch orders function
   const fetchOrders = async () => {
@@ -515,7 +1326,7 @@ const Dashboard = ({ initialUserData }) => {
           <ModalFooter>
             <HStack spacing={3}>
               <Button 
-                colorScheme="blue" 
+                variant="utlubha-outline"
                 leftIcon={<Icon as={FiCheck} />}
                 onClick={handleColorChange}
               >
@@ -621,11 +1432,11 @@ const Dashboard = ({ initialUserData }) => {
             </FormControl>
           </ModalBody>
           <ModalFooter>
-            <Button variant="ghost" mr={3} onClick={onClose}>
+            <Button variant="utlubha-solid" mr={3} onClick={onClose}>
               Cancel
             </Button>
             <Button 
-              colorScheme="blue" 
+              variant="utlubha-outline"
               onClick={handleSubmit}
               isDisabled={!menuForm.name}
             >
@@ -779,11 +1590,11 @@ const Dashboard = ({ initialUserData }) => {
             </VStack>
           </ModalBody>
           <ModalFooter>
-            <Button variant="ghost" mr={3} onClick={onClose}>
+            <Button variant="utlubha-solid" mr={3} onClick={onClose}>
               Cancel
             </Button>
             <Button 
-              colorScheme="blue" 
+              variant="utlubha-outline"
               onClick={handleSubmit}
               isDisabled={!menuItemForm.name || !menuItemForm.menuId}
             >
@@ -797,161 +1608,168 @@ const Dashboard = ({ initialUserData }) => {
 
   // QR Code Card Component
   const QRCodeCard = React.memo(({ 
-    tableName,
-    qrValue,
-    isDarkMode,
-    restaurantName,
-    customColors = null,
-    showLogo = true,
-    showName = true,
-    logoUrl = null
-  }) => {
-    const backgroundColor = customColors 
-      ? `linear-gradient(110deg, ${customColors.primary} 0%, ${customColors.secondary} 100%)`
-      : isDarkMode 
-        ? 'linear-gradient(110deg, #111111 0%, #67bdfd 100%)'
-        : 'linear-gradient(110deg, #67bdfd 0%, #111111 100%)';
-    
-    return (
-      <Box 
-        id={`qr-box-${tableName}`}
-        background={backgroundColor}
-        width="85.60mm"
-        height="53.98mm"
-        style={{
-          minWidth: '85.60mm',
-          minHeight: '53.98mm',
-          maxWidth: '85.60mm',
-          maxHeight: '53.98mm',
-          direction: 'ltr'
-        }}
-        position="relative"
-        overflow="hidden"
-        padding="15px"
-        mx="auto"
-        boxShadow="0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)"
+  tableName,
+  qrValue,
+  isDarkMode,
+  restaurantName,
+  customColors = null,
+  showLogo = true,
+  showName = true,
+  logoUrl = null
+}) => {
+  const backgroundColor = customColors 
+    ? `linear-gradient(110deg, ${customColors.primary} 0%, ${customColors.secondary} 100%)`
+    : isDarkMode 
+      ? 'linear-gradient(110deg, #111111 0%, #67bdfd 100%)'
+      : 'linear-gradient(110deg, #67bdfd 0%, #111111 100%)';
+  
+  // Ensure the QR code value is clean and valid
+  const safeQrValue = qrValue || `https://example.com/${tableName}`;
+  const safeTableName = tableName || 'Table';
+  
+  return (
+    <Box 
+      id={`qr-box-${safeTableName}`}
+      background={backgroundColor}
+      width="85.60mm"
+      height="53.98mm"
+      style={{
+        minWidth: '85.60mm',
+        minHeight: '53.98mm',
+        maxWidth: '85.60mm',
+        maxHeight: '53.98mm',
+        direction: 'ltr'
+      }}
+      position="relative"
+      overflow="hidden"
+      padding="15px"
+      mx="auto"
+      boxShadow="0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)"
+    >
+      {/* Utlubha Brand */}
+      <Text 
+        fontSize="xs" 
+        textAlign="center"
+        fontWeight="bold" 
+        color={customColors?.accent || (isDarkMode ? 'white' : 'black')}
       >
-        {/* Utlubha Brand */}
-        <Text 
-          fontSize="xs" 
-          textAlign="center"
-          fontWeight="bold" 
-          color={customColors?.accent || (isDarkMode ? 'white' : 'black')}
+        Powered by Utlubha
+      </Text>
+
+      {/* Main Content Area */}
+      <Flex 
+        height="calc(100% - 60px)"
+        width="100%"
+        position="relative"
+        justifyContent="flex-end"
+        alignItems="center"
+        style={{ direction: 'ltr' }}
+      >
+        {/* Restaurant Name (if shown) */}
+        {showName && (
+          <Box 
+            position="absolute"
+            left="0"
+            maxWidth="calc(100% - 35mm)"
+          >
+            <Text 
+              fontSize="sm"
+              color="whiteAlpha.800"
+              letterSpacing="wide"
+              noOfLines={1}
+              style={{ direction: 'ltr' }}
+            >
+              {restaurantName}
+            </Text>
+          </Box>
+        )}
+
+        {/* QR Code */}
+        <Box
+          bg={customColors?.qrBackground || 'white'}
+          p={2}
+          borderRadius="md"
+          width="25mm"
+          height="25mm"
+          style={{
+            minWidth: '25mm',
+            minHeight: '25mm',
+            maxWidth: '25mm',
+            maxHeight: '25mm'
+          }}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          flexShrink={0}
+          boxShadow="md"
         >
-          Powered by Utlubha
+          <QRCodeCanvas
+            id={`qr-canvas-${safeTableName}`}
+            value={safeQrValue}
+            size={180}
+            level="H" // High error correction for better scanning
+            includeMargin={true} // Include margin around QR code for better scanning
+            bgColor={customColors?.qrBackground || 'white'}
+            fgColor={customColors?.qrForeground || (isDarkMode ? '#111111' : '#1179be')}
+            style={{
+              width: '100%',
+              height: '100%'
+            }}
+            renderAs="canvas" // Force canvas rendering for better image capture
+          />
+        </Box>
+      </Flex>
+
+      {/* Bottom Area */}
+      <Flex 
+        position="absolute"
+        bottom="15px"
+        left="15px"
+        right="15px"
+        justifyContent="space-between"
+        alignItems="flex-end"
+        style={{ direction: 'ltr' }}
+      >
+        {/* Table Number */}
+        <Text 
+          fontSize="3xl"
+          fontWeight="bold" 
+          color={customColors?.accent || 'white'}
+          letterSpacing="wide"
+        >
+          {safeTableName}
         </Text>
 
-        {/* Main Content Area */}
-        <Flex 
-          height="calc(100% - 60px)"
-          width="100%"
-          position="relative"
-          justifyContent="flex-end"
-          alignItems="center"
-          style={{ direction: 'ltr' }}
-        >
-          {/* Restaurant Name (if shown) */}
-          {showName && (
-            <Box 
-              position="absolute"
-              left="0"
-              maxWidth="calc(100% - 35mm)"
-            >
-              <Text 
-                fontSize="sm"
-                color="whiteAlpha.800"
-                letterSpacing="wide"
-                noOfLines={1}
-                style={{ direction: 'ltr' }}
-              >
-                {restaurantName}
-              </Text>
-            </Box>
-          )}
-
-          {/* QR Code */}
+        {/* Restaurant Logo */}
+        {showLogo && logoUrl && (
           <Box
-            bg={customColors?.qrBackground || 'white'}
-            p={2}
-            borderRadius="md"
-            width="25mm"
-            height="25mm"
-            style={{
-              minWidth: '25mm',
-              minHeight: '25mm',
-              maxWidth: '25mm',
-              maxHeight: '25mm'
-            }}
+            width="12mm"
+            height="8mm"
+            position="relative"
+            overflow="hidden"
             display="flex"
             alignItems="center"
             justifyContent="center"
-            flexShrink={0}
-            boxShadow="md"
           >
-            <QRCodeCanvas
-              id={`qr-canvas-${tableName}`}
-              value={qrValue}
-              size={180}
-              level="H"
-              bgColor={customColors?.qrBackground || 'white'}
-              fgColor={customColors?.qrForeground || (isDarkMode ? '#111111' : '#1179be')}
+            <Image
+              src={logoUrl}
+              alt={restaurantName}
+              crossOrigin="anonymous" // Important for canvas to capture external images
               style={{
-                width: '100%',
-                height: '100%'
+                maxWidth: '12mm',
+                maxHeight: '8mm',
+                width: 'auto',
+                height: 'auto',
+                objectFit: 'contain',
+                filter: 'brightness(0) invert(1)'
               }}
             />
           </Box>
-        </Flex>
-
-        {/* Bottom Area */}
-        <Flex 
-          position="absolute"
-          bottom="15px"
-          left="15px"
-          right="15px"
-          justifyContent="space-between"
-          alignItems="flex-end"
-          style={{ direction: 'ltr' }}
-        >
-          {/* Table Number */}
-          <Text 
-            fontSize="3xl"
-            fontWeight="bold" 
-            color={customColors?.accent || 'white'}
-            letterSpacing="wide"
-          >
-            {tableName}
-          </Text>
-
-          {/* Restaurant Logo */}
-          {showLogo && logoUrl && (
-            <Box
-              width="12mm"
-              height="8mm"
-              position="relative"
-              overflow="hidden"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Image
-                src={logoUrl}
-                alt={restaurantName}
-                style={{
-                  maxWidth: '12mm',
-                  maxHeight: '8mm',
-                  width: 'auto',
-                  height: 'auto',
-                  objectFit: 'contain',
-                  filter: 'brightness(0) invert(1)'
-                }}
-              />
-            </Box>
-          )}
-        </Flex>
-      </Box>
-    );
-  });
+        )}
+      </Flex>
+    </Box>
+  );
+});
 
   // Handle print QR code
   const handlePrint = async (tableName) => {
@@ -1058,47 +1876,80 @@ const Dashboard = ({ initialUserData }) => {
 
   // Handle download QR code
   const captureAndDownload = async (tableName) => {
-    try {
-      // Get the element to capture
-      const element = document.getElementById(`qr-box-${tableName}`);
-      if (!element) {
-        console.error(`Element with ID "qr-box-${tableName}" not found`);
-        toast({
-          title: 'Error',
-          description: 'Failed to find QR code element',
-          status: 'error',
-          duration: 3000
-        });
-        return;
-      }
-
-      // Make sure html2canvas is imported properly
-      const html2canvas = (await import('html2canvas')).default;
-      
-      // Capture the element with better settings
-      const canvas = await html2canvas(element, {
-        scale: 2, // Higher quality but not too high
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: null,
-        logging: false,
-        onclone: (doc) => {
-          // Make sure the element is visible in the cloned document
-          const clonedElement = doc.getElementById(`qr-box-${tableName}`);
-          if (clonedElement) {
-            clonedElement.style.display = 'block';
-          }
-        }
+  try {
+    // Get the element to capture
+    const element = document.getElementById(`qr-box-${tableName}`);
+    if (!element) {
+      console.error(`Element with ID "qr-box-${tableName}" not found`);
+      toast({
+        title: 'Error',
+        description: 'Failed to find QR code element',
+        status: 'error',
+        duration: 3000
       });
+      return;
+    }
 
-      // Convert to image data URL
-      const image = canvas.toDataURL('image/png');
-      
-      // Create a simple download link
-      const link = document.createElement('a');
-      link.href = image;
-      link.download = `${tableName}-qrcode.png`;
-      document.body.appendChild(link);
+    // Show loading toast
+    const loadingToastId = toast({
+      title: 'Processing',
+      description: 'Generating QR code image...',
+      status: 'info',
+      duration: null,
+      isClosable: false
+    });
+
+    // Make sure html2canvas is imported properly
+    let html2canvas;
+    try {
+      html2canvas = (await import('html2canvas')).default;
+    } catch (error) {
+      console.error('Failed to load html2canvas:', error);
+      toast.close(loadingToastId);
+      toast({
+        title: 'Error',
+        description: 'Failed to load required libraries',
+        status: 'error',
+        duration: 3000
+      });
+      return;
+    }
+    
+    // Capture the element with better settings for QR codes
+    const canvas = await html2canvas(element, {
+      scale: 3, // Higher quality for QR readability
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: null,
+      logging: false,
+      removeContainer: false,
+      foreignObjectRendering: false, // Often more reliable for complex layouts
+      onclone: (doc) => {
+        // Make sure the element is visible in the cloned document
+        const clonedElement = doc.getElementById(`qr-box-${tableName}`);
+        if (clonedElement) {
+          clonedElement.style.display = 'block';
+          clonedElement.style.transform = 'none'; // Remove any transforms that might affect rendering
+        }
+      }
+    });
+
+    // Convert to image data URL with high quality
+    const image = canvas.toDataURL('image/png', 1.0);
+    
+    // Close loading toast
+    toast.close(loadingToastId);
+    
+    // Create a simple download link
+    const link = document.createElement('a');
+    link.href = image;
+    link.download = `${tableName.replace(/\s+/g, '-')}-qrcode.png`;
+    
+    // Append to body, click and remove (standard download approach)
+    document.body.appendChild(link);
+    
+    // Small delay to ensure everything is ready
+    setTimeout(() => {
       link.click();
       document.body.removeChild(link);
       
@@ -1108,16 +1959,17 @@ const Dashboard = ({ initialUserData }) => {
         status: 'success',
         duration: 2000
       });
-    } catch (error) {
-      console.error('Error capturing QR code:', error);
-      toast({
-        title: 'Error',
-        description: `Failed to download QR code: ${error.message}`,
-        status: 'error',
-        duration: 3000
-      });
-    }
-  };
+    }, 100);
+  } catch (error) {
+    console.error('Error capturing QR code:', error);
+    toast({
+      title: 'Error',
+      description: `Failed to download QR code: ${error.message}`,
+      status: 'error',
+      duration: 3000
+    });
+  }
+};
 
   // Handle table actions (create, edit, delete)
   const handleTableAction = async (action, tableId, tableName) => {
@@ -1430,6 +2282,8 @@ const Dashboard = ({ initialUserData }) => {
     setIsOrderDetailsOpen(false);
   };
 
+  
+
   // Handle delete operations
   const handleDelete = async (type, id) => {
     if (!window.confirm(t('confirmDelete'))) return;
@@ -1558,9 +2412,9 @@ const Dashboard = ({ initialUserData }) => {
     icon: Icon, 
     label, 
     onClick, 
-    colorScheme = "blue",
+    colorScheme = "orange",
     size = "md",
-    variant = "solid",
+    variant = "utlubha-solid",
     isDisabled = false,
     iconsOnly = false
   }) => (
@@ -1643,11 +2497,6 @@ const Dashboard = ({ initialUserData }) => {
                       {userData?.restaurant?.name || t('dashboard')}
                     </Heading>
                   </HStack>
-                  <ResponsiveIconButton
-                    icon={FiLogOut}
-                    label={t('logout')}
-                    onClick={handleLogout}
-                  />
                 </Flex>
 
                 {/* Restaurant Info Card */}
@@ -1743,7 +2592,7 @@ const Dashboard = ({ initialUserData }) => {
                                 icon={FiPlus}
                                 label={t('createRestaurant')}
                                 onClick={() => handleAdd('restaurant')}
-                                colorScheme="blue"
+                                variant="utlubha-solid"
                               />
                             </VStack>
                           </DashboardCard>
@@ -1758,7 +2607,7 @@ const Dashboard = ({ initialUserData }) => {
                                 icon={FiPlus}
                                 label={t('addFirstTable')}
                                 onClick={() => handleAdd('table')}
-                                colorScheme="blue"
+                                variant="utlubha-solid"
                               />
                             </VStack>
                           </DashboardCard>
@@ -1821,16 +2670,20 @@ const Dashboard = ({ initialUserData }) => {
 
                                   <Flex mt={4} gap={4} justify="center">
                                     <Button
-                                      onClick={() => setQrDarkMode(!qrDarkMode)}
-                                      leftIcon={qrDarkMode ? <FiSun /> : <FiMoon />}
-                                    >
-                                      {qrDarkMode ? 'Light Mode' : 'Dark Mode'}
-                                    </Button>
-                                    <Button
                                       onClick={() => captureAndDownload(table.attributes?.name || table.name)}
                                       leftIcon={<FiDownload />}
+                                      variant="utlubha-outline"
+                                      isFullWidth
                                     >
-                                      Download
+                                      Download QR Code
+                                    </Button>
+                                    <Button
+                                      onClick={() => handlePrint(table.attributes?.name || table.name)}
+                                      leftIcon={<FiPrinter />}
+                                      colorScheme="green"
+                                      isFullWidth
+                                    >
+                                      Print QR Code
                                     </Button>
                                   </Flex>
                                 </VStack>
@@ -1869,7 +2722,7 @@ const Dashboard = ({ initialUserData }) => {
                                 icon={FiPlus}
                                 label={t('createRestaurant')}
                                 onClick={() => handleAdd('restaurant')}
-                                colorScheme="blue"
+                                variant="utlubha-solid"
                               />
                             </VStack>
                           </DashboardCard>
@@ -1884,7 +2737,7 @@ const Dashboard = ({ initialUserData }) => {
                                 icon={FiPlus}
                                 label={t('createMenu')}
                                 onClick={() => handleAdd('menu')}
-                                colorScheme="blue"
+                                variant="utlubha-solid"
                               />
                             </VStack>
                           </DashboardCard>
@@ -1957,7 +2810,7 @@ const Dashboard = ({ initialUserData }) => {
                                 icon={FiPlus}
                                 label={t('createMenu')}
                                 onClick={() => handleAdd('menu')}
-                                colorScheme="blue"
+                                variant="utlubha-solid"
                               />
                             </VStack>
                           </DashboardCard>
@@ -1981,7 +2834,7 @@ const Dashboard = ({ initialUserData }) => {
                                         icon={FiPlus}
                                         label={t('addFirstItem')}
                                         onClick={() => handleAdd('menuItem')}
-                                        colorScheme="blue"
+                                        variant="utlubha-solid"
                                       />
                                     </VStack>
                                   </DashboardCard>
@@ -2144,7 +2997,6 @@ const Dashboard = ({ initialUserData }) => {
                                       icon={FiList}
                                       label={t('preparing')}
                                       onClick={() => handleUpdateOrderStatus(order.id, 'preparing')}
-                                      size="sm"
                                       colorScheme="blue"
                                     />
                                   )}
@@ -2153,7 +3005,6 @@ const Dashboard = ({ initialUserData }) => {
                                       icon={FiClock}
                                       label={t('ready')}
                                       onClick={() => handleUpdateOrderStatus(order.id, 'ready')}
-                                      size="sm"
                                       colorScheme="orange"
                                     />
                                   )}
@@ -2162,7 +3013,6 @@ const Dashboard = ({ initialUserData }) => {
                                       icon={FiCheck}
                                       label={t('complete')}
                                       onClick={() => handleUpdateOrderStatus(order.id, 'completed')}
-                                      size="sm"
                                       colorScheme="green"
                                     />
                                   )}
@@ -2173,7 +3023,6 @@ const Dashboard = ({ initialUserData }) => {
                                       icon={FiX}
                                       label={t('cancel')}
                                       onClick={() => handleUpdateOrderStatus(order.id, 'cancelled')}
-                                      size="sm"
                                       colorScheme="red"
                                     />
                                   )}
@@ -2263,7 +3112,7 @@ const Dashboard = ({ initialUserData }) => {
                             <VStack spacing={4}>
                               <Icon as={FiCreditCard} boxSize={12} />
                               <Text>No active subscription found</Text>
-                              <Button colorScheme="blue" onClick={() => handleUpgradeSubscription('standard')}>
+                              <Button variant="utlubha-solid" onClick={() => handleUpgradeSubscription('standard')}>
                                 Subscribe Now
                               </Button>
                             </VStack>
