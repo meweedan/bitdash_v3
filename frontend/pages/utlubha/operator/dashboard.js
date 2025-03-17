@@ -66,391 +66,6 @@ export async function getServerSideProps({ locale }) {
   };
 }
 
-const OrderDetails = ({ order, onClose, onUpdateStatus, operatorData }) => {
-  const { t } = useTranslation('common');
-  const toast = useToast();
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState('');
-  const messagesEndRef = useRef(null);
-  const [isLoading, setIsLoading] = useState(true);
-  
-  // Get base URL from environment variable
-  const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-  
-  // Scroll to bottom of messages
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-  
-  // Fetch messages when component mounts or order changes
-  useEffect(() => {
-    if (order?.id) {
-      loadMessages();
-    }
-  }, [order?.id]);
-  
-  // Set up message polling
-  useEffect(() => {
-    if (!order?.id) return;
-    
-    // Poll for new messages every 10 seconds
-    const intervalId = setInterval(loadMessages, 10000);
-    
-    // Clean up interval on unmount
-    return () => clearInterval(intervalId);
-  }, [order?.id]);
-  
-  // Scroll to bottom when messages change
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-  
-  // Load messages function
-  const loadMessages = async () => {
-    if (!order?.id) return;
-    
-    try {
-      setIsLoading(true);
-      
-      const token = localStorage.getItem('token');
-      const response = await fetch(
-        `${baseUrl}/api/messages?filters[order][id]=${order.id}&sort=timestamp:asc&populate=*`,
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        }
-      );
-      
-      if (!response.ok) {
-        throw new Error(`Failed to fetch messages: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      
-      if (data && data.data) {
-        setMessages(data.data);
-      } else {
-        console.warn('No messages found for order:', order.id);
-        setMessages([]);
-      }
-    } catch (error) {
-      console.error('Error loading messages:', error);
-      toast({
-        title: 'Error',
-        description: `Failed to load messages: ${error.message}`,
-        status: 'error',
-        duration: 3000
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  
-  // Send message function
-  const handleSendMessage = async () => {
-    if (!newMessage.trim() || !order?.id) return;
-    
-    try {
-      const token = localStorage.getItem('token');
-      
-      // Create message data
-      const messageData = {
-        data: {
-          content: newMessage,
-          sender_type: 'operator',
-          timestamp: new Date().toISOString(),
-          order: order.id,
-          read: false
-        }
-      };
-      
-      // Add operator ID if available
-      if (operatorData && operatorData.id) {
-        messageData.data.operator = operatorData.id;
-      }
-      
-      // Add optimistic update for better UX
-      const tempMessage = {
-        id: `temp-${Date.now()}`,
-        attributes: {
-          content: newMessage,
-          sender_type: 'operator',
-          timestamp: new Date().toISOString(),
-          read: false
-        }
-      };
-      
-      setMessages(prev => [...prev, tempMessage]);
-      setNewMessage('');
-      
-      // Send the actual message
-      const response = await fetch(
-        `${baseUrl}/api/messages`,
-        {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(messageData)
-        }
-      );
-      
-      if (!response.ok) {
-        throw new Error(`Failed to send message: ${response.status}`);
-      }
-      
-      // Reload messages to get the real message
-      await loadMessages();
-      
-      toast({
-        title: 'Success',
-        description: 'Message sent',
-        status: 'success',
-        duration: 2000
-      });
-    } catch (error) {
-      console.error('Error sending message:', error);
-      toast({
-        title: 'Error',
-        description: `Failed to send message: ${error.message}`,
-        status: 'error',
-        duration: 3000
-      });
-      
-      // Reload messages to remove the optimistic update
-      await loadMessages();
-    }
-  };
-  
-  // Format timestamp to readable time
-  const formatTime = (timestamp) => {
-    try {
-      const date = new Date(timestamp);
-      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    } catch (e) {
-      return 'Unknown time';
-    }
-  };
-  
-  if (!order) {
-    return (
-      <Flex justify="center" align="center" height="100%">
-        <Text>No order selected</Text>
-      </Flex>
-    );
-  }
-  
-  return (
-    <VStack spacing={4} align="stretch" h="full">
-      {/* Order Header */}
-      <Flex justify="space-between" align="center">
-        <Heading size="md">Order #{order.id}</Heading>
-        <Badge
-          colorScheme={
-            order.attributes?.status === 'pending' ? 'yellow' :
-            order.attributes?.status === 'preparing' ? 'blue' :
-            order.attributes?.status === 'ready' ? 'orange' :
-            order.attributes?.status === 'completed' ? 'green' : 'red'
-          }
-          fontSize="sm"
-          px={2}
-          py={1}
-          borderRadius="full"
-        >
-          {order.attributes?.status}
-        </Badge>
-      </Flex>
-      
-      <Divider />
-      
-      {/* Order Information */}
-      <Box bg="gray.50" p={4} borderRadius="md">
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-          <Box>
-            <Text fontWeight="bold">Customer:</Text>
-            <Text>
-              {order.attributes?.customer_profile?.data?.attributes?.fullName || 
-               order.attributes?.guest_info?.name || 
-               'Guest'}
-            </Text>
-          </Box>
-          <Box>
-            <Text fontWeight="bold">Contact:</Text>
-            <Text>
-              {order.attributes?.customer_profile?.data?.attributes?.phone || 
-               order.attributes?.guest_info?.phone || 
-               'N/A'}
-            </Text>
-          </Box>
-          <Box>
-            <Text fontWeight="bold">Table:</Text>
-            <Text>
-              {order.attributes?.tables?.data?.[0]?.attributes?.name || 'N/A'}
-            </Text>
-          </Box>
-          <Box>
-            <Text fontWeight="bold">Payment:</Text>
-            <Text>{order.attributes?.payment_method || 'N/A'}</Text>
-          </Box>
-        </SimpleGrid>
-      </Box>
-      
-      {/* Order Items */}
-      <Box>
-        <Text fontWeight="bold" mb={2}>Order Items:</Text>
-        <VStack spacing={2} align="stretch">
-          {order.attributes?.order_items?.data?.map((item, index) => (
-            <Box 
-              key={index} 
-              p={3} 
-              borderWidth="1px" 
-              borderRadius="md" 
-              bg="white"
-            >
-              <Flex justify="space-between">
-                <Box>
-                  <Text fontWeight="medium">
-                    {item.attributes?.quantity || 1}x {item.attributes?.menu_item?.data?.attributes?.name || 'Unknown Item'}
-                  </Text>
-                  {item.attributes?.special_instructions && (
-                    <Text fontSize="sm" color="gray.600">
-                      Note: {item.attributes.special_instructions}
-                    </Text>
-                  )}
-                </Box>
-                <Text fontWeight="bold">${item.attributes?.subtotal || '0.00'}</Text>
-              </Flex>
-            </Box>
-          ))}
-        </VStack>
-        
-        <Flex justify="space-between" mt={4} fontWeight="bold">
-          <Text>Total:</Text>
-          <Text>${order.attributes?.total || '0.00'}</Text>
-        </Flex>
-      </Box>
-      
-      <Divider />
-      
-      {/* Action Buttons */}
-      <SimpleGrid columns={2} spacing={4}>
-        {order.attributes?.status === 'pending' && (
-          <Button 
-            colorScheme="blue" 
-            onClick={() => onUpdateStatus(order.id, 'preparing')}
-            leftIcon={<Icon as={FiList} />}
-          >
-            Start Preparing
-          </Button>
-        )}
-        {order.attributes?.status === 'preparing' && (
-          <Button 
-            colorScheme="orange" 
-            onClick={() => onUpdateStatus(order.id, 'ready')}
-            leftIcon={<Icon as={FiClock} />}
-          >
-            Mark Ready
-          </Button>
-        )}
-        {order.attributes?.status === 'ready' && (
-          <Button 
-            colorScheme="green" 
-            onClick={() => onUpdateStatus(order.id, 'completed')}
-            leftIcon={<Icon as={FiCheck} />}
-          >
-            Complete
-          </Button>
-        )}
-        {['pending', 'preparing', 'ready'].includes(order.attributes?.status) && (
-          <Button 
-            colorScheme="red" 
-            onClick={() => onUpdateStatus(order.id, 'cancelled')}
-            leftIcon={<Icon as={FiX} />}
-          >
-            Cancel
-          </Button>
-        )}
-      </SimpleGrid>
-      
-      <Divider />
-      
-      {/* Messages Section */}
-      <Box flex="1">
-        <Text fontWeight="bold" mb={2}>Customer Communication:</Text>
-        
-        {/* Messages List */}
-        <Box 
-          borderWidth="1px" 
-          borderRadius="md" 
-          height="200px" 
-          overflowY="auto"
-          p={3}
-          bg="gray.50"
-        >
-          {isLoading ? (
-            <Flex justify="center" align="center" height="100%">
-              <Spinner />
-            </Flex>
-          ) : messages.length === 0 ? (
-            <Flex justify="center" align="center" height="100%" color="gray.500">
-              <Text>No messages yet</Text>
-            </Flex>
-          ) : (
-            messages.map((message, index) => (
-              <Box 
-                key={message.id || index}
-                mb={2}
-                display="flex"
-                justifyContent={message.attributes.sender_type === 'operator' ? 'flex-end' : 'flex-start'}
-              >
-                <Box
-                  maxWidth="80%"
-                  p={2}
-                  borderRadius="md"
-                  bg={message.attributes.sender_type === 'operator' ? 'blue.100' : 'gray.200'}
-                >
-                  <Text fontSize="sm">
-                    {message.attributes.content}
-                  </Text>
-                  <Text fontSize="xs" color="gray.500" textAlign="right">
-                    {formatTime(message.attributes.timestamp)}
-                  </Text>
-                </Box>
-              </Box>
-            ))
-          )}
-          <div ref={messagesEndRef} />
-        </Box>
-        
-        {/* Message Input */}
-        <Flex mt={2}>
-          <Input
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            placeholder="Type your message here..."
-            mr={2}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter') {
-                handleSendMessage();
-              }
-            }}
-          />
-          <Button
-            colorScheme="blue"
-            onClick={handleSendMessage}
-            isDisabled={!newMessage.trim()}
-          >
-            Send
-          </Button>
-        </Flex>
-      </Box>
-    </VStack>
-  );
-};
-
 const Dashboard = ({ initialUserData }) => {
   // State variables
   const [userData, setUserData] = useState(initialUserData);
@@ -728,10 +343,10 @@ const AnalyticsTab = ({ orders, subscription }) => {
         sum + parseFloat(order.attributes?.total || 0), 0);
       
       const completedOrders = periodOrders.filter(order => 
-        order.attributes?.status === 'completed').length;
+        getOrderProperty(order, 'status') === 'completed').length;
       
       const cancelledOrders = periodOrders.filter(order => 
-        order.attributes?.status === 'cancelled').length;
+        getOrderProperty(order, 'status') === 'cancelled').length;
       
       return {
         period: period.label,
@@ -755,7 +370,7 @@ const AnalyticsTab = ({ orders, subscription }) => {
       sum + parseFloat(order.attributes?.total || 0), 0);
     
     const completedOrders = orders.filter(order => 
-      order.attributes?.status === 'completed').length;
+      getOrderProperty(order, 'status') === 'completed').length;
     
     const averageOrderValue = orders.length > 0 
       ? totalSales / orders.length 
@@ -1152,7 +767,7 @@ const TableCard = ({
   // Filter only active orders (pending, preparing, ready) for this table
   const activeOrders = orders.filter(order => 
     order.attributes?.tables?.data?.some(t => t.id === table.id) && 
-    ['pending', 'preparing', 'ready'].includes(order.attributes?.status)
+    ['pending', 'preparing', 'ready'].includes(getOrderProperty(order, 'status'))
   );
 
   return (
@@ -1204,12 +819,12 @@ const TableCard = ({
                     <Text fontSize="sm" fontWeight="medium">Order #{order.id}</Text>
                     <Badge 
                       colorScheme={
-                        order.attributes?.status === 'pending' ? 'yellow' :
-                        order.attributes?.status === 'preparing' ? 'blue' : 'orange'
+                        getOrderProperty(order, 'status') === 'pending' ? 'yellow' :
+                        getOrderProperty(order, 'status') === 'preparing' ? 'blue' : 'orange'
                       }
                       fontSize="xs"
                     >
-                      {order.attributes?.status}
+                      {getOrderProperty(order, 'status')}
                     </Badge>
                   </Box>
                   <HStack>
@@ -1279,7 +894,21 @@ const TableCard = ({
   );
 };
 
-  // Fetch orders function
+
+const normalizeOrderData = (orders) => {
+    return orders.map(order => {
+      // If the order already has attributes, return it as-is
+      if (order.attributes) return order;
+
+      // Otherwise, restructure it to have attributes
+      return {
+        id: order.id,
+        attributes: { ...order }
+      };
+    });
+  };
+
+  // Add this before setting orders state in fetchOrders:
   const fetchOrders = async () => {
     if (!userData?.restaurant?.id) return;
     
@@ -1326,8 +955,12 @@ const TableCard = ({
         return [];
       }
       
-      setOrders(data.data || []);
-      return data.data;
+      // Normalize the data structure
+      const normalizedOrders = normalizeOrderData(data.data);
+      console.log('Normalized orders:', normalizedOrders);
+      
+      setOrders(normalizedOrders);
+      return normalizedOrders;
     } catch (error) {
       console.error('Error fetching orders:', error);
       toast({
@@ -1341,6 +974,391 @@ const TableCard = ({
       setIsLoading(false);
     }
   };
+
+  const OrderDetails = ({ order, onClose, onUpdateStatus, operatorData }) => {
+  const { t } = useTranslation('common');
+  const toast = useToast();
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState('');
+  const messagesEndRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // Get base URL from environment variable
+  const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+  
+  // Scroll to bottom of messages
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+  
+  // Fetch messages when component mounts or order changes
+  useEffect(() => {
+    if (order?.id) {
+      loadMessages();
+    }
+  }, [order?.id]);
+  
+  // Set up message polling
+  useEffect(() => {
+    if (!order?.id) return;
+    
+    // Poll for new messages every 10 seconds
+    const intervalId = setInterval(loadMessages, 10000);
+    
+    // Clean up interval on unmount
+    return () => clearInterval(intervalId);
+  }, [order?.id]);
+  
+  // Scroll to bottom when messages change
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+  
+  // Load messages function
+  const loadMessages = async () => {
+    if (!order?.id) return;
+    
+    try {
+      setIsLoading(true);
+      
+      const token = localStorage.getItem('token');
+      const response = await fetch(
+        `${baseUrl}/api/messages?filters[order][id]=${order.id}&sort=timestamp:asc&populate=*`,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch messages: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      if (data && data.data) {
+        setMessages(data.data);
+      } else {
+        console.warn('No messages found for order:', order.id);
+        setMessages([]);
+      }
+    } catch (error) {
+      console.error('Error loading messages:', error);
+      toast({
+        title: 'Error',
+        description: `Failed to load messages: ${error.message}`,
+        status: 'error',
+        duration: 3000
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
+  // Send message function
+  const handleSendMessage = async () => {
+    if (!newMessage.trim() || !order?.id) return;
+    
+    try {
+      const token = localStorage.getItem('token');
+      
+      // Create message data
+      const messageData = {
+        data: {
+          content: newMessage,
+          sender_type: 'operator',
+          timestamp: new Date().toISOString(),
+          order: order.id,
+          read: false
+        }
+      };
+      
+      // Add operator ID if available
+      if (operatorData && operatorData.id) {
+        messageData.data.operator = operatorData.id;
+      }
+      
+      // Add optimistic update for better UX
+      const tempMessage = {
+        id: `temp-${Date.now()}`,
+        attributes: {
+          content: newMessage,
+          sender_type: 'operator',
+          timestamp: new Date().toISOString(),
+          read: false
+        }
+      };
+      
+      setMessages(prev => [...prev, tempMessage]);
+      setNewMessage('');
+      
+      // Send the actual message
+      const response = await fetch(
+        `${baseUrl}/api/messages`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(messageData)
+        }
+      );
+      
+      if (!response.ok) {
+        throw new Error(`Failed to send message: ${response.status}`);
+      }
+      
+      // Reload messages to get the real message
+      await loadMessages();
+      
+      toast({
+        title: 'Success',
+        description: 'Message sent',
+        status: 'success',
+        duration: 2000
+      });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: 'Error',
+        description: `Failed to send message: ${error.message}`,
+        status: 'error',
+        duration: 3000
+      });
+      
+      // Reload messages to remove the optimistic update
+      await loadMessages();
+    }
+  };
+  
+  // Format timestamp to readable time
+  const formatTime = (timestamp) => {
+    try {
+      const date = new Date(timestamp);
+      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    } catch (e) {
+      return 'Unknown time';
+    }
+  };
+  
+  if (!order) {
+    return (
+      <Flex justify="center" align="center" height="100%">
+        <Text>No order selected</Text>
+      </Flex>
+    );
+  }
+  
+  return (
+    <VStack spacing={4} align="stretch" h="full">
+      {/* Order Header */}
+       <Flex justify="space-between" align="center">
+        <Heading size="md">Order #{order.id}</Heading>
+        <Badge
+          colorScheme={
+            getOrderProperty('status') === 'pending' ? 'yellow' :
+            getOrderProperty('status') === 'preparing' ? 'blue' :
+            getOrderProperty('status') === 'ready' ? 'orange' :
+            getOrderProperty('status') === 'completed' ? 'green' : 'red'
+          }
+          fontSize="sm"
+          px={2}
+          py={1}
+          borderRadius="full"
+        >
+          {getOrderProperty('status')}
+        </Badge>
+      </Flex>
+      
+      <Divider />
+      
+      {/* Order Information */}
+      <Box bg="gray.50" p={4} borderRadius="md">
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+          <Box>
+            <Text fontWeight="bold">Customer:</Text>
+            <Text>
+              {order.attributes?.customer_profile?.data?.attributes?.fullName || 
+               order.attributes?.guest_info?.name || 
+               'Guest'}
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="bold">Contact:</Text>
+            <Text>
+              {order.attributes?.customer_profile?.data?.attributes?.phone || 
+               order.attributes?.guest_info?.phone || 
+               'N/A'}
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="bold">Table:</Text>
+            <Text>
+              {order.attributes?.tables?.data?.[0]?.attributes?.name || 'N/A'}
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="bold">Payment:</Text>
+            <Text>{order.attributes?.payment_method || 'N/A'}</Text>
+          </Box>
+        </SimpleGrid>
+      </Box>
+      
+      {/* Order Items */}
+      <Box>
+        <Text fontWeight="bold" mb={2}>Order Items:</Text>
+        <VStack spacing={2} align="stretch">
+          {order.attributes?.order_items?.data?.map((item, index) => (
+            <Box 
+              key={index} 
+              p={3} 
+              borderWidth="1px" 
+              borderRadius="md" 
+              bg="white"
+            >
+              <Flex justify="space-between">
+                <Box>
+                  <Text fontWeight="medium">
+                    {item.attributes?.quantity || 1}x {item.attributes?.menu_item?.data?.attributes?.name || 'Unknown Item'}
+                  </Text>
+                  {item.attributes?.special_instructions && (
+                    <Text fontSize="sm" color="gray.600">
+                      Note: {item.attributes.special_instructions}
+                    </Text>
+                  )}
+                </Box>
+                <Text fontWeight="bold">${item.attributes?.subtotal || '0.00'}</Text>
+              </Flex>
+            </Box>
+          ))}
+        </VStack>
+        
+        <Flex justify="space-between" mt={4} fontWeight="bold">
+          <Text>Total:</Text>
+          <Text>${order.attributes?.total || '0.00'}</Text>
+        </Flex>
+      </Box>
+      
+      <Divider />
+      
+      {/* Action Buttons */}
+      <SimpleGrid columns={2} spacing={4}>
+        {getOrderProperty(order, 'status') === 'pending' && (
+          <Button 
+            colorScheme="blue" 
+            onClick={() => onUpdateStatus(order.id, 'preparing')}
+            leftIcon={<Icon as={FiList} />}
+          >
+            Start Preparing
+          </Button>
+        )}
+        {getOrderProperty(order, 'status') === 'preparing' && (
+          <Button 
+            colorScheme="orange" 
+            onClick={() => onUpdateStatus(order.id, 'ready')}
+            leftIcon={<Icon as={FiClock} />}
+          >
+            Mark Ready
+          </Button>
+        )}
+        {getOrderProperty(order, 'status') === 'ready' && (
+          <Button 
+            colorScheme="green" 
+            onClick={() => onUpdateStatus(order.id, 'completed')}
+            leftIcon={<Icon as={FiCheck} />}
+          >
+            Complete
+          </Button>
+        )}
+        {['pending', 'preparing', 'ready'].includes(getOrderProperty(order, 'status')) && (
+          <Button 
+            colorScheme="red" 
+            onClick={() => onUpdateStatus(order.id, 'cancelled')}
+            leftIcon={<Icon as={FiX} />}
+          >
+            Cancel
+          </Button>
+        )}
+      </SimpleGrid>
+      
+      <Divider />
+      
+      {/* Messages Section */}
+      <Box flex="1">
+        <Text fontWeight="bold" mb={2}>Customer Communication:</Text>
+        
+        {/* Messages List */}
+        <Box 
+          borderWidth="1px" 
+          borderRadius="md" 
+          height="200px" 
+          overflowY="auto"
+          p={3}
+          bg="gray.50"
+        >
+          {isLoading ? (
+            <Flex justify="center" align="center" height="100%">
+              <Spinner />
+            </Flex>
+          ) : messages.length === 0 ? (
+            <Flex justify="center" align="center" height="100%" color="gray.500">
+              <Text>No messages yet</Text>
+            </Flex>
+          ) : (
+            messages.map((message, index) => (
+              <Box 
+                key={message.id || index}
+                mb={2}
+                display="flex"
+                justifyContent={message.attributes.sender_type === 'operator' ? 'flex-end' : 'flex-start'}
+              >
+                <Box
+                  maxWidth="80%"
+                  p={2}
+                  borderRadius="md"
+                  bg={message.attributes.sender_type === 'operator' ? 'blue.100' : 'gray.200'}
+                >
+                  <Text fontSize="sm">
+                    {message.attributes.content}
+                  </Text>
+                  <Text fontSize="xs" color="gray.500" textAlign="right">
+                    {formatTime(message.attributes.timestamp)}
+                  </Text>
+                </Box>
+              </Box>
+            ))
+          )}
+          <div ref={messagesEndRef} />
+        </Box>
+        
+        {/* Message Input */}
+        <Flex mt={2}>
+          <Input
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Type your message here..."
+            mr={2}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                handleSendMessage();
+              }
+            }}
+          />
+          <Button
+            colorScheme="blue"
+            onClick={handleSendMessage}
+            isDisabled={!newMessage.trim()}
+          >
+            Send
+          </Button>
+        </Flex>
+      </Box>
+    </VStack>
+  );
+};
 
   // Color Customization Modal Component
   const ColorCustomizationModal = React.memo(({ 
@@ -3147,20 +3165,20 @@ const TableCard = ({
                                       </Badge>
                                       <Badge
                                         colorScheme={
-                                          order.attributes?.status === 'pending'
+                                          getOrderProperty(order, 'status') === 'pending'
                                             ? 'yellow'
-                                            : order.attributes?.status === 'preparing'
+                                            : getOrderProperty(order, 'status') === 'preparing'
                                             ? 'blue'
-                                            : order.attributes?.status === 'ready'
+                                            : getOrderProperty(order, 'status') === 'ready'
                                             ? 'orange'
-                                            : order.attributes?.status === 'completed'
+                                            : getOrderProperty(order, 'status') === 'completed'
                                             ? 'green'
                                             : 'red'
                                         }
                                         rounded="full"
                                         px={2}
                                       >
-                                        {order.attributes?.status || 'pending'}
+                                        {getOrderProperty(order, 'status') || 'pending'}
                                       </Badge>
                                     </HStack>
                                     {order.attributes?.notes && (
@@ -3180,7 +3198,7 @@ const TableCard = ({
                                     size="sm"
                                     colorScheme="gray"
                                   />
-                                  {order.attributes?.status === 'pending' && (
+                                  {getOrderProperty(order, 'status') === 'pending' && (
                                     <ResponsiveIconButton
                                       icon={FiList}
                                       label={t('preparing')}
@@ -3188,7 +3206,7 @@ const TableCard = ({
                                       colorScheme="blue"
                                     />
                                   )}
-                                  {order.attributes?.status === 'preparing' && (
+                                  {getOrderProperty(order, 'status') === 'preparing' && (
                                     <ResponsiveIconButton
                                       icon={FiClock}
                                       label={t('ready')}
@@ -3196,7 +3214,7 @@ const TableCard = ({
                                       colorScheme="orange"
                                     />
                                   )}
-                                  {order.attributes?.status === 'ready' && (
+                                  {getOrderProperty(order, 'status') === 'ready' && (
                                     <ResponsiveIconButton
                                       icon={FiCheck}
                                       label={t('complete')}
@@ -3204,9 +3222,9 @@ const TableCard = ({
                                       colorScheme="green"
                                     />
                                   )}
-                                  {(order.attributes?.status === 'pending' ||
-                                    order.attributes?.status === 'preparing' ||
-                                    order.attributes?.status === 'ready') && (
+                                  {(getOrderProperty(order, 'status') === 'pending' ||
+                                    getOrderProperty(order, 'status') === 'preparing' ||
+                                    getOrderProperty(order, 'status') === 'ready') && (
                                     <ResponsiveIconButton
                                       icon={FiX}
                                       label={t('cancel')}
@@ -3385,18 +3403,18 @@ const TableCard = ({
                     <Text fontWeight="bold">Status:</Text>
                     <Badge
                       colorScheme={
-                        selectedOrder.attributes?.status === 'pending'
+                        selectedgetOrderProperty(order, 'status') === 'pending'
                           ? 'yellow'
-                          : selectedOrder.attributes?.status === 'preparing'
+                          : selectedgetOrderProperty(order, 'status') === 'preparing'
                           ? 'blue'
-                          : selectedOrder.attributes?.status === 'completed'
+                          : selectedgetOrderProperty(order, 'status') === 'completed'
                           ? 'green'
                           : 'red'
                       }
                       rounded="full"
                       px={2}
                     >
-                      {selectedOrder.attributes?.status}
+                      {selectedgetOrderProperty(order, 'status')}
                     </Badge>
                   </HStack>
                 </Box>
