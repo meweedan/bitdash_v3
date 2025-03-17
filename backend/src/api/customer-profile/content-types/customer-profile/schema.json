@@ -65,6 +65,12 @@
       "target": "api::contact.contact",
       "mappedBy": "customer_profile"
     },
+    "messages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::message.message",
+      "mappedBy": "customer_profile"
+    },
     "avatar": {
       "type": "media",
       "multiple": false,

@@ -29,6 +29,27 @@
     "timestamp": {
       "type": "datetime",
       "required": true
+    },
+    "order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "messages"
+    },
+    "customer_profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer-profile.customer-profile",
+      "inversedBy": "customer-profile"
+    },
+    "operator": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::operator.operator",
+      "inversedBy": "operators"
+    },
+    "guest_info": {
+      "type": "json"
     }
   }
 }

@@ -39,7 +39,7 @@ import {
   FiCheck, FiPackage, FiArrowRight, FiSettings, FiDownload,
   FiSun, FiClock, FiX, FiCreditCard, FiTrendingUp, FiMoon,
   FiUser, FiPrinter, FiMaximize2, FiDollarSign, FiShoppingCart,
-  FiCheckCircle,  
+  FiCheckCircle, FiMinimize2
 } from 'react-icons/fi';
 
 // Initialize Stripe
@@ -300,64 +300,163 @@ const OrderDetails = ({ order, onClose, onUpdateStatus }) => {
   
   // Fetch messages from API
   const fetchMessages = async () => {
+    if (!order?.id) {
+      console.warn('No order ID provided to fetch messages');
+      return;
+    }
+    
     try {
       setIsLoading(true);
       const token = localStorage.getItem('token');
+      
+      // Log for debugging
+      console.log(`Fetching messages for order ID: ${order.id}`);
+      console.log(`API URL: ${BASE_URL}/api/messages?filters[order][id]=${order.id}`);
+      
+      // Try explicitly setting the relationship field
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/messages?filters[order][id]=${order.id}&sort=timestamp:asc&populate=*`,
+        `${BASE_URL}/api/messages?filters[order][id]=${order.id}&sort=timestamp:asc&populate=*`,
         {
           headers: {
             'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
           }
         }
       );
       
-      if (!response.ok) throw new Error('Failed to fetch messages');
+      // Debugging response
+      console.log('Messages API response status:', response.status);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch messages: ${response.status} ${response.statusText}`);
+      }
       
       const data = await response.json();
-      setMessages(data.data || []);
+      console.log('Messages data received:', data);
+      
+      if (data && data.data) {
+        setMessages(data.data);
+      } else {
+        console.warn('No messages data in response:', data);
+        setMessages([]);
+      }
     } catch (error) {
       console.error('Error fetching messages:', error);
       toast({
         title: 'Error',
-        description: 'Failed to load messages',
+        description: `Failed to load messages: ${error.message}`,
         status: 'error',
         duration: 3000
       });
+      setMessages([]); // Set empty array on error
     } finally {
       setIsLoading(false);
     }
   };
+
+  const fetchMessagesAlternative = async () => {
+  if (!order?.id) return;
+  
+  try {
+    setIsLoading(true);
+    const token = localStorage.getItem('token');
+    
+    // First get all messages
+    const response = await fetch(
+      `${BASE_URL}/api/messages?sort=timestamp:asc&populate=*`,
+      {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch messages: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    console.log('All messages:', data);
+    
+    // Filter messages that belong to this order manually
+    // (This is a workaround if the relationship filtering isn't working)
+    const filteredMessages = data.data.filter(message => {
+      return message.attributes?.order?.data?.id === order.id ||
+             message.attributes?.order === order.id;
+    });
+    
+    console.log('Filtered messages for order:', filteredMessages);
+    setMessages(filteredMessages || []);
+  } catch (error) {
+    console.error('Error fetching messages:', error);
+    toast({
+      title: 'Error',
+      description: 'Failed to load messages',
+      status: 'error',
+      duration: 3000
+    });
+    setMessages([]);
+  } finally {
+    setIsLoading(false);
+  }
+};
   
   // Send a new message
   const sendMessage = async () => {
-    if (!newMessage.trim()) return;
+    if (!newMessage.trim() || !order?.id) return;
     
     try {
       const token = localStorage.getItem('token');
+      
+      // Create the basic message data with what we know works
+      const messageData = {
+        data: {
+          content: newMessage,
+          sender_type: 'operator',
+          timestamp: new Date().toISOString(),
+          read: false
+        }
+      };
+      
+      // Add order ID - this is the critical relationship
+      if (order.id) {
+        messageData.data.order = order.id;
+      }
+      
+      // Add operator ID if available
+      if (operatorData && operatorData.id) {
+        messageData.data.operator = operatorData.id;
+      }
+      
+      console.log('Sending message with data:', messageData);
+      
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/messages`,
+        `${BASE_URL}/api/messages`,
         {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
-            data: {
-              content: newMessage,
-              sender_type: 'operator',
-              timestamp: new Date().toISOString(),
-              order: order.id
-            }
-          })
+          body: JSON.stringify(messageData)
         }
       );
       
-      if (!response.ok) throw new Error('Failed to send message');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('API Error response when sending message:', errorData);
+        throw new Error(`Failed to send message: ${response.status} ${response.statusText}`);
+      }
       
-      // Clear input and refresh messages
+      // Add successfully sent message to our UI immediately
+      const responseData = await response.json();
+      console.log('Message sent successfully, response:', responseData);
+      
+      // Clear input
       setNewMessage('');
+      
+      // Refresh messages
       fetchMessages();
       
       toast({
@@ -370,7 +469,7 @@ const OrderDetails = ({ order, onClose, onUpdateStatus }) => {
       console.error('Error sending message:', error);
       toast({
         title: 'Error',
-        description: 'Failed to send message',
+        description: `Failed to send message: ${error.message}`,
         status: 'error',
         duration: 3000
       });
@@ -799,7 +898,6 @@ const AnalyticsTab = ({ orders, subscription }) => {
         p={6}
         borderWidth="1px"
         borderRadius="lg"
-        bg="white"
         boxShadow="sm"
       >
         <Heading size="sm" mb={4}>Order Status Distribution</Heading>
@@ -868,7 +966,6 @@ const StatCard = ({ label, value, icon: Icon, color }) => {
       p={5}
       borderRadius="lg"
       borderWidth="1px"
-      bg="white"
       boxShadow="sm"
       transition="all 0.2s"
       _hover={{ transform: 'translateY(-2px)', boxShadow: 'md' }}

@@ -58,6 +58,12 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "operator"
     },
+    "messages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::message.message",
+      "mappedBy": "operator"
+    },
     "status": {
       "type": "enumeration",
       "enum": [

@@ -186,29 +186,12 @@ export default function LandingPage() {
                   >
                     {t('Landinghero.subtitle', 'From seamless deliveries to cashless payments, we offer innovative solutions for modern lifestyles.')}
                   </Text>
-                  
-                  <HStack spacing={6} mt={6} color={isDark ? "gray.400" : "gray.600"} flexWrap="wrap">
-                    <HStack>
-                      <Icon as={CheckCircle} />
-                      <Text>{t('Landinghero.feature1', 'Delivery and Cashless Solutions')}</Text>
-                    </HStack>
-                    
-                    <HStack>
-                      <Icon as={CheckCircle} />
-                      <Text>{t('Landinghero.feature2', 'Innovative Digital Services')}</Text>
-                    </HStack>
-                    
-                    <HStack>
-                      <Icon as={CheckCircle} />
-                      <Text>{t('Landinghero.feature3', 'Secure Transactions')}</Text>
-                    </HStack>
-                  </HStack>
                 </VStack>
               </MotionBox>
             </GridItem>
             
             <GridItem>
-              <ParallaxBox offset={isMobile ? 30 : 100}>
+              <ParallaxBox offset={isMobile ? 10 : 70}>
                 <Image
                   src="/images/digital-services.webp"
                   alt={t('alt.digitalServices', 'Digital Services Platform')}
@@ -239,7 +222,7 @@ export default function LandingPage() {
               maxW="3xl"
               mx="auto"
             >
-              <Text 
+              {/* <Text 
                 color="#387fc2" 
                 fontWeight="bold" 
                 mb={3}
@@ -247,7 +230,7 @@ export default function LandingPage() {
                 letterSpacing="wide"
               >
                 {t('platformSection.subtitle', 'Our Digital Ecosystem')}
-              </Text>
+              </Text> */}
               
               <Heading
                 fontSize={{ base: "3xl", md: "4xl" }}
@@ -270,7 +253,6 @@ export default function LandingPage() {
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} width="full">
               {/* utlubha Platform */}
               <PlatformCard
-                title={t('platforms.utlubha.title', 'utlubha')}
                 description={t('platforms.utlubha.description', 'Your complete delivery solution for food, groceries, and retail items. Features QR ordering for seamless in-restaurant experiences.')}
                 image="/utlubha.png"
                 cta={t('platforms.utlubha.cta', 'Try utlubha')}
@@ -281,7 +263,6 @@ export default function LandingPage() {
               
               {/* tazdani Platform */}
               <PlatformCard
-                title={t('platforms.tazdani.title', 'tazdani')}
                 description={t('platforms.tazdani.description', 'Cashless payment solution featuring merchant accounts, payment links, QR code payments, and a network of agent-operated human ATMs.')}
                 image="/tazdani.png"
                 cta={t('platforms.tazdani.cta', 'Try tazdani')}
@@ -651,7 +632,7 @@ export default function LandingPage() {
       </Box>
       
       {/* Mobile App Section */}
-      <Box>
+      {/* <Box>
         <Container maxW="container.xl">
           <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
             <GridItem>
@@ -685,26 +666,6 @@ export default function LandingPage() {
                   >
                     {t('app.description', 'Get our mobile apps for both Utlubha and tazdani to enjoy seamless deliveries and payments wherever you go. Feature-rich interfaces designed for intuitive use.')}
                   </Text>
-                  
-                  <HStack spacing={4} mt={6} flexWrap="wrap">
-                    <Image 
-                      src="/images/app-store.png" 
-                      alt="App Store" 
-                      height="50px"
-                      cursor="pointer"
-                      transition="transform 0.3s ease"
-                      _hover={{ transform: "scale(1.05)" }}
-                    />
-                    
-                    <Image 
-                      src="/images/google-play.png" 
-                      alt="Google Play" 
-                      height="50px"
-                      cursor="pointer"
-                      transition="transform 0.3s ease"
-                      _hover={{ transform: "scale(1.05)" }}
-                    />
-                  </HStack>
                 </VStack>
               </MotionBox>
             </GridItem>
@@ -736,7 +697,7 @@ export default function LandingPage() {
             </GridItem>
           </Grid>
         </Container>
-      </Box>
+      </Box> */}
       
       {/* Steps to Start Section */}
       <Box as="section" py={{ base: 16, md: 24 }}>
@@ -802,10 +763,7 @@ export default function LandingPage() {
             </SimpleGrid>
             
             <Button
-              bg="#387fc2"
-              color="white"
-              _hover={{ bg: "#9c7c63" }}
-              size="lg"
+              variant="bitdash-solid"
               px={10}
               onClick={() => router.push('/download')}
               rightIcon={<ArrowRight />}
@@ -880,9 +838,6 @@ export default function LandingPage() {
                 <HStack spacing={6} pt={4} wrap="wrap" justify="center">
                   <Button
                     bg={utlubhaColor}
-                    color="white"
-                    _hover={{ bg: "#E86C00" }}
-                    size="lg"
                     px={8}
                     rightIcon={<ArrowRight />}
                     onClick={() => router.push('/signup')}
@@ -892,9 +847,6 @@ export default function LandingPage() {
                   
                   <Button
                     bg={tazdaniColor}
-                    color="white"
-                    _hover={{ bg: "#1D4044" }}
-                    size="lg"
                     px={8}
                     rightIcon={<ArrowRight />}
                     onClick={() => router.push('/signup')}
@@ -918,81 +870,6 @@ export default function LandingPage() {
               </VStack>
             </Flex>
           </MotionBox>
-        </Container>
-      </Box>
-      
-      {/* Legal Notices Section */}
-      <Box 
-        as="section" 
-        py={10} 
-        borderTop="1px solid"
-        borderColor={isDark ? "gray.700" : "gray.200"}
-      >
-        <Container maxW="container.xl">
-          <VStack spacing={8} align="stretch">
-            <Heading size="md" color="#387fc2">
-              {t('legal.title', 'BitDash Digital Services')}
-            </Heading>
-            
-            <Text fontSize="sm" color={isDark ? "gray.400" : "gray.600"} lineHeight="tall">
-              {t('legal.disclaimer', 'Utlubha and tazdani are products of BitDash. Our delivery and payment services are designed to provide convenience and security. Please refer to our terms of service for complete information.')}
-            </Text>
-            
-            <Divider borderColor={isDark ? "gray.700" : "gray.200"} />
-            
-            <Grid templateColumns={{ base: "1fr", md: "2fr 1fr" }} gap={8}>
-              <GridItem>
-                <VStack align="flex-start" spacing={4}>
-                  <Heading size="sm" color={isDark ? "white" : "gray.800"}>
-                    {t('legal.coverage.title', 'Service Coverage')}
-                  </Heading>
-                  
-                  <Text fontSize="sm" color={isDark ? "gray.400" : "gray.600"} lineHeight="tall">
-                    {t('legal.coverage.content', 'Our services are currently available in select cities with plans for rapid expansion. Check our apps to see if delivery and payment services are available in your area.')}
-                  </Text>
-                </VStack>
-              </GridItem>
-              
-              <GridItem>
-                <VStack align="flex-start" spacing={4}>
-                  <Heading size="sm" color={isDark ? "white" : "gray.800"}>
-                    {t('legal.support.title', 'Customer Support')}
-                  </Heading>
-                  
-                  <Text fontSize="sm" color={isDark ? "gray.400" : "gray.600"} lineHeight="tall">
-                    {t('legal.support.content', 'Our dedicated support team is available to assist you with all delivery and payment related inquiries. Contact us through our apps or website.')}
-                  </Text>
-                </VStack>
-              </GridItem>
-            </Grid>
-            
-            <Wrap spacing={4}>
-              {[
-                'legal.links.privacy',
-                'legal.links.terms',
-                'legal.links.about',
-                'legal.links.careers',
-                'legal.links.help',
-                'legal.links.contact'
-              ].map((key, idx) => (
-                <WrapItem key={idx}>
-                  <Link 
-                    href={`/${t(key).toLowerCase().replace(/\s+/g, '-')}`}
-                    fontSize="xs"
-                    color={isDark ? "gray.400" : "gray.600"}
-                    _hover={{ color: "#387fc2" }}
-                    zIndex={1}
-                  >
-                    {t(key)}
-                  </Link>
-                </WrapItem>
-              ))}
-            </Wrap>
-            
-            <Text fontSize="xs" color={isDark ? "gray.400" : "gray.600"} textAlign="center" mt={4}>
-              {t('legal.copyright', '© 2025 BitDash. All rights reserved.')}
-            </Text>
-          </VStack>
         </Container>
       </Box>
     </Box>
@@ -1041,7 +918,6 @@ const PlatformCard = ({ title, description, image, cta, link, color, delay }) =>
           <Image 
             src={image}
             alt={title}
-            boxSize="60px"
             objectFit="contain"
           />
         </Flex>
