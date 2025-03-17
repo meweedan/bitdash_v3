@@ -66,6 +66,471 @@ export async function getServerSideProps({ locale }) {
   };
 }
 
+const normalizeOrderData = (orders) => {
+    return orders.map(order => {
+      // If the order already has attributes, return it as-is
+      if (order.attributes) return order;
+
+      // Otherwise, restructure it to have attributes
+      return {
+        id: order.id,
+        attributes: { ...order }
+      };
+    });
+  };
+
+  // Add this before setting orders state in fetchOrders:
+  const fetchOrders = async () => {
+    if (!userData?.restaurant?.id) return;
+    
+    try {
+      setIsLoading(true);
+      const token = localStorage.getItem('token');
+      
+      // Show loading toast for longer operations
+      const loadingToast = toast({
+        title: t('loading'),
+        description: t('fetchingOrders'),
+        status: 'info',
+        duration: null,
+        isClosable: false
+      });
+      
+      // Fetch orders with full relationship data
+      const response = await fetch(
+        `${BASE_URL}/api/orders?filters[restaurant][id]=${userData.restaurant.id}&populate[tables][populate]=*&populate[order_items][populate][menu_item]=*&populate[customer_profile]=*&populate[messages]=*&sort=createdAt:desc`,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+
+      // Close loading toast
+      toast.close(loadingToast);
+
+      if (!response.ok) {
+        console.error(`Failed to fetch orders: ${response.status} ${response.statusText}`);
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Error data:', errorData);
+        throw new Error(`Failed to fetch orders: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Orders data received:', data);
+      
+      if (!data || !data.data) {
+        console.warn('No orders data in response');
+        setOrders([]);
+        return [];
+      }
+      
+      // Normalize the data structure
+      const normalizedOrders = normalizeOrderData(data.data);
+      console.log('Normalized orders:', normalizedOrders);
+      
+      setOrders(normalizedOrders);
+      return normalizedOrders;
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+      toast({
+        title: t('error'),
+        description: t('failedToLoadOrders'),
+        status: 'error',
+        duration: 3000
+      });
+      return [];
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const OrderDetails = ({ order, onClose, onUpdateStatus, operatorData }) => {
+  const { t } = useTranslation('common');
+  const toast = useToast();
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState('');
+  const messagesEndRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // Get base URL from environment variable
+  const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+  
+  // Scroll to bottom of messages
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+  
+  // Fetch messages when component mounts or order changes
+  useEffect(() => {
+    if (order?.id) {
+      loadMessages();
+    }
+  }, [order?.id]);
+  
+  // Set up message polling
+  useEffect(() => {
+    if (!order?.id) return;
+    
+    // Poll for new messages every 10 seconds
+    const intervalId = setInterval(loadMessages, 10000);
+    
+    // Clean up interval on unmount
+    return () => clearInterval(intervalId);
+  }, [order?.id]);
+  
+  // Scroll to bottom when messages change
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+  
+  // Load messages function
+  const loadMessages = async () => {
+    if (!order?.id) return;
+    
+    try {
+      setIsLoading(true);
+      
+      const token = localStorage.getItem('token');
+      const response = await fetch(
+        `${baseUrl}/api/messages?filters[order][id]=${order.id}&sort=timestamp:asc&populate=*`,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch messages: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      if (data && data.data) {
+        setMessages(data.data);
+      } else {
+        console.warn('No messages found for order:', order.id);
+        setMessages([]);
+      }
+    } catch (error) {
+      console.error('Error loading messages:', error);
+      toast({
+        title: 'Error',
+        description: `Failed to load messages: ${error.message}`,
+        status: 'error',
+        duration: 3000
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
+  // Send message function
+  const handleSendMessage = async () => {
+    if (!newMessage.trim() || !order?.id) return;
+    
+    try {
+      const token = localStorage.getItem('token');
+      
+      // Create message data
+      const messageData = {
+        data: {
+          content: newMessage,
+          sender_type: 'operator',
+          timestamp: new Date().toISOString(),
+          order: order.id,
+          read: false
+        }
+      };
+      
+      // Add operator ID if available
+      if (operatorData && operatorData.id) {
+        messageData.data.operator = operatorData.id;
+      }
+      
+      // Add optimistic update for better UX
+      const tempMessage = {
+        id: `temp-${Date.now()}`,
+        attributes: {
+          content: newMessage,
+          sender_type: 'operator',
+          timestamp: new Date().toISOString(),
+          read: false
+        }
+      };
+      
+      setMessages(prev => [...prev, tempMessage]);
+      setNewMessage('');
+      
+      // Send the actual message
+      const response = await fetch(
+        `${baseUrl}/api/messages`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(messageData)
+        }
+      );
+      
+      if (!response.ok) {
+        throw new Error(`Failed to send message: ${response.status}`);
+      }
+      
+      // Reload messages to get the real message
+      await loadMessages();
+      
+      toast({
+        title: 'Success',
+        description: 'Message sent',
+        status: 'success',
+        duration: 2000
+      });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: 'Error',
+        description: `Failed to send message: ${error.message}`,
+        status: 'error',
+        duration: 3000
+      });
+      
+      // Reload messages to remove the optimistic update
+      await loadMessages();
+    }
+  };
+  
+  // Format timestamp to readable time
+  const formatTime = (timestamp) => {
+    try {
+      const date = new Date(timestamp);
+      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    } catch (e) {
+      return 'Unknown time';
+    }
+  };
+  
+  if (!order) {
+    return (
+      <Flex justify="center" align="center" height="100%">
+        <Text>No order selected</Text>
+      </Flex>
+    );
+  }
+  
+  return (
+    <VStack spacing={4} align="stretch" h="full">
+      {/* Order Header */}
+       <Flex justify="space-between" align="center">
+        <Heading size="md">Order #{order.id}</Heading>
+        <Badge
+          colorScheme={
+            getOrderProperty('status') === 'pending' ? 'yellow' :
+            getOrderProperty('status') === 'preparing' ? 'blue' :
+            getOrderProperty('status') === 'ready' ? 'orange' :
+            getOrderProperty('status') === 'completed' ? 'green' : 'red'
+          }
+          fontSize="sm"
+          px={2}
+          py={1}
+          borderRadius="full"
+        >
+          {getOrderProperty('status')}
+        </Badge>
+      </Flex>
+      
+      <Divider />
+      
+      {/* Order Information */}
+      <Box bg="gray.50" p={4} borderRadius="md">
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+          <Box>
+            <Text fontWeight="bold">Customer:</Text>
+            <Text>
+              {order.attributes?.customer_profile?.data?.attributes?.fullName || 
+               order.attributes?.guest_info?.name || 
+               'Guest'}
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="bold">Contact:</Text>
+            <Text>
+              {order.attributes?.customer_profile?.data?.attributes?.phone || 
+               order.attributes?.guest_info?.phone || 
+               'N/A'}
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="bold">Table:</Text>
+            <Text>
+              {order.attributes?.tables?.data?.[0]?.attributes?.name || 'N/A'}
+            </Text>
+          </Box>
+          <Box>
+            <Text fontWeight="bold">Payment:</Text>
+            <Text>{order.attributes?.payment_method || 'N/A'}</Text>
+          </Box>
+        </SimpleGrid>
+      </Box>
+      
+      {/* Order Items */}
+      <Box>
+        <Text fontWeight="bold" mb={2}>Order Items:</Text>
+        <VStack spacing={2} align="stretch">
+          {order.attributes?.order_items?.data?.map((item, index) => (
+            <Box 
+              key={index} 
+              p={3} 
+              borderWidth="1px" 
+              borderRadius="md" 
+              bg="white"
+            >
+              <Flex justify="space-between">
+                <Box>
+                  <Text fontWeight="medium">
+                    {item.attributes?.quantity || 1}x {item.attributes?.menu_item?.data?.attributes?.name || 'Unknown Item'}
+                  </Text>
+                  {item.attributes?.special_instructions && (
+                    <Text fontSize="sm" color="gray.600">
+                      Note: {item.attributes.special_instructions}
+                    </Text>
+                  )}
+                </Box>
+                <Text fontWeight="bold">${item.attributes?.subtotal || '0.00'}</Text>
+              </Flex>
+            </Box>
+          ))}
+        </VStack>
+        
+        <Flex justify="space-between" mt={4} fontWeight="bold">
+          <Text>Total:</Text>
+          <Text>${order.attributes?.total || '0.00'}</Text>
+        </Flex>
+      </Box>
+      
+      <Divider />
+      
+      {/* Action Buttons */}
+      <SimpleGrid columns={2} spacing={4}>
+        {getOrderProperty(order, 'status') === 'pending' && (
+          <Button 
+            colorScheme="blue" 
+            onClick={() => onUpdateStatus(order.id, 'preparing')}
+            leftIcon={<Icon as={FiList} />}
+          >
+            Start Preparing
+          </Button>
+        )}
+        {getOrderProperty(order, 'status') === 'preparing' && (
+          <Button 
+            colorScheme="orange" 
+            onClick={() => onUpdateStatus(order.id, 'ready')}
+            leftIcon={<Icon as={FiClock} />}
+          >
+            Mark Ready
+          </Button>
+        )}
+        {getOrderProperty(order, 'status') === 'ready' && (
+          <Button 
+            colorScheme="green" 
+            onClick={() => onUpdateStatus(order.id, 'completed')}
+            leftIcon={<Icon as={FiCheck} />}
+          >
+            Complete
+          </Button>
+        )}
+        {['pending', 'preparing', 'ready'].includes(getOrderProperty(order, 'status')) && (
+          <Button 
+            colorScheme="red" 
+            onClick={() => onUpdateStatus(order.id, 'cancelled')}
+            leftIcon={<Icon as={FiX} />}
+          >
+            Cancel
+          </Button>
+        )}
+      </SimpleGrid>
+      
+      <Divider />
+      
+      {/* Messages Section */}
+      <Box flex="1">
+        <Text fontWeight="bold" mb={2}>Customer Communication:</Text>
+        
+        {/* Messages List */}
+        <Box 
+          borderWidth="1px" 
+          borderRadius="md" 
+          height="200px" 
+          overflowY="auto"
+          p={3}
+          bg="gray.50"
+        >
+          {isLoading ? (
+            <Flex justify="center" align="center" height="100%">
+              <Spinner />
+            </Flex>
+          ) : messages.length === 0 ? (
+            <Flex justify="center" align="center" height="100%" color="gray.500">
+              <Text>No messages yet</Text>
+            </Flex>
+          ) : (
+            messages.map((message, index) => (
+              <Box 
+                key={message.id || index}
+                mb={2}
+                display="flex"
+                justifyContent={message.attributes.sender_type === 'operator' ? 'flex-end' : 'flex-start'}
+              >
+                <Box
+                  maxWidth="80%"
+                  p={2}
+                  borderRadius="md"
+                  bg={message.attributes.sender_type === 'operator' ? 'blue.100' : 'gray.200'}
+                >
+                  <Text fontSize="sm">
+                    {message.attributes.content}
+                  </Text>
+                  <Text fontSize="xs" color="gray.500" textAlign="right">
+                    {formatTime(message.attributes.timestamp)}
+                  </Text>
+                </Box>
+              </Box>
+            ))
+          )}
+          <div ref={messagesEndRef} />
+        </Box>
+        
+        {/* Message Input */}
+        <Flex mt={2}>
+          <Input
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Type your message here..."
+            mr={2}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                handleSendMessage();
+              }
+            }}
+          />
+          <Button
+            colorScheme="blue"
+            onClick={handleSendMessage}
+            isDisabled={!newMessage.trim()}
+          >
+            Send
+          </Button>
+        </Flex>
+      </Box>
+    </VStack>
+  );
+};
+
 const Dashboard = ({ initialUserData }) => {
   // State variables
   const [userData, setUserData] = useState(initialUserData);
@@ -764,10 +1229,10 @@ const TableCard = ({
   qrSettings,
   baseUrl
 }) => {
-  // Filter only active orders (pending, preparing, ready) for this table
+  // Filter only active orders - this should already work with normalized data
   const activeOrders = orders.filter(order => 
     order.attributes?.tables?.data?.some(t => t.id === table.id) && 
-    ['pending', 'preparing', 'ready'].includes(getOrderProperty(order, 'status'))
+    ['pending', 'preparing', 'ready'].includes(order.attributes?.status)
   );
 
   return (
@@ -808,7 +1273,7 @@ const TableCard = ({
           </HStack>
         </Flex>
 
-        {/* Active Orders Section */}
+       {/* Active Orders Section - everything should work with normalized data */}
         {activeOrders.length > 0 && (
           <Box bg="gray.50" p={3} borderRadius="md" mb={2}>
             <Text fontWeight="bold" mb={2}>Active Orders:</Text>
@@ -819,12 +1284,12 @@ const TableCard = ({
                     <Text fontSize="sm" fontWeight="medium">Order #{order.id}</Text>
                     <Badge 
                       colorScheme={
-                        getOrderProperty(order, 'status') === 'pending' ? 'yellow' :
-                        getOrderProperty(order, 'status') === 'preparing' ? 'blue' : 'orange'
+                        order.attributes?.status === 'pending' ? 'yellow' :
+                        order.attributes?.status === 'preparing' ? 'blue' : 'orange'
                       }
                       fontSize="xs"
                     >
-                      {getOrderProperty(order, 'status')}
+                      {order.attributes?.status}
                     </Badge>
                   </Box>
                   <HStack>
@@ -891,472 +1356,6 @@ const TableCard = ({
         </Flex>
       </VStack>
     </DashboardCard>
-  );
-};
-
-
-const normalizeOrderData = (orders) => {
-    return orders.map(order => {
-      // If the order already has attributes, return it as-is
-      if (order.attributes) return order;
-
-      // Otherwise, restructure it to have attributes
-      return {
-        id: order.id,
-        attributes: { ...order }
-      };
-    });
-  };
-
-  // Add this before setting orders state in fetchOrders:
-  const fetchOrders = async () => {
-    if (!userData?.restaurant?.id) return;
-    
-    try {
-      setIsLoading(true);
-      const token = localStorage.getItem('token');
-      
-      // Show loading toast for longer operations
-      const loadingToast = toast({
-        title: t('loading'),
-        description: t('fetchingOrders'),
-        status: 'info',
-        duration: null,
-        isClosable: false
-      });
-      
-      // Fetch orders with full relationship data
-      const response = await fetch(
-        `${BASE_URL}/api/orders?filters[restaurant][id]=${userData.restaurant.id}&populate[tables][populate]=*&populate[order_items][populate][menu_item]=*&populate[customer_profile]=*&populate[messages]=*&sort=createdAt:desc`,
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        }
-      );
-
-      // Close loading toast
-      toast.close(loadingToast);
-
-      if (!response.ok) {
-        console.error(`Failed to fetch orders: ${response.status} ${response.statusText}`);
-        const errorData = await response.json().catch(() => ({}));
-        console.error('Error data:', errorData);
-        throw new Error(`Failed to fetch orders: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log('Orders data received:', data);
-      
-      if (!data || !data.data) {
-        console.warn('No orders data in response');
-        setOrders([]);
-        return [];
-      }
-      
-      // Normalize the data structure
-      const normalizedOrders = normalizeOrderData(data.data);
-      console.log('Normalized orders:', normalizedOrders);
-      
-      setOrders(normalizedOrders);
-      return normalizedOrders;
-    } catch (error) {
-      console.error('Error fetching orders:', error);
-      toast({
-        title: t('error'),
-        description: t('failedToLoadOrders'),
-        status: 'error',
-        duration: 3000
-      });
-      return [];
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const OrderDetails = ({ order, onClose, onUpdateStatus, operatorData }) => {
-  const { t } = useTranslation('common');
-  const toast = useToast();
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState('');
-  const messagesEndRef = useRef(null);
-  const [isLoading, setIsLoading] = useState(true);
-  
-  // Get base URL from environment variable
-  const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-  
-  // Scroll to bottom of messages
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-  
-  // Fetch messages when component mounts or order changes
-  useEffect(() => {
-    if (order?.id) {
-      loadMessages();
-    }
-  }, [order?.id]);
-  
-  // Set up message polling
-  useEffect(() => {
-    if (!order?.id) return;
-    
-    // Poll for new messages every 10 seconds
-    const intervalId = setInterval(loadMessages, 10000);
-    
-    // Clean up interval on unmount
-    return () => clearInterval(intervalId);
-  }, [order?.id]);
-  
-  // Scroll to bottom when messages change
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-  
-  // Load messages function
-  const loadMessages = async () => {
-    if (!order?.id) return;
-    
-    try {
-      setIsLoading(true);
-      
-      const token = localStorage.getItem('token');
-      const response = await fetch(
-        `${baseUrl}/api/messages?filters[order][id]=${order.id}&sort=timestamp:asc&populate=*`,
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        }
-      );
-      
-      if (!response.ok) {
-        throw new Error(`Failed to fetch messages: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      
-      if (data && data.data) {
-        setMessages(data.data);
-      } else {
-        console.warn('No messages found for order:', order.id);
-        setMessages([]);
-      }
-    } catch (error) {
-      console.error('Error loading messages:', error);
-      toast({
-        title: 'Error',
-        description: `Failed to load messages: ${error.message}`,
-        status: 'error',
-        duration: 3000
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  
-  // Send message function
-  const handleSendMessage = async () => {
-    if (!newMessage.trim() || !order?.id) return;
-    
-    try {
-      const token = localStorage.getItem('token');
-      
-      // Create message data
-      const messageData = {
-        data: {
-          content: newMessage,
-          sender_type: 'operator',
-          timestamp: new Date().toISOString(),
-          order: order.id,
-          read: false
-        }
-      };
-      
-      // Add operator ID if available
-      if (operatorData && operatorData.id) {
-        messageData.data.operator = operatorData.id;
-      }
-      
-      // Add optimistic update for better UX
-      const tempMessage = {
-        id: `temp-${Date.now()}`,
-        attributes: {
-          content: newMessage,
-          sender_type: 'operator',
-          timestamp: new Date().toISOString(),
-          read: false
-        }
-      };
-      
-      setMessages(prev => [...prev, tempMessage]);
-      setNewMessage('');
-      
-      // Send the actual message
-      const response = await fetch(
-        `${baseUrl}/api/messages`,
-        {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(messageData)
-        }
-      );
-      
-      if (!response.ok) {
-        throw new Error(`Failed to send message: ${response.status}`);
-      }
-      
-      // Reload messages to get the real message
-      await loadMessages();
-      
-      toast({
-        title: 'Success',
-        description: 'Message sent',
-        status: 'success',
-        duration: 2000
-      });
-    } catch (error) {
-      console.error('Error sending message:', error);
-      toast({
-        title: 'Error',
-        description: `Failed to send message: ${error.message}`,
-        status: 'error',
-        duration: 3000
-      });
-      
-      // Reload messages to remove the optimistic update
-      await loadMessages();
-    }
-  };
-  
-  // Format timestamp to readable time
-  const formatTime = (timestamp) => {
-    try {
-      const date = new Date(timestamp);
-      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    } catch (e) {
-      return 'Unknown time';
-    }
-  };
-  
-  if (!order) {
-    return (
-      <Flex justify="center" align="center" height="100%">
-        <Text>No order selected</Text>
-      </Flex>
-    );
-  }
-  
-  return (
-    <VStack spacing={4} align="stretch" h="full">
-      {/* Order Header */}
-       <Flex justify="space-between" align="center">
-        <Heading size="md">Order #{order.id}</Heading>
-        <Badge
-          colorScheme={
-            getOrderProperty('status') === 'pending' ? 'yellow' :
-            getOrderProperty('status') === 'preparing' ? 'blue' :
-            getOrderProperty('status') === 'ready' ? 'orange' :
-            getOrderProperty('status') === 'completed' ? 'green' : 'red'
-          }
-          fontSize="sm"
-          px={2}
-          py={1}
-          borderRadius="full"
-        >
-          {getOrderProperty('status')}
-        </Badge>
-      </Flex>
-      
-      <Divider />
-      
-      {/* Order Information */}
-      <Box bg="gray.50" p={4} borderRadius="md">
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-          <Box>
-            <Text fontWeight="bold">Customer:</Text>
-            <Text>
-              {order.attributes?.customer_profile?.data?.attributes?.fullName || 
-               order.attributes?.guest_info?.name || 
-               'Guest'}
-            </Text>
-          </Box>
-          <Box>
-            <Text fontWeight="bold">Contact:</Text>
-            <Text>
-              {order.attributes?.customer_profile?.data?.attributes?.phone || 
-               order.attributes?.guest_info?.phone || 
-               'N/A'}
-            </Text>
-          </Box>
-          <Box>
-            <Text fontWeight="bold">Table:</Text>
-            <Text>
-              {order.attributes?.tables?.data?.[0]?.attributes?.name || 'N/A'}
-            </Text>
-          </Box>
-          <Box>
-            <Text fontWeight="bold">Payment:</Text>
-            <Text>{order.attributes?.payment_method || 'N/A'}</Text>
-          </Box>
-        </SimpleGrid>
-      </Box>
-      
-      {/* Order Items */}
-      <Box>
-        <Text fontWeight="bold" mb={2}>Order Items:</Text>
-        <VStack spacing={2} align="stretch">
-          {order.attributes?.order_items?.data?.map((item, index) => (
-            <Box 
-              key={index} 
-              p={3} 
-              borderWidth="1px" 
-              borderRadius="md" 
-              bg="white"
-            >
-              <Flex justify="space-between">
-                <Box>
-                  <Text fontWeight="medium">
-                    {item.attributes?.quantity || 1}x {item.attributes?.menu_item?.data?.attributes?.name || 'Unknown Item'}
-                  </Text>
-                  {item.attributes?.special_instructions && (
-                    <Text fontSize="sm" color="gray.600">
-                      Note: {item.attributes.special_instructions}
-                    </Text>
-                  )}
-                </Box>
-                <Text fontWeight="bold">${item.attributes?.subtotal || '0.00'}</Text>
-              </Flex>
-            </Box>
-          ))}
-        </VStack>
-        
-        <Flex justify="space-between" mt={4} fontWeight="bold">
-          <Text>Total:</Text>
-          <Text>${order.attributes?.total || '0.00'}</Text>
-        </Flex>
-      </Box>
-      
-      <Divider />
-      
-      {/* Action Buttons */}
-      <SimpleGrid columns={2} spacing={4}>
-        {getOrderProperty(order, 'status') === 'pending' && (
-          <Button 
-            colorScheme="blue" 
-            onClick={() => onUpdateStatus(order.id, 'preparing')}
-            leftIcon={<Icon as={FiList} />}
-          >
-            Start Preparing
-          </Button>
-        )}
-        {getOrderProperty(order, 'status') === 'preparing' && (
-          <Button 
-            colorScheme="orange" 
-            onClick={() => onUpdateStatus(order.id, 'ready')}
-            leftIcon={<Icon as={FiClock} />}
-          >
-            Mark Ready
-          </Button>
-        )}
-        {getOrderProperty(order, 'status') === 'ready' && (
-          <Button 
-            colorScheme="green" 
-            onClick={() => onUpdateStatus(order.id, 'completed')}
-            leftIcon={<Icon as={FiCheck} />}
-          >
-            Complete
-          </Button>
-        )}
-        {['pending', 'preparing', 'ready'].includes(getOrderProperty(order, 'status')) && (
-          <Button 
-            colorScheme="red" 
-            onClick={() => onUpdateStatus(order.id, 'cancelled')}
-            leftIcon={<Icon as={FiX} />}
-          >
-            Cancel
-          </Button>
-        )}
-      </SimpleGrid>
-      
-      <Divider />
-      
-      {/* Messages Section */}
-      <Box flex="1">
-        <Text fontWeight="bold" mb={2}>Customer Communication:</Text>
-        
-        {/* Messages List */}
-        <Box 
-          borderWidth="1px" 
-          borderRadius="md" 
-          height="200px" 
-          overflowY="auto"
-          p={3}
-          bg="gray.50"
-        >
-          {isLoading ? (
-            <Flex justify="center" align="center" height="100%">
-              <Spinner />
-            </Flex>
-          ) : messages.length === 0 ? (
-            <Flex justify="center" align="center" height="100%" color="gray.500">
-              <Text>No messages yet</Text>
-            </Flex>
-          ) : (
-            messages.map((message, index) => (
-              <Box 
-                key={message.id || index}
-                mb={2}
-                display="flex"
-                justifyContent={message.attributes.sender_type === 'operator' ? 'flex-end' : 'flex-start'}
-              >
-                <Box
-                  maxWidth="80%"
-                  p={2}
-                  borderRadius="md"
-                  bg={message.attributes.sender_type === 'operator' ? 'blue.100' : 'gray.200'}
-                >
-                  <Text fontSize="sm">
-                    {message.attributes.content}
-                  </Text>
-                  <Text fontSize="xs" color="gray.500" textAlign="right">
-                    {formatTime(message.attributes.timestamp)}
-                  </Text>
-                </Box>
-              </Box>
-            ))
-          )}
-          <div ref={messagesEndRef} />
-        </Box>
-        
-        {/* Message Input */}
-        <Flex mt={2}>
-          <Input
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            placeholder="Type your message here..."
-            mr={2}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter') {
-                handleSendMessage();
-              }
-            }}
-          />
-          <Button
-            colorScheme="blue"
-            onClick={handleSendMessage}
-            isDisabled={!newMessage.trim()}
-          >
-            Send
-          </Button>
-        </Flex>
-      </Box>
-    </VStack>
   );
 };
 
@@ -2522,9 +2521,26 @@ const normalizeOrderData = (orders) => {
 
   // Handle viewing order details
   const handleViewOrderDetails = (order) => {
+  if (typeof order === 'object') {
+    // If an order object is passed directly
     setSelectedOrder(order);
     setIsOrderDetailsOpen(true);
-  };
+  } else {
+    // If an ID is passed, find the order
+    const foundOrder = orders.find(o => o.id === order);
+    if (foundOrder) {
+      setSelectedOrder(foundOrder);
+      setIsOrderDetailsOpen(true);
+    } else {
+      toast({
+        title: 'Error',
+        description: 'Order not found',
+        status: 'error',
+        duration: 3000
+      });
+    }
+  }
+};
 
   // Handle closing order details
   const handleCloseOrderDetails = () => {
@@ -3352,36 +3368,47 @@ const normalizeOrderData = (orders) => {
                 <Heading size="md">Order #{selectedOrder.id}</Heading>
                 
                 {/* Guest Info */}
-                {selectedOrder.attributes?.guest_info && (
+                {(selectedOrder.attributes?.guest_info || selectedOrder.guest_info) && (
                   <Box>
                     <Text fontWeight="bold">Guest Information:</Text>
-                    <Text>Name: {selectedOrder.attributes.guest_info.name}</Text>
-                    <Text>Phone: {selectedOrder.attributes.guest_info.phone}</Text>
+                    <Text>Name: {selectedOrder.attributes?.guest_info?.name || selectedOrder.guest_info?.name}</Text>
+                    <Text>Phone: {selectedOrder.attributes?.guest_info?.phone || selectedOrder.guest_info?.phone}</Text>
                   </Box>
                 )}
 
                 {/* Table Info */}
                 <Box>
                   <Text fontWeight="bold">Table:</Text>
-                  <Text>{selectedOrder.attributes?.tables?.data?.[0]?.attributes?.name || 'No table'}</Text>
+                  <Text>
+                    {selectedOrder.attributes?.tables?.data?.[0]?.attributes?.name || 
+                    selectedOrder.tables?.[0]?.name || 
+                    'No table'}
+                  </Text>
                 </Box>
 
                 {/* Order Items */}
                 <Box>
                   <Text fontWeight="bold">Items:</Text>
-                  {selectedOrder.attributes?.order_items?.data?.map((item, index) => (
+                  {(selectedOrder.attributes?.order_items?.data || selectedOrder.order_items)?.map((item, index) => (
                     <Box key={index} p={2} borderWidth="1px" borderRadius="md" mt={2}>
                       <HStack justify="space-between">
                         <VStack align="start" spacing={0}>
-                          <Text fontWeight="medium">{item.attributes.menu_item.data.attributes.name}</Text>
-                          <Text fontSize="sm">${item.attributes.unit_price} x {item.attributes.quantity}</Text>
-                          {item.attributes.special_instructions && (
+                          <Text fontWeight="medium">
+                            {item.attributes?.menu_item?.data?.attributes?.name || 
+                            item.menu_item?.name || 
+                            'Unknown Item'}
+                          </Text>
+                          <Text fontSize="sm">
+                            ${item.attributes?.unit_price || item.unit_price || 0} x 
+                            {item.attributes?.quantity || item.quantity || 1}
+                          </Text>
+                          {(item.attributes?.special_instructions || item.special_instructions) && (
                             <Text fontSize="sm">
-                              Notes: {item.attributes.special_instructions}
+                              Notes: {item.attributes?.special_instructions || item.special_instructions}
                             </Text>
                           )}
                         </VStack>
-                        <Text fontWeight="bold">${item.attributes.subtotal}</Text>
+                        <Text fontWeight="bold">${item.attributes?.subtotal || item.subtotal || 0}</Text>
                       </HStack>
                     </Box>
                   ))}
@@ -3393,47 +3420,51 @@ const normalizeOrderData = (orders) => {
                 <Box>
                   <HStack justify="space-between">
                     <Text fontWeight="bold">Total:</Text>
-                    <Text>${selectedOrder.attributes?.total}</Text>
+                    <Text>${selectedOrder.attributes?.total || selectedOrder.total}</Text>
                   </HStack>
                   <HStack justify="space-between">
                     <Text fontWeight="bold">Payment Method:</Text>
-                    <Text>{selectedOrder.attributes?.payment_method}</Text>
+                    <Text>{selectedOrder.attributes?.payment_method || selectedOrder.payment_method}</Text>
                   </HStack>
                   <HStack justify="space-between">
                     <Text fontWeight="bold">Status:</Text>
                     <Badge
                       colorScheme={
-                        selectedgetOrderProperty(order, 'status') === 'pending'
+                        (selectedOrder.attributes?.status || selectedOrder.status) === 'pending'
                           ? 'yellow'
-                          : selectedgetOrderProperty(order, 'status') === 'preparing'
+                          : (selectedOrder.attributes?.status || selectedOrder.status) === 'preparing'
                           ? 'blue'
-                          : selectedgetOrderProperty(order, 'status') === 'completed'
+                          : (selectedOrder.attributes?.status || selectedOrder.status) === 'completed'
                           ? 'green'
                           : 'red'
                       }
                       rounded="full"
                       px={2}
                     >
-                      {selectedgetOrderProperty(order, 'status')}
+                      {selectedOrder.attributes?.status || selectedOrder.status}
                     </Badge>
                   </HStack>
                 </Box>
 
                 {/* Notes */}
-                {selectedOrder.attributes?.notes && (
+                {(selectedOrder.attributes?.notes || selectedOrder.notes) && (
                   <Box>
                     <Text fontWeight="bold">Notes:</Text>
-                    <Text whiteSpace="pre-wrap">{selectedOrder.attributes.notes}</Text>
+                    <Text whiteSpace="pre-wrap">{selectedOrder.attributes?.notes || selectedOrder.notes}</Text>
                   </Box>
                 )}
 
                 {/* Timestamps */}
                 <Box>
                   <Text fontWeight="bold">Order Time:</Text>
-                  <Text>{new Date(selectedOrder.attributes?.createdAt).toLocaleString()}</Text>
+                  <Text>
+                    {new Date(selectedOrder.attributes?.createdAt || selectedOrder.createdAt).toLocaleString()}
+                  </Text>
                 </Box>
+                
+                {/* Only show messages if selectedOrder.id exists */}
                 {selectedOrder.id && (
-                  <OperatorMessages orderId={selectedOrder.id} />
+                  <OrderMessages orderId={selectedOrder.id} />
                 )}
               </VStack>
             )}
