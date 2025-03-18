@@ -91,10 +91,6 @@
      "orderType": {
       "type": "enumeration",
       "enum": ["purchase", "test-drive", "inspection"]
-    },
-    "financingDetails": { "type": "json" },
-    "insuranceDetails": { "type": "json" },
-    "inspectionReport": { "type": "json" },
-    "testDriveDate": { "type": "datetime" }
+    }
   }
 }
