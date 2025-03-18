@@ -23,7 +23,8 @@ import {
   ModalFooter, Image, ModalBody, ModalCloseButton, DrawerHeader,
   DrawerBody, DrawerCloseButton, Textarea, Select, NumberInput,
   NumberInputField, NumberInputStepper, NumberIncrementStepper,
-  NumberDecrementStepper, useColorModeValue
+  NumberDecrementStepper, useColorModeValue, Grid, GridItem, Card,
+  CardHeader, CardBody, 
 } from '@chakra-ui/react';
 
 import { mdiCheckCircle } from '@mdi/js';
@@ -39,7 +40,8 @@ import {
   FiCheck, FiPackage, FiArrowRight, FiSettings, FiDownload,
   FiSun, FiClock, FiX, FiCreditCard, FiTrendingUp, FiMoon,
   FiUser, FiPrinter, FiMaximize2, FiDollarSign, FiShoppingCart,
-  FiCheckCircle, FiMinimize2, FiMessageSquare, FiRefreshCw 
+  FiCheckCircle, FiMinimize2, FiMessageSquare, FiRefreshCw, FiActivity,
+  FiCalendar, FiMapPin, 
 } from 'react-icons/fi';
 
 // Initialize Stripe
@@ -281,176 +283,6 @@ const getOrderItems = (order) => {
   }
   
   return [];
-};
-
-// Component for pickup and delivery orders display
-const DeliveryPickupSection = ({ orders, onViewOrder }) => {
-  const { t } = useTranslation('common');
-  
-  // Filter pickup orders (tables named "pickup" or "استلام")
-  const pickupOrders = orders.filter(order => {
-    const tableName = getTableName(order).toLowerCase();
-    return tableName === 'pickup' || tableName === 'استلام';
-  });
-  
-  // Filter delivery orders (tables named "delivery" or "توصيل")
-  const deliveryOrders = orders.filter(order => {
-    const tableName = getTableName(order).toLowerCase();
-    return tableName === 'delivery' || tableName === 'توصيل';
-  });
-  
-  return (
-    <Grid templateColumns={{ base: '1fr', lg: '1fr 1fr' }} gap={6} mb={8}>
-      {/* Pickup Orders */}
-      <GridItem>
-        <Card>
-          <CardHeader>
-            <Heading size="md">
-              <HStack>
-                <Icon as={FiPackage} />
-                <Text>{t('pickupOrders')}</Text>
-                <Badge colorScheme="orange">{pickupOrders.length}</Badge>
-              </HStack>
-            </Heading>
-          </CardHeader>
-          <CardBody>
-            {pickupOrders.length === 0 ? (
-              <Text color="gray.500" textAlign="center">{t('noPickupOrders')}</Text>
-            ) : (
-              <VStack spacing={4} align="stretch">
-                {pickupOrders.map(order => {
-                  const customer = getCustomerInfo(order);
-                  return (
-                    <Box 
-                      key={order.id} 
-                      p={4} 
-                      borderWidth="1px" 
-                      borderRadius="md"
-                      _hover={{ bg: "gray.50" }}
-                      transition="all 0.2s"
-                      cursor="pointer"
-                      onClick={() => onViewOrder(order)}
-                    >
-                      <HStack justify="space-between" mb={2}>
-                        <Text fontWeight="bold">Order #{order.id}</Text>
-                        <Badge colorScheme={getOrderStatusColor(order.attributes?.status)}>
-                          {order.attributes?.status}
-                        </Badge>
-                      </HStack>
-                      <VStack align="start" spacing={1}>
-                        <HStack>
-                          <Icon as={FiUser} color="gray.500" />
-                          <Text>{customer.name}</Text>
-                        </HStack>
-                        <HStack>
-                          <Icon as={FiPhone} color="gray.500" />
-                          <Text>{customer.phone}</Text>
-                        </HStack>
-                        <Text fontSize="sm" color="gray.500">
-                          {formatDate(order.attributes?.createdAt)} {formatTime(order.attributes?.createdAt)}
-                        </Text>
-                      </VStack>
-                      <Divider my={2} />
-                      <HStack justify="space-between">
-                        <Text>${order.attributes?.total || '0.00'}</Text>
-                        <Button size="sm" colorScheme="blue" onClick={() => onViewOrder(order)}>
-                          {t('viewDetails')}
-                        </Button>
-                      </HStack>
-                    </Box>
-                  );
-                })}
-              </VStack>
-            )}
-          </CardBody>
-        </Card>
-      </GridItem>
-      
-      {/* Delivery Orders */}
-      <GridItem>
-        <Card>
-          <CardHeader>
-            <Heading size="md">
-              <HStack>
-                <Icon as={FiMapPin} />
-                <Text>{t('deliveryOrders')}</Text>
-                <Badge colorScheme="blue">{deliveryOrders.length}</Badge>
-              </HStack>
-            </Heading>
-          </CardHeader>
-          <CardBody>
-            {deliveryOrders.length === 0 ? (
-              <Text color="gray.500" textAlign="center">{t('noDeliveryOrders')}</Text>
-            ) : (
-              <VStack spacing={4} align="stretch">
-                {deliveryOrders.map(order => {
-                  const customer = getCustomerInfo(order);
-                  const captain = order.attributes?.captain?.data?.attributes || {};
-                  return (
-                    <Box 
-                      key={order.id} 
-                      p={4} 
-                      borderWidth="1px" 
-                      borderRadius="md"
-                      _hover={{ bg: "gray.50" }}
-                      transition="all 0.2s"
-                      cursor="pointer"
-                      onClick={() => onViewOrder(order)}
-                    >
-                      <HStack justify="space-between" mb={2}>
-                        <Text fontWeight="bold">Order #{order.id}</Text>
-                        <Badge colorScheme={getOrderStatusColor(order.attributes?.status)}>
-                          {order.attributes?.status}
-                        </Badge>
-                      </HStack>
-                      <SimpleGrid columns={2} spacing={3}>
-                        <VStack align="start" spacing={1}>
-                          <Text fontWeight="bold">{t('customer')}:</Text>
-                          <HStack>
-                            <Icon as={FiUser} color="gray.500" />
-                            <Text>{customer.name}</Text>
-                          </HStack>
-                          <HStack>
-                            <Icon as={FiPhone} color="gray.500" />
-                            <Text>{customer.phone}</Text>
-                          </HStack>
-                          <HStack>
-                            <Icon as={FiMapPin} color="gray.500" />
-                            <Text noOfLines={2}>{customer.address}</Text>
-                          </HStack>
-                        </VStack>
-                        
-                        <VStack align="start" spacing={1}>
-                          <Text fontWeight="bold">{t('captain')}:</Text>
-                          <HStack>
-                            <Icon as={FiUser} color="gray.500" />
-                            <Text>{captain.name || t('notAssigned')}</Text>
-                          </HStack>
-                          {captain.authCode && (
-                            <HStack>
-                              <Icon as={FiInfo} color="gray.500" />
-                              <Text>{t('authCode')}: {captain.authCode}</Text>
-                            </HStack>
-                          )}
-                        </VStack>
-                      </SimpleGrid>
-                      <Divider my={2} />
-                      <HStack justify="space-between">
-                        <Text>${order.attributes?.total || '0.00'}</Text>
-                        <Button size="sm" colorScheme="blue" onClick={() => onViewOrder(order)}>
-                          {t('viewDetails')}
-                        </Button>
-                      </HStack>
-                    </Box>
-                  );
-                })}
-              </VStack>
-            )}
-          </CardBody>
-        </Card>
-      </GridItem>
-    </Grid>
-  );
 };
 
   // Filter orders based on selected filter
@@ -1210,6 +1042,176 @@ const StatCard = ({ title, value, icon: Icon, color }) => {
         </Box>
       </Flex>
     </Card>
+  );
+};
+
+// Component for pickup and delivery orders display
+const DeliveryPickupSection = ({ orders, onViewOrder }) => {
+  const { t } = useTranslation('common');
+  
+  // Filter pickup orders (tables named "pickup" or "استلام")
+  const pickupOrders = orders.filter(order => {
+    const tableName = getTableName(order).toLowerCase();
+    return tableName === 'pickup' || tableName === 'استلام';
+  });
+  
+  // Filter delivery orders (tables named "delivery" or "توصيل")
+  const deliveryOrders = orders.filter(order => {
+    const tableName = getTableName(order).toLowerCase();
+    return tableName === 'delivery' || tableName === 'توصيل';
+  });
+  
+  return (
+    <Grid templateColumns={{ base: '1fr', lg: '1fr 1fr' }} gap={6} mb={8}>
+      {/* Pickup Orders */}
+      <GridItem>
+        <Card>
+          <CardHeader>
+            <Heading size="md">
+              <HStack>
+                <Icon as={FiPackage} />
+                <Text>{t('pickupOrders')}</Text>
+                <Badge colorScheme="orange">{pickupOrders.length}</Badge>
+              </HStack>
+            </Heading>
+          </CardHeader>
+          <CardBody>
+            {pickupOrders.length === 0 ? (
+              <Text color="gray.500" textAlign="center">{t('noPickupOrders')}</Text>
+            ) : (
+              <VStack spacing={4} align="stretch">
+                {pickupOrders.map(order => {
+                  const customer = getCustomerInfo(order);
+                  return (
+                    <Box 
+                      key={order.id} 
+                      p={4} 
+                      borderWidth="1px" 
+                      borderRadius="md"
+                      _hover={{ bg: "gray.50" }}
+                      transition="all 0.2s"
+                      cursor="pointer"
+                      onClick={() => onViewOrder(order)}
+                    >
+                      <HStack justify="space-between" mb={2}>
+                        <Text fontWeight="bold">Order #{order.id}</Text>
+                        <Badge colorScheme={getOrderStatusColor(order.attributes?.status)}>
+                          {order.attributes?.status}
+                        </Badge>
+                      </HStack>
+                      <VStack align="start" spacing={1}>
+                        <HStack>
+                          <Icon as={FiUser} color="gray.500" />
+                          <Text>{customer.name}</Text>
+                        </HStack>
+                        <HStack>
+                          <Icon as={FiPhone} color="gray.500" />
+                          <Text>{customer.phone}</Text>
+                        </HStack>
+                        <Text fontSize="sm" color="gray.500">
+                          {formatDate(order.attributes?.createdAt)} {formatTime(order.attributes?.createdAt)}
+                        </Text>
+                      </VStack>
+                      <Divider my={2} />
+                      <HStack justify="space-between">
+                        <Text>${order.attributes?.total || '0.00'}</Text>
+                        <Button size="sm" colorScheme="blue" onClick={() => onViewOrder(order)}>
+                          {t('viewDetails')}
+                        </Button>
+                      </HStack>
+                    </Box>
+                  );
+                })}
+              </VStack>
+            )}
+          </CardBody>
+        </Card>
+      </GridItem>
+      
+      {/* Delivery Orders */}
+      <GridItem>
+        <Card>
+          <CardHeader>
+            <Heading size="md">
+              <HStack>
+                <Icon as={FiMapPin} />
+                <Text>{t('deliveryOrders')}</Text>
+                <Badge colorScheme="blue">{deliveryOrders.length}</Badge>
+              </HStack>
+            </Heading>
+          </CardHeader>
+          <CardBody>
+            {deliveryOrders.length === 0 ? (
+              <Text color="gray.500" textAlign="center">{t('noDeliveryOrders')}</Text>
+            ) : (
+              <VStack spacing={4} align="stretch">
+                {deliveryOrders.map(order => {
+                  const customer = getCustomerInfo(order);
+                  const captain = order.attributes?.captain?.data?.attributes || {};
+                  return (
+                    <Box 
+                      key={order.id} 
+                      p={4} 
+                      borderWidth="1px" 
+                      borderRadius="md"
+                      _hover={{ bg: "gray.50" }}
+                      transition="all 0.2s"
+                      cursor="pointer"
+                      onClick={() => onViewOrder(order)}
+                    >
+                      <HStack justify="space-between" mb={2}>
+                        <Text fontWeight="bold">Order #{order.id}</Text>
+                        <Badge colorScheme={getOrderStatusColor(order.attributes?.status)}>
+                          {order.attributes?.status}
+                        </Badge>
+                      </HStack>
+                      <SimpleGrid columns={2} spacing={3}>
+                        <VStack align="start" spacing={1}>
+                          <Text fontWeight="bold">{t('customer')}:</Text>
+                          <HStack>
+                            <Icon as={FiUser} color="gray.500" />
+                            <Text>{customer.name}</Text>
+                          </HStack>
+                          <HStack>
+                            <Icon as={FiPhone} color="gray.500" />
+                            <Text>{customer.phone}</Text>
+                          </HStack>
+                          <HStack>
+                            <Icon as={FiMapPin} color="gray.500" />
+                            <Text noOfLines={2}>{customer.address}</Text>
+                          </HStack>
+                        </VStack>
+                        
+                        <VStack align="start" spacing={1}>
+                          <Text fontWeight="bold">{t('captain')}:</Text>
+                          <HStack>
+                            <Icon as={FiUser} color="gray.500" />
+                            <Text>{captain.name || t('notAssigned')}</Text>
+                          </HStack>
+                          {captain.authCode && (
+                            <HStack>
+                              <Icon as={FiInfo} color="gray.500" />
+                              <Text>{t('authCode')}: {captain.authCode}</Text>
+                            </HStack>
+                          )}
+                        </VStack>
+                      </SimpleGrid>
+                      <Divider my={2} />
+                      <HStack justify="space-between">
+                        <Text>${order.attributes?.total || '0.00'}</Text>
+                        <Button size="sm" colorScheme="blue" onClick={() => onViewOrder(order)}>
+                          {t('viewDetails')}
+                        </Button>
+                      </HStack>
+                    </Box>
+                  );
+                })}
+              </VStack>
+            )}
+          </CardBody>
+        </Card>
+      </GridItem>
+    </Grid>
   );
 };
 

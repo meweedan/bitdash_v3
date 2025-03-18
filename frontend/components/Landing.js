@@ -103,7 +103,7 @@ export default function LandingPage() {
   
   // For responsive design
   const isMobile = useBreakpointValue({ base: true, md: false });
-  const heroImageSize = useBreakpointValue({ base: "100%", md: "90%" });
+  const heroImageSize = useBreakpointValue({ base: "90%", md: "70%" });
   const headingSize = useBreakpointValue({ base: "3xl", md: "4xl", lg: "5xl" });
   const glassCardBg = useColorModeValue('whiteAlpha.900', 'whiteAlpha.100');
   const headingColor = useColorModeValue('whiteAlpha.900', 'brand.bitdash.700');
@@ -188,17 +188,6 @@ export default function LandingPage() {
                   </Text>
                 </VStack>
               </MotionBox>
-            </GridItem>
-            
-            <GridItem>
-              <ParallaxBox offset={isMobile ? 10 : 70}>
-                <Image
-                  src="/images/digital-services.webp"
-                  alt={t('alt.digitalServices', 'Digital Services Platform')}
-                  borderRadius="xl"
-                  width={heroImageSize}
-                />
-              </ParallaxBox>
             </GridItem>
           </Grid>
         </Container>
@@ -367,7 +356,7 @@ export default function LandingPage() {
               >
                 <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
                   <Image 
-                    src="/images/delivery-app-screen.png" 
+                    src="/images/delivery-man.png" 
                     alt={t('utlubha.imageAlt', 'utlubha Delivery App Screenshot')}
                     width={{ base: "300px", md: "400px" }}
                     as={motion.img}
@@ -436,7 +425,7 @@ export default function LandingPage() {
               >
                 <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
                   <Image 
-                    src="/images/payment-app-screen.png" 
+                    src="/images/money-transfer.png" 
                     alt={t('tazdani.imageAlt', 'tazdani Payment App Screenshot')}
                     width={{ base: "300px", md: "400px" }}
                     as={motion.img}
@@ -540,33 +529,6 @@ export default function LandingPage() {
                 </VStack>
               </MotionBox>
             </GridItem>
-            
-            <GridItem>
-              <MotionBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={scaleUp}
-              >
-                <Image 
-                  src="/images/qr-ordering-screen.png" 
-                  alt={t('qr.imageAlt', 'QR Ordering System')}
-                  width="100%"
-                />
-              </MotionBox>
-            </GridItem>
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Agent Banking Section */}
-      <Box 
-        as="section" 
-        py={{ base: 16, md: 24 }}
-        position="relative"
-      >
-        <Container maxW="container.xl">
-          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
             <GridItem order={{ base: 1, lg: 2 }}>
               <MotionBox
                 initial="hidden"
@@ -612,165 +574,7 @@ export default function LandingPage() {
                 </VStack>
               </MotionBox>
             </GridItem>
-            
-            <GridItem order={{ base: 2, lg: 1 }}>
-              <MotionBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={scaleUp}
-              >
-                <Image 
-                  src="/images/agent-banking.png" 
-                  alt={t('agent.imageAlt', 'Agent Banking Network')}
-                  width="100%"
-                />
-              </MotionBox>
-            </GridItem>
           </Grid>
-        </Container>
-      </Box>
-      
-      {/* Mobile App Section */}
-      {/* <Box>
-        <Container maxW="container.xl">
-          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
-            <GridItem>
-              <MotionBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-              >
-                <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
-                  <Heading
-                    fontSize={{ base: "2xl", md: "3xl" }}
-                    fontWeight="bold"
-                    color={isDark ? "white" : "#333"}
-                  >
-                    {t('app.title', 'Mobile Apps for All Services')}
-                  </Heading>
-                  
-                  <Text
-                    fontSize={{ base: "xl", md: "2xl" }}
-                    fontWeight="bold"
-                    color="#387fc2"
-                  >
-                    {t('app.subtitle', 'DOWNLOAD AND EXPERIENCE THE DIFFERENCE')}
-                  </Text>
-                  
-                  <Text
-                    fontSize={{ base: "md", md: "lg" }}
-                    color={isDark ? "gray.300" : "gray.600"}
-                    maxW="600px"
-                  >
-                    {t('app.description', 'Get our mobile apps for both Utlubha and tazdani to enjoy seamless deliveries and payments wherever you go. Feature-rich interfaces designed for intuitive use.')}
-                  </Text>
-                </VStack>
-              </MotionBox>
-            </GridItem>
-            
-            <GridItem>
-              <MotionBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={scaleUp}
-              >
-                <Box 
-                  borderRadius="xl"
-                  overflow="hidden"
-                  transform="perspective(1000px) rotateY(-5deg) rotateX(5deg)"
-                  transition="all 0.5s ease"
-                  _hover={{
-                    transform: "perspective(1000px) rotateY(0deg) rotateX(0deg)"
-                  }}
-                >
-                  <Image 
-                    src="/images/mobile-apps.png" 
-                    alt={t('app.screenshotAlt', 'Mobile Apps')}
-                    borderRadius="md"
-                    width="100%"
-                  />
-                </Box>
-              </MotionBox>
-            </GridItem>
-          </Grid>
-        </Container>
-      </Box> */}
-      
-      {/* Steps to Start Section */}
-      <Box as="section" py={{ base: 16, md: 24 }}>
-        <Container maxW="container.xl">
-          <VStack spacing={16}>
-            <MotionBox
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              textAlign="center"
-              maxW="3xl"
-              mx="auto"
-            >
-              <Text 
-                color="#387fc2" 
-                fontWeight="bold" 
-                mb={3}
-                textTransform="uppercase"
-                letterSpacing="wide"
-              >
-                {t('steps.subtitle', 'Getting Started')}
-              </Text>
-              
-              <Heading
-                fontSize={{ base: "3xl", md: "4xl" }}
-                fontWeight="bold"
-                color={isDark ? "white" : "#333"}
-                mb={5}
-              >
-                {t('steps.title', 'Start Using Our Services in 3 Simple Steps')}
-              </Heading>
-              
-              <Text
-                fontSize={{ base: "md", md: "lg" }}
-                color={isDark ? "gray.300" : "gray.600"}
-              >
-                {t('steps.description', 'Whether it\'s deliveries with Utlubha or cashless payments with tazdani, getting started is quick and easy.')}
-              </Text>
-            </MotionBox>
-            
-            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} width="full">
-              <StepCard
-                number="1"
-                title={t('steps.step1.title', 'Download App')}
-                description={t('steps.step1.description', 'Download Utlubha for deliveries or tazdani for payments from your app store')}
-                delay={0}
-              />
-              
-              <StepCard
-                number="2"
-                title={t('steps.step2.title', 'Create Account')}
-                description={t('steps.step2.description', 'Sign up with your phone number and complete a simple verification process')}
-                delay={0.1}
-              />
-              
-              <StepCard
-                number="3"
-                title={t('steps.step3.title', 'Start Using')}
-                description={t('steps.step3.description', 'Order deliveries or make cashless payments instantly')}
-                delay={0.2}
-              />
-            </SimpleGrid>
-            
-            <Button
-              variant="bitdash-solid"
-              px={10}
-              onClick={() => router.push('/download')}
-              rightIcon={<ArrowRight />}
-            >
-              {t('steps.cta', 'Download Our Apps')}
-            </Button>
-          </VStack>
         </Container>
       </Box>
       

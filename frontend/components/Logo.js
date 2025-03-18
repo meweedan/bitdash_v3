@@ -31,8 +31,8 @@ const Logo = ({ variant = 'header' }) => {
       ar: { path: '/utlubha-ar.png', width: 1134, height: 634 }
     },
     main: {
-      en: { path: '/bitdash-logo.png', width: 1080, height: 249 },
-      ar: { path: '/bitdash-ar-logo.png', width: 1080, height: 249 }
+      en: { path: '/bitdash-logo.png', width: 1174, height: 520 },
+      ar: { path: '/bitdash-ar-logo.png', width: 1134, height: 634 }
     }
   };
 
@@ -45,7 +45,7 @@ const Logo = ({ variant = 'header' }) => {
     const aspectRatio = logoConfig.width / logoConfig.height;
     
     // Header logo sizes - updated for better fit in header
-    const headerWidth = useBreakpointValue({ base: "150px", md: "250px" });
+    const headerWidth = useBreakpointValue({ base: "150px", md: "200px" });
     const headerHeight = `${parseInt(headerWidth) / aspectRatio}px`;
     
     return (
