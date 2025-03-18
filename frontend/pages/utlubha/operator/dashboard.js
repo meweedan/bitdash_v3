@@ -1999,6 +1999,24 @@ const getTableName = (order) => {
       </Modal>
     );
   });
+
+  const getOrderStatusColor = (status) => {
+  switch (status) {
+    case 'pending':
+      return 'yellow';
+    case 'preparing':
+      return 'blue';
+    case 'ready':
+      return 'orange';
+    case 'completed':
+      return 'green';
+    case 'cancelled':
+      return 'red';
+    default:
+      return 'gray';
+  }
+};
+
   
   // Menu Item Modal Component
   const MenuItemModal = React.memo(({ isOpen, onClose }) => {
