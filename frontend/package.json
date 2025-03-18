@@ -45,6 +45,7 @@
     "framer-motion": "^10.18.0",
     "fs": "^0.0.1-security",
     "google-maps": "^4.3.3",
+    "gsap": "^3.12.7",
     "html2canvas": "^1.4.1",
     "html5-qrcode": "^2.3.8",
     "i18next": "^21.6.16",

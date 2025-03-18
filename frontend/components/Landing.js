@@ -88,6 +88,9 @@ import {
   FaMobileAlt
 } from 'react-icons/fa';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import dynamic from 'next/dynamic';
+
+const GlobeMap = dynamic(() => import('@/components/GlobeMap'), { ssr: false });
 
 const MotionBox = motion(Box);
 const ChakraBox = motion(Box);
@@ -479,7 +482,6 @@ export default function LandingPage() {
       {/* QR Ordering Section */}
       <Box 
         as="section" 
-        py={{ base: 16, md: 24 }}
         position="relative"
       >
         <Container maxW="container.xl">
@@ -575,9 +577,19 @@ export default function LandingPage() {
               </MotionBox>
             </GridItem>
           </Grid>
+          <Heading
+            fontSize={{ base: "3xl", md: "4xl" }}
+            py={{ base: 10, md: 20}}
+            fontWeight="bold"
+            textAlign="center"
+            color={isDark ? "white" : "#333"}
+          >
+            {t('startedInLibya')}
+          </Heading>
+          <GlobeMap />
         </Container>
       </Box>
-      
+
       {/* CTA Section */}
       <Box 
         as="section" 

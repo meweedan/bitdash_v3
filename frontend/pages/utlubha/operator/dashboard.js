@@ -1045,6 +1045,21 @@ const StatCard = ({ title, value, icon: Icon, color }) => {
   );
 };
 
+// Helper function to safely extract order items
+const getOrderItems = (order) => {
+  if (!order) return [];
+  
+  if (order.attributes?.order_items?.data && Array.isArray(order.attributes.order_items.data)) {
+    return order.attributes.order_items.data;
+  }
+  
+  if (order.order_items && Array.isArray(order.order_items)) {
+    return order.order_items;
+  }
+  
+  return [];
+};
+
 // Component for pickup and delivery orders display
 const DeliveryPickupSection = ({ orders, onViewOrder }) => {
   const { t } = useTranslation('common');
