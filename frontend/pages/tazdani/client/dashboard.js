@@ -310,17 +310,25 @@ const ClientDashboard = () => {
                   {t('wallet.id')}: {wallet.walletId}
                 </Badge>
               </VStack>
+            </HStack>
             
-            
-            <Wrap spacing={2} justify={{ base: "center", sm: "center", md: "center" }}>
+            <Wrap 
+            justify="space-between" 
+            align={{ base: "start", md: "center" }}
+            direction={{ base: "column", sm: "row" }}
+            gap={{ base: 2, md: 4 }}
+            p={{ base: 3, md: 6 }}
+            bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
+            backdropFilter="blur(8px)"
+            >
               <WrapItem>
                 <Tooltip label={t('actions.send_money')}>
                   <IconButton
                     icon={<FiArrowLeftCircle />}
                     onClick={() => router.push('/client/transfer')}
-                    colorScheme="blue"
+                    colorScheme="green"
                     variant="ghost"
-                    size={{ base: "2xl", md: "2xl" }}
+                    size={{ base: "2xl", md: "2xl", sm: "2xl" }}
                   />
                 </Tooltip>
               </WrapItem>
@@ -329,9 +337,9 @@ const ClientDashboard = () => {
                   <IconButton
                     icon={<FiCreditCard />}
                     onClick={onQROpen}
-                    colorScheme="purple"
+                    colorScheme="green"
                     variant="ghost"
-                    size={{ base: "2xl", md: "2xl" }}
+                    size={{ base: "2xl", md: "2xl", sm: "2xl" }}
                   />
                 </Tooltip>
               </WrapItem>
@@ -341,12 +349,12 @@ const ClientDashboard = () => {
                     icon={<FiMoreVertical />}
                     onClick={onMenuModalOpen}
                     variant="ghost"
-                    size={{ base: "2xl", md: "2xl" }}
+                    colorScheme="green"
+                    size={{ base: "2xl", md: "2xl", sm: "2xl" }}
                   />
                 </Tooltip>
               </WrapItem>
             </Wrap>
-            </HStack>
           </Flex>
 
           {/* Main Stats */}
