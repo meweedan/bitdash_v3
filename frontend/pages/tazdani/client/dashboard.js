@@ -273,11 +273,11 @@ const ClientDashboard = () => {
           pointerEvents="none"
         />
 
-        <VStack spacing={{ base: 4, md: 8 }} align="center">
+        <VStack spacing={{ base: 4, md: 8 }} align="stretch">
           {/* Header */}
           <Flex 
             justify="space-between" 
-            align={{ base: "center", md: "center" }}
+            align={{ base: "start", md: "center" }}
             direction={{ base: "column", sm: "row" }}
             gap={{ base: 2, md: 4 }}
             p={{ base: 3, md: 6 }}
@@ -299,10 +299,10 @@ const ClientDashboard = () => {
                 color="white"
               />
               <VStack align="start" spacing={0}>
-                <Heading size={{ base: "xl", md: "xl" }}>
+                <Heading size={{ base: "xl", md: "2xl" }}>
                   {customerProfile?.fullName || user?.username || t('common:unnamed')}
                 </Heading>
-                <Text fontSize={{ base: "xs", md: "sm" }} color="gray.500">
+                <Text size={{ base: "2xl", md: "2xl" }} color="gray.500">
                   {user?.email || t('common:no_email')}
                 </Text>
                 <Badge 
@@ -321,8 +321,9 @@ const ClientDashboard = () => {
                   <IconButton
                     icon={<FiArrowLeftCircle />}
                     onClick={() => router.push('/client/transfer')}
+                    colorScheme="blue"
                     variant="ghost"
-                    size={{ base: "xl", md: "xl" }}
+                    size={{ base: "xl", md: "2xl" }}
                   />
                 </Tooltip>
               </WrapItem>
@@ -331,8 +332,9 @@ const ClientDashboard = () => {
                   <IconButton
                     icon={<FiCreditCard />}
                     onClick={onQROpen}
+                    colorScheme="purple"
                     variant="ghost"
-                    size={{ base: "xl", md: "xl" }}
+                    size={{ base: "xl", md: "2xl" }}
                   />
                 </Tooltip>
               </WrapItem>
@@ -342,7 +344,7 @@ const ClientDashboard = () => {
                     icon={<FiMoreVertical />}
                     onClick={onMenuModalOpen}
                     variant="ghost"
-                    size={{ base: "xl", md: "xl" }}
+                    size={{ base: "xl", md: "2xl" }}
                   />
                 </Tooltip>
               </WrapItem>
@@ -373,6 +375,7 @@ const ClientDashboard = () => {
                 <IconButton
                   icon={showBalance ? <FiEyeOff /> : <FiEye />}
                   variant="ghost"
+                  size="sm"
                   onClick={() => setShowBalance(!showBalance)}
                 />
               </HStack>
