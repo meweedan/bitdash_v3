@@ -1729,7 +1729,6 @@
     }
   },
   "Landinghero": {
-    "badge": "Trade Smarter",
     "title": "Growing together, bit by bit.",
     "subtitle": "Our firm currently offers Tazdani, a revolutionary cash alternative and Utlubha, a food and grocery ordering platform that serves all your needs!",
     "getStarted": "Get Started",
@@ -1740,7 +1739,7 @@
   },
   "platformSection": {
     "subtitle": "Revolutionary solutions for your issues",
-    "title": "Our cutting-edge platform",
+    "title": "Our cutting-edge platforms",
     "description": "Discover our suite of next-generation platforms designed to revolutionise how you fulfill orders and transfer money."
   },
   "platforms": {

@@ -15,6 +15,7 @@ import {
   useDisclosure,
   useColorModeValue,
   HStack,
+  SimpleGrid,
   Icon,
   Popover,
   PopoverTrigger,
@@ -565,12 +566,12 @@ export default function Header() {
           </HStack>
 
           {/* Mobile Controls */}
-          <HStack display={{ base: 'flex', lg: 'none'}} spacing={2}>
-            <Box>
-              <LanguageSwitcher />
-            </Box>
-
+          <SimpleGrid display={{ base: 'relative', lg: 'none'}} columns={{ base: 1, md: 2 }}>
+              <Box>
+                <LanguageSwitcher />
+              </Box>
             <IconButton
+              m={2}
               onClick={toggleColorMode}
               variant={`${platform}-outline`}
               size="md"
@@ -588,6 +589,7 @@ export default function Header() {
             />
 
             <IconButton
+              m={2}
               icon={isOpen ? <CloseIcon boxSize={3} /> : <HamburgerIcon boxSize={5} />}
               variant={`${platform}-outline`}
               size="md"
@@ -596,7 +598,7 @@ export default function Header() {
               aria-label="Toggle Navigation"
               onClick={onToggle}
             />
-          </HStack>
+            </SimpleGrid>
         </Flex>
       </Flex>
 

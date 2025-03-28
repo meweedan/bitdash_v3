@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import {
   Box,
@@ -720,30 +721,6 @@ const TazdaniLanding = () => {
                     borderRadius="3xl"
                     boxShadow="2xl"
                   />
-                  
-                  {/* Floating elements for visual appeal */}
-                  <Box
-                    position="absolute"
-                    bottom="-30px"
-                    right="-30px"
-                    width="120px"
-                    height="120px"
-                    borderRadius="full"
-                    bg="brand.tazdani.500"
-                    opacity="0.3"
-                    zIndex="-1"
-                  />
-                  <Box
-                    position="absolute"
-                    top="-20px"
-                    left="-20px"
-                    width="80px"
-                    height="80px"
-                    borderRadius="full"
-                    bg="brand.tazdani.700"
-                    opacity="0.3"
-                    zIndex="-1"
-                  />
                 </Box>
               </Center>
             </GridItem>
@@ -751,7 +728,7 @@ const TazdaniLanding = () => {
         </Box>
 
         {/* Account Types Section */}
-        <Box py={20}>
+        <Box>
           <VStack spacing={12}>
             <VStack spacing={4} textAlign="center" maxW="3xl" mx="auto">
               <Text 
@@ -795,7 +772,6 @@ const TazdaniLanding = () => {
                 {t('accounts.tab.agent')}
               </Button>
             </HStack>
-            
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSection}
@@ -812,11 +788,10 @@ const TazdaniLanding = () => {
         </Box>
 
         {/* How It Works Section */}
-        <Box py={20}>
+        <Box>
           <VStack spacing={12}>
             <VStack spacing={4} textAlign="center" maxW="3xl" mx="auto">
               <Text 
-                fontSize="sm" 
                 fontWeight="bold" 
                 textTransform="uppercase" 
                 letterSpacing="wider"
@@ -841,7 +816,6 @@ const TazdaniLanding = () => {
               >
                 <Box
                   position="absolute"
-                  top={4}
                   right={4}
                   bg={accentColor}
                   color="white"
@@ -929,7 +903,6 @@ const TazdaniLanding = () => {
             </SimpleGrid>
             
             <Box
-              bg={useColorModeValue('brand.tazdani.500', 'brand.tazdani.600')}
               color="white"
               borderRadius="xl"
               p={8}
@@ -945,10 +918,8 @@ const TazdaniLanding = () => {
                 <GridItem>
                   <Center>
                     <Button 
-                      size="lg" 
-                      colorScheme="white" 
-                      color="brand.tazdani.500"
                       px={8}
+                      variant="tazdani-outline"
                       onClick={() => router.push('/signup')}
                     >
                       {t('howItWorks.cta.button')}
@@ -1011,15 +982,20 @@ const TazdaniLanding = () => {
               </VStack>
             </GridItem>
             <GridItem>
-              <Box 
-                borderRadius="xl" 
-                overflow="hidden" 
-                boxShadow="xl"
-                border="4px solid"
-                borderColor={accentColor}
-              >
-                <AgentLocator />
-              </Box>
+               <Box 
+                    bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
+                    borderRadius="xl"
+                    height={{ base: "400px", md: "600px" }}
+                    overflow="hidden"
+                  >
+                    <AgentLocator 
+                      labels={{
+                        title: t('locations.title'),
+                        searchPlaceholder: t('locations.search'),
+                        noAgents: t('locations.no_agents')
+                      }}
+                    />
+                  </Box>
             </GridItem>
           </Grid>
         </Box>
@@ -1182,215 +1158,6 @@ const TazdaniLanding = () => {
             >
               {t('business.cta')}
             </Button>
-          </VStack>
-        </Box>
-        
-        {/* Safety & Security Section */}
-        <Box py={20}>
-          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={12} alignItems="center">
-            <GridItem order={{ base: 2, lg: 1 }}>
-              <Box
-                borderRadius="full"
-                bg={useColorModeValue('green.50', 'green.900')}
-                p={8}
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                maxW="400px"
-                mx="auto"
-              >
-                <Icon as={FaShieldAlt} boxSize={48} color={accentColor} />
-              </Box>
-            </GridItem>
-            <GridItem order={{ base: 1, lg: 2 }}>
-              <VStack align="flex-start" spacing={8}>
-                <Text 
-                  fontSize="sm" 
-                  fontWeight="bold" 
-                  textTransform="uppercase" 
-                  letterSpacing="wider"
-                  color={accentColor}
-                >
-                  {t('security.subtitle')}
-                </Text>
-                <Heading size="xl">{t('security.title')}</Heading>
-                <Text fontSize="lg">
-                  {t('security.description')}
-                </Text>
-                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} w="full">
-                  <HStack align="flex-start" spacing={4}>
-                    <Icon as={FaFingerprint} boxSize={6} color={accentColor} mt={1} />
-                    <VStack align="flex-start" spacing={1}>
-                      <Text fontWeight="bold">{t('security.feature.biometric.title')}</Text>
-                      <Text fontSize="sm">{t('security.feature.biometric.description')}</Text>
-                    </VStack>
-                  </HStack>
-                  <HStack align="flex-start" spacing={4}>
-                    <Icon as={FaLock} boxSize={6} color={accentColor} mt={1} />
-                    <VStack align="flex-start" spacing={1}>
-                      <Text fontWeight="bold">{t('security.feature.encryption.title')}</Text>
-                      <Text fontSize="sm">{t('security.feature.encryption.description')}</Text>
-                    </VStack>
-                  </HStack>
-                  <HStack align="flex-start" spacing={4}>
-                    <Icon as={FaUserShield} boxSize={6} color={accentColor} mt={1} />
-                    <VStack align="flex-start" spacing={1}>
-                      <Text fontWeight="bold">{t('security.feature.monitoring.title')}</Text>
-                      <Text fontSize="sm">{t('security.feature.monitoring.description')}</Text>
-                    </VStack>
-                  </HStack>
-                  <HStack align="flex-start" spacing={4}>
-                    <Icon as={FaKey} boxSize={6} color={accentColor} mt={1} />
-                    <VStack align="flex-start" spacing={1}>
-                      <Text fontWeight="bold">{t('security.feature.authentication.title')}</Text>
-                      <Text fontSize="sm">{t('security.feature.authentication.description')}</Text>
-                    </VStack>
-                  </HStack>
-                </SimpleGrid>
-                <Button 
-                  variant="outline" 
-                  colorScheme="green" 
-                  size="md"
-                  onClick={() => router.push('/security')}
-                >
-                  {t('security.cta')}
-                </Button>
-              </VStack>
-            </GridItem>
-          </Grid>
-        </Box>
-        
-        {/* Testimonials Section */}
-        <Box py={20}>
-          <VStack spacing={12}>
-            <VStack spacing={4} textAlign="center" maxW="3xl" mx="auto">
-              <Text 
-                fontSize="sm" 
-                fontWeight="bold" 
-                textTransform="uppercase" 
-                letterSpacing="wider"
-                color={accentColor}
-              >
-                {t('testimonials.subtitle')}
-              </Text>
-              <Heading size="xl">{t('testimonials.title')}</Heading>
-              <Text fontSize="lg">
-                {t('testimonials.description')}
-              </Text>
-            </VStack>
-            
-            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8} w="full">
-              {/* Testimonial 1 */}
-              <Box 
-                bg={glassCardBg} 
-                p={8} 
-                borderRadius="xl" 
-                boxShadow="md"
-              >
-                <VStack align="flex-start" spacing={6}>
-                  <HStack spacing={4}>
-                    <Box
-                      boxSize="64px"
-                      borderRadius="full"
-                      bg="gray.200"
-                      overflow="hidden"
-                    >
-                      <Image src="/images/testimonial-1.jpg" alt={t('testimonials.person1.alt')} />
-                    </Box>
-                    <VStack align="flex-start" spacing={0}>
-                      <Text fontWeight="bold">{t('testimonials.person1.name')}</Text>
-                      <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
-                        {t('testimonials.person1.role')}
-                      </Text>
-                    </VStack>
-                  </HStack>
-                  <Text>
-                    {t('testimonials.person1.quote')}
-                  </Text>
-                  <HStack color={accentColor}>
-                    <Icon as={FaStar} />
-                    <Icon as={FaStar} />
-                    <Icon as={FaStar} />
-                    <Icon as={FaStar} />
-                    <Icon as={FaStar} />
-                  </HStack>
-                </VStack>
-              </Box>
-              
-              {/* Testimonial 2 */}
-              <Box 
-                bg={glassCardBg} 
-                p={8} 
-                borderRadius="xl" 
-                boxShadow="md"
-              >
-                <VStack align="flex-start" spacing={6}>
-                  <HStack spacing={4}>
-                    <Box
-                      boxSize="64px"
-                      borderRadius="full"
-                      bg="gray.200"
-                      overflow="hidden"
-                    >
-                      <Image src="/images/testimonial-2.jpg" alt={t('testimonials.person2.alt')} />
-                    </Box>
-                    <VStack align="flex-start" spacing={0}>
-                      <Text fontWeight="bold">{t('testimonials.person2.name')}</Text>
-                      <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
-                        {t('testimonials.person2.role')}
-                      </Text>
-                    </VStack>
-                  </HStack>
-                  <Text>
-                    {t('testimonials.person2.quote')}
-                  </Text>
-                  <HStack color={accentColor}>
-                    <Icon as={FaStar} />
-                    <Icon as={FaStar} />
-                    <Icon as={FaStar} />
-                    <Icon as={FaStar} />
-                    <Icon as={FaStar} />
-                  </HStack>
-                </VStack>
-              </Box>
-              
-              {/* Testimonial 3 */}
-              <Box 
-                bg={glassCardBg} 
-                p={8} 
-                borderRadius="xl" 
-                boxShadow="md"
-              >
-                <VStack align="flex-start" spacing={6}>
-                  <HStack spacing={4}>
-                    <Box
-                      boxSize="64px"
-                      borderRadius="full"
-                      bg="gray.200"
-                      overflow="hidden"
-                    >
-                      <Image src="/images/testimonial-3.jpg" alt={t('testimonials.person3.alt')} />
-                    </Box>
-                    <VStack align="flex-start" spacing={0}>
-                      <Text fontWeight="bold">{t('testimonials.person3.name')}</Text>
-                      <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.400')}>
-                        {t('testimonials.person3.role')}
-                      </Text>
-                    </VStack>
-                  </HStack>
-                  <Text>
-                    {t('testimonials.person3.quote')}
-                  </Text>
-                  <HStack color={accentColor}>
-                    <Icon as={FaStar} />
-                    <Icon as={FaStar} />
-                    <Icon as={FaStar} />
-                    <Icon as={FaStar} />
-                    <Icon as={FaStarHalfAlt} />
-                  </HStack>
-                </VStack>
-              </Box>
-            </SimpleGrid>
           </VStack>
         </Box>
         

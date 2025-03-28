@@ -56,8 +56,8 @@ const LanguageSwitcher = () => {
     >
       <Flex 
         position="relative"
-        width="90px"
-        height="35px"
+        width="110px"
+        height="39px"
         align="center"
         justify="space-between"
       >
@@ -65,18 +65,18 @@ const LanguageSwitcher = () => {
         <motion.div
           initial={false}
           animate={{
-            x: locale === 'ar' ? 0 : '45px', // Half of the container width
+            x: locale === 'ar' ? 0 : '60px', // Half of the container width
           }}
           transition={{ 
             type: "spring", 
             stiffness: 400, 
-            damping: 30,
-            duration: 0.2
+            damping: 40,
+            duration: 0.8
           }}
           style={{
             position: 'absolute',
-            width: '45px', // Half of the container width
-            height: '32px',
+            width: '50px', // Half of the container width
+            height: '35px',
             borderRadius: '100px',
             background: activeBgColor,
             zIndex: 0,
@@ -89,9 +89,8 @@ const LanguageSwitcher = () => {
             key={code}
             onClick={() => changeLanguage(code)}
             cursor="pointer"
-            width="45px"
-            height="100%"
-            textAlign="center"
+            width="50px"
+            height="39px"
             position="relative"
             zIndex={1}
             display="flex"
@@ -102,7 +101,6 @@ const LanguageSwitcher = () => {
             }}
           >
             <Text
-              fontSize="sm"
               fontWeight={locale === code ? "700" : "500"}
               color={locale === code ? accentColor : isDark ? "whiteAlpha.800" : "blackAlpha.700"}
               transition="all 0.2s ease"

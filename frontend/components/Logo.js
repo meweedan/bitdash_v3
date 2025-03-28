@@ -7,6 +7,7 @@ const Logo = ({ variant = 'header' }) => {
   const { i18n } = useTranslation();
   const isArabic = i18n.language === 'ar';
   const [platform, setPlatform] = useState(null);
+  const isMobile = useBreakpointValue({ base: true, md: false });
   
   useEffect(() => {
     const hostname = window.location.hostname;
@@ -20,26 +21,46 @@ const Logo = ({ variant = 'header' }) => {
     }
   }, []);
 
-  // Updated with accurate dimensions from the specs provided
+  // Updated logo configurations with mobile icon
   const logoConfigs = {
     tazdani: {
-      en: { path: '/tazdani.png', width: 1174, height: 520 },
-      ar: { path: '/tazdani-ar.png', width: 1134, height: 634 }
+      en: { 
+        fullLogo: { path: '/tazdani.png', width: 1174, height: 520 },
+        mobileLogo: { path: '/tazdani-icon.png', width: 200, height: 100 }
+      },
+      ar: { 
+        fullLogo: { path: '/tazdani-ar.png', width: 1134, height: 634 },
+        mobileLogo: { path: '/tazdani-icon.png', width: 200, height: 100 }
+      }
     },
     utlubha: {
-      en: { path: '/utlubha.png', width: 1174, height: 520 },
-      ar: { path: '/utlubha-ar.png', width: 1134, height: 634 }
+      en: { 
+        fullLogo: { path: '/utlubha.png', width: 1174, height: 520 },
+        mobileLogo: { path: '/utlubha-icon.png', width: 1200, height: 1200 }
+      },
+      ar: { 
+        fullLogo: { path: '/utlubha-ar.png', width: 1134, height: 634 },
+        mobileLogo: { path: '/utlubha-icon-ar.png', width: 1200, height: 1200 }
+      }
     },
     main: {
-      en: { path: '/bitdash-logo.png', width: 1174, height: 520 },
-      ar: { path: '/bitdash-ar-logo.png', width: 1134, height: 634 }
+      en: { 
+        fullLogo: { path: '/bitdash-logo.png', width: 1174, height: 520 },
+        mobileLogo: { path: '/bitdash-icon.png', width: 1200, height: 1200 }
+      },
+      ar: { 
+        fullLogo: { path: '/bitdash-ar-logo.png', width: 1134, height: 634 },
+        mobileLogo: { path: '/bitdash-icon-ar.png', width: 1200, height: 1200 }
+      }
     }
   };
 
-  // Renders a single logo based on current platform
+  // Renders a single logo based on current platform and device type
   const renderSingleLogo = () => {
     const platformKey = platform || 'main';
-    const logoConfig = logoConfigs[platformKey]?.[isArabic ? 'ar' : 'en'] || logoConfigs.main[isArabic ? 'ar' : 'en'];
+    const logoType = isMobile ? 'mobileLogo' : 'fullLogo';
+    const logoConfig = logoConfigs[platformKey]?.[isArabic ? 'ar' : 'en']?.[logoType] 
+      || logoConfigs.main[isArabic ? 'ar' : 'en'][logoType];
     
     // Calculate aspect ratio to maintain proportions
     const aspectRatio = logoConfig.width / logoConfig.height;
@@ -77,7 +98,7 @@ const Logo = ({ variant = 'header' }) => {
     return (
       <SimpleGrid columns={2} spacing={4} width="100%">
         {platformOptions.map((plat) => {
-          const logoConfig = logoConfigs[plat][isArabic ? 'ar' : 'en'];
+          const logoConfig = logoConfigs[plat][isArabic ? 'ar' : 'en'].fullLogo;
           const aspectRatio = logoConfig.width / logoConfig.height;
           
           // Fixed dimensions for grid items to ensure consistent layout

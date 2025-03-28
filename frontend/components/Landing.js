@@ -159,24 +159,22 @@ export default function LandingPage() {
     <Box ref={containerRef} overflow="hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       <Box 
         as="section" 
-        position="relative"
         pt={{ base: 18, md: 20 }}
         overflow="hidden"
       >
         <Container maxW="container.xl" position="relative" zIndex="2">
-          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 1, lg: 10 }} alignItems="center">
+          <Grid alignItems="center">
             <GridItem>
               <MotionBox
                 initial="hidden"
                 animate="visible"
                 variants={fadeIn}
               >
-                <VStack spacing={6} align="flex-start">
+                <VStack spacing={6}>
                   <Heading
                     as="h1"
                     fontSize={headingSize}
                     fontWeight="bold"
-                    lineHeight="1.2"
                     bgGradient="linear(to-r, #387fc2, #387fc2)"
                     bgClip="text"
                   >
@@ -232,13 +230,6 @@ export default function LandingPage() {
               >
                 {t('platformSection.title', 'Two Revolutionary Platforms')}
               </Heading>
-              
-              <Text
-                fontSize={{ base: "md", md: "lg" }}
-                color={isDark ? "gray.300" : "gray.600"}
-              >
-                {t('platformSection.description', 'Discover our innovative platforms designed to transform how you handle daily tasks, from deliveries to payments.')}
-              </Text>
             </MotionBox>
             
             {/* Platform Cards */}
@@ -430,7 +421,7 @@ export default function LandingPage() {
                   <Image 
                     src="/images/money-transfer.png" 
                     alt={t('tazdani.imageAlt', 'tazdani Payment App Screenshot')}
-                    width={{ base: "300px", md: "400px" }}
+                    width={{ base: "500px", md: "800px" }}
                     as={motion.img}
                     animate={{ scale: [1, 1.03, 1] }}
                     transition={{ repeat: Infinity, duration: 3 }}
@@ -721,9 +712,6 @@ const PlatformCard = ({ title, description, image, cta, link, color, delay }) =>
         borderRadius="lg"
         borderLeft="4px solid"
         borderColor={color}
-        boxShadow="lg"
-        height="full"
-        bg={isDark ? "gray.800" : "white"}
         transition="all 0.3s"
         _hover={{
           transform: 'translateY(-8px)',
@@ -747,9 +735,7 @@ const PlatformCard = ({ title, description, image, cta, link, color, delay }) =>
         </Text>
         
         <Button 
-          colorScheme="gray"
           variant="ghost"
-          size="sm"
           rightIcon={<ExternalLink size={16} />}
           justifyContent="flex-start"
           pl={0}
