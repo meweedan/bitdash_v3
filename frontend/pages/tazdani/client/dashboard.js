@@ -315,7 +315,7 @@ const ClientDashboard = () => {
               </VStack>
             </HStack>
             
-            <Wrap spacing={2} justify={{ base: "start", sm: "end" }}>
+            <Wrap spacing={2} justify={{ base: "flex-start", sm: "center" }}>
               <WrapItem>
                 <Tooltip label={t('actions.send_money')}>
                   <IconButton

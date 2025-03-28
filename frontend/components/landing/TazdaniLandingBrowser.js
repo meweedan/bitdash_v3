@@ -712,14 +712,12 @@ const TazdaniLanding = () => {
                 <Box
                   position="relative"
                   w="full"
-                  maxW="400px"
+                  maxW="300px"
                 >
                   {/* Phone mockup with app screenshot */}
                   <Image 
-                    src="/images/tazdani-app-mockup.png" 
+                    src="/images/tazdani-dashboard.png" 
                     alt={t('app.image.alt')} 
-                    borderRadius="3xl"
-                    boxShadow="2xl"
                   />
                 </Box>
               </Center>
@@ -1192,7 +1190,6 @@ const TazdaniLanding = () => {
                   <Button
                   variant="tazdani-outline"
                     _hover={{ bg: "lightgreen", transform: "translateY(-2px)" }}
-                    px={8}
                     onClick={() => router.push('/signup')}
                   >
                     {t('finalCta.primary')}
@@ -1200,7 +1197,6 @@ const TazdaniLanding = () => {
                   <Button
                     variant="tazdani-outline"
                     _hover={{ bg: "lightgreen", transform: "translateY(-2px)" }}
-                    px={8}
                     onClick={() => router.push('/contact')}
                   >
                     {t('finalCta.secondary')}
