@@ -282,8 +282,6 @@ const ClientDashboard = () => {
             gap={{ base: 2, md: 4 }}
             p={{ base: 3, md: 6 }}
             bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
-            borderRadius="2xl"
-            boxShadow="sm"
             backdropFilter="blur(8px)"
           >
             <HStack spacing={{ base: 2, md: 3 }} flex={1}>
@@ -295,11 +293,10 @@ const ClientDashboard = () => {
                     ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${customerProfile.avatar.data.attributes.url}`
                     : undefined
                 }
-                bg="blue.500"
-                color="white"
+                bg="brand.tazdani.500"
               />
               <VStack align="start" spacing={0}>
-                <Heading size={{ base: "xl", md: "2xl" }}>
+                <Heading size={{ base: "2xl", md: "2xl" }}>
                   {customerProfile?.fullName || user?.username || t('common:unnamed')}
                 </Heading>
                 <Text size={{ base: "2xl", md: "2xl" }} color="gray.500">
@@ -315,7 +312,7 @@ const ClientDashboard = () => {
               </VStack>
             </HStack>
             
-            <Wrap spacing={2} justify={{ base: "flex-start", sm: "center" }}>
+            <Wrap spacing={2} justify={{ base: "start", sm: "center", md: "center" }}>
               <WrapItem>
                 <Tooltip label={t('actions.send_money')}>
                   <IconButton
@@ -323,7 +320,7 @@ const ClientDashboard = () => {
                     onClick={() => router.push('/client/transfer')}
                     colorScheme="blue"
                     variant="ghost"
-                    size={{ base: "xl", md: "2xl" }}
+                    size={{ base: "2xl", md: "2xl" }}
                   />
                 </Tooltip>
               </WrapItem>
@@ -334,7 +331,7 @@ const ClientDashboard = () => {
                     onClick={onQROpen}
                     colorScheme="purple"
                     variant="ghost"
-                    size={{ base: "xl", md: "2xl" }}
+                    size={{ base: "2xl", md: "2xl" }}
                   />
                 </Tooltip>
               </WrapItem>
@@ -344,7 +341,7 @@ const ClientDashboard = () => {
                     icon={<FiMoreVertical />}
                     onClick={onMenuModalOpen}
                     variant="ghost"
-                    size={{ base: "xl", md: "2xl" }}
+                    size={{ base: "2xl", md: "2xl" }}
                   />
                 </Tooltip>
               </WrapItem>
