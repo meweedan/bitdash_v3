@@ -251,7 +251,7 @@ const ClientDashboard = () => {
   return (
     <Layout>
       <Head>
-        <title>{t('meta.title')} | tazdani</title>
+        <title>Dashboard</title>
       </Head>
       <Container 
         maxW={{ base: "100%", md: "1200px" }}

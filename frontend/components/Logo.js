@@ -26,31 +26,31 @@ const Logo = ({ variant = 'header' }) => {
     tazdani: {
       en: { 
         fullLogo: { path: '/tazdani.png', width: 1174, height: 520 },
-        mobileLogo: { path: '/tazdani-icon.png', width: 200, height: 100 }
+        mobileLogo: { path: '/tazdani-icon.png', width: 200, height: 150 }
       },
       ar: { 
         fullLogo: { path: '/tazdani-ar.png', width: 1134, height: 634 },
-        mobileLogo: { path: '/tazdani-icon.png', width: 200, height: 100 }
+        mobileLogo: { path: '/tazdani-icon.png', width: 200, height: 150 }
       }
     },
     utlubha: {
       en: { 
         fullLogo: { path: '/utlubha.png', width: 1174, height: 520 },
-        mobileLogo: { path: '/utlubha-icon.png', width: 1200, height: 1200 }
+        mobileLogo: { path: '/utlubha-icon.png', width: 200, height: 150 }
       },
       ar: { 
         fullLogo: { path: '/utlubha-ar.png', width: 1134, height: 634 },
-        mobileLogo: { path: '/utlubha-icon-ar.png', width: 1200, height: 1200 }
+        mobileLogo: { path: '/utlubha-icon.png', width: 200, height: 150 }
       }
     },
     main: {
       en: { 
         fullLogo: { path: '/bitdash-logo.png', width: 1174, height: 520 },
-        mobileLogo: { path: '/bitdash-icon.png', width: 1200, height: 1200 }
+        mobileLogo: { path: '/bitdash-icon.png', width: 200, height: 150 }
       },
       ar: { 
         fullLogo: { path: '/bitdash-ar-logo.png', width: 1134, height: 634 },
-        mobileLogo: { path: '/bitdash-icon-ar.png', width: 1200, height: 1200 }
+        mobileLogo: { path: '/bitdash-icon.png', width: 200, height: 150 }
       }
     }
   };
