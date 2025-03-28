@@ -314,12 +314,11 @@ const ClientDashboard = () => {
             
             <Wrap 
             justify="space-between" 
-            align={{ base: "start", md: "center" }}
-            direction={{ base: "column", sm: "row" }}
+            align={{ base: "center", md: "center" }}
+            size={{ base: "6xl", md: "6xl" }}
+            direction={{ base: "row", sm: "row" }}
             gap={{ base: 2, md: 4 }}
             p={{ base: 3, md: 6 }}
-            bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
-            backdropFilter="blur(8px)"
             >
               <WrapItem>
                 <Tooltip label={t('actions.send_money')}>
@@ -328,7 +327,6 @@ const ClientDashboard = () => {
                     onClick={() => router.push('/client/transfer')}
                     colorScheme="green"
                     variant="ghost"
-                    size={{ base: "2xl", md: "2xl", sm: "2xl" }}
                   />
                 </Tooltip>
               </WrapItem>
@@ -339,18 +337,6 @@ const ClientDashboard = () => {
                     onClick={onQROpen}
                     colorScheme="green"
                     variant="ghost"
-                    size={{ base: "2xl", md: "2xl", sm: "2xl" }}
-                  />
-                </Tooltip>
-              </WrapItem>
-              <WrapItem>
-                <Tooltip label={t('actions.more')}>
-                  <IconButton
-                    icon={<FiMoreVertical />}
-                    onClick={onMenuModalOpen}
-                    variant="ghost"
-                    colorScheme="green"
-                    size={{ base: "2xl", md: "2xl", sm: "2xl" }}
                   />
                 </Tooltip>
               </WrapItem>
@@ -358,9 +344,9 @@ const ClientDashboard = () => {
           </Flex>
 
           {/* Main Stats */}
-          <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={{ base: 3, md: 6 }}>
+          <SimpleGrid columns={{ base: 1, sm: 2, md: 2 }} spacing={{ base: 2, md: 4 }}>
             <MotionStat
-              p={{ base: 4, md: 6 }}
+              p={{ base: 2, md: 4}}
               bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
               borderRadius="2xl"
               boxShadow="lg"
@@ -427,7 +413,7 @@ const ClientDashboard = () => {
               </VStack>
             </MotionStat>
 
-            <MotionStat
+            {/* <MotionStat
               p={{ base: 4, md: 6 }}
               bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
               borderRadius="2xl"
@@ -467,9 +453,9 @@ const ClientDashboard = () => {
                   </VStack>
                 </SimpleGrid>
               </VStack>
-            </MotionStat>
+            </MotionStat> */}
           </SimpleGrid>
-          {/* Spending Chart */}
+          {/* Spending Chart
           <Box 
             bg={useColorModeValue('whiteAlpha.900', 'blackAlpha.400')}
             borderRadius="2xl"
@@ -482,7 +468,7 @@ const ClientDashboard = () => {
               isLoading={isTransactionsLoading}
               title={t('charts.spending')}
             />
-          </Box>
+          </Box> */}
 
           {/* Transactions and Activity */}
           <Box
