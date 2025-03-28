@@ -322,7 +322,7 @@ const ClientDashboard = () => {
             >
                 <Tooltip label={t('actions.send_money')}>
                   <Button
-                    icon={<FiArrowLeftCircle />}
+                    leftIcon={<FiArrowLeftCircle />}
                     onClick={() => router.push('/client/transfer')}
                     colorScheme="green"
                     variant="ghost"
@@ -332,7 +332,7 @@ const ClientDashboard = () => {
                 </Tooltip>
                 <Tooltip label={t('actions.qr_code')}>
                   <Button
-                    icon={<FiCreditCard />}
+                    leftIcon={<FiCreditCard />}
                     onClick={onQROpen}
                     colorScheme="green"
                     variant="ghost"
