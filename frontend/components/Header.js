@@ -238,6 +238,7 @@ export default function Header() {
       top="0"
       width="100%"
       zIndex={999}
+      bg={isDark ? "rgba(13, 17, 23, 0.7)" : "rgba(255, 255, 255, 0.7)"}
     >
       {/* Solutions Menu - Desktop */}
       <Collapse in={showPlatforms} animateOpacity>
@@ -567,14 +568,11 @@ export default function Header() {
 
           {/* Mobile Controls */}
           <SimpleGrid display={{ base: 'relative', lg: 'none'}} columns={{ base: 1, md: 2 }}>
-              <Box>
                 <LanguageSwitcher />
-              </Box>
             <IconButton
-              m={2}
+              mt={2}
               onClick={toggleColorMode}
               variant={`${platform}-outline`}
-              size="md"
               borderRadius="full"
               color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
               aria-label="Toggle Theme"
@@ -589,10 +587,10 @@ export default function Header() {
             />
 
             <IconButton
-              m={2}
+              mt={2}
+              ms={2}
               icon={isOpen ? <CloseIcon boxSize={3} /> : <HamburgerIcon boxSize={5} />}
               variant={`${platform}-outline`}
-              size="md"
               borderRadius="full"
               color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
               aria-label="Toggle Navigation"
@@ -607,7 +605,7 @@ export default function Header() {
         <Box
           position="absolute"
           width="100%"
-          bg={isDark ? "rgba(13, 17, 23, 0.97)" : "rgba(255, 255, 255, 0.97)"}
+          bg={isDark ? "rgba(13, 17, 23, 0.7)" : "rgba(255, 255, 255, 0.7)"}
           backdropFilter="blur(10px)"
           py={3}
           px={4}

@@ -56,7 +56,7 @@ const LanguageSwitcher = () => {
     >
       <Flex 
         position="relative"
-        width="110px"
+        width="90px"
         height="39px"
         align="center"
         justify="space-between"
@@ -65,7 +65,7 @@ const LanguageSwitcher = () => {
         <motion.div
           initial={false}
           animate={{
-            x: locale === 'ar' ? 0 : '60px', // Half of the container width
+            x: locale === 'ar' ? 0 : '45px', // Half of the container width
           }}
           transition={{ 
             type: "spring", 
@@ -75,7 +75,7 @@ const LanguageSwitcher = () => {
           }}
           style={{
             position: 'absolute',
-            width: '50px', // Half of the container width
+            width: '45px', // Half of the container width
             height: '35px',
             borderRadius: '100px',
             background: activeBgColor,

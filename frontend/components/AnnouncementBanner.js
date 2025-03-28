@@ -116,8 +116,8 @@ const AnnouncementBanner = ({ platform }) => {
                   </Text>
                   <Text
                     color={isDark ? 'black' : 'black'}
-                    fontWeight="large"
-                    fontSize="lg"
+                    fontWeight="bold"
+                    fontSize="xl"
                   >
                     {text}
                   </Text>
