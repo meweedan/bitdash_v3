@@ -310,9 +310,9 @@ const ClientDashboard = () => {
                   {t('wallet.id')}: {wallet.walletId}
                 </Badge>
               </VStack>
-            </HStack>
             
-            <Wrap spacing={2} justify={{ base: "start", sm: "center", md: "center" }}>
+            
+            <Wrap spacing={2} justify={{ base: "center", sm: "center", md: "center" }}>
               <WrapItem>
                 <Tooltip label={t('actions.send_money')}>
                   <IconButton
@@ -346,6 +346,7 @@ const ClientDashboard = () => {
                 </Tooltip>
               </WrapItem>
             </Wrap>
+            </HStack>
           </Flex>
 
           {/* Main Stats */}
