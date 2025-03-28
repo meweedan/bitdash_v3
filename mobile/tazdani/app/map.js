@@ -15,7 +15,7 @@ export default function LandingScreen() {
       
       <View style={styles.content}>
         <Image 
-          source={require('../assets/cash.png')} 
+          source={require('../assets/tazdani.png')} 
           style={styles.logo} 
           resizeMode="contain"
         />
