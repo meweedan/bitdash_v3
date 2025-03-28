@@ -312,7 +312,7 @@ const ClientDashboard = () => {
               </VStack>
             </HStack>
             
-            <Wrap 
+            <SimpleGrid 
             justify="space-between" 
             align={{ base: "center", md: "center" }}
             size={{ base: "6xl", md: "6xl" }}
@@ -320,27 +320,27 @@ const ClientDashboard = () => {
             gap={{ base: 2, md: 4 }}
             p={{ base: 3, md: 6 }}
             >
-              <WrapItem>
                 <Tooltip label={t('actions.send_money')}>
-                  <IconButton
+                  <Button
                     icon={<FiArrowLeftCircle />}
                     onClick={() => router.push('/client/transfer')}
                     colorScheme="green"
                     variant="ghost"
-                  />
+                  >
+                    {t('actions.send_money')}
+                  </Button>
                 </Tooltip>
-              </WrapItem>
-              <WrapItem>
                 <Tooltip label={t('actions.qr_code')}>
-                  <IconButton
+                  <Button
                     icon={<FiCreditCard />}
                     onClick={onQROpen}
                     colorScheme="green"
                     variant="ghost"
-                  />
+                  >
+                    {t('actions.qr_code')}
+                  </Button>
                 </Tooltip>
-              </WrapItem>
-            </Wrap>
+            </SimpleGrid>
           </Flex>
 
           {/* Main Stats */}
@@ -354,22 +354,24 @@ const ClientDashboard = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <StatLabel fontSize={{ base: "xl", md: "xl" }} mb={2}>
+              <StatLabel fontSize={{ base: "3xl", md: "3xl" }} mb={2}>
                 {t('balance.available')}
               </StatLabel>
               <HStack>
                 <StatNumber 
                   color={useColorModeValue('brand.tazdani.600', 'brand.tazdani.600')} 
-                  fontSize={{ base: "2xl", md: "3xl" }}
+                  fontSize={{ base: "3xl", md: "4xl" }}
                 >
                   {showBalance ? wallet.balance.toLocaleString() : '•••••••'} LYD
                 </StatNumber>
-                <IconButton
+                <Button
                   icon={showBalance ? <FiEyeOff /> : <FiEye />}
                   variant="ghost"
-                  size="sm"
+                  colorScheme="green"
                   onClick={() => setShowBalance(!showBalance)}
-                />
+                >
+                  {showBalance ? t('actions.hide') : t('actions.show')}
+                  </Button>
               </HStack>
               <HStack mt={2} spacing={2}>
                 <Badge 
