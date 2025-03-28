@@ -57,7 +57,7 @@ const LanguageSwitcher = () => {
       <Flex 
         position="relative"
         width="90px"
-        height="39px"
+        height="29px"
         align="center"
         justify="space-between"
       >
@@ -76,7 +76,7 @@ const LanguageSwitcher = () => {
           style={{
             position: 'absolute',
             width: '45px', // Half of the container width
-            height: '35px',
+            height: '27px',
             borderRadius: '100px',
             background: activeBgColor,
             zIndex: 0,
@@ -90,7 +90,7 @@ const LanguageSwitcher = () => {
             onClick={() => changeLanguage(code)}
             cursor="pointer"
             width="50px"
-            height="39px"
+            height="29px"
             position="relative"
             zIndex={1}
             display="flex"

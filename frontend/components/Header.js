@@ -568,11 +568,11 @@ export default function Header() {
 
           {/* Mobile Controls */}
           <SimpleGrid display={{ base: 'relative', lg: 'none'}} columns={{ base: 1, md: 2 }}>
-                <LanguageSwitcher />
+               
             <IconButton
-              mt={2}
+              mb={2}
               onClick={toggleColorMode}
-              variant={`${platform}-outline`}
+              variant="ghost"
               borderRadius="full"
               color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
               aria-label="Toggle Theme"
@@ -587,15 +587,16 @@ export default function Header() {
             />
 
             <IconButton
-              mt={2}
+              mb={2}
               ms={2}
               icon={isOpen ? <CloseIcon boxSize={3} /> : <HamburgerIcon boxSize={5} />}
-              variant={`${platform}-outline`}
+              variant="ghost"
               borderRadius="full"
               color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
               aria-label="Toggle Navigation"
               onClick={onToggle}
             />
+             <LanguageSwitcher />
             </SimpleGrid>
         </Flex>
       </Flex>
