@@ -273,11 +273,11 @@ const ClientDashboard = () => {
           pointerEvents="none"
         />
 
-        <VStack spacing={{ base: 4, md: 8 }} align="stretch">
+        <VStack spacing={{ base: 4, md: 8 }} align="center">
           {/* Header */}
           <Flex 
             justify="space-between" 
-            align={{ base: "start", md: "center" }}
+            align={{ base: "center", md: "center" }}
             direction={{ base: "column", sm: "row" }}
             gap={{ base: 2, md: 4 }}
             p={{ base: 3, md: 6 }}
@@ -288,7 +288,7 @@ const ClientDashboard = () => {
           >
             <HStack spacing={{ base: 2, md: 3 }} flex={1}>
               <Avatar
-                size={{ base: "lg", md: "2xl" }}
+                size={{ base: "xl", md: "2xl" }}
                 name={customerProfile?.fullName || user?.username}
                 src={
                   customerProfile?.avatar?.data?.attributes?.url
@@ -299,7 +299,7 @@ const ClientDashboard = () => {
                 color="white"
               />
               <VStack align="start" spacing={0}>
-                <Heading size={{ base: "sm", md: "md" }}>
+                <Heading size={{ base: "xl", md: "xl" }}>
                   {customerProfile?.fullName || user?.username || t('common:unnamed')}
                 </Heading>
                 <Text fontSize={{ base: "xs", md: "sm" }} color="gray.500">
@@ -321,9 +321,8 @@ const ClientDashboard = () => {
                   <IconButton
                     icon={<FiArrowLeftCircle />}
                     onClick={() => router.push('/client/transfer')}
-                    colorScheme="blue"
                     variant="ghost"
-                    size={{ base: "md", md: "lg" }}
+                    size={{ base: "xl", md: "xl" }}
                   />
                 </Tooltip>
               </WrapItem>
@@ -332,9 +331,8 @@ const ClientDashboard = () => {
                   <IconButton
                     icon={<FiCreditCard />}
                     onClick={onQROpen}
-                    colorScheme="purple"
                     variant="ghost"
-                    size={{ base: "md", md: "lg" }}
+                    size={{ base: "xl", md: "xl" }}
                   />
                 </Tooltip>
               </WrapItem>
@@ -344,7 +342,7 @@ const ClientDashboard = () => {
                     icon={<FiMoreVertical />}
                     onClick={onMenuModalOpen}
                     variant="ghost"
-                    size={{ base: "md", md: "lg" }}
+                    size={{ base: "xl", md: "xl" }}
                   />
                 </Tooltip>
               </WrapItem>
@@ -362,20 +360,19 @@ const ClientDashboard = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <StatLabel fontSize={{ base: "xs", md: "sm" }} mb={2}>
+              <StatLabel fontSize={{ base: "xl", md: "xl" }} mb={2}>
                 {t('balance.available')}
               </StatLabel>
               <HStack>
                 <StatNumber 
-                  color={useColorModeValue('blue.600', 'blue.300')} 
+                  color={useColorModeValue('brand.tazdani.600', 'brand.tazdani.600')} 
                   fontSize={{ base: "2xl", md: "3xl" }}
                 >
-                  {showBalance ? wallet.balance.toLocaleString() : '•••••••'} {t('common:currency')}
+                  {showBalance ? wallet.balance.toLocaleString() : '•••••••'} LYD
                 </StatNumber>
                 <IconButton
                   icon={showBalance ? <FiEyeOff /> : <FiEye />}
                   variant="ghost"
-                  size="sm"
                   onClick={() => setShowBalance(!showBalance)}
                 />
               </HStack>
