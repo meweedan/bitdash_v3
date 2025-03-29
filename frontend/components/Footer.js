@@ -22,6 +22,12 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  Avatar,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
+  PopoverArrow,
 } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
@@ -37,7 +43,6 @@ import {
   FileText,
   DollarSign,
   Globe,
-  LineChart,
   ArrowUpRight,
   Wallet,
   User,
@@ -47,9 +52,13 @@ import {
   TrendingUp,
   Building,
   CreditCard,
-  WalletIcon
+  ShoppingBag,
+  MapPin,
+  QrCode,
+  Send,
+  History,
+  MoreHorizontal
 } from 'lucide-react';
-import { FiArrowRightCircle, FiUser, FiUsers, FiLock } from 'react-icons/fi';
 import { FaWhatsapp, FaTelegram } from 'react-icons/fa';
 
 const Footer = () => {
@@ -63,8 +72,10 @@ const Footer = () => {
   const searchDisclosure = useDisclosure();
   const trackingDisclosure = useDisclosure();
   const scannerDisclosure = useDisclosure();
+  const contactDisclosure = useDisclosure();
 
   const [isPWA, setIsPWA] = useState(false);
+  const [shouldShowPWAUI, setShouldShowPWAUI] = useState(false);
   const [trackingNumber, setTrackingNumber] = useState('');
   const [error, setError] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -81,6 +92,10 @@ const Footer = () => {
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
       const isInPWA = window.navigator.standalone || isStandalone;
       setIsPWA(isInPWA);
+      
+      // Show PWA UI on mobile browsers too, not just in PWA mode
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      setShouldShowPWAUI(isMobile || isInPWA);
     }
   }, []);
 
@@ -108,15 +123,15 @@ const Footer = () => {
       { label: 'Terms', href: '/policies/terms', icon: FileText },
     ],
     utlubha: [
-      { label: 'Forex Pairs', href: '/utlubha/pairs', icon: Globe },
-      { label: 'Analysis', href: '/utlubha/analysis', icon: LineChart },
-      { label: 'Tools', href: '/utlubha/tools', icon: Settings },
-      { label: 'Charts', href: '/utlubha/charts', icon: BarChart2 },
+      { label: 'Order Food', href: '/utlubha/order', icon: ShoppingBag },
+      { label: 'Track Order', href: '/utlubha/track', icon: Globe },
+      { label: 'Find Restaurants', href: '/utlubha/nearby', icon: MapPin },
+      { label: 'Scan QR Menu', href: '/utlubha/scanner', icon: QrCode },
     ],
     tazdani: [
-      { label: 'Transfer Money', href: '/tazdani/client/transfer', icon: FiArrowRightCircle },
-      { label: 'Payment Solutions', href: '/tazdani/solutions', icon: CreditCard },
-      { label: 'Business Tools', href: '/tazdani/business', icon: Building },
+      { label: 'Transfer Money', href: '/tazdani/client/transfer', icon: Send },
+      { label: 'Payment Methods', href: '/tazdani/payment-methods', icon: CreditCard },
+      { label: 'Find Locations', href: '/tazdani/locations', icon: MapPin },
       { label: 'Account', href: '/tazdani/account', icon: User },
     ]
   };
@@ -125,16 +140,22 @@ const Footer = () => {
     // Define navigation items specific to each platform
     const navItems = {
       utlubha: [
-        { label: 'Trading', action: 'trading', icon: LineChart },
-        { label: 'Markets', action: 'markets', icon: Globe },
-        { label: 'Analysis', action: 'analysis', icon: BarChart2 },
-        { label: 'Account', action: 'account', icon: User },
+        { label: 'Order', action: 'order', icon: ShoppingBag },
+        { label: 'Track', action: 'track', icon: Clock },
+        { label: 'Nearby', action: 'nearby', icon: MapPin },
+        { label: 'Scan QR', action: 'scanner', icon: QrCode },
       ],
       tazdani: [
-        { label: 'Transfer', action: 'transfer', icon: FiArrowRightCircle },
+        { label: 'Send', action: 'transfer', icon: Send },
         { label: 'Wallet', action: 'wallet', icon: Wallet },
-        { label: 'History', action: 'history', icon: Clock },
+        { label: 'History', action: 'history', icon: History },
         { label: 'Account', action: 'account', icon: User },
+      ],
+      main: [
+        { label: 'Home', action: 'home', icon: User },
+        { label: 'Search', action: 'search', icon: Search },
+        { label: 'Settings', action: 'settings', icon: Settings },
+        { label: 'Help', action: 'help', icon: HelpCircle },
       ]
     };
 
@@ -142,7 +163,7 @@ const Footer = () => {
     const colorIntensities = ['500', '600', '400', '700'];
     
     // Get the base items for the current platform
-    let items = navItems[platform] || [];
+    let items = navItems[platform] || navItems.main;
     
     // Add colors to each item
     items = items.map((item, index) => {
@@ -160,20 +181,26 @@ const Footer = () => {
     return items;
   };
 
-  const handlePWAAction = async (action) => {
+ const handlePWAAction = async (action) => {
     // Define platform-specific paths
     const platformPaths = {
       utlubha: {
-        trading: '/utlubha/platform',
-        markets: '/utlubha/markets',
-        analysis: '/utlubha/analysis',
-        account: '/utlubha/account',
+        order: '/utlubha/order',
+        track: '/utlubha/track-order',
+        nearby: '/utlubha/restaurants',
+        scanner: '/utlubha/scanner',
       },
       tazdani: {
-        transfer: 'tazdani/client/transfer',
+        transfer: '/tazdani/client/transfer',
         wallet: '/tazdani/wallet',
         history: '/tazdani/transactions',
         account: '/tazdani/client/dashboard',
+      },
+      main: {
+        home: '/',
+        search: '/search',
+        settings: '/settings',
+        help: '/help',
       }
     };
 
@@ -183,18 +210,28 @@ const Footer = () => {
       return;
     }
 
+    if (action === 'contact') {
+      contactDisclosure.onOpen();
+      return;
+    }
+
+    if (action === 'more') {
+      menuDisclosure.onOpen();
+      return;
+    }
+
+    if (action === 'scanner') {
+      setScanning(true);
+      scannerDisclosure.onOpen();
+      return;
+    }
+
     // Navigate to platform-specific paths
-    const path = platformPaths[platform]?.[action];
+    const paths = platformPaths[platform] || platformPaths.main;
+    const path = paths[action];
+    
     if (path) {
       router.push(path);
-    } else {
-      // Fallback for actions that need special handling
-      switch (action) {
-        case 'scan':
-          setScanning(true);
-          scannerDisclosure.onOpen();
-          break;
-      }
     }
   };
 
@@ -222,7 +259,7 @@ const Footer = () => {
     let path = '';
     switch(platform) {
       case 'utlubha':
-        path = `/utlubha/transaction/${trackingNumber}`;
+        path = `/utlubha/order/${trackingNumber}`;
         break;
       case 'tazdani':
         path = `/tazdani/transaction/${trackingNumber}`;
@@ -243,7 +280,7 @@ const Footer = () => {
   const getDrawerTitle = () => {
     switch(platform) {
       case 'utlubha':
-        return 'Track Withdrawals and Deposits';
+        return 'Track Food Order';
       case 'tazdani':
         return 'Track Payment';
       default:
@@ -251,9 +288,59 @@ const Footer = () => {
     }
   };
 
+  const getContactOptions = () => {
+    return (
+      <VStack spacing={3} p={2}>
+        <Link 
+          href="https://api.whatsapp.com/send?phone=00447538636207" 
+          isExternal
+          w="full"
+        >
+          <HStack 
+            w="full" 
+            bg={isDark ? 'whiteAlpha.100' : 'gray.100'} 
+            p={3} 
+            borderRadius="md"
+            _hover={{ bg: isDark ? 'whiteAlpha.200' : 'gray.200' }}
+          >
+            <FaWhatsapp color="#25D366" size={20} />
+            <Text>WhatsApp</Text>
+          </HStack>
+        </Link>
+        <Link 
+          href="https://t.me/BitDashSupport" 
+          isExternal
+          w="full"
+        >
+          <HStack 
+            w="full" 
+            bg={isDark ? 'whiteAlpha.100' : 'gray.100'} 
+            p={3} 
+            borderRadius="md"
+            _hover={{ bg: isDark ? 'whiteAlpha.200' : 'gray.200' }}
+          >
+            <FaTelegram color="#0088cc" size={20} />
+            <Text>Telegram</Text>
+          </HStack>
+        </Link>
+      </VStack>
+    );
+  };
+
+  const getPlatformDescription = () => {
+    switch(platform) {
+      case 'utlubha':
+        return 'Food Delivery & QR Menu';
+      case 'tazdani':
+        return 'Payment Solutions';
+      default:
+        return 'Digital Solutions';
+    }
+  };
+
   return (
     <>
-      <Box height={isPWA ? "130px" : "80px"} />
+      <Box height={shouldShowPWAUI ? "100px" : "80px"} />
       
       {/* Desktop Footer */}
       <Box
@@ -285,7 +372,7 @@ const Footer = () => {
                 fontSize="sm"
                 _hover={{ textDecoration: 'none', color: getPlatformColor('500') }}
               >
-                Powered by BitDash™
+                Powered by BitDash™ — {getPlatformDescription()}
               </Link>        
             </HStack>
             <HStack spacing={4}>
@@ -299,6 +386,21 @@ const Footer = () => {
                   {item.label}
                 </Link>
               ))}
+              <Popover placement="top">
+                <PopoverTrigger>
+                  <IconButton
+                    icon={<HelpCircle size={18} />}
+                    variant="ghost"
+                    aria-label="Support"
+                  />
+                </PopoverTrigger>
+                <PopoverContent width="200px">
+                  <PopoverArrow />
+                  <PopoverBody p={0}>
+                    {getContactOptions()}
+                  </PopoverBody>
+                </PopoverContent>
+              </Popover>
             </HStack>
           </Stack>
         </Container>
@@ -312,7 +414,7 @@ const Footer = () => {
         bottom={0}
         left={0}
         right={0}
-        height={isPWA ? "100px" : "70px"}
+        height={shouldShowPWAUI ? "80px" : "60px"}
         borderTopWidth="1px"
         borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
         bg={bgColor}
@@ -320,14 +422,14 @@ const Footer = () => {
         zIndex={100}
       >
         <VStack w="100%" spacing={0}>
-          {isPWA ? (
+          {shouldShowPWAUI ? (
             <HStack 
-              justify="space-around" 
+              justify="space-between" 
               w="100%" 
               h="100%" 
-              px={4}
-              pb={2}
-              pt={2}
+              px={2}
+              pb={1}
+              pt={1}
             >
               {getPWANavItems(isLoggedIn).map((item) => (
                 <VStack
@@ -336,24 +438,64 @@ const Footer = () => {
                   flex={1}
                   onClick={() => handlePWAAction(item.action)}
                   cursor="pointer"
-                  pt={1}
-                  transform="translateY(-8px)"
                 >
                   <IconButton
-                    icon={<item.icon size={24} />}
+                    icon={<item.icon size={22} />}
                     variant="ghost"
                     aria-label={item.label}
                     color={item.color}
+                    size="sm"
                   />
                   <Text 
                     fontSize="xs"
-                    transform="translateY(-4px)"
                     color={item.color}
                   >
                     {item.label}
                   </Text>
                 </VStack>
               ))}
+              
+              <VStack
+                spacing={1}
+                flex={1}
+                onClick={() => contactDisclosure.onOpen()}
+                cursor="pointer"
+              >
+                <IconButton
+                  icon={<HelpCircle size={22} />}
+                  variant="ghost"
+                  aria-label="Contact"
+                  color={getPlatformColor('300')}
+                  size="sm"
+                />
+                <Text 
+                  fontSize="xs"
+                  color={getPlatformColor('300')}
+                >
+                  Support
+                </Text>
+              </VStack>
+              
+              <VStack
+                spacing={1}
+                flex={1}
+                onClick={() => menuDisclosure.onOpen()}
+                cursor="pointer"
+              >
+                <IconButton
+                  icon={<MoreHorizontal size={22} />}
+                  variant="ghost"
+                  aria-label="More"
+                  color={getPlatformColor('300')}
+                  size="sm"
+                />
+                <Text 
+                  fontSize="xs"
+                  color={getPlatformColor('300')}
+                >
+                  More
+                </Text>
+              </VStack>
             </HStack>
           ) : (
             <HStack justify="space-between" w="100%" px={4} h="60px">
@@ -362,32 +504,54 @@ const Footer = () => {
                   isExternal
                   _hover={{ textDecoration: 'none', color: getPlatformColor('500') }}
                 >
-                  Powered by BitDash™
+                  BitDash™ {getPlatformDescription()}
               </Link>    
-             <IconButton
-              icon={<FaWhatsapp />}
-              variant={`${platform}-outline`}
-              color={`brand.${platform}.400`}
-              onClick={() => {window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank");}}
-            >
-            </IconButton>
-            <IconButton
-              icon={<FaTelegram />}
-              variant={`${platform}-outline`}
-              onClick={() => window.open("https://t.me/BitDashSupport", "_blank")}
-              color={`brand.${platform}.400`}
-            >
-            </IconButton>          
-              <IconButton
-                icon={<Menu size={24} />}
-                variant="ghost"
-                onClick={menuDisclosure.onOpen}
-                aria-label="Menu"
-              />
+             
+              <HStack>
+                <Popover placement="top">
+                  <PopoverTrigger>
+                    <IconButton
+                      icon={<HelpCircle size={20} />}
+                      variant="ghost"
+                      aria-label="Contact"
+                    />
+                  </PopoverTrigger>
+                  <PopoverContent width="200px">
+                    <PopoverArrow />
+                    <PopoverBody p={0}>
+                      {getContactOptions()}
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+                <IconButton
+                  icon={<Menu size={24} />}
+                  variant="ghost"
+                  onClick={menuDisclosure.onOpen}
+                  aria-label="Menu"
+                />
+              </HStack>
             </HStack>
           )}
         </VStack>
       </Box>
+
+      {/* Contact Drawer */}
+      <Drawer
+        placement="bottom"
+        onClose={contactDisclosure.onClose}
+        isOpen={contactDisclosure.isOpen}
+      >
+        <DrawerOverlay />
+        <DrawerContent borderTopRadius="20px">
+          <DrawerHeader borderBottomWidth="1px">
+            Contact Support
+          </DrawerHeader>
+          <DrawerCloseButton />
+          <DrawerBody py={4}>
+            {getContactOptions()}
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
 
       {/* Menu Drawer */}
       <Drawer
@@ -398,8 +562,8 @@ const Footer = () => {
         <DrawerOverlay />
         <DrawerContent borderTopRadius="20px">
           <DrawerHeader borderBottomWidth="1px">
-            {platform === 'utlubha' ? 'Forex Menu' :
-             platform === 'tazdani' ? 'Cash Menu' :
+            {platform === 'utlubha' ? 'Food Delivery Menu' :
+             platform === 'tazdani' ? 'Payment Menu' :
              'Menu'}
           </DrawerHeader>
           <DrawerCloseButton />
@@ -421,9 +585,28 @@ const Footer = () => {
                 >
                   <item.icon size={20} />
                   <Text>{item.label}</Text>
-                  <ExternalLink size={16} style={{ marginLeft: 'auto' }} />
+                  <Box ml="auto">
+                    <ArrowUpRight size={16} />
+                  </Box>
                 </HStack>
               ))}
+              
+              <HStack
+                w="100%"
+                px={4}
+                py={2}
+                onClick={() => {
+                  contactDisclosure.onOpen();
+                  menuDisclosure.onClose();
+                }}
+                cursor="pointer"
+                _hover={{ bg: isDark ? 'whiteAlpha.100' : 'gray.100' }}
+                borderRadius="md"
+              >
+                <HelpCircle size={20} />
+                <Text>Contact Support</Text>
+              </HStack>
+              
               {isLoggedIn && (
                 <HStack
                   w="100%"
@@ -461,7 +644,7 @@ const Footer = () => {
           <DrawerBody py={4}>
             <FormControl isRequired isInvalid={!!error}>
               <FormLabel>
-                {platform === 'utlubha' ? 'Transaction ID' :
+                {platform === 'utlubha' ? 'Order ID' :
                  platform === 'tazdani' ? 'Payment ID' :
                  'Tracking Number'}
               </FormLabel>
@@ -472,7 +655,7 @@ const Footer = () => {
                   setError('');
                 }}
                 placeholder={
-                  platform === 'utlubha' ? 'Enter transaction ID' :
+                  platform === 'utlubha' ? 'Enter order ID' :
                   platform === 'tazdani' ? 'Enter payment ID' :
                   'Enter tracking number'
                 }
@@ -481,7 +664,7 @@ const Footer = () => {
             </FormControl>
             <Button
               mt={4}
-              colorScheme={platform === 'tazdani' ? 'brand.tazdani.400' : platform}
+              colorScheme={platform === 'tazdani' ? 'brand.tazdani' : 'brand.utlubha'}
               onClick={handleTracking}
               isFullWidth
             >
@@ -515,6 +698,7 @@ const Footer = () => {
             <QRScanner
               isOpen={scannerDisclosure.isOpen}
               onClose={scannerDisclosure.onClose}
+              platform={platform}
             />
           )}
         </DrawerContent>

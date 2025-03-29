@@ -313,33 +313,47 @@ const ClientDashboard = () => {
             </HStack>
             
             <SimpleGrid 
-            justify="space-between" 
-            align={{ base: "center", md: "center" }}
-            size={{ base: "6xl", md: "6xl" }}
-            direction={{ base: "row", sm: "row" }}
-            gap={{ base: 2, md: 4 }}
-            p={{ base: 3, md: 6 }}
+              columns={{ base: 2, md: 2 }} 
+              width="full"
+              spacing={{ base: 4, md: 6 }}
+              px={{ base: 4, md: 8 }}
+              py={{ base: 4, md: 5 }}
+              bg="white"
+              borderRadius="lg"
+              boxShadow="sm"
+              borderWidth="1px"
+              borderColor="gray.100"
             >
-                <Tooltip label={t('actions.send_money')}>
-                  <Button
-                    leftIcon={<FiArrowLeftCircle />}
-                    onClick={() => router.push('/client/transfer')}
-                    colorScheme="green"
-                    variant="ghost"
-                  >
-                    {t('actions.send_money')}
-                  </Button>
-                </Tooltip>
-                <Tooltip label={t('actions.qr_code')}>
-                  <Button
-                    leftIcon={<FiCreditCard />}
-                    onClick={onQROpen}
-                    colorScheme="green"
-                    variant="ghost"
-                  >
-                    {t('actions.qr_code')}
-                  </Button>
-                </Tooltip>
+              <Button
+                height={{ base: "60px", md: "70px" }}
+                leftIcon={<FiArrowLeftCircle size={20} />}
+                onClick={() => router.push('/client/transfer')}
+                colorScheme="green"
+                variant="solid"
+                fontSize={{ base: "md", md: "lg" }}
+                fontWeight="600"
+                _hover={{ transform: "translateY(-2px)", boxShadow: "lg" }}
+                transition="all 0.2s"
+                borderRadius="md"
+                isFullWidth
+              >
+                {t('actions.send_money')}
+              </Button>
+              <Button
+                height={{ base: "60px", md: "70px" }}
+                leftIcon={<FiCreditCard size={20} />}
+                onClick={onQROpen}
+                colorScheme="teal"
+                variant="solid"
+                fontSize={{ base: "md", md: "lg" }}
+                fontWeight="600"
+                _hover={{ transform: "translateY(-2px)", boxShadow: "lg" }}
+                transition="all 0.2s"
+                borderRadius="md"
+                isFullWidth
+              >
+                {t('actions.qr_code')}
+              </Button>
             </SimpleGrid>
           </Flex>
 

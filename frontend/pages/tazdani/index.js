@@ -1,7 +1,7 @@
 // frontend/pages/tazdani/index.js
 import { useEffect } from 'react';
 import { usePWA } from '@/hooks/usePWA';
-import { tazdaniPWALanding } from '@/components/PWALanding';  // Fix: import from PWALanding component
+import { TazdaniPWALanding } from '@/components/PWALanding';
 import TazdaniLandingBrowser from '@/components/landing/TazdaniLandingBrowser';
 
 const CashPage = () => {
@@ -17,7 +17,7 @@ const CashPage = () => {
 
   if (hostname === 'bitdash.app') return null;
 
-  return isPWA ? <tazdaniPWALanding /> : <TazdaniLandingBrowser />;
+  return isPWA ? <TazdaniPWALanding /> : <TazdaniLandingBrowser />;
 };
 
 export default CashPage;

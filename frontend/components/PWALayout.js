@@ -68,7 +68,7 @@ const UtlubhaPWALanding = () => {
 };
 
 // Cash PWA Landing
-const tazdaniPWALanding = () => {
+const TazdaniPWALanding = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -142,4 +142,4 @@ const PWALayout = ({ children }) => {
   return children;
 };
 
-export { UtlubhaPWALanding, tazdaniPWALanding, PWALayout };
+export { UtlubhaPWALanding, TazdaniPWALanding, PWALayout };
