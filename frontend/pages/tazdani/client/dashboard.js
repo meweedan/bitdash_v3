@@ -318,7 +318,6 @@ const ClientDashboard = () => {
               spacing={{ base: 4, md: 6 }}
               px={{ base: 4, md: 8 }}
               py={{ base: 4, md: 5 }}
-              bg="white"
               borderRadius="lg"
               boxShadow="sm"
               borderWidth="1px"
@@ -343,7 +342,7 @@ const ClientDashboard = () => {
                 height={{ base: "60px", md: "70px" }}
                 leftIcon={<FiCreditCard size={20} />}
                 onClick={onQROpen}
-                colorScheme="teal"
+                colorScheme="darkgreen"
                 variant="solid"
                 fontSize={{ base: "md", md: "lg" }}
                 fontWeight="600"

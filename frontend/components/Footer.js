@@ -475,27 +475,6 @@ const Footer = () => {
                   Support
                 </Text>
               </VStack>
-              
-              <VStack
-                spacing={1}
-                flex={1}
-                onClick={() => menuDisclosure.onOpen()}
-                cursor="pointer"
-              >
-                <IconButton
-                  icon={<MoreHorizontal size={22} />}
-                  variant="ghost"
-                  aria-label="More"
-                  color={getPlatformColor('300')}
-                  size="sm"
-                />
-                <Text 
-                  fontSize="xs"
-                  color={getPlatformColor('300')}
-                >
-                  More
-                </Text>
-              </VStack>
             </HStack>
           ) : (
             <HStack justify="space-between" w="100%" px={4} h="60px">
