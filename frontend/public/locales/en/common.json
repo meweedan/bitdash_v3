@@ -1264,6 +1264,7 @@
   "add_table": "Add Table",
   "no_tables_available": "No tables available",
   "customize_qr_cards": "Customize QR Cards",
+  "qr_code": "Your QR Code",
   "qr_code_settings": "QR Code Settings",
   "qr_code_color": "QR Code Color",
   "qr_background_color": "QR Background Color",

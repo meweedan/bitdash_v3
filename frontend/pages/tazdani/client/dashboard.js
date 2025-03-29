@@ -336,7 +336,7 @@ const ClientDashboard = () => {
                 borderRadius="md"
                 isFullWidth
               >
-                {t('actions.send_money')}
+                {t('send_money')}
               </Button>
               <Button
                 height={{ base: "60px", md: "70px" }}
@@ -351,7 +351,7 @@ const ClientDashboard = () => {
                 borderRadius="md"
                 isFullWidth
               >
-                {t('actions.qr_code')}
+                {t('qr_code')}
               </Button>
             </SimpleGrid>
           </Flex>
