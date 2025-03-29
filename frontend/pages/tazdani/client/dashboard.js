@@ -318,17 +318,13 @@ const ClientDashboard = () => {
               spacing={{ base: 4, md: 6 }}
               px={{ base: 4, md: 8 }}
               py={{ base: 4, md: 5 }}
-              borderRadius="lg"
-              boxShadow="sm"
-              borderWidth="1px"
-              borderColor="gray.100"
             >
               <Button
                 height={{ base: "60px", md: "70px" }}
                 leftIcon={<FiArrowLeftCircle size={20} />}
                 onClick={() => router.push('/client/transfer')}
                 colorScheme="green"
-                variant="solid"
+                variant="tazdani-outline"
                 fontSize={{ base: "md", md: "lg" }}
                 fontWeight="600"
                 _hover={{ transform: "translateY(-2px)", boxShadow: "lg" }}
@@ -342,8 +338,7 @@ const ClientDashboard = () => {
                 height={{ base: "60px", md: "70px" }}
                 leftIcon={<FiCreditCard size={20} />}
                 onClick={onQROpen}
-                colorScheme="#00bf63"
-                variant="solid"
+                variant="tazdani-solid"
                 fontSize={{ base: "md", md: "lg" }}
                 fontWeight="600"
                 _hover={{ transform: "translateY(-2px)", boxShadow: "lg" }}
