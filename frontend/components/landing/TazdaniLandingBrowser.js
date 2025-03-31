@@ -15,7 +15,6 @@ import {
   useColorModeValue,
   Flex,
   Icon,
-  Badge,
   Grid,
   GridItem,
   Image,
@@ -245,15 +244,6 @@ const TazdaniLanding = () => {
           <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={8} py={12}>
             <GridItem>
               <VStack align="flex-start" spacing={8}>
-                <Badge 
-                  px={3} 
-                  py={1} 
-                  colorScheme="green" 
-                  borderRadius="full" 
-                  fontSize="sm"
-                >
-                  {t('account.individuals')}
-                </Badge>
                 <Heading 
                   size="xl"
                   bgGradient="linear(to-r, brand.tazdani.500, brand.tazdani.700)"
@@ -286,8 +276,8 @@ const TazdaniLanding = () => {
               </VStack>
             </GridItem>
             <GridItem>
-              <AspectRatio ratio={1} borderRadius="2xl" overflow="hidden" boxShadow="2xl">
-                <Image src="/images/tazdani-app-mockup.jpg" alt={t('customer.image.alt')} objectFit="cover" />
+              <AspectRatio ratio={1}>
+                <Image src="/images/trader.png" alt={t('customer.image.alt')} objectFit="cover" />
               </AspectRatio>
             </GridItem>
           </Grid>
@@ -296,15 +286,6 @@ const TazdaniLanding = () => {
         return (
           <VStack spacing={12} py={12}>
             <VStack spacing={4} textAlign="center" maxW="3xl" mx="auto">
-              <Badge 
-                px={3} 
-                py={1} 
-                colorScheme="green" 
-                borderRadius="full" 
-                fontSize="sm"
-              >
-                {t('account.businesses')}
-              </Badge>
               <Heading 
                 size="xl"
                 bgGradient="linear(to-r, brand.tazdani.500, brand.tazdani.700)"
@@ -392,15 +373,6 @@ const TazdaniLanding = () => {
         return (
           <VStack spacing={12} py={12}>
             <VStack spacing={4} textAlign="center" maxW="3xl" mx="auto">
-              <Badge 
-                px={3} 
-                py={1} 
-                colorScheme="green" 
-                borderRadius="full" 
-                fontSize="sm"
-              >
-                {t('account.agents')}
-              </Badge>
               <Heading 
                 size="xl"
                 bgGradient="linear(to-r, brand.tazdani.500, brand.tazdani.700)"
@@ -584,207 +556,6 @@ const TazdaniLanding = () => {
           </Flex>
         </motion.div>
 
-        {/* Features Grid */}
-        <Box py={20}>
-          <VStack spacing={12}>
-            <VStack spacing={4} textAlign="center">
-              <Text 
-                fontSize="sm" 
-                fontWeight="bold" 
-                textTransform="uppercase" 
-                letterSpacing="wider"
-                color={accentColor}
-              >
-                {t('features.section.subtitle')}
-              </Text>
-              <Heading size="xl">{t('features.section.title')}</Heading>
-              <Text fontSize="lg" maxW="3xl">
-                {t('features.section.description')}
-              </Text>
-            </VStack>
-            
-            <SimpleGrid
-              columns={{ base: 1, md: 2, lg: 4 }}
-              spacing={8}
-              w="full"
-            >
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Box
-                    p={8}
-                    h="full"
-                    bg={glassCardBg}
-                    borderRadius="xl"
-                    borderColor={feature.color}
-                    borderWidth={2}
-                    _hover={{
-                      transform: 'translateY(-5px)',
-                      boxShadow: 'xl'
-                    }}
-                    transition="all 0.3s ease"
-                  >
-                    <VStack align="start" spacing={6}>
-                      <Icon as={feature.icon} boxSize={12} color={feature.color} />
-                      <Heading size="md">{t(feature.title)}</Heading>
-                      <Text>{t(feature.description)}</Text>
-                    </VStack>
-                  </Box>
-                </motion.div>
-              ))}
-            </SimpleGrid>
-          </VStack>
-        </Box>
-
-        {/* App Showcase */}
-        <Box py={20}>
-          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={12} alignItems="center">
-            <GridItem order={{ base: 2, lg: 1 }}>
-              <VStack align="flex-start" spacing={8}>
-                <Text 
-                  fontSize="sm" 
-                  fontWeight="bold" 
-                  textTransform="uppercase" 
-                  letterSpacing="wider"
-                  color={accentColor}
-                >
-                  {t('app.subtitle')}
-                </Text>
-                <Heading size="xl">{t('app.title')}</Heading>
-                <Text fontSize="lg">
-                  {t('app.description')}
-                </Text>
-                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} w="full">
-                  <HStack align="flex-start" spacing={4}>
-                    <Icon as={FaBolt} boxSize={6} color={accentColor} mt={1} />
-                    <VStack align="flex-start" spacing={1}>
-                      <Text fontWeight="bold">{t('app.feature.instant.title')}</Text>
-                      <Text fontSize="sm">{t('app.feature.instant.description')}</Text>
-                    </VStack>
-                  </HStack>
-                  <HStack align="flex-start" spacing={4}>
-                    <Icon as={FaQrcode} boxSize={6} color={accentColor} mt={1} />
-                    <VStack align="flex-start" spacing={1}>
-                      <Text fontWeight="bold">{t('app.feature.qr.title')}</Text>
-                      <Text fontSize="sm">{t('app.feature.qr.description')}</Text>
-                    </VStack>
-                  </HStack>
-                  <HStack align="flex-start" spacing={4}>
-                    <Icon as={FaMapMarkerAlt} boxSize={6} color={accentColor} mt={1} />
-                    <VStack align="flex-start" spacing={1}>
-                      <Text fontWeight="bold">{t('app.feature.locator.title')}</Text>
-                      <Text fontSize="sm">{t('app.feature.locator.description')}</Text>
-                    </VStack>
-                  </HStack>
-                  <HStack align="flex-start" spacing={4}>
-                    <Icon as={FaShieldAlt} boxSize={6} color={accentColor} mt={1} />
-                    <VStack align="flex-start" spacing={1}>
-                      <Text fontWeight="bold">{t('app.feature.security.title')}</Text>
-                      <Text fontSize="sm">{t('app.feature.security.description')}</Text>
-                    </VStack>
-                  </HStack>
-                </SimpleGrid>
-                <HStack spacing={4}>
-                  <Button 
-                    leftIcon={<FaApple />} 
-                    variant="tazdani-solid"
-                    onClick={() => router.push(t('app.store.ios.link'))}
-                  >
-                    {t('app.store.ios')}
-                  </Button>
-                  <Button 
-                    leftIcon={<FaGooglePlay />} 
-                    variant="tazdani-solid"
-                    onClick={() => router.push(t('app.store.android.link'))}
-                  >
-                    {t('app.store.android')}
-                  </Button>
-                </HStack>
-              </VStack>
-            </GridItem>
-            <GridItem order={{ base: 1, lg: 2 }}>
-              <Center>
-                <Box
-                  position="relative"
-                  w="full"
-                  maxW="300px"
-                >
-                  {/* Phone mockup with app screenshot */}
-                  <Image 
-                    src="/images/tazdani-dashboard.png" 
-                    alt={t('app.image.alt')} 
-                  />
-                </Box>
-              </Center>
-            </GridItem>
-          </Grid>
-        </Box>
-
-        {/* Account Types Section */}
-        <Box>
-          <VStack spacing={12}>
-            <VStack spacing={4} textAlign="center" maxW="3xl" mx="auto">
-              <Text 
-                fontSize="sm" 
-                fontWeight="bold" 
-                textTransform="uppercase" 
-                letterSpacing="wider"
-                color={accentColor}
-              >
-                {t('accounts.subtitle')}
-              </Text>
-              <Heading size="xl">{t('accounts.title')}</Heading>
-              <Text fontSize="lg">
-                {t('accounts.description')}
-              </Text>
-            </VStack>
-            
-            <HStack spacing={4} justify="center" flexWrap="wrap">
-              <Button 
-                variant={activeSection === 'customer' ? 'solid' : 'outline'} 
-                colorScheme="green"
-                size="lg"
-                onClick={() => handleAccountTypeChange('customer')}
-              >
-                {t('accounts.tab.individual')}
-              </Button>
-              <Button 
-                variant={activeSection === 'merchant' ? 'solid' : 'outline'} 
-                colorScheme="green"
-                size="lg"
-                onClick={() => handleAccountTypeChange('merchant')}
-              >
-                {t('accounts.tab.merchant')}
-              </Button>
-              <Button 
-                variant={activeSection === 'agent' ? 'solid' : 'outline'} 
-                colorScheme="green"
-                size="lg"
-                onClick={() => handleAccountTypeChange('agent')}
-              >
-                {t('accounts.tab.agent')}
-              </Button>
-            </HStack>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeSection}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                style={{ width: '100%' }}
-              >
-                {renderAccountSection()}
-              </motion.div>
-            </AnimatePresence>
-          </VStack>
-        </Box>
-
         {/* How It Works Section */}
         <Box>
           <VStack spacing={12}>
@@ -929,6 +700,147 @@ const TazdaniLanding = () => {
           </VStack>
         </Box>
 
+        {/* Features Grid */}
+        <Box py={20}>
+          <VStack spacing={12}>
+            <VStack spacing={4} textAlign="center">
+              <Text 
+                fontSize="sm" 
+                fontWeight="bold" 
+                textTransform="uppercase" 
+                letterSpacing="wider"
+                color={accentColor}
+              >
+                {t('features.section.subtitle')}
+              </Text>
+              <Heading size="xl">{t('features.section.title')}</Heading>
+              <Text fontSize="lg" maxW="3xl">
+                {t('features.section.description')}
+              </Text>
+            </VStack>
+            
+            <SimpleGrid
+              columns={{ base: 1, md: 2, lg: 4 }}
+              spacing={8}
+              w="full"
+            >
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Box
+                    p={8}
+                    h="full"
+                    bg={glassCardBg}
+                    borderRadius="xl"
+                    borderColor={feature.color}
+                    borderWidth={2}
+                    _hover={{
+                      transform: 'translateY(-5px)',
+                      boxShadow: 'xl'
+                    }}
+                    transition="all 0.3s ease"
+                  >
+                    <VStack align="start" spacing={6}>
+                      <Icon as={feature.icon} boxSize={12} color={feature.color} />
+                      <Heading size="md">{t(feature.title)}</Heading>
+                      <Text>{t(feature.description)}</Text>
+                    </VStack>
+                  </Box>
+                </motion.div>
+              ))}
+            </SimpleGrid>
+          </VStack>
+        </Box>
+
+        {/* App Showcase */}
+        <Box py={20}>
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={12} alignItems="center">
+            <GridItem order={{ base: 2, lg: 1 }}>
+              <VStack align="flex-start" spacing={8}>
+                <Text 
+                  fontSize="sm" 
+                  fontWeight="bold" 
+                  textTransform="uppercase" 
+                  letterSpacing="wider"
+                  color={accentColor}
+                >
+                  {t('app.subtitle')}
+                </Text>
+                <Heading size="xl">{t('app.title')}</Heading>
+                <Text fontSize="lg">
+                  {t('app.description')}
+                </Text>
+                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} w="full">
+                  <HStack align="flex-start" spacing={4}>
+                    <Icon as={FaBolt} boxSize={6} color={accentColor} mt={1} />
+                    <VStack align="flex-start" spacing={1}>
+                      <Text fontWeight="bold">{t('app.feature.instant.title')}</Text>
+                      <Text fontSize="sm">{t('app.feature.instant.description')}</Text>
+                    </VStack>
+                  </HStack>
+                  <HStack align="flex-start" spacing={4}>
+                    <Icon as={FaQrcode} boxSize={6} color={accentColor} mt={1} />
+                    <VStack align="flex-start" spacing={1}>
+                      <Text fontWeight="bold">{t('app.feature.qr.title')}</Text>
+                      <Text fontSize="sm">{t('app.feature.qr.description')}</Text>
+                    </VStack>
+                  </HStack>
+                  <HStack align="flex-start" spacing={4}>
+                    <Icon as={FaMapMarkerAlt} boxSize={6} color={accentColor} mt={1} />
+                    <VStack align="flex-start" spacing={1}>
+                      <Text fontWeight="bold">{t('app.feature.locator.title')}</Text>
+                      <Text fontSize="sm">{t('app.feature.locator.description')}</Text>
+                    </VStack>
+                  </HStack>
+                  <HStack align="flex-start" spacing={4}>
+                    <Icon as={FaShieldAlt} boxSize={6} color={accentColor} mt={1} />
+                    <VStack align="flex-start" spacing={1}>
+                      <Text fontWeight="bold">{t('app.feature.security.title')}</Text>
+                      <Text fontSize="sm">{t('app.feature.security.description')}</Text>
+                    </VStack>
+                  </HStack>
+                </SimpleGrid>
+                <HStack spacing={4}>
+                  <Button 
+                    leftIcon={<FaApple />} 
+                    variant="tazdani-solid"
+                    onClick={() => router.push(t('app.store.ios.link'))}
+                  >
+                    {t('app.store.ios')}
+                  </Button>
+                  <Button 
+                    leftIcon={<FaGooglePlay />} 
+                    variant="tazdani-solid"
+                    onClick={() => router.push(t('app.store.android.link'))}
+                  >
+                    {t('app.store.android')}
+                  </Button>
+                </HStack>
+              </VStack>
+            </GridItem>
+            <GridItem order={{ base: 1, lg: 2 }}>
+              <Center>
+                <Box
+                  position="relative"
+                  w="full"
+                  maxW="300px"
+                >
+                  {/* Phone mockup with app screenshot */}
+                  <Image 
+                    src="/images/tazdani-dashboard.png" 
+                    alt={t('app.image.alt')} 
+                  />
+                </Box>
+              </Center>
+            </GridItem>
+          </Grid>
+        </Box>
+
         {/* Agent Network Map */}
         <Box py={20}>
           <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={12} alignItems="center">
@@ -998,8 +910,8 @@ const TazdaniLanding = () => {
           </Grid>
         </Box>
 
-        {/* Business Solutions */}
-        <Box py={20}>
+        {/* Account Types Section */}
+        <Box>
           <VStack spacing={12}>
             <VStack spacing={4} textAlign="center" maxW="3xl" mx="auto">
               <Text 
@@ -1009,153 +921,52 @@ const TazdaniLanding = () => {
                 letterSpacing="wider"
                 color={accentColor}
               >
-                {t('business.subtitle')}
+                {t('accounts.subtitle')}
               </Text>
-              <Heading size="xl">{t('business.title')}</Heading>
+              <Heading size="xl">{t('accounts.title')}</Heading>
               <Text fontSize="lg">
-                {t('business.description')}
+                {t('accounts.description')}
               </Text>
             </VStack>
             
-            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8} w="full">
-              <Box 
-                bg={glassCardBg} 
-                p={8} 
-                borderRadius="xl" 
-                boxShadow="md"
-                transition="all 0.3s ease"
-                _hover={{
-                  transform: 'translateY(-5px)',
-                  boxShadow: 'lg'
-                }}
+            <HStack spacing={4} justify="center" flexWrap="wrap">
+              <Button 
+                variant={activeSection === 'customer' ? 'solid' : 'outline'} 
+                colorScheme="green"
+                size="lg"
+                onClick={() => handleAccountTypeChange('customer')}
               >
-                <VStack align="start" spacing={6}>
-                  <Flex
-                    align="center"
-                    justify="center"
-                    bg={useColorModeValue('green.50', 'green.900')}
-                    color={accentColor}
-                    boxSize={16}
-                    borderRadius="full"
-                  >
-                    <Icon as={FaQrcode} boxSize={8} />
-                  </Flex>
-                  <Heading size="md">{t('business.qr.title')}</Heading>
-                  <Text>
-                    {t('business.qr.description')}
-                  </Text>
-                  <List spacing={3}>
-                    <ListItem>
-                      <ListIcon as={FaCheckCircle} color={accentColor} />
-                      {t('business.qr.feature1')}
-                    </ListItem>
-                    <ListItem>
-                      <ListIcon as={FaCheckCircle} color={accentColor} />
-                      {t('business.qr.feature2')}
-                    </ListItem>
-                    <ListItem>
-                      <ListIcon as={FaCheckCircle} color={accentColor} />
-                      {t('business.qr.feature3')}
-                    </ListItem>
-                  </List>
-                </VStack>
-              </Box>
-              
-              <Box 
-                bg={glassCardBg} 
-                p={8} 
-                borderRadius="xl" 
-                boxShadow="md"
-                transition="all 0.3s ease"
-                _hover={{
-                  transform: 'translateY(-5px)',
-                  boxShadow: 'lg'
-                }}
+                {t('accounts.tab.individual')}
+              </Button>
+              <Button 
+                variant={activeSection === 'merchant' ? 'solid' : 'outline'} 
+                colorScheme="green"
+                size="lg"
+                onClick={() => handleAccountTypeChange('merchant')}
               >
-                <VStack align="start" spacing={6}>
-                  <Flex
-                    align="center"
-                    justify="center"
-                    bg={useColorModeValue('green.50', 'green.900')}
-                    color={accentColor}
-                    boxSize={16}
-                    borderRadius="full"
-                  >
-                    <Icon as={FaGlobe} boxSize={8} />
-                  </Flex>
-                  <Heading size="md">{t('business.online.title')}</Heading>
-                  <Text>
-                    {t('business.online.description')}
-                  </Text>
-                  <List spacing={3}>
-                    <ListItem>
-                      <ListIcon as={FaCheckCircle} color={accentColor} />
-                      {t('business.online.feature1')}
-                    </ListItem>
-                    <ListItem>
-                      <ListIcon as={FaCheckCircle} color={accentColor} />
-                      {t('business.online.feature2')}
-                    </ListItem>
-                    <ListItem>
-                      <ListIcon as={FaCheckCircle} color={accentColor} />
-                      {t('business.online.feature3')}
-                    </ListItem>
-                  </List>
-                </VStack>
-              </Box>
-              
-              <Box 
-                bg={glassCardBg} 
-                p={8} 
-                borderRadius="xl" 
-                boxShadow="md"
-                transition="all 0.3s ease"
-                _hover={{
-                  transform: 'translateY(-5px)',
-                  boxShadow: 'lg'
-                }}
+                {t('accounts.tab.merchant')}
+              </Button>
+              <Button 
+                variant={activeSection === 'agent' ? 'solid' : 'outline'} 
+                colorScheme="green"
+                size="lg"
+                onClick={() => handleAccountTypeChange('agent')}
               >
-                <VStack align="start" spacing={6}>
-                  <Flex
-                    align="center"
-                    justify="center"
-                    bg={useColorModeValue('green.50', 'green.900')}
-                    color={accentColor}
-                    boxSize={16}
-                    borderRadius="full"
-                  >
-                    <Icon as={FaChartLine} boxSize={8} />
-                  </Flex>
-                  <Heading size="md">{t('business.dashboard.title')}</Heading>
-                  <Text>
-                    {t('business.dashboard.description')}
-                  </Text>
-                  <List spacing={3}>
-                    <ListItem>
-                      <ListIcon as={FaCheckCircle} color={accentColor} />
-                      {t('business.dashboard.feature1')}
-                    </ListItem>
-                    <ListItem>
-                      <ListIcon as={FaCheckCircle} color={accentColor} />
-                      {t('business.dashboard.feature2')}
-                    </ListItem>
-                    <ListItem>
-                      <ListIcon as={FaCheckCircle} color={accentColor} />
-                      {t('business.dashboard.feature3')}
-                    </ListItem>
-                  </List>
-                </VStack>
-              </Box>
-            </SimpleGrid>
-            
-            <Button 
-              colorScheme="green" 
-              size="lg"
-              px={8}
-              onClick={() => router.push('/merchants')}
-            >
-              {t('business.cta')}
-            </Button>
+                {t('accounts.tab.agent')}
+              </Button>
+            </HStack>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeSection}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                style={{ width: '100%' }}
+              >
+                {renderAccountSection()}
+              </motion.div>
+            </AnimatePresence>
           </VStack>
         </Box>
         
