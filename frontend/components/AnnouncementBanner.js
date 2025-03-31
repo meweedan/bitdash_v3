@@ -1,5 +1,5 @@
 // components/AnnouncementBanner.js
-import React from 'react';
+import React, { useContext } from 'react';
 import { Box, HStack, Text, useColorMode } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
@@ -18,7 +18,7 @@ const iconMap = {
   rocket: "🚀"
 };
 
-const AnnouncementBanner = ({ platform }) => {
+const AnnouncementBanner = ({ platform, isMobileMenuOpen }) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   
@@ -53,8 +53,8 @@ const AnnouncementBanner = ({ platform }) => {
     refetchOnWindowFocus: false
   });
 
-  // If we're loading or have no announcements, don't render anything
-  if (isLoading || !announcements || !announcements.data || !Array.isArray(announcements.data) || announcements.data.length === 0) {
+  // If we're loading or have no announcements or mobile menu is open, don't render anything
+  if (isLoading || !announcements || !announcements.data || !Array.isArray(announcements.data) || announcements.data.length === 0 || isMobileMenuOpen) {
     return null;
   }
 
@@ -93,6 +93,7 @@ const AnnouncementBanner = ({ platform }) => {
               const text = attrs.text || '';
               const icon = attrs.icon || 'announcement';
               const link = attrs.link || '';
+              const emojiIcon = iconMap[icon] || '📢'; // Default icon if not found
               
               return (
                 <HStack
@@ -111,15 +112,12 @@ const AnnouncementBanner = ({ platform }) => {
                   }}
                   transition="all 0.2s"
                 >
-                  <Text fontSize="xl">
-                    {iconMap[icon] || '📢'} {/* Default icon if not found */}
-                  </Text>
                   <Text
                     color={isDark ? 'black' : 'black'}
                     fontWeight="bold"
                     fontSize="xl"
                   >
-                    {text}
+                    {emojiIcon} {text} {emojiIcon}
                   </Text>
                   <Box
                     w="2px"

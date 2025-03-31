@@ -775,11 +775,8 @@ export default function Header() {
       </Collapse>
 
       {/* Add the announcement banner with debug logging */}
-      {showAnnouncements && (
-        <>
-          {console.log(`Rendering announcement banner for platform: ${platform}`)}
-          <AnnouncementBanner platform={platform} />
-        </>
+     {showAnnouncements && (
+        <AnnouncementBanner platform={platform} isMobileMenuOpen={isOpen} />
       )}
     </Flex>
   );
