@@ -71,6 +71,7 @@ const TazdaniLanding = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
   const containerRef = useRef(null);
+  const MotionBox = motion(Box);
   const [activeSection, setActiveSection] = useState('customer');
   
   // Get current locale
@@ -557,7 +558,7 @@ const TazdaniLanding = () => {
         </motion.div>
 
         {/* How It Works Section */}
-        <Box>
+        <Box pt={8}>
           <VStack spacing={12}>
             <VStack spacing={4} textAlign="center" maxW="3xl" mx="auto">
               <Text 
@@ -573,6 +574,25 @@ const TazdaniLanding = () => {
                 {t('howItWorks.description')}
               </Text>
             </VStack>
+
+            <GridItem>
+                    <MotionBox
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                    >
+                      <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
+                        <Image 
+                          src="/images/money-transfer.png" 
+                          alt={t('tazdani.imageAlt', 'tazdani Payment App Screenshot')}
+                          width={{ base: "500px", md: "800px" }}
+                          as={motion.img}
+                          animate={{ scale: [1, 1.03, 1] }}
+                          transition={{ repeat: Infinity, duration: 3 }}
+                        />        
+                      </VStack>
+                    </MotionBox>
+                  </GridItem>
             
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8} w="full">
               <Box 
