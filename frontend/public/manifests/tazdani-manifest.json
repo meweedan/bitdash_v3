@@ -10,43 +10,43 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "/tazdani-icons/icon-72x72.png",
+      "src": "/tazdani-icons/favicon.ico",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "/tazdani-icons/icon-96x96.png",
+      "src": "/tazdani-icons/favicon.ico",
       "sizes": "96x96",
       "type": "image/png"
     },
-    {
-      "src": "/tazdani-icons/icon-128x128.png",
+    { 
+      "src": "/tazdani-icons/favicon.ico",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "/tazdani-icons/icon-144x144.png",
+      "src": "/tazdani-icons/favicon.ico",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "/tazdani-icons/icon-152x152.png",
+      "src": "/tazdani-icons/favicon.ico",
       "sizes": "152x152",
       "type": "image/png"
     },
     {
-      "src": "/tazdani-icons/icon-192x192.png",
+      "src": "/tazdani-icons/favicon.ico",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/tazdani-icons/icon-384x384.png",
+      "src": "/tazdani-icons/favicon.ico",
       "sizes": "384x384",
       "type": "image/png"
     },
     {
-      "src": "/tazdani-icons/icon-512x512.png",
+      "src": "/tazdani-icons/favicon.ico",
       "sizes": "512x512",
       "type": "image/png"
     }
