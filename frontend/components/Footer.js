@@ -81,6 +81,7 @@ const Footer = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [scanning, setScanning] = useState(false);
   const [platform, setPlatform] = useState('main');
+  const [isIOS, setIsIOS] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -93,9 +94,12 @@ const Footer = () => {
       const isInPWA = window.navigator.standalone || isStandalone;
       setIsPWA(isInPWA);
       
-      // Show PWA UI on mobile browsers too, not just in PWA mode
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      setShouldShowPWAUI(isMobile || isInPWA);
+      // Check if device is iOS
+      const isIOSDevice = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      setIsIOS(isIOSDevice);
+      
+      // Show PWA UI on all devices, not just on mobile
+      setShouldShowPWAUI(true);
     }
   }, []);
 
@@ -321,15 +325,6 @@ const Footer = () => {
           >
             <FaTelegram color="#0088cc" size={20} />
             <Text>Telegram</Text>
-            <Button>
-              <Text> Privacy Policy </Text>
-            </Button>
-            <Button>
-              <Text> Data Policy </Text>
-            </Button>
-            <Button>
-              <Text> Terms and Conditions </Text>
-            </Button>
           </HStack>
         </Link>
       </VStack>
@@ -345,6 +340,11 @@ const Footer = () => {
       default:
         return 'Digital Solutions';
     }
+  };
+
+  // Calculate the safe area padding for iOS
+  const getSafeAreaPadding = () => {
+    return isIOS ? "env(safe-area-inset-bottom, 34px)" : "0px";
   };
 
   return (
@@ -418,12 +418,14 @@ const Footer = () => {
       {/* Mobile Footer */}
       <Box
         as="footer"
-        display={{ base: 'flex', md: 'none' }}
+        display={{ base: 'flex', md: shouldShowPWAUI ? 'flex' : 'none' }}
         position="fixed"
         bottom={0}
         left={0}
         right={0}
         height={shouldShowPWAUI ? "80px" : "60px"}
+        paddingBottom={getSafeAreaPadding()}
+        marginBottom={isIOS ? "15px" : "0px"}
         borderTopWidth="1px"
         borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
         bg={bgColor}
@@ -458,6 +460,7 @@ const Footer = () => {
                   <Text 
                     fontSize="xs"
                     color={item.color}
+                    fontWeight="medium"
                   >
                     {item.label}
                   </Text>
@@ -480,6 +483,7 @@ const Footer = () => {
                 <Text 
                   fontSize="xs"
                   color={getPlatformColor('300')}
+                  fontWeight="medium"
                 >
                   Support
                 </Text>
