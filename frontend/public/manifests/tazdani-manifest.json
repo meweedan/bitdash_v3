@@ -3,7 +3,7 @@
   "short_name": "tazdani",
   "description": "Payment processing, remittance, and instant transfers for Libyans at home and abroad.",
   "theme_color": "#000000",
-  "background_color": "#ffffff",
+  "background_color": "#000000",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
