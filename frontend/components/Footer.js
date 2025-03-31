@@ -321,6 +321,15 @@ const Footer = () => {
           >
             <FaTelegram color="#0088cc" size={20} />
             <Text>Telegram</Text>
+            <Button>
+              <Text> Privacy Policy </Text>
+            </Button>
+            <Button>
+              <Text> Data Policy </Text>
+            </Button>
+            <Button>
+              <Text> Terms and Conditions </Text>
+            </Button>
           </HStack>
         </Link>
       </VStack>

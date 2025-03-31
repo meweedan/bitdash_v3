@@ -66,7 +66,7 @@ const Privacy = () => {
       case 'bitfund': return 'BitFund';
       case 'bittrade': return 'BitTrade';
       case 'bitstock': return 'BitStock';
-      case 'tazdani': return 'tazdani';
+      case 'tazdani': return 'BitCash';
       default: return 'BitDash';
     }
   };
