@@ -344,7 +344,7 @@ const Footer = () => {
 
   // Calculate the safe area padding for iOS
   const getSafeAreaPadding = () => {
-    return isIOS ? "env(safe-area-inset-bottom, 34px)" : "0px";
+    return isIOS ? "env(safe-area-inset-bottom, 34px)" : "34px";
   };
 
   return (
@@ -423,9 +423,9 @@ const Footer = () => {
         bottom={0}
         left={0}
         right={0}
-        height={shouldShowPWAUI ? "80px" : "60px"}
+        height={shouldShowPWAUI ? "105px" : "60px"}
         paddingBottom={getSafeAreaPadding()}
-        marginBottom={isIOS ? "15px" : "0px"}
+        marginBottom={isIOS ? "0px" : "10px"}
         borderTopWidth="1px"
         borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
         bg={bgColor}
