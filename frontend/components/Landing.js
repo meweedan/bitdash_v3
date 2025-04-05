@@ -62,7 +62,11 @@ import {
   ExternalLink,
   ChevronDown,
   Truck,
-  ShoppingBag
+  ShoppingBag,
+  Code,
+  Smartphone,
+  Globe,
+  Command
 } from 'lucide-react';
 import { 
   FaWhatsapp, 
@@ -83,9 +87,22 @@ import {
   FaUser,
   FaQrcode,
   FaStore,
-  FaUtensils,
-  FaShoppingBasket,
-  FaMobileAlt
+  FaCode,
+  FaMobileAlt,
+  FaReact,
+  FaNodeJs,
+  FaAws,
+  FaDocker,
+  FaSwift,
+  FaPython,
+  FaAndroid,
+  FaJava,
+  FaStripe,
+  FaCloud,
+  FaLaptopCode,
+  FaRocket,
+  FaProjectDiagram,
+  FaDatabase
 } from 'react-icons/fa';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
@@ -111,9 +128,9 @@ export default function LandingPage() {
   const glassCardBg = useColorModeValue('whiteAlpha.900', 'whiteAlpha.100');
   const headingColor = useColorModeValue('whiteAlpha.900', 'brand.bitdash.700');
   const textColor = useColorModeValue('black.900', 'whiteAlpha.900');
-  const accentColor = '#387fc2'; // The gold/brown accent color from the main site
-  const utlubhaColor = '#FF7D1A'; // Orange color for utlubha
+  const bitdashBlue = '#387fc2'; // Primary brand color
   const tazdaniColor = '#00bf63'; // Green color for tazdani
+  const devServicesColor = '#387fc2'; // Purple color for development services
 
   // Custom parallax component
   const ParallaxBox = ({ children, offset = 100, ...rest }) => {
@@ -154,534 +171,7 @@ export default function LandingPage() {
       transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
     }
   };
-  
-  return (
-    <Box ref={containerRef} overflow="hidden" dir={isRTL ? 'rtl' : 'ltr'}>
-      <Box 
-        as="section" 
-        pt={{ base: 18, md: 20 }}
-        overflow="hidden"
-      >
-        <Container maxW="container.xl" position="relative" zIndex="2">
-          <Grid alignItems="center">
-            <GridItem>
-              <MotionBox
-                initial="hidden"
-                animate="visible"
-                variants={fadeIn}
-              >
-                <VStack spacing={6}>
-                  <Heading
-                    as="h1"
-                    fontSize={headingSize}
-                    fontWeight="bold"
-                    bgGradient="linear(to-r, #387fc2, #387fc2)"
-                    bgClip="text"
-                  >
-                    {t('Landinghero.title', 'Revolutionizing Digital Services')}
-                  </Heading>
-                  
-                  <Text
-                    fontSize={{ base: "lg", md: "xl" }}
-                    maxW="550px"
-                  >
-                    {t('Landinghero.subtitle', 'From seamless deliveries to cashless payments, we offer innovative solutions for modern lifestyles.')}
-                  </Text>
-                </VStack>
-              </MotionBox>
-            </GridItem>
-          </Grid>
-        </Container>
-      </Box>
-      
-      {/* Platform Overview Section */}
-      <Box 
-        as="section" 
-        py={{ base: 16, md: 24 }}
-        position="relative"
-        overflow="hidden"
-      >
-        <Container maxW="container.xl">
-          <VStack spacing={16}>
-            <MotionBox
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              textAlign="center"
-              maxW="3xl"
-              mx="auto"
-            >
-              {/* <Text 
-                color="#387fc2" 
-                fontWeight="bold" 
-                mb={3}
-                textTransform="uppercase"
-                letterSpacing="wide"
-              >
-                {t('platformSection.subtitle', 'Our Digital Ecosystem')}
-              </Text> */}
-              
-              <Heading
-                fontSize={{ base: "3xl", md: "4xl" }}
-                fontWeight="bold"
-                color={isDark ? "white" : "#333"}
-                mb={5}
-              >
-                {t('platformSection.title', 'Two Revolutionary Platforms')}
-              </Heading>
-            </MotionBox>
-            
-            {/* Platform Cards */}
-            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} width="full">
-              {/* utlubha Platform */}
-              <PlatformCard
-                description={t('platforms.utlubha.description', 'Your complete delivery solution for food, groceries, and retail items. Features QR ordering for seamless in-restaurant experiences.')}
-                image="/utlubha.png"
-                cta={t('platforms.utlubha.cta', 'Try utlubha')}
-                link="https://utlubha.bitdash.app"
-                color={utlubhaColor}
-                delay={0}
-              />
-              
-              {/* tazdani Platform */}
-              <PlatformCard
-                description={t('platforms.tazdani.description', 'Cashless payment solution featuring merchant accounts, payment links, QR code payments, and a network of agent-operated human ATMs.')}
-                image="/tazdani.png"
-                cta={t('platforms.tazdani.cta', 'Try tazdani')}
-                link="https://tazdani.bitdash.app"
-                color={tazdaniColor}
-                delay={0.3}
-              />
-            </SimpleGrid>
-          </VStack>
-        </Container>
-      </Box>
-      
-      {/* utlubha Features Section */}
-      <Box 
-        as="section" 
-        py={{ base: 16, md: 24 }}
-        position="relative"
-      >
-        <Container maxW="container.xl">
-          <VStack spacing={12} mb={12}>
-            <MotionBox
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              textAlign="center"
-              maxW="3xl"
-              mx="auto"
-            >
-              <Text 
-                color={utlubhaColor} 
-                fontWeight="bold" 
-                mb={3}
-                textTransform="uppercase"
-                letterSpacing="wide"
-              >
-                {t('utlubha.subtitle', 'Delivery Solutions')}
-              </Text>
-              
-              <Heading
-                fontSize={{ base: "3xl", md: "4xl" }}
-                fontWeight="bold"
-                color={isDark ? "white" : "#333"}
-                mb={5}
-              >
-                {t('utlubha.title', 'utlubha: Beyond Delivery')}
-              </Heading>
-              
-              <Text
-                fontSize={{ base: "md", md: "lg" }}
-                color={isDark ? "gray.300" : "gray.600"}
-              >
-                {t('utlubha.description', 'Experience seamless delivery of food, groceries, and retail items, plus innovative QR ordering for a contactless dining experience.')}
-              </Text>
-            </MotionBox>
-          </VStack>
 
-          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
-            <GridItem order={{ base: 2, lg: 1 }}>
-              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-                {/* Feature Cards */}
-                <FeatureCard
-                  icon={FaUtensils}
-                  title={t('utlubha.features.food.title', 'Food Delivery')}
-                  description={t('utlubha.features.food.description', 'Get hot, fresh food delivered directly to your doorstep from your favorite restaurants')}
-                  delay={0}
-                  color={utlubhaColor}
-                />
-                
-                <FeatureCard
-                  icon={FaShoppingBasket}
-                  title={t('utlubha.features.grocery.title', 'Grocery Delivery')}
-                  description={t('utlubha.features.grocery.description', 'Fresh produce and pantry essentials delivered when you need them')}
-                  delay={0.1}
-                  color={utlubhaColor}
-                />
-                
-                <FeatureCard
-                  icon={FaStore}
-                  title={t('utlubha.features.retail.title', 'Retail Items')}
-                  description={t('utlubha.features.retail.description', 'Shop electronics, gifts, and more from local stores with same-day delivery')}
-                  delay={0.2}
-                  color={utlubhaColor}
-                />
-                
-                <FeatureCard
-                  icon={FaQrcode}
-                  title={t('utlubha.features.qr.title', 'QR Ordering')}
-                  description={t('utlubha.features.qr.description', 'Scan, order, and pay directly from your table at participating restaurants')}
-                  delay={0.3}
-                  color={utlubhaColor}
-                />
-              </SimpleGrid>
-            </GridItem>
-            
-            <GridItem order={{ base: 1, lg: 2 }}>
-              <MotionBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-              >
-                <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
-                  <Image 
-                    src="/images/delivery-man.png" 
-                    alt={t('utlubha.imageAlt', 'utlubha Delivery App Screenshot')}
-                    width={{ base: "300px", md: "400px" }}
-                    as={motion.img}
-                    animate={{ scale: [1, 1.03, 1] }}
-                    transition={{ repeat: Infinity, duration: 3 }}
-                  />        
-                </VStack>
-              </MotionBox>
-            </GridItem>
-          </Grid>
-        </Container>
-      </Box>
-      
-      {/* tazdani Features Section */}
-      <Box 
-        as="section" 
-        py={{ base: 16, md: 24 }}
-        position="relative"
-      >
-        <Container maxW="container.xl">
-          <VStack spacing={12} mb={12}>
-            <MotionBox
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              textAlign="center"
-              maxW="3xl"
-              mx="auto"
-            >
-              <Text 
-                color={tazdaniColor} 
-                fontWeight="bold" 
-                mb={3}
-                textTransform="uppercase"
-                letterSpacing="wide"
-              >
-                {t('tazdani.subtitle', 'Payment Solutions')}
-              </Text>
-              
-              <Heading
-                fontSize={{ base: "3xl", md: "4xl" }}
-                fontWeight="bold"
-                color={isDark ? "white" : "#333"}
-                mb={5}
-              >
-                {t('tazdani.title', 'tazdani: The Cashless Revolution')}
-              </Heading>
-              
-              <Text
-                fontSize={{ base: "md", md: "lg" }}
-                color={isDark ? "gray.300" : "gray.600"}
-              >
-                {t('tazdani.description', 'A comprehensive payment solution that transforms how people handle cash, with merchant tools, agent networks, and instant transfers.')}
-              </Text>
-            </MotionBox>
-          </VStack>
-
-          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
-            <GridItem>
-              <MotionBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-              >
-                <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
-                  <Image 
-                    src="/images/money-transfer.png" 
-                    alt={t('tazdani.imageAlt', 'tazdani Payment App Screenshot')}
-                    width={{ base: "500px", md: "800px" }}
-                    as={motion.img}
-                    animate={{ scale: [1, 1.03, 1] }}
-                    transition={{ repeat: Infinity, duration: 3 }}
-                  />        
-                </VStack>
-              </MotionBox>
-            </GridItem>
-            
-            <GridItem>
-              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-                {/* Feature Cards */}
-                <FeatureCard
-                  icon={FaStore}
-                  title={t('tazdani.features.merchant.title', 'Merchant Tools')}
-                  description={t('tazdani.features.merchant.description', 'Issue payment links and QR codes to collect payments seamlessly')}
-                  delay={0}
-                  color={tazdaniColor}
-                />
-                
-                <FeatureCard
-                  icon={FaUser}
-                  title={t('tazdani.features.agent.title', 'Agent Network')}
-                  description={t('tazdani.features.agent.description', 'Human ATMs for cash deposits and withdrawals across the community')}
-                  delay={0.1}
-                  color={tazdaniColor}
-                />
-                
-                <FeatureCard
-                  icon={FaExchangeAlt}
-                  title={t('tazdani.features.transfer.title', 'Instant Transfers')}
-                  description={t('tazdani.features.transfer.description', 'Send money instantly to anyone, anywhere with just a few taps')}
-                  delay={0.2}
-                  color={tazdaniColor}
-                />
-                
-                <FeatureCard
-                  icon={FaShieldAlt}
-                  title={t('tazdani.features.secure.title', 'Secure Transactions')}
-                  description={t('tazdani.features.secure.description', 'Enterprise-grade security for all your financial activities')}
-                  delay={0.3}
-                  color={tazdaniColor}
-                />
-              </SimpleGrid>
-            </GridItem>
-          </Grid>
-        </Container>
-      </Box>
-      
-      {/* QR Ordering Section */}
-      <Box 
-        as="section" 
-        position="relative"
-      >
-        <Container maxW="container.xl">
-          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
-            <GridItem>
-              <MotionBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-              >
-                <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
-                  <Heading
-                    fontSize={{ base: "2xl", md: "3xl" }}
-                    fontWeight="bold"
-                    color={utlubhaColor}
-                  >
-                    {t('qr.title', 'QR Table Ordering')}
-                  </Heading>
-                  
-                  <Text
-                    fontSize={{ base: "md", md: "lg" }}
-                    color={textColor}
-                    maxW="600px"
-                  >
-                    {t('qr.subtitle', 'A contactless dining experience that revolutionizes how customers order in restaurants')}
-                  </Text>
-                  
-                  <Text
-                    fontSize={{ base: "md", md: "lg" }}
-                    color={textColor}
-                    maxW="600px"
-                  >
-                    {t('qr.description', 'Customers scan a QR code at their table to view the menu, place orders, and pay directly from their phones. No app download required, just a seamless web experience that enhances dining for everyone.')}
-                  </Text>
-                  
-                  <Button
-                    bg={utlubhaColor}
-                    color="white"
-                    _hover={{ bg: "#E86C00" }}
-                    size="lg"
-                    rightIcon={<ArrowRight />}
-                    onClick={() => router.push('/qr-ordering')}
-                  >
-                    {t('qr.learn_more', 'Learn More')}
-                  </Button>
-                </VStack>
-              </MotionBox>
-            </GridItem>
-            <GridItem order={{ base: 1, lg: 2 }}>
-              <MotionBox
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-              >
-                <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
-                  <Heading
-                    fontSize={{ base: "2xl", md: "3xl" }}
-                    fontWeight="bold"
-                    color={tazdaniColor}
-                  >
-                    {t('agent.title', 'Human ATM Network')}
-                  </Heading>
-                  
-                  <Text
-                    fontSize={{ base: "md", md: "lg" }}
-                    color={textColor}
-                    maxW="600px"
-                  >
-                    {t('agent.subtitle', 'A network of trusted agents providing cash services in your community')}
-                  </Text>
-                  
-                  <Text
-                    fontSize={{ base: "md", md: "lg" }}
-                    color={textColor}
-                    maxW="600px"
-                  >
-                    {t('agent.description', 'Our agent network transforms local businesses and individuals into human ATMs, allowing for cash deposits and withdrawals from your tazdani account. Find agents near you, request services, and complete transactions with ease.')}
-                  </Text>
-                  
-                  <Button
-                    bg={tazdaniColor}
-                    color="white"
-                    _hover={{ bg: "#1D4044" }}
-                    size="lg"
-                    rightIcon={<ArrowRight />}
-                    onClick={() => router.push('/agent-network')}
-                  >
-                    {t('agent.learn_more', 'Learn More')}
-                  </Button>
-                </VStack>
-              </MotionBox>
-            </GridItem>
-          </Grid>
-          <Heading
-            fontSize={{ base: "3xl", md: "4xl" }}
-            py={{ base: 10, md: 20}}
-            fontWeight="bold"
-            textAlign="center"
-            color={isDark ? "white" : "#333"}
-          >
-            {t('startedInLibya')}
-          </Heading>
-          <GlobeMap />
-        </Container>
-      </Box>
-
-      {/* CTA Section */}
-      <Box 
-        as="section" 
-        py={{ base: 16, md: 24 }}
-      >
-        <Container maxW="container.xl">
-          <MotionBox
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-          >
-            <Flex
-              direction="column"
-              align="center"
-              textAlign="center"
-              py={{ base: 10, md: 16 }}
-              px={{ base: 6, md: 10 }}
-              color={isDark ? "white" : "#333"}
-              borderWidth="1px"
-              borderColor={isDark ? "gray.700" : "gray.200"}
-              position="relative"
-              overflow="hidden"
-              borderRadius="xl"
-            >
-              {/* Decorative top border */}
-              <Box
-                position="absolute"
-                top="0"
-                left="0"
-                right="0"
-                height="6px"
-                bg="#387fc2"
-              />
-              
-              <VStack spacing={8} maxW="3xl" position="relative" zIndex="1">
-                <Text 
-                  color="#387fc2" 
-                  fontWeight="bold" 
-                  textTransform="uppercase"
-                  letterSpacing="wide"
-                >
-                  {t('cta.subtitle', 'Ready to Transform Your Experience?')}
-                </Text>
-                
-                <Heading
-                  fontSize={{ base: "3xl", md: "4xl" }}
-                  fontWeight="bold"
-                  color={isDark ? "white" : "#333"}
-                >
-                  {t('cta.title', 'Get Started with Utlubha and tazdani Today')}
-                </Heading>
-                
-                <Text 
-                  fontSize="lg" 
-                  color={isDark ? "gray.300" : "gray.600"}
-                  maxW="2xl"
-                >
-                  {t('cta.description', 'Join thousands of users who have transformed their daily routines with our digital solutions. Experience seamless deliveries and cashless payments.')}
-                </Text>
-                
-                <HStack spacing={6} pt={4} wrap="wrap" justify="center">
-                  <Button
-                    bg={utlubhaColor}
-                    px={8}
-                    rightIcon={<ArrowRight />}
-                    onClick={() => router.push('/signup')}
-                  >
-                    {t('cta.utlubhaButton', 'Try Utlubha')}
-                  </Button>
-                  
-                  <Button
-                    bg={tazdaniColor}
-                    px={8}
-                    rightIcon={<ArrowRight />}
-                    onClick={() => router.push('/signup')}
-                  >
-                    {t('cta.tazdaniButton', 'Try tazdani')}
-                  </Button>
-                  
-                  <Button
-                    variant="outline"
-                    borderColor="#387fc2"
-                    color="#387fc2"
-                    _hover={{ borderColor: "#9c7c63", color: "#9c7c63" }}
-                    size="lg"
-                    px={8}
-                    leftIcon={<FaWhatsapp />}
-                    onClick={() => window.open("https://api.whatsapp.com/send?phone=+447538636207", "_blank")}
-                  >
-                    {t('cta.supportButton', 'Contact Support')}
-                  </Button>
-                </HStack>
-              </VStack>
-            </Flex>
-          </MotionBox>
-        </Container>
-      </Box>
-    </Box>
-  );
-}
 
 // Component for Platform Cards
 const PlatformCard = ({ title, description, image, cta, link, color, delay }) => {
@@ -811,63 +301,6 @@ const FeatureCard = ({ icon, title, description, delay, color }) => {
   );
 };
 
-// Component for Islamic Principle Cards
-const IslamicPrincipleCard = ({ icon, title, description, delay }) => {
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
-  
-  return (
-    <MotionBox
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      variants={{
-        hidden: { opacity: 0, y: 30 },
-        visible: { 
-          opacity: 1, 
-          y: 0,
-          transition: { 
-            duration: 0.6, 
-            delay: delay,
-            ease: [0.22, 1, 0.36, 1]
-          }
-        }
-      }}
-    >
-      <Flex
-        direction="column"
-        p={6}
-        borderRadius="lg"
-        boxShadow="md"
-        height="full"
-        bg={isDark ? "gray.700" : "white"}
-        transition="all 0.3s"
-        _hover={{
-          transform: 'translateY(-5px)',
-          boxShadow: 'lg'
-        }}
-      >
-        <Circle
-          size="50px"
-          bg="#387fc2"
-          color="white"
-          mb={4}
-        >
-          <Icon as={icon} boxSize={5} />
-        </Circle>
-        
-        <Heading as="h3" size="md" mb={3} fontWeight="bold">
-          {title}
-        </Heading>
-        
-        <Text fontSize="sm" color={isDark ? "gray.300" : "gray.600"}>
-          {description}
-        </Text>
-      </Flex>
-    </MotionBox>
-  );
-};
-
 // Component for Step Cards
 const StepCard = ({ number, title, description, delay }) => {
   const { colorMode } = useColorMode();
@@ -933,11 +366,693 @@ const StepCard = ({ number, title, description, delay }) => {
     </MotionBox>
   );
 };
+  
+  return (
+    <Box ref={containerRef} overflow="hidden" dir={isRTL ? 'rtl' : 'ltr'}>
+      {/* Hero Section */}
+      <Box 
+        as="section" 
+        pt={{ base: 18, md: 20 }}
+        overflow="hidden"
+      >
+        <Container maxW="container.xl" position="relative" zIndex="2">
+          <Grid alignItems="center">
+            <GridItem>
+              <MotionBox
+                initial="hidden"
+                animate="visible"
+                variants={fadeIn}
+              >
+                <VStack spacing={6}>
+                  <Heading
+                    as="h1"
+                    fontSize={headingSize}
+                    fontWeight="bold"
+                    color="brand.bitdash.400"
+                  >
+                    {t('Landinghero.title', 'Innovative Software Solutions for Modern Businesses')}
+                  </Heading>
+                  
+                  <Text
+                    fontSize={{ base: "lg", md: "xl" }}
+                    maxW="600px"
+                    textAlign="center"
+                  >
+                    {t('Landinghero.subtitle', 'From revolutionary payment systems to custom software development, we bring your digital vision to life.')}
+                  </Text>
+                  
+                  <HStack spacing={4} pt={6}>
+                    <Button
+                      colorScheme="blue"
+                      size="lg"
+                      rightIcon={<ArrowRight />}
+                      onClick={() => router.push('/solutions')}
+                      bg={bitdashBlue}
+                      _hover={{ bg: "#2a6eab" }}
+                    >
+                      {t('hero.solutions', 'Our Solutions')}
+                    </Button>
+                    
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      borderColor={bitdashBlue}
+                      color={bitdashBlue}
+                      rightIcon={<ArrowRight />}
+                      onClick={() => router.push('/contact')}
+                      _hover={{ bg: "rgba(56, 127, 194, 0.1)" }}
+                    >
+                      {t('hero.contact', 'Work With Us')}
+                    </Button>
+                  </HStack>
+                </VStack>
+              </MotionBox>
+            </GridItem>
+          </Grid>
+        </Container>
+      </Box>
+      
+      {/* Solutions Overview Section */}
+      <Box 
+        as="section" 
+        py={{ base: 16, md: 24 }}
+        position="relative"
+        overflow="hidden"
+      >
+        <Container maxW="container.xl">
+          <VStack spacing={16}>
+            <MotionBox
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              textAlign="center"
+              maxW="3xl"
+              mx="auto"
+            >
+              <Heading
+                fontSize={{ base: "3xl", md: "4xl" }}
+                fontWeight="bold"
+                color={isDark ? "white" : "#333"}
+                mb={5}
+              >
+                {t('solutions.title', 'Our Core Offerings')}
+              </Heading>
+            </MotionBox>
+            
+            {/* Solutions Cards */}
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} width="full">
+              {/* Tazdani Platform */}
+              <PlatformCard
+                title={t('solutions.tazdani.title', 'tazdani Payment System')}
+                description={t('solutions.tazdani.description', 'A comprehensive cashless payment solution featuring merchant accounts, payment links, QR code payments, and a network of agent-operated human ATMs.')}
+                image="/tazdani.png"
+                cta={t('solutions.tazdani.cta', 'Learn More')}
+                link="/tazdani"
+                color={tazdaniColor}
+                delay={0}
+              />
+              
+              {/* Development Services */}
+              <PlatformCard
+                title={t('solutions.dev.title', 'Custom Software Development')}
+                description={t('solutions.dev.description', 'Bring your digital ideas to life with our expert team of developers, designers, and strategists. We build custom solutions tailored to your business needs.')}
+                image="/images/bitdash-design-logo.png"
+                cta={t('solutions.dev.cta', 'Our Services')}
+                link="/services"
+                color={devServicesColor}
+                delay={0.3}
+              />
+            </SimpleGrid>
+          </VStack>
+        </Container>
+      </Box>
+      
+      {/* tazdani Features Section */}
+      <Box 
+        as="section" 
+        py={{ base: 16, md: 24 }}
+        position="relative"
+      >
+        <Container maxW="container.xl">
+          <VStack spacing={12} mb={12}>
+            <MotionBox
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              textAlign="center"
+              maxW="3xl"
+              mx="auto"
+            >
+              <Text 
+                color={tazdaniColor} 
+                fontWeight="bold" 
+                mb={3}
+                textTransform="uppercase"
+                letterSpacing="wide"
+              >
+                {t('tazdani.subtitle', 'Payment Solutions')}
+              </Text>
+              
+              <Heading
+                fontSize={{ base: "3xl", md: "4xl" }}
+                fontWeight="bold"
+                color={isDark ? "white" : "#333"}
+                mb={5}
+              >
+                {t('tazdani.title', 'tazdani: The Cashless Revolution')}
+              </Heading>
+              
+              <Text
+                fontSize={{ base: "md", md: "lg" }}
+                color={isDark ? "gray.300" : "gray.600"}
+              >
+                {t('tazdani.description', 'A comprehensive payment solution that transforms how people and businesses handle finances, with merchant tools, agent networks, and instant transfers.')}
+              </Text>
+            </MotionBox>
+          </VStack>
 
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common'])),
-    },
-  };
-}
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
+            <GridItem>
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+              >
+                <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
+                  <Image 
+                    src="/images/money-transfer.png" 
+                    alt={t('tazdani.imageAlt', 'tazdani Payment App Screenshot')}
+                    width={{ base: "500px", md: "800px" }}
+                    as={motion.img}
+                    animate={{ scale: [1, 1.03, 1] }}
+                    transition={{ repeat: Infinity, duration: 3 }}
+                  />        
+                </VStack>
+              </MotionBox>
+            </GridItem>
+            
+            <GridItem>
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+                {/* Feature Cards */}
+                <FeatureCard
+                  icon={FaStore}
+                  title={t('tazdani.features.merchant.title', 'Merchant Tools')}
+                  description={t('tazdani.features.merchant.description', 'Issue payment links and QR codes to collect payments seamlessly')}
+                  delay={0}
+                  color={tazdaniColor}
+                />
+                
+                <FeatureCard
+                  icon={FaUser}
+                  title={t('tazdani.features.agent.title', 'Agent Network')}
+                  description={t('tazdani.features.agent.description', 'Human ATMs for cash deposits and withdrawals across the community')}
+                  delay={0.1}
+                  color={tazdaniColor}
+                />
+                
+                <FeatureCard
+                  icon={FaExchangeAlt}
+                  title={t('tazdani.features.transfer.title', 'Instant Transfers')}
+                  description={t('tazdani.features.transfer.description', 'Send money instantly to anyone, anywhere with just a few taps')}
+                  delay={0.2}
+                  color={tazdaniColor}
+                />
+                
+                <FeatureCard
+                  icon={FaShieldAlt}
+                  title={t('tazdani.features.secure.title', 'Secure Transactions')}
+                  description={t('tazdani.features.secure.description', 'Enterprise-grade security for all your financial activities')}
+                  delay={0.3}
+                  color={tazdaniColor}
+                />
+              </SimpleGrid>
+            </GridItem>
+          </Grid>
+        </Container>
+      </Box>
+      
+      {/* Development Services Section */}
+      <Box 
+        as="section" 
+        py={{ base: 16, md: 24 }}
+        position="relative"
+      >
+        <Container maxW="container.xl">
+          <VStack spacing={12} mb={12}>
+            <MotionBox
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              textAlign="center"
+              maxW="3xl"
+              mx="auto"
+            >
+              <Text 
+                color={devServicesColor} 
+                fontWeight="bold" 
+                mb={3}
+                textTransform="uppercase"
+                letterSpacing="wide"
+              >
+                {t('dev.subtitle', 'Custom Development')}
+              </Text>
+              
+              <Heading
+                fontSize={{ base: "3xl", md: "4xl" }}
+                fontWeight="bold"
+                color={isDark ? "white" : "#333"}
+                mb={5}
+              >
+                {t('dev.title', 'Bringing Your Ideas to Life')}
+              </Heading>
+              
+              <Text
+                fontSize={{ base: "md", md: "lg" }}
+                color={isDark ? "gray.300" : "gray.600"}
+              >
+                {t('dev.description', 'Partner with our expert team to design and develop custom software solutions that drive growth and innovation for your business.')}
+              </Text>
+            </MotionBox>
+          </VStack>
+
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
+            <GridItem order={{ base: 2, lg: 1 }}>
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+                {/* Feature Cards */}
+                <FeatureCard
+                  icon={FaLaptopCode}
+                  title={t('dev.features.webapps.title', 'Web Applications')}
+                  description={t('dev.features.webapps.description', 'Responsive, scalable web applications built with modern technologies')}
+                  delay={0}
+                  color={devServicesColor}
+                />
+                
+                <FeatureCard
+                  icon={FaMobileAlt}
+                  title={t('dev.features.mobile.title', 'Mobile Apps')}
+                  description={t('dev.features.mobile.description', 'Native and cross-platform mobile applications for iOS and Android')}
+                  delay={0.1}
+                  color={devServicesColor}
+                />
+                
+                <FeatureCard
+                  icon={FaDatabase}
+                  title={t('dev.features.backend.title', 'Backend Systems')}
+                  description={t('dev.features.backend.description', 'Robust backend architecture and API development to power your solutions')}
+                  delay={0.2}
+                  color={devServicesColor}
+                />
+                
+                <FeatureCard
+                  icon={FaProjectDiagram}
+                  title={t('dev.features.integration.title', 'System Integration')}
+                  description={t('dev.features.integration.description', 'Seamless integration with existing systems and third-party services')}
+                  delay={0.3}
+                  color={devServicesColor}
+                />
+              </SimpleGrid>
+            </GridItem>
+            
+            <GridItem order={{ base: 1, lg: 2 }}>
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+              >
+                <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
+                  <Image 
+                    src="/images/bitdash-design.png" 
+                    alt={t('dev.imageAlt', 'Software Development Illustration')}
+                    width={{ base: "300px", md: "400px" }}
+                    as={motion.img}
+                    animate={{ scale: [1, 1.03, 1] }}
+                    transition={{ repeat: Infinity, duration: 3 }}
+                  />        
+                </VStack>
+              </MotionBox>
+            </GridItem>
+          </Grid>
+        </Container>
+      </Box>
+      
+      {/* Collaboration Process Section */}
+      <Box 
+        as="section" 
+        py={{ base: 16, md: 24 }}
+        position="relative"
+      >
+        <Container maxW="container.xl">
+          <VStack spacing={16}>
+            <MotionBox
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              textAlign="center"
+              maxW="3xl"
+              mx="auto"
+            >
+              <Text 
+                color={bitdashBlue} 
+                fontWeight="bold" 
+                mb={3}
+                textTransform="uppercase"
+                letterSpacing="wide"
+              >
+                {t('process.subtitle', 'Our Approach')}
+              </Text>
+              
+              <Heading
+                fontSize={{ base: "3xl", md: "4xl" }}
+                fontWeight="bold"
+                color={isDark ? "white" : "#333"}
+                mb={5}
+              >
+                {t('process.title', 'How We Collaborate')}
+              </Heading>
+              
+              <Text
+                fontSize={{ base: "md", md: "lg" }}
+                color={isDark ? "gray.300" : "gray.600"}
+              >
+                {t('process.description', 'Our streamlined process ensures that we deliver high-quality solutions that meet your business needs and exceed your expectations.')}
+              </Text>
+            </MotionBox>
+            
+            {/* Process Steps */}
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={10} width="full">
+              <StepCard 
+                number="1" 
+                title={t('process.steps.discovery.title', 'Discovery')}
+                description={t('process.steps.discovery.description', 'We learn about your business, goals, and challenges to define clear project objectives.')}
+                delay={0}
+              />
+              
+              <StepCard 
+                number="2" 
+                title={t('process.steps.planning.title', 'Planning')}
+                description={t('process.steps.planning.description', 'Our team creates a detailed roadmap with milestones, deliverables, and timelines.')}
+                delay={0.1}
+              />
+              
+              <StepCard 
+                number="3" 
+                title={t('process.steps.development.title', 'Development')}
+                description={t('process.steps.development.description', 'We build your solution using agile methodologies with regular updates and feedback.')}
+                delay={0.2}
+              />
+              
+              <StepCard 
+                number="4" 
+                title={t('process.steps.delivery.title', 'Delivery & Support')}
+                description={t('process.steps.delivery.description', 'We deploy your solution and provide ongoing support and maintenance services.')}
+                delay={0.3}
+              />
+            </SimpleGrid>
+          </VStack>
+        </Container>
+      </Box>
+      
+      {/* Why Choose Us Section */}
+      <Box 
+        as="section" 
+        position="relative"
+        py={{ base: 16, md: 24 }}
+      >
+        <Container maxW="container.xl">
+          <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
+            <GridItem>
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+              >
+                <VStack spacing={6} align={{ base: "center", lg: "flex-start" }} textAlign={{ base: "center", lg: "left" }}>
+                  <Heading
+                    fontSize={{ base: "2xl", md: "3xl" }}
+                    fontWeight="bold"
+                    color={bitdashBlue}
+                  >
+                    {t('whyus.title', 'Why Partner with bitdash?')}
+                  </Heading>
+                  
+                  <Text
+                    fontSize={{ base: "md", md: "lg" }}
+                    color={textColor}
+                    maxW="600px"
+                  >
+                    {t('whyus.subtitle', 'We combine technical expertise with business acumen to deliver solutions that drive real value.')}
+                  </Text>
+                  
+                  <VStack spacing={4} align="stretch" width="full" pt={4}>
+                    <HStack>
+                      <Circle size="30px" bg={bitdashBlue} color="white">
+                        <CheckCircle size={16} />
+                      </Circle>
+                      <Text fontWeight="medium">{t('whyus.points.expertise', 'Technical expertise across multiple platforms and technologies')}</Text>
+                    </HStack>
+                    
+                    <HStack>
+                      <Circle size="30px" bg={bitdashBlue} color="white">
+                        <CheckCircle size={16} />
+                      </Circle>
+                      <Text fontWeight="medium">{t('whyus.points.proven', 'Proven track record with tazdani payment system')}</Text>
+                    </HStack>
+                    
+                    <HStack>
+                      <Circle size="30px" bg={bitdashBlue} color="white">
+                        <CheckCircle size={16} />
+                      </Circle>
+                      <Text fontWeight="medium">{t('whyus.points.client', 'Client-centric approach with transparent communication')}</Text>
+                    </HStack>
+                    
+                    <HStack>
+                      <Circle size="30px" bg={bitdashBlue} color="white">
+                        <CheckCircle size={16} />
+                      </Circle>
+                      <Text fontWeight="medium">{t('whyus.points.global', 'Global perspective with local understanding')}</Text>
+                    </HStack>
+                  </VStack>
+                  
+                  <Button
+                    bg={bitdashBlue}
+                    color="white"
+                    _hover={{ bg: "#2a6eab" }}
+                    size="lg"
+                    rightIcon={<ArrowRight />}
+                    onClick={() => router.push('/about')}
+                    mt={4}
+                  >
+                    {t('whyus.learn_more', 'Learn More About Us')}
+                  </Button>
+                </VStack>
+              </MotionBox>
+            </GridItem>
+            
+            <GridItem>
+              <MotionBox
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+              >
+                <Box
+                  position="relative"
+                  height={{ base: "300px", md: "400px" }}
+                >
+                  <GlobeMap />
+                  <Heading
+                    position="absolute"
+                    bottom="20px"
+                    left="0"
+                    right="0"
+                    fontSize={{ base: "xl", md: "2xl" }}
+                    fontWeight="bold"
+                    textAlign="center"
+                    color={isDark ? "white" : "#333"}
+                    zIndex="1"
+                  >
+                    {t('startedInLibya', 'Started in Libya, Expanding Globally')}
+                  </Heading>
+                </Box>
+              </MotionBox>
+            </GridItem>
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Technology Stack Section */}
+      <Box 
+        as="section" 
+        py={{ base: 16, md: 24 }}
+        position="relative"
+      >
+        <Container maxW="container.xl">
+          <VStack spacing={12}>
+            <MotionBox
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              textAlign="center"
+              maxW="3xl"
+              mx="auto"
+            >
+              <Text 
+                color={bitdashBlue} 
+                fontWeight="bold" 
+                mb={3}
+                textTransform="uppercase"
+                letterSpacing="wide"
+              >
+                {t('tech.subtitle', 'Our Technology Stack')}
+              </Text>
+              
+              <Heading
+                fontSize={{ base: "3xl", md: "4xl" }}
+                fontWeight="bold"
+                color={isDark ? "white" : "#333"}
+                mb={5}
+              >
+                {t('tech.title', 'Cutting-Edge Technologies')}
+              </Heading>
+              
+              <Text
+                fontSize={{ base: "md", md: "lg" }}
+                color={isDark ? "gray.300" : "gray.600"}
+              >
+                {t('tech.description', 'We leverage modern technologies to build scalable, secure, and high-performance applications.')}
+              </Text>
+            </MotionBox>
+            
+            <SimpleGrid columns={{ base: 2, sm: 3, md: 4, lg: 6 }} spacing={10}>
+              <FeatureCard icon={FaReact} name="React" />
+              <FeatureCard icon={FaNodeJs} name="Node.js" />
+              <FeatureCard icon={FaDatabase} name="MongoDB" />
+              <FeatureCard icon={FaAws} name="AWS" />
+              <FeatureCard icon={FaDocker} name="Docker" />
+              <FeatureCard icon={FaSwift} name="Swift" />
+              <FeatureCard icon={FaAndroid} name="Android" />
+              <FeatureCard icon={FaPython} name="Python" />
+              <FeatureCard icon={FaJava} name="Java" />
+              <FeatureCard icon={FaRocket} name="Firebase" />
+              <FeatureCard icon={FaStripe} name="Stripe" />
+              <FeatureCard icon={FaCloud} name="GCP" />
+            </SimpleGrid>
+          </VStack>
+        </Container>
+      </Box>
+
+      {/* CTA Section */}
+      <Box 
+        as="section" 
+        py={{ base: 16, md: 24 }}
+      >
+        <Container maxW="container.xl">
+          <MotionBox
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <Flex
+              direction="column"
+              align="center"
+              textAlign="center"
+              py={{ base: 10, md: 16 }}
+              px={{ base: 6, md: 10 }}
+              color={isDark ? "white" : "#333"}
+              borderWidth="1px"
+              borderColor={isDark ? "gray.700" : "gray.200"}
+              position="relative"
+              overflow="hidden"
+              borderRadius="xl"
+            >
+              {/* Decorative top border */}
+              <Box
+                position="absolute"
+                top="0"
+                left="0"
+                right="0"
+                height="6px"
+                bg={bitdashBlue}
+              />
+              
+              <VStack spacing={8} maxW="3xl" position="relative" zIndex="1">
+                <Text 
+                  color={bitdashBlue} 
+                  fontWeight="bold" 
+                  textTransform="uppercase"
+                  letterSpacing="wide"
+                >
+                  {t('cta.subtitle', 'Ready to Transform Your Business?')}
+                </Text>
+                
+                <Heading
+                  fontSize={{ base: "3xl", md: "4xl" }}
+                  fontWeight="bold"
+                  color={isDark ? "white" : "#333"}
+                >
+                  {t('cta.title', 'Let\'s Build Something Amazing Together')}
+                </Heading>
+                
+                <Text 
+                  fontSize="lg" 
+                  color={isDark ? "gray.300" : "gray.600"}
+                  maxW="2xl"
+                >
+                  {t('cta.description', 'Whether you need a payment solution or custom software development, our team is ready to help you turn your vision into reality.')}
+                </Text>
+                
+                <HStack spacing={6} pt={4} wrap="wrap" justify="center">
+                  <Button
+                    bg={tazdaniColor}
+                    color="white"
+                    _hover={{ bg: "#00a857" }}
+                    size="lg"
+                    px={8}
+                    rightIcon={<ArrowRight />}
+                    onClick={() => router.push('/tazdani')}
+                  >
+                    {t('cta.tazdaniButton', 'Explore tazdani')}
+                  </Button>
+                  
+                  <Button
+                    bg={devServicesColor}
+                    color="white"
+                    _hover={{ bg: "#5a3ba3" }}
+                    size="lg"
+                    px={8}
+                    rightIcon={<ArrowRight />}
+                    onClick={() => router.push('/services')}
+                  >
+                    {t('cta.devButton', 'Our Services')}
+                  </Button>
+                  
+                  <Button
+                    variant="outline"
+                    borderColor={bitdashBlue}
+                    color={bitdashBlue}
+                    _hover={{ borderColor: "#2a6eab", color: "#2a6eab" }}
+                    size="lg"
+                    px={8}
+                    leftIcon={<FaWhatsapp />}
+                    aria-label="WhatsApp"
+                  >
+                    {t('cta.whatsappButton', 'Get in Touch')}
+                  </Button>
+                </HStack>
+                </VStack>
+              </Flex>
+            </MotionBox>
+        </Container> 
+      </Box>
+    </Box>
+  );
+};

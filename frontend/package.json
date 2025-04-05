@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf .next node_modules && npm install",
@@ -16,6 +17,10 @@
     "@babel/parser": "^7.26.9",
     "@babel/traverse": "^7.26.9",
     "@babel/types": "^7.26.9",
+    "@capacitor/android": "^7.2.0",
+    "@capacitor/cli": "^6.2.1",
+    "@capacitor/core": "^7.2.0",
+    "@capacitor/ios": "^7.2.0",
     "@chakra-ui/icons": "^2.2.4",
     "@chakra-ui/react": "^2.10.6",
     "@emotion/react": "^11.14.0",

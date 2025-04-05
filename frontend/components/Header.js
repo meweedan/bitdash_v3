@@ -96,14 +96,7 @@ export default function Header() {
       mobileImage: '/tazdani.png',
       href: 'https://tazdani.bitdash.app/',
       color: 'brand.tazdani'
-    },
-    {
-      name: 'utlubha',
-      image: '/utlubha.png',
-      mobileImage: '/utlubha.png',
-      href: 'https://utlubha.bitdash.app/',
-      color: 'brand.utlubha'
-    }, 
+    }
   ];
 
   const getPlatformFromURL = () => {
@@ -113,12 +106,10 @@ export default function Header() {
       
       // More specific checks to avoid partial matches
       if (hostname.includes('tazdani.bitdash') || hostname === 'tazdani.localhost') return 'tazdani';
-      if (hostname.includes('utlubha.bitdash') || hostname === 'utlubha.localhost') return 'utlubha';
       
       // Also check URL path for local development
       const pathname = window.location.pathname;
       if (pathname.startsWith('/tazdani')) return 'tazdani';
-      if (pathname.startsWith('/utlubha')) return 'utlubha';
     }
     return 'bitdash'; // Default platform
   };
