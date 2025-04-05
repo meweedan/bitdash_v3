@@ -12,6 +12,8 @@ import { PaymentProvider } from '@/contexts/PaymentContext';
 import InstallPWA from '@/components/InstallPWA';
 import FlowingLines from '@/components/FlowingShawl';
 import { CurrencyProvider } from '@/contexts/CurrencyContext';
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react"
 
 function MyApp({ Component, pageProps }) {
   const { locale } = useRouter();
@@ -44,6 +46,8 @@ function MyApp({ Component, pageProps }) {
               <PaymentProvider>
                 <FlowingLines/>
                 <InstallPWA />
+                <SpeedInsights />
+                <Analytics />
                 <CartProvider>
                   <ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
                   <Component {...pageProps} />
