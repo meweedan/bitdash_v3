@@ -916,6 +916,7 @@ export default function LandingPage() {
       <Box 
         as="section" 
         py={{ base: 16, md: 24 }}
+        mb={{ base: 16, md: 24 }}
         bg={subtleBg}
       >
         <Container maxW="container.xl">
