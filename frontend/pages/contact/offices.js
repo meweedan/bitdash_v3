@@ -216,11 +216,6 @@ const OfficesPage = () => {
                   as="h1" 
                   size={headingSize} 
                   fontWeight="bold"
-                  bgGradient={isDark ? 
-                    "linear(to-r, brand.bitdash.400, brand.stocks.400)" : 
-                    "linear(to-r, brand.bitdash.600, brand.stocks.600)"
-                  }
-                  bgClip="text"
                 >
                   {t('contact:officesTitle', 'Our Global Offices')}
                 </Heading>
@@ -427,65 +422,6 @@ const OfficesPage = () => {
                 </TabPanels>
               </Tabs>
             </VStack>
-          </Container>
-        </Box>
-        
-        {/* Work With Us Section */}
-        <Box py={16}>
-          <Container maxW="container.xl">
-            <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={10} alignItems="center">
-              <Box position="relative" height={{ base: "300px", md: "400px" }}>
-                <Image
-                  src="/offices/workspace.jpg"
-                  alt={t('contact:workspaceAlt', 'BitDash modern workspace')}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  style={{
-                    objectFit: 'cover',
-                    borderRadius: '1rem'
-                  }}
-                />
-              </Box>
-              
-              <Stack spacing={6}>
-                <Heading 
-                  as="h2" 
-                  size={subheadingSize} 
-                  color={isDark ? "white" : "gray.800"}
-                >
-                  {t('contact:workWithUsTitle', 'Work With Us')}
-                </Heading>
-                
-                <Text fontSize={textSize} color={isDark ? "gray.300" : "gray.700"}>
-                  {t('contact:workWithUsDesc1', 'Our offices are designed to foster innovation, collaboration, and well-being. We believe that the right environment plays a crucial role in our team\'s success and productivity.')}
-                </Text>
-                
-                <Text fontSize={textSize} color={isDark ? "gray.300" : "gray.700"}>
-                  {t('contact:workWithUsDesc2', 'Each BitDash location reflects our commitment to creating spaces where great ideas can flourish. From state-of-the-art technology to comfortable collaborative areas, our offices are built for the future of work.')}
-                </Text>
-                
-                <HStack spacing={4} pt={2}>
-                  <Button
-                    as={Link}
-                    href="/contact/careers"
-                    bg={isDark ? "brand.bitdash.600" : "brand.bitdash.500"}
-                    color="white"
-                    _hover={{
-                      bg: isDark ? "brand.bitdash.500" : "brand.bitdash.600",
-                      textDecoration: "none",
-                    }}
-                    px={6}
-                    py={6}
-                    height="auto"
-                    borderRadius="full"
-                    fontWeight="medium"
-                    fontSize="sm"
-                  >
-                    {t('contact:viewCareers', 'View Career Opportunities')}
-                  </Button>
-                </HStack>
-              </Stack>
-            </SimpleGrid>
           </Container>
         </Box>
       </Box>

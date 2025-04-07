@@ -424,17 +424,7 @@ export default function LandingPage() {
                     {t('Landinghero.subtitle', 'From revolutionary payment systems to custom software development, we bring your digital vision to life.')}
                   </Text>
                   
-                  <HStack pt={6}>
-                    <Button
-                      colorScheme="blue"
-                      rightIcon={<ArrowRight />}
-                      onClick={() => router.push('/solutions')}
-                      bg={bitdashBlue}
-                      _hover={{ bg: "#2a6eab" }}
-                    >
-                      {t('hero.solutions', 'Our Solutions')}
-                    </Button>
-                    
+                  <HStack pt={6}>                    
                     <Button
                       variant="outline"
                       borderColor={bitdashBlue}

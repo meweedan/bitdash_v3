@@ -152,9 +152,8 @@ const Footer = () => {
       ],
       tazdani: [
         { label: 'Send', action: 'transfer', icon: Send },
-        { label: 'Wallet', action: 'wallet', icon: Wallet },
-        { label: 'History', action: 'history', icon: History },
-        { label: 'Account', action: 'account', icon: User },
+        { label: 'My Wallet', action: 'wallet', icon: Wallet },
+        { label: 'Dashboard', action: 'account', icon: User },
       ],
       main: [
         { label: 'Home', action: 'home', icon: User },
@@ -342,12 +341,12 @@ const Footer = () => {
 
   // Calculate the safe area padding for iOS
   const getSafeAreaPadding = () => {
-    return isIOS ? "env(safe-area-inset-bottom, 34px)" : "34px";
+    return isIOS ? "env(safe-area-inset-bottom, 4px)" : "14px";
   };
 
   return (
     <>
-      <Box height={shouldShowPWAUI ? "100px" : "80px"} />
+      <Box height={shouldShowPWAUI ? "10px" : "40px"} />
       
       {/* Desktop Footer */}
       <Box
@@ -416,18 +415,16 @@ const Footer = () => {
       {/* Mobile Footer */}
       <Box
         as="footer"
-        display={{ base: 'flex', md: shouldShowPWAUI ? 'flex' : 'none' }}
+        display={{ base: 'flex', md: shouldShowPWAUI ? 'none' : 'none' }}
         position="fixed"
         bottom={0}
         left={0}
         right={0}
-        height={shouldShowPWAUI ? "105px" : "60px"}
+        height={shouldShowPWAUI ? "90px" : "20px"}
         paddingBottom={getSafeAreaPadding()}
-        marginBottom={isIOS ? "0px" : "10px"}
-        borderTopWidth="1px"
-        borderColor={isDark ? 'whiteAlpha.200' : 'gray.200'}
+        marginBottom={isIOS ? "0px" : "0px"}
         bg={bgColor}
-        backdropFilter="blur(10px)"
+        backdropFilter="blur(100px)"
         zIndex={100}
       >
         <VStack w="100%" spacing={0}>
@@ -483,7 +480,7 @@ const Footer = () => {
                   color={getPlatformColor('300')}
                   fontWeight="medium"
                 >
-                  Support
+                  Help
                 </Text>
               </VStack>
             </HStack>
