@@ -1743,67 +1743,6 @@
     "title": "Our cutting-edge platforms",
     "description": "Discover our suite of next-generation platforms designed to revolutionise how you fulfill orders and transfer money."
   },
-  "platforms": {
-    "forex": {
-      "title": "LDN Prime Markets",
-      "description": "Global currency trading with zero commission, ultra-tight spreads from 0.0 pips, and lightning-fast execution speeds.",
-      "cta": "Trade Forex",
-      "imageAlt": "Forex Trading"
-    },
-    "crypto": {
-      "title": "Crypto by BitDash",
-      "description": "Trade 100+ cryptocurrencies with industry-lowest fees, advanced DeFi staking options, and cold storage security.",
-      "cta": "Explore Crypto",
-      "imageAlt": "Cryptocurrency Trading"
-    },
-    "stock": {
-      "title": "Stock by BitDash",
-      "description": "Commission-free trading on US and EU stocks with fractional shares and access to exclusive pre-IPO opportunities.",
-      "cta": "Invest in Stocks",
-      "imageAlt": "Stock Trading"
-    },
-    "cash": {
-      "title": "Cash by BitDash",
-      "description": "Instant global payments with zero fees, blockchain-powered security, and multi-currency accounts with best-in-market rates.",
-      "cta": "Send Money",
-      "imageAlt": "Cash Transfer"
-    }
-  },
-  "islamic": {
-    "subtitle": "Islamic Finance Principles",
-    "title": "Built On Strong Ethical Foundations",
-    "description": "BitDash integrates Islamic financial principles into modern financial technology, ensuring all transactions are ethical, transparent, and shariah-compliant.",
-    "principles": {
-      "compliant": {
-        "title": "Shariah Compliant",
-        "description": "All our products and services adhere strictly to Islamic finance principles, certified by leading Shariah scholars."
-      },
-      "noRiba": {
-        "title": "No Riba (Interest)",
-        "description": "Our financial solutions operate without interest, utilizing ethical profit-sharing and fee-based structures."
-      },
-      "ethical": {
-        "title": "Ethical Investments",
-        "description": "We screen all investments to ensure they comply with Islamic values, avoiding prohibited industries."
-      },
-      "transparent": {
-        "title": "Transparent Contracts",
-        "description": "All agreements are clearly defined with fair terms that avoid uncertainty (gharar) and speculation (maysir)."
-      }
-    }
-  },
-  "products": {
-    "subtitle": "Trade Over 100 Instruments",
-    "title": "Diverse Range of Trading Products",
-    "viewAll": "View All Products",
-    "hundredsAlt": "Hundreds of Products Available",
-    "categories": {
-      "forex": "Forex",
-      "crypto": "Crypto",
-      "stocks": "Stocks",
-      "commodities": "Commodities"
-    }
-  },
   "companyProfile": "Company Profile",
   "careers": {
     "pageTitle": "Careers at BitDash | Join Our Team",
@@ -2075,8 +2014,6 @@
       "description": "In addition to our physical locations, BitDash proudly supports a global remote workforce. Our remote team members are distributed across multiple time zones, allowing us to provide 24/7 support and development capabilities while fostering a diverse and inclusive culture."
     }
   },
-  "exchangePageTitle": "Cryptocurrency Exchange | Trade Bitcoin, Ethereum & More | BitDash",
-  "exchangeMetaDescription": "Trade cryptocurrencies on BitDash's secure and advanced exchange platform. Buy and sell Bitcoin, Ethereum, and other digital assets with low fees and deep liquidity.",
   "earnPageTitle": "Earn Crypto | Staking, Yield Farming & Savings | BitDash",
   "earnMetaDescription": "Earn passive income on your cryptocurrency holdings with BitDash's staking, yield farming, and savings products. Get competitive APYs on Bitcoin, Ethereum, and more.",
   "earnProducts": "Earn Products",
@@ -2097,7 +2034,7 @@
   "marketsTitle": "Cryptocurrency Markets",
   "marketsIntroduction": "Track real-time cryptocurrency prices, market capitalization, and trading volumes. Stay updated with detailed information on thousands of digital assets from Bitcoin to the latest altcoins.",
   "startTrading": "Start Trading",
-  "createWatchlist": "Create Watchlist",
+
   "totalMarketCap": "Total Market Cap",
   "24hVolume": "24h Volume",
   "btcDominance": "BTC Dominance",
@@ -2758,10 +2695,10 @@
   "check_back_later": "Check back later for updates on",
   "crypto": "crypto",
   "app": {
-    "title": "Download BitDash Application",
-    "subtitle": "Stay in the Know Anywhere, Anytime",
-    "description": "Download now and try our dashboard with real-time trading, instant notifications, and secure account management on the go.",
-    "screenshotAlt": "BitDash Mobile Application Screenshot"
+    "title": "Download the tazdani app",
+    "subtitle": "Enjoy the full range of our services, in our dedicated app",
+    "description": "Download now and try our payment solution with real-time updates, instant notifications, and secure account management on the go.",
+    "screenshotAlt": "tazdani Mobile Application Screenshot"
   },
   "trade": {
     "hero": {

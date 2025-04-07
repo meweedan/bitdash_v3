@@ -60,6 +60,7 @@ import {
   MoreHorizontal
 } from 'lucide-react';
 import { FaWhatsapp, FaTelegram } from 'react-icons/fa';
+import { EmailIcon } from '@chakra-ui/icons';
 
 const Footer = () => {
   const router = useRouter();
@@ -157,9 +158,6 @@ const Footer = () => {
       ],
       main: [
         { label: 'Home', action: 'home', icon: User },
-        { label: 'Search', action: 'search', icon: Search },
-        { label: 'Settings', action: 'settings', icon: Settings },
-        { label: 'Help', action: 'help', icon: HelpCircle },
       ]
     };
 
