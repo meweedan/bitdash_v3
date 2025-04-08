@@ -134,11 +134,6 @@ export default function CompanyProfile() {
                     as="h1" 
                     size={headingSize} 
                     fontWeight="bold"
-                    bgGradient={isDark ? 
-                        "linear(to-r, brand.bitdash.400, brand.stocks.400)" : 
-                        "linear(to-r, brand.bitdash.600, brand.stocks.600)"
-                    }
-                    bgClip="text"
                     >
                     {t('about:title', 'Pioneering Financial Technology')}
                     </Heading>

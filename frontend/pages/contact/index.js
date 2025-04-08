@@ -112,7 +112,7 @@ const Contact = () => {
   const themeKey = currentPlatform?.themeKey || 'utlubha';
   
   const cardBg = useColorModeValue('white', 'black.800');
-  const highlightColor = useColorModeValue(`brand.${themeKey}.500`, `brand.${themeKey}.400`);
+  const highlightColor = useColorModeValue(`brand.${themeKey}.500`, `brand.${themeKey}.300`);
   
   const platforms = [
     { value: 'all', label: t('allPlatforms', 'All Platforms') },
@@ -341,7 +341,7 @@ const Contact = () => {
           
           <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={10}>
             {/* Contact Form */}
-            {/* <MotionBox variants={fadeIn}>
+            <MotionBox variants={fadeIn}>
               <Card 
                 shadow="xl" 
                 borderRadius="xl" 
@@ -481,7 +481,7 @@ const Contact = () => {
             <MotionBox variants={fadeIn}>
               <VStack spacing={8} align="stretch">
                 {/* Direct Contact */}
-                {/* <Card bg={cardBg} shadow="xl" borderRadius="xl" overflow="hidden">
+                <Card bg={cardBg} shadow="xl" borderRadius="xl" overflow="hidden">
                   <Box 
                     position="absolute" 
                     top={0} 
@@ -538,7 +538,7 @@ const Contact = () => {
                       </VStack>
                     </VStack>
                   </CardBody>
-                </Card>  */}
+                </Card>
                 
                 {/* WhatsApp & Telegram Buttons */}
                 <Card bg={cardBg} shadow="xl" borderRadius="xl" overflow="hidden">

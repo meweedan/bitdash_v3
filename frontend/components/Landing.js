@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiMysql } from "react-icons/si";
-import { IoLogoPwa } from "react-icons/io5";
 import {  
   Box,
   Heading,
@@ -67,6 +66,17 @@ import {
   FaProjectDiagram,
   FaDatabase
 } from 'react-icons/fa';
+import { 
+  SiTypescript,
+  SiTailwindcss,
+  SiGraphql,
+  SiMongodb,
+  SiMicrosoftazure,
+  SiGooglecloud,
+  SiKubernetes,
+  SiFlutter,
+  SiFirebase
+} from 'react-icons/si'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
 
@@ -956,20 +966,26 @@ export default function LandingPage() {
               maxW="4xl"
               mx="auto"
             >
-              {[
+            {[
                 { icon: FaReact, name: 'React', color: '#61DAFB' },
-                { icon: TbBrandNextjs, name: 'Next.js', color: '#000000'},
+                { icon: TbBrandNextjs, name: 'Next.js' },
+                { icon: SiTypescript, name: 'TypeScript', color: '#3178C6' },
                 { icon: FaNodeJs, name: 'Node.js', color: '#68A063' },
-                { icon: FaAndroid, name: 'Android', color: '#4479A1' },
-                { icon: IoLogoPwa, name: 'PWA', color: '#4479A1' },
-                { icon: SiMysql, name: 'MySQL', color: '#4479A1' },
-                { icon: FaAws, name: 'AWS', color: '#FF9900' },
-                { icon: FaDocker, name: 'Docker', color: '#2496ED' },
-                { icon: FaSwift, name: 'Swift', color: '#F05138' },
-                { icon: FaCloud, name: 'Cloud', color: '#4169E' },
                 { icon: FaPython, name: 'Python', color: '#3776AB' },
-                { icon: FaGit, name: 'Git', color: '#F05050' },
-              ].map((tech, index) => (
+                { icon: SiTailwindcss, name: 'Tailwind CSS', color: '#06B6D4' },
+                { icon: SiGraphql, name: 'GraphQL', color: '#E535AB' },
+                { icon: FaAndroid, name: 'Android', color: '#3DDC84' },
+                { icon: FaSwift, name: 'Swift', color: '#F05138' },
+                { icon: SiMysql, name: 'MySQL', color: '#4479A1' },
+                { icon: SiMongodb, name: 'MongoDB', color: '#47A248' },
+                { icon: FaAws, name: 'AWS', color: '#FF9900' },
+                { icon: SiMicrosoftazure, name: 'Azure', color: '#0078D4' },
+                { icon: SiGooglecloud, name: 'Google Cloud', color: '#4285F4' },
+                { icon: FaDocker, name: 'Docker', color: '#2496ED' },
+                { icon: SiKubernetes, name: 'Kubernetes', color: '#326CE5' },
+                { icon: SiFlutter, name: 'Flutter', color: '#02569B' },
+                { icon: SiFirebase, name: 'Firebase', color: '#FFCA28' }
+                ].map((tech, index) => (
                 <MotionBox
                   key={tech.name}
                   initial="hidden"

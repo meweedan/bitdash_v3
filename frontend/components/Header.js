@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
@@ -22,10 +22,13 @@ import {
   PopoverContent,
   PopoverBody,
   PopoverArrow,
+  Portal,
   Divider,
-  Portal
+  List,
+  ListItem,
+  Badge
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import Logo from '@/components/Logo';
 import { FaSignInAlt, FaUserPlus, FaUser, FaSignOutAlt, FaWhatsapp, FaTelegram, FaChevronDown } from 'react-icons/fa';
@@ -44,6 +47,15 @@ export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [platform, setPlatform] = useState('bitdash');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openMobileMenus, setOpenMobileMenus] = useState({});
+
+  // Toggle mobile submenu open/close
+  const toggleMobileSubmenu = (menuName) => {
+    setOpenMobileMenus(prev => ({
+      ...prev,
+      [menuName]: !prev[menuName]
+    }));
+  };
   
   // Always show announcements for these platforms
   const showAnnouncements = platform === 'utlubha' || platform === 'tazdani';
@@ -96,6 +108,13 @@ export default function Header() {
       mobileImage: '/tazdani.png',
       href: 'https://tazdani.bitdash.app/',
       color: 'brand.tazdani'
+    },
+    {
+      name: 'utlubha',
+      image: '/utlubha.png',
+      mobileImage: '/utlubha.png',
+      href: 'https://utlubha.bitdash.app/',
+      color: 'brand.utlubha'
     }
   ];
 
@@ -136,7 +155,6 @@ export default function Header() {
         name: t('contactUs', 'Contact Us'), 
         path: '/contact',
         submenu: [
-          { name: t('Careers', 'Careers'), path: '/contact/careers' },
           { name: t('Offices', 'Offices'), path: '/contact/offices' },
         ]
       },
@@ -220,6 +238,18 @@ export default function Header() {
     hidden: { opacity: 0, y: -5 },
     visible: { opacity: 1, y: 0 }
   };
+
+  // Detect if the current route is active
+  const isActivePath = (path) => {
+    if (!path) return false;
+    return router.pathname === path || router.pathname.startsWith(`${path}/`);
+  };
+  
+  // Animation for dropdown
+  const dropdownVariants = {
+    hidden: { opacity: 0, y: -5, height: 0 },
+    visible: { opacity: 1, y: 0, height: 'auto', transition: { duration: 0.2 } }
+  };
   
   return (
     <Flex
@@ -258,14 +288,14 @@ export default function Header() {
               >
                 <Box
                   as={motion.div}
-                  whileHover={{ y: -5 }}
+                  whileHover={{ y: -5, boxShadow: "0 8px 30px rgba(0,0,0,0.12)" }}
                   transition={{ duration: 0.2 }}
                   position="relative"
                   width={{ base: "150px", md: "200px" }}
                   height="50px"
                   p={3}
+                  borderRadius="md"
                   _hover={{
-                    boxShadow: "lg",
                     borderColor: `${plat.color}.500`,
                   }}
                 >
@@ -298,7 +328,7 @@ export default function Header() {
         {...scrolledStyles}
       >
         <Flex
-          maxW="1400px"
+          maxW="100%"
           w="full"
           mx="auto"
           justify="space-between"
@@ -315,7 +345,7 @@ export default function Header() {
 
           {/* Desktop Main Menu */}
           <HStack 
-            spacing={{ base: 3, lg: 2 }}
+            spacing={{ base: 3, lg: 20 }}
             display={{ base: 'none', lg: 'flex' }}
             height="100%"
           >
@@ -331,38 +361,63 @@ export default function Header() {
                         animate="visible"
                         variants={menuItemVariants}
                         position="relative"
-                        px={2}
+                        px={3}
                         py={2}
                         borderRadius="md"
                         _hover={{ bg: isDark ? 'whiteAlpha.100' : 'blackAlpha.50' }}
                         cursor="pointer"
+                        className={isActivePath(item.path) ? 'active-menu-item' : ''}
+                        sx={{
+                          '&.active-menu-item': {
+                            _after: {
+                              content: '""',
+                              position: 'absolute',
+                              bottom: '0',
+                              left: '15%',
+                              width: '70%',
+                              height: '2px',
+                              bg: `brand.${platform}.500`,
+                              borderRadius: 'full'
+                            }
+                          }
+                        }}
                       >
                         <HStack spacing={1} height="100%">
                           <Link href={item.path} passHref>
                             <Text 
-                              fontSize="lg"
+                              fontSize="md"
                               fontWeight="600"
-                              color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                              color={isActivePath(item.path) 
+                                ? `brand.${platform}.500` 
+                                : isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                             >
                               {item.name}
                             </Text>
                           </Link>
                           <Icon 
-                            as={FaChevronDown} 
-                            boxSize={2.5} 
-                            color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                            as={ChevronDownIcon} 
+                            boxSize={3.5} 
+                            color={isActivePath(item.path) 
+                              ? `brand.${platform}.500` 
+                              : isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                            transition="transform 0.2s"
+                            _groupHover={{ transform: 'rotate(-180deg)' }}
                           />
                         </HStack>
                       </Box>
                     </PopoverTrigger>
                     <Portal>
                       <PopoverContent 
+                        as={motion.div}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.2 }}
                         bg={isDark ? "gray.800" : "white"}
                         borderColor={isDark ? "gray.700" : "gray.200"}
                         boxShadow="lg"
-                        p={1}
-                        minW="180px"
-                        maxW="220px"
+                        p={2}
+                        minW="220px"
+                        maxW="280px"
                         borderRadius="md"
                         _focus={{ boxShadow: "lg" }}
                       >
@@ -372,17 +427,37 @@ export default function Header() {
                             {item.submenu.map((subItem, idx) => (
                               <Link key={subItem.name} href={subItem.path} passHref>
                                 <Box
-                                  p={2}
+                                  p={3}
                                   borderRadius="md"
+                                  transition="all 0.2s"
+                                  position="relative"
                                   _hover={{ 
                                     bg: isDark ? "gray.700" : "gray.50",
-                                    color: `brand.${platform}.500`
+                                    pl: 4
                                   }}
-                                  transition="all 0.2s"
+                                  sx={isActivePath(subItem.path) ? {
+                                    bg: isDark ? 'whiteAlpha.100' : 'blackAlpha.50',
+                                    borderLeft: '3px solid',
+                                    borderColor: `brand.${platform}.500`,
+                                    pl: 4
+                                  } : {}}
                                 >
-                                  <Text fontSize="sm" fontWeight="500">
-                                    {subItem.name}
-                                  </Text>
+                                  <HStack justify="space-between" align="center">
+                                    <Text 
+                                      fontSize="sm" 
+                                      fontWeight={isActivePath(subItem.path) ? "600" : "500"}
+                                      color={isActivePath(subItem.path) ? `brand.${platform}.500` : "inherit"}
+                                    >
+                                      {subItem.name}
+                                    </Text>
+                                    {isActivePath(subItem.path) && (
+                                      <Icon 
+                                        as={ChevronRightIcon} 
+                                        color={`brand.${platform}.500`} 
+                                        boxSize={4} 
+                                      />
+                                    )}
+                                  </HStack>
                                 </Box>
                               </Link>
                             ))}
@@ -399,16 +474,33 @@ export default function Header() {
                       animate="visible"
                       variants={menuItemVariants}
                       position="relative"
-                      px={2}
+                      px={3}
                       py={2}
                       borderRadius="md"
                       _hover={{ bg: isDark ? 'whiteAlpha.100' : 'blackAlpha.50' }}
                       cursor="pointer"
+                      className={isActivePath(item.path) ? 'active-menu-item' : ''}
+                      sx={{
+                        '&.active-menu-item': {
+                          _after: {
+                            content: '""',
+                            position: 'absolute',
+                            bottom: '0',
+                            left: '15%',
+                            width: '70%',
+                            height: '2px',
+                            bg: `brand.${platform}.500`,
+                            borderRadius: 'full'
+                          }
+                        }
+                      }}
                     >
                       <Text 
-                        fontSize="sm"
+                        fontSize="md"
                         fontWeight="600"
-                        color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                        color={isActivePath(item.path) 
+                          ? `brand.${platform}.500` 
+                          : isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                       >
                         {item.name}
                       </Text>
@@ -426,25 +518,45 @@ export default function Header() {
                 animate="visible"
                 variants={menuItemVariants}
                 position="relative"
-                px={2}
+                px={3}
                 py={2}
                 borderRadius="md"
                 _hover={{ bg: isDark ? 'whiteAlpha.100' : 'blackAlpha.50' }}
                 cursor="pointer"
                 onClick={() => setShowPlatforms(!showPlatforms)}
+                className={showPlatforms ? 'active-menu-item' : ''}
+                sx={{
+                  '&.active-menu-item': {
+                    bg: isDark ? 'whiteAlpha.100' : 'blackAlpha.50',
+                    _after: {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: '0',
+                      left: '15%',
+                      width: '70%',
+                      height: '2px',
+                      bg: `brand.${platform}.500`,
+                      borderRadius: 'full'
+                    }
+                  }
+                }}
               >
                 <HStack spacing={1}>
                   <Text 
-                    fontSize="lg"
+                    fontSize="md"
                     fontWeight="600"
-                    color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                    color={showPlatforms 
+                      ? `brand.${platform}.500` 
+                      : isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                   >
                     {t('ourSolutions', 'Our Solutions')}
                   </Text>
                   <Icon 
-                    as={FaChevronDown} 
-                    boxSize={2.5} 
-                    color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                    as={ChevronDownIcon} 
+                    boxSize={3.5} 
+                    color={showPlatforms 
+                      ? `brand.${platform}.500` 
+                      : isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
                     transform={showPlatforms ? 'rotate(180deg)' : 'rotate(0deg)'}
                     transition="transform 0.3s ease"
                   />
@@ -595,179 +707,240 @@ export default function Header() {
       {/* Mobile Menu */}
       <Collapse in={isOpen} animateOpacity>
         <Box
-          position="absolute"
-          width="100%"
-          bg={isDark ? "rgba(13, 17, 23, 0.7)" : "rgba(255, 255, 255, 0.7)"}
-          backdropFilter="blur(10px)"
-          py={3}
-          px={4}
-          textAlign="left"
-          boxShadow="lg"
-          zIndex="1000"
-          maxH="80vh"
-          overflowY="auto"
+          p={4}
+          bg={isDark ? 'gray.900' : 'white'}
+          borderBottom="1px solid"
+          borderColor={isDark ? 'gray.700' : 'gray.200'}
+          shadow="md"
         >
-          {!isMainDomain() && (
-            <>
-              <HStack align="stretch" spacing={2} mb={4}>
-                {isLoggedIn ? (
-                  <>
-                    <Button 
-                      leftIcon={<FaUser size={14} />}
-                      variant={`${platform}-outline`}
-                      w="full"
-                      borderRadius="full"
-                      color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
-                      onClick={() => {
-                        router.push('/login');
-                        onClose();
-                      }}
-                      _hover={{ bg: isDark ? 'whiteAlpha.200' : 'blackAlpha.100' }}
-                    >
-                      {t('myAccount', 'My Account')}
-                    </Button>
-                    <Button
-                      leftIcon={<FaSignOutAlt size={14} />}
-                      variant={`${platform}-outline`}
-                      w="full"
-                      borderRadius="full"
-                      color="red.400"
-                      onClick={() => {
-                        handleLogout();
-                        onClose();
-                      }}
-                      _hover={{ bg: isDark ? 'whiteAlpha.200' : 'blackAlpha.100' }}
-                    >
-                      {t('logout', 'Logout')}
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Button 
-                      leftIcon={<FaSignInAlt size={14} />}
-                      variant={`${platform}-outline`}
-                      w="full"
-                      borderRadius="full"
-                      color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
-                      onClick={() => {
-                        router.push('/login');
-                        onClose();
-                      }}
-                      _hover={{ bg: isDark ? 'whiteAlpha.200' : 'blackAlpha.100' }}
-                    >
-                      {t('login', 'Login')}
-                    </Button>
-                    <Button 
-                      leftIcon={<FaUserPlus size={14} />}
-                      w="full"
-                      borderRadius="full"
-                      variant={`${platform}-outline`}
-                      color="white"
-                      bg={`brand.${platform}.500`}
-                      _hover={{ bg: buttonBgHover }}
-                      onClick={() => {
-                        router.push('/signup');
-                        onClose();
-                      }}
-                    >
-                      {t('signup', 'Sign Up')}
-                    </Button>
-                  </>
-                )}
-              </HStack>
-              <Divider mb={4} borderColor={isDark ? "gray.700" : "gray.200"} />
-            </>
-          )}
-
-          <VStack align="stretch" spacing={2}>
-            {/* Display menu items based on domain */}
+          <VStack spacing={1} align="stretch">
             {menuItems.map((item) => (
               <Box key={item.name}>
                 {item.submenu && item.submenu.length > 0 ? (
                   <>
-                    <Text
-                      fontSize="sm"
-                      fontWeight="600"
-                      color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                    <Flex
                       py={2}
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="space-between"
-                      onClick={() => {
-                        // Navigate to the path on click
-                        router.push(item.path);
-                        onClose();
-                      }}
+                      px={3}
+                      align="center"
+                      justify="space-between"
+                      onClick={() => toggleMobileSubmenu(item.name)}
                       cursor="pointer"
+                      borderRadius="md"
+                      _hover={{ bg: isDark ? 'gray.800' : 'gray.100' }}
                     >
-                      {item.name}
-                      <Icon as={FaChevronDown} boxSize={3} />
-                    </Text>
-                    <VStack align="stretch" mt={1} mb={3} spacing={1} pl={3}>
-                      {item.submenu.map((subItem) => (
-                        <Link key={subItem.name} href={subItem.path} passHref>
-                          <Text
-                            fontSize="xs"
-                            py={1.5}
-                            fontWeight="500"
-                            _hover={{
-                              color: `brand.${platform}.500`
-                            }}
-                            onClick={onClose}
-                          >
-                            {subItem.name}
-                          </Text>
-                        </Link>
-                      ))}
-                    </VStack>
+                      <Text fontWeight="semibold">{item.name}</Text>
+                      <Icon
+                        as={ChevronDownIcon}
+                        transition="all .25s ease-in-out"
+                        transform={openMobileMenus[item.name] ? 'rotate(180deg)' : ''}
+                        w={6}
+                        h={6}
+                      />
+                    </Flex>
+                    <Collapse in={openMobileMenus[item.name]} animateOpacity>
+                      <Box
+                        as={motion.div}
+                        variants={dropdownVariants}
+                        initial="hidden"
+                        animate="visible"
+                        pl={4}
+                        borderLeft="2px solid"
+                        borderColor={isDark ? 'gray.700' : 'gray.200'}
+                        ml={3}
+                      >
+                        {item.submenu.map((subItem) => (
+                          <Link key={subItem.name} href={subItem.path} passHref>
+                            <Box
+                              py={2}
+                              px={3}
+                              _hover={{ bg: isDark ? 'gray.800' : 'gray.100' }}
+                              borderRadius="md"
+                              onClick={onClose}
+                            >
+                              <Text fontSize="sm">{subItem.name}</Text>
+                            </Box>
+                          </Link>
+                        ))}
+                      </Box>
+                    </Collapse>
                   </>
                 ) : (
                   <Link href={item.path} passHref>
-                    <Text
-                      fontWeight="600"
-                      color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
+                    <Box
                       py={2}
+                      px={3}
+                      _hover={{ bg: isDark ? 'gray.800' : 'gray.100' }}
+                      borderRadius="md"
                       onClick={onClose}
                     >
-                      {item.name}
-                    </Text>
+                      <Text fontWeight="semibold">{item.name}</Text>
+                    </Box>
                   </Link>
                 )}
-                <Divider borderColor={isDark ? "gray.700" : "gray.200"} opacity={0.5} />
               </Box>
             ))}
-            
-            {/* Our Solutions Section - only if we have platforms to show */}
+
+            {/* Mobile platforms menu */}
             {platforms.length > 0 && (
-              <Box>
-                <Text
-                  fontSize="sm"
-                  fontWeight="600"
+              <>
+                <Flex
                   py={2}
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  color={isDark ? `brand.${platform}.400` : `brand.${platform}.600`}
-                  onClick={() => setShowPlatforms(!showPlatforms)}
+                  px={3}
+                  align="center"
+                  justify="space-between"
+                  onClick={() => toggleMobileSubmenu('solutions')}
                   cursor="pointer"
+                  borderRadius="md"
+                  _hover={{ bg: isDark ? 'gray.800' : 'gray.100' }}
                 >
-                  {t('ourSolutions', 'Our Solutions')}
-                  <Icon 
-                    as={FaChevronDown} 
-                    boxSize={3}
-                    transform={showPlatforms ? 'rotate(180deg)' : 'rotate(0deg)'}
-                    transition="transform 0.3s ease"
+                  <Text fontWeight="semibold">{t('ourSolutions', 'Our Solutions')}</Text>
+                  <Icon
+                    as={ChevronDownIcon}
+                    transition="all .25s ease-in-out"
+                    transform={openMobileMenus['solutions'] ? 'rotate(180deg)' : ''}
+                    w={6}
+                    h={6}
                   />
-                </Text>
-              </Box>
+                </Flex>
+                <Collapse in={openMobileMenus['solutions']} animateOpacity>
+                  <Box
+                    as={motion.div}
+                    variants={dropdownVariants}
+                    initial="hidden"
+                    animate="visible"
+                    pl={4}
+                    borderLeft="2px solid"
+                    borderColor={isDark ? 'gray.700' : 'gray.200'}
+                    ml={3}
+                  >
+                    {platforms.map((plat) => (
+                      <a 
+                        key={plat.href}
+                        href={plat.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={onClose}
+                      >
+                        <Box
+                          py={2}
+                          px={3}
+                          mb={2}
+                          _hover={{ bg: isDark ? 'gray.800' : 'gray.100' }}
+                          borderRadius="md"
+                          display="flex"
+                          alignItems="center"
+                        >
+                          <Box 
+                            position="relative"
+                            width="80px" 
+                            height="30px"
+                            mr={2}
+                          >
+                            <Image 
+                              src={plat.mobileImage} 
+                              alt={plat.name}
+                              fill
+                              style={{ objectFit: 'contain' }}
+                            />
+                          </Box>
+                        </Box>
+                      </a>
+                    ))}
+                  </Box>
+                </Collapse>
+              </>
             )}
+
+            {/* Only show auth buttons if not on main domain */}
+            {!isMainDomain() && (
+              <>
+                <Divider my={2} borderColor={isDark ? 'gray.700' : 'gray.200'} />
+                {isLoggedIn ? (
+                  <VStack spacing={2} align="stretch" py={2}>
+                    <Link href="/account" passHref>
+                      <Button
+                        leftIcon={<FaUser size={14} />}
+                        variant={`${platform}-outline`}
+                        justifyContent="flex-start"
+                        width="full"
+                        onClick={onClose}
+                      >
+                        {t('myAccount', 'My Account')}
+                      </Button>
+                    </Link>
+                    <Button
+                      leftIcon={<FaSignOutAlt size={14} />}
+                      variant="outline"
+                      colorScheme="red"
+                      justifyContent="flex-start"
+                      width="full"
+                      onClick={() => {
+                        handleLogout();
+                        onClose();
+                      }}
+                    >
+                      {t('logout', 'Logout')}
+                    </Button>
+                  </VStack>
+                ) : (
+                  <VStack spacing={2} align="stretch" py={2}>
+                    <Link href="/login" passHref>
+                      <Button
+                        leftIcon={<FaSignInAlt size={14} />}
+                        variant={`${platform}-outline`}
+                        justifyContent="flex-start"
+                        width="full"
+                        onClick={onClose}
+                      >
+                        {t('login', 'Login')}
+                      </Button>
+                    </Link>
+                    <Link href="/signup" passHref>
+                      <Button
+                        leftIcon={<FaUserPlus size={14} />}
+                        variant={`${platform}-solid`}
+                        justifyContent="flex-start"
+                        width="full"
+                        color="white"
+                        bg={`brand.${platform}.500`}
+                        _hover={{ bg: buttonBgHover }}
+                        onClick={onClose}
+                      >
+                        {t('signup', 'Sign Up')}
+                      </Button>
+                    </Link>
+                  </VStack>
+                )}
+              </>
+            )}
+
+            {/* Contact buttons for mobile */}
+            <Divider my={2} borderColor={isDark ? 'gray.700' : 'gray.200'} />
+            <HStack spacing={2} justify="center" py={2}>
+              <IconButton
+                icon={<FaWhatsapp size={18} />}
+                colorScheme="whatsapp"
+                variant="outline"
+                borderRadius="full"
+                onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
+                aria-label="WhatsApp"
+              />
+              <IconButton
+                icon={<FaTelegram size={18} />}
+                colorScheme="blue"
+                variant="outline"
+                borderRadius="full"
+                onClick={() => window.open("https://t.me/BitDashSupport", "_blank")}
+                aria-label="Telegram"
+              />
+            </HStack>
           </VStack>
         </Box>
       </Collapse>
 
-      {/* Add the announcement banner with debug logging */}
-     {showAnnouncements && (
-        <AnnouncementBanner platform={platform} isMobileMenuOpen={isOpen} />
+      {/* Announcement Banner - Only shown for certain platforms */}
+      {showAnnouncements && (
+        <AnnouncementBanner platform={platform} />
       )}
     </Flex>
   );

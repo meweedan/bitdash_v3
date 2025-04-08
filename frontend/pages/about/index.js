@@ -126,11 +126,6 @@ export default function AboutIndex() {
                     as="h1" 
                     size={headingSize} 
                     fontWeight="bold"
-                    bgGradient={isDark ? 
-                      "linear(to-r, brand.bitdash.400, brand.stocks.400)" : 
-                      "linear(to-r, brand.bitdash.600, brand.stocks.600)"
-                    }
-                    bgClip="text"
                   >
                     {t('about:title', 'Transforming Financial Services')}
                   </Heading>
@@ -451,30 +446,6 @@ export default function AboutIndex() {
                   </Card>
                 ))}
               </SimpleGrid>
-              
-              <Box 
-                bg={isDark ? "whiteAlpha.100" : "brand.bitdash.50"} 
-                p={6} 
-                borderRadius="lg"
-                mt={4}
-                textAlign="center"
-              >
-                <VStack spacing={4}>
-                  <Heading size="md">{t('about:careers.title', 'Join Our Team')}</Heading>
-                  <Text maxW="2xl" mx="auto" color={isDark ? "gray.300" : "gray.700"}>
-                    {t('about:careers.description')}
-                  </Text>
-                  <Button
-                    as={NextLink}
-                    href="/contact/careers"
-                    variant="bitdash-outline"
-                    size="md"
-                    borderRadius="full"
-                  >
-                    {t('about:viewCareers', 'View Career Opportunities')}
-                  </Button>
-                </VStack>
-              </Box>
             </VStack>
           </Container>
         </Box>
