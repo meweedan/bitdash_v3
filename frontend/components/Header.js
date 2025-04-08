@@ -709,10 +709,65 @@ export default function Header() {
         <Box
           p={4}
           bg={isDark ? 'gray.900' : 'white'}
-          borderBottom="1px solid"
-          borderColor={isDark ? 'gray.700' : 'gray.200'}
-          shadow="md"
         >
+           {/* Only show auth buttons if not on main domain */}
+            {!isMainDomain() && (
+              <>
+                {isLoggedIn ? (
+                  <HStack spacing={2} justify="center" py={2}>
+                    <Link href="/account" passHref>
+                      <Button
+                        leftIcon={<FaUser />}
+                        width="100%"
+                        variant={`${platform}-outline`}
+                        onClick={onClose}
+                      >
+                        {t('myAccount', 'My Account')}
+                      </Button>
+                    </Link>
+                    <Button
+                      leftIcon={<FaSignOutAlt size={14} />}
+                      variant="solid"
+                      width="100%"
+                      colorScheme="red"
+                      onClick={() => {
+                        handleLogout();
+                        onClose();
+                      }}
+                    >
+                      {t('logout', 'Logout')}
+                    </Button>
+                  </HStack>
+                ) : (
+                  <HStack spacing={2} justify="center" py={2}>
+                    <Link href="/login" passHref>
+                      <Button
+                        width="100%"
+                        leftIcon={<FaSignInAlt />}
+                        variant={`${platform}-solid`}
+                        onClick={onClose}
+                      >
+                        {t('login', 'Login')}
+                      </Button>
+                    </Link>
+                    <Link href="/signup" passHref>
+                      <Button
+                        leftIcon={<FaUserPlus />}
+                        variant={`${platform}-outline`}
+                        width="100%"
+                        color="white"
+                        bg={`brand.${platform}.500`}
+                        _hover={{ bg: buttonBgHover }}
+                        onClick={onClose}
+                      >
+                        {t('signup', 'Sign Up')}
+                      </Button>
+                    </Link>
+                  </HStack>
+                )}
+              </>
+            )}
+
           <VStack spacing={1} align="stretch">
             {menuItems.map((item) => (
               <Box key={item.name}>
@@ -851,76 +906,13 @@ export default function Header() {
               </>
             )}
 
-            {/* Only show auth buttons if not on main domain */}
-            {!isMainDomain() && (
-              <>
-                <Divider my={2} borderColor={isDark ? 'gray.700' : 'gray.200'} />
-                {isLoggedIn ? (
-                  <VStack spacing={2} align="stretch" py={2}>
-                    <Link href="/account" passHref>
-                      <Button
-                        leftIcon={<FaUser size={14} />}
-                        variant={`${platform}-outline`}
-                        justifyContent="flex-start"
-                        width="full"
-                        onClick={onClose}
-                      >
-                        {t('myAccount', 'My Account')}
-                      </Button>
-                    </Link>
-                    <Button
-                      leftIcon={<FaSignOutAlt size={14} />}
-                      variant="outline"
-                      colorScheme="red"
-                      justifyContent="flex-start"
-                      width="full"
-                      onClick={() => {
-                        handleLogout();
-                        onClose();
-                      }}
-                    >
-                      {t('logout', 'Logout')}
-                    </Button>
-                  </VStack>
-                ) : (
-                  <VStack spacing={2} align="stretch" py={2}>
-                    <Link href="/login" passHref>
-                      <Button
-                        leftIcon={<FaSignInAlt size={14} />}
-                        variant={`${platform}-outline`}
-                        justifyContent="flex-start"
-                        width="full"
-                        onClick={onClose}
-                      >
-                        {t('login', 'Login')}
-                      </Button>
-                    </Link>
-                    <Link href="/signup" passHref>
-                      <Button
-                        leftIcon={<FaUserPlus size={14} />}
-                        variant={`${platform}-solid`}
-                        justifyContent="flex-start"
-                        width="full"
-                        color="white"
-                        bg={`brand.${platform}.500`}
-                        _hover={{ bg: buttonBgHover }}
-                        onClick={onClose}
-                      >
-                        {t('signup', 'Sign Up')}
-                      </Button>
-                    </Link>
-                  </VStack>
-                )}
-              </>
-            )}
-
             {/* Contact buttons for mobile */}
             <Divider my={2} borderColor={isDark ? 'gray.700' : 'gray.200'} />
             <HStack spacing={2} justify="center" py={2}>
               <IconButton
                 icon={<FaWhatsapp size={18} />}
                 colorScheme="whatsapp"
-                variant="outline"
+                variant="tazdani-outline"
                 borderRadius="full"
                 onClick={() => window.open("https://api.whatsapp.com/send?phone=00447538636207", "_blank")}
                 aria-label="WhatsApp"
