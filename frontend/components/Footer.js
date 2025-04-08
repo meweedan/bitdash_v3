@@ -341,7 +341,7 @@ const Footer = () => {
 
   // Calculate the safe area padding for iOS
   const getSafeAreaPadding = () => {
-    return isIOS ? "env(safe-area-inset-bottom, 4px)" : "14px";
+    return isIOS ? "env(safe-area-inset-bottom, 29px)" : "34px";
   };
 
   return (

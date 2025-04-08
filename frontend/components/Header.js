@@ -321,9 +321,9 @@ export default function Header() {
         align="center"
         justify="space-between"
         px={{ base: 4, md: 6 }}
+        bg={isDark ? 'gray.900' : 'white'}
         w="full"
         dir={isRTL ? 'rtl' : 'ltr'}
-        backdropFilter="blur(10px)"
         transition="all 0.3s ease"
         {...scrolledStyles}
       >
