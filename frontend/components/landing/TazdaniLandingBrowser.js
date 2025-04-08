@@ -73,6 +73,7 @@ const TazdaniLanding = () => {
   const containerRef = useRef(null);
   const MotionBox = motion(Box);
   const [activeSection, setActiveSection] = useState('customer');
+  const subtleBg = useColorModeValue('gray.50', 'gray.900');
   
   // Get current locale
   const { locale } = router;
@@ -471,7 +472,7 @@ const TazdaniLanding = () => {
   ];
 
   return (
-    <Box ref={containerRef} bg={bgGradient} overflow="hidden" dir={isRTL ? 'rtl' : 'ltr'}>
+    <Box ref={containerRef} bg={subtleBg} overflow="hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Hero Section */}
       <Container maxW="8xl" pt={8}>
         <motion.div style={{ scale: heroScale }}>
@@ -558,7 +559,7 @@ const TazdaniLanding = () => {
         </motion.div>
 
         {/* How It Works Section */}
-        <Box pt={8}>
+        <Box pt={8} bg={subtleBg}>
           <VStack spacing={12}>
             <VStack spacing={4} textAlign="center" maxW="3xl" mx="auto">
               <Text 
@@ -721,7 +722,7 @@ const TazdaniLanding = () => {
         </Box>
 
         {/* Features Grid */}
-        <Box py={20}>
+        <Box py={20} bg={subtleBg}>
           <VStack spacing={12}>
             <VStack spacing={4} textAlign="center">
               <Text 
@@ -778,7 +779,7 @@ const TazdaniLanding = () => {
         </Box>
 
         {/* App Showcase */}
-        <Box py={20}>
+        <Box py={20} bg={subtleBg}>
           <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={12} alignItems="center">
             <GridItem order={{ base: 2, lg: 1 }}>
               <VStack align="flex-start" spacing={8}>

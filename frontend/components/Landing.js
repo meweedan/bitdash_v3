@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
+import ReactPlayer from 'react-player/vimeo';
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiMysql } from "react-icons/si";
 import {  
@@ -22,6 +23,7 @@ import {
   Divider,
   Badge,
   useBreakpointValue,
+  AspectRatio,
 } from '@chakra-ui/react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
@@ -111,6 +113,7 @@ export default function LandingPage() {
   const textColor = useColorModeValue('gray.800', 'whiteAlpha.900');
   const bitdashBlue = '#387fc2'; // Primary brand color
   const tazdaniGreen = '#00bf63'; // Green color for tazdani
+  const utlubhaOrange = '#E86C00';
   const cardBg = useColorModeValue('white', 'gray.800');
   const subtleBg = useColorModeValue('gray.50', 'gray.900');
   
@@ -325,7 +328,13 @@ export default function LandingPage() {
             justifyContent="space-between"
             width="full"
             bg={color}
-            _hover={{ bg: color === tazdaniGreen ? "#00a857" : "#2a6eab" }}
+            _hover={{ 
+              bg: color === tazdaniGreen 
+                ? "#00a857" 
+                : color === utlubhaOrange 
+                  ? "#E86C00" 
+                  : "#2a6eab" 
+            }}
             as="a"
             href={link}
             mt="auto"
@@ -449,26 +458,37 @@ export default function LandingPage() {
                 </VStack>
               </MotionBox>
             </GridItem>
-            
-            <GridItem display="flex" justifyContent="center">
+            <GridItem order={{ base: 1, lg: 2 }}>
               <MotionBox
                 initial="hidden"
-                animate="visible"
-                variants={scaleUp}
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={slideInRight}
               >
-                <MotionImage
-                  src="/images/web-design.png" 
-                  alt="Software solutions"
-                  maxW="100%"
-                  animate={{ 
-                    y: [0, -15, 0],
-                    transition: { 
-                      repeat: Infinity, 
-                      duration: 6, 
-                      ease: "easeInOut" 
-                    }
-                  }}
-                />
+                {/* Video Player with autoplay and loop */}
+                <Box position="relative" textAlign="center">
+                  <AspectRatio 
+                    ratio={16/9} 
+                    width={{ base: "100%", md: "100%" }}
+                    mx="auto"
+                    borderRadius="xl"
+                    overflow="hidden"
+                    boxShadow="xl"
+                    position="relative"
+                    zIndex={1}
+                  >
+                    <ReactPlayer
+                      url="https://vimeo.com/1073731916/72dd0b8529"
+                      width="100%"
+                      height="100%"
+                      playing={true} // Enables autoplay
+                      loop={true} // Enables infinite loop
+                      muted={true} // Usually required for autoplay to work in browsers
+                      controls={false}
+                      playsinline={true} // Better mobile experience
+                    />
+                  </AspectRatio>
+                </Box>
               </MotionBox>
             </GridItem>
           </Grid>
@@ -520,12 +540,12 @@ export default function LandingPage() {
             </MotionBox>
             
             {/* Solutions Cards */}
-            <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={10} width="full">
+            <SimpleGrid columns={{ base: 1, lg: 3 }} spacing={10} width="full">
               {/* Tazdani Platform */}
               <SolutionCard
                 title={t('solutions.tazdani.title', 'tazdani Payment System')}
                 description={t('solutions.tazdani.description', 'A comprehensive cashless payment solution featuring merchant accounts, payment links, QR code payments, and a network of agent-operated human ATMs.')}
-                image="/tazdani.png"
+                image="/tazdani-icon.png"
                 cta={t('solutions.tazdani.cta', 'Learn More')}
                 link="/tazdani"
                 color={tazdaniGreen}
@@ -541,6 +561,18 @@ export default function LandingPage() {
                 link="/services"
                 color={bitdashBlue}
                 delay={0.3}
+              />
+
+               
+              {/* Utlubha Platform */}
+               <SolutionCard
+                title={t('solutions.utlubha.title', 'utlubha Food Ordering Services')}
+                description={t('solutions.utlubha.description', 'A comprehensive food ordering solution featuring live tracking, online payment, messaging system, and a fleet of delivery captains.')}
+                image="/utlubha-icon.png"
+                cta={t('solutions.utlubha.cta', 'Learn More')}
+                link="/utlubha"
+                color={utlubhaOrange}
+                delay={0}
               />
             </SimpleGrid>
           </VStack>
@@ -686,7 +718,7 @@ export default function LandingPage() {
           </VStack>
         </Container>
       </Box>
-      
+
       {/* Development Services Section */}
       <Box 
         as="section" 
@@ -822,6 +854,146 @@ export default function LandingPage() {
                     />
                   </Box>        
                 </MotionBox>
+              </GridItem>
+            </Grid>
+          </VStack>
+        </Container>
+      </Box>
+
+       {/* tazdani Features Section */}
+      <Box 
+        as="section" 
+        py={{ base: 16, md: 24 }}
+        position="relative"
+      >
+        <Container maxW="container.xl">
+          <VStack spacing={16}>
+            <MotionBox
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              textAlign="center"
+              maxW="3xl"
+              mx="auto"
+            >
+              <Badge 
+                colorScheme="orange" 
+                px={3} 
+                py={1} 
+                borderRadius="full" 
+                textTransform="uppercase" 
+                fontSize="xs" 
+                fontWeight="bold"
+                bg={`${utlubhaOrange}20`}
+                color={utlubhaOrange}
+              >
+                {t('utlubha.badge', 'Food & Beverages Ordering Solution')}
+              </Badge>
+              
+              <Heading
+                fontSize={{ base: "3xl", md: "4xl" }}
+                fontWeight="bold"
+                mt={3}
+                mb={5}
+              >
+                {t('utlubha.title', 'utlubha: The Food Ordering Revolution')}
+              </Heading>
+              
+              <Text
+                fontSize={{ base: "md", md: "lg" }}
+                color={useColorModeValue("gray.600", "gray.300")}
+              >
+                {t('utlubha.description', 'A comprehensive ordering solution that transforms how people and businesses handle customer orders, with merchant tools, groundbreaking tracking features and instant messaging.')}
+              </Text>
+            </MotionBox>
+
+            <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={{ base: 10, lg: 16 }} alignItems="center">
+              <GridItem>
+                <MotionBox
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={slideInLeft}
+                >
+                  <Box position="relative" textAlign="center">
+                    <Circle 
+                      position="absolute"
+                      size="300px"
+                      bg={`${utlubhaOrange}10`}
+                      top="50%"
+                      left="50%"
+                      transform="translate(-50%, -50%)"
+                      opacity={0.7}
+                      zIndex={0}
+                    />
+                    
+                    <MotionImage 
+                      src="/images/delivery-man.png" 
+                      alt={t('utlubha.imageAlt', 'utlubha Payment App Screenshot')}
+                      width={{ base: "100%", md: "80%" }}
+                      position="relative"
+                      zIndex={1}
+                      animate={{ 
+                        y: [0, -15, 0],
+                        transition: { 
+                          repeat: Infinity, 
+                          duration: 6,
+                          ease: "easeInOut" 
+                        }
+                      }}
+                    />
+                  </Box>    
+                </MotionBox>
+              </GridItem>
+              
+              <GridItem>
+                <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+                  {/* Feature Cards */}
+                  <FeatureCard
+                    icon={FaStore}
+                    title={t('utlubha.features.merchant.title', 'Merchant Tools')}
+                    description={t('utlubha.features.merchant.description', 'Issue payment links and QR codes to collect payments seamlessly')}
+                    delay={0}
+                    color={utlubhaOrange}
+                  />
+                  
+                  <FeatureCard
+                    icon={FaUser}
+                    title={t('tazdani.features.agent.title', 'Agent Network')}
+                    description={t('tazdani.features.agent.description', 'Human ATMs for cash deposits and withdrawals across the community')}
+                    delay={0.1}
+                    color={utlubhaOrange}
+                  />
+                  
+                  <FeatureCard
+                    icon={FaExchangeAlt}
+                    title={t('utlubha.features.transfer.title', 'Instant Transfers')}
+                    description={t('utlubha.features.transfer.description', 'Send money instantly to anyone, anywhere with just a few taps')}
+                    delay={0.2}
+                    color={utlubhaOrange}
+                  />
+                  
+                  <FeatureCard
+                    icon={FaShieldAlt}
+                    title={t('utlubha.features.secure.title', 'Secure Transactions')}
+                    description={t('utlubha.features.secure.description', 'Enterprise-grade security for all your financial activities')}
+                    delay={0.3}
+                    color={utlubhaOrange}
+                  />
+                </SimpleGrid>
+                
+                <Button
+                  mt={8}
+                  size="lg"
+                  rightIcon={<ArrowRight />}
+                  bg={utlubhaOrange}
+                  color="white"
+                  _hover={{ bg: "#00a857" }}
+                  onClick={() => router.push('/utlubha')}
+                >
+                  {t('utlubha.learnMore', 'Explore utlubha Platform')}
+                </Button>
               </GridItem>
             </Grid>
           </VStack>
